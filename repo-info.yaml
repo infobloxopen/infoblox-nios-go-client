@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: RepoMeta
+metadata:
+  description: Repo metadata
+  name: repo-info
+spec:
+  jira_project: NIOS
+  owner:
+  - nios-build-admins
+  protected_branches:
+  - main
