@@ -20,11 +20,8 @@ var _ MappedNullable = &GetAllnsgroupResponseObjectAsResult{}
 
 // GetAllnsgroupResponseObjectAsResult The response format to retrieve __Allnsgroup__ objects.
 type GetAllnsgroupResponseObjectAsResult struct {
-	Result               *Allnsgroup `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *Allnsgroup `json:"result,omitempty"`
 }
-
-type _GetAllnsgroupResponseObjectAsResult GetAllnsgroupResponseObjectAsResult
 
 // NewGetAllnsgroupResponseObjectAsResult instantiates a new GetAllnsgroupResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetAllnsgroupResponseObjectAsResult) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetAllnsgroupResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetAllnsgroupResponseObjectAsResult := _GetAllnsgroupResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetAllnsgroupResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetAllnsgroupResponseObjectAsResult(varGetAllnsgroupResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetAllnsgroupResponseObjectAsResult struct {

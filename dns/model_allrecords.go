@@ -49,11 +49,8 @@ type Allrecords struct {
 	// Name of the DNS View in which the record resides.
 	View *string `json:"view,omitempty"`
 	// Name of the zone in which the record resides.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _Allrecords Allrecords
 
 // NewAllrecords instantiates a new Allrecords object
 // This constructor will assign default values to properties that have it defined,
@@ -607,47 +604,7 @@ func (o Allrecords) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Allrecords) UnmarshalJSON(data []byte) (err error) {
-	varAllrecords := _Allrecords{}
-
-	err = json.Unmarshal(data, &varAllrecords)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Allrecords(varAllrecords)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "address")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "creator")
-		delete(additionalProperties, "ddns_principal")
-		delete(additionalProperties, "ddns_protected")
-		delete(additionalProperties, "disable")
-		delete(additionalProperties, "dtc_obscured")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "reclaimable")
-		delete(additionalProperties, "record")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAllrecords struct {

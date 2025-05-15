@@ -29,11 +29,8 @@ type NsgroupStubmember struct {
 	// The name of the Stub Member Name Server Group.
 	Name *string `json:"name,omitempty"`
 	// The Grid member servers of this stub zone. Note that the lead/stealth/grid_replicate/ preferred_primaries/override_preferred_primaries fields of the struct will be ignored when set in this field.
-	StubMembers          []NsgroupStubmemberStubMembers `json:"stub_members,omitempty"`
-	AdditionalProperties map[string]interface{}
+	StubMembers []NsgroupStubmemberStubMembers `json:"stub_members,omitempty"`
 }
-
-type _NsgroupStubmember NsgroupStubmember
 
 // NewNsgroupStubmember instantiates a new NsgroupStubmember object
 // This constructor will assign default values to properties that have it defined,
@@ -237,37 +234,7 @@ func (o NsgroupStubmember) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StubMembers) {
 		toSerialize["stub_members"] = o.StubMembers
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *NsgroupStubmember) UnmarshalJSON(data []byte) (err error) {
-	varNsgroupStubmember := _NsgroupStubmember{}
-
-	err = json.Unmarshal(data, &varNsgroupStubmember)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NsgroupStubmember(varNsgroupStubmember)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "stub_members")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableNsgroupStubmember struct {

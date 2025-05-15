@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](RecordunknownAPI.md#Get) | **Get** /record:unknown | Retrieve record:unknown objects
 [**Post**](RecordunknownAPI.md#Post) | **Post** /record:unknown | Create a record:unknown object
-[**Put**](RecordunknownAPI.md#Put) | **Put** /record:unknown | Use PUT call as GET operation with _method for a Struct field of a record:unknown object
 [**ReferenceDelete**](RecordunknownAPI.md#ReferenceDelete) | **Delete** /record:unknown/{reference} | Delete a record:unknown object
 [**ReferenceGet**](RecordunknownAPI.md#ReferenceGet) | **Get** /record:unknown/{reference} | Get a specific record:unknown object
 [**ReferencePut**](RecordunknownAPI.md#ReferencePut) | **Put** /record:unknown/{reference} | Update a record:unknown object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateRecordUnknownResponse**](CreateRecordUnknownResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListRecordUnknownResponse Put(ctx).RecordUnknown(recordUnknown).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a record:unknown object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordUnknown := *dns.NewRecordUnknown() // RecordUnknown | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordunknownAPI.Put(context.Background()).RecordUnknown(recordUnknown).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordunknownAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListRecordUnknownResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordunknownAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordunknownAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordUnknown** | [**RecordUnknown**](RecordUnknown.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListRecordUnknownResponse**](ListRecordUnknownResponse.md)
 
 ### Authorization
 

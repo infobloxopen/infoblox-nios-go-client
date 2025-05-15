@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](ZoneRpAPI.md#Get) | **Get** /zone_rp | Retrieve zone_rp objects
 [**Post**](ZoneRpAPI.md#Post) | **Post** /zone_rp | Create a zone_rp object
-[**Put**](ZoneRpAPI.md#Put) | **Put** /zone_rp | Use PUT call as GET operation with _method for a Struct field of a zone_rp object
 [**ReferenceDelete**](ZoneRpAPI.md#ReferenceDelete) | **Delete** /zone_rp/{reference} | Delete a zone_rp object
 [**ReferenceGet**](ZoneRpAPI.md#ReferenceGet) | **Get** /zone_rp/{reference} | Get a specific zone_rp object
 [**ReferencePut**](ZoneRpAPI.md#ReferencePut) | **Put** /zone_rp/{reference} | Update a zone_rp object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateZoneRpResponse**](CreateZoneRpResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListZoneRpResponse Put(ctx).ZoneRp(zoneRp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a zone_rp object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	zoneRp := *dns.NewZoneRp() // ZoneRp | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneRpAPI.Put(context.Background()).ZoneRp(zoneRp).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListZoneRpResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneRpAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ZoneRpAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**zoneRp** | [**ZoneRp**](ZoneRp.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListZoneRpResponse**](ListZoneRpResponse.md)
 
 ### Authorization
 

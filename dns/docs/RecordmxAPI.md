@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](RecordmxAPI.md#Get) | **Get** /record:mx | Retrieve record:mx objects
 [**Post**](RecordmxAPI.md#Post) | **Post** /record:mx | Create a record:mx object
-[**Put**](RecordmxAPI.md#Put) | **Put** /record:mx | Use PUT call as GET operation with _method for a Struct field of a record:mx object
 [**ReferenceDelete**](RecordmxAPI.md#ReferenceDelete) | **Delete** /record:mx/{reference} | Delete a record:mx object
 [**ReferenceGet**](RecordmxAPI.md#ReferenceGet) | **Get** /record:mx/{reference} | Get a specific record:mx object
 [**ReferencePut**](RecordmxAPI.md#ReferencePut) | **Put** /record:mx/{reference} | Update a record:mx object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateRecordMxResponse**](CreateRecordMxResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListRecordMxResponse Put(ctx).RecordMx(recordMx).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a record:mx object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordMx := *dns.NewRecordMx() // RecordMx | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordmxAPI.Put(context.Background()).RecordMx(recordMx).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordmxAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListRecordMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordmxAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordmxAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordMx** | [**RecordMx**](RecordMx.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListRecordMxResponse**](ListRecordMxResponse.md)
 
 ### Authorization
 

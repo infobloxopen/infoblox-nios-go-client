@@ -46,11 +46,8 @@ type RecordNsec struct {
 	// The name of the DNS View in which the record resides. Example: \"external\".
 	View *string `json:"view,omitempty"`
 	// The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _RecordNsec RecordNsec
 
 // NewRecordNsec instantiates a new RecordNsec object
 // This constructor will assign default values to properties that have it defined,
@@ -569,46 +566,7 @@ func (o RecordNsec) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecordNsec) UnmarshalJSON(data []byte) (err error) {
-	varRecordNsec := _RecordNsec{}
-
-	err = json.Unmarshal(data, &varRecordNsec)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RecordNsec(varRecordNsec)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "cloud_info")
-		delete(additionalProperties, "creation_time")
-		delete(additionalProperties, "creator")
-		delete(additionalProperties, "dns_name")
-		delete(additionalProperties, "dns_next_owner_name")
-		delete(additionalProperties, "last_queried")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "next_owner_name")
-		delete(additionalProperties, "rrset_types")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "use_ttl")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordNsec struct {

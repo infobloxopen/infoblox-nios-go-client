@@ -39,11 +39,8 @@ type RecordDhcid struct {
 	// The name of the DNS view in which the record resides. Example: \"external\".
 	View *string `json:"view,omitempty"`
 	// The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _RecordDhcid RecordDhcid
 
 // NewRecordDhcid instantiates a new RecordDhcid object
 // This constructor will assign default values to properties that have it defined,
@@ -422,42 +419,7 @@ func (o RecordDhcid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecordDhcid) UnmarshalJSON(data []byte) (err error) {
-	varRecordDhcid := _RecordDhcid{}
-
-	err = json.Unmarshal(data, &varRecordDhcid)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RecordDhcid(varRecordDhcid)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "creation_time")
-		delete(additionalProperties, "creator")
-		delete(additionalProperties, "dhcid")
-		delete(additionalProperties, "dns_name")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "use_ttl")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordDhcid struct {

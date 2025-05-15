@@ -120,11 +120,8 @@ type ZoneRp struct {
 	// Use flag for: soa_email
 	UseSoaEmail *bool `json:"use_soa_email,omitempty"`
 	// The name of the DNS view in which the zone resides. Example \"external\".
-	View                 *string `json:"view,omitempty"`
-	AdditionalProperties map[string]interface{}
+	View *string `json:"view,omitempty"`
 }
-
-type _ZoneRp ZoneRp
 
 // NewZoneRp instantiates a new ZoneRp object
 // This constructor will assign default values to properties that have it defined,
@@ -1973,84 +1970,7 @@ func (o ZoneRp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.View) {
 		toSerialize["view"] = o.View
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ZoneRp) UnmarshalJSON(data []byte) (err error) {
-	varZoneRp := _ZoneRp{}
-
-	err = json.Unmarshal(data, &varZoneRp)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ZoneRp(varZoneRp)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "address")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "copy_rpz_records")
-		delete(additionalProperties, "disable")
-		delete(additionalProperties, "display_domain")
-		delete(additionalProperties, "dns_soa_email")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "external_primaries")
-		delete(additionalProperties, "external_secondaries")
-		delete(additionalProperties, "fireeye_rule_mapping")
-		delete(additionalProperties, "fqdn")
-		delete(additionalProperties, "grid_primary")
-		delete(additionalProperties, "grid_secondaries")
-		delete(additionalProperties, "lock_unlock_zone")
-		delete(additionalProperties, "locked")
-		delete(additionalProperties, "locked_by")
-		delete(additionalProperties, "log_rpz")
-		delete(additionalProperties, "mask_prefix")
-		delete(additionalProperties, "member_soa_mnames")
-		delete(additionalProperties, "member_soa_serials")
-		delete(additionalProperties, "network_view")
-		delete(additionalProperties, "ns_group")
-		delete(additionalProperties, "parent")
-		delete(additionalProperties, "prefix")
-		delete(additionalProperties, "primary_type")
-		delete(additionalProperties, "record_name_policy")
-		delete(additionalProperties, "rpz_drop_ip_rule_enabled")
-		delete(additionalProperties, "rpz_drop_ip_rule_min_prefix_length_ipv4")
-		delete(additionalProperties, "rpz_drop_ip_rule_min_prefix_length_ipv6")
-		delete(additionalProperties, "rpz_last_updated_time")
-		delete(additionalProperties, "rpz_policy")
-		delete(additionalProperties, "rpz_priority")
-		delete(additionalProperties, "rpz_priority_end")
-		delete(additionalProperties, "rpz_severity")
-		delete(additionalProperties, "rpz_type")
-		delete(additionalProperties, "set_soa_serial_number")
-		delete(additionalProperties, "soa_default_ttl")
-		delete(additionalProperties, "soa_email")
-		delete(additionalProperties, "soa_expire")
-		delete(additionalProperties, "soa_negative_ttl")
-		delete(additionalProperties, "soa_refresh")
-		delete(additionalProperties, "soa_retry")
-		delete(additionalProperties, "soa_serial_number")
-		delete(additionalProperties, "substitute_name")
-		delete(additionalProperties, "use_external_primary")
-		delete(additionalProperties, "use_grid_zone_timer")
-		delete(additionalProperties, "use_log_rpz")
-		delete(additionalProperties, "use_record_name_policy")
-		delete(additionalProperties, "use_rpz_drop_ip_rule")
-		delete(additionalProperties, "use_soa_email")
-		delete(additionalProperties, "view")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableZoneRp struct {

@@ -42,11 +42,8 @@ type RecordNs struct {
 	// The name of the DNS view in which the record resides. Example: \"external\".
 	View *string `json:"view,omitempty"`
 	// The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _RecordNs RecordNs
 
 // NewRecordNs instantiates a new RecordNs object
 // This constructor will assign default values to properties that have it defined,
@@ -495,44 +492,7 @@ func (o RecordNs) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecordNs) UnmarshalJSON(data []byte) (err error) {
-	varRecordNs := _RecordNs{}
-
-	err = json.Unmarshal(data, &varRecordNs)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RecordNs(varRecordNs)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "addresses")
-		delete(additionalProperties, "cloud_info")
-		delete(additionalProperties, "creator")
-		delete(additionalProperties, "dns_name")
-		delete(additionalProperties, "last_queried")
-		delete(additionalProperties, "ms_delegation_name")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "nameserver")
-		delete(additionalProperties, "policy")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordNs struct {

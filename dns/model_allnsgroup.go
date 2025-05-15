@@ -27,11 +27,8 @@ type Allnsgroup struct {
 	// The name of the name server group.
 	Name *string `json:"name,omitempty"`
 	// The type of the name server group.
-	Type                 *string `json:"type,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Type *string `json:"type,omitempty"`
 }
-
-type _Allnsgroup Allnsgroup
 
 // NewAllnsgroup instantiates a new Allnsgroup object
 // This constructor will assign default values to properties that have it defined,
@@ -200,36 +197,7 @@ func (o Allnsgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Allnsgroup) UnmarshalJSON(data []byte) (err error) {
-	varAllnsgroup := _Allnsgroup{}
-
-	err = json.Unmarshal(data, &varAllnsgroup)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Allnsgroup(varAllnsgroup)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "type")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAllnsgroup struct {

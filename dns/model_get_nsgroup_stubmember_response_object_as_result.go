@@ -20,11 +20,8 @@ var _ MappedNullable = &GetNsgroupStubmemberResponseObjectAsResult{}
 
 // GetNsgroupStubmemberResponseObjectAsResult The response format to retrieve __NsgroupStubmember__ objects.
 type GetNsgroupStubmemberResponseObjectAsResult struct {
-	Result               *NsgroupStubmember `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *NsgroupStubmember `json:"result,omitempty"`
 }
-
-type _GetNsgroupStubmemberResponseObjectAsResult GetNsgroupStubmemberResponseObjectAsResult
 
 // NewGetNsgroupStubmemberResponseObjectAsResult instantiates a new GetNsgroupStubmemberResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetNsgroupStubmemberResponseObjectAsResult) ToMap() (map[string]interfac
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetNsgroupStubmemberResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetNsgroupStubmemberResponseObjectAsResult := _GetNsgroupStubmemberResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetNsgroupStubmemberResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetNsgroupStubmemberResponseObjectAsResult(varGetNsgroupStubmemberResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetNsgroupStubmemberResponseObjectAsResult struct {

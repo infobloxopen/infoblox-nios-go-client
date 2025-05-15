@@ -20,11 +20,8 @@ var _ MappedNullable = &GetDns64groupResponseObjectAsResult{}
 
 // GetDns64groupResponseObjectAsResult The response format to retrieve __Dns64group__ objects.
 type GetDns64groupResponseObjectAsResult struct {
-	Result               *Dns64group `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *Dns64group `json:"result,omitempty"`
 }
-
-type _GetDns64groupResponseObjectAsResult GetDns64groupResponseObjectAsResult
 
 // NewGetDns64groupResponseObjectAsResult instantiates a new GetDns64groupResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetDns64groupResponseObjectAsResult) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetDns64groupResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetDns64groupResponseObjectAsResult := _GetDns64groupResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetDns64groupResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetDns64groupResponseObjectAsResult(varGetDns64groupResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetDns64groupResponseObjectAsResult struct {

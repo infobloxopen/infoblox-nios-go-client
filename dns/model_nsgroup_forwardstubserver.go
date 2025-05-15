@@ -29,11 +29,8 @@ type NsgroupForwardstubserver struct {
 	// The list of external servers.
 	ExternalServers []NsgroupForwardstubserverExternalServers `json:"external_servers,omitempty"`
 	// The name of this Forward Stub Server Name Server Group.
-	Name                 *string `json:"name,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Name *string `json:"name,omitempty"`
 }
-
-type _NsgroupForwardstubserver NsgroupForwardstubserver
 
 // NewNsgroupForwardstubserver instantiates a new NsgroupForwardstubserver object
 // This constructor will assign default values to properties that have it defined,
@@ -237,37 +234,7 @@ func (o NsgroupForwardstubserver) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *NsgroupForwardstubserver) UnmarshalJSON(data []byte) (err error) {
-	varNsgroupForwardstubserver := _NsgroupForwardstubserver{}
-
-	err = json.Unmarshal(data, &varNsgroupForwardstubserver)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NsgroupForwardstubserver(varNsgroupForwardstubserver)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "external_servers")
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableNsgroupForwardstubserver struct {

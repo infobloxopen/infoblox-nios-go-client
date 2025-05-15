@@ -20,11 +20,8 @@ var _ MappedNullable = &GetRecordMxResponseObjectAsResult{}
 
 // GetRecordMxResponseObjectAsResult The response format to retrieve __RecordMx__ objects.
 type GetRecordMxResponseObjectAsResult struct {
-	Result               *RecordMx `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *RecordMx `json:"result,omitempty"`
 }
-
-type _GetRecordMxResponseObjectAsResult GetRecordMxResponseObjectAsResult
 
 // NewGetRecordMxResponseObjectAsResult instantiates a new GetRecordMxResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetRecordMxResponseObjectAsResult) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetRecordMxResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetRecordMxResponseObjectAsResult := _GetRecordMxResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetRecordMxResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetRecordMxResponseObjectAsResult(varGetRecordMxResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetRecordMxResponseObjectAsResult struct {

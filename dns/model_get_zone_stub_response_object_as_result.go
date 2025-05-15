@@ -20,11 +20,8 @@ var _ MappedNullable = &GetZoneStubResponseObjectAsResult{}
 
 // GetZoneStubResponseObjectAsResult The response format to retrieve __ZoneStub__ objects.
 type GetZoneStubResponseObjectAsResult struct {
-	Result               *ZoneStub `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *ZoneStub `json:"result,omitempty"`
 }
-
-type _GetZoneStubResponseObjectAsResult GetZoneStubResponseObjectAsResult
 
 // NewGetZoneStubResponseObjectAsResult instantiates a new GetZoneStubResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetZoneStubResponseObjectAsResult) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetZoneStubResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetZoneStubResponseObjectAsResult := _GetZoneStubResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetZoneStubResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetZoneStubResponseObjectAsResult(varGetZoneStubResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetZoneStubResponseObjectAsResult struct {

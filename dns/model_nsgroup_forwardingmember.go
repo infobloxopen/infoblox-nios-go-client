@@ -29,11 +29,8 @@ type NsgroupForwardingmember struct {
 	// The list of forwarding member servers.
 	ForwardingServers []NsgroupForwardingmemberForwardingServers `json:"forwarding_servers,omitempty"`
 	// The name of the Forwarding Member Name Server Group.
-	Name                 *string `json:"name,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Name *string `json:"name,omitempty"`
 }
-
-type _NsgroupForwardingmember NsgroupForwardingmember
 
 // NewNsgroupForwardingmember instantiates a new NsgroupForwardingmember object
 // This constructor will assign default values to properties that have it defined,
@@ -237,37 +234,7 @@ func (o NsgroupForwardingmember) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *NsgroupForwardingmember) UnmarshalJSON(data []byte) (err error) {
-	varNsgroupForwardingmember := _NsgroupForwardingmember{}
-
-	err = json.Unmarshal(data, &varNsgroupForwardingmember)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NsgroupForwardingmember(varNsgroupForwardingmember)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "forwarding_servers")
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableNsgroupForwardingmember struct {

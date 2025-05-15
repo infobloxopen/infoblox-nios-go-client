@@ -50,19 +50,6 @@ type NsgroupstubmemberAPI interface {
 	//  @return CreateNsgroupStubmemberResponse
 	PostExecute(r NsgroupstubmemberAPIPostRequest) (*CreateNsgroupStubmemberResponse, *http.Response, error)
 	/*
-		Put Use PUT call as GET operation with _method for a Struct field of a nsgroup:stubmember object
-
-		Use PUT call as GET operation with _method for a Struct field of a nsgroup:stubmember object
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NsgroupstubmemberAPIPutRequest
-	*/
-	Put(ctx context.Context) NsgroupstubmemberAPIPutRequest
-
-	// PutExecute executes the request
-	//  @return ListNsgroupStubmemberResponse
-	PutExecute(r NsgroupstubmemberAPIPutRequest) (*ListNsgroupStubmemberResponse, *http.Response, error)
-	/*
 		ReferenceDelete Delete a nsgroup:stubmember object
 
 		Deletes a specific nsgroup:stubmember object by reference
@@ -381,185 +368,6 @@ func (a *NsgroupstubmemberAPIService) PostExecute(r NsgroupstubmemberAPIPostRequ
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupStubmember != nil {
-		if r.nsgroupStubmember.Extattrs == nil {
-			r.nsgroupStubmember.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.nsgroupStubmember.Extattrs)[k]; !ok {
-				(*r.nsgroupStubmember.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.nsgroupStubmember
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NsgroupstubmemberAPIPutRequest struct {
-	ctx               context.Context
-	ApiService        NsgroupstubmemberAPI
-	nsgroupStubmember *NsgroupStubmember
-	returnFields      *string
-	returnFields2     *string
-	returnAsObject    *int32
-	maxResults        *int32
-	method            *string
-}
-
-// Object data to create
-func (r NsgroupstubmemberAPIPutRequest) NsgroupStubmember(nsgroupStubmember NsgroupStubmember) NsgroupstubmemberAPIPutRequest {
-	r.nsgroupStubmember = &nsgroupStubmember
-	return r
-}
-
-// Enter the field names followed by comma
-func (r NsgroupstubmemberAPIPutRequest) ReturnFields(returnFields string) NsgroupstubmemberAPIPutRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupstubmemberAPIPutRequest) ReturnFields2(returnFields2 string) NsgroupstubmemberAPIPutRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NsgroupstubmemberAPIPutRequest) ReturnAsObject(returnAsObject int32) NsgroupstubmemberAPIPutRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r NsgroupstubmemberAPIPutRequest) MaxResults(maxResults int32) NsgroupstubmemberAPIPutRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Enter the method type for the request
-func (r NsgroupstubmemberAPIPutRequest) Method(method string) NsgroupstubmemberAPIPutRequest {
-	r.method = &method
-	return r
-}
-
-func (r NsgroupstubmemberAPIPutRequest) Execute() (*ListNsgroupStubmemberResponse, *http.Response, error) {
-	return r.ApiService.PutExecute(r)
-}
-
-/*
-Put Use PUT call as GET operation with _method for a Struct field of a nsgroup:stubmember object
-
-Use PUT call as GET operation with _method for a Struct field of a nsgroup:stubmember object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NsgroupstubmemberAPIPutRequest
-*/
-func (a *NsgroupstubmemberAPIService) Put(ctx context.Context) NsgroupstubmemberAPIPutRequest {
-	return NsgroupstubmemberAPIPutRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListNsgroupStubmemberResponse
-func (a *NsgroupstubmemberAPIService) PutExecute(r NsgroupstubmemberAPIPutRequest) (*ListNsgroupStubmemberResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListNsgroupStubmemberResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupstubmemberAPIService.Put")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/nsgroup:stubmember"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.nsgroupStubmember == nil {
-		return localVarReturnValue, nil, internal.ReportError("nsgroupStubmember is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.method != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_method", r.method, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupStubmember != nil {
-		if r.nsgroupStubmember.Extattrs == nil {
-			r.nsgroupStubmember.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.nsgroupStubmember.Extattrs)[k]; !ok {
-				(*r.nsgroupStubmember.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
 	}
 	// body params
 	localVarPostBody = r.nsgroupStubmember
@@ -915,6 +723,18 @@ func (a *NsgroupstubmemberAPIService) ReferencePutExecute(r NsgroupstubmemberAPI
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupStubmember != nil {
+		if r.nsgroupStubmember.Extattrs == nil {
+			r.nsgroupStubmember.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.nsgroupStubmember.Extattrs)[k]; !ok {
+				(*r.nsgroupStubmember.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
 	}
 	// body params
 	localVarPostBody = r.nsgroupStubmember

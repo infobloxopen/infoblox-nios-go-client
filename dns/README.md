@@ -80,187 +80,152 @@ All URIs are relative to *http://localhost/wapi/v2.12.3*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AllnsgroupAPI* | [**Get**](docs/AllnsgroupAPI.md#get) | **Get** /allnsgroup | Retrieve allnsgroup objects
-*AllnsgroupAPI* | [**Put**](docs/AllnsgroupAPI.md#put) | **Put** /allnsgroup | Use PUT call as GET operation with _method for a Struct field of a allnsgroup object
 *AllnsgroupAPI* | [**ReferenceGet**](docs/AllnsgroupAPI.md#referenceget) | **Get** /allnsgroup/{reference} | Get a specific allnsgroup object
 *AllrecordsAPI* | [**Get**](docs/AllrecordsAPI.md#get) | **Get** /allrecords | Retrieve allrecords objects
-*AllrecordsAPI* | [**Put**](docs/AllrecordsAPI.md#put) | **Put** /allrecords | Use PUT call as GET operation with _method for a Struct field of a allrecords object
 *AllrecordsAPI* | [**ReferenceGet**](docs/AllrecordsAPI.md#referenceget) | **Get** /allrecords/{reference} | Get a specific allrecords object
 *Dns64groupAPI* | [**Get**](docs/Dns64groupAPI.md#get) | **Get** /dns64group | Retrieve dns64group objects
 *Dns64groupAPI* | [**Post**](docs/Dns64groupAPI.md#post) | **Post** /dns64group | Create a dns64group object
-*Dns64groupAPI* | [**Put**](docs/Dns64groupAPI.md#put) | **Put** /dns64group | Use PUT call as GET operation with _method for a Struct field of a dns64group object
 *Dns64groupAPI* | [**ReferenceDelete**](docs/Dns64groupAPI.md#referencedelete) | **Delete** /dns64group/{reference} | Delete a dns64group object
 *Dns64groupAPI* | [**ReferenceGet**](docs/Dns64groupAPI.md#referenceget) | **Get** /dns64group/{reference} | Get a specific dns64group object
 *Dns64groupAPI* | [**ReferencePut**](docs/Dns64groupAPI.md#referenceput) | **Put** /dns64group/{reference} | Update a dns64group object
 *NsgroupAPI* | [**Get**](docs/NsgroupAPI.md#get) | **Get** /nsgroup | Retrieve nsgroup objects
 *NsgroupAPI* | [**Post**](docs/NsgroupAPI.md#post) | **Post** /nsgroup | Create a nsgroup object
-*NsgroupAPI* | [**Put**](docs/NsgroupAPI.md#put) | **Put** /nsgroup | Use PUT call as GET operation with _method for a Struct field of a nsgroup object
 *NsgroupAPI* | [**ReferenceDelete**](docs/NsgroupAPI.md#referencedelete) | **Delete** /nsgroup/{reference} | Delete a nsgroup object
 *NsgroupAPI* | [**ReferenceGet**](docs/NsgroupAPI.md#referenceget) | **Get** /nsgroup/{reference} | Get a specific nsgroup object
 *NsgroupAPI* | [**ReferencePut**](docs/NsgroupAPI.md#referenceput) | **Put** /nsgroup/{reference} | Update a nsgroup object
 *NsgroupdelegationAPI* | [**Get**](docs/NsgroupdelegationAPI.md#get) | **Get** /nsgroup:delegation | Retrieve nsgroup:delegation objects
 *NsgroupdelegationAPI* | [**Post**](docs/NsgroupdelegationAPI.md#post) | **Post** /nsgroup:delegation | Create a nsgroup:delegation object
-*NsgroupdelegationAPI* | [**Put**](docs/NsgroupdelegationAPI.md#put) | **Put** /nsgroup:delegation | Use PUT call as GET operation with _method for a Struct field of a nsgroup:delegation object
 *NsgroupdelegationAPI* | [**ReferenceDelete**](docs/NsgroupdelegationAPI.md#referencedelete) | **Delete** /nsgroup:delegation/{reference} | Delete a nsgroup:delegation object
 *NsgroupdelegationAPI* | [**ReferenceGet**](docs/NsgroupdelegationAPI.md#referenceget) | **Get** /nsgroup:delegation/{reference} | Get a specific nsgroup:delegation object
 *NsgroupdelegationAPI* | [**ReferencePut**](docs/NsgroupdelegationAPI.md#referenceput) | **Put** /nsgroup:delegation/{reference} | Update a nsgroup:delegation object
 *NsgroupforwardingmemberAPI* | [**Get**](docs/NsgroupforwardingmemberAPI.md#get) | **Get** /nsgroup:forwardingmember | Retrieve nsgroup:forwardingmember objects
 *NsgroupforwardingmemberAPI* | [**Post**](docs/NsgroupforwardingmemberAPI.md#post) | **Post** /nsgroup:forwardingmember | Create a nsgroup:forwardingmember object
-*NsgroupforwardingmemberAPI* | [**Put**](docs/NsgroupforwardingmemberAPI.md#put) | **Put** /nsgroup:forwardingmember | Use PUT call as GET operation with _method for a Struct field of a nsgroup:forwardingmember object
 *NsgroupforwardingmemberAPI* | [**ReferenceDelete**](docs/NsgroupforwardingmemberAPI.md#referencedelete) | **Delete** /nsgroup:forwardingmember/{reference} | Delete a nsgroup:forwardingmember object
 *NsgroupforwardingmemberAPI* | [**ReferenceGet**](docs/NsgroupforwardingmemberAPI.md#referenceget) | **Get** /nsgroup:forwardingmember/{reference} | Get a specific nsgroup:forwardingmember object
 *NsgroupforwardingmemberAPI* | [**ReferencePut**](docs/NsgroupforwardingmemberAPI.md#referenceput) | **Put** /nsgroup:forwardingmember/{reference} | Update a nsgroup:forwardingmember object
 *NsgroupforwardstubserverAPI* | [**Get**](docs/NsgroupforwardstubserverAPI.md#get) | **Get** /nsgroup:forwardstubserver | Retrieve nsgroup:forwardstubserver objects
 *NsgroupforwardstubserverAPI* | [**Post**](docs/NsgroupforwardstubserverAPI.md#post) | **Post** /nsgroup:forwardstubserver | Create a nsgroup:forwardstubserver object
-*NsgroupforwardstubserverAPI* | [**Put**](docs/NsgroupforwardstubserverAPI.md#put) | **Put** /nsgroup:forwardstubserver | Use PUT call as GET operation with _method for a Struct field of a nsgroup:forwardstubserver object
 *NsgroupforwardstubserverAPI* | [**ReferenceDelete**](docs/NsgroupforwardstubserverAPI.md#referencedelete) | **Delete** /nsgroup:forwardstubserver/{reference} | Delete a nsgroup:forwardstubserver object
 *NsgroupforwardstubserverAPI* | [**ReferenceGet**](docs/NsgroupforwardstubserverAPI.md#referenceget) | **Get** /nsgroup:forwardstubserver/{reference} | Get a specific nsgroup:forwardstubserver object
 *NsgroupforwardstubserverAPI* | [**ReferencePut**](docs/NsgroupforwardstubserverAPI.md#referenceput) | **Put** /nsgroup:forwardstubserver/{reference} | Update a nsgroup:forwardstubserver object
 *NsgroupstubmemberAPI* | [**Get**](docs/NsgroupstubmemberAPI.md#get) | **Get** /nsgroup:stubmember | Retrieve nsgroup:stubmember objects
 *NsgroupstubmemberAPI* | [**Post**](docs/NsgroupstubmemberAPI.md#post) | **Post** /nsgroup:stubmember | Create a nsgroup:stubmember object
-*NsgroupstubmemberAPI* | [**Put**](docs/NsgroupstubmemberAPI.md#put) | **Put** /nsgroup:stubmember | Use PUT call as GET operation with _method for a Struct field of a nsgroup:stubmember object
 *NsgroupstubmemberAPI* | [**ReferenceDelete**](docs/NsgroupstubmemberAPI.md#referencedelete) | **Delete** /nsgroup:stubmember/{reference} | Delete a nsgroup:stubmember object
 *NsgroupstubmemberAPI* | [**ReferenceGet**](docs/NsgroupstubmemberAPI.md#referenceget) | **Get** /nsgroup:stubmember/{reference} | Get a specific nsgroup:stubmember object
 *NsgroupstubmemberAPI* | [**ReferencePut**](docs/NsgroupstubmemberAPI.md#referenceput) | **Put** /nsgroup:stubmember/{reference} | Update a nsgroup:stubmember object
 *RecordaAPI* | [**Get**](docs/RecordaAPI.md#get) | **Get** /record:a | Retrieve record:a objects
 *RecordaAPI* | [**Post**](docs/RecordaAPI.md#post) | **Post** /record:a | Create a record:a object
-*RecordaAPI* | [**Put**](docs/RecordaAPI.md#put) | **Put** /record:a | Use PUT call as GET operation with _method for a Struct field of a record:a object
 *RecordaAPI* | [**ReferenceDelete**](docs/RecordaAPI.md#referencedelete) | **Delete** /record:a/{reference} | Delete a record:a object
 *RecordaAPI* | [**ReferenceGet**](docs/RecordaAPI.md#referenceget) | **Get** /record:a/{reference} | Get a specific record:a object
 *RecordaAPI* | [**ReferencePut**](docs/RecordaAPI.md#referenceput) | **Put** /record:a/{reference} | Update a record:a object
 *RecordaaaaAPI* | [**Get**](docs/RecordaaaaAPI.md#get) | **Get** /record:aaaa | Retrieve record:aaaa objects
 *RecordaaaaAPI* | [**Post**](docs/RecordaaaaAPI.md#post) | **Post** /record:aaaa | Create a record:aaaa object
-*RecordaaaaAPI* | [**Put**](docs/RecordaaaaAPI.md#put) | **Put** /record:aaaa | Use PUT call as GET operation with _method for a Struct field of a record:aaaa object
 *RecordaaaaAPI* | [**ReferenceDelete**](docs/RecordaaaaAPI.md#referencedelete) | **Delete** /record:aaaa/{reference} | Delete a record:aaaa object
 *RecordaaaaAPI* | [**ReferenceGet**](docs/RecordaaaaAPI.md#referenceget) | **Get** /record:aaaa/{reference} | Get a specific record:aaaa object
 *RecordaaaaAPI* | [**ReferencePut**](docs/RecordaaaaAPI.md#referenceput) | **Put** /record:aaaa/{reference} | Update a record:aaaa object
 *RecordcaaAPI* | [**Get**](docs/RecordcaaAPI.md#get) | **Get** /record:caa | Retrieve record:caa objects
 *RecordcaaAPI* | [**Post**](docs/RecordcaaAPI.md#post) | **Post** /record:caa | Create a record:caa object
-*RecordcaaAPI* | [**Put**](docs/RecordcaaAPI.md#put) | **Put** /record:caa | Use PUT call as GET operation with _method for a Struct field of a record:caa object
 *RecordcaaAPI* | [**ReferenceDelete**](docs/RecordcaaAPI.md#referencedelete) | **Delete** /record:caa/{reference} | Delete a record:caa object
 *RecordcaaAPI* | [**ReferenceGet**](docs/RecordcaaAPI.md#referenceget) | **Get** /record:caa/{reference} | Get a specific record:caa object
 *RecordcaaAPI* | [**ReferencePut**](docs/RecordcaaAPI.md#referenceput) | **Put** /record:caa/{reference} | Update a record:caa object
 *RecordcnameAPI* | [**Get**](docs/RecordcnameAPI.md#get) | **Get** /record:cname | Retrieve record:cname objects
 *RecordcnameAPI* | [**Post**](docs/RecordcnameAPI.md#post) | **Post** /record:cname | Create a record:cname object
-*RecordcnameAPI* | [**Put**](docs/RecordcnameAPI.md#put) | **Put** /record:cname | Use PUT call as GET operation with _method for a Struct field of a record:cname object
 *RecordcnameAPI* | [**ReferenceDelete**](docs/RecordcnameAPI.md#referencedelete) | **Delete** /record:cname/{reference} | Delete a record:cname object
 *RecordcnameAPI* | [**ReferenceGet**](docs/RecordcnameAPI.md#referenceget) | **Get** /record:cname/{reference} | Get a specific record:cname object
 *RecordcnameAPI* | [**ReferencePut**](docs/RecordcnameAPI.md#referenceput) | **Put** /record:cname/{reference} | Update a record:cname object
 *RecorddhcidAPI* | [**Get**](docs/RecorddhcidAPI.md#get) | **Get** /record:dhcid | Retrieve record:dhcid objects
-*RecorddhcidAPI* | [**Put**](docs/RecorddhcidAPI.md#put) | **Put** /record:dhcid | Use PUT call as GET operation with _method for a Struct field of a record:dhcid object
 *RecorddhcidAPI* | [**ReferenceDelete**](docs/RecorddhcidAPI.md#referencedelete) | **Delete** /record:dhcid/{reference} | Delete a record:dhcid object
 *RecorddhcidAPI* | [**ReferenceGet**](docs/RecorddhcidAPI.md#referenceget) | **Get** /record:dhcid/{reference} | Get a specific record:dhcid object
 *RecorddnameAPI* | [**Get**](docs/RecorddnameAPI.md#get) | **Get** /record:dname | Retrieve record:dname objects
 *RecorddnameAPI* | [**Post**](docs/RecorddnameAPI.md#post) | **Post** /record:dname | Create a record:dname object
-*RecorddnameAPI* | [**Put**](docs/RecorddnameAPI.md#put) | **Put** /record:dname | Use PUT call as GET operation with _method for a Struct field of a record:dname object
 *RecorddnameAPI* | [**ReferenceDelete**](docs/RecorddnameAPI.md#referencedelete) | **Delete** /record:dname/{reference} | Delete a record:dname object
 *RecorddnameAPI* | [**ReferenceGet**](docs/RecorddnameAPI.md#referenceget) | **Get** /record:dname/{reference} | Get a specific record:dname object
 *RecorddnameAPI* | [**ReferencePut**](docs/RecorddnameAPI.md#referenceput) | **Put** /record:dname/{reference} | Update a record:dname object
 *RecorddnskeyAPI* | [**Get**](docs/RecorddnskeyAPI.md#get) | **Get** /record:dnskey | Retrieve record:dnskey objects
-*RecorddnskeyAPI* | [**Put**](docs/RecorddnskeyAPI.md#put) | **Put** /record:dnskey | Use PUT call as GET operation with _method for a Struct field of a record:dnskey object
 *RecorddnskeyAPI* | [**ReferenceGet**](docs/RecorddnskeyAPI.md#referenceget) | **Get** /record:dnskey/{reference} | Get a specific record:dnskey object
 *RecorddsAPI* | [**Get**](docs/RecorddsAPI.md#get) | **Get** /record:ds | Retrieve record:ds objects
-*RecorddsAPI* | [**Put**](docs/RecorddsAPI.md#put) | **Put** /record:ds | Use PUT call as GET operation with _method for a Struct field of a record:ds object
 *RecorddsAPI* | [**ReferenceDelete**](docs/RecorddsAPI.md#referencedelete) | **Delete** /record:ds/{reference} | Delete a record:ds object
 *RecorddsAPI* | [**ReferenceGet**](docs/RecorddsAPI.md#referenceget) | **Get** /record:ds/{reference} | Get a specific record:ds object
 *RecordhostAPI* | [**Get**](docs/RecordhostAPI.md#get) | **Get** /record:host | Retrieve record:host objects
 *RecordhostAPI* | [**Post**](docs/RecordhostAPI.md#post) | **Post** /record:host | Create a record:host object
-*RecordhostAPI* | [**Put**](docs/RecordhostAPI.md#put) | **Put** /record:host | Use PUT call as GET operation with _method for a Struct field of a record:host object
 *RecordhostAPI* | [**ReferenceDelete**](docs/RecordhostAPI.md#referencedelete) | **Delete** /record:host/{reference} | Delete a record:host object
 *RecordhostAPI* | [**ReferenceGet**](docs/RecordhostAPI.md#referenceget) | **Get** /record:host/{reference} | Get a specific record:host object
 *RecordhostAPI* | [**ReferencePut**](docs/RecordhostAPI.md#referenceput) | **Put** /record:host/{reference} | Update a record:host object
 *RecordmxAPI* | [**Get**](docs/RecordmxAPI.md#get) | **Get** /record:mx | Retrieve record:mx objects
 *RecordmxAPI* | [**Post**](docs/RecordmxAPI.md#post) | **Post** /record:mx | Create a record:mx object
-*RecordmxAPI* | [**Put**](docs/RecordmxAPI.md#put) | **Put** /record:mx | Use PUT call as GET operation with _method for a Struct field of a record:mx object
 *RecordmxAPI* | [**ReferenceDelete**](docs/RecordmxAPI.md#referencedelete) | **Delete** /record:mx/{reference} | Delete a record:mx object
 *RecordmxAPI* | [**ReferenceGet**](docs/RecordmxAPI.md#referenceget) | **Get** /record:mx/{reference} | Get a specific record:mx object
 *RecordmxAPI* | [**ReferencePut**](docs/RecordmxAPI.md#referenceput) | **Put** /record:mx/{reference} | Update a record:mx object
 *RecordnamepolicyAPI* | [**Get**](docs/RecordnamepolicyAPI.md#get) | **Get** /recordnamepolicy | Retrieve recordnamepolicy objects
 *RecordnamepolicyAPI* | [**Post**](docs/RecordnamepolicyAPI.md#post) | **Post** /recordnamepolicy | Create a recordnamepolicy object
-*RecordnamepolicyAPI* | [**Put**](docs/RecordnamepolicyAPI.md#put) | **Put** /recordnamepolicy | Use PUT call as GET operation with _method for a Struct field of a recordnamepolicy object
 *RecordnamepolicyAPI* | [**ReferenceDelete**](docs/RecordnamepolicyAPI.md#referencedelete) | **Delete** /recordnamepolicy/{reference} | Delete a recordnamepolicy object
 *RecordnamepolicyAPI* | [**ReferenceGet**](docs/RecordnamepolicyAPI.md#referenceget) | **Get** /recordnamepolicy/{reference} | Get a specific recordnamepolicy object
 *RecordnamepolicyAPI* | [**ReferencePut**](docs/RecordnamepolicyAPI.md#referenceput) | **Put** /recordnamepolicy/{reference} | Update a recordnamepolicy object
 *RecordnaptrAPI* | [**Get**](docs/RecordnaptrAPI.md#get) | **Get** /record:naptr | Retrieve record:naptr objects
 *RecordnaptrAPI* | [**Post**](docs/RecordnaptrAPI.md#post) | **Post** /record:naptr | Create a record:naptr object
-*RecordnaptrAPI* | [**Put**](docs/RecordnaptrAPI.md#put) | **Put** /record:naptr | Use PUT call as GET operation with _method for a Struct field of a record:naptr object
 *RecordnaptrAPI* | [**ReferenceDelete**](docs/RecordnaptrAPI.md#referencedelete) | **Delete** /record:naptr/{reference} | Delete a record:naptr object
 *RecordnaptrAPI* | [**ReferenceGet**](docs/RecordnaptrAPI.md#referenceget) | **Get** /record:naptr/{reference} | Get a specific record:naptr object
 *RecordnaptrAPI* | [**ReferencePut**](docs/RecordnaptrAPI.md#referenceput) | **Put** /record:naptr/{reference} | Update a record:naptr object
 *RecordnsAPI* | [**Get**](docs/RecordnsAPI.md#get) | **Get** /record:ns | Retrieve record:ns objects
 *RecordnsAPI* | [**Post**](docs/RecordnsAPI.md#post) | **Post** /record:ns | Create a record:ns object
-*RecordnsAPI* | [**Put**](docs/RecordnsAPI.md#put) | **Put** /record:ns | Use PUT call as GET operation with _method for a Struct field of a record:ns object
 *RecordnsAPI* | [**ReferenceDelete**](docs/RecordnsAPI.md#referencedelete) | **Delete** /record:ns/{reference} | Delete a record:ns object
 *RecordnsAPI* | [**ReferenceGet**](docs/RecordnsAPI.md#referenceget) | **Get** /record:ns/{reference} | Get a specific record:ns object
 *RecordnsAPI* | [**ReferencePut**](docs/RecordnsAPI.md#referenceput) | **Put** /record:ns/{reference} | Update a record:ns object
 *RecordnsecAPI* | [**Get**](docs/RecordnsecAPI.md#get) | **Get** /record:nsec | Retrieve record:nsec objects
-*RecordnsecAPI* | [**Put**](docs/RecordnsecAPI.md#put) | **Put** /record:nsec | Use PUT call as GET operation with _method for a Struct field of a record:nsec object
 *RecordnsecAPI* | [**ReferenceGet**](docs/RecordnsecAPI.md#referenceget) | **Get** /record:nsec/{reference} | Get a specific record:nsec object
 *Recordnsec3API* | [**Get**](docs/Recordnsec3API.md#get) | **Get** /record:nsec3 | Retrieve record:nsec3 objects
-*Recordnsec3API* | [**Put**](docs/Recordnsec3API.md#put) | **Put** /record:nsec3 | Use PUT call as GET operation with _method for a Struct field of a record:nsec3 object
 *Recordnsec3API* | [**ReferenceGet**](docs/Recordnsec3API.md#referenceget) | **Get** /record:nsec3/{reference} | Get a specific record:nsec3 object
 *Recordnsec3paramAPI* | [**Get**](docs/Recordnsec3paramAPI.md#get) | **Get** /record:nsec3param | Retrieve record:nsec3param objects
-*Recordnsec3paramAPI* | [**Put**](docs/Recordnsec3paramAPI.md#put) | **Put** /record:nsec3param | Use PUT call as GET operation with _method for a Struct field of a record:nsec3param object
 *Recordnsec3paramAPI* | [**ReferenceGet**](docs/Recordnsec3paramAPI.md#referenceget) | **Get** /record:nsec3param/{reference} | Get a specific record:nsec3param object
 *RecordptrAPI* | [**Get**](docs/RecordptrAPI.md#get) | **Get** /record:ptr | Retrieve record:ptr objects
 *RecordptrAPI* | [**Post**](docs/RecordptrAPI.md#post) | **Post** /record:ptr | Create a record:ptr object
-*RecordptrAPI* | [**Put**](docs/RecordptrAPI.md#put) | **Put** /record:ptr | Use PUT call as GET operation with _method for a Struct field of a record:ptr object
 *RecordptrAPI* | [**ReferenceDelete**](docs/RecordptrAPI.md#referencedelete) | **Delete** /record:ptr/{reference} | Delete a record:ptr object
 *RecordptrAPI* | [**ReferenceGet**](docs/RecordptrAPI.md#referenceget) | **Get** /record:ptr/{reference} | Get a specific record:ptr object
 *RecordptrAPI* | [**ReferencePut**](docs/RecordptrAPI.md#referenceput) | **Put** /record:ptr/{reference} | Update a record:ptr object
 *RecordrrsigAPI* | [**Get**](docs/RecordrrsigAPI.md#get) | **Get** /record:rrsig | Retrieve record:rrsig objects
-*RecordrrsigAPI* | [**Put**](docs/RecordrrsigAPI.md#put) | **Put** /record:rrsig | Use PUT call as GET operation with _method for a Struct field of a record:rrsig object
 *RecordrrsigAPI* | [**ReferenceGet**](docs/RecordrrsigAPI.md#referenceget) | **Get** /record:rrsig/{reference} | Get a specific record:rrsig object
 *RecordsrvAPI* | [**Get**](docs/RecordsrvAPI.md#get) | **Get** /record:srv | Retrieve record:srv objects
 *RecordsrvAPI* | [**Post**](docs/RecordsrvAPI.md#post) | **Post** /record:srv | Create a record:srv object
-*RecordsrvAPI* | [**Put**](docs/RecordsrvAPI.md#put) | **Put** /record:srv | Use PUT call as GET operation with _method for a Struct field of a record:srv object
 *RecordsrvAPI* | [**ReferenceDelete**](docs/RecordsrvAPI.md#referencedelete) | **Delete** /record:srv/{reference} | Delete a record:srv object
 *RecordsrvAPI* | [**ReferenceGet**](docs/RecordsrvAPI.md#referenceget) | **Get** /record:srv/{reference} | Get a specific record:srv object
 *RecordsrvAPI* | [**ReferencePut**](docs/RecordsrvAPI.md#referenceput) | **Put** /record:srv/{reference} | Update a record:srv object
 *RecordtlsaAPI* | [**Get**](docs/RecordtlsaAPI.md#get) | **Get** /record:tlsa | Retrieve record:tlsa objects
 *RecordtlsaAPI* | [**Post**](docs/RecordtlsaAPI.md#post) | **Post** /record:tlsa | Create a record:tlsa object
-*RecordtlsaAPI* | [**Put**](docs/RecordtlsaAPI.md#put) | **Put** /record:tlsa | Use PUT call as GET operation with _method for a Struct field of a record:tlsa object
 *RecordtlsaAPI* | [**ReferenceDelete**](docs/RecordtlsaAPI.md#referencedelete) | **Delete** /record:tlsa/{reference} | Delete a record:tlsa object
 *RecordtlsaAPI* | [**ReferenceGet**](docs/RecordtlsaAPI.md#referenceget) | **Get** /record:tlsa/{reference} | Get a specific record:tlsa object
 *RecordtlsaAPI* | [**ReferencePut**](docs/RecordtlsaAPI.md#referenceput) | **Put** /record:tlsa/{reference} | Update a record:tlsa object
 *RecordtxtAPI* | [**Get**](docs/RecordtxtAPI.md#get) | **Get** /record:txt | Retrieve record:txt objects
 *RecordtxtAPI* | [**Post**](docs/RecordtxtAPI.md#post) | **Post** /record:txt | Create a record:txt object
-*RecordtxtAPI* | [**Put**](docs/RecordtxtAPI.md#put) | **Put** /record:txt | Use PUT call as GET operation with _method for a Struct field of a record:txt object
 *RecordtxtAPI* | [**ReferenceDelete**](docs/RecordtxtAPI.md#referencedelete) | **Delete** /record:txt/{reference} | Delete a record:txt object
 *RecordtxtAPI* | [**ReferenceGet**](docs/RecordtxtAPI.md#referenceget) | **Get** /record:txt/{reference} | Get a specific record:txt object
 *RecordtxtAPI* | [**ReferencePut**](docs/RecordtxtAPI.md#referenceput) | **Put** /record:txt/{reference} | Update a record:txt object
 *RecordunknownAPI* | [**Get**](docs/RecordunknownAPI.md#get) | **Get** /record:unknown | Retrieve record:unknown objects
 *RecordunknownAPI* | [**Post**](docs/RecordunknownAPI.md#post) | **Post** /record:unknown | Create a record:unknown object
-*RecordunknownAPI* | [**Put**](docs/RecordunknownAPI.md#put) | **Put** /record:unknown | Use PUT call as GET operation with _method for a Struct field of a record:unknown object
 *RecordunknownAPI* | [**ReferenceDelete**](docs/RecordunknownAPI.md#referencedelete) | **Delete** /record:unknown/{reference} | Delete a record:unknown object
 *RecordunknownAPI* | [**ReferenceGet**](docs/RecordunknownAPI.md#referenceget) | **Get** /record:unknown/{reference} | Get a specific record:unknown object
 *RecordunknownAPI* | [**ReferencePut**](docs/RecordunknownAPI.md#referenceput) | **Put** /record:unknown/{reference} | Update a record:unknown object
 *ZoneAuthAPI* | [**Get**](docs/ZoneAuthAPI.md#get) | **Get** /zone_auth | Retrieve zone_auth objects
 *ZoneAuthAPI* | [**Post**](docs/ZoneAuthAPI.md#post) | **Post** /zone_auth | Create a zone_auth object
-*ZoneAuthAPI* | [**Put**](docs/ZoneAuthAPI.md#put) | **Put** /zone_auth | Use PUT call as GET operation with _method for a Struct field of a zone_auth object
 *ZoneAuthAPI* | [**ReferenceDelete**](docs/ZoneAuthAPI.md#referencedelete) | **Delete** /zone_auth/{reference} | Delete a zone_auth object
 *ZoneAuthAPI* | [**ReferenceGet**](docs/ZoneAuthAPI.md#referenceget) | **Get** /zone_auth/{reference} | Get a specific zone_auth object
 *ZoneAuthAPI* | [**ReferencePut**](docs/ZoneAuthAPI.md#referenceput) | **Put** /zone_auth/{reference} | Update a zone_auth object
 *ZoneDelegatedAPI* | [**Get**](docs/ZoneDelegatedAPI.md#get) | **Get** /zone_delegated | Retrieve zone_delegated objects
 *ZoneDelegatedAPI* | [**Post**](docs/ZoneDelegatedAPI.md#post) | **Post** /zone_delegated | Create a zone_delegated object
-*ZoneDelegatedAPI* | [**Put**](docs/ZoneDelegatedAPI.md#put) | **Put** /zone_delegated | Use PUT call as GET operation with _method for a Struct field of a zone_delegated object
 *ZoneDelegatedAPI* | [**ReferenceDelete**](docs/ZoneDelegatedAPI.md#referencedelete) | **Delete** /zone_delegated/{reference} | Delete a zone_delegated object
 *ZoneDelegatedAPI* | [**ReferenceGet**](docs/ZoneDelegatedAPI.md#referenceget) | **Get** /zone_delegated/{reference} | Get a specific zone_delegated object
 *ZoneDelegatedAPI* | [**ReferencePut**](docs/ZoneDelegatedAPI.md#referenceput) | **Put** /zone_delegated/{reference} | Update a zone_delegated object
 *ZoneForwardAPI* | [**Get**](docs/ZoneForwardAPI.md#get) | **Get** /zone_forward | Retrieve zone_forward objects
 *ZoneForwardAPI* | [**Post**](docs/ZoneForwardAPI.md#post) | **Post** /zone_forward | Create a zone_forward object
-*ZoneForwardAPI* | [**Put**](docs/ZoneForwardAPI.md#put) | **Put** /zone_forward | Use PUT call as GET operation with _method for a Struct field of a zone_forward object
 *ZoneForwardAPI* | [**ReferenceDelete**](docs/ZoneForwardAPI.md#referencedelete) | **Delete** /zone_forward/{reference} | Delete a zone_forward object
 *ZoneForwardAPI* | [**ReferenceGet**](docs/ZoneForwardAPI.md#referenceget) | **Get** /zone_forward/{reference} | Get a specific zone_forward object
 *ZoneForwardAPI* | [**ReferencePut**](docs/ZoneForwardAPI.md#referenceput) | **Put** /zone_forward/{reference} | Update a zone_forward object
 *ZoneRpAPI* | [**Get**](docs/ZoneRpAPI.md#get) | **Get** /zone_rp | Retrieve zone_rp objects
 *ZoneRpAPI* | [**Post**](docs/ZoneRpAPI.md#post) | **Post** /zone_rp | Create a zone_rp object
-*ZoneRpAPI* | [**Put**](docs/ZoneRpAPI.md#put) | **Put** /zone_rp | Use PUT call as GET operation with _method for a Struct field of a zone_rp object
 *ZoneRpAPI* | [**ReferenceDelete**](docs/ZoneRpAPI.md#referencedelete) | **Delete** /zone_rp/{reference} | Delete a zone_rp object
 *ZoneRpAPI* | [**ReferenceGet**](docs/ZoneRpAPI.md#referenceget) | **Get** /zone_rp/{reference} | Get a specific zone_rp object
 *ZoneRpAPI* | [**ReferencePut**](docs/ZoneRpAPI.md#referenceput) | **Put** /zone_rp/{reference} | Update a zone_rp object
 *ZoneStubAPI* | [**Get**](docs/ZoneStubAPI.md#get) | **Get** /zone_stub | Retrieve zone_stub objects
 *ZoneStubAPI* | [**Post**](docs/ZoneStubAPI.md#post) | **Post** /zone_stub | Create a zone_stub object
-*ZoneStubAPI* | [**Put**](docs/ZoneStubAPI.md#put) | **Put** /zone_stub | Use PUT call as GET operation with _method for a Struct field of a zone_stub object
 *ZoneStubAPI* | [**ReferenceDelete**](docs/ZoneStubAPI.md#referencedelete) | **Delete** /zone_stub/{reference} | Delete a zone_stub object
 *ZoneStubAPI* | [**ReferenceGet**](docs/ZoneStubAPI.md#referenceget) | **Get** /zone_stub/{reference} | Get a specific zone_stub object
 *ZoneStubAPI* | [**ReferencePut**](docs/ZoneStubAPI.md#referenceput) | **Put** /zone_stub/{reference} | Update a zone_stub object

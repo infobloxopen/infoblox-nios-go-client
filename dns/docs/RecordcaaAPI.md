@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](RecordcaaAPI.md#Get) | **Get** /record:caa | Retrieve record:caa objects
 [**Post**](RecordcaaAPI.md#Post) | **Post** /record:caa | Create a record:caa object
-[**Put**](RecordcaaAPI.md#Put) | **Put** /record:caa | Use PUT call as GET operation with _method for a Struct field of a record:caa object
 [**ReferenceDelete**](RecordcaaAPI.md#ReferenceDelete) | **Delete** /record:caa/{reference} | Delete a record:caa object
 [**ReferenceGet**](RecordcaaAPI.md#ReferenceGet) | **Get** /record:caa/{reference} | Get a specific record:caa object
 [**ReferencePut**](RecordcaaAPI.md#ReferencePut) | **Put** /record:caa/{reference} | Update a record:caa object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateRecordCaaResponse**](CreateRecordCaaResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListRecordCaaResponse Put(ctx).RecordCaa(recordCaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a record:caa object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordCaa := *dns.NewRecordCaa() // RecordCaa | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcaaAPI.Put(context.Background()).RecordCaa(recordCaa).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListRecordCaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcaaAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordcaaAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordCaa** | [**RecordCaa**](RecordCaa.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListRecordCaaResponse**](ListRecordCaaResponse.md)
 
 ### Authorization
 

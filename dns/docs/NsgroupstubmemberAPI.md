@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](NsgroupstubmemberAPI.md#Get) | **Get** /nsgroup:stubmember | Retrieve nsgroup:stubmember objects
 [**Post**](NsgroupstubmemberAPI.md#Post) | **Post** /nsgroup:stubmember | Create a nsgroup:stubmember object
-[**Put**](NsgroupstubmemberAPI.md#Put) | **Put** /nsgroup:stubmember | Use PUT call as GET operation with _method for a Struct field of a nsgroup:stubmember object
 [**ReferenceDelete**](NsgroupstubmemberAPI.md#ReferenceDelete) | **Delete** /nsgroup:stubmember/{reference} | Delete a nsgroup:stubmember object
 [**ReferenceGet**](NsgroupstubmemberAPI.md#ReferenceGet) | **Get** /nsgroup:stubmember/{reference} | Get a specific nsgroup:stubmember object
 [**ReferencePut**](NsgroupstubmemberAPI.md#ReferencePut) | **Put** /nsgroup:stubmember/{reference} | Update a nsgroup:stubmember object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateNsgroupStubmemberResponse**](CreateNsgroupStubmemberResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListNsgroupStubmemberResponse Put(ctx).NsgroupStubmember(nsgroupStubmember).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a nsgroup:stubmember object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	nsgroupStubmember := *dns.NewNsgroupStubmember() // NsgroupStubmember | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupstubmemberAPI.Put(context.Background()).NsgroupStubmember(nsgroupStubmember).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupstubmemberAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListNsgroupStubmemberResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupstubmemberAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NsgroupstubmemberAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**nsgroupStubmember** | [**NsgroupStubmember**](NsgroupStubmember.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListNsgroupStubmemberResponse**](ListNsgroupStubmemberResponse.md)
 
 ### Authorization
 

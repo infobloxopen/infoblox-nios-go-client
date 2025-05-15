@@ -60,11 +60,8 @@ type RecordRrsig struct {
 	// The name of the DNS View in which the record resides. Example: \"external\".
 	View *string `json:"view,omitempty"`
 	// The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _RecordRrsig RecordRrsig
 
 // NewRecordRrsig instantiates a new RecordRrsig object
 // This constructor will assign default values to properties that have it defined,
@@ -828,53 +825,7 @@ func (o RecordRrsig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecordRrsig) UnmarshalJSON(data []byte) (err error) {
-	varRecordRrsig := _RecordRrsig{}
-
-	err = json.Unmarshal(data, &varRecordRrsig)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RecordRrsig(varRecordRrsig)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "algorithm")
-		delete(additionalProperties, "cloud_info")
-		delete(additionalProperties, "creation_time")
-		delete(additionalProperties, "creator")
-		delete(additionalProperties, "dns_name")
-		delete(additionalProperties, "dns_signer_name")
-		delete(additionalProperties, "expiration_time")
-		delete(additionalProperties, "inception_time")
-		delete(additionalProperties, "key_tag")
-		delete(additionalProperties, "labels")
-		delete(additionalProperties, "last_queried")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "original_ttl")
-		delete(additionalProperties, "signature")
-		delete(additionalProperties, "signer_name")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "type_covered")
-		delete(additionalProperties, "use_ttl")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordRrsig struct {

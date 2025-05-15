@@ -20,11 +20,8 @@ var _ MappedNullable = &GetZoneDelegatedResponseObjectAsResult{}
 
 // GetZoneDelegatedResponseObjectAsResult The response format to retrieve __ZoneDelegated__ objects.
 type GetZoneDelegatedResponseObjectAsResult struct {
-	Result               *ZoneDelegated `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *ZoneDelegated `json:"result,omitempty"`
 }
-
-type _GetZoneDelegatedResponseObjectAsResult GetZoneDelegatedResponseObjectAsResult
 
 // NewGetZoneDelegatedResponseObjectAsResult instantiates a new GetZoneDelegatedResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetZoneDelegatedResponseObjectAsResult) ToMap() (map[string]interface{},
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetZoneDelegatedResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetZoneDelegatedResponseObjectAsResult := _GetZoneDelegatedResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetZoneDelegatedResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetZoneDelegatedResponseObjectAsResult(varGetZoneDelegatedResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetZoneDelegatedResponseObjectAsResult struct {

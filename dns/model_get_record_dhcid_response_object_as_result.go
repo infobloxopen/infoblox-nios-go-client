@@ -20,11 +20,8 @@ var _ MappedNullable = &GetRecordDhcidResponseObjectAsResult{}
 
 // GetRecordDhcidResponseObjectAsResult The response format to retrieve __RecordDhcid__ objects.
 type GetRecordDhcidResponseObjectAsResult struct {
-	Result               *RecordDhcid `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *RecordDhcid `json:"result,omitempty"`
 }
-
-type _GetRecordDhcidResponseObjectAsResult GetRecordDhcidResponseObjectAsResult
 
 // NewGetRecordDhcidResponseObjectAsResult instantiates a new GetRecordDhcidResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetRecordDhcidResponseObjectAsResult) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetRecordDhcidResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetRecordDhcidResponseObjectAsResult := _GetRecordDhcidResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetRecordDhcidResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetRecordDhcidResponseObjectAsResult(varGetRecordDhcidResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetRecordDhcidResponseObjectAsResult struct {

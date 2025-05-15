@@ -20,11 +20,8 @@ var _ MappedNullable = &GetRecordDnskeyResponseObjectAsResult{}
 
 // GetRecordDnskeyResponseObjectAsResult The response format to retrieve __RecordDnskey__ objects.
 type GetRecordDnskeyResponseObjectAsResult struct {
-	Result               *RecordDnskey `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *RecordDnskey `json:"result,omitempty"`
 }
-
-type _GetRecordDnskeyResponseObjectAsResult GetRecordDnskeyResponseObjectAsResult
 
 // NewGetRecordDnskeyResponseObjectAsResult instantiates a new GetRecordDnskeyResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetRecordDnskeyResponseObjectAsResult) ToMap() (map[string]interface{}, 
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetRecordDnskeyResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetRecordDnskeyResponseObjectAsResult := _GetRecordDnskeyResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetRecordDnskeyResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetRecordDnskeyResponseObjectAsResult(varGetRecordDnskeyResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetRecordDnskeyResponseObjectAsResult struct {

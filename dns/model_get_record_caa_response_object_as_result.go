@@ -20,11 +20,8 @@ var _ MappedNullable = &GetRecordCaaResponseObjectAsResult{}
 
 // GetRecordCaaResponseObjectAsResult The response format to retrieve __RecordCaa__ objects.
 type GetRecordCaaResponseObjectAsResult struct {
-	Result               *RecordCaa `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *RecordCaa `json:"result,omitempty"`
 }
-
-type _GetRecordCaaResponseObjectAsResult GetRecordCaaResponseObjectAsResult
 
 // NewGetRecordCaaResponseObjectAsResult instantiates a new GetRecordCaaResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetRecordCaaResponseObjectAsResult) ToMap() (map[string]interface{}, err
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetRecordCaaResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetRecordCaaResponseObjectAsResult := _GetRecordCaaResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetRecordCaaResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetRecordCaaResponseObjectAsResult(varGetRecordCaaResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetRecordCaaResponseObjectAsResult struct {

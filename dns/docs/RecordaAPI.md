@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](RecordaAPI.md#Get) | **Get** /record:a | Retrieve record:a objects
 [**Post**](RecordaAPI.md#Post) | **Post** /record:a | Create a record:a object
-[**Put**](RecordaAPI.md#Put) | **Put** /record:a | Use PUT call as GET operation with _method for a Struct field of a record:a object
 [**ReferenceDelete**](RecordaAPI.md#ReferenceDelete) | **Delete** /record:a/{reference} | Delete a record:a object
 [**ReferenceGet**](RecordaAPI.md#ReferenceGet) | **Get** /record:a/{reference} | Get a specific record:a object
 [**ReferencePut**](RecordaAPI.md#ReferencePut) | **Put** /record:a/{reference} | Update a record:a object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateRecordAResponse**](CreateRecordAResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListRecordAResponse Put(ctx).RecordA(recordA).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a record:a object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordA := *dns.NewRecordA() // RecordA | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordaAPI.Put(context.Background()).RecordA(recordA).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordaAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListRecordAResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordaAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordaAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordA** | [**RecordA**](RecordA.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListRecordAResponse**](ListRecordAResponse.md)
 
 ### Authorization
 

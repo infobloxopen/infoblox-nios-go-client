@@ -72,11 +72,8 @@ type ZoneDelegated struct {
 	// The name of the DNS view in which the zone resides. Example \"external\".
 	View *string `json:"view,omitempty"`
 	// Determines the format of this zone.
-	ZoneFormat           *string `json:"zone_format,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ZoneFormat *string `json:"zone_format,omitempty"`
 }
-
-type _ZoneDelegated ZoneDelegated
 
 // NewZoneDelegated instantiates a new ZoneDelegated object
 // This constructor will assign default values to properties that have it defined,
@@ -1050,59 +1047,7 @@ func (o ZoneDelegated) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ZoneFormat) {
 		toSerialize["zone_format"] = o.ZoneFormat
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ZoneDelegated) UnmarshalJSON(data []byte) (err error) {
-	varZoneDelegated := _ZoneDelegated{}
-
-	err = json.Unmarshal(data, &varZoneDelegated)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ZoneDelegated(varZoneDelegated)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "address")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "delegate_to")
-		delete(additionalProperties, "delegated_ttl")
-		delete(additionalProperties, "disable")
-		delete(additionalProperties, "display_domain")
-		delete(additionalProperties, "dns_fqdn")
-		delete(additionalProperties, "enable_rfc2317_exclusion")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "fqdn")
-		delete(additionalProperties, "lock_unlock_zone")
-		delete(additionalProperties, "locked")
-		delete(additionalProperties, "locked_by")
-		delete(additionalProperties, "mask_prefix")
-		delete(additionalProperties, "ms_ad_integrated")
-		delete(additionalProperties, "ms_ddns_mode")
-		delete(additionalProperties, "ms_managed")
-		delete(additionalProperties, "ms_read_only")
-		delete(additionalProperties, "ms_sync_master_name")
-		delete(additionalProperties, "ns_group")
-		delete(additionalProperties, "parent")
-		delete(additionalProperties, "prefix")
-		delete(additionalProperties, "use_delegated_ttl")
-		delete(additionalProperties, "using_srg_associations")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone_format")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableZoneDelegated struct {

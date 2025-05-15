@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](RecordnamepolicyAPI.md#Get) | **Get** /recordnamepolicy | Retrieve recordnamepolicy objects
 [**Post**](RecordnamepolicyAPI.md#Post) | **Post** /recordnamepolicy | Create a recordnamepolicy object
-[**Put**](RecordnamepolicyAPI.md#Put) | **Put** /recordnamepolicy | Use PUT call as GET operation with _method for a Struct field of a recordnamepolicy object
 [**ReferenceDelete**](RecordnamepolicyAPI.md#ReferenceDelete) | **Delete** /recordnamepolicy/{reference} | Delete a recordnamepolicy object
 [**ReferenceGet**](RecordnamepolicyAPI.md#ReferenceGet) | **Get** /recordnamepolicy/{reference} | Get a specific recordnamepolicy object
 [**ReferencePut**](RecordnamepolicyAPI.md#ReferencePut) | **Put** /recordnamepolicy/{reference} | Update a recordnamepolicy object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateRecordnamepolicyResponse**](CreateRecordnamepolicyResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListRecordnamepolicyResponse Put(ctx).Recordnamepolicy(recordnamepolicy).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a recordnamepolicy object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordnamepolicy := *dns.NewRecordnamepolicy() // Recordnamepolicy | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordnamepolicyAPI.Put(context.Background()).Recordnamepolicy(recordnamepolicy).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordnamepolicyAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListRecordnamepolicyResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordnamepolicyAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordnamepolicyAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordnamepolicy** | [**Recordnamepolicy**](Recordnamepolicy.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListRecordnamepolicyResponse**](ListRecordnamepolicyResponse.md)
 
 ### Authorization
 

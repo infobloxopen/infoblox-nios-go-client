@@ -29,11 +29,8 @@ type NsgroupDelegation struct {
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The name of the delegated NS group.
-	Name                 *string `json:"name,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Name *string `json:"name,omitempty"`
 }
-
-type _NsgroupDelegation NsgroupDelegation
 
 // NewNsgroupDelegation instantiates a new NsgroupDelegation object
 // This constructor will assign default values to properties that have it defined,
@@ -237,37 +234,7 @@ func (o NsgroupDelegation) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *NsgroupDelegation) UnmarshalJSON(data []byte) (err error) {
-	varNsgroupDelegation := _NsgroupDelegation{}
-
-	err = json.Unmarshal(data, &varNsgroupDelegation)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NsgroupDelegation(varNsgroupDelegation)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "delegate_to")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableNsgroupDelegation struct {

@@ -50,19 +50,6 @@ type NsgroupdelegationAPI interface {
 	//  @return CreateNsgroupDelegationResponse
 	PostExecute(r NsgroupdelegationAPIPostRequest) (*CreateNsgroupDelegationResponse, *http.Response, error)
 	/*
-		Put Use PUT call as GET operation with _method for a Struct field of a nsgroup:delegation object
-
-		Use PUT call as GET operation with _method for a Struct field of a nsgroup:delegation object
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NsgroupdelegationAPIPutRequest
-	*/
-	Put(ctx context.Context) NsgroupdelegationAPIPutRequest
-
-	// PutExecute executes the request
-	//  @return ListNsgroupDelegationResponse
-	PutExecute(r NsgroupdelegationAPIPutRequest) (*ListNsgroupDelegationResponse, *http.Response, error)
-	/*
 		ReferenceDelete Delete a nsgroup:delegation object
 
 		Deletes a specific nsgroup:delegation object by reference
@@ -381,185 +368,6 @@ func (a *NsgroupdelegationAPIService) PostExecute(r NsgroupdelegationAPIPostRequ
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupDelegation != nil {
-		if r.nsgroupDelegation.Extattrs == nil {
-			r.nsgroupDelegation.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.nsgroupDelegation.Extattrs)[k]; !ok {
-				(*r.nsgroupDelegation.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.nsgroupDelegation
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NsgroupdelegationAPIPutRequest struct {
-	ctx               context.Context
-	ApiService        NsgroupdelegationAPI
-	nsgroupDelegation *NsgroupDelegation
-	returnFields      *string
-	returnFields2     *string
-	returnAsObject    *int32
-	maxResults        *int32
-	method            *string
-}
-
-// Object data to create
-func (r NsgroupdelegationAPIPutRequest) NsgroupDelegation(nsgroupDelegation NsgroupDelegation) NsgroupdelegationAPIPutRequest {
-	r.nsgroupDelegation = &nsgroupDelegation
-	return r
-}
-
-// Enter the field names followed by comma
-func (r NsgroupdelegationAPIPutRequest) ReturnFields(returnFields string) NsgroupdelegationAPIPutRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupdelegationAPIPutRequest) ReturnFields2(returnFields2 string) NsgroupdelegationAPIPutRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NsgroupdelegationAPIPutRequest) ReturnAsObject(returnAsObject int32) NsgroupdelegationAPIPutRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r NsgroupdelegationAPIPutRequest) MaxResults(maxResults int32) NsgroupdelegationAPIPutRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Enter the method type for the request
-func (r NsgroupdelegationAPIPutRequest) Method(method string) NsgroupdelegationAPIPutRequest {
-	r.method = &method
-	return r
-}
-
-func (r NsgroupdelegationAPIPutRequest) Execute() (*ListNsgroupDelegationResponse, *http.Response, error) {
-	return r.ApiService.PutExecute(r)
-}
-
-/*
-Put Use PUT call as GET operation with _method for a Struct field of a nsgroup:delegation object
-
-Use PUT call as GET operation with _method for a Struct field of a nsgroup:delegation object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NsgroupdelegationAPIPutRequest
-*/
-func (a *NsgroupdelegationAPIService) Put(ctx context.Context) NsgroupdelegationAPIPutRequest {
-	return NsgroupdelegationAPIPutRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListNsgroupDelegationResponse
-func (a *NsgroupdelegationAPIService) PutExecute(r NsgroupdelegationAPIPutRequest) (*ListNsgroupDelegationResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListNsgroupDelegationResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupdelegationAPIService.Put")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/nsgroup:delegation"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.nsgroupDelegation == nil {
-		return localVarReturnValue, nil, internal.ReportError("nsgroupDelegation is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.method != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_method", r.method, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupDelegation != nil {
-		if r.nsgroupDelegation.Extattrs == nil {
-			r.nsgroupDelegation.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.nsgroupDelegation.Extattrs)[k]; !ok {
-				(*r.nsgroupDelegation.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
 	}
 	// body params
 	localVarPostBody = r.nsgroupDelegation
@@ -915,6 +723,18 @@ func (a *NsgroupdelegationAPIService) ReferencePutExecute(r NsgroupdelegationAPI
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupDelegation != nil {
+		if r.nsgroupDelegation.Extattrs == nil {
+			r.nsgroupDelegation.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.nsgroupDelegation.Extattrs)[k]; !ok {
+				(*r.nsgroupDelegation.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
 	}
 	// body params
 	localVarPostBody = r.nsgroupDelegation

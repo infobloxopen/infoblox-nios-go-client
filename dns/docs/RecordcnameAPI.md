@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](RecordcnameAPI.md#Get) | **Get** /record:cname | Retrieve record:cname objects
 [**Post**](RecordcnameAPI.md#Post) | **Post** /record:cname | Create a record:cname object
-[**Put**](RecordcnameAPI.md#Put) | **Put** /record:cname | Use PUT call as GET operation with _method for a Struct field of a record:cname object
 [**ReferenceDelete**](RecordcnameAPI.md#ReferenceDelete) | **Delete** /record:cname/{reference} | Delete a record:cname object
 [**ReferenceGet**](RecordcnameAPI.md#ReferenceGet) | **Get** /record:cname/{reference} | Get a specific record:cname object
 [**ReferencePut**](RecordcnameAPI.md#ReferencePut) | **Put** /record:cname/{reference} | Update a record:cname object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateRecordCnameResponse**](CreateRecordCnameResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListRecordCnameResponse Put(ctx).RecordCname(recordCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a record:cname object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordCname := *dns.NewRecordCname() // RecordCname | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcnameAPI.Put(context.Background()).RecordCname(recordCname).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcnameAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListRecordCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcnameAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordcnameAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordCname** | [**RecordCname**](RecordCname.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListRecordCnameResponse**](ListRecordCnameResponse.md)
 
 ### Authorization
 

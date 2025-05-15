@@ -241,86 +241,6 @@ paths:
       - record:a
       x-tf-resource: resource_nios_RecordA
       x-tf-datasource: datasource_nios_RecordA
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:a object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordA'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordAResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:a object
-      tags:
-      - record:a
-      x-sdk-default-ext-attrs: true
   /record:a/{reference}:
     delete:
       description: Deletes a specific record:a object by reference
@@ -483,6 +403,7 @@ paths:
       summary: Update a record:a object
       tags:
       - record:a
+      x-sdk-default-ext-attrs: true
   /record:aaaa:
     get:
       description: Returns a list of record:aaaa objects matching the search criteria
@@ -638,86 +559,6 @@ paths:
       - record:aaaa
       x-tf-resource: resource_nios_RecordAaaa
       x-tf-datasource: datasource_nios_RecordAaaa
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:aaaa object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordAaaa'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordAaaaResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:aaaa object
-      tags:
-      - record:aaaa
-      x-sdk-default-ext-attrs: true
   /record:aaaa/{reference}:
     delete:
       description: Deletes a specific record:aaaa object by reference
@@ -880,6 +721,7 @@ paths:
       summary: Update a record:aaaa object
       tags:
       - record:aaaa
+      x-sdk-default-ext-attrs: true
   /record:cname:
     get:
       description: Returns a list of record:cname objects matching the search criteria
@@ -1035,86 +877,6 @@ paths:
       - record:cname
       x-tf-resource: resource_nios_RecordCname
       x-tf-datasource: datasource_nios_RecordCname
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:cname object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordCname'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordCnameResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:cname object
-      tags:
-      - record:cname
-      x-sdk-default-ext-attrs: true
   /record:cname/{reference}:
     delete:
       description: Deletes a specific record:cname object by reference
@@ -1268,6 +1030,7 @@ paths:
       summary: Update a record:cname object
       tags:
       - record:cname
+      x-sdk-default-ext-attrs: true
   /record:mx:
     get:
       description: Returns a list of record:mx objects matching the search criteria
@@ -1423,86 +1186,6 @@ paths:
       - record:mx
       x-tf-resource: resource_nios_RecordMx
       x-tf-datasource: datasource_nios_RecordMx
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:mx object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordMx'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordMxResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:mx object
-      tags:
-      - record:mx
-      x-sdk-default-ext-attrs: true
   /record:mx/{reference}:
     delete:
       description: Deletes a specific record:mx object by reference
@@ -1656,6 +1339,7 @@ paths:
       summary: Update a record:mx object
       tags:
       - record:mx
+      x-sdk-default-ext-attrs: true
   /record:txt:
     get:
       description: Returns a list of record:txt objects matching the search criteria
@@ -1811,86 +1495,6 @@ paths:
       - record:txt
       x-tf-resource: resource_nios_RecordTxt
       x-tf-datasource: datasource_nios_RecordTxt
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:txt object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordTxt'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordTxtResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:txt object
-      tags:
-      - record:txt
-      x-sdk-default-ext-attrs: true
   /record:txt/{reference}:
     delete:
       description: Deletes a specific record:txt object by reference
@@ -2044,6 +1648,7 @@ paths:
       summary: Update a record:txt object
       tags:
       - record:txt
+      x-sdk-default-ext-attrs: true
   /record:ptr:
     get:
       description: Returns a list of record:ptr objects matching the search criteria
@@ -2199,86 +1804,6 @@ paths:
       - record:ptr
       x-tf-resource: resource_nios_RecordPtr
       x-tf-datasource: datasource_nios_RecordPtr
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:ptr object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordPtr'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordPtrResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:ptr object
-      tags:
-      - record:ptr
-      x-sdk-default-ext-attrs: true
   /record:ptr/{reference}:
     delete:
       description: Deletes a specific record:ptr object by reference
@@ -2432,6 +1957,7 @@ paths:
       summary: Update a record:ptr object
       tags:
       - record:ptr
+      x-sdk-default-ext-attrs: true
   /record:srv:
     get:
       description: Returns a list of record:srv objects matching the search criteria
@@ -2587,86 +2113,6 @@ paths:
       - record:srv
       x-tf-resource: resource_nios_RecordSrv
       x-tf-datasource: datasource_nios_RecordSrv
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:srv object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordSrv'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordSrvResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:srv object
-      tags:
-      - record:srv
-      x-sdk-default-ext-attrs: true
   /record:srv/{reference}:
     delete:
       description: Deletes a specific record:srv object by reference
@@ -2820,6 +2266,7 @@ paths:
       summary: Update a record:srv object
       tags:
       - record:srv
+      x-sdk-default-ext-attrs: true
   /record:ns:
     get:
       description: Returns a list of record:ns objects matching the search criteria
@@ -2975,84 +2422,6 @@ paths:
       - record:ns
       x-tf-resource: resource_nios_RecordNs
       x-tf-datasource: datasource_nios_RecordNs
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:ns object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordNs'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordNsResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:ns object
-      tags:
-      - record:ns
   /record:ns/{reference}:
     delete:
       description: Deletes a specific record:ns object by reference
@@ -3361,86 +2730,6 @@ paths:
       - record:host
       x-tf-resource: resource_nios_RecordHost
       x-tf-datasource: datasource_nios_RecordHost
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:host object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordHost'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordHostResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:host object
-      tags:
-      - record:host
-      x-sdk-default-ext-attrs: true
   /record:host/{reference}:
     delete:
       description: Deletes a specific record:host object by reference
@@ -3594,6 +2883,7 @@ paths:
       summary: Update a record:host object
       tags:
       - record:host
+      x-sdk-default-ext-attrs: true
   /record:dname:
     get:
       description: Returns a list of record:dname objects matching the search criteria
@@ -3749,86 +3039,6 @@ paths:
       - record:dname
       x-tf-resource: resource_nios_RecordDname
       x-tf-datasource: datasource_nios_RecordDname
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:dname object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordDname'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordDnameResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:dname object
-      tags:
-      - record:dname
-      x-sdk-default-ext-attrs: true
   /record:dname/{reference}:
     delete:
       description: Deletes a specific record:dname object by reference
@@ -3982,6 +3192,7 @@ paths:
       summary: Update a record:dname object
       tags:
       - record:dname
+      x-sdk-default-ext-attrs: true
   /record:naptr:
     get:
       description: Returns a list of record:naptr objects matching the search criteria
@@ -4137,86 +3348,6 @@ paths:
       - record:naptr
       x-tf-resource: resource_nios_RecordNaptr
       x-tf-datasource: datasource_nios_RecordNaptr
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:naptr object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordNaptr'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordNaptrResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:naptr object
-      tags:
-      - record:naptr
-      x-sdk-default-ext-attrs: true
   /record:naptr/{reference}:
     delete:
       description: Deletes a specific record:naptr object by reference
@@ -4370,6 +3501,7 @@ paths:
       summary: Update a record:naptr object
       tags:
       - record:naptr
+      x-sdk-default-ext-attrs: true
   /record:tlsa:
     get:
       description: Returns a list of record:tlsa objects matching the search criteria
@@ -4525,86 +3657,6 @@ paths:
       - record:tlsa
       x-tf-resource: resource_nios_RecordTlsa
       x-tf-datasource: datasource_nios_RecordTlsa
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:tlsa object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordTlsa'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordTlsaResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:tlsa object
-      tags:
-      - record:tlsa
-      x-sdk-default-ext-attrs: true
   /record:tlsa/{reference}:
     delete:
       description: Deletes a specific record:tlsa object by reference
@@ -4758,6 +3810,7 @@ paths:
       summary: Update a record:tlsa object
       tags:
       - record:tlsa
+      x-sdk-default-ext-attrs: true
   /record:caa:
     get:
       description: Returns a list of record:caa objects matching the search criteria
@@ -4913,86 +3966,6 @@ paths:
       - record:caa
       x-tf-resource: resource_nios_RecordCaa
       x-tf-datasource: datasource_nios_RecordCaa
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:caa object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordCaa'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordCaaResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:caa object
-      tags:
-      - record:caa
-      x-sdk-default-ext-attrs: true
   /record:caa/{reference}:
     delete:
       description: Deletes a specific record:caa object by reference
@@ -5146,6 +4119,7 @@ paths:
       summary: Update a record:caa object
       tags:
       - record:caa
+      x-sdk-default-ext-attrs: true
   /record:dhcid:
     get:
       description: Returns a list of record:dhcid objects matching the search criteria
@@ -5241,84 +4215,6 @@ paths:
       security:
       - basicAuth: []
       summary: Retrieve record:dhcid objects
-      tags:
-      - record:dhcid
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:dhcid object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordDhcid'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordDhcidResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:dhcid object
       tags:
       - record:dhcid
   /record:dhcid/{reference}:
@@ -5505,84 +4401,6 @@ paths:
       summary: Retrieve record:dnskey objects
       tags:
       - record:dnskey
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:dnskey object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordDnskey'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordDnskeyResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:dnskey object
-      tags:
-      - record:dnskey
   /record:dnskey/{reference}:
     get:
       description: Returns a specific record:dnskey object by reference
@@ -5738,84 +4556,6 @@ paths:
       security:
       - basicAuth: []
       summary: Retrieve record:ds objects
-      tags:
-      - record:ds
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:ds object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordDs'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordDsResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:ds object
       tags:
       - record:ds
   /record:ds/{reference}:
@@ -6002,84 +4742,6 @@ paths:
       summary: Retrieve record:nsec objects
       tags:
       - record:nsec
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:nsec object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordNsec'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordNsecResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:nsec object
-      tags:
-      - record:nsec
   /record:nsec/{reference}:
     get:
       description: Returns a specific record:nsec object by reference
@@ -6235,84 +4897,6 @@ paths:
       security:
       - basicAuth: []
       summary: Retrieve record:nsec3 objects
-      tags:
-      - record:nsec3
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:nsec3 object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordNsec3'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordNsec3Response'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:nsec3 object
       tags:
       - record:nsec3
   /record:nsec3/{reference}:
@@ -6473,84 +5057,6 @@ paths:
       summary: Retrieve record:nsec3param objects
       tags:
       - record:nsec3param
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:nsec3param object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordNsec3param'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordNsec3paramResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:nsec3param object
-      tags:
-      - record:nsec3param
   /record:nsec3param/{reference}:
     get:
       description: Returns a specific record:nsec3param object by reference
@@ -6706,84 +5212,6 @@ paths:
       security:
       - basicAuth: []
       summary: Retrieve record:rrsig objects
-      tags:
-      - record:rrsig
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:rrsig object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordRrsig'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordRrsigResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:rrsig object
       tags:
       - record:rrsig
   /record:rrsig/{reference}:
@@ -7001,86 +5429,6 @@ paths:
       - record:unknown
       x-tf-resource: resource_nios_RecordUnknown
       x-tf-datasource: datasource_nios_RecordUnknown
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a record:unknown object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RecordUnknown'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordUnknownResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        record:unknown object
-      tags:
-      - record:unknown
-      x-sdk-default-ext-attrs: true
   /record:unknown/{reference}:
     delete:
       description: Deletes a specific record:unknown object by reference
@@ -7234,6 +5582,7 @@ paths:
       summary: Update a record:unknown object
       tags:
       - record:unknown
+      x-sdk-default-ext-attrs: true
   /zone_auth:
     get:
       description: Returns a list of zone_auth objects matching the search criteria
@@ -7389,86 +5738,6 @@ paths:
       - zone_auth
       x-tf-resource: resource_nios_ZoneAuth
       x-tf-datasource: datasource_nios_ZoneAuth
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a zone_auth object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ZoneAuth'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListZoneAuthResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        zone_auth object
-      tags:
-      - zone_auth
-      x-sdk-default-ext-attrs: true
   /zone_auth/{reference}:
     delete:
       description: Deletes a specific zone_auth object by reference
@@ -7622,6 +5891,7 @@ paths:
       summary: Update a zone_auth object
       tags:
       - zone_auth
+      x-sdk-default-ext-attrs: true
   /zone_delegated:
     get:
       description: Returns a list of zone_delegated objects matching the search criteria
@@ -7777,86 +6047,6 @@ paths:
       - zone_delegated
       x-tf-resource: resource_nios_ZoneDelegated
       x-tf-datasource: datasource_nios_ZoneDelegated
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a zone_delegated object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ZoneDelegated'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListZoneDelegatedResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        zone_delegated object
-      tags:
-      - zone_delegated
-      x-sdk-default-ext-attrs: true
   /zone_delegated/{reference}:
     delete:
       description: Deletes a specific zone_delegated object by reference
@@ -8010,6 +6200,7 @@ paths:
       summary: Update a zone_delegated object
       tags:
       - zone_delegated
+      x-sdk-default-ext-attrs: true
   /zone_forward:
     get:
       description: Returns a list of zone_forward objects matching the search criteria
@@ -8165,86 +6356,6 @@ paths:
       - zone_forward
       x-tf-resource: resource_nios_ZoneForward
       x-tf-datasource: datasource_nios_ZoneForward
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a zone_forward object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ZoneForward'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListZoneForwardResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        zone_forward object
-      tags:
-      - zone_forward
-      x-sdk-default-ext-attrs: true
   /zone_forward/{reference}:
     delete:
       description: Deletes a specific zone_forward object by reference
@@ -8398,6 +6509,7 @@ paths:
       summary: Update a zone_forward object
       tags:
       - zone_forward
+      x-sdk-default-ext-attrs: true
   /zone_stub:
     get:
       description: Returns a list of zone_stub objects matching the search criteria
@@ -8553,86 +6665,6 @@ paths:
       - zone_stub
       x-tf-resource: resource_nios_ZoneStub
       x-tf-datasource: datasource_nios_ZoneStub
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a zone_stub object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ZoneStub'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListZoneStubResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        zone_stub object
-      tags:
-      - zone_stub
-      x-sdk-default-ext-attrs: true
   /zone_stub/{reference}:
     delete:
       description: Deletes a specific zone_stub object by reference
@@ -8786,6 +6818,7 @@ paths:
       summary: Update a zone_stub object
       tags:
       - zone_stub
+      x-sdk-default-ext-attrs: true
   /zone_rp:
     get:
       description: Returns a list of zone_rp objects matching the search criteria
@@ -8941,86 +6974,6 @@ paths:
       - zone_rp
       x-tf-resource: resource_nios_ZoneRp
       x-tf-datasource: datasource_nios_ZoneRp
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a zone_rp object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ZoneRp'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListZoneRpResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        zone_rp object
-      tags:
-      - zone_rp
-      x-sdk-default-ext-attrs: true
   /zone_rp/{reference}:
     delete:
       description: Deletes a specific zone_rp object by reference
@@ -9174,6 +7127,7 @@ paths:
       summary: Update a zone_rp object
       tags:
       - zone_rp
+      x-sdk-default-ext-attrs: true
   /allrecords:
     get:
       description: Returns a list of allrecords objects matching the search criteria
@@ -9269,84 +7223,6 @@ paths:
       security:
       - basicAuth: []
       summary: Retrieve allrecords objects
-      tags:
-      - allrecords
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a allrecords object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Allrecords'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListAllrecordsResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        allrecords object
       tags:
       - allrecords
   /allrecords/{reference}:
@@ -9565,84 +7441,6 @@ paths:
       - recordnamepolicy
       x-tf-resource: resource_nios_Recordnamepolicy
       x-tf-datasource: datasource_nios_Recordnamepolicy
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a recordnamepolicy object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Recordnamepolicy'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRecordnamepolicyResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        recordnamepolicy object
-      tags:
-      - recordnamepolicy
   /recordnamepolicy/{reference}:
     delete:
       description: Deletes a specific recordnamepolicy object by reference
@@ -9951,86 +7749,6 @@ paths:
       - dns64group
       x-tf-resource: resource_nios_Dns64group
       x-tf-datasource: datasource_nios_Dns64group
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a dns64group object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Dns64group'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListDns64groupResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        dns64group object
-      tags:
-      - dns64group
-      x-sdk-default-ext-attrs: true
   /dns64group/{reference}:
     delete:
       description: Deletes a specific dns64group object by reference
@@ -10184,6 +7902,7 @@ paths:
       summary: Update a dns64group object
       tags:
       - dns64group
+      x-sdk-default-ext-attrs: true
   /allnsgroup:
     get:
       description: Returns a list of allnsgroup objects matching the search criteria
@@ -10279,84 +7998,6 @@ paths:
       security:
       - basicAuth: []
       summary: Retrieve allnsgroup objects
-      tags:
-      - allnsgroup
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a allnsgroup object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Allnsgroup'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListAllnsgroupResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        allnsgroup object
       tags:
       - allnsgroup
   /allnsgroup/{reference}:
@@ -10574,86 +8215,6 @@ paths:
       - nsgroup
       x-tf-resource: resource_nios_Nsgroup
       x-tf-datasource: datasource_nios_Nsgroup
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a nsgroup object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Nsgroup'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListNsgroupResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        nsgroup object
-      tags:
-      - nsgroup
-      x-sdk-default-ext-attrs: true
   /nsgroup/{reference}:
     delete:
       description: Deletes a specific nsgroup object by reference
@@ -10807,6 +8368,7 @@ paths:
       summary: Update a nsgroup object
       tags:
       - nsgroup
+      x-sdk-default-ext-attrs: true
   /nsgroup:delegation:
     get:
       description: Returns a list of nsgroup:delegation objects matching the search
@@ -10963,86 +8525,6 @@ paths:
       - nsgroup:delegation
       x-tf-resource: resource_nios_NsgroupDelegation
       x-tf-datasource: datasource_nios_NsgroupDelegation
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a nsgroup:delegation object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NsgroupDelegation'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListNsgroupDelegationResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        nsgroup:delegation object
-      tags:
-      - nsgroup:delegation
-      x-sdk-default-ext-attrs: true
   /nsgroup:delegation/{reference}:
     delete:
       description: Deletes a specific nsgroup:delegation object by reference
@@ -11196,6 +8678,7 @@ paths:
       summary: Update a nsgroup:delegation object
       tags:
       - nsgroup:delegation
+      x-sdk-default-ext-attrs: true
   /nsgroup:forwardingmember:
     get:
       description: Returns a list of nsgroup:forwardingmember objects matching the
@@ -11352,86 +8835,6 @@ paths:
       - nsgroup:forwardingmember
       x-tf-resource: resource_nios_NsgroupForwardingmember
       x-tf-datasource: datasource_nios_NsgroupForwardingmember
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a nsgroup:forwardingmember object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NsgroupForwardingmember'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListNsgroupForwardingmemberResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        nsgroup:forwardingmember object
-      tags:
-      - nsgroup:forwardingmember
-      x-sdk-default-ext-attrs: true
   /nsgroup:forwardingmember/{reference}:
     delete:
       description: Deletes a specific nsgroup:forwardingmember object by reference
@@ -11585,6 +8988,7 @@ paths:
       summary: Update a nsgroup:forwardingmember object
       tags:
       - nsgroup:forwardingmember
+      x-sdk-default-ext-attrs: true
   /nsgroup:stubmember:
     get:
       description: Returns a list of nsgroup:stubmember objects matching the search
@@ -11741,86 +9145,6 @@ paths:
       - nsgroup:stubmember
       x-tf-resource: resource_nios_NsgroupStubmember
       x-tf-datasource: datasource_nios_NsgroupStubmember
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a nsgroup:stubmember object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NsgroupStubmember'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListNsgroupStubmemberResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        nsgroup:stubmember object
-      tags:
-      - nsgroup:stubmember
-      x-sdk-default-ext-attrs: true
   /nsgroup:stubmember/{reference}:
     delete:
       description: Deletes a specific nsgroup:stubmember object by reference
@@ -11974,6 +9298,7 @@ paths:
       summary: Update a nsgroup:stubmember object
       tags:
       - nsgroup:stubmember
+      x-sdk-default-ext-attrs: true
   /nsgroup:forwardstubserver:
     get:
       description: Returns a list of nsgroup:forwardstubserver objects matching the
@@ -12130,86 +9455,6 @@ paths:
       - nsgroup:forwardstubserver
       x-tf-resource: resource_nios_NsgroupForwardstubserver
       x-tf-datasource: datasource_nios_NsgroupForwardstubserver
-      x-sdk-default-ext-attrs: true
-    put:
-      description: Use PUT call as GET operation with _method for a Struct field of
-        a nsgroup:forwardstubserver object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Enter the method type for the request
-        explode: true
-        in: query
-        name: _method
-        required: false
-        schema:
-          type: string
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NsgroupForwardstubserver'
-        description: Object data to create
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListNsgroupForwardstubserverResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Use PUT call as GET operation with _method for a Struct field of a
-        nsgroup:forwardstubserver object
-      tags:
-      - nsgroup:forwardstubserver
-      x-sdk-default-ext-attrs: true
   /nsgroup:forwardstubserver/{reference}:
     delete:
       description: Deletes a specific nsgroup:forwardstubserver object by reference
@@ -12363,6 +9608,7 @@ paths:
       summary: Update a nsgroup:forwardstubserver object
       tags:
       - nsgroup:forwardstubserver
+      x-sdk-default-ext-attrs: true
 components:
   parameters:
     ReturnFields:
@@ -13693,6 +10939,7 @@ components:
         title: UpdateRecordAResponse
         type: string
     RecordAaaa:
+      additionalProperties: false
       example:
         creation_time: 1
         aws_rte53_record_info:
@@ -14842,6 +12089,7 @@ components:
         title: UpdateRecordAaaaResponse
         type: string
     RecordCname:
+      additionalProperties: false
       example:
         creation_time: 1
         aws_rte53_record_info:
@@ -15208,6 +12456,7 @@ components:
         title: UpdateRecordCnameResponse
         type: string
     RecordMx:
+      additionalProperties: false
       example:
         creation_time: 1
         aws_rte53_record_info:
@@ -15580,6 +12829,7 @@ components:
         title: UpdateRecordMxResponse
         type: string
     RecordTxt:
+      additionalProperties: false
       example:
         creation_time: 1
         aws_rte53_record_info:
@@ -15941,6 +13191,7 @@ components:
         title: UpdateRecordTxtResponse
         type: string
     RecordPtr:
+      additionalProperties: false
       example:
         creation_time: 1
         aws_rte53_record_info:
@@ -17099,6 +14350,7 @@ components:
         title: UpdateRecordPtrResponse
         type: string
     RecordSrv:
+      additionalProperties: false
       example:
         creation_time: 1
         aws_rte53_record_info:
@@ -17484,6 +14736,7 @@ components:
         title: UpdateRecordSrvResponse
         type: string
     RecordNs:
+      additionalProperties: false
       example:
         addresses:
         - address: Example address
@@ -17697,6 +14950,7 @@ components:
         title: UpdateRecordNsResponse
         type: string
     RecordHost:
+      additionalProperties: false
       example:
         creation_time: 1
         network_view: Example network_view
@@ -18207,6 +15461,7 @@ components:
         title: UpdateRecordHostResponse
         type: string
     RecordDname:
+      additionalProperties: false
       example:
         creation_time: 1
         creator: Example creator
@@ -18455,6 +15710,7 @@ components:
         title: UpdateRecordDnameResponse
         type: string
     RecordNaptr:
+      additionalProperties: false
       example:
         creation_time: 1
         regexp: Example regexp
@@ -18742,6 +15998,7 @@ components:
         title: UpdateRecordNaptrResponse
         type: string
     RecordTlsa:
+      additionalProperties: false
       example:
         creator: Example creator
         certificate_usage: 1
@@ -18973,6 +16230,7 @@ components:
         title: UpdateRecordTlsaResponse
         type: string
     RecordCaa:
+      additionalProperties: false
       example:
         creation_time: 1
         creator: Example creator
@@ -19223,6 +16481,7 @@ components:
         title: UpdateRecordCaaResponse
         type: string
     RecordDhcid:
+      additionalProperties: false
       example:
         creation_time: 1
         creator: Example creator
@@ -19320,6 +16579,7 @@ components:
         title: UpdateRecordDhcidResponse
         type: string
     RecordDnskey:
+      additionalProperties: false
       example:
         creation_time: 1
         public_key: Example public_key
@@ -19467,6 +16727,7 @@ components:
         title: UpdateRecordDnskeyResponse
         type: string
     RecordDs:
+      additionalProperties: false
       example:
         creation_time: 1
         creator: Example creator
@@ -19707,6 +16968,7 @@ components:
         title: UpdateRecordDsResponse
         type: string
     RecordNsec:
+      additionalProperties: false
       example:
         creation_time: 1
         creator: Example creator
@@ -19926,6 +17188,7 @@ components:
         title: UpdateRecordNsecResponse
         type: string
     RecordNsec3:
+      additionalProperties: false
       example:
         creation_time: 1
         creator: Example creator
@@ -20181,6 +17444,7 @@ components:
         title: UpdateRecordNsec3Response
         type: string
     RecordNsec3param:
+      additionalProperties: false
       example:
         creation_time: 1
         creator: Example creator
@@ -20418,6 +17682,7 @@ components:
         title: UpdateRecordNsec3paramResponse
         type: string
     RecordRrsig:
+      additionalProperties: false
       example:
         creation_time: 1
         creator: Example creator
@@ -20693,6 +17958,7 @@ components:
         title: UpdateRecordRrsigResponse
         type: string
     RecordUnknown:
+      additionalProperties: false
       example:
         enable_host_name_policy: false
         creator: Example creator
@@ -20959,6 +18225,7 @@ components:
         title: UpdateRecordUnknownResponse
         type: string
     ZoneAuth:
+      additionalProperties: false
       example:
         parent: Example parent
         prefix: Example prefix
@@ -23322,6 +20589,7 @@ components:
         title: UpdateZoneAuthResponse
         type: string
     ZoneDelegated:
+      additionalProperties: false
       example:
         parent: Example parent
         delegated_ttl: 1
@@ -23627,6 +20895,7 @@ components:
         title: UpdateZoneDelegatedResponse
         type: string
     ZoneForward:
+      additionalProperties: false
       example:
         parent: Example parent
         forward_to:
@@ -24008,6 +21277,7 @@ components:
         title: UpdateZoneForwardResponse
         type: string
     ZoneStub:
+      additionalProperties: false
       example:
         parent: Example parent
         soa_retry: 1
@@ -24533,6 +21803,7 @@ components:
         title: UpdateZoneStubResponse
         type: string
     ZoneRp:
+      additionalProperties: false
       example:
         parent: Example parent
         rpz_policy: Example rpz_policy
@@ -25374,6 +22645,7 @@ components:
         title: UpdateZoneRpResponse
         type: string
     Allrecords:
+      additionalProperties: false
       example:
         creator: Example creator
         address: Example address
@@ -25522,6 +22794,7 @@ components:
         title: UpdateAllrecordsResponse
         type: string
     Recordnamepolicy:
+      additionalProperties: false
       example:
         regex: Example regex
         pre_defined: false
@@ -25576,6 +22849,7 @@ components:
         title: UpdateRecordnamepolicyResponse
         type: string
     Dns64group:
+      additionalProperties: false
       example:
         clients:
         - address: Example address
@@ -25741,6 +23015,7 @@ components:
         title: UpdateDns64groupResponse
         type: string
     Allnsgroup:
+      additionalProperties: false
       example:
         _ref: _ref
         name: Example name
@@ -25797,6 +23072,7 @@ components:
         title: UpdateAllnsgroupResponse
         type: string
     Nsgroup:
+      additionalProperties: false
       example:
         grid_primary:
         - preferred_primaries: preferred_primaries
@@ -26217,6 +23493,7 @@ components:
         title: UpdateNsgroupResponse
         type: string
     NsgroupDelegation:
+      additionalProperties: false
       example:
         extattrs:
           key:
@@ -26342,6 +23619,7 @@ components:
         title: UpdateNsgroupDelegationResponse
         type: string
     NsgroupForwardingmember:
+      additionalProperties: false
       example:
         extattrs:
           key:
@@ -26474,6 +23752,7 @@ components:
         title: UpdateNsgroupForwardingmemberResponse
         type: string
     NsgroupStubmember:
+      additionalProperties: false
       example:
         extattrs:
           key:
@@ -26629,6 +23908,7 @@ components:
         title: UpdateNsgroupStubmemberResponse
         type: string
     NsgroupForwardstubserver:
+      additionalProperties: false
       example:
         external_servers:
         - address: Example address
@@ -27238,6 +24518,7 @@ components:
       title: CreateRecordAaaaResponseAsObject
       type: object
     GetRecordAaaaResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordAaaa__ objects.
       properties:
         result:
@@ -27459,6 +24740,7 @@ components:
       title: CreateRecordCnameResponseAsObject
       type: object
     GetRecordCnameResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordCname__ objects.
       properties:
         result:
@@ -27582,6 +24864,7 @@ components:
       title: CreateRecordMxResponseAsObject
       type: object
     GetRecordMxResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordMx__ objects.
       properties:
         result:
@@ -27704,6 +24987,7 @@ components:
       title: CreateRecordTxtResponseAsObject
       type: object
     GetRecordTxtResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordTxt__ objects.
       properties:
         result:
@@ -27926,6 +25210,7 @@ components:
       title: CreateRecordPtrResponseAsObject
       type: object
     GetRecordPtrResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordPtr__ objects.
       properties:
         result:
@@ -28152,6 +25437,7 @@ components:
       title: CreateRecordSrvResponseAsObject
       type: object
     GetRecordSrvResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordSrv__ objects.
       properties:
         result:
@@ -28257,6 +25543,7 @@ components:
       title: CreateRecordNsResponseAsObject
       type: object
     GetRecordNsResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordNs__ objects.
       properties:
         result:
@@ -28393,6 +25680,7 @@ components:
       title: CreateRecordHostResponseAsObject
       type: object
     GetRecordHostResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordHost__ objects.
       properties:
         result:
@@ -28536,6 +25824,7 @@ components:
       title: CreateRecordDnameResponseAsObject
       type: object
     GetRecordDnameResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordDname__ objects.
       properties:
         result:
@@ -28636,6 +25925,7 @@ components:
       title: CreateRecordNaptrResponseAsObject
       type: object
     GetRecordNaptrResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordNaptr__ objects.
       properties:
         result:
@@ -28732,6 +26022,7 @@ components:
       title: CreateRecordTlsaResponseAsObject
       type: object
     GetRecordTlsaResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordTlsa__ objects.
       properties:
         result:
@@ -28824,6 +26115,7 @@ components:
       title: CreateRecordCaaResponseAsObject
       type: object
     GetRecordCaaResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordCaa__ objects.
       properties:
         result:
@@ -28887,6 +26179,7 @@ components:
       title: CreateRecordDhcidResponseAsObject
       type: object
     GetRecordDhcidResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordDhcid__ objects.
       properties:
         result:
@@ -28917,6 +26210,7 @@ components:
       title: CreateRecordDnskeyResponseAsObject
       type: object
     GetRecordDnskeyResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordDnskey__ objects.
       properties:
         result:
@@ -28947,6 +26241,7 @@ components:
       title: CreateRecordDsResponseAsObject
       type: object
     GetRecordDsResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordDs__ objects.
       properties:
         result:
@@ -28977,6 +26272,7 @@ components:
       title: CreateRecordNsecResponseAsObject
       type: object
     GetRecordNsecResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordNsec__ objects.
       properties:
         result:
@@ -29007,6 +26303,7 @@ components:
       title: CreateRecordNsec3ResponseAsObject
       type: object
     GetRecordNsec3ResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordNsec3__ objects.
       properties:
         result:
@@ -29037,6 +26334,7 @@ components:
       title: CreateRecordNsec3paramResponseAsObject
       type: object
     GetRecordNsec3paramResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordNsec3param__ objects.
       properties:
         result:
@@ -29067,6 +26365,7 @@ components:
       title: CreateRecordRrsigResponseAsObject
       type: object
     GetRecordRrsigResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordRrsig__ objects.
       properties:
         result:
@@ -29133,6 +26432,7 @@ components:
       title: CreateRecordUnknownResponseAsObject
       type: object
     GetRecordUnknownResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __RecordUnknown__ objects.
       properties:
         result:
@@ -29546,6 +26846,7 @@ components:
       title: CreateZoneAuthResponseAsObject
       type: object
     GetZoneAuthResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __ZoneAuth__ objects.
       properties:
         result:
@@ -29970,6 +27271,7 @@ components:
       title: CreateZoneDelegatedResponseAsObject
       type: object
     GetZoneDelegatedResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __ZoneDelegated__ objects.
       properties:
         result:
@@ -30103,6 +27405,7 @@ components:
       title: CreateZoneForwardResponseAsObject
       type: object
     GetZoneForwardResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __ZoneForward__ objects.
       properties:
         result:
@@ -30268,6 +27571,7 @@ components:
       title: CreateZoneStubResponseAsObject
       type: object
     GetZoneStubResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __ZoneStub__ objects.
       properties:
         result:
@@ -30506,6 +27810,7 @@ components:
       title: CreateZoneRpResponseAsObject
       type: object
     GetZoneRpResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __ZoneRp__ objects.
       properties:
         result:
@@ -30665,6 +27970,7 @@ components:
       title: CreateAllrecordsResponseAsObject
       type: object
     GetAllrecordsResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __Allrecords__ objects.
       properties:
         result:
@@ -30702,6 +28008,7 @@ components:
       title: CreateRecordnamepolicyResponseAsObject
       type: object
     GetRecordnamepolicyResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __Recordnamepolicy__ objects.
       properties:
         result:
@@ -30765,6 +28072,7 @@ components:
       title: CreateDns64groupResponseAsObject
       type: object
     GetDns64groupResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __Dns64group__ objects.
       properties:
         result:
@@ -30821,6 +28129,7 @@ components:
       title: CreateAllnsgroupResponseAsObject
       type: object
     GetAllnsgroupResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __Allnsgroup__ objects.
       properties:
         result:
@@ -30922,6 +28231,7 @@ components:
       title: CreateNsgroupResponseAsObject
       type: object
     GetNsgroupResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __Nsgroup__ objects.
       properties:
         result:
@@ -31048,6 +28358,7 @@ components:
       title: CreateNsgroupDelegationResponseAsObject
       type: object
     GetNsgroupDelegationResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __NsgroupDelegation__ objects.
       properties:
         result:
@@ -31121,6 +28432,7 @@ components:
       title: CreateNsgroupForwardingmemberResponseAsObject
       type: object
     GetNsgroupForwardingmemberResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __NsgroupForwardingmember__ objects.
       properties:
         result:
@@ -31190,6 +28502,7 @@ components:
       title: CreateNsgroupStubmemberResponseAsObject
       type: object
     GetNsgroupStubmemberResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __NsgroupStubmember__ objects.
       properties:
         result:
@@ -31267,6 +28580,7 @@ components:
       title: CreateNsgroupForwardstubserverResponseAsObject
       type: object
     GetNsgroupForwardstubserverResponseObjectAsResult:
+      additionalProperties: false
       description: The response format to retrieve __NsgroupForwardstubserver__ objects.
       properties:
         result:

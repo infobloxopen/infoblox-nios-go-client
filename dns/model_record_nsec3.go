@@ -52,11 +52,8 @@ type RecordNsec3 struct {
 	// The name of the DNS View in which the record resides. Example: \"external\".
 	View *string `json:"view,omitempty"`
 	// The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _RecordNsec3 RecordNsec3
 
 // NewRecordNsec3 instantiates a new RecordNsec3 object
 // This constructor will assign default values to properties that have it defined,
@@ -680,49 +677,7 @@ func (o RecordNsec3) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecordNsec3) UnmarshalJSON(data []byte) (err error) {
-	varRecordNsec3 := _RecordNsec3{}
-
-	err = json.Unmarshal(data, &varRecordNsec3)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RecordNsec3(varRecordNsec3)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "algorithm")
-		delete(additionalProperties, "cloud_info")
-		delete(additionalProperties, "creation_time")
-		delete(additionalProperties, "creator")
-		delete(additionalProperties, "dns_name")
-		delete(additionalProperties, "flags")
-		delete(additionalProperties, "iterations")
-		delete(additionalProperties, "last_queried")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "next_owner_name")
-		delete(additionalProperties, "rrset_types")
-		delete(additionalProperties, "salt")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "use_ttl")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordNsec3 struct {

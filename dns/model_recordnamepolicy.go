@@ -29,11 +29,8 @@ type Recordnamepolicy struct {
 	// Determines whether the record name policy is a predefined one.
 	PreDefined *bool `json:"pre_defined,omitempty"`
 	// The POSIX regular expression the record names should match in order to comply with the record name policy.
-	Regex                *string `json:"regex,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Regex *string `json:"regex,omitempty"`
 }
-
-type _Recordnamepolicy Recordnamepolicy
 
 // NewRecordnamepolicy instantiates a new Recordnamepolicy object
 // This constructor will assign default values to properties that have it defined,
@@ -237,37 +234,7 @@ func (o Recordnamepolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Regex) {
 		toSerialize["regex"] = o.Regex
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Recordnamepolicy) UnmarshalJSON(data []byte) (err error) {
-	varRecordnamepolicy := _Recordnamepolicy{}
-
-	err = json.Unmarshal(data, &varRecordnamepolicy)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Recordnamepolicy(varRecordnamepolicy)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "is_default")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "pre_defined")
-		delete(additionalProperties, "regex")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordnamepolicy struct {

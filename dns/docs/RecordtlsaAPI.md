@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](RecordtlsaAPI.md#Get) | **Get** /record:tlsa | Retrieve record:tlsa objects
 [**Post**](RecordtlsaAPI.md#Post) | **Post** /record:tlsa | Create a record:tlsa object
-[**Put**](RecordtlsaAPI.md#Put) | **Put** /record:tlsa | Use PUT call as GET operation with _method for a Struct field of a record:tlsa object
 [**ReferenceDelete**](RecordtlsaAPI.md#ReferenceDelete) | **Delete** /record:tlsa/{reference} | Delete a record:tlsa object
 [**ReferenceGet**](RecordtlsaAPI.md#ReferenceGet) | **Get** /record:tlsa/{reference} | Get a specific record:tlsa object
 [**ReferencePut**](RecordtlsaAPI.md#ReferencePut) | **Put** /record:tlsa/{reference} | Update a record:tlsa object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateRecordTlsaResponse**](CreateRecordTlsaResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListRecordTlsaResponse Put(ctx).RecordTlsa(recordTlsa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a record:tlsa object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordTlsa := *dns.NewRecordTlsa() // RecordTlsa | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordtlsaAPI.Put(context.Background()).RecordTlsa(recordTlsa).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordtlsaAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListRecordTlsaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordtlsaAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordtlsaAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordTlsa** | [**RecordTlsa**](RecordTlsa.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListRecordTlsaResponse**](ListRecordTlsaResponse.md)
 
 ### Authorization
 

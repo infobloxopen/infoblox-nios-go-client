@@ -48,11 +48,8 @@ type RecordNsec3param struct {
 	// The name of the DNS View in which the record resides. Example: \"external\".
 	View *string `json:"view,omitempty"`
 	// The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _RecordNsec3param RecordNsec3param
 
 // NewRecordNsec3param instantiates a new RecordNsec3param object
 // This constructor will assign default values to properties that have it defined,
@@ -606,47 +603,7 @@ func (o RecordNsec3param) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecordNsec3param) UnmarshalJSON(data []byte) (err error) {
-	varRecordNsec3param := _RecordNsec3param{}
-
-	err = json.Unmarshal(data, &varRecordNsec3param)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RecordNsec3param(varRecordNsec3param)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "algorithm")
-		delete(additionalProperties, "cloud_info")
-		delete(additionalProperties, "creation_time")
-		delete(additionalProperties, "creator")
-		delete(additionalProperties, "dns_name")
-		delete(additionalProperties, "flags")
-		delete(additionalProperties, "iterations")
-		delete(additionalProperties, "last_queried")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "salt")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "use_ttl")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordNsec3param struct {

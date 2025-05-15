@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](NsgroupAPI.md#Get) | **Get** /nsgroup | Retrieve nsgroup objects
 [**Post**](NsgroupAPI.md#Post) | **Post** /nsgroup | Create a nsgroup object
-[**Put**](NsgroupAPI.md#Put) | **Put** /nsgroup | Use PUT call as GET operation with _method for a Struct field of a nsgroup object
 [**ReferenceDelete**](NsgroupAPI.md#ReferenceDelete) | **Delete** /nsgroup/{reference} | Delete a nsgroup object
 [**ReferenceGet**](NsgroupAPI.md#ReferenceGet) | **Get** /nsgroup/{reference} | Get a specific nsgroup object
 [**ReferencePut**](NsgroupAPI.md#ReferencePut) | **Put** /nsgroup/{reference} | Update a nsgroup object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateNsgroupResponse**](CreateNsgroupResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListNsgroupResponse Put(ctx).Nsgroup(nsgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a nsgroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	nsgroup := *dns.NewNsgroup() // Nsgroup | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupAPI.Put(context.Background()).Nsgroup(nsgroup).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListNsgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NsgroupAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**nsgroup** | [**Nsgroup**](Nsgroup.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListNsgroupResponse**](ListNsgroupResponse.md)
 
 ### Authorization
 

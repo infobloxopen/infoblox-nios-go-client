@@ -63,11 +63,8 @@ type RecordMx struct {
 	// The name of the DNS view in which the record resides. Example: \"external\".
 	View *string `json:"view,omitempty"`
 	// The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _RecordMx RecordMx
 
 // NewRecordMx instantiates a new RecordMx object
 // This constructor will assign default values to properties that have it defined,
@@ -901,55 +898,7 @@ func (o RecordMx) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecordMx) UnmarshalJSON(data []byte) (err error) {
-	varRecordMx := _RecordMx{}
-
-	err = json.Unmarshal(data, &varRecordMx)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RecordMx(varRecordMx)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "aws_rte53_record_info")
-		delete(additionalProperties, "cloud_info")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "creation_time")
-		delete(additionalProperties, "creator")
-		delete(additionalProperties, "ddns_principal")
-		delete(additionalProperties, "ddns_protected")
-		delete(additionalProperties, "disable")
-		delete(additionalProperties, "dns_mail_exchanger")
-		delete(additionalProperties, "dns_name")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "forbid_reclamation")
-		delete(additionalProperties, "last_queried")
-		delete(additionalProperties, "mail_exchanger")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "preference")
-		delete(additionalProperties, "reclaimable")
-		delete(additionalProperties, "shared_record_group")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "use_ttl")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordMx struct {

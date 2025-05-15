@@ -41,11 +41,8 @@ type Nsgroup struct {
 	// The name of this name server group.
 	Name *string `json:"name,omitempty"`
 	// This flag controls whether the group is using an external primary. Note that modification of this field requires passing values for \"grid_secondaries\" and \"external_primaries\".
-	UseExternalPrimary   *bool `json:"use_external_primary,omitempty"`
-	AdditionalProperties map[string]interface{}
+	UseExternalPrimary *bool `json:"use_external_primary,omitempty"`
 }
-
-type _Nsgroup Nsgroup
 
 // NewNsgroup instantiates a new Nsgroup object
 // This constructor will assign default values to properties that have it defined,
@@ -459,43 +456,7 @@ func (o Nsgroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseExternalPrimary) {
 		toSerialize["use_external_primary"] = o.UseExternalPrimary
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Nsgroup) UnmarshalJSON(data []byte) (err error) {
-	varNsgroup := _Nsgroup{}
-
-	err = json.Unmarshal(data, &varNsgroup)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Nsgroup(varNsgroup)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "external_primaries")
-		delete(additionalProperties, "external_secondaries")
-		delete(additionalProperties, "grid_primary")
-		delete(additionalProperties, "grid_secondaries")
-		delete(additionalProperties, "is_grid_default")
-		delete(additionalProperties, "is_multimaster")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "use_external_primary")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableNsgroup struct {

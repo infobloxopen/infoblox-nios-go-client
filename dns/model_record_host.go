@@ -89,11 +89,8 @@ type RecordHost struct {
 	// The name of the DNS view in which the record resides. Example: \"external\".
 	View *string `json:"view,omitempty"`
 	// The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _RecordHost RecordHost
 
 // NewRecordHost instantiates a new RecordHost object
 // This constructor will assign default values to properties that have it defined,
@@ -1417,69 +1414,7 @@ func (o RecordHost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecordHost) UnmarshalJSON(data []byte) (err error) {
-	varRecordHost := _RecordHost{}
-
-	err = json.Unmarshal(data, &varRecordHost)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RecordHost(varRecordHost)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "aliases")
-		delete(additionalProperties, "allow_telnet")
-		delete(additionalProperties, "cli_credentials")
-		delete(additionalProperties, "cloud_info")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "configure_for_dns")
-		delete(additionalProperties, "creation_time")
-		delete(additionalProperties, "ddns_protected")
-		delete(additionalProperties, "device_description")
-		delete(additionalProperties, "device_location")
-		delete(additionalProperties, "device_type")
-		delete(additionalProperties, "device_vendor")
-		delete(additionalProperties, "disable")
-		delete(additionalProperties, "disable_discovery")
-		delete(additionalProperties, "dns_aliases")
-		delete(additionalProperties, "dns_name")
-		delete(additionalProperties, "enable_immediate_discovery")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "ipv4addrs")
-		delete(additionalProperties, "ipv6addrs")
-		delete(additionalProperties, "last_queried")
-		delete(additionalProperties, "ms_ad_user_data")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "network_view")
-		delete(additionalProperties, "restart_if_needed")
-		delete(additionalProperties, "rrset_order")
-		delete(additionalProperties, "snmp3_credential")
-		delete(additionalProperties, "snmp_credential")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "use_cli_credentials")
-		delete(additionalProperties, "use_dns_ea_inheritance")
-		delete(additionalProperties, "use_snmp3_credential")
-		delete(additionalProperties, "use_snmp_credential")
-		delete(additionalProperties, "use_ttl")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordHost struct {

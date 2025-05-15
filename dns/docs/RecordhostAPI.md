@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](RecordhostAPI.md#Get) | **Get** /record:host | Retrieve record:host objects
 [**Post**](RecordhostAPI.md#Post) | **Post** /record:host | Create a record:host object
-[**Put**](RecordhostAPI.md#Put) | **Put** /record:host | Use PUT call as GET operation with _method for a Struct field of a record:host object
 [**ReferenceDelete**](RecordhostAPI.md#ReferenceDelete) | **Delete** /record:host/{reference} | Delete a record:host object
 [**ReferenceGet**](RecordhostAPI.md#ReferenceGet) | **Get** /record:host/{reference} | Get a specific record:host object
 [**ReferencePut**](RecordhostAPI.md#ReferencePut) | **Put** /record:host/{reference} | Update a record:host object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateRecordHostResponse**](CreateRecordHostResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListRecordHostResponse Put(ctx).RecordHost(recordHost).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a record:host object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordHost := *dns.NewRecordHost() // RecordHost | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordhostAPI.Put(context.Background()).RecordHost(recordHost).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordhostAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListRecordHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordhostAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordhostAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordHost** | [**RecordHost**](RecordHost.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListRecordHostResponse**](ListRecordHostResponse.md)
 
 ### Authorization
 

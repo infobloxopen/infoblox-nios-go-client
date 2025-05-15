@@ -20,11 +20,8 @@ var _ MappedNullable = &GetRecordNsec3paramResponseObjectAsResult{}
 
 // GetRecordNsec3paramResponseObjectAsResult The response format to retrieve __RecordNsec3param__ objects.
 type GetRecordNsec3paramResponseObjectAsResult struct {
-	Result               *RecordNsec3param `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *RecordNsec3param `json:"result,omitempty"`
 }
-
-type _GetRecordNsec3paramResponseObjectAsResult GetRecordNsec3paramResponseObjectAsResult
 
 // NewGetRecordNsec3paramResponseObjectAsResult instantiates a new GetRecordNsec3paramResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetRecordNsec3paramResponseObjectAsResult) ToMap() (map[string]interface
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetRecordNsec3paramResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetRecordNsec3paramResponseObjectAsResult := _GetRecordNsec3paramResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetRecordNsec3paramResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetRecordNsec3paramResponseObjectAsResult(varGetRecordNsec3paramResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetRecordNsec3paramResponseObjectAsResult struct {

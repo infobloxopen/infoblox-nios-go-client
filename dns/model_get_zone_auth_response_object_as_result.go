@@ -20,11 +20,8 @@ var _ MappedNullable = &GetZoneAuthResponseObjectAsResult{}
 
 // GetZoneAuthResponseObjectAsResult The response format to retrieve __ZoneAuth__ objects.
 type GetZoneAuthResponseObjectAsResult struct {
-	Result               *ZoneAuth `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *ZoneAuth `json:"result,omitempty"`
 }
-
-type _GetZoneAuthResponseObjectAsResult GetZoneAuthResponseObjectAsResult
 
 // NewGetZoneAuthResponseObjectAsResult instantiates a new GetZoneAuthResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetZoneAuthResponseObjectAsResult) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetZoneAuthResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetZoneAuthResponseObjectAsResult := _GetZoneAuthResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetZoneAuthResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetZoneAuthResponseObjectAsResult(varGetZoneAuthResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetZoneAuthResponseObjectAsResult struct {

@@ -20,11 +20,8 @@ var _ MappedNullable = &GetRecordNaptrResponseObjectAsResult{}
 
 // GetRecordNaptrResponseObjectAsResult The response format to retrieve __RecordNaptr__ objects.
 type GetRecordNaptrResponseObjectAsResult struct {
-	Result               *RecordNaptr `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *RecordNaptr `json:"result,omitempty"`
 }
-
-type _GetRecordNaptrResponseObjectAsResult GetRecordNaptrResponseObjectAsResult
 
 // NewGetRecordNaptrResponseObjectAsResult instantiates a new GetRecordNaptrResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetRecordNaptrResponseObjectAsResult) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetRecordNaptrResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetRecordNaptrResponseObjectAsResult := _GetRecordNaptrResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetRecordNaptrResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetRecordNaptrResponseObjectAsResult(varGetRecordNaptrResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetRecordNaptrResponseObjectAsResult struct {

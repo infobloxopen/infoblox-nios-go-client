@@ -5,7 +5,6 @@ All URIs are relative to *http://localhost/wapi/v2.12.3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](Recordnsec3API.md#Get) | **Get** /record:nsec3 | Retrieve record:nsec3 objects
-[**Put**](Recordnsec3API.md#Put) | **Put** /record:nsec3 | Use PUT call as GET operation with _method for a Struct field of a record:nsec3 object
 [**ReferenceGet**](Recordnsec3API.md#ReferenceGet) | **Get** /record:nsec3/{reference} | Get a specific record:nsec3 object
 
 
@@ -75,77 +74,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListRecordNsec3Response Put(ctx).RecordNsec3(recordNsec3).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a record:nsec3 object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordNsec3 := *dns.NewRecordNsec3() // RecordNsec3 | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.Recordnsec3API.Put(context.Background()).RecordNsec3(recordNsec3).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Recordnsec3API.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListRecordNsec3Response
-	fmt.Fprintf(os.Stdout, "Response from `Recordnsec3API.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `Recordnsec3APIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordNsec3** | [**RecordNsec3**](RecordNsec3.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListRecordNsec3Response**](ListRecordNsec3Response.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

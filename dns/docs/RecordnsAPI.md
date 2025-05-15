@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](RecordnsAPI.md#Get) | **Get** /record:ns | Retrieve record:ns objects
 [**Post**](RecordnsAPI.md#Post) | **Post** /record:ns | Create a record:ns object
-[**Put**](RecordnsAPI.md#Put) | **Put** /record:ns | Use PUT call as GET operation with _method for a Struct field of a record:ns object
 [**ReferenceDelete**](RecordnsAPI.md#ReferenceDelete) | **Delete** /record:ns/{reference} | Delete a record:ns object
 [**ReferenceGet**](RecordnsAPI.md#ReferenceGet) | **Get** /record:ns/{reference} | Get a specific record:ns object
 [**ReferencePut**](RecordnsAPI.md#ReferencePut) | **Put** /record:ns/{reference} | Update a record:ns object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateRecordNsResponse**](CreateRecordNsResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListRecordNsResponse Put(ctx).RecordNs(recordNs).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a record:ns object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordNs := *dns.NewRecordNs() // RecordNs | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordnsAPI.Put(context.Background()).RecordNs(recordNs).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordnsAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListRecordNsResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordnsAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordnsAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordNs** | [**RecordNs**](RecordNs.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListRecordNsResponse**](ListRecordNsResponse.md)
 
 ### Authorization
 

@@ -39,11 +39,8 @@ type Dns64group struct {
 	// The name of the DNS64 synthesis group object.
 	Name *string `json:"name,omitempty"`
 	// The IPv6 prefix used for the synthesized AAAA records. The prefix length must be /32, /40, /48, /56, /64 or /96, and all bits beyond the specified length must be zero.
-	Prefix               *string `json:"prefix,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Prefix *string `json:"prefix,omitempty"`
 }
-
-type _Dns64group Dns64group
 
 // NewDns64group instantiates a new Dns64group object
 // This constructor will assign default values to properties that have it defined,
@@ -422,42 +419,7 @@ func (o Dns64group) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Prefix) {
 		toSerialize["prefix"] = o.Prefix
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Dns64group) UnmarshalJSON(data []byte) (err error) {
-	varDns64group := _Dns64group{}
-
-	err = json.Unmarshal(data, &varDns64group)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Dns64group(varDns64group)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "clients")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "disable")
-		delete(additionalProperties, "enable_dnssec_dns64")
-		delete(additionalProperties, "exclude")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "mapped")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "prefix")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDns64group struct {

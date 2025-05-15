@@ -20,11 +20,8 @@ var _ MappedNullable = &GetNsgroupForwardstubserverResponseObjectAsResult{}
 
 // GetNsgroupForwardstubserverResponseObjectAsResult The response format to retrieve __NsgroupForwardstubserver__ objects.
 type GetNsgroupForwardstubserverResponseObjectAsResult struct {
-	Result               *NsgroupForwardstubserver `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *NsgroupForwardstubserver `json:"result,omitempty"`
 }
-
-type _GetNsgroupForwardstubserverResponseObjectAsResult GetNsgroupForwardstubserverResponseObjectAsResult
 
 // NewGetNsgroupForwardstubserverResponseObjectAsResult instantiates a new GetNsgroupForwardstubserverResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetNsgroupForwardstubserverResponseObjectAsResult) ToMap() (map[string]i
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetNsgroupForwardstubserverResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetNsgroupForwardstubserverResponseObjectAsResult := _GetNsgroupForwardstubserverResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetNsgroupForwardstubserverResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetNsgroupForwardstubserverResponseObjectAsResult(varGetNsgroupForwardstubserverResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetNsgroupForwardstubserverResponseObjectAsResult struct {

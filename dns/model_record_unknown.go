@@ -54,11 +54,8 @@ type RecordUnknown struct {
 	// The name of the DNS view in which the record resides. Example: \"external\".
 	View *string `json:"view,omitempty"`
 	// The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _RecordUnknown RecordUnknown
 
 // NewRecordUnknown instantiates a new RecordUnknown object
 // This constructor will assign default values to properties that have it defined,
@@ -717,50 +714,7 @@ func (o RecordUnknown) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecordUnknown) UnmarshalJSON(data []byte) (err error) {
-	varRecordUnknown := _RecordUnknown{}
-
-	err = json.Unmarshal(data, &varRecordUnknown)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RecordUnknown(varRecordUnknown)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "cloud_info")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "creator")
-		delete(additionalProperties, "disable")
-		delete(additionalProperties, "display_rdata")
-		delete(additionalProperties, "dns_name")
-		delete(additionalProperties, "enable_host_name_policy")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "last_queried")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "policy")
-		delete(additionalProperties, "record_type")
-		delete(additionalProperties, "subfield_values")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "use_ttl")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordUnknown struct {

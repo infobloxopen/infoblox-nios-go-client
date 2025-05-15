@@ -50,19 +50,6 @@ type RecorddnameAPI interface {
 	//  @return CreateRecordDnameResponse
 	PostExecute(r RecorddnameAPIPostRequest) (*CreateRecordDnameResponse, *http.Response, error)
 	/*
-		Put Use PUT call as GET operation with _method for a Struct field of a record:dname object
-
-		Use PUT call as GET operation with _method for a Struct field of a record:dname object
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecorddnameAPIPutRequest
-	*/
-	Put(ctx context.Context) RecorddnameAPIPutRequest
-
-	// PutExecute executes the request
-	//  @return ListRecordDnameResponse
-	PutExecute(r RecorddnameAPIPutRequest) (*ListRecordDnameResponse, *http.Response, error)
-	/*
 		ReferenceDelete Delete a record:dname object
 
 		Deletes a specific record:dname object by reference
@@ -381,185 +368,6 @@ func (a *RecorddnameAPIService) PostExecute(r RecorddnameAPIPostRequest) (*Creat
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordDname != nil {
-		if r.recordDname.Extattrs == nil {
-			r.recordDname.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordDname.Extattrs)[k]; !ok {
-				(*r.recordDname.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.recordDname
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecorddnameAPIPutRequest struct {
-	ctx            context.Context
-	ApiService     RecorddnameAPI
-	recordDname    *RecordDname
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-	maxResults     *int32
-	method         *string
-}
-
-// Object data to create
-func (r RecorddnameAPIPutRequest) RecordDname(recordDname RecordDname) RecorddnameAPIPutRequest {
-	r.recordDname = &recordDname
-	return r
-}
-
-// Enter the field names followed by comma
-func (r RecorddnameAPIPutRequest) ReturnFields(returnFields string) RecorddnameAPIPutRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecorddnameAPIPutRequest) ReturnFields2(returnFields2 string) RecorddnameAPIPutRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecorddnameAPIPutRequest) ReturnAsObject(returnAsObject int32) RecorddnameAPIPutRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r RecorddnameAPIPutRequest) MaxResults(maxResults int32) RecorddnameAPIPutRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Enter the method type for the request
-func (r RecorddnameAPIPutRequest) Method(method string) RecorddnameAPIPutRequest {
-	r.method = &method
-	return r
-}
-
-func (r RecorddnameAPIPutRequest) Execute() (*ListRecordDnameResponse, *http.Response, error) {
-	return r.ApiService.PutExecute(r)
-}
-
-/*
-Put Use PUT call as GET operation with _method for a Struct field of a record:dname object
-
-Use PUT call as GET operation with _method for a Struct field of a record:dname object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecorddnameAPIPutRequest
-*/
-func (a *RecorddnameAPIService) Put(ctx context.Context) RecorddnameAPIPutRequest {
-	return RecorddnameAPIPutRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListRecordDnameResponse
-func (a *RecorddnameAPIService) PutExecute(r RecorddnameAPIPutRequest) (*ListRecordDnameResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListRecordDnameResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecorddnameAPIService.Put")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:dname"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.recordDname == nil {
-		return localVarReturnValue, nil, internal.ReportError("recordDname is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.method != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_method", r.method, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordDname != nil {
-		if r.recordDname.Extattrs == nil {
-			r.recordDname.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordDname.Extattrs)[k]; !ok {
-				(*r.recordDname.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
 	}
 	// body params
 	localVarPostBody = r.recordDname
@@ -915,6 +723,18 @@ func (a *RecorddnameAPIService) ReferencePutExecute(r RecorddnameAPIReferencePut
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordDname != nil {
+		if r.recordDname.Extattrs == nil {
+			r.recordDname.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.recordDname.Extattrs)[k]; !ok {
+				(*r.recordDname.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
 	}
 	// body params
 	localVarPostBody = r.recordDname

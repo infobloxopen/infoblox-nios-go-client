@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](ZoneForwardAPI.md#Get) | **Get** /zone_forward | Retrieve zone_forward objects
 [**Post**](ZoneForwardAPI.md#Post) | **Post** /zone_forward | Create a zone_forward object
-[**Put**](ZoneForwardAPI.md#Put) | **Put** /zone_forward | Use PUT call as GET operation with _method for a Struct field of a zone_forward object
 [**ReferenceDelete**](ZoneForwardAPI.md#ReferenceDelete) | **Delete** /zone_forward/{reference} | Delete a zone_forward object
 [**ReferenceGet**](ZoneForwardAPI.md#ReferenceGet) | **Get** /zone_forward/{reference} | Get a specific zone_forward object
 [**ReferencePut**](ZoneForwardAPI.md#ReferencePut) | **Put** /zone_forward/{reference} | Update a zone_forward object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateZoneForwardResponse**](CreateZoneForwardResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListZoneForwardResponse Put(ctx).ZoneForward(zoneForward).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a zone_forward object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	zoneForward := *dns.NewZoneForward() // ZoneForward | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneForwardAPI.Put(context.Background()).ZoneForward(zoneForward).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneForwardAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListZoneForwardResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneForwardAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ZoneForwardAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**zoneForward** | [**ZoneForward**](ZoneForward.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListZoneForwardResponse**](ListZoneForwardResponse.md)
 
 ### Authorization
 

@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](NsgroupforwardstubserverAPI.md#Get) | **Get** /nsgroup:forwardstubserver | Retrieve nsgroup:forwardstubserver objects
 [**Post**](NsgroupforwardstubserverAPI.md#Post) | **Post** /nsgroup:forwardstubserver | Create a nsgroup:forwardstubserver object
-[**Put**](NsgroupforwardstubserverAPI.md#Put) | **Put** /nsgroup:forwardstubserver | Use PUT call as GET operation with _method for a Struct field of a nsgroup:forwardstubserver object
 [**ReferenceDelete**](NsgroupforwardstubserverAPI.md#ReferenceDelete) | **Delete** /nsgroup:forwardstubserver/{reference} | Delete a nsgroup:forwardstubserver object
 [**ReferenceGet**](NsgroupforwardstubserverAPI.md#ReferenceGet) | **Get** /nsgroup:forwardstubserver/{reference} | Get a specific nsgroup:forwardstubserver object
 [**ReferencePut**](NsgroupforwardstubserverAPI.md#ReferencePut) | **Put** /nsgroup:forwardstubserver/{reference} | Update a nsgroup:forwardstubserver object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateNsgroupForwardstubserverResponse**](CreateNsgroupForwardstubserverResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListNsgroupForwardstubserverResponse Put(ctx).NsgroupForwardstubserver(nsgroupForwardstubserver).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a nsgroup:forwardstubserver object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	nsgroupForwardstubserver := *dns.NewNsgroupForwardstubserver() // NsgroupForwardstubserver | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupforwardstubserverAPI.Put(context.Background()).NsgroupForwardstubserver(nsgroupForwardstubserver).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardstubserverAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListNsgroupForwardstubserverResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupforwardstubserverAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NsgroupforwardstubserverAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**nsgroupForwardstubserver** | [**NsgroupForwardstubserver**](NsgroupForwardstubserver.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListNsgroupForwardstubserverResponse**](ListNsgroupForwardstubserverResponse.md)
 
 ### Authorization
 

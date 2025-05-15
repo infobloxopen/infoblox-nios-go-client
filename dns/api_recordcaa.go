@@ -50,19 +50,6 @@ type RecordcaaAPI interface {
 	//  @return CreateRecordCaaResponse
 	PostExecute(r RecordcaaAPIPostRequest) (*CreateRecordCaaResponse, *http.Response, error)
 	/*
-		Put Use PUT call as GET operation with _method for a Struct field of a record:caa object
-
-		Use PUT call as GET operation with _method for a Struct field of a record:caa object
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordcaaAPIPutRequest
-	*/
-	Put(ctx context.Context) RecordcaaAPIPutRequest
-
-	// PutExecute executes the request
-	//  @return ListRecordCaaResponse
-	PutExecute(r RecordcaaAPIPutRequest) (*ListRecordCaaResponse, *http.Response, error)
-	/*
 		ReferenceDelete Delete a record:caa object
 
 		Deletes a specific record:caa object by reference
@@ -381,185 +368,6 @@ func (a *RecordcaaAPIService) PostExecute(r RecordcaaAPIPostRequest) (*CreateRec
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordCaa != nil {
-		if r.recordCaa.Extattrs == nil {
-			r.recordCaa.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordCaa.Extattrs)[k]; !ok {
-				(*r.recordCaa.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.recordCaa
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordcaaAPIPutRequest struct {
-	ctx            context.Context
-	ApiService     RecordcaaAPI
-	recordCaa      *RecordCaa
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-	maxResults     *int32
-	method         *string
-}
-
-// Object data to create
-func (r RecordcaaAPIPutRequest) RecordCaa(recordCaa RecordCaa) RecordcaaAPIPutRequest {
-	r.recordCaa = &recordCaa
-	return r
-}
-
-// Enter the field names followed by comma
-func (r RecordcaaAPIPutRequest) ReturnFields(returnFields string) RecordcaaAPIPutRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordcaaAPIPutRequest) ReturnFields2(returnFields2 string) RecordcaaAPIPutRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordcaaAPIPutRequest) ReturnAsObject(returnAsObject int32) RecordcaaAPIPutRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r RecordcaaAPIPutRequest) MaxResults(maxResults int32) RecordcaaAPIPutRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Enter the method type for the request
-func (r RecordcaaAPIPutRequest) Method(method string) RecordcaaAPIPutRequest {
-	r.method = &method
-	return r
-}
-
-func (r RecordcaaAPIPutRequest) Execute() (*ListRecordCaaResponse, *http.Response, error) {
-	return r.ApiService.PutExecute(r)
-}
-
-/*
-Put Use PUT call as GET operation with _method for a Struct field of a record:caa object
-
-Use PUT call as GET operation with _method for a Struct field of a record:caa object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordcaaAPIPutRequest
-*/
-func (a *RecordcaaAPIService) Put(ctx context.Context) RecordcaaAPIPutRequest {
-	return RecordcaaAPIPutRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListRecordCaaResponse
-func (a *RecordcaaAPIService) PutExecute(r RecordcaaAPIPutRequest) (*ListRecordCaaResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListRecordCaaResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordcaaAPIService.Put")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:caa"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.recordCaa == nil {
-		return localVarReturnValue, nil, internal.ReportError("recordCaa is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.method != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_method", r.method, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordCaa != nil {
-		if r.recordCaa.Extattrs == nil {
-			r.recordCaa.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordCaa.Extattrs)[k]; !ok {
-				(*r.recordCaa.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
 	}
 	// body params
 	localVarPostBody = r.recordCaa
@@ -915,6 +723,18 @@ func (a *RecordcaaAPIService) ReferencePutExecute(r RecordcaaAPIReferencePutRequ
 	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordCaa != nil {
+		if r.recordCaa.Extattrs == nil {
+			r.recordCaa.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.recordCaa.Extattrs)[k]; !ok {
+				(*r.recordCaa.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
 	}
 	// body params
 	localVarPostBody = r.recordCaa

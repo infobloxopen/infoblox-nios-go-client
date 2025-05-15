@@ -60,11 +60,8 @@ type RecordCaa struct {
 	// The name of the DNS view in which the record resides. Example: \"external\".
 	View *string `json:"view,omitempty"`
 	// The name of the zone in which the record resides. Example: \"zone.com\". If a view is not specified when searching by zone, the default view is used.
-	Zone                 *string `json:"zone,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Zone *string `json:"zone,omitempty"`
 }
-
-type _RecordCaa RecordCaa
 
 // NewRecordCaa instantiates a new RecordCaa object
 // This constructor will assign default values to properties that have it defined,
@@ -828,53 +825,7 @@ func (o RecordCaa) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Zone) {
 		toSerialize["zone"] = o.Zone
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecordCaa) UnmarshalJSON(data []byte) (err error) {
-	varRecordCaa := _RecordCaa{}
-
-	err = json.Unmarshal(data, &varRecordCaa)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RecordCaa(varRecordCaa)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_ref")
-		delete(additionalProperties, "ca_flag")
-		delete(additionalProperties, "ca_tag")
-		delete(additionalProperties, "ca_value")
-		delete(additionalProperties, "cloud_info")
-		delete(additionalProperties, "comment")
-		delete(additionalProperties, "creation_time")
-		delete(additionalProperties, "creator")
-		delete(additionalProperties, "ddns_principal")
-		delete(additionalProperties, "ddns_protected")
-		delete(additionalProperties, "disable")
-		delete(additionalProperties, "dns_name")
-		delete(additionalProperties, "extattrs")
-		delete(additionalProperties, "forbid_reclamation")
-		delete(additionalProperties, "last_queried")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "reclaimable")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "use_ttl")
-		delete(additionalProperties, "view")
-		delete(additionalProperties, "zone")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecordCaa struct {

@@ -5,7 +5,6 @@ All URIs are relative to *http://localhost/wapi/v2.12.3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](AllnsgroupAPI.md#Get) | **Get** /allnsgroup | Retrieve allnsgroup objects
-[**Put**](AllnsgroupAPI.md#Put) | **Put** /allnsgroup | Use PUT call as GET operation with _method for a Struct field of a allnsgroup object
 [**ReferenceGet**](AllnsgroupAPI.md#ReferenceGet) | **Get** /allnsgroup/{reference} | Get a specific allnsgroup object
 
 
@@ -75,77 +74,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListAllnsgroupResponse Put(ctx).Allnsgroup(allnsgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a allnsgroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	allnsgroup := *dns.NewAllnsgroup() // Allnsgroup | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.AllnsgroupAPI.Put(context.Background()).Allnsgroup(allnsgroup).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AllnsgroupAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListAllnsgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `AllnsgroupAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AllnsgroupAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**allnsgroup** | [**Allnsgroup**](Allnsgroup.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListAllnsgroupResponse**](ListAllnsgroupResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

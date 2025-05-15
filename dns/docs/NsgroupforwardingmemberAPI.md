@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](NsgroupforwardingmemberAPI.md#Get) | **Get** /nsgroup:forwardingmember | Retrieve nsgroup:forwardingmember objects
 [**Post**](NsgroupforwardingmemberAPI.md#Post) | **Post** /nsgroup:forwardingmember | Create a nsgroup:forwardingmember object
-[**Put**](NsgroupforwardingmemberAPI.md#Put) | **Put** /nsgroup:forwardingmember | Use PUT call as GET operation with _method for a Struct field of a nsgroup:forwardingmember object
 [**ReferenceDelete**](NsgroupforwardingmemberAPI.md#ReferenceDelete) | **Delete** /nsgroup:forwardingmember/{reference} | Delete a nsgroup:forwardingmember object
 [**ReferenceGet**](NsgroupforwardingmemberAPI.md#ReferenceGet) | **Get** /nsgroup:forwardingmember/{reference} | Get a specific nsgroup:forwardingmember object
 [**ReferencePut**](NsgroupforwardingmemberAPI.md#ReferencePut) | **Put** /nsgroup:forwardingmember/{reference} | Update a nsgroup:forwardingmember object
@@ -139,77 +138,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateNsgroupForwardingmemberResponse**](CreateNsgroupForwardingmemberResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## Put
-
-> ListNsgroupForwardingmemberResponse Put(ctx).NsgroupForwardingmember(nsgroupForwardingmember).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).MaxResults(maxResults).Method(method).Execute()
-
-Use PUT call as GET operation with _method for a Struct field of a nsgroup:forwardingmember object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	nsgroupForwardingmember := *dns.NewNsgroupForwardingmember() // NsgroupForwardingmember | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupforwardingmemberAPI.Put(context.Background()).NsgroupForwardingmember(nsgroupForwardingmember).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardingmemberAPI.Put``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Put`: ListNsgroupForwardingmemberResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupforwardingmemberAPI.Put`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NsgroupforwardingmemberAPIPutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**nsgroupForwardingmember** | [**NsgroupForwardingmember**](NsgroupForwardingmember.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-**maxResults** | **int32** | Enter the number of results to be fetched | 
-**method** | **string** | Enter the method type for the request | 
-
-### Return type
-
-[**ListNsgroupForwardingmemberResponse**](ListNsgroupForwardingmemberResponse.md)
 
 ### Authorization
 

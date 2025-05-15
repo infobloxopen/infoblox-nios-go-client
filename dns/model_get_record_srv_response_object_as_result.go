@@ -20,11 +20,8 @@ var _ MappedNullable = &GetRecordSrvResponseObjectAsResult{}
 
 // GetRecordSrvResponseObjectAsResult The response format to retrieve __RecordSrv__ objects.
 type GetRecordSrvResponseObjectAsResult struct {
-	Result               *RecordSrv `json:"result,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Result *RecordSrv `json:"result,omitempty"`
 }
-
-type _GetRecordSrvResponseObjectAsResult GetRecordSrvResponseObjectAsResult
 
 // NewGetRecordSrvResponseObjectAsResult instantiates a new GetRecordSrvResponseObjectAsResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GetRecordSrvResponseObjectAsResult) ToMap() (map[string]interface{}, err
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetRecordSrvResponseObjectAsResult) UnmarshalJSON(data []byte) (err error) {
-	varGetRecordSrvResponseObjectAsResult := _GetRecordSrvResponseObjectAsResult{}
-
-	err = json.Unmarshal(data, &varGetRecordSrvResponseObjectAsResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetRecordSrvResponseObjectAsResult(varGetRecordSrvResponseObjectAsResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "result")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetRecordSrvResponseObjectAsResult struct {
