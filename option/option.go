@@ -41,11 +41,11 @@ func WithHTTPClient(httpClient *http.Client) ClientOption {
 	}
 }
 
-// WithDefaultTags returns a ClientOption that sets the tags the client can set by default for objects that has tags support.
+// WithDefaultExtAttrs returns a ClientOption that sets the Extensible Attributes the client can set by default for objects that has Extensible Attributes support.
 // Optional.
-func WithDefaultTags(defaultTags map[string]struct{ Value string }) ClientOption {
+func WithDefaultExtAttrs(defaultExtAttrs map[string]struct{ Value string }) ClientOption {
 	return func(configuration *internal.Configuration) {
-		configuration.DefaultExtAttrs = defaultTags
+		configuration.DefaultExtAttrs = defaultExtAttrs
 	}
 }
 

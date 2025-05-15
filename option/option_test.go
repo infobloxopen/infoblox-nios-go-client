@@ -1,11 +1,12 @@
 package option
 
 import (
-	"github.com/unasra/nios-go-client/internal"
 	"net/http"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/internal"
 )
 
 func TestWithNIOSAuthUrl(t *testing.T) {
@@ -32,12 +33,12 @@ func TestWithHTTPClient(t *testing.T) {
 	assert.Equal(t, client, config.HTTPClient)
 }
 
-func TestWithDefaultTags(t *testing.T) {
+func TestWithDefaultExtAttrs(t *testing.T) {
 	config := &internal.Configuration{}
-	tags := map[string]string{"tag1": "value1"}
-	opt := WithDefaultTags(tags)
+	extAttrs := map[string]struct{ Value string }{"tag1": {Value: "value1"}}
+	opt := WithDefaultExtAttrs(extAttrs)
 	opt(config)
-	assert.Equal(t, tags, config.DefaultExtAttrs)
+	assert.Equal(t, extAttrs, config.DefaultExtAttrs)
 }
 
 func TestWithClientName(t *testing.T) {

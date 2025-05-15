@@ -18,7 +18,7 @@ type APIClient struct {
 // - WithNIOSHostUrl(string) sets the URL for NIOS Portal.
 // - WithNIOSAuth(string) sets the NIOSAuth for accessing the NIOS Portal.
 // - WithHTTPClient(*http.Client) sets the HTTPClient to use for the SDK.
-// - WithDefaultTags(map[string]string) sets the tags the client can set by default for objects that has tags support.
+// - WithDefaultExtAttrs(map[string]string) sets the Extensible Attributes the client can set by default for objects that has Extensible Attributes support.
 // - WithDebug() sets the debug mode.
 func NewAPIClient(options ...option.ClientOption) *APIClient {
 	return &APIClient{
