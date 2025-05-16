@@ -1,0 +1,264 @@
+# GetRirOrganizationResponse
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**Id** | Pointer to **string** | The RIR organization identifier. | [optional] 
+**Maintainer** | Pointer to **string** | The RIR organization maintainer. | [optional] 
+**Name** | Pointer to **string** | The RIR organization name. | [optional] 
+**Password** | Pointer to **string** | The password for the maintainer of RIR organization. | [optional] 
+**Rir** | Pointer to **string** | The RIR associated with RIR organization. | [optional] 
+**SenderEmail** | Pointer to **string** | The sender e-mail address for RIR organization. | [optional] 
+**Result** | Pointer to [**RirOrganization**](RirOrganization.md) |  | [optional] 
+
+## Methods
+
+### NewGetRirOrganizationResponse
+
+`func NewGetRirOrganizationResponse() *GetRirOrganizationResponse`
+
+NewGetRirOrganizationResponse instantiates a new GetRirOrganizationResponse object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewGetRirOrganizationResponseWithDefaults
+
+`func NewGetRirOrganizationResponseWithDefaults() *GetRirOrganizationResponse`
+
+NewGetRirOrganizationResponseWithDefaults instantiates a new GetRirOrganizationResponse object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetRef
+
+`func (o *GetRirOrganizationResponse) GetRef() string`
+
+GetRef returns the Ref field if non-nil, zero value otherwise.
+
+### GetRefOk
+
+`func (o *GetRirOrganizationResponse) GetRefOk() (*string, bool)`
+
+GetRefOk returns a tuple with the Ref field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRef
+
+`func (o *GetRirOrganizationResponse) SetRef(v string)`
+
+SetRef sets Ref field to given value.
+
+### HasRef
+
+`func (o *GetRirOrganizationResponse) HasRef() bool`
+
+HasRef returns a boolean if a field has been set.
+
+### GetExtattrs
+
+`func (o *GetRirOrganizationResponse) GetExtattrs() map[string]ExtAttrs`
+
+GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+
+### GetExtattrsOk
+
+`func (o *GetRirOrganizationResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+
+GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtattrs
+
+`func (o *GetRirOrganizationResponse) SetExtattrs(v map[string]ExtAttrs)`
+
+SetExtattrs sets Extattrs field to given value.
+
+### HasExtattrs
+
+`func (o *GetRirOrganizationResponse) HasExtattrs() bool`
+
+HasExtattrs returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *GetRirOrganizationResponse) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *GetRirOrganizationResponse) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *GetRirOrganizationResponse) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *GetRirOrganizationResponse) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetMaintainer
+
+`func (o *GetRirOrganizationResponse) GetMaintainer() string`
+
+GetMaintainer returns the Maintainer field if non-nil, zero value otherwise.
+
+### GetMaintainerOk
+
+`func (o *GetRirOrganizationResponse) GetMaintainerOk() (*string, bool)`
+
+GetMaintainerOk returns a tuple with the Maintainer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaintainer
+
+`func (o *GetRirOrganizationResponse) SetMaintainer(v string)`
+
+SetMaintainer sets Maintainer field to given value.
+
+### HasMaintainer
+
+`func (o *GetRirOrganizationResponse) HasMaintainer() bool`
+
+HasMaintainer returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *GetRirOrganizationResponse) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *GetRirOrganizationResponse) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *GetRirOrganizationResponse) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *GetRirOrganizationResponse) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### GetPassword
+
+`func (o *GetRirOrganizationResponse) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *GetRirOrganizationResponse) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *GetRirOrganizationResponse) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *GetRirOrganizationResponse) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
+
+### GetRir
+
+`func (o *GetRirOrganizationResponse) GetRir() string`
+
+GetRir returns the Rir field if non-nil, zero value otherwise.
+
+### GetRirOk
+
+`func (o *GetRirOrganizationResponse) GetRirOk() (*string, bool)`
+
+GetRirOk returns a tuple with the Rir field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRir
+
+`func (o *GetRirOrganizationResponse) SetRir(v string)`
+
+SetRir sets Rir field to given value.
+
+### HasRir
+
+`func (o *GetRirOrganizationResponse) HasRir() bool`
+
+HasRir returns a boolean if a field has been set.
+
+### GetSenderEmail
+
+`func (o *GetRirOrganizationResponse) GetSenderEmail() string`
+
+GetSenderEmail returns the SenderEmail field if non-nil, zero value otherwise.
+
+### GetSenderEmailOk
+
+`func (o *GetRirOrganizationResponse) GetSenderEmailOk() (*string, bool)`
+
+GetSenderEmailOk returns a tuple with the SenderEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSenderEmail
+
+`func (o *GetRirOrganizationResponse) SetSenderEmail(v string)`
+
+SetSenderEmail sets SenderEmail field to given value.
+
+### HasSenderEmail
+
+`func (o *GetRirOrganizationResponse) HasSenderEmail() bool`
+
+HasSenderEmail returns a boolean if a field has been set.
+
+### GetResult
+
+`func (o *GetRirOrganizationResponse) GetResult() RirOrganization`
+
+GetResult returns the Result field if non-nil, zero value otherwise.
+
+### GetResultOk
+
+`func (o *GetRirOrganizationResponse) GetResultOk() (*RirOrganization, bool)`
+
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResult
+
+`func (o *GetRirOrganizationResponse) SetResult(v RirOrganization)`
+
+SetResult sets Result field to given value.
+
+### HasResult
+
+`func (o *GetRirOrganizationResponse) HasResult() bool`
+
+HasResult returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

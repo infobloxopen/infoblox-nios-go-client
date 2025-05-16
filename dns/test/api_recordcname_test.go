@@ -47,18 +47,6 @@ func TestRecordcnameAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordcnameAPIService Put", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.RecordcnameAPI.Put(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test RecordcnameAPIService ReferenceDelete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

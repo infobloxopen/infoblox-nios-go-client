@@ -35,18 +35,6 @@ func TestRecordrrsigAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordrrsigAPIService Put", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.RecordrrsigAPI.Put(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test RecordrrsigAPIService ReferenceGet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

@@ -47,18 +47,6 @@ func TestZoneStubAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneStubAPIService Put", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.ZoneStubAPI.Put(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ZoneStubAPIService ReferenceDelete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

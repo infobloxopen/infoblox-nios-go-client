@@ -1,0 +1,4424 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: jkhatri@infoblox.com
+    name: Jeenitkumar Khatri
+    url: https://www.infoblox.com
+  description: OpenAPI specification for Infoblox NIOS WAPI CLOUD objects
+  license:
+    name: Infoblox License
+    url: https://www.infoblox.com
+  termsOfService: https://www.infoblox.com
+  title: Infoblox CLOUD API
+  version: 2.12.3
+servers:
+- description: NIOS WAPI server
+  url: /wapi/v2.12.3
+tags:
+- description: Operations for grid:cloudapi objects
+  name: grid:cloudapi
+- description: Operations for grid:cloudapi:cloudstatistics objects
+  name: grid:cloudapi:cloudstatistics
+- description: Operations for grid:cloudapi:tenant objects
+  name: grid:cloudapi:tenant
+- description: Operations for grid:cloudapi:vm objects
+  name: grid:cloudapi:vm
+- description: Operations for grid:cloudapi:vmaddress objects
+  name: grid:cloudapi:vmaddress
+- description: Operations for grid:member:cloudapi objects
+  name: grid:member:cloudapi
+- description: Operations for awsrte53taskgroup objects
+  name: awsrte53taskgroup
+- description: Operations for awsuser objects
+  name: awsuser
+- description: Operations for outbound:cloudclient objects
+  name: outbound:cloudclient
+paths:
+  /grid:cloudapi:
+    get:
+      description: Returns a list of grid:cloudapi objects matching the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGridCloudapiResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve grid:cloudapi objects
+      tags:
+      - grid:cloudapi
+  /grid:cloudapi/{reference}:
+    get:
+      description: Returns a specific grid:cloudapi object by reference
+      parameters:
+      - description: Reference of the grid:cloudapi object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGridCloudapiResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific grid:cloudapi object
+      tags:
+      - grid:cloudapi
+    put:
+      description: Updates a specific grid:cloudapi object by reference
+      parameters:
+      - description: Reference of the grid:cloudapi object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GridCloudapi'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateGridCloudapiResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a grid:cloudapi object
+      tags:
+      - grid:cloudapi
+  /grid:cloudapi:cloudstatistics:
+    get:
+      description: Returns a list of grid:cloudapi:cloudstatistics objects matching
+        the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGridCloudapiCloudstatisticsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve grid:cloudapi:cloudstatistics objects
+      tags:
+      - grid:cloudapi:cloudstatistics
+  /grid:cloudapi:cloudstatistics/{reference}:
+    get:
+      description: Returns a specific grid:cloudapi:cloudstatistics object by reference
+      parameters:
+      - description: Reference of the grid:cloudapi:cloudstatistics object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGridCloudapiCloudstatisticsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific grid:cloudapi:cloudstatistics object
+      tags:
+      - grid:cloudapi:cloudstatistics
+  /grid:cloudapi:tenant:
+    get:
+      description: Returns a list of grid:cloudapi:tenant objects matching the search
+        criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGridCloudapiTenantResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve grid:cloudapi:tenant objects
+      tags:
+      - grid:cloudapi:tenant
+  /grid:cloudapi:tenant/{reference}:
+    get:
+      description: Returns a specific grid:cloudapi:tenant object by reference
+      parameters:
+      - description: Reference of the grid:cloudapi:tenant object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGridCloudapiTenantResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific grid:cloudapi:tenant object
+      tags:
+      - grid:cloudapi:tenant
+    put:
+      description: Updates a specific grid:cloudapi:tenant object by reference
+      parameters:
+      - description: Reference of the grid:cloudapi:tenant object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GridCloudapiTenant'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateGridCloudapiTenantResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a grid:cloudapi:tenant object
+      tags:
+      - grid:cloudapi:tenant
+  /grid:cloudapi:vm:
+    get:
+      description: Returns a list of grid:cloudapi:vm objects matching the search
+        criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGridCloudapiVmResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve grid:cloudapi:vm objects
+      tags:
+      - grid:cloudapi:vm
+  /grid:cloudapi:vm/{reference}:
+    get:
+      description: Returns a specific grid:cloudapi:vm object by reference
+      parameters:
+      - description: Reference of the grid:cloudapi:vm object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGridCloudapiVmResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific grid:cloudapi:vm object
+      tags:
+      - grid:cloudapi:vm
+    put:
+      description: Updates a specific grid:cloudapi:vm object by reference
+      parameters:
+      - description: Reference of the grid:cloudapi:vm object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GridCloudapiVm'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateGridCloudapiVmResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a grid:cloudapi:vm object
+      tags:
+      - grid:cloudapi:vm
+      x-sdk-default-ext-attrs: true
+  /grid:cloudapi:vmaddress:
+    get:
+      description: Returns a list of grid:cloudapi:vmaddress objects matching the
+        search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGridCloudapiVmaddressResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve grid:cloudapi:vmaddress objects
+      tags:
+      - grid:cloudapi:vmaddress
+  /grid:cloudapi:vmaddress/{reference}:
+    get:
+      description: Returns a specific grid:cloudapi:vmaddress object by reference
+      parameters:
+      - description: Reference of the grid:cloudapi:vmaddress object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGridCloudapiVmaddressResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific grid:cloudapi:vmaddress object
+      tags:
+      - grid:cloudapi:vmaddress
+  /grid:member:cloudapi:
+    get:
+      description: Returns a list of grid:member:cloudapi objects matching the search
+        criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGridMemberCloudapiResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve grid:member:cloudapi objects
+      tags:
+      - grid:member:cloudapi
+  /grid:member:cloudapi/{reference}:
+    get:
+      description: Returns a specific grid:member:cloudapi object by reference
+      parameters:
+      - description: Reference of the grid:member:cloudapi object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGridMemberCloudapiResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific grid:member:cloudapi object
+      tags:
+      - grid:member:cloudapi
+    put:
+      description: Updates a specific grid:member:cloudapi object by reference
+      parameters:
+      - description: Reference of the grid:member:cloudapi object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GridMemberCloudapi'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateGridMemberCloudapiResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a grid:member:cloudapi object
+      tags:
+      - grid:member:cloudapi
+      x-sdk-default-ext-attrs: true
+  /awsrte53taskgroup:
+    get:
+      description: Returns a list of awsrte53taskgroup objects matching the search
+        criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAwsrte53taskgroupResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve awsrte53taskgroup objects
+      tags:
+      - awsrte53taskgroup
+    post:
+      description: Creates a new awsrte53taskgroup object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Awsrte53taskgroup'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAwsrte53taskgroupResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a awsrte53taskgroup object
+      tags:
+      - awsrte53taskgroup
+      x-tf-resource: resource_nios_Awsrte53taskgroup
+      x-tf-datasource: datasource_nios_Awsrte53taskgroup
+  /awsrte53taskgroup/{reference}:
+    delete:
+      description: Deletes a specific awsrte53taskgroup object by reference
+      parameters:
+      - description: Reference of the awsrte53taskgroup object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a awsrte53taskgroup object
+      tags:
+      - awsrte53taskgroup
+    get:
+      description: Returns a specific awsrte53taskgroup object by reference
+      parameters:
+      - description: Reference of the awsrte53taskgroup object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAwsrte53taskgroupResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific awsrte53taskgroup object
+      tags:
+      - awsrte53taskgroup
+    put:
+      description: Updates a specific awsrte53taskgroup object by reference
+      parameters:
+      - description: Reference of the awsrte53taskgroup object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Awsrte53taskgroup'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAwsrte53taskgroupResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a awsrte53taskgroup object
+      tags:
+      - awsrte53taskgroup
+  /awsuser:
+    get:
+      description: Returns a list of awsuser objects matching the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAwsuserResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve awsuser objects
+      tags:
+      - awsuser
+    post:
+      description: Creates a new awsuser object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Awsuser'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAwsuserResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a awsuser object
+      tags:
+      - awsuser
+      x-tf-resource: resource_nios_Awsuser
+      x-tf-datasource: datasource_nios_Awsuser
+  /awsuser/{reference}:
+    delete:
+      description: Deletes a specific awsuser object by reference
+      parameters:
+      - description: Reference of the awsuser object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a awsuser object
+      tags:
+      - awsuser
+    get:
+      description: Returns a specific awsuser object by reference
+      parameters:
+      - description: Reference of the awsuser object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAwsuserResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific awsuser object
+      tags:
+      - awsuser
+    put:
+      description: Updates a specific awsuser object by reference
+      parameters:
+      - description: Reference of the awsuser object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Awsuser'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAwsuserResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a awsuser object
+      tags:
+      - awsuser
+  /outbound:cloudclient:
+    get:
+      description: Returns a list of outbound:cloudclient objects matching the search
+        criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOutboundCloudclientResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve outbound:cloudclient objects
+      tags:
+      - outbound:cloudclient
+  /outbound:cloudclient/{reference}:
+    get:
+      description: Returns a specific outbound:cloudclient object by reference
+      parameters:
+      - description: Reference of the outbound:cloudclient object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOutboundCloudclientResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific outbound:cloudclient object
+      tags:
+      - outbound:cloudclient
+    put:
+      description: Updates a specific outbound:cloudclient object by reference
+      parameters:
+      - description: Reference of the outbound:cloudclient object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OutboundCloudclient'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateOutboundCloudclientResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a outbound:cloudclient object
+      tags:
+      - outbound:cloudclient
+components:
+  parameters:
+    ReturnFields:
+      description: Enter the field names followed by comma
+      explode: true
+      in: query
+      name: _return_fields
+      required: false
+      schema:
+        type: string
+      style: form
+    ReturnFieldsPlus:
+      description: "Enter the field names followed by comma, this returns the required\
+        \ fields along with the default fields"
+      explode: true
+      in: query
+      name: _return_fields+
+      required: false
+      schema:
+        type: string
+      style: form
+    MaxResults:
+      description: Enter the number of results to be fetched
+      explode: true
+      in: query
+      name: _max_results
+      required: false
+      schema:
+        format: int32
+        minimum: 1
+        type: integer
+      style: form
+    ReturnAsObject:
+      description: Select 1 if result is required as an object
+      explode: true
+      in: query
+      name: _return_as_object
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Paging:
+      description: Control paging of results
+      explode: true
+      in: query
+      name: _paging
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    PageId:
+      description: Page id for retrieving next page of results
+      explode: true
+      in: query
+      name: _page_id
+      required: false
+      schema:
+        type: string
+      style: form
+    ProxySearch:
+      description: Search Grid members for data
+      explode: true
+      in: query
+      name: _proxy_search
+      required: false
+      schema:
+        type: string
+      style: form
+    Schema:
+      description: Return schema for this object type
+      explode: true
+      in: query
+      name: _schema
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaVersion:
+      description: Schema version to use
+      explode: true
+      in: query
+      name: _schema_version
+      required: false
+      schema:
+        enum:
+        - 1
+        - 2
+        type: integer
+      style: form
+    GetDoc:
+      description: Return documentation with schema
+      explode: true
+      in: query
+      name: _get_doc
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaSearchable:
+      description: Return searchable fields with schema
+      explode: true
+      in: query
+      name: _schema_searchable
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Inheritance:
+      description: "If this option is set to True, fields which support inheritance,\
+        \ will display data properly."
+      explode: true
+      in: query
+      name: _inheritance
+      required: false
+      schema:
+        type: boolean
+      style: form
+    filters:
+      explode: false
+      in: query
+      name: filters
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    ExtAttrFilters:
+      explode: false
+      in: query
+      name: extattrfilter
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    Method:
+      description: Enter the method type for the request
+      explode: true
+      in: query
+      name: _method
+      required: false
+      schema:
+        type: string
+      style: form
+    Body:
+      explode: true
+      in: query
+      name: body
+      required: false
+      schema:
+        type: object
+      style: form
+  schemas:
+    ExtAttrs:
+      description: Extensible attributes associated with the object.
+      example:
+        value: value
+      properties:
+        value:
+          description: The value of the extensible attribute.
+          type: string
+      required:
+      - value
+      type: object
+    GridCloudapi:
+      additionalProperties: false
+      example:
+        allowed_api_admins:
+        - remote_admin: Example remote_admin
+          local_admin: Example local_admin
+          is_remote: false
+        - remote_admin: Example remote_admin
+          local_admin: Example local_admin
+          is_remote: false
+        gateway_config:
+          port: 1
+          enable_proxy_service: false
+          endpoint_mapping: endpoint_mapping
+        _ref: _ref
+        enable_recycle_bin: false
+        allow_api_admins: Example allow_api_admins
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        allow_api_admins:
+          description: "Defines administrators who can perform cloud API requests\
+            \ on the Grid Master. The valid value is NONE (no administrator), ALL\
+            \ (all administrators), or LIST (administrators on the ACL)."
+          enum:
+          - NONE
+          - LIST
+          - ALL
+          example: Example allow_api_admins
+          type: string
+        allowed_api_admins:
+          description: The list of administrators who can perform cloud API requests
+            on the Cloud Platform Appliance.
+          enum:
+          - grid:cloudapi:user
+          items:
+            $ref: '#/components/schemas/GridCloudapiAllowedApiAdmins'
+          type: array
+        enable_recycle_bin:
+          description: Determines whether the recycle bin for deleted cloud objects
+            is enabled or not on the Grid Master.
+          example: false
+          type: boolean
+        gateway_config:
+          $ref: '#/components/schemas/GridCloudapiGatewayConfig'
+      type: object
+    GridCloudapiAllowedApiAdmins:
+      example:
+        remote_admin: Example remote_admin
+        local_admin: Example local_admin
+        is_remote: false
+      properties:
+        is_remote:
+          description: Determines whether this is a remote admin user.
+          example: false
+          type: boolean
+        remote_admin:
+          description: Username that matches a remote administrator who can perform
+            cloud API requests on the Cloud Platform Appliance.
+          example: Example remote_admin
+          type: string
+        local_admin:
+          description: Local administrator who can perform cloud API requests on the
+            Cloud Platform Appliance.
+          example: Example local_admin
+          type: string
+      type: object
+    GridCloudapiGatewayConfig:
+      example:
+        port: 1
+        enable_proxy_service: false
+        endpoint_mapping: endpoint_mapping
+      properties:
+        enable_proxy_service:
+          description: Enable Gateway Service.
+          example: false
+          type: boolean
+        port:
+          description: Gateway port
+          example: 1
+          format: int64
+          type: integer
+        endpoint_mapping:
+          $ref: '#/components/schemas/GridcloudapigatewayconfigEndpointMapping'
+      type: object
+    GridcloudapigatewayconfigEndpointMapping:
+      properties:
+        gateway_fqdn:
+          description: Gateway FQDN.
+          example: Example gateway_fqdn
+          type: string
+        endpoint_fqdn:
+          description: Endpoint FQDN.
+          example: Example endpoint_fqdn
+          type: string
+      type: object
+    ListGridCloudapiResponse:
+      oneOf:
+      - description: The response format to retrieve __GridCloudapi__ objects.
+        items:
+          $ref: '#/components/schemas/GridCloudapi'
+        title: ListGridCloudapiResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListGridCloudapiResponseObject'
+    CreateGridCloudapiResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateGridCloudapiResponseAsObject'
+      - description: The response format to create __GridCloudapi__.
+        title: CreateGridCloudapiResponse
+        type: string
+    GetGridCloudapiResponse:
+      oneOf:
+      - $ref: '#/components/schemas/GridCloudapi'
+      - $ref: '#/components/schemas/GetGridCloudapiResponseObjectAsResult'
+    UpdateGridCloudapiResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateGridCloudapiResponseAsObject'
+      - description: The response format to update __GridCloudapi__ .
+        title: UpdateGridCloudapiResponse
+        type: string
+    GridCloudapiCloudstatistics:
+      additionalProperties: false
+      example:
+        allocated_available_ratio: 1
+        allocated_ip_count: 1
+        tenant_count: 1
+        _ref: _ref
+        fixed_ip_count: 1
+        available_ip_count: Example available_ip_count
+        tenant_vm_count: 1
+        floating_ip_count: 1
+        tenant_ip_count: 1
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        allocated_available_ratio:
+          description: Ratio of allocated vs. available IPs
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        allocated_ip_count:
+          description: Total number of IPs allocated by tenants.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        available_ip_count:
+          description: The total number of IP addresses available to tenants. Only
+            IP addresses in networks that are within a delegation scope are counted.
+          example: Example available_ip_count
+          readOnly: true
+          type: string
+        fixed_ip_count:
+          description: The total number of fixed IP addresses currently in use by
+            all tenants in the system.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        floating_ip_count:
+          description: The total number of floating IP addresses currently in use
+            by all tenants in the system.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        tenant_count:
+          description: Total number of tenant currently in the system.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        tenant_ip_count:
+          description: The total number of IP addresses currently in use by all tenants
+            in the system.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        tenant_vm_count:
+          description: The total number of VMs currently in use by all tenants in
+            the system.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+      type: object
+    ListGridCloudapiCloudstatisticsResponse:
+      oneOf:
+      - description: The response format to retrieve __GridCloudapiCloudstatistics__
+          objects.
+        items:
+          $ref: '#/components/schemas/GridCloudapiCloudstatistics'
+        title: ListGridCloudapiCloudstatisticsResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListGridCloudapiCloudstatisticsResponseObject'
+    CreateGridCloudapiCloudstatisticsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateGridCloudapiCloudstatisticsResponseAsObject'
+      - description: The response format to create __GridCloudapiCloudstatistics__.
+        title: CreateGridCloudapiCloudstatisticsResponse
+        type: string
+    GetGridCloudapiCloudstatisticsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/GridCloudapiCloudstatistics'
+      - $ref: '#/components/schemas/GetGridCloudapiCloudstatisticsResponseObjectAsResult'
+    UpdateGridCloudapiCloudstatisticsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateGridCloudapiCloudstatisticsResponseAsObject'
+      - description: The response format to update __GridCloudapiCloudstatistics__
+          .
+        title: UpdateGridCloudapiCloudstatisticsResponse
+        type: string
+    GridCloudapiTenant:
+      additionalProperties: false
+      example:
+        vm_count: 1
+        created_ts: 1
+        network_count: 1
+        _ref: _ref
+        name: Example name
+        cloud_info:
+          delegated_member: delegated_member
+          delegated_scope: Example delegated_scope
+          owned_by_adaptor: false
+          usage: Example usage
+          authority_type: Example authority_type
+          mgmt_platform: Example mgmt_platform
+          tenant: Example tenant
+          delegated_root: Example delegated_root
+        comment: Example comment
+        id: Example id
+        last_event_ts: 1
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        cloud_info:
+          $ref: '#/components/schemas/GridCloudapiTenantCloudInfo'
+        comment:
+          description: Comment for the Grid Cloud API Tenant object; maximum 256 characters.
+          example: Example comment
+          type: string
+        created_ts:
+          description: The timestamp when the tenant was first created in the system.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        id:
+          description: Unique ID associated with the tenant. This is set only when
+            the tenant is first created.
+          example: Example id
+          readOnly: true
+          type: string
+        last_event_ts:
+          description: The timestamp when the last event associated with the tenant
+            happened.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          description: Name of the tenant.
+          example: Example name
+          type: string
+        network_count:
+          description: Number of Networks associated with the tenant.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        vm_count:
+          description: Number of VMs associated with the tenant.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+      type: object
+    GridCloudapiTenantCloudInfo:
+      example:
+        delegated_member: delegated_member
+        delegated_scope: Example delegated_scope
+        owned_by_adaptor: false
+        usage: Example usage
+        authority_type: Example authority_type
+        mgmt_platform: Example mgmt_platform
+        tenant: Example tenant
+        delegated_root: Example delegated_root
+      properties:
+        delegated_member:
+          $ref: '#/components/schemas/GridcloudapitenantcloudinfoDelegatedMember'
+        delegated_scope:
+          description: "Indicates the scope of delegation for the object. This can\
+            \ be one of the following: NONE (outside any delegation), ROOT (the delegation\
+            \ point), SUBTREE (within the scope of a delegation), RECLAIMING (within\
+            \ the scope of a delegation being reclaimed, either as the delegation\
+            \ point or in the subtree)."
+          enum:
+          - NONE
+          - ROOT
+          - SUBTREE
+          - RECLAIMING
+          example: Example delegated_scope
+          readOnly: true
+          type: string
+        delegated_root:
+          description: Indicates the root of the delegation if delegated_scope is
+            SUBTREE or RECLAIMING. This is not set otherwise.
+          example: Example delegated_root
+          readOnly: true
+          type: string
+        owned_by_adaptor:
+          description: Determines whether the object was created by the cloud adapter
+            or not.
+          example: false
+          readOnly: true
+          type: boolean
+        usage:
+          description: Indicates the cloud origin of the object.
+          enum:
+          - NONE
+          - ADAPTER
+          - USED_BY
+          - DELEGATED
+          example: Example usage
+          readOnly: true
+          type: string
+        tenant:
+          description: "Reference to the tenant object associated with the object,\
+            \ if any."
+          example: Example tenant
+          readOnly: true
+          type: string
+        mgmt_platform:
+          description: Indicates the specified cloud management platform.
+          example: Example mgmt_platform
+          readOnly: true
+          type: string
+        authority_type:
+          description: Type of authority over the object.
+          enum:
+          - NONE
+          - GM
+          - CP
+          example: Example authority_type
+          readOnly: true
+          type: string
+      type: object
+    GridcloudapitenantcloudinfoDelegatedMember:
+      properties:
+        ipv4addr:
+          description: The IPv4 Address of the Grid Member.
+          example: Example ipv4addr
+          type: string
+        ipv6addr:
+          description: The IPv6 Address of the Grid Member.
+          example: Example ipv6addr
+          type: string
+        name:
+          description: The Grid member name
+          example: Example name
+          type: string
+      type: object
+    ListGridCloudapiTenantResponse:
+      oneOf:
+      - description: The response format to retrieve __GridCloudapiTenant__ objects.
+        items:
+          $ref: '#/components/schemas/GridCloudapiTenant'
+        title: ListGridCloudapiTenantResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListGridCloudapiTenantResponseObject'
+    CreateGridCloudapiTenantResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateGridCloudapiTenantResponseAsObject'
+      - description: The response format to create __GridCloudapiTenant__.
+        title: CreateGridCloudapiTenantResponse
+        type: string
+    GetGridCloudapiTenantResponse:
+      oneOf:
+      - $ref: '#/components/schemas/GridCloudapiTenant'
+      - $ref: '#/components/schemas/GetGridCloudapiTenantResponseObjectAsResult'
+    UpdateGridCloudapiTenantResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateGridCloudapiTenantResponseAsObject'
+      - description: The response format to update __GridCloudapiTenant__ .
+        title: UpdateGridCloudapiTenantResponse
+        type: string
+    GridCloudapiVm:
+      additionalProperties: false
+      example:
+        availability_zone: Example availability_zone
+        tenant_name: Example tenant_name
+        extattrs:
+          key:
+            value: value
+        first_seen: 1
+        vpc_name: Example vpc_name
+        last_seen: 1
+        vpc_id: Example vpc_id
+        network_count: 1
+        subnet_cidr: 1
+        cloud_info:
+          delegated_member: delegated_member
+          delegated_scope: Example delegated_scope
+          owned_by_adaptor: false
+          usage: Example usage
+          authority_type: Example authority_type
+          mgmt_platform: Example mgmt_platform
+          tenant: Example tenant
+          delegated_root: Example delegated_root
+        hostname: Example hostname
+        vm_type: Example vm_type
+        kernel_id: Example kernel_id
+        vpc_address: Example vpc_address
+        elastic_ip_address: Example elastic_ip_address
+        vpc_cidr: 1
+        _ref: _ref
+        name: Example name
+        operating_system: Example operating_system
+        subnet_id: Example subnet_id
+        comment: Example comment
+        id: Example id
+        primary_mac_address: Example primary_mac_address
+        subnet_address: Example subnet_address
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        availability_zone:
+          description: Availability zone of the VM.
+          example: Example availability_zone
+          readOnly: true
+          type: string
+        cloud_info:
+          $ref: '#/components/schemas/GridCloudapiVmCloudInfo'
+        comment:
+          description: Comment for the vm object; maximum 1024 characters.
+          example: Example comment
+          type: string
+        elastic_ip_address:
+          description: Elastic IP address associated with the VM's primary interface.
+          example: Example elastic_ip_address
+          readOnly: true
+          type: string
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+        first_seen:
+          description: The timestamp when the VM was first seen in the system.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        hostname:
+          description: Hostname part of the FQDN for the address associated with the
+            VM's primary interface.
+          example: Example hostname
+          readOnly: true
+          type: string
+        id:
+          description: Unique ID associated with the VM. This is set only when the
+            VM is first created.
+          example: Example id
+          readOnly: true
+          type: string
+        kernel_id:
+          description: Identifier of the kernel that this VM is running; maximum 128
+            characters.
+          example: Example kernel_id
+          type: string
+        last_seen:
+          description: The timestamp when the last event associated with the VM happened.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          description: Name of the VM.
+          example: Example name
+          type: string
+        network_count:
+          description: Number of Networks containing any address associated with this
+            VM.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        operating_system:
+          description: Guest Operating system that this VM is running; maximum 128
+            characters.
+          example: Example operating_system
+          type: string
+        primary_mac_address:
+          description: MAC address associated with the VM's primary interface.
+          example: Example primary_mac_address
+          readOnly: true
+          type: string
+        subnet_address:
+          description: Address of the network that is the container of the address
+            associated with the VM's primary interface.
+          example: Example subnet_address
+          readOnly: true
+          type: string
+        subnet_cidr:
+          description: CIDR of the network that is the container of the address associated
+            with the VM's primary interface.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        subnet_id:
+          description: Subnet ID of the network that is the container of the address
+            associated with the VM's primary interface.
+          example: Example subnet_id
+          readOnly: true
+          type: string
+        tenant_name:
+          description: Name of the tenant associated with the VM.
+          example: Example tenant_name
+          readOnly: true
+          type: string
+        vm_type:
+          description: VM type; maximum 64 characters.
+          example: Example vm_type
+          type: string
+        vpc_address:
+          description: Network address of the parent VPC.
+          example: Example vpc_address
+          readOnly: true
+          type: string
+        vpc_cidr:
+          description: Network CIDR of the parent VPC.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        vpc_id:
+          description: Identifier of the parent VPC.
+          example: Example vpc_id
+          readOnly: true
+          type: string
+        vpc_name:
+          description: Name of the parent VPC.
+          example: Example vpc_name
+          readOnly: true
+          type: string
+      type: object
+    GridCloudapiVmCloudInfo:
+      example:
+        delegated_member: delegated_member
+        delegated_scope: Example delegated_scope
+        owned_by_adaptor: false
+        usage: Example usage
+        authority_type: Example authority_type
+        mgmt_platform: Example mgmt_platform
+        tenant: Example tenant
+        delegated_root: Example delegated_root
+      properties:
+        delegated_member:
+          $ref: '#/components/schemas/GridcloudapivmcloudinfoDelegatedMember'
+        delegated_scope:
+          description: "Indicates the scope of delegation for the object. This can\
+            \ be one of the following: NONE (outside any delegation), ROOT (the delegation\
+            \ point), SUBTREE (within the scope of a delegation), RECLAIMING (within\
+            \ the scope of a delegation being reclaimed, either as the delegation\
+            \ point or in the subtree)."
+          enum:
+          - NONE
+          - ROOT
+          - SUBTREE
+          - RECLAIMING
+          example: Example delegated_scope
+          readOnly: true
+          type: string
+        delegated_root:
+          description: Indicates the root of the delegation if delegated_scope is
+            SUBTREE or RECLAIMING. This is not set otherwise.
+          example: Example delegated_root
+          readOnly: true
+          type: string
+        owned_by_adaptor:
+          description: Determines whether the object was created by the cloud adapter
+            or not.
+          example: false
+          readOnly: true
+          type: boolean
+        usage:
+          description: Indicates the cloud origin of the object.
+          enum:
+          - NONE
+          - ADAPTER
+          - USED_BY
+          - DELEGATED
+          example: Example usage
+          readOnly: true
+          type: string
+        tenant:
+          description: "Reference to the tenant object associated with the object,\
+            \ if any."
+          example: Example tenant
+          readOnly: true
+          type: string
+        mgmt_platform:
+          description: Indicates the specified cloud management platform.
+          example: Example mgmt_platform
+          readOnly: true
+          type: string
+        authority_type:
+          description: Type of authority over the object.
+          enum:
+          - NONE
+          - GM
+          - CP
+          example: Example authority_type
+          readOnly: true
+          type: string
+      type: object
+    GridcloudapivmcloudinfoDelegatedMember:
+      properties:
+        ipv4addr:
+          description: The IPv4 Address of the Grid Member.
+          example: Example ipv4addr
+          type: string
+        ipv6addr:
+          description: The IPv6 Address of the Grid Member.
+          example: Example ipv6addr
+          type: string
+        name:
+          description: The Grid member name
+          example: Example name
+          type: string
+      type: object
+    ListGridCloudapiVmResponse:
+      oneOf:
+      - description: The response format to retrieve __GridCloudapiVm__ objects.
+        items:
+          $ref: '#/components/schemas/GridCloudapiVm'
+        title: ListGridCloudapiVmResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListGridCloudapiVmResponseObject'
+    CreateGridCloudapiVmResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateGridCloudapiVmResponseAsObject'
+      - description: The response format to create __GridCloudapiVm__.
+        title: CreateGridCloudapiVmResponse
+        type: string
+    GetGridCloudapiVmResponse:
+      oneOf:
+      - $ref: '#/components/schemas/GridCloudapiVm'
+      - $ref: '#/components/schemas/GetGridCloudapiVmResponseObjectAsResult'
+    UpdateGridCloudapiVmResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateGridCloudapiVmResponseAsObject'
+      - description: The response format to update __GridCloudapiVm__ .
+        title: UpdateGridCloudapiVmResponse
+        type: string
+    GridCloudapiVmaddress:
+      additionalProperties: false
+      example:
+        private_address: Example private_address
+        network_view: Example network_view
+        associated_ip: Example associated_ip
+        vm_creation_time: 1
+        interface_name: Example interface_name
+        cloud_info:
+          delegated_member: delegated_member
+          delegated_scope: Example delegated_scope
+          owned_by_adaptor: false
+          usage: Example usage
+          authority_type: Example authority_type
+          mgmt_platform: Example mgmt_platform
+          tenant: Example tenant
+          delegated_root: Example delegated_root
+        is_ipv4: false
+        vm_hostname: Example vm_hostname
+        vm_vpc_address: Example vm_vpc_address
+        associated_object_types:
+        - associated_object_types
+        - associated_object_types
+        network: Example network
+        associated_objects:
+        - fixedaddress
+        - fixedaddress
+        vm_operating_system: Example vm_operating_system
+        vm_id: Example vm_id
+        vm_type: Example vm_type
+        mac_address: Example mac_address
+        tenant: Example tenant
+        vm_name: Example vm_name
+        vm_vpc_name: Example vm_vpc_name
+        vm_vpc_ref: Example vm_vpc_ref
+        vm_vpc_cidr: 1
+        address: Example address
+        address_type: Example address_type
+        vm_kernel_id: Example vm_kernel_id
+        vm_comment: Example vm_comment
+        subnet_cidr: 1
+        vm_availability_zone: Example vm_availability_zone
+        ms_ad_user_data:
+          active_users_count: 1
+        dns_names:
+        - dns_names
+        - dns_names
+        vm_vpc_id: Example vm_vpc_id
+        _ref: _ref
+        vm_network_count: 1
+        elastic_address: Example elastic_address
+        port_id: 1
+        public_hostname: Example public_hostname
+        subnet_id: Example subnet_id
+        vm_last_update_time: 1
+        public_address: Example public_address
+        private_hostname: Example private_hostname
+        subnet_address: Example subnet_address
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        address:
+          description: The IP address of the interface.
+          example: Example address
+          readOnly: true
+          type: string
+        address_type:
+          description: "IP address type (Public, Private, Elastic, Floating, ...)."
+          example: Example address_type
+          readOnly: true
+          type: string
+        associated_ip:
+          description: Reference to associated IPv4 or IPv6 address.
+          example: Example associated_ip
+          readOnly: true
+          type: string
+        associated_object_types:
+          description: "Array of string denoting the types of underlying objects IPv4/IPv6\
+            \ - \"A\", \"AAAA\", \"PTR\", \"HOST\", \"FA\", \"RESERVATION\", \"UNMANAGED\"\
+            \ + (\"BULKHOST\", \"DHCP_RANGE\", \"RESERVED_RANGE\", \"LEASE\", \"NETWORK\"\
+            , \"BROADCAST\", \"PENDING\"),"
+          enum:
+          - string
+          items:
+            type: string
+          readOnly: true
+          type: array
+        associated_objects:
+          description: "The list of references to the object (Host, Fixed Address,\
+            \ RR, ...) that defines this IP."
+          enum:
+          - fixedaddress
+          items:
+            enum:
+            - fixedaddress
+            type: string
+          readOnly: true
+          type: array
+        cloud_info:
+          $ref: '#/components/schemas/GridCloudapiVmaddressCloudInfo'
+        dns_names:
+          description: The list of all FQDNs associated with the IP address.
+          enum:
+          - string
+          items:
+            type: string
+          readOnly: true
+          type: array
+        elastic_address:
+          description: "Elastic IP address associated with this private address, if\
+            \ this address is a private address; otherwise empty."
+          example: Example elastic_address
+          readOnly: true
+          type: string
+        interface_name:
+          description: Name of the interface associated with this IP address.
+          example: Example interface_name
+          readOnly: true
+          type: string
+        is_ipv4:
+          description: Indicates whether the address is IPv4 or IPv6.
+          example: false
+          readOnly: true
+          type: boolean
+        mac_address:
+          description: The MAC address of the interface.
+          example: Example mac_address
+          readOnly: true
+          type: string
+        ms_ad_user_data:
+          $ref: '#/components/schemas/GridCloudapiVmaddressMsAdUserData'
+        network:
+          description: "The network to which this address belongs, in IPv4 Address/CIDR\
+            \ format."
+          example: Example network
+          readOnly: true
+          type: string
+        network_view:
+          description: Network view name of the delegated object.
+          example: Example network_view
+          readOnly: true
+          type: string
+        port_id:
+          description: Port identifier of the interface.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        private_address:
+          description: "Private IP address associated with this public (or elastic\
+            \ or floating) address, if this address is a public address; otherwise\
+            \ empty."
+          example: Example private_address
+          readOnly: true
+          type: string
+        private_hostname:
+          description: Host part of the FQDN of this address if this address is a
+            private address; otherwise empty
+          example: Example private_hostname
+          readOnly: true
+          type: string
+        public_address:
+          description: "Public IP address associated with this private address, if\
+            \ this address is a private address; otherwise empty."
+          example: Example public_address
+          readOnly: true
+          type: string
+        public_hostname:
+          description: Host part of the FQDN of this address if this address is a
+            public (or elastic or floating) address; otherwise empty
+          example: Example public_hostname
+          readOnly: true
+          type: string
+        subnet_address:
+          description: Network address of the subnet that is the container of this
+            address.
+          example: Example subnet_address
+          readOnly: true
+          type: string
+        subnet_cidr:
+          description: CIDR of the subnet that is the container of this address.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        subnet_id:
+          description: Subnet ID that is the container of this address.
+          example: Example subnet_id
+          readOnly: true
+          type: string
+        tenant:
+          description: The Cloud API Tenant object.
+          example: Example tenant
+          readOnly: true
+          type: string
+        vm_availability_zone:
+          description: Availability zone of the VM.
+          example: Example vm_availability_zone
+          readOnly: true
+          type: string
+        vm_comment:
+          description: VM comment.
+          example: Example vm_comment
+          readOnly: true
+          type: string
+        vm_creation_time:
+          description: Date/time the VM was first created as NIOS object.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        vm_hostname:
+          description: Host part of the FQDN of the address attached to the primary
+            interface.
+          example: Example vm_hostname
+          readOnly: true
+          type: string
+        vm_id:
+          description: The UUID of the Virtual Machine.
+          example: Example vm_id
+          readOnly: true
+          type: string
+        vm_kernel_id:
+          description: Kernel ID of the VM that this address is associated with.
+          example: Example vm_kernel_id
+          readOnly: true
+          type: string
+        vm_last_update_time:
+          description: Last time the VM was updated.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        vm_name:
+          description: The name of the Virtual Machine.
+          example: Example vm_name
+          readOnly: true
+          type: string
+        vm_network_count:
+          description: Count of networks containing all the addresses of the VM.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        vm_operating_system:
+          description: Operating system that the VM is running.
+          example: Example vm_operating_system
+          readOnly: true
+          type: string
+        vm_type:
+          description: Type of the VM this address is associated with.
+          example: Example vm_type
+          readOnly: true
+          type: string
+        vm_vpc_address:
+          description: Network address of the VPC of the VM that this address is associated
+            with.
+          example: Example vm_vpc_address
+          readOnly: true
+          type: string
+        vm_vpc_cidr:
+          description: CIDR of the VPC of the VM that this address is associated with.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        vm_vpc_id:
+          description: Identifier of the VPC where the VM is defined.
+          example: Example vm_vpc_id
+          readOnly: true
+          type: string
+        vm_vpc_name:
+          description: Name of the VPC where the VM is defined.
+          example: Example vm_vpc_name
+          readOnly: true
+          type: string
+        vm_vpc_ref:
+          description: Reference to the VPC where the VM is defined.
+          example: Example vm_vpc_ref
+          readOnly: true
+          type: string
+      type: object
+    GridCloudapiVmaddressCloudInfo:
+      example:
+        delegated_member: delegated_member
+        delegated_scope: Example delegated_scope
+        owned_by_adaptor: false
+        usage: Example usage
+        authority_type: Example authority_type
+        mgmt_platform: Example mgmt_platform
+        tenant: Example tenant
+        delegated_root: Example delegated_root
+      properties:
+        delegated_member:
+          $ref: '#/components/schemas/GridcloudapivmaddresscloudinfoDelegatedMember'
+        delegated_scope:
+          description: "Indicates the scope of delegation for the object. This can\
+            \ be one of the following: NONE (outside any delegation), ROOT (the delegation\
+            \ point), SUBTREE (within the scope of a delegation), RECLAIMING (within\
+            \ the scope of a delegation being reclaimed, either as the delegation\
+            \ point or in the subtree)."
+          enum:
+          - NONE
+          - ROOT
+          - SUBTREE
+          - RECLAIMING
+          example: Example delegated_scope
+          readOnly: true
+          type: string
+        delegated_root:
+          description: Indicates the root of the delegation if delegated_scope is
+            SUBTREE or RECLAIMING. This is not set otherwise.
+          example: Example delegated_root
+          readOnly: true
+          type: string
+        owned_by_adaptor:
+          description: Determines whether the object was created by the cloud adapter
+            or not.
+          example: false
+          readOnly: true
+          type: boolean
+        usage:
+          description: Indicates the cloud origin of the object.
+          enum:
+          - NONE
+          - ADAPTER
+          - USED_BY
+          - DELEGATED
+          example: Example usage
+          readOnly: true
+          type: string
+        tenant:
+          description: "Reference to the tenant object associated with the object,\
+            \ if any."
+          example: Example tenant
+          readOnly: true
+          type: string
+        mgmt_platform:
+          description: Indicates the specified cloud management platform.
+          example: Example mgmt_platform
+          readOnly: true
+          type: string
+        authority_type:
+          description: Type of authority over the object.
+          enum:
+          - NONE
+          - GM
+          - CP
+          example: Example authority_type
+          readOnly: true
+          type: string
+      type: object
+    GridcloudapivmaddresscloudinfoDelegatedMember:
+      properties:
+        ipv4addr:
+          description: The IPv4 Address of the Grid Member.
+          example: Example ipv4addr
+          type: string
+        ipv6addr:
+          description: The IPv6 Address of the Grid Member.
+          example: Example ipv6addr
+          type: string
+        name:
+          description: The Grid member name
+          example: Example name
+          type: string
+      type: object
+    GridCloudapiVmaddressMsAdUserData:
+      example:
+        active_users_count: 1
+      properties:
+        active_users_count:
+          description: The number of active users.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+      type: object
+    ListGridCloudapiVmaddressResponse:
+      oneOf:
+      - description: The response format to retrieve __GridCloudapiVmaddress__ objects.
+        items:
+          $ref: '#/components/schemas/GridCloudapiVmaddress'
+        title: ListGridCloudapiVmaddressResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListGridCloudapiVmaddressResponseObject'
+    CreateGridCloudapiVmaddressResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateGridCloudapiVmaddressResponseAsObject'
+      - description: The response format to create __GridCloudapiVmaddress__.
+        title: CreateGridCloudapiVmaddressResponse
+        type: string
+    GetGridCloudapiVmaddressResponse:
+      oneOf:
+      - $ref: '#/components/schemas/GridCloudapiVmaddress'
+      - $ref: '#/components/schemas/GetGridCloudapiVmaddressResponseObjectAsResult'
+    UpdateGridCloudapiVmaddressResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateGridCloudapiVmaddressResponseAsObject'
+      - description: The response format to update __GridCloudapiVmaddress__ .
+        title: UpdateGridCloudapiVmaddressResponse
+        type: string
+    GridMemberCloudapi:
+      additionalProperties: false
+      example:
+        enable_service: false
+        extattrs:
+          key:
+            value: value
+        allowed_api_admins:
+        - remote_admin: Example remote_admin
+          local_admin: Example local_admin
+          is_remote: false
+        - remote_admin: Example remote_admin
+          local_admin: Example local_admin
+          is_remote: false
+        gateway_config:
+          port: 1
+          enable_proxy_service: false
+          endpoint_mapping: endpoint_mapping
+        _ref: _ref
+        member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
+        allow_api_admins: Example allow_api_admins
+        status: Example status
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        allow_api_admins:
+          description: "Defines which administrators are allowed to perform Cloud\
+            \ API request on the Grid Member: no administrators (NONE), any administrators\
+            \ (ALL) or administrators in the ACL list (LIST). Default is ALL."
+          enum:
+          - NONE
+          - LIST
+          - ALL
+          example: Example allow_api_admins
+          type: string
+        allowed_api_admins:
+          description: List of administrators allowed to perform Cloud Platform API
+            requests on that member.
+          enum:
+          - grid:cloudapi:user
+          items:
+            $ref: '#/components/schemas/GridMemberCloudapiAllowedApiAdmins'
+          type: array
+        enable_service:
+          description: Controls whether the Cloud API service runs on the member or
+            not.
+          example: false
+          type: boolean
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          readOnly: true
+          type: object
+        gateway_config:
+          $ref: '#/components/schemas/GridMemberCloudapiGatewayConfig'
+        member:
+          $ref: '#/components/schemas/GridMemberCloudapiMember'
+        status:
+          description: Status of Cloud API service on the member.
+          enum:
+          - UNKNOWN
+          - INACTIVE
+          - WORKING
+          - WARNING
+          - FAILED
+          example: Example status
+          readOnly: true
+          type: string
+      type: object
+    GridMemberCloudapiAllowedApiAdmins:
+      example:
+        remote_admin: Example remote_admin
+        local_admin: Example local_admin
+        is_remote: false
+      properties:
+        is_remote:
+          description: Determines whether this is a remote admin user.
+          example: false
+          type: boolean
+        remote_admin:
+          description: Username that matches a remote administrator who can perform
+            cloud API requests on the Cloud Platform Appliance.
+          example: Example remote_admin
+          type: string
+        local_admin:
+          description: Local administrator who can perform cloud API requests on the
+            Cloud Platform Appliance.
+          example: Example local_admin
+          type: string
+      type: object
+    GridMemberCloudapiGatewayConfig:
+      example:
+        port: 1
+        enable_proxy_service: false
+        endpoint_mapping: endpoint_mapping
+      properties:
+        enable_proxy_service:
+          description: Enable Gateway Service.
+          example: false
+          type: boolean
+        port:
+          description: Gateway port
+          example: 1
+          format: int64
+          type: integer
+        endpoint_mapping:
+          $ref: '#/components/schemas/GridmembercloudapigatewayconfigEndpointMapping'
+      type: object
+    GridmembercloudapigatewayconfigEndpointMapping:
+      properties:
+        gateway_fqdn:
+          description: Gateway FQDN.
+          example: Example gateway_fqdn
+          type: string
+        endpoint_fqdn:
+          description: Endpoint FQDN.
+          example: Example endpoint_fqdn
+          type: string
+      type: object
+    GridMemberCloudapiMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
+      properties:
+        ipv4addr:
+          description: The IPv4 Address of the Grid Member.
+          example: Example ipv4addr
+          type: string
+        ipv6addr:
+          description: The IPv6 Address of the Grid Member.
+          example: Example ipv6addr
+          type: string
+        name:
+          description: The Grid member name
+          example: Example name
+          type: string
+      type: object
+    ListGridMemberCloudapiResponse:
+      oneOf:
+      - description: The response format to retrieve __GridMemberCloudapi__ objects.
+        items:
+          $ref: '#/components/schemas/GridMemberCloudapi'
+        title: ListGridMemberCloudapiResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListGridMemberCloudapiResponseObject'
+    CreateGridMemberCloudapiResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateGridMemberCloudapiResponseAsObject'
+      - description: The response format to create __GridMemberCloudapi__.
+        title: CreateGridMemberCloudapiResponse
+        type: string
+    GetGridMemberCloudapiResponse:
+      oneOf:
+      - $ref: '#/components/schemas/GridMemberCloudapi'
+      - $ref: '#/components/schemas/GetGridMemberCloudapiResponseObjectAsResult'
+    UpdateGridMemberCloudapiResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateGridMemberCloudapiResponseAsObject'
+      - description: The response format to update __GridMemberCloudapi__ .
+        title: UpdateGridMemberCloudapiResponse
+        type: string
+    Awsrte53taskgroup:
+      additionalProperties: false
+      example:
+        network_view: Example network_view
+        grid_member: Example grid_member
+        task_control: "{}"
+        account_id: Example account_id
+        consolidated_view: Example consolidated_view
+        role_arn: Example role_arn
+        sync_child_accounts: false
+        _ref: _ref
+        name: Example name
+        comment: Example comment
+        consolidate_zones: false
+        disabled: false
+        sync_status: Example sync_status
+        task_list:
+        - state_msg: Example state_msg
+          sync_public_zones: false
+          last_run: 1
+          aws_user: Example aws_user
+          filter: Example filter
+          sync_private_zones: false
+          name: Example name
+          schedule_interval: 1
+          schedule_units: Example schedule_units
+          disabled: false
+          zone_count: 1
+          state: Example state
+          status_timestamp: 1
+          credentials_type: Example credentials_type
+        - state_msg: Example state_msg
+          sync_public_zones: false
+          last_run: 1
+          aws_user: Example aws_user
+          filter: Example filter
+          sync_private_zones: false
+          name: Example name
+          schedule_interval: 1
+          schedule_units: Example schedule_units
+          disabled: false
+          zone_count: 1
+          state: Example state
+          status_timestamp: 1
+          credentials_type: Example credentials_type
+        network_view_mapping_policy: Example network_view_mapping_policy
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        account_id:
+          description: The AWS Account ID associated with this task group.
+          example: Example account_id
+          readOnly: true
+          type: string
+        comment:
+          description: Comment for the task group; maximum 256 characters.
+          example: Example comment
+          type: string
+        consolidate_zones:
+          description: Indicates if all zones need to be saved into a single view.
+          example: false
+          type: boolean
+        consolidated_view:
+          description: The name of the DNS view for consolidating zones.
+          example: Example consolidated_view
+          type: string
+        disabled:
+          description: Indicates if the task group is enabled or disabled.
+          example: false
+          type: boolean
+        grid_member:
+          description: Member on which the tasks in this task group will be run.
+          example: Example grid_member
+          type: string
+        name:
+          description: The name of this AWS Route53 sync task group.
+          example: Example name
+          type: string
+        network_view:
+          description: The name of the tenant's network view.
+          example: Example network_view
+          type: string
+        network_view_mapping_policy:
+          description: The network view mapping policy.
+          enum:
+          - AUTO_CREATE
+          - DIRECT
+          example: Example network_view_mapping_policy
+          type: string
+        role_arn:
+          description: Role ARN for syncing child accounts; maximum 128 characters.
+          example: Example role_arn
+          type: string
+        sync_child_accounts:
+          description: Synchronizing child accounts is enabled or disabled.
+          example: false
+          type: boolean
+        sync_status:
+          description: Indicate the overall sync status of this task group.
+          enum:
+          - NEW
+          - OK
+          - WARNING
+          - ERROR
+          example: Example sync_status
+          readOnly: true
+          type: string
+        task_control:
+          properties: {}
+          type: object
+        task_list:
+          description: List of AWS Route53 tasks in this group.
+          enum:
+          - awsrte53task
+          items:
+            $ref: '#/components/schemas/Awsrte53taskgroupTaskList'
+          type: array
+      type: object
+    Awsrte53taskgroupTaskControl:
+      properties: {}
+      type: object
+    Awsrte53taskgroupTaskList:
+      example:
+        state_msg: Example state_msg
+        sync_public_zones: false
+        last_run: 1
+        aws_user: Example aws_user
+        filter: Example filter
+        sync_private_zones: false
+        name: Example name
+        schedule_interval: 1
+        schedule_units: Example schedule_units
+        disabled: false
+        zone_count: 1
+        state: Example state
+        status_timestamp: 1
+        credentials_type: Example credentials_type
+      properties:
+        name:
+          description: The name of this task.
+          example: Example name
+          type: string
+        disabled:
+          description: Indicates if the task is enabled or disabled.
+          example: false
+          type: boolean
+        state:
+          description: Indicate the sync status of this task.
+          enum:
+          - IDLE
+          - READY
+          - RUNNING
+          - PARTIALLY_COMPLETED
+          - COMPLETED
+          - FAILED
+          - CANCELED
+          example: Example state
+          readOnly: true
+          type: string
+        state_msg:
+          description: State message for the task.
+          example: Example state_msg
+          readOnly: true
+          type: string
+        filter:
+          description: Filter for this task.
+          example: Example filter
+          type: string
+        schedule_interval:
+          description: Periodic interval for this task.
+          example: 1
+          format: int64
+          type: integer
+        schedule_units:
+          description: Units for the schedule interval.
+          enum:
+          - MINS
+          - HOURS
+          - DAYS
+          example: Example schedule_units
+          type: string
+        aws_user:
+          description: Reference to associated AWS user whose credentials are to be
+            used for this task.
+          example: Example aws_user
+          type: string
+        status_timestamp:
+          description: The timestamp when the last state was logged.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        last_run:
+          description: The timestamp when the task was started last.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        sync_public_zones:
+          description: Indicates whether public zones are synchronized.
+          example: false
+          type: boolean
+        sync_private_zones:
+          description: Indicates whether private zones are synchronized.
+          example: false
+          type: boolean
+        zone_count:
+          description: The number of zones synchronized by this task.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        credentials_type:
+          description: Credentials type used for connecting to the cloud management
+            platform.
+          enum:
+          - DIRECT
+          - INDIRECT
+          example: Example credentials_type
+          type: string
+      type: object
+    ListAwsrte53taskgroupResponse:
+      oneOf:
+      - description: The response format to retrieve __Awsrte53taskgroup__ objects.
+        items:
+          $ref: '#/components/schemas/Awsrte53taskgroup'
+        title: ListAwsrte53taskgroupResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListAwsrte53taskgroupResponseObject'
+    CreateAwsrte53taskgroupResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateAwsrte53taskgroupResponseAsObject'
+      - description: The response format to create __Awsrte53taskgroup__.
+        title: CreateAwsrte53taskgroupResponse
+        type: string
+    GetAwsrte53taskgroupResponse:
+      oneOf:
+      - $ref: '#/components/schemas/Awsrte53taskgroup'
+      - $ref: '#/components/schemas/GetAwsrte53taskgroupResponseObjectAsResult'
+    UpdateAwsrte53taskgroupResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateAwsrte53taskgroupResponseAsObject'
+      - description: The response format to update __Awsrte53taskgroup__ .
+        title: UpdateAwsrte53taskgroupResponse
+        type: string
+    Awsuser:
+      additionalProperties: false
+      example:
+        access_key_id: Example access_key_id
+        account_id: Example account_id
+        last_used: 1
+        nios_user_name: Example nios_user_name
+        _ref: _ref
+        name: Example name
+        secret_access_key: Example secret_access_key
+        govcloud_enabled: false
+        status: Example status
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        access_key_id:
+          description: The unique Access Key ID of this AWS user. Maximum 255 characters.
+          example: Example access_key_id
+          type: string
+        account_id:
+          description: The AWS Account ID of this AWS user. Maximum 64 characters.
+          example: Example account_id
+          type: string
+        govcloud_enabled:
+          description: Indicates if gov cloud is enabled or disabled.
+          example: false
+          type: boolean
+        last_used:
+          description: The timestamp when this AWS user credentials was last used.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          description: The AWS user name. Maximum 64 characters.
+          example: Example name
+          type: string
+        nios_user_name:
+          description: The NIOS user name mapped to this AWS user. Maximum 64 characters.
+          example: Example nios_user_name
+          type: string
+        secret_access_key:
+          description: The Secret Access Key for the Access Key ID of this user. Maximum
+            255 characters.
+          example: Example secret_access_key
+          type: string
+          writeOnly: true
+        status:
+          description: Indicate the validity status of this AWS user.
+          enum:
+          - UNUSED
+          - SUCCESSFUL
+          - UNSUCCESSFUL
+          example: Example status
+          readOnly: true
+          type: string
+      type: object
+    ListAwsuserResponse:
+      oneOf:
+      - description: The response format to retrieve __Awsuser__ objects.
+        items:
+          $ref: '#/components/schemas/Awsuser'
+        title: ListAwsuserResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListAwsuserResponseObject'
+    CreateAwsuserResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateAwsuserResponseAsObject'
+      - description: The response format to create __Awsuser__.
+        title: CreateAwsuserResponse
+        type: string
+    GetAwsuserResponse:
+      oneOf:
+      - $ref: '#/components/schemas/Awsuser'
+      - $ref: '#/components/schemas/GetAwsuserResponseObjectAsResult'
+    UpdateAwsuserResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateAwsuserResponseAsObject'
+      - description: The response format to update __Awsuser__ .
+        title: UpdateAwsuserResponse
+        type: string
+    OutboundCloudclient:
+      additionalProperties: false
+      example:
+        grid_member: Example grid_member
+        enable: false
+        outbound_cloud_client_events:
+        - event_type: Example event_type
+          enabled: false
+        - event_type: Example event_type
+          enabled: false
+        _ref: _ref
+        interval: 1
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        enable:
+          description: Determines whether the OutBound Cloud Client is enabled.
+          example: false
+          type: boolean
+        grid_member:
+          description: The Grid member where our outbound is running.
+          example: Example grid_member
+          type: string
+        interval:
+          description: The time interval (in seconds) for requesting newly detected
+            domains by the Infoblox Outbound Cloud Client and applying them to the
+            list of configured RPZs.
+          example: 1
+          format: int64
+          type: integer
+        outbound_cloud_client_events:
+          description: List of event types to request
+          enum:
+          - outbound:cloudclient:event
+          items:
+            $ref: '#/components/schemas/OutboundCloudclientOutboundCloudClientEvents'
+          type: array
+      type: object
+    OutboundCloudclientOutboundCloudClientEvents:
+      example:
+        event_type: Example event_type
+        enabled: false
+      properties:
+        event_type:
+          description: The event type enum rpz and analytics.
+          enum:
+          - RPZ
+          - ANALYTIC
+          example: Example event_type
+          type: string
+        enabled:
+          description: Determines if the event type is enabled or not.
+          example: false
+          type: boolean
+      type: object
+    ListOutboundCloudclientResponse:
+      oneOf:
+      - description: The response format to retrieve __OutboundCloudclient__ objects.
+        items:
+          $ref: '#/components/schemas/OutboundCloudclient'
+        title: ListOutboundCloudclientResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListOutboundCloudclientResponseObject'
+    CreateOutboundCloudclientResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateOutboundCloudclientResponseAsObject'
+      - description: The response format to create __OutboundCloudclient__.
+        title: CreateOutboundCloudclientResponse
+        type: string
+    GetOutboundCloudclientResponse:
+      oneOf:
+      - $ref: '#/components/schemas/OutboundCloudclient'
+      - $ref: '#/components/schemas/GetOutboundCloudclientResponseObjectAsResult'
+    UpdateOutboundCloudclientResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateOutboundCloudclientResponseAsObject'
+      - description: The response format to update __OutboundCloudclient__ .
+        title: UpdateOutboundCloudclientResponse
+        type: string
+    ListGridCloudapiResponseObject:
+      description: The response format to retrieve __GridCloudapi__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/GridCloudapi'
+          type: array
+      title: ListGridCloudapiResponseObject
+      type: object
+    CreateGridCloudapiResponseAsObject:
+      description: The response format to create __GridCloudapi__ in object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapi'
+      title: CreateGridCloudapiResponseAsObject
+      type: object
+    GetGridCloudapiResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __GridCloudapi__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapi'
+      title: GetGridCloudapiResponseObjectAsResult
+      type: object
+    UpdateGridCloudapiResponseAsObject:
+      description: The response format to update __GridCloudapi__ in object format.
+      example:
+        result:
+          allowed_api_admins:
+          - remote_admin: Example remote_admin
+            local_admin: Example local_admin
+            is_remote: false
+          - remote_admin: Example remote_admin
+            local_admin: Example local_admin
+            is_remote: false
+          gateway_config:
+            port: 1
+            enable_proxy_service: false
+            endpoint_mapping: endpoint_mapping
+          _ref: _ref
+          enable_recycle_bin: false
+          allow_api_admins: Example allow_api_admins
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapi'
+      title: UpdateGridCloudapiResponseAsObject
+      type: object
+    ListGridCloudapiCloudstatisticsResponseObject:
+      description: The response format to retrieve __GridCloudapiCloudstatistics__
+        objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/GridCloudapiCloudstatistics'
+          type: array
+      title: ListGridCloudapiCloudstatisticsResponseObject
+      type: object
+    CreateGridCloudapiCloudstatisticsResponseAsObject:
+      description: The response format to create __GridCloudapiCloudstatistics__ in
+        object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiCloudstatistics'
+      title: CreateGridCloudapiCloudstatisticsResponseAsObject
+      type: object
+    GetGridCloudapiCloudstatisticsResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __GridCloudapiCloudstatistics__
+        objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiCloudstatistics'
+      title: GetGridCloudapiCloudstatisticsResponseObjectAsResult
+      type: object
+    UpdateGridCloudapiCloudstatisticsResponseAsObject:
+      description: The response format to update __GridCloudapiCloudstatistics__ in
+        object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiCloudstatistics'
+      title: UpdateGridCloudapiCloudstatisticsResponseAsObject
+      type: object
+    ListGridCloudapiTenantResponseObject:
+      description: The response format to retrieve __GridCloudapiTenant__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/GridCloudapiTenant'
+          type: array
+      title: ListGridCloudapiTenantResponseObject
+      type: object
+    CreateGridCloudapiTenantResponseAsObject:
+      description: The response format to create __GridCloudapiTenant__ in object
+        format.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiTenant'
+      title: CreateGridCloudapiTenantResponseAsObject
+      type: object
+    GetGridCloudapiTenantResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __GridCloudapiTenant__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiTenant'
+      title: GetGridCloudapiTenantResponseObjectAsResult
+      type: object
+    UpdateGridCloudapiTenantResponseAsObject:
+      description: The response format to update __GridCloudapiTenant__ in object
+        format.
+      example:
+        result:
+          vm_count: 1
+          created_ts: 1
+          network_count: 1
+          _ref: _ref
+          name: Example name
+          cloud_info:
+            delegated_member: delegated_member
+            delegated_scope: Example delegated_scope
+            owned_by_adaptor: false
+            usage: Example usage
+            authority_type: Example authority_type
+            mgmt_platform: Example mgmt_platform
+            tenant: Example tenant
+            delegated_root: Example delegated_root
+          comment: Example comment
+          id: Example id
+          last_event_ts: 1
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiTenant'
+      title: UpdateGridCloudapiTenantResponseAsObject
+      type: object
+    ListGridCloudapiVmResponseObject:
+      description: The response format to retrieve __GridCloudapiVm__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/GridCloudapiVm'
+          type: array
+      title: ListGridCloudapiVmResponseObject
+      type: object
+    CreateGridCloudapiVmResponseAsObject:
+      description: The response format to create __GridCloudapiVm__ in object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiVm'
+      title: CreateGridCloudapiVmResponseAsObject
+      type: object
+    GetGridCloudapiVmResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __GridCloudapiVm__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiVm'
+      title: GetGridCloudapiVmResponseObjectAsResult
+      type: object
+    UpdateGridCloudapiVmResponseAsObject:
+      description: The response format to update __GridCloudapiVm__ in object format.
+      example:
+        result:
+          availability_zone: Example availability_zone
+          tenant_name: Example tenant_name
+          extattrs:
+            key:
+              value: value
+          first_seen: 1
+          vpc_name: Example vpc_name
+          last_seen: 1
+          vpc_id: Example vpc_id
+          network_count: 1
+          subnet_cidr: 1
+          cloud_info:
+            delegated_member: delegated_member
+            delegated_scope: Example delegated_scope
+            owned_by_adaptor: false
+            usage: Example usage
+            authority_type: Example authority_type
+            mgmt_platform: Example mgmt_platform
+            tenant: Example tenant
+            delegated_root: Example delegated_root
+          hostname: Example hostname
+          vm_type: Example vm_type
+          kernel_id: Example kernel_id
+          vpc_address: Example vpc_address
+          elastic_ip_address: Example elastic_ip_address
+          vpc_cidr: 1
+          _ref: _ref
+          name: Example name
+          operating_system: Example operating_system
+          subnet_id: Example subnet_id
+          comment: Example comment
+          id: Example id
+          primary_mac_address: Example primary_mac_address
+          subnet_address: Example subnet_address
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiVm'
+      title: UpdateGridCloudapiVmResponseAsObject
+      type: object
+    ListGridCloudapiVmaddressResponseObject:
+      description: The response format to retrieve __GridCloudapiVmaddress__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/GridCloudapiVmaddress'
+          type: array
+      title: ListGridCloudapiVmaddressResponseObject
+      type: object
+    CreateGridCloudapiVmaddressResponseAsObject:
+      description: The response format to create __GridCloudapiVmaddress__ in object
+        format.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiVmaddress'
+      title: CreateGridCloudapiVmaddressResponseAsObject
+      type: object
+    GetGridCloudapiVmaddressResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __GridCloudapiVmaddress__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiVmaddress'
+      title: GetGridCloudapiVmaddressResponseObjectAsResult
+      type: object
+    UpdateGridCloudapiVmaddressResponseAsObject:
+      description: The response format to update __GridCloudapiVmaddress__ in object
+        format.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridCloudapiVmaddress'
+      title: UpdateGridCloudapiVmaddressResponseAsObject
+      type: object
+    ListGridMemberCloudapiResponseObject:
+      description: The response format to retrieve __GridMemberCloudapi__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/GridMemberCloudapi'
+          type: array
+      title: ListGridMemberCloudapiResponseObject
+      type: object
+    CreateGridMemberCloudapiResponseAsObject:
+      description: The response format to create __GridMemberCloudapi__ in object
+        format.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridMemberCloudapi'
+      title: CreateGridMemberCloudapiResponseAsObject
+      type: object
+    GetGridMemberCloudapiResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __GridMemberCloudapi__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/GridMemberCloudapi'
+      title: GetGridMemberCloudapiResponseObjectAsResult
+      type: object
+    UpdateGridMemberCloudapiResponseAsObject:
+      description: The response format to update __GridMemberCloudapi__ in object
+        format.
+      example:
+        result:
+          enable_service: false
+          extattrs:
+            key:
+              value: value
+          allowed_api_admins:
+          - remote_admin: Example remote_admin
+            local_admin: Example local_admin
+            is_remote: false
+          - remote_admin: Example remote_admin
+            local_admin: Example local_admin
+            is_remote: false
+          gateway_config:
+            port: 1
+            enable_proxy_service: false
+            endpoint_mapping: endpoint_mapping
+          _ref: _ref
+          member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
+          allow_api_admins: Example allow_api_admins
+          status: Example status
+      properties:
+        result:
+          $ref: '#/components/schemas/GridMemberCloudapi'
+      title: UpdateGridMemberCloudapiResponseAsObject
+      type: object
+    ListAwsrte53taskgroupResponseObject:
+      description: The response format to retrieve __Awsrte53taskgroup__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/Awsrte53taskgroup'
+          type: array
+      title: ListAwsrte53taskgroupResponseObject
+      type: object
+    CreateAwsrte53taskgroupResponseAsObject:
+      description: The response format to create __Awsrte53taskgroup__ in object format.
+      example:
+        result:
+          network_view: Example network_view
+          grid_member: Example grid_member
+          task_control: "{}"
+          account_id: Example account_id
+          consolidated_view: Example consolidated_view
+          role_arn: Example role_arn
+          sync_child_accounts: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          consolidate_zones: false
+          disabled: false
+          sync_status: Example sync_status
+          task_list:
+          - state_msg: Example state_msg
+            sync_public_zones: false
+            last_run: 1
+            aws_user: Example aws_user
+            filter: Example filter
+            sync_private_zones: false
+            name: Example name
+            schedule_interval: 1
+            schedule_units: Example schedule_units
+            disabled: false
+            zone_count: 1
+            state: Example state
+            status_timestamp: 1
+            credentials_type: Example credentials_type
+          - state_msg: Example state_msg
+            sync_public_zones: false
+            last_run: 1
+            aws_user: Example aws_user
+            filter: Example filter
+            sync_private_zones: false
+            name: Example name
+            schedule_interval: 1
+            schedule_units: Example schedule_units
+            disabled: false
+            zone_count: 1
+            state: Example state
+            status_timestamp: 1
+            credentials_type: Example credentials_type
+          network_view_mapping_policy: Example network_view_mapping_policy
+      properties:
+        result:
+          $ref: '#/components/schemas/Awsrte53taskgroup'
+      title: CreateAwsrte53taskgroupResponseAsObject
+      type: object
+    GetAwsrte53taskgroupResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __Awsrte53taskgroup__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/Awsrte53taskgroup'
+      title: GetAwsrte53taskgroupResponseObjectAsResult
+      type: object
+    UpdateAwsrte53taskgroupResponseAsObject:
+      description: The response format to update __Awsrte53taskgroup__ in object format.
+      example:
+        result:
+          network_view: Example network_view
+          grid_member: Example grid_member
+          task_control: "{}"
+          account_id: Example account_id
+          consolidated_view: Example consolidated_view
+          role_arn: Example role_arn
+          sync_child_accounts: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          consolidate_zones: false
+          disabled: false
+          sync_status: Example sync_status
+          task_list:
+          - state_msg: Example state_msg
+            sync_public_zones: false
+            last_run: 1
+            aws_user: Example aws_user
+            filter: Example filter
+            sync_private_zones: false
+            name: Example name
+            schedule_interval: 1
+            schedule_units: Example schedule_units
+            disabled: false
+            zone_count: 1
+            state: Example state
+            status_timestamp: 1
+            credentials_type: Example credentials_type
+          - state_msg: Example state_msg
+            sync_public_zones: false
+            last_run: 1
+            aws_user: Example aws_user
+            filter: Example filter
+            sync_private_zones: false
+            name: Example name
+            schedule_interval: 1
+            schedule_units: Example schedule_units
+            disabled: false
+            zone_count: 1
+            state: Example state
+            status_timestamp: 1
+            credentials_type: Example credentials_type
+          network_view_mapping_policy: Example network_view_mapping_policy
+      properties:
+        result:
+          $ref: '#/components/schemas/Awsrte53taskgroup'
+      title: UpdateAwsrte53taskgroupResponseAsObject
+      type: object
+    ListAwsuserResponseObject:
+      description: The response format to retrieve __Awsuser__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/Awsuser'
+          type: array
+      title: ListAwsuserResponseObject
+      type: object
+    CreateAwsuserResponseAsObject:
+      description: The response format to create __Awsuser__ in object format.
+      example:
+        result:
+          access_key_id: Example access_key_id
+          account_id: Example account_id
+          last_used: 1
+          nios_user_name: Example nios_user_name
+          _ref: _ref
+          name: Example name
+          secret_access_key: Example secret_access_key
+          govcloud_enabled: false
+          status: Example status
+      properties:
+        result:
+          $ref: '#/components/schemas/Awsuser'
+      title: CreateAwsuserResponseAsObject
+      type: object
+    GetAwsuserResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __Awsuser__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/Awsuser'
+      title: GetAwsuserResponseObjectAsResult
+      type: object
+    UpdateAwsuserResponseAsObject:
+      description: The response format to update __Awsuser__ in object format.
+      example:
+        result:
+          access_key_id: Example access_key_id
+          account_id: Example account_id
+          last_used: 1
+          nios_user_name: Example nios_user_name
+          _ref: _ref
+          name: Example name
+          secret_access_key: Example secret_access_key
+          govcloud_enabled: false
+          status: Example status
+      properties:
+        result:
+          $ref: '#/components/schemas/Awsuser'
+      title: UpdateAwsuserResponseAsObject
+      type: object
+    ListOutboundCloudclientResponseObject:
+      description: The response format to retrieve __OutboundCloudclient__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/OutboundCloudclient'
+          type: array
+      title: ListOutboundCloudclientResponseObject
+      type: object
+    CreateOutboundCloudclientResponseAsObject:
+      description: The response format to create __OutboundCloudclient__ in object
+        format.
+      properties:
+        result:
+          $ref: '#/components/schemas/OutboundCloudclient'
+      title: CreateOutboundCloudclientResponseAsObject
+      type: object
+    GetOutboundCloudclientResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __OutboundCloudclient__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/OutboundCloudclient'
+      title: GetOutboundCloudclientResponseObjectAsResult
+      type: object
+    UpdateOutboundCloudclientResponseAsObject:
+      description: The response format to update __OutboundCloudclient__ in object
+        format.
+      example:
+        result:
+          grid_member: Example grid_member
+          enable: false
+          outbound_cloud_client_events:
+          - event_type: Example event_type
+            enabled: false
+          - event_type: Example event_type
+            enabled: false
+          _ref: _ref
+          interval: 1
+      properties:
+        result:
+          $ref: '#/components/schemas/OutboundCloudclient'
+      title: UpdateOutboundCloudclientResponseAsObject
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http
