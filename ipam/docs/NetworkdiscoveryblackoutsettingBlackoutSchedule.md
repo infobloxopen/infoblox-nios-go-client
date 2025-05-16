@@ -1,0 +1,342 @@
+# NetworkdiscoveryblackoutsettingBlackoutSchedule
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Weekdays** | Pointer to **[]string** | Days of the week when scheduling is triggered. | [optional] 
+**TimeZone** | Pointer to **string** | The time zone for the schedule. | [optional] 
+**RecurringTime** | Pointer to **int64** | The recurring time for the schedule in Epoch seconds format. This field is obsolete and is preserved only for backward compatibility purposes. Please use other applicable fields to define the recurring schedule. DO NOT use recurring_time together with these fields. If you use recurring_time with other fields to define the recurring schedule, recurring_time has priority over year, hour_of_day, and minutes_past_hour and will override the values of these fields, although it does not override month and day_of_month. In this case, the recurring time value might be different than the intended value that you define. | [optional] 
+**Frequency** | Pointer to **string** | The frequency for the scheduled task. | [optional] 
+**Every** | Pointer to **int64** | The number of frequency to wait before repeating the scheduled task. | [optional] 
+**MinutesPastHour** | Pointer to **int64** | The minutes past the hour for the scheduled task. | [optional] 
+**HourOfDay** | Pointer to **int64** | The hour of day for the scheduled task. | [optional] 
+**Year** | Pointer to **int64** | The year for the scheduled task. | [optional] 
+**Month** | Pointer to **int64** | The month for the scheduled task. | [optional] 
+**DayOfMonth** | Pointer to **int64** | The day of the month for the scheduled task. | [optional] 
+**Repeat** | Pointer to **string** | Indicates if the scheduled task will be repeated or run only once. | [optional] 
+**Disable** | Pointer to **bool** | If set to True, the scheduled task is disabled. | [optional] 
+
+## Methods
+
+### NewNetworkdiscoveryblackoutsettingBlackoutSchedule
+
+`func NewNetworkdiscoveryblackoutsettingBlackoutSchedule() *NetworkdiscoveryblackoutsettingBlackoutSchedule`
+
+NewNetworkdiscoveryblackoutsettingBlackoutSchedule instantiates a new NetworkdiscoveryblackoutsettingBlackoutSchedule object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewNetworkdiscoveryblackoutsettingBlackoutScheduleWithDefaults
+
+`func NewNetworkdiscoveryblackoutsettingBlackoutScheduleWithDefaults() *NetworkdiscoveryblackoutsettingBlackoutSchedule`
+
+NewNetworkdiscoveryblackoutsettingBlackoutScheduleWithDefaults instantiates a new NetworkdiscoveryblackoutsettingBlackoutSchedule object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetWeekdays
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetWeekdays() []string`
+
+GetWeekdays returns the Weekdays field if non-nil, zero value otherwise.
+
+### GetWeekdaysOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetWeekdaysOk() (*[]string, bool)`
+
+GetWeekdaysOk returns a tuple with the Weekdays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWeekdays
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetWeekdays(v []string)`
+
+SetWeekdays sets Weekdays field to given value.
+
+### HasWeekdays
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasWeekdays() bool`
+
+HasWeekdays returns a boolean if a field has been set.
+
+### GetTimeZone
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetTimeZone() string`
+
+GetTimeZone returns the TimeZone field if non-nil, zero value otherwise.
+
+### GetTimeZoneOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetTimeZoneOk() (*string, bool)`
+
+GetTimeZoneOk returns a tuple with the TimeZone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeZone
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetTimeZone(v string)`
+
+SetTimeZone sets TimeZone field to given value.
+
+### HasTimeZone
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasTimeZone() bool`
+
+HasTimeZone returns a boolean if a field has been set.
+
+### GetRecurringTime
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetRecurringTime() int64`
+
+GetRecurringTime returns the RecurringTime field if non-nil, zero value otherwise.
+
+### GetRecurringTimeOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetRecurringTimeOk() (*int64, bool)`
+
+GetRecurringTimeOk returns a tuple with the RecurringTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecurringTime
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetRecurringTime(v int64)`
+
+SetRecurringTime sets RecurringTime field to given value.
+
+### HasRecurringTime
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasRecurringTime() bool`
+
+HasRecurringTime returns a boolean if a field has been set.
+
+### GetFrequency
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetFrequency() string`
+
+GetFrequency returns the Frequency field if non-nil, zero value otherwise.
+
+### GetFrequencyOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetFrequencyOk() (*string, bool)`
+
+GetFrequencyOk returns a tuple with the Frequency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFrequency
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetFrequency(v string)`
+
+SetFrequency sets Frequency field to given value.
+
+### HasFrequency
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasFrequency() bool`
+
+HasFrequency returns a boolean if a field has been set.
+
+### GetEvery
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetEvery() int64`
+
+GetEvery returns the Every field if non-nil, zero value otherwise.
+
+### GetEveryOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetEveryOk() (*int64, bool)`
+
+GetEveryOk returns a tuple with the Every field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEvery
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetEvery(v int64)`
+
+SetEvery sets Every field to given value.
+
+### HasEvery
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasEvery() bool`
+
+HasEvery returns a boolean if a field has been set.
+
+### GetMinutesPastHour
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetMinutesPastHour() int64`
+
+GetMinutesPastHour returns the MinutesPastHour field if non-nil, zero value otherwise.
+
+### GetMinutesPastHourOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetMinutesPastHourOk() (*int64, bool)`
+
+GetMinutesPastHourOk returns a tuple with the MinutesPastHour field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinutesPastHour
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetMinutesPastHour(v int64)`
+
+SetMinutesPastHour sets MinutesPastHour field to given value.
+
+### HasMinutesPastHour
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasMinutesPastHour() bool`
+
+HasMinutesPastHour returns a boolean if a field has been set.
+
+### GetHourOfDay
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetHourOfDay() int64`
+
+GetHourOfDay returns the HourOfDay field if non-nil, zero value otherwise.
+
+### GetHourOfDayOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetHourOfDayOk() (*int64, bool)`
+
+GetHourOfDayOk returns a tuple with the HourOfDay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHourOfDay
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetHourOfDay(v int64)`
+
+SetHourOfDay sets HourOfDay field to given value.
+
+### HasHourOfDay
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasHourOfDay() bool`
+
+HasHourOfDay returns a boolean if a field has been set.
+
+### GetYear
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetYear() int64`
+
+GetYear returns the Year field if non-nil, zero value otherwise.
+
+### GetYearOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetYearOk() (*int64, bool)`
+
+GetYearOk returns a tuple with the Year field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYear
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetYear(v int64)`
+
+SetYear sets Year field to given value.
+
+### HasYear
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasYear() bool`
+
+HasYear returns a boolean if a field has been set.
+
+### GetMonth
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetMonth() int64`
+
+GetMonth returns the Month field if non-nil, zero value otherwise.
+
+### GetMonthOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetMonthOk() (*int64, bool)`
+
+GetMonthOk returns a tuple with the Month field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMonth
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetMonth(v int64)`
+
+SetMonth sets Month field to given value.
+
+### HasMonth
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasMonth() bool`
+
+HasMonth returns a boolean if a field has been set.
+
+### GetDayOfMonth
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetDayOfMonth() int64`
+
+GetDayOfMonth returns the DayOfMonth field if non-nil, zero value otherwise.
+
+### GetDayOfMonthOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetDayOfMonthOk() (*int64, bool)`
+
+GetDayOfMonthOk returns a tuple with the DayOfMonth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDayOfMonth
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetDayOfMonth(v int64)`
+
+SetDayOfMonth sets DayOfMonth field to given value.
+
+### HasDayOfMonth
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasDayOfMonth() bool`
+
+HasDayOfMonth returns a boolean if a field has been set.
+
+### GetRepeat
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetRepeat() string`
+
+GetRepeat returns the Repeat field if non-nil, zero value otherwise.
+
+### GetRepeatOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetRepeatOk() (*string, bool)`
+
+GetRepeatOk returns a tuple with the Repeat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRepeat
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetRepeat(v string)`
+
+SetRepeat sets Repeat field to given value.
+
+### HasRepeat
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasRepeat() bool`
+
+HasRepeat returns a boolean if a field has been set.
+
+### GetDisable
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetDisable() bool`
+
+GetDisable returns the Disable field if non-nil, zero value otherwise.
+
+### GetDisableOk
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) GetDisableOk() (*bool, bool)`
+
+GetDisableOk returns a tuple with the Disable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisable
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) SetDisable(v bool)`
+
+SetDisable sets Disable field to given value.
+
+### HasDisable
+
+`func (o *NetworkdiscoveryblackoutsettingBlackoutSchedule) HasDisable() bool`
+
+HasDisable returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
