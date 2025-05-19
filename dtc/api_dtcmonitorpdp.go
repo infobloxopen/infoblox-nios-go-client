@@ -369,6 +369,18 @@ func (a *DtcmonitorpdpAPIService) PostExecute(r DtcmonitorpdpAPIPostRequest) (*C
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorPdp != nil {
+		if r.dtcMonitorPdp.Extattrs == nil {
+			r.dtcMonitorPdp.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.dtcMonitorPdp.Extattrs)[k]; !ok {
+				(*r.dtcMonitorPdp.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.dtcMonitorPdp
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

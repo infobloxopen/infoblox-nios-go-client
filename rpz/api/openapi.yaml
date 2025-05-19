@@ -360,6 +360,7 @@ paths:
       - record:rpz:a
       x-tf-resource: resource_nios_RecordRpzA
       x-tf-datasource: datasource_nios_RecordRpzA
+      x-sdk-default-ext-attrs: true
   /record:rpz:a/{reference}:
     delete:
       description: Deletes a specific record:rpz:a object by reference
@@ -669,6 +670,7 @@ paths:
       - record:rpz:aaaa
       x-tf-resource: resource_nios_RecordRpzAaaa
       x-tf-datasource: datasource_nios_RecordRpzAaaa
+      x-sdk-default-ext-attrs: true
   /record:rpz:aaaa/{reference}:
     delete:
       description: Deletes a specific record:rpz:aaaa object by reference
@@ -979,6 +981,7 @@ paths:
       - record:rpz:cname
       x-tf-resource: resource_nios_RecordRpzCname
       x-tf-datasource: datasource_nios_RecordRpzCname
+      x-sdk-default-ext-attrs: true
   /record:rpz:cname/{reference}:
     delete:
       description: Deletes a specific record:rpz:cname object by reference
@@ -1288,6 +1291,7 @@ paths:
       - record:rpz:mx
       x-tf-resource: resource_nios_RecordRpzMx
       x-tf-datasource: datasource_nios_RecordRpzMx
+      x-sdk-default-ext-attrs: true
   /record:rpz:mx/{reference}:
     delete:
       description: Deletes a specific record:rpz:mx object by reference
@@ -1598,6 +1602,7 @@ paths:
       - record:rpz:naptr
       x-tf-resource: resource_nios_RecordRpzNaptr
       x-tf-datasource: datasource_nios_RecordRpzNaptr
+      x-sdk-default-ext-attrs: true
   /record:rpz:naptr/{reference}:
     delete:
       description: Deletes a specific record:rpz:naptr object by reference
@@ -1907,6 +1912,7 @@ paths:
       - record:rpz:ptr
       x-tf-resource: resource_nios_RecordRpzPtr
       x-tf-datasource: datasource_nios_RecordRpzPtr
+      x-sdk-default-ext-attrs: true
   /record:rpz:ptr/{reference}:
     delete:
       description: Deletes a specific record:rpz:ptr object by reference
@@ -2216,6 +2222,7 @@ paths:
       - record:rpz:srv
       x-tf-resource: resource_nios_RecordRpzSrv
       x-tf-datasource: datasource_nios_RecordRpzSrv
+      x-sdk-default-ext-attrs: true
   /record:rpz:srv/{reference}:
     delete:
       description: Deletes a specific record:rpz:srv object by reference
@@ -2525,6 +2532,7 @@ paths:
       - record:rpz:txt
       x-tf-resource: resource_nios_RecordRpzTxt
       x-tf-datasource: datasource_nios_RecordRpzTxt
+      x-sdk-default-ext-attrs: true
   /record:rpz:txt/{reference}:
     delete:
       description: Deletes a specific record:rpz:txt object by reference
@@ -2835,6 +2843,7 @@ paths:
       - record:rpz:a:ipaddress
       x-tf-resource: resource_nios_RecordRpzAIpaddress
       x-tf-datasource: datasource_nios_RecordRpzAIpaddress
+      x-sdk-default-ext-attrs: true
   /record:rpz:a:ipaddress/{reference}:
     delete:
       description: Deletes a specific record:rpz:a:ipaddress object by reference
@@ -3145,6 +3154,7 @@ paths:
       - record:rpz:aaaa:ipaddress
       x-tf-resource: resource_nios_RecordRpzAaaaIpaddress
       x-tf-datasource: datasource_nios_RecordRpzAaaaIpaddress
+      x-sdk-default-ext-attrs: true
   /record:rpz:aaaa:ipaddress/{reference}:
     delete:
       description: Deletes a specific record:rpz:aaaa:ipaddress object by reference
@@ -3455,6 +3465,7 @@ paths:
       - record:rpz:cname:ipaddress
       x-tf-resource: resource_nios_RecordRpzCnameIpaddress
       x-tf-datasource: datasource_nios_RecordRpzCnameIpaddress
+      x-sdk-default-ext-attrs: true
   /record:rpz:cname:ipaddress/{reference}:
     delete:
       description: Deletes a specific record:rpz:cname:ipaddress object by reference
@@ -3765,6 +3776,7 @@ paths:
       - record:rpz:cname:ipaddressdn
       x-tf-resource: resource_nios_RecordRpzCnameIpaddressdn
       x-tf-datasource: datasource_nios_RecordRpzCnameIpaddressdn
+      x-sdk-default-ext-attrs: true
   /record:rpz:cname:ipaddressdn/{reference}:
     delete:
       description: Deletes a specific record:rpz:cname:ipaddressdn object by reference
@@ -4075,6 +4087,7 @@ paths:
       - record:rpz:cname:clientipaddress
       x-tf-resource: resource_nios_RecordRpzCnameClientipaddress
       x-tf-datasource: datasource_nios_RecordRpzCnameClientipaddress
+      x-sdk-default-ext-attrs: true
   /record:rpz:cname:clientipaddress/{reference}:
     delete:
       description: Deletes a specific record:rpz:cname:clientipaddress object by reference
@@ -4385,6 +4398,7 @@ paths:
       - record:rpz:cname:clientipaddressdn
       x-tf-resource: resource_nios_RecordRpzCnameClientipaddressdn
       x-tf-datasource: datasource_nios_RecordRpzCnameClientipaddressdn
+      x-sdk-default-ext-attrs: true
   /record:rpz:cname:clientipaddressdn/{reference}:
     delete:
       description: Deletes a specific record:rpz:cname:clientipaddressdn object by

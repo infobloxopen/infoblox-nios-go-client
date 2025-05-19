@@ -369,6 +369,18 @@ func (a *RecordnaptrAPIService) PostExecute(r RecordnaptrAPIPostRequest) (*Creat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordNaptr != nil {
+		if r.recordNaptr.Extattrs == nil {
+			r.recordNaptr.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.recordNaptr.Extattrs)[k]; !ok {
+				(*r.recordNaptr.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.recordNaptr
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

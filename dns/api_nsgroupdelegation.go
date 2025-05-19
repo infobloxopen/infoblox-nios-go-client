@@ -369,6 +369,18 @@ func (a *NsgroupdelegationAPIService) PostExecute(r NsgroupdelegationAPIPostRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupDelegation != nil {
+		if r.nsgroupDelegation.Extattrs == nil {
+			r.nsgroupDelegation.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.nsgroupDelegation.Extattrs)[k]; !ok {
+				(*r.nsgroupDelegation.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.nsgroupDelegation
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

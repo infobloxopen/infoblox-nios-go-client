@@ -369,6 +369,18 @@ func (a *ZoneRpAPIService) PostExecute(r ZoneRpAPIPostRequest) (*CreateZoneRpRes
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneRp != nil {
+		if r.zoneRp.Extattrs == nil {
+			r.zoneRp.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.zoneRp.Extattrs)[k]; !ok {
+				(*r.zoneRp.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.zoneRp
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

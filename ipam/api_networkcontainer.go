@@ -369,6 +369,18 @@ func (a *NetworkcontainerAPIService) PostExecute(r NetworkcontainerAPIPostReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.networkcontainer != nil {
+		if r.networkcontainer.Extattrs == nil {
+			r.networkcontainer.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.networkcontainer.Extattrs)[k]; !ok {
+				(*r.networkcontainer.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.networkcontainer
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

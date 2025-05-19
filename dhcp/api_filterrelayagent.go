@@ -369,6 +369,18 @@ func (a *FilterrelayagentAPIService) PostExecute(r FilterrelayagentAPIPostReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filterrelayagent != nil {
+		if r.filterrelayagent.Extattrs == nil {
+			r.filterrelayagent.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.filterrelayagent.Extattrs)[k]; !ok {
+				(*r.filterrelayagent.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.filterrelayagent
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

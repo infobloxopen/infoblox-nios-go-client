@@ -369,6 +369,18 @@ func (a *ZoneDelegatedAPIService) PostExecute(r ZoneDelegatedAPIPostRequest) (*C
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneDelegated != nil {
+		if r.zoneDelegated.Extattrs == nil {
+			r.zoneDelegated.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.zoneDelegated.Extattrs)[k]; !ok {
+				(*r.zoneDelegated.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.zoneDelegated
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

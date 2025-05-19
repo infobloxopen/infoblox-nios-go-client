@@ -369,6 +369,18 @@ func (a *RecordrpzaaaaipaddressAPIService) PostExecute(r RecordrpzaaaaipaddressA
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordRpzAaaaIpaddress != nil {
+		if r.recordRpzAaaaIpaddress.Extattrs == nil {
+			r.recordRpzAaaaIpaddress.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.recordRpzAaaaIpaddress.Extattrs)[k]; !ok {
+				(*r.recordRpzAaaaIpaddress.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.recordRpzAaaaIpaddress
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

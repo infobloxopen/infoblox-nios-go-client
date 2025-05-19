@@ -369,6 +369,18 @@ func (a *NsgroupforwardingmemberAPIService) PostExecute(r Nsgroupforwardingmembe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupForwardingmember != nil {
+		if r.nsgroupForwardingmember.Extattrs == nil {
+			r.nsgroupForwardingmember.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.nsgroupForwardingmember.Extattrs)[k]; !ok {
+				(*r.nsgroupForwardingmember.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.nsgroupForwardingmember
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

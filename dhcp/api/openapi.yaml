@@ -839,6 +839,7 @@ paths:
       - dhcpfailover
       x-tf-resource: resource_nios_Dhcpfailover
       x-tf-datasource: datasource_nios_Dhcpfailover
+      x-sdk-default-ext-attrs: true
   /dhcpfailover/{reference}:
     delete:
       description: Deletes a specific dhcpfailover object by reference
@@ -1766,6 +1767,7 @@ paths:
       - filterfingerprint
       x-tf-resource: resource_nios_Filterfingerprint
       x-tf-datasource: datasource_nios_Filterfingerprint
+      x-sdk-default-ext-attrs: true
   /filterfingerprint/{reference}:
     delete:
       description: Deletes a specific filterfingerprint object by reference
@@ -2075,6 +2077,7 @@ paths:
       - filtermac
       x-tf-resource: resource_nios_Filtermac
       x-tf-datasource: datasource_nios_Filtermac
+      x-sdk-default-ext-attrs: true
   /filtermac/{reference}:
     delete:
       description: Deletes a specific filtermac object by reference
@@ -2384,6 +2387,7 @@ paths:
       - filternac
       x-tf-resource: resource_nios_Filternac
       x-tf-datasource: datasource_nios_Filternac
+      x-sdk-default-ext-attrs: true
   /filternac/{reference}:
     delete:
       description: Deletes a specific filternac object by reference
@@ -2693,6 +2697,7 @@ paths:
       - filteroption
       x-tf-resource: resource_nios_Filteroption
       x-tf-datasource: datasource_nios_Filteroption
+      x-sdk-default-ext-attrs: true
   /filteroption/{reference}:
     delete:
       description: Deletes a specific filteroption object by reference
@@ -3003,6 +3008,7 @@ paths:
       - filterrelayagent
       x-tf-resource: resource_nios_Filterrelayagent
       x-tf-datasource: datasource_nios_Filterrelayagent
+      x-sdk-default-ext-attrs: true
   /filterrelayagent/{reference}:
     delete:
       description: Deletes a specific filterrelayagent object by reference
@@ -3312,6 +3318,7 @@ paths:
       - fingerprint
       x-tf-resource: resource_nios_Fingerprint
       x-tf-datasource: datasource_nios_Fingerprint
+      x-sdk-default-ext-attrs: true
   /fingerprint/{reference}:
     delete:
       description: Deletes a specific fingerprint object by reference
@@ -3621,6 +3628,7 @@ paths:
       - fixedaddress
       x-tf-resource: resource_nios_Fixedaddress
       x-tf-datasource: datasource_nios_Fixedaddress
+      x-sdk-default-ext-attrs: true
   /fixedaddress/{reference}:
     delete:
       description: Deletes a specific fixedaddress object by reference
@@ -3931,6 +3939,7 @@ paths:
       - fixedaddresstemplate
       x-tf-resource: resource_nios_Fixedaddresstemplate
       x-tf-datasource: datasource_nios_Fixedaddresstemplate
+      x-sdk-default-ext-attrs: true
   /fixedaddresstemplate/{reference}:
     delete:
       description: Deletes a specific fixedaddresstemplate object by reference
@@ -4859,6 +4868,7 @@ paths:
       - ipv6filteroption
       x-tf-resource: resource_nios_Ipv6filteroption
       x-tf-datasource: datasource_nios_Ipv6filteroption
+      x-sdk-default-ext-attrs: true
   /ipv6filteroption/{reference}:
     delete:
       description: Deletes a specific ipv6filteroption object by reference
@@ -5169,6 +5179,7 @@ paths:
       - ipv6fixedaddress
       x-tf-resource: resource_nios_Ipv6fixedaddress
       x-tf-datasource: datasource_nios_Ipv6fixedaddress
+      x-sdk-default-ext-attrs: true
   /ipv6fixedaddress/{reference}:
     delete:
       description: Deletes a specific ipv6fixedaddress object by reference
@@ -5479,6 +5490,7 @@ paths:
       - ipv6fixedaddresstemplate
       x-tf-resource: resource_nios_Ipv6fixedaddresstemplate
       x-tf-datasource: datasource_nios_Ipv6fixedaddresstemplate
+      x-sdk-default-ext-attrs: true
   /ipv6fixedaddresstemplate/{reference}:
     delete:
       description: Deletes a specific ipv6fixedaddresstemplate object by reference
@@ -5788,6 +5800,7 @@ paths:
       - ipv6range
       x-tf-resource: resource_nios_Ipv6range
       x-tf-datasource: datasource_nios_Ipv6range
+      x-sdk-default-ext-attrs: true
   /ipv6range/{reference}:
     delete:
       description: Deletes a specific ipv6range object by reference
@@ -6407,6 +6420,7 @@ paths:
       - ipv6sharednetwork
       x-tf-resource: resource_nios_Ipv6sharednetwork
       x-tf-datasource: datasource_nios_Ipv6sharednetwork
+      x-sdk-default-ext-attrs: true
   /ipv6sharednetwork/{reference}:
     delete:
       description: Deletes a specific ipv6sharednetwork object by reference
@@ -6901,6 +6915,7 @@ paths:
       - macfilteraddress
       x-tf-resource: resource_nios_Macfilteraddress
       x-tf-datasource: datasource_nios_Macfilteraddress
+      x-sdk-default-ext-attrs: true
   /macfilteraddress/{reference}:
     delete:
       description: Deletes a specific macfilteraddress object by reference
@@ -7210,6 +7225,7 @@ paths:
       - range
       x-tf-resource: resource_nios_Range
       x-tf-datasource: datasource_nios_Range
+      x-sdk-default-ext-attrs: true
   /range/{reference}:
     delete:
       description: Deletes a specific range object by reference
@@ -7519,6 +7535,7 @@ paths:
       - rangetemplate
       x-tf-resource: resource_nios_Rangetemplate
       x-tf-datasource: datasource_nios_Rangetemplate
+      x-sdk-default-ext-attrs: true
   /rangetemplate/{reference}:
     delete:
       description: Deletes a specific rangetemplate object by reference
@@ -7828,6 +7845,7 @@ paths:
       - roaminghost
       x-tf-resource: resource_nios_Roaminghost
       x-tf-datasource: datasource_nios_Roaminghost
+      x-sdk-default-ext-attrs: true
   /roaminghost/{reference}:
     delete:
       description: Deletes a specific roaminghost object by reference
@@ -8137,6 +8155,7 @@ paths:
       - sharednetwork
       x-tf-resource: resource_nios_Sharednetwork
       x-tf-datasource: datasource_nios_Sharednetwork
+      x-sdk-default-ext-attrs: true
   /sharednetwork/{reference}:
     delete:
       description: Deletes a specific sharednetwork object by reference
@@ -8669,6 +8688,7 @@ paths:
       - mssuperscope
       x-tf-resource: resource_nios_Mssuperscope
       x-tf-datasource: datasource_nios_Mssuperscope
+      x-sdk-default-ext-attrs: true
   /mssuperscope/{reference}:
     delete:
       description: Deletes a specific mssuperscope object by reference
