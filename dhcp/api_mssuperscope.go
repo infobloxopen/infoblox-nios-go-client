@@ -369,6 +369,18 @@ func (a *MssuperscopeAPIService) PostExecute(r MssuperscopeAPIPostRequest) (*Cre
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.mssuperscope != nil {
+		if r.mssuperscope.Extattrs == nil {
+			r.mssuperscope.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.mssuperscope.Extattrs)[k]; !ok {
+				(*r.mssuperscope.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.mssuperscope
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

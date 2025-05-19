@@ -369,6 +369,18 @@ func (a *Ipv6networkcontainerAPIService) PostExecute(r Ipv6networkcontainerAPIPo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6networkcontainer != nil {
+		if r.ipv6networkcontainer.Extattrs == nil {
+			r.ipv6networkcontainer.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.ipv6networkcontainer.Extattrs)[k]; !ok {
+				(*r.ipv6networkcontainer.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.ipv6networkcontainer
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

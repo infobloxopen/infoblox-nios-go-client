@@ -369,6 +369,18 @@ func (a *FtpuserAPIService) PostExecute(r FtpuserAPIPostRequest) (*CreateFtpuser
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ftpuser != nil {
+		if r.ftpuser.Extattrs == nil {
+			r.ftpuser.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.ftpuser.Extattrs)[k]; !ok {
+				(*r.ftpuser.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.ftpuser
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

@@ -715,6 +715,7 @@ paths:
       - network
       x-tf-resource: resource_nios_Network
       x-tf-datasource: datasource_nios_Network
+      x-sdk-default-ext-attrs: true
   /network/{reference}:
     delete:
       description: Deletes a specific network object by reference
@@ -1025,6 +1026,7 @@ paths:
       - networkcontainer
       x-tf-resource: resource_nios_Networkcontainer
       x-tf-datasource: datasource_nios_Networkcontainer
+      x-sdk-default-ext-attrs: true
   /networkcontainer/{reference}:
     delete:
       description: Deletes a specific networkcontainer object by reference
@@ -1345,6 +1347,7 @@ paths:
       - networktemplate
       x-tf-resource: resource_nios_Networktemplate
       x-tf-datasource: datasource_nios_Networktemplate
+      x-sdk-default-ext-attrs: true
   /networktemplate/{reference}:
     delete:
       description: Deletes a specific networktemplate object by reference
@@ -1654,6 +1657,7 @@ paths:
       - networkview
       x-tf-resource: resource_nios_Networkview
       x-tf-datasource: datasource_nios_Networkview
+      x-sdk-default-ext-attrs: true
   /networkview/{reference}:
     delete:
       description: Deletes a specific networkview object by reference
@@ -1963,6 +1967,7 @@ paths:
       - ipv6network
       x-tf-resource: resource_nios_Ipv6network
       x-tf-datasource: datasource_nios_Ipv6network
+      x-sdk-default-ext-attrs: true
   /ipv6network/{reference}:
     delete:
       description: Deletes a specific ipv6network object by reference
@@ -2273,6 +2278,7 @@ paths:
       - ipv6networkcontainer
       x-tf-resource: resource_nios_Ipv6networkcontainer
       x-tf-datasource: datasource_nios_Ipv6networkcontainer
+      x-sdk-default-ext-attrs: true
   /ipv6networkcontainer/{reference}:
     delete:
       description: Deletes a specific ipv6networkcontainer object by reference
@@ -2594,6 +2600,7 @@ paths:
       - ipv6networktemplate
       x-tf-resource: resource_nios_Ipv6networktemplate
       x-tf-datasource: datasource_nios_Ipv6networktemplate
+      x-sdk-default-ext-attrs: true
   /ipv6networktemplate/{reference}:
     delete:
       description: Deletes a specific ipv6networktemplate object by reference
@@ -3284,6 +3291,7 @@ paths:
       - rir:organization
       x-tf-resource: resource_nios_RirOrganization
       x-tf-datasource: datasource_nios_RirOrganization
+      x-sdk-default-ext-attrs: true
   /rir:organization/{reference}:
     delete:
       description: Deletes a specific rir:organization object by reference
@@ -3593,6 +3601,7 @@ paths:
       - vlan
       x-tf-resource: resource_nios_Vlan
       x-tf-datasource: datasource_nios_Vlan
+      x-sdk-default-ext-attrs: true
   /vlan/{reference}:
     delete:
       description: Deletes a specific vlan object by reference
@@ -3902,6 +3911,7 @@ paths:
       - vlanview
       x-tf-resource: resource_nios_Vlanview
       x-tf-datasource: datasource_nios_Vlanview
+      x-sdk-default-ext-attrs: true
   /vlanview/{reference}:
     delete:
       description: Deletes a specific vlanview object by reference
@@ -4211,6 +4221,7 @@ paths:
       - vlanrange
       x-tf-resource: resource_nios_Vlanrange
       x-tf-datasource: datasource_nios_Vlanrange
+      x-sdk-default-ext-attrs: true
   /vlanrange/{reference}:
     delete:
       description: Deletes a specific vlanrange object by reference
@@ -4530,6 +4541,7 @@ paths:
       - bulkhost
       x-tf-resource: resource_nios_Bulkhost
       x-tf-datasource: datasource_nios_Bulkhost
+      x-sdk-default-ext-attrs: true
   /bulkhost/{reference}:
     delete:
       description: Deletes a specific bulkhost object by reference

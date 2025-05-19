@@ -369,6 +369,18 @@ func (a *AdminuserAPIService) PostExecute(r AdminuserAPIPostRequest) (*CreateAdm
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.adminuser != nil {
+		if r.adminuser.Extattrs == nil {
+			r.adminuser.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.adminuser.Extattrs)[k]; !ok {
+				(*r.adminuser.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.adminuser
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

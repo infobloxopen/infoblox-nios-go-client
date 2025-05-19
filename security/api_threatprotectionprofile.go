@@ -369,6 +369,18 @@ func (a *ThreatprotectionprofileAPIService) PostExecute(r Threatprotectionprofil
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.threatprotectionProfile != nil {
+		if r.threatprotectionProfile.Extattrs == nil {
+			r.threatprotectionProfile.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.threatprotectionProfile.Extattrs)[k]; !ok {
+				(*r.threatprotectionProfile.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.threatprotectionProfile
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

@@ -369,6 +369,18 @@ func (a *MacfilteraddressAPIService) PostExecute(r MacfilteraddressAPIPostReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.macfilteraddress != nil {
+		if r.macfilteraddress.Extattrs == nil {
+			r.macfilteraddress.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.macfilteraddress.Extattrs)[k]; !ok {
+				(*r.macfilteraddress.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.macfilteraddress
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

@@ -369,6 +369,18 @@ func (a *DtcmonitorsipAPIService) PostExecute(r DtcmonitorsipAPIPostRequest) (*C
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorSip != nil {
+		if r.dtcMonitorSip.Extattrs == nil {
+			r.dtcMonitorSip.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.dtcMonitorSip.Extattrs)[k]; !ok {
+				(*r.dtcMonitorSip.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.dtcMonitorSip
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

@@ -369,6 +369,18 @@ func (a *Ipv6filteroptionAPIService) PostExecute(r Ipv6filteroptionAPIPostReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6filteroption != nil {
+		if r.ipv6filteroption.Extattrs == nil {
+			r.ipv6filteroption.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.ipv6filteroption.Extattrs)[k]; !ok {
+				(*r.ipv6filteroption.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.ipv6filteroption
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

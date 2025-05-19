@@ -369,6 +369,18 @@ func (a *NsgroupstubmemberAPIService) PostExecute(r NsgroupstubmemberAPIPostRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupStubmember != nil {
+		if r.nsgroupStubmember.Extattrs == nil {
+			r.nsgroupStubmember.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.nsgroupStubmember.Extattrs)[k]; !ok {
+				(*r.nsgroupStubmember.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.nsgroupStubmember
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

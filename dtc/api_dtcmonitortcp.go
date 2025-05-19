@@ -369,6 +369,18 @@ func (a *DtcmonitortcpAPIService) PostExecute(r DtcmonitortcpAPIPostRequest) (*C
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorTcp != nil {
+		if r.dtcMonitorTcp.Extattrs == nil {
+			r.dtcMonitorTcp.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.dtcMonitorTcp.Extattrs)[k]; !ok {
+				(*r.dtcMonitorTcp.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.dtcMonitorTcp
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

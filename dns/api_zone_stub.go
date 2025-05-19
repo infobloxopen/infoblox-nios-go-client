@@ -369,6 +369,18 @@ func (a *ZoneStubAPIService) PostExecute(r ZoneStubAPIPostRequest) (*CreateZoneS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneStub != nil {
+		if r.zoneStub.Extattrs == nil {
+			r.zoneStub.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.zoneStub.Extattrs)[k]; !ok {
+				(*r.zoneStub.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.zoneStub
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

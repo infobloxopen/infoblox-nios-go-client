@@ -369,6 +369,18 @@ func (a *BulkhostAPIService) PostExecute(r BulkhostAPIPostRequest) (*CreateBulkh
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.bulkhost != nil {
+		if r.bulkhost.Extattrs == nil {
+			r.bulkhost.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.bulkhost.Extattrs)[k]; !ok {
+				(*r.bulkhost.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.bulkhost
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

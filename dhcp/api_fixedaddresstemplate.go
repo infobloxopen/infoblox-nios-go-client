@@ -369,6 +369,18 @@ func (a *FixedaddresstemplateAPIService) PostExecute(r FixedaddresstemplateAPIPo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.fixedaddresstemplate != nil {
+		if r.fixedaddresstemplate.Extattrs == nil {
+			r.fixedaddresstemplate.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.fixedaddresstemplate.Extattrs)[k]; !ok {
+				(*r.fixedaddresstemplate.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.fixedaddresstemplate
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

@@ -369,6 +369,18 @@ func (a *DtcpoolAPIService) PostExecute(r DtcpoolAPIPostRequest) (*CreateDtcPool
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcPool != nil {
+		if r.dtcPool.Extattrs == nil {
+			r.dtcPool.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.dtcPool.Extattrs)[k]; !ok {
+				(*r.dtcPool.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.dtcPool
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

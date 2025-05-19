@@ -369,6 +369,18 @@ func (a *RecordrpznaptrAPIService) PostExecute(r RecordrpznaptrAPIPostRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordRpzNaptr != nil {
+		if r.recordRpzNaptr.Extattrs == nil {
+			r.recordRpzNaptr.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.recordRpzNaptr.Extattrs)[k]; !ok {
+				(*r.recordRpzNaptr.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.recordRpzNaptr
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

@@ -438,6 +438,7 @@ paths:
       - dtc:server
       x-tf-resource: resource_nios_DtcServer
       x-tf-datasource: datasource_nios_DtcServer
+      x-sdk-default-ext-attrs: true
   /dtc:server/{reference}:
     delete:
       description: Deletes a specific dtc:server object by reference
@@ -747,6 +748,7 @@ paths:
       - dtc:pool
       x-tf-resource: resource_nios_DtcPool
       x-tf-datasource: datasource_nios_DtcPool
+      x-sdk-default-ext-attrs: true
   /dtc:pool/{reference}:
     delete:
       description: Deletes a specific dtc:pool object by reference
@@ -1056,6 +1058,7 @@ paths:
       - dtc:topology
       x-tf-resource: resource_nios_DtcTopology
       x-tf-datasource: datasource_nios_DtcTopology
+      x-sdk-default-ext-attrs: true
   /dtc:topology/{reference}:
     delete:
       description: Deletes a specific dtc:topology object by reference
@@ -1365,6 +1368,7 @@ paths:
       - dtc:lbdn
       x-tf-resource: resource_nios_DtcLbdn
       x-tf-datasource: datasource_nios_DtcLbdn
+      x-sdk-default-ext-attrs: true
   /dtc:lbdn/{reference}:
     delete:
       description: Deletes a specific dtc:lbdn object by reference
@@ -1899,6 +1903,7 @@ paths:
       - dtc:monitor:http
       x-tf-resource: resource_nios_DtcMonitorHttp
       x-tf-datasource: datasource_nios_DtcMonitorHttp
+      x-sdk-default-ext-attrs: true
   /dtc:monitor:http/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:http object by reference
@@ -2209,6 +2214,7 @@ paths:
       - dtc:monitor:icmp
       x-tf-resource: resource_nios_DtcMonitorIcmp
       x-tf-datasource: datasource_nios_DtcMonitorIcmp
+      x-sdk-default-ext-attrs: true
   /dtc:monitor:icmp/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:icmp object by reference
@@ -2518,6 +2524,7 @@ paths:
       - dtc:monitor:pdp
       x-tf-resource: resource_nios_DtcMonitorPdp
       x-tf-datasource: datasource_nios_DtcMonitorPdp
+      x-sdk-default-ext-attrs: true
   /dtc:monitor:pdp/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:pdp object by reference
@@ -2827,6 +2834,7 @@ paths:
       - dtc:monitor:sip
       x-tf-resource: resource_nios_DtcMonitorSip
       x-tf-datasource: datasource_nios_DtcMonitorSip
+      x-sdk-default-ext-attrs: true
   /dtc:monitor:sip/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:sip object by reference
@@ -3137,6 +3145,7 @@ paths:
       - dtc:monitor:snmp
       x-tf-resource: resource_nios_DtcMonitorSnmp
       x-tf-datasource: datasource_nios_DtcMonitorSnmp
+      x-sdk-default-ext-attrs: true
   /dtc:monitor:snmp/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:snmp object by reference
@@ -3446,6 +3455,7 @@ paths:
       - dtc:monitor:tcp
       x-tf-resource: resource_nios_DtcMonitorTcp
       x-tf-datasource: datasource_nios_DtcMonitorTcp
+      x-sdk-default-ext-attrs: true
   /dtc:monitor:tcp/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:tcp object by reference

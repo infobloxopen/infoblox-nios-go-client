@@ -428,6 +428,7 @@ paths:
       - member
       x-tf-resource: resource_nios_Member
       x-tf-datasource: datasource_nios_Member
+      x-sdk-default-ext-attrs: true
   /member/{reference}:
     delete:
       description: Deletes a specific member object by reference
@@ -738,6 +739,7 @@ paths:
       - grid:servicerestart:group
       x-tf-resource: resource_nios_GridServicerestartGroup
       x-tf-datasource: datasource_nios_GridServicerestartGroup
+      x-sdk-default-ext-attrs: true
   /grid:servicerestart:group/{reference}:
     delete:
       description: Deletes a specific grid:servicerestart:group object by reference

@@ -217,6 +217,7 @@ paths:
       - admingroup
       x-tf-resource: resource_nios_Admingroup
       x-tf-datasource: datasource_nios_Admingroup
+      x-sdk-default-ext-attrs: true
   /admingroup/{reference}:
     delete:
       description: Deletes a specific admingroup object by reference
@@ -526,6 +527,7 @@ paths:
       - adminrole
       x-tf-resource: resource_nios_Adminrole
       x-tf-datasource: datasource_nios_Adminrole
+      x-sdk-default-ext-attrs: true
   /adminrole/{reference}:
     delete:
       description: Deletes a specific adminrole object by reference
@@ -835,6 +837,7 @@ paths:
       - adminuser
       x-tf-resource: resource_nios_Adminuser
       x-tf-datasource: datasource_nios_Adminuser
+      x-sdk-default-ext-attrs: true
   /adminuser/{reference}:
     delete:
       description: Deletes a specific adminuser object by reference
@@ -1899,6 +1902,7 @@ paths:
       - approvalworkflow
       x-tf-resource: resource_nios_Approvalworkflow
       x-tf-datasource: datasource_nios_Approvalworkflow
+      x-sdk-default-ext-attrs: true
   /approvalworkflow/{reference}:
     delete:
       description: Deletes a specific approvalworkflow object by reference
@@ -4095,6 +4099,7 @@ paths:
       - snmpuser
       x-tf-resource: resource_nios_Snmpuser
       x-tf-datasource: datasource_nios_Snmpuser
+      x-sdk-default-ext-attrs: true
   /snmpuser/{reference}:
     delete:
       description: Deletes a specific snmpuser object by reference
@@ -4404,6 +4409,7 @@ paths:
       - ftpuser
       x-tf-resource: resource_nios_Ftpuser
       x-tf-datasource: datasource_nios_Ftpuser
+      x-sdk-default-ext-attrs: true
   /ftpuser/{reference}:
     delete:
       description: Deletes a specific ftpuser object by reference
@@ -5022,6 +5028,7 @@ paths:
       - threatprotection:profile
       x-tf-resource: resource_nios_ThreatprotectionProfile
       x-tf-datasource: datasource_nios_ThreatprotectionProfile
+      x-sdk-default-ext-attrs: true
   /threatprotection:profile/{reference}:
     delete:
       description: Deletes a specific threatprotection:profile object by reference

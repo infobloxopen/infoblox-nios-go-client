@@ -369,6 +369,18 @@ func (a *DtcmonitoricmpAPIService) PostExecute(r DtcmonitoricmpAPIPostRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorIcmp != nil {
+		if r.dtcMonitorIcmp.Extattrs == nil {
+			r.dtcMonitorIcmp.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.dtcMonitorIcmp.Extattrs)[k]; !ok {
+				(*r.dtcMonitorIcmp.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.dtcMonitorIcmp
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

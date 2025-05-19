@@ -369,6 +369,18 @@ func (a *ApprovalworkflowAPIService) PostExecute(r ApprovalworkflowAPIPostReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.approvalworkflow != nil {
+		if r.approvalworkflow.Extattrs == nil {
+			r.approvalworkflow.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.approvalworkflow.Extattrs)[k]; !ok {
+				(*r.approvalworkflow.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.approvalworkflow
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

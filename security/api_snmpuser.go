@@ -369,6 +369,18 @@ func (a *SnmpuserAPIService) PostExecute(r SnmpuserAPIPostRequest) (*CreateSnmpu
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.snmpuser != nil {
+		if r.snmpuser.Extattrs == nil {
+			r.snmpuser.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.snmpuser.Extattrs)[k]; !ok {
+				(*r.snmpuser.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.snmpuser
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

@@ -369,6 +369,18 @@ func (a *FilterfingerprintAPIService) PostExecute(r FilterfingerprintAPIPostRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filterfingerprint != nil {
+		if r.filterfingerprint.Extattrs == nil {
+			r.filterfingerprint.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.filterfingerprint.Extattrs)[k]; !ok {
+				(*r.filterfingerprint.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.filterfingerprint
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

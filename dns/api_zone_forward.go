@@ -369,6 +369,18 @@ func (a *ZoneForwardAPIService) PostExecute(r ZoneForwardAPIPostRequest) (*Creat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneForward != nil {
+		if r.zoneForward.Extattrs == nil {
+			r.zoneForward.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.zoneForward.Extattrs)[k]; !ok {
+				(*r.zoneForward.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.zoneForward
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

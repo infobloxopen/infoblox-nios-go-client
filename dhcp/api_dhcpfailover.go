@@ -369,6 +369,18 @@ func (a *DhcpfailoverAPIService) PostExecute(r DhcpfailoverAPIPostRequest) (*Cre
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dhcpfailover != nil {
+		if r.dhcpfailover.Extattrs == nil {
+			r.dhcpfailover.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.dhcpfailover.Extattrs)[k]; !ok {
+				(*r.dhcpfailover.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
 	// body params
 	localVarPostBody = r.dhcpfailover
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

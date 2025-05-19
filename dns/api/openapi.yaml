@@ -241,6 +241,7 @@ paths:
       - record:a
       x-tf-resource: resource_nios_RecordA
       x-tf-datasource: datasource_nios_RecordA
+      x-sdk-default-ext-attrs: true
   /record:a/{reference}:
     delete:
       description: Deletes a specific record:a object by reference
@@ -559,6 +560,7 @@ paths:
       - record:aaaa
       x-tf-resource: resource_nios_RecordAaaa
       x-tf-datasource: datasource_nios_RecordAaaa
+      x-sdk-default-ext-attrs: true
   /record:aaaa/{reference}:
     delete:
       description: Deletes a specific record:aaaa object by reference
@@ -877,6 +879,7 @@ paths:
       - record:cname
       x-tf-resource: resource_nios_RecordCname
       x-tf-datasource: datasource_nios_RecordCname
+      x-sdk-default-ext-attrs: true
   /record:cname/{reference}:
     delete:
       description: Deletes a specific record:cname object by reference
@@ -1186,6 +1189,7 @@ paths:
       - record:mx
       x-tf-resource: resource_nios_RecordMx
       x-tf-datasource: datasource_nios_RecordMx
+      x-sdk-default-ext-attrs: true
   /record:mx/{reference}:
     delete:
       description: Deletes a specific record:mx object by reference
@@ -1495,6 +1499,7 @@ paths:
       - record:txt
       x-tf-resource: resource_nios_RecordTxt
       x-tf-datasource: datasource_nios_RecordTxt
+      x-sdk-default-ext-attrs: true
   /record:txt/{reference}:
     delete:
       description: Deletes a specific record:txt object by reference
@@ -1804,6 +1809,7 @@ paths:
       - record:ptr
       x-tf-resource: resource_nios_RecordPtr
       x-tf-datasource: datasource_nios_RecordPtr
+      x-sdk-default-ext-attrs: true
   /record:ptr/{reference}:
     delete:
       description: Deletes a specific record:ptr object by reference
@@ -2113,6 +2119,7 @@ paths:
       - record:srv
       x-tf-resource: resource_nios_RecordSrv
       x-tf-datasource: datasource_nios_RecordSrv
+      x-sdk-default-ext-attrs: true
   /record:srv/{reference}:
     delete:
       description: Deletes a specific record:srv object by reference
@@ -2730,6 +2737,7 @@ paths:
       - record:host
       x-tf-resource: resource_nios_RecordHost
       x-tf-datasource: datasource_nios_RecordHost
+      x-sdk-default-ext-attrs: true
   /record:host/{reference}:
     delete:
       description: Deletes a specific record:host object by reference
@@ -3039,6 +3047,7 @@ paths:
       - record:dname
       x-tf-resource: resource_nios_RecordDname
       x-tf-datasource: datasource_nios_RecordDname
+      x-sdk-default-ext-attrs: true
   /record:dname/{reference}:
     delete:
       description: Deletes a specific record:dname object by reference
@@ -3348,6 +3357,7 @@ paths:
       - record:naptr
       x-tf-resource: resource_nios_RecordNaptr
       x-tf-datasource: datasource_nios_RecordNaptr
+      x-sdk-default-ext-attrs: true
   /record:naptr/{reference}:
     delete:
       description: Deletes a specific record:naptr object by reference
@@ -3657,6 +3667,7 @@ paths:
       - record:tlsa
       x-tf-resource: resource_nios_RecordTlsa
       x-tf-datasource: datasource_nios_RecordTlsa
+      x-sdk-default-ext-attrs: true
   /record:tlsa/{reference}:
     delete:
       description: Deletes a specific record:tlsa object by reference
@@ -3966,6 +3977,7 @@ paths:
       - record:caa
       x-tf-resource: resource_nios_RecordCaa
       x-tf-datasource: datasource_nios_RecordCaa
+      x-sdk-default-ext-attrs: true
   /record:caa/{reference}:
     delete:
       description: Deletes a specific record:caa object by reference
@@ -5429,6 +5441,7 @@ paths:
       - record:unknown
       x-tf-resource: resource_nios_RecordUnknown
       x-tf-datasource: datasource_nios_RecordUnknown
+      x-sdk-default-ext-attrs: true
   /record:unknown/{reference}:
     delete:
       description: Deletes a specific record:unknown object by reference
@@ -5738,6 +5751,7 @@ paths:
       - zone_auth
       x-tf-resource: resource_nios_ZoneAuth
       x-tf-datasource: datasource_nios_ZoneAuth
+      x-sdk-default-ext-attrs: true
   /zone_auth/{reference}:
     delete:
       description: Deletes a specific zone_auth object by reference
@@ -6047,6 +6061,7 @@ paths:
       - zone_delegated
       x-tf-resource: resource_nios_ZoneDelegated
       x-tf-datasource: datasource_nios_ZoneDelegated
+      x-sdk-default-ext-attrs: true
   /zone_delegated/{reference}:
     delete:
       description: Deletes a specific zone_delegated object by reference
@@ -6356,6 +6371,7 @@ paths:
       - zone_forward
       x-tf-resource: resource_nios_ZoneForward
       x-tf-datasource: datasource_nios_ZoneForward
+      x-sdk-default-ext-attrs: true
   /zone_forward/{reference}:
     delete:
       description: Deletes a specific zone_forward object by reference
@@ -6665,6 +6681,7 @@ paths:
       - zone_stub
       x-tf-resource: resource_nios_ZoneStub
       x-tf-datasource: datasource_nios_ZoneStub
+      x-sdk-default-ext-attrs: true
   /zone_stub/{reference}:
     delete:
       description: Deletes a specific zone_stub object by reference
@@ -6974,6 +6991,7 @@ paths:
       - zone_rp
       x-tf-resource: resource_nios_ZoneRp
       x-tf-datasource: datasource_nios_ZoneRp
+      x-sdk-default-ext-attrs: true
   /zone_rp/{reference}:
     delete:
       description: Deletes a specific zone_rp object by reference
@@ -7749,6 +7767,7 @@ paths:
       - dns64group
       x-tf-resource: resource_nios_Dns64group
       x-tf-datasource: datasource_nios_Dns64group
+      x-sdk-default-ext-attrs: true
   /dns64group/{reference}:
     delete:
       description: Deletes a specific dns64group object by reference
@@ -8215,6 +8234,7 @@ paths:
       - nsgroup
       x-tf-resource: resource_nios_Nsgroup
       x-tf-datasource: datasource_nios_Nsgroup
+      x-sdk-default-ext-attrs: true
   /nsgroup/{reference}:
     delete:
       description: Deletes a specific nsgroup object by reference
@@ -8525,6 +8545,7 @@ paths:
       - nsgroup:delegation
       x-tf-resource: resource_nios_NsgroupDelegation
       x-tf-datasource: datasource_nios_NsgroupDelegation
+      x-sdk-default-ext-attrs: true
   /nsgroup:delegation/{reference}:
     delete:
       description: Deletes a specific nsgroup:delegation object by reference
@@ -8835,6 +8856,7 @@ paths:
       - nsgroup:forwardingmember
       x-tf-resource: resource_nios_NsgroupForwardingmember
       x-tf-datasource: datasource_nios_NsgroupForwardingmember
+      x-sdk-default-ext-attrs: true
   /nsgroup:forwardingmember/{reference}:
     delete:
       description: Deletes a specific nsgroup:forwardingmember object by reference
@@ -9145,6 +9167,7 @@ paths:
       - nsgroup:stubmember
       x-tf-resource: resource_nios_NsgroupStubmember
       x-tf-datasource: datasource_nios_NsgroupStubmember
+      x-sdk-default-ext-attrs: true
   /nsgroup:stubmember/{reference}:
     delete:
       description: Deletes a specific nsgroup:stubmember object by reference
@@ -9455,6 +9478,7 @@ paths:
       - nsgroup:forwardstubserver
       x-tf-resource: resource_nios_NsgroupForwardstubserver
       x-tf-datasource: datasource_nios_NsgroupForwardstubserver
+      x-sdk-default-ext-attrs: true
   /nsgroup:forwardstubserver/{reference}:
     delete:
       description: Deletes a specific nsgroup:forwardstubserver object by reference
