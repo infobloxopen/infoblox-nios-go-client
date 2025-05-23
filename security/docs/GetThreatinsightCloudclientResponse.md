@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**BlacklistRpzList** | Pointer to **[]string** | The RPZs to which you apply newly detected domains through the Infoblox Threat Insight Cloud Client. | [optional] 
+**BlacklistRpzList** | Pointer to **[]map[string]interface{}** | The RPZs to which you apply newly detected domains through the Infoblox Threat Insight Cloud Client. | [optional] 
 **Enable** | Pointer to **bool** | Determines whether the Threat Insight in Cloud Client is enabled. | [optional] 
 **ForceRefresh** | Pointer to **bool** | Force a refresh if at least one RPZ is configured. | [optional] 
 **Interval** | Pointer to **int64** | The time interval (in seconds) for requesting newly detected domains by the Infoblox Threat Insight Cloud Client and applying them to the list of configured RPZs. | [optional] 
@@ -57,20 +57,20 @@ HasRef returns a boolean if a field has been set.
 
 ### GetBlacklistRpzList
 
-`func (o *GetThreatinsightCloudclientResponse) GetBlacklistRpzList() []string`
+`func (o *GetThreatinsightCloudclientResponse) GetBlacklistRpzList() []map[string]interface{}`
 
 GetBlacklistRpzList returns the BlacklistRpzList field if non-nil, zero value otherwise.
 
 ### GetBlacklistRpzListOk
 
-`func (o *GetThreatinsightCloudclientResponse) GetBlacklistRpzListOk() (*[]string, bool)`
+`func (o *GetThreatinsightCloudclientResponse) GetBlacklistRpzListOk() (*[]map[string]interface{}, bool)`
 
 GetBlacklistRpzListOk returns a tuple with the BlacklistRpzList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBlacklistRpzList
 
-`func (o *GetThreatinsightCloudclientResponse) SetBlacklistRpzList(v []string)`
+`func (o *GetThreatinsightCloudclientResponse) SetBlacklistRpzList(v []map[string]interface{})`
 
 SetBlacklistRpzList sets BlacklistRpzList field to given value.
 

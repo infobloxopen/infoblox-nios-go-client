@@ -1,6 +1,6 @@
 # MemberlicenseAPI
 
-All URIs are relative to *http://localhost/wapi/v2.12.3*
+All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

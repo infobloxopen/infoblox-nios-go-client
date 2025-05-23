@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Bootfile** | Pointer to **string** | The bootfile name for the network. You can configure the DHCP server to support clients that use the boot file name option in their DHCPREQUEST messages. | [optional] 
 **Bootserver** | Pointer to **string** | The bootserver address for the network. You can specify the name and/or IP address of the boot server that the host needs to boot. The boot server IPv4 Address or name in FQDN format. | [optional] 
 **CloudInfo** | Pointer to [**NetworkCloudInfo**](NetworkCloudInfo.md) |  | [optional] 
+**CloudShared** | Pointer to **bool** | Boolean flag to indicate if the network is shared with cloud. | [optional] 
 **Comment** | Pointer to **string** | Comment for the network, maximum 256 characters. | [optional] 
 **ConflictCount** | Pointer to **int64** | The number of conflicts discovered via network discovery. | [optional] [readonly] 
 **DdnsDomainname** | Pointer to **string** | The dynamic DNS domain name the appliance uses specifically for DDNS updates for this network. | [optional] 
@@ -46,9 +47,10 @@ Name | Type | Description | Notes
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the network should be immediately enabled. | [optional] 
 **EnablePxeLeaseTime** | Pointer to **bool** | Set this to True if you want the DHCP server to use a different lease time for PXE clients. | [optional] 
 **EnableSnmpWarnings** | Pointer to **bool** | Determines if DHCP threshold warnings are send through SNMP. | [optional] 
-**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP Network object. | [optional] [readonly] 
+**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP Network object. | [optional] [readonly] 
 **ExpandNetwork** | Pointer to **map[string]interface{}** |  | [optional] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**FederatedRealms** | Pointer to [**[]NetworkFederatedRealms**](NetworkFederatedRealms.md) | This field contains the federated realms associated to this network | [optional] 
 **HighWaterMark** | Pointer to **int64** | The percentage of DHCP network usage threshold above which network usage is not expected and may warrant your attention. When the high watermark is reached, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **HighWaterMarkReset** | Pointer to **int64** | The percentage of DHCP network usage below which the corresponding SNMP trap is reset. A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The high watermark reset value must be lower than the high watermark value. | [optional] 
 **IgnoreDhcpOptionListRequest** | Pointer to **bool** | If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested. | [optional] 
@@ -60,7 +62,7 @@ Name | Type | Description | Notes
 **Ipv4addr** | Pointer to **string** | The IPv4 Address of the network. | [optional] 
 **LastRirRegistrationUpdateSent** | Pointer to **int64** | The timestamp when the last RIR registration update was sent. | [optional] [readonly] 
 **LastRirRegistrationUpdateStatus** | Pointer to **string** | Last RIR registration update status. | [optional] [readonly] 
-**LeaseScavengeTime** | Pointer to **string** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int32** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogicFilterRules** | Pointer to [**[]NetworkLogicFilterRules**](NetworkLogicFilterRules.md) | This field contains the logic filters to be applied on the this network. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **LowWaterMark** | Pointer to **int64** | The percentage of DHCP network usage below which the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **LowWaterMarkReset** | Pointer to **int64** | The percentage of DHCP network usage threshold below which network usage is not expected and may warrant your attention. When the low watermark is crossed, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The low watermark reset value must be higher than the low watermark value. | [optional] 
@@ -300,6 +302,31 @@ SetCloudInfo sets CloudInfo field to given value.
 `func (o *Network) HasCloudInfo() bool`
 
 HasCloudInfo returns a boolean if a field has been set.
+
+### GetCloudShared
+
+`func (o *Network) GetCloudShared() bool`
+
+GetCloudShared returns the CloudShared field if non-nil, zero value otherwise.
+
+### GetCloudSharedOk
+
+`func (o *Network) GetCloudSharedOk() (*bool, bool)`
+
+GetCloudSharedOk returns a tuple with the CloudShared field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudShared
+
+`func (o *Network) SetCloudShared(v bool)`
+
+SetCloudShared sets CloudShared field to given value.
+
+### HasCloudShared
+
+`func (o *Network) HasCloudShared() bool`
+
+HasCloudShared returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -1203,20 +1230,20 @@ HasEnableSnmpWarnings returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *Network) GetEndpointSources() []string`
+`func (o *Network) GetEndpointSources() []map[string]interface{}`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *Network) GetEndpointSourcesOk() (*[]string, bool)`
+`func (o *Network) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *Network) SetEndpointSources(v []string)`
+`func (o *Network) SetEndpointSources(v []map[string]interface{})`
 
 SetEndpointSources sets EndpointSources field to given value.
 
@@ -1275,6 +1302,31 @@ SetExtattrs sets Extattrs field to given value.
 `func (o *Network) HasExtattrs() bool`
 
 HasExtattrs returns a boolean if a field has been set.
+
+### GetFederatedRealms
+
+`func (o *Network) GetFederatedRealms() []NetworkFederatedRealms`
+
+GetFederatedRealms returns the FederatedRealms field if non-nil, zero value otherwise.
+
+### GetFederatedRealmsOk
+
+`func (o *Network) GetFederatedRealmsOk() (*[]NetworkFederatedRealms, bool)`
+
+GetFederatedRealmsOk returns a tuple with the FederatedRealms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederatedRealms
+
+`func (o *Network) SetFederatedRealms(v []NetworkFederatedRealms)`
+
+SetFederatedRealms sets FederatedRealms field to given value.
+
+### HasFederatedRealms
+
+`func (o *Network) HasFederatedRealms() bool`
+
+HasFederatedRealms returns a boolean if a field has been set.
 
 ### GetHighWaterMark
 
@@ -1553,20 +1605,20 @@ HasLastRirRegistrationUpdateStatus returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *Network) GetLeaseScavengeTime() string`
+`func (o *Network) GetLeaseScavengeTime() int32`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *Network) GetLeaseScavengeTimeOk() (*string, bool)`
+`func (o *Network) GetLeaseScavengeTimeOk() (*int32, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *Network) SetLeaseScavengeTime(v string)`
+`func (o *Network) SetLeaseScavengeTime(v int32)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 

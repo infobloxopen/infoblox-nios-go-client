@@ -25,16 +25,16 @@ Name | Type | Description | Notes
 **ChassisSerialNumber** | Pointer to **string** | The device chassis serial number. | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the device. | [optional] [readonly] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**Interfaces** | Pointer to **[]string** | List of the device interfaces. | [optional] [readonly] 
+**Interfaces** | Pointer to **[]map[string]interface{}** | List of the device interfaces. | [optional] [readonly] 
 **Location** | Pointer to **string** | The location of the device. | [optional] [readonly] 
 **Model** | Pointer to **string** | The model name of the device. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**DiscoveryDeviceMsAdUserData**](DiscoveryDeviceMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the device. | [optional] [readonly] 
-**Neighbors** | Pointer to **[]string** | List of the device neighbors. | [optional] [readonly] 
+**Neighbors** | Pointer to **[]map[string]interface{}** | List of the device neighbors. | [optional] [readonly] 
 **Network** | Pointer to **string** | The ref to the network to which belongs the management IP address belongs. | [optional] [readonly] 
 **NetworkInfos** | Pointer to [**[]DiscoveryDeviceNetworkInfos**](DiscoveryDeviceNetworkInfos.md) | The list of networks to which the device interfaces belong. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this device resides. | [optional] [readonly] 
-**Networks** | Pointer to **[]string** | The list of networks to which the device interfaces belong. | [optional] [readonly] 
+**Networks** | Pointer to **[]map[string]interface{}** | The list of networks to which the device interfaces belong. | [optional] [readonly] 
 **OsVersion** | Pointer to **string** | The Operating System version running on the device. | [optional] [readonly] 
 **PortStats** | Pointer to [**DiscoveryDevicePortStats**](DiscoveryDevicePortStats.md) |  | [optional] 
 **PrivilegedPolling** | Pointer to **bool** | A flag indicated that NI should send enable command when interacting with device. | [optional] 
@@ -590,20 +590,20 @@ HasExtattrs returns a boolean if a field has been set.
 
 ### GetInterfaces
 
-`func (o *GetDiscoveryDeviceResponse) GetInterfaces() []string`
+`func (o *GetDiscoveryDeviceResponse) GetInterfaces() []map[string]interface{}`
 
 GetInterfaces returns the Interfaces field if non-nil, zero value otherwise.
 
 ### GetInterfacesOk
 
-`func (o *GetDiscoveryDeviceResponse) GetInterfacesOk() (*[]string, bool)`
+`func (o *GetDiscoveryDeviceResponse) GetInterfacesOk() (*[]map[string]interface{}, bool)`
 
 GetInterfacesOk returns a tuple with the Interfaces field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInterfaces
 
-`func (o *GetDiscoveryDeviceResponse) SetInterfaces(v []string)`
+`func (o *GetDiscoveryDeviceResponse) SetInterfaces(v []map[string]interface{})`
 
 SetInterfaces sets Interfaces field to given value.
 
@@ -715,20 +715,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetNeighbors
 
-`func (o *GetDiscoveryDeviceResponse) GetNeighbors() []string`
+`func (o *GetDiscoveryDeviceResponse) GetNeighbors() []map[string]interface{}`
 
 GetNeighbors returns the Neighbors field if non-nil, zero value otherwise.
 
 ### GetNeighborsOk
 
-`func (o *GetDiscoveryDeviceResponse) GetNeighborsOk() (*[]string, bool)`
+`func (o *GetDiscoveryDeviceResponse) GetNeighborsOk() (*[]map[string]interface{}, bool)`
 
 GetNeighborsOk returns a tuple with the Neighbors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNeighbors
 
-`func (o *GetDiscoveryDeviceResponse) SetNeighbors(v []string)`
+`func (o *GetDiscoveryDeviceResponse) SetNeighbors(v []map[string]interface{})`
 
 SetNeighbors sets Neighbors field to given value.
 
@@ -815,20 +815,20 @@ HasNetworkView returns a boolean if a field has been set.
 
 ### GetNetworks
 
-`func (o *GetDiscoveryDeviceResponse) GetNetworks() []string`
+`func (o *GetDiscoveryDeviceResponse) GetNetworks() []map[string]interface{}`
 
 GetNetworks returns the Networks field if non-nil, zero value otherwise.
 
 ### GetNetworksOk
 
-`func (o *GetDiscoveryDeviceResponse) GetNetworksOk() (*[]string, bool)`
+`func (o *GetDiscoveryDeviceResponse) GetNetworksOk() (*[]map[string]interface{}, bool)`
 
 GetNetworksOk returns a tuple with the Networks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworks
 
-`func (o *GetDiscoveryDeviceResponse) SetNetworks(v []string)`
+`func (o *GetDiscoveryDeviceResponse) SetNetworks(v []map[string]interface{})`
 
 SetNetworks sets Networks field to given value.
 

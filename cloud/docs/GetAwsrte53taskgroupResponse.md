@@ -6,11 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **AccountId** | Pointer to **string** | The AWS Account ID associated with this task group. | [optional] [readonly] 
+**AccountsList** | Pointer to **string** | The AWS Account IDs list associated with this task group. | [optional] [readonly] 
+**AwsAccountIdsFileToken** | Pointer to **string** | The AWS account IDs file&#39;s token. | [optional] 
 **Comment** | Pointer to **string** | Comment for the task group; maximum 256 characters. | [optional] 
 **ConsolidateZones** | Pointer to **bool** | Indicates if all zones need to be saved into a single view. | [optional] 
 **ConsolidatedView** | Pointer to **string** | The name of the DNS view for consolidating zones. | [optional] 
 **Disabled** | Pointer to **bool** | Indicates if the task group is enabled or disabled. | [optional] 
 **GridMember** | Pointer to **string** | Member on which the tasks in this task group will be run. | [optional] 
+**MultipleAccountsSyncPolicy** | Pointer to **string** | Discover all child accounts or Upload child account ids to discover.. | [optional] 
 **Name** | Pointer to **string** | The name of this AWS Route53 sync task group. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the tenant&#39;s network view. | [optional] 
 **NetworkViewMappingPolicy** | Pointer to **string** | The network view mapping policy. | [optional] 
@@ -89,6 +92,56 @@ SetAccountId sets AccountId field to given value.
 `func (o *GetAwsrte53taskgroupResponse) HasAccountId() bool`
 
 HasAccountId returns a boolean if a field has been set.
+
+### GetAccountsList
+
+`func (o *GetAwsrte53taskgroupResponse) GetAccountsList() string`
+
+GetAccountsList returns the AccountsList field if non-nil, zero value otherwise.
+
+### GetAccountsListOk
+
+`func (o *GetAwsrte53taskgroupResponse) GetAccountsListOk() (*string, bool)`
+
+GetAccountsListOk returns a tuple with the AccountsList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountsList
+
+`func (o *GetAwsrte53taskgroupResponse) SetAccountsList(v string)`
+
+SetAccountsList sets AccountsList field to given value.
+
+### HasAccountsList
+
+`func (o *GetAwsrte53taskgroupResponse) HasAccountsList() bool`
+
+HasAccountsList returns a boolean if a field has been set.
+
+### GetAwsAccountIdsFileToken
+
+`func (o *GetAwsrte53taskgroupResponse) GetAwsAccountIdsFileToken() string`
+
+GetAwsAccountIdsFileToken returns the AwsAccountIdsFileToken field if non-nil, zero value otherwise.
+
+### GetAwsAccountIdsFileTokenOk
+
+`func (o *GetAwsrte53taskgroupResponse) GetAwsAccountIdsFileTokenOk() (*string, bool)`
+
+GetAwsAccountIdsFileTokenOk returns a tuple with the AwsAccountIdsFileToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAccountIdsFileToken
+
+`func (o *GetAwsrte53taskgroupResponse) SetAwsAccountIdsFileToken(v string)`
+
+SetAwsAccountIdsFileToken sets AwsAccountIdsFileToken field to given value.
+
+### HasAwsAccountIdsFileToken
+
+`func (o *GetAwsrte53taskgroupResponse) HasAwsAccountIdsFileToken() bool`
+
+HasAwsAccountIdsFileToken returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -214,6 +267,31 @@ SetGridMember sets GridMember field to given value.
 `func (o *GetAwsrte53taskgroupResponse) HasGridMember() bool`
 
 HasGridMember returns a boolean if a field has been set.
+
+### GetMultipleAccountsSyncPolicy
+
+`func (o *GetAwsrte53taskgroupResponse) GetMultipleAccountsSyncPolicy() string`
+
+GetMultipleAccountsSyncPolicy returns the MultipleAccountsSyncPolicy field if non-nil, zero value otherwise.
+
+### GetMultipleAccountsSyncPolicyOk
+
+`func (o *GetAwsrte53taskgroupResponse) GetMultipleAccountsSyncPolicyOk() (*string, bool)`
+
+GetMultipleAccountsSyncPolicyOk returns a tuple with the MultipleAccountsSyncPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMultipleAccountsSyncPolicy
+
+`func (o *GetAwsrte53taskgroupResponse) SetMultipleAccountsSyncPolicy(v string)`
+
+SetMultipleAccountsSyncPolicy sets MultipleAccountsSyncPolicy field to given value.
+
+### HasMultipleAccountsSyncPolicy
+
+`func (o *GetAwsrte53taskgroupResponse) HasMultipleAccountsSyncPolicy() bool`
+
+HasMultipleAccountsSyncPolicy returns a boolean if a field has been set.
 
 ### GetName
 

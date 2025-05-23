@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **Assigned** | Pointer to **int64** | The number of dynamic licenses allocated to vNIOS appliances. | [optional] [readonly] 
-**ExpirationStatus** | Pointer to **string** | The license expiration status. | [optional] [readonly] 
+**ExpirationStatus** | Pointer to **string** | The license expiration status. * DELETED - The temporary license has been deleted. * EXPIRED - License/Pool has reached the expiry date. * EXPIRING_SOON - License/Pool expires in 31-90 days. * EXPIRING_VERY_SOON - License/Pool expires in 30 days or earlier. * NOT_EXPIRED - License/Pool has not expired. * PERMANENT - License/Pool does not expire. | [optional] [readonly] 
 **ExpiryDate** | Pointer to **int64** | The expiration timestamp of the license. | [optional] [readonly] 
 **Installed** | Pointer to **int64** | The total number of dynamic licenses allowed for this license pool. | [optional] [readonly] 
 **Key** | Pointer to **string** | The license string for the license pool. | [optional] [readonly] 

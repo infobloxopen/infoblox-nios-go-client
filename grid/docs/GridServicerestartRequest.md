@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **LastUpdatedTime** | Pointer to **int64** | The timestamp when the status of the request has changed. | [optional] [readonly] 
 **Member** | Pointer to **string** | The member to restart. | [optional] [readonly] 
 **Needed** | Pointer to **string** | Indicates if restart is needed. | [optional] [readonly] 
-**Order** | Pointer to **string** | The order to restart. | [optional] [readonly] 
+**Order** | Pointer to **int32** | The order to restart. | [optional] [readonly] 
 **Result** | Pointer to **string** | The result of the restart operation. | [optional] [readonly] 
 **Service** | Pointer to **string** | The service to restart. | [optional] [readonly] 
 **State** | Pointer to **string** | The state of the request. | [optional] [readonly] 
@@ -212,20 +212,20 @@ HasNeeded returns a boolean if a field has been set.
 
 ### GetOrder
 
-`func (o *GridServicerestartRequest) GetOrder() string`
+`func (o *GridServicerestartRequest) GetOrder() int32`
 
 GetOrder returns the Order field if non-nil, zero value otherwise.
 
 ### GetOrderOk
 
-`func (o *GridServicerestartRequest) GetOrderOk() (*string, bool)`
+`func (o *GridServicerestartRequest) GetOrderOk() (*int32, bool)`
 
 GetOrderOk returns a tuple with the Order field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrder
 
-`func (o *GridServicerestartRequest) SetOrder(v string)`
+`func (o *GridServicerestartRequest) SetOrder(v int32)`
 
 SetOrder sets Order field to given value.
 

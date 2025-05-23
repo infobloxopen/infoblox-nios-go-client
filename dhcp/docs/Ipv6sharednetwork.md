@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **LogicFilterRules** | Pointer to [**[]Ipv6sharednetworkLogicFilterRules**](Ipv6sharednetworkLogicFilterRules.md) | This field contains the logic filters to be applied on the this IPv6 shared network. This list corresponds to the match rules that are written to the DHCPv6 configuration file. | [optional] 
 **Name** | Pointer to **string** | The name of the IPv6 Shared Network. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this IPv6 shared network resides. | [optional] 
-**Networks** | Pointer to **[]string** | A list of IPv6 networks belonging to the shared network Each individual list item must be specified as an object containing a &#39;_ref&#39; parameter to a network reference, for example:: [{ \&quot;_ref\&quot;: \&quot;ipv6network/ZG5zdHdvcmskMTAuAvMTYvMA\&quot;, }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \&quot;_ref\&quot;: { &#39;network&#39;: &#39;aabb::/64&#39;, } }] note that in this case the search must match exactly one network for the assignment to be successful. | [optional] 
+**Networks** | Pointer to **[]map[string]interface{}** | A list of IPv6 networks belonging to the shared network Each individual list item must be specified as an object containing a &#39;_ref&#39; parameter to a network reference, for example:: [{ \&quot;_ref\&quot;: \&quot;ipv6network/ZG5zdHdvcmskMTAuAvMTYvMA\&quot;, }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \&quot;_ref\&quot;: { &#39;network&#39;: &#39;aabb::/64&#39;, } }] note that in this case the search must match exactly one network for the assignment to be successful. | [optional] 
 **Options** | Pointer to [**[]Ipv6sharednetworkOptions**](Ipv6sharednetworkOptions.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
 **PreferredLifetime** | Pointer to **int64** | Use this method to set or retrieve the preferred lifetime value of a DHCP IPv6 Shared Network object. | [optional] 
 **UpdateDnsOnLeaseRenewal** | Pointer to **bool** | This field controls whether the DHCP server updates DNS when a DHCP lease is renewed. | [optional] 
@@ -433,20 +433,20 @@ HasNetworkView returns a boolean if a field has been set.
 
 ### GetNetworks
 
-`func (o *Ipv6sharednetwork) GetNetworks() []string`
+`func (o *Ipv6sharednetwork) GetNetworks() []map[string]interface{}`
 
 GetNetworks returns the Networks field if non-nil, zero value otherwise.
 
 ### GetNetworksOk
 
-`func (o *Ipv6sharednetwork) GetNetworksOk() (*[]string, bool)`
+`func (o *Ipv6sharednetwork) GetNetworksOk() (*[]map[string]interface{}, bool)`
 
 GetNetworksOk returns a tuple with the Networks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworks
 
-`func (o *Ipv6sharednetwork) SetNetworks(v []string)`
+`func (o *Ipv6sharednetwork) SetNetworks(v []map[string]interface{})`
 
 SetNetworks sets Networks field to given value.
 

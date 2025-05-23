@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**AssignedTo** | Pointer to **[]string** | List of objects VLAN is assigned to. | [optional] [readonly] 
+**AssignedTo** | Pointer to **[]map[string]interface{}** | List of objects VLAN is assigned to. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment for this VLAN. | [optional] 
 **Contact** | Pointer to **string** | Contact information for person/team managing or using VLAN. | [optional] 
 **Department** | Pointer to **string** | Department where VLAN is used. | [optional] 
@@ -64,20 +64,20 @@ HasRef returns a boolean if a field has been set.
 
 ### GetAssignedTo
 
-`func (o *GetVlanResponse) GetAssignedTo() []string`
+`func (o *GetVlanResponse) GetAssignedTo() []map[string]interface{}`
 
 GetAssignedTo returns the AssignedTo field if non-nil, zero value otherwise.
 
 ### GetAssignedToOk
 
-`func (o *GetVlanResponse) GetAssignedToOk() (*[]string, bool)`
+`func (o *GetVlanResponse) GetAssignedToOk() (*[]map[string]interface{}, bool)`
 
 GetAssignedToOk returns a tuple with the AssignedTo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedTo
 
-`func (o *GetVlanResponse) SetAssignedTo(v []string)`
+`func (o *GetVlanResponse) SetAssignedTo(v []map[string]interface{})`
 
 SetAssignedTo sets AssignedTo field to given value.
 

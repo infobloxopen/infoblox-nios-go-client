@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AddressOrFqdn** | Pointer to **string** | The IPv4 or IPv6 address or FQDN of the backup syslog server. | [optional] 
 **DirectoryPath** | Pointer to **string** | The directory path for the replication of the rotated syslog files. | [optional] 
 **Enable** | Pointer to **bool** | If set to True, the syslog backup server is enabled. | [optional] 
 **Password** | Pointer to **string** | The password of the backup syslog server. | [optional] 
 **Port** | Pointer to **int64** | The port used to connect to the backup syslog server. | [optional] 
 **Protocol** | Pointer to **string** | The transport protocol used to connect to the backup syslog server. | [optional] 
 **Username** | Pointer to **string** | The username of the backup syslog server. | [optional] 
-**Address** | Pointer to **string** | The IPv4/IPv6 address or FQDN of the backup syslog server. | [optional] 
 
 ## Methods
 
@@ -30,6 +30,31 @@ will change when the set of required properties is changed
 NewGridExternalSyslogBackupServersWithDefaults instantiates a new GridExternalSyslogBackupServers object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAddressOrFqdn
+
+`func (o *GridExternalSyslogBackupServers) GetAddressOrFqdn() string`
+
+GetAddressOrFqdn returns the AddressOrFqdn field if non-nil, zero value otherwise.
+
+### GetAddressOrFqdnOk
+
+`func (o *GridExternalSyslogBackupServers) GetAddressOrFqdnOk() (*string, bool)`
+
+GetAddressOrFqdnOk returns a tuple with the AddressOrFqdn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddressOrFqdn
+
+`func (o *GridExternalSyslogBackupServers) SetAddressOrFqdn(v string)`
+
+SetAddressOrFqdn sets AddressOrFqdn field to given value.
+
+### HasAddressOrFqdn
+
+`func (o *GridExternalSyslogBackupServers) HasAddressOrFqdn() bool`
+
+HasAddressOrFqdn returns a boolean if a field has been set.
 
 ### GetDirectoryPath
 
@@ -180,31 +205,6 @@ SetUsername sets Username field to given value.
 `func (o *GridExternalSyslogBackupServers) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
-### GetAddress
-
-`func (o *GridExternalSyslogBackupServers) GetAddress() string`
-
-GetAddress returns the Address field if non-nil, zero value otherwise.
-
-### GetAddressOk
-
-`func (o *GridExternalSyslogBackupServers) GetAddressOk() (*string, bool)`
-
-GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAddress
-
-`func (o *GridExternalSyslogBackupServers) SetAddress(v string)`
-
-SetAddress sets Address field to given value.
-
-### HasAddress
-
-`func (o *GridExternalSyslogBackupServers) HasAddress() bool`
-
-HasAddress returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

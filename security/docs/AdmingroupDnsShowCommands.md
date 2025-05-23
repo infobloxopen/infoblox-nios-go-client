@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **ShowDtcEa** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowDtcGeoip** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowRestartAnycastWithDnsRestart** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
+**ShowRpzAddSoa** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowDnsAccel** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowDnsAccelDebug** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowAllowQueryDomain** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
@@ -601,6 +602,31 @@ SetShowRestartAnycastWithDnsRestart sets ShowRestartAnycastWithDnsRestart field 
 `func (o *AdmingroupDnsShowCommands) HasShowRestartAnycastWithDnsRestart() bool`
 
 HasShowRestartAnycastWithDnsRestart returns a boolean if a field has been set.
+
+### GetShowRpzAddSoa
+
+`func (o *AdmingroupDnsShowCommands) GetShowRpzAddSoa() bool`
+
+GetShowRpzAddSoa returns the ShowRpzAddSoa field if non-nil, zero value otherwise.
+
+### GetShowRpzAddSoaOk
+
+`func (o *AdmingroupDnsShowCommands) GetShowRpzAddSoaOk() (*bool, bool)`
+
+GetShowRpzAddSoaOk returns a tuple with the ShowRpzAddSoa field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowRpzAddSoa
+
+`func (o *AdmingroupDnsShowCommands) SetShowRpzAddSoa(v bool)`
+
+SetShowRpzAddSoa sets ShowRpzAddSoa field to given value.
+
+### HasShowRpzAddSoa
+
+`func (o *AdmingroupDnsShowCommands) HasShowRpzAddSoa() bool`
+
+HasShowRpzAddSoa returns a boolean if a field has been set.
 
 ### GetShowDnsAccel
 

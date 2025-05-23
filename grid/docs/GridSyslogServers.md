@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AddressOrFqdn** | Pointer to **string** | The server address or FQDN. | [optional] 
 **Certificate** | Pointer to **string** | Reference to the underlying X509Certificate object grid:x509certificate. | [optional] [readonly] 
 **CertificateToken** | Pointer to **string** | The token returned by the uploadinit function call in object fileop. | [optional] 
 **ConnectionType** | Pointer to **string** | The connection type for communicating with this server. | [optional] 
@@ -14,7 +15,6 @@ Name | Type | Description | Notes
 **Severity** | Pointer to **string** | The severity filter. The appliance sends log messages of the specified severity and above to the external syslog server. | [optional] 
 **CategoryList** | Pointer to **[]string** | The list of all syslog logging categories. | [optional] 
 **OnlyCategoryList** | Pointer to **bool** | The list of selected syslog logging categories. The appliance forwards syslog messages that belong to the selected categories. | [optional] 
-**Address** | Pointer to **string** | The server address or FQDN. | [optional] 
 
 ## Methods
 
@@ -34,6 +34,31 @@ will change when the set of required properties is changed
 NewGridSyslogServersWithDefaults instantiates a new GridSyslogServers object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAddressOrFqdn
+
+`func (o *GridSyslogServers) GetAddressOrFqdn() string`
+
+GetAddressOrFqdn returns the AddressOrFqdn field if non-nil, zero value otherwise.
+
+### GetAddressOrFqdnOk
+
+`func (o *GridSyslogServers) GetAddressOrFqdnOk() (*string, bool)`
+
+GetAddressOrFqdnOk returns a tuple with the AddressOrFqdn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddressOrFqdn
+
+`func (o *GridSyslogServers) SetAddressOrFqdn(v string)`
+
+SetAddressOrFqdn sets AddressOrFqdn field to given value.
+
+### HasAddressOrFqdn
+
+`func (o *GridSyslogServers) HasAddressOrFqdn() bool`
+
+HasAddressOrFqdn returns a boolean if a field has been set.
 
 ### GetCertificate
 
@@ -284,31 +309,6 @@ SetOnlyCategoryList sets OnlyCategoryList field to given value.
 `func (o *GridSyslogServers) HasOnlyCategoryList() bool`
 
 HasOnlyCategoryList returns a boolean if a field has been set.
-
-### GetAddress
-
-`func (o *GridSyslogServers) GetAddress() string`
-
-GetAddress returns the Address field if non-nil, zero value otherwise.
-
-### GetAddressOk
-
-`func (o *GridSyslogServers) GetAddressOk() (*string, bool)`
-
-GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAddress
-
-`func (o *GridSyslogServers) SetAddress(v string)`
-
-SetAddress sets Address field to given value.
-
-### HasAddress
-
-`func (o *GridSyslogServers) HasAddress() bool`
-
-HasAddress returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

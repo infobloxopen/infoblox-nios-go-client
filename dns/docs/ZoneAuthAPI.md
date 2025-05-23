@@ -1,6 +1,6 @@
 # ZoneAuthAPI
 
-All URIs are relative to *http://localhost/wapi/v2.12.3*
+All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> ReferenceDelete(ctx, reference).RemoveSubzones(removeSubzones).Execute()
 
 Delete a zone_auth object
 
@@ -201,6 +201,7 @@ Other parameters are passed through a pointer to a `ZoneAuthAPIReferenceDeleteRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+**removeSubzones** | **bool** | Remove subzones delete option. Determines whether all child objects should be removed alongside with the parent zone or child objects should be assigned to another parental zone. By default child objects are deleted with the parent zone. | 
 
 ### Return type
 

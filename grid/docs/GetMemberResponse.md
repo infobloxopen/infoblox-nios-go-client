@@ -26,6 +26,8 @@ Name | Type | Description | Notes
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalSyslogBackupServers** | Pointer to [**[]MemberExternalSyslogBackupServers**](MemberExternalSyslogBackupServers.md) | The list of external syslog backup servers. | [optional] 
 **ExternalSyslogServerEnable** | Pointer to **bool** | Determines if external syslog servers should be enabled. | [optional] 
+**HaCloudPlatform** | Pointer to **string** | Cloud platform for HA. | [optional] 
+**HaOnCloud** | Pointer to **bool** | True: HA on cloud. False: HA not on cloud. | [optional] 
 **HostName** | Pointer to **string** | The host name of the Grid member. | [optional] 
 **Ipv6Setting** | Pointer to [**MemberIpv6Setting**](MemberIpv6Setting.md) |  | [optional] 
 **Ipv6StaticRoutes** | Pointer to [**[]MemberIpv6StaticRoutes**](MemberIpv6StaticRoutes.md) | List of IPv6 static routes. | [optional] 
@@ -41,7 +43,7 @@ Name | Type | Description | Notes
 **MmdbEaBuildTime** | Pointer to **int64** | Extensible attributes Topology database build time. | [optional] [readonly] 
 **MmdbGeoipBuildTime** | Pointer to **int64** | GeoIP Topology database build time. | [optional] [readonly] 
 **NatSetting** | Pointer to [**MemberNatSetting**](MemberNatSetting.md) |  | [optional] 
-**NodeInfo** | Pointer to [**[]MemberNodeInfo**](MemberNodeInfo.md) | The node information list with detailed status report on the operations of the Grid Member. | [optional] 
+**NodeInfo** | Pointer to [**[]MemberNodeInfo**](MemberNodeInfo.md) | The node information list with detailed status report on the operations of the Grid Member, mgmt_port_setting must be enabled when configuring the MGMT Port using the node_info field. | [optional] 
 **NtpSetting** | Pointer to [**MemberNtpSetting**](MemberNtpSetting.md) |  | [optional] 
 **OspfList** | Pointer to [**[]MemberOspfList**](MemberOspfList.md) | The OSPF area configuration (for anycast) list for a Grid member. | [optional] 
 **PassiveHaArpEnabled** | Pointer to **bool** | The ARP protocol setting on the passive node of an HA pair. If you do not specify a value, the default value is \&quot;false\&quot;. You can only set this value to \&quot;true\&quot; if the member is an HA pair. | [optional] 
@@ -663,6 +665,56 @@ SetExternalSyslogServerEnable sets ExternalSyslogServerEnable field to given val
 `func (o *GetMemberResponse) HasExternalSyslogServerEnable() bool`
 
 HasExternalSyslogServerEnable returns a boolean if a field has been set.
+
+### GetHaCloudPlatform
+
+`func (o *GetMemberResponse) GetHaCloudPlatform() string`
+
+GetHaCloudPlatform returns the HaCloudPlatform field if non-nil, zero value otherwise.
+
+### GetHaCloudPlatformOk
+
+`func (o *GetMemberResponse) GetHaCloudPlatformOk() (*string, bool)`
+
+GetHaCloudPlatformOk returns a tuple with the HaCloudPlatform field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHaCloudPlatform
+
+`func (o *GetMemberResponse) SetHaCloudPlatform(v string)`
+
+SetHaCloudPlatform sets HaCloudPlatform field to given value.
+
+### HasHaCloudPlatform
+
+`func (o *GetMemberResponse) HasHaCloudPlatform() bool`
+
+HasHaCloudPlatform returns a boolean if a field has been set.
+
+### GetHaOnCloud
+
+`func (o *GetMemberResponse) GetHaOnCloud() bool`
+
+GetHaOnCloud returns the HaOnCloud field if non-nil, zero value otherwise.
+
+### GetHaOnCloudOk
+
+`func (o *GetMemberResponse) GetHaOnCloudOk() (*bool, bool)`
+
+GetHaOnCloudOk returns a tuple with the HaOnCloud field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHaOnCloud
+
+`func (o *GetMemberResponse) SetHaOnCloud(v bool)`
+
+SetHaOnCloud sets HaOnCloud field to given value.
+
+### HasHaOnCloud
+
+`func (o *GetMemberResponse) HasHaOnCloud() bool`
+
+HasHaOnCloud returns a boolean if a field has been set.
 
 ### GetHostName
 

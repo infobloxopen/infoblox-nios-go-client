@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **BasicPollingSettings** | Pointer to [**DiscoveryGridpropertiesBasicPollingSettings**](DiscoveryGridpropertiesBasicPollingSettings.md) |  | [optional] 
 **BasicSdnPollingSettings** | Pointer to [**DiscoveryGridpropertiesBasicSdnPollingSettings**](DiscoveryGridpropertiesBasicSdnPollingSettings.md) |  | [optional] 
 **CliCredentials** | Pointer to [**[]DiscoveryGridpropertiesCliCredentials**](DiscoveryGridpropertiesCliCredentials.md) | Discovery CLI credentials. | [optional] 
+**DeviceHints** | Pointer to [**[]DiscoveryGridpropertiesDeviceHints**](DiscoveryGridpropertiesDeviceHints.md) | Device Hints. | [optional] 
 **Diagnostic** | Pointer to **map[string]interface{}** |  | [optional] 
 **DiagnosticStatus** | Pointer to **map[string]interface{}** |  | [optional] 
 **DiscoveryBlackoutSetting** | Pointer to [**DiscoveryGridpropertiesDiscoveryBlackoutSetting**](DiscoveryGridpropertiesDiscoveryBlackoutSetting.md) |  | [optional] 
@@ -303,6 +304,31 @@ SetCliCredentials sets CliCredentials field to given value.
 `func (o *GetDiscoveryGridpropertiesResponse) HasCliCredentials() bool`
 
 HasCliCredentials returns a boolean if a field has been set.
+
+### GetDeviceHints
+
+`func (o *GetDiscoveryGridpropertiesResponse) GetDeviceHints() []DiscoveryGridpropertiesDeviceHints`
+
+GetDeviceHints returns the DeviceHints field if non-nil, zero value otherwise.
+
+### GetDeviceHintsOk
+
+`func (o *GetDiscoveryGridpropertiesResponse) GetDeviceHintsOk() (*[]DiscoveryGridpropertiesDeviceHints, bool)`
+
+GetDeviceHintsOk returns a tuple with the DeviceHints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceHints
+
+`func (o *GetDiscoveryGridpropertiesResponse) SetDeviceHints(v []DiscoveryGridpropertiesDeviceHints)`
+
+SetDeviceHints sets DeviceHints field to given value.
+
+### HasDeviceHints
+
+`func (o *GetDiscoveryGridpropertiesResponse) HasDeviceHints() bool`
+
+HasDeviceHints returns a boolean if a field has been set.
 
 ### GetDiagnostic
 

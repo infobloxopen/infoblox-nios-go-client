@@ -27,6 +27,8 @@ Name | Type | Description | Notes
 **Ipv6prefix** | Pointer to **string** | The IPv6 Address prefix of the DHCP IPv6 fixed address. | [optional] 
 **Ipv6prefixBits** | Pointer to **int64** | Prefix bits of the DHCP IPv6 fixed address. | [optional] 
 **LogicFilterRules** | Pointer to [**[]Ipv6fixedaddressLogicFilterRules**](Ipv6fixedaddressLogicFilterRules.md) | This field contains the logic filters to be applied to this IPv6 fixed address. This list corresponds to the match rules that are written to the DHCPv6 configuration file. | [optional] 
+**MacAddress** | Pointer to **string** | The MAC address for this IPv6 fixed address. | [optional] 
+**MatchClient** | Pointer to **string** | The match_client value for this fixed address. Valid values are: \&quot;DUID\&quot;: The fixed IP address is leased to the matching DUID. \&quot;MAC_ADDRESS\&quot;: The fixed IP address is leased to the matching MAC address. | [optional] 
 **MsAdUserData** | Pointer to [**Ipv6fixedaddressMsAdUserData**](Ipv6fixedaddressMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | This field contains the name of this IPv6 fixed address. | [optional] 
 **Network** | Pointer to **string** | The network to which this IPv6 fixed address belongs, in IPv6 Address/CIDR format. | [optional] 
@@ -642,6 +644,56 @@ SetLogicFilterRules sets LogicFilterRules field to given value.
 `func (o *Ipv6fixedaddress) HasLogicFilterRules() bool`
 
 HasLogicFilterRules returns a boolean if a field has been set.
+
+### GetMacAddress
+
+`func (o *Ipv6fixedaddress) GetMacAddress() string`
+
+GetMacAddress returns the MacAddress field if non-nil, zero value otherwise.
+
+### GetMacAddressOk
+
+`func (o *Ipv6fixedaddress) GetMacAddressOk() (*string, bool)`
+
+GetMacAddressOk returns a tuple with the MacAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMacAddress
+
+`func (o *Ipv6fixedaddress) SetMacAddress(v string)`
+
+SetMacAddress sets MacAddress field to given value.
+
+### HasMacAddress
+
+`func (o *Ipv6fixedaddress) HasMacAddress() bool`
+
+HasMacAddress returns a boolean if a field has been set.
+
+### GetMatchClient
+
+`func (o *Ipv6fixedaddress) GetMatchClient() string`
+
+GetMatchClient returns the MatchClient field if non-nil, zero value otherwise.
+
+### GetMatchClientOk
+
+`func (o *Ipv6fixedaddress) GetMatchClientOk() (*string, bool)`
+
+GetMatchClientOk returns a tuple with the MatchClient field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchClient
+
+`func (o *Ipv6fixedaddress) SetMatchClient(v string)`
+
+SetMatchClient sets MatchClient field to given value.
+
+### HasMatchClient
+
+`func (o *Ipv6fixedaddress) HasMatchClient() bool`
+
+HasMatchClient returns a boolean if a field has been set.
 
 ### GetMsAdUserData
 

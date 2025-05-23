@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Mode** | Pointer to **string** | Network discovery scanning mode. | [optional] 
 **NetworkDiscoveryControl** | Pointer to **map[string]interface{}** |  | [optional] 
 **NetworkView** | Pointer to **string** | Name of the network view in which target networks for network discovery reside. | [optional] 
-**Networks** | Pointer to **[]string** | The list of the networks on which the network discovery will be invoked. | [optional] 
+**Networks** | Pointer to **[]map[string]interface{}** | The list of the networks on which the network discovery will be invoked. | [optional] 
 **PingRetries** | Pointer to **int64** | The number of times to perfrom ping for ICMP and FULL modes. | [optional] 
 **PingTimeout** | Pointer to **int64** | The ping timeout for ICMP and FULL modes. | [optional] 
 **ScheduledRun** | Pointer to [**DiscoverytaskScheduledRun**](DiscoverytaskScheduledRun.md) |  | [optional] 
@@ -300,20 +300,20 @@ HasNetworkView returns a boolean if a field has been set.
 
 ### GetNetworks
 
-`func (o *GetDiscoverytaskResponse) GetNetworks() []string`
+`func (o *GetDiscoverytaskResponse) GetNetworks() []map[string]interface{}`
 
 GetNetworks returns the Networks field if non-nil, zero value otherwise.
 
 ### GetNetworksOk
 
-`func (o *GetDiscoverytaskResponse) GetNetworksOk() (*[]string, bool)`
+`func (o *GetDiscoverytaskResponse) GetNetworksOk() (*[]map[string]interface{}, bool)`
 
 GetNetworksOk returns a tuple with the Networks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworks
 
-`func (o *GetDiscoverytaskResponse) SetNetworks(v []string)`
+`func (o *GetDiscoverytaskResponse) SetNetworks(v []map[string]interface{})`
 
 SetNetworks sets Networks field to given value.
 

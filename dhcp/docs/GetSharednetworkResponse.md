@@ -26,12 +26,12 @@ Name | Type | Description | Notes
 **IgnoreDhcpOptionListRequest** | Pointer to **bool** | If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested. | [optional] 
 **IgnoreId** | Pointer to **string** | Indicates whether the appliance will ignore DHCP client IDs or MAC addresses. Valid values are \&quot;NONE\&quot;, \&quot;CLIENT\&quot;, or \&quot;MACADDR\&quot;. The default is \&quot;NONE\&quot;. | [optional] 
 **IgnoreMacAddresses** | Pointer to **[]string** | A list of MAC addresses the appliance will ignore. | [optional] 
-**LeaseScavengeTime** | Pointer to **string** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int32** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogicFilterRules** | Pointer to [**[]SharednetworkLogicFilterRules**](SharednetworkLogicFilterRules.md) | This field contains the logic filters to be applied on the this shared network. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **MsAdUserData** | Pointer to [**SharednetworkMsAdUserData**](SharednetworkMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the IPv6 Shared Network. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this shared network resides. | [optional] 
-**Networks** | Pointer to **[]string** | A list of networks belonging to the shared network Each individual list item must be specified as an object containing a &#39;_ref&#39; parameter to a network reference, for example:: [{ \&quot;_ref\&quot;: \&quot;network/ZG5zLm5ldHdvcmskMTAuMwLvMTYvMA\&quot;, }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \&quot;_ref\&quot;: { &#39;network&#39;: &#39;10.0.0.0/8&#39;, } }] note that in this case the search must match exactly one network for the assignment to be successful. | [optional] 
+**Networks** | Pointer to **[]map[string]interface{}** | A list of networks belonging to the shared network Each individual list item must be specified as an object containing a &#39;_ref&#39; parameter to a network reference, for example:: [{ \&quot;_ref\&quot;: \&quot;network/ZG5zLm5ldHdvcmskMTAuMwLvMTYvMA\&quot;, }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \&quot;_ref\&quot;: { &#39;network&#39;: &#39;10.0.0.0/8&#39;, } }] note that in this case the search must match exactly one network for the assignment to be successful. | [optional] 
 **Nextserver** | Pointer to **string** | The name in FQDN and/or IPv4 Address of the next server that the host needs to boot. | [optional] 
 **Options** | Pointer to [**[]SharednetworkOptions**](SharednetworkOptions.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
 **PxeLeaseTime** | Pointer to **int64** | The PXE lease time value of a shared network object. Some hosts use PXE (Preboot Execution Environment) to boot remotely from a server. To better manage your IP resources, set a different lease time for PXE boot requests. You can configure the DHCP server to allocate an IP address with a shorter lease time to hosts that send PXE boot requests, so IP addresses are not leased longer than necessary. A 32-bit unsigned integer that represents the duration, in seconds, for which the update is cached. Zero indicates that the update is not cached. | [optional] 
@@ -629,20 +629,20 @@ HasIgnoreMacAddresses returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *GetSharednetworkResponse) GetLeaseScavengeTime() string`
+`func (o *GetSharednetworkResponse) GetLeaseScavengeTime() int32`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *GetSharednetworkResponse) GetLeaseScavengeTimeOk() (*string, bool)`
+`func (o *GetSharednetworkResponse) GetLeaseScavengeTimeOk() (*int32, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *GetSharednetworkResponse) SetLeaseScavengeTime(v string)`
+`func (o *GetSharednetworkResponse) SetLeaseScavengeTime(v int32)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 
@@ -754,20 +754,20 @@ HasNetworkView returns a boolean if a field has been set.
 
 ### GetNetworks
 
-`func (o *GetSharednetworkResponse) GetNetworks() []string`
+`func (o *GetSharednetworkResponse) GetNetworks() []map[string]interface{}`
 
 GetNetworks returns the Networks field if non-nil, zero value otherwise.
 
 ### GetNetworksOk
 
-`func (o *GetSharednetworkResponse) GetNetworksOk() (*[]string, bool)`
+`func (o *GetSharednetworkResponse) GetNetworksOk() (*[]map[string]interface{}, bool)`
 
 GetNetworksOk returns a tuple with the Networks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworks
 
-`func (o *GetSharednetworkResponse) SetNetworks(v []string)`
+`func (o *GetSharednetworkResponse) SetNetworks(v []map[string]interface{})`
 
 SetNetworks sets Networks field to given value.
 

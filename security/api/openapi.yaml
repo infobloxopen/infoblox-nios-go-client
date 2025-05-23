@@ -1,8 +1,7 @@
 openapi: 3.0.0
 info:
   contact:
-    email: jkhatri@infoblox.com
-    name: Jeenitkumar Khatri
+    name: Infoblox
     url: https://www.infoblox.com
   description: OpenAPI specification for Infoblox NIOS WAPI SECURITY objects
   license:
@@ -10,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox SECURITY API
-  version: 2.12.3
+  version: 2.13.6
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.12.3
+  url: /wapi/v2.13.6
 tags:
 - description: Operations for admingroup objects
   name: admingroup
@@ -6562,6 +6561,7 @@ components:
           show_restart_anycast_with_dns_restart: false
           show_dns_accel_debug: false
           show_dtc_geoip: false
+          show_rpz_add_soa: false
           show_allow_query_domain: false
         use_account_inactivity_lockout_enable: false
         use_password_setting: false
@@ -6795,6 +6795,7 @@ components:
           set_extra_dns_name_validations: false
           set_enable_dnstap: false
           set_ms_sticky_ip: false
+          set_rpz_add_soa: false
           enable_all: false
           set_dns: false
           set_restart_anycast_with_dns_restart: false
@@ -7875,6 +7876,7 @@ components:
         set_extra_dns_name_validations: false
         set_enable_dnstap: false
         set_ms_sticky_ip: false
+        set_rpz_add_soa: false
         enable_all: false
         set_dns: false
         set_restart_anycast_with_dns_restart: false
@@ -7927,6 +7929,10 @@ components:
           example: false
           type: boolean
         set_restart_anycast_with_dns_restart:
+          description: If True then CLI user has permission to run the command
+          example: false
+          type: boolean
+        set_rpz_add_soa:
           description: If True then CLI user has permission to run the command
           example: false
           type: boolean
@@ -7984,6 +7990,7 @@ components:
         show_restart_anycast_with_dns_restart: false
         show_dns_accel_debug: false
         show_dtc_geoip: false
+        show_rpz_add_soa: false
         show_allow_query_domain: false
       properties:
         show_log_guest_lookups:
@@ -8071,6 +8078,10 @@ components:
           example: false
           type: boolean
         show_restart_anycast_with_dns_restart:
+          description: If True then CLI user has permission to run the command
+          example: false
+          type: boolean
+        show_rpz_add_soa:
           description: If True then CLI user has permission to run the command
           example: false
           type: boolean
@@ -9441,7 +9452,7 @@ components:
     Userprofile:
       additionalProperties: false
       example:
-        days_to_expire: Example days_to_expire
+        days_to_expire: 1
         table_size: 1
         grid_admin_groups:
         - grid_admin_groups
@@ -9481,11 +9492,9 @@ components:
           type: string
         days_to_expire:
           description: The number of days left before the admin's password expires.
-          enum:
-          - int
-          example: Example days_to_expire
+          example: 1
           readOnly: true
-          type: string
+          type: integer
         email:
           description: The email address of the admin.
           example: Example email
@@ -9600,8 +9609,8 @@ components:
       additionalProperties: false
       example:
         auth_services:
-        - localuser:authservice
-        - localuser:authservice
+        - "{}"
+        - "{}"
         usage_type: Example usage_type
         _ref: _ref
         default_group: Example default_group
@@ -9632,7 +9641,7 @@ components:
           items:
             enum:
             - localuser:authservice
-            type: string
+            type: object
           type: array
         default_group:
           description: The default admin group that provides authentication in case
@@ -9948,8 +9957,8 @@ components:
         remote_lookup_username: Example remote_lookup_username
         test_ocsp_responder_settings: "{}"
         ca_certificates:
-        - cacertificate
-        - cacertificate
+        - "{}"
+        - "{}"
         remote_lookup_password: Example remote_lookup_password
         _ref: _ref
         name: Example name
@@ -9979,7 +9988,7 @@ components:
           items:
             enum:
             - cacertificate
-            type: string
+            type: object
           type: array
         comment:
           description: The descriptive comment for the certificate authentication
@@ -10905,10 +10914,6 @@ components:
           - NONE
           - MD5
           - SHA
-          - SHA-224
-          - SHA-256
-          - SHA-384
-          - SHA-512
           example: Example authentication_protocol
           type: string
         comment:
@@ -10940,10 +10945,6 @@ components:
           - NONE
           - DES
           - AES
-          - AES-192
-          - AES-192C
-          - AES-256
-          - AES-256C
           example: Example privacy_protocol
           type: string
       type: object
@@ -11286,7 +11287,17 @@ components:
         config:
           log_severity: Example log_severity
           action: Example action
-          params: params
+          params:
+            min: 1
+            max: 1
+            read_only: false
+            enum_values:
+            - enum_values
+            - enum_values
+            name: Example name
+            description: Example description
+            syntax: Example syntax
+            value: Example value
         use_config: false
         sid: 1
       properties:
@@ -11328,7 +11339,17 @@ components:
       example:
         log_severity: Example log_severity
         action: Example action
-        params: params
+        params:
+          min: 1
+          max: 1
+          read_only: false
+          enum_values:
+          - enum_values
+          - enum_values
+          name: Example name
+          description: Example description
+          syntax: Example syntax
+          value: Example value
       properties:
         action:
           description: The rule action.
@@ -11351,6 +11372,17 @@ components:
           $ref: '#/components/schemas/ThreatprotectionruleconfigParams'
       type: object
     ThreatprotectionruleconfigParams:
+      example:
+        min: 1
+        max: 1
+        read_only: false
+        enum_values:
+        - enum_values
+        - enum_values
+        name: Example name
+        description: Example description
+        syntax: Example syntax
+        value: Example value
       properties:
         name:
           description: The rule parameter name.
@@ -11391,7 +11423,6 @@ components:
           description: The rule parameter enum values.
           enum:
           - string
-          example: Example enum_values
           items:
             type: string
           readOnly: true
@@ -11507,17 +11538,17 @@ components:
       additionalProperties: false
       example:
         stat_infos:
-        - total: Example total
-          critical: Example critical
-          major: Example major
-          warning: Example warning
-          informational: Example informational
+        - total: "{}"
+          critical: "{}"
+          major: "{}"
+          warning: "{}"
+          informational: "{}"
           timestamp: 1
-        - total: Example total
-          critical: Example critical
-          major: Example major
-          warning: Example warning
-          informational: Example informational
+        - total: "{}"
+          critical: "{}"
+          major: "{}"
+          warning: "{}"
+          informational: "{}"
           timestamp: 1
         _ref: _ref
         member: Example member
@@ -11543,11 +11574,11 @@ components:
       type: object
     ThreatprotectionStatisticsStatInfos:
       example:
-        total: Example total
-        critical: Example critical
-        major: Example major
-        warning: Example warning
-        informational: Example informational
+        total: "{}"
+        critical: "{}"
+        major: "{}"
+        warning: "{}"
+        informational: "{}"
         timestamp: 1
       properties:
         timestamp:
@@ -11560,32 +11591,27 @@ components:
           description: The number of critical events.
           enum:
           - unsigned long integer
-          example: Example critical
-          type: string
+          type: object
         major:
           description: The number of major events.
           enum:
           - unsigned long integer
-          example: Example major
-          type: string
+          type: object
         warning:
           description: The number of warning events.
           enum:
           - unsigned long integer
-          example: Example warning
-          type: string
+          type: object
         informational:
           description: The number of informational events.
           enum:
           - unsigned long integer
-          example: Example informational
-          type: string
+          type: object
         total:
           description: The total number of events.
           enum:
           - unsigned long integer
-          example: Example total
-          type: string
+          type: object
       type: object
     ListThreatprotectionStatisticsResponse:
       oneOf:
@@ -11679,8 +11705,8 @@ components:
         interval: 1
         force_refresh: false
         blacklist_rpz_list:
-        - zone_rp
-        - zone_rp
+        - "{}"
+        - "{}"
       properties:
         _ref:
           description: The reference to the object.
@@ -11693,7 +11719,7 @@ components:
           items:
             enum:
             - zone_rp
-            type: string
+            type: object
           type: array
         enable:
           description: Determines whether the Threat Insight in Cloud Client is enabled.
@@ -11781,6 +11807,7 @@ components:
             show_restart_anycast_with_dns_restart: false
             show_dns_accel_debug: false
             show_dtc_geoip: false
+            show_rpz_add_soa: false
             show_allow_query_domain: false
           use_account_inactivity_lockout_enable: false
           use_password_setting: false
@@ -12014,6 +12041,7 @@ components:
             set_extra_dns_name_validations: false
             set_enable_dnstap: false
             set_ms_sticky_ip: false
+            set_rpz_add_soa: false
             enable_all: false
             set_dns: false
             set_restart_anycast_with_dns_restart: false
@@ -12207,6 +12235,7 @@ components:
             show_restart_anycast_with_dns_restart: false
             show_dns_accel_debug: false
             show_dtc_geoip: false
+            show_rpz_add_soa: false
             show_allow_query_domain: false
           use_account_inactivity_lockout_enable: false
           use_password_setting: false
@@ -12440,6 +12469,7 @@ components:
             set_extra_dns_name_validations: false
             set_enable_dnstap: false
             set_ms_sticky_ip: false
+            set_rpz_add_soa: false
             enable_all: false
             set_dns: false
             set_restart_anycast_with_dns_restart: false
@@ -12805,7 +12835,7 @@ components:
       description: The response format to update __Userprofile__ in object format.
       example:
         result:
-          days_to_expire: Example days_to_expire
+          days_to_expire: 1
           table_size: 1
           grid_admin_groups:
           - grid_admin_groups
@@ -12860,8 +12890,8 @@ components:
       example:
         result:
           auth_services:
-          - localuser:authservice
-          - localuser:authservice
+          - "{}"
+          - "{}"
           usage_type: Example usage_type
           _ref: _ref
           default_group: Example default_group
@@ -13024,8 +13054,8 @@ components:
           remote_lookup_username: Example remote_lookup_username
           test_ocsp_responder_settings: "{}"
           ca_certificates:
-          - cacertificate
-          - cacertificate
+          - "{}"
+          - "{}"
           remote_lookup_password: Example remote_lookup_password
           _ref: _ref
           name: Example name
@@ -13075,8 +13105,8 @@ components:
           remote_lookup_username: Example remote_lookup_username
           test_ocsp_responder_settings: "{}"
           ca_certificates:
-          - cacertificate
-          - cacertificate
+          - "{}"
+          - "{}"
           remote_lookup_password: Example remote_lookup_password
           _ref: _ref
           name: Example name
@@ -13769,7 +13799,17 @@ components:
           config:
             log_severity: Example log_severity
             action: Example action
-            params: params
+            params:
+              min: 1
+              max: 1
+              read_only: false
+              enum_values:
+              - enum_values
+              - enum_values
+              name: Example name
+              description: Example description
+              syntax: Example syntax
+              value: Example value
           use_config: false
           sid: 1
       properties:
@@ -13939,8 +13979,8 @@ components:
           interval: 1
           force_refresh: false
           blacklist_rpz_list:
-          - zone_rp
-          - zone_rp
+          - "{}"
+          - "{}"
       properties:
         result:
           $ref: '#/components/schemas/ThreatinsightCloudclient'

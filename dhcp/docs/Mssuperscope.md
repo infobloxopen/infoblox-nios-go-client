@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **LowWaterMarkReset** | Pointer to **int64** | The percentage value for DHCP range usage below which an alarm will be reset. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the Microsoft DHCP superscope. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view in which the superscope resides. | [optional] 
-**Ranges** | Pointer to **[]string** | The list of DHCP ranges that are associated with the superscope. | [optional] 
+**Ranges** | Pointer to **[]map[string]interface{}** | The list of DHCP ranges that are associated with the superscope. | [optional] 
 **StaticHosts** | Pointer to **int64** | The number of static DHCP addresses configured in DHCP range objects that belong to the superscope. | [optional] [readonly] 
 **TotalHosts** | Pointer to **int64** | The total number of DHCP addresses configured in DHCP range objects that belong to the superscope. | [optional] [readonly] 
 
@@ -367,20 +367,20 @@ HasNetworkView returns a boolean if a field has been set.
 
 ### GetRanges
 
-`func (o *Mssuperscope) GetRanges() []string`
+`func (o *Mssuperscope) GetRanges() []map[string]interface{}`
 
 GetRanges returns the Ranges field if non-nil, zero value otherwise.
 
 ### GetRangesOk
 
-`func (o *Mssuperscope) GetRangesOk() (*[]string, bool)`
+`func (o *Mssuperscope) GetRangesOk() (*[]map[string]interface{}, bool)`
 
 GetRangesOk returns a tuple with the Ranges field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRanges
 
-`func (o *Mssuperscope) SetRanges(v []string)`
+`func (o *Mssuperscope) SetRanges(v []map[string]interface{})`
 
 SetRanges sets Ranges field to given value.
 

@@ -1,8 +1,7 @@
 openapi: 3.0.0
 info:
   contact:
-    email: jkhatri@infoblox.com
-    name: Jeenitkumar Khatri
+    name: Infoblox
     url: https://www.infoblox.com
   description: OpenAPI specification for Infoblox NIOS WAPI RPZ objects
   license:
@@ -10,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox RPZ API
-  version: 2.12.3
+  version: 2.13.6
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.12.3
+  url: /wapi/v2.13.6
 tags:
 - description: Operations for allrpzrecords objects
   name: allrpzrecords

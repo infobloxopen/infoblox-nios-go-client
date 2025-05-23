@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **SetMsDnsReportsSyncInterval** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetMsStickyIp** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetRestartAnycastWithDnsRestart** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
+**SetRpzAddSoa** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetDnsAccel** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetDnsAccelDebug** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetDnsAutoGen** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
@@ -341,6 +342,31 @@ SetSetRestartAnycastWithDnsRestart sets SetRestartAnycastWithDnsRestart field to
 `func (o *AdmingroupDnsSetCommands) HasSetRestartAnycastWithDnsRestart() bool`
 
 HasSetRestartAnycastWithDnsRestart returns a boolean if a field has been set.
+
+### GetSetRpzAddSoa
+
+`func (o *AdmingroupDnsSetCommands) GetSetRpzAddSoa() bool`
+
+GetSetRpzAddSoa returns the SetRpzAddSoa field if non-nil, zero value otherwise.
+
+### GetSetRpzAddSoaOk
+
+`func (o *AdmingroupDnsSetCommands) GetSetRpzAddSoaOk() (*bool, bool)`
+
+GetSetRpzAddSoaOk returns a tuple with the SetRpzAddSoa field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSetRpzAddSoa
+
+`func (o *AdmingroupDnsSetCommands) SetSetRpzAddSoa(v bool)`
+
+SetSetRpzAddSoa sets SetRpzAddSoa field to given value.
+
+### HasSetRpzAddSoa
+
+`func (o *AdmingroupDnsSetCommands) HasSetRpzAddSoa() bool`
+
+HasSetRpzAddSoa returns a boolean if a field has been set.
 
 ### GetSetDnsAccel
 

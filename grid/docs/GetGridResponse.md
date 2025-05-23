@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **Dscp** | Pointer to **int64** | The DSCP value. Valid values are integers between 0 and 63 inclusive. | [optional] 
 **EmailSetting** | Pointer to [**GridEmailSetting**](GridEmailSetting.md) |  | [optional] 
 **EmptyRecycleBin** | Pointer to **map[string]interface{}** |  | [optional] 
+**EnableFederation** | Pointer to **bool** | Determines if the federation feature is enabled or not. Test Setting will be performed for any change in enable_federation. | [optional] 
+**EnableForceSyncJoinTokenToGmc** | Pointer to **bool** | Determines if the force sync join token from GM to GMC is enabled or not. | [optional] 
 **EnableGuiApiForLanVip** | Pointer to **bool** | If set to True, GUI and API access are enabled on the LAN/VIP port and MGMT port (if configured). | [optional] 
 **EnableLom** | Pointer to **bool** | Determines if the LOM functionality is enabled or not. | [optional] 
 **EnableMemberRedirect** | Pointer to **bool** | Determines redirections is enabled or not for members. | [optional] 
@@ -481,6 +483,56 @@ SetEmptyRecycleBin sets EmptyRecycleBin field to given value.
 `func (o *GetGridResponse) HasEmptyRecycleBin() bool`
 
 HasEmptyRecycleBin returns a boolean if a field has been set.
+
+### GetEnableFederation
+
+`func (o *GetGridResponse) GetEnableFederation() bool`
+
+GetEnableFederation returns the EnableFederation field if non-nil, zero value otherwise.
+
+### GetEnableFederationOk
+
+`func (o *GetGridResponse) GetEnableFederationOk() (*bool, bool)`
+
+GetEnableFederationOk returns a tuple with the EnableFederation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableFederation
+
+`func (o *GetGridResponse) SetEnableFederation(v bool)`
+
+SetEnableFederation sets EnableFederation field to given value.
+
+### HasEnableFederation
+
+`func (o *GetGridResponse) HasEnableFederation() bool`
+
+HasEnableFederation returns a boolean if a field has been set.
+
+### GetEnableForceSyncJoinTokenToGmc
+
+`func (o *GetGridResponse) GetEnableForceSyncJoinTokenToGmc() bool`
+
+GetEnableForceSyncJoinTokenToGmc returns the EnableForceSyncJoinTokenToGmc field if non-nil, zero value otherwise.
+
+### GetEnableForceSyncJoinTokenToGmcOk
+
+`func (o *GetGridResponse) GetEnableForceSyncJoinTokenToGmcOk() (*bool, bool)`
+
+GetEnableForceSyncJoinTokenToGmcOk returns a tuple with the EnableForceSyncJoinTokenToGmc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableForceSyncJoinTokenToGmc
+
+`func (o *GetGridResponse) SetEnableForceSyncJoinTokenToGmc(v bool)`
+
+SetEnableForceSyncJoinTokenToGmc sets EnableForceSyncJoinTokenToGmc field to given value.
+
+### HasEnableForceSyncJoinTokenToGmc
+
+`func (o *GetGridResponse) HasEnableForceSyncJoinTokenToGmc() bool`
+
+HasEnableForceSyncJoinTokenToGmc returns a boolean if a field has been set.
 
 ### GetEnableGuiApiForLanVip
 

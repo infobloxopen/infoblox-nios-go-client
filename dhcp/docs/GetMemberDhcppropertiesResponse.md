@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 **EnableLeasequery** | Pointer to **bool** | Determines if lease query is allowed or not. This setting overrides the Grid-level setting. | [optional] 
 **EnableSnmpWarnings** | Pointer to **bool** | Determines if SNMP warnings are enabled or disabled on this DHCP member. When DHCP threshold is enabled and DHCP address usage crosses a watermark threshold, the appliance sends an SNMP trap to the trap receiver that was defined for the Grid member level. | [optional] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a member DHCP object. | [optional] 
+**GssTsigKeys** | Pointer to **[]map[string]interface{}** | The list of GSS-TSIG keys for a member DHCP object. | [optional] 
 **HighWaterMark** | Pointer to **int64** | Determines the high watermark value of a member DHCP server. If the percentage of allocated addresses exceeds this watermark, the appliance makes a syslog entry and sends an e-mail notification (if enabled). Specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **HighWaterMarkReset** | Pointer to **int64** | Determines the high watermark reset value of a member DHCP server. If the percentage of allocated addresses drops below this value, a corresponding SNMP trap is reset. Specifies the percentage of allocated addresses. The range is from 1 to 100. The high watermark reset value must be lower than the high watermark value. | [optional] 
 **HostName** | Pointer to **string** | Host name of the Grid member. | [optional] [readonly] 
@@ -65,7 +65,7 @@ Name | Type | Description | Notes
 **Ipv6EnableLeaseScavenging** | Pointer to **bool** | Indicates whether DHCPv6 lease scavenging is enabled or disabled. | [optional] 
 **Ipv6EnableRetryUpdates** | Pointer to **bool** | Determines if the DHCPv6 server retries failed dynamic DNS updates or not. | [optional] 
 **Ipv6GenerateHostname** | Pointer to **bool** | Determines if the server generates the hostname if it is not sent by the client. | [optional] 
-**Ipv6GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a member DHCPv6 object. | [optional] 
+**Ipv6GssTsigKeys** | Pointer to **[]map[string]interface{}** | The list of GSS-TSIG keys for a member DHCPv6 object. | [optional] 
 **Ipv6KdcServer** | Pointer to **string** | Determines the IPv6 address or FQDN of the Kerberos server for DHCPv6 GSS-TSIG authentication. This setting overrides the Grid level setting. | [optional] 
 **Ipv6LeaseScavengingTime** | Pointer to **int64** | The member-level grace period (in seconds) to keep an expired lease before it is deleted by the scavenging process. | [optional] 
 **Ipv6MicrosoftCodePage** | Pointer to **string** | The Microsoft client DHCP IPv6 code page value of a Grid member. This value is the hostname translation code page for Microsoft DHCP IPv6 clients and overrides the Grid level Microsoft DHCP IPv6 client code page. | [optional] 
@@ -78,7 +78,7 @@ Name | Type | Description | Notes
 **Ipv6addr** | Pointer to **string** | The IPv6 Address of the Grid member. | [optional] [readonly] 
 **KdcServer** | Pointer to **string** | The IPv4 address or FQDN of the Kerberos server for DHCPv4 GSS-TSIG authentication. This setting overrides the Grid level setting. | [optional] 
 **LeasePerClientSettings** | Pointer to **string** | Defines how the appliance releases DHCP leases. Valid values are \&quot;RELEASE_MACHING_ID\&quot;, \&quot;NEVER_RELEASE\&quot;, or \&quot;ONE_LEASE_PER_CLIENT\&quot;. The default is \&quot;RELEASE_MATCHING_ID\&quot;. | [optional] 
-**LeaseScavengeTime** | Pointer to **string** | Determines the lease scavenging time value. When this field is set, the appliance permanently deletes the free and backup leases that remain in the database beyond a specified period of time. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int32** | Determines the lease scavenging time value. When this field is set, the appliance permanently deletes the free and backup leases that remain in the database beyond a specified period of time. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogLeaseEvents** | Pointer to **bool** | This value specifies whether the grid member logs lease events. This setting overrides the Grid level setting. | [optional] 
 **LogicFilterRules** | Pointer to [**[]MemberDhcppropertiesLogicFilterRules**](MemberDhcppropertiesLogicFilterRules.md) | This field contains the logic filters to be applied on the Grid member. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **LowWaterMark** | Pointer to **int64** | Determines the low watermark value. If the percent of allocated addresses drops below this watermark, the appliance makes a syslog entry and sends an e-mail notification (if enabled). | [optional] 
@@ -1129,20 +1129,20 @@ HasExtattrs returns a boolean if a field has been set.
 
 ### GetGssTsigKeys
 
-`func (o *GetMemberDhcppropertiesResponse) GetGssTsigKeys() []string`
+`func (o *GetMemberDhcppropertiesResponse) GetGssTsigKeys() []map[string]interface{}`
 
 GetGssTsigKeys returns the GssTsigKeys field if non-nil, zero value otherwise.
 
 ### GetGssTsigKeysOk
 
-`func (o *GetMemberDhcppropertiesResponse) GetGssTsigKeysOk() (*[]string, bool)`
+`func (o *GetMemberDhcppropertiesResponse) GetGssTsigKeysOk() (*[]map[string]interface{}, bool)`
 
 GetGssTsigKeysOk returns a tuple with the GssTsigKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGssTsigKeys
 
-`func (o *GetMemberDhcppropertiesResponse) SetGssTsigKeys(v []string)`
+`func (o *GetMemberDhcppropertiesResponse) SetGssTsigKeys(v []map[string]interface{})`
 
 SetGssTsigKeys sets GssTsigKeys field to given value.
 
@@ -1704,20 +1704,20 @@ HasIpv6GenerateHostname returns a boolean if a field has been set.
 
 ### GetIpv6GssTsigKeys
 
-`func (o *GetMemberDhcppropertiesResponse) GetIpv6GssTsigKeys() []string`
+`func (o *GetMemberDhcppropertiesResponse) GetIpv6GssTsigKeys() []map[string]interface{}`
 
 GetIpv6GssTsigKeys returns the Ipv6GssTsigKeys field if non-nil, zero value otherwise.
 
 ### GetIpv6GssTsigKeysOk
 
-`func (o *GetMemberDhcppropertiesResponse) GetIpv6GssTsigKeysOk() (*[]string, bool)`
+`func (o *GetMemberDhcppropertiesResponse) GetIpv6GssTsigKeysOk() (*[]map[string]interface{}, bool)`
 
 GetIpv6GssTsigKeysOk returns a tuple with the Ipv6GssTsigKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv6GssTsigKeys
 
-`func (o *GetMemberDhcppropertiesResponse) SetIpv6GssTsigKeys(v []string)`
+`func (o *GetMemberDhcppropertiesResponse) SetIpv6GssTsigKeys(v []map[string]interface{})`
 
 SetIpv6GssTsigKeys sets Ipv6GssTsigKeys field to given value.
 
@@ -2029,20 +2029,20 @@ HasLeasePerClientSettings returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *GetMemberDhcppropertiesResponse) GetLeaseScavengeTime() string`
+`func (o *GetMemberDhcppropertiesResponse) GetLeaseScavengeTime() int32`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *GetMemberDhcppropertiesResponse) GetLeaseScavengeTimeOk() (*string, bool)`
+`func (o *GetMemberDhcppropertiesResponse) GetLeaseScavengeTimeOk() (*int32, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *GetMemberDhcppropertiesResponse) SetLeaseScavengeTime(v string)`
+`func (o *GetMemberDhcppropertiesResponse) SetLeaseScavengeTime(v int32)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 
