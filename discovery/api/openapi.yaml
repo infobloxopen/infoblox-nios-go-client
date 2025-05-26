@@ -1,8 +1,7 @@
 openapi: 3.0.0
 info:
   contact:
-    email: jkhatri@infoblox.com
-    name: Jeenitkumar Khatri
+    name: Infoblox
     url: https://www.infoblox.com
   description: OpenAPI specification for Infoblox NIOS WAPI DISCOVERY objects
   license:
@@ -10,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DISCOVERY API
-  version: 2.12.3
+  version: 2.13.6
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.12.3
+  url: /wapi/v2.13.6
 tags:
 - description: Operations for discovery objects
   name: discovery
@@ -3320,16 +3319,16 @@ components:
         cap_description_ind: false
         cap_net_vlan_provisioning_na_reason: Example cap_net_vlan_provisioning_na_reason
         networks:
-        - network
-        - network
+        - "{}"
+        - "{}"
         type: Example type
         network: Example network
         cap_vlan_assignment_ind: false
         cap_voice_vlan_ind: false
         cap_admin_status_na_reason: Example cap_admin_status_na_reason
         neighbors:
-        - discovery:deviceneighbor
-        - discovery:deviceneighbor
+        - "{}"
+        - "{}"
         vendor: Example vendor
         network_infos:
         - network_str: Example network_str
@@ -3343,8 +3342,8 @@ components:
         - available_mgmt_ips
         cap_net_deprovisioning_na_reason: Example cap_net_deprovisioning_na_reason
         interfaces:
-        - discovery:deviceinterface
-        - discovery:deviceinterface
+        - "{}"
+        - "{}"
         address: Example address
         extattrs:
           key:
@@ -3495,7 +3494,7 @@ components:
           items:
             enum:
             - discovery:deviceinterface
-            type: string
+            type: object
           readOnly: true
           type: array
         location:
@@ -3522,7 +3521,7 @@ components:
           items:
             enum:
             - discovery:deviceneighbor
-            type: string
+            type: object
           readOnly: true
           type: array
         network:
@@ -3551,7 +3550,7 @@ components:
           items:
             enum:
             - network
-            type: string
+            type: object
           readOnly: true
           type: array
         os_version:
@@ -3797,13 +3796,16 @@ components:
         last_change: 1
         cap_if_description_ind: false
         cap_if_net_provisioning_ipv4_ind: false
-        index: Example index
+        index: 1
         cap_if_description_na_reason: Example cap_if_description_na_reason
         cap_if_net_deprovisioning_ipv4_na_reason: Example cap_if_net_deprovisioning_ipv4_na_reason
         aggr_interface_name: Example aggr_interface_name
         port_fast: Example port_fast
         admin_status_task_info:
-          details: details
+          details:
+            id: 1
+            is_synchronized: false
+            status: Example status
           status: Example status
         cap_if_admin_status_ind: false
         link_aggregation: false
@@ -3813,12 +3815,22 @@ components:
         vrf_rd: Example vrf_rd
         cap_if_vlan_assignment_ind: false
         vlan_info_task_info:
-          data_vlan_info: data_vlan_info
-          details: details
-          voice_vlan_info: voice_vlan_info
+          data_vlan_info:
+            name: Example name
+            id: 1
+          details:
+            id: 1
+            is_synchronized: false
+            status: Example status
+          voice_vlan_info:
+            name: Example name
+            id: 1
         description_task_info:
           description: Example description
-          details: details
+          details:
+            id: 1
+            is_synchronized: false
+            status: Example status
         trunk_status: Example trunk_status
         _ref: _ref
         name: Example name
@@ -3969,11 +3981,9 @@ components:
           type: array
         index:
           description: "The interface index number, as reported by SNMP."
-          enum:
-          - int
-          example: Example index
+          example: 1
           readOnly: true
-          type: string
+          type: integer
         last_change:
           description: Timestamp of the last interface property change detected.
           example: 1
@@ -4085,7 +4095,10 @@ components:
       type: object
     DiscoveryDeviceinterfaceAdminStatusTaskInfo:
       example:
-        details: details
+        details:
+          id: 1
+          is_synchronized: false
+          status: Example status
         status: Example status
       properties:
         status:
@@ -4100,6 +4113,10 @@ components:
           $ref: '#/components/schemas/DiscoverydeviceinterfaceadminstatustaskinfoDetails'
       type: object
     DiscoverydeviceinterfaceadminstatustaskinfoDetails:
+      example:
+        id: 1
+        is_synchronized: false
+        status: Example status
       properties:
         id:
           description: The ID of the associated port control task.
@@ -4127,7 +4144,10 @@ components:
     DiscoveryDeviceinterfaceDescriptionTaskInfo:
       example:
         description: Example description
-        details: details
+        details:
+          id: 1
+          is_synchronized: false
+          status: Example status
       properties:
         description:
           description: The configured description value.
@@ -4138,6 +4158,10 @@ components:
           $ref: '#/components/schemas/DiscoverydeviceinterfacedescriptiontaskinfoDetails'
       type: object
     DiscoverydeviceinterfacedescriptiontaskinfoDetails:
+      example:
+        id: 1
+        is_synchronized: false
+        status: Example status
       properties:
         id:
           description: The ID of the associated port control task.
@@ -4198,9 +4222,16 @@ components:
       type: object
     DiscoveryDeviceinterfaceVlanInfoTaskInfo:
       example:
-        data_vlan_info: data_vlan_info
-        details: details
-        voice_vlan_info: voice_vlan_info
+        data_vlan_info:
+          name: Example name
+          id: 1
+        details:
+          id: 1
+          is_synchronized: false
+          status: Example status
+        voice_vlan_info:
+          name: Example name
+          id: 1
       properties:
         data_vlan_info:
           $ref: '#/components/schemas/DiscoverydeviceinterfacevlaninfotaskinfoDataVlanInfo'
@@ -4210,6 +4241,9 @@ components:
           $ref: '#/components/schemas/DiscoverydeviceinterfacevlaninfotaskinfoDetails'
       type: object
     DiscoverydeviceinterfacevlaninfotaskinfoDataVlanInfo:
+      example:
+        name: Example name
+        id: 1
       properties:
         id:
           description: The Vlan ID.
@@ -4222,6 +4256,9 @@ components:
           type: string
       type: object
     DiscoverydeviceinterfacevlaninfotaskinfoVoiceVlanInfo:
+      example:
+        name: Example name
+        id: 1
       properties:
         id:
           description: The Vlan ID.
@@ -4234,6 +4271,10 @@ components:
           type: string
       type: object
     DiscoverydeviceinterfacevlaninfotaskinfoDetails:
+      example:
+        id: 1
+        is_synchronized: false
+        status: Example status
       properties:
         id:
           description: The ID of the associated port control task.
@@ -4530,16 +4571,32 @@ components:
         basic_polling_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
-          switch_port_data_collection_polling_interval: 1
           credential_group: Example credential_group
+          polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
           complete_ping_sweep: false
-          switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-          port_scanning: false
+          switch_port_data_collection_polling_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
+          use_global_polling_frequency_modifier: false
           snmp_collection: false
           smart_subnet_ping_sweep: false
-          auto_arp_refresh_before_switch_port_polling: false
           netbios_scanning: false
+          switch_port_data_collection_polling_interval: 1
+          port_scanning: false
+          auto_arp_refresh_before_switch_port_polling: false
         enable_advisor: false
         diagnostic_status: "{}"
         advisor_settings:
@@ -4590,6 +4647,13 @@ components:
           comment: Example comment
           id: 1
           user: Example user
+        device_hints:
+        - criteria: Example criteria
+          device_type: Example device_type
+          comment: Example comment
+        - criteria: Example criteria
+          device_type: Example device_type
+          comment: Example comment
         auto_conversion_settings:
         - network_view: Example network_view
           condition: Example condition
@@ -4629,7 +4693,21 @@ components:
           comment: Example comment
         port_control_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         same_port_control_discovery_blackout: false
         grid_name: Example grid_name
@@ -4640,7 +4718,21 @@ components:
           end_host_polling_interval: 1
           end_host_polling: Example end_host_polling
           default_network_view: Example default_network_view
-          end_host_polling_schedule: end_host_polling_schedule
+          end_host_polling_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
         advanced_sdn_polling_settings:
           disable_sdn_discovery_outside_ipam: false
           networks_mapping_policy: Example networks_mapping_policy
@@ -4671,7 +4763,21 @@ components:
         vrf_mapping_policy: Example vrf_mapping_policy
         discovery_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
       properties:
         _ref:
@@ -4706,6 +4812,13 @@ components:
           - discovery:clicredential
           items:
             $ref: '#/components/schemas/DiscoveryGridpropertiesCliCredentials'
+          type: array
+        device_hints:
+          description: Device Hints.
+          enum:
+          - discovery:devicehint
+          items:
+            $ref: '#/components/schemas/DiscoveryGridpropertiesDeviceHints'
           type: array
         diagnostic:
           properties: {}
@@ -5119,16 +5232,32 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
-        switch_port_data_collection_polling_interval: 1
         credential_group: Example credential_group
+        polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
         complete_ping_sweep: false
-        switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-        port_scanning: false
+        switch_port_data_collection_polling_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
+        use_global_polling_frequency_modifier: false
         snmp_collection: false
         smart_subnet_ping_sweep: false
-        auto_arp_refresh_before_switch_port_polling: false
         netbios_scanning: false
+        switch_port_data_collection_polling_interval: 1
+        port_scanning: false
+        auto_arp_refresh_before_switch_port_polling: false
       properties:
         port_scanning:
           description: Determines whether port scanning is enabled or not.
@@ -5182,8 +5311,31 @@ components:
           description: Credential group.
           example: Example credential_group
           type: string
+        polling_frequency_modifier:
+          description: Polling Frequency Modifier.
+          example: Example polling_frequency_modifier
+          type: string
+        use_global_polling_frequency_modifier:
+          description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
       type: object
     DiscoverygridpropertiesbasicpollingsettingsSwitchPortDataCollectionPollingSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -5195,7 +5347,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -5275,7 +5426,21 @@ components:
         end_host_polling_interval: 1
         end_host_polling: Example end_host_polling
         default_network_view: Example default_network_view
-        end_host_polling_schedule: end_host_polling_schedule
+        end_host_polling_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
       properties:
         sdn_discovery:
           description: Enable/disable SDN discovery.
@@ -5303,6 +5468,21 @@ components:
           $ref: '#/components/schemas/DiscoverygridpropertiesbasicsdnpollingsettingsEndHostPollingSchedule'
       type: object
     DiscoverygridpropertiesbasicsdnpollingsettingsEndHostPollingSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -5314,7 +5494,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -5430,6 +5609,27 @@ components:
           example: Example credential_group
           type: string
       type: object
+    DiscoveryGridpropertiesDeviceHints:
+      example:
+        criteria: Example criteria
+        device_type: Example device_type
+        comment: Example comment
+      properties:
+        device_type:
+          description: The type of Device
+          example: Example device_type
+          type: string
+        criteria:
+          description: Pattern or extended POSIX regular expression matching the Device
+            Hint. The regular expression string should contain the leading caret anchor
+            ^ and the trailing dollar anchor $ symbols.
+          example: Example criteria
+          type: string
+        comment:
+          description: The comment.
+          example: Example comment
+          type: string
+      type: object
     DiscoveryGridpropertiesDiagnostic:
       properties: {}
       type: object
@@ -5439,7 +5639,21 @@ components:
     DiscoveryGridpropertiesDiscoveryBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -5455,6 +5669,21 @@ components:
           $ref: '#/components/schemas/DiscoverygridpropertiesdiscoveryblackoutsettingBlackoutSchedule'
       type: object
     DiscoverygridpropertiesdiscoveryblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -5466,7 +5695,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -5543,7 +5771,21 @@ components:
     DiscoveryGridpropertiesPortControlBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -5559,6 +5801,21 @@ components:
           $ref: '#/components/schemas/DiscoverygridpropertiesportcontrolblackoutsettingBlackoutSchedule'
       type: object
     DiscoverygridpropertiesportcontrolblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -5570,7 +5827,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -5859,7 +6115,9 @@ components:
         sdn_configs:
         - sdn_type: Example sdn_type
           network_view: Example network_view
-          addresses: Example addresses
+          addresses:
+          - addresses
+          - addresses
           use_global_proxy: false
           network_interface_virtual_ip: Example network_interface_virtual_ip
           handle: Example handle
@@ -5873,7 +6131,9 @@ components:
           username: Example username
         - sdn_type: Example sdn_type
           network_view: Example network_view
-          addresses: Example addresses
+          addresses:
+          - addresses
+          - addresses
           use_global_proxy: false
           network_interface_virtual_ip: Example network_interface_virtual_ip
           handle: Example handle
@@ -6107,7 +6367,9 @@ components:
       example:
         sdn_type: Example sdn_type
         network_view: Example network_view
-        addresses: Example addresses
+        addresses:
+        - addresses
+        - addresses
         use_global_proxy: false
         network_interface_virtual_ip: Example network_interface_virtual_ip
         handle: Example handle
@@ -6134,7 +6396,6 @@ components:
           description: SDN controller IP addresses or FQDNs.
           enum:
           - string
-          example: Example addresses
           items:
             type: string
           type: array
@@ -6795,13 +7056,43 @@ components:
     Vdiscoverytask:
       additionalProperties: false
       example:
+        auto_consolidate_managed_tenant: false
+        identity_version: Example identity_version
+        public_network_view_mapping_policy: Example public_network_view_mapping_policy
+        fqdn_or_ip: Example fqdn_or_ip
+        domain_name: Example domain_name
+        password: Example password
+        protocol: Example protocol
+        sync_child_accounts: false
+        state: Example state
+        vdiscovery_control: "{}"
+        service_account_file: Example service_account_file
+        network_filter: Example network_filter
+        update_metadata: false
+        service_account_file_token: Example service_account_file_token
+        allow_unsecured_connection: false
+        govcloud_enabled: false
+        private_network_view: Example private_network_view
+        public_network_view: Example public_network_view
+        cdiscovery_file_token: Example cdiscovery_file_token
+        dns_view_public_ip: Example dns_view_public_ip
+        role_arn: Example role_arn
+        port: 1
+        name: Example name
+        multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+        private_network_view_mapping_policy: Example private_network_view_mapping_policy
+        dns_view_private_ip: Example dns_view_private_ip
+        merge_data: false
+        credentials_type: Example credentials_type
         use_identity: false
         driver_type: Example driver_type
         update_dns_view_private_ip: false
         scheduled_run:
           month: 1
           year: 1
-          weekdays: Example weekdays
+          weekdays:
+          - weekdays
+          - weekdays
           disable: false
           recurring_time: 1
           repeat: Example repeat
@@ -6811,48 +7102,34 @@ components:
           day_of_month: 1
           hour_of_day: 1
           frequency: Example frequency
-        auto_consolidate_managed_tenant: false
         enable_filter: false
         enabled: false
         auto_create_dns_record: false
         auto_create_dns_record_type: Example auto_create_dns_record_type
-        identity_version: Example identity_version
-        public_network_view_mapping_policy: Example public_network_view_mapping_policy
-        fqdn_or_ip: Example fqdn_or_ip
-        domain_name: Example domain_name
-        password: Example password
-        protocol: Example protocol
         update_dns_view_public_ip: false
         auto_consolidate_cloud_ea: false
         member: Example member
-        state: Example state
-        vdiscovery_control: "{}"
         network_list:
         - network_list
         - network_list
-        service_account_file: Example service_account_file
-        network_filter: Example network_filter
-        update_metadata: false
         state_msg: Example state_msg
-        allow_unsecured_connection: false
         last_run: 1
-        private_network_view: Example private_network_view
-        public_network_view: Example public_network_view
-        dns_view_public_ip: Example dns_view_public_ip
+        accounts_list: Example accounts_list
         auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
-        port: 1
+        selected_regions: Example selected_regions
         _ref: _ref
-        name: Example name
         comment: Example comment
-        private_network_view_mapping_policy: Example private_network_view_mapping_policy
         auto_consolidate_managed_vm: false
-        dns_view_private_ip: Example dns_view_private_ip
-        merge_data: false
-        credentials_type: Example credentials_type
         username: Example username
       properties:
         _ref:
           description: The reference to the object.
+          type: string
+        accounts_list:
+          description: The AWS Account IDs or GCP Project IDs list associated with
+            this task.
+          example: Example accounts_list
+          readOnly: true
           type: string
         allow_unsecured_connection:
           description: Allow unsecured connection over HTTPS and bypass validation
@@ -6888,6 +7165,10 @@ components:
           - HOST_RECORD
           - A_PTR_RECORD
           example: Example auto_create_dns_record_type
+          type: string
+        cdiscovery_file_token:
+          description: The AWS account IDs or GCP Project IDs file's token.
+          example: Example cdiscovery_file_token
           type: string
         comment:
           description: Comment on the task.
@@ -6935,6 +7216,10 @@ components:
           description: FQDN or IP of the cloud management platform.
           example: Example fqdn_or_ip
           type: string
+        govcloud_enabled:
+          description: Indicates if gov cloud is enabled or disabled.
+          example: false
+          type: boolean
         identity_version:
           description: Identity service version.
           enum:
@@ -6956,6 +7241,14 @@ components:
           description: Whether to replace the old data with new or not.
           example: false
           type: boolean
+        multiple_accounts_sync_policy:
+          description: Discover all child accounts or Upload child account ids to
+            discover..
+          enum:
+          - DISCOVER
+          - UPLOAD
+          example: Example multiple_accounts_sync_policy
+          type: string
         name:
           description: Name of this cloud discovery task. Uniquely identify a task.
           example: Example name
@@ -7018,11 +7311,24 @@ components:
           - AUTO_CREATE
           example: Example public_network_view_mapping_policy
           type: string
+        role_arn:
+          description: Role ARN for syncing child accounts; maximum 128 characters.
+          example: Example role_arn
+          type: string
         scheduled_run:
           $ref: '#/components/schemas/VdiscoverytaskScheduledRun'
+        selected_regions:
+          description: String containing selected regions for discovery in comma separated
+            format.
+          example: Example selected_regions
+          type: string
         service_account_file:
           description: The service_account_file for GCP.
           example: Example service_account_file
+          type: string
+        service_account_file_token:
+          description: Service account file's token.
+          example: Example service_account_file_token
           type: string
         state:
           description: Current state of this task.
@@ -7043,6 +7349,10 @@ components:
           example: Example state_msg
           readOnly: true
           type: string
+        sync_child_accounts:
+          description: Synchronizing child accounts is enabled or disabled.
+          example: false
+          type: boolean
         update_dns_view_private_ip:
           description: "If set to true, the appliance uses a specific DNS view for\
             \ private IPs."
@@ -7074,7 +7384,9 @@ components:
       example:
         month: 1
         year: 1
-        weekdays: Example weekdays
+        weekdays:
+        - weekdays
+        - weekdays
         disable: false
         recurring_time: 1
         repeat: Example repeat
@@ -7095,7 +7407,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -7319,16 +7630,16 @@ components:
           cap_description_ind: false
           cap_net_vlan_provisioning_na_reason: Example cap_net_vlan_provisioning_na_reason
           networks:
-          - network
-          - network
+          - "{}"
+          - "{}"
           type: Example type
           network: Example network
           cap_vlan_assignment_ind: false
           cap_voice_vlan_ind: false
           cap_admin_status_na_reason: Example cap_admin_status_na_reason
           neighbors:
-          - discovery:deviceneighbor
-          - discovery:deviceneighbor
+          - "{}"
+          - "{}"
           vendor: Example vendor
           network_infos:
           - network_str: Example network_str
@@ -7342,8 +7653,8 @@ components:
           - available_mgmt_ips
           cap_net_deprovisioning_na_reason: Example cap_net_deprovisioning_na_reason
           interfaces:
-          - discovery:deviceinterface
-          - discovery:deviceinterface
+          - "{}"
+          - "{}"
           address: Example address
           extattrs:
             key:
@@ -7473,13 +7784,16 @@ components:
           last_change: 1
           cap_if_description_ind: false
           cap_if_net_provisioning_ipv4_ind: false
-          index: Example index
+          index: 1
           cap_if_description_na_reason: Example cap_if_description_na_reason
           cap_if_net_deprovisioning_ipv4_na_reason: Example cap_if_net_deprovisioning_ipv4_na_reason
           aggr_interface_name: Example aggr_interface_name
           port_fast: Example port_fast
           admin_status_task_info:
-            details: details
+            details:
+              id: 1
+              is_synchronized: false
+              status: Example status
             status: Example status
           cap_if_admin_status_ind: false
           link_aggregation: false
@@ -7489,12 +7803,22 @@ components:
           vrf_rd: Example vrf_rd
           cap_if_vlan_assignment_ind: false
           vlan_info_task_info:
-            data_vlan_info: data_vlan_info
-            details: details
-            voice_vlan_info: voice_vlan_info
+            data_vlan_info:
+              name: Example name
+              id: 1
+            details:
+              id: 1
+              is_synchronized: false
+              status: Example status
+            voice_vlan_info:
+              name: Example name
+              id: 1
           description_task_info:
             description: Example description
-            details: details
+            details:
+              id: 1
+              is_synchronized: false
+              status: Example status
           trunk_status: Example trunk_status
           _ref: _ref
           name: Example name
@@ -7654,16 +7978,32 @@ components:
           basic_polling_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_advisor: false
           diagnostic_status: "{}"
           advisor_settings:
@@ -7714,6 +8054,13 @@ components:
             comment: Example comment
             id: 1
             user: Example user
+          device_hints:
+          - criteria: Example criteria
+            device_type: Example device_type
+            comment: Example comment
+          - criteria: Example criteria
+            device_type: Example device_type
+            comment: Example comment
           auto_conversion_settings:
           - network_view: Example network_view
             condition: Example condition
@@ -7753,7 +8100,21 @@ components:
             comment: Example comment
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           same_port_control_discovery_blackout: false
           grid_name: Example grid_name
@@ -7764,7 +8125,21 @@ components:
             end_host_polling_interval: 1
             end_host_polling: Example end_host_polling
             default_network_view: Example default_network_view
-            end_host_polling_schedule: end_host_polling_schedule
+            end_host_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
           advanced_sdn_polling_settings:
             disable_sdn_discovery_outside_ipam: false
             networks_mapping_policy: Example networks_mapping_policy
@@ -7795,7 +8170,21 @@ components:
           vrf_mapping_policy: Example vrf_mapping_policy
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
       properties:
         result:
@@ -7898,7 +8287,9 @@ components:
           sdn_configs:
           - sdn_type: Example sdn_type
             network_view: Example network_view
-            addresses: Example addresses
+            addresses:
+            - addresses
+            - addresses
             use_global_proxy: false
             network_interface_virtual_ip: Example network_interface_virtual_ip
             handle: Example handle
@@ -7912,7 +8303,9 @@ components:
             username: Example username
           - sdn_type: Example sdn_type
             network_view: Example network_view
-            addresses: Example addresses
+            addresses:
+            - addresses
+            - addresses
             use_global_proxy: false
             network_interface_virtual_ip: Example network_interface_virtual_ip
             handle: Example handle
@@ -8046,13 +8439,43 @@ components:
       description: The response format to create __Vdiscoverytask__ in object format.
       example:
         result:
+          auto_consolidate_managed_tenant: false
+          identity_version: Example identity_version
+          public_network_view_mapping_policy: Example public_network_view_mapping_policy
+          fqdn_or_ip: Example fqdn_or_ip
+          domain_name: Example domain_name
+          password: Example password
+          protocol: Example protocol
+          sync_child_accounts: false
+          state: Example state
+          vdiscovery_control: "{}"
+          service_account_file: Example service_account_file
+          network_filter: Example network_filter
+          update_metadata: false
+          service_account_file_token: Example service_account_file_token
+          allow_unsecured_connection: false
+          govcloud_enabled: false
+          private_network_view: Example private_network_view
+          public_network_view: Example public_network_view
+          cdiscovery_file_token: Example cdiscovery_file_token
+          dns_view_public_ip: Example dns_view_public_ip
+          role_arn: Example role_arn
+          port: 1
+          name: Example name
+          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+          private_network_view_mapping_policy: Example private_network_view_mapping_policy
+          dns_view_private_ip: Example dns_view_private_ip
+          merge_data: false
+          credentials_type: Example credentials_type
           use_identity: false
           driver_type: Example driver_type
           update_dns_view_private_ip: false
           scheduled_run:
             month: 1
             year: 1
-            weekdays: Example weekdays
+            weekdays:
+            - weekdays
+            - weekdays
             disable: false
             recurring_time: 1
             repeat: Example repeat
@@ -8062,44 +8485,24 @@ components:
             day_of_month: 1
             hour_of_day: 1
             frequency: Example frequency
-          auto_consolidate_managed_tenant: false
           enable_filter: false
           enabled: false
           auto_create_dns_record: false
           auto_create_dns_record_type: Example auto_create_dns_record_type
-          identity_version: Example identity_version
-          public_network_view_mapping_policy: Example public_network_view_mapping_policy
-          fqdn_or_ip: Example fqdn_or_ip
-          domain_name: Example domain_name
-          password: Example password
-          protocol: Example protocol
           update_dns_view_public_ip: false
           auto_consolidate_cloud_ea: false
           member: Example member
-          state: Example state
-          vdiscovery_control: "{}"
           network_list:
           - network_list
           - network_list
-          service_account_file: Example service_account_file
-          network_filter: Example network_filter
-          update_metadata: false
           state_msg: Example state_msg
-          allow_unsecured_connection: false
           last_run: 1
-          private_network_view: Example private_network_view
-          public_network_view: Example public_network_view
-          dns_view_public_ip: Example dns_view_public_ip
+          accounts_list: Example accounts_list
           auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
-          port: 1
+          selected_regions: Example selected_regions
           _ref: _ref
-          name: Example name
           comment: Example comment
-          private_network_view_mapping_policy: Example private_network_view_mapping_policy
           auto_consolidate_managed_vm: false
-          dns_view_private_ip: Example dns_view_private_ip
-          merge_data: false
-          credentials_type: Example credentials_type
           username: Example username
       properties:
         result:
@@ -8118,13 +8521,43 @@ components:
       description: The response format to update __Vdiscoverytask__ in object format.
       example:
         result:
+          auto_consolidate_managed_tenant: false
+          identity_version: Example identity_version
+          public_network_view_mapping_policy: Example public_network_view_mapping_policy
+          fqdn_or_ip: Example fqdn_or_ip
+          domain_name: Example domain_name
+          password: Example password
+          protocol: Example protocol
+          sync_child_accounts: false
+          state: Example state
+          vdiscovery_control: "{}"
+          service_account_file: Example service_account_file
+          network_filter: Example network_filter
+          update_metadata: false
+          service_account_file_token: Example service_account_file_token
+          allow_unsecured_connection: false
+          govcloud_enabled: false
+          private_network_view: Example private_network_view
+          public_network_view: Example public_network_view
+          cdiscovery_file_token: Example cdiscovery_file_token
+          dns_view_public_ip: Example dns_view_public_ip
+          role_arn: Example role_arn
+          port: 1
+          name: Example name
+          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+          private_network_view_mapping_policy: Example private_network_view_mapping_policy
+          dns_view_private_ip: Example dns_view_private_ip
+          merge_data: false
+          credentials_type: Example credentials_type
           use_identity: false
           driver_type: Example driver_type
           update_dns_view_private_ip: false
           scheduled_run:
             month: 1
             year: 1
-            weekdays: Example weekdays
+            weekdays:
+            - weekdays
+            - weekdays
             disable: false
             recurring_time: 1
             repeat: Example repeat
@@ -8134,44 +8567,24 @@ components:
             day_of_month: 1
             hour_of_day: 1
             frequency: Example frequency
-          auto_consolidate_managed_tenant: false
           enable_filter: false
           enabled: false
           auto_create_dns_record: false
           auto_create_dns_record_type: Example auto_create_dns_record_type
-          identity_version: Example identity_version
-          public_network_view_mapping_policy: Example public_network_view_mapping_policy
-          fqdn_or_ip: Example fqdn_or_ip
-          domain_name: Example domain_name
-          password: Example password
-          protocol: Example protocol
           update_dns_view_public_ip: false
           auto_consolidate_cloud_ea: false
           member: Example member
-          state: Example state
-          vdiscovery_control: "{}"
           network_list:
           - network_list
           - network_list
-          service_account_file: Example service_account_file
-          network_filter: Example network_filter
-          update_metadata: false
           state_msg: Example state_msg
-          allow_unsecured_connection: false
           last_run: 1
-          private_network_view: Example private_network_view
-          public_network_view: Example public_network_view
-          dns_view_public_ip: Example dns_view_public_ip
+          accounts_list: Example accounts_list
           auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
-          port: 1
+          selected_regions: Example selected_regions
           _ref: _ref
-          name: Example name
           comment: Example comment
-          private_network_view_mapping_policy: Example private_network_view_mapping_policy
           auto_consolidate_managed_vm: false
-          dns_view_private_ip: Example dns_view_private_ip
-          merge_data: false
-          credentials_type: Example credentials_type
           username: Example username
       properties:
         result:

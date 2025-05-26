@@ -82,7 +82,7 @@ Name | Type | Description | Notes
 **MsSecondaries** | Pointer to [**[]ZoneAuthMsSecondaries**](ZoneAuthMsSecondaries.md) | The list with the Microsoft DNS servers that are secondary servers for the zone. | [optional] 
 **MsSyncDisabled** | Pointer to **bool** | This flag controls whether this zone is synchronized with Microsoft DNS servers. | [optional] 
 **MsSyncMasterName** | Pointer to **string** | The name of MS synchronization master for this zone. | [optional] [readonly] 
-**NetworkAssociations** | Pointer to **[]string** | The list with the associated network/network container information. | [optional] [readonly] 
+**NetworkAssociations** | Pointer to **[]map[string]interface{}** | The list with the associated network/network container information. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this zone resides. | [optional] [readonly] 
 **NotifyDelay** | Pointer to **int64** | The number of seconds in delay with which notify messages are sent to secondaries. | [optional] 
 **NsGroup** | Pointer to **string** | The name server group that serves DNS for this zone. | [optional] 
@@ -91,6 +91,7 @@ Name | Type | Description | Notes
 **PrimaryType** | Pointer to **string** | The type of the primary server. | [optional] [readonly] 
 **RecordNamePolicy** | Pointer to **string** | The hostname policy for records under this zone. | [optional] 
 **RecordsMonitored** | Pointer to **bool** | Determines if this zone is also monitoring resource records. | [optional] [readonly] 
+**RemoveSubzones** | Pointer to **bool** | Remove subzones delete option. Determines whether all child objects should be removed alongside with the parent zone or child objects should be assigned to another parental zone. By default child objects are deleted with the parent zone. | [optional] 
 **RestartIfNeeded** | Pointer to **bool** | Restarts the member service. | [optional] 
 **RrNotQueriedEnabledTime** | Pointer to **int64** | The time data collection for Not Queried Resource Record was enabled for this zone. | [optional] [readonly] 
 **RunScavenging** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -2102,20 +2103,20 @@ HasMsSyncMasterName returns a boolean if a field has been set.
 
 ### GetNetworkAssociations
 
-`func (o *GetZoneAuthResponse) GetNetworkAssociations() []string`
+`func (o *GetZoneAuthResponse) GetNetworkAssociations() []map[string]interface{}`
 
 GetNetworkAssociations returns the NetworkAssociations field if non-nil, zero value otherwise.
 
 ### GetNetworkAssociationsOk
 
-`func (o *GetZoneAuthResponse) GetNetworkAssociationsOk() (*[]string, bool)`
+`func (o *GetZoneAuthResponse) GetNetworkAssociationsOk() (*[]map[string]interface{}, bool)`
 
 GetNetworkAssociationsOk returns a tuple with the NetworkAssociations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworkAssociations
 
-`func (o *GetZoneAuthResponse) SetNetworkAssociations(v []string)`
+`func (o *GetZoneAuthResponse) SetNetworkAssociations(v []map[string]interface{})`
 
 SetNetworkAssociations sets NetworkAssociations field to given value.
 
@@ -2324,6 +2325,31 @@ SetRecordsMonitored sets RecordsMonitored field to given value.
 `func (o *GetZoneAuthResponse) HasRecordsMonitored() bool`
 
 HasRecordsMonitored returns a boolean if a field has been set.
+
+### GetRemoveSubzones
+
+`func (o *GetZoneAuthResponse) GetRemoveSubzones() bool`
+
+GetRemoveSubzones returns the RemoveSubzones field if non-nil, zero value otherwise.
+
+### GetRemoveSubzonesOk
+
+`func (o *GetZoneAuthResponse) GetRemoveSubzonesOk() (*bool, bool)`
+
+GetRemoveSubzonesOk returns a tuple with the RemoveSubzones field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRemoveSubzones
+
+`func (o *GetZoneAuthResponse) SetRemoveSubzones(v bool)`
+
+SetRemoveSubzones sets RemoveSubzones field to given value.
+
+### HasRemoveSubzones
+
+`func (o *GetZoneAuthResponse) HasRemoveSubzones() bool`
+
+HasRemoveSubzones returns a boolean if a field has been set.
 
 ### GetRestartIfNeeded
 

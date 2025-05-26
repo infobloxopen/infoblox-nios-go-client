@@ -80,6 +80,7 @@ Name | Type | Description | Notes
 **EnableDnsHealthCheck** | Pointer to **bool** | The flag that indicates whether the DNS health check is enabled or not. | [optional] 
 **EnableDnstapQueries** | Pointer to **bool** | Determines whether the query messages need to be forwarded to DNSTAP or not. | [optional] 
 **EnableDnstapResponses** | Pointer to **bool** | Determines whether the response messages need to be forwarded to DNSTAP or not. | [optional] 
+**EnableDnstapViolationsTls** | Pointer to **bool** | Determines whether the violations messages need to be forwarded to DNSTAP or not. | [optional] 
 **EnableExcludedDomainNames** | Pointer to **bool** | The flag that indicates whether excluding domain names from captured DNS queries and responses is enabled or disabled. | [optional] 
 **EnableFixedRrsetOrderFqdns** | Pointer to **bool** | Determines if the fixed RRset order FQDN is enabled or not. | [optional] 
 **EnableFtc** | Pointer to **bool** | Determines whether Fault Tolerant Caching (FTC) is enabled. | [optional] 
@@ -99,7 +100,7 @@ Name | Type | Description | Notes
 **FtcExpiredRecordTimeout** | Pointer to **int64** | The timeout interval (in seconds) after which the expired Fault Tolerant Caching (FTC)record is stale and no longer valid. | [optional] 
 **FtcExpiredRecordTtl** | Pointer to **int64** | The TTL value (in seconds) of the expired Fault Tolerant Caching (FTC) record in DNS responses. | [optional] 
 **GlueRecordAddresses** | Pointer to [**[]MemberDnsGlueRecordAddresses**](MemberDnsGlueRecordAddresses.md) | The list of glue record addresses. | [optional] 
-**GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a member DNS object. | [optional] 
+**GssTsigKeys** | Pointer to **[]map[string]interface{}** | The list of GSS-TSIG keys for a member DNS object. | [optional] 
 **HostName** | Pointer to **string** | The host name of the Grid member. | [optional] [readonly] 
 **Ipv4addr** | Pointer to **string** | The IPv4 Address of the Grid member. | [optional] [readonly] 
 **Ipv6GlueRecordAddresses** | Pointer to [**[]MemberDnsIpv6GlueRecordAddresses**](MemberDnsIpv6GlueRecordAddresses.md) | The list of IPv6 glue record addresses. | [optional] 
@@ -145,6 +146,7 @@ Name | Type | Description | Notes
 **TransfersIn** | Pointer to **int64** | The number of maximum concurrent transfers for the member. | [optional] 
 **TransfersOut** | Pointer to **int64** | The number of maximum outbound concurrent zone transfers for the member. | [optional] 
 **TransfersPerNs** | Pointer to **int64** | The number of maximum concurrent transfers per member for the member. | [optional] 
+**UpstreamAddressFamilyPreference** | Pointer to **string** | Upstream address family preference when dual mode is configured. | [optional] 
 **UseAddClientIpMacOptions** | Pointer to **bool** | Use flag for: add_client_ip_mac_options | [optional] 
 **UseAllowQuery** | Pointer to **bool** | Use flag for: allow_query | [optional] 
 **UseAllowTransfer** | Pointer to **bool** | Use flag for: allow_transfer | [optional] 
@@ -2130,6 +2132,31 @@ SetEnableDnstapResponses sets EnableDnstapResponses field to given value.
 
 HasEnableDnstapResponses returns a boolean if a field has been set.
 
+### GetEnableDnstapViolationsTls
+
+`func (o *GetMemberDnsResponse) GetEnableDnstapViolationsTls() bool`
+
+GetEnableDnstapViolationsTls returns the EnableDnstapViolationsTls field if non-nil, zero value otherwise.
+
+### GetEnableDnstapViolationsTlsOk
+
+`func (o *GetMemberDnsResponse) GetEnableDnstapViolationsTlsOk() (*bool, bool)`
+
+GetEnableDnstapViolationsTlsOk returns a tuple with the EnableDnstapViolationsTls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapViolationsTls
+
+`func (o *GetMemberDnsResponse) SetEnableDnstapViolationsTls(v bool)`
+
+SetEnableDnstapViolationsTls sets EnableDnstapViolationsTls field to given value.
+
+### HasEnableDnstapViolationsTls
+
+`func (o *GetMemberDnsResponse) HasEnableDnstapViolationsTls() bool`
+
+HasEnableDnstapViolationsTls returns a boolean if a field has been set.
+
 ### GetEnableExcludedDomainNames
 
 `func (o *GetMemberDnsResponse) GetEnableExcludedDomainNames() bool`
@@ -2607,20 +2634,20 @@ HasGlueRecordAddresses returns a boolean if a field has been set.
 
 ### GetGssTsigKeys
 
-`func (o *GetMemberDnsResponse) GetGssTsigKeys() []string`
+`func (o *GetMemberDnsResponse) GetGssTsigKeys() []map[string]interface{}`
 
 GetGssTsigKeys returns the GssTsigKeys field if non-nil, zero value otherwise.
 
 ### GetGssTsigKeysOk
 
-`func (o *GetMemberDnsResponse) GetGssTsigKeysOk() (*[]string, bool)`
+`func (o *GetMemberDnsResponse) GetGssTsigKeysOk() (*[]map[string]interface{}, bool)`
 
 GetGssTsigKeysOk returns a tuple with the GssTsigKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGssTsigKeys
 
-`func (o *GetMemberDnsResponse) SetGssTsigKeys(v []string)`
+`func (o *GetMemberDnsResponse) SetGssTsigKeys(v []map[string]interface{})`
 
 SetGssTsigKeys sets GssTsigKeys field to given value.
 
@@ -3754,6 +3781,31 @@ SetTransfersPerNs sets TransfersPerNs field to given value.
 `func (o *GetMemberDnsResponse) HasTransfersPerNs() bool`
 
 HasTransfersPerNs returns a boolean if a field has been set.
+
+### GetUpstreamAddressFamilyPreference
+
+`func (o *GetMemberDnsResponse) GetUpstreamAddressFamilyPreference() string`
+
+GetUpstreamAddressFamilyPreference returns the UpstreamAddressFamilyPreference field if non-nil, zero value otherwise.
+
+### GetUpstreamAddressFamilyPreferenceOk
+
+`func (o *GetMemberDnsResponse) GetUpstreamAddressFamilyPreferenceOk() (*string, bool)`
+
+GetUpstreamAddressFamilyPreferenceOk returns a tuple with the UpstreamAddressFamilyPreference field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpstreamAddressFamilyPreference
+
+`func (o *GetMemberDnsResponse) SetUpstreamAddressFamilyPreference(v string)`
+
+SetUpstreamAddressFamilyPreference sets UpstreamAddressFamilyPreference field to given value.
+
+### HasUpstreamAddressFamilyPreference
+
+`func (o *GetMemberDnsResponse) HasUpstreamAddressFamilyPreference() bool`
+
+HasUpstreamAddressFamilyPreference returns a boolean if a field has been set.
 
 ### GetUseAddClientIpMacOptions
 

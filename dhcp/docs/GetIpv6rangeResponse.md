@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **EnableDiscovery** | Pointer to **bool** | Determines whether a discovery is enabled or not for this range. When this is set to False, the discovery for this range is disabled. | [optional] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the range should be immediately enabled. | [optional] 
 **EndAddr** | Pointer to **string** | The IPv6 Address end address of the DHCP IPv6 range. | [optional] 
-**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP IPv6 Range object. | [optional] [readonly] 
+**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP IPv6 Range object. | [optional] [readonly] 
 **Exclude** | Pointer to [**[]Ipv6rangeExclude**](Ipv6rangeExclude.md) | These are ranges of IP addresses that the appliance does not use to assign to clients. You can use these exclusion addresses as static IP addresses. They contain the start and end addresses of the exclusion range, and optionally,information about this exclusion range. | [optional] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Ipv6EndPrefix** | Pointer to **string** | The IPv6 Address end prefix of the DHCP IPv6 range. | [optional] 
@@ -366,20 +366,20 @@ HasEndAddr returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *GetIpv6rangeResponse) GetEndpointSources() []string`
+`func (o *GetIpv6rangeResponse) GetEndpointSources() []map[string]interface{}`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *GetIpv6rangeResponse) GetEndpointSourcesOk() (*[]string, bool)`
+`func (o *GetIpv6rangeResponse) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *GetIpv6rangeResponse) SetEndpointSources(v []string)`
+`func (o *GetIpv6rangeResponse) SetEndpointSources(v []map[string]interface{})`
 
 SetEndpointSources sets EndpointSources field to given value.
 

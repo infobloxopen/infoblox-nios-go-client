@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **DiscoveredData** | Pointer to [**LeaseDiscoveredData**](LeaseDiscoveredData.md) |  | [optional] 
 **Ends** | Pointer to **int64** | The end time value of a DHCP Lease object. This field specifies the time when a lease ended. | [optional] [readonly] 
 **Fingerprint** | Pointer to **string** | DHCP fingerprint for the lease. | [optional] [readonly] 
-**Hardware** | Pointer to **string** | The hardware type of a DHCP Lease object. This field specifies the MAC address of the network interface on which the lease will be used. This field is for IPv4 leases only. | [optional] [readonly] 
+**Hardware** | Pointer to **string** | The hardware type of a DHCP Lease object. This field specifies the MAC address of the network interface on which the lease will be used. This field is supported for IPv4 leases, and from NIOS-9.0.6 onwards, also supported for IPv6 leases. | [optional] [readonly] 
 **Ipv6Duid** | Pointer to **string** | The DUID value for this lease. This field is only applicable for IPv6 leases. | [optional] [readonly] 
 **Ipv6Iaid** | Pointer to **string** | The interface ID of an IPv6 address that the Infoblox appliance leased to the DHCP client. This field is for IPv6 leases only. | [optional] [readonly] 
 **Ipv6PreferredLifetime** | Pointer to **int64** | The preferred lifetime value of an IPv6 address that the Infoblox appliance leased to the DHCP client. This field is for IPv6 leases only. | [optional] [readonly] 
@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **Option** | Pointer to **string** | The option value of a DHCP Lease object. This field specifies the agent circuit ID and remote ID sent by a DHCP relay agent in DHCP option 82. This field is for IPv4 leases only. | [optional] [readonly] 
 **Protocol** | Pointer to **string** | This field determines whether the lease is an IPv4 or IPv6 address. | [optional] [readonly] 
 **RemoteId** | Pointer to **string** | This field represents the \&quot;Remote ID\&quot; sub-option of DHCP option 82. Remote ID can be in ASCII form (e.g. &#x60;&#x60;\&quot;abcd\&quot;&#x60;&#x60;) or in colon-separated HEX form (e.g. &#x60;&#x60;1:2:ab:cd&#x60;&#x60;). HEX representation is used only when the sub-option value contains unprintable characters. If a remote ID sub-option value is in ASCII form, it is always enclosed in quotes to prevent ambiguous values (e.g. &#x60;&#x60;\&quot;10:20\&quot;&#x60;&#x60; - ASCII 5-byte string; &#x60;&#x60;10:20&#x60;&#x60; - HEX 2-byte value). * ASCII representation is used if the remote ID sub-option contains only printable ASCII characters (ASCII characters in range &#x60;&#x60;x20-0x7E&#x60;&#x60;). * The backslash symbol (&#x60;&#x60;\\&#x60;&#x60;) is used as an escape symbol to escape the quote symbol (&#x60;&#x60;\&quot;&#x60;&#x60;) in an ASCII string. * Double backslashes (&#x60;&#x60;\\\\&#x60;&#x60;) are used to represent the backslash symbol (&#x60;&#x60;\\&#x60;&#x60;) in an ASCII string. * HEX representation is used only when the remote ID sub-option value contains unprintable characters and is normalized as follows: * starting zero is removed from digits: &#x60;&#x60;1&#x60;&#x60;, &#x60;&#x60;a&#x60;&#x60; - Valid; &#x60;&#x60;01&#x60;&#x60;, &#x60;&#x60;0a&#x60;&#x60; - Invalid; * lowercase characters are used for symbols: &#x60;&#x60;fa&#x60;&#x60; - Valid; &#x60;&#x60;FA&#x60;&#x60; - Invalid. NIOS does not support the convertion between HEX and ASCII formats. Searches are performed using the exact same format and value as the sub-option is represented. Query examples assume the following leases are stored in the database: .. tabularcolumns:: |p{1in}|p{3in}|p{2in}| &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Number Option field Extracted remote ID field &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Lease01 agent.remote-id&#x3D; \&quot;00152654358700\&quot; \&quot;00152654358700\&quot; agent.circuit-id&#x3D; \&quot;BX1-PORT-003\&quot; Lease02 agent.remote-id&#x3D;\&quot;Dhcp \&quot;Dhcp Relay 10\&quot; Relay 10\&quot; agent.circuit-id&#x3D;\&quot;Port008\&quot; Lease03 agent.remote-id&#x3D;\&quot;00:01:02\&quot; \&quot;00:01:02\&quot; Lease04 agent.remote-id&#x3D;0:1:2 0:1:2 Lease05 agent.remote-id&#x3D;02:03 2:3 Lease06 agent.remote-id&#x3D;10:20 10:20 Lease07 agent.circuit-id&#x3D; \&quot;no-remote-id\&quot; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Expected results: .. tabularcolumns:: |p{1.5in}|p{1.5in}|p{3in}| &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Query Returned leases Comments &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; remote_id&#x3D;01:02 None EXACT query. No results are expected. remote_id&#x3D;\&quot;Dhcp Relay 10\&quot; Lease02 EXACT query for an ASCII value. remote_id&#x3D;0:1:2 Lease04 EXACT query for a HEX value. remote_id&#x3D;00:01:02 None EXACT query for a HEX value. No results are expected as the search value is not normalized to the same format used in the database. remote_id~&#x3D;10 Lease02, Lease06 REGEX query. remote_id~&#x3D;^\&quot;.*1 Lease01, Lease02, REGEX query. Only ASCII Lease03 values are expected due to the starting quote (&#x60;&#x60;\&quot;&#x60;&#x60;) in the search value. remote_id~&#x3D;^[^\&quot;]*2 Lease04, Lease05, REGEX query. Only HEX values Lease06 are expected as the starting quote (&#x60;&#x60;\&quot;&#x60;&#x60;) is excluded from the search value. remote_id&#x3D;\&quot;\&quot; None EXACT query. No results are expected as no leases that contain an empty remote ID value exist in the database. ID value in the database. remote_id~&#x3D;\&quot;\&quot; Lease01, Lease02, REGEX query. This query is Lease03, Lease04, expected to match any Lease05, Lease06 lease that contain remote ID set to any value. &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; **NOTE:** Lease07 is not expected to be returned when searching for the remote ID sub-option. | [optional] [readonly] 
+**RequestedOptions** | Pointer to **string** | This field contains the option request list received from the client. For DHCPv4, it includes \&quot;Parameter Request List\&quot; data and for DHCPv6, it includes \&quot;Option Request Option\&quot; data. | [optional] [readonly] 
 **ServedBy** | Pointer to **string** | The IP address of the server that sends an active lease to a client. | [optional] [readonly] 
 **ServerHostName** | Pointer to **string** | The host name of the Grid member or Microsoft DHCP server that issues the lease. | [optional] [readonly] 
 **Starts** | Pointer to **int64** | The start time of a DHCP Lease object. This field specifies the time when the lease starts. | [optional] [readonly] 
@@ -733,6 +734,31 @@ SetRemoteId sets RemoteId field to given value.
 `func (o *Lease) HasRemoteId() bool`
 
 HasRemoteId returns a boolean if a field has been set.
+
+### GetRequestedOptions
+
+`func (o *Lease) GetRequestedOptions() string`
+
+GetRequestedOptions returns the RequestedOptions field if non-nil, zero value otherwise.
+
+### GetRequestedOptionsOk
+
+`func (o *Lease) GetRequestedOptionsOk() (*string, bool)`
+
+GetRequestedOptionsOk returns a tuple with the RequestedOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedOptions
+
+`func (o *Lease) SetRequestedOptions(v string)`
+
+SetRequestedOptions sets RequestedOptions field to given value.
+
+### HasRequestedOptions
+
+`func (o *Lease) HasRequestedOptions() bool`
+
+HasRequestedOptions returns a boolean if a field has been set.
 
 ### GetServedBy
 

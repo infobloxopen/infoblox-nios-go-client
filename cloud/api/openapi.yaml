@@ -1,8 +1,7 @@
 openapi: 3.0.0
 info:
   contact:
-    email: jkhatri@infoblox.com
-    name: Jeenitkumar Khatri
+    name: Infoblox
     url: https://www.infoblox.com
   description: OpenAPI specification for Infoblox NIOS WAPI CLOUD objects
   license:
@@ -10,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox CLOUD API
-  version: 2.12.3
+  version: 2.13.6
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.12.3
+  url: /wapi/v2.13.6
 tags:
 - description: Operations for grid:cloudapi objects
   name: grid:cloudapi
@@ -2280,7 +2279,9 @@ components:
         gateway_config:
           port: 1
           enable_proxy_service: false
-          endpoint_mapping: endpoint_mapping
+          endpoint_mapping:
+            endpoint_fqdn: Example endpoint_fqdn
+            gateway_fqdn: Example gateway_fqdn
         _ref: _ref
         enable_recycle_bin: false
         allow_api_admins: Example allow_api_admins
@@ -2339,7 +2340,9 @@ components:
       example:
         port: 1
         enable_proxy_service: false
-        endpoint_mapping: endpoint_mapping
+        endpoint_mapping:
+          endpoint_fqdn: Example endpoint_fqdn
+          gateway_fqdn: Example gateway_fqdn
       properties:
         enable_proxy_service:
           description: Enable Gateway Service.
@@ -2354,6 +2357,9 @@ components:
           $ref: '#/components/schemas/GridcloudapigatewayconfigEndpointMapping'
       type: object
     GridcloudapigatewayconfigEndpointMapping:
+      example:
+        endpoint_fqdn: Example endpoint_fqdn
+        gateway_fqdn: Example gateway_fqdn
       properties:
         gateway_fqdn:
           description: Gateway FQDN.
@@ -2492,7 +2498,10 @@ components:
         _ref: _ref
         name: Example name
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -2551,7 +2560,10 @@ components:
       type: object
     GridCloudapiTenantCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -2620,6 +2632,10 @@ components:
           type: string
       type: object
     GridcloudapitenantcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -2673,7 +2689,10 @@ components:
         network_count: 1
         subnet_cidr: 1
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -2823,7 +2842,10 @@ components:
       type: object
     GridCloudapiVmCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -2892,6 +2914,10 @@ components:
           type: string
       type: object
     GridcloudapivmcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -2939,7 +2965,10 @@ components:
         vm_creation_time: 1
         interface_name: Example interface_name
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -2955,8 +2984,8 @@ components:
         - associated_object_types
         network: Example network
         associated_objects:
-        - fixedaddress
-        - fixedaddress
+        - "{}"
+        - "{}"
         vm_operating_system: Example vm_operating_system
         vm_id: Example vm_id
         vm_type: Example vm_type
@@ -3026,7 +3055,7 @@ components:
           items:
             enum:
             - fixedaddress
-            type: string
+            type: object
           readOnly: true
           type: array
         cloud_info:
@@ -3215,7 +3244,10 @@ components:
       type: object
     GridCloudapiVmaddressCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -3284,6 +3316,10 @@ components:
           type: string
       type: object
     GridcloudapivmaddresscloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -3350,7 +3386,9 @@ components:
         gateway_config:
           port: 1
           enable_proxy_service: false
-          endpoint_mapping: endpoint_mapping
+          endpoint_mapping:
+            endpoint_fqdn: Example endpoint_fqdn
+            gateway_fqdn: Example gateway_fqdn
         _ref: _ref
         member:
           name: Example name
@@ -3433,7 +3471,9 @@ components:
       example:
         port: 1
         enable_proxy_service: false
-        endpoint_mapping: endpoint_mapping
+        endpoint_mapping:
+          endpoint_fqdn: Example endpoint_fqdn
+          gateway_fqdn: Example gateway_fqdn
       properties:
         enable_proxy_service:
           description: Enable Gateway Service.
@@ -3448,6 +3488,9 @@ components:
           $ref: '#/components/schemas/GridmembercloudapigatewayconfigEndpointMapping'
       type: object
     GridmembercloudapigatewayconfigEndpointMapping:
+      example:
+        endpoint_fqdn: Example endpoint_fqdn
+        gateway_fqdn: Example gateway_fqdn
       properties:
         gateway_fqdn:
           description: Gateway FQDN.
@@ -3507,6 +3550,7 @@ components:
         network_view: Example network_view
         grid_member: Example grid_member
         task_control: "{}"
+        accounts_list: Example accounts_list
         account_id: Example account_id
         consolidated_view: Example consolidated_view
         role_arn: Example role_arn
@@ -3517,6 +3561,7 @@ components:
         consolidate_zones: false
         disabled: false
         sync_status: Example sync_status
+        multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
         task_list:
         - state_msg: Example state_msg
           sync_public_zones: false
@@ -3546,6 +3591,7 @@ components:
           state: Example state
           status_timestamp: 1
           credentials_type: Example credentials_type
+        aws_account_ids_file_token: Example aws_account_ids_file_token
         network_view_mapping_policy: Example network_view_mapping_policy
       properties:
         _ref:
@@ -3555,6 +3601,15 @@ components:
           description: The AWS Account ID associated with this task group.
           example: Example account_id
           readOnly: true
+          type: string
+        accounts_list:
+          description: The AWS Account IDs list associated with this task group.
+          example: Example accounts_list
+          readOnly: true
+          type: string
+        aws_account_ids_file_token:
+          description: The AWS account IDs file's token.
+          example: Example aws_account_ids_file_token
           type: string
         comment:
           description: Comment for the task group; maximum 256 characters.
@@ -3575,6 +3630,15 @@ components:
         grid_member:
           description: Member on which the tasks in this task group will be run.
           example: Example grid_member
+          type: string
+        multiple_accounts_sync_policy:
+          description: Discover all child accounts or Upload child account ids to
+            discover..
+          enum:
+          - NONE
+          - DISCOVER_CHILDREN
+          - UPLOAD_CHILDREN
+          example: Example multiple_accounts_sync_policy
           type: string
         name:
           description: The name of this AWS Route53 sync task group.
@@ -3947,7 +4011,9 @@ components:
           gateway_config:
             port: 1
             enable_proxy_service: false
-            endpoint_mapping: endpoint_mapping
+            endpoint_mapping:
+              endpoint_fqdn: Example endpoint_fqdn
+              gateway_fqdn: Example gateway_fqdn
           _ref: _ref
           enable_recycle_bin: false
           allow_api_admins: Example allow_api_admins
@@ -4027,7 +4093,10 @@ components:
           _ref: _ref
           name: Example name
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -4083,7 +4152,10 @@ components:
           network_count: 1
           subnet_cidr: 1
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -4187,7 +4259,9 @@ components:
           gateway_config:
             port: 1
             enable_proxy_service: false
-            endpoint_mapping: endpoint_mapping
+            endpoint_mapping:
+              endpoint_fqdn: Example endpoint_fqdn
+              gateway_fqdn: Example gateway_fqdn
           _ref: _ref
           member:
             name: Example name
@@ -4216,6 +4290,7 @@ components:
           network_view: Example network_view
           grid_member: Example grid_member
           task_control: "{}"
+          accounts_list: Example accounts_list
           account_id: Example account_id
           consolidated_view: Example consolidated_view
           role_arn: Example role_arn
@@ -4226,6 +4301,7 @@ components:
           consolidate_zones: false
           disabled: false
           sync_status: Example sync_status
+          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
           task_list:
           - state_msg: Example state_msg
             sync_public_zones: false
@@ -4255,6 +4331,7 @@ components:
             state: Example state
             status_timestamp: 1
             credentials_type: Example credentials_type
+          aws_account_ids_file_token: Example aws_account_ids_file_token
           network_view_mapping_policy: Example network_view_mapping_policy
       properties:
         result:
@@ -4276,6 +4353,7 @@ components:
           network_view: Example network_view
           grid_member: Example grid_member
           task_control: "{}"
+          accounts_list: Example accounts_list
           account_id: Example account_id
           consolidated_view: Example consolidated_view
           role_arn: Example role_arn
@@ -4286,6 +4364,7 @@ components:
           consolidate_zones: false
           disabled: false
           sync_status: Example sync_status
+          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
           task_list:
           - state_msg: Example state_msg
             sync_public_zones: false
@@ -4315,6 +4394,7 @@ components:
             state: Example state
             status_timestamp: 1
             credentials_type: Example credentials_type
+          aws_account_ids_file_token: Example aws_account_ids_file_token
           network_view_mapping_policy: Example network_view_mapping_policy
       properties:
         result:

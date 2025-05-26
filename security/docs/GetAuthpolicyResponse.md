@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **AdminGroups** | Pointer to **[]string** | List of names of local administration groups that are mapped to remote administration groups. | [optional] 
-**AuthServices** | Pointer to **[]string** | The array that contains an ordered list of refs to :doc:&#x60;localuser:authservice object &lt;/objects/localuser.authservice&gt;&#x60;, ldap_auth_service object ldap_auth_service, :doc:&#x60;radius:authservice object &lt;/objects/radius.authservice&gt;&#x60;, :doc:&#x60;tacacsplus:authservice object &lt;/objects/tacacsplus.authservice&gt;&#x60;, ad_auth_service object ad_auth_service, :doc:&#x60;certificate:authservice object &lt;/objects/certificate.authservice&gt;&#x60;. :doc:&#x60;saml:authservice object &lt;/objects/saml.authservice&gt;&#x60;, | [optional] 
+**AuthServices** | Pointer to **[]map[string]interface{}** | The array that contains an ordered list of refs to :doc:&#x60;localuser:authservice object &lt;/objects/localuser.authservice&gt;&#x60;, ldap_auth_service object ldap_auth_service, :doc:&#x60;radius:authservice object &lt;/objects/radius.authservice&gt;&#x60;, :doc:&#x60;tacacsplus:authservice object &lt;/objects/tacacsplus.authservice&gt;&#x60;, ad_auth_service object ad_auth_service, :doc:&#x60;certificate:authservice object &lt;/objects/certificate.authservice&gt;&#x60;. :doc:&#x60;saml:authservice object &lt;/objects/saml.authservice&gt;&#x60;, | [optional] 
 **DefaultGroup** | Pointer to **string** | The default admin group that provides authentication in case no valid group is found. | [optional] 
 **UsageType** | Pointer to **string** | Remote policies usage. | [optional] 
 **Result** | Pointer to [**Authpolicy**](Authpolicy.md) |  | [optional] 
@@ -82,20 +82,20 @@ HasAdminGroups returns a boolean if a field has been set.
 
 ### GetAuthServices
 
-`func (o *GetAuthpolicyResponse) GetAuthServices() []string`
+`func (o *GetAuthpolicyResponse) GetAuthServices() []map[string]interface{}`
 
 GetAuthServices returns the AuthServices field if non-nil, zero value otherwise.
 
 ### GetAuthServicesOk
 
-`func (o *GetAuthpolicyResponse) GetAuthServicesOk() (*[]string, bool)`
+`func (o *GetAuthpolicyResponse) GetAuthServicesOk() (*[]map[string]interface{}, bool)`
 
 GetAuthServicesOk returns a tuple with the AuthServices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthServices
 
-`func (o *GetAuthpolicyResponse) SetAuthServices(v []string)`
+`func (o *GetAuthpolicyResponse) SetAuthServices(v []map[string]interface{})`
 
 SetAuthServices sets AuthServices field to given value.
 

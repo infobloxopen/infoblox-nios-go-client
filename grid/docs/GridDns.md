@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **BlacklistRedirectAddresses** | Pointer to **[]string** | The IP addresses the appliance includes in the response it sends in place of a blacklisted IP address. | [optional] 
 **BlacklistRedirectTtl** | Pointer to **int64** | The TTL value (in seconds) of the synthetic DNS responses that result from blacklist redirection. | [optional] 
 **BlacklistRulesets** | Pointer to **[]string** | The DNS Ruleset object names assigned at the Grid level for blacklist redirection. | [optional] 
-**BulkHostNameTemplates** | Pointer to **[]string** | The list of bulk host name templates. There are four Infoblox predefined bulk host name templates. Template Name Template Format \&quot;Four Octets\&quot; -$1-$2-$3-$4 \&quot;Three Octets\&quot; -$2-$3-$4 \&quot;Two Octets\&quot; -$3-$4 \&quot;One Octet\&quot; -$4 | [optional] 
+**BulkHostNameTemplates** | Pointer to **[]map[string]interface{}** | The list of bulk host name templates. There are four Infoblox predefined bulk host name templates. Template Name Template Format \&quot;Four Octets\&quot; -$1-$2-$3-$4 \&quot;Three Octets\&quot; -$2-$3-$4 \&quot;Two Octets\&quot; -$3-$4 \&quot;One Octet\&quot; -$4 | [optional] 
 **CaptureDnsQueriesOnAllDomains** | Pointer to **bool** | Determines if the capture of DNS queries for all domains is enabled or disabled. | [optional] 
 **CheckNamesForDdnsAndZoneTransfer** | Pointer to **bool** | Determines whether the application of BIND check-names for zone transfers and DDNS updates are enabled. | [optional] 
 **ClientSubnetDomains** | Pointer to [**[]GridDnsClientSubnetDomains**](GridDnsClientSubnetDomains.md) | The list of zone domain names that are allowed or forbidden for EDNS client subnet (ECS) recursion. | [optional] 
@@ -76,12 +76,13 @@ Name | Type | Description | Notes
 **EnableCaptureDnsQueries** | Pointer to **bool** | Determines if the capture of DNS queries is enabled or disabled. | [optional] 
 **EnableCaptureDnsResponses** | Pointer to **bool** | Determines if the capture of DNS responses is enabled or disabled. | [optional] 
 **EnableClientSubnetForwarding** | Pointer to **bool** | Determines whether to enable forwarding EDNS client subnet options to upstream servers. | [optional] 
-**EnableClientSubnetRecursive** | Pointer to **bool** | Determines whether to enable adding EDNS client subnet options in recursive resolution. | [optional] 
+**EnableClientSubnetRecursive** | Pointer to **bool** | Determines whether to enable adding EDNS client subnet options in recursive resolution. The client_subnet_domains parameter value must not be empty to enable the enable_client_subnet_recursive parameter. | [optional] 
 **EnableDeleteAssociatedPtr** | Pointer to **bool** | Determines if the ability to automatically remove associated PTR records while deleting A or AAAA records is enabled or not. | [optional] 
 **EnableDns64** | Pointer to **bool** | Determines if the DNS64 support is enabled or not. | [optional] 
 **EnableDnsHealthCheck** | Pointer to **bool** | Determines if the DNS health check is enabled or not. | [optional] 
 **EnableDnstapQueries** | Pointer to **bool** | Determines whether the query messages need to be forwarded to DNSTAP or not. | [optional] 
 **EnableDnstapResponses** | Pointer to **bool** | Determines whether the response messages need to be forwarded to DNSTAP or not. | [optional] 
+**EnableDnstapViolationsTls** | Pointer to **bool** | Determines whether the violations messages need to be forwarded to DNSTAP or not. | [optional] 
 **EnableExcludedDomainNames** | Pointer to **bool** | Determines if excluding domain names from captured DNS queries and responses is enabled or disabled. | [optional] 
 **EnableFixedRrsetOrderFqdns** | Pointer to **bool** | Determines if the fixed RRset order FQDN is enabled or not. | [optional] 
 **EnableFtc** | Pointer to **bool** | Determines whether Fault Tolerant Caching (FTC) is enabled. | [optional] 
@@ -106,7 +107,7 @@ Name | Type | Description | Notes
 **GenEadbFromNetworkContainers** | Pointer to **bool** | Flag for taking EA values from IPAM Network Containers into consideration for the DTC topology EA database. | [optional] 
 **GenEadbFromNetworks** | Pointer to **bool** | Flag for taking EA values from IPAM Network into consideration for the DTC topology EA database. | [optional] 
 **GenEadbFromRanges** | Pointer to **bool** | Flag for taking EA values from IPAM Ranges into consideration for the DTC topology EA database. | [optional] 
-**GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a Grid DNS object. | [optional] 
+**GssTsigKeys** | Pointer to **[]map[string]interface{}** | The list of GSS-TSIG keys for a Grid DNS object. | [optional] 
 **LastQueriedAcl** | Pointer to [**[]GridDnsLastQueriedAcl**](GridDnsLastQueriedAcl.md) | Determines last queried ACL for the specified IPv4 or IPv6 addresses and networks in scavenging settings. | [optional] 
 **LoggingCategories** | Pointer to [**GridDnsLoggingCategories**](GridDnsLoggingCategories.md) |  | [optional] 
 **MaxCacheTtl** | Pointer to **int64** | The maximum time (in seconds) for which the server will cache positive answers. | [optional] 
@@ -126,7 +127,7 @@ Name | Type | Description | Notes
 **NxdomainRedirectTtl** | Pointer to **int64** | The TTL value (in seconds) of synthetic DNS responses that result from NXDOMAIN redirection. | [optional] 
 **NxdomainRulesets** | Pointer to **[]string** | The Ruleset object names assigned at the Grid level for NXDOMAIN redirection. | [optional] 
 **PreserveHostRrsetOrderOnSecondaries** | Pointer to **bool** | Determines if the host RRset order on secondaries is preserved or not. | [optional] 
-**ProtocolRecordNamePolicies** | Pointer to **[]string** | The list of record name policies. | [optional] 
+**ProtocolRecordNamePolicies** | Pointer to **[]map[string]interface{}** | The list of record name policies. | [optional] 
 **QueryRewriteDomainNames** | Pointer to **[]string** | The list of domain names that trigger DNS query rewrite. | [optional] 
 **QueryRewritePrefix** | Pointer to **string** | The domain name prefix for DNS query rewrite. | [optional] 
 **QuerySourcePort** | Pointer to **int64** | The source port for queries. Specifying a source port number for recursive queries ensures that a firewall will allow the response. Valid values are between 1 and 63999. The default is picked by BIND. | [optional] 
@@ -652,20 +653,20 @@ HasBlacklistRulesets returns a boolean if a field has been set.
 
 ### GetBulkHostNameTemplates
 
-`func (o *GridDns) GetBulkHostNameTemplates() []string`
+`func (o *GridDns) GetBulkHostNameTemplates() []map[string]interface{}`
 
 GetBulkHostNameTemplates returns the BulkHostNameTemplates field if non-nil, zero value otherwise.
 
 ### GetBulkHostNameTemplatesOk
 
-`func (o *GridDns) GetBulkHostNameTemplatesOk() (*[]string, bool)`
+`func (o *GridDns) GetBulkHostNameTemplatesOk() (*[]map[string]interface{}, bool)`
 
 GetBulkHostNameTemplatesOk returns a tuple with the BulkHostNameTemplates field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBulkHostNameTemplates
 
-`func (o *GridDns) SetBulkHostNameTemplates(v []string)`
+`func (o *GridDns) SetBulkHostNameTemplates(v []map[string]interface{})`
 
 SetBulkHostNameTemplates sets BulkHostNameTemplates field to given value.
 
@@ -2125,6 +2126,31 @@ SetEnableDnstapResponses sets EnableDnstapResponses field to given value.
 
 HasEnableDnstapResponses returns a boolean if a field has been set.
 
+### GetEnableDnstapViolationsTls
+
+`func (o *GridDns) GetEnableDnstapViolationsTls() bool`
+
+GetEnableDnstapViolationsTls returns the EnableDnstapViolationsTls field if non-nil, zero value otherwise.
+
+### GetEnableDnstapViolationsTlsOk
+
+`func (o *GridDns) GetEnableDnstapViolationsTlsOk() (*bool, bool)`
+
+GetEnableDnstapViolationsTlsOk returns a tuple with the EnableDnstapViolationsTls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapViolationsTls
+
+`func (o *GridDns) SetEnableDnstapViolationsTls(v bool)`
+
+SetEnableDnstapViolationsTls sets EnableDnstapViolationsTls field to given value.
+
+### HasEnableDnstapViolationsTls
+
+`func (o *GridDns) HasEnableDnstapViolationsTls() bool`
+
+HasEnableDnstapViolationsTls returns a boolean if a field has been set.
+
 ### GetEnableExcludedDomainNames
 
 `func (o *GridDns) GetEnableExcludedDomainNames() bool`
@@ -2727,20 +2753,20 @@ HasGenEadbFromRanges returns a boolean if a field has been set.
 
 ### GetGssTsigKeys
 
-`func (o *GridDns) GetGssTsigKeys() []string`
+`func (o *GridDns) GetGssTsigKeys() []map[string]interface{}`
 
 GetGssTsigKeys returns the GssTsigKeys field if non-nil, zero value otherwise.
 
 ### GetGssTsigKeysOk
 
-`func (o *GridDns) GetGssTsigKeysOk() (*[]string, bool)`
+`func (o *GridDns) GetGssTsigKeysOk() (*[]map[string]interface{}, bool)`
 
 GetGssTsigKeysOk returns a tuple with the GssTsigKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGssTsigKeys
 
-`func (o *GridDns) SetGssTsigKeys(v []string)`
+`func (o *GridDns) SetGssTsigKeys(v []map[string]interface{})`
 
 SetGssTsigKeys sets GssTsigKeys field to given value.
 
@@ -3227,20 +3253,20 @@ HasPreserveHostRrsetOrderOnSecondaries returns a boolean if a field has been set
 
 ### GetProtocolRecordNamePolicies
 
-`func (o *GridDns) GetProtocolRecordNamePolicies() []string`
+`func (o *GridDns) GetProtocolRecordNamePolicies() []map[string]interface{}`
 
 GetProtocolRecordNamePolicies returns the ProtocolRecordNamePolicies field if non-nil, zero value otherwise.
 
 ### GetProtocolRecordNamePoliciesOk
 
-`func (o *GridDns) GetProtocolRecordNamePoliciesOk() (*[]string, bool)`
+`func (o *GridDns) GetProtocolRecordNamePoliciesOk() (*[]map[string]interface{}, bool)`
 
 GetProtocolRecordNamePoliciesOk returns a tuple with the ProtocolRecordNamePolicies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProtocolRecordNamePolicies
 
-`func (o *GridDns) SetProtocolRecordNamePolicies(v []string)`
+`func (o *GridDns) SetProtocolRecordNamePolicies(v []map[string]interface{})`
 
 SetProtocolRecordNamePolicies sets ProtocolRecordNamePolicies field to given value.
 

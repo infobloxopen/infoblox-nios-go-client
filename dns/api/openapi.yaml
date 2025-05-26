@@ -1,8 +1,7 @@
 openapi: 3.0.0
 info:
   contact:
-    email: jkhatri@infoblox.com
-    name: Jeenitkumar Khatri
+    name: Infoblox
     url: https://www.infoblox.com
   description: OpenAPI specification for Infoblox NIOS WAPI DNS objects
   license:
@@ -10,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DNS API
-  version: 2.12.3
+  version: 2.13.6
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.12.3
+  url: /wapi/v2.13.6
 tags:
 - description: Operations for record:a objects
   name: record:a
@@ -5764,6 +5763,17 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Remove subzones delete option. Determines whether all child objects
+          should be removed alongside with the parent zone or child objects should
+          be assigned to another parental zone. By default child objects are deleted
+          with the parent zone.
+        explode: true
+        in: query
+        name: remove_subzones
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           description: Object deleted successfully
@@ -9933,7 +9943,10 @@ components:
           device_vendor: Example device_vendor
           v_entity_type: Example v_entity_type
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -10173,7 +10186,10 @@ components:
       type: object
     RecordACloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -10242,6 +10258,10 @@ components:
           type: string
       type: object
     RecordacloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -11083,7 +11103,10 @@ components:
           device_vendor: Example device_vendor
           v_entity_type: Example v_entity_type
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -11323,7 +11346,10 @@ components:
       type: object
     RecordAaaaCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -11392,6 +11418,10 @@ components:
           type: string
       type: object
     RecordaaaacloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -12136,7 +12166,10 @@ components:
         shared_record_group: Example shared_record_group
         use_ttl: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -12372,7 +12405,10 @@ components:
       type: object
     RecordCnameCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -12441,6 +12477,10 @@ components:
           type: string
       type: object
     RecordcnamecloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -12505,7 +12545,10 @@ components:
         use_ttl: false
         preference: 1
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -12745,7 +12788,10 @@ components:
       type: object
     RecordMxCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -12814,6 +12860,10 @@ components:
           type: string
       type: object
     RecordmxcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -12876,7 +12926,10 @@ components:
         shared_record_group: Example shared_record_group
         use_ttl: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -13107,7 +13160,10 @@ components:
       type: object
     RecordTxtCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -13176,6 +13232,10 @@ components:
           type: string
       type: object
     RecordtxtcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -13233,7 +13293,10 @@ components:
           set_identifier: Example set_identifier
         use_ttl: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -13584,7 +13647,10 @@ components:
       type: object
     RecordPtrCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -13653,6 +13719,10 @@ components:
           type: string
       type: object
     RecordptrcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -14392,7 +14462,10 @@ components:
           set_identifier: Example set_identifier
         use_ttl: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -14652,7 +14725,10 @@ components:
       type: object
     RecordSrvCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -14721,6 +14797,10 @@ components:
           type: string
       type: object
     RecordsrvcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -14774,7 +14854,10 @@ components:
         _ref: _ref
         name: Example name
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -14866,7 +14949,10 @@ components:
       type: object
     RecordNsCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -14935,6 +15021,10 @@ components:
           type: string
       type: object
     RecordnscloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -14987,7 +15077,10 @@ components:
         - dns_aliases
         - dns_aliases
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -15022,8 +15115,8 @@ components:
         device_location: Example device_location
         ddns_protected: false
         ipv4addrs:
-        - record:host_ipv4addr
-        - record:host_ipv4addr
+        - "{}"
+        - "{}"
         ttl: 1
         dns_name: Example dns_name
         enable_immediate_discovery: false
@@ -15050,8 +15143,8 @@ components:
         comment: Example comment
         device_vendor: Example device_vendor
         ipv6addrs:
-        - record:host_ipv6addr
-        - record:host_ipv6addr
+        - "{}"
+        - "{}"
         disable_discovery: false
         use_cli_credentials: false
       properties:
@@ -15158,7 +15251,7 @@ components:
           items:
             enum:
             - record:host_ipv4addr
-            type: string
+            type: object
           type: array
         ipv6addrs:
           description: This is a list of IPv6 Addresses for the host.
@@ -15167,7 +15260,7 @@ components:
           items:
             enum:
             - record:host_ipv6addr
-            type: string
+            type: object
           type: array
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
@@ -15289,7 +15382,10 @@ components:
       type: object
     RecordHostCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -15358,6 +15454,10 @@ components:
           type: string
       type: object
     RecordhostcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -15495,7 +15595,10 @@ components:
         shared_record_group: Example shared_record_group
         use_ttl: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -15626,7 +15729,10 @@ components:
       type: object
     RecordDnameCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -15695,6 +15801,10 @@ components:
           type: string
       type: object
     RecorddnamecloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -15742,7 +15852,10 @@ components:
         use_ttl: false
         flags: Example flags
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -15914,7 +16027,10 @@ components:
       type: object
     RecordNaptrCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -15983,6 +16099,10 @@ components:
           type: string
       type: object
     RecordnaptrcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -16032,7 +16152,10 @@ components:
         certificate_data: Example certificate_data
         use_ttl: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -16146,7 +16269,10 @@ components:
       type: object
     RecordTlsaCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -16215,6 +16341,10 @@ components:
           type: string
       type: object
     RecordtlsacloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -16264,7 +16394,10 @@ components:
         use_ttl: false
         ca_value: Example ca_value
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -16397,7 +16530,10 @@ components:
       type: object
     RecordCaaCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -16466,6 +16602,10 @@ components:
           type: string
       type: object
     RecordcaacloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -16609,7 +16749,7 @@ components:
         public_key: Example public_key
         creator: Example creator
         use_ttl: false
-        flags: Example flags
+        flags: 1
         ttl: 1
         dns_name: Example dns_name
         key_tag: 1
@@ -16670,11 +16810,9 @@ components:
             \ a zone key and cannot be used to verify zone data. The least significant\
             \ bit indicates \"secure entry point property\". If it is not zero, the\
             \ key is a key signing key (KSK type). Otherwise, the key type is ZSK."
-          enum:
-          - int
-          example: Example flags
+          example: 1
           readOnly: true
-          type: string
+          type: integer
         key_tag:
           description: The key tag identifying the public key of a DNSKEY Record object.
           example: 1
@@ -16757,7 +16895,10 @@ components:
         creator: Example creator
         use_ttl: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -16884,7 +17025,10 @@ components:
       type: object
     RecordDsCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -16953,6 +17097,10 @@ components:
           type: string
       type: object
     RecorddscloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -16999,7 +17147,10 @@ components:
         next_owner_name: Example next_owner_name
         use_ttl: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -17104,7 +17255,10 @@ components:
       type: object
     RecordNsecCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -17173,6 +17327,10 @@ components:
           type: string
       type: object
     RecordnseccloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -17221,7 +17379,10 @@ components:
         use_ttl: false
         flags: 1
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -17360,7 +17521,10 @@ components:
       type: object
     RecordNsec3CloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -17429,6 +17593,10 @@ components:
           type: string
       type: object
     Recordnsec3cloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -17476,7 +17644,10 @@ components:
         use_ttl: false
         flags: 1
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -17598,7 +17769,10 @@ components:
       type: object
     RecordNsec3paramCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -17667,6 +17841,10 @@ components:
           type: string
       type: object
     Recordnsec3paramcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -17715,7 +17893,10 @@ components:
         use_ttl: false
         expiration_time: 1
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -17874,7 +18055,10 @@ components:
       type: object
     RecordRrsigCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -17943,6 +18127,10 @@ components:
           type: string
       type: object
     RecordrrsigcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -17999,7 +18187,10 @@ components:
           field_type: Example field_type
           include_length: Example include_length
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -18115,7 +18306,10 @@ components:
       type: object
     RecordUnknownCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -18184,6 +18378,10 @@ components:
           type: string
       type: object
     RecordunknowncloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -18292,10 +18490,34 @@ components:
         scavenging_settings:
           enable_scavenging: false
           enable_recurrent_scavenging: false
-          scavenging_schedule: scavenging_schedule
+          scavenging_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           enable_rr_last_queried: false
-          expression_list: expression_list
-          ea_expression_list: ea_expression_list
+          expression_list:
+            op2: Example op2
+            op: Example op
+            op1: Example op1
+            op1_type: Example op1_type
+            op2_type: Example op2_type
+          ea_expression_list:
+            op2: Example op2
+            op: Example op
+            op1: Example op1
+            op1_type: Example op1_type
+            op2_type: Example op2_type
           reclaim_associated_records: false
           enable_auto_reclamation: false
           enable_zone_last_queried: false
@@ -18307,6 +18529,7 @@ components:
         use_ddns_force_creation_timestamp_update: false
         record_name_policy: Example record_name_policy
         dns_soa_email: Example dns_soa_email
+        remove_subzones: false
         ddns_principal_tracking: false
         ddns_restrict_secure: false
         rr_not_queried_enabled_time: 1
@@ -18327,7 +18550,10 @@ components:
         use_import_from: false
         allow_update_forwarding: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -18426,8 +18652,12 @@ components:
         last_queried: 1
         locked: false
         aws_rte53_zone_info:
-          associated_vpcs: Example associated_vpcs
-          name_servers: Example name_servers
+          associated_vpcs:
+          - associated_vpcs
+          - associated_vpcs
+          name_servers:
+          - name_servers
+          - name_servers
           caller_reference: Example caller_reference
           hosted_zone_id: Example hosted_zone_id
           record_set_count: 1
@@ -18485,7 +18715,9 @@ components:
         dnssec_key_params:
           nsec3_iterations: 1
           signature_expiration: 1
-          zsk_algorithms: zsk_algorithms
+          zsk_algorithms:
+            size: 1
+            algorithm: Example algorithm
           zsk_algorithm: Example zsk_algorithm
           ksk_snmp_notification_enabled: false
           ksk_algorithm: Example ksk_algorithm
@@ -18494,7 +18726,9 @@ components:
           next_secure_type: Example next_secure_type
           nsec3_salt_min_length: 1
           ksk_rollover: 1
-          ksk_algorithms: ksk_algorithms
+          ksk_algorithms:
+            size: 1
+            algorithm: Example algorithm
           zsk_rollover_mechanism: Example zsk_rollover_mechanism
           ksk_rollover_notification_config: Example ksk_rollover_notification_config
           zsk_rollover: 1
@@ -18548,8 +18782,8 @@ components:
           comment: Example comment
         ms_ddns_mode: Example ms_ddns_mode
         network_associations:
-        - network
-        - network
+        - "{}"
+        - "{}"
         allow_update:
         - address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -18564,13 +18798,29 @@ components:
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
         grid_primary:
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
           stealth: false
           lead: false
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
@@ -18584,13 +18834,29 @@ components:
         _ref: _ref
         comment: Example comment
         grid_secondaries:
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
           stealth: false
           lead: false
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
@@ -19085,7 +19351,7 @@ components:
           items:
             enum:
             - network
-            type: string
+            type: object
           readOnly: true
           type: array
         network_view:
@@ -19135,6 +19401,13 @@ components:
           description: Determines if this zone is also monitoring resource records.
           example: false
           readOnly: true
+          type: boolean
+        remove_subzones:
+          description: Remove subzones delete option. Determines whether all child
+            objects should be removed alongside with the parent zone or child objects
+            should be assigned to another parental zone. By default child objects
+            are deleted with the parent zone.
+          example: false
           type: boolean
         restart_if_needed:
           description: Restarts the member service.
@@ -19489,8 +19762,12 @@ components:
       type: object
     ZoneAuthAwsRte53ZoneInfo:
       example:
-        associated_vpcs: Example associated_vpcs
-        name_servers: Example name_servers
+        associated_vpcs:
+        - associated_vpcs
+        - associated_vpcs
+        name_servers:
+        - name_servers
+        - name_servers
         caller_reference: Example caller_reference
         hosted_zone_id: Example hosted_zone_id
         record_set_count: 1
@@ -19501,7 +19778,6 @@ components:
           description: List of AWS VPC strings that are associated with this zone.
           enum:
           - string
-          example: Example associated_vpcs
           items:
             type: string
           readOnly: true
@@ -19526,7 +19802,6 @@ components:
             name.
           enum:
           - string
-          example: Example name_servers
           items:
             type: string
           readOnly: true
@@ -19548,7 +19823,10 @@ components:
       type: object
     ZoneAuthCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -19617,6 +19895,10 @@ components:
           type: string
       type: object
     ZoneauthcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -19644,7 +19926,9 @@ components:
       example:
         nsec3_iterations: 1
         signature_expiration: 1
-        zsk_algorithms: zsk_algorithms
+        zsk_algorithms:
+          size: 1
+          algorithm: Example algorithm
         zsk_algorithm: Example zsk_algorithm
         ksk_snmp_notification_enabled: false
         ksk_algorithm: Example ksk_algorithm
@@ -19653,7 +19937,9 @@ components:
         next_secure_type: Example next_secure_type
         nsec3_salt_min_length: 1
         ksk_rollover: 1
-        ksk_algorithms: ksk_algorithms
+        ksk_algorithms:
+          size: 1
+          algorithm: Example algorithm
         zsk_rollover_mechanism: Example zsk_rollover_mechanism
         ksk_rollover_notification_config: Example ksk_rollover_notification_config
         zsk_rollover: 1
@@ -19764,6 +20050,9 @@ components:
           type: integer
       type: object
     ZoneauthdnsseckeyparamsKskAlgorithms:
+      example:
+        size: 1
+        algorithm: Example algorithm
       properties:
         algorithm:
           description: The signing key algorithm.
@@ -19782,6 +20071,9 @@ components:
           type: integer
       type: object
     ZoneauthdnsseckeyparamsZskAlgorithms:
+      example:
+        size: 1
+        algorithm: Example algorithm
       properties:
         algorithm:
           description: The signing key algorithm.
@@ -19971,7 +20263,15 @@ components:
       type: object
     ZoneAuthGridPrimary:
       example:
-        preferred_primaries: preferred_primaries
+        preferred_primaries:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
         enable_preferred_primaries: false
         grid_replicate: false
         name: Example name
@@ -19989,8 +20289,8 @@ components:
           example: false
           type: boolean
         grid_replicate:
-          description: "The flag represents DNS zone transfers if set to True, and\
-            \ ID Grid Replication if set to False. This flag is ignored if the struct\
+          description: "The flag represents DNS zone transfers if set to False, and\
+            \ ID Grid Replication if set to True. This flag is ignored if the struct\
             \ is specified as part of a stub zone or if it is set as grid_member in\
             \ an authoritative zone."
           example: false
@@ -20010,6 +20310,15 @@ components:
           type: boolean
       type: object
     ZoneauthgridprimaryPreferredPrimaries:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        name: Example name
+        stealth: false
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+        shared_with_ms_parent_delegation: false
       properties:
         address:
           description: The IPv4 Address or IPv6 Address of the server.
@@ -20052,7 +20361,15 @@ components:
       type: object
     ZoneAuthGridSecondaries:
       example:
-        preferred_primaries: preferred_primaries
+        preferred_primaries:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
         enable_preferred_primaries: false
         grid_replicate: false
         name: Example name
@@ -20070,8 +20387,8 @@ components:
           example: false
           type: boolean
         grid_replicate:
-          description: "The flag represents DNS zone transfers if set to True, and\
-            \ ID Grid Replication if set to False. This flag is ignored if the struct\
+          description: "The flag represents DNS zone transfers if set to False, and\
+            \ ID Grid Replication if set to True. This flag is ignored if the struct\
             \ is specified as part of a stub zone or if it is set as grid_member in\
             \ an authoritative zone."
           example: false
@@ -20091,6 +20408,15 @@ components:
           type: boolean
       type: object
     ZoneauthgridsecondariesPreferredPrimaries:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        name: Example name
+        stealth: false
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+        shared_with_ms_parent_delegation: false
       properties:
         address:
           description: The IPv4 Address or IPv6 Address of the server.
@@ -20322,10 +20648,34 @@ components:
       example:
         enable_scavenging: false
         enable_recurrent_scavenging: false
-        scavenging_schedule: scavenging_schedule
+        scavenging_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         enable_rr_last_queried: false
-        expression_list: expression_list
-        ea_expression_list: ea_expression_list
+        expression_list:
+          op2: Example op2
+          op: Example op
+          op1: Example op1
+          op1_type: Example op1_type
+          op2_type: Example op2_type
+        ea_expression_list:
+          op2: Example op2
+          op: Example op
+          op1: Example op1
+          op1_type: Example op1_type
+          op2_type: Example op2_type
         reclaim_associated_records: false
         enable_auto_reclamation: false
         enable_zone_last_queried: false
@@ -20368,6 +20718,21 @@ components:
           $ref: '#/components/schemas/ZoneauthscavengingsettingsEaExpressionList'
       type: object
     ZoneauthscavengingsettingsScavengingSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -20379,7 +20744,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -20454,6 +20818,12 @@ components:
           type: boolean
       type: object
     ZoneauthscavengingsettingsExpressionList:
+      example:
+        op2: Example op2
+        op: Example op
+        op1: Example op1
+        op1_type: Example op1_type
+        op2_type: Example op2_type
       properties:
         op:
           description: The operation name.
@@ -20500,6 +20870,12 @@ components:
           type: string
       type: object
     ZoneauthscavengingsettingsEaExpressionList:
+      example:
+        op2: Example op2
+        op: Example op
+        op1: Example op1
+        op1_type: Example op1_type
+        op2_type: Example op2_type
       properties:
         op:
           description: The operation name.
@@ -20964,11 +21340,27 @@ components:
         using_srg_associations: false
         disable: false
         forwarding_servers:
-        - forward_to: forward_to
+        - forward_to:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           name: Example name
           forwarders_only: false
           use_override_forwarders: false
-        - forward_to: forward_to
+        - forward_to:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           name: Example name
           forwarders_only: false
           use_override_forwarders: false
@@ -21211,7 +21603,15 @@ components:
       type: object
     ZoneForwardForwardingServers:
       example:
-        forward_to: forward_to
+        forward_to:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
         name: Example name
         forwarders_only: false
         use_override_forwarders: false
@@ -21233,6 +21633,15 @@ components:
           type: boolean
       type: object
     ZoneforwardforwardingserversForwardTo:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        name: Example name
+        stealth: false
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+        shared_with_ms_parent_delegation: false
       properties:
         address:
           description: The IPv4 Address or IPv6 Address of the server.
@@ -21307,13 +21716,29 @@ components:
         soa_retry: 1
         prefix: Example prefix
         stub_members:
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
           stealth: false
           lead: false
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
@@ -21684,7 +22109,15 @@ components:
       type: object
     ZoneStubStubMembers:
       example:
-        preferred_primaries: preferred_primaries
+        preferred_primaries:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
         enable_preferred_primaries: false
         grid_replicate: false
         name: Example name
@@ -21702,8 +22135,8 @@ components:
           example: false
           type: boolean
         grid_replicate:
-          description: "The flag represents DNS zone transfers if set to True, and\
-            \ ID Grid Replication if set to False. This flag is ignored if the struct\
+          description: "The flag represents DNS zone transfers if set to False, and\
+            \ ID Grid Replication if set to True. This flag is ignored if the struct\
             \ is specified as part of a stub zone or if it is set as grid_member in\
             \ an authoritative zone."
           example: false
@@ -21723,6 +22156,15 @@ components:
           type: boolean
       type: object
     ZonestubstubmembersPreferredPrimaries:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        name: Example name
+        stealth: false
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+        shared_with_ms_parent_delegation: false
       properties:
         address:
           description: The IPv4 Address or IPv6 Address of the server.
@@ -21906,7 +22348,10 @@ components:
         fireeye_rule_mapping:
           substituted_domain_name: Example substituted_domain_name
           apt_override: Example apt_override
-          fireeye_alert_mapping: fireeye_alert_mapping
+          fireeye_alert_mapping:
+            rpz_rule: Example rpz_rule
+            lifetime: 1
+            alert_type: Example alert_type
         use_grid_zone_timer: false
         log_rpz: false
         address: Example address
@@ -21915,13 +22360,29 @@ components:
             value: value
         soa_refresh: 1
         grid_primary:
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
           stealth: false
           lead: false
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
@@ -21943,13 +22404,29 @@ components:
         lock_unlock_zone: "{}"
         comment: Example comment
         grid_secondaries:
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
           stealth: false
           lead: false
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
@@ -22375,7 +22852,10 @@ components:
       example:
         substituted_domain_name: Example substituted_domain_name
         apt_override: Example apt_override
-        fireeye_alert_mapping: fireeye_alert_mapping
+        fireeye_alert_mapping:
+          rpz_rule: Example rpz_rule
+          lifetime: 1
+          alert_type: Example alert_type
       properties:
         apt_override:
           description: The override setting for APT alerts.
@@ -22396,6 +22876,10 @@ components:
           type: string
       type: object
     ZonerpfireeyerulemappingFireeyeAlertMapping:
+      example:
+        rpz_rule: Example rpz_rule
+        lifetime: 1
+        alert_type: Example alert_type
       properties:
         alert_type:
           description: The type of Fireeye Alert.
@@ -22427,7 +22911,15 @@ components:
       type: object
     ZoneRpGridPrimary:
       example:
-        preferred_primaries: preferred_primaries
+        preferred_primaries:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
         enable_preferred_primaries: false
         grid_replicate: false
         name: Example name
@@ -22445,8 +22937,8 @@ components:
           example: false
           type: boolean
         grid_replicate:
-          description: "The flag represents DNS zone transfers if set to True, and\
-            \ ID Grid Replication if set to False. This flag is ignored if the struct\
+          description: "The flag represents DNS zone transfers if set to False, and\
+            \ ID Grid Replication if set to True. This flag is ignored if the struct\
             \ is specified as part of a stub zone or if it is set as grid_member in\
             \ an authoritative zone."
           example: false
@@ -22466,6 +22958,15 @@ components:
           type: boolean
       type: object
     ZonerpgridprimaryPreferredPrimaries:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        name: Example name
+        stealth: false
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+        shared_with_ms_parent_delegation: false
       properties:
         address:
           description: The IPv4 Address or IPv6 Address of the server.
@@ -22508,7 +23009,15 @@ components:
       type: object
     ZoneRpGridSecondaries:
       example:
-        preferred_primaries: preferred_primaries
+        preferred_primaries:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
         enable_preferred_primaries: false
         grid_replicate: false
         name: Example name
@@ -22526,8 +23035,8 @@ components:
           example: false
           type: boolean
         grid_replicate:
-          description: "The flag represents DNS zone transfers if set to True, and\
-            \ ID Grid Replication if set to False. This flag is ignored if the struct\
+          description: "The flag represents DNS zone transfers if set to False, and\
+            \ ID Grid Replication if set to True. This flag is ignored if the struct\
             \ is specified as part of a stub zone or if it is set as grid_member in\
             \ an authoritative zone."
           example: false
@@ -22547,6 +23056,15 @@ components:
           type: boolean
       type: object
     ZonerpgridsecondariesPreferredPrimaries:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        name: Example name
+        stealth: false
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+        shared_with_ms_parent_delegation: false
       properties:
         address:
           description: The IPv4 Address or IPv6 Address of the server.
@@ -23099,13 +23617,29 @@ components:
       additionalProperties: false
       example:
         grid_primary:
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
           stealth: false
           lead: false
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
@@ -23155,13 +23689,29 @@ components:
         use_external_primary: false
         comment: Example comment
         grid_secondaries:
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
           stealth: false
           lead: false
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
@@ -23332,7 +23882,15 @@ components:
       type: object
     NsgroupGridPrimary:
       example:
-        preferred_primaries: preferred_primaries
+        preferred_primaries:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
         enable_preferred_primaries: false
         grid_replicate: false
         name: Example name
@@ -23350,8 +23908,8 @@ components:
           example: false
           type: boolean
         grid_replicate:
-          description: "The flag represents DNS zone transfers if set to True, and\
-            \ ID Grid Replication if set to False. This flag is ignored if the struct\
+          description: "The flag represents DNS zone transfers if set to False, and\
+            \ ID Grid Replication if set to True. This flag is ignored if the struct\
             \ is specified as part of a stub zone or if it is set as grid_member in\
             \ an authoritative zone."
           example: false
@@ -23371,6 +23929,15 @@ components:
           type: boolean
       type: object
     NsgroupgridprimaryPreferredPrimaries:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        name: Example name
+        stealth: false
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+        shared_with_ms_parent_delegation: false
       properties:
         address:
           description: The IPv4 Address or IPv6 Address of the server.
@@ -23413,7 +23980,15 @@ components:
       type: object
     NsgroupGridSecondaries:
       example:
-        preferred_primaries: preferred_primaries
+        preferred_primaries:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
         enable_preferred_primaries: false
         grid_replicate: false
         name: Example name
@@ -23431,8 +24006,8 @@ components:
           example: false
           type: boolean
         grid_replicate:
-          description: "The flag represents DNS zone transfers if set to True, and\
-            \ ID Grid Replication if set to False. This flag is ignored if the struct\
+          description: "The flag represents DNS zone transfers if set to False, and\
+            \ ID Grid Replication if set to True. This flag is ignored if the struct\
             \ is specified as part of a stub zone or if it is set as grid_member in\
             \ an authoritative zone."
           example: false
@@ -23452,6 +24027,15 @@ components:
           type: boolean
       type: object
     NsgroupgridsecondariesPreferredPrimaries:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        name: Example name
+        stealth: false
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+        shared_with_ms_parent_delegation: false
       properties:
         address:
           description: The IPv4 Address or IPv6 Address of the server.
@@ -23649,11 +24233,27 @@ components:
           key:
             value: value
         forwarding_servers:
-        - forward_to: forward_to
+        - forward_to:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           name: Example name
           forwarders_only: false
           use_override_forwarders: false
-        - forward_to: forward_to
+        - forward_to:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           name: Example name
           forwarders_only: false
           use_override_forwarders: false
@@ -23689,7 +24289,15 @@ components:
       type: object
     NsgroupForwardingmemberForwardingServers:
       example:
-        forward_to: forward_to
+        forward_to:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
         name: Example name
         forwarders_only: false
         use_override_forwarders: false
@@ -23711,6 +24319,15 @@ components:
           type: boolean
       type: object
     NsgroupforwardingmemberforwardingserversForwardTo:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        name: Example name
+        stealth: false
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+        shared_with_ms_parent_delegation: false
       properties:
         address:
           description: The IPv4 Address or IPv6 Address of the server.
@@ -23782,13 +24399,29 @@ components:
           key:
             value: value
         stub_members:
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
           stealth: false
           lead: false
-        - preferred_primaries: preferred_primaries
+        - preferred_primaries:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
           enable_preferred_primaries: false
           grid_replicate: false
           name: Example name
@@ -23828,7 +24461,15 @@ components:
       type: object
     NsgroupStubmemberStubMembers:
       example:
-        preferred_primaries: preferred_primaries
+        preferred_primaries:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
         enable_preferred_primaries: false
         grid_replicate: false
         name: Example name
@@ -23846,8 +24487,8 @@ components:
           example: false
           type: boolean
         grid_replicate:
-          description: "The flag represents DNS zone transfers if set to True, and\
-            \ ID Grid Replication if set to False. This flag is ignored if the struct\
+          description: "The flag represents DNS zone transfers if set to False, and\
+            \ ID Grid Replication if set to True. This flag is ignored if the struct\
             \ is specified as part of a stub zone or if it is set as grid_member in\
             \ an authoritative zone."
           example: false
@@ -23867,6 +24508,15 @@ components:
           type: boolean
       type: object
     NsgroupstubmemberstubmembersPreferredPrimaries:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        name: Example name
+        stealth: false
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+        shared_with_ms_parent_delegation: false
       properties:
         address:
           description: The IPv4 Address or IPv6 Address of the server.
@@ -24190,7 +24840,10 @@ components:
             device_vendor: Example device_vendor
             v_entity_type: Example v_entity_type
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24350,7 +25003,10 @@ components:
             device_vendor: Example device_vendor
             v_entity_type: Example v_entity_type
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24511,7 +25167,10 @@ components:
             device_vendor: Example device_vendor
             v_entity_type: Example v_entity_type
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24671,7 +25330,10 @@ components:
             device_vendor: Example device_vendor
             v_entity_type: Example v_entity_type
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24735,7 +25397,10 @@ components:
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24796,7 +25461,10 @@ components:
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24860,7 +25528,10 @@ components:
           use_ttl: false
           preference: 1
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24922,7 +25593,10 @@ components:
           use_ttl: false
           preference: 1
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24983,7 +25657,10 @@ components:
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25043,7 +25720,10 @@ components:
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25099,7 +25779,10 @@ components:
             set_identifier: Example set_identifier
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25261,7 +25944,10 @@ components:
             set_identifier: Example set_identifier
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25424,7 +26110,10 @@ components:
             set_identifier: Example set_identifier
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25488,7 +26177,10 @@ components:
             set_identifier: Example set_identifier
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25549,7 +26241,10 @@ components:
           _ref: _ref
           name: Example name
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25590,7 +26285,10 @@ components:
           _ref: _ref
           name: Example name
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25631,7 +26329,10 @@ components:
           - dns_aliases
           - dns_aliases
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25666,8 +26367,8 @@ components:
           device_location: Example device_location
           ddns_protected: false
           ipv4addrs:
-          - record:host_ipv4addr
-          - record:host_ipv4addr
+          - "{}"
+          - "{}"
           ttl: 1
           dns_name: Example dns_name
           enable_immediate_discovery: false
@@ -25694,8 +26395,8 @@ components:
           comment: Example comment
           device_vendor: Example device_vendor
           ipv6addrs:
-          - record:host_ipv6addr
-          - record:host_ipv6addr
+          - "{}"
+          - "{}"
           disable_discovery: false
           use_cli_credentials: false
       properties:
@@ -25726,7 +26427,10 @@ components:
           - dns_aliases
           - dns_aliases
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25761,8 +26465,8 @@ components:
           device_location: Example device_location
           ddns_protected: false
           ipv4addrs:
-          - record:host_ipv4addr
-          - record:host_ipv4addr
+          - "{}"
+          - "{}"
           ttl: 1
           dns_name: Example dns_name
           enable_immediate_discovery: false
@@ -25789,8 +26493,8 @@ components:
           comment: Example comment
           device_vendor: Example device_vendor
           ipv6addrs:
-          - record:host_ipv6addr
-          - record:host_ipv6addr
+          - "{}"
+          - "{}"
           disable_discovery: false
           use_cli_credentials: false
       properties:
@@ -25819,7 +26523,10 @@ components:
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25867,7 +26574,10 @@ components:
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25914,7 +26624,10 @@ components:
           use_ttl: false
           flags: Example flags
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25966,7 +26679,10 @@ components:
           use_ttl: false
           flags: Example flags
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -26021,7 +26737,10 @@ components:
           certificate_data: Example certificate_data
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -26065,7 +26784,10 @@ components:
           certificate_data: Example certificate_data
           use_ttl: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -26110,7 +26832,10 @@ components:
           use_ttl: false
           ca_value: Example ca_value
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -26158,7 +26883,10 @@ components:
           use_ttl: false
           ca_value: Example ca_value
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -26431,7 +27159,10 @@ components:
             field_type: Example field_type
             include_length: Example include_length
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -26482,7 +27213,10 @@ components:
             field_type: Example field_type
             include_length: Example include_length
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -26560,10 +27294,34 @@ components:
           scavenging_settings:
             enable_scavenging: false
             enable_recurrent_scavenging: false
-            scavenging_schedule: scavenging_schedule
+            scavenging_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             enable_rr_last_queried: false
-            expression_list: expression_list
-            ea_expression_list: ea_expression_list
+            expression_list:
+              op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            ea_expression_list:
+              op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
             reclaim_associated_records: false
             enable_auto_reclamation: false
             enable_zone_last_queried: false
@@ -26575,6 +27333,7 @@ components:
           use_ddns_force_creation_timestamp_update: false
           record_name_policy: Example record_name_policy
           dns_soa_email: Example dns_soa_email
+          remove_subzones: false
           ddns_principal_tracking: false
           ddns_restrict_secure: false
           rr_not_queried_enabled_time: 1
@@ -26595,7 +27354,10 @@ components:
           use_import_from: false
           allow_update_forwarding: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -26694,8 +27456,12 @@ components:
           last_queried: 1
           locked: false
           aws_rte53_zone_info:
-            associated_vpcs: Example associated_vpcs
-            name_servers: Example name_servers
+            associated_vpcs:
+            - associated_vpcs
+            - associated_vpcs
+            name_servers:
+            - name_servers
+            - name_servers
             caller_reference: Example caller_reference
             hosted_zone_id: Example hosted_zone_id
             record_set_count: 1
@@ -26753,7 +27519,9 @@ components:
           dnssec_key_params:
             nsec3_iterations: 1
             signature_expiration: 1
-            zsk_algorithms: zsk_algorithms
+            zsk_algorithms:
+              size: 1
+              algorithm: Example algorithm
             zsk_algorithm: Example zsk_algorithm
             ksk_snmp_notification_enabled: false
             ksk_algorithm: Example ksk_algorithm
@@ -26762,7 +27530,9 @@ components:
             next_secure_type: Example next_secure_type
             nsec3_salt_min_length: 1
             ksk_rollover: 1
-            ksk_algorithms: ksk_algorithms
+            ksk_algorithms:
+              size: 1
+              algorithm: Example algorithm
             zsk_rollover_mechanism: Example zsk_rollover_mechanism
             ksk_rollover_notification_config: Example ksk_rollover_notification_config
             zsk_rollover: 1
@@ -26816,8 +27586,8 @@ components:
             comment: Example comment
           ms_ddns_mode: Example ms_ddns_mode
           network_associations:
-          - network
-          - network
+          - "{}"
+          - "{}"
           allow_update:
           - address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -26832,13 +27602,29 @@ components:
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
           grid_primary:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -26852,13 +27638,29 @@ components:
           _ref: _ref
           comment: Example comment
           grid_secondaries:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -26922,10 +27724,34 @@ components:
           scavenging_settings:
             enable_scavenging: false
             enable_recurrent_scavenging: false
-            scavenging_schedule: scavenging_schedule
+            scavenging_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             enable_rr_last_queried: false
-            expression_list: expression_list
-            ea_expression_list: ea_expression_list
+            expression_list:
+              op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            ea_expression_list:
+              op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
             reclaim_associated_records: false
             enable_auto_reclamation: false
             enable_zone_last_queried: false
@@ -26937,6 +27763,7 @@ components:
           use_ddns_force_creation_timestamp_update: false
           record_name_policy: Example record_name_policy
           dns_soa_email: Example dns_soa_email
+          remove_subzones: false
           ddns_principal_tracking: false
           ddns_restrict_secure: false
           rr_not_queried_enabled_time: 1
@@ -26957,7 +27784,10 @@ components:
           use_import_from: false
           allow_update_forwarding: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -27056,8 +27886,12 @@ components:
           last_queried: 1
           locked: false
           aws_rte53_zone_info:
-            associated_vpcs: Example associated_vpcs
-            name_servers: Example name_servers
+            associated_vpcs:
+            - associated_vpcs
+            - associated_vpcs
+            name_servers:
+            - name_servers
+            - name_servers
             caller_reference: Example caller_reference
             hosted_zone_id: Example hosted_zone_id
             record_set_count: 1
@@ -27115,7 +27949,9 @@ components:
           dnssec_key_params:
             nsec3_iterations: 1
             signature_expiration: 1
-            zsk_algorithms: zsk_algorithms
+            zsk_algorithms:
+              size: 1
+              algorithm: Example algorithm
             zsk_algorithm: Example zsk_algorithm
             ksk_snmp_notification_enabled: false
             ksk_algorithm: Example ksk_algorithm
@@ -27124,7 +27960,9 @@ components:
             next_secure_type: Example next_secure_type
             nsec3_salt_min_length: 1
             ksk_rollover: 1
-            ksk_algorithms: ksk_algorithms
+            ksk_algorithms:
+              size: 1
+              algorithm: Example algorithm
             zsk_rollover_mechanism: Example zsk_rollover_mechanism
             ksk_rollover_notification_config: Example ksk_rollover_notification_config
             zsk_rollover: 1
@@ -27178,8 +28016,8 @@ components:
             comment: Example comment
           ms_ddns_mode: Example ms_ddns_mode
           network_associations:
-          - network
-          - network
+          - "{}"
+          - "{}"
           allow_update:
           - address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -27194,13 +28032,29 @@ components:
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
           grid_primary:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -27214,13 +28068,29 @@ components:
           _ref: _ref
           comment: Example comment
           grid_secondaries:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -27412,11 +28282,27 @@ components:
           using_srg_associations: false
           disable: false
           forwarding_servers:
-          - forward_to: forward_to
+          - forward_to:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             name: Example name
             forwarders_only: false
             use_override_forwarders: false
-          - forward_to: forward_to
+          - forward_to:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             name: Example name
             forwarders_only: false
             use_override_forwarders: false
@@ -27483,11 +28369,27 @@ components:
           using_srg_associations: false
           disable: false
           forwarding_servers:
-          - forward_to: forward_to
+          - forward_to:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             name: Example name
             forwarders_only: false
             use_override_forwarders: false
-          - forward_to: forward_to
+          - forward_to:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             name: Example name
             forwarders_only: false
             use_override_forwarders: false
@@ -27516,13 +28418,29 @@ components:
           soa_retry: 1
           prefix: Example prefix
           stub_members:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -27610,13 +28528,29 @@ components:
           soa_retry: 1
           prefix: Example prefix
           stub_members:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -27778,7 +28712,10 @@ components:
           fireeye_rule_mapping:
             substituted_domain_name: Example substituted_domain_name
             apt_override: Example apt_override
-            fireeye_alert_mapping: fireeye_alert_mapping
+            fireeye_alert_mapping:
+              rpz_rule: Example rpz_rule
+              lifetime: 1
+              alert_type: Example alert_type
           use_grid_zone_timer: false
           log_rpz: false
           address: Example address
@@ -27787,13 +28724,29 @@ components:
               value: value
           soa_refresh: 1
           grid_primary:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -27815,13 +28768,29 @@ components:
           lock_unlock_zone: "{}"
           comment: Example comment
           grid_secondaries:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -27922,7 +28891,10 @@ components:
           fireeye_rule_mapping:
             substituted_domain_name: Example substituted_domain_name
             apt_override: Example apt_override
-            fireeye_alert_mapping: fireeye_alert_mapping
+            fireeye_alert_mapping:
+              rpz_rule: Example rpz_rule
+              lifetime: 1
+              alert_type: Example alert_type
           use_grid_zone_timer: false
           log_rpz: false
           address: Example address
@@ -27931,13 +28903,29 @@ components:
               value: value
           soa_refresh: 1
           grid_primary:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -27959,13 +28947,29 @@ components:
           lock_unlock_zone: "{}"
           comment: Example comment
           grid_secondaries:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -28181,13 +29185,29 @@ components:
       example:
         result:
           grid_primary:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -28237,13 +29257,29 @@ components:
           use_external_primary: false
           comment: Example comment
           grid_secondaries:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -28267,13 +29303,29 @@ components:
       example:
         result:
           grid_primary:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -28323,13 +29375,29 @@ components:
           use_external_primary: false
           comment: Example comment
           grid_secondaries:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -28439,11 +29507,27 @@ components:
             key:
               value: value
           forwarding_servers:
-          - forward_to: forward_to
+          - forward_to:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             name: Example name
             forwarders_only: false
             use_override_forwarders: false
-          - forward_to: forward_to
+          - forward_to:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             name: Example name
             forwarders_only: false
             use_override_forwarders: false
@@ -28472,11 +29556,27 @@ components:
             key:
               value: value
           forwarding_servers:
-          - forward_to: forward_to
+          - forward_to:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             name: Example name
             forwarders_only: false
             use_override_forwarders: false
-          - forward_to: forward_to
+          - forward_to:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             name: Example name
             forwarders_only: false
             use_override_forwarders: false
@@ -28505,13 +29605,29 @@ components:
             key:
               value: value
           stub_members:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
@@ -28541,13 +29657,29 @@ components:
             key:
               value: value
           stub_members:
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name
             stealth: false
             lead: false
-          - preferred_primaries: preferred_primaries
+          - preferred_primaries:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
             enable_preferred_primaries: false
             grid_replicate: false
             name: Example name

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**AccountsList** | Pointer to **string** | The AWS Account IDs or GCP Project IDs list associated with this task. | [optional] [readonly] 
 **AllowUnsecuredConnection** | Pointer to **bool** | Allow unsecured connection over HTTPS and bypass validation of the remote SSL certificate. | [optional] 
 **AutoConsolidateCloudEa** | Pointer to **bool** | Whether to insert or update cloud EAs with discovery data. | [optional] 
 **AutoConsolidateManagedTenant** | Pointer to **bool** | Whether to replace managed tenant with discovery tenant data. | [optional] 
@@ -12,6 +13,7 @@ Name | Type | Description | Notes
 **AutoCreateDnsHostnameTemplate** | Pointer to **string** | Template string used to generate host name. | [optional] 
 **AutoCreateDnsRecord** | Pointer to **bool** | Control whether to create or update DNS record using discovered data. | [optional] 
 **AutoCreateDnsRecordType** | Pointer to **string** | Indicates the type of record to create if the auto create DNS record is enabled. | [optional] 
+**CdiscoveryFileToken** | Pointer to **string** | The AWS account IDs or GCP Project IDs file&#39;s token. | [optional] 
 **Comment** | Pointer to **string** | Comment on the task. | [optional] 
 **CredentialsType** | Pointer to **string** | Credentials type used for connecting to the cloud management platform. | [optional] 
 **DnsViewPrivateIp** | Pointer to **string** | The DNS view name for private IPs. | [optional] 
@@ -21,10 +23,12 @@ Name | Type | Description | Notes
 **EnableFilter** | Pointer to **bool** | Enable filter for cloud discovery task | [optional] 
 **Enabled** | Pointer to **bool** | Whether to enabled the cloud discovery or not. | [optional] 
 **FqdnOrIp** | Pointer to **string** | FQDN or IP of the cloud management platform. | [optional] 
+**GovcloudEnabled** | Pointer to **bool** | Indicates if gov cloud is enabled or disabled. | [optional] 
 **IdentityVersion** | Pointer to **string** | Identity service version. | [optional] 
 **LastRun** | Pointer to **int64** | Timestamp of last run. | [optional] [readonly] 
 **Member** | Pointer to **string** | Member on which cloud discovery will be run. | [optional] 
 **MergeData** | Pointer to **bool** | Whether to replace the old data with new or not. | [optional] 
+**MultipleAccountsSyncPolicy** | Pointer to **string** | Discover all child accounts or Upload child account ids to discover.. | [optional] 
 **Name** | Pointer to **string** | Name of this cloud discovery task. Uniquely identify a task. | [optional] 
 **NetworkFilter** | Pointer to **string** | Options to filter the networks in cdiscovery task. | [optional] 
 **NetworkList** | Pointer to **[]string** | List of networks to filter in cdiscovery task. | [optional] 
@@ -35,10 +39,14 @@ Name | Type | Description | Notes
 **Protocol** | Pointer to **string** | Connection protocol used for connecting to the cloud management platform. | [optional] 
 **PublicNetworkView** | Pointer to **string** | Network view for public IPs. | [optional] 
 **PublicNetworkViewMappingPolicy** | Pointer to **string** | Mapping policy for the network view for public IPs in discovery data. | [optional] 
+**RoleArn** | Pointer to **string** | Role ARN for syncing child accounts; maximum 128 characters. | [optional] 
 **ScheduledRun** | Pointer to [**VdiscoverytaskScheduledRun**](VdiscoverytaskScheduledRun.md) |  | [optional] 
+**SelectedRegions** | Pointer to **string** | String containing selected regions for discovery in comma separated format. | [optional] 
 **ServiceAccountFile** | Pointer to **string** | The service_account_file for GCP. | [optional] 
+**ServiceAccountFileToken** | Pointer to **string** | Service account file&#39;s token. | [optional] 
 **State** | Pointer to **string** | Current state of this task. | [optional] [readonly] 
 **StateMsg** | Pointer to **string** | State message of the complete discovery process. | [optional] [readonly] 
+**SyncChildAccounts** | Pointer to **bool** | Synchronizing child accounts is enabled or disabled. | [optional] 
 **UpdateDnsViewPrivateIp** | Pointer to **bool** | If set to true, the appliance uses a specific DNS view for private IPs. | [optional] 
 **UpdateDnsViewPublicIp** | Pointer to **bool** | If set to true, the appliance uses a specific DNS view for public IPs. | [optional] 
 **UpdateMetadata** | Pointer to **bool** | Whether to update metadata as a result of this network discovery. | [optional] 
@@ -89,6 +97,31 @@ SetRef sets Ref field to given value.
 `func (o *Vdiscoverytask) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetAccountsList
+
+`func (o *Vdiscoverytask) GetAccountsList() string`
+
+GetAccountsList returns the AccountsList field if non-nil, zero value otherwise.
+
+### GetAccountsListOk
+
+`func (o *Vdiscoverytask) GetAccountsListOk() (*string, bool)`
+
+GetAccountsListOk returns a tuple with the AccountsList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountsList
+
+`func (o *Vdiscoverytask) SetAccountsList(v string)`
+
+SetAccountsList sets AccountsList field to given value.
+
+### HasAccountsList
+
+`func (o *Vdiscoverytask) HasAccountsList() bool`
+
+HasAccountsList returns a boolean if a field has been set.
 
 ### GetAllowUnsecuredConnection
 
@@ -264,6 +297,31 @@ SetAutoCreateDnsRecordType sets AutoCreateDnsRecordType field to given value.
 `func (o *Vdiscoverytask) HasAutoCreateDnsRecordType() bool`
 
 HasAutoCreateDnsRecordType returns a boolean if a field has been set.
+
+### GetCdiscoveryFileToken
+
+`func (o *Vdiscoverytask) GetCdiscoveryFileToken() string`
+
+GetCdiscoveryFileToken returns the CdiscoveryFileToken field if non-nil, zero value otherwise.
+
+### GetCdiscoveryFileTokenOk
+
+`func (o *Vdiscoverytask) GetCdiscoveryFileTokenOk() (*string, bool)`
+
+GetCdiscoveryFileTokenOk returns a tuple with the CdiscoveryFileToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCdiscoveryFileToken
+
+`func (o *Vdiscoverytask) SetCdiscoveryFileToken(v string)`
+
+SetCdiscoveryFileToken sets CdiscoveryFileToken field to given value.
+
+### HasCdiscoveryFileToken
+
+`func (o *Vdiscoverytask) HasCdiscoveryFileToken() bool`
+
+HasCdiscoveryFileToken returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -490,6 +548,31 @@ SetFqdnOrIp sets FqdnOrIp field to given value.
 
 HasFqdnOrIp returns a boolean if a field has been set.
 
+### GetGovcloudEnabled
+
+`func (o *Vdiscoverytask) GetGovcloudEnabled() bool`
+
+GetGovcloudEnabled returns the GovcloudEnabled field if non-nil, zero value otherwise.
+
+### GetGovcloudEnabledOk
+
+`func (o *Vdiscoverytask) GetGovcloudEnabledOk() (*bool, bool)`
+
+GetGovcloudEnabledOk returns a tuple with the GovcloudEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGovcloudEnabled
+
+`func (o *Vdiscoverytask) SetGovcloudEnabled(v bool)`
+
+SetGovcloudEnabled sets GovcloudEnabled field to given value.
+
+### HasGovcloudEnabled
+
+`func (o *Vdiscoverytask) HasGovcloudEnabled() bool`
+
+HasGovcloudEnabled returns a boolean if a field has been set.
+
 ### GetIdentityVersion
 
 `func (o *Vdiscoverytask) GetIdentityVersion() string`
@@ -589,6 +672,31 @@ SetMergeData sets MergeData field to given value.
 `func (o *Vdiscoverytask) HasMergeData() bool`
 
 HasMergeData returns a boolean if a field has been set.
+
+### GetMultipleAccountsSyncPolicy
+
+`func (o *Vdiscoverytask) GetMultipleAccountsSyncPolicy() string`
+
+GetMultipleAccountsSyncPolicy returns the MultipleAccountsSyncPolicy field if non-nil, zero value otherwise.
+
+### GetMultipleAccountsSyncPolicyOk
+
+`func (o *Vdiscoverytask) GetMultipleAccountsSyncPolicyOk() (*string, bool)`
+
+GetMultipleAccountsSyncPolicyOk returns a tuple with the MultipleAccountsSyncPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMultipleAccountsSyncPolicy
+
+`func (o *Vdiscoverytask) SetMultipleAccountsSyncPolicy(v string)`
+
+SetMultipleAccountsSyncPolicy sets MultipleAccountsSyncPolicy field to given value.
+
+### HasMultipleAccountsSyncPolicy
+
+`func (o *Vdiscoverytask) HasMultipleAccountsSyncPolicy() bool`
+
+HasMultipleAccountsSyncPolicy returns a boolean if a field has been set.
 
 ### GetName
 
@@ -840,6 +948,31 @@ SetPublicNetworkViewMappingPolicy sets PublicNetworkViewMappingPolicy field to g
 
 HasPublicNetworkViewMappingPolicy returns a boolean if a field has been set.
 
+### GetRoleArn
+
+`func (o *Vdiscoverytask) GetRoleArn() string`
+
+GetRoleArn returns the RoleArn field if non-nil, zero value otherwise.
+
+### GetRoleArnOk
+
+`func (o *Vdiscoverytask) GetRoleArnOk() (*string, bool)`
+
+GetRoleArnOk returns a tuple with the RoleArn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleArn
+
+`func (o *Vdiscoverytask) SetRoleArn(v string)`
+
+SetRoleArn sets RoleArn field to given value.
+
+### HasRoleArn
+
+`func (o *Vdiscoverytask) HasRoleArn() bool`
+
+HasRoleArn returns a boolean if a field has been set.
+
 ### GetScheduledRun
 
 `func (o *Vdiscoverytask) GetScheduledRun() VdiscoverytaskScheduledRun`
@@ -865,6 +998,31 @@ SetScheduledRun sets ScheduledRun field to given value.
 
 HasScheduledRun returns a boolean if a field has been set.
 
+### GetSelectedRegions
+
+`func (o *Vdiscoverytask) GetSelectedRegions() string`
+
+GetSelectedRegions returns the SelectedRegions field if non-nil, zero value otherwise.
+
+### GetSelectedRegionsOk
+
+`func (o *Vdiscoverytask) GetSelectedRegionsOk() (*string, bool)`
+
+GetSelectedRegionsOk returns a tuple with the SelectedRegions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectedRegions
+
+`func (o *Vdiscoverytask) SetSelectedRegions(v string)`
+
+SetSelectedRegions sets SelectedRegions field to given value.
+
+### HasSelectedRegions
+
+`func (o *Vdiscoverytask) HasSelectedRegions() bool`
+
+HasSelectedRegions returns a boolean if a field has been set.
+
 ### GetServiceAccountFile
 
 `func (o *Vdiscoverytask) GetServiceAccountFile() string`
@@ -889,6 +1047,31 @@ SetServiceAccountFile sets ServiceAccountFile field to given value.
 `func (o *Vdiscoverytask) HasServiceAccountFile() bool`
 
 HasServiceAccountFile returns a boolean if a field has been set.
+
+### GetServiceAccountFileToken
+
+`func (o *Vdiscoverytask) GetServiceAccountFileToken() string`
+
+GetServiceAccountFileToken returns the ServiceAccountFileToken field if non-nil, zero value otherwise.
+
+### GetServiceAccountFileTokenOk
+
+`func (o *Vdiscoverytask) GetServiceAccountFileTokenOk() (*string, bool)`
+
+GetServiceAccountFileTokenOk returns a tuple with the ServiceAccountFileToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceAccountFileToken
+
+`func (o *Vdiscoverytask) SetServiceAccountFileToken(v string)`
+
+SetServiceAccountFileToken sets ServiceAccountFileToken field to given value.
+
+### HasServiceAccountFileToken
+
+`func (o *Vdiscoverytask) HasServiceAccountFileToken() bool`
+
+HasServiceAccountFileToken returns a boolean if a field has been set.
 
 ### GetState
 
@@ -939,6 +1122,31 @@ SetStateMsg sets StateMsg field to given value.
 `func (o *Vdiscoverytask) HasStateMsg() bool`
 
 HasStateMsg returns a boolean if a field has been set.
+
+### GetSyncChildAccounts
+
+`func (o *Vdiscoverytask) GetSyncChildAccounts() bool`
+
+GetSyncChildAccounts returns the SyncChildAccounts field if non-nil, zero value otherwise.
+
+### GetSyncChildAccountsOk
+
+`func (o *Vdiscoverytask) GetSyncChildAccountsOk() (*bool, bool)`
+
+GetSyncChildAccountsOk returns a tuple with the SyncChildAccounts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSyncChildAccounts
+
+`func (o *Vdiscoverytask) SetSyncChildAccounts(v bool)`
+
+SetSyncChildAccounts sets SyncChildAccounts field to given value.
+
+### HasSyncChildAccounts
+
+`func (o *Vdiscoverytask) HasSyncChildAccounts() bool`
+
+HasSyncChildAccounts returns a boolean if a field has been set.
 
 ### GetUpdateDnsViewPrivateIp
 

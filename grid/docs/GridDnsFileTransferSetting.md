@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Directory** | Pointer to **string** | The directory to save the captured DNS queries and responses. | [optional] 
+**ServerAddressOrFqdn** | Pointer to **string** | The server address or a FQDN name of the destination server for DNS capture transfer. | [optional] 
 **Password** | Pointer to **string** | The password to access the destination server directory. | [optional] 
 **Type** | Pointer to **string** | The transfer protocol for the captured DNS queries and responses. | [optional] 
 **Username** | Pointer to **string** | The username to access the destination server directory. | [optional] 
 **Port** | Pointer to **int64** | Transfer scp port. | [optional] 
-**Host** | Pointer to **string** | The host name of the destination server for DNS capture transfer. | [optional] 
 
 ## Methods
 
@@ -54,6 +54,31 @@ SetDirectory sets Directory field to given value.
 `func (o *GridDnsFileTransferSetting) HasDirectory() bool`
 
 HasDirectory returns a boolean if a field has been set.
+
+### GetServerAddressOrFqdn
+
+`func (o *GridDnsFileTransferSetting) GetServerAddressOrFqdn() string`
+
+GetServerAddressOrFqdn returns the ServerAddressOrFqdn field if non-nil, zero value otherwise.
+
+### GetServerAddressOrFqdnOk
+
+`func (o *GridDnsFileTransferSetting) GetServerAddressOrFqdnOk() (*string, bool)`
+
+GetServerAddressOrFqdnOk returns a tuple with the ServerAddressOrFqdn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerAddressOrFqdn
+
+`func (o *GridDnsFileTransferSetting) SetServerAddressOrFqdn(v string)`
+
+SetServerAddressOrFqdn sets ServerAddressOrFqdn field to given value.
+
+### HasServerAddressOrFqdn
+
+`func (o *GridDnsFileTransferSetting) HasServerAddressOrFqdn() bool`
+
+HasServerAddressOrFqdn returns a boolean if a field has been set.
 
 ### GetPassword
 
@@ -154,31 +179,6 @@ SetPort sets Port field to given value.
 `func (o *GridDnsFileTransferSetting) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
-
-### GetHost
-
-`func (o *GridDnsFileTransferSetting) GetHost() string`
-
-GetHost returns the Host field if non-nil, zero value otherwise.
-
-### GetHostOk
-
-`func (o *GridDnsFileTransferSetting) GetHostOk() (*string, bool)`
-
-GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHost
-
-`func (o *GridDnsFileTransferSetting) SetHost(v string)`
-
-SetHost sets Host field to given value.
-
-### HasHost
-
-`func (o *GridDnsFileTransferSetting) HasHost() bool`
-
-HasHost returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

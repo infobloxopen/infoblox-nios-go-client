@@ -1,8 +1,7 @@
 openapi: 3.0.0
 info:
   contact:
-    email: jkhatri@infoblox.com
-    name: Jeenitkumar Khatri
+    name: Infoblox
     url: https://www.infoblox.com
   description: OpenAPI specification for Infoblox NIOS WAPI IPAM objects
   license:
@@ -10,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox IPAM API
-  version: 2.12.3
+  version: 2.13.6
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.12.3
+  url: /wapi/v2.13.6
 tags:
 - description: Operations for ipv4address objects
   name: ipv4address
@@ -8075,7 +8074,21 @@ components:
         conflict_count: 1
         port_control_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         update_dns_on_lease_renewal: false
         zone_associations:
@@ -8098,8 +8111,8 @@ components:
         deny_bootp: false
         last_rir_registration_update_status: Example last_rir_registration_update_status
         endpoint_sources:
-        - pxgrid:endpoint
-        - pxgrid:endpoint
+        - "{}"
+        - "{}"
         unmanaged: false
         use_ipam_trap_settings: false
         discovered_vlan_id: Example discovered_vlan_id
@@ -8109,7 +8122,10 @@ components:
         use_enable_dhcp_thresholds: false
         ddns_update_fixed_addresses: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -8122,16 +8138,32 @@ components:
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
-          switch_port_data_collection_polling_interval: 1
           credential_group: Example credential_group
+          polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
           complete_ping_sweep: false
-          switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-          port_scanning: false
+          switch_port_data_collection_polling_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
+          use_global_polling_frequency_modifier: false
           snmp_collection: false
           smart_subnet_ping_sweep: false
-          auto_arp_refresh_before_switch_port_polling: false
           netbios_scanning: false
+          switch_port_data_collection_polling_interval: 1
+          port_scanning: false
+          auto_arp_refresh_before_switch_port_polling: false
         enable_ddns: false
         recycle_leases: false
         use_ignore_id: false
@@ -8152,6 +8184,7 @@ components:
         bootserver: Example bootserver
         disable: false
         restart_if_needed: false
+        cloud_shared: false
         low_water_mark: 1
         logic_filter_rules:
         - filter: Example filter
@@ -8160,13 +8193,31 @@ components:
           type: Example type
         discovery_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         use_options: false
         use_ddns_use_option81: false
         subscribe_settings:
-          mapped_ea_attributes: mapped_ea_attributes
-          enabled_attributes: Example enabled_attributes
+          mapped_ea_attributes:
+            mapped_ea: Example mapped_ea
+            name: Example name
+          enabled_attributes:
+          - enabled_attributes
+          - enabled_attributes
         use_bootserver: false
         discovery_engine_type: Example discovery_engine_type
         nextserver: Example nextserver
@@ -8208,14 +8259,14 @@ components:
         discovered_tenant: Example discovered_tenant
         network_view: Example network_view
         vlans:
-        - vlan: Example vlan
+        - vlan: "{}"
           name: Example name
           id: 1
-        - vlan: Example vlan
+        - vlan: "{}"
           name: Example name
           id: 1
         discovery_member: Example discovery_member
-        lease_scavenge_time: Example lease_scavenge_time
+        lease_scavenge_time: 1
         use_ddns_ttl: false
         enable_discovery: false
         rir_registration_status: Example rir_registration_status
@@ -8229,6 +8280,11 @@ components:
         use_email_list: false
         ignore_id: Example ignore_id
         network_container: Example network_container
+        federated_realms:
+        - name: Example name
+          id: Example id
+        - name: Example name
+          id: Example id
         utilization_update: 1
         total_hosts: 1
         ddns_generate_hostname: false
@@ -8275,6 +8331,10 @@ components:
           type: string
         cloud_info:
           $ref: '#/components/schemas/NetworkCloudInfo'
+        cloud_shared:
+          description: Boolean flag to indicate if the network is shared with cloud.
+          example: false
+          type: boolean
         comment:
           description: "Comment for the network, maximum 256 characters."
           example: Example comment
@@ -8490,7 +8550,7 @@ components:
           items:
             enum:
             - pxgrid:endpoint
-            type: string
+            type: object
           readOnly: true
           type: array
         expand_network:
@@ -8502,6 +8562,14 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+        federated_realms:
+          description: This field contains the federated realms associated to this
+            network
+          enum:
+          - federatedrealm
+          items:
+            $ref: '#/components/schemas/NetworkFederatedRealms'
+          type: array
         high_water_mark:
           description: "The percentage of DHCP network usage threshold above which\
             \ network usage is not expected and may warrant your attention. When the\
@@ -8575,10 +8643,8 @@ components:
             \ are automatically deleted. To disable lease scavenging, set the parameter\
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
-          enum:
-          - int
-          example: Example lease_scavenge_time
-          type: string
+          example: 1
+          type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
             this network. This list corresponds to the match rules that are written
@@ -8936,7 +9002,10 @@ components:
       type: object
     NetworkCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -9005,6 +9074,10 @@ components:
           type: string
       type: object
     NetworkcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -9023,16 +9096,32 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
-        switch_port_data_collection_polling_interval: 1
         credential_group: Example credential_group
+        polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
         complete_ping_sweep: false
-        switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-        port_scanning: false
+        switch_port_data_collection_polling_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
+        use_global_polling_frequency_modifier: false
         snmp_collection: false
         smart_subnet_ping_sweep: false
-        auto_arp_refresh_before_switch_port_polling: false
         netbios_scanning: false
+        switch_port_data_collection_polling_interval: 1
+        port_scanning: false
+        auto_arp_refresh_before_switch_port_polling: false
       properties:
         port_scanning:
           description: Determines whether port scanning is enabled or not.
@@ -9086,8 +9175,31 @@ components:
           description: Credential group.
           example: Example credential_group
           type: string
+        polling_frequency_modifier:
+          description: Polling Frequency Modifier.
+          example: Example polling_frequency_modifier
+          type: string
+        use_global_polling_frequency_modifier:
+          description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
       type: object
     NetworkdiscoverybasicpollsettingsSwitchPortDataCollectionPollingSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -9099,7 +9211,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -9176,7 +9287,21 @@ components:
     NetworkDiscoveryBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -9192,6 +9317,21 @@ components:
           $ref: '#/components/schemas/NetworkdiscoveryblackoutsettingBlackoutSchedule'
       type: object
     NetworkdiscoveryblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -9203,7 +9343,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -9279,6 +9418,20 @@ components:
       type: object
     NetworkExpandNetwork:
       properties: {}
+      type: object
+    NetworkFederatedRealms:
+      example:
+        name: Example name
+        id: Example id
+      properties:
+        name:
+          description: The federated realm name
+          example: Example name
+          type: string
+        id:
+          description: The federated realm id
+          example: Example id
+          type: string
       type: object
     NetworkIpamThresholdSettings:
       example:
@@ -9402,7 +9555,21 @@ components:
     NetworkPortControlBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -9418,6 +9585,21 @@ components:
           $ref: '#/components/schemas/NetworkportcontrolblackoutsettingBlackoutSchedule'
       type: object
     NetworkportcontrolblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -9429,7 +9611,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -9511,8 +9692,12 @@ components:
       type: object
     NetworkSubscribeSettings:
       example:
-        mapped_ea_attributes: mapped_ea_attributes
-        enabled_attributes: Example enabled_attributes
+        mapped_ea_attributes:
+          mapped_ea: Example mapped_ea
+          name: Example name
+        enabled_attributes:
+        - enabled_attributes
+        - enabled_attributes
       properties:
         enabled_attributes:
           description: The list of Cisco ISE attributes allowed for subscription.
@@ -9524,7 +9709,6 @@ components:
           - SSID
           - USERNAME
           - VLAN
-          example: Example enabled_attributes
           items:
             type: string
           type: array
@@ -9532,6 +9716,9 @@ components:
           $ref: '#/components/schemas/NetworksubscribesettingsMappedEaAttributes'
       type: object
     NetworksubscribesettingsMappedEaAttributes:
+      example:
+        mapped_ea: Example mapped_ea
+        name: Example name
       properties:
         name:
           description: The Cisco ISE attribute name that is enabled for publishsing
@@ -9556,7 +9743,7 @@ components:
       type: object
     NetworkVlans:
       example:
-        vlan: Example vlan
+        vlan: "{}"
         name: Example name
         id: 1
       properties:
@@ -9564,8 +9751,7 @@ components:
           description: Reference to the underlying StaticVlan object vlan.
           enum:
           - subobj
-          example: Example vlan
-          type: string
+          type: object
         id:
           description: VLAN ID value.
           example: 1
@@ -9650,7 +9836,21 @@ components:
         rir: Example rir
         port_control_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         update_dns_on_lease_renewal: false
         zone_associations:
@@ -9672,8 +9872,8 @@ components:
         deny_bootp: false
         last_rir_registration_update_status: Example last_rir_registration_update_status
         endpoint_sources:
-        - pxgrid:endpoint
-        - pxgrid:endpoint
+        - "{}"
+        - "{}"
         unmanaged: false
         use_ipam_trap_settings: false
         high_water_mark_reset: 1
@@ -9681,7 +9881,10 @@ components:
         use_enable_dhcp_thresholds: false
         ddns_update_fixed_addresses: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -9694,16 +9897,32 @@ components:
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
-          switch_port_data_collection_polling_interval: 1
           credential_group: Example credential_group
+          polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
           complete_ping_sweep: false
-          switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-          port_scanning: false
+          switch_port_data_collection_polling_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
+          use_global_polling_frequency_modifier: false
           snmp_collection: false
           smart_subnet_ping_sweep: false
-          auto_arp_refresh_before_switch_port_polling: false
           netbios_scanning: false
+          switch_port_data_collection_polling_interval: 1
+          port_scanning: false
+          auto_arp_refresh_before_switch_port_polling: false
         enable_ddns: false
         recycle_leases: false
         use_ignore_id: false
@@ -9728,13 +9947,31 @@ components:
           type: Example type
         discovery_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         use_options: false
         use_ddns_use_option81: false
         subscribe_settings:
-          mapped_ea_attributes: mapped_ea_attributes
-          enabled_attributes: Example enabled_attributes
+          mapped_ea_attributes:
+            mapped_ea: Example mapped_ea
+            name: Example name
+          enabled_attributes:
+          - enabled_attributes
+          - enabled_attributes
         use_bootserver: false
         discovery_engine_type: Example discovery_engine_type
         nextserver: Example nextserver
@@ -9761,7 +9998,7 @@ components:
         ddns_domainname: Example ddns_domainname
         network_view: Example network_view
         discovery_member: Example discovery_member
-        lease_scavenge_time: Example lease_scavenge_time
+        lease_scavenge_time: 1
         use_ddns_ttl: false
         enable_discovery: false
         rir_registration_status: Example rir_registration_status
@@ -9774,6 +10011,11 @@ components:
         use_email_list: false
         ignore_id: Example ignore_id
         network_container: Example network_container
+        federated_realms:
+        - name: Example name
+          id: Example id
+        - name: Example name
+          id: Example id
         ddns_generate_hostname: false
         ddns_ttl: 1
         use_zone_associations: false
@@ -9948,7 +10190,7 @@ components:
           items:
             enum:
             - pxgrid:endpoint
-            type: string
+            type: object
           readOnly: true
           type: array
         extattrs:
@@ -9957,6 +10199,14 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+        federated_realms:
+          description: This field contains the federated realms associated to this
+            network container.
+          enum:
+          - federatedrealm
+          items:
+            $ref: '#/components/schemas/NetworkcontainerFederatedRealms'
+          type: array
         high_water_mark:
           description: "The percentage of DHCP network container usage threshold above\
             \ which network container usage is not expected and may warrant your attention.\
@@ -10025,10 +10275,8 @@ components:
             \ are automatically deleted. To disable lease scavenging, set the parameter\
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
-          enum:
-          - int
-          example: Example lease_scavenge_time
-          type: string
+          example: 1
+          type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
             this network container. This list corresponds to the match rules that
@@ -10328,7 +10576,10 @@ components:
       type: object
     NetworkcontainerCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -10397,6 +10648,10 @@ components:
           type: string
       type: object
     NetworkcontainercloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -10415,16 +10670,32 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
-        switch_port_data_collection_polling_interval: 1
         credential_group: Example credential_group
+        polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
         complete_ping_sweep: false
-        switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-        port_scanning: false
+        switch_port_data_collection_polling_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
+        use_global_polling_frequency_modifier: false
         snmp_collection: false
         smart_subnet_ping_sweep: false
-        auto_arp_refresh_before_switch_port_polling: false
         netbios_scanning: false
+        switch_port_data_collection_polling_interval: 1
+        port_scanning: false
+        auto_arp_refresh_before_switch_port_polling: false
       properties:
         port_scanning:
           description: Determines whether port scanning is enabled or not.
@@ -10478,8 +10749,31 @@ components:
           description: Credential group.
           example: Example credential_group
           type: string
+        polling_frequency_modifier:
+          description: Polling Frequency Modifier.
+          example: Example polling_frequency_modifier
+          type: string
+        use_global_polling_frequency_modifier:
+          description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
       type: object
     NetworkcontainerdiscoverybasicpollsettingsSwitchPortDataCollectionPollingSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -10491,7 +10785,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -10568,7 +10861,21 @@ components:
     NetworkcontainerDiscoveryBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -10584,6 +10891,21 @@ components:
           $ref: '#/components/schemas/NetworkcontainerdiscoveryblackoutsettingBlackoutSchedule'
       type: object
     NetworkcontainerdiscoveryblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -10595,7 +10917,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -10668,6 +10989,20 @@ components:
           description: "If set to True, the scheduled task is disabled."
           example: false
           type: boolean
+      type: object
+    NetworkcontainerFederatedRealms:
+      example:
+        name: Example name
+        id: Example id
+      properties:
+        name:
+          description: The federated realm name
+          example: Example name
+          type: string
+        id:
+          description: The federated realm id
+          example: Example id
+          type: string
       type: object
     NetworkcontainerIpamThresholdSettings:
       example:
@@ -10766,7 +11101,21 @@ components:
     NetworkcontainerPortControlBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -10782,6 +11131,21 @@ components:
           $ref: '#/components/schemas/NetworkcontainerportcontrolblackoutsettingBlackoutSchedule'
       type: object
     NetworkcontainerportcontrolblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -10793,7 +11157,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -10872,8 +11235,12 @@ components:
       type: object
     NetworkcontainerSubscribeSettings:
       example:
-        mapped_ea_attributes: mapped_ea_attributes
-        enabled_attributes: Example enabled_attributes
+        mapped_ea_attributes:
+          mapped_ea: Example mapped_ea
+          name: Example name
+        enabled_attributes:
+        - enabled_attributes
+        - enabled_attributes
       properties:
         enabled_attributes:
           description: The list of Cisco ISE attributes allowed for subscription.
@@ -10885,7 +11252,6 @@ components:
           - SSID
           - USERNAME
           - VLAN
-          example: Example enabled_attributes
           items:
             type: string
           type: array
@@ -10893,6 +11259,9 @@ components:
           $ref: '#/components/schemas/NetworkcontainersubscribesettingsMappedEaAttributes'
       type: object
     NetworkcontainersubscribesettingsMappedEaAttributes:
+      example:
+        mapped_ea: Example mapped_ea
+        name: Example name
       properties:
         name:
           description: The Cisco ISE attribute name that is enabled for publishsing
@@ -11028,7 +11397,7 @@ components:
         use_enable_dhcp_thresholds: false
         cloud_api_compatible: false
         ddns_update_fixed_addresses: false
-        lease_scavenge_time: Example lease_scavenge_time
+        lease_scavenge_time: 1
         rir_organization: Example rir_organization
         use_ddns_ttl: false
         rir_registration_status: Example rir_registration_status
@@ -11243,10 +11612,8 @@ components:
             \ are automatically deleted. To disable lease scavenging, set the parameter\
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
-          enum:
-          - int
-          example: Example lease_scavenge_time
-          type: string
+          example: 1
+          type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
             this network template. This list corresponds to the match rules that are
@@ -11614,10 +11981,19 @@ components:
           key:
             value: value
         associated_members:
-        - failovers: Example failovers
+        - failovers:
+          - failovers
+          - failovers
           member: Example member
-        - failovers: Example failovers
+        - failovers:
+          - failovers
+          - failovers
           member: Example member
+        federated_realms:
+        - name: Example name
+          id: Example id
+        - name: Example name
+          id: Example id
         remote_reverse_zones:
         - gss_tsig_domain: Example gss_tsig_domain
           key_type: Example key_type
@@ -11636,7 +12012,10 @@ components:
           server_address: Example server_address
           tsig_key_name: Example tsig_key_name
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -11646,8 +12025,8 @@ components:
           delegated_root: Example delegated_root
         is_default: false
         internal_forward_zones:
-        - zone_auth
-        - zone_auth
+        - "{}"
+        - "{}"
         ms_ad_user_data:
           active_users_count: 1
         remote_forward_zones:
@@ -11728,6 +12107,14 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+        federated_realms:
+          description: This field contains the federated realms associated to this
+            network view
+          enum:
+          - federatedrealm
+          items:
+            $ref: '#/components/schemas/NetworkviewFederatedRealms'
+          type: array
         internal_forward_zones:
           description: The list of linked authoritative DNS zones.
           enum:
@@ -11735,7 +12122,7 @@ components:
           items:
             enum:
             - zone_auth
-            type: string
+            type: object
           type: array
         is_default:
           description: "The NIOS appliance provides one default network view. You\
@@ -11775,7 +12162,9 @@ components:
       type: object
     NetworkviewAssociatedMembers:
       example:
-        failovers: Example failovers
+        failovers:
+        - failovers
+        - failovers
         member: Example member
       properties:
         member:
@@ -11787,7 +12176,6 @@ components:
           description: The list of failover objects associated with each member.
           enum:
           - string
-          example: Example failovers
           items:
             type: string
           readOnly: true
@@ -11795,7 +12183,10 @@ components:
       type: object
     NetworkviewCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -11864,6 +12255,10 @@ components:
           type: string
       type: object
     NetworkviewcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -11911,6 +12306,20 @@ components:
           description: The IP address of the External server. Valid when zone_match
             is "EXTERNAL" or "ANY_EXTERNAL".
           example: Example dns_ext_primary
+          type: string
+      type: object
+    NetworkviewFederatedRealms:
+      example:
+        name: Example name
+        id: Example id
+      properties:
+        name:
+          description: The federated realm name
+          example: Example name
+          type: string
+        id:
+          description: The federated realm id
+          example: Example id
           type: string
       type: object
     NetworkviewMsAdUserData:
@@ -12058,8 +12467,12 @@ components:
       additionalProperties: false
       example:
         subscribe_settings:
-          mapped_ea_attributes: mapped_ea_attributes
-          enabled_attributes: Example enabled_attributes
+          mapped_ea_attributes:
+            mapped_ea: Example mapped_ea
+            name: Example name
+          enabled_attributes:
+          - enabled_attributes
+          - enabled_attributes
         discovery_engine_type: Example discovery_engine_type
         use_enable_ifmap_publishing: false
         enable_ifmap_publishing: false
@@ -12100,7 +12513,21 @@ components:
         use_update_dns_on_lease_renewal: false
         port_control_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         update_dns_on_lease_renewal: false
         zone_associations:
@@ -12123,8 +12550,8 @@ components:
         last_rir_registration_update_status: Example last_rir_registration_update_status
         use_domain_name_servers: false
         endpoint_sources:
-        - pxgrid:endpoint
-        - pxgrid:endpoint
+        - "{}"
+        - "{}"
         mgm_private: false
         unmanaged: false
         ddns_domainname: Example ddns_domainname
@@ -12133,17 +12560,20 @@ components:
         template: Example template
         network_view: Example network_view
         vlans:
-        - vlan: Example vlan
+        - vlan: "{}"
           name: Example name
           id: 1
-        - vlan: Example vlan
+        - vlan: "{}"
           name: Example name
           id: 1
         discovery_member: Example discovery_member
         ddns_enable_option_fqdn: false
         use_ddns_enable_option_fqdn: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -12159,16 +12589,32 @@ components:
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
-          switch_port_data_collection_polling_interval: 1
           credential_group: Example credential_group
+          polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
           complete_ping_sweep: false
-          switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-          port_scanning: false
+          switch_port_data_collection_polling_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
+          use_global_polling_frequency_modifier: false
           snmp_collection: false
           smart_subnet_ping_sweep: false
-          auto_arp_refresh_before_switch_port_polling: false
           netbios_scanning: false
+          switch_port_data_collection_polling_interval: 1
+          port_scanning: false
+          auto_arp_refresh_before_switch_port_polling: false
         enable_ddns: false
         network: Example network
         recycle_leases: false
@@ -12187,6 +12633,11 @@ components:
             value: value
         network_container: Example network_container
         rir_registration_action: Example rir_registration_action
+        federated_realms:
+        - name: Example name
+          id: Example id
+        - name: Example name
+          id: Example id
         ddns_generate_hostname: false
         ddns_ttl: 1
         use_zone_associations: false
@@ -12207,7 +12658,21 @@ components:
         use_enable_discovery: false
         discovery_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         use_options: false
       properties:
@@ -12387,7 +12852,7 @@ components:
           items:
             enum:
             - pxgrid:endpoint
-            type: string
+            type: object
           readOnly: true
           type: array
         expand_network:
@@ -12399,6 +12864,14 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+        federated_realms:
+          description: This field contains the federated realms associated to this
+            network
+          enum:
+          - federatedrealm
+          items:
+            $ref: '#/components/schemas/Ipv6networkFederatedRealms'
+          type: array
         last_rir_registration_update_sent:
           description: The timestamp when the last RIR registration update was sent.
           example: 1
@@ -12669,7 +13142,10 @@ components:
       type: object
     Ipv6networkCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -12738,6 +13214,10 @@ components:
           type: string
       type: object
     Ipv6networkcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -12756,16 +13236,32 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
-        switch_port_data_collection_polling_interval: 1
         credential_group: Example credential_group
+        polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
         complete_ping_sweep: false
-        switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-        port_scanning: false
+        switch_port_data_collection_polling_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
+        use_global_polling_frequency_modifier: false
         snmp_collection: false
         smart_subnet_ping_sweep: false
-        auto_arp_refresh_before_switch_port_polling: false
         netbios_scanning: false
+        switch_port_data_collection_polling_interval: 1
+        port_scanning: false
+        auto_arp_refresh_before_switch_port_polling: false
       properties:
         port_scanning:
           description: Determines whether port scanning is enabled or not.
@@ -12819,8 +13315,31 @@ components:
           description: Credential group.
           example: Example credential_group
           type: string
+        polling_frequency_modifier:
+          description: Polling Frequency Modifier.
+          example: Example polling_frequency_modifier
+          type: string
+        use_global_polling_frequency_modifier:
+          description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
       type: object
     Ipv6networkdiscoverybasicpollsettingsSwitchPortDataCollectionPollingSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -12832,7 +13351,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -12909,7 +13427,21 @@ components:
     Ipv6networkDiscoveryBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -12925,6 +13457,21 @@ components:
           $ref: '#/components/schemas/Ipv6networkdiscoveryblackoutsettingBlackoutSchedule'
       type: object
     Ipv6networkdiscoveryblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -12936,7 +13483,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -13012,6 +13558,20 @@ components:
       type: object
     Ipv6networkExpandNetwork:
       properties: {}
+      type: object
+    Ipv6networkFederatedRealms:
+      example:
+        name: Example name
+        id: Example id
+      properties:
+        name:
+          description: The federated realm name
+          example: Example name
+          type: string
+        id:
+          description: The federated realm id
+          example: Example id
+          type: string
       type: object
     Ipv6networkLogicFilterRules:
       example:
@@ -13102,7 +13662,21 @@ components:
     Ipv6networkPortControlBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -13118,6 +13692,21 @@ components:
           $ref: '#/components/schemas/Ipv6networkportcontrolblackoutsettingBlackoutSchedule'
       type: object
     Ipv6networkportcontrolblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -13129,7 +13718,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -13208,8 +13796,12 @@ components:
       type: object
     Ipv6networkSubscribeSettings:
       example:
-        mapped_ea_attributes: mapped_ea_attributes
-        enabled_attributes: Example enabled_attributes
+        mapped_ea_attributes:
+          mapped_ea: Example mapped_ea
+          name: Example name
+        enabled_attributes:
+        - enabled_attributes
+        - enabled_attributes
       properties:
         enabled_attributes:
           description: The list of Cisco ISE attributes allowed for subscription.
@@ -13221,7 +13813,6 @@ components:
           - SSID
           - USERNAME
           - VLAN
-          example: Example enabled_attributes
           items:
             type: string
           type: array
@@ -13229,6 +13820,9 @@ components:
           $ref: '#/components/schemas/Ipv6networksubscribesettingsMappedEaAttributes'
       type: object
     Ipv6networksubscribesettingsMappedEaAttributes:
+      example:
+        mapped_ea: Example mapped_ea
+        name: Example name
       properties:
         name:
           description: The Cisco ISE attribute name that is enabled for publishsing
@@ -13253,7 +13847,7 @@ components:
       type: object
     Ipv6networkVlans:
       example:
-        vlan: Example vlan
+        vlan: "{}"
         name: Example name
         id: 1
       properties:
@@ -13261,8 +13855,7 @@ components:
           description: Reference to the underlying StaticVlan object vlan.
           enum:
           - subobj
-          example: Example vlan
-          type: string
+          type: object
         id:
           description: VLAN ID value.
           example: 1
@@ -13323,8 +13916,12 @@ components:
       additionalProperties: false
       example:
         subscribe_settings:
-          mapped_ea_attributes: mapped_ea_attributes
-          enabled_attributes: Example enabled_attributes
+          mapped_ea_attributes:
+            mapped_ea: Example mapped_ea
+            name: Example name
+          enabled_attributes:
+          - enabled_attributes
+          - enabled_attributes
         discovery_engine_type: Example discovery_engine_type
         use_valid_lifetime: false
         delete_reason: Example delete_reason
@@ -13352,7 +13949,21 @@ components:
         use_update_dns_on_lease_renewal: false
         port_control_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         update_dns_on_lease_renewal: false
         zone_associations:
@@ -13373,8 +13984,8 @@ components:
         last_rir_registration_update_status: Example last_rir_registration_update_status
         use_domain_name_servers: false
         endpoint_sources:
-        - pxgrid:endpoint
-        - pxgrid:endpoint
+        - "{}"
+        - "{}"
         mgm_private: false
         unmanaged: false
         ddns_domainname: Example ddns_domainname
@@ -13383,7 +13994,10 @@ components:
         ddns_enable_option_fqdn: false
         use_ddns_enable_option_fqdn: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -13399,16 +14013,32 @@ components:
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
-          switch_port_data_collection_polling_interval: 1
           credential_group: Example credential_group
+          polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
           complete_ping_sweep: false
-          switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-          port_scanning: false
+          switch_port_data_collection_polling_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
+          use_global_polling_frequency_modifier: false
           snmp_collection: false
           smart_subnet_ping_sweep: false
-          auto_arp_refresh_before_switch_port_polling: false
           netbios_scanning: false
+          switch_port_data_collection_polling_interval: 1
+          port_scanning: false
+          auto_arp_refresh_before_switch_port_polling: false
         enable_ddns: false
         network: Example network
         use_logic_filter_rules: false
@@ -13422,6 +14052,11 @@ components:
             value: value
         network_container: Example network_container
         rir_registration_action: Example rir_registration_action
+        federated_realms:
+        - name: Example name
+          id: Example id
+        - name: Example name
+          id: Example id
         ddns_generate_hostname: false
         ddns_ttl: 1
         use_zone_associations: false
@@ -13439,7 +14074,21 @@ components:
         use_enable_discovery: false
         discovery_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         use_options: false
       properties:
@@ -13562,7 +14211,7 @@ components:
           items:
             enum:
             - pxgrid:endpoint
-            type: string
+            type: object
           readOnly: true
           type: array
         extattrs:
@@ -13571,6 +14220,14 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+        federated_realms:
+          description: This field contains the federated realms associated to this
+            network container.
+          enum:
+          - federatedrealm
+          items:
+            $ref: '#/components/schemas/Ipv6networkcontainerFederatedRealms'
+          type: array
         last_rir_registration_update_sent:
           description: The timestamp when the last RIR registration update was sent.
           example: 1
@@ -13797,7 +14454,10 @@ components:
       type: object
     Ipv6networkcontainerCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -13866,6 +14526,10 @@ components:
           type: string
       type: object
     Ipv6networkcontainercloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -13884,16 +14548,32 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
-        switch_port_data_collection_polling_interval: 1
         credential_group: Example credential_group
+        polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
         complete_ping_sweep: false
-        switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-        port_scanning: false
+        switch_port_data_collection_polling_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
+        use_global_polling_frequency_modifier: false
         snmp_collection: false
         smart_subnet_ping_sweep: false
-        auto_arp_refresh_before_switch_port_polling: false
         netbios_scanning: false
+        switch_port_data_collection_polling_interval: 1
+        port_scanning: false
+        auto_arp_refresh_before_switch_port_polling: false
       properties:
         port_scanning:
           description: Determines whether port scanning is enabled or not.
@@ -13947,8 +14627,31 @@ components:
           description: Credential group.
           example: Example credential_group
           type: string
+        polling_frequency_modifier:
+          description: Polling Frequency Modifier.
+          example: Example polling_frequency_modifier
+          type: string
+        use_global_polling_frequency_modifier:
+          description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
       type: object
     Ipv6networkcontainerdiscoverybasicpollsettingsSwitchPortDataCollectionPollingSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -13960,7 +14663,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -14037,7 +14739,21 @@ components:
     Ipv6networkcontainerDiscoveryBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -14053,6 +14769,21 @@ components:
           $ref: '#/components/schemas/Ipv6networkcontainerdiscoveryblackoutsettingBlackoutSchedule'
       type: object
     Ipv6networkcontainerdiscoveryblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -14064,7 +14795,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -14138,6 +14868,20 @@ components:
           example: false
           type: boolean
       type: object
+    Ipv6networkcontainerFederatedRealms:
+      example:
+        name: Example name
+        id: Example id
+      properties:
+        name:
+          description: The federated realm name
+          example: Example name
+          type: string
+        id:
+          description: The federated realm id
+          example: Example id
+          type: string
+      type: object
     Ipv6networkcontainerLogicFilterRules:
       example:
         filter: Example filter
@@ -14202,7 +14946,21 @@ components:
     Ipv6networkcontainerPortControlBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -14218,6 +14976,21 @@ components:
           $ref: '#/components/schemas/Ipv6networkcontainerportcontrolblackoutsettingBlackoutSchedule'
       type: object
     Ipv6networkcontainerportcontrolblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -14229,7 +15002,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -14305,8 +15077,12 @@ components:
       type: object
     Ipv6networkcontainerSubscribeSettings:
       example:
-        mapped_ea_attributes: mapped_ea_attributes
-        enabled_attributes: Example enabled_attributes
+        mapped_ea_attributes:
+          mapped_ea: Example mapped_ea
+          name: Example name
+        enabled_attributes:
+        - enabled_attributes
+        - enabled_attributes
       properties:
         enabled_attributes:
           description: The list of Cisco ISE attributes allowed for subscription.
@@ -14318,7 +15094,6 @@ components:
           - SSID
           - USERNAME
           - VLAN
-          example: Example enabled_attributes
           items:
             type: string
           type: array
@@ -14326,6 +15101,9 @@ components:
           $ref: '#/components/schemas/Ipv6networkcontainersubscribesettingsMappedEaAttributes'
       type: object
     Ipv6networkcontainersubscribesettingsMappedEaAttributes:
+      example:
+        mapped_ea: Example mapped_ea
+        name: Example name
       properties:
         name:
           description: The Cisco ISE attribute name that is enabled for publishsing
@@ -15091,8 +15869,8 @@ components:
         id: 1
         department: Example department
         assigned_to:
-        - network
-        - network
+        - "{}"
+        - "{}"
         status: Example status
       properties:
         _ref:
@@ -15105,7 +15883,7 @@ components:
           items:
             enum:
             - network
-            type: string
+            type: object
           readOnly: true
           type: array
         comment:
@@ -15376,7 +16154,10 @@ components:
         use_ttl: false
         use_name_template: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -15489,7 +16270,10 @@ components:
       type: object
     BulkhostCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -15558,6 +16342,10 @@ components:
           type: string
       type: object
     BulkhostcloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -15764,7 +16552,9 @@ components:
         scheduled_run:
           month: 1
           year: 1
-          weekdays: Example weekdays
+          weekdays:
+          - weekdays
+          - weekdays
           disable: false
           recurring_time: 1
           repeat: Example repeat
@@ -15778,8 +16568,8 @@ components:
         discovery_task_oid: Example discovery_task_oid
         member_name: Example member_name
         networks:
-        - network
-        - network
+        - "{}"
+        - "{}"
         v_network_view: Example v_network_view
         ping_timeout: 1
         mode: Example mode
@@ -15868,7 +16658,7 @@ components:
           items:
             enum:
             - network
-            type: string
+            type: object
           type: array
         ping_retries:
           description: The number of times to perfrom ping for ICMP and FULL modes.
@@ -15951,7 +16741,9 @@ components:
       example:
         month: 1
         year: 1
-        weekdays: Example weekdays
+        weekdays:
+        - weekdays
+        - weekdays
         disable: false
         recurring_time: 1
         repeat: Example repeat
@@ -15972,7 +16764,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -16574,7 +17365,21 @@ components:
           conflict_count: 1
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           update_dns_on_lease_renewal: false
           zone_associations:
@@ -16597,8 +17402,8 @@ components:
           deny_bootp: false
           last_rir_registration_update_status: Example last_rir_registration_update_status
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           unmanaged: false
           use_ipam_trap_settings: false
           discovered_vlan_id: Example discovered_vlan_id
@@ -16608,7 +17413,10 @@ components:
           use_enable_dhcp_thresholds: false
           ddns_update_fixed_addresses: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -16621,16 +17429,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
           recycle_leases: false
           use_ignore_id: false
@@ -16651,6 +17475,7 @@ components:
           bootserver: Example bootserver
           disable: false
           restart_if_needed: false
+          cloud_shared: false
           low_water_mark: 1
           logic_filter_rules:
           - filter: Example filter
@@ -16659,13 +17484,31 @@ components:
             type: Example type
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           use_options: false
           use_ddns_use_option81: false
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           use_bootserver: false
           discovery_engine_type: Example discovery_engine_type
           nextserver: Example nextserver
@@ -16707,14 +17550,14 @@ components:
           discovered_tenant: Example discovered_tenant
           network_view: Example network_view
           vlans:
-          - vlan: Example vlan
+          - vlan: "{}"
             name: Example name
             id: 1
-          - vlan: Example vlan
+          - vlan: "{}"
             name: Example name
             id: 1
           discovery_member: Example discovery_member
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           use_ddns_ttl: false
           enable_discovery: false
           rir_registration_status: Example rir_registration_status
@@ -16728,6 +17571,11 @@ components:
           use_email_list: false
           ignore_id: Example ignore_id
           network_container: Example network_container
+          federated_realms:
+          - name: Example name
+            id: Example id
+          - name: Example name
+            id: Example id
           utilization_update: 1
           total_hosts: 1
           ddns_generate_hostname: false
@@ -16793,7 +17641,21 @@ components:
           conflict_count: 1
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           update_dns_on_lease_renewal: false
           zone_associations:
@@ -16816,8 +17678,8 @@ components:
           deny_bootp: false
           last_rir_registration_update_status: Example last_rir_registration_update_status
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           unmanaged: false
           use_ipam_trap_settings: false
           discovered_vlan_id: Example discovered_vlan_id
@@ -16827,7 +17689,10 @@ components:
           use_enable_dhcp_thresholds: false
           ddns_update_fixed_addresses: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -16840,16 +17705,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
           recycle_leases: false
           use_ignore_id: false
@@ -16870,6 +17751,7 @@ components:
           bootserver: Example bootserver
           disable: false
           restart_if_needed: false
+          cloud_shared: false
           low_water_mark: 1
           logic_filter_rules:
           - filter: Example filter
@@ -16878,13 +17760,31 @@ components:
             type: Example type
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           use_options: false
           use_ddns_use_option81: false
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           use_bootserver: false
           discovery_engine_type: Example discovery_engine_type
           nextserver: Example nextserver
@@ -16926,14 +17826,14 @@ components:
           discovered_tenant: Example discovered_tenant
           network_view: Example network_view
           vlans:
-          - vlan: Example vlan
+          - vlan: "{}"
             name: Example name
             id: 1
-          - vlan: Example vlan
+          - vlan: "{}"
             name: Example name
             id: 1
           discovery_member: Example discovery_member
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           use_ddns_ttl: false
           enable_discovery: false
           rir_registration_status: Example rir_registration_status
@@ -16947,6 +17847,11 @@ components:
           use_email_list: false
           ignore_id: Example ignore_id
           network_container: Example network_container
+          federated_realms:
+          - name: Example name
+            id: Example id
+          - name: Example name
+            id: Example id
           utilization_update: 1
           total_hosts: 1
           ddns_generate_hostname: false
@@ -17008,7 +17913,21 @@ components:
           rir: Example rir
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           update_dns_on_lease_renewal: false
           zone_associations:
@@ -17030,8 +17949,8 @@ components:
           deny_bootp: false
           last_rir_registration_update_status: Example last_rir_registration_update_status
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           unmanaged: false
           use_ipam_trap_settings: false
           high_water_mark_reset: 1
@@ -17039,7 +17958,10 @@ components:
           use_enable_dhcp_thresholds: false
           ddns_update_fixed_addresses: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -17052,16 +17974,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
           recycle_leases: false
           use_ignore_id: false
@@ -17086,13 +18024,31 @@ components:
             type: Example type
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           use_options: false
           use_ddns_use_option81: false
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           use_bootserver: false
           discovery_engine_type: Example discovery_engine_type
           nextserver: Example nextserver
@@ -17119,7 +18075,7 @@ components:
           ddns_domainname: Example ddns_domainname
           network_view: Example network_view
           discovery_member: Example discovery_member
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           use_ddns_ttl: false
           enable_discovery: false
           rir_registration_status: Example rir_registration_status
@@ -17132,6 +18088,11 @@ components:
           use_email_list: false
           ignore_id: Example ignore_id
           network_container: Example network_container
+          federated_realms:
+          - name: Example name
+            id: Example id
+          - name: Example name
+            id: Example id
           ddns_generate_hostname: false
           ddns_ttl: 1
           use_zone_associations: false
@@ -17188,7 +18149,21 @@ components:
           rir: Example rir
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           update_dns_on_lease_renewal: false
           zone_associations:
@@ -17210,8 +18185,8 @@ components:
           deny_bootp: false
           last_rir_registration_update_status: Example last_rir_registration_update_status
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           unmanaged: false
           use_ipam_trap_settings: false
           high_water_mark_reset: 1
@@ -17219,7 +18194,10 @@ components:
           use_enable_dhcp_thresholds: false
           ddns_update_fixed_addresses: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -17232,16 +18210,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
           recycle_leases: false
           use_ignore_id: false
@@ -17266,13 +18260,31 @@ components:
             type: Example type
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           use_options: false
           use_ddns_use_option81: false
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           use_bootserver: false
           discovery_engine_type: Example discovery_engine_type
           nextserver: Example nextserver
@@ -17299,7 +18311,7 @@ components:
           ddns_domainname: Example ddns_domainname
           network_view: Example network_view
           discovery_member: Example discovery_member
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           use_ddns_ttl: false
           enable_discovery: false
           rir_registration_status: Example rir_registration_status
@@ -17312,6 +18324,11 @@ components:
           use_email_list: false
           ignore_id: Example ignore_id
           network_container: Example network_container
+          federated_realms:
+          - name: Example name
+            id: Example id
+          - name: Example name
+            id: Example id
           ddns_generate_hostname: false
           ddns_ttl: 1
           use_zone_associations: false
@@ -17410,7 +18427,7 @@ components:
           use_enable_dhcp_thresholds: false
           cloud_api_compatible: false
           ddns_update_fixed_addresses: false
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           rir_organization: Example rir_organization
           use_ddns_ttl: false
           rir_registration_status: Example rir_registration_status
@@ -17535,7 +18552,7 @@ components:
           use_enable_dhcp_thresholds: false
           cloud_api_compatible: false
           ddns_update_fixed_addresses: false
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           rir_organization: Example rir_organization
           use_ddns_ttl: false
           rir_registration_status: Example rir_registration_status
@@ -17602,10 +18619,19 @@ components:
             key:
               value: value
           associated_members:
-          - failovers: Example failovers
+          - failovers:
+            - failovers
+            - failovers
             member: Example member
-          - failovers: Example failovers
+          - failovers:
+            - failovers
+            - failovers
             member: Example member
+          federated_realms:
+          - name: Example name
+            id: Example id
+          - name: Example name
+            id: Example id
           remote_reverse_zones:
           - gss_tsig_domain: Example gss_tsig_domain
             key_type: Example key_type
@@ -17624,7 +18650,10 @@ components:
             server_address: Example server_address
             tsig_key_name: Example tsig_key_name
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -17634,8 +18663,8 @@ components:
             delegated_root: Example delegated_root
           is_default: false
           internal_forward_zones:
-          - zone_auth
-          - zone_auth
+          - "{}"
+          - "{}"
           ms_ad_user_data:
             active_users_count: 1
           remote_forward_zones:
@@ -17695,10 +18724,19 @@ components:
             key:
               value: value
           associated_members:
-          - failovers: Example failovers
+          - failovers:
+            - failovers
+            - failovers
             member: Example member
-          - failovers: Example failovers
+          - failovers:
+            - failovers
+            - failovers
             member: Example member
+          federated_realms:
+          - name: Example name
+            id: Example id
+          - name: Example name
+            id: Example id
           remote_reverse_zones:
           - gss_tsig_domain: Example gss_tsig_domain
             key_type: Example key_type
@@ -17717,7 +18755,10 @@ components:
             server_address: Example server_address
             tsig_key_name: Example tsig_key_name
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -17727,8 +18768,8 @@ components:
             delegated_root: Example delegated_root
           is_default: false
           internal_forward_zones:
-          - zone_auth
-          - zone_auth
+          - "{}"
+          - "{}"
           ms_ad_user_data:
             active_users_count: 1
           remote_forward_zones:
@@ -17783,8 +18824,12 @@ components:
       example:
         result:
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           discovery_engine_type: Example discovery_engine_type
           use_enable_ifmap_publishing: false
           enable_ifmap_publishing: false
@@ -17825,7 +18870,21 @@ components:
           use_update_dns_on_lease_renewal: false
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           update_dns_on_lease_renewal: false
           zone_associations:
@@ -17848,8 +18907,8 @@ components:
           last_rir_registration_update_status: Example last_rir_registration_update_status
           use_domain_name_servers: false
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           mgm_private: false
           unmanaged: false
           ddns_domainname: Example ddns_domainname
@@ -17858,17 +18917,20 @@ components:
           template: Example template
           network_view: Example network_view
           vlans:
-          - vlan: Example vlan
+          - vlan: "{}"
             name: Example name
             id: 1
-          - vlan: Example vlan
+          - vlan: "{}"
             name: Example name
             id: 1
           discovery_member: Example discovery_member
           ddns_enable_option_fqdn: false
           use_ddns_enable_option_fqdn: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -17884,16 +18946,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
           network: Example network
           recycle_leases: false
@@ -17912,6 +18990,11 @@ components:
               value: value
           network_container: Example network_container
           rir_registration_action: Example rir_registration_action
+          federated_realms:
+          - name: Example name
+            id: Example id
+          - name: Example name
+            id: Example id
           ddns_generate_hostname: false
           ddns_ttl: 1
           use_zone_associations: false
@@ -17932,7 +19015,21 @@ components:
           use_enable_discovery: false
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           use_options: false
       properties:
@@ -17953,8 +19050,12 @@ components:
       example:
         result:
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           discovery_engine_type: Example discovery_engine_type
           use_enable_ifmap_publishing: false
           enable_ifmap_publishing: false
@@ -17995,7 +19096,21 @@ components:
           use_update_dns_on_lease_renewal: false
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           update_dns_on_lease_renewal: false
           zone_associations:
@@ -18018,8 +19133,8 @@ components:
           last_rir_registration_update_status: Example last_rir_registration_update_status
           use_domain_name_servers: false
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           mgm_private: false
           unmanaged: false
           ddns_domainname: Example ddns_domainname
@@ -18028,17 +19143,20 @@ components:
           template: Example template
           network_view: Example network_view
           vlans:
-          - vlan: Example vlan
+          - vlan: "{}"
             name: Example name
             id: 1
-          - vlan: Example vlan
+          - vlan: "{}"
             name: Example name
             id: 1
           discovery_member: Example discovery_member
           ddns_enable_option_fqdn: false
           use_ddns_enable_option_fqdn: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -18054,16 +19172,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
           network: Example network
           recycle_leases: false
@@ -18082,6 +19216,11 @@ components:
               value: value
           network_container: Example network_container
           rir_registration_action: Example rir_registration_action
+          federated_realms:
+          - name: Example name
+            id: Example id
+          - name: Example name
+            id: Example id
           ddns_generate_hostname: false
           ddns_ttl: 1
           use_zone_associations: false
@@ -18102,7 +19241,21 @@ components:
           use_enable_discovery: false
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           use_options: false
       properties:
@@ -18125,8 +19278,12 @@ components:
       example:
         result:
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           discovery_engine_type: Example discovery_engine_type
           use_valid_lifetime: false
           delete_reason: Example delete_reason
@@ -18154,7 +19311,21 @@ components:
           use_update_dns_on_lease_renewal: false
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           update_dns_on_lease_renewal: false
           zone_associations:
@@ -18175,8 +19346,8 @@ components:
           last_rir_registration_update_status: Example last_rir_registration_update_status
           use_domain_name_servers: false
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           mgm_private: false
           unmanaged: false
           ddns_domainname: Example ddns_domainname
@@ -18185,7 +19356,10 @@ components:
           ddns_enable_option_fqdn: false
           use_ddns_enable_option_fqdn: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -18201,16 +19375,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
           network: Example network
           use_logic_filter_rules: false
@@ -18224,6 +19414,11 @@ components:
               value: value
           network_container: Example network_container
           rir_registration_action: Example rir_registration_action
+          federated_realms:
+          - name: Example name
+            id: Example id
+          - name: Example name
+            id: Example id
           ddns_generate_hostname: false
           ddns_ttl: 1
           use_zone_associations: false
@@ -18241,7 +19436,21 @@ components:
           use_enable_discovery: false
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           use_options: false
       properties:
@@ -18263,8 +19472,12 @@ components:
       example:
         result:
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           discovery_engine_type: Example discovery_engine_type
           use_valid_lifetime: false
           delete_reason: Example delete_reason
@@ -18292,7 +19505,21 @@ components:
           use_update_dns_on_lease_renewal: false
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           update_dns_on_lease_renewal: false
           zone_associations:
@@ -18313,8 +19540,8 @@ components:
           last_rir_registration_update_status: Example last_rir_registration_update_status
           use_domain_name_servers: false
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           mgm_private: false
           unmanaged: false
           ddns_domainname: Example ddns_domainname
@@ -18323,7 +19550,10 @@ components:
           ddns_enable_option_fqdn: false
           use_ddns_enable_option_fqdn: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -18339,16 +19569,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
           network: Example network
           use_logic_filter_rules: false
@@ -18362,6 +19608,11 @@ components:
               value: value
           network_container: Example network_container
           rir_registration_action: Example rir_registration_action
+          federated_realms:
+          - name: Example name
+            id: Example id
+          - name: Example name
+            id: Example id
           ddns_generate_hostname: false
           ddns_ttl: 1
           use_zone_associations: false
@@ -18379,7 +19630,21 @@ components:
           use_enable_discovery: false
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           use_options: false
       properties:
@@ -18728,8 +19993,8 @@ components:
           id: 1
           department: Example department
           assigned_to:
-          - network
-          - network
+          - "{}"
+          - "{}"
           status: Example status
       properties:
         result:
@@ -18761,8 +20026,8 @@ components:
           id: 1
           department: Example department
           assigned_to:
-          - network
-          - network
+          - "{}"
+          - "{}"
           status: Example status
       properties:
         result:
@@ -18911,7 +20176,10 @@ components:
           use_ttl: false
           use_name_template: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -18958,7 +20226,10 @@ components:
           use_ttl: false
           use_name_template: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -19096,7 +20367,9 @@ components:
           scheduled_run:
             month: 1
             year: 1
-            weekdays: Example weekdays
+            weekdays:
+            - weekdays
+            - weekdays
             disable: false
             recurring_time: 1
             repeat: Example repeat
@@ -19110,8 +20383,8 @@ components:
           discovery_task_oid: Example discovery_task_oid
           member_name: Example member_name
           networks:
-          - network
-          - network
+          - "{}"
+          - "{}"
           v_network_view: Example v_network_view
           ping_timeout: 1
           mode: Example mode

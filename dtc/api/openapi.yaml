@@ -1,8 +1,7 @@
 openapi: 3.0.0
 info:
   contact:
-    email: jkhatri@infoblox.com
-    name: Jeenitkumar Khatri
+    name: Infoblox
     url: https://www.infoblox.com
   description: OpenAPI specification for Infoblox NIOS WAPI DTC objects
   license:
@@ -10,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DTC API
-  version: 2.12.3
+  version: 2.13.6
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.12.3
+  url: /wapi/v2.13.6
 tags:
 - description: Operations for dtc objects
   name: dtc
@@ -6548,11 +6547,15 @@ components:
       example:
         lb_alternate_method: Example lb_alternate_method
         consolidated_monitors:
-        - members: Example members
+        - members:
+          - members
+          - members
           full_health_communication: false
           monitor: Example monitor
           availability: Example availability
-        - members: Example members
+        - members:
+          - members
+          - members
           full_health_communication: false
           monitor: Example monitor
           availability: Example availability
@@ -6593,8 +6596,8 @@ components:
           monitor: Example monitor
           monitor_weighing: Example monitor_weighing
         monitors:
-        - dtc:monitor:http
-        - dtc:monitor:http
+        - "{}"
+        - "{}"
       properties:
         _ref:
           description: The reference to the object.
@@ -6684,7 +6687,7 @@ components:
           items:
             enum:
             - dtc:monitor:http
-            type: string
+            type: object
           type: array
         name:
           description: The DTC Pool display name.
@@ -6717,7 +6720,9 @@ components:
       type: object
     DtcPoolConsolidatedMonitors:
       example:
-        members: Example members
+        members:
+        - members
+        - members
         full_health_communication: false
         monitor: Example monitor
         availability: Example availability
@@ -6727,7 +6732,6 @@ components:
             in a pool.
           enum:
           - string
-          example: Example members
           items:
             type: string
           type: array
@@ -6912,8 +6916,8 @@ components:
         name: Example name
         comment: Example comment
         rules:
-        - dtc:topology:rule
-        - dtc:topology:rule
+        - "{}"
+        - "{}"
       properties:
         _ref:
           description: The reference to the object.
@@ -6940,7 +6944,7 @@ components:
           items:
             enum:
             - dtc:topology:rule
-            type: string
+            type: object
           type: array
       type: object
     ListDtcTopologyResponse:
@@ -6971,8 +6975,8 @@ components:
       additionalProperties: false
       example:
         auth_zones:
-        - zone_auth
-        - zone_auth
+        - "{}"
+        - "{}"
         types:
         - types
         - types
@@ -7013,7 +7017,7 @@ components:
           items:
             enum:
             - zone_auth
-            type: string
+            type: object
           type: array
         auto_consolidated_monitors:
           description: Flag for enabling auto managing DTC Consolidated Monitors on
@@ -8992,11 +8996,15 @@ components:
         result:
           lb_alternate_method: Example lb_alternate_method
           consolidated_monitors:
-          - members: Example members
+          - members:
+            - members
+            - members
             full_health_communication: false
             monitor: Example monitor
             availability: Example availability
-          - members: Example members
+          - members:
+            - members
+            - members
             full_health_communication: false
             monitor: Example monitor
             availability: Example availability
@@ -9037,8 +9045,8 @@ components:
             monitor: Example monitor
             monitor_weighing: Example monitor_weighing
           monitors:
-          - dtc:monitor:http
-          - dtc:monitor:http
+          - "{}"
+          - "{}"
       properties:
         result:
           $ref: '#/components/schemas/DtcPool'
@@ -9058,11 +9066,15 @@ components:
         result:
           lb_alternate_method: Example lb_alternate_method
           consolidated_monitors:
-          - members: Example members
+          - members:
+            - members
+            - members
             full_health_communication: false
             monitor: Example monitor
             availability: Example availability
-          - members: Example members
+          - members:
+            - members
+            - members
             full_health_communication: false
             monitor: Example monitor
             availability: Example availability
@@ -9103,8 +9115,8 @@ components:
             monitor: Example monitor
             monitor_weighing: Example monitor_weighing
           monitors:
-          - dtc:monitor:http
-          - dtc:monitor:http
+          - "{}"
+          - "{}"
       properties:
         result:
           $ref: '#/components/schemas/DtcPool'
@@ -9130,8 +9142,8 @@ components:
           name: Example name
           comment: Example comment
           rules:
-          - dtc:topology:rule
-          - dtc:topology:rule
+          - "{}"
+          - "{}"
       properties:
         result:
           $ref: '#/components/schemas/DtcTopology'
@@ -9156,8 +9168,8 @@ components:
           name: Example name
           comment: Example comment
           rules:
-          - dtc:topology:rule
-          - dtc:topology:rule
+          - "{}"
+          - "{}"
       properties:
         result:
           $ref: '#/components/schemas/DtcTopology'
@@ -9177,8 +9189,8 @@ components:
       example:
         result:
           auth_zones:
-          - zone_auth
-          - zone_auth
+          - "{}"
+          - "{}"
           types:
           - types
           - types
@@ -9226,8 +9238,8 @@ components:
       example:
         result:
           auth_zones:
-          - zone_auth
-          - zone_auth
+          - "{}"
+          - "{}"
           types:
           - types
           - types

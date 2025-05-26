@@ -34,9 +34,10 @@ Name | Type | Description | Notes
 **EnableDiscovery** | Pointer to **bool** | Determines whether a discovery is enabled or not for this network. When this is set to False, the network discovery is disabled. | [optional] 
 **EnableIfmapPublishing** | Pointer to **bool** | Determines if IFMAP publishing is enabled for the network. | [optional] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the network should be immediately enabled. | [optional] 
-**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP IPv6 Network object. | [optional] [readonly] 
+**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP IPv6 Network object. | [optional] [readonly] 
 **ExpandNetwork** | Pointer to **map[string]interface{}** |  | [optional] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**FederatedRealms** | Pointer to [**[]Ipv6networkFederatedRealms**](Ipv6networkFederatedRealms.md) | This field contains the federated realms associated to this network | [optional] 
 **LastRirRegistrationUpdateSent** | Pointer to **int64** | The timestamp when the last RIR registration update was sent. | [optional] [readonly] 
 **LastRirRegistrationUpdateStatus** | Pointer to **string** | Last RIR registration update status. | [optional] [readonly] 
 **LogicFilterRules** | Pointer to [**[]Ipv6networkLogicFilterRules**](Ipv6networkLogicFilterRules.md) | This field contains the logic filters to be applied on this IPv6 network. This list corresponds to the match rules that are written to the DHCPv6 configuration file. | [optional] 
@@ -863,20 +864,20 @@ HasEnableImmediateDiscovery returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *GetIpv6networkResponse) GetEndpointSources() []string`
+`func (o *GetIpv6networkResponse) GetEndpointSources() []map[string]interface{}`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *GetIpv6networkResponse) GetEndpointSourcesOk() (*[]string, bool)`
+`func (o *GetIpv6networkResponse) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *GetIpv6networkResponse) SetEndpointSources(v []string)`
+`func (o *GetIpv6networkResponse) SetEndpointSources(v []map[string]interface{})`
 
 SetEndpointSources sets EndpointSources field to given value.
 
@@ -935,6 +936,31 @@ SetExtattrs sets Extattrs field to given value.
 `func (o *GetIpv6networkResponse) HasExtattrs() bool`
 
 HasExtattrs returns a boolean if a field has been set.
+
+### GetFederatedRealms
+
+`func (o *GetIpv6networkResponse) GetFederatedRealms() []Ipv6networkFederatedRealms`
+
+GetFederatedRealms returns the FederatedRealms field if non-nil, zero value otherwise.
+
+### GetFederatedRealmsOk
+
+`func (o *GetIpv6networkResponse) GetFederatedRealmsOk() (*[]Ipv6networkFederatedRealms, bool)`
+
+GetFederatedRealmsOk returns a tuple with the FederatedRealms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederatedRealms
+
+`func (o *GetIpv6networkResponse) SetFederatedRealms(v []Ipv6networkFederatedRealms)`
+
+SetFederatedRealms sets FederatedRealms field to given value.
+
+### HasFederatedRealms
+
+`func (o *GetIpv6networkResponse) HasFederatedRealms() bool`
+
+HasFederatedRealms returns a boolean if a field has been set.
 
 ### GetLastRirRegistrationUpdateSent
 

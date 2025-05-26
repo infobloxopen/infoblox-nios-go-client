@@ -12,7 +12,8 @@ Name | Type | Description | Notes
 **DdnsDnsView** | Pointer to **string** | DNS views that will receive the updates if you enable the appliance to send updates to Grid members. | [optional] 
 **DdnsZonePrimaries** | Pointer to [**[]NetworkviewDdnsZonePrimaries**](NetworkviewDdnsZonePrimaries.md) | An array of Ddns Zone Primary dhcpddns structs that lists the information of primary zone to wich DDNS updates should be sent. | [optional] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**InternalForwardZones** | Pointer to **[]string** | The list of linked authoritative DNS zones. | [optional] 
+**FederatedRealms** | Pointer to [**[]NetworkviewFederatedRealms**](NetworkviewFederatedRealms.md) | This field contains the federated realms associated to this network view | [optional] 
+**InternalForwardZones** | Pointer to **[]map[string]interface{}** | The list of linked authoritative DNS zones. | [optional] 
 **IsDefault** | Pointer to **bool** | The NIOS appliance provides one default network view. You can rename the default view and change its settings, but you cannot delete it. There must always be at least one network view in the appliance. | [optional] [readonly] 
 **MgmPrivate** | Pointer to **bool** | This field controls whether this object is synchronized with the Multi-Grid Master. If this field is set to True, objects are not synchronized. | [optional] 
 **MsAdUserData** | Pointer to [**NetworkviewMsAdUserData**](NetworkviewMsAdUserData.md) |  | [optional] 
@@ -240,22 +241,47 @@ SetExtattrs sets Extattrs field to given value.
 
 HasExtattrs returns a boolean if a field has been set.
 
+### GetFederatedRealms
+
+`func (o *GetNetworkviewResponse) GetFederatedRealms() []NetworkviewFederatedRealms`
+
+GetFederatedRealms returns the FederatedRealms field if non-nil, zero value otherwise.
+
+### GetFederatedRealmsOk
+
+`func (o *GetNetworkviewResponse) GetFederatedRealmsOk() (*[]NetworkviewFederatedRealms, bool)`
+
+GetFederatedRealmsOk returns a tuple with the FederatedRealms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederatedRealms
+
+`func (o *GetNetworkviewResponse) SetFederatedRealms(v []NetworkviewFederatedRealms)`
+
+SetFederatedRealms sets FederatedRealms field to given value.
+
+### HasFederatedRealms
+
+`func (o *GetNetworkviewResponse) HasFederatedRealms() bool`
+
+HasFederatedRealms returns a boolean if a field has been set.
+
 ### GetInternalForwardZones
 
-`func (o *GetNetworkviewResponse) GetInternalForwardZones() []string`
+`func (o *GetNetworkviewResponse) GetInternalForwardZones() []map[string]interface{}`
 
 GetInternalForwardZones returns the InternalForwardZones field if non-nil, zero value otherwise.
 
 ### GetInternalForwardZonesOk
 
-`func (o *GetNetworkviewResponse) GetInternalForwardZonesOk() (*[]string, bool)`
+`func (o *GetNetworkviewResponse) GetInternalForwardZonesOk() (*[]map[string]interface{}, bool)`
 
 GetInternalForwardZonesOk returns a tuple with the InternalForwardZones field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternalForwardZones
 
-`func (o *GetNetworkviewResponse) SetInternalForwardZones(v []string)`
+`func (o *GetNetworkviewResponse) SetInternalForwardZones(v []map[string]interface{})`
 
 SetInternalForwardZones sets InternalForwardZones field to given value.
 

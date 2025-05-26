@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DnstapReceiverAddressOrFqdn** | Pointer to **string** | Address or FQDN of DNSTAP receiver. | [optional] 
 **DnstapReceiverPort** | Pointer to **int64** | DNSTAP receiver port number. | [optional] 
 **DnstapIdentity** | Pointer to **string** | DNSTAP id string. | [optional] [readonly] 
 **DnstapVersion** | Pointer to **string** | DNSTAP version. | [optional] [readonly] 
-**DnstapReceiverAddress** | Pointer to **string** | Address or FQDN of DNSTAP receiver. | [optional] 
 
 ## Methods
 
@@ -27,6 +27,31 @@ will change when the set of required properties is changed
 NewMemberDnsDnstapSettingWithDefaults instantiates a new MemberDnsDnstapSetting object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDnstapReceiverAddressOrFqdn
+
+`func (o *MemberDnsDnstapSetting) GetDnstapReceiverAddressOrFqdn() string`
+
+GetDnstapReceiverAddressOrFqdn returns the DnstapReceiverAddressOrFqdn field if non-nil, zero value otherwise.
+
+### GetDnstapReceiverAddressOrFqdnOk
+
+`func (o *MemberDnsDnstapSetting) GetDnstapReceiverAddressOrFqdnOk() (*string, bool)`
+
+GetDnstapReceiverAddressOrFqdnOk returns a tuple with the DnstapReceiverAddressOrFqdn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnstapReceiverAddressOrFqdn
+
+`func (o *MemberDnsDnstapSetting) SetDnstapReceiverAddressOrFqdn(v string)`
+
+SetDnstapReceiverAddressOrFqdn sets DnstapReceiverAddressOrFqdn field to given value.
+
+### HasDnstapReceiverAddressOrFqdn
+
+`func (o *MemberDnsDnstapSetting) HasDnstapReceiverAddressOrFqdn() bool`
+
+HasDnstapReceiverAddressOrFqdn returns a boolean if a field has been set.
 
 ### GetDnstapReceiverPort
 
@@ -102,31 +127,6 @@ SetDnstapVersion sets DnstapVersion field to given value.
 `func (o *MemberDnsDnstapSetting) HasDnstapVersion() bool`
 
 HasDnstapVersion returns a boolean if a field has been set.
-
-### GetDnstapReceiverAddress
-
-`func (o *MemberDnsDnstapSetting) GetDnstapReceiverAddress() string`
-
-GetDnstapReceiverAddress returns the DnstapReceiverAddress field if non-nil, zero value otherwise.
-
-### GetDnstapReceiverAddressOk
-
-`func (o *MemberDnsDnstapSetting) GetDnstapReceiverAddressOk() (*string, bool)`
-
-GetDnstapReceiverAddressOk returns a tuple with the DnstapReceiverAddress field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDnstapReceiverAddress
-
-`func (o *MemberDnsDnstapSetting) SetDnstapReceiverAddress(v string)`
-
-SetDnstapReceiverAddress sets DnstapReceiverAddress field to given value.
-
-### HasDnstapReceiverAddress
-
-`func (o *MemberDnsDnstapSetting) HasDnstapReceiverAddress() bool`
-
-HasDnstapReceiverAddress returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

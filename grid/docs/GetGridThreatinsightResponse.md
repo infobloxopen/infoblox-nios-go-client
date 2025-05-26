@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ConfigureDomainCollapsing** | Pointer to **bool** | Disable domain collapsing at grid level | [optional] 
 **CurrentAllowlist** | Pointer to **string** | The Grid allowlist. | [optional] [readonly] 
 **CurrentModuleset** | Pointer to **string** | The current threat insight module set. | [optional] [readonly] 
-**DnsTunnelBlockListRpzZones** | Pointer to **[]string** | The list of response policy zones for DNS tunnelling requests. | [optional] 
+**DnsTunnelBlockListRpzZones** | Pointer to **[]map[string]interface{}** | The list of response policy zones for DNS tunnelling requests. | [optional] 
 **DomainCollapsingLevel** | Pointer to **int64** | Level of domain collapsing | [optional] 
 **DownloadThreatInsightAllowlistUpdate** | Pointer to **map[string]interface{}** |  | [optional] 
 **DownloadThreatInsightModulesetUpdate** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -181,20 +181,20 @@ HasCurrentModuleset returns a boolean if a field has been set.
 
 ### GetDnsTunnelBlockListRpzZones
 
-`func (o *GetGridThreatinsightResponse) GetDnsTunnelBlockListRpzZones() []string`
+`func (o *GetGridThreatinsightResponse) GetDnsTunnelBlockListRpzZones() []map[string]interface{}`
 
 GetDnsTunnelBlockListRpzZones returns the DnsTunnelBlockListRpzZones field if non-nil, zero value otherwise.
 
 ### GetDnsTunnelBlockListRpzZonesOk
 
-`func (o *GetGridThreatinsightResponse) GetDnsTunnelBlockListRpzZonesOk() (*[]string, bool)`
+`func (o *GetGridThreatinsightResponse) GetDnsTunnelBlockListRpzZonesOk() (*[]map[string]interface{}, bool)`
 
 GetDnsTunnelBlockListRpzZonesOk returns a tuple with the DnsTunnelBlockListRpzZones field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDnsTunnelBlockListRpzZones
 
-`func (o *GetGridThreatinsightResponse) SetDnsTunnelBlockListRpzZones(v []string)`
+`func (o *GetGridThreatinsightResponse) SetDnsTunnelBlockListRpzZones(v []map[string]interface{})`
 
 SetDnsTunnelBlockListRpzZones sets DnsTunnelBlockListRpzZones field to given value.
 

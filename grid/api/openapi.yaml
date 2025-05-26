@@ -1,8 +1,7 @@
 openapi: 3.0.0
 info:
   contact:
-    email: jkhatri@infoblox.com
-    name: Jeenitkumar Khatri
+    name: Infoblox
     url: https://www.infoblox.com
   description: OpenAPI specification for Infoblox NIOS WAPI GRID objects
   license:
@@ -10,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox GRID API
-  version: 2.12.3
+  version: 2.13.6
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.12.3
+  url: /wapi/v2.13.6
 tags:
 - description: Operations for grid objects
   name: grid
@@ -3930,9 +3929,26 @@ components:
         ntp_setting:
           gm_local_ntp_stratum: 1
           enable_ntp: false
-          ntp_acl: ntp_acl
-          ntp_keys: ntp_keys
-          ntp_servers: ntp_servers
+          ntp_acl:
+            ac_list:
+              address_ac:
+                address: Example address
+                permission: Example permission
+              service: Example service
+            service: Example service
+            acl_type: Example acl_type
+            named_acl: Example named_acl
+          ntp_keys:
+            number: 1
+            string: Example string
+            type: Example type
+          ntp_servers:
+            enable_authentication: false
+            address: Example address
+            ntp_key_number: 1
+            burst: false
+            preferred: false
+            iburst: false
           use_default_stratum: false
           ntp_kod: false
           local_ntp_stratum: 1
@@ -3954,6 +3970,7 @@ components:
           disable: false
           name: Example name
           comment: Example comment
+        enable_force_sync_join_token_to_gmc: false
         join: "{}"
         test_syslog_backup_server_connection: "{}"
         csp_api_config:
@@ -3992,24 +4009,28 @@ components:
           min_password_age: 1
         syslog_servers:
         - severity: Example severity
-          category_list: Example category_list
+          category_list:
+          - category_list
+          - category_list
           message_node_id: Example message_node_id
-          address: Example address
           connection_type: Example connection_type
           port: 1
           only_category_list: false
           certificate: Example certificate
+          address_or_fqdn: Example address_or_fqdn
           certificate_token: Example certificate_token
           local_interface: Example local_interface
           message_source: Example message_source
         - severity: Example severity
-          category_list: Example category_list
+          category_list:
+          - category_list
+          - category_list
           message_node_id: Example message_node_id
-          address: Example address
           connection_type: Example connection_type
           port: 1
           only_category_list: false
           certificate: Example certificate
+          address_or_fqdn: Example address_or_fqdn
           certificate_token: Example certificate_token
           local_interface: Example local_interface
           message_source: Example message_source
@@ -4061,17 +4082,17 @@ components:
         external_syslog_backup_servers:
         - password: Example password
           protocol: Example protocol
-          address: Example address
           port: 1
           directory_path: Example directory_path
           enable: false
+          address_or_fqdn: Example address_or_fqdn
           username: Example username
         - password: Example password
           protocol: Example protocol
-          address: Example address
           port: 1
           directory_path: Example directory_path
           enable: false
+          address_or_fqdn: Example address_or_fqdn
           username: Example username
         traffic_capture_chr_setting:
           chr_trigger_enable: false
@@ -4106,7 +4127,9 @@ components:
         traffic_capture_rec_dns_setting:
           rec_dns_latency_trigger_enable: false
           rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
-          kpi_monitored_domains: kpi_monitored_domains
+          kpi_monitored_domains:
+            domain_name: Example domain_name
+            record_type: Example record_type
           rec_dns_latency_reset: 1
           rec_dns_latency_threshold: 1
         email_setting:
@@ -4157,23 +4180,39 @@ components:
         restart_status: Example restart_status
         empty_recycle_bin: "{}"
         dns_resolver_setting:
-          resolvers: Example resolvers
-          search_domains: Example search_domains
+          resolvers:
+          - resolvers
+          - resolvers
+          search_domains:
+          - search_domains
+          - search_domains
         external_syslog_server_enable: false
         enable_recycle_bin: false
         get_template_schema_versions: "{}"
         syslog_size: 1
+        enable_federation: false
         security_setting:
           support_access_enable: false
           remote_console_access_enable: false
           ssh_perm_enable: false
           support_access_info: Example support_access_info
           disable_concurrent_login: false
-          admin_access_items: admin_access_items
+          admin_access_items:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
           login_banner_text: Example login_banner_text
           security_access_enable: false
           http_redirect_enable: false
-          inactivity_lockout_setting: inactivity_lockout_setting
+          inactivity_lockout_setting:
+            account_inactivity_lockout_enable: false
+            reactivate_via_remote_console_enable: false
+            reminder_days: 1
+            inactive_days: 1
+            reactivate_via_serial_console_enable: false
           login_banner_enable: false
           audit_log_rolling_enable: false
           security_access_remote_console_enable: false
@@ -4203,17 +4242,32 @@ components:
         get_rpz_threat_details: "{}"
         _ref: _ref
         snmp_setting:
-          syslocation: Example syslocation
-          syscontact: Example syscontact
+          syslocation:
+          - syslocation
+          - syslocation
+          syscontact:
+          - syscontact
+          - syscontact
           snmpv3_queries_enable: false
-          snmpv3_queries_users: snmpv3_queries_users
-          sysdescr: Example sysdescr
+          snmpv3_queries_users:
+            comment: Example comment
+            user: Example user
+          sysdescr:
+          - sysdescr
+          - sysdescr
           traps_community_string: Example traps_community_string
-          engine_id: Example engine_id
+          engine_id:
+          - engine_id
+          - engine_id
           queries_community_string: Example queries_community_string
           snmpv3_traps_enable: false
-          sysname: Example sysname
-          trap_receivers: trap_receivers
+          sysname:
+          - sysname
+          - sysname
+          trap_receivers:
+            address: Example address
+            comment: Example comment
+            user: Example user
           traps_enable: false
           queries_enable: false
         member_upgrade: "{}"
@@ -4276,6 +4330,16 @@ components:
         empty_recycle_bin:
           properties: {}
           type: object
+        enable_federation:
+          description: Determines if the federation feature is enabled or not. Test
+            Setting will be performed for any change in enable_federation.
+          example: false
+          type: boolean
+        enable_force_sync_join_token_to_gmc:
+          description: Determines if the force sync join token from GM to GMC is enabled
+            or not.
+          example: false
+          type: boolean
         enable_gui_api_for_lan_vip:
           description: "If set to True, GUI and API access are enabled on the LAN/VIP\
             \ port and MGMT port (if configured)."
@@ -4711,8 +4775,12 @@ components:
       type: object
     GridDnsResolverSetting:
       example:
-        resolvers: Example resolvers
-        search_domains: Example search_domains
+        resolvers:
+        - resolvers
+        - resolvers
+        search_domains:
+        - search_domains
+        - search_domains
       properties:
         resolvers:
           description: The resolvers of a Grid member. The Grid member sends queries
@@ -4720,7 +4788,6 @@ components:
             is used if first one does not response.
           enum:
           - string
-          example: Example resolvers
           items:
             type: string
           type: array
@@ -4731,7 +4798,6 @@ components:
             \ or alternate_resolver is set."
           enum:
           - string
-          example: Example search_domains
           items:
             type: string
           type: array
@@ -4794,12 +4860,16 @@ components:
       example:
         password: Example password
         protocol: Example protocol
-        address: Example address
         port: 1
         directory_path: Example directory_path
         enable: false
+        address_or_fqdn: Example address_or_fqdn
         username: Example username
       properties:
+        address_or_fqdn:
+          description: The IPv4 or IPv6 address or FQDN of the backup syslog server.
+          example: Example address_or_fqdn
+          type: string
         directory_path:
           description: The directory path for the replication of the rotated syslog
             files.
@@ -4830,10 +4900,6 @@ components:
         username:
           description: The username of the backup syslog server.
           example: Example username
-          type: string
-        address:
-          description: The IPv4/IPv6 address or FQDN of the backup syslog server.
-          example: Example address
           type: string
       type: object
     GridGenerateTsigKey:
@@ -5106,9 +5172,26 @@ components:
       example:
         gm_local_ntp_stratum: 1
         enable_ntp: false
-        ntp_acl: ntp_acl
-        ntp_keys: ntp_keys
-        ntp_servers: ntp_servers
+        ntp_acl:
+          ac_list:
+            address_ac:
+              address: Example address
+              permission: Example permission
+            service: Example service
+          service: Example service
+          acl_type: Example acl_type
+          named_acl: Example named_acl
+        ntp_keys:
+          number: 1
+          string: Example string
+          type: Example type
+        ntp_servers:
+          enable_authentication: false
+          address: Example address
+          ntp_key_number: 1
+          burst: false
+          preferred: false
+          iburst: false
         use_default_stratum: false
         ntp_kod: false
         local_ntp_stratum: 1
@@ -5144,6 +5227,13 @@ components:
           type: boolean
       type: object
     GridntpsettingNtpServers:
+      example:
+        enable_authentication: false
+        address: Example address
+        ntp_key_number: 1
+        burst: false
+        preferred: false
+        iburst: false
       properties:
         address:
           description: The NTP server IP address or FQDN.
@@ -5177,6 +5267,10 @@ components:
           type: boolean
       type: object
     GridntpsettingNtpKeys:
+      example:
+        number: 1
+        string: Example string
+        type: Example type
       properties:
         number:
           description: The NTP authentication key identifier.
@@ -5199,6 +5293,15 @@ components:
           type: string
       type: object
     GridntpsettingNtpAcl:
+      example:
+        ac_list:
+          address_ac:
+            address: Example address
+            permission: Example permission
+          service: Example service
+        service: Example service
+        acl_type: Example acl_type
+        named_acl: Example named_acl
       properties:
         acl_type:
           description: The NTP access control list type.
@@ -5224,6 +5327,11 @@ components:
           type: string
       type: object
     GridntpsettingntpaclAcList:
+      example:
+        address_ac:
+          address: Example address
+          permission: Example permission
+        service: Example service
       properties:
         address_ac:
           $ref: '#/components/schemas/GridntpsettingntpaclaclistAddressAc'
@@ -5236,6 +5344,9 @@ components:
           type: string
       type: object
     GridntpsettingntpaclaclistAddressAc:
+      example:
+        address: Example address
+        permission: Example permission
       properties:
         address:
           description: The address this rule applies to or "Any".
@@ -5636,11 +5747,22 @@ components:
         ssh_perm_enable: false
         support_access_info: Example support_access_info
         disable_concurrent_login: false
-        admin_access_items: admin_access_items
+        admin_access_items:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          permission: Example permission
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
         login_banner_text: Example login_banner_text
         security_access_enable: false
         http_redirect_enable: false
-        inactivity_lockout_setting: inactivity_lockout_setting
+        inactivity_lockout_setting:
+          account_inactivity_lockout_enable: false
+          reactivate_via_remote_console_enable: false
+          reminder_days: 1
+          inactive_days: 1
+          reactivate_via_serial_console_enable: false
         login_banner_enable: false
         audit_log_rolling_enable: false
         security_access_remote_console_enable: false
@@ -5704,6 +5826,13 @@ components:
           $ref: '#/components/schemas/GridsecuritysettingInactivityLockoutSetting'
       type: object
     GridsecuritysettingAdminAccessItems:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        permission: Example permission
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
       properties:
         address:
           description: The address this rule applies to or "Any".
@@ -5739,6 +5868,12 @@ components:
           type: boolean
       type: object
     GridsecuritysettingInactivityLockoutSetting:
+      example:
+        account_inactivity_lockout_enable: false
+        reactivate_via_remote_console_enable: false
+        reminder_days: 1
+        inactive_days: 1
+        reactivate_via_serial_console_enable: false
       properties:
         account_inactivity_lockout_enable:
           description: Enable/disable the account inactivity lockout.
@@ -5772,17 +5907,32 @@ components:
       type: object
     GridSnmpSetting:
       example:
-        syslocation: Example syslocation
-        syscontact: Example syscontact
+        syslocation:
+        - syslocation
+        - syslocation
+        syscontact:
+        - syscontact
+        - syscontact
         snmpv3_queries_enable: false
-        snmpv3_queries_users: snmpv3_queries_users
-        sysdescr: Example sysdescr
+        snmpv3_queries_users:
+          comment: Example comment
+          user: Example user
+        sysdescr:
+        - sysdescr
+        - sysdescr
         traps_community_string: Example traps_community_string
-        engine_id: Example engine_id
+        engine_id:
+        - engine_id
+        - engine_id
         queries_community_string: Example queries_community_string
         snmpv3_traps_enable: false
-        sysname: Example sysname
-        trap_receivers: trap_receivers
+        sysname:
+        - sysname
+        - sysname
+        trap_receivers:
+          address: Example address
+          comment: Example comment
+          user: Example user
         traps_enable: false
         queries_enable: false
       properties:
@@ -5790,7 +5940,6 @@ components:
           description: The engine ID of the appliance that manages the SNMP agent.
           enum:
           - string
-          example: Example engine_id
           items:
             type: string
           readOnly: true
@@ -5818,7 +5967,6 @@ components:
             is applicable only for HA pair. Otherwise second value is ignored.
           enum:
           - string
-          example: Example syscontact
           items:
             type: string
           type: array
@@ -5827,7 +5975,6 @@ components:
             only for HA pair. Otherwise second value is ignored.
           enum:
           - string
-          example: Example sysdescr
           items:
             type: string
           type: array
@@ -5836,7 +5983,6 @@ components:
             only for HA pair. Otherwise second value is ignored.
           enum:
           - string
-          example: Example syslocation
           items:
             type: string
           type: array
@@ -5845,7 +5991,6 @@ components:
             value is applicable only for HA pair. Otherwise second value is ignored.
           enum:
           - string
-          example: Example sysname
           items:
             type: string
           type: array
@@ -5863,6 +6008,9 @@ components:
           type: boolean
       type: object
     GridsnmpsettingSnmpv3QueriesUsers:
+      example:
+        comment: Example comment
+        user: Example user
       properties:
         user:
           description: The SNMPv3 user.
@@ -5874,6 +6022,10 @@ components:
           type: string
       type: object
     GridsnmpsettingTrapReceivers:
+      example:
+        address: Example address
+        comment: Example comment
+        user: Example user
       properties:
         address:
           description: The address of the trap receiver.
@@ -5894,17 +6046,23 @@ components:
     GridSyslogServers:
       example:
         severity: Example severity
-        category_list: Example category_list
+        category_list:
+        - category_list
+        - category_list
         message_node_id: Example message_node_id
-        address: Example address
         connection_type: Example connection_type
         port: 1
         only_category_list: false
         certificate: Example certificate
+        address_or_fqdn: Example address_or_fqdn
         certificate_token: Example certificate_token
         local_interface: Example local_interface
         message_source: Example message_source
       properties:
+        address_or_fqdn:
+          description: The server address or FQDN.
+          example: Example address_or_fqdn
+          type: string
         certificate:
           description: Reference to the underlying X509Certificate object grid:x509certificate.
           example: Example certificate
@@ -6020,7 +6178,6 @@ components:
           - AUTH_TACACS
           - AUTH_LDAP
           - OUTBOUND_API
-          example: Example category_list
           items:
             type: string
           type: array
@@ -6029,10 +6186,6 @@ components:
             forwards syslog messages that belong to the selected categories.
           example: false
           type: boolean
-        address:
-          description: The server address or FQDN.
-          example: Example address
-          type: string
       type: object
     GridTestSyslogBackupServerConnection:
       properties: {}
@@ -6179,7 +6332,9 @@ components:
       example:
         rec_dns_latency_trigger_enable: false
         rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
-        kpi_monitored_domains: kpi_monitored_domains
+        kpi_monitored_domains:
+          domain_name: Example domain_name
+          record_type: Example record_type
         rec_dns_latency_reset: 1
         rec_dns_latency_threshold: 1
       properties:
@@ -6214,6 +6369,9 @@ components:
           $ref: '#/components/schemas/GridtrafficcapturerecdnssettingKpiMonitoredDomains'
       type: object
     GridtrafficcapturerecdnssettingKpiMonitoredDomains:
+      example:
+        domain_name: Example domain_name
+        record_type: Example record_type
       properties:
         domain_name:
           description: Domain name (FQDN to Query).
@@ -6323,6 +6481,7 @@ components:
           - Outbound
           - AutomatedTrafficCapture
           - CloudDNSsync
+          - IMCGRPCServer
           - IPAMUtilization
           - RPZHitRate
           example: Example trap_type
@@ -6428,9 +6587,23 @@ components:
         - csp_access_key
         capture_traffic_control: "{}"
         ntp_setting:
-          ntp_acl: ntp_acl
+          ntp_acl:
+            ac_list:
+              address_ac:
+                address: Example address
+                permission: Example permission
+              service: Example service
+            service: Example service
+            acl_type: Example acl_type
+            named_acl: Example named_acl
           use_ntp_keys: false
-          ntp_servers: ntp_servers
+          ntp_servers:
+            enable_authentication: false
+            address: Example address
+            ntp_key_number: 1
+            burst: false
+            preferred: false
+            iburst: false
           exclude_grid_master_ntp_server: false
           use_default_stratum: false
           local_ntp_stratum: 1
@@ -6438,7 +6611,10 @@ components:
           enable_ntp: false
           use_ntp_servers: false
           use_ntp_acl: false
-          ntp_keys: ntp_keys
+          ntp_keys:
+            number: 1
+            string: Example string
+            type: Example type
           enable_external_ntp_servers: false
           use_ntp_kod: false
           ntp_kod: false
@@ -6460,7 +6636,13 @@ components:
           comment: Example comment
         syslog_proxy_setting:
           tcp_port: 1
-          client_acls: client_acls
+          client_acls:
+            address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
           udp_enable: false
           enable: false
           tcp_enable: false
@@ -6483,24 +6665,28 @@ components:
         remote_console_access_enable: false
         syslog_servers:
         - severity: Example severity
-          category_list: Example category_list
+          category_list:
+          - category_list
+          - category_list
           message_node_id: Example message_node_id
-          address: Example address
           connection_type: Example connection_type
           port: 1
           only_category_list: false
           certificate: Example certificate
+          address_or_fqdn: Example address_or_fqdn
           certificate_token: Example certificate_token
           local_interface: Example local_interface
           message_source: Example message_source
         - severity: Example severity
-          category_list: Example category_list
+          category_list:
+          - category_list
+          - category_list
           message_node_id: Example message_node_id
-          address: Example address
           connection_type: Example connection_type
           port: 1
           only_category_list: false
           certificate: Example certificate
+          address_or_fqdn: Example address_or_fqdn
           certificate_token: Example certificate_token
           local_interface: Example local_interface
           message_source: Example message_source
@@ -6512,21 +6698,22 @@ components:
           type: Example type
           option: Example option
         enable_member_redirect: false
+        ha_on_cloud: false
         use_traffic_capture_rec_queries: false
         external_syslog_backup_servers:
         - password: Example password
           protocol: Example protocol
-          address: Example address
           port: 1
           directory_path: Example directory_path
           enable: false
+          address_or_fqdn: Example address_or_fqdn
           username: Example username
         - password: Example password
           protocol: Example protocol
-          address: Example address
           port: 1
           directory_path: Example directory_path
           enable: false
+          address_or_fqdn: Example address_or_fqdn
           username: Example username
         lom_network_config:
         - address: Example address
@@ -6573,12 +6760,34 @@ components:
         - as: 1
           link_detect: false
           keepalive: 1
-          neighbors: neighbors
+          neighbors:
+            bgp_neighbor_pass: Example bgp_neighbor_pass
+            authentication_mode: Example authentication_mode
+            multihop_ttl: 1
+            remote_as: 1
+            multihop: false
+            neighbor_ip: Example neighbor_ip
+            bfd_template: Example bfd_template
+            enable_bfd: false
+            comment: Example comment
+            interface: Example interface
+            enable_bfd_dnscheck: false
           holddown: 1
         - as: 1
           link_detect: false
           keepalive: 1
-          neighbors: neighbors
+          neighbors:
+            bgp_neighbor_pass: Example bgp_neighbor_pass
+            authentication_mode: Example authentication_mode
+            multihop_ttl: 1
+            remote_as: 1
+            multihop: false
+            neighbor_ip: Example neighbor_ip
+            bfd_template: Example bfd_template
+            enable_bfd: false
+            comment: Example comment
+            interface: Example interface
+            enable_bfd_dnscheck: false
           holddown: 1
         active_position: Example active_position
         support_access_enable: false
@@ -6587,7 +6796,9 @@ components:
         traffic_capture_rec_dns_setting:
           rec_dns_latency_trigger_enable: false
           rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
-          kpi_monitored_domains: kpi_monitored_domains
+          kpi_monitored_domains:
+            domain_name: Example domain_name
+            record_type: Example record_type
           rec_dns_latency_reset: 1
           rec_dns_latency_listen_on_ip: Example rec_dns_latency_listen_on_ip
           rec_dns_latency_threshold: 1
@@ -6646,11 +6857,18 @@ components:
           cidr: 1
           gateway: Example gateway
         pre_provisioning:
-          licenses: Example licenses
-          hardware_info: hardware_info
+          licenses:
+          - licenses
+          - licenses
+          hardware_info:
+            hwtype: Example hwtype
         dns_resolver_setting:
-          resolvers: Example resolvers
-          search_domains: Example search_domains
+          resolvers:
+          - resolvers
+          - resolvers
+          search_domains:
+          - search_domains
+          - search_domains
         master_candidate: false
         external_syslog_server_enable: false
         router_id: 1
@@ -6664,6 +6882,7 @@ components:
           gateway: Example gateway
           virtual_ip: Example virtual_ip
           primary: false
+        ha_cloud_platform: Example ha_cloud_platform
         use_syslog_proxy_setting: false
         syslog_size: 1
         csp_member_setting:
@@ -6729,57 +6948,168 @@ components:
         use_remote_console_access_enable: false
         create_token: "{}"
         node_info:
-        - v6_mgmt_network_setting: v6_mgmt_network_setting
+        - v6_mgmt_network_setting:
+            auto_router_config_enabled: false
+            vlan_id: 1
+            dscp: 1
+            cidr_prefix: 1
+            use_dscp: false
+            enabled: false
+            gateway: Example gateway
+            virtual_ip: Example virtual_ip
+            primary: false
           ha_status: Example ha_status
-          lan2_physical_setting: lan2_physical_setting
-          mgmt_physical_setting: mgmt_physical_setting
-          lan_ha_port_setting: lan_ha_port_setting
+          lan2_physical_setting:
+            auto_port_setting_enabled: false
+            duplex: Example duplex
+            speed: Example speed
+          mgmt_physical_setting:
+            auto_port_setting_enabled: false
+            duplex: Example duplex
+            speed: Example speed
+          lan_ha_port_setting:
+            ha_cloud_attribute: Example ha_cloud_attribute
+            mgmt_ipv6addr: Example mgmt_ipv6addr
+            lan_port_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            mgmt_lan: Example mgmt_lan
+            ha_port_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            ha_ip_address: Example ha_ip_address
           host_platform: Example host_platform
-          mgmt_network_setting: mgmt_network_setting
+          mgmt_network_setting:
+            lan_subnet_mask: Example lan_subnet_mask
+            vlan_id: 1
+            address: Example address
+            dscp: 1
+            subnet_mask: Example subnet_mask
+            use_dscp: false
+            gateway: Example gateway
+            lan_gateway: Example lan_gateway
+            primary: false
           paid_nios: false
           hwtype: Example hwtype
           hwmodel: Example hwmodel
           hypervisor: Example hypervisor
-          service_status: service_status
+          service_status:
+            service: Example service
+            description: Example description
+            status: Example status
           hwid: Example hwid
           physical_oid: Example physical_oid
           nat_external_ip: Example nat_external_ip
-        - v6_mgmt_network_setting: v6_mgmt_network_setting
+        - v6_mgmt_network_setting:
+            auto_router_config_enabled: false
+            vlan_id: 1
+            dscp: 1
+            cidr_prefix: 1
+            use_dscp: false
+            enabled: false
+            gateway: Example gateway
+            virtual_ip: Example virtual_ip
+            primary: false
           ha_status: Example ha_status
-          lan2_physical_setting: lan2_physical_setting
-          mgmt_physical_setting: mgmt_physical_setting
-          lan_ha_port_setting: lan_ha_port_setting
+          lan2_physical_setting:
+            auto_port_setting_enabled: false
+            duplex: Example duplex
+            speed: Example speed
+          mgmt_physical_setting:
+            auto_port_setting_enabled: false
+            duplex: Example duplex
+            speed: Example speed
+          lan_ha_port_setting:
+            ha_cloud_attribute: Example ha_cloud_attribute
+            mgmt_ipv6addr: Example mgmt_ipv6addr
+            lan_port_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            mgmt_lan: Example mgmt_lan
+            ha_port_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            ha_ip_address: Example ha_ip_address
           host_platform: Example host_platform
-          mgmt_network_setting: mgmt_network_setting
+          mgmt_network_setting:
+            lan_subnet_mask: Example lan_subnet_mask
+            vlan_id: 1
+            address: Example address
+            dscp: 1
+            subnet_mask: Example subnet_mask
+            use_dscp: false
+            gateway: Example gateway
+            lan_gateway: Example lan_gateway
+            primary: false
           paid_nios: false
           hwtype: Example hwtype
           hwmodel: Example hwmodel
           hypervisor: Example hypervisor
-          service_status: service_status
+          service_status:
+            service: Example service
+            description: Example description
+            status: Example status
           hwid: Example hwid
           physical_oid: Example physical_oid
           nat_external_ip: Example nat_external_ip
         lan2_port_setting:
           virtual_router_id: 1
-          v6_network_setting: v6_network_setting
+          v6_network_setting:
+            auto_router_config_enabled: false
+            vlan_id: 1
+            dscp: 1
+            cidr_prefix: 1
+            use_dscp: false
+            enabled: false
+            gateway: Example gateway
+            virtual_ip: Example virtual_ip
+            primary: false
           default_route_failover_enabled: false
           nic_failover_enabled: false
-          network_setting: network_setting
+          network_setting:
+            lan_subnet_mask: Example lan_subnet_mask
+            vlan_id: 1
+            address: Example address
+            dscp: 1
+            subnet_mask: Example subnet_mask
+            use_dscp: false
+            gateway: Example gateway
+            lan_gateway: Example lan_gateway
+            primary: false
           enabled: false
           nic_failover_enable_primary: false
         _ref: _ref
         snmp_setting:
-          syslocation: Example syslocation
-          syscontact: Example syscontact
+          syslocation:
+          - syslocation
+          - syslocation
+          syscontact:
+          - syscontact
+          - syscontact
           snmpv3_queries_enable: false
-          snmpv3_queries_users: snmpv3_queries_users
-          sysdescr: Example sysdescr
+          snmpv3_queries_users:
+            comment: Example comment
+            user: Example user
+          sysdescr:
+          - sysdescr
+          - sysdescr
           traps_community_string: Example traps_community_string
-          engine_id: Example engine_id
+          engine_id:
+          - engine_id
+          - engine_id
           queries_community_string: Example queries_community_string
           snmpv3_traps_enable: false
-          sysname: Example sysname
-          trap_receivers: trap_receivers
+          sysname:
+          - sysname
+          - sysname
+          trap_receivers:
+            address: Example address
+            comment: Example comment
+            user: Example user
           traps_enable: false
           queries_enable: false
         comment: Example comment
@@ -6787,17 +7117,53 @@ components:
         additional_ip_list:
         - anycast: false
           enable_bgp: false
-          ipv6_network_setting: ipv6_network_setting
+          ipv6_network_setting:
+            auto_router_config_enabled: false
+            vlan_id: 1
+            dscp: 1
+            cidr_prefix: 1
+            use_dscp: false
+            enabled: false
+            gateway: Example gateway
+            virtual_ip: Example virtual_ip
+            primary: false
           enable_ospf: false
           comment: Example comment
-          ipv4_network_setting: ipv4_network_setting
+          ipv4_network_setting:
+            lan_subnet_mask: Example lan_subnet_mask
+            vlan_id: 1
+            address: Example address
+            dscp: 1
+            subnet_mask: Example subnet_mask
+            use_dscp: false
+            gateway: Example gateway
+            lan_gateway: Example lan_gateway
+            primary: false
           interface: Example interface
         - anycast: false
           enable_bgp: false
-          ipv6_network_setting: ipv6_network_setting
+          ipv6_network_setting:
+            auto_router_config_enabled: false
+            vlan_id: 1
+            dscp: 1
+            cidr_prefix: 1
+            use_dscp: false
+            enabled: false
+            gateway: Example gateway
+            virtual_ip: Example virtual_ip
+            primary: false
           enable_ospf: false
           comment: Example comment
-          ipv4_network_setting: ipv4_network_setting
+          ipv4_network_setting:
+            lan_subnet_mask: Example lan_subnet_mask
+            vlan_id: 1
+            address: Example address
+            dscp: 1
+            subnet_mask: Example subnet_mask
+            use_dscp: false
+            gateway: Example gateway
+            lan_gateway: Example lan_gateway
+            primary: false
           interface: Example interface
         host_name: Example host_name
       properties:
@@ -6902,6 +7268,18 @@ components:
           description: Determines if external syslog servers should be enabled.
           example: false
           type: boolean
+        ha_cloud_platform:
+          description: Cloud platform for HA.
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          example: Example ha_cloud_platform
+          type: string
+        ha_on_cloud:
+          description: "True: HA on cloud. False: HA not on cloud."
+          example: false
+          type: boolean
         host_name:
           description: The host name of the Grid member.
           example: Example host_name
@@ -6975,8 +7353,9 @@ components:
         nat_setting:
           $ref: '#/components/schemas/MemberNatSetting'
         node_info:
-          description: The node information list with detailed status report on the
-            operations of the Grid Member.
+          description: "The node information list with detailed status report on the\
+            \ operations of the Grid Member, mgmt_port_setting must be enabled when\
+            \ configuring the MGMT Port using the node_info field."
           enum:
           - nodeinfo
           items:
@@ -7217,10 +7596,28 @@ components:
       example:
         anycast: false
         enable_bgp: false
-        ipv6_network_setting: ipv6_network_setting
+        ipv6_network_setting:
+          auto_router_config_enabled: false
+          vlan_id: 1
+          dscp: 1
+          cidr_prefix: 1
+          use_dscp: false
+          enabled: false
+          gateway: Example gateway
+          virtual_ip: Example virtual_ip
+          primary: false
         enable_ospf: false
         comment: Example comment
-        ipv4_network_setting: ipv4_network_setting
+        ipv4_network_setting:
+          lan_subnet_mask: Example lan_subnet_mask
+          vlan_id: 1
+          address: Example address
+          dscp: 1
+          subnet_mask: Example subnet_mask
+          use_dscp: false
+          gateway: Example gateway
+          lan_gateway: Example lan_gateway
+          primary: false
         interface: Example interface
       properties:
         anycast:
@@ -7257,6 +7654,16 @@ components:
           type: string
       type: object
     MemberadditionaliplistIpv4NetworkSetting:
+      example:
+        lan_subnet_mask: Example lan_subnet_mask
+        vlan_id: 1
+        address: Example address
+        dscp: 1
+        subnet_mask: Example subnet_mask
+        use_dscp: false
+        gateway: Example gateway
+        lan_gateway: Example lan_gateway
+        primary: false
       properties:
         address:
           description: The IPv4 Address of the Grid Member.
@@ -7302,6 +7709,16 @@ components:
           type: boolean
       type: object
     MemberadditionaliplistIpv6NetworkSetting:
+      example:
+        auto_router_config_enabled: false
+        vlan_id: 1
+        dscp: 1
+        cidr_prefix: 1
+        use_dscp: false
+        enabled: false
+        gateway: Example gateway
+        virtual_ip: Example virtual_ip
+        primary: false
       properties:
         enabled:
           description: Determines if IPv6 networking should be enabled.
@@ -7415,7 +7832,18 @@ components:
         as: 1
         link_detect: false
         keepalive: 1
-        neighbors: neighbors
+        neighbors:
+          bgp_neighbor_pass: Example bgp_neighbor_pass
+          authentication_mode: Example authentication_mode
+          multihop_ttl: 1
+          remote_as: 1
+          multihop: false
+          neighbor_ip: Example neighbor_ip
+          bfd_template: Example bfd_template
+          enable_bfd: false
+          comment: Example comment
+          interface: Example interface
+          enable_bfd_dnscheck: false
         holddown: 1
       properties:
         as:
@@ -7444,6 +7872,18 @@ components:
           type: boolean
       type: object
     MemberbgpasNeighbors:
+      example:
+        bgp_neighbor_pass: Example bgp_neighbor_pass
+        authentication_mode: Example authentication_mode
+        multihop_ttl: 1
+        remote_as: 1
+        multihop: false
+        neighbor_ip: Example neighbor_ip
+        bfd_template: Example bfd_template
+        enable_bfd: false
+        comment: Example comment
+        interface: Example interface
+        enable_bfd_dnscheck: false
       properties:
         interface:
           description: The interface that sends BGP advertisement information.
@@ -7547,8 +7987,12 @@ components:
       type: object
     MemberDnsResolverSetting:
       example:
-        resolvers: Example resolvers
-        search_domains: Example search_domains
+        resolvers:
+        - resolvers
+        - resolvers
+        search_domains:
+        - search_domains
+        - search_domains
       properties:
         resolvers:
           description: The resolvers of a Grid member. The Grid member sends queries
@@ -7556,7 +8000,6 @@ components:
             is used if first one does not response.
           enum:
           - string
-          example: Example resolvers
           items:
             type: string
           type: array
@@ -7567,7 +8010,6 @@ components:
             \ or alternate_resolver is set."
           enum:
           - string
-          example: Example search_domains
           items:
             type: string
           type: array
@@ -7627,12 +8069,16 @@ components:
       example:
         password: Example password
         protocol: Example protocol
-        address: Example address
         port: 1
         directory_path: Example directory_path
         enable: false
+        address_or_fqdn: Example address_or_fqdn
         username: Example username
       properties:
+        address_or_fqdn:
+          description: The IPv4 or IPv6 address or FQDN of the backup syslog server.
+          example: Example address_or_fqdn
+          type: string
         directory_path:
           description: The directory path for the replication of the rotated syslog
             files.
@@ -7663,10 +8109,6 @@ components:
         username:
           description: The username of the backup syslog server.
           example: Example username
-          type: string
-        address:
-          description: The IPv4/IPv6 address or FQDN of the backup syslog server.
-          example: Example address
           type: string
       type: object
     MemberIpv6Setting:
@@ -7748,10 +8190,28 @@ components:
     MemberLan2PortSetting:
       example:
         virtual_router_id: 1
-        v6_network_setting: v6_network_setting
+        v6_network_setting:
+          auto_router_config_enabled: false
+          vlan_id: 1
+          dscp: 1
+          cidr_prefix: 1
+          use_dscp: false
+          enabled: false
+          gateway: Example gateway
+          virtual_ip: Example virtual_ip
+          primary: false
         default_route_failover_enabled: false
         nic_failover_enabled: false
-        network_setting: network_setting
+        network_setting:
+          lan_subnet_mask: Example lan_subnet_mask
+          vlan_id: 1
+          address: Example address
+          dscp: 1
+          subnet_mask: Example subnet_mask
+          use_dscp: false
+          gateway: Example gateway
+          lan_gateway: Example lan_gateway
+          primary: false
         enabled: false
         nic_failover_enable_primary: false
       properties:
@@ -7785,6 +8245,16 @@ components:
           type: boolean
       type: object
     Memberlan2portsettingNetworkSetting:
+      example:
+        lan_subnet_mask: Example lan_subnet_mask
+        vlan_id: 1
+        address: Example address
+        dscp: 1
+        subnet_mask: Example subnet_mask
+        use_dscp: false
+        gateway: Example gateway
+        lan_gateway: Example lan_gateway
+        primary: false
       properties:
         address:
           description: The IPv4 Address of the Grid Member.
@@ -7830,6 +8300,16 @@ components:
           type: boolean
       type: object
     Memberlan2portsettingV6NetworkSetting:
+      example:
+        auto_router_config_enabled: false
+        vlan_id: 1
+        dscp: 1
+        cidr_prefix: 1
+        use_dscp: false
+        enabled: false
+        gateway: Example gateway
+        virtual_ip: Example virtual_ip
+        primary: false
       properties:
         enabled:
           description: Determines if IPv6 networking should be enabled.
@@ -8013,18 +8493,57 @@ components:
       type: object
     MemberNodeInfo:
       example:
-        v6_mgmt_network_setting: v6_mgmt_network_setting
+        v6_mgmt_network_setting:
+          auto_router_config_enabled: false
+          vlan_id: 1
+          dscp: 1
+          cidr_prefix: 1
+          use_dscp: false
+          enabled: false
+          gateway: Example gateway
+          virtual_ip: Example virtual_ip
+          primary: false
         ha_status: Example ha_status
-        lan2_physical_setting: lan2_physical_setting
-        mgmt_physical_setting: mgmt_physical_setting
-        lan_ha_port_setting: lan_ha_port_setting
+        lan2_physical_setting:
+          auto_port_setting_enabled: false
+          duplex: Example duplex
+          speed: Example speed
+        mgmt_physical_setting:
+          auto_port_setting_enabled: false
+          duplex: Example duplex
+          speed: Example speed
+        lan_ha_port_setting:
+          ha_cloud_attribute: Example ha_cloud_attribute
+          mgmt_ipv6addr: Example mgmt_ipv6addr
+          lan_port_setting:
+            auto_port_setting_enabled: false
+            duplex: Example duplex
+            speed: Example speed
+          mgmt_lan: Example mgmt_lan
+          ha_port_setting:
+            auto_port_setting_enabled: false
+            duplex: Example duplex
+            speed: Example speed
+          ha_ip_address: Example ha_ip_address
         host_platform: Example host_platform
-        mgmt_network_setting: mgmt_network_setting
+        mgmt_network_setting:
+          lan_subnet_mask: Example lan_subnet_mask
+          vlan_id: 1
+          address: Example address
+          dscp: 1
+          subnet_mask: Example subnet_mask
+          use_dscp: false
+          gateway: Example gateway
+          lan_gateway: Example lan_gateway
+          primary: false
         paid_nios: false
         hwtype: Example hwtype
         hwmodel: Example hwmodel
         hypervisor: Example hypervisor
-        service_status: service_status
+        service_status:
+          service: Example service
+          description: Example description
+          status: Example status
         hwid: Example hwid
         physical_oid: Example physical_oid
         nat_external_ip: Example nat_external_ip
@@ -8091,6 +8610,10 @@ components:
           $ref: '#/components/schemas/MembernodeinfoV6MgmtNetworkSetting'
       type: object
     MembernodeinfoServiceStatus:
+      example:
+        service: Example service
+        description: Example description
+        status: Example status
       properties:
         description:
           description: The description of the current service status.
@@ -8180,6 +8703,16 @@ components:
           type: string
       type: object
     MembernodeinfoMgmtNetworkSetting:
+      example:
+        lan_subnet_mask: Example lan_subnet_mask
+        vlan_id: 1
+        address: Example address
+        dscp: 1
+        subnet_mask: Example subnet_mask
+        use_dscp: false
+        gateway: Example gateway
+        lan_gateway: Example lan_gateway
+        primary: false
       properties:
         address:
           description: The IPv4 Address of the Grid Member.
@@ -8225,6 +8758,19 @@ components:
           type: boolean
       type: object
     MembernodeinfoLanHaPortSetting:
+      example:
+        ha_cloud_attribute: Example ha_cloud_attribute
+        mgmt_ipv6addr: Example mgmt_ipv6addr
+        lan_port_setting:
+          auto_port_setting_enabled: false
+          duplex: Example duplex
+          speed: Example speed
+        mgmt_lan: Example mgmt_lan
+        ha_port_setting:
+          auto_port_setting_enabled: false
+          duplex: Example duplex
+          speed: Example speed
+        ha_ip_address: Example ha_ip_address
       properties:
         mgmt_lan:
           description: Public IPv4 address for the LAN1 interface.
@@ -8248,6 +8794,10 @@ components:
           type: string
       type: object
     MembernodeinfolanhaportsettingLanPortSetting:
+      example:
+        auto_port_setting_enabled: false
+        duplex: Example duplex
+        speed: Example speed
       properties:
         auto_port_setting_enabled:
           description: Enable or disalbe the auto port setting.
@@ -8270,6 +8820,10 @@ components:
           type: string
       type: object
     MembernodeinfolanhaportsettingHaPortSetting:
+      example:
+        auto_port_setting_enabled: false
+        duplex: Example duplex
+        speed: Example speed
       properties:
         auto_port_setting_enabled:
           description: Enable or disalbe the auto port setting.
@@ -8292,6 +8846,10 @@ components:
           type: string
       type: object
     MembernodeinfoMgmtPhysicalSetting:
+      example:
+        auto_port_setting_enabled: false
+        duplex: Example duplex
+        speed: Example speed
       properties:
         auto_port_setting_enabled:
           description: Enable or disalbe the auto port setting.
@@ -8314,6 +8872,10 @@ components:
           type: string
       type: object
     MembernodeinfoLan2PhysicalSetting:
+      example:
+        auto_port_setting_enabled: false
+        duplex: Example duplex
+        speed: Example speed
       properties:
         auto_port_setting_enabled:
           description: Enable or disalbe the auto port setting.
@@ -8336,6 +8898,16 @@ components:
           type: string
       type: object
     MembernodeinfoV6MgmtNetworkSetting:
+      example:
+        auto_router_config_enabled: false
+        vlan_id: 1
+        dscp: 1
+        cidr_prefix: 1
+        use_dscp: false
+        enabled: false
+        gateway: Example gateway
+        virtual_ip: Example virtual_ip
+        primary: false
       properties:
         enabled:
           description: Determines if IPv6 networking should be enabled.
@@ -8383,9 +8955,23 @@ components:
       type: object
     MemberNtpSetting:
       example:
-        ntp_acl: ntp_acl
+        ntp_acl:
+          ac_list:
+            address_ac:
+              address: Example address
+              permission: Example permission
+            service: Example service
+          service: Example service
+          acl_type: Example acl_type
+          named_acl: Example named_acl
         use_ntp_keys: false
-        ntp_servers: ntp_servers
+        ntp_servers:
+          enable_authentication: false
+          address: Example address
+          ntp_key_number: 1
+          burst: false
+          preferred: false
+          iburst: false
         exclude_grid_master_ntp_server: false
         use_default_stratum: false
         local_ntp_stratum: 1
@@ -8393,7 +8979,10 @@ components:
         enable_ntp: false
         use_ntp_servers: false
         use_ntp_acl: false
-        ntp_keys: ntp_keys
+        ntp_keys:
+          number: 1
+          string: Example string
+          type: Example type
         enable_external_ntp_servers: false
         use_ntp_kod: false
         ntp_kod: false
@@ -8453,6 +9042,13 @@ components:
           type: boolean
       type: object
     MemberntpsettingNtpServers:
+      example:
+        enable_authentication: false
+        address: Example address
+        ntp_key_number: 1
+        burst: false
+        preferred: false
+        iburst: false
       properties:
         address:
           description: The NTP server IP address or FQDN.
@@ -8486,6 +9082,10 @@ components:
           type: boolean
       type: object
     MemberntpsettingNtpKeys:
+      example:
+        number: 1
+        string: Example string
+        type: Example type
       properties:
         number:
           description: The NTP authentication key identifier.
@@ -8508,6 +9108,15 @@ components:
           type: string
       type: object
     MemberntpsettingNtpAcl:
+      example:
+        ac_list:
+          address_ac:
+            address: Example address
+            permission: Example permission
+          service: Example service
+        service: Example service
+        acl_type: Example acl_type
+        named_acl: Example named_acl
       properties:
         acl_type:
           description: The NTP access control list type.
@@ -8533,6 +9142,11 @@ components:
           type: string
       type: object
     MemberntpsettingntpaclAcList:
+      example:
+        address_ac:
+          address: Example address
+          permission: Example permission
+        service: Example service
       properties:
         address_ac:
           $ref: '#/components/schemas/MemberntpsettingntpaclaclistAddressAc'
@@ -8545,6 +9159,9 @@ components:
           type: string
       type: object
     MemberntpsettingntpaclaclistAddressAc:
+      example:
+        address: Example address
+        permission: Example permission
       properties:
         address:
           description: The address this rule applies to or "Any".
@@ -8681,8 +9298,11 @@ components:
       type: object
     MemberPreProvisioning:
       example:
-        licenses: Example licenses
-        hardware_info: hardware_info
+        licenses:
+        - licenses
+        - licenses
+        hardware_info:
+          hwtype: Example hwtype
       properties:
         hardware_info:
           $ref: '#/components/schemas/MemberpreprovisioningHardwareInfo'
@@ -8703,81 +9323,48 @@ components:
           - dns
           - enterprise
           - dhcp
-          example: Example licenses
           items:
             type: string
           type: array
       type: object
     MemberpreprovisioningHardwareInfo:
+      example:
+        hwtype: Example hwtype
       properties:
         hwtype:
           description: Hardware type.
           enum:
-          - IB-2210
-          - IB-4030-10GE
-          - PT-2205
-          - IB-2215
-          - IB-4030
-          - PT-4000-10GE
-          - IB-4020
-          - PT-2200
-          - IB-4025
-          - IB-V825
-          - PT-4000
-          - IB-2220
-          - IB-100
-          - IB-2225
-          - IB-4015
-          - IB-1415
-          - IB-V2225
-          - IB-1410
-          - IB-V2215
-          - IB-V1425
-          - IB-4010
-          - IB-RSP2
-          - IB-VNIOS
-          - PT-1405
-          - IB-820
-          - IB-V4025
-          - PT-1400
-          - IB-V4015
-          - IB-825
-          - IB-1420
-          - IB-810
-          - IB-V1415
-          - IB-1425
           - IB-815
+          - IB-825
+          - IB-926
+          - IB-1415
+          - IB-1425
+          - IB-1516
+          - IB-1526
+          - IB-2215
+          - IB-2225
+          - IB-2326
+          - IB-4015
+          - IB-4025
+          - IB-4126
           - IB-V815
+          - IB-V825
+          - IB-V926
+          - IB-V1415
+          - IB-V1425
+          - IB-V1516
+          - IB-V1526
+          - IB-V2215
+          - IB-V2225
+          - IB-V2326
+          - IB-V4015
+          - IB-V4025
+          - IB-V4126
           - IB-FLEX
           - CP-V805
           - CP-V1405
           - CP-V2205
           example: Example hwtype
-          type: string
-        hwmodel:
-          description: "Hardware model - for IB-4010 are Rev1, Rev2; for IB-4030 are\
-            \ Rev1, Rev2; for PT-4000 is Rev2; for IB-VNIOS are IB-VM-100, IB-VM-810,\
-            \ IB-VM-820, IB-VM-RSP, IB-VM-1410, IB-VM-1420, IB-VM-2210, IB-VM-2220,\
-            \ IB-VM-4010, CP-V800, CP-V1400, CP-V2200. Note that you cannot specify\
-            \ hwmodel for following hardware types: IB-FLEX, IB-V2215, IB-V1425, IB-V4025,\
-            \ IB-V4015, IB-V1415, IB-V815, IB-V825, IB-V2225, CP-V805, CP-V1405, CP-V2205,\
-            \ IB-2215, IB-2225."
-          enum:
-          - Rev1
-          - Rev2
-          - IB-VM-100
-          - IB-VM-810
-          - IB-VM-820
-          - IB-VM-RSP
-          - IB-VM-1410
-          - IB-VM-1420
-          - IB-VM-2210
-          - IB-VM-2220
-          - IB-VM-4010
-          - CP-V800
-          - CP-V1400
-          - CP-V2200
-          example: Example hwmodel
           type: string
       type: object
     MemberReadToken:
@@ -8841,17 +9428,32 @@ components:
       type: object
     MemberSnmpSetting:
       example:
-        syslocation: Example syslocation
-        syscontact: Example syscontact
+        syslocation:
+        - syslocation
+        - syslocation
+        syscontact:
+        - syscontact
+        - syscontact
         snmpv3_queries_enable: false
-        snmpv3_queries_users: snmpv3_queries_users
-        sysdescr: Example sysdescr
+        snmpv3_queries_users:
+          comment: Example comment
+          user: Example user
+        sysdescr:
+        - sysdescr
+        - sysdescr
         traps_community_string: Example traps_community_string
-        engine_id: Example engine_id
+        engine_id:
+        - engine_id
+        - engine_id
         queries_community_string: Example queries_community_string
         snmpv3_traps_enable: false
-        sysname: Example sysname
-        trap_receivers: trap_receivers
+        sysname:
+        - sysname
+        - sysname
+        trap_receivers:
+          address: Example address
+          comment: Example comment
+          user: Example user
         traps_enable: false
         queries_enable: false
       properties:
@@ -8859,7 +9461,6 @@ components:
           description: The engine ID of the appliance that manages the SNMP agent.
           enum:
           - string
-          example: Example engine_id
           items:
             type: string
           readOnly: true
@@ -8887,7 +9488,6 @@ components:
             is applicable only for HA pair. Otherwise second value is ignored.
           enum:
           - string
-          example: Example syscontact
           items:
             type: string
           type: array
@@ -8896,7 +9496,6 @@ components:
             only for HA pair. Otherwise second value is ignored.
           enum:
           - string
-          example: Example sysdescr
           items:
             type: string
           type: array
@@ -8905,7 +9504,6 @@ components:
             only for HA pair. Otherwise second value is ignored.
           enum:
           - string
-          example: Example syslocation
           items:
             type: string
           type: array
@@ -8914,7 +9512,6 @@ components:
             value is applicable only for HA pair. Otherwise second value is ignored.
           enum:
           - string
-          example: Example sysname
           items:
             type: string
           type: array
@@ -8932,6 +9529,9 @@ components:
           type: boolean
       type: object
     MembersnmpsettingSnmpv3QueriesUsers:
+      example:
+        comment: Example comment
+        user: Example user
       properties:
         user:
           description: The SNMPv3 user.
@@ -8943,6 +9543,10 @@ components:
           type: string
       type: object
     MembersnmpsettingTrapReceivers:
+      example:
+        address: Example address
+        comment: Example comment
+        user: Example user
       properties:
         address:
           description: The address of the trap receiver.
@@ -9015,7 +9619,13 @@ components:
     MemberSyslogProxySetting:
       example:
         tcp_port: 1
-        client_acls: client_acls
+        client_acls:
+          address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          permission: Example permission
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
         udp_enable: false
         enable: false
         tcp_enable: false
@@ -9051,6 +9661,13 @@ components:
           $ref: '#/components/schemas/MembersyslogproxysettingClientAcls'
       type: object
     MembersyslogproxysettingClientAcls:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        permission: Example permission
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
       properties:
         address:
           description: The address this rule applies to or "Any".
@@ -9088,17 +9705,23 @@ components:
     MemberSyslogServers:
       example:
         severity: Example severity
-        category_list: Example category_list
+        category_list:
+        - category_list
+        - category_list
         message_node_id: Example message_node_id
-        address: Example address
         connection_type: Example connection_type
         port: 1
         only_category_list: false
         certificate: Example certificate
+        address_or_fqdn: Example address_or_fqdn
         certificate_token: Example certificate_token
         local_interface: Example local_interface
         message_source: Example message_source
       properties:
+        address_or_fqdn:
+          description: The server address or FQDN.
+          example: Example address_or_fqdn
+          type: string
         certificate:
           description: Reference to the underlying X509Certificate object grid:x509certificate.
           example: Example certificate
@@ -9214,7 +9837,6 @@ components:
           - AUTH_TACACS
           - AUTH_LDAP
           - OUTBOUND_API
-          example: Example category_list
           items:
             type: string
           type: array
@@ -9223,10 +9845,6 @@ components:
             forwards syslog messages that belong to the selected categories.
           example: false
           type: boolean
-        address:
-          description: The server address or FQDN.
-          example: Example address
-          type: string
       type: object
     MemberThresholdTraps:
       example:
@@ -9374,7 +9992,9 @@ components:
       example:
         rec_dns_latency_trigger_enable: false
         rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
-        kpi_monitored_domains: kpi_monitored_domains
+        kpi_monitored_domains:
+          domain_name: Example domain_name
+          record_type: Example record_type
         rec_dns_latency_reset: 1
         rec_dns_latency_listen_on_ip: Example rec_dns_latency_listen_on_ip
         rec_dns_latency_threshold: 1
@@ -9416,6 +10036,9 @@ components:
           $ref: '#/components/schemas/MembertrafficcapturerecdnssettingKpiMonitoredDomains'
       type: object
     MembertrafficcapturerecdnssettingKpiMonitoredDomains:
+      example:
+        domain_name: Example domain_name
+        record_type: Example record_type
       properties:
         domain_name:
           description: Domain name (FQDN to Query).
@@ -9525,6 +10148,7 @@ components:
           - Outbound
           - AutomatedTrafficCapture
           - CloudDNSsync
+          - IMCGRPCServer
           - IPAMUtilization
           - RPZHitRate
           example: Example trap_type
@@ -9625,8 +10249,8 @@ components:
           key:
             value: value
         requests:
-        - grid:servicerestart:request
-        - grid:servicerestart:request
+        - "{}"
+        - "{}"
         is_default: false
         mode: Example mode
         last_updated_time: 1
@@ -9640,9 +10264,25 @@ components:
         position: 1
         recurring_schedule:
           mode: Example mode
-          schedule: schedule
+          schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           force: false
-          services: Example services
+          services:
+          - services
+          - services
         status: Example status
       properties:
         _ref:
@@ -9702,7 +10342,7 @@ components:
           items:
             enum:
             - grid:servicerestart:request
-            type: string
+            type: object
           readOnly: true
           type: array
         service:
@@ -9721,9 +10361,25 @@ components:
     GridServicerestartGroupRecurringSchedule:
       example:
         mode: Example mode
-        schedule: schedule
+        schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         force: false
-        services: Example services
+        services:
+        - services
+        - services
       properties:
         services:
           description: The list of applicable services for the restart.
@@ -9733,7 +10389,6 @@ components:
           - DHCP
           - DHCPV4
           - DHCPV6
-          example: Example services
           items:
             type: string
           type: array
@@ -9753,6 +10408,21 @@ components:
           type: boolean
       type: object
     GridservicerestartgrouprecurringscheduleSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -9764,7 +10434,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -9996,7 +10665,7 @@ components:
         state: Example state
         error: Example error
         group: Example group
-        order: Example order
+        order: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -10040,11 +10709,9 @@ components:
           type: string
         order:
           description: The order to restart.
-          enum:
-          - int
-          example: Example order
+          example: 1
           readOnly: true
-          type: string
+          type: integer
         result:
           description: The result of the restart operation.
           enum:
@@ -10388,19 +11055,47 @@ components:
         scavenging_settings:
           enable_scavenging: false
           enable_recurrent_scavenging: false
-          scavenging_schedule: scavenging_schedule
+          scavenging_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           enable_rr_last_queried: false
-          expression_list: expression_list
-          ea_expression_list: ea_expression_list
+          expression_list:
+            op2: Example op2
+            op: Example op
+            op1: Example op1
+            op1_type: Example op1_type
+            op2_type: Example op2_type
+          ea_expression_list:
+            op2: Example op2
+            op: Example op
+            op1: Example op1
+            op1_type: Example op1_type
+            op2_type: Example op2_type
           reclaim_associated_records: false
           enable_auto_reclamation: false
           enable_zone_last_queried: false
         blacklist_redirect_ttl: 1
         notify_delay: 1
         sortlist:
-        - match_list: Example match_list
+        - match_list:
+          - match_list
+          - match_list
           address: Example address
-        - match_list: Example match_list
+        - match_list:
+          - match_list
+          - match_list
           address: Example address
         ddns_restrict_protected: false
         store_locally: false
@@ -10426,17 +11121,36 @@ components:
         enable_gss_tsig: false
         refresh_timer: 1
         attack_mitigation:
-          detect_nxdomain_responses: detect_nxdomain_responses
-          detect_udp_drop: detect_udp_drop
+          detect_nxdomain_responses:
+            high: 1
+            low: 1
+            enable: false
+            interval_max: 1
+            interval_min: 1
+            interval_time: 1
+          detect_udp_drop:
+            high: 1
+            low: 1
+            enable: false
+            interval_max: 1
+            interval_min: 1
+            interval_time: 1
           interval: 1
           detect_chr_grace: 1
-          detect_chr: detect_chr
+          detect_chr:
+            high: 1
+            low: 1
+            enable: false
+            interval_max: 1
+            interval_min: 1
+            interval_time: 1
         enable_ftc: false
         capture_dns_queries_on_all_domains: false
         dtc_dnssec_mode: Example dtc_dnssec_mode
         root_name_server_type: Example root_name_server_type
         bind_check_names_policy: Example bind_check_names_policy
         filter_aaaa: Example filter_aaaa
+        enable_dnstap_violations_tls: false
         copy_client_ip_mac_options: false
         dns_health_check_timeout: 1
         email: Example email
@@ -10451,9 +11165,9 @@ components:
         file_transfer_setting:
           password: Example password
           port: 1
-          host: Example host
           type: Example type
           directory: Example directory
+          server_address_or_fqdn: Example server_address_or_fqdn
           username: Example username
         blackhole_list:
         - address: Example address
@@ -10471,8 +11185,8 @@ components:
         dnssec_expired_signatures_enabled: false
         enable_blackhole: false
         bulk_host_name_templates:
-        - bulkhostnametemplate
-        - bulkhostnametemplate
+        - "{}"
+        - "{}"
         run_scavenging: "{}"
         allow_transfer:
         - address: Example address
@@ -10495,8 +11209,8 @@ components:
         - blacklist_redirect_addresses
         client_subnet_ipv4_prefix_length: 1
         protocol_record_name_policies:
-        - recordnamepolicy
-        - recordnamepolicy
+        - "{}"
+        - "{}"
         ftc_expired_record_ttl: 1
         rpz_drop_ip_rule_min_prefix_length_ipv4: 1
         transfers_out: 1
@@ -10578,8 +11292,8 @@ components:
           username: Example username
         enable_dnstap_queries: false
         gss_tsig_keys:
-        - kerberoskey
-        - kerberoskey
+        - "{}"
+        - "{}"
         dnssec_rpz_enabled: false
         anonymize_response_logging: false
         filter_aaaa_list:
@@ -10618,7 +11332,9 @@ components:
         dnssec_key_params:
           nsec3_iterations: 1
           signature_expiration: 1
-          zsk_algorithms: zsk_algorithms
+          zsk_algorithms:
+            size: 1
+            algorithm: Example algorithm
           zsk_algorithm: Example zsk_algorithm
           ksk_snmp_notification_enabled: false
           ksk_algorithm: Example ksk_algorithm
@@ -10627,7 +11343,9 @@ components:
           next_secure_type: Example next_secure_type
           nsec3_salt_min_length: 1
           ksk_rollover: 1
-          ksk_algorithms: ksk_algorithms
+          ksk_algorithms:
+            size: 1
+            algorithm: Example algorithm
           zsk_rollover_mechanism: Example zsk_rollover_mechanism
           ksk_rollover_notification_config: Example ksk_rollover_notification_config
           zsk_rollover: 1
@@ -10730,13 +11448,13 @@ components:
         enable_capture_dns_responses: false
         dnstap_setting:
           dnstap_identity: Example dnstap_identity
-          dnstap_receiver_address: Example dnstap_receiver_address
           dnstap_version: Example dnstap_version
+          dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
           dnstap_receiver_port: 1
         restart_setting:
           delay: 1
           restart_offline: false
-          timeout: Example timeout
+          timeout: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -10868,7 +11586,7 @@ components:
           items:
             enum:
             - bulkhostnametemplate
-            type: string
+            type: object
           type: array
         capture_dns_queries_on_all_domains:
           description: Determines if the capture of DNS queries for all domains is
@@ -11155,7 +11873,8 @@ components:
           type: boolean
         enable_client_subnet_recursive:
           description: Determines whether to enable adding EDNS client subnet options
-            in recursive resolution.
+            in recursive resolution. The client_subnet_domains parameter value must
+            not be empty to enable the enable_client_subnet_recursive parameter.
           example: false
           type: boolean
         enable_delete_associated_ptr:
@@ -11178,6 +11897,11 @@ components:
           type: boolean
         enable_dnstap_responses:
           description: Determines whether the response messages need to be forwarded
+            to DNSTAP or not.
+          example: false
+          type: boolean
+        enable_dnstap_violations_tls:
+          description: Determines whether the violations messages need to be forwarded
             to DNSTAP or not.
           example: false
           type: boolean
@@ -11326,7 +12050,7 @@ components:
           items:
             enum:
             - kerberoskey
-            type: string
+            type: object
           type: array
         last_queried_acl:
           description: Determines last queried ACL for the specified IPv4 or IPv6
@@ -11452,7 +12176,7 @@ components:
           items:
             enum:
             - recordnamepolicy
-            type: string
+            type: object
           type: array
         query_rewrite_domain_names:
           description: The list of domain names that trigger DNS query rewrite.
@@ -11752,11 +12476,29 @@ components:
       type: object
     GridDnsAttackMitigation:
       example:
-        detect_nxdomain_responses: detect_nxdomain_responses
-        detect_udp_drop: detect_udp_drop
+        detect_nxdomain_responses:
+          high: 1
+          low: 1
+          enable: false
+          interval_max: 1
+          interval_min: 1
+          interval_time: 1
+        detect_udp_drop:
+          high: 1
+          low: 1
+          enable: false
+          interval_max: 1
+          interval_min: 1
+          interval_time: 1
         interval: 1
         detect_chr_grace: 1
-        detect_chr: detect_chr
+        detect_chr:
+          high: 1
+          low: 1
+          enable: false
+          interval_max: 1
+          interval_min: 1
+          interval_time: 1
       properties:
         detect_chr:
           $ref: '#/components/schemas/GriddnsattackmitigationDetectChr'
@@ -11778,6 +12520,13 @@ components:
           type: integer
       type: object
     GriddnsattackmitigationDetectChr:
+      example:
+        high: 1
+        low: 1
+        enable: false
+        interval_max: 1
+        interval_min: 1
+        interval_time: 1
       properties:
         enable:
           description: Determines if DNS attack detection is enabled or not.
@@ -11814,6 +12563,13 @@ components:
           type: integer
       type: object
     GriddnsattackmitigationDetectNxdomainResponses:
+      example:
+        high: 1
+        low: 1
+        enable: false
+        interval_max: 1
+        interval_min: 1
+        interval_time: 1
       properties:
         enable:
           description: Determines if DNS attack detection is enabled or not.
@@ -11850,6 +12606,13 @@ components:
           type: integer
       type: object
     GriddnsattackmitigationDetectUdpDrop:
+      example:
+        high: 1
+        low: 1
+        enable: false
+        interval_max: 1
+        interval_min: 1
+        interval_time: 1
       properties:
         enable:
           description: Determines if DNS attack detection is enabled or not.
@@ -12064,7 +12827,9 @@ components:
       example:
         nsec3_iterations: 1
         signature_expiration: 1
-        zsk_algorithms: zsk_algorithms
+        zsk_algorithms:
+          size: 1
+          algorithm: Example algorithm
         zsk_algorithm: Example zsk_algorithm
         ksk_snmp_notification_enabled: false
         ksk_algorithm: Example ksk_algorithm
@@ -12073,7 +12838,9 @@ components:
         next_secure_type: Example next_secure_type
         nsec3_salt_min_length: 1
         ksk_rollover: 1
-        ksk_algorithms: ksk_algorithms
+        ksk_algorithms:
+          size: 1
+          algorithm: Example algorithm
         zsk_rollover_mechanism: Example zsk_rollover_mechanism
         ksk_rollover_notification_config: Example ksk_rollover_notification_config
         zsk_rollover: 1
@@ -12184,6 +12951,9 @@ components:
           type: integer
       type: object
     GriddnsdnsseckeyparamsKskAlgorithms:
+      example:
+        size: 1
+        algorithm: Example algorithm
       properties:
         algorithm:
           description: The signing key algorithm.
@@ -12202,6 +12972,9 @@ components:
           type: integer
       type: object
     GriddnsdnsseckeyparamsZskAlgorithms:
+      example:
+        size: 1
+        algorithm: Example algorithm
       properties:
         algorithm:
           description: The signing key algorithm.
@@ -12253,10 +13026,14 @@ components:
     GridDnsDnstapSetting:
       example:
         dnstap_identity: Example dnstap_identity
-        dnstap_receiver_address: Example dnstap_receiver_address
         dnstap_version: Example dnstap_version
+        dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
         dnstap_receiver_port: 1
       properties:
+        dnstap_receiver_address_or_fqdn:
+          description: Address or FQDN of DNSTAP receiver.
+          example: Example dnstap_receiver_address_or_fqdn
+          type: string
         dnstap_receiver_port:
           description: DNSTAP receiver port number.
           example: 1
@@ -12271,10 +13048,6 @@ components:
           description: DNSTAP version.
           example: Example dnstap_version
           readOnly: true
-          type: string
-        dnstap_receiver_address:
-          description: Address or FQDN of DNSTAP receiver.
-          example: Example dnstap_receiver_address
           type: string
       type: object
     GridDnsDtcScheduledBackup:
@@ -12463,14 +13236,19 @@ components:
       example:
         password: Example password
         port: 1
-        host: Example host
         type: Example type
         directory: Example directory
+        server_address_or_fqdn: Example server_address_or_fqdn
         username: Example username
       properties:
         directory:
           description: The directory to save the captured DNS queries and responses.
           example: Example directory
+          type: string
+        server_address_or_fqdn:
+          description: The server address or a FQDN name of the destination server
+            for DNS capture transfer.
+          example: Example server_address_or_fqdn
           type: string
         password:
           description: The password to access the destination server directory.
@@ -12494,10 +13272,6 @@ components:
           example: 1
           format: int64
           type: integer
-        host:
-          description: The host name of the destination server for DNS capture transfer.
-          example: Example host
-          type: string
       type: object
     GridDnsFilterAaaaList:
       example:
@@ -12733,7 +13507,7 @@ components:
       example:
         delay: 1
         restart_offline: false
-        timeout: Example timeout
+        timeout: 1
       properties:
         delay:
           description: The time duration to delay a restart for a restart group.
@@ -12743,10 +13517,8 @@ components:
         timeout:
           description: The duration of timeout for a restart group. The value "-1"
             means infinite.
-          enum:
-          - int
-          example: Example timeout
-          type: string
+          example: 1
+          type: integer
         restart_offline:
           description: Determines whether the Grid should try to restart offline member.
           example: false
@@ -12759,10 +13531,34 @@ components:
       example:
         enable_scavenging: false
         enable_recurrent_scavenging: false
-        scavenging_schedule: scavenging_schedule
+        scavenging_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         enable_rr_last_queried: false
-        expression_list: expression_list
-        ea_expression_list: ea_expression_list
+        expression_list:
+          op2: Example op2
+          op: Example op
+          op1: Example op1
+          op1_type: Example op1_type
+          op2_type: Example op2_type
+        ea_expression_list:
+          op2: Example op2
+          op: Example op
+          op1: Example op1
+          op1_type: Example op1_type
+          op2_type: Example op2_type
         reclaim_associated_records: false
         enable_auto_reclamation: false
         enable_zone_last_queried: false
@@ -12805,6 +13601,21 @@ components:
           $ref: '#/components/schemas/GriddnsscavengingsettingsEaExpressionList'
       type: object
     GriddnsscavengingsettingsScavengingSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -12816,7 +13627,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -12891,6 +13701,12 @@ components:
           type: boolean
       type: object
     GriddnsscavengingsettingsExpressionList:
+      example:
+        op2: Example op2
+        op: Example op
+        op1: Example op1
+        op1_type: Example op1_type
+        op2_type: Example op2_type
       properties:
         op:
           description: The operation name.
@@ -12937,6 +13753,12 @@ components:
           type: string
       type: object
     GriddnsscavengingsettingsEaExpressionList:
+      example:
+        op2: Example op2
+        op: Example op
+        op1: Example op1
+        op1_type: Example op1_type
+        op2_type: Example op2_type
       properties:
         op:
           description: The operation name.
@@ -12985,7 +13807,9 @@ components:
       type: object
     GridDnsSortlist:
       example:
-        match_list: Example match_list
+        match_list:
+        - match_list
+        - match_list
         address: Example address
       properties:
         address:
@@ -12996,7 +13820,6 @@ components:
           description: The match list of a sortlist.
           enum:
           - string
-          example: Example match_list
           items:
             type: string
           type: array
@@ -13126,7 +13949,9 @@ components:
         scheduled_download:
           month: 1
           year: 1
-          weekdays: Example weekdays
+          weekdays:
+          - weekdays
+          - weekdays
           disable: false
           recurring_time: 1
           repeat: Example repeat
@@ -13146,14 +13971,20 @@ components:
         nat_rules:
         - rule_type: Example rule_type
           address: Example address
-          nat_ports: nat_ports
+          nat_ports:
+            start_port: 1
+            end_port: 1
+            block_size: 1
           start_address: Example start_address
           cidr: 1
           end_address: Example end_address
           network: Example network
         - rule_type: Example rule_type
           address: Example address
-          nat_ports: nat_ports
+          nat_ports:
+            start_port: 1
+            end_port: 1
+            block_size: 1
           start_address: Example start_address
           cidr: 1
           end_address: Example end_address
@@ -13250,7 +14081,10 @@ components:
       example:
         rule_type: Example rule_type
         address: Example address
-        nat_ports: nat_ports
+        nat_ports:
+          start_port: 1
+          end_port: 1
+          block_size: 1
         start_address: Example start_address
         cidr: 1
         end_address: Example end_address
@@ -13291,6 +14125,10 @@ components:
           $ref: '#/components/schemas/GridthreatprotectionnatrulesNatPorts'
       type: object
     GridthreatprotectionnatrulesNatPorts:
+      example:
+        start_port: 1
+        end_port: 1
+        block_size: 1
       properties:
         start_port:
           description: The start port value for the NAT port configuration object.
@@ -13327,7 +14165,9 @@ components:
       example:
         month: 1
         year: 1
-        weekdays: Example weekdays
+        weekdays:
+        - weekdays
+        - weekdays
         disable: false
         recurring_time: 1
         repeat: Example repeat
@@ -13348,7 +14188,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -13453,14 +14292,16 @@ components:
       additionalProperties: false
       example:
         dns_tunnel_block_list_rpz_zones:
-        - zone_rp
-        - zone_rp
+        - "{}"
+        - "{}"
         set_last_uploaded_threat_insight_moduleset: "{}"
         last_checked_for_package_update: 1
         scheduled_allowlist_download:
           month: 1
           year: 1
-          weekdays: Example weekdays
+          weekdays:
+          - weekdays
+          - weekdays
           disable: false
           recurring_time: 1
           repeat: Example repeat
@@ -13494,7 +14335,9 @@ components:
         scheduled_download:
           month: 1
           year: 1
-          weekdays: Example weekdays
+          weekdays:
+          - weekdays
+          - weekdays
           disable: false
           recurring_time: 1
           repeat: Example repeat
@@ -13539,7 +14382,7 @@ components:
           items:
             enum:
             - zone_rp
-            type: string
+            type: object
           type: array
         domain_collapsing_level:
           description: Level of domain collapsing
@@ -13660,7 +14503,9 @@ components:
       example:
         month: 1
         year: 1
-        weekdays: Example weekdays
+        weekdays:
+        - weekdays
+        - weekdays
         disable: false
         recurring_time: 1
         repeat: Example repeat
@@ -13681,7 +14526,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -13759,7 +14603,9 @@ components:
       example:
         month: 1
         year: 1
-        weekdays: Example weekdays
+        weekdays:
+        - weekdays
+        - weekdays
         disable: false
         recurring_time: 1
         repeat: Example repeat
@@ -13780,7 +14626,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -13919,7 +14764,11 @@ components:
           readOnly: true
           type: integer
         expiration_status:
-          description: The license expiration status.
+          description: The license expiration status. * DELETED - The temporary license
+            has been deleted. * EXPIRED - License/Pool has reached the expiry date.
+            * EXPIRING_SOON - License/Pool expires in 31-90 days. * EXPIRING_VERY_SOON
+            - License/Pool expires in 30 days or earlier. * NOT_EXPIRED - License/Pool
+            has not expired. * PERMANENT - License/Pool does not expire.
           enum:
           - NOT_EXPIRED
           - EXPIRED
@@ -14184,9 +15033,13 @@ components:
         enable_dns_cache_acceleration: false
         notify_delay: 1
         sortlist:
-        - match_list: Example match_list
+        - match_list:
+          - match_list
+          - match_list
           address: Example address
-        - match_list: Example match_list
+        - match_list:
+          - match_list
+          - match_list
           address: Example address
         store_locally: false
         use_bind_hostname_directive: false
@@ -14216,9 +15069,9 @@ components:
         file_transfer_setting:
           password: Example password
           port: 1
-          host: Example host
           type: Example type
           directory: Example directory
+          server_address_or_fqdn: Example server_address_or_fqdn
           username: Example username
         extattrs:
           key:
@@ -14398,8 +15251,8 @@ components:
         enable_capture_dns_responses: false
         dnstap_setting:
           dnstap_identity: Example dnstap_identity
-          dnstap_receiver_address: Example dnstap_receiver_address
           dnstap_version: Example dnstap_version
+          dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
           dnstap_receiver_port: 1
         doh_https_session_duration: 1
         use_dns64: false
@@ -14432,12 +15285,31 @@ components:
         use_logging_categories: false
         enable_gss_tsig: false
         attack_mitigation:
-          detect_nxdomain_responses: detect_nxdomain_responses
-          detect_udp_drop: detect_udp_drop
+          detect_nxdomain_responses:
+            high: 1
+            low: 1
+            enable: false
+            interval_max: 1
+            interval_min: 1
+            interval_time: 1
+          detect_udp_drop:
+            high: 1
+            low: 1
+            enable: false
+            interval_max: 1
+            interval_min: 1
+            interval_time: 1
           interval: 1
           detect_chr_grace: 1
-          detect_chr: detect_chr
+          detect_chr:
+            high: 1
+            low: 1
+            enable: false
+            interval_max: 1
+            interval_min: 1
+            interval_time: 1
         use_notify_delay: false
+        enable_dnstap_violations_tls: false
         copy_client_ip_mac_options: false
         dns_health_check_timeout: 1
         use_forwarders: false
@@ -14474,6 +15346,7 @@ components:
         - blacklist_redirect_addresses
         ftc_expired_record_ttl: 1
         transfers_out: 1
+        upstream_address_family_preference: Example upstream_address_family_preference
         use_root_name_server: false
         tls_session_duration: 1
         enable_capture_dns_queries: false
@@ -14484,8 +15357,8 @@ components:
         dns_health_check_retries: 1
         use_lan_ipv6_port: false
         gss_tsig_keys:
-        - kerberoskey
-        - kerberoskey
+        - "{}"
+        - "{}"
         use_copy_client_ip_mac_options: false
         dnssec_rpz_enabled: false
         use_allow_transfer: false
@@ -15014,6 +15887,11 @@ components:
             to DNSTAP or not.
           example: false
           type: boolean
+        enable_dnstap_violations_tls:
+          description: Determines whether the violations messages need to be forwarded
+            to DNSTAP or not.
+          example: false
+          type: boolean
         enable_excluded_domain_names:
           description: The flag that indicates whether excluding domain names from
             captured DNS queries and responses is enabled or disabled.
@@ -15136,7 +16014,7 @@ components:
           items:
             enum:
             - kerberoskey
-            type: string
+            type: object
           type: array
         host_name:
           description: The host name of the Grid member.
@@ -15417,6 +16295,14 @@ components:
           example: 1
           format: int64
           type: integer
+        upstream_address_family_preference:
+          description: Upstream address family preference when dual mode is configured.
+          enum:
+          - IPV4
+          - IPV6
+          - ANY
+          example: Example upstream_address_family_preference
+          type: string
         use_add_client_ip_mac_options:
           description: "Use flag for: add_client_ip_mac_options"
           example: false
@@ -15832,11 +16718,29 @@ components:
       type: object
     MemberDnsAttackMitigation:
       example:
-        detect_nxdomain_responses: detect_nxdomain_responses
-        detect_udp_drop: detect_udp_drop
+        detect_nxdomain_responses:
+          high: 1
+          low: 1
+          enable: false
+          interval_max: 1
+          interval_min: 1
+          interval_time: 1
+        detect_udp_drop:
+          high: 1
+          low: 1
+          enable: false
+          interval_max: 1
+          interval_min: 1
+          interval_time: 1
         interval: 1
         detect_chr_grace: 1
-        detect_chr: detect_chr
+        detect_chr:
+          high: 1
+          low: 1
+          enable: false
+          interval_max: 1
+          interval_min: 1
+          interval_time: 1
       properties:
         detect_chr:
           $ref: '#/components/schemas/MemberdnsattackmitigationDetectChr'
@@ -15858,6 +16762,13 @@ components:
           type: integer
       type: object
     MemberdnsattackmitigationDetectChr:
+      example:
+        high: 1
+        low: 1
+        enable: false
+        interval_max: 1
+        interval_min: 1
+        interval_time: 1
       properties:
         enable:
           description: Determines if DNS attack detection is enabled or not.
@@ -15894,6 +16805,13 @@ components:
           type: integer
       type: object
     MemberdnsattackmitigationDetectNxdomainResponses:
+      example:
+        high: 1
+        low: 1
+        enable: false
+        interval_max: 1
+        interval_min: 1
+        interval_time: 1
       properties:
         enable:
           description: Determines if DNS attack detection is enabled or not.
@@ -15930,6 +16848,13 @@ components:
           type: integer
       type: object
     MemberdnsattackmitigationDetectUdpDrop:
+      example:
+        high: 1
+        low: 1
+        enable: false
+        interval_max: 1
+        interval_min: 1
+        interval_time: 1
       properties:
         enable:
           description: Determines if DNS attack detection is enabled or not.
@@ -16254,10 +17179,14 @@ components:
     MemberDnsDnstapSetting:
       example:
         dnstap_identity: Example dnstap_identity
-        dnstap_receiver_address: Example dnstap_receiver_address
         dnstap_version: Example dnstap_version
+        dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
         dnstap_receiver_port: 1
       properties:
+        dnstap_receiver_address_or_fqdn:
+          description: Address or FQDN of DNSTAP receiver.
+          example: Example dnstap_receiver_address_or_fqdn
+          type: string
         dnstap_receiver_port:
           description: DNSTAP receiver port number.
           example: 1
@@ -16273,23 +17202,24 @@ components:
           example: Example dnstap_version
           readOnly: true
           type: string
-        dnstap_receiver_address:
-          description: Address or FQDN of DNSTAP receiver.
-          example: Example dnstap_receiver_address
-          type: string
       type: object
     MemberDnsFileTransferSetting:
       example:
         password: Example password
         port: 1
-        host: Example host
         type: Example type
         directory: Example directory
+        server_address_or_fqdn: Example server_address_or_fqdn
         username: Example username
       properties:
         directory:
           description: The directory to save the captured DNS queries and responses.
           example: Example directory
+          type: string
+        server_address_or_fqdn:
+          description: The server address or a FQDN name of the destination server
+            for DNS capture transfer.
+          example: Example server_address_or_fqdn
           type: string
         password:
           description: The password to access the destination server directory.
@@ -16313,10 +17243,6 @@ components:
           example: 1
           format: int64
           type: integer
-        host:
-          description: The host name of the destination server for DNS capture transfer.
-          example: Example host
-          type: string
       type: object
     MemberDnsFilterAaaaList:
       example:
@@ -16593,7 +17519,9 @@ components:
       type: object
     MemberDnsSortlist:
       example:
-        match_list: Example match_list
+        match_list:
+        - match_list
+        - match_list
         address: Example address
       properties:
         address:
@@ -16604,7 +17532,6 @@ components:
           description: The match list of a sortlist.
           enum:
           - string
-          example: Example match_list
           items:
             type: string
           type: array
@@ -17047,14 +17974,20 @@ components:
         nat_rules:
         - rule_type: Example rule_type
           address: Example address
-          nat_ports: nat_ports
+          nat_ports:
+            start_port: 1
+            end_port: 1
+            block_size: 1
           start_address: Example start_address
           cidr: 1
           end_address: Example end_address
           network: Example network
         - rule_type: Example rule_type
           address: Example address
-          nat_ports: nat_ports
+          nat_ports:
+            start_port: 1
+            end_port: 1
+            block_size: 1
           start_address: Example start_address
           cidr: 1
           end_address: Example end_address
@@ -17164,7 +18097,10 @@ components:
       example:
         rule_type: Example rule_type
         address: Example address
-        nat_ports: nat_ports
+        nat_ports:
+          start_port: 1
+          end_port: 1
+          block_size: 1
         start_address: Example start_address
         cidr: 1
         end_address: Example end_address
@@ -17205,6 +18141,10 @@ components:
           $ref: '#/components/schemas/MemberthreatprotectionnatrulesNatPorts'
       type: object
     MemberthreatprotectionnatrulesNatPorts:
+      example:
+        start_port: 1
+        end_port: 1
+        block_size: 1
       properties:
         start_port:
           description: The start port value for the NAT port configuration object.
@@ -17314,9 +18254,26 @@ components:
           ntp_setting:
             gm_local_ntp_stratum: 1
             enable_ntp: false
-            ntp_acl: ntp_acl
-            ntp_keys: ntp_keys
-            ntp_servers: ntp_servers
+            ntp_acl:
+              ac_list:
+                address_ac:
+                  address: Example address
+                  permission: Example permission
+                service: Example service
+              service: Example service
+              acl_type: Example acl_type
+              named_acl: Example named_acl
+            ntp_keys:
+              number: 1
+              string: Example string
+              type: Example type
+            ntp_servers:
+              enable_authentication: false
+              address: Example address
+              ntp_key_number: 1
+              burst: false
+              preferred: false
+              iburst: false
             use_default_stratum: false
             ntp_kod: false
             local_ntp_stratum: 1
@@ -17338,6 +18295,7 @@ components:
             disable: false
             name: Example name
             comment: Example comment
+          enable_force_sync_join_token_to_gmc: false
           join: "{}"
           test_syslog_backup_server_connection: "{}"
           csp_api_config:
@@ -17376,24 +18334,28 @@ components:
             min_password_age: 1
           syslog_servers:
           - severity: Example severity
-            category_list: Example category_list
+            category_list:
+            - category_list
+            - category_list
             message_node_id: Example message_node_id
-            address: Example address
             connection_type: Example connection_type
             port: 1
             only_category_list: false
             certificate: Example certificate
+            address_or_fqdn: Example address_or_fqdn
             certificate_token: Example certificate_token
             local_interface: Example local_interface
             message_source: Example message_source
           - severity: Example severity
-            category_list: Example category_list
+            category_list:
+            - category_list
+            - category_list
             message_node_id: Example message_node_id
-            address: Example address
             connection_type: Example connection_type
             port: 1
             only_category_list: false
             certificate: Example certificate
+            address_or_fqdn: Example address_or_fqdn
             certificate_token: Example certificate_token
             local_interface: Example local_interface
             message_source: Example message_source
@@ -17445,17 +18407,17 @@ components:
           external_syslog_backup_servers:
           - password: Example password
             protocol: Example protocol
-            address: Example address
             port: 1
             directory_path: Example directory_path
             enable: false
+            address_or_fqdn: Example address_or_fqdn
             username: Example username
           - password: Example password
             protocol: Example protocol
-            address: Example address
             port: 1
             directory_path: Example directory_path
             enable: false
+            address_or_fqdn: Example address_or_fqdn
             username: Example username
           traffic_capture_chr_setting:
             chr_trigger_enable: false
@@ -17490,7 +18452,9 @@ components:
           traffic_capture_rec_dns_setting:
             rec_dns_latency_trigger_enable: false
             rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
-            kpi_monitored_domains: kpi_monitored_domains
+            kpi_monitored_domains:
+              domain_name: Example domain_name
+              record_type: Example record_type
             rec_dns_latency_reset: 1
             rec_dns_latency_threshold: 1
           email_setting:
@@ -17541,23 +18505,39 @@ components:
           restart_status: Example restart_status
           empty_recycle_bin: "{}"
           dns_resolver_setting:
-            resolvers: Example resolvers
-            search_domains: Example search_domains
+            resolvers:
+            - resolvers
+            - resolvers
+            search_domains:
+            - search_domains
+            - search_domains
           external_syslog_server_enable: false
           enable_recycle_bin: false
           get_template_schema_versions: "{}"
           syslog_size: 1
+          enable_federation: false
           security_setting:
             support_access_enable: false
             remote_console_access_enable: false
             ssh_perm_enable: false
             support_access_info: Example support_access_info
             disable_concurrent_login: false
-            admin_access_items: admin_access_items
+            admin_access_items:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              permission: Example permission
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
             login_banner_text: Example login_banner_text
             security_access_enable: false
             http_redirect_enable: false
-            inactivity_lockout_setting: inactivity_lockout_setting
+            inactivity_lockout_setting:
+              account_inactivity_lockout_enable: false
+              reactivate_via_remote_console_enable: false
+              reminder_days: 1
+              inactive_days: 1
+              reactivate_via_serial_console_enable: false
             login_banner_enable: false
             audit_log_rolling_enable: false
             security_access_remote_console_enable: false
@@ -17587,17 +18567,32 @@ components:
           get_rpz_threat_details: "{}"
           _ref: _ref
           snmp_setting:
-            syslocation: Example syslocation
-            syscontact: Example syscontact
+            syslocation:
+            - syslocation
+            - syslocation
+            syscontact:
+            - syscontact
+            - syscontact
             snmpv3_queries_enable: false
-            snmpv3_queries_users: snmpv3_queries_users
-            sysdescr: Example sysdescr
+            snmpv3_queries_users:
+              comment: Example comment
+              user: Example user
+            sysdescr:
+            - sysdescr
+            - sysdescr
             traps_community_string: Example traps_community_string
-            engine_id: Example engine_id
+            engine_id:
+            - engine_id
+            - engine_id
             queries_community_string: Example queries_community_string
             snmpv3_traps_enable: false
-            sysname: Example sysname
-            trap_receivers: trap_receivers
+            sysname:
+            - sysname
+            - sysname
+            trap_receivers:
+              address: Example address
+              comment: Example comment
+              user: Example user
             traps_enable: false
             queries_enable: false
           member_upgrade: "{}"
@@ -17647,9 +18642,23 @@ components:
           - csp_access_key
           capture_traffic_control: "{}"
           ntp_setting:
-            ntp_acl: ntp_acl
+            ntp_acl:
+              ac_list:
+                address_ac:
+                  address: Example address
+                  permission: Example permission
+                service: Example service
+              service: Example service
+              acl_type: Example acl_type
+              named_acl: Example named_acl
             use_ntp_keys: false
-            ntp_servers: ntp_servers
+            ntp_servers:
+              enable_authentication: false
+              address: Example address
+              ntp_key_number: 1
+              burst: false
+              preferred: false
+              iburst: false
             exclude_grid_master_ntp_server: false
             use_default_stratum: false
             local_ntp_stratum: 1
@@ -17657,7 +18666,10 @@ components:
             enable_ntp: false
             use_ntp_servers: false
             use_ntp_acl: false
-            ntp_keys: ntp_keys
+            ntp_keys:
+              number: 1
+              string: Example string
+              type: Example type
             enable_external_ntp_servers: false
             use_ntp_kod: false
             ntp_kod: false
@@ -17679,7 +18691,13 @@ components:
             comment: Example comment
           syslog_proxy_setting:
             tcp_port: 1
-            client_acls: client_acls
+            client_acls:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              permission: Example permission
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
             udp_enable: false
             enable: false
             tcp_enable: false
@@ -17702,24 +18720,28 @@ components:
           remote_console_access_enable: false
           syslog_servers:
           - severity: Example severity
-            category_list: Example category_list
+            category_list:
+            - category_list
+            - category_list
             message_node_id: Example message_node_id
-            address: Example address
             connection_type: Example connection_type
             port: 1
             only_category_list: false
             certificate: Example certificate
+            address_or_fqdn: Example address_or_fqdn
             certificate_token: Example certificate_token
             local_interface: Example local_interface
             message_source: Example message_source
           - severity: Example severity
-            category_list: Example category_list
+            category_list:
+            - category_list
+            - category_list
             message_node_id: Example message_node_id
-            address: Example address
             connection_type: Example connection_type
             port: 1
             only_category_list: false
             certificate: Example certificate
+            address_or_fqdn: Example address_or_fqdn
             certificate_token: Example certificate_token
             local_interface: Example local_interface
             message_source: Example message_source
@@ -17731,21 +18753,22 @@ components:
             type: Example type
             option: Example option
           enable_member_redirect: false
+          ha_on_cloud: false
           use_traffic_capture_rec_queries: false
           external_syslog_backup_servers:
           - password: Example password
             protocol: Example protocol
-            address: Example address
             port: 1
             directory_path: Example directory_path
             enable: false
+            address_or_fqdn: Example address_or_fqdn
             username: Example username
           - password: Example password
             protocol: Example protocol
-            address: Example address
             port: 1
             directory_path: Example directory_path
             enable: false
+            address_or_fqdn: Example address_or_fqdn
             username: Example username
           lom_network_config:
           - address: Example address
@@ -17792,12 +18815,34 @@ components:
           - as: 1
             link_detect: false
             keepalive: 1
-            neighbors: neighbors
+            neighbors:
+              bgp_neighbor_pass: Example bgp_neighbor_pass
+              authentication_mode: Example authentication_mode
+              multihop_ttl: 1
+              remote_as: 1
+              multihop: false
+              neighbor_ip: Example neighbor_ip
+              bfd_template: Example bfd_template
+              enable_bfd: false
+              comment: Example comment
+              interface: Example interface
+              enable_bfd_dnscheck: false
             holddown: 1
           - as: 1
             link_detect: false
             keepalive: 1
-            neighbors: neighbors
+            neighbors:
+              bgp_neighbor_pass: Example bgp_neighbor_pass
+              authentication_mode: Example authentication_mode
+              multihop_ttl: 1
+              remote_as: 1
+              multihop: false
+              neighbor_ip: Example neighbor_ip
+              bfd_template: Example bfd_template
+              enable_bfd: false
+              comment: Example comment
+              interface: Example interface
+              enable_bfd_dnscheck: false
             holddown: 1
           active_position: Example active_position
           support_access_enable: false
@@ -17806,7 +18851,9 @@ components:
           traffic_capture_rec_dns_setting:
             rec_dns_latency_trigger_enable: false
             rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
-            kpi_monitored_domains: kpi_monitored_domains
+            kpi_monitored_domains:
+              domain_name: Example domain_name
+              record_type: Example record_type
             rec_dns_latency_reset: 1
             rec_dns_latency_listen_on_ip: Example rec_dns_latency_listen_on_ip
             rec_dns_latency_threshold: 1
@@ -17865,11 +18912,18 @@ components:
             cidr: 1
             gateway: Example gateway
           pre_provisioning:
-            licenses: Example licenses
-            hardware_info: hardware_info
+            licenses:
+            - licenses
+            - licenses
+            hardware_info:
+              hwtype: Example hwtype
           dns_resolver_setting:
-            resolvers: Example resolvers
-            search_domains: Example search_domains
+            resolvers:
+            - resolvers
+            - resolvers
+            search_domains:
+            - search_domains
+            - search_domains
           master_candidate: false
           external_syslog_server_enable: false
           router_id: 1
@@ -17883,6 +18937,7 @@ components:
             gateway: Example gateway
             virtual_ip: Example virtual_ip
             primary: false
+          ha_cloud_platform: Example ha_cloud_platform
           use_syslog_proxy_setting: false
           syslog_size: 1
           csp_member_setting:
@@ -17948,57 +19003,168 @@ components:
           use_remote_console_access_enable: false
           create_token: "{}"
           node_info:
-          - v6_mgmt_network_setting: v6_mgmt_network_setting
+          - v6_mgmt_network_setting:
+              auto_router_config_enabled: false
+              vlan_id: 1
+              dscp: 1
+              cidr_prefix: 1
+              use_dscp: false
+              enabled: false
+              gateway: Example gateway
+              virtual_ip: Example virtual_ip
+              primary: false
             ha_status: Example ha_status
-            lan2_physical_setting: lan2_physical_setting
-            mgmt_physical_setting: mgmt_physical_setting
-            lan_ha_port_setting: lan_ha_port_setting
+            lan2_physical_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            mgmt_physical_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            lan_ha_port_setting:
+              ha_cloud_attribute: Example ha_cloud_attribute
+              mgmt_ipv6addr: Example mgmt_ipv6addr
+              lan_port_setting:
+                auto_port_setting_enabled: false
+                duplex: Example duplex
+                speed: Example speed
+              mgmt_lan: Example mgmt_lan
+              ha_port_setting:
+                auto_port_setting_enabled: false
+                duplex: Example duplex
+                speed: Example speed
+              ha_ip_address: Example ha_ip_address
             host_platform: Example host_platform
-            mgmt_network_setting: mgmt_network_setting
+            mgmt_network_setting:
+              lan_subnet_mask: Example lan_subnet_mask
+              vlan_id: 1
+              address: Example address
+              dscp: 1
+              subnet_mask: Example subnet_mask
+              use_dscp: false
+              gateway: Example gateway
+              lan_gateway: Example lan_gateway
+              primary: false
             paid_nios: false
             hwtype: Example hwtype
             hwmodel: Example hwmodel
             hypervisor: Example hypervisor
-            service_status: service_status
+            service_status:
+              service: Example service
+              description: Example description
+              status: Example status
             hwid: Example hwid
             physical_oid: Example physical_oid
             nat_external_ip: Example nat_external_ip
-          - v6_mgmt_network_setting: v6_mgmt_network_setting
+          - v6_mgmt_network_setting:
+              auto_router_config_enabled: false
+              vlan_id: 1
+              dscp: 1
+              cidr_prefix: 1
+              use_dscp: false
+              enabled: false
+              gateway: Example gateway
+              virtual_ip: Example virtual_ip
+              primary: false
             ha_status: Example ha_status
-            lan2_physical_setting: lan2_physical_setting
-            mgmt_physical_setting: mgmt_physical_setting
-            lan_ha_port_setting: lan_ha_port_setting
+            lan2_physical_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            mgmt_physical_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            lan_ha_port_setting:
+              ha_cloud_attribute: Example ha_cloud_attribute
+              mgmt_ipv6addr: Example mgmt_ipv6addr
+              lan_port_setting:
+                auto_port_setting_enabled: false
+                duplex: Example duplex
+                speed: Example speed
+              mgmt_lan: Example mgmt_lan
+              ha_port_setting:
+                auto_port_setting_enabled: false
+                duplex: Example duplex
+                speed: Example speed
+              ha_ip_address: Example ha_ip_address
             host_platform: Example host_platform
-            mgmt_network_setting: mgmt_network_setting
+            mgmt_network_setting:
+              lan_subnet_mask: Example lan_subnet_mask
+              vlan_id: 1
+              address: Example address
+              dscp: 1
+              subnet_mask: Example subnet_mask
+              use_dscp: false
+              gateway: Example gateway
+              lan_gateway: Example lan_gateway
+              primary: false
             paid_nios: false
             hwtype: Example hwtype
             hwmodel: Example hwmodel
             hypervisor: Example hypervisor
-            service_status: service_status
+            service_status:
+              service: Example service
+              description: Example description
+              status: Example status
             hwid: Example hwid
             physical_oid: Example physical_oid
             nat_external_ip: Example nat_external_ip
           lan2_port_setting:
             virtual_router_id: 1
-            v6_network_setting: v6_network_setting
+            v6_network_setting:
+              auto_router_config_enabled: false
+              vlan_id: 1
+              dscp: 1
+              cidr_prefix: 1
+              use_dscp: false
+              enabled: false
+              gateway: Example gateway
+              virtual_ip: Example virtual_ip
+              primary: false
             default_route_failover_enabled: false
             nic_failover_enabled: false
-            network_setting: network_setting
+            network_setting:
+              lan_subnet_mask: Example lan_subnet_mask
+              vlan_id: 1
+              address: Example address
+              dscp: 1
+              subnet_mask: Example subnet_mask
+              use_dscp: false
+              gateway: Example gateway
+              lan_gateway: Example lan_gateway
+              primary: false
             enabled: false
             nic_failover_enable_primary: false
           _ref: _ref
           snmp_setting:
-            syslocation: Example syslocation
-            syscontact: Example syscontact
+            syslocation:
+            - syslocation
+            - syslocation
+            syscontact:
+            - syscontact
+            - syscontact
             snmpv3_queries_enable: false
-            snmpv3_queries_users: snmpv3_queries_users
-            sysdescr: Example sysdescr
+            snmpv3_queries_users:
+              comment: Example comment
+              user: Example user
+            sysdescr:
+            - sysdescr
+            - sysdescr
             traps_community_string: Example traps_community_string
-            engine_id: Example engine_id
+            engine_id:
+            - engine_id
+            - engine_id
             queries_community_string: Example queries_community_string
             snmpv3_traps_enable: false
-            sysname: Example sysname
-            trap_receivers: trap_receivers
+            sysname:
+            - sysname
+            - sysname
+            trap_receivers:
+              address: Example address
+              comment: Example comment
+              user: Example user
             traps_enable: false
             queries_enable: false
           comment: Example comment
@@ -18006,17 +19172,53 @@ components:
           additional_ip_list:
           - anycast: false
             enable_bgp: false
-            ipv6_network_setting: ipv6_network_setting
+            ipv6_network_setting:
+              auto_router_config_enabled: false
+              vlan_id: 1
+              dscp: 1
+              cidr_prefix: 1
+              use_dscp: false
+              enabled: false
+              gateway: Example gateway
+              virtual_ip: Example virtual_ip
+              primary: false
             enable_ospf: false
             comment: Example comment
-            ipv4_network_setting: ipv4_network_setting
+            ipv4_network_setting:
+              lan_subnet_mask: Example lan_subnet_mask
+              vlan_id: 1
+              address: Example address
+              dscp: 1
+              subnet_mask: Example subnet_mask
+              use_dscp: false
+              gateway: Example gateway
+              lan_gateway: Example lan_gateway
+              primary: false
             interface: Example interface
           - anycast: false
             enable_bgp: false
-            ipv6_network_setting: ipv6_network_setting
+            ipv6_network_setting:
+              auto_router_config_enabled: false
+              vlan_id: 1
+              dscp: 1
+              cidr_prefix: 1
+              use_dscp: false
+              enabled: false
+              gateway: Example gateway
+              virtual_ip: Example virtual_ip
+              primary: false
             enable_ospf: false
             comment: Example comment
-            ipv4_network_setting: ipv4_network_setting
+            ipv4_network_setting:
+              lan_subnet_mask: Example lan_subnet_mask
+              vlan_id: 1
+              address: Example address
+              dscp: 1
+              subnet_mask: Example subnet_mask
+              use_dscp: false
+              gateway: Example gateway
+              lan_gateway: Example lan_gateway
+              primary: false
             interface: Example interface
           host_name: Example host_name
       properties:
@@ -18063,9 +19265,23 @@ components:
           - csp_access_key
           capture_traffic_control: "{}"
           ntp_setting:
-            ntp_acl: ntp_acl
+            ntp_acl:
+              ac_list:
+                address_ac:
+                  address: Example address
+                  permission: Example permission
+                service: Example service
+              service: Example service
+              acl_type: Example acl_type
+              named_acl: Example named_acl
             use_ntp_keys: false
-            ntp_servers: ntp_servers
+            ntp_servers:
+              enable_authentication: false
+              address: Example address
+              ntp_key_number: 1
+              burst: false
+              preferred: false
+              iburst: false
             exclude_grid_master_ntp_server: false
             use_default_stratum: false
             local_ntp_stratum: 1
@@ -18073,7 +19289,10 @@ components:
             enable_ntp: false
             use_ntp_servers: false
             use_ntp_acl: false
-            ntp_keys: ntp_keys
+            ntp_keys:
+              number: 1
+              string: Example string
+              type: Example type
             enable_external_ntp_servers: false
             use_ntp_kod: false
             ntp_kod: false
@@ -18095,7 +19314,13 @@ components:
             comment: Example comment
           syslog_proxy_setting:
             tcp_port: 1
-            client_acls: client_acls
+            client_acls:
+              address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              permission: Example permission
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
             udp_enable: false
             enable: false
             tcp_enable: false
@@ -18118,24 +19343,28 @@ components:
           remote_console_access_enable: false
           syslog_servers:
           - severity: Example severity
-            category_list: Example category_list
+            category_list:
+            - category_list
+            - category_list
             message_node_id: Example message_node_id
-            address: Example address
             connection_type: Example connection_type
             port: 1
             only_category_list: false
             certificate: Example certificate
+            address_or_fqdn: Example address_or_fqdn
             certificate_token: Example certificate_token
             local_interface: Example local_interface
             message_source: Example message_source
           - severity: Example severity
-            category_list: Example category_list
+            category_list:
+            - category_list
+            - category_list
             message_node_id: Example message_node_id
-            address: Example address
             connection_type: Example connection_type
             port: 1
             only_category_list: false
             certificate: Example certificate
+            address_or_fqdn: Example address_or_fqdn
             certificate_token: Example certificate_token
             local_interface: Example local_interface
             message_source: Example message_source
@@ -18147,21 +19376,22 @@ components:
             type: Example type
             option: Example option
           enable_member_redirect: false
+          ha_on_cloud: false
           use_traffic_capture_rec_queries: false
           external_syslog_backup_servers:
           - password: Example password
             protocol: Example protocol
-            address: Example address
             port: 1
             directory_path: Example directory_path
             enable: false
+            address_or_fqdn: Example address_or_fqdn
             username: Example username
           - password: Example password
             protocol: Example protocol
-            address: Example address
             port: 1
             directory_path: Example directory_path
             enable: false
+            address_or_fqdn: Example address_or_fqdn
             username: Example username
           lom_network_config:
           - address: Example address
@@ -18208,12 +19438,34 @@ components:
           - as: 1
             link_detect: false
             keepalive: 1
-            neighbors: neighbors
+            neighbors:
+              bgp_neighbor_pass: Example bgp_neighbor_pass
+              authentication_mode: Example authentication_mode
+              multihop_ttl: 1
+              remote_as: 1
+              multihop: false
+              neighbor_ip: Example neighbor_ip
+              bfd_template: Example bfd_template
+              enable_bfd: false
+              comment: Example comment
+              interface: Example interface
+              enable_bfd_dnscheck: false
             holddown: 1
           - as: 1
             link_detect: false
             keepalive: 1
-            neighbors: neighbors
+            neighbors:
+              bgp_neighbor_pass: Example bgp_neighbor_pass
+              authentication_mode: Example authentication_mode
+              multihop_ttl: 1
+              remote_as: 1
+              multihop: false
+              neighbor_ip: Example neighbor_ip
+              bfd_template: Example bfd_template
+              enable_bfd: false
+              comment: Example comment
+              interface: Example interface
+              enable_bfd_dnscheck: false
             holddown: 1
           active_position: Example active_position
           support_access_enable: false
@@ -18222,7 +19474,9 @@ components:
           traffic_capture_rec_dns_setting:
             rec_dns_latency_trigger_enable: false
             rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
-            kpi_monitored_domains: kpi_monitored_domains
+            kpi_monitored_domains:
+              domain_name: Example domain_name
+              record_type: Example record_type
             rec_dns_latency_reset: 1
             rec_dns_latency_listen_on_ip: Example rec_dns_latency_listen_on_ip
             rec_dns_latency_threshold: 1
@@ -18281,11 +19535,18 @@ components:
             cidr: 1
             gateway: Example gateway
           pre_provisioning:
-            licenses: Example licenses
-            hardware_info: hardware_info
+            licenses:
+            - licenses
+            - licenses
+            hardware_info:
+              hwtype: Example hwtype
           dns_resolver_setting:
-            resolvers: Example resolvers
-            search_domains: Example search_domains
+            resolvers:
+            - resolvers
+            - resolvers
+            search_domains:
+            - search_domains
+            - search_domains
           master_candidate: false
           external_syslog_server_enable: false
           router_id: 1
@@ -18299,6 +19560,7 @@ components:
             gateway: Example gateway
             virtual_ip: Example virtual_ip
             primary: false
+          ha_cloud_platform: Example ha_cloud_platform
           use_syslog_proxy_setting: false
           syslog_size: 1
           csp_member_setting:
@@ -18364,57 +19626,168 @@ components:
           use_remote_console_access_enable: false
           create_token: "{}"
           node_info:
-          - v6_mgmt_network_setting: v6_mgmt_network_setting
+          - v6_mgmt_network_setting:
+              auto_router_config_enabled: false
+              vlan_id: 1
+              dscp: 1
+              cidr_prefix: 1
+              use_dscp: false
+              enabled: false
+              gateway: Example gateway
+              virtual_ip: Example virtual_ip
+              primary: false
             ha_status: Example ha_status
-            lan2_physical_setting: lan2_physical_setting
-            mgmt_physical_setting: mgmt_physical_setting
-            lan_ha_port_setting: lan_ha_port_setting
+            lan2_physical_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            mgmt_physical_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            lan_ha_port_setting:
+              ha_cloud_attribute: Example ha_cloud_attribute
+              mgmt_ipv6addr: Example mgmt_ipv6addr
+              lan_port_setting:
+                auto_port_setting_enabled: false
+                duplex: Example duplex
+                speed: Example speed
+              mgmt_lan: Example mgmt_lan
+              ha_port_setting:
+                auto_port_setting_enabled: false
+                duplex: Example duplex
+                speed: Example speed
+              ha_ip_address: Example ha_ip_address
             host_platform: Example host_platform
-            mgmt_network_setting: mgmt_network_setting
+            mgmt_network_setting:
+              lan_subnet_mask: Example lan_subnet_mask
+              vlan_id: 1
+              address: Example address
+              dscp: 1
+              subnet_mask: Example subnet_mask
+              use_dscp: false
+              gateway: Example gateway
+              lan_gateway: Example lan_gateway
+              primary: false
             paid_nios: false
             hwtype: Example hwtype
             hwmodel: Example hwmodel
             hypervisor: Example hypervisor
-            service_status: service_status
+            service_status:
+              service: Example service
+              description: Example description
+              status: Example status
             hwid: Example hwid
             physical_oid: Example physical_oid
             nat_external_ip: Example nat_external_ip
-          - v6_mgmt_network_setting: v6_mgmt_network_setting
+          - v6_mgmt_network_setting:
+              auto_router_config_enabled: false
+              vlan_id: 1
+              dscp: 1
+              cidr_prefix: 1
+              use_dscp: false
+              enabled: false
+              gateway: Example gateway
+              virtual_ip: Example virtual_ip
+              primary: false
             ha_status: Example ha_status
-            lan2_physical_setting: lan2_physical_setting
-            mgmt_physical_setting: mgmt_physical_setting
-            lan_ha_port_setting: lan_ha_port_setting
+            lan2_physical_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            mgmt_physical_setting:
+              auto_port_setting_enabled: false
+              duplex: Example duplex
+              speed: Example speed
+            lan_ha_port_setting:
+              ha_cloud_attribute: Example ha_cloud_attribute
+              mgmt_ipv6addr: Example mgmt_ipv6addr
+              lan_port_setting:
+                auto_port_setting_enabled: false
+                duplex: Example duplex
+                speed: Example speed
+              mgmt_lan: Example mgmt_lan
+              ha_port_setting:
+                auto_port_setting_enabled: false
+                duplex: Example duplex
+                speed: Example speed
+              ha_ip_address: Example ha_ip_address
             host_platform: Example host_platform
-            mgmt_network_setting: mgmt_network_setting
+            mgmt_network_setting:
+              lan_subnet_mask: Example lan_subnet_mask
+              vlan_id: 1
+              address: Example address
+              dscp: 1
+              subnet_mask: Example subnet_mask
+              use_dscp: false
+              gateway: Example gateway
+              lan_gateway: Example lan_gateway
+              primary: false
             paid_nios: false
             hwtype: Example hwtype
             hwmodel: Example hwmodel
             hypervisor: Example hypervisor
-            service_status: service_status
+            service_status:
+              service: Example service
+              description: Example description
+              status: Example status
             hwid: Example hwid
             physical_oid: Example physical_oid
             nat_external_ip: Example nat_external_ip
           lan2_port_setting:
             virtual_router_id: 1
-            v6_network_setting: v6_network_setting
+            v6_network_setting:
+              auto_router_config_enabled: false
+              vlan_id: 1
+              dscp: 1
+              cidr_prefix: 1
+              use_dscp: false
+              enabled: false
+              gateway: Example gateway
+              virtual_ip: Example virtual_ip
+              primary: false
             default_route_failover_enabled: false
             nic_failover_enabled: false
-            network_setting: network_setting
+            network_setting:
+              lan_subnet_mask: Example lan_subnet_mask
+              vlan_id: 1
+              address: Example address
+              dscp: 1
+              subnet_mask: Example subnet_mask
+              use_dscp: false
+              gateway: Example gateway
+              lan_gateway: Example lan_gateway
+              primary: false
             enabled: false
             nic_failover_enable_primary: false
           _ref: _ref
           snmp_setting:
-            syslocation: Example syslocation
-            syscontact: Example syscontact
+            syslocation:
+            - syslocation
+            - syslocation
+            syscontact:
+            - syscontact
+            - syscontact
             snmpv3_queries_enable: false
-            snmpv3_queries_users: snmpv3_queries_users
-            sysdescr: Example sysdescr
+            snmpv3_queries_users:
+              comment: Example comment
+              user: Example user
+            sysdescr:
+            - sysdescr
+            - sysdescr
             traps_community_string: Example traps_community_string
-            engine_id: Example engine_id
+            engine_id:
+            - engine_id
+            - engine_id
             queries_community_string: Example queries_community_string
             snmpv3_traps_enable: false
-            sysname: Example sysname
-            trap_receivers: trap_receivers
+            sysname:
+            - sysname
+            - sysname
+            trap_receivers:
+              address: Example address
+              comment: Example comment
+              user: Example user
             traps_enable: false
             queries_enable: false
           comment: Example comment
@@ -18422,17 +19795,53 @@ components:
           additional_ip_list:
           - anycast: false
             enable_bgp: false
-            ipv6_network_setting: ipv6_network_setting
+            ipv6_network_setting:
+              auto_router_config_enabled: false
+              vlan_id: 1
+              dscp: 1
+              cidr_prefix: 1
+              use_dscp: false
+              enabled: false
+              gateway: Example gateway
+              virtual_ip: Example virtual_ip
+              primary: false
             enable_ospf: false
             comment: Example comment
-            ipv4_network_setting: ipv4_network_setting
+            ipv4_network_setting:
+              lan_subnet_mask: Example lan_subnet_mask
+              vlan_id: 1
+              address: Example address
+              dscp: 1
+              subnet_mask: Example subnet_mask
+              use_dscp: false
+              gateway: Example gateway
+              lan_gateway: Example lan_gateway
+              primary: false
             interface: Example interface
           - anycast: false
             enable_bgp: false
-            ipv6_network_setting: ipv6_network_setting
+            ipv6_network_setting:
+              auto_router_config_enabled: false
+              vlan_id: 1
+              dscp: 1
+              cidr_prefix: 1
+              use_dscp: false
+              enabled: false
+              gateway: Example gateway
+              virtual_ip: Example virtual_ip
+              primary: false
             enable_ospf: false
             comment: Example comment
-            ipv4_network_setting: ipv4_network_setting
+            ipv4_network_setting:
+              lan_subnet_mask: Example lan_subnet_mask
+              vlan_id: 1
+              address: Example address
+              dscp: 1
+              subnet_mask: Example subnet_mask
+              use_dscp: false
+              gateway: Example gateway
+              lan_gateway: Example lan_gateway
+              primary: false
             interface: Example interface
           host_name: Example host_name
       properties:
@@ -18458,8 +19867,8 @@ components:
             key:
               value: value
           requests:
-          - grid:servicerestart:request
-          - grid:servicerestart:request
+          - "{}"
+          - "{}"
           is_default: false
           mode: Example mode
           last_updated_time: 1
@@ -18473,9 +19882,25 @@ components:
           position: 1
           recurring_schedule:
             mode: Example mode
-            schedule: schedule
+            schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             force: false
-            services: Example services
+            services:
+            - services
+            - services
           status: Example status
       properties:
         result:
@@ -18499,8 +19924,8 @@ components:
             key:
               value: value
           requests:
-          - grid:servicerestart:request
-          - grid:servicerestart:request
+          - "{}"
+          - "{}"
           is_default: false
           mode: Example mode
           last_updated_time: 1
@@ -18514,9 +19939,25 @@ components:
           position: 1
           recurring_schedule:
             mode: Example mode
-            schedule: schedule
+            schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             force: false
-            services: Example services
+            services:
+            - services
+            - services
           status: Example status
       properties:
         result:
@@ -18755,19 +20196,47 @@ components:
           scavenging_settings:
             enable_scavenging: false
             enable_recurrent_scavenging: false
-            scavenging_schedule: scavenging_schedule
+            scavenging_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             enable_rr_last_queried: false
-            expression_list: expression_list
-            ea_expression_list: ea_expression_list
+            expression_list:
+              op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            ea_expression_list:
+              op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
             reclaim_associated_records: false
             enable_auto_reclamation: false
             enable_zone_last_queried: false
           blacklist_redirect_ttl: 1
           notify_delay: 1
           sortlist:
-          - match_list: Example match_list
+          - match_list:
+            - match_list
+            - match_list
             address: Example address
-          - match_list: Example match_list
+          - match_list:
+            - match_list
+            - match_list
             address: Example address
           ddns_restrict_protected: false
           store_locally: false
@@ -18793,17 +20262,36 @@ components:
           enable_gss_tsig: false
           refresh_timer: 1
           attack_mitigation:
-            detect_nxdomain_responses: detect_nxdomain_responses
-            detect_udp_drop: detect_udp_drop
+            detect_nxdomain_responses:
+              high: 1
+              low: 1
+              enable: false
+              interval_max: 1
+              interval_min: 1
+              interval_time: 1
+            detect_udp_drop:
+              high: 1
+              low: 1
+              enable: false
+              interval_max: 1
+              interval_min: 1
+              interval_time: 1
             interval: 1
             detect_chr_grace: 1
-            detect_chr: detect_chr
+            detect_chr:
+              high: 1
+              low: 1
+              enable: false
+              interval_max: 1
+              interval_min: 1
+              interval_time: 1
           enable_ftc: false
           capture_dns_queries_on_all_domains: false
           dtc_dnssec_mode: Example dtc_dnssec_mode
           root_name_server_type: Example root_name_server_type
           bind_check_names_policy: Example bind_check_names_policy
           filter_aaaa: Example filter_aaaa
+          enable_dnstap_violations_tls: false
           copy_client_ip_mac_options: false
           dns_health_check_timeout: 1
           email: Example email
@@ -18818,9 +20306,9 @@ components:
           file_transfer_setting:
             password: Example password
             port: 1
-            host: Example host
             type: Example type
             directory: Example directory
+            server_address_or_fqdn: Example server_address_or_fqdn
             username: Example username
           blackhole_list:
           - address: Example address
@@ -18838,8 +20326,8 @@ components:
           dnssec_expired_signatures_enabled: false
           enable_blackhole: false
           bulk_host_name_templates:
-          - bulkhostnametemplate
-          - bulkhostnametemplate
+          - "{}"
+          - "{}"
           run_scavenging: "{}"
           allow_transfer:
           - address: Example address
@@ -18862,8 +20350,8 @@ components:
           - blacklist_redirect_addresses
           client_subnet_ipv4_prefix_length: 1
           protocol_record_name_policies:
-          - recordnamepolicy
-          - recordnamepolicy
+          - "{}"
+          - "{}"
           ftc_expired_record_ttl: 1
           rpz_drop_ip_rule_min_prefix_length_ipv4: 1
           transfers_out: 1
@@ -18945,8 +20433,8 @@ components:
             username: Example username
           enable_dnstap_queries: false
           gss_tsig_keys:
-          - kerberoskey
-          - kerberoskey
+          - "{}"
+          - "{}"
           dnssec_rpz_enabled: false
           anonymize_response_logging: false
           filter_aaaa_list:
@@ -18985,7 +20473,9 @@ components:
           dnssec_key_params:
             nsec3_iterations: 1
             signature_expiration: 1
-            zsk_algorithms: zsk_algorithms
+            zsk_algorithms:
+              size: 1
+              algorithm: Example algorithm
             zsk_algorithm: Example zsk_algorithm
             ksk_snmp_notification_enabled: false
             ksk_algorithm: Example ksk_algorithm
@@ -18994,7 +20484,9 @@ components:
             next_secure_type: Example next_secure_type
             nsec3_salt_min_length: 1
             ksk_rollover: 1
-            ksk_algorithms: ksk_algorithms
+            ksk_algorithms:
+              size: 1
+              algorithm: Example algorithm
             zsk_rollover_mechanism: Example zsk_rollover_mechanism
             ksk_rollover_notification_config: Example ksk_rollover_notification_config
             zsk_rollover: 1
@@ -19097,13 +20589,13 @@ components:
           enable_capture_dns_responses: false
           dnstap_setting:
             dnstap_identity: Example dnstap_identity
-            dnstap_receiver_address: Example dnstap_receiver_address
             dnstap_version: Example dnstap_version
+            dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
             dnstap_receiver_port: 1
           restart_setting:
             delay: 1
             restart_offline: false
-            timeout: Example timeout
+            timeout: 1
       properties:
         result:
           $ref: '#/components/schemas/GridDns'
@@ -19196,7 +20688,9 @@ components:
           scheduled_download:
             month: 1
             year: 1
-            weekdays: Example weekdays
+            weekdays:
+            - weekdays
+            - weekdays
             disable: false
             recurring_time: 1
             repeat: Example repeat
@@ -19216,14 +20710,20 @@ components:
           nat_rules:
           - rule_type: Example rule_type
             address: Example address
-            nat_ports: nat_ports
+            nat_ports:
+              start_port: 1
+              end_port: 1
+              block_size: 1
             start_address: Example start_address
             cidr: 1
             end_address: Example end_address
             network: Example network
           - rule_type: Example rule_type
             address: Example address
-            nat_ports: nat_ports
+            nat_ports:
+              start_port: 1
+              end_port: 1
+              block_size: 1
             start_address: Example start_address
             cidr: 1
             end_address: Example end_address
@@ -19262,14 +20762,16 @@ components:
       example:
         result:
           dns_tunnel_block_list_rpz_zones:
-          - zone_rp
-          - zone_rp
+          - "{}"
+          - "{}"
           set_last_uploaded_threat_insight_moduleset: "{}"
           last_checked_for_package_update: 1
           scheduled_allowlist_download:
             month: 1
             year: 1
-            weekdays: Example weekdays
+            weekdays:
+            - weekdays
+            - weekdays
             disable: false
             recurring_time: 1
             repeat: Example repeat
@@ -19303,7 +20805,9 @@ components:
           scheduled_download:
             month: 1
             year: 1
-            weekdays: Example weekdays
+            weekdays:
+            - weekdays
+            - weekdays
             disable: false
             recurring_time: 1
             repeat: Example repeat
@@ -19449,9 +20953,13 @@ components:
           enable_dns_cache_acceleration: false
           notify_delay: 1
           sortlist:
-          - match_list: Example match_list
+          - match_list:
+            - match_list
+            - match_list
             address: Example address
-          - match_list: Example match_list
+          - match_list:
+            - match_list
+            - match_list
             address: Example address
           store_locally: false
           use_bind_hostname_directive: false
@@ -19481,9 +20989,9 @@ components:
           file_transfer_setting:
             password: Example password
             port: 1
-            host: Example host
             type: Example type
             directory: Example directory
+            server_address_or_fqdn: Example server_address_or_fqdn
             username: Example username
           extattrs:
             key:
@@ -19663,8 +21171,8 @@ components:
           enable_capture_dns_responses: false
           dnstap_setting:
             dnstap_identity: Example dnstap_identity
-            dnstap_receiver_address: Example dnstap_receiver_address
             dnstap_version: Example dnstap_version
+            dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
             dnstap_receiver_port: 1
           doh_https_session_duration: 1
           use_dns64: false
@@ -19697,12 +21205,31 @@ components:
           use_logging_categories: false
           enable_gss_tsig: false
           attack_mitigation:
-            detect_nxdomain_responses: detect_nxdomain_responses
-            detect_udp_drop: detect_udp_drop
+            detect_nxdomain_responses:
+              high: 1
+              low: 1
+              enable: false
+              interval_max: 1
+              interval_min: 1
+              interval_time: 1
+            detect_udp_drop:
+              high: 1
+              low: 1
+              enable: false
+              interval_max: 1
+              interval_min: 1
+              interval_time: 1
             interval: 1
             detect_chr_grace: 1
-            detect_chr: detect_chr
+            detect_chr:
+              high: 1
+              low: 1
+              enable: false
+              interval_max: 1
+              interval_min: 1
+              interval_time: 1
           use_notify_delay: false
+          enable_dnstap_violations_tls: false
           copy_client_ip_mac_options: false
           dns_health_check_timeout: 1
           use_forwarders: false
@@ -19739,6 +21266,7 @@ components:
           - blacklist_redirect_addresses
           ftc_expired_record_ttl: 1
           transfers_out: 1
+          upstream_address_family_preference: Example upstream_address_family_preference
           use_root_name_server: false
           tls_session_duration: 1
           enable_capture_dns_queries: false
@@ -19749,8 +21277,8 @@ components:
           dns_health_check_retries: 1
           use_lan_ipv6_port: false
           gss_tsig_keys:
-          - kerberoskey
-          - kerberoskey
+          - "{}"
+          - "{}"
           use_copy_client_ip_mac_options: false
           dnssec_rpz_enabled: false
           use_allow_transfer: false
@@ -19993,14 +21521,20 @@ components:
           nat_rules:
           - rule_type: Example rule_type
             address: Example address
-            nat_ports: nat_ports
+            nat_ports:
+              start_port: 1
+              end_port: 1
+              block_size: 1
             start_address: Example start_address
             cidr: 1
             end_address: Example end_address
             network: Example network
           - rule_type: Example rule_type
             address: Example address
-            nat_ports: nat_ports
+            nat_ports:
+              start_port: 1
+              end_port: 1
+              block_size: 1
             start_address: Example start_address
             cidr: 1
             end_address: Example end_address

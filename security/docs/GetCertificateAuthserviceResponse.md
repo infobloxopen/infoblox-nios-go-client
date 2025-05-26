@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **AutoPopulateLogin** | Pointer to **string** | Specifies the value of the client certificate for automatically populating the NIOS login name. | [optional] 
-**CaCertificates** | Pointer to **[]string** | The list of CA certificates. | [optional] 
+**CaCertificates** | Pointer to **[]map[string]interface{}** | The list of CA certificates. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment for the certificate authentication service. | [optional] 
 **Disabled** | Pointer to **bool** | Determines if this certificate authentication service is enabled or disabled. | [optional] 
 **EnablePasswordRequest** | Pointer to **bool** | Determines if username/password authentication together with client certificate authentication is enabled or disabled. | [optional] 
@@ -96,20 +96,20 @@ HasAutoPopulateLogin returns a boolean if a field has been set.
 
 ### GetCaCertificates
 
-`func (o *GetCertificateAuthserviceResponse) GetCaCertificates() []string`
+`func (o *GetCertificateAuthserviceResponse) GetCaCertificates() []map[string]interface{}`
 
 GetCaCertificates returns the CaCertificates field if non-nil, zero value otherwise.
 
 ### GetCaCertificatesOk
 
-`func (o *GetCertificateAuthserviceResponse) GetCaCertificatesOk() (*[]string, bool)`
+`func (o *GetCertificateAuthserviceResponse) GetCaCertificatesOk() (*[]map[string]interface{}, bool)`
 
 GetCaCertificatesOk returns a tuple with the CaCertificates field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCaCertificates
 
-`func (o *GetCertificateAuthserviceResponse) SetCaCertificates(v []string)`
+`func (o *GetCertificateAuthserviceResponse) SetCaCertificates(v []map[string]interface{})`
 
 SetCaCertificates sets CaCertificates field to given value.
 

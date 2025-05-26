@@ -32,8 +32,9 @@ Name | Type | Description | Notes
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the network container should be immediately enabled. | [optional] 
 **EnablePxeLeaseTime** | Pointer to **bool** | Set this to True if you want the DHCP server to use a different lease time for PXE clients. | [optional] 
 **EnableSnmpWarnings** | Pointer to **bool** | Determines if DHCP threshold warnings are send through SNMP. | [optional] 
-**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP Network Container object. | [optional] [readonly] 
+**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP Network Container object. | [optional] [readonly] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**FederatedRealms** | Pointer to [**[]NetworkcontainerFederatedRealms**](NetworkcontainerFederatedRealms.md) | This field contains the federated realms associated to this network container. | [optional] 
 **HighWaterMark** | Pointer to **int64** | The percentage of DHCP network container usage threshold above which network container usage is not expected and may warrant your attention. When the high watermark is reached, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **HighWaterMarkReset** | Pointer to **int64** | The percentage of DHCP network container usage below which the corresponding SNMP trap is reset. A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The high watermark reset value must be lower than the high watermark value. | [optional] 
 **IgnoreDhcpOptionListRequest** | Pointer to **bool** | If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested. | [optional] 
@@ -44,7 +45,7 @@ Name | Type | Description | Notes
 **IpamTrapSettings** | Pointer to [**NetworkcontainerIpamTrapSettings**](NetworkcontainerIpamTrapSettings.md) |  | [optional] 
 **LastRirRegistrationUpdateSent** | Pointer to **int64** | The timestamp when the last RIR registration update was sent. | [optional] [readonly] 
 **LastRirRegistrationUpdateStatus** | Pointer to **string** | Last RIR registration update status. | [optional] [readonly] 
-**LeaseScavengeTime** | Pointer to **string** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int32** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogicFilterRules** | Pointer to [**[]NetworkcontainerLogicFilterRules**](NetworkcontainerLogicFilterRules.md) | This field contains the logic filters to be applied on the this network container. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **LowWaterMark** | Pointer to **int64** | The percentage of DHCP network container usage below which the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **LowWaterMarkReset** | Pointer to **int64** | The percentage of DHCP network container usage threshold below which network container usage is not expected and may warrant your attention. When the low watermark is crossed, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The low watermark reset value must be higher than the low watermark value. | [optional] 
@@ -827,20 +828,20 @@ HasEnableSnmpWarnings returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *GetNetworkcontainerResponse) GetEndpointSources() []string`
+`func (o *GetNetworkcontainerResponse) GetEndpointSources() []map[string]interface{}`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *GetNetworkcontainerResponse) GetEndpointSourcesOk() (*[]string, bool)`
+`func (o *GetNetworkcontainerResponse) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *GetNetworkcontainerResponse) SetEndpointSources(v []string)`
+`func (o *GetNetworkcontainerResponse) SetEndpointSources(v []map[string]interface{})`
 
 SetEndpointSources sets EndpointSources field to given value.
 
@@ -874,6 +875,31 @@ SetExtattrs sets Extattrs field to given value.
 `func (o *GetNetworkcontainerResponse) HasExtattrs() bool`
 
 HasExtattrs returns a boolean if a field has been set.
+
+### GetFederatedRealms
+
+`func (o *GetNetworkcontainerResponse) GetFederatedRealms() []NetworkcontainerFederatedRealms`
+
+GetFederatedRealms returns the FederatedRealms field if non-nil, zero value otherwise.
+
+### GetFederatedRealmsOk
+
+`func (o *GetNetworkcontainerResponse) GetFederatedRealmsOk() (*[]NetworkcontainerFederatedRealms, bool)`
+
+GetFederatedRealmsOk returns a tuple with the FederatedRealms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederatedRealms
+
+`func (o *GetNetworkcontainerResponse) SetFederatedRealms(v []NetworkcontainerFederatedRealms)`
+
+SetFederatedRealms sets FederatedRealms field to given value.
+
+### HasFederatedRealms
+
+`func (o *GetNetworkcontainerResponse) HasFederatedRealms() bool`
+
+HasFederatedRealms returns a boolean if a field has been set.
 
 ### GetHighWaterMark
 
@@ -1127,20 +1153,20 @@ HasLastRirRegistrationUpdateStatus returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *GetNetworkcontainerResponse) GetLeaseScavengeTime() string`
+`func (o *GetNetworkcontainerResponse) GetLeaseScavengeTime() int32`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *GetNetworkcontainerResponse) GetLeaseScavengeTimeOk() (*string, bool)`
+`func (o *GetNetworkcontainerResponse) GetLeaseScavengeTimeOk() (*int32, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *GetNetworkcontainerResponse) SetLeaseScavengeTime(v string)`
+`func (o *GetNetworkcontainerResponse) SetLeaseScavengeTime(v int32)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 

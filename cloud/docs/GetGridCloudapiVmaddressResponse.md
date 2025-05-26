@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **AddressType** | Pointer to **string** | IP address type (Public, Private, Elastic, Floating, ...). | [optional] [readonly] 
 **AssociatedIp** | Pointer to **string** | Reference to associated IPv4 or IPv6 address. | [optional] [readonly] 
 **AssociatedObjectTypes** | Pointer to **[]string** | Array of string denoting the types of underlying objects IPv4/IPv6 - \&quot;A\&quot;, \&quot;AAAA\&quot;, \&quot;PTR\&quot;, \&quot;HOST\&quot;, \&quot;FA\&quot;, \&quot;RESERVATION\&quot;, \&quot;UNMANAGED\&quot; + (\&quot;BULKHOST\&quot;, \&quot;DHCP_RANGE\&quot;, \&quot;RESERVED_RANGE\&quot;, \&quot;LEASE\&quot;, \&quot;NETWORK\&quot;, \&quot;BROADCAST\&quot;, \&quot;PENDING\&quot;), | [optional] [readonly] 
-**AssociatedObjects** | Pointer to **[]string** | The list of references to the object (Host, Fixed Address, RR, ...) that defines this IP. | [optional] [readonly] 
+**AssociatedObjects** | Pointer to **[]map[string]interface{}** | The list of references to the object (Host, Fixed Address, RR, ...) that defines this IP. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**GridCloudapiVmaddressCloudInfo**](GridCloudapiVmaddressCloudInfo.md) |  | [optional] 
 **DnsNames** | Pointer to **[]string** | The list of all FQDNs associated with the IP address. | [optional] [readonly] 
 **ElasticAddress** | Pointer to **string** | Elastic IP address associated with this private address, if this address is a private address; otherwise empty. | [optional] [readonly] 
@@ -192,20 +192,20 @@ HasAssociatedObjectTypes returns a boolean if a field has been set.
 
 ### GetAssociatedObjects
 
-`func (o *GetGridCloudapiVmaddressResponse) GetAssociatedObjects() []string`
+`func (o *GetGridCloudapiVmaddressResponse) GetAssociatedObjects() []map[string]interface{}`
 
 GetAssociatedObjects returns the AssociatedObjects field if non-nil, zero value otherwise.
 
 ### GetAssociatedObjectsOk
 
-`func (o *GetGridCloudapiVmaddressResponse) GetAssociatedObjectsOk() (*[]string, bool)`
+`func (o *GetGridCloudapiVmaddressResponse) GetAssociatedObjectsOk() (*[]map[string]interface{}, bool)`
 
 GetAssociatedObjectsOk returns a tuple with the AssociatedObjects field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssociatedObjects
 
-`func (o *GetGridCloudapiVmaddressResponse) SetAssociatedObjects(v []string)`
+`func (o *GetGridCloudapiVmaddressResponse) SetAssociatedObjects(v []map[string]interface{})`
 
 SetAssociatedObjects sets AssociatedObjects field to given value.
 

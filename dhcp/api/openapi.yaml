@@ -1,8 +1,7 @@
 openapi: 3.0.0
 info:
   contact:
-    email: jkhatri@infoblox.com
-    name: Jeenitkumar Khatri
+    name: Infoblox
     url: https://www.infoblox.com
   description: OpenAPI specification for Infoblox NIOS WAPI DHCP objects
   license:
@@ -10,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DHCP API
-  version: 2.12.3
+  version: 2.13.6
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.12.3
+  url: /wapi/v2.13.6
 tags:
 - description: Operations for grid:dhcpproperties objects
   name: grid:dhcpproperties
@@ -9359,8 +9358,8 @@ components:
         ipv6_ddns_ttl: 1
         ipv6_remember_expired_client_association: false
         gss_tsig_keys:
-        - kerberoskey
-        - kerberoskey
+        - "{}"
+        - "{}"
         options:
         - vendor_class: Example vendor_class
           use_option: false
@@ -9395,8 +9394,8 @@ components:
         - ipv6_domain_name_servers
         log_lease_events: false
         protocol_hostname_rewrite_policies:
-        - hostnamerewritepolicy
-        - hostnamerewritepolicy
+        - "{}"
+        - "{}"
         preferred_lifetime: 1
         deny_bootp: false
         enable_email_warnings: false
@@ -9412,12 +9411,12 @@ components:
         ddns_update_fixed_addresses: false
         enable_gss_tsig: false
         ipv6_gss_tsig_keys:
-        - kerberoskey
-        - kerberoskey
+        - "{}"
+        - "{}"
         lease_per_client_settings: Example lease_per_client_settings
         ipv6_ddns_enable_option_fqdn: false
         ipv6_enable_gss_tsig: false
-        lease_scavenge_time: Example lease_scavenge_time
+        lease_scavenge_time: 1
         enable_ddns: false
         ping_timeout: 1
         ipv6_retry_updates_interval: 1
@@ -9462,7 +9461,7 @@ components:
         restart_setting:
           delay: 1
           restart_offline: false
-          timeout: Example timeout
+          timeout: 1
         enable_hostname_rewrite: false
         logic_filter_rules:
         - filter: Example filter
@@ -9625,7 +9624,7 @@ components:
           items:
             enum:
             - kerberoskey
-            type: string
+            type: object
           type: array
         high_water_mark:
           description: "Determines the high watermark value of a Grid DHCP server.\
@@ -9756,7 +9755,7 @@ components:
           items:
             enum:
             - kerberoskey
-            type: string
+            type: object
           type: array
         ipv6_kdc_server:
           description: The IPv6 address or FQDN of the Kerberos server for DHCPv6
@@ -9886,10 +9885,8 @@ components:
             \ that remain in the database beyond a specified period of time. To disable\
             \ lease scavenging, set the parameter to -1. The minimum positive value\
             \ must be greater than 86400 seconds (1 day)."
-          enum:
-          - int
-          example: Example lease_scavenge_time
-          type: string
+          example: 1
+          type: integer
         log_lease_events:
           description: This value specifies whether the Grid DHCP members log lease
             events is enabled or not.
@@ -10018,7 +10015,7 @@ components:
           items:
             enum:
             - hostnamerewritepolicy
-            type: string
+            type: object
           type: array
         pxe_lease_time:
           description: "Specifies the duration of time it takes a host to connect\
@@ -10194,7 +10191,7 @@ components:
       example:
         delay: 1
         restart_offline: false
-        timeout: Example timeout
+        timeout: 1
       properties:
         delay:
           description: The time duration to delay a restart for a restart group.
@@ -10204,10 +10201,8 @@ components:
         timeout:
           description: The duration of timeout for a restart group. The value "-1"
             means infinite.
-          enum:
-          - int
-          example: Example timeout
-          type: string
+          example: 1
+          type: integer
         restart_offline:
           description: Determines whether the Grid should try to restart offline member.
           example: false
@@ -10381,8 +10376,8 @@ components:
         use_enable_hostname_rewrite: false
         use_lease_scavenge_time: false
         gss_tsig_keys:
-        - kerberoskey
-        - kerberoskey
+        - "{}"
+        - "{}"
         use_ignore_dhcp_option_list_request: false
         use_ipv6_ddns_enable_option_fqdn: false
         ddns_server_always_updates: false
@@ -10406,10 +10401,10 @@ components:
         ipv6_ddns_hostname: Example ipv6_ddns_hostname
         use_ipv6_enable_retry_updates: false
         ipv6_gss_tsig_keys:
-        - kerberoskey
-        - kerberoskey
+        - "{}"
+        - "{}"
         ipv6_enable_gss_tsig: false
-        lease_scavenge_time: Example lease_scavenge_time
+        lease_scavenge_time: 1
         use_ddns_ttl: false
         ipv6_server_duid: Example ipv6_server_duid
         ipv6addr: Example ipv6addr
@@ -10665,7 +10660,7 @@ components:
           items:
             enum:
             - kerberoskey
-            type: string
+            type: object
           type: array
         high_water_mark:
           description: "Determines the high watermark value of a member DHCP server.\
@@ -10802,7 +10797,7 @@ components:
           items:
             enum:
             - kerberoskey
-            type: string
+            type: object
           type: array
         ipv6_kdc_server:
           description: Determines the IPv6 address or FQDN of the Kerberos server
@@ -10917,10 +10912,8 @@ components:
             \ that remain in the database beyond a specified period of time. To disable\
             \ lease scavenging, set the parameter to -1. The minimum positive value\
             \ must be greater than 86400 seconds (1 day)."
-          enum:
-          - int
-          example: Example lease_scavenge_time
-          type: string
+          example: 1
+          type: integer
         log_lease_events:
           description: This value specifies whether the grid member logs lease events.
             This setting overrides the Grid level setting.
@@ -12945,7 +12938,10 @@ components:
         network_view: Example network_view
         device_description: Example device_description
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -13342,7 +13338,10 @@ components:
       type: object
     FixedaddressCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -13411,6 +13410,10 @@ components:
           type: string
       type: object
     FixedaddresscloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -14847,10 +14850,14 @@ components:
         template: Example template
         network_view: Example network_view
         duid: Example duid
+        match_client: Example match_client
         ipv6prefix: Example ipv6prefix
         device_description: Example device_description
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -14882,6 +14889,7 @@ components:
           id: 1
           user: Example user
         use_domain_name: false
+        mac_address: Example mac_address
         discover_now_status: Example discover_now_status
         options:
         - vendor_class: Example vendor_class
@@ -15159,6 +15167,20 @@ components:
           items:
             $ref: '#/components/schemas/Ipv6fixedaddressLogicFilterRules'
           type: array
+        mac_address:
+          description: The MAC address for this IPv6 fixed address.
+          example: Example mac_address
+          type: string
+        match_client:
+          description: "The match_client value for this fixed address. Valid values\
+            \ are: \"DUID\": The fixed IP address is leased to the matching DUID.\
+            \ \"MAC_ADDRESS\": The fixed IP address is leased to the matching MAC\
+            \ address."
+          enum:
+          - DUID
+          - MAC_ADDRESS
+          example: Example match_client
+          type: string
         ms_ad_user_data:
           $ref: '#/components/schemas/Ipv6fixedaddressMsAdUserData'
         name:
@@ -15299,7 +15321,10 @@ components:
       type: object
     Ipv6fixedaddressCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -15368,6 +15393,10 @@ components:
           type: string
       type: object
     Ipv6fixedaddresscloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -16426,11 +16455,18 @@ components:
         network_view: Example network_view
         discovery_member: Example discovery_member
         subscribe_settings:
-          mapped_ea_attributes: mapped_ea_attributes
-          enabled_attributes: Example enabled_attributes
+          mapped_ea_attributes:
+            mapped_ea: Example mapped_ea
+            name: Example name
+          enabled_attributes:
+          - enabled_attributes
+          - enabled_attributes
         end_addr: Example end_addr
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -16442,16 +16478,32 @@ components:
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
-          switch_port_data_collection_polling_interval: 1
           credential_group: Example credential_group
+          polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
           complete_ping_sweep: false
-          switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-          port_scanning: false
+          switch_port_data_collection_polling_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
+          use_global_polling_frequency_modifier: false
           snmp_collection: false
           smart_subnet_ping_sweep: false
-          auto_arp_refresh_before_switch_port_polling: false
           netbios_scanning: false
+          switch_port_data_collection_polling_interval: 1
+          port_scanning: false
+          auto_arp_refresh_before_switch_port_polling: false
         ipv6_prefix_bits: 1
         network: Example network
         ipv6_end_prefix: Example ipv6_end_prefix
@@ -16485,14 +16537,28 @@ components:
         address_type: Example address_type
         port_control_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         same_port_control_discovery_blackout: false
         use_discovery_basic_polling_settings: false
         enable_immediate_discovery: false
         endpoint_sources:
-        - pxgrid:endpoint
-        - pxgrid:endpoint
+        - "{}"
+        - "{}"
         use_recycle_leases: false
         disable: false
         restart_if_needed: false
@@ -16508,7 +16574,21 @@ components:
         use_enable_discovery: false
         discovery_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
       properties:
         _ref:
@@ -16576,7 +16656,7 @@ components:
           items:
             enum:
             - pxgrid:endpoint
-            type: string
+            type: object
           readOnly: true
           type: array
         exclude:
@@ -16706,7 +16786,10 @@ components:
       type: object
     Ipv6rangeCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -16775,6 +16858,10 @@ components:
           type: string
       type: object
     Ipv6rangecloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -16793,16 +16880,32 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
-        switch_port_data_collection_polling_interval: 1
         credential_group: Example credential_group
+        polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
         complete_ping_sweep: false
-        switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-        port_scanning: false
+        switch_port_data_collection_polling_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
+        use_global_polling_frequency_modifier: false
         snmp_collection: false
         smart_subnet_ping_sweep: false
-        auto_arp_refresh_before_switch_port_polling: false
         netbios_scanning: false
+        switch_port_data_collection_polling_interval: 1
+        port_scanning: false
+        auto_arp_refresh_before_switch_port_polling: false
       properties:
         port_scanning:
           description: Determines whether port scanning is enabled or not.
@@ -16856,8 +16959,31 @@ components:
           description: Credential group.
           example: Example credential_group
           type: string
+        polling_frequency_modifier:
+          description: Polling Frequency Modifier.
+          example: Example polling_frequency_modifier
+          type: string
+        use_global_polling_frequency_modifier:
+          description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
       type: object
     Ipv6rangediscoverybasicpollsettingsSwitchPortDataCollectionPollingSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -16869,7 +16995,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -16946,7 +17071,21 @@ components:
     Ipv6rangeDiscoveryBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -16962,6 +17101,21 @@ components:
           $ref: '#/components/schemas/Ipv6rangediscoveryblackoutsettingBlackoutSchedule'
       type: object
     Ipv6rangediscoveryblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -16973,7 +17127,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -17122,7 +17275,21 @@ components:
     Ipv6rangePortControlBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -17138,6 +17305,21 @@ components:
           $ref: '#/components/schemas/Ipv6rangeportcontrolblackoutsettingBlackoutSchedule'
       type: object
     Ipv6rangeportcontrolblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -17149,7 +17331,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -17225,8 +17406,12 @@ components:
       type: object
     Ipv6rangeSubscribeSettings:
       example:
-        mapped_ea_attributes: mapped_ea_attributes
-        enabled_attributes: Example enabled_attributes
+        mapped_ea_attributes:
+          mapped_ea: Example mapped_ea
+          name: Example name
+        enabled_attributes:
+        - enabled_attributes
+        - enabled_attributes
       properties:
         enabled_attributes:
           description: The list of Cisco ISE attributes allowed for subscription.
@@ -17238,7 +17423,6 @@ components:
           - SSID
           - USERNAME
           - VLAN
-          example: Example enabled_attributes
           items:
             type: string
           type: array
@@ -17246,6 +17430,9 @@ components:
           $ref: '#/components/schemas/Ipv6rangesubscribesettingsMappedEaAttributes'
       type: object
     Ipv6rangesubscribesettingsMappedEaAttributes:
+      example:
+        mapped_ea: Example mapped_ea
+        name: Example name
       properties:
         name:
           description: The Cisco ISE attribute name that is enabled for publishsing
@@ -17534,8 +17721,8 @@ components:
         network_view: Example network_view
         use_ddns_use_option81: false
         networks:
-        - ipv6network
-        - ipv6network
+        - "{}"
+        - "{}"
         use_ddns_ttl: false
         use_ddns_generate_hostname: false
         use_valid_lifetime: false
@@ -17684,7 +17871,7 @@ components:
           items:
             enum:
             - ipv6network
-            type: string
+            type: object
           type: array
         options:
           description: An array of DHCP option dhcpoption structs that lists the DHCP
@@ -17853,6 +18040,7 @@ components:
         ends: 1
         fingerprint: Example fingerprint
         starts: 1
+        requested_options: Example requested_options
         hardware: Example hardware
         address: Example address
         remote_id: Example remote_id
@@ -18035,9 +18223,10 @@ components:
           readOnly: true
           type: string
         hardware:
-          description: The hardware type of a DHCP Lease object. This field specifies
-            the MAC address of the network interface on which the lease will be used.
-            This field is for IPv4 leases only.
+          description: "The hardware type of a DHCP Lease object. This field specifies\
+            \ the MAC address of the network interface on which the lease will be\
+            \ used. This field is supported for IPv4 leases, and from NIOS-9.0.6 onwards,\
+            \ also supported for IPv6 leases."
           example: Example hardware
           readOnly: true
           type: string
@@ -18203,6 +18392,13 @@ components:
             \ **NOTE:** Lease07 is not expected to be returned when searching for\
             \ the remote ID sub-option."
           example: Example remote_id
+          readOnly: true
+          type: string
+        requested_options:
+          description: "This field contains the option request list received from\
+            \ the client. For DHCPv4, it includes \"Parameter Request List\" data\
+            \ and for DHCPv6, it includes \"Option Request Option\" data."
+          example: Example requested_options
           readOnly: true
           type: string
         served_by:
@@ -19171,7 +19367,21 @@ components:
           value: Example value
         port_control_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         update_dns_on_lease_renewal: false
         enable_pxe_lease_time: false
@@ -19180,15 +19390,18 @@ components:
         enable_immediate_discovery: false
         deny_bootp: false
         endpoint_sources:
-        - pxgrid:endpoint
-        - pxgrid:endpoint
+        - "{}"
+        - "{}"
         high_water_mark_reset: 1
         ms_server:
           ipv4addr: Example ipv4addr
         template: Example template
         use_enable_dhcp_thresholds: false
         cloud_info:
-          delegated_member: delegated_member
+          delegated_member:
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           delegated_scope: Example delegated_scope
           owned_by_adaptor: false
           usage: Example usage
@@ -19205,16 +19418,32 @@ components:
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
-          switch_port_data_collection_polling_interval: 1
           credential_group: Example credential_group
+          polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
           complete_ping_sweep: false
-          switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-          port_scanning: false
+          switch_port_data_collection_polling_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
+          use_global_polling_frequency_modifier: false
           snmp_collection: false
           smart_subnet_ping_sweep: false
-          auto_arp_refresh_before_switch_port_polling: false
           netbios_scanning: false
+          switch_port_data_collection_polling_interval: 1
+          port_scanning: false
+          auto_arp_refresh_before_switch_port_polling: false
         enable_ddns: false
         recycle_leases: false
         use_ignore_id: false
@@ -19244,7 +19473,21 @@ components:
           type: Example type
         discovery_blackout_setting:
           enable_blackout: false
-          blackout_schedule: blackout_schedule
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
           blackout_duration: 1
         use_options: false
         nac_filter_rules:
@@ -19253,8 +19496,12 @@ components:
         - filter: Example filter
           permission: Example permission
         subscribe_settings:
-          mapped_ea_attributes: mapped_ea_attributes
-          enabled_attributes: Example enabled_attributes
+          mapped_ea_attributes:
+            mapped_ea: Example mapped_ea
+            name: Example name
+          enabled_attributes:
+          - enabled_attributes
+          - enabled_attributes
         use_bootserver: false
         nextserver: Example nextserver
         use_pxe_lease_time: false
@@ -19295,7 +19542,7 @@ components:
         network_view: Example network_view
         discovery_member: Example discovery_member
         split_scope_exclusion_percent: 1
-        lease_scavenge_time: Example lease_scavenge_time
+        lease_scavenge_time: 1
         enable_discovery: false
         failover_association: Example failover_association
         network: Example network
@@ -19475,7 +19722,7 @@ components:
           items:
             enum:
             - pxgrid:endpoint
-            type: string
+            type: object
           readOnly: true
           type: array
         exclude:
@@ -19570,10 +19817,8 @@ components:
             \ are automatically deleted. To disable lease scavenging, set the parameter\
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
-          enum:
-          - int
-          example: Example lease_scavenge_time
-          type: string
+          example: 1
+          type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied to this
             range. This list corresponds to the match rules that are written to the
@@ -19872,7 +20117,10 @@ components:
       type: object
     RangeCloudInfo:
       example:
-        delegated_member: delegated_member
+        delegated_member:
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         delegated_scope: Example delegated_scope
         owned_by_adaptor: false
         usage: Example usage
@@ -19941,6 +20189,10 @@ components:
           type: string
       type: object
     RangecloudinfoDelegatedMember:
+      example:
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
           description: The IPv4 Address of the Grid Member.
@@ -19959,16 +20211,32 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
-        switch_port_data_collection_polling_interval: 1
         credential_group: Example credential_group
+        polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
         complete_ping_sweep: false
-        switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-        port_scanning: false
+        switch_port_data_collection_polling_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
+        use_global_polling_frequency_modifier: false
         snmp_collection: false
         smart_subnet_ping_sweep: false
-        auto_arp_refresh_before_switch_port_polling: false
         netbios_scanning: false
+        switch_port_data_collection_polling_interval: 1
+        port_scanning: false
+        auto_arp_refresh_before_switch_port_polling: false
       properties:
         port_scanning:
           description: Determines whether port scanning is enabled or not.
@@ -20022,8 +20290,31 @@ components:
           description: Credential group.
           example: Example credential_group
           type: string
+        polling_frequency_modifier:
+          description: Polling Frequency Modifier.
+          example: Example polling_frequency_modifier
+          type: string
+        use_global_polling_frequency_modifier:
+          description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
       type: object
     RangediscoverybasicpollsettingsSwitchPortDataCollectionPollingSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -20035,7 +20326,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -20112,7 +20402,21 @@ components:
     RangeDiscoveryBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -20128,6 +20432,21 @@ components:
           $ref: '#/components/schemas/RangediscoveryblackoutsettingBlackoutSchedule'
       type: object
     RangediscoveryblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -20139,7 +20458,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -20440,7 +20758,21 @@ components:
     RangePortControlBlackoutSetting:
       example:
         enable_blackout: false
-        blackout_schedule: blackout_schedule
+        blackout_schedule:
+          month: 1
+          year: 1
+          weekdays:
+          - weekdays
+          - weekdays
+          disable: false
+          recurring_time: 1
+          repeat: Example repeat
+          minutes_past_hour: 1
+          time_zone: Example time_zone
+          every: 1
+          day_of_month: 1
+          hour_of_day: 1
+          frequency: Example frequency
         blackout_duration: 1
       properties:
         enable_blackout:
@@ -20456,6 +20788,21 @@ components:
           $ref: '#/components/schemas/RangeportcontrolblackoutsettingBlackoutSchedule'
       type: object
     RangeportcontrolblackoutsettingBlackoutSchedule:
+      example:
+        month: 1
+        year: 1
+        weekdays:
+        - weekdays
+        - weekdays
+        disable: false
+        recurring_time: 1
+        repeat: Example repeat
+        minutes_past_hour: 1
+        time_zone: Example time_zone
+        every: 1
+        day_of_month: 1
+        hour_of_day: 1
+        frequency: Example frequency
       properties:
         weekdays:
           description: Days of the week when scheduling is triggered.
@@ -20467,7 +20814,6 @@ components:
           - WEDNESDAY
           - THURSDAY
           - FRIDAY
-          example: Example weekdays
           items:
             type: string
           type: array
@@ -20569,8 +20915,12 @@ components:
       type: object
     RangeSubscribeSettings:
       example:
-        mapped_ea_attributes: mapped_ea_attributes
-        enabled_attributes: Example enabled_attributes
+        mapped_ea_attributes:
+          mapped_ea: Example mapped_ea
+          name: Example name
+        enabled_attributes:
+        - enabled_attributes
+        - enabled_attributes
       properties:
         enabled_attributes:
           description: The list of Cisco ISE attributes allowed for subscription.
@@ -20582,7 +20932,6 @@ components:
           - SSID
           - USERNAME
           - VLAN
-          example: Example enabled_attributes
           items:
             type: string
           type: array
@@ -20590,6 +20939,9 @@ components:
           $ref: '#/components/schemas/RangesubscribesettingsMappedEaAttributes'
       type: object
     RangesubscribesettingsMappedEaAttributes:
+      example:
+        mapped_ea: Example mapped_ea
+        name: Example name
       properties:
         name:
           description: The Cisco ISE attribute name that is enabled for publishsing
@@ -20717,7 +21069,7 @@ components:
           ipv4addr: Example ipv4addr
         use_enable_dhcp_thresholds: false
         cloud_api_compatible: false
-        lease_scavenge_time: Example lease_scavenge_time
+        lease_scavenge_time: 1
         mac_filter_rules:
         - filter: Example filter
           permission: Example permission
@@ -20916,10 +21268,8 @@ components:
             \ are automatically deleted. To disable lease scavenging, set the parameter\
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
-          enum:
-          - int
-          example: Example lease_scavenge_time
-          type: string
+          example: 1
+          type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on this
             range. This list corresponds to the match rules that are written to the
@@ -21473,6 +21823,7 @@ components:
         ipv6_match_option: Example ipv6_match_option
         network_view: Example network_view
         ipv6_enable_ddns: false
+        ipv6_mac_address: Example ipv6_mac_address
         mac: Example mac
         enable_ddns: false
         pxe_lease_time: 1
@@ -21617,12 +21968,18 @@ components:
           description: Set this to True to use the roaming host name as its ddns_hostname.
           example: false
           type: boolean
+        ipv6_mac_address:
+          description: The MAC address for this roaming host.
+          example: Example ipv6_mac_address
+          type: string
         ipv6_match_option:
           description: "The identification method for an IPv6 or mixed IPv4/IPv6 roaming\
-            \ host. Currently, the only supported value for this field is \"DUID\"\
-            , which corresponds to identification by DHCPv6 unique ID."
+            \ host. The supported values for this field are \"DUID\" or \"V6_MAC_ADDRESS\"\
+            , which specify what option should be used to identify the specific DHCPv6\
+            \ client."
           enum:
           - DUID
+          - V6_MAC_ADDRESS
           example: Example ipv6_match_option
           type: string
         ipv6_options:
@@ -21901,10 +22258,10 @@ components:
         network_view: Example network_view
         ddns_update_fixed_addresses: false
         ignore_client_identifier: false
-        lease_scavenge_time: Example lease_scavenge_time
+        lease_scavenge_time: 1
         networks:
-        - network
-        - network
+        - "{}"
+        - "{}"
         use_ddns_ttl: false
         use_ddns_generate_hostname: false
         enable_ddns: false
@@ -22075,10 +22432,8 @@ components:
             \ are automatically deleted. To disable lease scavenging, set the parameter\
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
-          enum:
-          - int
-          example: Example lease_scavenge_time
-          type: string
+          example: 1
+          type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
             this shared network. This list corresponds to the match rules that are
@@ -22112,7 +22467,7 @@ components:
           items:
             enum:
             - network
-            type: string
+            type: object
           type: array
         nextserver:
           description: The name in FQDN and/or IPv4 Address of the next server that
@@ -22317,8 +22672,8 @@ components:
       additionalProperties: false
       example:
         ranges:
-        - range
-        - range
+        - "{}"
+        - "{}"
         _ref: _ref
         network: Example network
       properties:
@@ -22337,7 +22692,7 @@ components:
           items:
             enum:
             - range
-            type: string
+            type: object
           type: array
       type: object
     ListOrderedrangesResponse:
@@ -22373,8 +22728,8 @@ components:
           key:
             value: value
         ranges:
-        - range
-        - range
+        - "{}"
+        - "{}"
         static_hosts: 1
         total_hosts: 1
         dhcp_utilization_status: Example dhcp_utilization_status
@@ -22473,7 +22828,7 @@ components:
           items:
             enum:
             - range
-            type: string
+            type: object
           type: array
         static_hosts:
           description: The number of static DHCP addresses configured in DHCP range
@@ -22754,8 +23109,8 @@ components:
           ipv6_ddns_ttl: 1
           ipv6_remember_expired_client_association: false
           gss_tsig_keys:
-          - kerberoskey
-          - kerberoskey
+          - "{}"
+          - "{}"
           options:
           - vendor_class: Example vendor_class
             use_option: false
@@ -22790,8 +23145,8 @@ components:
           - ipv6_domain_name_servers
           log_lease_events: false
           protocol_hostname_rewrite_policies:
-          - hostnamerewritepolicy
-          - hostnamerewritepolicy
+          - "{}"
+          - "{}"
           preferred_lifetime: 1
           deny_bootp: false
           enable_email_warnings: false
@@ -22807,12 +23162,12 @@ components:
           ddns_update_fixed_addresses: false
           enable_gss_tsig: false
           ipv6_gss_tsig_keys:
-          - kerberoskey
-          - kerberoskey
+          - "{}"
+          - "{}"
           lease_per_client_settings: Example lease_per_client_settings
           ipv6_ddns_enable_option_fqdn: false
           ipv6_enable_gss_tsig: false
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           enable_ddns: false
           ping_timeout: 1
           ipv6_retry_updates_interval: 1
@@ -22857,7 +23212,7 @@ components:
           restart_setting:
             delay: 1
             restart_offline: false
-            timeout: Example timeout
+            timeout: 1
           enable_hostname_rewrite: false
           logic_filter_rules:
           - filter: Example filter
@@ -23040,8 +23395,8 @@ components:
           use_enable_hostname_rewrite: false
           use_lease_scavenge_time: false
           gss_tsig_keys:
-          - kerberoskey
-          - kerberoskey
+          - "{}"
+          - "{}"
           use_ignore_dhcp_option_list_request: false
           use_ipv6_ddns_enable_option_fqdn: false
           ddns_server_always_updates: false
@@ -23065,10 +23420,10 @@ components:
           ipv6_ddns_hostname: Example ipv6_ddns_hostname
           use_ipv6_enable_retry_updates: false
           ipv6_gss_tsig_keys:
-          - kerberoskey
-          - kerberoskey
+          - "{}"
+          - "{}"
           ipv6_enable_gss_tsig: false
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           use_ddns_ttl: false
           ipv6_server_duid: Example ipv6_server_duid
           ipv6addr: Example ipv6addr
@@ -23966,7 +24321,10 @@ components:
           network_view: Example network_view
           device_description: Example device_description
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24200,7 +24558,10 @@ components:
           network_view: Example network_view
           device_description: Example device_description
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24563,10 +24924,14 @@ components:
           template: Example template
           network_view: Example network_view
           duid: Example duid
+          match_client: Example match_client
           ipv6prefix: Example ipv6prefix
           device_description: Example device_description
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24598,6 +24963,7 @@ components:
             id: 1
             user: Example user
           use_domain_name: false
+          mac_address: Example mac_address
           discover_now_status: Example discover_now_status
           options:
           - vendor_class: Example vendor_class
@@ -24769,10 +25135,14 @@ components:
           template: Example template
           network_view: Example network_view
           duid: Example duid
+          match_client: Example match_client
           ipv6prefix: Example ipv6prefix
           device_description: Example device_description
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -24804,6 +25174,7 @@ components:
             id: 1
             user: Example user
           use_domain_name: false
+          mac_address: Example mac_address
           discover_now_status: Example discover_now_status
           options:
           - vendor_class: Example vendor_class
@@ -25086,11 +25457,18 @@ components:
           network_view: Example network_view
           discovery_member: Example discovery_member
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           end_addr: Example end_addr
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25102,16 +25480,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           ipv6_prefix_bits: 1
           network: Example network
           ipv6_end_prefix: Example ipv6_end_prefix
@@ -25145,14 +25539,28 @@ components:
           address_type: Example address_type
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           same_port_control_discovery_blackout: false
           use_discovery_basic_polling_settings: false
           enable_immediate_discovery: false
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           use_recycle_leases: false
           disable: false
           restart_if_needed: false
@@ -25168,7 +25576,21 @@ components:
           use_enable_discovery: false
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
       properties:
         result:
@@ -25191,11 +25613,18 @@ components:
           network_view: Example network_view
           discovery_member: Example discovery_member
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           end_addr: Example end_addr
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25207,16 +25636,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           ipv6_prefix_bits: 1
           network: Example network
           ipv6_end_prefix: Example ipv6_end_prefix
@@ -25250,14 +25695,28 @@ components:
           address_type: Example address_type
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           same_port_control_discovery_blackout: false
           use_discovery_basic_polling_settings: false
           enable_immediate_discovery: false
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           use_recycle_leases: false
           disable: false
           restart_if_needed: false
@@ -25273,7 +25732,21 @@ components:
           use_enable_discovery: false
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
       properties:
         result:
@@ -25401,8 +25874,8 @@ components:
           network_view: Example network_view
           use_ddns_use_option81: false
           networks:
-          - ipv6network
-          - ipv6network
+          - "{}"
+          - "{}"
           use_ddns_ttl: false
           use_ddns_generate_hostname: false
           use_valid_lifetime: false
@@ -25470,8 +25943,8 @@ components:
           network_view: Example network_view
           use_ddns_use_option81: false
           networks:
-          - ipv6network
-          - ipv6network
+          - "{}"
+          - "{}"
           use_ddns_ttl: false
           use_ddns_generate_hostname: false
           use_valid_lifetime: false
@@ -25690,7 +26163,21 @@ components:
             value: Example value
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           update_dns_on_lease_renewal: false
           enable_pxe_lease_time: false
@@ -25699,15 +26186,18 @@ components:
           enable_immediate_discovery: false
           deny_bootp: false
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           high_water_mark_reset: 1
           ms_server:
             ipv4addr: Example ipv4addr
           template: Example template
           use_enable_dhcp_thresholds: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25724,16 +26214,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
           recycle_leases: false
           use_ignore_id: false
@@ -25763,7 +26269,21 @@ components:
             type: Example type
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           use_options: false
           nac_filter_rules:
@@ -25772,8 +26292,12 @@ components:
           - filter: Example filter
             permission: Example permission
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           use_bootserver: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
@@ -25814,7 +26338,7 @@ components:
           network_view: Example network_view
           discovery_member: Example discovery_member
           split_scope_exclusion_percent: 1
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           enable_discovery: false
           failover_association: Example failover_association
           network: Example network
@@ -25899,7 +26423,21 @@ components:
             value: Example value
           port_control_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           update_dns_on_lease_renewal: false
           enable_pxe_lease_time: false
@@ -25908,15 +26446,18 @@ components:
           enable_immediate_discovery: false
           deny_bootp: false
           endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          - "{}"
+          - "{}"
           high_water_mark_reset: 1
           ms_server:
             ipv4addr: Example ipv4addr
           template: Example template
           use_enable_dhcp_thresholds: false
           cloud_info:
-            delegated_member: delegated_member
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
             delegated_scope: Example delegated_scope
             owned_by_adaptor: false
             usage: Example usage
@@ -25933,16 +26474,32 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
-            switch_port_data_collection_polling_interval: 1
             credential_group: Example credential_group
+            polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
             complete_ping_sweep: false
-            switch_port_data_collection_polling_schedule: switch_port_data_collection_polling_schedule
-            port_scanning: false
+            switch_port_data_collection_polling_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            use_global_polling_frequency_modifier: false
             snmp_collection: false
             smart_subnet_ping_sweep: false
-            auto_arp_refresh_before_switch_port_polling: false
             netbios_scanning: false
+            switch_port_data_collection_polling_interval: 1
+            port_scanning: false
+            auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
           recycle_leases: false
           use_ignore_id: false
@@ -25972,7 +26529,21 @@ components:
             type: Example type
           discovery_blackout_setting:
             enable_blackout: false
-            blackout_schedule: blackout_schedule
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
             blackout_duration: 1
           use_options: false
           nac_filter_rules:
@@ -25981,8 +26552,12 @@ components:
           - filter: Example filter
             permission: Example permission
           subscribe_settings:
-            mapped_ea_attributes: mapped_ea_attributes
-            enabled_attributes: Example enabled_attributes
+            mapped_ea_attributes:
+              mapped_ea: Example mapped_ea
+              name: Example name
+            enabled_attributes:
+            - enabled_attributes
+            - enabled_attributes
           use_bootserver: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
@@ -26023,7 +26598,7 @@ components:
           network_view: Example network_view
           discovery_member: Example discovery_member
           split_scope_exclusion_percent: 1
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           enable_discovery: false
           failover_association: Example failover_association
           network: Example network
@@ -26146,7 +26721,7 @@ components:
             ipv4addr: Example ipv4addr
           use_enable_dhcp_thresholds: false
           cloud_api_compatible: false
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           mac_filter_rules:
           - filter: Example filter
             permission: Example permission
@@ -26290,7 +26865,7 @@ components:
             ipv4addr: Example ipv4addr
           use_enable_dhcp_thresholds: false
           cloud_api_compatible: false
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           mac_filter_rules:
           - filter: Example filter
             permission: Example permission
@@ -26413,6 +26988,7 @@ components:
           ipv6_match_option: Example ipv6_match_option
           network_view: Example network_view
           ipv6_enable_ddns: false
+          ipv6_mac_address: Example ipv6_mac_address
           mac: Example mac
           enable_ddns: false
           pxe_lease_time: 1
@@ -26507,6 +27083,7 @@ components:
           ipv6_match_option: Example ipv6_match_option
           network_view: Example network_view
           ipv6_enable_ddns: false
+          ipv6_mac_address: Example ipv6_mac_address
           mac: Example mac
           enable_ddns: false
           pxe_lease_time: 1
@@ -26587,10 +27164,10 @@ components:
           network_view: Example network_view
           ddns_update_fixed_addresses: false
           ignore_client_identifier: false
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           networks:
-          - network
-          - network
+          - "{}"
+          - "{}"
           use_ddns_ttl: false
           use_ddns_generate_hostname: false
           enable_ddns: false
@@ -26677,10 +27254,10 @@ components:
           network_view: Example network_view
           ddns_update_fixed_addresses: false
           ignore_client_identifier: false
-          lease_scavenge_time: Example lease_scavenge_time
+          lease_scavenge_time: 1
           networks:
-          - network
-          - network
+          - "{}"
+          - "{}"
           use_ddns_ttl: false
           use_ddns_generate_hostname: false
           enable_ddns: false
@@ -26743,8 +27320,8 @@ components:
       example:
         result:
           ranges:
-          - range
-          - range
+          - "{}"
+          - "{}"
           _ref: _ref
           network: Example network
       properties:
@@ -26771,8 +27348,8 @@ components:
             key:
               value: value
           ranges:
-          - range
-          - range
+          - "{}"
+          - "{}"
           static_hosts: 1
           total_hosts: 1
           dhcp_utilization_status: Example dhcp_utilization_status
@@ -26808,8 +27385,8 @@ components:
             key:
               value: value
           ranges:
-          - range
-          - range
+          - "{}"
+          - "{}"
           static_hosts: 1
           total_hosts: 1
           dhcp_utilization_status: Example dhcp_utilization_status

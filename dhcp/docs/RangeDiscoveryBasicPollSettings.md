@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **SwitchPortDataCollectionPollingSchedule** | Pointer to [**RangediscoverybasicpollsettingsSwitchPortDataCollectionPollingSchedule**](RangediscoverybasicpollsettingsSwitchPortDataCollectionPollingSchedule.md) |  | [optional] 
 **SwitchPortDataCollectionPollingInterval** | Pointer to **int64** | Indicates the interval for switch port data collection polling. | [optional] 
 **CredentialGroup** | Pointer to **string** | Credential group. | [optional] 
+**PollingFrequencyModifier** | Pointer to **string** | Polling Frequency Modifier. | [optional] 
+**UseGlobalPollingFrequencyModifier** | Pointer to **bool** | Use Global Polling Frequency Modifier. | [optional] 
 
 ## Methods
 
@@ -335,6 +337,56 @@ SetCredentialGroup sets CredentialGroup field to given value.
 `func (o *RangeDiscoveryBasicPollSettings) HasCredentialGroup() bool`
 
 HasCredentialGroup returns a boolean if a field has been set.
+
+### GetPollingFrequencyModifier
+
+`func (o *RangeDiscoveryBasicPollSettings) GetPollingFrequencyModifier() string`
+
+GetPollingFrequencyModifier returns the PollingFrequencyModifier field if non-nil, zero value otherwise.
+
+### GetPollingFrequencyModifierOk
+
+`func (o *RangeDiscoveryBasicPollSettings) GetPollingFrequencyModifierOk() (*string, bool)`
+
+GetPollingFrequencyModifierOk returns a tuple with the PollingFrequencyModifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPollingFrequencyModifier
+
+`func (o *RangeDiscoveryBasicPollSettings) SetPollingFrequencyModifier(v string)`
+
+SetPollingFrequencyModifier sets PollingFrequencyModifier field to given value.
+
+### HasPollingFrequencyModifier
+
+`func (o *RangeDiscoveryBasicPollSettings) HasPollingFrequencyModifier() bool`
+
+HasPollingFrequencyModifier returns a boolean if a field has been set.
+
+### GetUseGlobalPollingFrequencyModifier
+
+`func (o *RangeDiscoveryBasicPollSettings) GetUseGlobalPollingFrequencyModifier() bool`
+
+GetUseGlobalPollingFrequencyModifier returns the UseGlobalPollingFrequencyModifier field if non-nil, zero value otherwise.
+
+### GetUseGlobalPollingFrequencyModifierOk
+
+`func (o *RangeDiscoveryBasicPollSettings) GetUseGlobalPollingFrequencyModifierOk() (*bool, bool)`
+
+GetUseGlobalPollingFrequencyModifierOk returns a tuple with the UseGlobalPollingFrequencyModifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseGlobalPollingFrequencyModifier
+
+`func (o *RangeDiscoveryBasicPollSettings) SetUseGlobalPollingFrequencyModifier(v bool)`
+
+SetUseGlobalPollingFrequencyModifier sets UseGlobalPollingFrequencyModifier field to given value.
+
+### HasUseGlobalPollingFrequencyModifier
+
+`func (o *RangeDiscoveryBasicPollSettings) HasUseGlobalPollingFrequencyModifier() bool`
+
+HasUseGlobalPollingFrequencyModifier returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

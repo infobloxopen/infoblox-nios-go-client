@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **EnableSnmpWarnings** | Pointer to **bool** | Determined if the SNMP warnings on Grid-level are enabled or not. When DHCP threshold is enabled and DHCP address usage crosses a watermark threshold, the appliance sends an SNMP trap to the trap receiver that you defined you defined at the Grid member level. | [optional] 
 **FormatLogOption82** | Pointer to **string** | The format option for Option 82 logging. | [optional] 
 **Grid** | Pointer to **string** | Determines the Grid that serves DHCP. This specifies a group of Infoblox appliances that are connected together to provide a single point of device administration and service configuration in a secure, highly available environment. | [optional] [readonly] 
-**GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a Grid DHCP object. | [optional] 
+**GssTsigKeys** | Pointer to **[]map[string]interface{}** | The list of GSS-TSIG keys for a Grid DHCP object. | [optional] 
 **HighWaterMark** | Pointer to **int64** | Determines the high watermark value of a Grid DHCP server. If the percentage of allocated addresses exceeds this watermark, the appliance makes a syslog entry and sends an e-mail notification (if enabled). Specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **HighWaterMarkReset** | Pointer to **int64** | Determines the high watermark reset value of a member DHCP server. If the percentage of allocated addresses drops below this value, a corresponding SNMP trap is reset. Specifies the percentage of allocated addresses. The range is from 1 to 100. The high watermark reset value must be lower than the high watermark value. | [optional] 
 **HostnameRewritePolicy** | Pointer to **string** | The name of the default hostname rewrite policy, which is also in the protocol_hostname_rewrite_policies array. | [optional] 
@@ -53,7 +53,7 @@ Name | Type | Description | Notes
 **Ipv6EnableLeaseScavenging** | Pointer to **bool** | Indicates whether DHCPv6 lease scavenging is enabled or disabled. | [optional] 
 **Ipv6EnableRetryUpdates** | Pointer to **bool** | Determines if the DHCPv6 server retries failed dynamic DNS updates or not. | [optional] 
 **Ipv6GenerateHostname** | Pointer to **bool** | Determines if the server generates the hostname if it is not sent by the client. | [optional] 
-**Ipv6GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a Grid DHCPv6 object. | [optional] 
+**Ipv6GssTsigKeys** | Pointer to **[]map[string]interface{}** | The list of GSS-TSIG keys for a Grid DHCPv6 object. | [optional] 
 **Ipv6KdcServer** | Pointer to **string** | The IPv6 address or FQDN of the Kerberos server for DHCPv6 GSS-TSIG authentication. | [optional] 
 **Ipv6LeaseScavengingTime** | Pointer to **int64** | The Grid-level grace period (in seconds) to keep an expired lease before it is deleted by the scavenging process. | [optional] 
 **Ipv6MicrosoftCodePage** | Pointer to **string** | The Grid-level Microsoft client DHCP IPv6 code page value. This value is the hostname translation code page for Microsoft DHCP IPv6 clients. | [optional] 
@@ -67,7 +67,7 @@ Name | Type | Description | Notes
 **KdcServer** | Pointer to **string** | The IPv4 address or FQDN of the Kerberos server for DHCPv4 GSS-TSIG authentication. | [optional] 
 **LeaseLoggingMember** | Pointer to **string** | The Grid member on which you want to store the DHCP lease history log. Infoblox recommends that you dedicate a member other than the master as a logging member. If possible, use this member solely for storing the DHCP lease history log. If you do not select a member, no logging can occur. | [optional] 
 **LeasePerClientSettings** | Pointer to **string** | Defines how the appliance releases DHCP leases. Valid values are \&quot;RELEASE_MACHING_ID\&quot;, \&quot;NEVER_RELEASE\&quot;, or \&quot;ONE_LEASE_PER_CLIENT\&quot;. The default is \&quot;RELEASE_MATCHING_ID\&quot;. | [optional] 
-**LeaseScavengeTime** | Pointer to **string** | Determines the lease scavenging time value. When this field is set, the appliance permanently deletes the free and backup leases, that remain in the database beyond a specified period of time. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int32** | Determines the lease scavenging time value. When this field is set, the appliance permanently deletes the free and backup leases, that remain in the database beyond a specified period of time. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogLeaseEvents** | Pointer to **bool** | This value specifies whether the Grid DHCP members log lease events is enabled or not. | [optional] 
 **LogicFilterRules** | Pointer to [**[]GridDhcppropertiesLogicFilterRules**](GridDhcppropertiesLogicFilterRules.md) | This field contains the logic filters to be applied on the Infoblox Grid. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **LowWaterMark** | Pointer to **int64** | Determines the low watermark value. If the percent of allocated addresses drops below this watermark, the appliance makes a syslog entry and if enabled, sends an e-mail notification. | [optional] 
@@ -80,7 +80,7 @@ Name | Type | Description | Notes
 **PingTimeout** | Pointer to **int64** | Indicates the number of milliseconds the appliance waits for a response to its ping. Valid values are 100, 500, 1000, 2000, 3000, 4000 and 5000 milliseconds. | [optional] 
 **PreferredLifetime** | Pointer to **int64** | The preferred lifetime value. | [optional] 
 **PrefixLengthMode** | Pointer to **string** | The Prefix length mode for DHCPv6. | [optional] 
-**ProtocolHostnameRewritePolicies** | Pointer to **[]string** | The list of hostname rewrite policies. | [optional] 
+**ProtocolHostnameRewritePolicies** | Pointer to **[]map[string]interface{}** | The list of hostname rewrite policies. | [optional] 
 **PxeLeaseTime** | Pointer to **int64** | Specifies the duration of time it takes a host to connect to a boot server, such as a TFTP server, and download the file it needs to boot. A 32-bit unsigned integer that represents the duration, in seconds, for which the update is cached. Zero indicates that the update is not cached. | [optional] 
 **RecycleLeases** | Pointer to **bool** | Determines if the recycle leases feature is enabled or not. If you enabled this feature, and then delete a DHCP range, the appliance stores active leases from this range up to one week after the leases expires. | [optional] 
 **RestartSetting** | Pointer to [**GridDhcppropertiesRestartSetting**](GridDhcppropertiesRestartSetting.md) |  | [optional] 
@@ -786,20 +786,20 @@ HasGrid returns a boolean if a field has been set.
 
 ### GetGssTsigKeys
 
-`func (o *GridDhcpproperties) GetGssTsigKeys() []string`
+`func (o *GridDhcpproperties) GetGssTsigKeys() []map[string]interface{}`
 
 GetGssTsigKeys returns the GssTsigKeys field if non-nil, zero value otherwise.
 
 ### GetGssTsigKeysOk
 
-`func (o *GridDhcpproperties) GetGssTsigKeysOk() (*[]string, bool)`
+`func (o *GridDhcpproperties) GetGssTsigKeysOk() (*[]map[string]interface{}, bool)`
 
 GetGssTsigKeysOk returns a tuple with the GssTsigKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGssTsigKeys
 
-`func (o *GridDhcpproperties) SetGssTsigKeys(v []string)`
+`func (o *GridDhcpproperties) SetGssTsigKeys(v []map[string]interface{})`
 
 SetGssTsigKeys sets GssTsigKeys field to given value.
 
@@ -1336,20 +1336,20 @@ HasIpv6GenerateHostname returns a boolean if a field has been set.
 
 ### GetIpv6GssTsigKeys
 
-`func (o *GridDhcpproperties) GetIpv6GssTsigKeys() []string`
+`func (o *GridDhcpproperties) GetIpv6GssTsigKeys() []map[string]interface{}`
 
 GetIpv6GssTsigKeys returns the Ipv6GssTsigKeys field if non-nil, zero value otherwise.
 
 ### GetIpv6GssTsigKeysOk
 
-`func (o *GridDhcpproperties) GetIpv6GssTsigKeysOk() (*[]string, bool)`
+`func (o *GridDhcpproperties) GetIpv6GssTsigKeysOk() (*[]map[string]interface{}, bool)`
 
 GetIpv6GssTsigKeysOk returns a tuple with the Ipv6GssTsigKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv6GssTsigKeys
 
-`func (o *GridDhcpproperties) SetIpv6GssTsigKeys(v []string)`
+`func (o *GridDhcpproperties) SetIpv6GssTsigKeys(v []map[string]interface{})`
 
 SetIpv6GssTsigKeys sets Ipv6GssTsigKeys field to given value.
 
@@ -1686,20 +1686,20 @@ HasLeasePerClientSettings returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *GridDhcpproperties) GetLeaseScavengeTime() string`
+`func (o *GridDhcpproperties) GetLeaseScavengeTime() int32`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *GridDhcpproperties) GetLeaseScavengeTimeOk() (*string, bool)`
+`func (o *GridDhcpproperties) GetLeaseScavengeTimeOk() (*int32, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *GridDhcpproperties) SetLeaseScavengeTime(v string)`
+`func (o *GridDhcpproperties) SetLeaseScavengeTime(v int32)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 
@@ -2011,20 +2011,20 @@ HasPrefixLengthMode returns a boolean if a field has been set.
 
 ### GetProtocolHostnameRewritePolicies
 
-`func (o *GridDhcpproperties) GetProtocolHostnameRewritePolicies() []string`
+`func (o *GridDhcpproperties) GetProtocolHostnameRewritePolicies() []map[string]interface{}`
 
 GetProtocolHostnameRewritePolicies returns the ProtocolHostnameRewritePolicies field if non-nil, zero value otherwise.
 
 ### GetProtocolHostnameRewritePoliciesOk
 
-`func (o *GridDhcpproperties) GetProtocolHostnameRewritePoliciesOk() (*[]string, bool)`
+`func (o *GridDhcpproperties) GetProtocolHostnameRewritePoliciesOk() (*[]map[string]interface{}, bool)`
 
 GetProtocolHostnameRewritePoliciesOk returns a tuple with the ProtocolHostnameRewritePolicies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProtocolHostnameRewritePolicies
 
-`func (o *GridDhcpproperties) SetProtocolHostnameRewritePolicies(v []string)`
+`func (o *GridDhcpproperties) SetProtocolHostnameRewritePolicies(v []map[string]interface{})`
 
 SetProtocolHostnameRewritePolicies sets ProtocolHostnameRewritePolicies field to given value.
 

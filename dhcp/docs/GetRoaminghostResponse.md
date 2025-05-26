@@ -28,7 +28,8 @@ Name | Type | Description | Notes
 **Ipv6Duid** | Pointer to **string** | The DUID value for this roaming host. | [optional] 
 **Ipv6EnableDdns** | Pointer to **bool** | Set this to True to enable IPv6 DDNS. | [optional] 
 **Ipv6ForceRoamingHostname** | Pointer to **bool** | Set this to True to use the roaming host name as its ddns_hostname. | [optional] 
-**Ipv6MatchOption** | Pointer to **string** | The identification method for an IPv6 or mixed IPv4/IPv6 roaming host. Currently, the only supported value for this field is \&quot;DUID\&quot;, which corresponds to identification by DHCPv6 unique ID. | [optional] 
+**Ipv6MacAddress** | Pointer to **string** | The MAC address for this roaming host. | [optional] 
+**Ipv6MatchOption** | Pointer to **string** | The identification method for an IPv6 or mixed IPv4/IPv6 roaming host. The supported values for this field are \&quot;DUID\&quot; or \&quot;V6_MAC_ADDRESS\&quot;, which specify what option should be used to identify the specific DHCPv6 client. | [optional] 
 **Ipv6Options** | Pointer to [**[]RoaminghostIpv6Options**](RoaminghostIpv6Options.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
 **Ipv6Template** | Pointer to **string** | If set on creation, the roaming host will be created according to the values specified in the named IPv6 roaming host template. | [optional] 
 **Mac** | Pointer to **string** | The MAC address for this roaming host. | [optional] 
@@ -677,6 +678,31 @@ SetIpv6ForceRoamingHostname sets Ipv6ForceRoamingHostname field to given value.
 `func (o *GetRoaminghostResponse) HasIpv6ForceRoamingHostname() bool`
 
 HasIpv6ForceRoamingHostname returns a boolean if a field has been set.
+
+### GetIpv6MacAddress
+
+`func (o *GetRoaminghostResponse) GetIpv6MacAddress() string`
+
+GetIpv6MacAddress returns the Ipv6MacAddress field if non-nil, zero value otherwise.
+
+### GetIpv6MacAddressOk
+
+`func (o *GetRoaminghostResponse) GetIpv6MacAddressOk() (*string, bool)`
+
+GetIpv6MacAddressOk returns a tuple with the Ipv6MacAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpv6MacAddress
+
+`func (o *GetRoaminghostResponse) SetIpv6MacAddress(v string)`
+
+SetIpv6MacAddress sets Ipv6MacAddress field to given value.
+
+### HasIpv6MacAddress
+
+`func (o *GetRoaminghostResponse) HasIpv6MacAddress() bool`
+
+HasIpv6MacAddress returns a boolean if a field has been set.
 
 ### GetIpv6MatchOption
 

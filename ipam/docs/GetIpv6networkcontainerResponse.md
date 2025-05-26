@@ -23,8 +23,9 @@ Name | Type | Description | Notes
 **EnableDdns** | Pointer to **bool** | The dynamic DNS updates flag of a DHCP IPv6 network container object. If set to True, the DHCP server sends DDNS updates to DNS servers in the same Grid, and to external DNS servers. | [optional] 
 **EnableDiscovery** | Pointer to **bool** | Determines whether a discovery is enabled or not for this network container. When this is set to False, the network container discovery is disabled. | [optional] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the network container should be immediately enabled. | [optional] 
-**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP IPv6 Network Container. | [optional] [readonly] 
+**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP IPv6 Network Container. | [optional] [readonly] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**FederatedRealms** | Pointer to [**[]Ipv6networkcontainerFederatedRealms**](Ipv6networkcontainerFederatedRealms.md) | This field contains the federated realms associated to this network container. | [optional] 
 **LastRirRegistrationUpdateSent** | Pointer to **int64** | The timestamp when the last RIR registration update was sent. | [optional] [readonly] 
 **LastRirRegistrationUpdateStatus** | Pointer to **string** | Last RIR registration update status. | [optional] [readonly] 
 **LogicFilterRules** | Pointer to [**[]Ipv6networkcontainerLogicFilterRules**](Ipv6networkcontainerLogicFilterRules.md) | This field contains the logic filters to be applied on the this network container. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
@@ -567,20 +568,20 @@ HasEnableImmediateDiscovery returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *GetIpv6networkcontainerResponse) GetEndpointSources() []string`
+`func (o *GetIpv6networkcontainerResponse) GetEndpointSources() []map[string]interface{}`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *GetIpv6networkcontainerResponse) GetEndpointSourcesOk() (*[]string, bool)`
+`func (o *GetIpv6networkcontainerResponse) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *GetIpv6networkcontainerResponse) SetEndpointSources(v []string)`
+`func (o *GetIpv6networkcontainerResponse) SetEndpointSources(v []map[string]interface{})`
 
 SetEndpointSources sets EndpointSources field to given value.
 
@@ -614,6 +615,31 @@ SetExtattrs sets Extattrs field to given value.
 `func (o *GetIpv6networkcontainerResponse) HasExtattrs() bool`
 
 HasExtattrs returns a boolean if a field has been set.
+
+### GetFederatedRealms
+
+`func (o *GetIpv6networkcontainerResponse) GetFederatedRealms() []Ipv6networkcontainerFederatedRealms`
+
+GetFederatedRealms returns the FederatedRealms field if non-nil, zero value otherwise.
+
+### GetFederatedRealmsOk
+
+`func (o *GetIpv6networkcontainerResponse) GetFederatedRealmsOk() (*[]Ipv6networkcontainerFederatedRealms, bool)`
+
+GetFederatedRealmsOk returns a tuple with the FederatedRealms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederatedRealms
+
+`func (o *GetIpv6networkcontainerResponse) SetFederatedRealms(v []Ipv6networkcontainerFederatedRealms)`
+
+SetFederatedRealms sets FederatedRealms field to given value.
+
+### HasFederatedRealms
+
+`func (o *GetIpv6networkcontainerResponse) HasFederatedRealms() bool`
+
+HasFederatedRealms returns a boolean if a field has been set.
 
 ### GetLastRirRegistrationUpdateSent
 
