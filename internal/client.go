@@ -154,7 +154,6 @@ func NewAPIClient(basePath string, cfg *Configuration) *APIClient {
 	cfg.Servers = []ServerConfiguration{{URL: apiUrl}}
 	cfg.DefaultHeader[headerSDK] = sdkIdentifier
 	cfg.DefaultHeader[headerClient] = cfg.ClientName
-	// cfg.NIOSAuth = base64.StdEncoding.EncodeToString([]byte(cfg.NIOSAuth))
 
 	Auth := cfg.NIOSUsername + ":" + cfg.NIOSPassword
 
