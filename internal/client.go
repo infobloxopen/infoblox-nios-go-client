@@ -33,9 +33,11 @@ const (
 	headerSDK           = "x-infoblox-sdk"
 	headerAuthorization = "Authorization"
 
-	envNiosHostURL = "NIOS_HOST_URL"
-	envNiosAuth    = "NIOS_AUTH"
-	envIBLogLevel  = "IB_LOG_LEVEL"
+	envNiosHostURL  = "NIOS_HOST_URL"
+	envNiosUsername = "NIOS_USERNAME"
+	envNiosPassword = "NIOS_PASSWORD"
+
+	envIBLogLevel = "IB_LOG_LEVEL"
 
 	envClientCertPath = "CLIENT_CERT_PATH"
 	envClientKeyPath  = "CLIENT_KEY_PATH"
@@ -152,7 +154,11 @@ func NewAPIClient(basePath string, cfg *Configuration) *APIClient {
 	cfg.Servers = []ServerConfiguration{{URL: apiUrl}}
 	cfg.DefaultHeader[headerSDK] = sdkIdentifier
 	cfg.DefaultHeader[headerClient] = cfg.ClientName
-	cfg.NIOSAuth = base64.StdEncoding.EncodeToString([]byte(cfg.NIOSAuth))
+	// cfg.NIOSAuth = base64.StdEncoding.EncodeToString([]byte(cfg.NIOSAuth))
+
+	Auth := cfg.NIOSUsername + ":" + cfg.NIOSPassword
+
+	cfg.DefaultHeader[headerAuthorization] = "Basic " + base64.StdEncoding.EncodeToString([]byte(Auth))
 
 	c.Cfg = cfg
 	c.Common.Client = c
@@ -182,9 +188,12 @@ func (t *RetryableTransport) setCertificateAuth() *tls.Config {
 
 // setAuth sets the authentication for the request
 func (t *RetryableTransport) setAuth(request *http.Request) {
-	if t.Client.Cfg.NIOSAuth != "" {
-		request.Header.Set(headerAuthorization, "Basic "+t.Client.Cfg.NIOSAuth)
-	} else if t.Client.Cfg.ClientCert != nil && t.Client.Cfg.ClientKey != nil {
+	cfg := t.Client.Cfg
+
+	if cfg.NIOSUsername != "" && cfg.NIOSPassword != "" {
+		Auth := cfg.NIOSUsername + ":" + cfg.NIOSPassword
+		request.Header.Set(headerAuthorization, "Basic "+base64.StdEncoding.EncodeToString([]byte(Auth)))
+	} else if cfg.ClientCert != nil && cfg.ClientKey != nil {
 		if transport, ok := t.Transport.(*http.Transport); ok {
 			transport.TLSClientConfig = t.setCertificateAuth()
 		}

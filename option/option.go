@@ -1,8 +1,9 @@
 package option
 
 import (
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/internal"
 	"net/http"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/internal"
 )
 
 // ClientOption is a function that applies configuration options to the API Client.
@@ -19,14 +20,22 @@ func WithNIOSHostUrl(NIOSHostURL string) ClientOption {
 	}
 }
 
-// WithNIOSAuth returns a ClientOption that sets the NIOSAuth for accessing the NIOS WAPI.
-// Can also be configured by using the `NIOS_AUTH` environment variable.
-//
-// Required.
-func WithNIOSAuth(NIOSAuth string) ClientOption {
+// WithNIOSUsername returns a ClientOption that sets the NIOSUsername for the API Client.
+// Can also be configured using the `NIOS_USERNAME` environment variable.
+func WithNIOSUsername(NIOSUsername string) ClientOption {
 	return func(configuration *internal.Configuration) {
-		if NIOSAuth != "" {
-			configuration.NIOSAuth = NIOSAuth
+		if NIOSUsername != "" {
+			configuration.NIOSUsername = NIOSUsername
+		}
+	}
+}
+
+// WithNIOSPassword returns a ClientOption that sets the NIOSPassword for the API Client.
+// Can also be configured using the `NIOS_PASSWORD` environment variable.
+func WithNIOSPassword(NIOSPassword string) ClientOption {
+	return func(configuration *internal.Configuration) {
+		if NIOSPassword != "" {
+			configuration.NIOSPassword = NIOSPassword
 		}
 	}
 }

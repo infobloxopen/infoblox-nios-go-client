@@ -59,7 +59,8 @@ type ServerConfigurations []ServerConfiguration
 type Configuration struct {
 	ClientName       string            `json:"clientName,omitempty"`
 	NIOSHostURL      string            `json:"niosHostURL,omitempty"`
-	NIOSAuth         string            `json:"niosAuth,omitempty"`
+	NIOSUsername     string            `json:"niosUsername,omitempty"`
+	NIOSPassword     string            `json:"niosPassword,omitempty"`
 	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
 	UserAgent        string            `json:"userAgent,omitempty"`
 	Debug            bool              `json:"debug,omitempty"`
@@ -81,7 +82,8 @@ func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		ClientName:       "nios-go-client",
 		NIOSHostURL:      lookupEnv(envNiosHostURL, ""),
-		NIOSAuth:         lookupEnv(envNiosAuth, ""),
+		NIOSUsername:     lookupEnv(envNiosUsername, ""),
+		NIOSPassword:     lookupEnv(envNiosPassword, ""),
 		DefaultHeader:    make(map[string]string),
 		Debug:            lookupEnvBool(envIBLogLevel, true),
 		UserAgent:        fmt.Sprintf("nios-%s/%s", sdkIdentifier, version),
