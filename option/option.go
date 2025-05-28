@@ -20,7 +20,7 @@ func WithNIOSHostUrl(NIOSHostURL string) ClientOption {
 	}
 }
 
-// WithNIOSUsername returns a ClientOption that sets the NIOSUsername for the API Client.
+// WithNIOSUsername returns a ClientOption that sets the NIOSUsername for Infoblox NIOS Portal
 // Can also be configured using the `NIOS_USERNAME` environment variable.
 func WithNIOSUsername(NIOSUsername string) ClientOption {
 	return func(configuration *internal.Configuration) {
@@ -30,7 +30,7 @@ func WithNIOSUsername(NIOSUsername string) ClientOption {
 	}
 }
 
-// WithNIOSPassword returns a ClientOption that sets the NIOSPassword for the API Client.
+// WithNIOSPassword returns a ClientOption that sets the NIOSPassword for Infoblox NIOS Portal.
 // Can also be configured using the `NIOS_PASSWORD` environment variable.
 func WithNIOSPassword(NIOSPassword string) ClientOption {
 	return func(configuration *internal.Configuration) {
