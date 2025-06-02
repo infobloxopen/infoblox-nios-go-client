@@ -155,10 +155,6 @@ func NewAPIClient(basePath string, cfg *Configuration) *APIClient {
 	cfg.DefaultHeader[headerSDK] = sdkIdentifier
 	cfg.DefaultHeader[headerClient] = cfg.ClientName
 
-	Auth := cfg.NIOSUsername + ":" + cfg.NIOSPassword
-
-	cfg.DefaultHeader[headerAuthorization] = "Basic " + base64.StdEncoding.EncodeToString([]byte(Auth))
-
 	c.Cfg = cfg
 	c.Common.Client = c
 
