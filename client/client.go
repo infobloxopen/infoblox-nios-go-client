@@ -1,60 +1,58 @@
 package client
 
 import (
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/discovery"
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/internal"
 	"github.com/Infoblox-CTO/infoblox-nios-go-client/option"
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+	v2_12_3_cloud "github.com/Infoblox-CTO/infoblox-nios-go-client/v2.12.3/cloud"
+	v2_12_3_dns "github.com/Infoblox-CTO/infoblox-nios-go-client/v2.12.3/dns"
+	v2_12_3_dtc "github.com/Infoblox-CTO/infoblox-nios-go-client/v2.12.3/dtc"
+	v2_13_6_dtc "github.com/Infoblox-CTO/infoblox-nios-go-client/v2.13.6/cloud"
+	v2_13_6_dns "github.com/Infoblox-CTO/infoblox-nios-go-client/v2.13.6/dns"
+	v2_13_6_cloud "github.com/Infoblox-CTO/infoblox-nios-go-client/v2.13.6/dtc"
 )
 
-// APIClient is an aggregation of different NIOS WAPI clients.
 type APIClient struct {
-	CloudAPI     *cloud.APIClient
-	DHCPAPI      *dhcp.APIClient
-	DiscoveryAPI *discovery.APIClient
-	DNSAPI       *dns.APIClient
-	DTCAPI       *dtc.APIClient
-	GridAPI      *grid.APIClient
-	IPAMAPI      *ipam.APIClient
-	RPZAPI       *rpz.APIClient
-	SecurityAPI  *security.APIClient
+	WAPIV_2_12_3 WAPIV_2_12_3
+	WAPIV_2_13_6 WAPIV_2_13_6
+}
+
+type WAPIV_2_12_3 struct {
+	DNS   *v2_12_3_dns.APIClient
+	DTC   *v2_12_3_dtc.APIClient
+	Cloud *v2_12_3_cloud.APIClient // Assuming Cloud is also part of v2.12.3
+}
+
+type WAPIV_2_13_6 struct {
+	DNS   *v2_13_6_dns.APIClient
+	DTC   *v2_13_6_dtc.APIClient
+	Cloud *v2_13_6_cloud.APIClient // Assuming Cloud is also part of v2.13.6
 }
 
 // NewAPIClient creates a new NIOS WAPI Client.
-// This is an aggregation of different NIOS WAPI clients.
-// The following clients are available:
-// - CloudAPI
-// - DHCPAPI
-// - DiscoveryAPI
-// - DNSAPI
-// - DTCAPI
-// - GridAPI
-// - IPAMAPI
-// - RPZAPI
-// - SecurityAPI
-// The client can be configured with a variadic option. The following options are available:
-// - WithClientName(string) sets the name of the client using the SDK.
-// - WithNIOSHostUrl(string) sets the URL for NIOS Portal.
-// - WithNIOSAuth(string) sets the NIOSAuth for accessing the NIOS Portal.
-// - WithHTTPClient(*http.Client) sets the HTTPClient to use for the SDK.
-// - WithDefaultExtAttrs(map[string]struct{ Value String }) sets the Extensible Attributes the client can set by default for objects that has Extensible Attributes support.
-// - WithDebug() sets the debug mode.
 func NewAPIClient(options ...option.ClientOption) *APIClient {
-	return &APIClient{
-		CloudAPI:     cloud.NewAPIClient(options...),
-		DHCPAPI:      dhcp.NewAPIClient(options...),
-		DiscoveryAPI: discovery.NewAPIClient(options...),
-		DNSAPI:       dns.NewAPIClient(options...),
-		DTCAPI:       dtc.NewAPIClient(options...),
-		GridAPI:      grid.NewAPIClient(options...),
-		IPAMAPI:      ipam.NewAPIClient(options...),
-		RPZAPI:       rpz.NewAPIClient(options...),
-		SecurityAPI:  security.NewAPIClient(options...),
+	cfg := internal.NewConfiguration()
+	for _, o := range options {
+		o(cfg)
 	}
+
+	client := &APIClient{}
+
+	initV2_12_3(client, options...)
+	initV2_13_6(client, options...)
+
+	return client
+}
+
+// initV2_12_3 initializes all services for the 2.12.3 API version
+func initV2_12_3(client *APIClient, options ...option.ClientOption) {
+	client.WAPIV_2_12_3.DNS = v2_12_3_dns.NewAPIClient(options...)
+	client.WAPIV_2_12_3.DTC = v2_12_3_dtc.NewAPIClient(options...)
+	client.WAPIV_2_12_3.Cloud = v2_12_3_cloud.NewAPIClient(options...)
+}
+
+// initV2_13_5 initializes all services for the 2.13.5 API version
+func initV2_13_6(client *APIClient, options ...option.ClientOption) {
+	client.WAPIV_2_13_6.DNS = v2_13_6_dns.NewAPIClient(options...)
+	client.WAPIV_2_13_6.DTC = v2_13_6_dtc.NewAPIClient(options...)
+	client.WAPIV_2_13_6.Cloud = v2_13_6_cloud.NewAPIClient(options...)
 }
