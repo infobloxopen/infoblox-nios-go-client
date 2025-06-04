@@ -9321,11 +9321,10 @@ components:
     ExtAttrs:
       description: Extensible attributes associated with the object.
       example:
-        value: value
+        value: ""
       properties:
         value:
           description: The value of the extensible attribute.
-          type: string
       required:
       - value
       type: object
@@ -10324,7 +10323,7 @@ components:
         use_ipv6_options: false
         extattrs:
           key:
-            value: value
+            value: ""
         use_ipv6_enable_ddns: false
         ipv6_ddns_domainname: Example ipv6_ddns_domainname
         use_bootfile: false
@@ -11595,7 +11594,7 @@ components:
         max_response_delay: 1
         extattrs:
           key:
-            value: value
+            value: ""
         secondary_state: Example secondary_state
         use_ms_switchover_interval: false
         ms_enable_switchover_interval: false
@@ -12056,7 +12055,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         _ref: _ref
         fingerprint:
         - fingerprint
@@ -12119,7 +12118,7 @@ components:
         reserved_for_infoblox: Example reserved_for_infoblox
         extattrs:
           key:
-            value: value
+            value: ""
         default_mac_address_expiration: 1
         disable: false
         lease_time: 1
@@ -12263,7 +12262,7 @@ components:
         expression: Example expression
         extattrs:
           key:
-            value: value
+            value: ""
         lease_time: 1
         _ref: _ref
         name: Example name
@@ -12379,7 +12378,7 @@ components:
         expression: Example expression
         extattrs:
           key:
-            value: value
+            value: ""
         next_server: Example next_server
         bootfile: Example bootfile
         apply_as_class: false
@@ -12534,7 +12533,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         circuit_id_substring_length: 1
         circuit_id_name: Example circuit_id_name
         remote_id_name: Example remote_id_name
@@ -12663,7 +12662,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         disable: false
         ipv6_option_sequence:
         - ipv6_option_sequence
@@ -12960,7 +12959,7 @@ components:
         agent_remote_id: Example agent_remote_id
         extattrs:
           key:
-            value: value
+            value: ""
         device_location: Example device_location
         use_bootfile: false
         bootfile: Example bootfile
@@ -14340,7 +14339,7 @@ components:
         use_enable_ddns: false
         extattrs:
           key:
-            value: value
+            value: ""
         offset: 1
         use_deny_bootp: false
         enable_pxe_lease_time: false
@@ -14723,7 +14722,7 @@ components:
         expression: Example expression
         extattrs:
           key:
-            value: value
+            value: ""
         lease_time: 1
         option_list:
         - vendor_class: Example vendor_class
@@ -14907,7 +14906,7 @@ components:
         use_preferred_lifetime: false
         extattrs:
           key:
-            value: value
+            value: ""
         address_type: Example address_type
         discovered_data:
           vport_name: Example vport_name
@@ -16247,7 +16246,7 @@ components:
         use_preferred_lifetime: false
         extattrs:
           key:
-            value: value
+            value: ""
         offset: 1
         use_valid_lifetime: false
         domain_name_servers:
@@ -16528,7 +16527,7 @@ components:
         start_addr: Example start_addr
         extattrs:
           key:
-            value: value
+            value: ""
         option_filter_rules:
         - filter: Example filter
           permission: Example permission
@@ -17752,7 +17751,7 @@ components:
         use_preferred_lifetime: false
         extattrs:
           key:
-            value: value
+            value: ""
         use_update_dns_on_lease_renewal: false
         update_dns_on_lease_renewal: false
         ddns_generate_hostname: false
@@ -19190,7 +19189,7 @@ components:
         reserved_for_infoblox: Example reserved_for_infoblox
         extattrs:
           key:
-            value: value
+            value: ""
         expiration_time: 1
         never_expires: false
         guest_last_name: Example guest_last_name
@@ -19455,7 +19454,7 @@ components:
         server_association_type: Example server_association_type
         extattrs:
           key:
-            value: value
+            value: ""
         use_bootfile: false
         bootfile: Example bootfile
         high_water_mark: 1
@@ -21089,7 +21088,7 @@ components:
         use_email_list: false
         extattrs:
           key:
-            value: value
+            value: ""
         option_filter_rules:
         - filter: Example filter
           permission: Example permission
@@ -21833,7 +21832,7 @@ components:
         dhcp_client_identifier: Example dhcp_client_identifier
         extattrs:
           key:
-            value: value
+            value: ""
         address_type: Example address_type
         use_ipv6_enable_ddns: false
         ipv6_ddns_domainname: Example ipv6_ddns_domainname
@@ -22272,7 +22271,7 @@ components:
         ignore_id: Example ignore_id
         extattrs:
           key:
-            value: value
+            value: ""
         total_hosts: 1
         ddns_generate_hostname: false
         ddns_ttl: 1
@@ -22726,7 +22725,7 @@ components:
         network_view: Example network_view
         extattrs:
           key:
-            value: value
+            value: ""
         ranges:
         - "{}"
         - "{}"
@@ -23343,7 +23342,7 @@ components:
           use_ipv6_options: false
           extattrs:
             key:
-              value: value
+              value: ""
           use_ipv6_enable_ddns: false
           ipv6_ddns_domainname: Example ipv6_ddns_domainname
           use_bootfile: false
@@ -23524,7 +23523,7 @@ components:
           max_response_delay: 1
           extattrs:
             key:
-              value: value
+              value: ""
           secondary_state: Example secondary_state
           use_ms_switchover_interval: false
           ms_enable_switchover_interval: false
@@ -23578,7 +23577,7 @@ components:
           max_response_delay: 1
           extattrs:
             key:
-              value: value
+              value: ""
           secondary_state: Example secondary_state
           use_ms_switchover_interval: false
           ms_enable_switchover_interval: false
@@ -23718,7 +23717,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           _ref: _ref
           fingerprint:
           - fingerprint
@@ -23744,7 +23743,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           _ref: _ref
           fingerprint:
           - fingerprint
@@ -23772,7 +23771,7 @@ components:
           reserved_for_infoblox: Example reserved_for_infoblox
           extattrs:
             key:
-              value: value
+              value: ""
           default_mac_address_expiration: 1
           disable: false
           lease_time: 1
@@ -23812,7 +23811,7 @@ components:
           reserved_for_infoblox: Example reserved_for_infoblox
           extattrs:
             key:
-              value: value
+              value: ""
           default_mac_address_expiration: 1
           disable: false
           lease_time: 1
@@ -23853,7 +23852,7 @@ components:
           expression: Example expression
           extattrs:
             key:
-              value: value
+              value: ""
           lease_time: 1
           _ref: _ref
           name: Example name
@@ -23889,7 +23888,7 @@ components:
           expression: Example expression
           extattrs:
             key:
-              value: value
+              value: ""
           lease_time: 1
           _ref: _ref
           name: Example name
@@ -23926,7 +23925,7 @@ components:
           expression: Example expression
           extattrs:
             key:
-              value: value
+              value: ""
           next_server: Example next_server
           bootfile: Example bootfile
           apply_as_class: false
@@ -23968,7 +23967,7 @@ components:
           expression: Example expression
           extattrs:
             key:
-              value: value
+              value: ""
           next_server: Example next_server
           bootfile: Example bootfile
           apply_as_class: false
@@ -24010,7 +24009,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           circuit_id_substring_length: 1
           circuit_id_name: Example circuit_id_name
           remote_id_name: Example remote_id_name
@@ -24043,7 +24042,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           circuit_id_substring_length: 1
           circuit_id_name: Example circuit_id_name
           remote_id_name: Example remote_id_name
@@ -24077,7 +24076,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           disable: false
           ipv6_option_sequence:
           - ipv6_option_sequence
@@ -24112,7 +24111,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           disable: false
           ipv6_option_sequence:
           - ipv6_option_sequence
@@ -24343,7 +24342,7 @@ components:
           agent_remote_id: Example agent_remote_id
           extattrs:
             key:
-              value: value
+              value: ""
           device_location: Example device_location
           use_bootfile: false
           bootfile: Example bootfile
@@ -24580,7 +24579,7 @@ components:
           agent_remote_id: Example agent_remote_id
           extattrs:
             key:
-              value: value
+              value: ""
           device_location: Example device_location
           use_bootfile: false
           bootfile: Example bootfile
@@ -24644,7 +24643,7 @@ components:
           use_enable_ddns: false
           extattrs:
             key:
-              value: value
+              value: ""
           offset: 1
           use_deny_bootp: false
           enable_pxe_lease_time: false
@@ -24706,7 +24705,7 @@ components:
           use_enable_ddns: false
           extattrs:
             key:
-              value: value
+              value: ""
           offset: 1
           use_deny_bootp: false
           enable_pxe_lease_time: false
@@ -24848,7 +24847,7 @@ components:
           expression: Example expression
           extattrs:
             key:
-              value: value
+              value: ""
           lease_time: 1
           option_list:
           - vendor_class: Example vendor_class
@@ -24886,7 +24885,7 @@ components:
           expression: Example expression
           extattrs:
             key:
-              value: value
+              value: ""
           lease_time: 1
           option_list:
           - vendor_class: Example vendor_class
@@ -24981,7 +24980,7 @@ components:
           use_preferred_lifetime: false
           extattrs:
             key:
-              value: value
+              value: ""
           address_type: Example address_type
           discovered_data:
             vport_name: Example vport_name
@@ -25192,7 +25191,7 @@ components:
           use_preferred_lifetime: false
           extattrs:
             key:
-              value: value
+              value: ""
           address_type: Example address_type
           discovered_data:
             vport_name: Example vport_name
@@ -25348,7 +25347,7 @@ components:
           use_preferred_lifetime: false
           extattrs:
             key:
-              value: value
+              value: ""
           offset: 1
           use_valid_lifetime: false
           domain_name_servers:
@@ -25402,7 +25401,7 @@ components:
           use_preferred_lifetime: false
           extattrs:
             key:
-              value: value
+              value: ""
           offset: 1
           use_valid_lifetime: false
           domain_name_servers:
@@ -25530,7 +25529,7 @@ components:
           start_addr: Example start_addr
           extattrs:
             key:
-              value: value
+              value: ""
           option_filter_rules:
           - filter: Example filter
             permission: Example permission
@@ -25686,7 +25685,7 @@ components:
           start_addr: Example start_addr
           extattrs:
             key:
-              value: value
+              value: ""
           option_filter_rules:
           - filter: Example filter
             permission: Example permission
@@ -25905,7 +25904,7 @@ components:
           use_preferred_lifetime: false
           extattrs:
             key:
-              value: value
+              value: ""
           use_update_dns_on_lease_renewal: false
           update_dns_on_lease_renewal: false
           ddns_generate_hostname: false
@@ -25974,7 +25973,7 @@ components:
           use_preferred_lifetime: false
           extattrs:
             key:
-              value: value
+              value: ""
           use_update_dns_on_lease_renewal: false
           update_dns_on_lease_renewal: false
           ddns_generate_hostname: false
@@ -26047,7 +26046,7 @@ components:
           reserved_for_infoblox: Example reserved_for_infoblox
           extattrs:
             key:
-              value: value
+              value: ""
           expiration_time: 1
           never_expires: false
           guest_last_name: Example guest_last_name
@@ -26087,7 +26086,7 @@ components:
           reserved_for_infoblox: Example reserved_for_infoblox
           extattrs:
             key:
-              value: value
+              value: ""
           expiration_time: 1
           never_expires: false
           guest_last_name: Example guest_last_name
@@ -26251,7 +26250,7 @@ components:
           server_association_type: Example server_association_type
           extattrs:
             key:
-              value: value
+              value: ""
           use_bootfile: false
           bootfile: Example bootfile
           high_water_mark: 1
@@ -26511,7 +26510,7 @@ components:
           server_association_type: Example server_association_type
           extattrs:
             key:
-              value: value
+              value: ""
           use_bootfile: false
           bootfile: Example bootfile
           high_water_mark: 1
@@ -26741,7 +26740,7 @@ components:
           use_email_list: false
           extattrs:
             key:
-              value: value
+              value: ""
           option_filter_rules:
           - filter: Example filter
             permission: Example permission
@@ -26885,7 +26884,7 @@ components:
           use_email_list: false
           extattrs:
             key:
-              value: value
+              value: ""
           option_filter_rules:
           - filter: Example filter
             permission: Example permission
@@ -26998,7 +26997,7 @@ components:
           dhcp_client_identifier: Example dhcp_client_identifier
           extattrs:
             key:
-              value: value
+              value: ""
           address_type: Example address_type
           use_ipv6_enable_ddns: false
           ipv6_ddns_domainname: Example ipv6_ddns_domainname
@@ -27093,7 +27092,7 @@ components:
           dhcp_client_identifier: Example dhcp_client_identifier
           extattrs:
             key:
-              value: value
+              value: ""
           address_type: Example address_type
           use_ipv6_enable_ddns: false
           ipv6_ddns_domainname: Example ipv6_ddns_domainname
@@ -27178,7 +27177,7 @@ components:
           ignore_id: Example ignore_id
           extattrs:
             key:
-              value: value
+              value: ""
           total_hosts: 1
           ddns_generate_hostname: false
           ddns_ttl: 1
@@ -27268,7 +27267,7 @@ components:
           ignore_id: Example ignore_id
           extattrs:
             key:
-              value: value
+              value: ""
           total_hosts: 1
           ddns_generate_hostname: false
           ddns_ttl: 1
@@ -27346,7 +27345,7 @@ components:
           network_view: Example network_view
           extattrs:
             key:
-              value: value
+              value: ""
           ranges:
           - "{}"
           - "{}"
@@ -27383,7 +27382,7 @@ components:
           network_view: Example network_view
           extattrs:
             key:
-              value: value
+              value: ""
           ranges:
           - "{}"
           - "{}"

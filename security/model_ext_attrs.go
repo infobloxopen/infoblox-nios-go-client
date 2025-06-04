@@ -21,7 +21,7 @@ var _ MappedNullable = &ExtAttrs{}
 // ExtAttrs Extensible attributes associated with the object.
 type ExtAttrs struct {
 	// The value of the extensible attribute.
-	Value                string `json:"value"`
+	Value                interface{} `json:"value"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _ExtAttrs ExtAttrs
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExtAttrs(value string) *ExtAttrs {
+func NewExtAttrs(value interface{}) *ExtAttrs {
 	this := ExtAttrs{}
 	this.Value = value
 	return &this
@@ -46,9 +46,10 @@ func NewExtAttrsWithDefaults() *ExtAttrs {
 }
 
 // GetValue returns the Value field value
-func (o *ExtAttrs) GetValue() string {
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *ExtAttrs) GetValue() interface{} {
 	if o == nil {
-		var ret string
+		var ret interface{}
 		return ret
 	}
 
@@ -57,15 +58,16 @@ func (o *ExtAttrs) GetValue() string {
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *ExtAttrs) GetValueOk() (*string, bool) {
-	if o == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ExtAttrs) GetValueOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return &o.Value, true
 }
 
 // SetValue sets field value
-func (o *ExtAttrs) SetValue(v string) {
+func (o *ExtAttrs) SetValue(v interface{}) {
 	o.Value = v
 }
 
@@ -79,7 +81,9 @@ func (o ExtAttrs) MarshalJSON() ([]byte, error) {
 
 func (o ExtAttrs) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["value"] = o.Value
+	if o.Value != nil {
+		toSerialize["value"] = o.Value
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

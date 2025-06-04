@@ -3893,11 +3893,10 @@ components:
     ExtAttrs:
       description: Extensible attributes associated with the object.
       example:
-        value: value
+        value: ""
       properties:
         value:
           description: The value of the extensible attribute.
-          type: string
       required:
       - value
       type: object
@@ -6894,7 +6893,7 @@ components:
           csp_dns_resolver: Example csp_dns_resolver
         extattrs:
           key:
-            value: value
+            value: ""
         service_type_configuration: Example service_type_configuration
         capture_traffic_status: "{}"
         ospf_list:
@@ -10247,7 +10246,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         requests:
         - "{}"
         - "{}"
@@ -15075,7 +15074,7 @@ components:
           username: Example username
         extattrs:
           key:
-            value: value
+            value: ""
         dnssec_expired_signatures_enabled: false
         enable_blackhole: false
         dns_query_source_interface: Example dns_query_source_interface
@@ -18949,7 +18948,7 @@ components:
             csp_dns_resolver: Example csp_dns_resolver
           extattrs:
             key:
-              value: value
+              value: ""
           service_type_configuration: Example service_type_configuration
           capture_traffic_status: "{}"
           ospf_list:
@@ -19572,7 +19571,7 @@ components:
             csp_dns_resolver: Example csp_dns_resolver
           extattrs:
             key:
-              value: value
+              value: ""
           service_type_configuration: Example service_type_configuration
           capture_traffic_status: "{}"
           ospf_list:
@@ -19865,7 +19864,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           requests:
           - "{}"
           - "{}"
@@ -19922,7 +19921,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           requests:
           - "{}"
           - "{}"
@@ -20995,7 +20994,7 @@ components:
             username: Example username
           extattrs:
             key:
-              value: value
+              value: ""
           dnssec_expired_signatures_enabled: false
           enable_blackhole: false
           dns_query_source_interface: Example dns_query_source_interface
