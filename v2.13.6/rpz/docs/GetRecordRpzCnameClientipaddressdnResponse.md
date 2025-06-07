@@ -1,0 +1,368 @@
+# GetRecordRpzCnameClientipaddressdnResponse
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Canonical** | Pointer to **string** | The canonical name in FQDN format. This value can be in unicode format. | [optional] 
+**Comment** | Pointer to **string** | The comment for the record; maximum 256 characters. | [optional] 
+**Disable** | Pointer to **bool** | Determines if the record is disabled or not. False means that the record is enabled. | [optional] 
+**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**IsIpv4** | Pointer to **bool** | Indicates whether the record is an IPv4 record. If the return value is \&quot;true\&quot;, it is an IPv4 record. Ohterwise, it is an IPv6 record. | [optional] [readonly] 
+**Name** | Pointer to **string** | The name for a record in FQDN format. This value cannot be in unicode format. | [optional] 
+**RpZone** | Pointer to **string** | The name of a response policy zone in which the record resides. | [optional] 
+**Ttl** | Pointer to **int64** | The Time To Live (TTL) value for record. A 32-bit unsigned integer that represents the duration, in seconds, for which the record is valid (cached). Zero indicates that the record should not be cached. | [optional] 
+**UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] 
+**View** | Pointer to **string** | The name of the DNS View in which the record resides. Example: \&quot;external\&quot;. | [optional] 
+**Zone** | Pointer to **string** | The name of the zone in which the record resides. Example: \&quot;zone.com\&quot;. If a view is not specified when searching by zone, the default view is used. | [optional] [readonly] 
+**Result** | Pointer to [**RecordRpzCnameClientipaddressdn**](RecordRpzCnameClientipaddressdn.md) |  | [optional] 
+
+## Methods
+
+### NewGetRecordRpzCnameClientipaddressdnResponse
+
+`func NewGetRecordRpzCnameClientipaddressdnResponse() *GetRecordRpzCnameClientipaddressdnResponse`
+
+NewGetRecordRpzCnameClientipaddressdnResponse instantiates a new GetRecordRpzCnameClientipaddressdnResponse object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewGetRecordRpzCnameClientipaddressdnResponseWithDefaults
+
+`func NewGetRecordRpzCnameClientipaddressdnResponseWithDefaults() *GetRecordRpzCnameClientipaddressdnResponse`
+
+NewGetRecordRpzCnameClientipaddressdnResponseWithDefaults instantiates a new GetRecordRpzCnameClientipaddressdnResponse object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetRef
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetRef() string`
+
+GetRef returns the Ref field if non-nil, zero value otherwise.
+
+### GetRefOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetRefOk() (*string, bool)`
+
+GetRefOk returns a tuple with the Ref field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRef
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetRef(v string)`
+
+SetRef sets Ref field to given value.
+
+### HasRef
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasRef() bool`
+
+HasRef returns a boolean if a field has been set.
+
+### GetCanonical
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetCanonical() string`
+
+GetCanonical returns the Canonical field if non-nil, zero value otherwise.
+
+### GetCanonicalOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetCanonicalOk() (*string, bool)`
+
+GetCanonicalOk returns a tuple with the Canonical field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCanonical
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetCanonical(v string)`
+
+SetCanonical sets Canonical field to given value.
+
+### HasCanonical
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasCanonical() bool`
+
+HasCanonical returns a boolean if a field has been set.
+
+### GetComment
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetComment() string`
+
+GetComment returns the Comment field if non-nil, zero value otherwise.
+
+### GetCommentOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetCommentOk() (*string, bool)`
+
+GetCommentOk returns a tuple with the Comment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComment
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetComment(v string)`
+
+SetComment sets Comment field to given value.
+
+### HasComment
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasComment() bool`
+
+HasComment returns a boolean if a field has been set.
+
+### GetDisable
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetDisable() bool`
+
+GetDisable returns the Disable field if non-nil, zero value otherwise.
+
+### GetDisableOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetDisableOk() (*bool, bool)`
+
+GetDisableOk returns a tuple with the Disable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisable
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetDisable(v bool)`
+
+SetDisable sets Disable field to given value.
+
+### HasDisable
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasDisable() bool`
+
+HasDisable returns a boolean if a field has been set.
+
+### GetExtattrs
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetExtattrs() map[string]ExtAttrs`
+
+GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+
+### GetExtattrsOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+
+GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtattrs
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetExtattrs(v map[string]ExtAttrs)`
+
+SetExtattrs sets Extattrs field to given value.
+
+### HasExtattrs
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasExtattrs() bool`
+
+HasExtattrs returns a boolean if a field has been set.
+
+### GetIsIpv4
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetIsIpv4() bool`
+
+GetIsIpv4 returns the IsIpv4 field if non-nil, zero value otherwise.
+
+### GetIsIpv4Ok
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetIsIpv4Ok() (*bool, bool)`
+
+GetIsIpv4Ok returns a tuple with the IsIpv4 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsIpv4
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetIsIpv4(v bool)`
+
+SetIsIpv4 sets IsIpv4 field to given value.
+
+### HasIsIpv4
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasIsIpv4() bool`
+
+HasIsIpv4 returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### GetRpZone
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetRpZone() string`
+
+GetRpZone returns the RpZone field if non-nil, zero value otherwise.
+
+### GetRpZoneOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetRpZoneOk() (*string, bool)`
+
+GetRpZoneOk returns a tuple with the RpZone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRpZone
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetRpZone(v string)`
+
+SetRpZone sets RpZone field to given value.
+
+### HasRpZone
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasRpZone() bool`
+
+HasRpZone returns a boolean if a field has been set.
+
+### GetTtl
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetTtl() int64`
+
+GetTtl returns the Ttl field if non-nil, zero value otherwise.
+
+### GetTtlOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetTtlOk() (*int64, bool)`
+
+GetTtlOk returns a tuple with the Ttl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTtl
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetTtl(v int64)`
+
+SetTtl sets Ttl field to given value.
+
+### HasTtl
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasTtl() bool`
+
+HasTtl returns a boolean if a field has been set.
+
+### GetUseTtl
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetUseTtl() bool`
+
+GetUseTtl returns the UseTtl field if non-nil, zero value otherwise.
+
+### GetUseTtlOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetUseTtlOk() (*bool, bool)`
+
+GetUseTtlOk returns a tuple with the UseTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseTtl
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetUseTtl(v bool)`
+
+SetUseTtl sets UseTtl field to given value.
+
+### HasUseTtl
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasUseTtl() bool`
+
+HasUseTtl returns a boolean if a field has been set.
+
+### GetView
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetView() string`
+
+GetView returns the View field if non-nil, zero value otherwise.
+
+### GetViewOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetViewOk() (*string, bool)`
+
+GetViewOk returns a tuple with the View field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetView
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetView(v string)`
+
+SetView sets View field to given value.
+
+### HasView
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasView() bool`
+
+HasView returns a boolean if a field has been set.
+
+### GetZone
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetZone() string`
+
+GetZone returns the Zone field if non-nil, zero value otherwise.
+
+### GetZoneOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetZoneOk() (*string, bool)`
+
+GetZoneOk returns a tuple with the Zone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetZone
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetZone(v string)`
+
+SetZone sets Zone field to given value.
+
+### HasZone
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasZone() bool`
+
+HasZone returns a boolean if a field has been set.
+
+### GetResult
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetResult() RecordRpzCnameClientipaddressdn`
+
+GetResult returns the Result field if non-nil, zero value otherwise.
+
+### GetResultOk
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) GetResultOk() (*RecordRpzCnameClientipaddressdn, bool)`
+
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResult
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) SetResult(v RecordRpzCnameClientipaddressdn)`
+
+SetResult sets Result field to given value.
+
+### HasResult
+
+`func (o *GetRecordRpzCnameClientipaddressdnResponse) HasResult() bool`
+
+HasResult returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

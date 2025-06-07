@@ -9,8 +9,6 @@ github.com/pmezard/go-difflib/difflib
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/assert/yaml
 github.com/stretchr/testify/require
-# github.com/unasra/nios-go-client v0.0.0-20250331153558-f18348d3f8b6
-## explicit; go 1.19
 # golang.org/x/net v0.40.0
 ## explicit; go 1.23.0
 golang.org/x/net/publicsuffix
