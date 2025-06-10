@@ -46,7 +46,8 @@ type APIClient struct {
 // The client can be configured with a variadic option. The following options are available:
 // - WithClientName(string) sets the name of the client using the SDK.
 // - WithNIOSHostUrl(string) sets the URL for NIOS Portal.
-// - WithNIOSAuth(string) sets the NIOSAuth for accessing the NIOS Portal.
+// - WithNIOSUsername(string) sets the Username for the NIOS Portal.
+// - WithNIOSPassword(string) sets the Password for the NIOS Portal.
 // - WithHTTPClient(*http.Client) sets the HTTPClient to use for the SDK.
 // - WithDefaultExtAttrs(map[string]struct{ Value string }) sets the tags the client can set by default for objects that has tags support.
 // - WithDebug() sets the debug mode.

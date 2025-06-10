@@ -17,12 +17,20 @@ func TestWithNIOSAuthUrl(t *testing.T) {
 	assert.Equal(t, url, config.NIOSHostURL)
 }
 
-func TestWithNIOSAuth(t *testing.T) {
+func TestWithNIOSUsername(t *testing.T) {
 	config := &internal.Configuration{}
-	apiKey := "testKey"
-	opt := WithNIOSAuth(apiKey)
+	username := "testUser"
+	opt := WithNIOSUsername(username)
 	opt(config)
-	assert.Equal(t, apiKey, config.NIOSAuth)
+	assert.Equal(t, username, config.NIOSUsername)
+}
+
+func TestWithNIOSPassword(t *testing.T) {
+	config := &internal.Configuration{}
+	password := "testPassword"
+	opt := WithNIOSPassword(password)
+	opt(config)
+	assert.Equal(t, password, config.NIOSPassword)
 }
 
 func TestWithHTTPClient(t *testing.T) {
