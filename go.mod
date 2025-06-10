@@ -6,7 +6,6 @@ toolchain go1.23.4
 
 require (
 	github.com/stretchr/testify v1.10.0
-	github.com/unasra/nios-go-client v0.0.0-20250331153558-f18348d3f8b6
 	golang.org/x/net v0.40.0
 )
 
