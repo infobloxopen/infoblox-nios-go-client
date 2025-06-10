@@ -9814,11 +9814,10 @@ components:
     ExtAttrs:
       description: Extensible attributes associated with the object.
       example:
-        value: value
+        value: ""
       properties:
         value:
           description: The value of the extensible attribute.
-          type: string
       required:
       - value
       type: object
@@ -9842,7 +9841,7 @@ components:
         creator: Example creator
         extattrs:
           key:
-            value: value
+            value: ""
         shared_record_group: Example shared_record_group
         use_ttl: false
         discovered_data:
@@ -11002,7 +11001,7 @@ components:
         creator: Example creator
         extattrs:
           key:
-            value: value
+            value: ""
         shared_record_group: Example shared_record_group
         use_ttl: false
         discovered_data:
@@ -12162,7 +12161,7 @@ components:
         creator: Example creator
         extattrs:
           key:
-            value: value
+            value: ""
         shared_record_group: Example shared_record_group
         use_ttl: false
         cloud_info:
@@ -12540,7 +12539,7 @@ components:
         mail_exchanger: Example mail_exchanger
         extattrs:
           key:
-            value: value
+            value: ""
         shared_record_group: Example shared_record_group
         use_ttl: false
         preference: 1
@@ -12922,7 +12921,7 @@ components:
         creator: Example creator
         extattrs:
           key:
-            value: value
+            value: ""
         shared_record_group: Example shared_record_group
         use_ttl: false
         cloud_info:
@@ -13315,7 +13314,7 @@ components:
         creator: Example creator
         extattrs:
           key:
-            value: value
+            value: ""
         shared_record_group: Example shared_record_group
         discovered_data:
           vport_name: Example vport_name
@@ -14483,7 +14482,7 @@ components:
         creator: Example creator
         extattrs:
           key:
-            value: value
+            value: ""
         shared_record_group: Example shared_record_group
         weight: 1
         ddns_protected: false
@@ -15111,7 +15110,7 @@ components:
         use_dns_ea_inheritance: false
         extattrs:
           key:
-            value: value
+            value: ""
         device_location: Example device_location
         ddns_protected: false
         ipv4addrs:
@@ -15591,7 +15590,7 @@ components:
         creator: Example creator
         extattrs:
           key:
-            value: value
+            value: ""
         shared_record_group: Example shared_record_group
         use_ttl: false
         cloud_info:
@@ -15873,7 +15872,7 @@ components:
         creator: Example creator
         extattrs:
           key:
-            value: value
+            value: ""
         preference: 1
         ddns_protected: false
         services: Example services
@@ -16148,7 +16147,7 @@ components:
         certificate_usage: 1
         extattrs:
           key:
-            value: value
+            value: ""
         certificate_data: Example certificate_data
         use_ttl: false
         cloud_info:
@@ -16390,7 +16389,7 @@ components:
         creator: Example creator
         extattrs:
           key:
-            value: value
+            value: ""
         use_ttl: false
         ca_value: Example ca_value
         cloud_info:
@@ -18177,7 +18176,7 @@ components:
         display_rdata: Example display_rdata
         extattrs:
           key:
-            value: value
+            value: ""
         use_ttl: false
         subfield_values:
         - field_value: Example field_value
@@ -18579,7 +18578,7 @@ components:
         address: Example address
         extattrs:
           key:
-            value: value
+            value: ""
         copyzonerecords: "{}"
         ms_ad_integrated: false
         run_scavenging: "{}"
@@ -21025,7 +21024,7 @@ components:
         address: Example address
         extattrs:
           key:
-            value: value
+            value: ""
         fqdn: Example fqdn
         ms_ad_integrated: false
         ms_ddns_mode: Example ms_ddns_mode
@@ -21330,7 +21329,7 @@ components:
         address: Example address
         extattrs:
           key:
-            value: value
+            value: ""
         fqdn: Example fqdn
         ms_ad_integrated: false
         disable_ns_generation: false
@@ -21774,7 +21773,7 @@ components:
         address: Example address
         extattrs:
           key:
-            value: value
+            value: ""
         soa_serial_number: 1
         fqdn: Example fqdn
         soa_refresh: 1
@@ -22357,7 +22356,7 @@ components:
         address: Example address
         extattrs:
           key:
-            value: value
+            value: ""
         soa_refresh: 1
         grid_primary:
         - preferred_primaries:
@@ -23400,7 +23399,7 @@ components:
           permission: Example permission
         extattrs:
           key:
-            value: value
+            value: ""
         disable: false
         prefix: Example prefix
         _ref: _ref
@@ -23647,7 +23646,7 @@ components:
           lead: false
         extattrs:
           key:
-            value: value
+            value: ""
         external_secondaries:
         - address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -24105,7 +24104,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         _ref: _ref
         name: Example name
         comment: Example comment
@@ -24231,7 +24230,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         forwarding_servers:
         - forward_to:
             address: Example address
@@ -24397,7 +24396,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         stub_members:
         - preferred_primaries:
             address: Example address
@@ -24603,7 +24602,7 @@ components:
           shared_with_ms_parent_delegation: false
         extattrs:
           key:
-            value: value
+            value: ""
         _ref: _ref
         name: Example name
         comment: Example comment
@@ -24739,7 +24738,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           discovered_data:
@@ -24902,7 +24901,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           discovered_data:
@@ -25066,7 +25065,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           discovered_data:
@@ -25229,7 +25228,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           discovered_data:
@@ -25393,7 +25392,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
@@ -25457,7 +25456,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
@@ -25523,7 +25522,7 @@ components:
           mail_exchanger: Example mail_exchanger
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           preference: 1
@@ -25588,7 +25587,7 @@ components:
           mail_exchanger: Example mail_exchanger
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           preference: 1
@@ -25653,7 +25652,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
@@ -25716,7 +25715,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
@@ -25801,7 +25800,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           discovered_data:
             vport_name: Example vport_name
@@ -25966,7 +25965,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           discovered_data:
             vport_name: Example vport_name
@@ -26131,7 +26130,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           weight: 1
           ddns_protected: false
@@ -26198,7 +26197,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           weight: 1
           ddns_protected: false
@@ -26363,7 +26362,7 @@ components:
           use_dns_ea_inheritance: false
           extattrs:
             key:
-              value: value
+              value: ""
           device_location: Example device_location
           ddns_protected: false
           ipv4addrs:
@@ -26461,7 +26460,7 @@ components:
           use_dns_ea_inheritance: false
           extattrs:
             key:
-              value: value
+              value: ""
           device_location: Example device_location
           ddns_protected: false
           ipv4addrs:
@@ -26519,7 +26518,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
@@ -26570,7 +26569,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
@@ -26645,7 +26644,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           preference: 1
           ddns_protected: false
           services: Example services
@@ -26700,7 +26699,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           preference: 1
           ddns_protected: false
           services: Example services
@@ -26733,7 +26732,7 @@ components:
           certificate_usage: 1
           extattrs:
             key:
-              value: value
+              value: ""
           certificate_data: Example certificate_data
           use_ttl: false
           cloud_info:
@@ -26780,7 +26779,7 @@ components:
           certificate_usage: 1
           extattrs:
             key:
-              value: value
+              value: ""
           certificate_data: Example certificate_data
           use_ttl: false
           cloud_info:
@@ -26828,7 +26827,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           use_ttl: false
           ca_value: Example ca_value
           cloud_info:
@@ -26879,7 +26878,7 @@ components:
           creator: Example creator
           extattrs:
             key:
-              value: value
+              value: ""
           use_ttl: false
           ca_value: Example ca_value
           cloud_info:
@@ -27149,7 +27148,7 @@ components:
           display_rdata: Example display_rdata
           extattrs:
             key:
-              value: value
+              value: ""
           use_ttl: false
           subfield_values:
           - field_value: Example field_value
@@ -27203,7 +27202,7 @@ components:
           display_rdata: Example display_rdata
           extattrs:
             key:
-              value: value
+              value: ""
           use_ttl: false
           subfield_values:
           - field_value: Example field_value
@@ -27383,7 +27382,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           copyzonerecords: "{}"
           ms_ad_integrated: false
           run_scavenging: "{}"
@@ -27813,7 +27812,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           copyzonerecords: "{}"
           ms_ad_integrated: false
           run_scavenging: "{}"
@@ -28148,7 +28147,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           fqdn: Example fqdn
           ms_ad_integrated: false
           ms_ddns_mode: Example ms_ddns_mode
@@ -28210,7 +28209,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           fqdn: Example fqdn
           ms_ad_integrated: false
           ms_ddns_mode: Example ms_ddns_mode
@@ -28272,7 +28271,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           fqdn: Example fqdn
           ms_ad_integrated: false
           disable_ns_generation: false
@@ -28359,7 +28358,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           fqdn: Example fqdn
           ms_ad_integrated: false
           disable_ns_generation: false
@@ -28476,7 +28475,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           soa_serial_number: 1
           fqdn: Example fqdn
           soa_refresh: 1
@@ -28586,7 +28585,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           soa_serial_number: 1
           fqdn: Example fqdn
           soa_refresh: 1
@@ -28721,7 +28720,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           soa_refresh: 1
           grid_primary:
           - preferred_primaries:
@@ -28900,7 +28899,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           soa_refresh: 1
           grid_primary:
           - preferred_primaries:
@@ -29077,7 +29076,7 @@ components:
             permission: Example permission
           extattrs:
             key:
-              value: value
+              value: ""
           disable: false
           prefix: Example prefix
           _ref: _ref
@@ -29118,7 +29117,7 @@ components:
             permission: Example permission
           extattrs:
             key:
-              value: value
+              value: ""
           disable: false
           prefix: Example prefix
           _ref: _ref
@@ -29215,7 +29214,7 @@ components:
             lead: false
           extattrs:
             key:
-              value: value
+              value: ""
           external_secondaries:
           - address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -29333,7 +29332,7 @@ components:
             lead: false
           extattrs:
             key:
-              value: value
+              value: ""
           external_secondaries:
           - address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -29423,7 +29422,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           _ref: _ref
           name: Example name
           comment: Example comment
@@ -29463,7 +29462,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           _ref: _ref
           name: Example name
           comment: Example comment
@@ -29505,7 +29504,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           forwarding_servers:
           - forward_to:
               address: Example address
@@ -29554,7 +29553,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           forwarding_servers:
           - forward_to:
               address: Example address
@@ -29603,7 +29602,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           stub_members:
           - preferred_primaries:
               address: Example address
@@ -29655,7 +29654,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           stub_members:
           - preferred_primaries:
               address: Example address
@@ -29726,7 +29725,7 @@ components:
             shared_with_ms_parent_delegation: false
           extattrs:
             key:
-              value: value
+              value: ""
           _ref: _ref
           name: Example name
           comment: Example comment
@@ -29767,7 +29766,7 @@ components:
             shared_with_ms_parent_delegation: false
           extattrs:
             key:
-              value: value
+              value: ""
           _ref: _ref
           name: Example name
           comment: Example comment

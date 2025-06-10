@@ -3150,11 +3150,10 @@ components:
     ExtAttrs:
       description: Extensible attributes associated with the object.
       example:
-        value: value
+        value: ""
       properties:
         value:
           description: The value of the extensible attribute.
-          type: string
       required:
       - value
       type: object
@@ -3347,7 +3346,7 @@ components:
         address: Example address
         extattrs:
           key:
-            value: value
+            value: ""
         address_ref: Example address_ref
         cap_admin_status_ind: false
         os_version: Example os_version
@@ -3791,7 +3790,7 @@ components:
         cap_if_vlan_assignment_na_reason: Example cap_if_vlan_assignment_na_reason
         extattrs:
           key:
-            value: value
+            value: ""
         cap_if_voice_vlan_ind: false
         last_change: 1
         cap_if_description_ind: false
@@ -7658,7 +7657,7 @@ components:
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           address_ref: Example address_ref
           cap_admin_status_ind: false
           os_version: Example os_version
@@ -7779,7 +7778,7 @@ components:
           cap_if_vlan_assignment_na_reason: Example cap_if_vlan_assignment_na_reason
           extattrs:
             key:
-              value: value
+              value: ""
           cap_if_voice_vlan_ind: false
           last_change: 1
           cap_if_description_ind: false

@@ -6519,11 +6519,10 @@ components:
     ExtAttrs:
       description: Extensible attributes associated with the object.
       example:
-        value: value
+        value: ""
       properties:
         value:
           description: The value of the extensible attribute.
-          type: string
       required:
       - value
       type: object
@@ -6836,7 +6835,7 @@ components:
           expire_days: 1
         extattrs:
           key:
-            value: value
+            value: ""
         security_show_commands:
           show_check_ssl_certificate: false
           show_adp_debug: false
@@ -9032,7 +9031,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         disable: false
         _ref: _ref
         name: Example name
@@ -9092,7 +9091,7 @@ components:
         auth_type: Example auth_type
         extattrs:
           key:
-            value: value
+            value: ""
         use_ssh_keys: false
         time_zone: Example time_zone
         admin_groups:
@@ -9686,7 +9685,7 @@ components:
         submitter_group: Example submitter_group
         extattrs:
           key:
-            value: value
+            value: ""
         failed_notify_to: Example failed_notify_to
         enable_notify_user: false
         enable_rejected_notify: false
@@ -10890,7 +10889,7 @@ components:
         authentication_password: Example authentication_password
         extattrs:
           key:
-            value: value
+            value: ""
         privacy_protocol: Example privacy_protocol
         disable: false
         _ref: _ref
@@ -10978,7 +10977,7 @@ components:
         password: Example password
         extattrs:
           key:
-            value: value
+            value: ""
         home_dir: Example home_dir
         _ref: _ref
         create_home_dir: false
@@ -11174,7 +11173,7 @@ components:
         source_member: Example source_member
         extattrs:
           key:
-            value: value
+            value: ""
         use_disable_multiple_dns_tcp_request: false
         use_current_ruleset: false
         use_events_per_second_per_rule: false
@@ -12082,7 +12081,7 @@ components:
             expire_days: 1
           extattrs:
             key:
-              value: value
+              value: ""
           security_show_commands:
             show_check_ssl_certificate: false
             show_adp_debug: false
@@ -12510,7 +12509,7 @@ components:
             expire_days: 1
           extattrs:
             key:
-              value: value
+              value: ""
           security_show_commands:
             show_check_ssl_certificate: false
             show_adp_debug: false
@@ -12635,7 +12634,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           disable: false
           _ref: _ref
           name: Example name
@@ -12659,7 +12658,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           disable: false
           _ref: _ref
           name: Example name
@@ -12687,7 +12686,7 @@ components:
           auth_type: Example auth_type
           extattrs:
             key:
-              value: value
+              value: ""
           use_ssh_keys: false
           time_zone: Example time_zone
           admin_groups:
@@ -12732,7 +12731,7 @@ components:
           auth_type: Example auth_type
           extattrs:
             key:
-              value: value
+              value: ""
           use_ssh_keys: false
           time_zone: Example time_zone
           admin_groups:
@@ -12919,7 +12918,7 @@ components:
           submitter_group: Example submitter_group
           extattrs:
             key:
-              value: value
+              value: ""
           failed_notify_to: Example failed_notify_to
           enable_notify_user: false
           enable_rejected_notify: false
@@ -12959,7 +12958,7 @@ components:
           submitter_group: Example submitter_group
           extattrs:
             key:
-              value: value
+              value: ""
           failed_notify_to: Example failed_notify_to
           enable_notify_user: false
           enable_rejected_notify: false
@@ -13529,7 +13528,7 @@ components:
           authentication_password: Example authentication_password
           extattrs:
             key:
-              value: value
+              value: ""
           privacy_protocol: Example privacy_protocol
           disable: false
           _ref: _ref
@@ -13557,7 +13556,7 @@ components:
           authentication_password: Example authentication_password
           extattrs:
             key:
-              value: value
+              value: ""
           privacy_protocol: Example privacy_protocol
           disable: false
           _ref: _ref
@@ -13586,7 +13585,7 @@ components:
           password: Example password
           extattrs:
             key:
-              value: value
+              value: ""
           home_dir: Example home_dir
           _ref: _ref
           create_home_dir: false
@@ -13612,7 +13611,7 @@ components:
           password: Example password
           extattrs:
             key:
-              value: value
+              value: ""
           home_dir: Example home_dir
           _ref: _ref
           create_home_dir: false
@@ -13707,7 +13706,7 @@ components:
           source_member: Example source_member
           extattrs:
             key:
-              value: value
+              value: ""
           use_disable_multiple_dns_tcp_request: false
           use_current_ruleset: false
           use_events_per_second_per_rule: false
@@ -13742,7 +13741,7 @@ components:
           source_member: Example source_member
           extattrs:
             key:
-              value: value
+              value: ""
           use_disable_multiple_dns_tcp_request: false
           use_current_ruleset: false
           use_events_per_second_per_rule: false

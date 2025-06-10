@@ -2258,11 +2258,10 @@ components:
     ExtAttrs:
       description: Extensible attributes associated with the object.
       example:
-        value: value
+        value: ""
       properties:
         value:
           description: The value of the extensible attribute.
-          type: string
       required:
       - value
       type: object
@@ -2681,7 +2680,7 @@ components:
         tenant_name: Example tenant_name
         extattrs:
           key:
-            value: value
+            value: ""
         first_seen: 1
         vpc_name: Example vpc_name
         last_seen: 1
@@ -3375,7 +3374,7 @@ components:
         enable_service: false
         extattrs:
           key:
-            value: value
+            value: ""
         allowed_api_admins:
         - remote_admin: Example remote_admin
           local_admin: Example local_admin
@@ -4144,7 +4143,7 @@ components:
           tenant_name: Example tenant_name
           extattrs:
             key:
-              value: value
+              value: ""
           first_seen: 1
           vpc_name: Example vpc_name
           last_seen: 1
@@ -4248,7 +4247,7 @@ components:
           enable_service: false
           extattrs:
             key:
-              value: value
+              value: ""
           allowed_api_admins:
           - remote_admin: Example remote_admin
             local_admin: Example local_admin

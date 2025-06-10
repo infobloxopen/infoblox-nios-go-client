@@ -6308,11 +6308,10 @@ components:
     ExtAttrs:
       description: Extensible attributes associated with the object.
       example:
-        value: value
+        value: ""
       properties:
         value:
           description: The value of the extensible attribute.
-          type: string
       required:
       - value
       type: object
@@ -6403,7 +6402,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         disable: false
         _ref: _ref
         host: Example host
@@ -6561,7 +6560,7 @@ components:
           availability: Example availability
         extattrs:
           key:
-            value: value
+            value: ""
         lb_preferred_topology: Example lb_preferred_topology
         lb_alternate_topology: Example lb_alternate_topology
         lb_preferred_method: Example lb_preferred_method
@@ -6911,7 +6910,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         _ref: _ref
         name: Example name
         comment: Example comment
@@ -6982,7 +6981,7 @@ components:
         - types
         extattrs:
           key:
-            value: value
+            value: ""
         topology: Example topology
         use_ttl: false
         patterns:
@@ -7186,7 +7185,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         port: 1
         _ref: _ref
         name: Example name
@@ -7289,7 +7288,7 @@ components:
         request: Example request
         extattrs:
           key:
-            value: value
+            value: ""
         content_check_op: Example content_check_op
         content_extract_type: Example content_extract_type
         client_cert: Example client_cert
@@ -7471,7 +7470,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         _ref: _ref
         name: Example name
         comment: Example comment
@@ -7549,7 +7548,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         port: 1
         _ref: _ref
         name: Example name
@@ -7634,7 +7633,7 @@ components:
         request: Example request
         extattrs:
           key:
-            value: value
+            value: ""
         client_cert: Example client_cert
         transport: Example transport
         timeout: 1
@@ -7764,7 +7763,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         community: Example community
         version: Example version
         timeout: 1
@@ -7948,7 +7947,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         port: 1
         _ref: _ref
         name: Example name
@@ -8585,7 +8584,7 @@ components:
         display_type: Example display_type
         extattrs:
           key:
-            value: value
+            value: ""
         ipv6_address_list:
         - ipv6_address_list
         - ipv6_address_list
@@ -8921,7 +8920,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           disable: false
           _ref: _ref
           host: Example host
@@ -8958,7 +8957,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           disable: false
           _ref: _ref
           host: Example host
@@ -9010,7 +9009,7 @@ components:
             availability: Example availability
           extattrs:
             key:
-              value: value
+              value: ""
           lb_preferred_topology: Example lb_preferred_topology
           lb_alternate_topology: Example lb_alternate_topology
           lb_preferred_method: Example lb_preferred_method
@@ -9080,7 +9079,7 @@ components:
             availability: Example availability
           extattrs:
             key:
-              value: value
+              value: ""
           lb_preferred_topology: Example lb_preferred_topology
           lb_alternate_topology: Example lb_alternate_topology
           lb_preferred_method: Example lb_preferred_method
@@ -9137,7 +9136,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           _ref: _ref
           name: Example name
           comment: Example comment
@@ -9163,7 +9162,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           _ref: _ref
           name: Example name
           comment: Example comment
@@ -9196,7 +9195,7 @@ components:
           - types
           extattrs:
             key:
-              value: value
+              value: ""
           topology: Example topology
           use_ttl: false
           patterns:
@@ -9245,7 +9244,7 @@ components:
           - types
           extattrs:
             key:
-              value: value
+              value: ""
           topology: Example topology
           use_ttl: false
           patterns:
@@ -9304,7 +9303,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           port: 1
           _ref: _ref
           name: Example name
@@ -9337,7 +9336,7 @@ components:
           request: Example request
           extattrs:
             key:
-              value: value
+              value: ""
           content_check_op: Example content_check_op
           content_extract_type: Example content_extract_type
           client_cert: Example client_cert
@@ -9380,7 +9379,7 @@ components:
           request: Example request
           extattrs:
             key:
-              value: value
+              value: ""
           content_check_op: Example content_check_op
           content_extract_type: Example content_extract_type
           client_cert: Example client_cert
@@ -9422,7 +9421,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           _ref: _ref
           name: Example name
           comment: Example comment
@@ -9449,7 +9448,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           _ref: _ref
           name: Example name
           comment: Example comment
@@ -9477,7 +9476,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           port: 1
           _ref: _ref
           name: Example name
@@ -9505,7 +9504,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           port: 1
           _ref: _ref
           name: Example name
@@ -9535,7 +9534,7 @@ components:
           request: Example request
           extattrs:
             key:
-              value: value
+              value: ""
           client_cert: Example client_cert
           transport: Example transport
           timeout: 1
@@ -9570,7 +9569,7 @@ components:
           request: Example request
           extattrs:
             key:
-              value: value
+              value: ""
           client_cert: Example client_cert
           transport: Example transport
           timeout: 1
@@ -9605,7 +9604,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           community: Example community
           version: Example version
           timeout: 1
@@ -9651,7 +9650,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           community: Example community
           version: Example version
           timeout: 1
@@ -9698,7 +9697,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           port: 1
           _ref: _ref
           name: Example name
@@ -9726,7 +9725,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           port: 1
           _ref: _ref
           name: Example name
@@ -10113,7 +10112,7 @@ components:
           display_type: Example display_type
           extattrs:
             key:
-              value: value
+              value: ""
           ipv6_address_list:
           - ipv6_address_list
           - ipv6_address_list
