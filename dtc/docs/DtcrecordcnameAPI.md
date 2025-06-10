@@ -1,20 +1,20 @@
-# DtcrecordcnameAPI
+# DtcRecordCnameAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcrecordcnameAPI.md#Get) | **Get** /dtc:record:cname | Retrieve dtc:record:cname objects
-[**Post**](DtcrecordcnameAPI.md#Post) | **Post** /dtc:record:cname | Create a dtc:record:cname object
-[**ReferenceDelete**](DtcrecordcnameAPI.md#ReferenceDelete) | **Delete** /dtc:record:cname/{reference} | Delete a dtc:record:cname object
-[**ReferenceGet**](DtcrecordcnameAPI.md#ReferenceGet) | **Get** /dtc:record:cname/{reference} | Get a specific dtc:record:cname object
-[**ReferencePut**](DtcrecordcnameAPI.md#ReferencePut) | **Put** /dtc:record:cname/{reference} | Update a dtc:record:cname object
+[**DtcrecordcnameGet**](DtcRecordCnameAPI.md#DtcrecordcnameGet) | **Get** /dtc:record:cname | Retrieve dtc:record:cname objects
+[**DtcrecordcnamePost**](DtcRecordCnameAPI.md#DtcrecordcnamePost) | **Post** /dtc:record:cname | Create a dtc:record:cname object
+[**DtcrecordcnameReferenceDelete**](DtcRecordCnameAPI.md#DtcrecordcnameReferenceDelete) | **Delete** /dtc:record:cname/{reference} | Delete a dtc:record:cname object
+[**DtcrecordcnameReferenceGet**](DtcRecordCnameAPI.md#DtcrecordcnameReferenceGet) | **Get** /dtc:record:cname/{reference} | Get a specific dtc:record:cname object
+[**DtcrecordcnameReferencePut**](DtcRecordCnameAPI.md#DtcrecordcnameReferencePut) | **Put** /dtc:record:cname/{reference} | Update a dtc:record:cname object
 
 
 
-## Get
+## DtcrecordcnameGet
 
-> ListDtcRecordCnameResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcRecordCnameResponse DtcrecordcnameGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:record:cname objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordcnameAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcRecordCnameAPI.DtcrecordcnameGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordcnameAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordCnameAPI.DtcrecordcnameGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcRecordCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordcnameAPI.Get`: %v\n", resp)
+	// response from `DtcrecordcnameGet`: ListDtcRecordCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordCnameAPI.DtcrecordcnameGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordcnameAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordCnameAPIDtcrecordcnameGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## DtcrecordcnamePost
 
-> CreateDtcRecordCnameResponse Post(ctx).DtcRecordCname(dtcRecordCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateDtcRecordCnameResponse DtcrecordcnamePost(ctx).DtcRecordCname(dtcRecordCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a dtc:record:cname object
 
@@ -109,13 +109,13 @@ func main() {
 	dtcRecordCname := *dtc.NewDtcRecordCname() // DtcRecordCname | Object data to create
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordcnameAPI.Post(context.Background()).DtcRecordCname(dtcRecordCname).Execute()
+	resp, r, err := apiClient.DtcRecordCnameAPI.DtcrecordcnamePost(context.Background()).DtcRecordCname(dtcRecordCname).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordcnameAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordCnameAPI.DtcrecordcnamePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateDtcRecordCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordcnameAPI.Post`: %v\n", resp)
+	// response from `DtcrecordcnamePost`: CreateDtcRecordCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordCnameAPI.DtcrecordcnamePost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordcnameAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordCnameAPIDtcrecordcnamePostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## DtcrecordcnameReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> DtcrecordcnameReferenceDelete(ctx, reference).Execute()
 
 Delete a dtc:record:cname object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:record:cname object
 
 	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtcrecordcnameAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.DtcRecordCnameAPI.DtcrecordcnameReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordcnameAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordCnameAPI.DtcrecordcnameReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordcnameAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordCnameAPIDtcrecordcnameReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtcrecordcnameReferenceGet
 
-> GetDtcRecordCnameResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcRecordCnameResponse DtcrecordcnameReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:record:cname object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:record:cname object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordcnameAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcRecordCnameAPI.DtcrecordcnameReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordcnameAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordCnameAPI.DtcrecordcnameReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcRecordCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordcnameAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtcrecordcnameReferenceGet`: GetDtcRecordCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordCnameAPI.DtcrecordcnameReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordcnameAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordCnameAPIDtcrecordcnameReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtcrecordcnameReferencePut
 
-> UpdateDtcRecordCnameResponse ReferencePut(ctx, reference).DtcRecordCname(dtcRecordCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcRecordCnameResponse DtcrecordcnameReferencePut(ctx, reference).DtcRecordCname(dtcRecordCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:record:cname object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcRecordCname := *dtc.NewDtcRecordCname() // DtcRecordCname | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordcnameAPI.ReferencePut(context.Background(), reference).DtcRecordCname(dtcRecordCname).Execute()
+	resp, r, err := apiClient.DtcRecordCnameAPI.DtcrecordcnameReferencePut(context.Background(), reference).DtcRecordCname(dtcRecordCname).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordcnameAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordCnameAPI.DtcrecordcnameReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcRecordCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordcnameAPI.ReferencePut`: %v\n", resp)
+	// response from `DtcrecordcnameReferencePut`: UpdateDtcRecordCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordCnameAPI.DtcrecordcnameReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordcnameAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordCnameAPIDtcrecordcnameReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

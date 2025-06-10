@@ -1,20 +1,20 @@
-# TacacsplusauthserviceAPI
+# TacacsplusAuthserviceAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](TacacsplusauthserviceAPI.md#Get) | **Get** /tacacsplus:authservice | Retrieve tacacsplus:authservice objects
-[**Post**](TacacsplusauthserviceAPI.md#Post) | **Post** /tacacsplus:authservice | Create a tacacsplus:authservice object
-[**ReferenceDelete**](TacacsplusauthserviceAPI.md#ReferenceDelete) | **Delete** /tacacsplus:authservice/{reference} | Delete a tacacsplus:authservice object
-[**ReferenceGet**](TacacsplusauthserviceAPI.md#ReferenceGet) | **Get** /tacacsplus:authservice/{reference} | Get a specific tacacsplus:authservice object
-[**ReferencePut**](TacacsplusauthserviceAPI.md#ReferencePut) | **Put** /tacacsplus:authservice/{reference} | Update a tacacsplus:authservice object
+[**TacacsplusauthserviceGet**](TacacsplusAuthserviceAPI.md#TacacsplusauthserviceGet) | **Get** /tacacsplus:authservice | Retrieve tacacsplus:authservice objects
+[**TacacsplusauthservicePost**](TacacsplusAuthserviceAPI.md#TacacsplusauthservicePost) | **Post** /tacacsplus:authservice | Create a tacacsplus:authservice object
+[**TacacsplusauthserviceReferenceDelete**](TacacsplusAuthserviceAPI.md#TacacsplusauthserviceReferenceDelete) | **Delete** /tacacsplus:authservice/{reference} | Delete a tacacsplus:authservice object
+[**TacacsplusauthserviceReferenceGet**](TacacsplusAuthserviceAPI.md#TacacsplusauthserviceReferenceGet) | **Get** /tacacsplus:authservice/{reference} | Get a specific tacacsplus:authservice object
+[**TacacsplusauthserviceReferencePut**](TacacsplusAuthserviceAPI.md#TacacsplusauthserviceReferencePut) | **Put** /tacacsplus:authservice/{reference} | Update a tacacsplus:authservice object
 
 
 
-## Get
+## TacacsplusauthserviceGet
 
-> ListTacacsplusAuthserviceResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListTacacsplusAuthserviceResponse TacacsplusauthserviceGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve tacacsplus:authservice objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.TacacsplusauthserviceAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.TacacsplusAuthserviceAPI.TacacsplusauthserviceGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TacacsplusauthserviceAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TacacsplusAuthserviceAPI.TacacsplusauthserviceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListTacacsplusAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `TacacsplusauthserviceAPI.Get`: %v\n", resp)
+	// response from `TacacsplusauthserviceGet`: ListTacacsplusAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `TacacsplusAuthserviceAPI.TacacsplusauthserviceGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `TacacsplusauthserviceAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## TacacsplusauthservicePost
 
-> CreateTacacsplusAuthserviceResponse Post(ctx).TacacsplusAuthservice(tacacsplusAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateTacacsplusAuthserviceResponse TacacsplusauthservicePost(ctx).TacacsplusAuthservice(tacacsplusAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a tacacsplus:authservice object
 
@@ -109,13 +109,13 @@ func main() {
 	tacacsplusAuthservice := *security.NewTacacsplusAuthservice() // TacacsplusAuthservice | Object data to create
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.TacacsplusauthserviceAPI.Post(context.Background()).TacacsplusAuthservice(tacacsplusAuthservice).Execute()
+	resp, r, err := apiClient.TacacsplusAuthserviceAPI.TacacsplusauthservicePost(context.Background()).TacacsplusAuthservice(tacacsplusAuthservice).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TacacsplusauthserviceAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TacacsplusAuthserviceAPI.TacacsplusauthservicePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateTacacsplusAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `TacacsplusauthserviceAPI.Post`: %v\n", resp)
+	// response from `TacacsplusauthservicePost`: CreateTacacsplusAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `TacacsplusAuthserviceAPI.TacacsplusauthservicePost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `TacacsplusauthserviceAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `TacacsplusAuthserviceAPITacacsplusauthservicePostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## TacacsplusauthserviceReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> TacacsplusauthserviceReferenceDelete(ctx, reference).Execute()
 
 Delete a tacacsplus:authservice object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the tacacsplus:authservice object
 
 	apiClient := security.NewAPIClient()
-	r, err := apiClient.TacacsplusauthserviceAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.TacacsplusAuthserviceAPI.TacacsplusauthserviceReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TacacsplusauthserviceAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TacacsplusAuthserviceAPI.TacacsplusauthserviceReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `TacacsplusauthserviceAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `TacacsplusAuthserviceAPITacacsplusauthserviceReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## TacacsplusauthserviceReferenceGet
 
-> GetTacacsplusAuthserviceResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetTacacsplusAuthserviceResponse TacacsplusauthserviceReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific tacacsplus:authservice object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the tacacsplus:authservice object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.TacacsplusauthserviceAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.TacacsplusAuthserviceAPI.TacacsplusauthserviceReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TacacsplusauthserviceAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TacacsplusAuthserviceAPI.TacacsplusauthserviceReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetTacacsplusAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `TacacsplusauthserviceAPI.ReferenceGet`: %v\n", resp)
+	// response from `TacacsplusauthserviceReferenceGet`: GetTacacsplusAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `TacacsplusAuthserviceAPI.TacacsplusauthserviceReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `TacacsplusauthserviceAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## TacacsplusauthserviceReferencePut
 
-> UpdateTacacsplusAuthserviceResponse ReferencePut(ctx, reference).TacacsplusAuthservice(tacacsplusAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateTacacsplusAuthserviceResponse TacacsplusauthserviceReferencePut(ctx, reference).TacacsplusAuthservice(tacacsplusAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a tacacsplus:authservice object
 
@@ -318,13 +318,13 @@ func main() {
 	tacacsplusAuthservice := *security.NewTacacsplusAuthservice() // TacacsplusAuthservice | Object data to update
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.TacacsplusauthserviceAPI.ReferencePut(context.Background(), reference).TacacsplusAuthservice(tacacsplusAuthservice).Execute()
+	resp, r, err := apiClient.TacacsplusAuthserviceAPI.TacacsplusauthserviceReferencePut(context.Background(), reference).TacacsplusAuthservice(tacacsplusAuthservice).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TacacsplusauthserviceAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TacacsplusAuthserviceAPI.TacacsplusauthserviceReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateTacacsplusAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `TacacsplusauthserviceAPI.ReferencePut`: %v\n", resp)
+	// response from `TacacsplusauthserviceReferencePut`: UpdateTacacsplusAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `TacacsplusAuthserviceAPI.TacacsplusauthserviceReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `TacacsplusauthserviceAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

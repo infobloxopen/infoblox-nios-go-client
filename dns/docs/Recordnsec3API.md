@@ -1,17 +1,17 @@
-# Recordnsec3API
+# RecordNsec3API
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](Recordnsec3API.md#Get) | **Get** /record:nsec3 | Retrieve record:nsec3 objects
-[**ReferenceGet**](Recordnsec3API.md#ReferenceGet) | **Get** /record:nsec3/{reference} | Get a specific record:nsec3 object
+[**Recordnsec3Get**](RecordNsec3API.md#Recordnsec3Get) | **Get** /record:nsec3 | Retrieve record:nsec3 objects
+[**Recordnsec3ReferenceGet**](RecordNsec3API.md#Recordnsec3ReferenceGet) | **Get** /record:nsec3/{reference} | Get a specific record:nsec3 object
 
 
 
-## Get
+## Recordnsec3Get
 
-> ListRecordNsec3Response Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordNsec3Response Recordnsec3Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:nsec3 objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.Recordnsec3API.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordNsec3API.Recordnsec3Get(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Recordnsec3API.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNsec3API.Recordnsec3Get``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordNsec3Response
-	fmt.Fprintf(os.Stdout, "Response from `Recordnsec3API.Get`: %v\n", resp)
+	// response from `Recordnsec3Get`: ListRecordNsec3Response
+	fmt.Fprintf(os.Stdout, "Response from `RecordNsec3API.Recordnsec3Get`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `Recordnsec3APIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNsec3APIRecordnsec3GetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Recordnsec3ReferenceGet
 
-> GetRecordNsec3Response ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordNsec3Response Recordnsec3ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:nsec3 object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:nsec3 object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.Recordnsec3API.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordNsec3API.Recordnsec3ReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Recordnsec3API.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNsec3API.Recordnsec3ReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordNsec3Response
-	fmt.Fprintf(os.Stdout, "Response from `Recordnsec3API.ReferenceGet`: %v\n", resp)
+	// response from `Recordnsec3ReferenceGet`: GetRecordNsec3Response
+	fmt.Fprintf(os.Stdout, "Response from `RecordNsec3API.Recordnsec3ReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `Recordnsec3APIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNsec3APIRecordnsec3ReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

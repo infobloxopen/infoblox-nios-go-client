@@ -1,18 +1,18 @@
-# GridfiledistributionAPI
+# GridFiledistributionAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](GridfiledistributionAPI.md#Get) | **Get** /grid:filedistribution | Retrieve grid:filedistribution objects
-[**ReferenceGet**](GridfiledistributionAPI.md#ReferenceGet) | **Get** /grid:filedistribution/{reference} | Get a specific grid:filedistribution object
-[**ReferencePut**](GridfiledistributionAPI.md#ReferencePut) | **Put** /grid:filedistribution/{reference} | Update a grid:filedistribution object
+[**GridfiledistributionGet**](GridFiledistributionAPI.md#GridfiledistributionGet) | **Get** /grid:filedistribution | Retrieve grid:filedistribution objects
+[**GridfiledistributionReferenceGet**](GridFiledistributionAPI.md#GridfiledistributionReferenceGet) | **Get** /grid:filedistribution/{reference} | Get a specific grid:filedistribution object
+[**GridfiledistributionReferencePut**](GridFiledistributionAPI.md#GridfiledistributionReferencePut) | **Put** /grid:filedistribution/{reference} | Update a grid:filedistribution object
 
 
 
-## Get
+## GridfiledistributionGet
 
-> ListGridFiledistributionResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridFiledistributionResponse GridfiledistributionGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:filedistribution objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridfiledistributionAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.GridFiledistributionAPI.GridfiledistributionGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridfiledistributionAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridFiledistributionAPI.GridfiledistributionGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListGridFiledistributionResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridfiledistributionAPI.Get`: %v\n", resp)
+	// response from `GridfiledistributionGet`: ListGridFiledistributionResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridFiledistributionAPI.GridfiledistributionGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridfiledistributionAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridFiledistributionAPIGridfiledistributionGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## GridfiledistributionReferenceGet
 
-> GetGridFiledistributionResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridFiledistributionResponse GridfiledistributionReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:filedistribution object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:filedistribution object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridfiledistributionAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridFiledistributionAPI.GridfiledistributionReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridfiledistributionAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridFiledistributionAPI.GridfiledistributionReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetGridFiledistributionResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridfiledistributionAPI.ReferenceGet`: %v\n", resp)
+	// response from `GridfiledistributionReferenceGet`: GetGridFiledistributionResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridFiledistributionAPI.GridfiledistributionReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridfiledistributionAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridFiledistributionAPIGridfiledistributionReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## GridfiledistributionReferencePut
 
-> UpdateGridFiledistributionResponse ReferencePut(ctx, reference).GridFiledistribution(gridFiledistribution).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridFiledistributionResponse GridfiledistributionReferencePut(ctx, reference).GridFiledistribution(gridFiledistribution).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:filedistribution object
 
@@ -180,13 +180,13 @@ func main() {
 	gridFiledistribution := *grid.NewGridFiledistribution() // GridFiledistribution | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridfiledistributionAPI.ReferencePut(context.Background(), reference).GridFiledistribution(gridFiledistribution).Execute()
+	resp, r, err := apiClient.GridFiledistributionAPI.GridfiledistributionReferencePut(context.Background(), reference).GridFiledistribution(gridFiledistribution).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridfiledistributionAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridFiledistributionAPI.GridfiledistributionReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateGridFiledistributionResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridfiledistributionAPI.ReferencePut`: %v\n", resp)
+	// response from `GridfiledistributionReferencePut`: UpdateGridFiledistributionResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridFiledistributionAPI.GridfiledistributionReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridfiledistributionAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridFiledistributionAPIGridfiledistributionReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

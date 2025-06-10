@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**AtpObjectReset** | Pointer to **map[string]interface{}** |  | [optional] 
 **CurrentRuleset** | Pointer to **string** | The current Grid ruleset. | [optional] 
 **DisableMultipleDnsTcpRequest** | Pointer to **bool** | Determines if multiple BIND responses via TCP connection are disabled. | [optional] 
 **EnableAccelRespBeforeThreatProtection** | Pointer to **bool** | Determines if DNS responses are sent from acceleration cache before applying Threat Protection rules. Recommended for better performance when using DNS Cache Acceleration. | [optional] 
@@ -21,7 +20,6 @@ Name | Type | Description | Notes
 **OutboundSettings** | Pointer to [**GridThreatprotectionOutboundSettings**](GridThreatprotectionOutboundSettings.md) |  | [optional] 
 **RuleUpdatePolicy** | Pointer to **string** | The update rule policy. | [optional] 
 **ScheduledDownload** | Pointer to [**GridThreatprotectionScheduledDownload**](GridThreatprotectionScheduledDownload.md) |  | [optional] 
-**TestAtpServerConnectivity** | Pointer to **map[string]interface{}** |  | [optional] 
 **Result** | Pointer to [**GridThreatprotection**](GridThreatprotection.md) |  | [optional] 
 
 ## Methods
@@ -67,31 +65,6 @@ SetRef sets Ref field to given value.
 `func (o *GetGridThreatprotectionResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
-
-### GetAtpObjectReset
-
-`func (o *GetGridThreatprotectionResponse) GetAtpObjectReset() map[string]interface{}`
-
-GetAtpObjectReset returns the AtpObjectReset field if non-nil, zero value otherwise.
-
-### GetAtpObjectResetOk
-
-`func (o *GetGridThreatprotectionResponse) GetAtpObjectResetOk() (*map[string]interface{}, bool)`
-
-GetAtpObjectResetOk returns a tuple with the AtpObjectReset field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAtpObjectReset
-
-`func (o *GetGridThreatprotectionResponse) SetAtpObjectReset(v map[string]interface{})`
-
-SetAtpObjectReset sets AtpObjectReset field to given value.
-
-### HasAtpObjectReset
-
-`func (o *GetGridThreatprotectionResponse) HasAtpObjectReset() bool`
-
-HasAtpObjectReset returns a boolean if a field has been set.
 
 ### GetCurrentRuleset
 
@@ -467,31 +440,6 @@ SetScheduledDownload sets ScheduledDownload field to given value.
 `func (o *GetGridThreatprotectionResponse) HasScheduledDownload() bool`
 
 HasScheduledDownload returns a boolean if a field has been set.
-
-### GetTestAtpServerConnectivity
-
-`func (o *GetGridThreatprotectionResponse) GetTestAtpServerConnectivity() map[string]interface{}`
-
-GetTestAtpServerConnectivity returns the TestAtpServerConnectivity field if non-nil, zero value otherwise.
-
-### GetTestAtpServerConnectivityOk
-
-`func (o *GetGridThreatprotectionResponse) GetTestAtpServerConnectivityOk() (*map[string]interface{}, bool)`
-
-GetTestAtpServerConnectivityOk returns a tuple with the TestAtpServerConnectivity field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTestAtpServerConnectivity
-
-`func (o *GetGridThreatprotectionResponse) SetTestAtpServerConnectivity(v map[string]interface{})`
-
-SetTestAtpServerConnectivity sets TestAtpServerConnectivity field to given value.
-
-### HasTestAtpServerConnectivity
-
-`func (o *GetGridThreatprotectionResponse) HasTestAtpServerConnectivity() bool`
-
-HasTestAtpServerConnectivity returns a boolean if a field has been set.
 
 ### GetResult
 

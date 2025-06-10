@@ -1,0 +1,2925 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Infoblox
+    url: https://www.infoblox.com
+  description: OpenAPI specification for Infoblox NIOS WAPI PARENTALCONTROL objects
+  license:
+    name: Infoblox License
+    url: https://www.infoblox.com
+  termsOfService: https://www.infoblox.com
+  title: Infoblox PARENTALCONTROL API
+  version: 2.13.6
+servers:
+- description: NIOS WAPI server
+  url: /wapi/v2.13.6
+tags:
+- description: Operations for parentalcontrol:avp objects
+  name: ParentalcontrolAvp
+- description: Operations for parentalcontrol:blockingpolicy objects
+  name: ParentalcontrolBlockingpolicy
+- description: Operations for parentalcontrol:subscriber objects
+  name: ParentalcontrolSubscriber
+- description: Operations for parentalcontrol:subscriberrecord objects
+  name: ParentalcontrolSubscriberrecord
+- description: Operations for parentalcontrol:subscribersite objects
+  name: ParentalcontrolSubscribersite
+paths:
+  /parentalcontrol:avp:
+    get:
+      description: Returns a list of parentalcontrol:avp objects matching the search
+        criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListParentalcontrolAvpResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve parentalcontrol:avp objects
+      tags:
+      - ParentalcontrolAvp
+    post:
+      description: Creates a new parentalcontrol:avp object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParentalcontrolAvp'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateParentalcontrolAvpResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a parentalcontrol:avp object
+      tags:
+      - ParentalcontrolAvp
+      x-tf-resource: nios_parentalcontrol_parentalcontrol_avp
+      x-tf-datasource: nios_parentalcontrol_parentalcontrol_avp
+  /parentalcontrol:avp/{reference}:
+    delete:
+      description: Deletes a specific parentalcontrol:avp object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:avp object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a parentalcontrol:avp object
+      tags:
+      - ParentalcontrolAvp
+    get:
+      description: Returns a specific parentalcontrol:avp object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:avp object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetParentalcontrolAvpResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific parentalcontrol:avp object
+      tags:
+      - ParentalcontrolAvp
+    put:
+      description: Updates a specific parentalcontrol:avp object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:avp object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParentalcontrolAvp'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateParentalcontrolAvpResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a parentalcontrol:avp object
+      tags:
+      - ParentalcontrolAvp
+  /parentalcontrol:blockingpolicy:
+    get:
+      description: Returns a list of parentalcontrol:blockingpolicy objects matching
+        the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListParentalcontrolBlockingpolicyResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve parentalcontrol:blockingpolicy objects
+      tags:
+      - ParentalcontrolBlockingpolicy
+    post:
+      description: Creates a new parentalcontrol:blockingpolicy object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParentalcontrolBlockingpolicy'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateParentalcontrolBlockingpolicyResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a parentalcontrol:blockingpolicy object
+      tags:
+      - ParentalcontrolBlockingpolicy
+      x-tf-resource: nios_parentalcontrol_parentalcontrol_blockingpolicy
+      x-tf-datasource: nios_parentalcontrol_parentalcontrol_blockingpolicy
+  /parentalcontrol:blockingpolicy/{reference}:
+    delete:
+      description: Deletes a specific parentalcontrol:blockingpolicy object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:blockingpolicy object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a parentalcontrol:blockingpolicy object
+      tags:
+      - ParentalcontrolBlockingpolicy
+    get:
+      description: Returns a specific parentalcontrol:blockingpolicy object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:blockingpolicy object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetParentalcontrolBlockingpolicyResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific parentalcontrol:blockingpolicy object
+      tags:
+      - ParentalcontrolBlockingpolicy
+    put:
+      description: Updates a specific parentalcontrol:blockingpolicy object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:blockingpolicy object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParentalcontrolBlockingpolicy'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateParentalcontrolBlockingpolicyResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a parentalcontrol:blockingpolicy object
+      tags:
+      - ParentalcontrolBlockingpolicy
+  /parentalcontrol:subscriber:
+    get:
+      description: Returns a list of parentalcontrol:subscriber objects matching the
+        search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListParentalcontrolSubscriberResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve parentalcontrol:subscriber objects
+      tags:
+      - ParentalcontrolSubscriber
+  /parentalcontrol:subscriber/{reference}:
+    get:
+      description: Returns a specific parentalcontrol:subscriber object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:subscriber object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetParentalcontrolSubscriberResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific parentalcontrol:subscriber object
+      tags:
+      - ParentalcontrolSubscriber
+    put:
+      description: Updates a specific parentalcontrol:subscriber object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:subscriber object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParentalcontrolSubscriber'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateParentalcontrolSubscriberResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a parentalcontrol:subscriber object
+      tags:
+      - ParentalcontrolSubscriber
+  /parentalcontrol:subscriberrecord:
+    get:
+      description: Returns a list of parentalcontrol:subscriberrecord objects matching
+        the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListParentalcontrolSubscriberrecordResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve parentalcontrol:subscriberrecord objects
+      tags:
+      - ParentalcontrolSubscriberrecord
+    post:
+      description: Creates a new parentalcontrol:subscriberrecord object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParentalcontrolSubscriberrecord'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateParentalcontrolSubscriberrecordResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a parentalcontrol:subscriberrecord object
+      tags:
+      - ParentalcontrolSubscriberrecord
+      x-tf-resource: nios_parentalcontrol_parentalcontrol_subscriberrecord
+      x-tf-datasource: nios_parentalcontrol_parentalcontrol_subscriberrecord
+  /parentalcontrol:subscriberrecord/{reference}:
+    delete:
+      description: Deletes a specific parentalcontrol:subscriberrecord object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:subscriberrecord object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a parentalcontrol:subscriberrecord object
+      tags:
+      - ParentalcontrolSubscriberrecord
+    get:
+      description: Returns a specific parentalcontrol:subscriberrecord object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:subscriberrecord object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetParentalcontrolSubscriberrecordResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific parentalcontrol:subscriberrecord object
+      tags:
+      - ParentalcontrolSubscriberrecord
+    put:
+      description: Updates a specific parentalcontrol:subscriberrecord object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:subscriberrecord object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParentalcontrolSubscriberrecord'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateParentalcontrolSubscriberrecordResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a parentalcontrol:subscriberrecord object
+      tags:
+      - ParentalcontrolSubscriberrecord
+  /parentalcontrol:subscribersite:
+    get:
+      description: Returns a list of parentalcontrol:subscribersite objects matching
+        the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListParentalcontrolSubscribersiteResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve parentalcontrol:subscribersite objects
+      tags:
+      - ParentalcontrolSubscribersite
+    post:
+      description: Creates a new parentalcontrol:subscribersite object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParentalcontrolSubscribersite'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateParentalcontrolSubscribersiteResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a parentalcontrol:subscribersite object
+      tags:
+      - ParentalcontrolSubscribersite
+      x-tf-resource: nios_parentalcontrol_parentalcontrol_subscribersite
+      x-tf-datasource: nios_parentalcontrol_parentalcontrol_subscribersite
+      x-sdk-default-ext-attrs: true
+  /parentalcontrol:subscribersite/{reference}:
+    delete:
+      description: Deletes a specific parentalcontrol:subscribersite object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:subscribersite object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a parentalcontrol:subscribersite object
+      tags:
+      - ParentalcontrolSubscribersite
+    get:
+      description: Returns a specific parentalcontrol:subscribersite object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:subscribersite object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetParentalcontrolSubscribersiteResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific parentalcontrol:subscribersite object
+      tags:
+      - ParentalcontrolSubscribersite
+    put:
+      description: Updates a specific parentalcontrol:subscribersite object by reference
+      parameters:
+      - description: Reference of the parentalcontrol:subscribersite object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParentalcontrolSubscribersite'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateParentalcontrolSubscribersiteResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a parentalcontrol:subscribersite object
+      tags:
+      - ParentalcontrolSubscribersite
+      x-sdk-default-ext-attrs: true
+components:
+  parameters:
+    ReturnFields:
+      description: Enter the field names followed by comma
+      explode: true
+      in: query
+      name: _return_fields
+      required: false
+      schema:
+        type: string
+      style: form
+    ReturnFieldsPlus:
+      description: "Enter the field names followed by comma, this returns the required\
+        \ fields along with the default fields"
+      explode: true
+      in: query
+      name: _return_fields+
+      required: false
+      schema:
+        type: string
+      style: form
+    MaxResults:
+      description: Enter the number of results to be fetched
+      explode: true
+      in: query
+      name: _max_results
+      required: false
+      schema:
+        format: int32
+        minimum: 1
+        type: integer
+      style: form
+    ReturnAsObject:
+      description: Select 1 if result is required as an object
+      explode: true
+      in: query
+      name: _return_as_object
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Paging:
+      description: Control paging of results
+      explode: true
+      in: query
+      name: _paging
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    PageId:
+      description: Page id for retrieving next page of results
+      explode: true
+      in: query
+      name: _page_id
+      required: false
+      schema:
+        type: string
+      style: form
+    ProxySearch:
+      description: Search Grid members for data
+      explode: true
+      in: query
+      name: _proxy_search
+      required: false
+      schema:
+        type: string
+      style: form
+    Schema:
+      description: Return schema for this object type
+      explode: true
+      in: query
+      name: _schema
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaVersion:
+      description: Schema version to use
+      explode: true
+      in: query
+      name: _schema_version
+      required: false
+      schema:
+        enum:
+        - 1
+        - 2
+        type: integer
+      style: form
+    GetDoc:
+      description: Return documentation with schema
+      explode: true
+      in: query
+      name: _get_doc
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaSearchable:
+      description: Return searchable fields with schema
+      explode: true
+      in: query
+      name: _schema_searchable
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Inheritance:
+      description: "If this option is set to True, fields which support inheritance,\
+        \ will display data properly."
+      explode: true
+      in: query
+      name: _inheritance
+      required: false
+      schema:
+        type: boolean
+      style: form
+    filters:
+      explode: false
+      in: query
+      name: filters
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    ExtAttrFilters:
+      explode: false
+      in: query
+      name: extattrfilter
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    Method:
+      description: Enter the method type for the request
+      explode: true
+      in: query
+      name: _method
+      required: false
+      schema:
+        type: string
+      style: form
+    Body:
+      explode: true
+      in: query
+      name: body
+      required: false
+      schema:
+        type: object
+      style: form
+  schemas:
+    ExtAttrs:
+      description: Extensible attributes associated with the object.
+      example:
+        value: ""
+      properties:
+        value:
+          description: The value of the extensible attribute.
+      required:
+      - value
+      type: object
+    ParentalcontrolAvp:
+      additionalProperties: false
+      example:
+        value_type: Example value_type
+        user_defined: false
+        is_restricted: false
+        vendor_id: 1
+        _ref: _ref
+        name: Example name
+        comment: Example comment
+        type: 1
+        domain_types:
+        - domain_types
+        - domain_types
+        vendor_type: 1
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        comment:
+          description: The comment for the AVP.
+          example: Example comment
+          type: string
+        domain_types:
+          description: The list of domains applicable to AVP.
+          enum:
+          - SUBS_ID
+          - ANCILLARY
+          - NAS_CONTEXT
+          - IP_SPACE_DIS
+          items:
+            type: string
+          type: array
+        is_restricted:
+          description: Determines if AVP is restricted to domains.
+          example: false
+          type: boolean
+        name:
+          description: The name of AVP.
+          example: Example name
+          type: string
+        type:
+          description: The type of AVP as per RFC 2865/2866.
+          example: 1
+          format: int64
+          type: integer
+        user_defined:
+          description: Determines if AVP was defined by user.
+          example: false
+          readOnly: true
+          type: boolean
+        value_type:
+          description: The type of value.
+          enum:
+          - IPV6ADDR
+          - STRING
+          - DATE
+          - INTEGER
+          - BYTE
+          - IPV6IFID
+          - IPADDR
+          - SHORT
+          - IPV6PREFIX
+          - OCTETS
+          - INTEGER64
+          example: Example value_type
+          type: string
+        vendor_id:
+          description: The vendor ID as per RFC 2865/2866.
+          example: 1
+          format: int64
+          type: integer
+        vendor_type:
+          description: The vendor type as per RFC 2865/2866.
+          example: 1
+          format: int64
+          type: integer
+      type: object
+    ListParentalcontrolAvpResponse:
+      oneOf:
+      - description: The response format to retrieve __ParentalcontrolAvp__ objects.
+        items:
+          $ref: '#/components/schemas/ParentalcontrolAvp'
+        title: ListParentalcontrolAvpResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListParentalcontrolAvpResponseObject'
+    CreateParentalcontrolAvpResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateParentalcontrolAvpResponseAsObject'
+      - description: The response format to create __ParentalcontrolAvp__.
+        title: CreateParentalcontrolAvpResponse
+        type: string
+    GetParentalcontrolAvpResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ParentalcontrolAvp'
+      - $ref: '#/components/schemas/GetParentalcontrolAvpResponseObjectAsResult'
+    UpdateParentalcontrolAvpResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateParentalcontrolAvpResponseAsObject'
+      - description: The response format to update __ParentalcontrolAvp__ .
+        title: UpdateParentalcontrolAvpResponse
+        type: string
+    ParentalcontrolBlockingpolicy:
+      additionalProperties: false
+      example:
+        _ref: _ref
+        name: Example name
+        value: Example value
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        name:
+          description: The name of the blocking policy.
+          example: Example name
+          type: string
+        value:
+          description: The 32 bit hex value of the blocking policy.
+          example: Example value
+          type: string
+      type: object
+    ListParentalcontrolBlockingpolicyResponse:
+      oneOf:
+      - description: The response format to retrieve __ParentalcontrolBlockingpolicy__
+          objects.
+        items:
+          $ref: '#/components/schemas/ParentalcontrolBlockingpolicy'
+        title: ListParentalcontrolBlockingpolicyResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListParentalcontrolBlockingpolicyResponseObject'
+    CreateParentalcontrolBlockingpolicyResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateParentalcontrolBlockingpolicyResponseAsObject'
+      - description: The response format to create __ParentalcontrolBlockingpolicy__.
+        title: CreateParentalcontrolBlockingpolicyResponse
+        type: string
+    GetParentalcontrolBlockingpolicyResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ParentalcontrolBlockingpolicy'
+      - $ref: '#/components/schemas/GetParentalcontrolBlockingpolicyResponseObjectAsResult'
+    UpdateParentalcontrolBlockingpolicyResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateParentalcontrolBlockingpolicyResponseAsObject'
+      - description: The response format to update __ParentalcontrolBlockingpolicy__
+          .
+        title: UpdateParentalcontrolBlockingpolicyResponse
+        type: string
+    ParentalcontrolSubscriber:
+      additionalProperties: false
+      example:
+        cat_acctname: Example cat_acctname
+        interim_accounting_interval: 1
+        category_url: Example category_url
+        ip_space_discriminator: Example ip_space_discriminator
+        zvelo_update_failure_in_days: 1
+        alt_subscriber_id_subexpression: 1
+        enable_mgmt_only_nas: false
+        proxy_password: Example proxy_password
+        ancillaries:
+        - ancillaries
+        - ancillaries
+        subscriber_id: Example subscriber_id
+        subscriber_id_subexpression: 1
+        ip_space_disc_regexp: Example ip_space_disc_regexp
+        log_guest_lookups: false
+        alt_subscriber_id: Example alt_subscriber_id
+        nas_context_info: Example nas_context_info
+        local_id: Example local_id
+        ip_space_disc_subexpression: 1
+        proxy_username: Example proxy_username
+        alt_subscriber_id_regexp: Example alt_subscriber_id_regexp
+        cat_update_frequency: 1
+        local_id_regexp: Example local_id_regexp
+        local_id_subexpression: 1
+        enable_parental_control: false
+        pc_zone_name: Example pc_zone_name
+        ip_anchors:
+        - ip_anchors
+        - ip_anchors
+        subscriber_id_regexp: Example subscriber_id_regexp
+        cat_password: Example cat_password
+        _ref: _ref
+        proxy_url: Example proxy_url
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        alt_subscriber_id:
+          description: The name of AVP to be used as an alternate subscriber ID for
+            fixed lines.
+          example: Example alt_subscriber_id
+          type: string
+        alt_subscriber_id_regexp:
+          description: A character string to control aspects of rewriting of the fields.
+          example: Example alt_subscriber_id_regexp
+          type: string
+        alt_subscriber_id_subexpression:
+          description: "The subexpression indicates which subexpression to extract.\
+            \ If zero, then the text matching the entire regular expression is extracted.\
+            \ If non-zero, then the regex must contain at least that many sub-expression\
+            \ groups. It takes values from 0 to 8."
+          example: 1
+          format: int64
+          type: integer
+        ancillaries:
+          description: The list of ordered AVP Ancillary Fields.
+          enum:
+          - string
+          items:
+            type: string
+          type: array
+        cat_acctname:
+          description: Category content account name using the categorization service.
+          example: Example cat_acctname
+          type: string
+        cat_password:
+          description: Category content account password to access the categorization
+            service.
+          example: Example cat_password
+          type: string
+        cat_update_frequency:
+          description: Category content updates every number of hours.
+          example: 1
+          format: int64
+          type: integer
+        category_url:
+          description: "Category content vendor url to download category data from\
+            \ and upload feedback to, configure for parental control."
+          example: Example category_url
+          type: string
+        enable_mgmt_only_nas:
+          description: Determines if NAS RADIUS traffic is accepted over MGMT only.
+          example: false
+          type: boolean
+        enable_parental_control:
+          description: Determines if parental control is enabled.
+          example: false
+          type: boolean
+        interim_accounting_interval:
+          description: The time for collector to be fully populated. Valid values
+            are from 1 to 65535.
+          example: 1
+          format: int64
+          type: integer
+        ip_anchors:
+          description: "The ordered list of IP Anchors AVPs. The list content cannot\
+            \ be changed, but the order of elements."
+          enum:
+          - string
+          items:
+            type: string
+          type: array
+        ip_space_disc_regexp:
+          description: A character string to control aspects of rewriting of the fields.
+          example: Example ip_space_disc_regexp
+          type: string
+        ip_space_disc_subexpression:
+          description: "The subexpression indicates which subexpression to extract.\
+            \ If zero, then the text matching the entire regular expression is extracted.\
+            \ If non-zero, then the regex must contain at least that many sub-expression\
+            \ groups. It takes values from 0 to 8."
+          example: 1
+          format: int64
+          type: integer
+        ip_space_discriminator:
+          description: The name of AVP to be used as IP address discriminator.
+          example: Example ip_space_discriminator
+          type: string
+        local_id:
+          description: The name of AVP to be used as local ID.
+          example: Example local_id
+          type: string
+        local_id_regexp:
+          description: A character string to control aspects of rewriting of the fields.
+          example: Example local_id_regexp
+          type: string
+        local_id_subexpression:
+          description: "The subexpression indicates which subexpression to extract.\
+            \ If zero, then the text matching the entire regular expression is extracted.\
+            \ If non-zero, then the regex must contain at least that many sub-expression\
+            \ groups. It takes values from 0 to 8."
+          example: 1
+          format: int64
+          type: integer
+        log_guest_lookups:
+          description: "CEF log all guest lookups, will produce two logs in case of\
+            \ a violation."
+          example: false
+          type: boolean
+        nas_context_info:
+          description: NAS contextual information AVP.
+          example: Example nas_context_info
+          type: string
+        pc_zone_name:
+          description: The SOA to store parental control records.
+          example: Example pc_zone_name
+          type: string
+        proxy_password:
+          description: Proxy server password used for authentication.
+          example: Example proxy_password
+          type: string
+        proxy_url:
+          description: "Proxy url to download category data from and upload feedback\
+            \ to, configure for parental control. The default value 'None' is no longer\
+            \ valid as it match url regex pattern \"^http|https://\". The new default\
+            \ value does not get saved in database, but rather used for comparision\
+            \ with object created in unit test cases."
+          example: Example proxy_url
+          type: string
+        proxy_username:
+          description: Proxy server username used for authentication.
+          example: Example proxy_username
+          type: string
+        subscriber_id:
+          description: The name of AVP to be used as a subscriber.
+          example: Example subscriber_id
+          type: string
+        subscriber_id_regexp:
+          description: A character string to control aspects of rewriting of the fields.
+          example: Example subscriber_id_regexp
+          type: string
+        subscriber_id_subexpression:
+          description: "The subexpression indicates which subexpression to extract.\
+            \ If zero, then the text matching the entire regular expression is extracted.\
+            \ If non-zero, then the regex must contain at least that many sub-expression\
+            \ groups. It takes values from 0 to 8."
+          example: 1
+          format: int64
+          type: integer
+        zvelo_update_failure_in_days:
+          description: Number of days since zvelo DB failed to update.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+      type: object
+    ListParentalcontrolSubscriberResponse:
+      oneOf:
+      - description: The response format to retrieve __ParentalcontrolSubscriber__
+          objects.
+        items:
+          $ref: '#/components/schemas/ParentalcontrolSubscriber'
+        title: ListParentalcontrolSubscriberResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListParentalcontrolSubscriberResponseObject'
+    GetParentalcontrolSubscriberResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ParentalcontrolSubscriber'
+      - $ref: '#/components/schemas/GetParentalcontrolSubscriberResponseObjectAsResult'
+    UpdateParentalcontrolSubscriberResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateParentalcontrolSubscriberResponseAsObject'
+      - description: The response format to update __ParentalcontrolSubscriber__ .
+        title: UpdateParentalcontrolSubscriberResponse
+        type: string
+    ParentalcontrolSubscriberrecord:
+      additionalProperties: false
+      example:
+        black_list: Example black_list
+        prefix: 1
+        flags: Example flags
+        ipsd: Example ipsd
+        op_code: Example op_code
+        white_list: Example white_list
+        subscriber_id: Example subscriber_id
+        alt_ip_addr: Example alt_ip_addr
+        accounting_session_id: Example accounting_session_id
+        dynamic_category_policy: false
+        ans3: Example ans3
+        ans2: Example ans2
+        ans4: Example ans4
+        ans1: Example ans1
+        ans0: Example ans0
+        subscriber_secure_policy: Example subscriber_secure_policy
+        wpc_category_policy: Example wpc_category_policy
+        localid: Example localid
+        site: Example site
+        proxy_all: false
+        bwflag: false
+        _ref: _ref
+        ip_addr: Example ip_addr
+        unknown_category_policy: false
+        nas_contextual: Example nas_contextual
+        parental_control_policy: Example parental_control_policy
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        accounting_session_id:
+          description: accounting_session_id
+          example: Example accounting_session_id
+          type: string
+        alt_ip_addr:
+          description: alt_ip_addr
+          example: Example alt_ip_addr
+          type: string
+        ans0:
+          description: ans0
+          example: Example ans0
+          type: string
+        ans1:
+          description: ans1
+          example: Example ans1
+          type: string
+        ans2:
+          description: ans2
+          example: Example ans2
+          type: string
+        ans3:
+          description: ans3
+          example: Example ans3
+          type: string
+        ans4:
+          description: ans4
+          example: Example ans4
+          type: string
+        black_list:
+          description: black_list
+          example: Example black_list
+          type: string
+        bwflag:
+          description: bwflag
+          example: false
+          type: boolean
+        dynamic_category_policy:
+          description: dynamic_category_policy
+          example: false
+          type: boolean
+        flags:
+          description: flags
+          example: Example flags
+          type: string
+        ip_addr:
+          description: ip_addr
+          example: Example ip_addr
+          type: string
+        ipsd:
+          description: ipsd
+          example: Example ipsd
+          type: string
+        localid:
+          description: localid
+          example: Example localid
+          type: string
+        nas_contextual:
+          description: nas_contextual
+          example: Example nas_contextual
+          type: string
+        op_code:
+          description: op_code
+          example: Example op_code
+          type: string
+        parental_control_policy:
+          description: parental_control_policy
+          example: Example parental_control_policy
+          type: string
+        prefix:
+          description: prefix
+          example: 1
+          format: int64
+          type: integer
+        proxy_all:
+          description: proxy_all
+          example: false
+          type: boolean
+        site:
+          description: site
+          example: Example site
+          type: string
+        subscriber_id:
+          description: subscriber_id
+          example: Example subscriber_id
+          type: string
+        subscriber_secure_policy:
+          description: subscriber_secure_policy
+          example: Example subscriber_secure_policy
+          type: string
+        unknown_category_policy:
+          description: unknown_category_policy
+          example: false
+          type: boolean
+        white_list:
+          description: white_list
+          example: Example white_list
+          type: string
+        wpc_category_policy:
+          description: wpc_category_policy
+          example: Example wpc_category_policy
+          type: string
+      type: object
+    ListParentalcontrolSubscriberrecordResponse:
+      oneOf:
+      - description: The response format to retrieve __ParentalcontrolSubscriberrecord__
+          objects.
+        items:
+          $ref: '#/components/schemas/ParentalcontrolSubscriberrecord'
+        title: ListParentalcontrolSubscriberrecordResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListParentalcontrolSubscriberrecordResponseObject'
+    CreateParentalcontrolSubscriberrecordResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateParentalcontrolSubscriberrecordResponseAsObject'
+      - description: The response format to create __ParentalcontrolSubscriberrecord__.
+        title: CreateParentalcontrolSubscriberrecordResponse
+        type: string
+    GetParentalcontrolSubscriberrecordResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ParentalcontrolSubscriberrecord'
+      - $ref: '#/components/schemas/GetParentalcontrolSubscriberrecordResponseObjectAsResult'
+    UpdateParentalcontrolSubscriberrecordResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateParentalcontrolSubscriberrecordResponseAsObject'
+      - description: The response format to update __ParentalcontrolSubscriberrecord__
+          .
+        title: UpdateParentalcontrolSubscriberrecordResponse
+        type: string
+    ParentalcontrolSubscribersite:
+      additionalProperties: false
+      example:
+        nas_gateways:
+        - name: Example name
+          shared_secret: Example shared_secret
+          comment: Example comment
+          ip_address: Example ip_address
+          send_ack: false
+          message_rate: 1
+        - name: Example name
+          shared_secret: Example shared_secret
+          comment: Example comment
+          ip_address: Example ip_address
+          send_ack: false
+          message_rate: 1
+        dca_sub_query_count: false
+        proxy_rpz_passthru: false
+        blocking_ipv4_vip1: Example blocking_ipv4_vip1
+        api_members:
+        - name: Example name
+        - name: Example name
+        blocking_ipv4_vip2: Example blocking_ipv4_vip2
+        members:
+        - name: Example name
+          type: Example type
+        - name: Example name
+          type: Example type
+        first_port: 1
+        strict_nat: false
+        msps:
+        - ip_address: Example ip_address
+        - ip_address: Example ip_address
+        block_size: 1
+        maximum_subscribers: 1
+        stop_anycast: false
+        extattrs:
+          key:
+            value: ""
+        global_allow_list_rpz: 1
+        subscriber_collection_type: Example subscriber_collection_type
+        nas_port: 1
+        abss:
+        - ip_address: Example ip_address
+          blocking_policy: Example blocking_policy
+        - ip_address: Example ip_address
+          blocking_policy: Example blocking_policy
+        api_port: 1
+        blocking_ipv6_vip1: Example blocking_ipv6_vip1
+        dca_sub_bw_list: false
+        blocking_ipv6_vip2: Example blocking_ipv6_vip2
+        spms:
+        - ip_address: Example ip_address
+        - ip_address: Example ip_address
+        _ref: _ref
+        enable_rpz_filtering_bypass: false
+        name: Example name
+        enable_global_allow_list_rpz: false
+        comment: Example comment
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        abss:
+          description: The list of ABS for the site.
+          enum:
+          - parentalcontrol:abs
+          items:
+            $ref: '#/components/schemas/ParentalcontrolSubscribersiteAbss'
+          type: array
+        api_members:
+          description: The list of API members for the site.
+          enum:
+          - parentalcontrol:siteapimember
+          items:
+            $ref: '#/components/schemas/ParentalcontrolSubscribersiteApiMembers'
+          type: array
+        api_port:
+          description: The port number for gRPC API server.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        block_size:
+          description: The size of the Deterministic NAT block-size.
+          example: 1
+          format: int64
+          type: integer
+        blocking_ipv4_vip1:
+          description: The IPv4 Address of the blocking server.
+          example: Example blocking_ipv4_vip1
+          type: string
+        blocking_ipv4_vip2:
+          description: The IPv4 Address of the blocking server.
+          example: Example blocking_ipv4_vip2
+          type: string
+        blocking_ipv6_vip1:
+          description: The IPv6 Address of the blocking server.
+          example: Example blocking_ipv6_vip1
+          type: string
+        blocking_ipv6_vip2:
+          description: The IPv6 Address of the blocking server.
+          example: Example blocking_ipv6_vip2
+          type: string
+        comment:
+          description: The human readable comment for the site.
+          example: Example comment
+          type: string
+        dca_sub_bw_list:
+          description: Enable/disable the DCA subscriber B/W list support.
+          example: false
+          type: boolean
+        dca_sub_query_count:
+          description: Enable/disable the DCA subscriber query count.
+          example: false
+          type: boolean
+        enable_global_allow_list_rpz:
+          description: Enable/disable global allow list RPZ setting.
+          example: false
+          type: boolean
+        enable_rpz_filtering_bypass:
+          description: Enable/disable Subscriber Secure Policy Bypass for Allowed
+            list.
+          example: false
+          type: boolean
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+        first_port:
+          description: The start of the first Deterministic block.
+          example: 1
+          format: int64
+          type: integer
+        global_allow_list_rpz:
+          description: Global allow list RPZ index. Valid values are between 0 and
+            63.
+          example: 1
+          format: int64
+          type: integer
+        maximum_subscribers:
+          description: The max number of subscribers for the site. It is used to configure
+            the cache size.
+          example: 1
+          format: int64
+          type: integer
+        members:
+          description: The list of members for the site.
+          enum:
+          - parentalcontrol:sitemember
+          items:
+            $ref: '#/components/schemas/ParentalcontrolSubscribersiteMembers'
+          type: array
+        msps:
+          description: The list of MSP for the site.
+          enum:
+          - parentalcontrol:msp
+          items:
+            $ref: '#/components/schemas/ParentalcontrolSubscribersiteMsps'
+          type: array
+        name:
+          description: The name of the site.
+          example: Example name
+          type: string
+        nas_gateways:
+          description: The list of accounting log servers.
+          enum:
+          - parentalcontrol:nasgateway
+          items:
+            $ref: '#/components/schemas/ParentalcontrolSubscribersiteNasGateways'
+          type: array
+        nas_port:
+          description: The port number to reach the collector.
+          example: 1
+          format: int64
+          type: integer
+        proxy_rpz_passthru:
+          description: Enforce the global proxy list.
+          example: false
+          type: boolean
+        spms:
+          description: The list of SPM for the site.
+          enum:
+          - parentalcontrol:spm
+          items:
+            $ref: '#/components/schemas/ParentalcontrolSubscribersiteSpms'
+          type: array
+        stop_anycast:
+          description: Stop the anycast service when the subscriber service is in
+            the interim state.
+          example: false
+          type: boolean
+        strict_nat:
+          description: Restrict subscriber cache entries to NATed clients.
+          example: false
+          type: boolean
+        subscriber_collection_type:
+          description: Subscriber collection type either RADIUS or API.
+          enum:
+          - RADIUS
+          - API
+          example: Example subscriber_collection_type
+          type: string
+      type: object
+    ParentalcontrolSubscribersiteAbss:
+      example:
+        ip_address: Example ip_address
+        blocking_policy: Example blocking_policy
+      properties:
+        ip_address:
+          description: The IP address of addional blocking server.
+          example: Example ip_address
+          type: string
+        blocking_policy:
+          description: The blocking policy for the addional blocking server.
+          example: Example blocking_policy
+          type: string
+      type: object
+    ParentalcontrolSubscribersiteApiMembers:
+      example:
+        name: Example name
+      properties:
+        name:
+          description: The Grid member name.
+          example: Example name
+          type: string
+      type: object
+    ParentalcontrolSubscribersiteMembers:
+      example:
+        name: Example name
+        type: Example type
+      properties:
+        name:
+          description: The Grid member name.
+          example: Example name
+          type: string
+        type:
+          description: The type of member.
+          enum:
+          - CLIENT
+          - COLLECTOR
+          - BOTH
+          - NONE
+          example: Example type
+          readOnly: true
+          type: string
+      type: object
+    ParentalcontrolSubscribersiteMsps:
+      example:
+        ip_address: Example ip_address
+      properties:
+        ip_address:
+          description: The IP Address of MSP.
+          example: Example ip_address
+          type: string
+      type: object
+    ParentalcontrolSubscribersiteNasGateways:
+      example:
+        name: Example name
+        shared_secret: Example shared_secret
+        comment: Example comment
+        ip_address: Example ip_address
+        send_ack: false
+        message_rate: 1
+      properties:
+        name:
+          description: The name of NAS gateway.
+          example: Example name
+          type: string
+        ip_address:
+          description: The IP address of NAS gateway.
+          example: Example ip_address
+          type: string
+        shared_secret:
+          description: The protocol MD5 phrase.
+          example: Example shared_secret
+          type: string
+          writeOnly: true
+        send_ack:
+          description: Determines whether an acknowledge needs to be sent.
+          example: false
+          type: boolean
+        message_rate:
+          description: The message rate per server.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        comment:
+          description: The human readable comment for NAS gateway.
+          example: Example comment
+          type: string
+      type: object
+    ParentalcontrolSubscribersiteSpms:
+      example:
+        ip_address: Example ip_address
+      properties:
+        ip_address:
+          description: The IP Address of SPM.
+          example: Example ip_address
+          type: string
+      type: object
+    ListParentalcontrolSubscribersiteResponse:
+      oneOf:
+      - description: The response format to retrieve __ParentalcontrolSubscribersite__
+          objects.
+        items:
+          $ref: '#/components/schemas/ParentalcontrolSubscribersite'
+        title: ListParentalcontrolSubscribersiteResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListParentalcontrolSubscribersiteResponseObject'
+    CreateParentalcontrolSubscribersiteResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateParentalcontrolSubscribersiteResponseAsObject'
+      - description: The response format to create __ParentalcontrolSubscribersite__.
+        title: CreateParentalcontrolSubscribersiteResponse
+        type: string
+    GetParentalcontrolSubscribersiteResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ParentalcontrolSubscribersite'
+      - $ref: '#/components/schemas/GetParentalcontrolSubscribersiteResponseObjectAsResult'
+    UpdateParentalcontrolSubscribersiteResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateParentalcontrolSubscribersiteResponseAsObject'
+      - description: The response format to update __ParentalcontrolSubscribersite__
+          .
+        title: UpdateParentalcontrolSubscribersiteResponse
+        type: string
+    ListParentalcontrolAvpResponseObject:
+      description: The response format to retrieve __ParentalcontrolAvp__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ParentalcontrolAvp'
+          type: array
+      title: ListParentalcontrolAvpResponseObject
+      type: object
+    CreateParentalcontrolAvpResponseAsObject:
+      description: The response format to create __ParentalcontrolAvp__ in object
+        format.
+      example:
+        result:
+          value_type: Example value_type
+          user_defined: false
+          is_restricted: false
+          vendor_id: 1
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          type: 1
+          domain_types:
+          - domain_types
+          - domain_types
+          vendor_type: 1
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolAvp'
+      title: CreateParentalcontrolAvpResponseAsObject
+      type: object
+    GetParentalcontrolAvpResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ParentalcontrolAvp__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolAvp'
+      title: GetParentalcontrolAvpResponseObjectAsResult
+      type: object
+    UpdateParentalcontrolAvpResponseAsObject:
+      description: The response format to update __ParentalcontrolAvp__ in object
+        format.
+      example:
+        result:
+          value_type: Example value_type
+          user_defined: false
+          is_restricted: false
+          vendor_id: 1
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          type: 1
+          domain_types:
+          - domain_types
+          - domain_types
+          vendor_type: 1
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolAvp'
+      title: UpdateParentalcontrolAvpResponseAsObject
+      type: object
+    ListParentalcontrolBlockingpolicyResponseObject:
+      description: The response format to retrieve __ParentalcontrolBlockingpolicy__
+        objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ParentalcontrolBlockingpolicy'
+          type: array
+      title: ListParentalcontrolBlockingpolicyResponseObject
+      type: object
+    CreateParentalcontrolBlockingpolicyResponseAsObject:
+      description: The response format to create __ParentalcontrolBlockingpolicy__
+        in object format.
+      example:
+        result:
+          _ref: _ref
+          name: Example name
+          value: Example value
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolBlockingpolicy'
+      title: CreateParentalcontrolBlockingpolicyResponseAsObject
+      type: object
+    GetParentalcontrolBlockingpolicyResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ParentalcontrolBlockingpolicy__
+        objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolBlockingpolicy'
+      title: GetParentalcontrolBlockingpolicyResponseObjectAsResult
+      type: object
+    UpdateParentalcontrolBlockingpolicyResponseAsObject:
+      description: The response format to update __ParentalcontrolBlockingpolicy__
+        in object format.
+      example:
+        result:
+          _ref: _ref
+          name: Example name
+          value: Example value
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolBlockingpolicy'
+      title: UpdateParentalcontrolBlockingpolicyResponseAsObject
+      type: object
+    ListParentalcontrolSubscriberResponseObject:
+      description: The response format to retrieve __ParentalcontrolSubscriber__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ParentalcontrolSubscriber'
+          type: array
+      title: ListParentalcontrolSubscriberResponseObject
+      type: object
+    GetParentalcontrolSubscriberResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ParentalcontrolSubscriber__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolSubscriber'
+      title: GetParentalcontrolSubscriberResponseObjectAsResult
+      type: object
+    UpdateParentalcontrolSubscriberResponseAsObject:
+      description: The response format to update __ParentalcontrolSubscriber__ in
+        object format.
+      example:
+        result:
+          cat_acctname: Example cat_acctname
+          interim_accounting_interval: 1
+          category_url: Example category_url
+          ip_space_discriminator: Example ip_space_discriminator
+          zvelo_update_failure_in_days: 1
+          alt_subscriber_id_subexpression: 1
+          enable_mgmt_only_nas: false
+          proxy_password: Example proxy_password
+          ancillaries:
+          - ancillaries
+          - ancillaries
+          subscriber_id: Example subscriber_id
+          subscriber_id_subexpression: 1
+          ip_space_disc_regexp: Example ip_space_disc_regexp
+          log_guest_lookups: false
+          alt_subscriber_id: Example alt_subscriber_id
+          nas_context_info: Example nas_context_info
+          local_id: Example local_id
+          ip_space_disc_subexpression: 1
+          proxy_username: Example proxy_username
+          alt_subscriber_id_regexp: Example alt_subscriber_id_regexp
+          cat_update_frequency: 1
+          local_id_regexp: Example local_id_regexp
+          local_id_subexpression: 1
+          enable_parental_control: false
+          pc_zone_name: Example pc_zone_name
+          ip_anchors:
+          - ip_anchors
+          - ip_anchors
+          subscriber_id_regexp: Example subscriber_id_regexp
+          cat_password: Example cat_password
+          _ref: _ref
+          proxy_url: Example proxy_url
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolSubscriber'
+      title: UpdateParentalcontrolSubscriberResponseAsObject
+      type: object
+    ListParentalcontrolSubscriberrecordResponseObject:
+      description: The response format to retrieve __ParentalcontrolSubscriberrecord__
+        objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ParentalcontrolSubscriberrecord'
+          type: array
+      title: ListParentalcontrolSubscriberrecordResponseObject
+      type: object
+    CreateParentalcontrolSubscriberrecordResponseAsObject:
+      description: The response format to create __ParentalcontrolSubscriberrecord__
+        in object format.
+      example:
+        result:
+          black_list: Example black_list
+          prefix: 1
+          flags: Example flags
+          ipsd: Example ipsd
+          op_code: Example op_code
+          white_list: Example white_list
+          subscriber_id: Example subscriber_id
+          alt_ip_addr: Example alt_ip_addr
+          accounting_session_id: Example accounting_session_id
+          dynamic_category_policy: false
+          ans3: Example ans3
+          ans2: Example ans2
+          ans4: Example ans4
+          ans1: Example ans1
+          ans0: Example ans0
+          subscriber_secure_policy: Example subscriber_secure_policy
+          wpc_category_policy: Example wpc_category_policy
+          localid: Example localid
+          site: Example site
+          proxy_all: false
+          bwflag: false
+          _ref: _ref
+          ip_addr: Example ip_addr
+          unknown_category_policy: false
+          nas_contextual: Example nas_contextual
+          parental_control_policy: Example parental_control_policy
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolSubscriberrecord'
+      title: CreateParentalcontrolSubscriberrecordResponseAsObject
+      type: object
+    GetParentalcontrolSubscriberrecordResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ParentalcontrolSubscriberrecord__
+        objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolSubscriberrecord'
+      title: GetParentalcontrolSubscriberrecordResponseObjectAsResult
+      type: object
+    UpdateParentalcontrolSubscriberrecordResponseAsObject:
+      description: The response format to update __ParentalcontrolSubscriberrecord__
+        in object format.
+      example:
+        result:
+          black_list: Example black_list
+          prefix: 1
+          flags: Example flags
+          ipsd: Example ipsd
+          op_code: Example op_code
+          white_list: Example white_list
+          subscriber_id: Example subscriber_id
+          alt_ip_addr: Example alt_ip_addr
+          accounting_session_id: Example accounting_session_id
+          dynamic_category_policy: false
+          ans3: Example ans3
+          ans2: Example ans2
+          ans4: Example ans4
+          ans1: Example ans1
+          ans0: Example ans0
+          subscriber_secure_policy: Example subscriber_secure_policy
+          wpc_category_policy: Example wpc_category_policy
+          localid: Example localid
+          site: Example site
+          proxy_all: false
+          bwflag: false
+          _ref: _ref
+          ip_addr: Example ip_addr
+          unknown_category_policy: false
+          nas_contextual: Example nas_contextual
+          parental_control_policy: Example parental_control_policy
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolSubscriberrecord'
+      title: UpdateParentalcontrolSubscriberrecordResponseAsObject
+      type: object
+    ListParentalcontrolSubscribersiteResponseObject:
+      description: The response format to retrieve __ParentalcontrolSubscribersite__
+        objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ParentalcontrolSubscribersite'
+          type: array
+      title: ListParentalcontrolSubscribersiteResponseObject
+      type: object
+    CreateParentalcontrolSubscribersiteResponseAsObject:
+      description: The response format to create __ParentalcontrolSubscribersite__
+        in object format.
+      example:
+        result:
+          nas_gateways:
+          - name: Example name
+            shared_secret: Example shared_secret
+            comment: Example comment
+            ip_address: Example ip_address
+            send_ack: false
+            message_rate: 1
+          - name: Example name
+            shared_secret: Example shared_secret
+            comment: Example comment
+            ip_address: Example ip_address
+            send_ack: false
+            message_rate: 1
+          dca_sub_query_count: false
+          proxy_rpz_passthru: false
+          blocking_ipv4_vip1: Example blocking_ipv4_vip1
+          api_members:
+          - name: Example name
+          - name: Example name
+          blocking_ipv4_vip2: Example blocking_ipv4_vip2
+          members:
+          - name: Example name
+            type: Example type
+          - name: Example name
+            type: Example type
+          first_port: 1
+          strict_nat: false
+          msps:
+          - ip_address: Example ip_address
+          - ip_address: Example ip_address
+          block_size: 1
+          maximum_subscribers: 1
+          stop_anycast: false
+          extattrs:
+            key:
+              value: ""
+          global_allow_list_rpz: 1
+          subscriber_collection_type: Example subscriber_collection_type
+          nas_port: 1
+          abss:
+          - ip_address: Example ip_address
+            blocking_policy: Example blocking_policy
+          - ip_address: Example ip_address
+            blocking_policy: Example blocking_policy
+          api_port: 1
+          blocking_ipv6_vip1: Example blocking_ipv6_vip1
+          dca_sub_bw_list: false
+          blocking_ipv6_vip2: Example blocking_ipv6_vip2
+          spms:
+          - ip_address: Example ip_address
+          - ip_address: Example ip_address
+          _ref: _ref
+          enable_rpz_filtering_bypass: false
+          name: Example name
+          enable_global_allow_list_rpz: false
+          comment: Example comment
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolSubscribersite'
+      title: CreateParentalcontrolSubscribersiteResponseAsObject
+      type: object
+    GetParentalcontrolSubscribersiteResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ParentalcontrolSubscribersite__
+        objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolSubscribersite'
+      title: GetParentalcontrolSubscribersiteResponseObjectAsResult
+      type: object
+    UpdateParentalcontrolSubscribersiteResponseAsObject:
+      description: The response format to update __ParentalcontrolSubscribersite__
+        in object format.
+      example:
+        result:
+          nas_gateways:
+          - name: Example name
+            shared_secret: Example shared_secret
+            comment: Example comment
+            ip_address: Example ip_address
+            send_ack: false
+            message_rate: 1
+          - name: Example name
+            shared_secret: Example shared_secret
+            comment: Example comment
+            ip_address: Example ip_address
+            send_ack: false
+            message_rate: 1
+          dca_sub_query_count: false
+          proxy_rpz_passthru: false
+          blocking_ipv4_vip1: Example blocking_ipv4_vip1
+          api_members:
+          - name: Example name
+          - name: Example name
+          blocking_ipv4_vip2: Example blocking_ipv4_vip2
+          members:
+          - name: Example name
+            type: Example type
+          - name: Example name
+            type: Example type
+          first_port: 1
+          strict_nat: false
+          msps:
+          - ip_address: Example ip_address
+          - ip_address: Example ip_address
+          block_size: 1
+          maximum_subscribers: 1
+          stop_anycast: false
+          extattrs:
+            key:
+              value: ""
+          global_allow_list_rpz: 1
+          subscriber_collection_type: Example subscriber_collection_type
+          nas_port: 1
+          abss:
+          - ip_address: Example ip_address
+            blocking_policy: Example blocking_policy
+          - ip_address: Example ip_address
+            blocking_policy: Example blocking_policy
+          api_port: 1
+          blocking_ipv6_vip1: Example blocking_ipv6_vip1
+          dca_sub_bw_list: false
+          blocking_ipv6_vip2: Example blocking_ipv6_vip2
+          spms:
+          - ip_address: Example ip_address
+          - ip_address: Example ip_address
+          _ref: _ref
+          enable_rpz_filtering_bypass: false
+          name: Example name
+          enable_global_allow_list_rpz: false
+          comment: Example comment
+      properties:
+        result:
+          $ref: '#/components/schemas/ParentalcontrolSubscribersite'
+      title: UpdateParentalcontrolSubscribersiteResponseAsObject
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http

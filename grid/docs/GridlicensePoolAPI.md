@@ -1,17 +1,17 @@
-# GridlicensePoolAPI
+# GridLicensePoolAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](GridlicensePoolAPI.md#Get) | **Get** /grid:license_pool | Retrieve grid:license_pool objects
-[**ReferenceGet**](GridlicensePoolAPI.md#ReferenceGet) | **Get** /grid:license_pool/{reference} | Get a specific grid:license_pool object
+[**GridlicensePoolGet**](GridLicensePoolAPI.md#GridlicensePoolGet) | **Get** /grid:license_pool | Retrieve grid:license_pool objects
+[**GridlicensePoolReferenceGet**](GridLicensePoolAPI.md#GridlicensePoolReferenceGet) | **Get** /grid:license_pool/{reference} | Get a specific grid:license_pool object
 
 
 
-## Get
+## GridlicensePoolGet
 
-> ListGridLicensePoolResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridLicensePoolResponse GridlicensePoolGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:license_pool objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridlicensePoolAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.GridLicensePoolAPI.GridlicensePoolGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridlicensePoolAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridLicensePoolAPI.GridlicensePoolGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListGridLicensePoolResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridlicensePoolAPI.Get`: %v\n", resp)
+	// response from `GridlicensePoolGet`: ListGridLicensePoolResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridLicensePoolAPI.GridlicensePoolGet`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridlicensePoolAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridLicensePoolAPIGridlicensePoolGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## GridlicensePoolReferenceGet
 
-> GetGridLicensePoolResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridLicensePoolResponse GridlicensePoolReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:license_pool object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:license_pool object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridlicensePoolAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridLicensePoolAPI.GridlicensePoolReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridlicensePoolAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridLicensePoolAPI.GridlicensePoolReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetGridLicensePoolResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridlicensePoolAPI.ReferenceGet`: %v\n", resp)
+	// response from `GridlicensePoolReferenceGet`: GetGridLicensePoolResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridLicensePoolAPI.GridlicensePoolReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridlicensePoolAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridLicensePoolAPIGridlicensePoolReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

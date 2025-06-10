@@ -1,20 +1,20 @@
-# DtcmonitorpdpAPI
+# DtcMonitorPdpAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcmonitorpdpAPI.md#Get) | **Get** /dtc:monitor:pdp | Retrieve dtc:monitor:pdp objects
-[**Post**](DtcmonitorpdpAPI.md#Post) | **Post** /dtc:monitor:pdp | Create a dtc:monitor:pdp object
-[**ReferenceDelete**](DtcmonitorpdpAPI.md#ReferenceDelete) | **Delete** /dtc:monitor:pdp/{reference} | Delete a dtc:monitor:pdp object
-[**ReferenceGet**](DtcmonitorpdpAPI.md#ReferenceGet) | **Get** /dtc:monitor:pdp/{reference} | Get a specific dtc:monitor:pdp object
-[**ReferencePut**](DtcmonitorpdpAPI.md#ReferencePut) | **Put** /dtc:monitor:pdp/{reference} | Update a dtc:monitor:pdp object
+[**DtcmonitorpdpGet**](DtcMonitorPdpAPI.md#DtcmonitorpdpGet) | **Get** /dtc:monitor:pdp | Retrieve dtc:monitor:pdp objects
+[**DtcmonitorpdpPost**](DtcMonitorPdpAPI.md#DtcmonitorpdpPost) | **Post** /dtc:monitor:pdp | Create a dtc:monitor:pdp object
+[**DtcmonitorpdpReferenceDelete**](DtcMonitorPdpAPI.md#DtcmonitorpdpReferenceDelete) | **Delete** /dtc:monitor:pdp/{reference} | Delete a dtc:monitor:pdp object
+[**DtcmonitorpdpReferenceGet**](DtcMonitorPdpAPI.md#DtcmonitorpdpReferenceGet) | **Get** /dtc:monitor:pdp/{reference} | Get a specific dtc:monitor:pdp object
+[**DtcmonitorpdpReferencePut**](DtcMonitorPdpAPI.md#DtcmonitorpdpReferencePut) | **Put** /dtc:monitor:pdp/{reference} | Update a dtc:monitor:pdp object
 
 
 
-## Get
+## DtcmonitorpdpGet
 
-> ListDtcMonitorPdpResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcMonitorPdpResponse DtcmonitorpdpGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:monitor:pdp objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorpdpAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcMonitorPdpAPI.DtcmonitorpdpGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorpdpAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorPdpAPI.DtcmonitorpdpGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcMonitorPdpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorpdpAPI.Get`: %v\n", resp)
+	// response from `DtcmonitorpdpGet`: ListDtcMonitorPdpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorPdpAPI.DtcmonitorpdpGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorpdpAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorPdpAPIDtcmonitorpdpGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## DtcmonitorpdpPost
 
-> CreateDtcMonitorPdpResponse Post(ctx).DtcMonitorPdp(dtcMonitorPdp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateDtcMonitorPdpResponse DtcmonitorpdpPost(ctx).DtcMonitorPdp(dtcMonitorPdp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a dtc:monitor:pdp object
 
@@ -109,13 +109,13 @@ func main() {
 	dtcMonitorPdp := *dtc.NewDtcMonitorPdp() // DtcMonitorPdp | Object data to create
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorpdpAPI.Post(context.Background()).DtcMonitorPdp(dtcMonitorPdp).Execute()
+	resp, r, err := apiClient.DtcMonitorPdpAPI.DtcmonitorpdpPost(context.Background()).DtcMonitorPdp(dtcMonitorPdp).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorpdpAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorPdpAPI.DtcmonitorpdpPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateDtcMonitorPdpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorpdpAPI.Post`: %v\n", resp)
+	// response from `DtcmonitorpdpPost`: CreateDtcMonitorPdpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorPdpAPI.DtcmonitorpdpPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorpdpAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorPdpAPIDtcmonitorpdpPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## DtcmonitorpdpReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> DtcmonitorpdpReferenceDelete(ctx, reference).Execute()
 
 Delete a dtc:monitor:pdp object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:monitor:pdp object
 
 	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtcmonitorpdpAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.DtcMonitorPdpAPI.DtcmonitorpdpReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorpdpAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorPdpAPI.DtcmonitorpdpReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorpdpAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorPdpAPIDtcmonitorpdpReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtcmonitorpdpReferenceGet
 
-> GetDtcMonitorPdpResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcMonitorPdpResponse DtcmonitorpdpReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:monitor:pdp object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:monitor:pdp object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorpdpAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcMonitorPdpAPI.DtcmonitorpdpReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorpdpAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorPdpAPI.DtcmonitorpdpReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcMonitorPdpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorpdpAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtcmonitorpdpReferenceGet`: GetDtcMonitorPdpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorPdpAPI.DtcmonitorpdpReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorpdpAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtcmonitorpdpReferencePut
 
-> UpdateDtcMonitorPdpResponse ReferencePut(ctx, reference).DtcMonitorPdp(dtcMonitorPdp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcMonitorPdpResponse DtcmonitorpdpReferencePut(ctx, reference).DtcMonitorPdp(dtcMonitorPdp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:monitor:pdp object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcMonitorPdp := *dtc.NewDtcMonitorPdp() // DtcMonitorPdp | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorpdpAPI.ReferencePut(context.Background(), reference).DtcMonitorPdp(dtcMonitorPdp).Execute()
+	resp, r, err := apiClient.DtcMonitorPdpAPI.DtcmonitorpdpReferencePut(context.Background(), reference).DtcMonitorPdp(dtcMonitorPdp).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorpdpAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorPdpAPI.DtcmonitorpdpReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcMonitorPdpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorpdpAPI.ReferencePut`: %v\n", resp)
+	// response from `DtcmonitorpdpReferencePut`: UpdateDtcMonitorPdpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorPdpAPI.DtcmonitorpdpReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorpdpAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

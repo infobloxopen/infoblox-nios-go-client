@@ -1,20 +1,20 @@
-# DtcmonitorsipAPI
+# DtcMonitorSipAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcmonitorsipAPI.md#Get) | **Get** /dtc:monitor:sip | Retrieve dtc:monitor:sip objects
-[**Post**](DtcmonitorsipAPI.md#Post) | **Post** /dtc:monitor:sip | Create a dtc:monitor:sip object
-[**ReferenceDelete**](DtcmonitorsipAPI.md#ReferenceDelete) | **Delete** /dtc:monitor:sip/{reference} | Delete a dtc:monitor:sip object
-[**ReferenceGet**](DtcmonitorsipAPI.md#ReferenceGet) | **Get** /dtc:monitor:sip/{reference} | Get a specific dtc:monitor:sip object
-[**ReferencePut**](DtcmonitorsipAPI.md#ReferencePut) | **Put** /dtc:monitor:sip/{reference} | Update a dtc:monitor:sip object
+[**DtcmonitorsipGet**](DtcMonitorSipAPI.md#DtcmonitorsipGet) | **Get** /dtc:monitor:sip | Retrieve dtc:monitor:sip objects
+[**DtcmonitorsipPost**](DtcMonitorSipAPI.md#DtcmonitorsipPost) | **Post** /dtc:monitor:sip | Create a dtc:monitor:sip object
+[**DtcmonitorsipReferenceDelete**](DtcMonitorSipAPI.md#DtcmonitorsipReferenceDelete) | **Delete** /dtc:monitor:sip/{reference} | Delete a dtc:monitor:sip object
+[**DtcmonitorsipReferenceGet**](DtcMonitorSipAPI.md#DtcmonitorsipReferenceGet) | **Get** /dtc:monitor:sip/{reference} | Get a specific dtc:monitor:sip object
+[**DtcmonitorsipReferencePut**](DtcMonitorSipAPI.md#DtcmonitorsipReferencePut) | **Put** /dtc:monitor:sip/{reference} | Update a dtc:monitor:sip object
 
 
 
-## Get
+## DtcmonitorsipGet
 
-> ListDtcMonitorSipResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcMonitorSipResponse DtcmonitorsipGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:monitor:sip objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorsipAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcMonitorSipAPI.DtcmonitorsipGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorsipAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorSipAPI.DtcmonitorsipGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcMonitorSipResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorsipAPI.Get`: %v\n", resp)
+	// response from `DtcmonitorsipGet`: ListDtcMonitorSipResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorSipAPI.DtcmonitorsipGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorsipAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorSipAPIDtcmonitorsipGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## DtcmonitorsipPost
 
-> CreateDtcMonitorSipResponse Post(ctx).DtcMonitorSip(dtcMonitorSip).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateDtcMonitorSipResponse DtcmonitorsipPost(ctx).DtcMonitorSip(dtcMonitorSip).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a dtc:monitor:sip object
 
@@ -109,13 +109,13 @@ func main() {
 	dtcMonitorSip := *dtc.NewDtcMonitorSip() // DtcMonitorSip | Object data to create
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorsipAPI.Post(context.Background()).DtcMonitorSip(dtcMonitorSip).Execute()
+	resp, r, err := apiClient.DtcMonitorSipAPI.DtcmonitorsipPost(context.Background()).DtcMonitorSip(dtcMonitorSip).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorsipAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorSipAPI.DtcmonitorsipPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateDtcMonitorSipResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorsipAPI.Post`: %v\n", resp)
+	// response from `DtcmonitorsipPost`: CreateDtcMonitorSipResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorSipAPI.DtcmonitorsipPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorsipAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorSipAPIDtcmonitorsipPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## DtcmonitorsipReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> DtcmonitorsipReferenceDelete(ctx, reference).Execute()
 
 Delete a dtc:monitor:sip object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:monitor:sip object
 
 	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtcmonitorsipAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.DtcMonitorSipAPI.DtcmonitorsipReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorsipAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorSipAPI.DtcmonitorsipReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorsipAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorSipAPIDtcmonitorsipReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtcmonitorsipReferenceGet
 
-> GetDtcMonitorSipResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcMonitorSipResponse DtcmonitorsipReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:monitor:sip object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:monitor:sip object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorsipAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcMonitorSipAPI.DtcmonitorsipReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorsipAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorSipAPI.DtcmonitorsipReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcMonitorSipResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorsipAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtcmonitorsipReferenceGet`: GetDtcMonitorSipResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorSipAPI.DtcmonitorsipReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorsipAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtcmonitorsipReferencePut
 
-> UpdateDtcMonitorSipResponse ReferencePut(ctx, reference).DtcMonitorSip(dtcMonitorSip).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcMonitorSipResponse DtcmonitorsipReferencePut(ctx, reference).DtcMonitorSip(dtcMonitorSip).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:monitor:sip object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcMonitorSip := *dtc.NewDtcMonitorSip() // DtcMonitorSip | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorsipAPI.ReferencePut(context.Background(), reference).DtcMonitorSip(dtcMonitorSip).Execute()
+	resp, r, err := apiClient.DtcMonitorSipAPI.DtcmonitorsipReferencePut(context.Background(), reference).DtcMonitorSip(dtcMonitorSip).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorsipAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorSipAPI.DtcmonitorsipReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcMonitorSipResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorsipAPI.ReferencePut`: %v\n", resp)
+	// response from `DtcmonitorsipReferencePut`: UpdateDtcMonitorSipResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorSipAPI.DtcmonitorsipReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorsipAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorSipAPIDtcmonitorsipReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

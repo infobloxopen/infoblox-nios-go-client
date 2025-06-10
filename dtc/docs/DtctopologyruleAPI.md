@@ -1,18 +1,18 @@
-# DtctopologyruleAPI
+# DtcTopologyRuleAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtctopologyruleAPI.md#Get) | **Get** /dtc:topology:rule | Retrieve dtc:topology:rule objects
-[**ReferenceGet**](DtctopologyruleAPI.md#ReferenceGet) | **Get** /dtc:topology:rule/{reference} | Get a specific dtc:topology:rule object
-[**ReferencePut**](DtctopologyruleAPI.md#ReferencePut) | **Put** /dtc:topology:rule/{reference} | Update a dtc:topology:rule object
+[**DtctopologyruleGet**](DtcTopologyRuleAPI.md#DtctopologyruleGet) | **Get** /dtc:topology:rule | Retrieve dtc:topology:rule objects
+[**DtctopologyruleReferenceGet**](DtcTopologyRuleAPI.md#DtctopologyruleReferenceGet) | **Get** /dtc:topology:rule/{reference} | Get a specific dtc:topology:rule object
+[**DtctopologyruleReferencePut**](DtcTopologyRuleAPI.md#DtctopologyruleReferencePut) | **Put** /dtc:topology:rule/{reference} | Update a dtc:topology:rule object
 
 
 
-## Get
+## DtctopologyruleGet
 
-> ListDtcTopologyRuleResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcTopologyRuleResponse DtctopologyruleGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:topology:rule objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtctopologyruleAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcTopologyRuleAPI.DtctopologyruleGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtctopologyruleAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyRuleAPI.DtctopologyruleGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcTopologyRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtctopologyruleAPI.Get`: %v\n", resp)
+	// response from `DtctopologyruleGet`: ListDtcTopologyRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyRuleAPI.DtctopologyruleGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtctopologyruleAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyRuleAPIDtctopologyruleGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtctopologyruleReferenceGet
 
-> GetDtcTopologyRuleResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcTopologyRuleResponse DtctopologyruleReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:topology:rule object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:topology:rule object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtctopologyruleAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcTopologyRuleAPI.DtctopologyruleReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtctopologyruleAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyRuleAPI.DtctopologyruleReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcTopologyRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtctopologyruleAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtctopologyruleReferenceGet`: GetDtcTopologyRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyRuleAPI.DtctopologyruleReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtctopologyruleAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtctopologyruleReferencePut
 
-> UpdateDtcTopologyRuleResponse ReferencePut(ctx, reference).DtcTopologyRule(dtcTopologyRule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcTopologyRuleResponse DtctopologyruleReferencePut(ctx, reference).DtcTopologyRule(dtcTopologyRule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:topology:rule object
 
@@ -180,13 +180,13 @@ func main() {
 	dtcTopologyRule := *dtc.NewDtcTopologyRule() // DtcTopologyRule | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtctopologyruleAPI.ReferencePut(context.Background(), reference).DtcTopologyRule(dtcTopologyRule).Execute()
+	resp, r, err := apiClient.DtcTopologyRuleAPI.DtctopologyruleReferencePut(context.Background(), reference).DtcTopologyRule(dtcTopologyRule).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtctopologyruleAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyRuleAPI.DtctopologyruleReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcTopologyRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtctopologyruleAPI.ReferencePut`: %v\n", resp)
+	// response from `DtctopologyruleReferencePut`: UpdateDtcTopologyRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyRuleAPI.DtctopologyruleReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtctopologyruleAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyRuleAPIDtctopologyruleReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

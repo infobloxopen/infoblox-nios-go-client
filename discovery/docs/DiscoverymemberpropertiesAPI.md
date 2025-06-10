@@ -1,18 +1,18 @@
-# DiscoverymemberpropertiesAPI
+# DiscoveryMemberpropertiesAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DiscoverymemberpropertiesAPI.md#Get) | **Get** /discovery:memberproperties | Retrieve discovery:memberproperties objects
-[**ReferenceGet**](DiscoverymemberpropertiesAPI.md#ReferenceGet) | **Get** /discovery:memberproperties/{reference} | Get a specific discovery:memberproperties object
-[**ReferencePut**](DiscoverymemberpropertiesAPI.md#ReferencePut) | **Put** /discovery:memberproperties/{reference} | Update a discovery:memberproperties object
+[**DiscoverymemberpropertiesGet**](DiscoveryMemberpropertiesAPI.md#DiscoverymemberpropertiesGet) | **Get** /discovery:memberproperties | Retrieve discovery:memberproperties objects
+[**DiscoverymemberpropertiesReferenceGet**](DiscoveryMemberpropertiesAPI.md#DiscoverymemberpropertiesReferenceGet) | **Get** /discovery:memberproperties/{reference} | Get a specific discovery:memberproperties object
+[**DiscoverymemberpropertiesReferencePut**](DiscoveryMemberpropertiesAPI.md#DiscoverymemberpropertiesReferencePut) | **Put** /discovery:memberproperties/{reference} | Update a discovery:memberproperties object
 
 
 
-## Get
+## DiscoverymemberpropertiesGet
 
-> ListDiscoveryMemberpropertiesResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoveryMemberpropertiesResponse DiscoverymemberpropertiesGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:memberproperties objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverymemberpropertiesAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoveryMemberpropertiesAPI.DiscoverymemberpropertiesGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverymemberpropertiesAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryMemberpropertiesAPI.DiscoverymemberpropertiesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDiscoveryMemberpropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverymemberpropertiesAPI.Get`: %v\n", resp)
+	// response from `DiscoverymemberpropertiesGet`: ListDiscoveryMemberpropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryMemberpropertiesAPI.DiscoverymemberpropertiesGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverymemberpropertiesAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DiscoverymemberpropertiesReferenceGet
 
-> GetDiscoveryMemberpropertiesResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoveryMemberpropertiesResponse DiscoverymemberpropertiesReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:memberproperties object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:memberproperties object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverymemberpropertiesAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoveryMemberpropertiesAPI.DiscoverymemberpropertiesReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverymemberpropertiesAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryMemberpropertiesAPI.DiscoverymemberpropertiesReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDiscoveryMemberpropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverymemberpropertiesAPI.ReferenceGet`: %v\n", resp)
+	// response from `DiscoverymemberpropertiesReferenceGet`: GetDiscoveryMemberpropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryMemberpropertiesAPI.DiscoverymemberpropertiesReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverymemberpropertiesAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DiscoverymemberpropertiesReferencePut
 
-> UpdateDiscoveryMemberpropertiesResponse ReferencePut(ctx, reference).DiscoveryMemberproperties(discoveryMemberproperties).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDiscoveryMemberpropertiesResponse DiscoverymemberpropertiesReferencePut(ctx, reference).DiscoveryMemberproperties(discoveryMemberproperties).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a discovery:memberproperties object
 
@@ -180,13 +180,13 @@ func main() {
 	discoveryMemberproperties := *discovery.NewDiscoveryMemberproperties() // DiscoveryMemberproperties | Object data to update
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverymemberpropertiesAPI.ReferencePut(context.Background(), reference).DiscoveryMemberproperties(discoveryMemberproperties).Execute()
+	resp, r, err := apiClient.DiscoveryMemberpropertiesAPI.DiscoverymemberpropertiesReferencePut(context.Background(), reference).DiscoveryMemberproperties(discoveryMemberproperties).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverymemberpropertiesAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryMemberpropertiesAPI.DiscoverymemberpropertiesReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDiscoveryMemberpropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverymemberpropertiesAPI.ReferencePut`: %v\n", resp)
+	// response from `DiscoverymemberpropertiesReferencePut`: UpdateDiscoveryMemberpropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryMemberpropertiesAPI.DiscoverymemberpropertiesReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverymemberpropertiesAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

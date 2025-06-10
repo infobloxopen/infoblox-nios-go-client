@@ -89,25 +89,29 @@ Class | Method | HTTP request | Description
 *AwsuserAPI* | [**ReferenceDelete**](docs/AwsuserAPI.md#referencedelete) | **Delete** /awsuser/{reference} | Delete a awsuser object
 *AwsuserAPI* | [**ReferenceGet**](docs/AwsuserAPI.md#referenceget) | **Get** /awsuser/{reference} | Get a specific awsuser object
 *AwsuserAPI* | [**ReferencePut**](docs/AwsuserAPI.md#referenceput) | **Put** /awsuser/{reference} | Update a awsuser object
-*GridcloudapiAPI* | [**Get**](docs/GridcloudapiAPI.md#get) | **Get** /grid:cloudapi | Retrieve grid:cloudapi objects
-*GridcloudapiAPI* | [**ReferenceGet**](docs/GridcloudapiAPI.md#referenceget) | **Get** /grid:cloudapi/{reference} | Get a specific grid:cloudapi object
-*GridcloudapiAPI* | [**ReferencePut**](docs/GridcloudapiAPI.md#referenceput) | **Put** /grid:cloudapi/{reference} | Update a grid:cloudapi object
-*GridcloudapicloudstatisticsAPI* | [**Get**](docs/GridcloudapicloudstatisticsAPI.md#get) | **Get** /grid:cloudapi:cloudstatistics | Retrieve grid:cloudapi:cloudstatistics objects
-*GridcloudapicloudstatisticsAPI* | [**ReferenceGet**](docs/GridcloudapicloudstatisticsAPI.md#referenceget) | **Get** /grid:cloudapi:cloudstatistics/{reference} | Get a specific grid:cloudapi:cloudstatistics object
-*GridcloudapitenantAPI* | [**Get**](docs/GridcloudapitenantAPI.md#get) | **Get** /grid:cloudapi:tenant | Retrieve grid:cloudapi:tenant objects
-*GridcloudapitenantAPI* | [**ReferenceGet**](docs/GridcloudapitenantAPI.md#referenceget) | **Get** /grid:cloudapi:tenant/{reference} | Get a specific grid:cloudapi:tenant object
-*GridcloudapitenantAPI* | [**ReferencePut**](docs/GridcloudapitenantAPI.md#referenceput) | **Put** /grid:cloudapi:tenant/{reference} | Update a grid:cloudapi:tenant object
-*GridcloudapivmAPI* | [**Get**](docs/GridcloudapivmAPI.md#get) | **Get** /grid:cloudapi:vm | Retrieve grid:cloudapi:vm objects
-*GridcloudapivmAPI* | [**ReferenceGet**](docs/GridcloudapivmAPI.md#referenceget) | **Get** /grid:cloudapi:vm/{reference} | Get a specific grid:cloudapi:vm object
-*GridcloudapivmAPI* | [**ReferencePut**](docs/GridcloudapivmAPI.md#referenceput) | **Put** /grid:cloudapi:vm/{reference} | Update a grid:cloudapi:vm object
-*GridcloudapivmaddressAPI* | [**Get**](docs/GridcloudapivmaddressAPI.md#get) | **Get** /grid:cloudapi:vmaddress | Retrieve grid:cloudapi:vmaddress objects
-*GridcloudapivmaddressAPI* | [**ReferenceGet**](docs/GridcloudapivmaddressAPI.md#referenceget) | **Get** /grid:cloudapi:vmaddress/{reference} | Get a specific grid:cloudapi:vmaddress object
-*GridmembercloudapiAPI* | [**Get**](docs/GridmembercloudapiAPI.md#get) | **Get** /grid:member:cloudapi | Retrieve grid:member:cloudapi objects
-*GridmembercloudapiAPI* | [**ReferenceGet**](docs/GridmembercloudapiAPI.md#referenceget) | **Get** /grid:member:cloudapi/{reference} | Get a specific grid:member:cloudapi object
-*GridmembercloudapiAPI* | [**ReferencePut**](docs/GridmembercloudapiAPI.md#referenceput) | **Put** /grid:member:cloudapi/{reference} | Update a grid:member:cloudapi object
-*OutboundcloudclientAPI* | [**Get**](docs/OutboundcloudclientAPI.md#get) | **Get** /outbound:cloudclient | Retrieve outbound:cloudclient objects
-*OutboundcloudclientAPI* | [**ReferenceGet**](docs/OutboundcloudclientAPI.md#referenceget) | **Get** /outbound:cloudclient/{reference} | Get a specific outbound:cloudclient object
-*OutboundcloudclientAPI* | [**ReferencePut**](docs/OutboundcloudclientAPI.md#referenceput) | **Put** /outbound:cloudclient/{reference} | Update a outbound:cloudclient object
+*AzurednstaskgroupAPI* | [**Get**](docs/AzurednstaskgroupAPI.md#get) | **Get** /azurednstaskgroup | Retrieve azurednstaskgroup objects
+*AzurednstaskgroupAPI* | [**Post**](docs/AzurednstaskgroupAPI.md#post) | **Post** /azurednstaskgroup | Create a azurednstaskgroup object
+*AzurednstaskgroupAPI* | [**ReferenceDelete**](docs/AzurednstaskgroupAPI.md#referencedelete) | **Delete** /azurednstaskgroup/{reference} | Delete a azurednstaskgroup object
+*AzurednstaskgroupAPI* | [**ReferenceGet**](docs/AzurednstaskgroupAPI.md#referenceget) | **Get** /azurednstaskgroup/{reference} | Get a specific azurednstaskgroup object
+*AzurednstaskgroupAPI* | [**ReferencePut**](docs/AzurednstaskgroupAPI.md#referenceput) | **Put** /azurednstaskgroup/{reference} | Update a azurednstaskgroup object
+*AzureuserAPI* | [**Get**](docs/AzureuserAPI.md#get) | **Get** /azureuser | Retrieve azureuser objects
+*AzureuserAPI* | [**Post**](docs/AzureuserAPI.md#post) | **Post** /azureuser | Create a azureuser object
+*AzureuserAPI* | [**ReferenceDelete**](docs/AzureuserAPI.md#referencedelete) | **Delete** /azureuser/{reference} | Delete a azureuser object
+*AzureuserAPI* | [**ReferenceGet**](docs/AzureuserAPI.md#referenceget) | **Get** /azureuser/{reference} | Get a specific azureuser object
+*AzureuserAPI* | [**ReferencePut**](docs/AzureuserAPI.md#referenceput) | **Put** /azureuser/{reference} | Update a azureuser object
+*GcpdnstaskgroupAPI* | [**Get**](docs/GcpdnstaskgroupAPI.md#get) | **Get** /gcpdnstaskgroup | Retrieve gcpdnstaskgroup objects
+*GcpdnstaskgroupAPI* | [**Post**](docs/GcpdnstaskgroupAPI.md#post) | **Post** /gcpdnstaskgroup | Create a gcpdnstaskgroup object
+*GcpdnstaskgroupAPI* | [**ReferenceDelete**](docs/GcpdnstaskgroupAPI.md#referencedelete) | **Delete** /gcpdnstaskgroup/{reference} | Delete a gcpdnstaskgroup object
+*GcpdnstaskgroupAPI* | [**ReferenceGet**](docs/GcpdnstaskgroupAPI.md#referenceget) | **Get** /gcpdnstaskgroup/{reference} | Get a specific gcpdnstaskgroup object
+*GcpdnstaskgroupAPI* | [**ReferencePut**](docs/GcpdnstaskgroupAPI.md#referenceput) | **Put** /gcpdnstaskgroup/{reference} | Update a gcpdnstaskgroup object
+*GcpuserAPI* | [**Get**](docs/GcpuserAPI.md#get) | **Get** /gcpuser | Retrieve gcpuser objects
+*GcpuserAPI* | [**Post**](docs/GcpuserAPI.md#post) | **Post** /gcpuser | Create a gcpuser object
+*GcpuserAPI* | [**ReferenceDelete**](docs/GcpuserAPI.md#referencedelete) | **Delete** /gcpuser/{reference} | Delete a gcpuser object
+*GcpuserAPI* | [**ReferenceGet**](docs/GcpuserAPI.md#referenceget) | **Get** /gcpuser/{reference} | Get a specific gcpuser object
+*GcpuserAPI* | [**ReferencePut**](docs/GcpuserAPI.md#referenceput) | **Put** /gcpuser/{reference} | Update a gcpuser object
+*MultiregionsAPI* | [**Get**](docs/MultiregionsAPI.md#get) | **Get** /multiregions | Retrieve multiregions objects
+*MultiregionsAPI* | [**ReferenceGet**](docs/MultiregionsAPI.md#referenceget) | **Get** /multiregions/{reference} | Get a specific multiregions object
+*MultiregionsAPI* | [**ReferencePut**](docs/MultiregionsAPI.md#referenceput) | **Put** /multiregions/{reference} | Update a multiregions object
 
 
 ## Documentation For Models
@@ -115,101 +119,68 @@ Class | Method | HTTP request | Description
  - [Awsrte53taskgroup](docs/Awsrte53taskgroup.md)
  - [Awsrte53taskgroupTaskList](docs/Awsrte53taskgroupTaskList.md)
  - [Awsuser](docs/Awsuser.md)
+ - [Azurednstaskgroup](docs/Azurednstaskgroup.md)
+ - [AzurednstaskgroupTaskList](docs/AzurednstaskgroupTaskList.md)
+ - [Azureuser](docs/Azureuser.md)
  - [CreateAwsrte53taskgroupResponse](docs/CreateAwsrte53taskgroupResponse.md)
  - [CreateAwsrte53taskgroupResponseAsObject](docs/CreateAwsrte53taskgroupResponseAsObject.md)
  - [CreateAwsuserResponse](docs/CreateAwsuserResponse.md)
  - [CreateAwsuserResponseAsObject](docs/CreateAwsuserResponseAsObject.md)
- - [CreateGridCloudapiCloudstatisticsResponse](docs/CreateGridCloudapiCloudstatisticsResponse.md)
- - [CreateGridCloudapiCloudstatisticsResponseAsObject](docs/CreateGridCloudapiCloudstatisticsResponseAsObject.md)
- - [CreateGridCloudapiResponse](docs/CreateGridCloudapiResponse.md)
- - [CreateGridCloudapiResponseAsObject](docs/CreateGridCloudapiResponseAsObject.md)
- - [CreateGridCloudapiTenantResponse](docs/CreateGridCloudapiTenantResponse.md)
- - [CreateGridCloudapiTenantResponseAsObject](docs/CreateGridCloudapiTenantResponseAsObject.md)
- - [CreateGridCloudapiVmResponse](docs/CreateGridCloudapiVmResponse.md)
- - [CreateGridCloudapiVmResponseAsObject](docs/CreateGridCloudapiVmResponseAsObject.md)
- - [CreateGridCloudapiVmaddressResponse](docs/CreateGridCloudapiVmaddressResponse.md)
- - [CreateGridCloudapiVmaddressResponseAsObject](docs/CreateGridCloudapiVmaddressResponseAsObject.md)
- - [CreateGridMemberCloudapiResponse](docs/CreateGridMemberCloudapiResponse.md)
- - [CreateGridMemberCloudapiResponseAsObject](docs/CreateGridMemberCloudapiResponseAsObject.md)
- - [CreateOutboundCloudclientResponse](docs/CreateOutboundCloudclientResponse.md)
- - [CreateOutboundCloudclientResponseAsObject](docs/CreateOutboundCloudclientResponseAsObject.md)
+ - [CreateAzurednstaskgroupResponse](docs/CreateAzurednstaskgroupResponse.md)
+ - [CreateAzurednstaskgroupResponseAsObject](docs/CreateAzurednstaskgroupResponseAsObject.md)
+ - [CreateAzureuserResponse](docs/CreateAzureuserResponse.md)
+ - [CreateAzureuserResponseAsObject](docs/CreateAzureuserResponseAsObject.md)
+ - [CreateGcpdnstaskgroupResponse](docs/CreateGcpdnstaskgroupResponse.md)
+ - [CreateGcpdnstaskgroupResponseAsObject](docs/CreateGcpdnstaskgroupResponseAsObject.md)
+ - [CreateGcpuserResponse](docs/CreateGcpuserResponse.md)
+ - [CreateGcpuserResponseAsObject](docs/CreateGcpuserResponseAsObject.md)
  - [ExtAttrs](docs/ExtAttrs.md)
+ - [Gcpdnstaskgroup](docs/Gcpdnstaskgroup.md)
+ - [GcpdnstaskgroupTaskList](docs/GcpdnstaskgroupTaskList.md)
+ - [Gcpuser](docs/Gcpuser.md)
  - [GetAwsrte53taskgroupResponse](docs/GetAwsrte53taskgroupResponse.md)
  - [GetAwsrte53taskgroupResponseObjectAsResult](docs/GetAwsrte53taskgroupResponseObjectAsResult.md)
  - [GetAwsuserResponse](docs/GetAwsuserResponse.md)
  - [GetAwsuserResponseObjectAsResult](docs/GetAwsuserResponseObjectAsResult.md)
- - [GetGridCloudapiCloudstatisticsResponse](docs/GetGridCloudapiCloudstatisticsResponse.md)
- - [GetGridCloudapiCloudstatisticsResponseObjectAsResult](docs/GetGridCloudapiCloudstatisticsResponseObjectAsResult.md)
- - [GetGridCloudapiResponse](docs/GetGridCloudapiResponse.md)
- - [GetGridCloudapiResponseObjectAsResult](docs/GetGridCloudapiResponseObjectAsResult.md)
- - [GetGridCloudapiTenantResponse](docs/GetGridCloudapiTenantResponse.md)
- - [GetGridCloudapiTenantResponseObjectAsResult](docs/GetGridCloudapiTenantResponseObjectAsResult.md)
- - [GetGridCloudapiVmResponse](docs/GetGridCloudapiVmResponse.md)
- - [GetGridCloudapiVmResponseObjectAsResult](docs/GetGridCloudapiVmResponseObjectAsResult.md)
- - [GetGridCloudapiVmaddressResponse](docs/GetGridCloudapiVmaddressResponse.md)
- - [GetGridCloudapiVmaddressResponseObjectAsResult](docs/GetGridCloudapiVmaddressResponseObjectAsResult.md)
- - [GetGridMemberCloudapiResponse](docs/GetGridMemberCloudapiResponse.md)
- - [GetGridMemberCloudapiResponseObjectAsResult](docs/GetGridMemberCloudapiResponseObjectAsResult.md)
- - [GetOutboundCloudclientResponse](docs/GetOutboundCloudclientResponse.md)
- - [GetOutboundCloudclientResponseObjectAsResult](docs/GetOutboundCloudclientResponseObjectAsResult.md)
- - [GridCloudapi](docs/GridCloudapi.md)
- - [GridCloudapiAllowedApiAdmins](docs/GridCloudapiAllowedApiAdmins.md)
- - [GridCloudapiCloudstatistics](docs/GridCloudapiCloudstatistics.md)
- - [GridCloudapiGatewayConfig](docs/GridCloudapiGatewayConfig.md)
- - [GridCloudapiTenant](docs/GridCloudapiTenant.md)
- - [GridCloudapiTenantCloudInfo](docs/GridCloudapiTenantCloudInfo.md)
- - [GridCloudapiVm](docs/GridCloudapiVm.md)
- - [GridCloudapiVmCloudInfo](docs/GridCloudapiVmCloudInfo.md)
- - [GridCloudapiVmaddress](docs/GridCloudapiVmaddress.md)
- - [GridCloudapiVmaddressCloudInfo](docs/GridCloudapiVmaddressCloudInfo.md)
- - [GridCloudapiVmaddressMsAdUserData](docs/GridCloudapiVmaddressMsAdUserData.md)
- - [GridMemberCloudapi](docs/GridMemberCloudapi.md)
- - [GridMemberCloudapiAllowedApiAdmins](docs/GridMemberCloudapiAllowedApiAdmins.md)
- - [GridMemberCloudapiGatewayConfig](docs/GridMemberCloudapiGatewayConfig.md)
- - [GridMemberCloudapiMember](docs/GridMemberCloudapiMember.md)
- - [GridcloudapigatewayconfigEndpointMapping](docs/GridcloudapigatewayconfigEndpointMapping.md)
- - [GridcloudapitenantcloudinfoDelegatedMember](docs/GridcloudapitenantcloudinfoDelegatedMember.md)
- - [GridcloudapivmaddresscloudinfoDelegatedMember](docs/GridcloudapivmaddresscloudinfoDelegatedMember.md)
- - [GridcloudapivmcloudinfoDelegatedMember](docs/GridcloudapivmcloudinfoDelegatedMember.md)
- - [GridmembercloudapigatewayconfigEndpointMapping](docs/GridmembercloudapigatewayconfigEndpointMapping.md)
+ - [GetAzurednstaskgroupResponse](docs/GetAzurednstaskgroupResponse.md)
+ - [GetAzurednstaskgroupResponseObjectAsResult](docs/GetAzurednstaskgroupResponseObjectAsResult.md)
+ - [GetAzureuserResponse](docs/GetAzureuserResponse.md)
+ - [GetAzureuserResponseObjectAsResult](docs/GetAzureuserResponseObjectAsResult.md)
+ - [GetGcpdnstaskgroupResponse](docs/GetGcpdnstaskgroupResponse.md)
+ - [GetGcpdnstaskgroupResponseObjectAsResult](docs/GetGcpdnstaskgroupResponseObjectAsResult.md)
+ - [GetGcpuserResponse](docs/GetGcpuserResponse.md)
+ - [GetGcpuserResponseObjectAsResult](docs/GetGcpuserResponseObjectAsResult.md)
+ - [GetMultiregionsResponse](docs/GetMultiregionsResponse.md)
+ - [GetMultiregionsResponseObjectAsResult](docs/GetMultiregionsResponseObjectAsResult.md)
  - [ListAwsrte53taskgroupResponse](docs/ListAwsrte53taskgroupResponse.md)
  - [ListAwsrte53taskgroupResponseObject](docs/ListAwsrte53taskgroupResponseObject.md)
  - [ListAwsuserResponse](docs/ListAwsuserResponse.md)
  - [ListAwsuserResponseObject](docs/ListAwsuserResponseObject.md)
- - [ListGridCloudapiCloudstatisticsResponse](docs/ListGridCloudapiCloudstatisticsResponse.md)
- - [ListGridCloudapiCloudstatisticsResponseObject](docs/ListGridCloudapiCloudstatisticsResponseObject.md)
- - [ListGridCloudapiResponse](docs/ListGridCloudapiResponse.md)
- - [ListGridCloudapiResponseObject](docs/ListGridCloudapiResponseObject.md)
- - [ListGridCloudapiTenantResponse](docs/ListGridCloudapiTenantResponse.md)
- - [ListGridCloudapiTenantResponseObject](docs/ListGridCloudapiTenantResponseObject.md)
- - [ListGridCloudapiVmResponse](docs/ListGridCloudapiVmResponse.md)
- - [ListGridCloudapiVmResponseObject](docs/ListGridCloudapiVmResponseObject.md)
- - [ListGridCloudapiVmaddressResponse](docs/ListGridCloudapiVmaddressResponse.md)
- - [ListGridCloudapiVmaddressResponseObject](docs/ListGridCloudapiVmaddressResponseObject.md)
- - [ListGridMemberCloudapiResponse](docs/ListGridMemberCloudapiResponse.md)
- - [ListGridMemberCloudapiResponseObject](docs/ListGridMemberCloudapiResponseObject.md)
- - [ListOutboundCloudclientResponse](docs/ListOutboundCloudclientResponse.md)
- - [ListOutboundCloudclientResponseObject](docs/ListOutboundCloudclientResponseObject.md)
- - [OutboundCloudclient](docs/OutboundCloudclient.md)
- - [OutboundCloudclientOutboundCloudClientEvents](docs/OutboundCloudclientOutboundCloudClientEvents.md)
+ - [ListAzurednstaskgroupResponse](docs/ListAzurednstaskgroupResponse.md)
+ - [ListAzurednstaskgroupResponseObject](docs/ListAzurednstaskgroupResponseObject.md)
+ - [ListAzureuserResponse](docs/ListAzureuserResponse.md)
+ - [ListAzureuserResponseObject](docs/ListAzureuserResponseObject.md)
+ - [ListGcpdnstaskgroupResponse](docs/ListGcpdnstaskgroupResponse.md)
+ - [ListGcpdnstaskgroupResponseObject](docs/ListGcpdnstaskgroupResponseObject.md)
+ - [ListGcpuserResponse](docs/ListGcpuserResponse.md)
+ - [ListGcpuserResponseObject](docs/ListGcpuserResponseObject.md)
+ - [ListMultiregionsResponse](docs/ListMultiregionsResponse.md)
+ - [ListMultiregionsResponseObject](docs/ListMultiregionsResponseObject.md)
+ - [Multiregions](docs/Multiregions.md)
  - [UpdateAwsrte53taskgroupResponse](docs/UpdateAwsrte53taskgroupResponse.md)
  - [UpdateAwsrte53taskgroupResponseAsObject](docs/UpdateAwsrte53taskgroupResponseAsObject.md)
  - [UpdateAwsuserResponse](docs/UpdateAwsuserResponse.md)
  - [UpdateAwsuserResponseAsObject](docs/UpdateAwsuserResponseAsObject.md)
- - [UpdateGridCloudapiCloudstatisticsResponse](docs/UpdateGridCloudapiCloudstatisticsResponse.md)
- - [UpdateGridCloudapiCloudstatisticsResponseAsObject](docs/UpdateGridCloudapiCloudstatisticsResponseAsObject.md)
- - [UpdateGridCloudapiResponse](docs/UpdateGridCloudapiResponse.md)
- - [UpdateGridCloudapiResponseAsObject](docs/UpdateGridCloudapiResponseAsObject.md)
- - [UpdateGridCloudapiTenantResponse](docs/UpdateGridCloudapiTenantResponse.md)
- - [UpdateGridCloudapiTenantResponseAsObject](docs/UpdateGridCloudapiTenantResponseAsObject.md)
- - [UpdateGridCloudapiVmResponse](docs/UpdateGridCloudapiVmResponse.md)
- - [UpdateGridCloudapiVmResponseAsObject](docs/UpdateGridCloudapiVmResponseAsObject.md)
- - [UpdateGridCloudapiVmaddressResponse](docs/UpdateGridCloudapiVmaddressResponse.md)
- - [UpdateGridCloudapiVmaddressResponseAsObject](docs/UpdateGridCloudapiVmaddressResponseAsObject.md)
- - [UpdateGridMemberCloudapiResponse](docs/UpdateGridMemberCloudapiResponse.md)
- - [UpdateGridMemberCloudapiResponseAsObject](docs/UpdateGridMemberCloudapiResponseAsObject.md)
- - [UpdateOutboundCloudclientResponse](docs/UpdateOutboundCloudclientResponse.md)
- - [UpdateOutboundCloudclientResponseAsObject](docs/UpdateOutboundCloudclientResponseAsObject.md)
+ - [UpdateAzurednstaskgroupResponse](docs/UpdateAzurednstaskgroupResponse.md)
+ - [UpdateAzurednstaskgroupResponseAsObject](docs/UpdateAzurednstaskgroupResponseAsObject.md)
+ - [UpdateAzureuserResponse](docs/UpdateAzureuserResponse.md)
+ - [UpdateAzureuserResponseAsObject](docs/UpdateAzureuserResponseAsObject.md)
+ - [UpdateGcpdnstaskgroupResponse](docs/UpdateGcpdnstaskgroupResponse.md)
+ - [UpdateGcpdnstaskgroupResponseAsObject](docs/UpdateGcpdnstaskgroupResponseAsObject.md)
+ - [UpdateGcpuserResponse](docs/UpdateGcpuserResponse.md)
+ - [UpdateGcpuserResponseAsObject](docs/UpdateGcpuserResponseAsObject.md)
+ - [UpdateMultiregionsResponse](docs/UpdateMultiregionsResponse.md)
+ - [UpdateMultiregionsResponseAsObject](docs/UpdateMultiregionsResponseAsObject.md)
 
 
 ## Documentation For Authorization

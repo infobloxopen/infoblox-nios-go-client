@@ -70,8 +70,7 @@ type MemberDns struct {
 	// The flag that indicates whether the capture of DNS queries for all domains is enabled or disabled.
 	CaptureDnsQueriesOnAllDomains *bool `json:"capture_dns_queries_on_all_domains,omitempty"`
 	// Determines whether the application of BIND check-names for zone transfers and DDNS updates are enabled.
-	CheckNamesForDdnsAndZoneTransfer *bool                  `json:"check_names_for_ddns_and_zone_transfer,omitempty"`
-	ClearDnsCache                    map[string]interface{} `json:"clear_dns_cache,omitempty"`
+	CheckNamesForDdnsAndZoneTransfer *bool `json:"check_names_for_ddns_and_zone_transfer,omitempty"`
 	// Copy custom IP, MAC and DNS View name ENDS0 options from incoming to outgoing recursive queries.
 	CopyClientIpMacOptions *bool `json:"copy_client_ip_mac_options,omitempty"`
 	// Copies the allowed IPs from the zone transfer list into the also-notify statement in the named.conf file.
@@ -207,7 +206,7 @@ type MemberDns struct {
 	// The list of glue record addresses.
 	GlueRecordAddresses []MemberDnsGlueRecordAddresses `json:"glue_record_addresses,omitempty"`
 	// The list of GSS-TSIG keys for a member DNS object.
-	GssTsigKeys []map[string]interface{} `json:"gss_tsig_keys,omitempty"`
+	GssTsigKeys []string `json:"gss_tsig_keys,omitempty"`
 	// The host name of the Grid member.
 	HostName *string `json:"host_name,omitempty"`
 	// The IPv4 Address of the Grid member.
@@ -1307,38 +1306,6 @@ func (o *MemberDns) HasCheckNamesForDdnsAndZoneTransfer() bool {
 // SetCheckNamesForDdnsAndZoneTransfer gets a reference to the given bool and assigns it to the CheckNamesForDdnsAndZoneTransfer field.
 func (o *MemberDns) SetCheckNamesForDdnsAndZoneTransfer(v bool) {
 	o.CheckNamesForDdnsAndZoneTransfer = &v
-}
-
-// GetClearDnsCache returns the ClearDnsCache field value if set, zero value otherwise.
-func (o *MemberDns) GetClearDnsCache() map[string]interface{} {
-	if o == nil || IsNil(o.ClearDnsCache) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.ClearDnsCache
-}
-
-// GetClearDnsCacheOk returns a tuple with the ClearDnsCache field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MemberDns) GetClearDnsCacheOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.ClearDnsCache) {
-		return map[string]interface{}{}, false
-	}
-	return o.ClearDnsCache, true
-}
-
-// HasClearDnsCache returns a boolean if a field has been set.
-func (o *MemberDns) HasClearDnsCache() bool {
-	if o != nil && !IsNil(o.ClearDnsCache) {
-		return true
-	}
-
-	return false
-}
-
-// SetClearDnsCache gets a reference to the given map[string]interface{} and assigns it to the ClearDnsCache field.
-func (o *MemberDns) SetClearDnsCache(v map[string]interface{}) {
-	o.ClearDnsCache = v
 }
 
 // GetCopyClientIpMacOptions returns the CopyClientIpMacOptions field value if set, zero value otherwise.
@@ -3518,9 +3485,9 @@ func (o *MemberDns) SetGlueRecordAddresses(v []MemberDnsGlueRecordAddresses) {
 }
 
 // GetGssTsigKeys returns the GssTsigKeys field value if set, zero value otherwise.
-func (o *MemberDns) GetGssTsigKeys() []map[string]interface{} {
+func (o *MemberDns) GetGssTsigKeys() []string {
 	if o == nil || IsNil(o.GssTsigKeys) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.GssTsigKeys
@@ -3528,7 +3495,7 @@ func (o *MemberDns) GetGssTsigKeys() []map[string]interface{} {
 
 // GetGssTsigKeysOk returns a tuple with the GssTsigKeys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberDns) GetGssTsigKeysOk() ([]map[string]interface{}, bool) {
+func (o *MemberDns) GetGssTsigKeysOk() ([]string, bool) {
 	if o == nil || IsNil(o.GssTsigKeys) {
 		return nil, false
 	}
@@ -3544,8 +3511,8 @@ func (o *MemberDns) HasGssTsigKeys() bool {
 	return false
 }
 
-// SetGssTsigKeys gets a reference to the given []map[string]interface{} and assigns it to the GssTsigKeys field.
-func (o *MemberDns) SetGssTsigKeys(v []map[string]interface{}) {
+// SetGssTsigKeys gets a reference to the given []string and assigns it to the GssTsigKeys field.
+func (o *MemberDns) SetGssTsigKeys(v []string) {
 	o.GssTsigKeys = v
 }
 
@@ -7159,9 +7126,6 @@ func (o MemberDns) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CheckNamesForDdnsAndZoneTransfer) {
 		toSerialize["check_names_for_ddns_and_zone_transfer"] = o.CheckNamesForDdnsAndZoneTransfer
-	}
-	if !IsNil(o.ClearDnsCache) {
-		toSerialize["clear_dns_cache"] = o.ClearDnsCache
 	}
 	if !IsNil(o.CopyClientIpMacOptions) {
 		toSerialize["copy_client_ip_mac_options"] = o.CopyClientIpMacOptions

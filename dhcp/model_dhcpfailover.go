@@ -78,9 +78,7 @@ type Dhcpfailover struct {
 	// The type of the secondary server of DHCP Failover association object.
 	SecondaryServerType *string `json:"secondary_server_type,omitempty"`
 	// The secondary server status of a DHCP failover object.
-	SecondaryState                   *string                `json:"secondary_state,omitempty"`
-	SetDhcpFailoverPartnerDown       map[string]interface{} `json:"set_dhcp_failover_partner_down,omitempty"`
-	SetDhcpFailoverSecondaryRecovery map[string]interface{} `json:"set_dhcp_failover_secondary_recovery,omitempty"`
+	SecondaryState *string `json:"secondary_state,omitempty"`
 	// Use flag for: failover_port
 	UseFailoverPort *bool `json:"use_failover_port,omitempty"`
 	// Use flag for: ms_switchover_interval
@@ -1066,70 +1064,6 @@ func (o *Dhcpfailover) SetSecondaryState(v string) {
 	o.SecondaryState = &v
 }
 
-// GetSetDhcpFailoverPartnerDown returns the SetDhcpFailoverPartnerDown field value if set, zero value otherwise.
-func (o *Dhcpfailover) GetSetDhcpFailoverPartnerDown() map[string]interface{} {
-	if o == nil || IsNil(o.SetDhcpFailoverPartnerDown) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.SetDhcpFailoverPartnerDown
-}
-
-// GetSetDhcpFailoverPartnerDownOk returns a tuple with the SetDhcpFailoverPartnerDown field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Dhcpfailover) GetSetDhcpFailoverPartnerDownOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.SetDhcpFailoverPartnerDown) {
-		return map[string]interface{}{}, false
-	}
-	return o.SetDhcpFailoverPartnerDown, true
-}
-
-// HasSetDhcpFailoverPartnerDown returns a boolean if a field has been set.
-func (o *Dhcpfailover) HasSetDhcpFailoverPartnerDown() bool {
-	if o != nil && !IsNil(o.SetDhcpFailoverPartnerDown) {
-		return true
-	}
-
-	return false
-}
-
-// SetSetDhcpFailoverPartnerDown gets a reference to the given map[string]interface{} and assigns it to the SetDhcpFailoverPartnerDown field.
-func (o *Dhcpfailover) SetSetDhcpFailoverPartnerDown(v map[string]interface{}) {
-	o.SetDhcpFailoverPartnerDown = v
-}
-
-// GetSetDhcpFailoverSecondaryRecovery returns the SetDhcpFailoverSecondaryRecovery field value if set, zero value otherwise.
-func (o *Dhcpfailover) GetSetDhcpFailoverSecondaryRecovery() map[string]interface{} {
-	if o == nil || IsNil(o.SetDhcpFailoverSecondaryRecovery) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.SetDhcpFailoverSecondaryRecovery
-}
-
-// GetSetDhcpFailoverSecondaryRecoveryOk returns a tuple with the SetDhcpFailoverSecondaryRecovery field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Dhcpfailover) GetSetDhcpFailoverSecondaryRecoveryOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.SetDhcpFailoverSecondaryRecovery) {
-		return map[string]interface{}{}, false
-	}
-	return o.SetDhcpFailoverSecondaryRecovery, true
-}
-
-// HasSetDhcpFailoverSecondaryRecovery returns a boolean if a field has been set.
-func (o *Dhcpfailover) HasSetDhcpFailoverSecondaryRecovery() bool {
-	if o != nil && !IsNil(o.SetDhcpFailoverSecondaryRecovery) {
-		return true
-	}
-
-	return false
-}
-
-// SetSetDhcpFailoverSecondaryRecovery gets a reference to the given map[string]interface{} and assigns it to the SetDhcpFailoverSecondaryRecovery field.
-func (o *Dhcpfailover) SetSetDhcpFailoverSecondaryRecovery(v map[string]interface{}) {
-	o.SetDhcpFailoverSecondaryRecovery = v
-}
-
 // GetUseFailoverPort returns the UseFailoverPort field value if set, zero value otherwise.
 func (o *Dhcpfailover) GetUseFailoverPort() bool {
 	if o == nil || IsNil(o.UseFailoverPort) {
@@ -1325,12 +1259,6 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecondaryState) {
 		toSerialize["secondary_state"] = o.SecondaryState
-	}
-	if !IsNil(o.SetDhcpFailoverPartnerDown) {
-		toSerialize["set_dhcp_failover_partner_down"] = o.SetDhcpFailoverPartnerDown
-	}
-	if !IsNil(o.SetDhcpFailoverSecondaryRecovery) {
-		toSerialize["set_dhcp_failover_secondary_recovery"] = o.SetDhcpFailoverSecondaryRecovery
 	}
 	if !IsNil(o.UseFailoverPort) {
 		toSerialize["use_failover_port"] = o.UseFailoverPort

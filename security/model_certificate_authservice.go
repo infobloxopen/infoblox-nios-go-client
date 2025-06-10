@@ -24,7 +24,7 @@ type CertificateAuthservice struct {
 	// Specifies the value of the client certificate for automatically populating the NIOS login name.
 	AutoPopulateLogin *string `json:"auto_populate_login,omitempty"`
 	// The list of CA certificates.
-	CaCertificates []map[string]interface{} `json:"ca_certificates,omitempty"`
+	CaCertificates []string `json:"ca_certificates,omitempty"`
 	// The descriptive comment for the certificate authentication service.
 	Comment *string `json:"comment,omitempty"`
 	// Determines if this certificate authentication service is enabled or disabled.
@@ -50,8 +50,7 @@ type CertificateAuthservice struct {
 	// The username for the service account.
 	RemoteLookupUsername *string `json:"remote_lookup_username,omitempty"`
 	// The validation timeout period in milliseconds.
-	ResponseTimeout           *int64                 `json:"response_timeout,omitempty"`
-	TestOcspResponderSettings map[string]interface{} `json:"test_ocsp_responder_settings,omitempty"`
+	ResponseTimeout *int64 `json:"response_timeout,omitempty"`
 	// The OCSP trust model.
 	TrustModel *string `json:"trust_model,omitempty"`
 	// Specifies how to search for a user.
@@ -140,9 +139,9 @@ func (o *CertificateAuthservice) SetAutoPopulateLogin(v string) {
 }
 
 // GetCaCertificates returns the CaCertificates field value if set, zero value otherwise.
-func (o *CertificateAuthservice) GetCaCertificates() []map[string]interface{} {
+func (o *CertificateAuthservice) GetCaCertificates() []string {
 	if o == nil || IsNil(o.CaCertificates) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.CaCertificates
@@ -150,7 +149,7 @@ func (o *CertificateAuthservice) GetCaCertificates() []map[string]interface{} {
 
 // GetCaCertificatesOk returns a tuple with the CaCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificateAuthservice) GetCaCertificatesOk() ([]map[string]interface{}, bool) {
+func (o *CertificateAuthservice) GetCaCertificatesOk() ([]string, bool) {
 	if o == nil || IsNil(o.CaCertificates) {
 		return nil, false
 	}
@@ -166,8 +165,8 @@ func (o *CertificateAuthservice) HasCaCertificates() bool {
 	return false
 }
 
-// SetCaCertificates gets a reference to the given []map[string]interface{} and assigns it to the CaCertificates field.
-func (o *CertificateAuthservice) SetCaCertificates(v []map[string]interface{}) {
+// SetCaCertificates gets a reference to the given []string and assigns it to the CaCertificates field.
+func (o *CertificateAuthservice) SetCaCertificates(v []string) {
 	o.CaCertificates = v
 }
 
@@ -587,38 +586,6 @@ func (o *CertificateAuthservice) SetResponseTimeout(v int64) {
 	o.ResponseTimeout = &v
 }
 
-// GetTestOcspResponderSettings returns the TestOcspResponderSettings field value if set, zero value otherwise.
-func (o *CertificateAuthservice) GetTestOcspResponderSettings() map[string]interface{} {
-	if o == nil || IsNil(o.TestOcspResponderSettings) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.TestOcspResponderSettings
-}
-
-// GetTestOcspResponderSettingsOk returns a tuple with the TestOcspResponderSettings field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CertificateAuthservice) GetTestOcspResponderSettingsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.TestOcspResponderSettings) {
-		return map[string]interface{}{}, false
-	}
-	return o.TestOcspResponderSettings, true
-}
-
-// HasTestOcspResponderSettings returns a boolean if a field has been set.
-func (o *CertificateAuthservice) HasTestOcspResponderSettings() bool {
-	if o != nil && !IsNil(o.TestOcspResponderSettings) {
-		return true
-	}
-
-	return false
-}
-
-// SetTestOcspResponderSettings gets a reference to the given map[string]interface{} and assigns it to the TestOcspResponderSettings field.
-func (o *CertificateAuthservice) SetTestOcspResponderSettings(v map[string]interface{}) {
-	o.TestOcspResponderSettings = v
-}
-
 // GetTrustModel returns the TrustModel field value if set, zero value otherwise.
 func (o *CertificateAuthservice) GetTrustModel() string {
 	if o == nil || IsNil(o.TrustModel) {
@@ -740,9 +707,6 @@ func (o CertificateAuthservice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ResponseTimeout) {
 		toSerialize["response_timeout"] = o.ResponseTimeout
-	}
-	if !IsNil(o.TestOcspResponderSettings) {
-		toSerialize["test_ocsp_responder_settings"] = o.TestOcspResponderSettings
 	}
 	if !IsNil(o.TrustModel) {
 		toSerialize["trust_model"] = o.TrustModel

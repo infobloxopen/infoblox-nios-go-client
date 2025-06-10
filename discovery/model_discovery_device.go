@@ -62,7 +62,7 @@ type DiscoveryDevice struct {
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// List of the device interfaces.
-	Interfaces []map[string]interface{} `json:"interfaces,omitempty"`
+	Interfaces []string `json:"interfaces,omitempty"`
 	// The location of the device.
 	Location *string `json:"location,omitempty"`
 	// The model name of the device.
@@ -71,7 +71,7 @@ type DiscoveryDevice struct {
 	// The name of the device.
 	Name *string `json:"name,omitempty"`
 	// List of the device neighbors.
-	Neighbors []map[string]interface{} `json:"neighbors,omitempty"`
+	Neighbors []string `json:"neighbors,omitempty"`
 	// The ref to the network to which belongs the management IP address belongs.
 	Network *string `json:"network,omitempty"`
 	// The list of networks to which the device interfaces belong.
@@ -79,7 +79,7 @@ type DiscoveryDevice struct {
 	// The name of the network view in which this device resides.
 	NetworkView *string `json:"network_view,omitempty"`
 	// The list of networks to which the device interfaces belong.
-	Networks []map[string]interface{} `json:"networks,omitempty"`
+	Networks []string `json:"networks,omitempty"`
 	// The Operating System version running on the device.
 	OsVersion *string                   `json:"os_version,omitempty"`
 	PortStats *DiscoveryDevicePortStats `json:"port_stats,omitempty"`
@@ -785,9 +785,9 @@ func (o *DiscoveryDevice) SetExtattrs(v map[string]ExtAttrs) {
 }
 
 // GetInterfaces returns the Interfaces field value if set, zero value otherwise.
-func (o *DiscoveryDevice) GetInterfaces() []map[string]interface{} {
+func (o *DiscoveryDevice) GetInterfaces() []string {
 	if o == nil || IsNil(o.Interfaces) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Interfaces
@@ -795,7 +795,7 @@ func (o *DiscoveryDevice) GetInterfaces() []map[string]interface{} {
 
 // GetInterfacesOk returns a tuple with the Interfaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiscoveryDevice) GetInterfacesOk() ([]map[string]interface{}, bool) {
+func (o *DiscoveryDevice) GetInterfacesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Interfaces) {
 		return nil, false
 	}
@@ -811,8 +811,8 @@ func (o *DiscoveryDevice) HasInterfaces() bool {
 	return false
 }
 
-// SetInterfaces gets a reference to the given []map[string]interface{} and assigns it to the Interfaces field.
-func (o *DiscoveryDevice) SetInterfaces(v []map[string]interface{}) {
+// SetInterfaces gets a reference to the given []string and assigns it to the Interfaces field.
+func (o *DiscoveryDevice) SetInterfaces(v []string) {
 	o.Interfaces = v
 }
 
@@ -945,9 +945,9 @@ func (o *DiscoveryDevice) SetName(v string) {
 }
 
 // GetNeighbors returns the Neighbors field value if set, zero value otherwise.
-func (o *DiscoveryDevice) GetNeighbors() []map[string]interface{} {
+func (o *DiscoveryDevice) GetNeighbors() []string {
 	if o == nil || IsNil(o.Neighbors) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Neighbors
@@ -955,7 +955,7 @@ func (o *DiscoveryDevice) GetNeighbors() []map[string]interface{} {
 
 // GetNeighborsOk returns a tuple with the Neighbors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiscoveryDevice) GetNeighborsOk() ([]map[string]interface{}, bool) {
+func (o *DiscoveryDevice) GetNeighborsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Neighbors) {
 		return nil, false
 	}
@@ -971,8 +971,8 @@ func (o *DiscoveryDevice) HasNeighbors() bool {
 	return false
 }
 
-// SetNeighbors gets a reference to the given []map[string]interface{} and assigns it to the Neighbors field.
-func (o *DiscoveryDevice) SetNeighbors(v []map[string]interface{}) {
+// SetNeighbors gets a reference to the given []string and assigns it to the Neighbors field.
+func (o *DiscoveryDevice) SetNeighbors(v []string) {
 	o.Neighbors = v
 }
 
@@ -1073,9 +1073,9 @@ func (o *DiscoveryDevice) SetNetworkView(v string) {
 }
 
 // GetNetworks returns the Networks field value if set, zero value otherwise.
-func (o *DiscoveryDevice) GetNetworks() []map[string]interface{} {
+func (o *DiscoveryDevice) GetNetworks() []string {
 	if o == nil || IsNil(o.Networks) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Networks
@@ -1083,7 +1083,7 @@ func (o *DiscoveryDevice) GetNetworks() []map[string]interface{} {
 
 // GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiscoveryDevice) GetNetworksOk() ([]map[string]interface{}, bool) {
+func (o *DiscoveryDevice) GetNetworksOk() ([]string, bool) {
 	if o == nil || IsNil(o.Networks) {
 		return nil, false
 	}
@@ -1099,8 +1099,8 @@ func (o *DiscoveryDevice) HasNetworks() bool {
 	return false
 }
 
-// SetNetworks gets a reference to the given []map[string]interface{} and assigns it to the Networks field.
-func (o *DiscoveryDevice) SetNetworks(v []map[string]interface{}) {
+// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
+func (o *DiscoveryDevice) SetNetworks(v []string) {
 	o.Networks = v
 }
 

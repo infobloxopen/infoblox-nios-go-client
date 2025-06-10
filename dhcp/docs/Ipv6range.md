@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **EnableDiscovery** | Pointer to **bool** | Determines whether a discovery is enabled or not for this range. When this is set to False, the discovery for this range is disabled. | [optional] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the range should be immediately enabled. | [optional] 
 **EndAddr** | Pointer to **string** | The IPv6 Address end address of the DHCP IPv6 range. | [optional] 
-**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP IPv6 Range object. | [optional] [readonly] 
+**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP IPv6 Range object. | [optional] [readonly] 
 **Exclude** | Pointer to [**[]Ipv6rangeExclude**](Ipv6rangeExclude.md) | These are ranges of IP addresses that the appliance does not use to assign to clients. You can use these exclusion addresses as static IP addresses. They contain the start and end addresses of the exclusion range, and optionally,information about this exclusion range. | [optional] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Ipv6EndPrefix** | Pointer to **string** | The IPv6 Address end prefix of the DHCP IPv6 range. | [optional] 
@@ -27,7 +27,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | This field contains the name of the Microsoft scope. | [optional] 
 **Network** | Pointer to **string** | The network this range belongs to, in IPv6 Address/CIDR format. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this range resides. | [optional] 
-**NextAvailableIp** | Pointer to **map[string]interface{}** |  | [optional] 
 **OptionFilterRules** | Pointer to [**[]Ipv6rangeOptionFilterRules**](Ipv6rangeOptionFilterRules.md) | This field contains the Option filters to be applied to this IPv6 range. The appliance uses the matching rules of these filters to select the address range from which it assigns a lease. | [optional] 
 **PortControlBlackoutSetting** | Pointer to [**Ipv6rangePortControlBlackoutSetting**](Ipv6rangePortControlBlackoutSetting.md) |  | [optional] 
 **RecycleLeases** | Pointer to **bool** | If the field is set to True, the leases are kept in the Recycle Bin until one week after expiration. Otherwise, the leases are permanently deleted. | [optional] 
@@ -365,20 +364,20 @@ HasEndAddr returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *Ipv6range) GetEndpointSources() []map[string]interface{}`
+`func (o *Ipv6range) GetEndpointSources() []string`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *Ipv6range) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
+`func (o *Ipv6range) GetEndpointSourcesOk() (*[]string, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *Ipv6range) SetEndpointSources(v []map[string]interface{})`
+`func (o *Ipv6range) SetEndpointSources(v []string)`
 
 SetEndpointSources sets EndpointSources field to given value.
 
@@ -637,31 +636,6 @@ SetNetworkView sets NetworkView field to given value.
 `func (o *Ipv6range) HasNetworkView() bool`
 
 HasNetworkView returns a boolean if a field has been set.
-
-### GetNextAvailableIp
-
-`func (o *Ipv6range) GetNextAvailableIp() map[string]interface{}`
-
-GetNextAvailableIp returns the NextAvailableIp field if non-nil, zero value otherwise.
-
-### GetNextAvailableIpOk
-
-`func (o *Ipv6range) GetNextAvailableIpOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableIpOk returns a tuple with the NextAvailableIp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableIp
-
-`func (o *Ipv6range) SetNextAvailableIp(v map[string]interface{})`
-
-SetNextAvailableIp sets NextAvailableIp field to given value.
-
-### HasNextAvailableIp
-
-`func (o *Ipv6range) HasNextAvailableIp() bool`
-
-HasNextAvailableIp returns a boolean if a field has been set.
 
 ### GetOptionFilterRules
 

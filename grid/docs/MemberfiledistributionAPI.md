@@ -1,18 +1,18 @@
-# MemberfiledistributionAPI
+# MemberFiledistributionAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](MemberfiledistributionAPI.md#Get) | **Get** /member:filedistribution | Retrieve member:filedistribution objects
-[**ReferenceGet**](MemberfiledistributionAPI.md#ReferenceGet) | **Get** /member:filedistribution/{reference} | Get a specific member:filedistribution object
-[**ReferencePut**](MemberfiledistributionAPI.md#ReferencePut) | **Put** /member:filedistribution/{reference} | Update a member:filedistribution object
+[**MemberfiledistributionGet**](MemberFiledistributionAPI.md#MemberfiledistributionGet) | **Get** /member:filedistribution | Retrieve member:filedistribution objects
+[**MemberfiledistributionReferenceGet**](MemberFiledistributionAPI.md#MemberfiledistributionReferenceGet) | **Get** /member:filedistribution/{reference} | Get a specific member:filedistribution object
+[**MemberfiledistributionReferencePut**](MemberFiledistributionAPI.md#MemberfiledistributionReferencePut) | **Put** /member:filedistribution/{reference} | Update a member:filedistribution object
 
 
 
-## Get
+## MemberfiledistributionGet
 
-> ListMemberFiledistributionResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListMemberFiledistributionResponse MemberfiledistributionGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve member:filedistribution objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberfiledistributionAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.MemberFiledistributionAPI.MemberfiledistributionGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberfiledistributionAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberFiledistributionAPI.MemberfiledistributionGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListMemberFiledistributionResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberfiledistributionAPI.Get`: %v\n", resp)
+	// response from `MemberfiledistributionGet`: ListMemberFiledistributionResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberFiledistributionAPI.MemberfiledistributionGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberfiledistributionAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberFiledistributionAPIMemberfiledistributionGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## MemberfiledistributionReferenceGet
 
-> GetMemberFiledistributionResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMemberFiledistributionResponse MemberfiledistributionReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific member:filedistribution object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the member:filedistribution object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberfiledistributionAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MemberFiledistributionAPI.MemberfiledistributionReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberfiledistributionAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberFiledistributionAPI.MemberfiledistributionReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetMemberFiledistributionResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberfiledistributionAPI.ReferenceGet`: %v\n", resp)
+	// response from `MemberfiledistributionReferenceGet`: GetMemberFiledistributionResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberFiledistributionAPI.MemberfiledistributionReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberfiledistributionAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## MemberfiledistributionReferencePut
 
-> UpdateMemberFiledistributionResponse ReferencePut(ctx, reference).MemberFiledistribution(memberFiledistribution).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateMemberFiledistributionResponse MemberfiledistributionReferencePut(ctx, reference).MemberFiledistribution(memberFiledistribution).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a member:filedistribution object
 
@@ -180,13 +180,13 @@ func main() {
 	memberFiledistribution := *grid.NewMemberFiledistribution() // MemberFiledistribution | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberfiledistributionAPI.ReferencePut(context.Background(), reference).MemberFiledistribution(memberFiledistribution).Execute()
+	resp, r, err := apiClient.MemberFiledistributionAPI.MemberfiledistributionReferencePut(context.Background(), reference).MemberFiledistribution(memberFiledistribution).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberfiledistributionAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberFiledistributionAPI.MemberfiledistributionReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateMemberFiledistributionResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberfiledistributionAPI.ReferencePut`: %v\n", resp)
+	// response from `MemberfiledistributionReferencePut`: UpdateMemberFiledistributionResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberFiledistributionAPI.MemberfiledistributionReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberfiledistributionAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberFiledistributionAPIMemberfiledistributionReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -1,20 +1,20 @@
-# NsgroupforwardstubserverAPI
+# NsgroupForwardstubserverAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](NsgroupforwardstubserverAPI.md#Get) | **Get** /nsgroup:forwardstubserver | Retrieve nsgroup:forwardstubserver objects
-[**Post**](NsgroupforwardstubserverAPI.md#Post) | **Post** /nsgroup:forwardstubserver | Create a nsgroup:forwardstubserver object
-[**ReferenceDelete**](NsgroupforwardstubserverAPI.md#ReferenceDelete) | **Delete** /nsgroup:forwardstubserver/{reference} | Delete a nsgroup:forwardstubserver object
-[**ReferenceGet**](NsgroupforwardstubserverAPI.md#ReferenceGet) | **Get** /nsgroup:forwardstubserver/{reference} | Get a specific nsgroup:forwardstubserver object
-[**ReferencePut**](NsgroupforwardstubserverAPI.md#ReferencePut) | **Put** /nsgroup:forwardstubserver/{reference} | Update a nsgroup:forwardstubserver object
+[**NsgroupforwardstubserverGet**](NsgroupForwardstubserverAPI.md#NsgroupforwardstubserverGet) | **Get** /nsgroup:forwardstubserver | Retrieve nsgroup:forwardstubserver objects
+[**NsgroupforwardstubserverPost**](NsgroupForwardstubserverAPI.md#NsgroupforwardstubserverPost) | **Post** /nsgroup:forwardstubserver | Create a nsgroup:forwardstubserver object
+[**NsgroupforwardstubserverReferenceDelete**](NsgroupForwardstubserverAPI.md#NsgroupforwardstubserverReferenceDelete) | **Delete** /nsgroup:forwardstubserver/{reference} | Delete a nsgroup:forwardstubserver object
+[**NsgroupforwardstubserverReferenceGet**](NsgroupForwardstubserverAPI.md#NsgroupforwardstubserverReferenceGet) | **Get** /nsgroup:forwardstubserver/{reference} | Get a specific nsgroup:forwardstubserver object
+[**NsgroupforwardstubserverReferencePut**](NsgroupForwardstubserverAPI.md#NsgroupforwardstubserverReferencePut) | **Put** /nsgroup:forwardstubserver/{reference} | Update a nsgroup:forwardstubserver object
 
 
 
-## Get
+## NsgroupforwardstubserverGet
 
-> ListNsgroupForwardstubserverResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListNsgroupForwardstubserverResponse NsgroupforwardstubserverGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve nsgroup:forwardstubserver objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupforwardstubserverAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.NsgroupForwardstubserverAPI.NsgroupforwardstubserverGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardstubserverAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupForwardstubserverAPI.NsgroupforwardstubserverGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListNsgroupForwardstubserverResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupforwardstubserverAPI.Get`: %v\n", resp)
+	// response from `NsgroupforwardstubserverGet`: ListNsgroupForwardstubserverResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupForwardstubserverAPI.NsgroupforwardstubserverGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupforwardstubserverAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## NsgroupforwardstubserverPost
 
-> CreateNsgroupForwardstubserverResponse Post(ctx).NsgroupForwardstubserver(nsgroupForwardstubserver).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateNsgroupForwardstubserverResponse NsgroupforwardstubserverPost(ctx).NsgroupForwardstubserver(nsgroupForwardstubserver).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a nsgroup:forwardstubserver object
 
@@ -109,13 +109,13 @@ func main() {
 	nsgroupForwardstubserver := *dns.NewNsgroupForwardstubserver() // NsgroupForwardstubserver | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupforwardstubserverAPI.Post(context.Background()).NsgroupForwardstubserver(nsgroupForwardstubserver).Execute()
+	resp, r, err := apiClient.NsgroupForwardstubserverAPI.NsgroupforwardstubserverPost(context.Background()).NsgroupForwardstubserver(nsgroupForwardstubserver).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardstubserverAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupForwardstubserverAPI.NsgroupforwardstubserverPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateNsgroupForwardstubserverResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupforwardstubserverAPI.Post`: %v\n", resp)
+	// response from `NsgroupforwardstubserverPost`: CreateNsgroupForwardstubserverResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupForwardstubserverAPI.NsgroupforwardstubserverPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupforwardstubserverAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## NsgroupforwardstubserverReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> NsgroupforwardstubserverReferenceDelete(ctx, reference).Execute()
 
 Delete a nsgroup:forwardstubserver object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the nsgroup:forwardstubserver object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.NsgroupforwardstubserverAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardstubserverAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupforwardstubserverAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## NsgroupforwardstubserverReferenceGet
 
-> GetNsgroupForwardstubserverResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetNsgroupForwardstubserverResponse NsgroupforwardstubserverReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific nsgroup:forwardstubserver object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the nsgroup:forwardstubserver object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupforwardstubserverAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardstubserverAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetNsgroupForwardstubserverResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupforwardstubserverAPI.ReferenceGet`: %v\n", resp)
+	// response from `NsgroupforwardstubserverReferenceGet`: GetNsgroupForwardstubserverResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupforwardstubserverAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## NsgroupforwardstubserverReferencePut
 
-> UpdateNsgroupForwardstubserverResponse ReferencePut(ctx, reference).NsgroupForwardstubserver(nsgroupForwardstubserver).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateNsgroupForwardstubserverResponse NsgroupforwardstubserverReferencePut(ctx, reference).NsgroupForwardstubserver(nsgroupForwardstubserver).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a nsgroup:forwardstubserver object
 
@@ -318,13 +318,13 @@ func main() {
 	nsgroupForwardstubserver := *dns.NewNsgroupForwardstubserver() // NsgroupForwardstubserver | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupforwardstubserverAPI.ReferencePut(context.Background(), reference).NsgroupForwardstubserver(nsgroupForwardstubserver).Execute()
+	resp, r, err := apiClient.NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferencePut(context.Background(), reference).NsgroupForwardstubserver(nsgroupForwardstubserver).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardstubserverAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateNsgroupForwardstubserverResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupforwardstubserverAPI.ReferencePut`: %v\n", resp)
+	// response from `NsgroupforwardstubserverReferencePut`: UpdateNsgroupForwardstubserverResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupforwardstubserverAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

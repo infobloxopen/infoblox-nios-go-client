@@ -1,17 +1,17 @@
-# IpamstatisticsAPI
+# IpamStatisticsAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](IpamstatisticsAPI.md#Get) | **Get** /ipam:statistics | Retrieve ipam:statistics objects
-[**ReferenceGet**](IpamstatisticsAPI.md#ReferenceGet) | **Get** /ipam:statistics/{reference} | Get a specific ipam:statistics object
+[**IpamstatisticsGet**](IpamStatisticsAPI.md#IpamstatisticsGet) | **Get** /ipam:statistics | Retrieve ipam:statistics objects
+[**IpamstatisticsReferenceGet**](IpamStatisticsAPI.md#IpamstatisticsReferenceGet) | **Get** /ipam:statistics/{reference} | Get a specific ipam:statistics object
 
 
 
-## Get
+## IpamstatisticsGet
 
-> ListIpamStatisticsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListIpamStatisticsResponse IpamstatisticsGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve ipam:statistics objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpamstatisticsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.IpamStatisticsAPI.IpamstatisticsGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpamstatisticsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpamStatisticsAPI.IpamstatisticsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListIpamStatisticsResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpamstatisticsAPI.Get`: %v\n", resp)
+	// response from `IpamstatisticsGet`: ListIpamStatisticsResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpamStatisticsAPI.IpamstatisticsGet`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `IpamstatisticsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `IpamStatisticsAPIIpamstatisticsGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## IpamstatisticsReferenceGet
 
-> GetIpamStatisticsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetIpamStatisticsResponse IpamstatisticsReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific ipam:statistics object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the ipam:statistics object
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpamstatisticsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.IpamStatisticsAPI.IpamstatisticsReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpamstatisticsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpamStatisticsAPI.IpamstatisticsReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetIpamStatisticsResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpamstatisticsAPI.ReferenceGet`: %v\n", resp)
+	// response from `IpamstatisticsReferenceGet`: GetIpamStatisticsResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpamStatisticsAPI.IpamstatisticsReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `IpamstatisticsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `IpamStatisticsAPIIpamstatisticsReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

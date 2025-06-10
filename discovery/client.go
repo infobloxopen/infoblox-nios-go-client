@@ -24,18 +24,18 @@ type APIClient struct {
 
 	// API Services
 	DiscoveryAPI DiscoveryAPI
-	DiscoverycredentialgroupAPI DiscoverycredentialgroupAPI
-	DiscoverydeviceAPI DiscoverydeviceAPI
-	DiscoverydevicecomponentAPI DiscoverydevicecomponentAPI
-	DiscoverydeviceinterfaceAPI DiscoverydeviceinterfaceAPI
-	DiscoverydeviceneighborAPI DiscoverydeviceneighborAPI
-	DiscoverydevicesupportbundleAPI DiscoverydevicesupportbundleAPI
-	DiscoverydiagnostictaskAPI DiscoverydiagnostictaskAPI
-	DiscoverygridpropertiesAPI DiscoverygridpropertiesAPI
-	DiscoverymemberpropertiesAPI DiscoverymemberpropertiesAPI
-	DiscoverysdnnetworkAPI DiscoverysdnnetworkAPI
-	DiscoverystatusAPI DiscoverystatusAPI
-	DiscoveryvrfAPI DiscoveryvrfAPI
+	DiscoveryCredentialgroupAPI DiscoveryCredentialgroupAPI
+	DiscoveryDeviceAPI DiscoveryDeviceAPI
+	DiscoveryDevicecomponentAPI DiscoveryDevicecomponentAPI
+	DiscoveryDeviceinterfaceAPI DiscoveryDeviceinterfaceAPI
+	DiscoveryDeviceneighborAPI DiscoveryDeviceneighborAPI
+	DiscoveryDevicesupportbundleAPI DiscoveryDevicesupportbundleAPI
+	DiscoveryDiagnostictaskAPI DiscoveryDiagnostictaskAPI
+	DiscoveryGridpropertiesAPI DiscoveryGridpropertiesAPI
+	DiscoveryMemberpropertiesAPI DiscoveryMemberpropertiesAPI
+	DiscoverySdnnetworkAPI DiscoverySdnnetworkAPI
+	DiscoveryStatusAPI DiscoveryStatusAPI
+	DiscoveryVrfAPI DiscoveryVrfAPI
 	VdiscoverytaskAPI VdiscoverytaskAPI
 }
 
@@ -59,18 +59,18 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 
 	// API Services
 	c.DiscoveryAPI = (*DiscoveryAPIService)(&c.Common)
-	c.DiscoverycredentialgroupAPI = (*DiscoverycredentialgroupAPIService)(&c.Common)
-	c.DiscoverydeviceAPI = (*DiscoverydeviceAPIService)(&c.Common)
-	c.DiscoverydevicecomponentAPI = (*DiscoverydevicecomponentAPIService)(&c.Common)
-	c.DiscoverydeviceinterfaceAPI = (*DiscoverydeviceinterfaceAPIService)(&c.Common)
-	c.DiscoverydeviceneighborAPI = (*DiscoverydeviceneighborAPIService)(&c.Common)
-	c.DiscoverydevicesupportbundleAPI = (*DiscoverydevicesupportbundleAPIService)(&c.Common)
-	c.DiscoverydiagnostictaskAPI = (*DiscoverydiagnostictaskAPIService)(&c.Common)
-	c.DiscoverygridpropertiesAPI = (*DiscoverygridpropertiesAPIService)(&c.Common)
-	c.DiscoverymemberpropertiesAPI = (*DiscoverymemberpropertiesAPIService)(&c.Common)
-	c.DiscoverysdnnetworkAPI = (*DiscoverysdnnetworkAPIService)(&c.Common)
-	c.DiscoverystatusAPI = (*DiscoverystatusAPIService)(&c.Common)
-	c.DiscoveryvrfAPI = (*DiscoveryvrfAPIService)(&c.Common)
+	c.DiscoveryCredentialgroupAPI = (*DiscoveryCredentialgroupAPIService)(&c.Common)
+	c.DiscoveryDeviceAPI = (*DiscoveryDeviceAPIService)(&c.Common)
+	c.DiscoveryDevicecomponentAPI = (*DiscoveryDevicecomponentAPIService)(&c.Common)
+	c.DiscoveryDeviceinterfaceAPI = (*DiscoveryDeviceinterfaceAPIService)(&c.Common)
+	c.DiscoveryDeviceneighborAPI = (*DiscoveryDeviceneighborAPIService)(&c.Common)
+	c.DiscoveryDevicesupportbundleAPI = (*DiscoveryDevicesupportbundleAPIService)(&c.Common)
+	c.DiscoveryDiagnostictaskAPI = (*DiscoveryDiagnostictaskAPIService)(&c.Common)
+	c.DiscoveryGridpropertiesAPI = (*DiscoveryGridpropertiesAPIService)(&c.Common)
+	c.DiscoveryMemberpropertiesAPI = (*DiscoveryMemberpropertiesAPIService)(&c.Common)
+	c.DiscoverySdnnetworkAPI = (*DiscoverySdnnetworkAPIService)(&c.Common)
+	c.DiscoveryStatusAPI = (*DiscoveryStatusAPIService)(&c.Common)
+	c.DiscoveryVrfAPI = (*DiscoveryVrfAPIService)(&c.Common)
 	c.VdiscoverytaskAPI = (*VdiscoverytaskAPIService)(&c.Common)
 
 	return c

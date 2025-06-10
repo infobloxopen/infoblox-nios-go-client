@@ -81,88 +81,81 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AllrpzrecordsAPI* | [**Get**](docs/AllrpzrecordsAPI.md#get) | **Get** /allrpzrecords | Retrieve allrpzrecords objects
 *AllrpzrecordsAPI* | [**ReferenceGet**](docs/AllrpzrecordsAPI.md#referenceget) | **Get** /allrpzrecords/{reference} | Get a specific allrpzrecords object
-*OrderedresponsepolicyzonesAPI* | [**Get**](docs/OrderedresponsepolicyzonesAPI.md#get) | **Get** /orderedresponsepolicyzones | Retrieve orderedresponsepolicyzones objects
-*OrderedresponsepolicyzonesAPI* | [**ReferenceGet**](docs/OrderedresponsepolicyzonesAPI.md#referenceget) | **Get** /orderedresponsepolicyzones/{reference} | Get a specific orderedresponsepolicyzones object
-*OrderedresponsepolicyzonesAPI* | [**ReferencePut**](docs/OrderedresponsepolicyzonesAPI.md#referenceput) | **Put** /orderedresponsepolicyzones/{reference} | Update a orderedresponsepolicyzones object
-*RecordrpzaAPI* | [**Get**](docs/RecordrpzaAPI.md#get) | **Get** /record:rpz:a | Retrieve record:rpz:a objects
-*RecordrpzaAPI* | [**Post**](docs/RecordrpzaAPI.md#post) | **Post** /record:rpz:a | Create a record:rpz:a object
-*RecordrpzaAPI* | [**ReferenceDelete**](docs/RecordrpzaAPI.md#referencedelete) | **Delete** /record:rpz:a/{reference} | Delete a record:rpz:a object
-*RecordrpzaAPI* | [**ReferenceGet**](docs/RecordrpzaAPI.md#referenceget) | **Get** /record:rpz:a/{reference} | Get a specific record:rpz:a object
-*RecordrpzaAPI* | [**ReferencePut**](docs/RecordrpzaAPI.md#referenceput) | **Put** /record:rpz:a/{reference} | Update a record:rpz:a object
-*RecordrpzaaaaAPI* | [**Get**](docs/RecordrpzaaaaAPI.md#get) | **Get** /record:rpz:aaaa | Retrieve record:rpz:aaaa objects
-*RecordrpzaaaaAPI* | [**Post**](docs/RecordrpzaaaaAPI.md#post) | **Post** /record:rpz:aaaa | Create a record:rpz:aaaa object
-*RecordrpzaaaaAPI* | [**ReferenceDelete**](docs/RecordrpzaaaaAPI.md#referencedelete) | **Delete** /record:rpz:aaaa/{reference} | Delete a record:rpz:aaaa object
-*RecordrpzaaaaAPI* | [**ReferenceGet**](docs/RecordrpzaaaaAPI.md#referenceget) | **Get** /record:rpz:aaaa/{reference} | Get a specific record:rpz:aaaa object
-*RecordrpzaaaaAPI* | [**ReferencePut**](docs/RecordrpzaaaaAPI.md#referenceput) | **Put** /record:rpz:aaaa/{reference} | Update a record:rpz:aaaa object
-*RecordrpzaaaaipaddressAPI* | [**Get**](docs/RecordrpzaaaaipaddressAPI.md#get) | **Get** /record:rpz:aaaa:ipaddress | Retrieve record:rpz:aaaa:ipaddress objects
-*RecordrpzaaaaipaddressAPI* | [**Post**](docs/RecordrpzaaaaipaddressAPI.md#post) | **Post** /record:rpz:aaaa:ipaddress | Create a record:rpz:aaaa:ipaddress object
-*RecordrpzaaaaipaddressAPI* | [**ReferenceDelete**](docs/RecordrpzaaaaipaddressAPI.md#referencedelete) | **Delete** /record:rpz:aaaa:ipaddress/{reference} | Delete a record:rpz:aaaa:ipaddress object
-*RecordrpzaaaaipaddressAPI* | [**ReferenceGet**](docs/RecordrpzaaaaipaddressAPI.md#referenceget) | **Get** /record:rpz:aaaa:ipaddress/{reference} | Get a specific record:rpz:aaaa:ipaddress object
-*RecordrpzaaaaipaddressAPI* | [**ReferencePut**](docs/RecordrpzaaaaipaddressAPI.md#referenceput) | **Put** /record:rpz:aaaa:ipaddress/{reference} | Update a record:rpz:aaaa:ipaddress object
-*RecordrpzaipaddressAPI* | [**Get**](docs/RecordrpzaipaddressAPI.md#get) | **Get** /record:rpz:a:ipaddress | Retrieve record:rpz:a:ipaddress objects
-*RecordrpzaipaddressAPI* | [**Post**](docs/RecordrpzaipaddressAPI.md#post) | **Post** /record:rpz:a:ipaddress | Create a record:rpz:a:ipaddress object
-*RecordrpzaipaddressAPI* | [**ReferenceDelete**](docs/RecordrpzaipaddressAPI.md#referencedelete) | **Delete** /record:rpz:a:ipaddress/{reference} | Delete a record:rpz:a:ipaddress object
-*RecordrpzaipaddressAPI* | [**ReferenceGet**](docs/RecordrpzaipaddressAPI.md#referenceget) | **Get** /record:rpz:a:ipaddress/{reference} | Get a specific record:rpz:a:ipaddress object
-*RecordrpzaipaddressAPI* | [**ReferencePut**](docs/RecordrpzaipaddressAPI.md#referenceput) | **Put** /record:rpz:a:ipaddress/{reference} | Update a record:rpz:a:ipaddress object
-*RecordrpzcnameAPI* | [**Get**](docs/RecordrpzcnameAPI.md#get) | **Get** /record:rpz:cname | Retrieve record:rpz:cname objects
-*RecordrpzcnameAPI* | [**Post**](docs/RecordrpzcnameAPI.md#post) | **Post** /record:rpz:cname | Create a record:rpz:cname object
-*RecordrpzcnameAPI* | [**ReferenceDelete**](docs/RecordrpzcnameAPI.md#referencedelete) | **Delete** /record:rpz:cname/{reference} | Delete a record:rpz:cname object
-*RecordrpzcnameAPI* | [**ReferenceGet**](docs/RecordrpzcnameAPI.md#referenceget) | **Get** /record:rpz:cname/{reference} | Get a specific record:rpz:cname object
-*RecordrpzcnameAPI* | [**ReferencePut**](docs/RecordrpzcnameAPI.md#referenceput) | **Put** /record:rpz:cname/{reference} | Update a record:rpz:cname object
-*RecordrpzcnameclientipaddressAPI* | [**Get**](docs/RecordrpzcnameclientipaddressAPI.md#get) | **Get** /record:rpz:cname:clientipaddress | Retrieve record:rpz:cname:clientipaddress objects
-*RecordrpzcnameclientipaddressAPI* | [**Post**](docs/RecordrpzcnameclientipaddressAPI.md#post) | **Post** /record:rpz:cname:clientipaddress | Create a record:rpz:cname:clientipaddress object
-*RecordrpzcnameclientipaddressAPI* | [**ReferenceDelete**](docs/RecordrpzcnameclientipaddressAPI.md#referencedelete) | **Delete** /record:rpz:cname:clientipaddress/{reference} | Delete a record:rpz:cname:clientipaddress object
-*RecordrpzcnameclientipaddressAPI* | [**ReferenceGet**](docs/RecordrpzcnameclientipaddressAPI.md#referenceget) | **Get** /record:rpz:cname:clientipaddress/{reference} | Get a specific record:rpz:cname:clientipaddress object
-*RecordrpzcnameclientipaddressAPI* | [**ReferencePut**](docs/RecordrpzcnameclientipaddressAPI.md#referenceput) | **Put** /record:rpz:cname:clientipaddress/{reference} | Update a record:rpz:cname:clientipaddress object
-*RecordrpzcnameclientipaddressdnAPI* | [**Get**](docs/RecordrpzcnameclientipaddressdnAPI.md#get) | **Get** /record:rpz:cname:clientipaddressdn | Retrieve record:rpz:cname:clientipaddressdn objects
-*RecordrpzcnameclientipaddressdnAPI* | [**Post**](docs/RecordrpzcnameclientipaddressdnAPI.md#post) | **Post** /record:rpz:cname:clientipaddressdn | Create a record:rpz:cname:clientipaddressdn object
-*RecordrpzcnameclientipaddressdnAPI* | [**ReferenceDelete**](docs/RecordrpzcnameclientipaddressdnAPI.md#referencedelete) | **Delete** /record:rpz:cname:clientipaddressdn/{reference} | Delete a record:rpz:cname:clientipaddressdn object
-*RecordrpzcnameclientipaddressdnAPI* | [**ReferenceGet**](docs/RecordrpzcnameclientipaddressdnAPI.md#referenceget) | **Get** /record:rpz:cname:clientipaddressdn/{reference} | Get a specific record:rpz:cname:clientipaddressdn object
-*RecordrpzcnameclientipaddressdnAPI* | [**ReferencePut**](docs/RecordrpzcnameclientipaddressdnAPI.md#referenceput) | **Put** /record:rpz:cname:clientipaddressdn/{reference} | Update a record:rpz:cname:clientipaddressdn object
-*RecordrpzcnameipaddressAPI* | [**Get**](docs/RecordrpzcnameipaddressAPI.md#get) | **Get** /record:rpz:cname:ipaddress | Retrieve record:rpz:cname:ipaddress objects
-*RecordrpzcnameipaddressAPI* | [**Post**](docs/RecordrpzcnameipaddressAPI.md#post) | **Post** /record:rpz:cname:ipaddress | Create a record:rpz:cname:ipaddress object
-*RecordrpzcnameipaddressAPI* | [**ReferenceDelete**](docs/RecordrpzcnameipaddressAPI.md#referencedelete) | **Delete** /record:rpz:cname:ipaddress/{reference} | Delete a record:rpz:cname:ipaddress object
-*RecordrpzcnameipaddressAPI* | [**ReferenceGet**](docs/RecordrpzcnameipaddressAPI.md#referenceget) | **Get** /record:rpz:cname:ipaddress/{reference} | Get a specific record:rpz:cname:ipaddress object
-*RecordrpzcnameipaddressAPI* | [**ReferencePut**](docs/RecordrpzcnameipaddressAPI.md#referenceput) | **Put** /record:rpz:cname:ipaddress/{reference} | Update a record:rpz:cname:ipaddress object
-*RecordrpzcnameipaddressdnAPI* | [**Get**](docs/RecordrpzcnameipaddressdnAPI.md#get) | **Get** /record:rpz:cname:ipaddressdn | Retrieve record:rpz:cname:ipaddressdn objects
-*RecordrpzcnameipaddressdnAPI* | [**Post**](docs/RecordrpzcnameipaddressdnAPI.md#post) | **Post** /record:rpz:cname:ipaddressdn | Create a record:rpz:cname:ipaddressdn object
-*RecordrpzcnameipaddressdnAPI* | [**ReferenceDelete**](docs/RecordrpzcnameipaddressdnAPI.md#referencedelete) | **Delete** /record:rpz:cname:ipaddressdn/{reference} | Delete a record:rpz:cname:ipaddressdn object
-*RecordrpzcnameipaddressdnAPI* | [**ReferenceGet**](docs/RecordrpzcnameipaddressdnAPI.md#referenceget) | **Get** /record:rpz:cname:ipaddressdn/{reference} | Get a specific record:rpz:cname:ipaddressdn object
-*RecordrpzcnameipaddressdnAPI* | [**ReferencePut**](docs/RecordrpzcnameipaddressdnAPI.md#referenceput) | **Put** /record:rpz:cname:ipaddressdn/{reference} | Update a record:rpz:cname:ipaddressdn object
-*RecordrpzmxAPI* | [**Get**](docs/RecordrpzmxAPI.md#get) | **Get** /record:rpz:mx | Retrieve record:rpz:mx objects
-*RecordrpzmxAPI* | [**Post**](docs/RecordrpzmxAPI.md#post) | **Post** /record:rpz:mx | Create a record:rpz:mx object
-*RecordrpzmxAPI* | [**ReferenceDelete**](docs/RecordrpzmxAPI.md#referencedelete) | **Delete** /record:rpz:mx/{reference} | Delete a record:rpz:mx object
-*RecordrpzmxAPI* | [**ReferenceGet**](docs/RecordrpzmxAPI.md#referenceget) | **Get** /record:rpz:mx/{reference} | Get a specific record:rpz:mx object
-*RecordrpzmxAPI* | [**ReferencePut**](docs/RecordrpzmxAPI.md#referenceput) | **Put** /record:rpz:mx/{reference} | Update a record:rpz:mx object
-*RecordrpznaptrAPI* | [**Get**](docs/RecordrpznaptrAPI.md#get) | **Get** /record:rpz:naptr | Retrieve record:rpz:naptr objects
-*RecordrpznaptrAPI* | [**Post**](docs/RecordrpznaptrAPI.md#post) | **Post** /record:rpz:naptr | Create a record:rpz:naptr object
-*RecordrpznaptrAPI* | [**ReferenceDelete**](docs/RecordrpznaptrAPI.md#referencedelete) | **Delete** /record:rpz:naptr/{reference} | Delete a record:rpz:naptr object
-*RecordrpznaptrAPI* | [**ReferenceGet**](docs/RecordrpznaptrAPI.md#referenceget) | **Get** /record:rpz:naptr/{reference} | Get a specific record:rpz:naptr object
-*RecordrpznaptrAPI* | [**ReferencePut**](docs/RecordrpznaptrAPI.md#referenceput) | **Put** /record:rpz:naptr/{reference} | Update a record:rpz:naptr object
-*RecordrpzptrAPI* | [**Get**](docs/RecordrpzptrAPI.md#get) | **Get** /record:rpz:ptr | Retrieve record:rpz:ptr objects
-*RecordrpzptrAPI* | [**Post**](docs/RecordrpzptrAPI.md#post) | **Post** /record:rpz:ptr | Create a record:rpz:ptr object
-*RecordrpzptrAPI* | [**ReferenceDelete**](docs/RecordrpzptrAPI.md#referencedelete) | **Delete** /record:rpz:ptr/{reference} | Delete a record:rpz:ptr object
-*RecordrpzptrAPI* | [**ReferenceGet**](docs/RecordrpzptrAPI.md#referenceget) | **Get** /record:rpz:ptr/{reference} | Get a specific record:rpz:ptr object
-*RecordrpzptrAPI* | [**ReferencePut**](docs/RecordrpzptrAPI.md#referenceput) | **Put** /record:rpz:ptr/{reference} | Update a record:rpz:ptr object
-*RecordrpzsrvAPI* | [**Get**](docs/RecordrpzsrvAPI.md#get) | **Get** /record:rpz:srv | Retrieve record:rpz:srv objects
-*RecordrpzsrvAPI* | [**Post**](docs/RecordrpzsrvAPI.md#post) | **Post** /record:rpz:srv | Create a record:rpz:srv object
-*RecordrpzsrvAPI* | [**ReferenceDelete**](docs/RecordrpzsrvAPI.md#referencedelete) | **Delete** /record:rpz:srv/{reference} | Delete a record:rpz:srv object
-*RecordrpzsrvAPI* | [**ReferenceGet**](docs/RecordrpzsrvAPI.md#referenceget) | **Get** /record:rpz:srv/{reference} | Get a specific record:rpz:srv object
-*RecordrpzsrvAPI* | [**ReferencePut**](docs/RecordrpzsrvAPI.md#referenceput) | **Put** /record:rpz:srv/{reference} | Update a record:rpz:srv object
-*RecordrpztxtAPI* | [**Get**](docs/RecordrpztxtAPI.md#get) | **Get** /record:rpz:txt | Retrieve record:rpz:txt objects
-*RecordrpztxtAPI* | [**Post**](docs/RecordrpztxtAPI.md#post) | **Post** /record:rpz:txt | Create a record:rpz:txt object
-*RecordrpztxtAPI* | [**ReferenceDelete**](docs/RecordrpztxtAPI.md#referencedelete) | **Delete** /record:rpz:txt/{reference} | Delete a record:rpz:txt object
-*RecordrpztxtAPI* | [**ReferenceGet**](docs/RecordrpztxtAPI.md#referenceget) | **Get** /record:rpz:txt/{reference} | Get a specific record:rpz:txt object
-*RecordrpztxtAPI* | [**ReferencePut**](docs/RecordrpztxtAPI.md#referenceput) | **Put** /record:rpz:txt/{reference} | Update a record:rpz:txt object
+*RecordRpzAAPI* | [**RecordrpzaGet**](docs/RecordRpzAAPI.md#recordrpzaget) | **Get** /record:rpz:a | Retrieve record:rpz:a objects
+*RecordRpzAAPI* | [**RecordrpzaPost**](docs/RecordRpzAAPI.md#recordrpzapost) | **Post** /record:rpz:a | Create a record:rpz:a object
+*RecordRpzAAPI* | [**RecordrpzaReferenceDelete**](docs/RecordRpzAAPI.md#recordrpzareferencedelete) | **Delete** /record:rpz:a/{reference} | Delete a record:rpz:a object
+*RecordRpzAAPI* | [**RecordrpzaReferenceGet**](docs/RecordRpzAAPI.md#recordrpzareferenceget) | **Get** /record:rpz:a/{reference} | Get a specific record:rpz:a object
+*RecordRpzAAPI* | [**RecordrpzaReferencePut**](docs/RecordRpzAAPI.md#recordrpzareferenceput) | **Put** /record:rpz:a/{reference} | Update a record:rpz:a object
+*RecordRpzAIpaddressAPI* | [**RecordrpzaipaddressGet**](docs/RecordRpzAIpaddressAPI.md#recordrpzaipaddressget) | **Get** /record:rpz:a:ipaddress | Retrieve record:rpz:a:ipaddress objects
+*RecordRpzAIpaddressAPI* | [**RecordrpzaipaddressPost**](docs/RecordRpzAIpaddressAPI.md#recordrpzaipaddresspost) | **Post** /record:rpz:a:ipaddress | Create a record:rpz:a:ipaddress object
+*RecordRpzAIpaddressAPI* | [**RecordrpzaipaddressReferenceDelete**](docs/RecordRpzAIpaddressAPI.md#recordrpzaipaddressreferencedelete) | **Delete** /record:rpz:a:ipaddress/{reference} | Delete a record:rpz:a:ipaddress object
+*RecordRpzAIpaddressAPI* | [**RecordrpzaipaddressReferenceGet**](docs/RecordRpzAIpaddressAPI.md#recordrpzaipaddressreferenceget) | **Get** /record:rpz:a:ipaddress/{reference} | Get a specific record:rpz:a:ipaddress object
+*RecordRpzAIpaddressAPI* | [**RecordrpzaipaddressReferencePut**](docs/RecordRpzAIpaddressAPI.md#recordrpzaipaddressreferenceput) | **Put** /record:rpz:a:ipaddress/{reference} | Update a record:rpz:a:ipaddress object
+*RecordRpzAaaaAPI* | [**RecordrpzaaaaGet**](docs/RecordRpzAaaaAPI.md#recordrpzaaaaget) | **Get** /record:rpz:aaaa | Retrieve record:rpz:aaaa objects
+*RecordRpzAaaaAPI* | [**RecordrpzaaaaPost**](docs/RecordRpzAaaaAPI.md#recordrpzaaaapost) | **Post** /record:rpz:aaaa | Create a record:rpz:aaaa object
+*RecordRpzAaaaAPI* | [**RecordrpzaaaaReferenceDelete**](docs/RecordRpzAaaaAPI.md#recordrpzaaaareferencedelete) | **Delete** /record:rpz:aaaa/{reference} | Delete a record:rpz:aaaa object
+*RecordRpzAaaaAPI* | [**RecordrpzaaaaReferenceGet**](docs/RecordRpzAaaaAPI.md#recordrpzaaaareferenceget) | **Get** /record:rpz:aaaa/{reference} | Get a specific record:rpz:aaaa object
+*RecordRpzAaaaAPI* | [**RecordrpzaaaaReferencePut**](docs/RecordRpzAaaaAPI.md#recordrpzaaaareferenceput) | **Put** /record:rpz:aaaa/{reference} | Update a record:rpz:aaaa object
+*RecordRpzAaaaIpaddressAPI* | [**RecordrpzaaaaipaddressGet**](docs/RecordRpzAaaaIpaddressAPI.md#recordrpzaaaaipaddressget) | **Get** /record:rpz:aaaa:ipaddress | Retrieve record:rpz:aaaa:ipaddress objects
+*RecordRpzAaaaIpaddressAPI* | [**RecordrpzaaaaipaddressPost**](docs/RecordRpzAaaaIpaddressAPI.md#recordrpzaaaaipaddresspost) | **Post** /record:rpz:aaaa:ipaddress | Create a record:rpz:aaaa:ipaddress object
+*RecordRpzAaaaIpaddressAPI* | [**RecordrpzaaaaipaddressReferenceDelete**](docs/RecordRpzAaaaIpaddressAPI.md#recordrpzaaaaipaddressreferencedelete) | **Delete** /record:rpz:aaaa:ipaddress/{reference} | Delete a record:rpz:aaaa:ipaddress object
+*RecordRpzAaaaIpaddressAPI* | [**RecordrpzaaaaipaddressReferenceGet**](docs/RecordRpzAaaaIpaddressAPI.md#recordrpzaaaaipaddressreferenceget) | **Get** /record:rpz:aaaa:ipaddress/{reference} | Get a specific record:rpz:aaaa:ipaddress object
+*RecordRpzAaaaIpaddressAPI* | [**RecordrpzaaaaipaddressReferencePut**](docs/RecordRpzAaaaIpaddressAPI.md#recordrpzaaaaipaddressreferenceput) | **Put** /record:rpz:aaaa:ipaddress/{reference} | Update a record:rpz:aaaa:ipaddress object
+*RecordRpzCnameAPI* | [**RecordrpzcnameGet**](docs/RecordRpzCnameAPI.md#recordrpzcnameget) | **Get** /record:rpz:cname | Retrieve record:rpz:cname objects
+*RecordRpzCnameAPI* | [**RecordrpzcnamePost**](docs/RecordRpzCnameAPI.md#recordrpzcnamepost) | **Post** /record:rpz:cname | Create a record:rpz:cname object
+*RecordRpzCnameAPI* | [**RecordrpzcnameReferenceDelete**](docs/RecordRpzCnameAPI.md#recordrpzcnamereferencedelete) | **Delete** /record:rpz:cname/{reference} | Delete a record:rpz:cname object
+*RecordRpzCnameAPI* | [**RecordrpzcnameReferenceGet**](docs/RecordRpzCnameAPI.md#recordrpzcnamereferenceget) | **Get** /record:rpz:cname/{reference} | Get a specific record:rpz:cname object
+*RecordRpzCnameAPI* | [**RecordrpzcnameReferencePut**](docs/RecordRpzCnameAPI.md#recordrpzcnamereferenceput) | **Put** /record:rpz:cname/{reference} | Update a record:rpz:cname object
+*RecordRpzCnameClientipaddressAPI* | [**RecordrpzcnameclientipaddressGet**](docs/RecordRpzCnameClientipaddressAPI.md#recordrpzcnameclientipaddressget) | **Get** /record:rpz:cname:clientipaddress | Retrieve record:rpz:cname:clientipaddress objects
+*RecordRpzCnameClientipaddressAPI* | [**RecordrpzcnameclientipaddressPost**](docs/RecordRpzCnameClientipaddressAPI.md#recordrpzcnameclientipaddresspost) | **Post** /record:rpz:cname:clientipaddress | Create a record:rpz:cname:clientipaddress object
+*RecordRpzCnameClientipaddressAPI* | [**RecordrpzcnameclientipaddressReferenceDelete**](docs/RecordRpzCnameClientipaddressAPI.md#recordrpzcnameclientipaddressreferencedelete) | **Delete** /record:rpz:cname:clientipaddress/{reference} | Delete a record:rpz:cname:clientipaddress object
+*RecordRpzCnameClientipaddressAPI* | [**RecordrpzcnameclientipaddressReferenceGet**](docs/RecordRpzCnameClientipaddressAPI.md#recordrpzcnameclientipaddressreferenceget) | **Get** /record:rpz:cname:clientipaddress/{reference} | Get a specific record:rpz:cname:clientipaddress object
+*RecordRpzCnameClientipaddressAPI* | [**RecordrpzcnameclientipaddressReferencePut**](docs/RecordRpzCnameClientipaddressAPI.md#recordrpzcnameclientipaddressreferenceput) | **Put** /record:rpz:cname:clientipaddress/{reference} | Update a record:rpz:cname:clientipaddress object
+*RecordRpzCnameClientipaddressdnAPI* | [**RecordrpzcnameclientipaddressdnGet**](docs/RecordRpzCnameClientipaddressdnAPI.md#recordrpzcnameclientipaddressdnget) | **Get** /record:rpz:cname:clientipaddressdn | Retrieve record:rpz:cname:clientipaddressdn objects
+*RecordRpzCnameClientipaddressdnAPI* | [**RecordrpzcnameclientipaddressdnPost**](docs/RecordRpzCnameClientipaddressdnAPI.md#recordrpzcnameclientipaddressdnpost) | **Post** /record:rpz:cname:clientipaddressdn | Create a record:rpz:cname:clientipaddressdn object
+*RecordRpzCnameClientipaddressdnAPI* | [**RecordrpzcnameclientipaddressdnReferenceDelete**](docs/RecordRpzCnameClientipaddressdnAPI.md#recordrpzcnameclientipaddressdnreferencedelete) | **Delete** /record:rpz:cname:clientipaddressdn/{reference} | Delete a record:rpz:cname:clientipaddressdn object
+*RecordRpzCnameClientipaddressdnAPI* | [**RecordrpzcnameclientipaddressdnReferenceGet**](docs/RecordRpzCnameClientipaddressdnAPI.md#recordrpzcnameclientipaddressdnreferenceget) | **Get** /record:rpz:cname:clientipaddressdn/{reference} | Get a specific record:rpz:cname:clientipaddressdn object
+*RecordRpzCnameClientipaddressdnAPI* | [**RecordrpzcnameclientipaddressdnReferencePut**](docs/RecordRpzCnameClientipaddressdnAPI.md#recordrpzcnameclientipaddressdnreferenceput) | **Put** /record:rpz:cname:clientipaddressdn/{reference} | Update a record:rpz:cname:clientipaddressdn object
+*RecordRpzCnameIpaddressAPI* | [**RecordrpzcnameipaddressGet**](docs/RecordRpzCnameIpaddressAPI.md#recordrpzcnameipaddressget) | **Get** /record:rpz:cname:ipaddress | Retrieve record:rpz:cname:ipaddress objects
+*RecordRpzCnameIpaddressAPI* | [**RecordrpzcnameipaddressPost**](docs/RecordRpzCnameIpaddressAPI.md#recordrpzcnameipaddresspost) | **Post** /record:rpz:cname:ipaddress | Create a record:rpz:cname:ipaddress object
+*RecordRpzCnameIpaddressAPI* | [**RecordrpzcnameipaddressReferenceDelete**](docs/RecordRpzCnameIpaddressAPI.md#recordrpzcnameipaddressreferencedelete) | **Delete** /record:rpz:cname:ipaddress/{reference} | Delete a record:rpz:cname:ipaddress object
+*RecordRpzCnameIpaddressAPI* | [**RecordrpzcnameipaddressReferenceGet**](docs/RecordRpzCnameIpaddressAPI.md#recordrpzcnameipaddressreferenceget) | **Get** /record:rpz:cname:ipaddress/{reference} | Get a specific record:rpz:cname:ipaddress object
+*RecordRpzCnameIpaddressAPI* | [**RecordrpzcnameipaddressReferencePut**](docs/RecordRpzCnameIpaddressAPI.md#recordrpzcnameipaddressreferenceput) | **Put** /record:rpz:cname:ipaddress/{reference} | Update a record:rpz:cname:ipaddress object
+*RecordRpzCnameIpaddressdnAPI* | [**RecordrpzcnameipaddressdnGet**](docs/RecordRpzCnameIpaddressdnAPI.md#recordrpzcnameipaddressdnget) | **Get** /record:rpz:cname:ipaddressdn | Retrieve record:rpz:cname:ipaddressdn objects
+*RecordRpzCnameIpaddressdnAPI* | [**RecordrpzcnameipaddressdnPost**](docs/RecordRpzCnameIpaddressdnAPI.md#recordrpzcnameipaddressdnpost) | **Post** /record:rpz:cname:ipaddressdn | Create a record:rpz:cname:ipaddressdn object
+*RecordRpzCnameIpaddressdnAPI* | [**RecordrpzcnameipaddressdnReferenceDelete**](docs/RecordRpzCnameIpaddressdnAPI.md#recordrpzcnameipaddressdnreferencedelete) | **Delete** /record:rpz:cname:ipaddressdn/{reference} | Delete a record:rpz:cname:ipaddressdn object
+*RecordRpzCnameIpaddressdnAPI* | [**RecordrpzcnameipaddressdnReferenceGet**](docs/RecordRpzCnameIpaddressdnAPI.md#recordrpzcnameipaddressdnreferenceget) | **Get** /record:rpz:cname:ipaddressdn/{reference} | Get a specific record:rpz:cname:ipaddressdn object
+*RecordRpzCnameIpaddressdnAPI* | [**RecordrpzcnameipaddressdnReferencePut**](docs/RecordRpzCnameIpaddressdnAPI.md#recordrpzcnameipaddressdnreferenceput) | **Put** /record:rpz:cname:ipaddressdn/{reference} | Update a record:rpz:cname:ipaddressdn object
+*RecordRpzMxAPI* | [**RecordrpzmxGet**](docs/RecordRpzMxAPI.md#recordrpzmxget) | **Get** /record:rpz:mx | Retrieve record:rpz:mx objects
+*RecordRpzMxAPI* | [**RecordrpzmxPost**](docs/RecordRpzMxAPI.md#recordrpzmxpost) | **Post** /record:rpz:mx | Create a record:rpz:mx object
+*RecordRpzMxAPI* | [**RecordrpzmxReferenceDelete**](docs/RecordRpzMxAPI.md#recordrpzmxreferencedelete) | **Delete** /record:rpz:mx/{reference} | Delete a record:rpz:mx object
+*RecordRpzMxAPI* | [**RecordrpzmxReferenceGet**](docs/RecordRpzMxAPI.md#recordrpzmxreferenceget) | **Get** /record:rpz:mx/{reference} | Get a specific record:rpz:mx object
+*RecordRpzMxAPI* | [**RecordrpzmxReferencePut**](docs/RecordRpzMxAPI.md#recordrpzmxreferenceput) | **Put** /record:rpz:mx/{reference} | Update a record:rpz:mx object
+*RecordRpzNaptrAPI* | [**RecordrpznaptrGet**](docs/RecordRpzNaptrAPI.md#recordrpznaptrget) | **Get** /record:rpz:naptr | Retrieve record:rpz:naptr objects
+*RecordRpzNaptrAPI* | [**RecordrpznaptrPost**](docs/RecordRpzNaptrAPI.md#recordrpznaptrpost) | **Post** /record:rpz:naptr | Create a record:rpz:naptr object
+*RecordRpzNaptrAPI* | [**RecordrpznaptrReferenceDelete**](docs/RecordRpzNaptrAPI.md#recordrpznaptrreferencedelete) | **Delete** /record:rpz:naptr/{reference} | Delete a record:rpz:naptr object
+*RecordRpzNaptrAPI* | [**RecordrpznaptrReferenceGet**](docs/RecordRpzNaptrAPI.md#recordrpznaptrreferenceget) | **Get** /record:rpz:naptr/{reference} | Get a specific record:rpz:naptr object
+*RecordRpzNaptrAPI* | [**RecordrpznaptrReferencePut**](docs/RecordRpzNaptrAPI.md#recordrpznaptrreferenceput) | **Put** /record:rpz:naptr/{reference} | Update a record:rpz:naptr object
+*RecordRpzPtrAPI* | [**RecordrpzptrGet**](docs/RecordRpzPtrAPI.md#recordrpzptrget) | **Get** /record:rpz:ptr | Retrieve record:rpz:ptr objects
+*RecordRpzPtrAPI* | [**RecordrpzptrPost**](docs/RecordRpzPtrAPI.md#recordrpzptrpost) | **Post** /record:rpz:ptr | Create a record:rpz:ptr object
+*RecordRpzPtrAPI* | [**RecordrpzptrReferenceDelete**](docs/RecordRpzPtrAPI.md#recordrpzptrreferencedelete) | **Delete** /record:rpz:ptr/{reference} | Delete a record:rpz:ptr object
+*RecordRpzPtrAPI* | [**RecordrpzptrReferenceGet**](docs/RecordRpzPtrAPI.md#recordrpzptrreferenceget) | **Get** /record:rpz:ptr/{reference} | Get a specific record:rpz:ptr object
+*RecordRpzPtrAPI* | [**RecordrpzptrReferencePut**](docs/RecordRpzPtrAPI.md#recordrpzptrreferenceput) | **Put** /record:rpz:ptr/{reference} | Update a record:rpz:ptr object
+*RecordRpzSrvAPI* | [**RecordrpzsrvGet**](docs/RecordRpzSrvAPI.md#recordrpzsrvget) | **Get** /record:rpz:srv | Retrieve record:rpz:srv objects
+*RecordRpzSrvAPI* | [**RecordrpzsrvPost**](docs/RecordRpzSrvAPI.md#recordrpzsrvpost) | **Post** /record:rpz:srv | Create a record:rpz:srv object
+*RecordRpzSrvAPI* | [**RecordrpzsrvReferenceDelete**](docs/RecordRpzSrvAPI.md#recordrpzsrvreferencedelete) | **Delete** /record:rpz:srv/{reference} | Delete a record:rpz:srv object
+*RecordRpzSrvAPI* | [**RecordrpzsrvReferenceGet**](docs/RecordRpzSrvAPI.md#recordrpzsrvreferenceget) | **Get** /record:rpz:srv/{reference} | Get a specific record:rpz:srv object
+*RecordRpzSrvAPI* | [**RecordrpzsrvReferencePut**](docs/RecordRpzSrvAPI.md#recordrpzsrvreferenceput) | **Put** /record:rpz:srv/{reference} | Update a record:rpz:srv object
+*RecordRpzTxtAPI* | [**RecordrpztxtGet**](docs/RecordRpzTxtAPI.md#recordrpztxtget) | **Get** /record:rpz:txt | Retrieve record:rpz:txt objects
+*RecordRpzTxtAPI* | [**RecordrpztxtPost**](docs/RecordRpzTxtAPI.md#recordrpztxtpost) | **Post** /record:rpz:txt | Create a record:rpz:txt object
+*RecordRpzTxtAPI* | [**RecordrpztxtReferenceDelete**](docs/RecordRpzTxtAPI.md#recordrpztxtreferencedelete) | **Delete** /record:rpz:txt/{reference} | Delete a record:rpz:txt object
+*RecordRpzTxtAPI* | [**RecordrpztxtReferenceGet**](docs/RecordRpzTxtAPI.md#recordrpztxtreferenceget) | **Get** /record:rpz:txt/{reference} | Get a specific record:rpz:txt object
+*RecordRpzTxtAPI* | [**RecordrpztxtReferencePut**](docs/RecordRpzTxtAPI.md#recordrpztxtreferenceput) | **Put** /record:rpz:txt/{reference} | Update a record:rpz:txt object
 
 
 ## Documentation For Models
 
  - [Allrpzrecords](docs/Allrpzrecords.md)
- - [CreateAllrpzrecordsResponse](docs/CreateAllrpzrecordsResponse.md)
- - [CreateAllrpzrecordsResponseAsObject](docs/CreateAllrpzrecordsResponseAsObject.md)
- - [CreateOrderedresponsepolicyzonesResponse](docs/CreateOrderedresponsepolicyzonesResponse.md)
- - [CreateOrderedresponsepolicyzonesResponseAsObject](docs/CreateOrderedresponsepolicyzonesResponseAsObject.md)
  - [CreateRecordRpzAIpaddressResponse](docs/CreateRecordRpzAIpaddressResponse.md)
  - [CreateRecordRpzAIpaddressResponseAsObject](docs/CreateRecordRpzAIpaddressResponseAsObject.md)
  - [CreateRecordRpzAResponse](docs/CreateRecordRpzAResponse.md)
@@ -194,8 +187,6 @@ Class | Method | HTTP request | Description
  - [ExtAttrs](docs/ExtAttrs.md)
  - [GetAllrpzrecordsResponse](docs/GetAllrpzrecordsResponse.md)
  - [GetAllrpzrecordsResponseObjectAsResult](docs/GetAllrpzrecordsResponseObjectAsResult.md)
- - [GetOrderedresponsepolicyzonesResponse](docs/GetOrderedresponsepolicyzonesResponse.md)
- - [GetOrderedresponsepolicyzonesResponseObjectAsResult](docs/GetOrderedresponsepolicyzonesResponseObjectAsResult.md)
  - [GetRecordRpzAIpaddressResponse](docs/GetRecordRpzAIpaddressResponse.md)
  - [GetRecordRpzAIpaddressResponseObjectAsResult](docs/GetRecordRpzAIpaddressResponseObjectAsResult.md)
  - [GetRecordRpzAResponse](docs/GetRecordRpzAResponse.md)
@@ -226,8 +217,6 @@ Class | Method | HTTP request | Description
  - [GetRecordRpzTxtResponseObjectAsResult](docs/GetRecordRpzTxtResponseObjectAsResult.md)
  - [ListAllrpzrecordsResponse](docs/ListAllrpzrecordsResponse.md)
  - [ListAllrpzrecordsResponseObject](docs/ListAllrpzrecordsResponseObject.md)
- - [ListOrderedresponsepolicyzonesResponse](docs/ListOrderedresponsepolicyzonesResponse.md)
- - [ListOrderedresponsepolicyzonesResponseObject](docs/ListOrderedresponsepolicyzonesResponseObject.md)
  - [ListRecordRpzAIpaddressResponse](docs/ListRecordRpzAIpaddressResponse.md)
  - [ListRecordRpzAIpaddressResponseObject](docs/ListRecordRpzAIpaddressResponseObject.md)
  - [ListRecordRpzAResponse](docs/ListRecordRpzAResponse.md)
@@ -256,7 +245,6 @@ Class | Method | HTTP request | Description
  - [ListRecordRpzSrvResponseObject](docs/ListRecordRpzSrvResponseObject.md)
  - [ListRecordRpzTxtResponse](docs/ListRecordRpzTxtResponse.md)
  - [ListRecordRpzTxtResponseObject](docs/ListRecordRpzTxtResponseObject.md)
- - [Orderedresponsepolicyzones](docs/Orderedresponsepolicyzones.md)
  - [RecordRpzA](docs/RecordRpzA.md)
  - [RecordRpzAIpaddress](docs/RecordRpzAIpaddress.md)
  - [RecordRpzAaaa](docs/RecordRpzAaaa.md)
@@ -273,8 +261,6 @@ Class | Method | HTTP request | Description
  - [RecordRpzTxt](docs/RecordRpzTxt.md)
  - [UpdateAllrpzrecordsResponse](docs/UpdateAllrpzrecordsResponse.md)
  - [UpdateAllrpzrecordsResponseAsObject](docs/UpdateAllrpzrecordsResponseAsObject.md)
- - [UpdateOrderedresponsepolicyzonesResponse](docs/UpdateOrderedresponsepolicyzonesResponse.md)
- - [UpdateOrderedresponsepolicyzonesResponseAsObject](docs/UpdateOrderedresponsepolicyzonesResponseAsObject.md)
  - [UpdateRecordRpzAIpaddressResponse](docs/UpdateRecordRpzAIpaddressResponse.md)
  - [UpdateRecordRpzAIpaddressResponseAsObject](docs/UpdateRecordRpzAIpaddressResponseAsObject.md)
  - [UpdateRecordRpzAResponse](docs/UpdateRecordRpzAResponse.md)

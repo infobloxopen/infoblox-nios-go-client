@@ -1,18 +1,18 @@
-# RecorddhcidAPI
+# RecordDhcidAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecorddhcidAPI.md#Get) | **Get** /record:dhcid | Retrieve record:dhcid objects
-[**ReferenceDelete**](RecorddhcidAPI.md#ReferenceDelete) | **Delete** /record:dhcid/{reference} | Delete a record:dhcid object
-[**ReferenceGet**](RecorddhcidAPI.md#ReferenceGet) | **Get** /record:dhcid/{reference} | Get a specific record:dhcid object
+[**RecorddhcidGet**](RecordDhcidAPI.md#RecorddhcidGet) | **Get** /record:dhcid | Retrieve record:dhcid objects
+[**RecorddhcidReferenceDelete**](RecordDhcidAPI.md#RecorddhcidReferenceDelete) | **Delete** /record:dhcid/{reference} | Delete a record:dhcid object
+[**RecorddhcidReferenceGet**](RecordDhcidAPI.md#RecorddhcidReferenceGet) | **Get** /record:dhcid/{reference} | Get a specific record:dhcid object
 
 
 
-## Get
+## RecorddhcidGet
 
-> ListRecordDhcidResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordDhcidResponse RecorddhcidGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:dhcid objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecorddhcidAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordDhcidAPI.RecorddhcidGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddhcidAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDhcidAPI.RecorddhcidGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordDhcidResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecorddhcidAPI.Get`: %v\n", resp)
+	// response from `RecorddhcidGet`: ListRecordDhcidResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordDhcidAPI.RecorddhcidGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecorddhcidAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordDhcidAPIRecorddhcidGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecorddhcidReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecorddhcidReferenceDelete(ctx, reference).Execute()
 
 Delete a record:dhcid object
 
@@ -107,9 +107,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:dhcid object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecorddhcidAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordDhcidAPI.RecorddhcidReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddhcidAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDhcidAPI.RecorddhcidReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecorddhcidAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordDhcidAPIRecorddhcidReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -149,9 +149,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecorddhcidReferenceGet
 
-> GetRecordDhcidResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordDhcidResponse RecorddhcidReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:dhcid object
 
@@ -174,13 +174,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:dhcid object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecorddhcidAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordDhcidAPI.RecorddhcidReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddhcidAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDhcidAPI.RecorddhcidReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordDhcidResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecorddhcidAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecorddhcidReferenceGet`: GetRecordDhcidResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordDhcidAPI.RecorddhcidReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecorddhcidAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordDhcidAPIRecorddhcidReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

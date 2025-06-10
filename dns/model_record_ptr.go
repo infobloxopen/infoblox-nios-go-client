@@ -45,9 +45,9 @@ type RecordPtr struct {
 	// Determines if the reclamation is allowed for the record or not.
 	ForbidReclamation *bool `json:"forbid_reclamation,omitempty"`
 	// The IPv4 Address of the record.
-	Ipv4addr *string `json:"ipv4addr,omitempty"`
-	// The IPv6 Address of the record.
-	Ipv6addr *string `json:"ipv6addr,omitempty"`
+	Ipv4addr *string            `json:"ipv4addr,omitempty"`
+	Ipv6addr *RecordPtrIpv6addr `json:"ipv6addr,omitempty"`
+	FuncCall *FuncCall          `json:"func_call,omitempty"`
 	// The time of the last DNS query in Epoch seconds format.
 	LastQueried  *int64                 `json:"last_queried,omitempty"`
 	MsAdUserData *RecordPtrMsAdUserData `json:"ms_ad_user_data,omitempty"`
@@ -567,9 +567,9 @@ func (o *RecordPtr) SetIpv4addr(v string) {
 }
 
 // GetIpv6addr returns the Ipv6addr field value if set, zero value otherwise.
-func (o *RecordPtr) GetIpv6addr() string {
+func (o *RecordPtr) GetIpv6addr() RecordPtrIpv6addr {
 	if o == nil || IsNil(o.Ipv6addr) {
-		var ret string
+		var ret RecordPtrIpv6addr
 		return ret
 	}
 	return *o.Ipv6addr
@@ -577,7 +577,7 @@ func (o *RecordPtr) GetIpv6addr() string {
 
 // GetIpv6addrOk returns a tuple with the Ipv6addr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecordPtr) GetIpv6addrOk() (*string, bool) {
+func (o *RecordPtr) GetIpv6addrOk() (*RecordPtrIpv6addr, bool) {
 	if o == nil || IsNil(o.Ipv6addr) {
 		return nil, false
 	}
@@ -593,9 +593,41 @@ func (o *RecordPtr) HasIpv6addr() bool {
 	return false
 }
 
-// SetIpv6addr gets a reference to the given string and assigns it to the Ipv6addr field.
-func (o *RecordPtr) SetIpv6addr(v string) {
+// SetIpv6addr gets a reference to the given RecordPtrIpv6addr and assigns it to the Ipv6addr field.
+func (o *RecordPtr) SetIpv6addr(v RecordPtrIpv6addr) {
 	o.Ipv6addr = &v
+}
+
+// GetFuncCall returns the FuncCall field value if set, zero value otherwise.
+func (o *RecordPtr) GetFuncCall() FuncCall {
+	if o == nil || IsNil(o.FuncCall) {
+		var ret FuncCall
+		return ret
+	}
+	return *o.FuncCall
+}
+
+// GetFuncCallOk returns a tuple with the FuncCall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RecordPtr) GetFuncCallOk() (*FuncCall, bool) {
+	if o == nil || IsNil(o.FuncCall) {
+		return nil, false
+	}
+	return o.FuncCall, true
+}
+
+// HasFuncCall returns a boolean if a field has been set.
+func (o *RecordPtr) HasFuncCall() bool {
+	if o != nil && !IsNil(o.FuncCall) {
+		return true
+	}
+
+	return false
+}
+
+// SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
+func (o *RecordPtr) SetFuncCall(v FuncCall) {
+	o.FuncCall = &v
 }
 
 // GetLastQueried returns the LastQueried field value if set, zero value otherwise.
@@ -975,6 +1007,9 @@ func (o RecordPtr) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ipv6addr) {
 		toSerialize["ipv6addr"] = o.Ipv6addr
+	}
+	if !IsNil(o.FuncCall) {
+		toSerialize["func_call"] = o.FuncCall
 	}
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried

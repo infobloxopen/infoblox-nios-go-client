@@ -1,20 +1,20 @@
-# DtcrecordsrvAPI
+# DtcRecordSrvAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcrecordsrvAPI.md#Get) | **Get** /dtc:record:srv | Retrieve dtc:record:srv objects
-[**Post**](DtcrecordsrvAPI.md#Post) | **Post** /dtc:record:srv | Create a dtc:record:srv object
-[**ReferenceDelete**](DtcrecordsrvAPI.md#ReferenceDelete) | **Delete** /dtc:record:srv/{reference} | Delete a dtc:record:srv object
-[**ReferenceGet**](DtcrecordsrvAPI.md#ReferenceGet) | **Get** /dtc:record:srv/{reference} | Get a specific dtc:record:srv object
-[**ReferencePut**](DtcrecordsrvAPI.md#ReferencePut) | **Put** /dtc:record:srv/{reference} | Update a dtc:record:srv object
+[**DtcrecordsrvGet**](DtcRecordSrvAPI.md#DtcrecordsrvGet) | **Get** /dtc:record:srv | Retrieve dtc:record:srv objects
+[**DtcrecordsrvPost**](DtcRecordSrvAPI.md#DtcrecordsrvPost) | **Post** /dtc:record:srv | Create a dtc:record:srv object
+[**DtcrecordsrvReferenceDelete**](DtcRecordSrvAPI.md#DtcrecordsrvReferenceDelete) | **Delete** /dtc:record:srv/{reference} | Delete a dtc:record:srv object
+[**DtcrecordsrvReferenceGet**](DtcRecordSrvAPI.md#DtcrecordsrvReferenceGet) | **Get** /dtc:record:srv/{reference} | Get a specific dtc:record:srv object
+[**DtcrecordsrvReferencePut**](DtcRecordSrvAPI.md#DtcrecordsrvReferencePut) | **Put** /dtc:record:srv/{reference} | Update a dtc:record:srv object
 
 
 
-## Get
+## DtcrecordsrvGet
 
-> ListDtcRecordSrvResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcRecordSrvResponse DtcrecordsrvGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:record:srv objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordsrvAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcRecordSrvAPI.DtcrecordsrvGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordsrvAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordSrvAPI.DtcrecordsrvGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcRecordSrvResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordsrvAPI.Get`: %v\n", resp)
+	// response from `DtcrecordsrvGet`: ListDtcRecordSrvResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordSrvAPI.DtcrecordsrvGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordsrvAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordSrvAPIDtcrecordsrvGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## DtcrecordsrvPost
 
-> CreateDtcRecordSrvResponse Post(ctx).DtcRecordSrv(dtcRecordSrv).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateDtcRecordSrvResponse DtcrecordsrvPost(ctx).DtcRecordSrv(dtcRecordSrv).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a dtc:record:srv object
 
@@ -109,13 +109,13 @@ func main() {
 	dtcRecordSrv := *dtc.NewDtcRecordSrv() // DtcRecordSrv | Object data to create
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordsrvAPI.Post(context.Background()).DtcRecordSrv(dtcRecordSrv).Execute()
+	resp, r, err := apiClient.DtcRecordSrvAPI.DtcrecordsrvPost(context.Background()).DtcRecordSrv(dtcRecordSrv).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordsrvAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordSrvAPI.DtcrecordsrvPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateDtcRecordSrvResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordsrvAPI.Post`: %v\n", resp)
+	// response from `DtcrecordsrvPost`: CreateDtcRecordSrvResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordSrvAPI.DtcrecordsrvPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordsrvAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordSrvAPIDtcrecordsrvPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## DtcrecordsrvReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> DtcrecordsrvReferenceDelete(ctx, reference).Execute()
 
 Delete a dtc:record:srv object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:record:srv object
 
 	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtcrecordsrvAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.DtcRecordSrvAPI.DtcrecordsrvReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordsrvAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordSrvAPI.DtcrecordsrvReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordsrvAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordSrvAPIDtcrecordsrvReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtcrecordsrvReferenceGet
 
-> GetDtcRecordSrvResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcRecordSrvResponse DtcrecordsrvReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:record:srv object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:record:srv object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordsrvAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcRecordSrvAPI.DtcrecordsrvReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordsrvAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordSrvAPI.DtcrecordsrvReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcRecordSrvResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordsrvAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtcrecordsrvReferenceGet`: GetDtcRecordSrvResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordSrvAPI.DtcrecordsrvReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordsrvAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordSrvAPIDtcrecordsrvReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtcrecordsrvReferencePut
 
-> UpdateDtcRecordSrvResponse ReferencePut(ctx, reference).DtcRecordSrv(dtcRecordSrv).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcRecordSrvResponse DtcrecordsrvReferencePut(ctx, reference).DtcRecordSrv(dtcRecordSrv).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:record:srv object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcRecordSrv := *dtc.NewDtcRecordSrv() // DtcRecordSrv | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordsrvAPI.ReferencePut(context.Background(), reference).DtcRecordSrv(dtcRecordSrv).Execute()
+	resp, r, err := apiClient.DtcRecordSrvAPI.DtcrecordsrvReferencePut(context.Background(), reference).DtcRecordSrv(dtcRecordSrv).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordsrvAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordSrvAPI.DtcrecordsrvReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcRecordSrvResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordsrvAPI.ReferencePut`: %v\n", resp)
+	// response from `DtcrecordsrvReferencePut`: UpdateDtcRecordSrvResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordSrvAPI.DtcrecordsrvReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordsrvAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordSrvAPIDtcrecordsrvReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

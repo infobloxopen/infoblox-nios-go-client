@@ -1,18 +1,18 @@
-# DiscoverydiagnostictaskAPI
+# DiscoveryDiagnostictaskAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DiscoverydiagnostictaskAPI.md#Get) | **Get** /discovery:diagnostictask | Retrieve discovery:diagnostictask objects
-[**ReferenceGet**](DiscoverydiagnostictaskAPI.md#ReferenceGet) | **Get** /discovery:diagnostictask/{reference} | Get a specific discovery:diagnostictask object
-[**ReferencePut**](DiscoverydiagnostictaskAPI.md#ReferencePut) | **Put** /discovery:diagnostictask/{reference} | Update a discovery:diagnostictask object
+[**DiscoverydiagnostictaskGet**](DiscoveryDiagnostictaskAPI.md#DiscoverydiagnostictaskGet) | **Get** /discovery:diagnostictask | Retrieve discovery:diagnostictask objects
+[**DiscoverydiagnostictaskReferenceGet**](DiscoveryDiagnostictaskAPI.md#DiscoverydiagnostictaskReferenceGet) | **Get** /discovery:diagnostictask/{reference} | Get a specific discovery:diagnostictask object
+[**DiscoverydiagnostictaskReferencePut**](DiscoveryDiagnostictaskAPI.md#DiscoverydiagnostictaskReferencePut) | **Put** /discovery:diagnostictask/{reference} | Update a discovery:diagnostictask object
 
 
 
-## Get
+## DiscoverydiagnostictaskGet
 
-> ListDiscoveryDiagnostictaskResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoveryDiagnostictaskResponse DiscoverydiagnostictaskGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:diagnostictask objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverydiagnostictaskAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverydiagnostictaskAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDiscoveryDiagnostictaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverydiagnostictaskAPI.Get`: %v\n", resp)
+	// response from `DiscoverydiagnostictaskGet`: ListDiscoveryDiagnostictaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverydiagnostictaskAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DiscoverydiagnostictaskReferenceGet
 
-> GetDiscoveryDiagnostictaskResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoveryDiagnostictaskResponse DiscoverydiagnostictaskReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:diagnostictask object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:diagnostictask object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverydiagnostictaskAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverydiagnostictaskAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDiscoveryDiagnostictaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverydiagnostictaskAPI.ReferenceGet`: %v\n", resp)
+	// response from `DiscoverydiagnostictaskReferenceGet`: GetDiscoveryDiagnostictaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverydiagnostictaskAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DiscoverydiagnostictaskReferencePut
 
-> UpdateDiscoveryDiagnostictaskResponse ReferencePut(ctx, reference).DiscoveryDiagnostictask(discoveryDiagnostictask).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDiscoveryDiagnostictaskResponse DiscoverydiagnostictaskReferencePut(ctx, reference).DiscoveryDiagnostictask(discoveryDiagnostictask).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a discovery:diagnostictask object
 
@@ -180,13 +180,13 @@ func main() {
 	discoveryDiagnostictask := *discovery.NewDiscoveryDiagnostictask() // DiscoveryDiagnostictask | Object data to update
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverydiagnostictaskAPI.ReferencePut(context.Background(), reference).DiscoveryDiagnostictask(discoveryDiagnostictask).Execute()
+	resp, r, err := apiClient.DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskReferencePut(context.Background(), reference).DiscoveryDiagnostictask(discoveryDiagnostictask).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverydiagnostictaskAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDiscoveryDiagnostictaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverydiagnostictaskAPI.ReferencePut`: %v\n", resp)
+	// response from `DiscoverydiagnostictaskReferencePut`: UpdateDiscoveryDiagnostictaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverydiagnostictaskAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

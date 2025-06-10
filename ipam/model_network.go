@@ -103,8 +103,7 @@ type Network struct {
 	// Determines if DHCP threshold warnings are send through SNMP.
 	EnableSnmpWarnings *bool `json:"enable_snmp_warnings,omitempty"`
 	// The endpoints that provides data for the DHCP Network object.
-	EndpointSources []map[string]interface{} `json:"endpoint_sources,omitempty"`
-	ExpandNetwork   map[string]interface{}   `json:"expand_network,omitempty"`
+	EndpointSources []string `json:"endpoint_sources,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// This field contains the federated realms associated to this network
@@ -145,16 +144,13 @@ type Network struct {
 	MgmPrivateOverridable *bool                `json:"mgm_private_overridable,omitempty"`
 	MsAdUserData          *NetworkMsAdUserData `json:"ms_ad_user_data,omitempty"`
 	// The netmask of the network in CIDR format.
-	Netmask *int64 `json:"netmask,omitempty"`
-	// The network address in IPv4 Address/CIDR format. For regular expression searches, only the IPv4 Address portion is supported. Searches for the CIDR portion is always an exact match. For example, both network containers 10.0.0.0/8 and 20.1.0.0/16 are matched by expression '.0' and only 20.1.0.0/16 is matched by '.0/16'.
-	Network *string `json:"network,omitempty"`
+	Netmask  *int64          `json:"netmask,omitempty"`
+	Network  *NetworkNetwork `json:"network,omitempty"`
+	FuncCall *FuncCall       `json:"func_call,omitempty"`
 	// The network container to which this network belongs (if any).
 	NetworkContainer *string `json:"network_container,omitempty"`
 	// The name of the network view in which this network resides.
-	NetworkView          *string                `json:"network_view,omitempty"`
-	NextAvailableIp      map[string]interface{} `json:"next_available_ip,omitempty"`
-	NextAvailableNetwork map[string]interface{} `json:"next_available_network,omitempty"`
-	NextAvailableVlan    map[string]interface{} `json:"next_available_vlan,omitempty"`
+	NetworkView *string `json:"network_view,omitempty"`
 	// The name in FQDN and/or IPv4 Address of the next server that the host needs to boot.
 	Nextserver *string `json:"nextserver,omitempty"`
 	// An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object.
@@ -163,8 +159,7 @@ type Network struct {
 	// The PXE lease time value of a DHCP Network object. Some hosts use PXE (Preboot Execution Environment) to boot remotely from a server. To better manage your IP resources, set a different lease time for PXE boot requests. You can configure the DHCP server to allocate an IP address with a shorter lease time to hosts that send PXE boot requests, so IP addresses are not leased longer than necessary. A 32-bit unsigned integer that represents the duration, in seconds, for which the update is cached. Zero indicates that the update is not cached.
 	PxeLeaseTime *int64 `json:"pxe_lease_time,omitempty"`
 	// If the field is set to True, the leases are kept in the Recycle Bin until one week after expiration. Otherwise, the leases are permanently deleted.
-	RecycleLeases *bool                  `json:"recycle_leases,omitempty"`
-	Resize        map[string]interface{} `json:"resize,omitempty"`
+	RecycleLeases *bool `json:"recycle_leases,omitempty"`
 	// Restarts the member service.
 	RestartIfNeeded *bool `json:"restart_if_needed,omitempty"`
 	// The registry (RIR) that allocated the network address space.
@@ -178,8 +173,7 @@ type Network struct {
 	// If the field is set to True, the discovery blackout setting will be used for port control blackout setting.
 	SamePortControlDiscoveryBlackout *bool `json:"same_port_control_discovery_blackout,omitempty"`
 	// Determines whether to send the RIR registration request.
-	SendRirRequest *bool                  `json:"send_rir_request,omitempty"`
-	SplitNetwork   map[string]interface{} `json:"split_network,omitempty"`
+	SendRirRequest *bool `json:"send_rir_request,omitempty"`
 	// The number of static DHCP addresses configured in the network.
 	StaticHosts       *int64                    `json:"static_hosts,omitempty"`
 	SubscribeSettings *NetworkSubscribeSettings `json:"subscribe_settings,omitempty"`
@@ -1659,9 +1653,9 @@ func (o *Network) SetEnableSnmpWarnings(v bool) {
 }
 
 // GetEndpointSources returns the EndpointSources field value if set, zero value otherwise.
-func (o *Network) GetEndpointSources() []map[string]interface{} {
+func (o *Network) GetEndpointSources() []string {
 	if o == nil || IsNil(o.EndpointSources) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.EndpointSources
@@ -1669,7 +1663,7 @@ func (o *Network) GetEndpointSources() []map[string]interface{} {
 
 // GetEndpointSourcesOk returns a tuple with the EndpointSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Network) GetEndpointSourcesOk() ([]map[string]interface{}, bool) {
+func (o *Network) GetEndpointSourcesOk() ([]string, bool) {
 	if o == nil || IsNil(o.EndpointSources) {
 		return nil, false
 	}
@@ -1685,41 +1679,9 @@ func (o *Network) HasEndpointSources() bool {
 	return false
 }
 
-// SetEndpointSources gets a reference to the given []map[string]interface{} and assigns it to the EndpointSources field.
-func (o *Network) SetEndpointSources(v []map[string]interface{}) {
+// SetEndpointSources gets a reference to the given []string and assigns it to the EndpointSources field.
+func (o *Network) SetEndpointSources(v []string) {
 	o.EndpointSources = v
-}
-
-// GetExpandNetwork returns the ExpandNetwork field value if set, zero value otherwise.
-func (o *Network) GetExpandNetwork() map[string]interface{} {
-	if o == nil || IsNil(o.ExpandNetwork) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.ExpandNetwork
-}
-
-// GetExpandNetworkOk returns a tuple with the ExpandNetwork field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Network) GetExpandNetworkOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.ExpandNetwork) {
-		return map[string]interface{}{}, false
-	}
-	return o.ExpandNetwork, true
-}
-
-// HasExpandNetwork returns a boolean if a field has been set.
-func (o *Network) HasExpandNetwork() bool {
-	if o != nil && !IsNil(o.ExpandNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetExpandNetwork gets a reference to the given map[string]interface{} and assigns it to the ExpandNetwork field.
-func (o *Network) SetExpandNetwork(v map[string]interface{}) {
-	o.ExpandNetwork = v
 }
 
 // GetExtattrs returns the Extattrs field value if set, zero value otherwise.
@@ -2427,9 +2389,9 @@ func (o *Network) SetNetmask(v int64) {
 }
 
 // GetNetwork returns the Network field value if set, zero value otherwise.
-func (o *Network) GetNetwork() string {
+func (o *Network) GetNetwork() NetworkNetwork {
 	if o == nil || IsNil(o.Network) {
-		var ret string
+		var ret NetworkNetwork
 		return ret
 	}
 	return *o.Network
@@ -2437,7 +2399,7 @@ func (o *Network) GetNetwork() string {
 
 // GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Network) GetNetworkOk() (*string, bool) {
+func (o *Network) GetNetworkOk() (*NetworkNetwork, bool) {
 	if o == nil || IsNil(o.Network) {
 		return nil, false
 	}
@@ -2453,9 +2415,41 @@ func (o *Network) HasNetwork() bool {
 	return false
 }
 
-// SetNetwork gets a reference to the given string and assigns it to the Network field.
-func (o *Network) SetNetwork(v string) {
+// SetNetwork gets a reference to the given NetworkNetwork and assigns it to the Network field.
+func (o *Network) SetNetwork(v NetworkNetwork) {
 	o.Network = &v
+}
+
+// GetFuncCall returns the FuncCall field value if set, zero value otherwise.
+func (o *Network) GetFuncCall() FuncCall {
+	if o == nil || IsNil(o.FuncCall) {
+		var ret FuncCall
+		return ret
+	}
+	return *o.FuncCall
+}
+
+// GetFuncCallOk returns a tuple with the FuncCall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Network) GetFuncCallOk() (*FuncCall, bool) {
+	if o == nil || IsNil(o.FuncCall) {
+		return nil, false
+	}
+	return o.FuncCall, true
+}
+
+// HasFuncCall returns a boolean if a field has been set.
+func (o *Network) HasFuncCall() bool {
+	if o != nil && !IsNil(o.FuncCall) {
+		return true
+	}
+
+	return false
+}
+
+// SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
+func (o *Network) SetFuncCall(v FuncCall) {
+	o.FuncCall = &v
 }
 
 // GetNetworkContainer returns the NetworkContainer field value if set, zero value otherwise.
@@ -2520,102 +2514,6 @@ func (o *Network) HasNetworkView() bool {
 // SetNetworkView gets a reference to the given string and assigns it to the NetworkView field.
 func (o *Network) SetNetworkView(v string) {
 	o.NetworkView = &v
-}
-
-// GetNextAvailableIp returns the NextAvailableIp field value if set, zero value otherwise.
-func (o *Network) GetNextAvailableIp() map[string]interface{} {
-	if o == nil || IsNil(o.NextAvailableIp) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NextAvailableIp
-}
-
-// GetNextAvailableIpOk returns a tuple with the NextAvailableIp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Network) GetNextAvailableIpOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NextAvailableIp) {
-		return map[string]interface{}{}, false
-	}
-	return o.NextAvailableIp, true
-}
-
-// HasNextAvailableIp returns a boolean if a field has been set.
-func (o *Network) HasNextAvailableIp() bool {
-	if o != nil && !IsNil(o.NextAvailableIp) {
-		return true
-	}
-
-	return false
-}
-
-// SetNextAvailableIp gets a reference to the given map[string]interface{} and assigns it to the NextAvailableIp field.
-func (o *Network) SetNextAvailableIp(v map[string]interface{}) {
-	o.NextAvailableIp = v
-}
-
-// GetNextAvailableNetwork returns the NextAvailableNetwork field value if set, zero value otherwise.
-func (o *Network) GetNextAvailableNetwork() map[string]interface{} {
-	if o == nil || IsNil(o.NextAvailableNetwork) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NextAvailableNetwork
-}
-
-// GetNextAvailableNetworkOk returns a tuple with the NextAvailableNetwork field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Network) GetNextAvailableNetworkOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NextAvailableNetwork) {
-		return map[string]interface{}{}, false
-	}
-	return o.NextAvailableNetwork, true
-}
-
-// HasNextAvailableNetwork returns a boolean if a field has been set.
-func (o *Network) HasNextAvailableNetwork() bool {
-	if o != nil && !IsNil(o.NextAvailableNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetNextAvailableNetwork gets a reference to the given map[string]interface{} and assigns it to the NextAvailableNetwork field.
-func (o *Network) SetNextAvailableNetwork(v map[string]interface{}) {
-	o.NextAvailableNetwork = v
-}
-
-// GetNextAvailableVlan returns the NextAvailableVlan field value if set, zero value otherwise.
-func (o *Network) GetNextAvailableVlan() map[string]interface{} {
-	if o == nil || IsNil(o.NextAvailableVlan) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NextAvailableVlan
-}
-
-// GetNextAvailableVlanOk returns a tuple with the NextAvailableVlan field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Network) GetNextAvailableVlanOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NextAvailableVlan) {
-		return map[string]interface{}{}, false
-	}
-	return o.NextAvailableVlan, true
-}
-
-// HasNextAvailableVlan returns a boolean if a field has been set.
-func (o *Network) HasNextAvailableVlan() bool {
-	if o != nil && !IsNil(o.NextAvailableVlan) {
-		return true
-	}
-
-	return false
-}
-
-// SetNextAvailableVlan gets a reference to the given map[string]interface{} and assigns it to the NextAvailableVlan field.
-func (o *Network) SetNextAvailableVlan(v map[string]interface{}) {
-	o.NextAvailableVlan = v
 }
 
 // GetNextserver returns the Nextserver field value if set, zero value otherwise.
@@ -2776,38 +2674,6 @@ func (o *Network) HasRecycleLeases() bool {
 // SetRecycleLeases gets a reference to the given bool and assigns it to the RecycleLeases field.
 func (o *Network) SetRecycleLeases(v bool) {
 	o.RecycleLeases = &v
-}
-
-// GetResize returns the Resize field value if set, zero value otherwise.
-func (o *Network) GetResize() map[string]interface{} {
-	if o == nil || IsNil(o.Resize) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Resize
-}
-
-// GetResizeOk returns a tuple with the Resize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Network) GetResizeOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Resize) {
-		return map[string]interface{}{}, false
-	}
-	return o.Resize, true
-}
-
-// HasResize returns a boolean if a field has been set.
-func (o *Network) HasResize() bool {
-	if o != nil && !IsNil(o.Resize) {
-		return true
-	}
-
-	return false
-}
-
-// SetResize gets a reference to the given map[string]interface{} and assigns it to the Resize field.
-func (o *Network) SetResize(v map[string]interface{}) {
-	o.Resize = v
 }
 
 // GetRestartIfNeeded returns the RestartIfNeeded field value if set, zero value otherwise.
@@ -3032,38 +2898,6 @@ func (o *Network) HasSendRirRequest() bool {
 // SetSendRirRequest gets a reference to the given bool and assigns it to the SendRirRequest field.
 func (o *Network) SetSendRirRequest(v bool) {
 	o.SendRirRequest = &v
-}
-
-// GetSplitNetwork returns the SplitNetwork field value if set, zero value otherwise.
-func (o *Network) GetSplitNetwork() map[string]interface{} {
-	if o == nil || IsNil(o.SplitNetwork) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.SplitNetwork
-}
-
-// GetSplitNetworkOk returns a tuple with the SplitNetwork field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Network) GetSplitNetworkOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.SplitNetwork) {
-		return map[string]interface{}{}, false
-	}
-	return o.SplitNetwork, true
-}
-
-// HasSplitNetwork returns a boolean if a field has been set.
-func (o *Network) HasSplitNetwork() bool {
-	if o != nil && !IsNil(o.SplitNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetSplitNetwork gets a reference to the given map[string]interface{} and assigns it to the SplitNetwork field.
-func (o *Network) SetSplitNetwork(v map[string]interface{}) {
-	o.SplitNetwork = v
 }
 
 // GetStaticHosts returns the StaticHosts field value if set, zero value otherwise.
@@ -4552,9 +4386,6 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EndpointSources) {
 		toSerialize["endpoint_sources"] = o.EndpointSources
 	}
-	if !IsNil(o.ExpandNetwork) {
-		toSerialize["expand_network"] = o.ExpandNetwork
-	}
 	if !IsNil(o.Extattrs) {
 		toSerialize["extattrs"] = o.Extattrs
 	}
@@ -4624,20 +4455,14 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
 	}
+	if !IsNil(o.FuncCall) {
+		toSerialize["func_call"] = o.FuncCall
+	}
 	if !IsNil(o.NetworkContainer) {
 		toSerialize["network_container"] = o.NetworkContainer
 	}
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
-	}
-	if !IsNil(o.NextAvailableIp) {
-		toSerialize["next_available_ip"] = o.NextAvailableIp
-	}
-	if !IsNil(o.NextAvailableNetwork) {
-		toSerialize["next_available_network"] = o.NextAvailableNetwork
-	}
-	if !IsNil(o.NextAvailableVlan) {
-		toSerialize["next_available_vlan"] = o.NextAvailableVlan
 	}
 	if !IsNil(o.Nextserver) {
 		toSerialize["nextserver"] = o.Nextserver
@@ -4653,9 +4478,6 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RecycleLeases) {
 		toSerialize["recycle_leases"] = o.RecycleLeases
-	}
-	if !IsNil(o.Resize) {
-		toSerialize["resize"] = o.Resize
 	}
 	if !IsNil(o.RestartIfNeeded) {
 		toSerialize["restart_if_needed"] = o.RestartIfNeeded
@@ -4677,9 +4499,6 @@ func (o Network) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SendRirRequest) {
 		toSerialize["send_rir_request"] = o.SendRirRequest
-	}
-	if !IsNil(o.SplitNetwork) {
-		toSerialize["split_network"] = o.SplitNetwork
 	}
 	if !IsNil(o.StaticHosts) {
 		toSerialize["static_hosts"] = o.StaticHosts

@@ -1,17 +1,17 @@
-# DiscoverysdnnetworkAPI
+# DiscoverySdnnetworkAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DiscoverysdnnetworkAPI.md#Get) | **Get** /discovery:sdnnetwork | Retrieve discovery:sdnnetwork objects
-[**ReferenceGet**](DiscoverysdnnetworkAPI.md#ReferenceGet) | **Get** /discovery:sdnnetwork/{reference} | Get a specific discovery:sdnnetwork object
+[**DiscoverysdnnetworkGet**](DiscoverySdnnetworkAPI.md#DiscoverysdnnetworkGet) | **Get** /discovery:sdnnetwork | Retrieve discovery:sdnnetwork objects
+[**DiscoverysdnnetworkReferenceGet**](DiscoverySdnnetworkAPI.md#DiscoverysdnnetworkReferenceGet) | **Get** /discovery:sdnnetwork/{reference} | Get a specific discovery:sdnnetwork object
 
 
 
-## Get
+## DiscoverysdnnetworkGet
 
-> ListDiscoverySdnnetworkResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoverySdnnetworkResponse DiscoverysdnnetworkGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:sdnnetwork objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverysdnnetworkAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoverySdnnetworkAPI.DiscoverysdnnetworkGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverysdnnetworkAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverySdnnetworkAPI.DiscoverysdnnetworkGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDiscoverySdnnetworkResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverysdnnetworkAPI.Get`: %v\n", resp)
+	// response from `DiscoverysdnnetworkGet`: ListDiscoverySdnnetworkResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoverySdnnetworkAPI.DiscoverysdnnetworkGet`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverysdnnetworkAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DiscoverysdnnetworkReferenceGet
 
-> GetDiscoverySdnnetworkResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoverySdnnetworkResponse DiscoverysdnnetworkReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:sdnnetwork object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:sdnnetwork object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverysdnnetworkAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoverySdnnetworkAPI.DiscoverysdnnetworkReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverysdnnetworkAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverySdnnetworkAPI.DiscoverysdnnetworkReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDiscoverySdnnetworkResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverysdnnetworkAPI.ReferenceGet`: %v\n", resp)
+	// response from `DiscoverysdnnetworkReferenceGet`: GetDiscoverySdnnetworkResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoverySdnnetworkAPI.DiscoverysdnnetworkReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverysdnnetworkAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

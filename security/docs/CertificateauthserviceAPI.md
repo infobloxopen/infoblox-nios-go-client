@@ -1,20 +1,20 @@
-# CertificateauthserviceAPI
+# CertificateAuthserviceAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](CertificateauthserviceAPI.md#Get) | **Get** /certificate:authservice | Retrieve certificate:authservice objects
-[**Post**](CertificateauthserviceAPI.md#Post) | **Post** /certificate:authservice | Create a certificate:authservice object
-[**ReferenceDelete**](CertificateauthserviceAPI.md#ReferenceDelete) | **Delete** /certificate:authservice/{reference} | Delete a certificate:authservice object
-[**ReferenceGet**](CertificateauthserviceAPI.md#ReferenceGet) | **Get** /certificate:authservice/{reference} | Get a specific certificate:authservice object
-[**ReferencePut**](CertificateauthserviceAPI.md#ReferencePut) | **Put** /certificate:authservice/{reference} | Update a certificate:authservice object
+[**CertificateauthserviceGet**](CertificateAuthserviceAPI.md#CertificateauthserviceGet) | **Get** /certificate:authservice | Retrieve certificate:authservice objects
+[**CertificateauthservicePost**](CertificateAuthserviceAPI.md#CertificateauthservicePost) | **Post** /certificate:authservice | Create a certificate:authservice object
+[**CertificateauthserviceReferenceDelete**](CertificateAuthserviceAPI.md#CertificateauthserviceReferenceDelete) | **Delete** /certificate:authservice/{reference} | Delete a certificate:authservice object
+[**CertificateauthserviceReferenceGet**](CertificateAuthserviceAPI.md#CertificateauthserviceReferenceGet) | **Get** /certificate:authservice/{reference} | Get a specific certificate:authservice object
+[**CertificateauthserviceReferencePut**](CertificateAuthserviceAPI.md#CertificateauthserviceReferencePut) | **Put** /certificate:authservice/{reference} | Update a certificate:authservice object
 
 
 
-## Get
+## CertificateauthserviceGet
 
-> ListCertificateAuthserviceResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListCertificateAuthserviceResponse CertificateauthserviceGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve certificate:authservice objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.CertificateauthserviceAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.CertificateAuthserviceAPI.CertificateauthserviceGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CertificateauthserviceAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthserviceAPI.CertificateauthserviceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListCertificateAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `CertificateauthserviceAPI.Get`: %v\n", resp)
+	// response from `CertificateauthserviceGet`: ListCertificateAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `CertificateAuthserviceAPI.CertificateauthserviceGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `CertificateauthserviceAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `CertificateAuthserviceAPICertificateauthserviceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## CertificateauthservicePost
 
-> CreateCertificateAuthserviceResponse Post(ctx).CertificateAuthservice(certificateAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateCertificateAuthserviceResponse CertificateauthservicePost(ctx).CertificateAuthservice(certificateAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a certificate:authservice object
 
@@ -109,13 +109,13 @@ func main() {
 	certificateAuthservice := *security.NewCertificateAuthservice() // CertificateAuthservice | Object data to create
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.CertificateauthserviceAPI.Post(context.Background()).CertificateAuthservice(certificateAuthservice).Execute()
+	resp, r, err := apiClient.CertificateAuthserviceAPI.CertificateauthservicePost(context.Background()).CertificateAuthservice(certificateAuthservice).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CertificateauthserviceAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthserviceAPI.CertificateauthservicePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateCertificateAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `CertificateauthserviceAPI.Post`: %v\n", resp)
+	// response from `CertificateauthservicePost`: CreateCertificateAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `CertificateAuthserviceAPI.CertificateauthservicePost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `CertificateauthserviceAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `CertificateAuthserviceAPICertificateauthservicePostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## CertificateauthserviceReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> CertificateauthserviceReferenceDelete(ctx, reference).Execute()
 
 Delete a certificate:authservice object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the certificate:authservice object
 
 	apiClient := security.NewAPIClient()
-	r, err := apiClient.CertificateauthserviceAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.CertificateAuthserviceAPI.CertificateauthserviceReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CertificateauthserviceAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthserviceAPI.CertificateauthserviceReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `CertificateauthserviceAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `CertificateAuthserviceAPICertificateauthserviceReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## CertificateauthserviceReferenceGet
 
-> GetCertificateAuthserviceResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetCertificateAuthserviceResponse CertificateauthserviceReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific certificate:authservice object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the certificate:authservice object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.CertificateauthserviceAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.CertificateAuthserviceAPI.CertificateauthserviceReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CertificateauthserviceAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthserviceAPI.CertificateauthserviceReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetCertificateAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `CertificateauthserviceAPI.ReferenceGet`: %v\n", resp)
+	// response from `CertificateauthserviceReferenceGet`: GetCertificateAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `CertificateAuthserviceAPI.CertificateauthserviceReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `CertificateauthserviceAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## CertificateauthserviceReferencePut
 
-> UpdateCertificateAuthserviceResponse ReferencePut(ctx, reference).CertificateAuthservice(certificateAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateCertificateAuthserviceResponse CertificateauthserviceReferencePut(ctx, reference).CertificateAuthservice(certificateAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a certificate:authservice object
 
@@ -318,13 +318,13 @@ func main() {
 	certificateAuthservice := *security.NewCertificateAuthservice() // CertificateAuthservice | Object data to update
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.CertificateauthserviceAPI.ReferencePut(context.Background(), reference).CertificateAuthservice(certificateAuthservice).Execute()
+	resp, r, err := apiClient.CertificateAuthserviceAPI.CertificateauthserviceReferencePut(context.Background(), reference).CertificateAuthservice(certificateAuthservice).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CertificateauthserviceAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthserviceAPI.CertificateauthserviceReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateCertificateAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `CertificateauthserviceAPI.ReferencePut`: %v\n", resp)
+	// response from `CertificateauthserviceReferencePut`: UpdateCertificateAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `CertificateAuthserviceAPI.CertificateauthserviceReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `CertificateauthserviceAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `CertificateAuthserviceAPICertificateauthserviceReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -23,9 +23,7 @@ type DiscoveryGridproperties struct {
 	Ref                        *string                                            `json:"_ref,omitempty"`
 	AdvancedPollingSettings    *DiscoveryGridpropertiesAdvancedPollingSettings    `json:"advanced_polling_settings,omitempty"`
 	AdvancedSdnPollingSettings *DiscoveryGridpropertiesAdvancedSdnPollingSettings `json:"advanced_sdn_polling_settings,omitempty"`
-	AdvisorRunNow              map[string]interface{}                             `json:"advisor_run_now,omitempty"`
 	AdvisorSettings            *DiscoveryGridpropertiesAdvisorSettings            `json:"advisor_settings,omitempty"`
-	AdvisorTestConnection      map[string]interface{}                             `json:"advisor_test_connection,omitempty"`
 	// Automatic conversion settings.
 	AutoConversionSettings  []DiscoveryGridpropertiesAutoConversionSettings `json:"auto_conversion_settings,omitempty"`
 	BasicPollingSettings    *DiscoveryGridpropertiesBasicPollingSettings    `json:"basic_polling_settings,omitempty"`
@@ -34,8 +32,6 @@ type DiscoveryGridproperties struct {
 	CliCredentials []DiscoveryGridpropertiesCliCredentials `json:"cli_credentials,omitempty"`
 	// Device Hints.
 	DeviceHints              []DiscoveryGridpropertiesDeviceHints             `json:"device_hints,omitempty"`
-	Diagnostic               map[string]interface{}                           `json:"diagnostic,omitempty"`
-	DiagnosticStatus         map[string]interface{}                           `json:"diagnostic_status,omitempty"`
 	DiscoveryBlackoutSetting *DiscoveryGridpropertiesDiscoveryBlackoutSetting `json:"discovery_blackout_setting,omitempty"`
 	// The type of the devices the DNS processor operates on.
 	DnsLookupOption *string `json:"dns_lookup_option,omitempty"`
@@ -183,38 +179,6 @@ func (o *DiscoveryGridproperties) SetAdvancedSdnPollingSettings(v DiscoveryGridp
 	o.AdvancedSdnPollingSettings = &v
 }
 
-// GetAdvisorRunNow returns the AdvisorRunNow field value if set, zero value otherwise.
-func (o *DiscoveryGridproperties) GetAdvisorRunNow() map[string]interface{} {
-	if o == nil || IsNil(o.AdvisorRunNow) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.AdvisorRunNow
-}
-
-// GetAdvisorRunNowOk returns a tuple with the AdvisorRunNow field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DiscoveryGridproperties) GetAdvisorRunNowOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.AdvisorRunNow) {
-		return map[string]interface{}{}, false
-	}
-	return o.AdvisorRunNow, true
-}
-
-// HasAdvisorRunNow returns a boolean if a field has been set.
-func (o *DiscoveryGridproperties) HasAdvisorRunNow() bool {
-	if o != nil && !IsNil(o.AdvisorRunNow) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdvisorRunNow gets a reference to the given map[string]interface{} and assigns it to the AdvisorRunNow field.
-func (o *DiscoveryGridproperties) SetAdvisorRunNow(v map[string]interface{}) {
-	o.AdvisorRunNow = v
-}
-
 // GetAdvisorSettings returns the AdvisorSettings field value if set, zero value otherwise.
 func (o *DiscoveryGridproperties) GetAdvisorSettings() DiscoveryGridpropertiesAdvisorSettings {
 	if o == nil || IsNil(o.AdvisorSettings) {
@@ -245,38 +209,6 @@ func (o *DiscoveryGridproperties) HasAdvisorSettings() bool {
 // SetAdvisorSettings gets a reference to the given DiscoveryGridpropertiesAdvisorSettings and assigns it to the AdvisorSettings field.
 func (o *DiscoveryGridproperties) SetAdvisorSettings(v DiscoveryGridpropertiesAdvisorSettings) {
 	o.AdvisorSettings = &v
-}
-
-// GetAdvisorTestConnection returns the AdvisorTestConnection field value if set, zero value otherwise.
-func (o *DiscoveryGridproperties) GetAdvisorTestConnection() map[string]interface{} {
-	if o == nil || IsNil(o.AdvisorTestConnection) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.AdvisorTestConnection
-}
-
-// GetAdvisorTestConnectionOk returns a tuple with the AdvisorTestConnection field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DiscoveryGridproperties) GetAdvisorTestConnectionOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.AdvisorTestConnection) {
-		return map[string]interface{}{}, false
-	}
-	return o.AdvisorTestConnection, true
-}
-
-// HasAdvisorTestConnection returns a boolean if a field has been set.
-func (o *DiscoveryGridproperties) HasAdvisorTestConnection() bool {
-	if o != nil && !IsNil(o.AdvisorTestConnection) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdvisorTestConnection gets a reference to the given map[string]interface{} and assigns it to the AdvisorTestConnection field.
-func (o *DiscoveryGridproperties) SetAdvisorTestConnection(v map[string]interface{}) {
-	o.AdvisorTestConnection = v
 }
 
 // GetAutoConversionSettings returns the AutoConversionSettings field value if set, zero value otherwise.
@@ -437,70 +369,6 @@ func (o *DiscoveryGridproperties) HasDeviceHints() bool {
 // SetDeviceHints gets a reference to the given []DiscoveryGridpropertiesDeviceHints and assigns it to the DeviceHints field.
 func (o *DiscoveryGridproperties) SetDeviceHints(v []DiscoveryGridpropertiesDeviceHints) {
 	o.DeviceHints = v
-}
-
-// GetDiagnostic returns the Diagnostic field value if set, zero value otherwise.
-func (o *DiscoveryGridproperties) GetDiagnostic() map[string]interface{} {
-	if o == nil || IsNil(o.Diagnostic) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Diagnostic
-}
-
-// GetDiagnosticOk returns a tuple with the Diagnostic field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DiscoveryGridproperties) GetDiagnosticOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Diagnostic) {
-		return map[string]interface{}{}, false
-	}
-	return o.Diagnostic, true
-}
-
-// HasDiagnostic returns a boolean if a field has been set.
-func (o *DiscoveryGridproperties) HasDiagnostic() bool {
-	if o != nil && !IsNil(o.Diagnostic) {
-		return true
-	}
-
-	return false
-}
-
-// SetDiagnostic gets a reference to the given map[string]interface{} and assigns it to the Diagnostic field.
-func (o *DiscoveryGridproperties) SetDiagnostic(v map[string]interface{}) {
-	o.Diagnostic = v
-}
-
-// GetDiagnosticStatus returns the DiagnosticStatus field value if set, zero value otherwise.
-func (o *DiscoveryGridproperties) GetDiagnosticStatus() map[string]interface{} {
-	if o == nil || IsNil(o.DiagnosticStatus) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.DiagnosticStatus
-}
-
-// GetDiagnosticStatusOk returns a tuple with the DiagnosticStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DiscoveryGridproperties) GetDiagnosticStatusOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.DiagnosticStatus) {
-		return map[string]interface{}{}, false
-	}
-	return o.DiagnosticStatus, true
-}
-
-// HasDiagnosticStatus returns a boolean if a field has been set.
-func (o *DiscoveryGridproperties) HasDiagnosticStatus() bool {
-	if o != nil && !IsNil(o.DiagnosticStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetDiagnosticStatus gets a reference to the given map[string]interface{} and assigns it to the DiagnosticStatus field.
-func (o *DiscoveryGridproperties) SetDiagnosticStatus(v map[string]interface{}) {
-	o.DiagnosticStatus = v
 }
 
 // GetDiscoveryBlackoutSetting returns the DiscoveryBlackoutSetting field value if set, zero value otherwise.
@@ -1066,14 +934,8 @@ func (o DiscoveryGridproperties) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdvancedSdnPollingSettings) {
 		toSerialize["advanced_sdn_polling_settings"] = o.AdvancedSdnPollingSettings
 	}
-	if !IsNil(o.AdvisorRunNow) {
-		toSerialize["advisor_run_now"] = o.AdvisorRunNow
-	}
 	if !IsNil(o.AdvisorSettings) {
 		toSerialize["advisor_settings"] = o.AdvisorSettings
-	}
-	if !IsNil(o.AdvisorTestConnection) {
-		toSerialize["advisor_test_connection"] = o.AdvisorTestConnection
 	}
 	if !IsNil(o.AutoConversionSettings) {
 		toSerialize["auto_conversion_settings"] = o.AutoConversionSettings
@@ -1089,12 +951,6 @@ func (o DiscoveryGridproperties) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DeviceHints) {
 		toSerialize["device_hints"] = o.DeviceHints
-	}
-	if !IsNil(o.Diagnostic) {
-		toSerialize["diagnostic"] = o.Diagnostic
-	}
-	if !IsNil(o.DiagnosticStatus) {
-		toSerialize["diagnostic_status"] = o.DiagnosticStatus
 	}
 	if !IsNil(o.DiscoveryBlackoutSetting) {
 		toSerialize["discovery_blackout_setting"] = o.DiscoveryBlackoutSetting

@@ -25,13 +25,11 @@ type APIClient struct {
 	// API Services
 	Awsrte53taskgroupAPI Awsrte53taskgroupAPI
 	AwsuserAPI AwsuserAPI
-	GridcloudapiAPI GridcloudapiAPI
-	GridcloudapicloudstatisticsAPI GridcloudapicloudstatisticsAPI
-	GridcloudapitenantAPI GridcloudapitenantAPI
-	GridcloudapivmAPI GridcloudapivmAPI
-	GridcloudapivmaddressAPI GridcloudapivmaddressAPI
-	GridmembercloudapiAPI GridmembercloudapiAPI
-	OutboundcloudclientAPI OutboundcloudclientAPI
+	AzurednstaskgroupAPI AzurednstaskgroupAPI
+	AzureuserAPI AzureuserAPI
+	GcpdnstaskgroupAPI GcpdnstaskgroupAPI
+	GcpuserAPI GcpuserAPI
+	MultiregionsAPI MultiregionsAPI
 }
 
 // NewAPIClient creates a new API client.
@@ -55,13 +53,11 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 	// API Services
 	c.Awsrte53taskgroupAPI = (*Awsrte53taskgroupAPIService)(&c.Common)
 	c.AwsuserAPI = (*AwsuserAPIService)(&c.Common)
-	c.GridcloudapiAPI = (*GridcloudapiAPIService)(&c.Common)
-	c.GridcloudapicloudstatisticsAPI = (*GridcloudapicloudstatisticsAPIService)(&c.Common)
-	c.GridcloudapitenantAPI = (*GridcloudapitenantAPIService)(&c.Common)
-	c.GridcloudapivmAPI = (*GridcloudapivmAPIService)(&c.Common)
-	c.GridcloudapivmaddressAPI = (*GridcloudapivmaddressAPIService)(&c.Common)
-	c.GridmembercloudapiAPI = (*GridmembercloudapiAPIService)(&c.Common)
-	c.OutboundcloudclientAPI = (*OutboundcloudclientAPIService)(&c.Common)
+	c.AzurednstaskgroupAPI = (*AzurednstaskgroupAPIService)(&c.Common)
+	c.AzureuserAPI = (*AzureuserAPIService)(&c.Common)
+	c.GcpdnstaskgroupAPI = (*GcpdnstaskgroupAPIService)(&c.Common)
+	c.GcpuserAPI = (*GcpuserAPIService)(&c.Common)
+	c.MultiregionsAPI = (*MultiregionsAPIService)(&c.Common)
 
 	return c
 }

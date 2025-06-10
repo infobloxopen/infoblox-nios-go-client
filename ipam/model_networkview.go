@@ -37,7 +37,7 @@ type Networkview struct {
 	// This field contains the federated realms associated to this network view
 	FederatedRealms []NetworkviewFederatedRealms `json:"federated_realms,omitempty"`
 	// The list of linked authoritative DNS zones.
-	InternalForwardZones []map[string]interface{} `json:"internal_forward_zones,omitempty"`
+	InternalForwardZones []string `json:"internal_forward_zones,omitempty"`
 	// The NIOS appliance provides one default network view. You can rename the default view and change its settings, but you cannot delete it. There must always be at least one network view in the appliance.
 	IsDefault *bool `json:"is_default,omitempty"`
 	// This field controls whether this object is synchronized with the Multi-Grid Master. If this field is set to True, objects are not synchronized.
@@ -357,9 +357,9 @@ func (o *Networkview) SetFederatedRealms(v []NetworkviewFederatedRealms) {
 }
 
 // GetInternalForwardZones returns the InternalForwardZones field value if set, zero value otherwise.
-func (o *Networkview) GetInternalForwardZones() []map[string]interface{} {
+func (o *Networkview) GetInternalForwardZones() []string {
 	if o == nil || IsNil(o.InternalForwardZones) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.InternalForwardZones
@@ -367,7 +367,7 @@ func (o *Networkview) GetInternalForwardZones() []map[string]interface{} {
 
 // GetInternalForwardZonesOk returns a tuple with the InternalForwardZones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Networkview) GetInternalForwardZonesOk() ([]map[string]interface{}, bool) {
+func (o *Networkview) GetInternalForwardZonesOk() ([]string, bool) {
 	if o == nil || IsNil(o.InternalForwardZones) {
 		return nil, false
 	}
@@ -383,8 +383,8 @@ func (o *Networkview) HasInternalForwardZones() bool {
 	return false
 }
 
-// SetInternalForwardZones gets a reference to the given []map[string]interface{} and assigns it to the InternalForwardZones field.
-func (o *Networkview) SetInternalForwardZones(v []map[string]interface{}) {
+// SetInternalForwardZones gets a reference to the given []string and assigns it to the InternalForwardZones field.
+func (o *Networkview) SetInternalForwardZones(v []string) {
 	o.InternalForwardZones = v
 }
 

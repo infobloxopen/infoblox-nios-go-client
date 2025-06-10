@@ -1,20 +1,20 @@
-# DiscoverycredentialgroupAPI
+# DiscoveryCredentialgroupAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DiscoverycredentialgroupAPI.md#Get) | **Get** /discovery:credentialgroup | Retrieve discovery:credentialgroup objects
-[**Post**](DiscoverycredentialgroupAPI.md#Post) | **Post** /discovery:credentialgroup | Create a discovery:credentialgroup object
-[**ReferenceDelete**](DiscoverycredentialgroupAPI.md#ReferenceDelete) | **Delete** /discovery:credentialgroup/{reference} | Delete a discovery:credentialgroup object
-[**ReferenceGet**](DiscoverycredentialgroupAPI.md#ReferenceGet) | **Get** /discovery:credentialgroup/{reference} | Get a specific discovery:credentialgroup object
-[**ReferencePut**](DiscoverycredentialgroupAPI.md#ReferencePut) | **Put** /discovery:credentialgroup/{reference} | Update a discovery:credentialgroup object
+[**DiscoverycredentialgroupGet**](DiscoveryCredentialgroupAPI.md#DiscoverycredentialgroupGet) | **Get** /discovery:credentialgroup | Retrieve discovery:credentialgroup objects
+[**DiscoverycredentialgroupPost**](DiscoveryCredentialgroupAPI.md#DiscoverycredentialgroupPost) | **Post** /discovery:credentialgroup | Create a discovery:credentialgroup object
+[**DiscoverycredentialgroupReferenceDelete**](DiscoveryCredentialgroupAPI.md#DiscoverycredentialgroupReferenceDelete) | **Delete** /discovery:credentialgroup/{reference} | Delete a discovery:credentialgroup object
+[**DiscoverycredentialgroupReferenceGet**](DiscoveryCredentialgroupAPI.md#DiscoverycredentialgroupReferenceGet) | **Get** /discovery:credentialgroup/{reference} | Get a specific discovery:credentialgroup object
+[**DiscoverycredentialgroupReferencePut**](DiscoveryCredentialgroupAPI.md#DiscoverycredentialgroupReferencePut) | **Put** /discovery:credentialgroup/{reference} | Update a discovery:credentialgroup object
 
 
 
-## Get
+## DiscoverycredentialgroupGet
 
-> ListDiscoveryCredentialgroupResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoveryCredentialgroupResponse DiscoverycredentialgroupGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:credentialgroup objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverycredentialgroupAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverycredentialgroupAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDiscoveryCredentialgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverycredentialgroupAPI.Get`: %v\n", resp)
+	// response from `DiscoverycredentialgroupGet`: ListDiscoveryCredentialgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverycredentialgroupAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## DiscoverycredentialgroupPost
 
-> CreateDiscoveryCredentialgroupResponse Post(ctx).DiscoveryCredentialgroup(discoveryCredentialgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateDiscoveryCredentialgroupResponse DiscoverycredentialgroupPost(ctx).DiscoveryCredentialgroup(discoveryCredentialgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a discovery:credentialgroup object
 
@@ -109,13 +109,13 @@ func main() {
 	discoveryCredentialgroup := *discovery.NewDiscoveryCredentialgroup() // DiscoveryCredentialgroup | Object data to create
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverycredentialgroupAPI.Post(context.Background()).DiscoveryCredentialgroup(discoveryCredentialgroup).Execute()
+	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupPost(context.Background()).DiscoveryCredentialgroup(discoveryCredentialgroup).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverycredentialgroupAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateDiscoveryCredentialgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverycredentialgroupAPI.Post`: %v\n", resp)
+	// response from `DiscoverycredentialgroupPost`: CreateDiscoveryCredentialgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverycredentialgroupAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## DiscoverycredentialgroupReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> DiscoverycredentialgroupReferenceDelete(ctx, reference).Execute()
 
 Delete a discovery:credentialgroup object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:credentialgroup object
 
 	apiClient := discovery.NewAPIClient()
-	r, err := apiClient.DiscoverycredentialgroupAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverycredentialgroupAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverycredentialgroupAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DiscoverycredentialgroupReferenceGet
 
-> GetDiscoveryCredentialgroupResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoveryCredentialgroupResponse DiscoverycredentialgroupReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:credentialgroup object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:credentialgroup object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverycredentialgroupAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverycredentialgroupAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDiscoveryCredentialgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverycredentialgroupAPI.ReferenceGet`: %v\n", resp)
+	// response from `DiscoverycredentialgroupReferenceGet`: GetDiscoveryCredentialgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverycredentialgroupAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DiscoverycredentialgroupReferencePut
 
-> UpdateDiscoveryCredentialgroupResponse ReferencePut(ctx, reference).DiscoveryCredentialgroup(discoveryCredentialgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDiscoveryCredentialgroupResponse DiscoverycredentialgroupReferencePut(ctx, reference).DiscoveryCredentialgroup(discoveryCredentialgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a discovery:credentialgroup object
 
@@ -318,13 +318,13 @@ func main() {
 	discoveryCredentialgroup := *discovery.NewDiscoveryCredentialgroup() // DiscoveryCredentialgroup | Object data to update
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverycredentialgroupAPI.ReferencePut(context.Background(), reference).DiscoveryCredentialgroup(discoveryCredentialgroup).Execute()
+	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferencePut(context.Background(), reference).DiscoveryCredentialgroup(discoveryCredentialgroup).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverycredentialgroupAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDiscoveryCredentialgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverycredentialgroupAPI.ReferencePut`: %v\n", resp)
+	// response from `DiscoverycredentialgroupReferencePut`: UpdateDiscoveryCredentialgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverycredentialgroupAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

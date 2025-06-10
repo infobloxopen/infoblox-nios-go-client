@@ -1,20 +1,20 @@
-# RecordrpzcnameclientipaddressdnAPI
+# RecordRpzCnameClientipaddressdnAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordrpzcnameclientipaddressdnAPI.md#Get) | **Get** /record:rpz:cname:clientipaddressdn | Retrieve record:rpz:cname:clientipaddressdn objects
-[**Post**](RecordrpzcnameclientipaddressdnAPI.md#Post) | **Post** /record:rpz:cname:clientipaddressdn | Create a record:rpz:cname:clientipaddressdn object
-[**ReferenceDelete**](RecordrpzcnameclientipaddressdnAPI.md#ReferenceDelete) | **Delete** /record:rpz:cname:clientipaddressdn/{reference} | Delete a record:rpz:cname:clientipaddressdn object
-[**ReferenceGet**](RecordrpzcnameclientipaddressdnAPI.md#ReferenceGet) | **Get** /record:rpz:cname:clientipaddressdn/{reference} | Get a specific record:rpz:cname:clientipaddressdn object
-[**ReferencePut**](RecordrpzcnameclientipaddressdnAPI.md#ReferencePut) | **Put** /record:rpz:cname:clientipaddressdn/{reference} | Update a record:rpz:cname:clientipaddressdn object
+[**RecordrpzcnameclientipaddressdnGet**](RecordRpzCnameClientipaddressdnAPI.md#RecordrpzcnameclientipaddressdnGet) | **Get** /record:rpz:cname:clientipaddressdn | Retrieve record:rpz:cname:clientipaddressdn objects
+[**RecordrpzcnameclientipaddressdnPost**](RecordRpzCnameClientipaddressdnAPI.md#RecordrpzcnameclientipaddressdnPost) | **Post** /record:rpz:cname:clientipaddressdn | Create a record:rpz:cname:clientipaddressdn object
+[**RecordrpzcnameclientipaddressdnReferenceDelete**](RecordRpzCnameClientipaddressdnAPI.md#RecordrpzcnameclientipaddressdnReferenceDelete) | **Delete** /record:rpz:cname:clientipaddressdn/{reference} | Delete a record:rpz:cname:clientipaddressdn object
+[**RecordrpzcnameclientipaddressdnReferenceGet**](RecordRpzCnameClientipaddressdnAPI.md#RecordrpzcnameclientipaddressdnReferenceGet) | **Get** /record:rpz:cname:clientipaddressdn/{reference} | Get a specific record:rpz:cname:clientipaddressdn object
+[**RecordrpzcnameclientipaddressdnReferencePut**](RecordRpzCnameClientipaddressdnAPI.md#RecordrpzcnameclientipaddressdnReferencePut) | **Put** /record:rpz:cname:clientipaddressdn/{reference} | Update a record:rpz:cname:clientipaddressdn object
 
 
 
-## Get
+## RecordrpzcnameclientipaddressdnGet
 
-> ListRecordRpzCnameClientipaddressdnResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordRpzCnameClientipaddressdnResponse RecordrpzcnameclientipaddressdnGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:rpz:cname:clientipaddressdn objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzcnameclientipaddressdnAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzcnameclientipaddressdnAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordRpzCnameClientipaddressdnResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzcnameclientipaddressdnAPI.Get`: %v\n", resp)
+	// response from `RecordrpzcnameclientipaddressdnGet`: ListRecordRpzCnameClientipaddressdnResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzcnameclientipaddressdnAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzCnameClientipaddressdnAPIRecordrpzcnameclientipaddressdnGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordrpzcnameclientipaddressdnPost
 
-> CreateRecordRpzCnameClientipaddressdnResponse Post(ctx).RecordRpzCnameClientipaddressdn(recordRpzCnameClientipaddressdn).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordRpzCnameClientipaddressdnResponse RecordrpzcnameclientipaddressdnPost(ctx).RecordRpzCnameClientipaddressdn(recordRpzCnameClientipaddressdn).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:rpz:cname:clientipaddressdn object
 
@@ -109,13 +109,13 @@ func main() {
 	recordRpzCnameClientipaddressdn := *rpz.NewRecordRpzCnameClientipaddressdn() // RecordRpzCnameClientipaddressdn | Object data to create
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzcnameclientipaddressdnAPI.Post(context.Background()).RecordRpzCnameClientipaddressdn(recordRpzCnameClientipaddressdn).Execute()
+	resp, r, err := apiClient.RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnPost(context.Background()).RecordRpzCnameClientipaddressdn(recordRpzCnameClientipaddressdn).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzcnameclientipaddressdnAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordRpzCnameClientipaddressdnResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzcnameclientipaddressdnAPI.Post`: %v\n", resp)
+	// response from `RecordrpzcnameclientipaddressdnPost`: CreateRecordRpzCnameClientipaddressdnResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzcnameclientipaddressdnAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzCnameClientipaddressdnAPIRecordrpzcnameclientipaddressdnPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordrpzcnameclientipaddressdnReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordrpzcnameclientipaddressdnReferenceDelete(ctx, reference).Execute()
 
 Delete a record:rpz:cname:clientipaddressdn object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:rpz:cname:clientipaddressdn object
 
 	apiClient := rpz.NewAPIClient()
-	r, err := apiClient.RecordrpzcnameclientipaddressdnAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzcnameclientipaddressdnAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzcnameclientipaddressdnAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzCnameClientipaddressdnAPIRecordrpzcnameclientipaddressdnReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordrpzcnameclientipaddressdnReferenceGet
 
-> GetRecordRpzCnameClientipaddressdnResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordRpzCnameClientipaddressdnResponse RecordrpzcnameclientipaddressdnReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:rpz:cname:clientipaddressdn object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:rpz:cname:clientipaddressdn object
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzcnameclientipaddressdnAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzcnameclientipaddressdnAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordRpzCnameClientipaddressdnResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzcnameclientipaddressdnAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordrpzcnameclientipaddressdnReferenceGet`: GetRecordRpzCnameClientipaddressdnResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzcnameclientipaddressdnAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzCnameClientipaddressdnAPIRecordrpzcnameclientipaddressdnReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordrpzcnameclientipaddressdnReferencePut
 
-> UpdateRecordRpzCnameClientipaddressdnResponse ReferencePut(ctx, reference).RecordRpzCnameClientipaddressdn(recordRpzCnameClientipaddressdn).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordRpzCnameClientipaddressdnResponse RecordrpzcnameclientipaddressdnReferencePut(ctx, reference).RecordRpzCnameClientipaddressdn(recordRpzCnameClientipaddressdn).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:rpz:cname:clientipaddressdn object
 
@@ -318,13 +318,13 @@ func main() {
 	recordRpzCnameClientipaddressdn := *rpz.NewRecordRpzCnameClientipaddressdn() // RecordRpzCnameClientipaddressdn | Object data to update
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzcnameclientipaddressdnAPI.ReferencePut(context.Background(), reference).RecordRpzCnameClientipaddressdn(recordRpzCnameClientipaddressdn).Execute()
+	resp, r, err := apiClient.RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnReferencePut(context.Background(), reference).RecordRpzCnameClientipaddressdn(recordRpzCnameClientipaddressdn).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzcnameclientipaddressdnAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordRpzCnameClientipaddressdnResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzcnameclientipaddressdnAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordrpzcnameclientipaddressdnReferencePut`: UpdateRecordRpzCnameClientipaddressdnResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameClientipaddressdnAPI.RecordrpzcnameclientipaddressdnReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzcnameclientipaddressdnAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzCnameClientipaddressdnAPIRecordrpzcnameclientipaddressdnReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

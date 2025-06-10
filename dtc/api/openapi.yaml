@@ -15,49 +15,49 @@ servers:
   url: /wapi/v2.13.6
 tags:
 - description: Operations for dtc objects
-  name: dtc
+  name: Dtc
 - description: Operations for dtc:server objects
-  name: dtc:server
+  name: DtcServer
 - description: Operations for dtc:pool objects
-  name: dtc:pool
+  name: DtcPool
 - description: Operations for dtc:topology objects
-  name: dtc:topology
+  name: DtcTopology
 - description: Operations for dtc:lbdn objects
-  name: dtc:lbdn
+  name: DtcLbdn
 - description: Operations for dtc:monitor objects
-  name: dtc:monitor
+  name: DtcMonitor
 - description: Operations for dtc:monitor:http objects
-  name: dtc:monitor:http
+  name: DtcMonitorHttp
 - description: Operations for dtc:monitor:icmp objects
-  name: dtc:monitor:icmp
+  name: DtcMonitorIcmp
 - description: Operations for dtc:monitor:pdp objects
-  name: dtc:monitor:pdp
+  name: DtcMonitorPdp
 - description: Operations for dtc:monitor:sip objects
-  name: dtc:monitor:sip
+  name: DtcMonitorSip
 - description: Operations for dtc:monitor:snmp objects
-  name: dtc:monitor:snmp
+  name: DtcMonitorSnmp
 - description: Operations for dtc:monitor:tcp objects
-  name: dtc:monitor:tcp
+  name: DtcMonitorTcp
 - description: Operations for dtc:record:a objects
-  name: dtc:record:a
+  name: DtcRecordA
 - description: Operations for dtc:record:aaaa objects
-  name: dtc:record:aaaa
+  name: DtcRecordAaaa
 - description: Operations for dtc:record:cname objects
-  name: dtc:record:cname
+  name: DtcRecordCname
 - description: Operations for dtc:record:naptr objects
-  name: dtc:record:naptr
+  name: DtcRecordNaptr
 - description: Operations for dtc:record:srv objects
-  name: dtc:record:srv
+  name: DtcRecordSrv
 - description: Operations for dtc:certificate objects
-  name: dtc:certificate
+  name: DtcCertificate
 - description: Operations for dtc:allrecords objects
-  name: dtc:allrecords
+  name: DtcAllrecords
 - description: Operations for dtc:object objects
-  name: dtc:object
+  name: DtcObject
 - description: Operations for dtc:topology:rule objects
-  name: dtc:topology:rule
+  name: DtcTopologyRule
 - description: Operations for dtc:topology:label objects
-  name: dtc:topology:label
+  name: DtcTopologyLabel
 paths:
   /dtc:
     get:
@@ -155,7 +155,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc objects
       tags:
-      - dtc
+      - Dtc
   /dtc/{reference}:
     get:
       description: Returns a specific dtc object by reference
@@ -215,73 +215,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc object
       tags:
-      - dtc
-    put:
-      description: Updates a specific dtc object by reference
-      parameters:
-      - description: Reference of the dtc object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Dtc'
-        description: Object data to update
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDtcResponse'
-          description: Object updated successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Update a dtc object
-      tags:
-      - dtc
+      - Dtc
   /dtc:server:
     get:
       description: Returns a list of dtc:server objects matching the search criteria
@@ -378,7 +312,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:server objects
       tags:
-      - dtc:server
+      - DtcServer
     post:
       description: Creates a new dtc:server object
       parameters:
@@ -434,9 +368,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:server object
       tags:
-      - dtc:server
-      x-tf-resource: resource_nios_DtcServer
-      x-tf-datasource: datasource_nios_DtcServer
+      - DtcServer
+      x-tf-resource: nios_dtc_dtc_server
+      x-tf-datasource: nios_dtc_dtc_server
       x-sdk-default-ext-attrs: true
   /dtc:server/{reference}:
     delete:
@@ -465,7 +399,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:server object
       tags:
-      - dtc:server
+      - DtcServer
     get:
       description: Returns a specific dtc:server object by reference
       parameters:
@@ -524,7 +458,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:server object
       tags:
-      - dtc:server
+      - DtcServer
     put:
       description: Updates a specific dtc:server object by reference
       parameters:
@@ -590,7 +524,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:server object
       tags:
-      - dtc:server
+      - DtcServer
       x-sdk-default-ext-attrs: true
   /dtc:pool:
     get:
@@ -688,7 +622,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:pool objects
       tags:
-      - dtc:pool
+      - DtcPool
     post:
       description: Creates a new dtc:pool object
       parameters:
@@ -744,9 +678,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:pool object
       tags:
-      - dtc:pool
-      x-tf-resource: resource_nios_DtcPool
-      x-tf-datasource: datasource_nios_DtcPool
+      - DtcPool
+      x-tf-resource: nios_dtc_dtc_pool
+      x-tf-datasource: nios_dtc_dtc_pool
       x-sdk-default-ext-attrs: true
   /dtc:pool/{reference}:
     delete:
@@ -775,7 +709,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:pool object
       tags:
-      - dtc:pool
+      - DtcPool
     get:
       description: Returns a specific dtc:pool object by reference
       parameters:
@@ -834,7 +768,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:pool object
       tags:
-      - dtc:pool
+      - DtcPool
     put:
       description: Updates a specific dtc:pool object by reference
       parameters:
@@ -900,7 +834,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:pool object
       tags:
-      - dtc:pool
+      - DtcPool
       x-sdk-default-ext-attrs: true
   /dtc:topology:
     get:
@@ -998,7 +932,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:topology objects
       tags:
-      - dtc:topology
+      - DtcTopology
     post:
       description: Creates a new dtc:topology object
       parameters:
@@ -1054,9 +988,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:topology object
       tags:
-      - dtc:topology
-      x-tf-resource: resource_nios_DtcTopology
-      x-tf-datasource: datasource_nios_DtcTopology
+      - DtcTopology
+      x-tf-resource: nios_dtc_dtc_topology
+      x-tf-datasource: nios_dtc_dtc_topology
       x-sdk-default-ext-attrs: true
   /dtc:topology/{reference}:
     delete:
@@ -1085,7 +1019,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:topology object
       tags:
-      - dtc:topology
+      - DtcTopology
     get:
       description: Returns a specific dtc:topology object by reference
       parameters:
@@ -1144,7 +1078,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:topology object
       tags:
-      - dtc:topology
+      - DtcTopology
     put:
       description: Updates a specific dtc:topology object by reference
       parameters:
@@ -1210,7 +1144,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:topology object
       tags:
-      - dtc:topology
+      - DtcTopology
       x-sdk-default-ext-attrs: true
   /dtc:lbdn:
     get:
@@ -1308,7 +1242,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:lbdn objects
       tags:
-      - dtc:lbdn
+      - DtcLbdn
     post:
       description: Creates a new dtc:lbdn object
       parameters:
@@ -1364,9 +1298,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:lbdn object
       tags:
-      - dtc:lbdn
-      x-tf-resource: resource_nios_DtcLbdn
-      x-tf-datasource: datasource_nios_DtcLbdn
+      - DtcLbdn
+      x-tf-resource: nios_dtc_dtc_lbdn
+      x-tf-datasource: nios_dtc_dtc_lbdn
       x-sdk-default-ext-attrs: true
   /dtc:lbdn/{reference}:
     delete:
@@ -1395,7 +1329,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:lbdn object
       tags:
-      - dtc:lbdn
+      - DtcLbdn
     get:
       description: Returns a specific dtc:lbdn object by reference
       parameters:
@@ -1454,7 +1388,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:lbdn object
       tags:
-      - dtc:lbdn
+      - DtcLbdn
     put:
       description: Updates a specific dtc:lbdn object by reference
       parameters:
@@ -1520,7 +1454,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:lbdn object
       tags:
-      - dtc:lbdn
+      - DtcLbdn
       x-sdk-default-ext-attrs: true
   /dtc:monitor:
     get:
@@ -1618,7 +1552,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:monitor objects
       tags:
-      - dtc:monitor
+      - DtcMonitor
   /dtc:monitor/{reference}:
     get:
       description: Returns a specific dtc:monitor object by reference
@@ -1678,7 +1612,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:monitor object
       tags:
-      - dtc:monitor
+      - DtcMonitor
     put:
       description: Updates a specific dtc:monitor object by reference
       parameters:
@@ -1744,7 +1678,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:monitor object
       tags:
-      - dtc:monitor
+      - DtcMonitor
       x-sdk-default-ext-attrs: true
   /dtc:monitor:http:
     get:
@@ -1843,7 +1777,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:monitor:http objects
       tags:
-      - dtc:monitor:http
+      - DtcMonitorHttp
     post:
       description: Creates a new dtc:monitor:http object
       parameters:
@@ -1899,9 +1833,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:monitor:http object
       tags:
-      - dtc:monitor:http
-      x-tf-resource: resource_nios_DtcMonitorHttp
-      x-tf-datasource: datasource_nios_DtcMonitorHttp
+      - DtcMonitorHttp
+      x-tf-resource: nios_dtc_dtc_monitor_http
+      x-tf-datasource: nios_dtc_dtc_monitor_http
       x-sdk-default-ext-attrs: true
   /dtc:monitor:http/{reference}:
     delete:
@@ -1930,7 +1864,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:monitor:http object
       tags:
-      - dtc:monitor:http
+      - DtcMonitorHttp
     get:
       description: Returns a specific dtc:monitor:http object by reference
       parameters:
@@ -1989,7 +1923,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:monitor:http object
       tags:
-      - dtc:monitor:http
+      - DtcMonitorHttp
     put:
       description: Updates a specific dtc:monitor:http object by reference
       parameters:
@@ -2055,7 +1989,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:monitor:http object
       tags:
-      - dtc:monitor:http
+      - DtcMonitorHttp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:icmp:
     get:
@@ -2154,7 +2088,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:monitor:icmp objects
       tags:
-      - dtc:monitor:icmp
+      - DtcMonitorIcmp
     post:
       description: Creates a new dtc:monitor:icmp object
       parameters:
@@ -2210,9 +2144,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:monitor:icmp object
       tags:
-      - dtc:monitor:icmp
-      x-tf-resource: resource_nios_DtcMonitorIcmp
-      x-tf-datasource: datasource_nios_DtcMonitorIcmp
+      - DtcMonitorIcmp
+      x-tf-resource: nios_dtc_dtc_monitor_icmp
+      x-tf-datasource: nios_dtc_dtc_monitor_icmp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:icmp/{reference}:
     delete:
@@ -2241,7 +2175,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:monitor:icmp object
       tags:
-      - dtc:monitor:icmp
+      - DtcMonitorIcmp
     get:
       description: Returns a specific dtc:monitor:icmp object by reference
       parameters:
@@ -2300,7 +2234,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:monitor:icmp object
       tags:
-      - dtc:monitor:icmp
+      - DtcMonitorIcmp
     put:
       description: Updates a specific dtc:monitor:icmp object by reference
       parameters:
@@ -2366,7 +2300,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:monitor:icmp object
       tags:
-      - dtc:monitor:icmp
+      - DtcMonitorIcmp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:pdp:
     get:
@@ -2464,7 +2398,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:monitor:pdp objects
       tags:
-      - dtc:monitor:pdp
+      - DtcMonitorPdp
     post:
       description: Creates a new dtc:monitor:pdp object
       parameters:
@@ -2520,9 +2454,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:monitor:pdp object
       tags:
-      - dtc:monitor:pdp
-      x-tf-resource: resource_nios_DtcMonitorPdp
-      x-tf-datasource: datasource_nios_DtcMonitorPdp
+      - DtcMonitorPdp
+      x-tf-resource: nios_dtc_dtc_monitor_pdp
+      x-tf-datasource: nios_dtc_dtc_monitor_pdp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:pdp/{reference}:
     delete:
@@ -2551,7 +2485,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:monitor:pdp object
       tags:
-      - dtc:monitor:pdp
+      - DtcMonitorPdp
     get:
       description: Returns a specific dtc:monitor:pdp object by reference
       parameters:
@@ -2610,7 +2544,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:monitor:pdp object
       tags:
-      - dtc:monitor:pdp
+      - DtcMonitorPdp
     put:
       description: Updates a specific dtc:monitor:pdp object by reference
       parameters:
@@ -2676,7 +2610,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:monitor:pdp object
       tags:
-      - dtc:monitor:pdp
+      - DtcMonitorPdp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:sip:
     get:
@@ -2774,7 +2708,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:monitor:sip objects
       tags:
-      - dtc:monitor:sip
+      - DtcMonitorSip
     post:
       description: Creates a new dtc:monitor:sip object
       parameters:
@@ -2830,9 +2764,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:monitor:sip object
       tags:
-      - dtc:monitor:sip
-      x-tf-resource: resource_nios_DtcMonitorSip
-      x-tf-datasource: datasource_nios_DtcMonitorSip
+      - DtcMonitorSip
+      x-tf-resource: nios_dtc_dtc_monitor_sip
+      x-tf-datasource: nios_dtc_dtc_monitor_sip
       x-sdk-default-ext-attrs: true
   /dtc:monitor:sip/{reference}:
     delete:
@@ -2861,7 +2795,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:monitor:sip object
       tags:
-      - dtc:monitor:sip
+      - DtcMonitorSip
     get:
       description: Returns a specific dtc:monitor:sip object by reference
       parameters:
@@ -2920,7 +2854,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:monitor:sip object
       tags:
-      - dtc:monitor:sip
+      - DtcMonitorSip
     put:
       description: Updates a specific dtc:monitor:sip object by reference
       parameters:
@@ -2986,7 +2920,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:monitor:sip object
       tags:
-      - dtc:monitor:sip
+      - DtcMonitorSip
       x-sdk-default-ext-attrs: true
   /dtc:monitor:snmp:
     get:
@@ -3085,7 +3019,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:monitor:snmp objects
       tags:
-      - dtc:monitor:snmp
+      - DtcMonitorSnmp
     post:
       description: Creates a new dtc:monitor:snmp object
       parameters:
@@ -3141,9 +3075,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:monitor:snmp object
       tags:
-      - dtc:monitor:snmp
-      x-tf-resource: resource_nios_DtcMonitorSnmp
-      x-tf-datasource: datasource_nios_DtcMonitorSnmp
+      - DtcMonitorSnmp
+      x-tf-resource: nios_dtc_dtc_monitor_snmp
+      x-tf-datasource: nios_dtc_dtc_monitor_snmp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:snmp/{reference}:
     delete:
@@ -3172,7 +3106,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:monitor:snmp object
       tags:
-      - dtc:monitor:snmp
+      - DtcMonitorSnmp
     get:
       description: Returns a specific dtc:monitor:snmp object by reference
       parameters:
@@ -3231,7 +3165,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:monitor:snmp object
       tags:
-      - dtc:monitor:snmp
+      - DtcMonitorSnmp
     put:
       description: Updates a specific dtc:monitor:snmp object by reference
       parameters:
@@ -3297,7 +3231,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:monitor:snmp object
       tags:
-      - dtc:monitor:snmp
+      - DtcMonitorSnmp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:tcp:
     get:
@@ -3395,7 +3329,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:monitor:tcp objects
       tags:
-      - dtc:monitor:tcp
+      - DtcMonitorTcp
     post:
       description: Creates a new dtc:monitor:tcp object
       parameters:
@@ -3451,9 +3385,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:monitor:tcp object
       tags:
-      - dtc:monitor:tcp
-      x-tf-resource: resource_nios_DtcMonitorTcp
-      x-tf-datasource: datasource_nios_DtcMonitorTcp
+      - DtcMonitorTcp
+      x-tf-resource: nios_dtc_dtc_monitor_tcp
+      x-tf-datasource: nios_dtc_dtc_monitor_tcp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:tcp/{reference}:
     delete:
@@ -3482,7 +3416,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:monitor:tcp object
       tags:
-      - dtc:monitor:tcp
+      - DtcMonitorTcp
     get:
       description: Returns a specific dtc:monitor:tcp object by reference
       parameters:
@@ -3541,7 +3475,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:monitor:tcp object
       tags:
-      - dtc:monitor:tcp
+      - DtcMonitorTcp
     put:
       description: Updates a specific dtc:monitor:tcp object by reference
       parameters:
@@ -3607,7 +3541,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:monitor:tcp object
       tags:
-      - dtc:monitor:tcp
+      - DtcMonitorTcp
       x-sdk-default-ext-attrs: true
   /dtc:record:a:
     get:
@@ -3705,7 +3639,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:record:a objects
       tags:
-      - dtc:record:a
+      - DtcRecordA
     post:
       description: Creates a new dtc:record:a object
       parameters:
@@ -3761,9 +3695,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:record:a object
       tags:
-      - dtc:record:a
-      x-tf-resource: resource_nios_DtcRecordA
-      x-tf-datasource: datasource_nios_DtcRecordA
+      - DtcRecordA
+      x-tf-resource: nios_dtc_dtc_record_a
+      x-tf-datasource: nios_dtc_dtc_record_a
   /dtc:record:a/{reference}:
     delete:
       description: Deletes a specific dtc:record:a object by reference
@@ -3791,7 +3725,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:record:a object
       tags:
-      - dtc:record:a
+      - DtcRecordA
     get:
       description: Returns a specific dtc:record:a object by reference
       parameters:
@@ -3850,7 +3784,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:record:a object
       tags:
-      - dtc:record:a
+      - DtcRecordA
     put:
       description: Updates a specific dtc:record:a object by reference
       parameters:
@@ -3916,7 +3850,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:record:a object
       tags:
-      - dtc:record:a
+      - DtcRecordA
   /dtc:record:aaaa:
     get:
       description: Returns a list of dtc:record:aaaa objects matching the search criteria
@@ -4013,7 +3947,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:record:aaaa objects
       tags:
-      - dtc:record:aaaa
+      - DtcRecordAaaa
     post:
       description: Creates a new dtc:record:aaaa object
       parameters:
@@ -4069,9 +4003,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:record:aaaa object
       tags:
-      - dtc:record:aaaa
-      x-tf-resource: resource_nios_DtcRecordAaaa
-      x-tf-datasource: datasource_nios_DtcRecordAaaa
+      - DtcRecordAaaa
+      x-tf-resource: nios_dtc_dtc_record_aaaa
+      x-tf-datasource: nios_dtc_dtc_record_aaaa
   /dtc:record:aaaa/{reference}:
     delete:
       description: Deletes a specific dtc:record:aaaa object by reference
@@ -4099,7 +4033,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:record:aaaa object
       tags:
-      - dtc:record:aaaa
+      - DtcRecordAaaa
     get:
       description: Returns a specific dtc:record:aaaa object by reference
       parameters:
@@ -4158,7 +4092,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:record:aaaa object
       tags:
-      - dtc:record:aaaa
+      - DtcRecordAaaa
     put:
       description: Updates a specific dtc:record:aaaa object by reference
       parameters:
@@ -4224,7 +4158,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:record:aaaa object
       tags:
-      - dtc:record:aaaa
+      - DtcRecordAaaa
   /dtc:record:cname:
     get:
       description: Returns a list of dtc:record:cname objects matching the search
@@ -4322,7 +4256,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:record:cname objects
       tags:
-      - dtc:record:cname
+      - DtcRecordCname
     post:
       description: Creates a new dtc:record:cname object
       parameters:
@@ -4378,9 +4312,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:record:cname object
       tags:
-      - dtc:record:cname
-      x-tf-resource: resource_nios_DtcRecordCname
-      x-tf-datasource: datasource_nios_DtcRecordCname
+      - DtcRecordCname
+      x-tf-resource: nios_dtc_dtc_record_cname
+      x-tf-datasource: nios_dtc_dtc_record_cname
   /dtc:record:cname/{reference}:
     delete:
       description: Deletes a specific dtc:record:cname object by reference
@@ -4408,7 +4342,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:record:cname object
       tags:
-      - dtc:record:cname
+      - DtcRecordCname
     get:
       description: Returns a specific dtc:record:cname object by reference
       parameters:
@@ -4467,7 +4401,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:record:cname object
       tags:
-      - dtc:record:cname
+      - DtcRecordCname
     put:
       description: Updates a specific dtc:record:cname object by reference
       parameters:
@@ -4533,7 +4467,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:record:cname object
       tags:
-      - dtc:record:cname
+      - DtcRecordCname
   /dtc:record:naptr:
     get:
       description: Returns a list of dtc:record:naptr objects matching the search
@@ -4631,7 +4565,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:record:naptr objects
       tags:
-      - dtc:record:naptr
+      - DtcRecordNaptr
     post:
       description: Creates a new dtc:record:naptr object
       parameters:
@@ -4687,9 +4621,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:record:naptr object
       tags:
-      - dtc:record:naptr
-      x-tf-resource: resource_nios_DtcRecordNaptr
-      x-tf-datasource: datasource_nios_DtcRecordNaptr
+      - DtcRecordNaptr
+      x-tf-resource: nios_dtc_dtc_record_naptr
+      x-tf-datasource: nios_dtc_dtc_record_naptr
   /dtc:record:naptr/{reference}:
     delete:
       description: Deletes a specific dtc:record:naptr object by reference
@@ -4717,7 +4651,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:record:naptr object
       tags:
-      - dtc:record:naptr
+      - DtcRecordNaptr
     get:
       description: Returns a specific dtc:record:naptr object by reference
       parameters:
@@ -4776,7 +4710,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:record:naptr object
       tags:
-      - dtc:record:naptr
+      - DtcRecordNaptr
     put:
       description: Updates a specific dtc:record:naptr object by reference
       parameters:
@@ -4842,7 +4776,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:record:naptr object
       tags:
-      - dtc:record:naptr
+      - DtcRecordNaptr
   /dtc:record:srv:
     get:
       description: Returns a list of dtc:record:srv objects matching the search criteria
@@ -4939,7 +4873,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:record:srv objects
       tags:
-      - dtc:record:srv
+      - DtcRecordSrv
     post:
       description: Creates a new dtc:record:srv object
       parameters:
@@ -4995,9 +4929,9 @@ paths:
       - basicAuth: []
       summary: Create a dtc:record:srv object
       tags:
-      - dtc:record:srv
-      x-tf-resource: resource_nios_DtcRecordSrv
-      x-tf-datasource: datasource_nios_DtcRecordSrv
+      - DtcRecordSrv
+      x-tf-resource: nios_dtc_dtc_record_srv
+      x-tf-datasource: nios_dtc_dtc_record_srv
   /dtc:record:srv/{reference}:
     delete:
       description: Deletes a specific dtc:record:srv object by reference
@@ -5025,7 +4959,7 @@ paths:
       - basicAuth: []
       summary: Delete a dtc:record:srv object
       tags:
-      - dtc:record:srv
+      - DtcRecordSrv
     get:
       description: Returns a specific dtc:record:srv object by reference
       parameters:
@@ -5084,7 +5018,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:record:srv object
       tags:
-      - dtc:record:srv
+      - DtcRecordSrv
     put:
       description: Updates a specific dtc:record:srv object by reference
       parameters:
@@ -5150,7 +5084,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:record:srv object
       tags:
-      - dtc:record:srv
+      - DtcRecordSrv
   /dtc:certificate:
     get:
       description: Returns a list of dtc:certificate objects matching the search criteria
@@ -5247,7 +5181,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:certificate objects
       tags:
-      - dtc:certificate
+      - DtcCertificate
   /dtc:certificate/{reference}:
     get:
       description: Returns a specific dtc:certificate object by reference
@@ -5307,7 +5241,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:certificate object
       tags:
-      - dtc:certificate
+      - DtcCertificate
   /dtc:allrecords:
     get:
       description: Returns a list of dtc:allrecords objects matching the search criteria
@@ -5404,7 +5338,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:allrecords objects
       tags:
-      - dtc:allrecords
+      - DtcAllrecords
   /dtc:allrecords/{reference}:
     get:
       description: Returns a specific dtc:allrecords object by reference
@@ -5464,7 +5398,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:allrecords object
       tags:
-      - dtc:allrecords
+      - DtcAllrecords
     put:
       description: Updates a specific dtc:allrecords object by reference
       parameters:
@@ -5530,7 +5464,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:allrecords object
       tags:
-      - dtc:allrecords
+      - DtcAllrecords
   /dtc:object:
     get:
       description: Returns a list of dtc:object objects matching the search criteria
@@ -5627,7 +5561,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:object objects
       tags:
-      - dtc:object
+      - DtcObject
   /dtc:object/{reference}:
     get:
       description: Returns a specific dtc:object object by reference
@@ -5687,7 +5621,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:object object
       tags:
-      - dtc:object
+      - DtcObject
     put:
       description: Updates a specific dtc:object object by reference
       parameters:
@@ -5753,7 +5687,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:object object
       tags:
-      - dtc:object
+      - DtcObject
       x-sdk-default-ext-attrs: true
   /dtc:topology:rule:
     get:
@@ -5852,7 +5786,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:topology:rule objects
       tags:
-      - dtc:topology:rule
+      - DtcTopologyRule
   /dtc:topology:rule/{reference}:
     get:
       description: Returns a specific dtc:topology:rule object by reference
@@ -5912,7 +5846,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:topology:rule object
       tags:
-      - dtc:topology:rule
+      - DtcTopologyRule
     put:
       description: Updates a specific dtc:topology:rule object by reference
       parameters:
@@ -5978,7 +5912,7 @@ paths:
       - basicAuth: []
       summary: Update a dtc:topology:rule object
       tags:
-      - dtc:topology:rule
+      - DtcTopologyRule
   /dtc:topology:label:
     get:
       description: Returns a list of dtc:topology:label objects matching the search
@@ -6076,7 +6010,7 @@ paths:
       - basicAuth: []
       summary: Retrieve dtc:topology:label objects
       tags:
-      - dtc:topology:label
+      - DtcTopologyLabel
   /dtc:topology:label/{reference}:
     get:
       description: Returns a specific dtc:topology:label object by reference
@@ -6136,7 +6070,7 @@ paths:
       - basicAuth: []
       summary: Get a specific dtc:topology:label object
       tags:
-      - dtc:topology:label
+      - DtcTopologyLabel
 components:
   parameters:
     ReturnFields:
@@ -6318,60 +6252,11 @@ components:
     Dtc:
       additionalProperties: false
       example:
-        dtc_get_object_grid_state: "{}"
-        query: "{}"
         _ref: _ref
-        dtc_object_disable: "{}"
-        import_maxminddb: "{}"
-        add_certificate: "{}"
-        generate_ea_topology_db: "{}"
-        dtc_object_enable: "{}"
       properties:
         _ref:
           description: The reference to the object.
           type: string
-        add_certificate:
-          properties: {}
-          type: object
-        dtc_get_object_grid_state:
-          properties: {}
-          type: object
-        dtc_object_disable:
-          properties: {}
-          type: object
-        dtc_object_enable:
-          properties: {}
-          type: object
-        generate_ea_topology_db:
-          properties: {}
-          type: object
-        import_maxminddb:
-          properties: {}
-          type: object
-        query:
-          properties: {}
-          type: object
-      type: object
-    DtcAddCertificate:
-      properties: {}
-      type: object
-    DtcDtcGetObjectGridState:
-      properties: {}
-      type: object
-    DtcDtcObjectDisable:
-      properties: {}
-      type: object
-    DtcDtcObjectEnable:
-      properties: {}
-      type: object
-    DtcGenerateEaTopologyDb:
-      properties: {}
-      type: object
-    DtcImportMaxminddb:
-      properties: {}
-      type: object
-    DtcQuery:
-      properties: {}
       type: object
     ListDtcResponse:
       oneOf:
@@ -6381,12 +6266,6 @@ components:
         title: ListDtcResponseArray
         type: array
       - $ref: '#/components/schemas/ListDtcResponseObject'
-    CreateDtcResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDtcResponseAsObject'
-      - description: The response format to create __Dtc__.
-        title: CreateDtcResponse
-        type: string
     GetDtcResponse:
       oneOf:
       - $ref: '#/components/schemas/Dtc'
@@ -6595,8 +6474,8 @@ components:
           monitor: Example monitor
           monitor_weighing: Example monitor_weighing
         monitors:
-        - "{}"
-        - "{}"
+        - dtc:monitor:http
+        - dtc:monitor:http
       properties:
         _ref:
           description: The reference to the object.
@@ -6686,7 +6565,7 @@ components:
           items:
             enum:
             - dtc:monitor:http
-            type: object
+            type: string
           type: array
         name:
           description: The DTC Pool display name.
@@ -6915,8 +6794,8 @@ components:
         name: Example name
         comment: Example comment
         rules:
-        - "{}"
-        - "{}"
+        - dtc:topology:rule
+        - dtc:topology:rule
       properties:
         _ref:
           description: The reference to the object.
@@ -6943,7 +6822,7 @@ components:
           items:
             enum:
             - dtc:topology:rule
-            type: object
+            type: string
           type: array
       type: object
     ListDtcTopologyResponse:
@@ -6974,8 +6853,8 @@ components:
       additionalProperties: false
       example:
         auth_zones:
-        - "{}"
-        - "{}"
+        - zone_auth
+        - zone_auth
         types:
         - types
         - types
@@ -7016,7 +6895,7 @@ components:
           items:
             enum:
             - zone_auth
-            type: object
+            type: string
           type: array
         auto_consolidated_monitors:
           description: Flag for enabling auto managing DTC Consolidated Monitors on
@@ -7265,12 +7144,6 @@ components:
         title: ListDtcMonitorResponseArray
         type: array
       - $ref: '#/components/schemas/ListDtcMonitorResponseObject'
-    CreateDtcMonitorResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDtcMonitorResponseAsObject'
-      - description: The response format to create __DtcMonitor__.
-        title: CreateDtcMonitorResponse
-        type: string
     GetDtcMonitorResponse:
       oneOf:
       - $ref: '#/components/schemas/DtcMonitor'
@@ -8480,12 +8353,6 @@ components:
         title: ListDtcCertificateResponseArray
         type: array
       - $ref: '#/components/schemas/ListDtcCertificateResponseObject'
-    CreateDtcCertificateResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDtcCertificateResponseAsObject'
-      - description: The response format to create __DtcCertificate__.
-        title: CreateDtcCertificateResponse
-        type: string
     GetDtcCertificateResponse:
       oneOf:
       - $ref: '#/components/schemas/DtcCertificate'
@@ -8562,12 +8429,6 @@ components:
         title: ListDtcAllrecordsResponseArray
         type: array
       - $ref: '#/components/schemas/ListDtcAllrecordsResponseObject'
-    CreateDtcAllrecordsResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDtcAllrecordsResponseAsObject'
-      - description: The response format to create __DtcAllrecords__.
-        title: CreateDtcAllrecordsResponse
-        type: string
     GetDtcAllrecordsResponse:
       oneOf:
       - $ref: '#/components/schemas/DtcAllrecords'
@@ -8676,12 +8537,6 @@ components:
         title: ListDtcObjectResponseArray
         type: array
       - $ref: '#/components/schemas/ListDtcObjectResponseObject'
-    CreateDtcObjectResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDtcObjectResponseAsObject'
-      - description: The response format to create __DtcObject__.
-        title: CreateDtcObjectResponse
-        type: string
     GetDtcObjectResponse:
       oneOf:
       - $ref: '#/components/schemas/DtcObject'
@@ -8792,12 +8647,6 @@ components:
         title: ListDtcTopologyRuleResponseArray
         type: array
       - $ref: '#/components/schemas/ListDtcTopologyRuleResponseObject'
-    CreateDtcTopologyRuleResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDtcTopologyRuleResponseAsObject'
-      - description: The response format to create __DtcTopologyRule__.
-        title: CreateDtcTopologyRuleResponse
-        type: string
     GetDtcTopologyRuleResponse:
       oneOf:
       - $ref: '#/components/schemas/DtcTopologyRule'
@@ -8848,12 +8697,6 @@ components:
         title: ListDtcTopologyLabelResponseArray
         type: array
       - $ref: '#/components/schemas/ListDtcTopologyLabelResponseObject'
-    CreateDtcTopologyLabelResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDtcTopologyLabelResponseAsObject'
-      - description: The response format to create __DtcTopologyLabel__.
-        title: CreateDtcTopologyLabelResponse
-        type: string
     GetDtcTopologyLabelResponse:
       oneOf:
       - $ref: '#/components/schemas/DtcTopologyLabel'
@@ -8873,13 +8716,6 @@ components:
           type: array
       title: ListDtcResponseObject
       type: object
-    CreateDtcResponseAsObject:
-      description: The response format to create __Dtc__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Dtc'
-      title: CreateDtcResponseAsObject
-      type: object
     GetDtcResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __Dtc__ objects.
@@ -8890,16 +8726,6 @@ components:
       type: object
     UpdateDtcResponseAsObject:
       description: The response format to update __Dtc__ in object format.
-      example:
-        result:
-          dtc_get_object_grid_state: "{}"
-          query: "{}"
-          _ref: _ref
-          dtc_object_disable: "{}"
-          import_maxminddb: "{}"
-          add_certificate: "{}"
-          generate_ea_topology_db: "{}"
-          dtc_object_enable: "{}"
       properties:
         result:
           $ref: '#/components/schemas/Dtc'
@@ -9044,8 +8870,8 @@ components:
             monitor: Example monitor
             monitor_weighing: Example monitor_weighing
           monitors:
-          - "{}"
-          - "{}"
+          - dtc:monitor:http
+          - dtc:monitor:http
       properties:
         result:
           $ref: '#/components/schemas/DtcPool'
@@ -9114,8 +8940,8 @@ components:
             monitor: Example monitor
             monitor_weighing: Example monitor_weighing
           monitors:
-          - "{}"
-          - "{}"
+          - dtc:monitor:http
+          - dtc:monitor:http
       properties:
         result:
           $ref: '#/components/schemas/DtcPool'
@@ -9141,8 +8967,8 @@ components:
           name: Example name
           comment: Example comment
           rules:
-          - "{}"
-          - "{}"
+          - dtc:topology:rule
+          - dtc:topology:rule
       properties:
         result:
           $ref: '#/components/schemas/DtcTopology'
@@ -9167,8 +8993,8 @@ components:
           name: Example name
           comment: Example comment
           rules:
-          - "{}"
-          - "{}"
+          - dtc:topology:rule
+          - dtc:topology:rule
       properties:
         result:
           $ref: '#/components/schemas/DtcTopology'
@@ -9188,8 +9014,8 @@ components:
       example:
         result:
           auth_zones:
-          - "{}"
-          - "{}"
+          - zone_auth
+          - zone_auth
           types:
           - types
           - types
@@ -9237,8 +9063,8 @@ components:
       example:
         result:
           auth_zones:
-          - "{}"
-          - "{}"
+          - zone_auth
+          - zone_auth
           types:
           - types
           - types
@@ -9281,13 +9107,6 @@ components:
             $ref: '#/components/schemas/DtcMonitor'
           type: array
       title: ListDtcMonitorResponseObject
-      type: object
-    CreateDtcMonitorResponseAsObject:
-      description: The response format to create __DtcMonitor__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DtcMonitor'
-      title: CreateDtcMonitorResponseAsObject
       type: object
     GetDtcMonitorResponseObjectAsResult:
       additionalProperties: false
@@ -10019,13 +9838,6 @@ components:
           type: array
       title: ListDtcCertificateResponseObject
       type: object
-    CreateDtcCertificateResponseAsObject:
-      description: The response format to create __DtcCertificate__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DtcCertificate'
-      title: CreateDtcCertificateResponseAsObject
-      type: object
     GetDtcCertificateResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __DtcCertificate__ objects.
@@ -10049,13 +9861,6 @@ components:
             $ref: '#/components/schemas/DtcAllrecords'
           type: array
       title: ListDtcAllrecordsResponseObject
-      type: object
-    CreateDtcAllrecordsResponseAsObject:
-      description: The response format to create __DtcAllrecords__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DtcAllrecords'
-      title: CreateDtcAllrecordsResponseAsObject
       type: object
     GetDtcAllrecordsResponseObjectAsResult:
       additionalProperties: false
@@ -10089,13 +9894,6 @@ components:
             $ref: '#/components/schemas/DtcObject'
           type: array
       title: ListDtcObjectResponseObject
-      type: object
-    CreateDtcObjectResponseAsObject:
-      description: The response format to create __DtcObject__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DtcObject'
-      title: CreateDtcObjectResponseAsObject
       type: object
     GetDtcObjectResponseObjectAsResult:
       additionalProperties: false
@@ -10140,13 +9938,6 @@ components:
           type: array
       title: ListDtcTopologyRuleResponseObject
       type: object
-    CreateDtcTopologyRuleResponseAsObject:
-      description: The response format to create __DtcTopologyRule__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DtcTopologyRule'
-      title: CreateDtcTopologyRuleResponseAsObject
-      type: object
     GetDtcTopologyRuleResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __DtcTopologyRule__ objects.
@@ -10185,13 +9976,6 @@ components:
             $ref: '#/components/schemas/DtcTopologyLabel'
           type: array
       title: ListDtcTopologyLabelResponseObject
-      type: object
-    CreateDtcTopologyLabelResponseAsObject:
-      description: The response format to create __DtcTopologyLabel__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DtcTopologyLabel'
-      title: CreateDtcTopologyLabelResponseAsObject
       type: object
     GetDtcTopologyLabelResponseObjectAsResult:
       additionalProperties: false

@@ -1,18 +1,18 @@
-# GridthreatinsightAPI
+# GridThreatinsightAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](GridthreatinsightAPI.md#Get) | **Get** /grid:threatinsight | Retrieve grid:threatinsight objects
-[**ReferenceGet**](GridthreatinsightAPI.md#ReferenceGet) | **Get** /grid:threatinsight/{reference} | Get a specific grid:threatinsight object
-[**ReferencePut**](GridthreatinsightAPI.md#ReferencePut) | **Put** /grid:threatinsight/{reference} | Update a grid:threatinsight object
+[**GridthreatinsightGet**](GridThreatinsightAPI.md#GridthreatinsightGet) | **Get** /grid:threatinsight | Retrieve grid:threatinsight objects
+[**GridthreatinsightReferenceGet**](GridThreatinsightAPI.md#GridthreatinsightReferenceGet) | **Get** /grid:threatinsight/{reference} | Get a specific grid:threatinsight object
+[**GridthreatinsightReferencePut**](GridThreatinsightAPI.md#GridthreatinsightReferencePut) | **Put** /grid:threatinsight/{reference} | Update a grid:threatinsight object
 
 
 
-## Get
+## GridthreatinsightGet
 
-> ListGridThreatinsightResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridThreatinsightResponse GridthreatinsightGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:threatinsight objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridthreatinsightAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.GridThreatinsightAPI.GridthreatinsightGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridthreatinsightAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatinsightAPI.GridthreatinsightGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListGridThreatinsightResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridthreatinsightAPI.Get`: %v\n", resp)
+	// response from `GridthreatinsightGet`: ListGridThreatinsightResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridThreatinsightAPI.GridthreatinsightGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridthreatinsightAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridThreatinsightAPIGridthreatinsightGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## GridthreatinsightReferenceGet
 
-> GetGridThreatinsightResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridThreatinsightResponse GridthreatinsightReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:threatinsight object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:threatinsight object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridthreatinsightAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridThreatinsightAPI.GridthreatinsightReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridthreatinsightAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatinsightAPI.GridthreatinsightReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetGridThreatinsightResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridthreatinsightAPI.ReferenceGet`: %v\n", resp)
+	// response from `GridthreatinsightReferenceGet`: GetGridThreatinsightResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridThreatinsightAPI.GridthreatinsightReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridthreatinsightAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridThreatinsightAPIGridthreatinsightReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## GridthreatinsightReferencePut
 
-> UpdateGridThreatinsightResponse ReferencePut(ctx, reference).GridThreatinsight(gridThreatinsight).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridThreatinsightResponse GridthreatinsightReferencePut(ctx, reference).GridThreatinsight(gridThreatinsight).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:threatinsight object
 
@@ -180,13 +180,13 @@ func main() {
 	gridThreatinsight := *grid.NewGridThreatinsight() // GridThreatinsight | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridthreatinsightAPI.ReferencePut(context.Background(), reference).GridThreatinsight(gridThreatinsight).Execute()
+	resp, r, err := apiClient.GridThreatinsightAPI.GridthreatinsightReferencePut(context.Background(), reference).GridThreatinsight(gridThreatinsight).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridthreatinsightAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatinsightAPI.GridthreatinsightReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateGridThreatinsightResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridthreatinsightAPI.ReferencePut`: %v\n", resp)
+	// response from `GridthreatinsightReferencePut`: UpdateGridThreatinsightResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridThreatinsightAPI.GridthreatinsightReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridthreatinsightAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridThreatinsightAPIGridthreatinsightReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

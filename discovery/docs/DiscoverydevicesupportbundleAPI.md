@@ -1,18 +1,18 @@
-# DiscoverydevicesupportbundleAPI
+# DiscoveryDevicesupportbundleAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DiscoverydevicesupportbundleAPI.md#Get) | **Get** /discovery:devicesupportbundle | Retrieve discovery:devicesupportbundle objects
-[**ReferenceDelete**](DiscoverydevicesupportbundleAPI.md#ReferenceDelete) | **Delete** /discovery:devicesupportbundle/{reference} | Delete a discovery:devicesupportbundle object
-[**ReferenceGet**](DiscoverydevicesupportbundleAPI.md#ReferenceGet) | **Get** /discovery:devicesupportbundle/{reference} | Get a specific discovery:devicesupportbundle object
+[**DiscoverydevicesupportbundleGet**](DiscoveryDevicesupportbundleAPI.md#DiscoverydevicesupportbundleGet) | **Get** /discovery:devicesupportbundle | Retrieve discovery:devicesupportbundle objects
+[**DiscoverydevicesupportbundleReferenceDelete**](DiscoveryDevicesupportbundleAPI.md#DiscoverydevicesupportbundleReferenceDelete) | **Delete** /discovery:devicesupportbundle/{reference} | Delete a discovery:devicesupportbundle object
+[**DiscoverydevicesupportbundleReferenceGet**](DiscoveryDevicesupportbundleAPI.md#DiscoverydevicesupportbundleReferenceGet) | **Get** /discovery:devicesupportbundle/{reference} | Get a specific discovery:devicesupportbundle object
 
 
 
-## Get
+## DiscoverydevicesupportbundleGet
 
-> ListDiscoveryDevicesupportbundleResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoveryDevicesupportbundleResponse DiscoverydevicesupportbundleGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:devicesupportbundle objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverydevicesupportbundleAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverydevicesupportbundleAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDiscoveryDevicesupportbundleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverydevicesupportbundleAPI.Get`: %v\n", resp)
+	// response from `DiscoverydevicesupportbundleGet`: ListDiscoveryDevicesupportbundleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverydevicesupportbundleAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## DiscoverydevicesupportbundleReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> DiscoverydevicesupportbundleReferenceDelete(ctx, reference).Execute()
 
 Delete a discovery:devicesupportbundle object
 
@@ -107,9 +107,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:devicesupportbundle object
 
 	apiClient := discovery.NewAPIClient()
-	r, err := apiClient.DiscoverydevicesupportbundleAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverydevicesupportbundleAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverydevicesupportbundleAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -149,9 +149,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DiscoverydevicesupportbundleReferenceGet
 
-> GetDiscoveryDevicesupportbundleResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoveryDevicesupportbundleResponse DiscoverydevicesupportbundleReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:devicesupportbundle object
 
@@ -174,13 +174,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:devicesupportbundle object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverydevicesupportbundleAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverydevicesupportbundleAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDiscoveryDevicesupportbundleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverydevicesupportbundleAPI.ReferenceGet`: %v\n", resp)
+	// response from `DiscoverydevicesupportbundleReferenceGet`: GetDiscoveryDevicesupportbundleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverydevicesupportbundleAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

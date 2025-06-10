@@ -1,20 +1,20 @@
-# RecordmxAPI
+# RecordMxAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordmxAPI.md#Get) | **Get** /record:mx | Retrieve record:mx objects
-[**Post**](RecordmxAPI.md#Post) | **Post** /record:mx | Create a record:mx object
-[**ReferenceDelete**](RecordmxAPI.md#ReferenceDelete) | **Delete** /record:mx/{reference} | Delete a record:mx object
-[**ReferenceGet**](RecordmxAPI.md#ReferenceGet) | **Get** /record:mx/{reference} | Get a specific record:mx object
-[**ReferencePut**](RecordmxAPI.md#ReferencePut) | **Put** /record:mx/{reference} | Update a record:mx object
+[**RecordmxGet**](RecordMxAPI.md#RecordmxGet) | **Get** /record:mx | Retrieve record:mx objects
+[**RecordmxPost**](RecordMxAPI.md#RecordmxPost) | **Post** /record:mx | Create a record:mx object
+[**RecordmxReferenceDelete**](RecordMxAPI.md#RecordmxReferenceDelete) | **Delete** /record:mx/{reference} | Delete a record:mx object
+[**RecordmxReferenceGet**](RecordMxAPI.md#RecordmxReferenceGet) | **Get** /record:mx/{reference} | Get a specific record:mx object
+[**RecordmxReferencePut**](RecordMxAPI.md#RecordmxReferencePut) | **Put** /record:mx/{reference} | Update a record:mx object
 
 
 
-## Get
+## RecordmxGet
 
-> ListRecordMxResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordMxResponse RecordmxGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:mx objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordmxAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordMxAPI.RecordmxGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordmxAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.RecordmxGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordmxAPI.Get`: %v\n", resp)
+	// response from `RecordmxGet`: ListRecordMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.RecordmxGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordmxAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordMxAPIRecordmxGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordmxPost
 
-> CreateRecordMxResponse Post(ctx).RecordMx(recordMx).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordMxResponse RecordmxPost(ctx).RecordMx(recordMx).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:mx object
 
@@ -109,13 +109,13 @@ func main() {
 	recordMx := *dns.NewRecordMx() // RecordMx | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordmxAPI.Post(context.Background()).RecordMx(recordMx).Execute()
+	resp, r, err := apiClient.RecordMxAPI.RecordmxPost(context.Background()).RecordMx(recordMx).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordmxAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.RecordmxPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordmxAPI.Post`: %v\n", resp)
+	// response from `RecordmxPost`: CreateRecordMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.RecordmxPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordmxAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordMxAPIRecordmxPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordmxReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordmxReferenceDelete(ctx, reference).Execute()
 
 Delete a record:mx object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:mx object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordmxAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordMxAPI.RecordmxReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordmxAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.RecordmxReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordmxAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordMxAPIRecordmxReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordmxReferenceGet
 
-> GetRecordMxResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordMxResponse RecordmxReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:mx object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:mx object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordmxAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordMxAPI.RecordmxReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordmxAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.RecordmxReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordmxAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordmxReferenceGet`: GetRecordMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.RecordmxReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordmxAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordMxAPIRecordmxReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordmxReferencePut
 
-> UpdateRecordMxResponse ReferencePut(ctx, reference).RecordMx(recordMx).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordMxResponse RecordmxReferencePut(ctx, reference).RecordMx(recordMx).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:mx object
 
@@ -318,13 +318,13 @@ func main() {
 	recordMx := *dns.NewRecordMx() // RecordMx | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordmxAPI.ReferencePut(context.Background(), reference).RecordMx(recordMx).Execute()
+	resp, r, err := apiClient.RecordMxAPI.RecordmxReferencePut(context.Background(), reference).RecordMx(recordMx).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordmxAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.RecordmxReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordmxAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordmxReferencePut`: UpdateRecordMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.RecordmxReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordmxAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordMxAPIRecordmxReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

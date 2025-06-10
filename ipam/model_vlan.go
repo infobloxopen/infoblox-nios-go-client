@@ -22,7 +22,7 @@ type Vlan struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
 	// List of objects VLAN is assigned to.
-	AssignedTo []map[string]interface{} `json:"assigned_to,omitempty"`
+	AssignedTo []string `json:"assigned_to,omitempty"`
 	// A descriptive comment for this VLAN.
 	Comment *string `json:"comment,omitempty"`
 	// Contact information for person/team managing or using VLAN.
@@ -95,9 +95,9 @@ func (o *Vlan) SetRef(v string) {
 }
 
 // GetAssignedTo returns the AssignedTo field value if set, zero value otherwise.
-func (o *Vlan) GetAssignedTo() []map[string]interface{} {
+func (o *Vlan) GetAssignedTo() []string {
 	if o == nil || IsNil(o.AssignedTo) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.AssignedTo
@@ -105,7 +105,7 @@ func (o *Vlan) GetAssignedTo() []map[string]interface{} {
 
 // GetAssignedToOk returns a tuple with the AssignedTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Vlan) GetAssignedToOk() ([]map[string]interface{}, bool) {
+func (o *Vlan) GetAssignedToOk() ([]string, bool) {
 	if o == nil || IsNil(o.AssignedTo) {
 		return nil, false
 	}
@@ -121,8 +121,8 @@ func (o *Vlan) HasAssignedTo() bool {
 	return false
 }
 
-// SetAssignedTo gets a reference to the given []map[string]interface{} and assigns it to the AssignedTo field.
-func (o *Vlan) SetAssignedTo(v []map[string]interface{}) {
+// SetAssignedTo gets a reference to the given []string and assigns it to the AssignedTo field.
+func (o *Vlan) SetAssignedTo(v []string) {
 	o.AssignedTo = v
 }
 

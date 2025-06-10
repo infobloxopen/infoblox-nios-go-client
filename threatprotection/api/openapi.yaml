@@ -1,0 +1,3461 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Infoblox
+    url: https://www.infoblox.com
+  description: OpenAPI specification for Infoblox NIOS WAPI THREATPROTECTION objects
+  license:
+    name: Infoblox License
+    url: https://www.infoblox.com
+  termsOfService: https://www.infoblox.com
+  title: Infoblox THREATPROTECTION API
+  version: 2.13.6
+servers:
+- description: NIOS WAPI server
+  url: /wapi/v2.13.6
+tags:
+- description: Operations for threatprotection:grid:rule objects
+  name: ThreatprotectionGridRule
+- description: Operations for threatprotection:profile objects
+  name: ThreatprotectionProfile
+- description: Operations for threatprotection:profile:rule objects
+  name: ThreatprotectionProfileRule
+- description: Operations for threatprotection:rule objects
+  name: ThreatprotectionRule
+- description: Operations for threatprotection:rulecategory objects
+  name: ThreatprotectionRulecategory
+- description: Operations for threatprotection:ruleset objects
+  name: ThreatprotectionRuleset
+- description: Operations for threatprotection:ruletemplate objects
+  name: ThreatprotectionRuletemplate
+- description: Operations for threatprotection:statistics objects
+  name: ThreatprotectionStatistics
+paths:
+  /threatprotection:grid:rule:
+    get:
+      description: Returns a list of threatprotection:grid:rule objects matching the
+        search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatprotectionGridRuleResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatprotection:grid:rule objects
+      tags:
+      - ThreatprotectionGridRule
+    post:
+      description: Creates a new threatprotection:grid:rule object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatprotectionGridRule'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateThreatprotectionGridRuleResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a threatprotection:grid:rule object
+      tags:
+      - ThreatprotectionGridRule
+      x-tf-resource: nios_threatprotection_threatprotection_grid_rule
+      x-tf-datasource: nios_threatprotection_threatprotection_grid_rule
+  /threatprotection:grid:rule/{reference}:
+    delete:
+      description: Deletes a specific threatprotection:grid:rule object by reference
+      parameters:
+      - description: Reference of the threatprotection:grid:rule object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a threatprotection:grid:rule object
+      tags:
+      - ThreatprotectionGridRule
+    get:
+      description: Returns a specific threatprotection:grid:rule object by reference
+      parameters:
+      - description: Reference of the threatprotection:grid:rule object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatprotectionGridRuleResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatprotection:grid:rule object
+      tags:
+      - ThreatprotectionGridRule
+    put:
+      description: Updates a specific threatprotection:grid:rule object by reference
+      parameters:
+      - description: Reference of the threatprotection:grid:rule object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatprotectionGridRule'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateThreatprotectionGridRuleResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a threatprotection:grid:rule object
+      tags:
+      - ThreatprotectionGridRule
+  /threatprotection:profile:
+    get:
+      description: Returns a list of threatprotection:profile objects matching the
+        search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatprotectionProfileResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatprotection:profile objects
+      tags:
+      - ThreatprotectionProfile
+    post:
+      description: Creates a new threatprotection:profile object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatprotectionProfile'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateThreatprotectionProfileResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a threatprotection:profile object
+      tags:
+      - ThreatprotectionProfile
+      x-tf-resource: nios_threatprotection_threatprotection_profile
+      x-tf-datasource: nios_threatprotection_threatprotection_profile
+      x-sdk-default-ext-attrs: true
+  /threatprotection:profile/{reference}:
+    delete:
+      description: Deletes a specific threatprotection:profile object by reference
+      parameters:
+      - description: Reference of the threatprotection:profile object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a threatprotection:profile object
+      tags:
+      - ThreatprotectionProfile
+    get:
+      description: Returns a specific threatprotection:profile object by reference
+      parameters:
+      - description: Reference of the threatprotection:profile object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatprotectionProfileResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatprotection:profile object
+      tags:
+      - ThreatprotectionProfile
+    put:
+      description: Updates a specific threatprotection:profile object by reference
+      parameters:
+      - description: Reference of the threatprotection:profile object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatprotectionProfile'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateThreatprotectionProfileResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a threatprotection:profile object
+      tags:
+      - ThreatprotectionProfile
+      x-sdk-default-ext-attrs: true
+  /threatprotection:profile:rule:
+    get:
+      description: Returns a list of threatprotection:profile:rule objects matching
+        the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatprotectionProfileRuleResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatprotection:profile:rule objects
+      tags:
+      - ThreatprotectionProfileRule
+  /threatprotection:profile:rule/{reference}:
+    get:
+      description: Returns a specific threatprotection:profile:rule object by reference
+      parameters:
+      - description: Reference of the threatprotection:profile:rule object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatprotectionProfileRuleResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatprotection:profile:rule object
+      tags:
+      - ThreatprotectionProfileRule
+    put:
+      description: Updates a specific threatprotection:profile:rule object by reference
+      parameters:
+      - description: Reference of the threatprotection:profile:rule object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatprotectionProfileRule'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateThreatprotectionProfileRuleResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a threatprotection:profile:rule object
+      tags:
+      - ThreatprotectionProfileRule
+  /threatprotection:rule:
+    get:
+      description: Returns a list of threatprotection:rule objects matching the search
+        criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatprotectionRuleResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatprotection:rule objects
+      tags:
+      - ThreatprotectionRule
+  /threatprotection:rule/{reference}:
+    get:
+      description: Returns a specific threatprotection:rule object by reference
+      parameters:
+      - description: Reference of the threatprotection:rule object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatprotectionRuleResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatprotection:rule object
+      tags:
+      - ThreatprotectionRule
+    put:
+      description: Updates a specific threatprotection:rule object by reference
+      parameters:
+      - description: Reference of the threatprotection:rule object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatprotectionRule'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateThreatprotectionRuleResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a threatprotection:rule object
+      tags:
+      - ThreatprotectionRule
+  /threatprotection:rulecategory:
+    get:
+      description: Returns a list of threatprotection:rulecategory objects matching
+        the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatprotectionRulecategoryResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatprotection:rulecategory objects
+      tags:
+      - ThreatprotectionRulecategory
+  /threatprotection:rulecategory/{reference}:
+    get:
+      description: Returns a specific threatprotection:rulecategory object by reference
+      parameters:
+      - description: Reference of the threatprotection:rulecategory object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatprotectionRulecategoryResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatprotection:rulecategory object
+      tags:
+      - ThreatprotectionRulecategory
+  /threatprotection:ruleset:
+    get:
+      description: Returns a list of threatprotection:ruleset objects matching the
+        search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatprotectionRulesetResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatprotection:ruleset objects
+      tags:
+      - ThreatprotectionRuleset
+  /threatprotection:ruleset/{reference}:
+    delete:
+      description: Deletes a specific threatprotection:ruleset object by reference
+      parameters:
+      - description: Reference of the threatprotection:ruleset object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a threatprotection:ruleset object
+      tags:
+      - ThreatprotectionRuleset
+    get:
+      description: Returns a specific threatprotection:ruleset object by reference
+      parameters:
+      - description: Reference of the threatprotection:ruleset object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatprotectionRulesetResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatprotection:ruleset object
+      tags:
+      - ThreatprotectionRuleset
+    put:
+      description: Updates a specific threatprotection:ruleset object by reference
+      parameters:
+      - description: Reference of the threatprotection:ruleset object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatprotectionRuleset'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateThreatprotectionRulesetResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a threatprotection:ruleset object
+      tags:
+      - ThreatprotectionRuleset
+  /threatprotection:ruletemplate:
+    get:
+      description: Returns a list of threatprotection:ruletemplate objects matching
+        the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatprotectionRuletemplateResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatprotection:ruletemplate objects
+      tags:
+      - ThreatprotectionRuletemplate
+  /threatprotection:ruletemplate/{reference}:
+    get:
+      description: Returns a specific threatprotection:ruletemplate object by reference
+      parameters:
+      - description: Reference of the threatprotection:ruletemplate object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatprotectionRuletemplateResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatprotection:ruletemplate object
+      tags:
+      - ThreatprotectionRuletemplate
+  /threatprotection:statistics:
+    get:
+      description: Returns a list of threatprotection:statistics objects matching
+        the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatprotectionStatisticsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatprotection:statistics objects
+      tags:
+      - ThreatprotectionStatistics
+  /threatprotection:statistics/{reference}:
+    get:
+      description: Returns a specific threatprotection:statistics object by reference
+      parameters:
+      - description: Reference of the threatprotection:statistics object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatprotectionStatisticsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatprotection:statistics object
+      tags:
+      - ThreatprotectionStatistics
+components:
+  parameters:
+    ReturnFields:
+      description: Enter the field names followed by comma
+      explode: true
+      in: query
+      name: _return_fields
+      required: false
+      schema:
+        type: string
+      style: form
+    ReturnFieldsPlus:
+      description: "Enter the field names followed by comma, this returns the required\
+        \ fields along with the default fields"
+      explode: true
+      in: query
+      name: _return_fields+
+      required: false
+      schema:
+        type: string
+      style: form
+    MaxResults:
+      description: Enter the number of results to be fetched
+      explode: true
+      in: query
+      name: _max_results
+      required: false
+      schema:
+        format: int32
+        minimum: 1
+        type: integer
+      style: form
+    ReturnAsObject:
+      description: Select 1 if result is required as an object
+      explode: true
+      in: query
+      name: _return_as_object
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Paging:
+      description: Control paging of results
+      explode: true
+      in: query
+      name: _paging
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    PageId:
+      description: Page id for retrieving next page of results
+      explode: true
+      in: query
+      name: _page_id
+      required: false
+      schema:
+        type: string
+      style: form
+    ProxySearch:
+      description: Search Grid members for data
+      explode: true
+      in: query
+      name: _proxy_search
+      required: false
+      schema:
+        type: string
+      style: form
+    Schema:
+      description: Return schema for this object type
+      explode: true
+      in: query
+      name: _schema
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaVersion:
+      description: Schema version to use
+      explode: true
+      in: query
+      name: _schema_version
+      required: false
+      schema:
+        enum:
+        - 1
+        - 2
+        type: integer
+      style: form
+    GetDoc:
+      description: Return documentation with schema
+      explode: true
+      in: query
+      name: _get_doc
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaSearchable:
+      description: Return searchable fields with schema
+      explode: true
+      in: query
+      name: _schema_searchable
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Inheritance:
+      description: "If this option is set to True, fields which support inheritance,\
+        \ will display data properly."
+      explode: true
+      in: query
+      name: _inheritance
+      required: false
+      schema:
+        type: boolean
+      style: form
+    filters:
+      explode: false
+      in: query
+      name: filters
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    ExtAttrFilters:
+      explode: false
+      in: query
+      name: extattrfilter
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    Method:
+      description: Enter the method type for the request
+      explode: true
+      in: query
+      name: _method
+      required: false
+      schema:
+        type: string
+      style: form
+    Body:
+      explode: true
+      in: query
+      name: body
+      required: false
+      schema:
+        type: object
+      style: form
+  schemas:
+    ExtAttrs:
+      description: Extensible attributes associated with the object.
+      example:
+        value: ""
+      properties:
+        value:
+          description: The value of the extensible attribute.
+      required:
+      - value
+      type: object
+    ThreatprotectionGridRule:
+      additionalProperties: false
+      example:
+        template: Example template
+        ruleset: Example ruleset
+        description: Example description
+        type: Example type
+        sid: 1
+        allowed_actions:
+        - allowed_actions
+        - allowed_actions
+        is_factory_reset_enabled: false
+        _ref: _ref
+        name: Example name
+        comment: Example comment
+        disabled: false
+        category: Example category
+        config:
+          log_severity: Example log_severity
+          action: Example action
+          params:
+            min: 1
+            max: 1
+            read_only: false
+            enum_values:
+            - enum_values
+            - enum_values
+            name: Example name
+            description: Example description
+            syntax: Example syntax
+            value: Example value
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        allowed_actions:
+          description: The list of allowed actions of the custom rule.
+          enum:
+          - ALERT
+          - PASS
+          - DROP
+          items:
+            type: string
+          readOnly: true
+          type: array
+        category:
+          description: The rule category the custom rule assigned to.
+          example: Example category
+          readOnly: true
+          type: string
+        comment:
+          description: The human readable comment for the custom rule.
+          example: Example comment
+          type: string
+        config:
+          $ref: '#/components/schemas/ThreatprotectionGridRuleConfig'
+        description:
+          description: The description of the custom rule.
+          example: Example description
+          readOnly: true
+          type: string
+        disabled:
+          description: Determines if the custom rule is disabled.
+          example: false
+          type: boolean
+        is_factory_reset_enabled:
+          description: Determines if factory reset is enabled for the custom rule.
+          example: false
+          readOnly: true
+          type: boolean
+        name:
+          description: The name of the rule custom rule concatenated with its rule
+            config parameters.
+          example: Example name
+          readOnly: true
+          type: string
+        ruleset:
+          description: The version of the ruleset the custom rule assigned to.
+          example: Example ruleset
+          readOnly: true
+          type: string
+        sid:
+          description: The Rule ID.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        template:
+          description: The threat protection rule template used to create this rule.
+          example: Example template
+          type: string
+        type:
+          description: The type of the custom rule.
+          enum:
+          - SYSTEM
+          - AUTO
+          - CUSTOM
+          example: Example type
+          readOnly: true
+          type: string
+      type: object
+    ThreatprotectionGridRuleConfig:
+      example:
+        log_severity: Example log_severity
+        action: Example action
+        params:
+          min: 1
+          max: 1
+          read_only: false
+          enum_values:
+          - enum_values
+          - enum_values
+          name: Example name
+          description: Example description
+          syntax: Example syntax
+          value: Example value
+      properties:
+        action:
+          description: The rule action.
+          enum:
+          - ALERT
+          - DROP
+          - PASS
+          example: Example action
+          type: string
+        log_severity:
+          description: The rule log severity.
+          enum:
+          - CRITICAL
+          - MAJOR
+          - WARNING
+          - INFORMATIONAL
+          example: Example log_severity
+          type: string
+        params:
+          $ref: '#/components/schemas/ThreatprotectiongridruleconfigParams'
+      type: object
+    ThreatprotectiongridruleconfigParams:
+      example:
+        min: 1
+        max: 1
+        read_only: false
+        enum_values:
+        - enum_values
+        - enum_values
+        name: Example name
+        description: Example description
+        syntax: Example syntax
+        value: Example value
+      properties:
+        name:
+          description: The rule parameter name.
+          example: Example name
+          type: string
+        description:
+          description: The rule parameter description.
+          example: Example description
+          readOnly: true
+          type: string
+        syntax:
+          description: The rule parameter syntax.
+          example: Example syntax
+          readOnly: true
+          type: string
+        value:
+          description: The rule parameter value.
+          example: Example value
+          type: string
+        min:
+          description: The rule parameter minimum.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        max:
+          description: The rule parameter maximum.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        read_only:
+          description: Determines if parameter value is editable at member level.
+          example: false
+          readOnly: true
+          type: boolean
+        enum_values:
+          description: The rule parameter enum values.
+          enum:
+          - string
+          items:
+            type: string
+          readOnly: true
+          type: array
+      type: object
+    ListThreatprotectionGridRuleResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatprotectionGridRule__
+          objects.
+        items:
+          $ref: '#/components/schemas/ThreatprotectionGridRule'
+        title: ListThreatprotectionGridRuleResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatprotectionGridRuleResponseObject'
+    CreateThreatprotectionGridRuleResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateThreatprotectionGridRuleResponseAsObject'
+      - description: The response format to create __ThreatprotectionGridRule__.
+        title: CreateThreatprotectionGridRuleResponse
+        type: string
+    GetThreatprotectionGridRuleResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatprotectionGridRule'
+      - $ref: '#/components/schemas/GetThreatprotectionGridRuleResponseObjectAsResult'
+    UpdateThreatprotectionGridRuleResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatprotectionGridRuleResponseAsObject'
+      - description: The response format to update __ThreatprotectionGridRule__ .
+        title: UpdateThreatprotectionGridRuleResponse
+        type: string
+    ThreatprotectionProfile:
+      additionalProperties: false
+      example:
+        source_member: Example source_member
+        extattrs:
+          key:
+            value: ""
+        use_disable_multiple_dns_tcp_request: false
+        use_current_ruleset: false
+        use_events_per_second_per_rule: false
+        current_ruleset: Example current_ruleset
+        members:
+        - members
+        - members
+        _ref: _ref
+        name: Example name
+        comment: Example comment
+        disable_multiple_dns_tcp_request: false
+        events_per_second_per_rule: 1
+        source_profile: Example source_profile
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        comment:
+          description: The comment for the Threat Protection profile.
+          example: Example comment
+          type: string
+        current_ruleset:
+          description: The current Threat Protection profile ruleset.
+          example: Example current_ruleset
+          type: string
+        disable_multiple_dns_tcp_request:
+          description: Determines if multiple BIND responses via TCP connection are
+            disabled.
+          example: false
+          type: boolean
+        events_per_second_per_rule:
+          description: The number of events logged per second per rule.
+          example: 1
+          format: int64
+          type: integer
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+        members:
+          description: The list of members that are associated with the profile.
+          enum:
+          - string
+          items:
+            type: string
+          type: array
+        name:
+          description: The name of the Threat Protection profile.
+          example: Example name
+          type: string
+        source_member:
+          description: The source member. It can be used only during the create operation
+            for cloning a profile from an existing member.
+          example: Example source_member
+          type: string
+          writeOnly: true
+        source_profile:
+          description: The source profile. It can be used only during the create operation
+            for cloning a profile from an existing profile.
+          example: Example source_profile
+          type: string
+          writeOnly: true
+        use_current_ruleset:
+          description: "Use flag for: current_ruleset"
+          example: false
+          type: boolean
+        use_disable_multiple_dns_tcp_request:
+          description: "Use flag for: disable_multiple_dns_tcp_request"
+          example: false
+          type: boolean
+        use_events_per_second_per_rule:
+          description: "Use flag for: events_per_second_per_rule"
+          example: false
+          type: boolean
+      type: object
+    ListThreatprotectionProfileResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatprotectionProfile__ objects.
+        items:
+          $ref: '#/components/schemas/ThreatprotectionProfile'
+        title: ListThreatprotectionProfileResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatprotectionProfileResponseObject'
+    CreateThreatprotectionProfileResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateThreatprotectionProfileResponseAsObject'
+      - description: The response format to create __ThreatprotectionProfile__.
+        title: CreateThreatprotectionProfileResponse
+        type: string
+    GetThreatprotectionProfileResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatprotectionProfile'
+      - $ref: '#/components/schemas/GetThreatprotectionProfileResponseObjectAsResult'
+    UpdateThreatprotectionProfileResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatprotectionProfileResponseAsObject'
+      - description: The response format to update __ThreatprotectionProfile__ .
+        title: UpdateThreatprotectionProfileResponse
+        type: string
+    ThreatprotectionProfileRule:
+      additionalProperties: false
+      example:
+        use_disable: false
+        disable: false
+        profile: Example profile
+        _ref: _ref
+        rule: Example rule
+        config:
+          log_severity: Example log_severity
+          action: Example action
+          params:
+            min: 1
+            max: 1
+            read_only: false
+            enum_values:
+            - enum_values
+            - enum_values
+            name: Example name
+            description: Example description
+            syntax: Example syntax
+            value: Example value
+        use_config: false
+        sid: 1
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        config:
+          $ref: '#/components/schemas/ThreatprotectionProfileRuleConfig'
+        disable:
+          description: Determines if the rule is enabled or not for the profile.
+          example: false
+          type: boolean
+        profile:
+          description: The name of the Threat protection profile.
+          example: Example profile
+          readOnly: true
+          type: string
+        rule:
+          description: The rule object name.
+          example: Example rule
+          readOnly: true
+          type: string
+        sid:
+          description: The snort rule ID.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        use_config:
+          description: "Use flag for: config"
+          example: false
+          type: boolean
+        use_disable:
+          description: "Use flag for: disable"
+          example: false
+          type: boolean
+      type: object
+    ThreatprotectionProfileRuleConfig:
+      example:
+        log_severity: Example log_severity
+        action: Example action
+        params:
+          min: 1
+          max: 1
+          read_only: false
+          enum_values:
+          - enum_values
+          - enum_values
+          name: Example name
+          description: Example description
+          syntax: Example syntax
+          value: Example value
+      properties:
+        action:
+          description: The rule action.
+          enum:
+          - ALERT
+          - DROP
+          - PASS
+          example: Example action
+          type: string
+        log_severity:
+          description: The rule log severity.
+          enum:
+          - CRITICAL
+          - MAJOR
+          - WARNING
+          - INFORMATIONAL
+          example: Example log_severity
+          type: string
+        params:
+          $ref: '#/components/schemas/ThreatprotectionprofileruleconfigParams'
+      type: object
+    ThreatprotectionprofileruleconfigParams:
+      example:
+        min: 1
+        max: 1
+        read_only: false
+        enum_values:
+        - enum_values
+        - enum_values
+        name: Example name
+        description: Example description
+        syntax: Example syntax
+        value: Example value
+      properties:
+        name:
+          description: The rule parameter name.
+          example: Example name
+          type: string
+        description:
+          description: The rule parameter description.
+          example: Example description
+          readOnly: true
+          type: string
+        syntax:
+          description: The rule parameter syntax.
+          example: Example syntax
+          readOnly: true
+          type: string
+        value:
+          description: The rule parameter value.
+          example: Example value
+          type: string
+        min:
+          description: The rule parameter minimum.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        max:
+          description: The rule parameter maximum.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        read_only:
+          description: Determines if parameter value is editable at member level.
+          example: false
+          readOnly: true
+          type: boolean
+        enum_values:
+          description: The rule parameter enum values.
+          enum:
+          - string
+          items:
+            type: string
+          readOnly: true
+          type: array
+      type: object
+    ListThreatprotectionProfileRuleResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatprotectionProfileRule__
+          objects.
+        items:
+          $ref: '#/components/schemas/ThreatprotectionProfileRule'
+        title: ListThreatprotectionProfileRuleResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatprotectionProfileRuleResponseObject'
+    GetThreatprotectionProfileRuleResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatprotectionProfileRule'
+      - $ref: '#/components/schemas/GetThreatprotectionProfileRuleResponseObjectAsResult'
+    UpdateThreatprotectionProfileRuleResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatprotectionProfileRuleResponseAsObject'
+      - description: The response format to update __ThreatprotectionProfileRule__
+          .
+        title: UpdateThreatprotectionProfileRuleResponse
+        type: string
+    ThreatprotectionRule:
+      additionalProperties: false
+      example:
+        use_disable: false
+        disable: false
+        _ref: _ref
+        member: Example member
+        rule: Example rule
+        config:
+          log_severity: Example log_severity
+          action: Example action
+          params:
+            min: 1
+            max: 1
+            read_only: false
+            enum_values:
+            - enum_values
+            - enum_values
+            name: Example name
+            description: Example description
+            syntax: Example syntax
+            value: Example value
+        use_config: false
+        sid: 1
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        config:
+          $ref: '#/components/schemas/ThreatprotectionRuleConfig'
+        disable:
+          description: Determines if the rule is enabled or not for the member.
+          example: false
+          type: boolean
+        member:
+          description: The name of the Threat protection member.
+          example: Example member
+          readOnly: true
+          type: string
+        rule:
+          description: The rule object name.
+          example: Example rule
+          readOnly: true
+          type: string
+        sid:
+          description: The Rule ID.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        use_config:
+          description: "Use flag for: config"
+          example: false
+          type: boolean
+        use_disable:
+          description: "Use flag for: disable"
+          example: false
+          type: boolean
+      type: object
+    ThreatprotectionRuleConfig:
+      example:
+        log_severity: Example log_severity
+        action: Example action
+        params:
+          min: 1
+          max: 1
+          read_only: false
+          enum_values:
+          - enum_values
+          - enum_values
+          name: Example name
+          description: Example description
+          syntax: Example syntax
+          value: Example value
+      properties:
+        action:
+          description: The rule action.
+          enum:
+          - ALERT
+          - DROP
+          - PASS
+          example: Example action
+          type: string
+        log_severity:
+          description: The rule log severity.
+          enum:
+          - CRITICAL
+          - MAJOR
+          - WARNING
+          - INFORMATIONAL
+          example: Example log_severity
+          type: string
+        params:
+          $ref: '#/components/schemas/ThreatprotectionruleconfigParams'
+      type: object
+    ThreatprotectionruleconfigParams:
+      example:
+        min: 1
+        max: 1
+        read_only: false
+        enum_values:
+        - enum_values
+        - enum_values
+        name: Example name
+        description: Example description
+        syntax: Example syntax
+        value: Example value
+      properties:
+        name:
+          description: The rule parameter name.
+          example: Example name
+          type: string
+        description:
+          description: The rule parameter description.
+          example: Example description
+          readOnly: true
+          type: string
+        syntax:
+          description: The rule parameter syntax.
+          example: Example syntax
+          readOnly: true
+          type: string
+        value:
+          description: The rule parameter value.
+          example: Example value
+          type: string
+        min:
+          description: The rule parameter minimum.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        max:
+          description: The rule parameter maximum.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        read_only:
+          description: Determines if parameter value is editable at member level.
+          example: false
+          readOnly: true
+          type: boolean
+        enum_values:
+          description: The rule parameter enum values.
+          enum:
+          - string
+          items:
+            type: string
+          readOnly: true
+          type: array
+      type: object
+    ListThreatprotectionRuleResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatprotectionRule__ objects.
+        items:
+          $ref: '#/components/schemas/ThreatprotectionRule'
+        title: ListThreatprotectionRuleResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatprotectionRuleResponseObject'
+    GetThreatprotectionRuleResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatprotectionRule'
+      - $ref: '#/components/schemas/GetThreatprotectionRuleResponseObjectAsResult'
+    UpdateThreatprotectionRuleResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatprotectionRuleResponseAsObject'
+      - description: The response format to update __ThreatprotectionRule__ .
+        title: UpdateThreatprotectionRuleResponse
+        type: string
+    ThreatprotectionRulecategory:
+      additionalProperties: false
+      example:
+        is_factory_reset_enabled: false
+        _ref: _ref
+        name: Example name
+        ruleset: Example ruleset
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        is_factory_reset_enabled:
+          description: Determines if factory reset is enabled for this rule category.
+          example: false
+          readOnly: true
+          type: boolean
+        name:
+          description: The name of the rule category.
+          example: Example name
+          readOnly: true
+          type: string
+        ruleset:
+          description: The version of the ruleset the category assigned to.
+          example: Example ruleset
+          readOnly: true
+          type: string
+      type: object
+    ListThreatprotectionRulecategoryResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatprotectionRulecategory__
+          objects.
+        items:
+          $ref: '#/components/schemas/ThreatprotectionRulecategory'
+        title: ListThreatprotectionRulecategoryResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatprotectionRulecategoryResponseObject'
+    GetThreatprotectionRulecategoryResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatprotectionRulecategory'
+      - $ref: '#/components/schemas/GetThreatprotectionRulecategoryResponseObjectAsResult'
+    UpdateThreatprotectionRulecategoryResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatprotectionRulecategoryResponseAsObject'
+      - description: The response format to update __ThreatprotectionRulecategory__
+          .
+        title: UpdateThreatprotectionRulecategoryResponse
+        type: string
+    ThreatprotectionRuleset:
+      additionalProperties: false
+      example:
+        added_time: 1
+        is_factory_reset_enabled: false
+        do_not_delete: false
+        _ref: _ref
+        comment: Example comment
+        used_by:
+        - used_by
+        - used_by
+        version: Example version
+        add_type: Example add_type
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        add_type:
+          description: Determines the way the ruleset was added.
+          enum:
+          - AUTOMATIC
+          - MANUAL
+          example: Example add_type
+          readOnly: true
+          type: string
+        added_time:
+          description: The time when the ruleset was added.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        comment:
+          description: The human readable comment for the ruleset.
+          example: Example comment
+          type: string
+        do_not_delete:
+          description: Determines if the ruleset will not be deleted during upgrade.
+          example: false
+          type: boolean
+        is_factory_reset_enabled:
+          description: Determines if factory reset is enabled for this ruleset.
+          example: false
+          readOnly: true
+          type: boolean
+        used_by:
+          description: The users of the ruleset.
+          enum:
+          - string
+          items:
+            type: string
+          readOnly: true
+          type: array
+        version:
+          description: The ruleset version.
+          example: Example version
+          readOnly: true
+          type: string
+      type: object
+    ListThreatprotectionRulesetResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatprotectionRuleset__ objects.
+        items:
+          $ref: '#/components/schemas/ThreatprotectionRuleset'
+        title: ListThreatprotectionRulesetResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatprotectionRulesetResponseObject'
+    GetThreatprotectionRulesetResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatprotectionRuleset'
+      - $ref: '#/components/schemas/GetThreatprotectionRulesetResponseObjectAsResult'
+    UpdateThreatprotectionRulesetResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatprotectionRulesetResponseAsObject'
+      - description: The response format to update __ThreatprotectionRuleset__ .
+        title: UpdateThreatprotectionRulesetResponse
+        type: string
+    ThreatprotectionRuletemplate:
+      additionalProperties: false
+      example:
+        allowed_actions:
+        - allowed_actions
+        - allowed_actions
+        _ref: _ref
+        name: Example name
+        ruleset: Example ruleset
+        description: Example description
+        default_config:
+          log_severity: Example log_severity
+          action: Example action
+          params:
+            min: 1
+            max: 1
+            read_only: false
+            enum_values:
+            - enum_values
+            - enum_values
+            name: Example name
+            description: Example description
+            syntax: Example syntax
+            value: Example value
+        category: Example category
+        sid: 1
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        allowed_actions:
+          description: The list of allowed actions of rhe rule template.
+          enum:
+          - ALERT
+          - PASS
+          - DROP
+          items:
+            type: string
+          readOnly: true
+          type: array
+        category:
+          description: The rule category this template assigned to.
+          example: Example category
+          readOnly: true
+          type: string
+        default_config:
+          $ref: '#/components/schemas/ThreatprotectionRuletemplateDefaultConfig'
+        description:
+          description: The description of the rule template.
+          example: Example description
+          readOnly: true
+          type: string
+        name:
+          description: The name of the rule template.
+          example: Example name
+          readOnly: true
+          type: string
+        ruleset:
+          description: The version of the ruleset the template assigned to.
+          example: Example ruleset
+          readOnly: true
+          type: string
+        sid:
+          description: The Rule ID.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+      type: object
+    ThreatprotectionRuletemplateDefaultConfig:
+      example:
+        log_severity: Example log_severity
+        action: Example action
+        params:
+          min: 1
+          max: 1
+          read_only: false
+          enum_values:
+          - enum_values
+          - enum_values
+          name: Example name
+          description: Example description
+          syntax: Example syntax
+          value: Example value
+      properties:
+        action:
+          description: The rule action.
+          enum:
+          - ALERT
+          - DROP
+          - PASS
+          example: Example action
+          type: string
+        log_severity:
+          description: The rule log severity.
+          enum:
+          - CRITICAL
+          - MAJOR
+          - WARNING
+          - INFORMATIONAL
+          example: Example log_severity
+          type: string
+        params:
+          $ref: '#/components/schemas/ThreatprotectionruletemplatedefaultconfigParams'
+      type: object
+    ThreatprotectionruletemplatedefaultconfigParams:
+      example:
+        min: 1
+        max: 1
+        read_only: false
+        enum_values:
+        - enum_values
+        - enum_values
+        name: Example name
+        description: Example description
+        syntax: Example syntax
+        value: Example value
+      properties:
+        name:
+          description: The rule parameter name.
+          example: Example name
+          type: string
+        description:
+          description: The rule parameter description.
+          example: Example description
+          readOnly: true
+          type: string
+        syntax:
+          description: The rule parameter syntax.
+          example: Example syntax
+          readOnly: true
+          type: string
+        value:
+          description: The rule parameter value.
+          example: Example value
+          type: string
+        min:
+          description: The rule parameter minimum.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        max:
+          description: The rule parameter maximum.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        read_only:
+          description: Determines if parameter value is editable at member level.
+          example: false
+          readOnly: true
+          type: boolean
+        enum_values:
+          description: The rule parameter enum values.
+          enum:
+          - string
+          items:
+            type: string
+          readOnly: true
+          type: array
+      type: object
+    ListThreatprotectionRuletemplateResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatprotectionRuletemplate__
+          objects.
+        items:
+          $ref: '#/components/schemas/ThreatprotectionRuletemplate'
+        title: ListThreatprotectionRuletemplateResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatprotectionRuletemplateResponseObject'
+    GetThreatprotectionRuletemplateResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatprotectionRuletemplate'
+      - $ref: '#/components/schemas/GetThreatprotectionRuletemplateResponseObjectAsResult'
+    UpdateThreatprotectionRuletemplateResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatprotectionRuletemplateResponseAsObject'
+      - description: The response format to update __ThreatprotectionRuletemplate__
+          .
+        title: UpdateThreatprotectionRuletemplateResponse
+        type: string
+    ThreatprotectionStatistics:
+      additionalProperties: false
+      example:
+        stat_infos:
+        - total: "{}"
+          critical: "{}"
+          major: "{}"
+          warning: "{}"
+          informational: "{}"
+          timestamp: 1
+        - total: "{}"
+          critical: "{}"
+          major: "{}"
+          warning: "{}"
+          informational: "{}"
+          timestamp: 1
+        _ref: _ref
+        member: Example member
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        member:
+          description: The Grid member name to get threat protection statistics. If
+            nothing is specified then event statistics is returned for the Grid.
+          example: Example member
+          readOnly: true
+          type: string
+        stat_infos:
+          description: The list of event statistical information for the Grid or particular
+            members.
+          enum:
+          - threatprotection:statinfo
+          items:
+            $ref: '#/components/schemas/ThreatprotectionStatisticsStatInfos'
+          readOnly: true
+          type: array
+      type: object
+    ThreatprotectionStatisticsStatInfos:
+      example:
+        total: "{}"
+        critical: "{}"
+        major: "{}"
+        warning: "{}"
+        informational: "{}"
+        timestamp: 1
+      properties:
+        timestamp:
+          description: The timestamp when data was collected.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        critical:
+          description: The number of critical events.
+          enum:
+          - unsigned long integer
+          type: object
+        major:
+          description: The number of major events.
+          enum:
+          - unsigned long integer
+          type: object
+        warning:
+          description: The number of warning events.
+          enum:
+          - unsigned long integer
+          type: object
+        informational:
+          description: The number of informational events.
+          enum:
+          - unsigned long integer
+          type: object
+        total:
+          description: The total number of events.
+          enum:
+          - unsigned long integer
+          type: object
+      type: object
+    ListThreatprotectionStatisticsResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatprotectionStatistics__
+          objects.
+        items:
+          $ref: '#/components/schemas/ThreatprotectionStatistics'
+        title: ListThreatprotectionStatisticsResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatprotectionStatisticsResponseObject'
+    GetThreatprotectionStatisticsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatprotectionStatistics'
+      - $ref: '#/components/schemas/GetThreatprotectionStatisticsResponseObjectAsResult'
+    UpdateThreatprotectionStatisticsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatprotectionStatisticsResponseAsObject'
+      - description: The response format to update __ThreatprotectionStatistics__
+          .
+        title: UpdateThreatprotectionStatisticsResponse
+        type: string
+    ListThreatprotectionGridRuleResponseObject:
+      description: The response format to retrieve __ThreatprotectionGridRule__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatprotectionGridRule'
+          type: array
+      title: ListThreatprotectionGridRuleResponseObject
+      type: object
+    CreateThreatprotectionGridRuleResponseAsObject:
+      description: The response format to create __ThreatprotectionGridRule__ in object
+        format.
+      example:
+        result:
+          template: Example template
+          ruleset: Example ruleset
+          description: Example description
+          type: Example type
+          sid: 1
+          allowed_actions:
+          - allowed_actions
+          - allowed_actions
+          is_factory_reset_enabled: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          disabled: false
+          category: Example category
+          config:
+            log_severity: Example log_severity
+            action: Example action
+            params:
+              min: 1
+              max: 1
+              read_only: false
+              enum_values:
+              - enum_values
+              - enum_values
+              name: Example name
+              description: Example description
+              syntax: Example syntax
+              value: Example value
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionGridRule'
+      title: CreateThreatprotectionGridRuleResponseAsObject
+      type: object
+    GetThreatprotectionGridRuleResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatprotectionGridRule__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionGridRule'
+      title: GetThreatprotectionGridRuleResponseObjectAsResult
+      type: object
+    UpdateThreatprotectionGridRuleResponseAsObject:
+      description: The response format to update __ThreatprotectionGridRule__ in object
+        format.
+      example:
+        result:
+          template: Example template
+          ruleset: Example ruleset
+          description: Example description
+          type: Example type
+          sid: 1
+          allowed_actions:
+          - allowed_actions
+          - allowed_actions
+          is_factory_reset_enabled: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          disabled: false
+          category: Example category
+          config:
+            log_severity: Example log_severity
+            action: Example action
+            params:
+              min: 1
+              max: 1
+              read_only: false
+              enum_values:
+              - enum_values
+              - enum_values
+              name: Example name
+              description: Example description
+              syntax: Example syntax
+              value: Example value
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionGridRule'
+      title: UpdateThreatprotectionGridRuleResponseAsObject
+      type: object
+    ListThreatprotectionProfileResponseObject:
+      description: The response format to retrieve __ThreatprotectionProfile__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatprotectionProfile'
+          type: array
+      title: ListThreatprotectionProfileResponseObject
+      type: object
+    CreateThreatprotectionProfileResponseAsObject:
+      description: The response format to create __ThreatprotectionProfile__ in object
+        format.
+      example:
+        result:
+          source_member: Example source_member
+          extattrs:
+            key:
+              value: ""
+          use_disable_multiple_dns_tcp_request: false
+          use_current_ruleset: false
+          use_events_per_second_per_rule: false
+          current_ruleset: Example current_ruleset
+          members:
+          - members
+          - members
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          disable_multiple_dns_tcp_request: false
+          events_per_second_per_rule: 1
+          source_profile: Example source_profile
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionProfile'
+      title: CreateThreatprotectionProfileResponseAsObject
+      type: object
+    GetThreatprotectionProfileResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatprotectionProfile__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionProfile'
+      title: GetThreatprotectionProfileResponseObjectAsResult
+      type: object
+    UpdateThreatprotectionProfileResponseAsObject:
+      description: The response format to update __ThreatprotectionProfile__ in object
+        format.
+      example:
+        result:
+          source_member: Example source_member
+          extattrs:
+            key:
+              value: ""
+          use_disable_multiple_dns_tcp_request: false
+          use_current_ruleset: false
+          use_events_per_second_per_rule: false
+          current_ruleset: Example current_ruleset
+          members:
+          - members
+          - members
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          disable_multiple_dns_tcp_request: false
+          events_per_second_per_rule: 1
+          source_profile: Example source_profile
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionProfile'
+      title: UpdateThreatprotectionProfileResponseAsObject
+      type: object
+    ListThreatprotectionProfileRuleResponseObject:
+      description: The response format to retrieve __ThreatprotectionProfileRule__
+        objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatprotectionProfileRule'
+          type: array
+      title: ListThreatprotectionProfileRuleResponseObject
+      type: object
+    GetThreatprotectionProfileRuleResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatprotectionProfileRule__
+        objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionProfileRule'
+      title: GetThreatprotectionProfileRuleResponseObjectAsResult
+      type: object
+    UpdateThreatprotectionProfileRuleResponseAsObject:
+      description: The response format to update __ThreatprotectionProfileRule__ in
+        object format.
+      example:
+        result:
+          use_disable: false
+          disable: false
+          profile: Example profile
+          _ref: _ref
+          rule: Example rule
+          config:
+            log_severity: Example log_severity
+            action: Example action
+            params:
+              min: 1
+              max: 1
+              read_only: false
+              enum_values:
+              - enum_values
+              - enum_values
+              name: Example name
+              description: Example description
+              syntax: Example syntax
+              value: Example value
+          use_config: false
+          sid: 1
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionProfileRule'
+      title: UpdateThreatprotectionProfileRuleResponseAsObject
+      type: object
+    ListThreatprotectionRuleResponseObject:
+      description: The response format to retrieve __ThreatprotectionRule__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatprotectionRule'
+          type: array
+      title: ListThreatprotectionRuleResponseObject
+      type: object
+    GetThreatprotectionRuleResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatprotectionRule__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionRule'
+      title: GetThreatprotectionRuleResponseObjectAsResult
+      type: object
+    UpdateThreatprotectionRuleResponseAsObject:
+      description: The response format to update __ThreatprotectionRule__ in object
+        format.
+      example:
+        result:
+          use_disable: false
+          disable: false
+          _ref: _ref
+          member: Example member
+          rule: Example rule
+          config:
+            log_severity: Example log_severity
+            action: Example action
+            params:
+              min: 1
+              max: 1
+              read_only: false
+              enum_values:
+              - enum_values
+              - enum_values
+              name: Example name
+              description: Example description
+              syntax: Example syntax
+              value: Example value
+          use_config: false
+          sid: 1
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionRule'
+      title: UpdateThreatprotectionRuleResponseAsObject
+      type: object
+    ListThreatprotectionRulecategoryResponseObject:
+      description: The response format to retrieve __ThreatprotectionRulecategory__
+        objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatprotectionRulecategory'
+          type: array
+      title: ListThreatprotectionRulecategoryResponseObject
+      type: object
+    GetThreatprotectionRulecategoryResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatprotectionRulecategory__
+        objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionRulecategory'
+      title: GetThreatprotectionRulecategoryResponseObjectAsResult
+      type: object
+    UpdateThreatprotectionRulecategoryResponseAsObject:
+      description: The response format to update __ThreatprotectionRulecategory__
+        in object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionRulecategory'
+      title: UpdateThreatprotectionRulecategoryResponseAsObject
+      type: object
+    ListThreatprotectionRulesetResponseObject:
+      description: The response format to retrieve __ThreatprotectionRuleset__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatprotectionRuleset'
+          type: array
+      title: ListThreatprotectionRulesetResponseObject
+      type: object
+    GetThreatprotectionRulesetResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatprotectionRuleset__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionRuleset'
+      title: GetThreatprotectionRulesetResponseObjectAsResult
+      type: object
+    UpdateThreatprotectionRulesetResponseAsObject:
+      description: The response format to update __ThreatprotectionRuleset__ in object
+        format.
+      example:
+        result:
+          added_time: 1
+          is_factory_reset_enabled: false
+          do_not_delete: false
+          _ref: _ref
+          comment: Example comment
+          used_by:
+          - used_by
+          - used_by
+          version: Example version
+          add_type: Example add_type
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionRuleset'
+      title: UpdateThreatprotectionRulesetResponseAsObject
+      type: object
+    ListThreatprotectionRuletemplateResponseObject:
+      description: The response format to retrieve __ThreatprotectionRuletemplate__
+        objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatprotectionRuletemplate'
+          type: array
+      title: ListThreatprotectionRuletemplateResponseObject
+      type: object
+    GetThreatprotectionRuletemplateResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatprotectionRuletemplate__
+        objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionRuletemplate'
+      title: GetThreatprotectionRuletemplateResponseObjectAsResult
+      type: object
+    UpdateThreatprotectionRuletemplateResponseAsObject:
+      description: The response format to update __ThreatprotectionRuletemplate__
+        in object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionRuletemplate'
+      title: UpdateThreatprotectionRuletemplateResponseAsObject
+      type: object
+    ListThreatprotectionStatisticsResponseObject:
+      description: The response format to retrieve __ThreatprotectionStatistics__
+        objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatprotectionStatistics'
+          type: array
+      title: ListThreatprotectionStatisticsResponseObject
+      type: object
+    GetThreatprotectionStatisticsResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatprotectionStatistics__
+        objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionStatistics'
+      title: GetThreatprotectionStatisticsResponseObjectAsResult
+      type: object
+    UpdateThreatprotectionStatisticsResponseAsObject:
+      description: The response format to update __ThreatprotectionStatistics__ in
+        object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatprotectionStatistics'
+      title: UpdateThreatprotectionStatisticsResponseAsObject
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http

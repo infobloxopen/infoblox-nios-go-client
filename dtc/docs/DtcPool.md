@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **LbDynamicRatioPreferred** | Pointer to [**DtcPoolLbDynamicRatioPreferred**](DtcPoolLbDynamicRatioPreferred.md) |  | [optional] 
 **LbPreferredMethod** | Pointer to **string** | The preferred load balancing method. Use this to select a method type from the pool. | [optional] 
 **LbPreferredTopology** | Pointer to **string** | The preferred topology for load balancing. | [optional] 
-**Monitors** | Pointer to **[]map[string]interface{}** | The monitors related to pool. | [optional] 
+**Monitors** | Pointer to **[]string** | The monitors related to pool. | [optional] 
 **Name** | Pointer to **string** | The DTC Pool display name. | [optional] 
 **Quorum** | Pointer to **int64** | For availability mode QUORUM, at least this many monitors must report the resource as up for it to be available | [optional] 
 **Servers** | Pointer to [**[]DtcPoolServers**](DtcPoolServers.md) | The servers related to the pool. | [optional] 
@@ -396,20 +396,20 @@ HasLbPreferredTopology returns a boolean if a field has been set.
 
 ### GetMonitors
 
-`func (o *DtcPool) GetMonitors() []map[string]interface{}`
+`func (o *DtcPool) GetMonitors() []string`
 
 GetMonitors returns the Monitors field if non-nil, zero value otherwise.
 
 ### GetMonitorsOk
 
-`func (o *DtcPool) GetMonitorsOk() (*[]map[string]interface{}, bool)`
+`func (o *DtcPool) GetMonitorsOk() (*[]string, bool)`
 
 GetMonitorsOk returns a tuple with the Monitors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMonitors
 
-`func (o *DtcPool) SetMonitors(v []map[string]interface{})`
+`func (o *DtcPool) SetMonitors(v []string)`
 
 SetMonitors sets Monitors field to given value.
 

@@ -1,20 +1,20 @@
-# NsgroupstubmemberAPI
+# NsgroupStubmemberAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](NsgroupstubmemberAPI.md#Get) | **Get** /nsgroup:stubmember | Retrieve nsgroup:stubmember objects
-[**Post**](NsgroupstubmemberAPI.md#Post) | **Post** /nsgroup:stubmember | Create a nsgroup:stubmember object
-[**ReferenceDelete**](NsgroupstubmemberAPI.md#ReferenceDelete) | **Delete** /nsgroup:stubmember/{reference} | Delete a nsgroup:stubmember object
-[**ReferenceGet**](NsgroupstubmemberAPI.md#ReferenceGet) | **Get** /nsgroup:stubmember/{reference} | Get a specific nsgroup:stubmember object
-[**ReferencePut**](NsgroupstubmemberAPI.md#ReferencePut) | **Put** /nsgroup:stubmember/{reference} | Update a nsgroup:stubmember object
+[**NsgroupstubmemberGet**](NsgroupStubmemberAPI.md#NsgroupstubmemberGet) | **Get** /nsgroup:stubmember | Retrieve nsgroup:stubmember objects
+[**NsgroupstubmemberPost**](NsgroupStubmemberAPI.md#NsgroupstubmemberPost) | **Post** /nsgroup:stubmember | Create a nsgroup:stubmember object
+[**NsgroupstubmemberReferenceDelete**](NsgroupStubmemberAPI.md#NsgroupstubmemberReferenceDelete) | **Delete** /nsgroup:stubmember/{reference} | Delete a nsgroup:stubmember object
+[**NsgroupstubmemberReferenceGet**](NsgroupStubmemberAPI.md#NsgroupstubmemberReferenceGet) | **Get** /nsgroup:stubmember/{reference} | Get a specific nsgroup:stubmember object
+[**NsgroupstubmemberReferencePut**](NsgroupStubmemberAPI.md#NsgroupstubmemberReferencePut) | **Put** /nsgroup:stubmember/{reference} | Update a nsgroup:stubmember object
 
 
 
-## Get
+## NsgroupstubmemberGet
 
-> ListNsgroupStubmemberResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListNsgroupStubmemberResponse NsgroupstubmemberGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve nsgroup:stubmember objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupstubmemberAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.NsgroupStubmemberAPI.NsgroupstubmemberGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupstubmemberAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupStubmemberAPI.NsgroupstubmemberGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListNsgroupStubmemberResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupstubmemberAPI.Get`: %v\n", resp)
+	// response from `NsgroupstubmemberGet`: ListNsgroupStubmemberResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupStubmemberAPI.NsgroupstubmemberGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupstubmemberAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupStubmemberAPINsgroupstubmemberGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## NsgroupstubmemberPost
 
-> CreateNsgroupStubmemberResponse Post(ctx).NsgroupStubmember(nsgroupStubmember).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateNsgroupStubmemberResponse NsgroupstubmemberPost(ctx).NsgroupStubmember(nsgroupStubmember).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a nsgroup:stubmember object
 
@@ -109,13 +109,13 @@ func main() {
 	nsgroupStubmember := *dns.NewNsgroupStubmember() // NsgroupStubmember | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupstubmemberAPI.Post(context.Background()).NsgroupStubmember(nsgroupStubmember).Execute()
+	resp, r, err := apiClient.NsgroupStubmemberAPI.NsgroupstubmemberPost(context.Background()).NsgroupStubmember(nsgroupStubmember).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupstubmemberAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupStubmemberAPI.NsgroupstubmemberPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateNsgroupStubmemberResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupstubmemberAPI.Post`: %v\n", resp)
+	// response from `NsgroupstubmemberPost`: CreateNsgroupStubmemberResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupStubmemberAPI.NsgroupstubmemberPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupstubmemberAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupStubmemberAPINsgroupstubmemberPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## NsgroupstubmemberReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> NsgroupstubmemberReferenceDelete(ctx, reference).Execute()
 
 Delete a nsgroup:stubmember object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the nsgroup:stubmember object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.NsgroupstubmemberAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.NsgroupStubmemberAPI.NsgroupstubmemberReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupstubmemberAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupStubmemberAPI.NsgroupstubmemberReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupstubmemberAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupStubmemberAPINsgroupstubmemberReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## NsgroupstubmemberReferenceGet
 
-> GetNsgroupStubmemberResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetNsgroupStubmemberResponse NsgroupstubmemberReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific nsgroup:stubmember object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the nsgroup:stubmember object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupstubmemberAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.NsgroupStubmemberAPI.NsgroupstubmemberReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupstubmemberAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupStubmemberAPI.NsgroupstubmemberReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetNsgroupStubmemberResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupstubmemberAPI.ReferenceGet`: %v\n", resp)
+	// response from `NsgroupstubmemberReferenceGet`: GetNsgroupStubmemberResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupStubmemberAPI.NsgroupstubmemberReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupstubmemberAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## NsgroupstubmemberReferencePut
 
-> UpdateNsgroupStubmemberResponse ReferencePut(ctx, reference).NsgroupStubmember(nsgroupStubmember).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateNsgroupStubmemberResponse NsgroupstubmemberReferencePut(ctx, reference).NsgroupStubmember(nsgroupStubmember).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a nsgroup:stubmember object
 
@@ -318,13 +318,13 @@ func main() {
 	nsgroupStubmember := *dns.NewNsgroupStubmember() // NsgroupStubmember | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupstubmemberAPI.ReferencePut(context.Background(), reference).NsgroupStubmember(nsgroupStubmember).Execute()
+	resp, r, err := apiClient.NsgroupStubmemberAPI.NsgroupstubmemberReferencePut(context.Background(), reference).NsgroupStubmember(nsgroupStubmember).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupstubmemberAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupStubmemberAPI.NsgroupstubmemberReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateNsgroupStubmemberResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupstubmemberAPI.ReferencePut`: %v\n", resp)
+	// response from `NsgroupstubmemberReferencePut`: UpdateNsgroupStubmemberResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupStubmemberAPI.NsgroupstubmemberReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupstubmemberAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

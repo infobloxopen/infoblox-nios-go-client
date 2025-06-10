@@ -1,20 +1,20 @@
-# DtcmonitortcpAPI
+# DtcMonitorTcpAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcmonitortcpAPI.md#Get) | **Get** /dtc:monitor:tcp | Retrieve dtc:monitor:tcp objects
-[**Post**](DtcmonitortcpAPI.md#Post) | **Post** /dtc:monitor:tcp | Create a dtc:monitor:tcp object
-[**ReferenceDelete**](DtcmonitortcpAPI.md#ReferenceDelete) | **Delete** /dtc:monitor:tcp/{reference} | Delete a dtc:monitor:tcp object
-[**ReferenceGet**](DtcmonitortcpAPI.md#ReferenceGet) | **Get** /dtc:monitor:tcp/{reference} | Get a specific dtc:monitor:tcp object
-[**ReferencePut**](DtcmonitortcpAPI.md#ReferencePut) | **Put** /dtc:monitor:tcp/{reference} | Update a dtc:monitor:tcp object
+[**DtcmonitortcpGet**](DtcMonitorTcpAPI.md#DtcmonitortcpGet) | **Get** /dtc:monitor:tcp | Retrieve dtc:monitor:tcp objects
+[**DtcmonitortcpPost**](DtcMonitorTcpAPI.md#DtcmonitortcpPost) | **Post** /dtc:monitor:tcp | Create a dtc:monitor:tcp object
+[**DtcmonitortcpReferenceDelete**](DtcMonitorTcpAPI.md#DtcmonitortcpReferenceDelete) | **Delete** /dtc:monitor:tcp/{reference} | Delete a dtc:monitor:tcp object
+[**DtcmonitortcpReferenceGet**](DtcMonitorTcpAPI.md#DtcmonitortcpReferenceGet) | **Get** /dtc:monitor:tcp/{reference} | Get a specific dtc:monitor:tcp object
+[**DtcmonitortcpReferencePut**](DtcMonitorTcpAPI.md#DtcmonitortcpReferencePut) | **Put** /dtc:monitor:tcp/{reference} | Update a dtc:monitor:tcp object
 
 
 
-## Get
+## DtcmonitortcpGet
 
-> ListDtcMonitorTcpResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcMonitorTcpResponse DtcmonitortcpGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:monitor:tcp objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitortcpAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcMonitorTcpAPI.DtcmonitortcpGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitortcpAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorTcpAPI.DtcmonitortcpGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcMonitorTcpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitortcpAPI.Get`: %v\n", resp)
+	// response from `DtcmonitortcpGet`: ListDtcMonitorTcpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorTcpAPI.DtcmonitortcpGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitortcpAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorTcpAPIDtcmonitortcpGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## DtcmonitortcpPost
 
-> CreateDtcMonitorTcpResponse Post(ctx).DtcMonitorTcp(dtcMonitorTcp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateDtcMonitorTcpResponse DtcmonitortcpPost(ctx).DtcMonitorTcp(dtcMonitorTcp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a dtc:monitor:tcp object
 
@@ -109,13 +109,13 @@ func main() {
 	dtcMonitorTcp := *dtc.NewDtcMonitorTcp() // DtcMonitorTcp | Object data to create
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitortcpAPI.Post(context.Background()).DtcMonitorTcp(dtcMonitorTcp).Execute()
+	resp, r, err := apiClient.DtcMonitorTcpAPI.DtcmonitortcpPost(context.Background()).DtcMonitorTcp(dtcMonitorTcp).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitortcpAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorTcpAPI.DtcmonitortcpPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateDtcMonitorTcpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitortcpAPI.Post`: %v\n", resp)
+	// response from `DtcmonitortcpPost`: CreateDtcMonitorTcpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorTcpAPI.DtcmonitortcpPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitortcpAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorTcpAPIDtcmonitortcpPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## DtcmonitortcpReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> DtcmonitortcpReferenceDelete(ctx, reference).Execute()
 
 Delete a dtc:monitor:tcp object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:monitor:tcp object
 
 	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtcmonitortcpAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.DtcMonitorTcpAPI.DtcmonitortcpReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitortcpAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorTcpAPI.DtcmonitortcpReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitortcpAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorTcpAPIDtcmonitortcpReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtcmonitortcpReferenceGet
 
-> GetDtcMonitorTcpResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcMonitorTcpResponse DtcmonitortcpReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:monitor:tcp object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:monitor:tcp object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitortcpAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcMonitorTcpAPI.DtcmonitortcpReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitortcpAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorTcpAPI.DtcmonitortcpReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcMonitorTcpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitortcpAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtcmonitortcpReferenceGet`: GetDtcMonitorTcpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorTcpAPI.DtcmonitortcpReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitortcpAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtcmonitortcpReferencePut
 
-> UpdateDtcMonitorTcpResponse ReferencePut(ctx, reference).DtcMonitorTcp(dtcMonitorTcp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcMonitorTcpResponse DtcmonitortcpReferencePut(ctx, reference).DtcMonitorTcp(dtcMonitorTcp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:monitor:tcp object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcMonitorTcp := *dtc.NewDtcMonitorTcp() // DtcMonitorTcp | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitortcpAPI.ReferencePut(context.Background(), reference).DtcMonitorTcp(dtcMonitorTcp).Execute()
+	resp, r, err := apiClient.DtcMonitorTcpAPI.DtcmonitortcpReferencePut(context.Background(), reference).DtcMonitorTcp(dtcMonitorTcp).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitortcpAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorTcpAPI.DtcmonitortcpReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcMonitorTcpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitortcpAPI.ReferencePut`: %v\n", resp)
+	// response from `DtcmonitortcpReferencePut`: UpdateDtcMonitorTcpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorTcpAPI.DtcmonitortcpReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitortcpAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

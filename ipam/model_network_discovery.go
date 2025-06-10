@@ -20,8 +20,7 @@ var _ MappedNullable = &NetworkDiscovery{}
 // NetworkDiscovery struct for NetworkDiscovery
 type NetworkDiscovery struct {
 	// The reference to the object.
-	Ref                *string                `json:"_ref,omitempty"`
-	ClearDiscoveryData map[string]interface{} `json:"clear_discovery_data,omitempty"`
+	Ref *string `json:"_ref,omitempty"`
 }
 
 // NewNetworkDiscovery instantiates a new NetworkDiscovery object
@@ -73,38 +72,6 @@ func (o *NetworkDiscovery) SetRef(v string) {
 	o.Ref = &v
 }
 
-// GetClearDiscoveryData returns the ClearDiscoveryData field value if set, zero value otherwise.
-func (o *NetworkDiscovery) GetClearDiscoveryData() map[string]interface{} {
-	if o == nil || IsNil(o.ClearDiscoveryData) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.ClearDiscoveryData
-}
-
-// GetClearDiscoveryDataOk returns a tuple with the ClearDiscoveryData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NetworkDiscovery) GetClearDiscoveryDataOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.ClearDiscoveryData) {
-		return map[string]interface{}{}, false
-	}
-	return o.ClearDiscoveryData, true
-}
-
-// HasClearDiscoveryData returns a boolean if a field has been set.
-func (o *NetworkDiscovery) HasClearDiscoveryData() bool {
-	if o != nil && !IsNil(o.ClearDiscoveryData) {
-		return true
-	}
-
-	return false
-}
-
-// SetClearDiscoveryData gets a reference to the given map[string]interface{} and assigns it to the ClearDiscoveryData field.
-func (o *NetworkDiscovery) SetClearDiscoveryData(v map[string]interface{}) {
-	o.ClearDiscoveryData = v
-}
-
 func (o NetworkDiscovery) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -117,9 +84,6 @@ func (o NetworkDiscovery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
-	}
-	if !IsNil(o.ClearDiscoveryData) {
-		toSerialize["clear_discovery_data"] = o.ClearDiscoveryData
 	}
 	return toSerialize, nil
 }

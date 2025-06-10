@@ -79,37 +79,88 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CaptiveportalAPI* | [**Get**](docs/CaptiveportalAPI.md#get) | **Get** /captiveportal | Retrieve captiveportal objects
+*CaptiveportalAPI* | [**ReferenceGet**](docs/CaptiveportalAPI.md#referenceget) | **Get** /captiveportal/{reference} | Get a specific captiveportal object
+*CaptiveportalAPI* | [**ReferencePut**](docs/CaptiveportalAPI.md#referenceput) | **Put** /captiveportal/{reference} | Update a captiveportal object
+*DistributionscheduleAPI* | [**Get**](docs/DistributionscheduleAPI.md#get) | **Get** /distributionschedule | Retrieve distributionschedule objects
+*DistributionscheduleAPI* | [**ReferenceGet**](docs/DistributionscheduleAPI.md#referenceget) | **Get** /distributionschedule/{reference} | Get a specific distributionschedule object
+*DistributionscheduleAPI* | [**ReferencePut**](docs/DistributionscheduleAPI.md#referenceput) | **Put** /distributionschedule/{reference} | Update a distributionschedule object
+*ExtensibleattributedefAPI* | [**Get**](docs/ExtensibleattributedefAPI.md#get) | **Get** /extensibleattributedef | Retrieve extensibleattributedef objects
+*ExtensibleattributedefAPI* | [**Post**](docs/ExtensibleattributedefAPI.md#post) | **Post** /extensibleattributedef | Create a extensibleattributedef object
+*ExtensibleattributedefAPI* | [**ReferenceDelete**](docs/ExtensibleattributedefAPI.md#referencedelete) | **Delete** /extensibleattributedef/{reference} | Delete a extensibleattributedef object
+*ExtensibleattributedefAPI* | [**ReferenceGet**](docs/ExtensibleattributedefAPI.md#referenceget) | **Get** /extensibleattributedef/{reference} | Get a specific extensibleattributedef object
+*ExtensibleattributedefAPI* | [**ReferencePut**](docs/ExtensibleattributedefAPI.md#referenceput) | **Put** /extensibleattributedef/{reference} | Update a extensibleattributedef object
+*GmcgroupAPI* | [**Get**](docs/GmcgroupAPI.md#get) | **Get** /gmcgroup | Retrieve gmcgroup objects
+*GmcgroupAPI* | [**Post**](docs/GmcgroupAPI.md#post) | **Post** /gmcgroup | Create a gmcgroup object
+*GmcgroupAPI* | [**ReferenceDelete**](docs/GmcgroupAPI.md#referencedelete) | **Delete** /gmcgroup/{reference} | Delete a gmcgroup object
+*GmcgroupAPI* | [**ReferenceGet**](docs/GmcgroupAPI.md#referenceget) | **Get** /gmcgroup/{reference} | Get a specific gmcgroup object
+*GmcgroupAPI* | [**ReferencePut**](docs/GmcgroupAPI.md#referenceput) | **Put** /gmcgroup/{reference} | Update a gmcgroup object
+*GmcscheduleAPI* | [**Get**](docs/GmcscheduleAPI.md#get) | **Get** /gmcschedule | Retrieve gmcschedule objects
+*GmcscheduleAPI* | [**ReferenceGet**](docs/GmcscheduleAPI.md#referenceget) | **Get** /gmcschedule/{reference} | Get a specific gmcschedule object
+*GmcscheduleAPI* | [**ReferencePut**](docs/GmcscheduleAPI.md#referenceput) | **Put** /gmcschedule/{reference} | Update a gmcschedule object
 *GridAPI* | [**Get**](docs/GridAPI.md#get) | **Get** /grid | Retrieve grid objects
 *GridAPI* | [**ReferenceGet**](docs/GridAPI.md#referenceget) | **Get** /grid/{reference} | Get a specific grid object
 *GridAPI* | [**ReferencePut**](docs/GridAPI.md#referenceput) | **Put** /grid/{reference} | Update a grid object
-*GriddashboardAPI* | [**Get**](docs/GriddashboardAPI.md#get) | **Get** /grid:dashboard | Retrieve grid:dashboard objects
-*GriddashboardAPI* | [**ReferenceGet**](docs/GriddashboardAPI.md#referenceget) | **Get** /grid:dashboard/{reference} | Get a specific grid:dashboard object
-*GriddashboardAPI* | [**ReferencePut**](docs/GriddashboardAPI.md#referenceput) | **Put** /grid:dashboard/{reference} | Update a grid:dashboard object
-*GriddnsAPI* | [**Get**](docs/GriddnsAPI.md#get) | **Get** /grid:dns | Retrieve grid:dns objects
-*GriddnsAPI* | [**ReferenceGet**](docs/GriddnsAPI.md#referenceget) | **Get** /grid:dns/{reference} | Get a specific grid:dns object
-*GriddnsAPI* | [**ReferencePut**](docs/GriddnsAPI.md#referenceput) | **Put** /grid:dns/{reference} | Update a grid:dns object
-*GridfiledistributionAPI* | [**Get**](docs/GridfiledistributionAPI.md#get) | **Get** /grid:filedistribution | Retrieve grid:filedistribution objects
-*GridfiledistributionAPI* | [**ReferenceGet**](docs/GridfiledistributionAPI.md#referenceget) | **Get** /grid:filedistribution/{reference} | Get a specific grid:filedistribution object
-*GridfiledistributionAPI* | [**ReferencePut**](docs/GridfiledistributionAPI.md#referenceput) | **Put** /grid:filedistribution/{reference} | Update a grid:filedistribution object
-*GridlicensePoolAPI* | [**Get**](docs/GridlicensePoolAPI.md#get) | **Get** /grid:license_pool | Retrieve grid:license_pool objects
-*GridlicensePoolAPI* | [**ReferenceGet**](docs/GridlicensePoolAPI.md#referenceget) | **Get** /grid:license_pool/{reference} | Get a specific grid:license_pool object
-*GridservicerestartgroupAPI* | [**Get**](docs/GridservicerestartgroupAPI.md#get) | **Get** /grid:servicerestart:group | Retrieve grid:servicerestart:group objects
-*GridservicerestartgroupAPI* | [**Post**](docs/GridservicerestartgroupAPI.md#post) | **Post** /grid:servicerestart:group | Create a grid:servicerestart:group object
-*GridservicerestartgroupAPI* | [**ReferenceDelete**](docs/GridservicerestartgroupAPI.md#referencedelete) | **Delete** /grid:servicerestart:group/{reference} | Delete a grid:servicerestart:group object
-*GridservicerestartgroupAPI* | [**ReferenceGet**](docs/GridservicerestartgroupAPI.md#referenceget) | **Get** /grid:servicerestart:group/{reference} | Get a specific grid:servicerestart:group object
-*GridservicerestartgroupAPI* | [**ReferencePut**](docs/GridservicerestartgroupAPI.md#referenceput) | **Put** /grid:servicerestart:group/{reference} | Update a grid:servicerestart:group object
-*GridservicerestartrequestAPI* | [**Get**](docs/GridservicerestartrequestAPI.md#get) | **Get** /grid:servicerestart:request | Retrieve grid:servicerestart:request objects
-*GridservicerestartrequestAPI* | [**ReferenceGet**](docs/GridservicerestartrequestAPI.md#referenceget) | **Get** /grid:servicerestart:request/{reference} | Get a specific grid:servicerestart:request object
-*GridservicerestartstatusAPI* | [**Get**](docs/GridservicerestartstatusAPI.md#get) | **Get** /grid:servicerestart:status | Retrieve grid:servicerestart:status objects
-*GridservicerestartstatusAPI* | [**ReferenceGet**](docs/GridservicerestartstatusAPI.md#referenceget) | **Get** /grid:servicerestart:status/{reference} | Get a specific grid:servicerestart:status object
-*GridthreatinsightAPI* | [**Get**](docs/GridthreatinsightAPI.md#get) | **Get** /grid:threatinsight | Retrieve grid:threatinsight objects
-*GridthreatinsightAPI* | [**ReferenceGet**](docs/GridthreatinsightAPI.md#referenceget) | **Get** /grid:threatinsight/{reference} | Get a specific grid:threatinsight object
-*GridthreatinsightAPI* | [**ReferencePut**](docs/GridthreatinsightAPI.md#referenceput) | **Put** /grid:threatinsight/{reference} | Update a grid:threatinsight object
-*GridthreatprotectionAPI* | [**Get**](docs/GridthreatprotectionAPI.md#get) | **Get** /grid:threatprotection | Retrieve grid:threatprotection objects
-*GridthreatprotectionAPI* | [**ReferenceGet**](docs/GridthreatprotectionAPI.md#referenceget) | **Get** /grid:threatprotection/{reference} | Get a specific grid:threatprotection object
-*GridthreatprotectionAPI* | [**ReferencePut**](docs/GridthreatprotectionAPI.md#referenceput) | **Put** /grid:threatprotection/{reference} | Update a grid:threatprotection object
-*Gridx509certificateAPI* | [**Get**](docs/Gridx509certificateAPI.md#get) | **Get** /grid:x509certificate | Retrieve grid:x509certificate objects
-*Gridx509certificateAPI* | [**ReferenceGet**](docs/Gridx509certificateAPI.md#referenceget) | **Get** /grid:x509certificate/{reference} | Get a specific grid:x509certificate object
+*GridCloudapiAPI* | [**GridcloudapiGet**](docs/GridCloudapiAPI.md#gridcloudapiget) | **Get** /grid:cloudapi | Retrieve grid:cloudapi objects
+*GridCloudapiAPI* | [**GridcloudapiReferenceGet**](docs/GridCloudapiAPI.md#gridcloudapireferenceget) | **Get** /grid:cloudapi/{reference} | Get a specific grid:cloudapi object
+*GridCloudapiAPI* | [**GridcloudapiReferencePut**](docs/GridCloudapiAPI.md#gridcloudapireferenceput) | **Put** /grid:cloudapi/{reference} | Update a grid:cloudapi object
+*GridCloudapiCloudstatisticsAPI* | [**GridcloudapicloudstatisticsGet**](docs/GridCloudapiCloudstatisticsAPI.md#gridcloudapicloudstatisticsget) | **Get** /grid:cloudapi:cloudstatistics | Retrieve grid:cloudapi:cloudstatistics objects
+*GridCloudapiCloudstatisticsAPI* | [**GridcloudapicloudstatisticsReferenceGet**](docs/GridCloudapiCloudstatisticsAPI.md#gridcloudapicloudstatisticsreferenceget) | **Get** /grid:cloudapi:cloudstatistics/{reference} | Get a specific grid:cloudapi:cloudstatistics object
+*GridCloudapiTenantAPI* | [**GridcloudapitenantGet**](docs/GridCloudapiTenantAPI.md#gridcloudapitenantget) | **Get** /grid:cloudapi:tenant | Retrieve grid:cloudapi:tenant objects
+*GridCloudapiTenantAPI* | [**GridcloudapitenantReferenceGet**](docs/GridCloudapiTenantAPI.md#gridcloudapitenantreferenceget) | **Get** /grid:cloudapi:tenant/{reference} | Get a specific grid:cloudapi:tenant object
+*GridCloudapiTenantAPI* | [**GridcloudapitenantReferencePut**](docs/GridCloudapiTenantAPI.md#gridcloudapitenantreferenceput) | **Put** /grid:cloudapi:tenant/{reference} | Update a grid:cloudapi:tenant object
+*GridCloudapiVmAPI* | [**GridcloudapivmGet**](docs/GridCloudapiVmAPI.md#gridcloudapivmget) | **Get** /grid:cloudapi:vm | Retrieve grid:cloudapi:vm objects
+*GridCloudapiVmAPI* | [**GridcloudapivmReferenceGet**](docs/GridCloudapiVmAPI.md#gridcloudapivmreferenceget) | **Get** /grid:cloudapi:vm/{reference} | Get a specific grid:cloudapi:vm object
+*GridCloudapiVmAPI* | [**GridcloudapivmReferencePut**](docs/GridCloudapiVmAPI.md#gridcloudapivmreferenceput) | **Put** /grid:cloudapi:vm/{reference} | Update a grid:cloudapi:vm object
+*GridCloudapiVmaddressAPI* | [**GridcloudapivmaddressGet**](docs/GridCloudapiVmaddressAPI.md#gridcloudapivmaddressget) | **Get** /grid:cloudapi:vmaddress | Retrieve grid:cloudapi:vmaddress objects
+*GridCloudapiVmaddressAPI* | [**GridcloudapivmaddressReferenceGet**](docs/GridCloudapiVmaddressAPI.md#gridcloudapivmaddressreferenceget) | **Get** /grid:cloudapi:vmaddress/{reference} | Get a specific grid:cloudapi:vmaddress object
+*GridDashboardAPI* | [**GriddashboardGet**](docs/GridDashboardAPI.md#griddashboardget) | **Get** /grid:dashboard | Retrieve grid:dashboard objects
+*GridDashboardAPI* | [**GriddashboardReferenceGet**](docs/GridDashboardAPI.md#griddashboardreferenceget) | **Get** /grid:dashboard/{reference} | Get a specific grid:dashboard object
+*GridDashboardAPI* | [**GriddashboardReferencePut**](docs/GridDashboardAPI.md#griddashboardreferenceput) | **Put** /grid:dashboard/{reference} | Update a grid:dashboard object
+*GridDhcppropertiesAPI* | [**GriddhcppropertiesGet**](docs/GridDhcppropertiesAPI.md#griddhcppropertiesget) | **Get** /grid:dhcpproperties | Retrieve grid:dhcpproperties objects
+*GridDhcppropertiesAPI* | [**GriddhcppropertiesReferenceGet**](docs/GridDhcppropertiesAPI.md#griddhcppropertiesreferenceget) | **Get** /grid:dhcpproperties/{reference} | Get a specific grid:dhcpproperties object
+*GridDhcppropertiesAPI* | [**GriddhcppropertiesReferencePut**](docs/GridDhcppropertiesAPI.md#griddhcppropertiesreferenceput) | **Put** /grid:dhcpproperties/{reference} | Update a grid:dhcpproperties object
+*GridDnsAPI* | [**GriddnsGet**](docs/GridDnsAPI.md#griddnsget) | **Get** /grid:dns | Retrieve grid:dns objects
+*GridDnsAPI* | [**GriddnsReferenceGet**](docs/GridDnsAPI.md#griddnsreferenceget) | **Get** /grid:dns/{reference} | Get a specific grid:dns object
+*GridDnsAPI* | [**GriddnsReferencePut**](docs/GridDnsAPI.md#griddnsreferenceput) | **Put** /grid:dns/{reference} | Update a grid:dns object
+*GridFiledistributionAPI* | [**GridfiledistributionGet**](docs/GridFiledistributionAPI.md#gridfiledistributionget) | **Get** /grid:filedistribution | Retrieve grid:filedistribution objects
+*GridFiledistributionAPI* | [**GridfiledistributionReferenceGet**](docs/GridFiledistributionAPI.md#gridfiledistributionreferenceget) | **Get** /grid:filedistribution/{reference} | Get a specific grid:filedistribution object
+*GridFiledistributionAPI* | [**GridfiledistributionReferencePut**](docs/GridFiledistributionAPI.md#gridfiledistributionreferenceput) | **Put** /grid:filedistribution/{reference} | Update a grid:filedistribution object
+*GridLicensePoolAPI* | [**GridlicensePoolGet**](docs/GridLicensePoolAPI.md#gridlicensepoolget) | **Get** /grid:license_pool | Retrieve grid:license_pool objects
+*GridLicensePoolAPI* | [**GridlicensePoolReferenceGet**](docs/GridLicensePoolAPI.md#gridlicensepoolreferenceget) | **Get** /grid:license_pool/{reference} | Get a specific grid:license_pool object
+*GridLicensePoolContainerAPI* | [**GridlicensePoolContainerGet**](docs/GridLicensePoolContainerAPI.md#gridlicensepoolcontainerget) | **Get** /grid:license_pool_container | Retrieve grid:license_pool_container objects
+*GridLicensePoolContainerAPI* | [**GridlicensePoolContainerReferenceGet**](docs/GridLicensePoolContainerAPI.md#gridlicensepoolcontainerreferenceget) | **Get** /grid:license_pool_container/{reference} | Get a specific grid:license_pool_container object
+*GridMaxminddbinfoAPI* | [**GridmaxminddbinfoGet**](docs/GridMaxminddbinfoAPI.md#gridmaxminddbinfoget) | **Get** /grid:maxminddbinfo | Retrieve grid:maxminddbinfo objects
+*GridMaxminddbinfoAPI* | [**GridmaxminddbinfoReferenceGet**](docs/GridMaxminddbinfoAPI.md#gridmaxminddbinforeferenceget) | **Get** /grid:maxminddbinfo/{reference} | Get a specific grid:maxminddbinfo object
+*GridMemberCloudapiAPI* | [**GridmembercloudapiGet**](docs/GridMemberCloudapiAPI.md#gridmembercloudapiget) | **Get** /grid:member:cloudapi | Retrieve grid:member:cloudapi objects
+*GridMemberCloudapiAPI* | [**GridmembercloudapiReferenceGet**](docs/GridMemberCloudapiAPI.md#gridmembercloudapireferenceget) | **Get** /grid:member:cloudapi/{reference} | Get a specific grid:member:cloudapi object
+*GridMemberCloudapiAPI* | [**GridmembercloudapiReferencePut**](docs/GridMemberCloudapiAPI.md#gridmembercloudapireferenceput) | **Put** /grid:member:cloudapi/{reference} | Update a grid:member:cloudapi object
+*GridServicerestartGroupAPI* | [**GridservicerestartgroupGet**](docs/GridServicerestartGroupAPI.md#gridservicerestartgroupget) | **Get** /grid:servicerestart:group | Retrieve grid:servicerestart:group objects
+*GridServicerestartGroupAPI* | [**GridservicerestartgroupPost**](docs/GridServicerestartGroupAPI.md#gridservicerestartgrouppost) | **Post** /grid:servicerestart:group | Create a grid:servicerestart:group object
+*GridServicerestartGroupAPI* | [**GridservicerestartgroupReferenceDelete**](docs/GridServicerestartGroupAPI.md#gridservicerestartgroupreferencedelete) | **Delete** /grid:servicerestart:group/{reference} | Delete a grid:servicerestart:group object
+*GridServicerestartGroupAPI* | [**GridservicerestartgroupReferenceGet**](docs/GridServicerestartGroupAPI.md#gridservicerestartgroupreferenceget) | **Get** /grid:servicerestart:group/{reference} | Get a specific grid:servicerestart:group object
+*GridServicerestartGroupAPI* | [**GridservicerestartgroupReferencePut**](docs/GridServicerestartGroupAPI.md#gridservicerestartgroupreferenceput) | **Put** /grid:servicerestart:group/{reference} | Update a grid:servicerestart:group object
+*GridServicerestartGroupOrderAPI* | [**GridservicerestartgrouporderGet**](docs/GridServicerestartGroupOrderAPI.md#gridservicerestartgrouporderget) | **Get** /grid:servicerestart:group:order | Retrieve grid:servicerestart:group:order objects
+*GridServicerestartGroupOrderAPI* | [**GridservicerestartgrouporderPost**](docs/GridServicerestartGroupOrderAPI.md#gridservicerestartgrouporderpost) | **Post** /grid:servicerestart:group:order | Create a grid:servicerestart:group:order object
+*GridServicerestartGroupOrderAPI* | [**GridservicerestartgrouporderReferenceGet**](docs/GridServicerestartGroupOrderAPI.md#gridservicerestartgrouporderreferenceget) | **Get** /grid:servicerestart:group:order/{reference} | Get a specific grid:servicerestart:group:order object
+*GridServicerestartGroupOrderAPI* | [**GridservicerestartgrouporderReferencePut**](docs/GridServicerestartGroupOrderAPI.md#gridservicerestartgrouporderreferenceput) | **Put** /grid:servicerestart:group:order/{reference} | Update a grid:servicerestart:group:order object
+*GridServicerestartRequestAPI* | [**GridservicerestartrequestGet**](docs/GridServicerestartRequestAPI.md#gridservicerestartrequestget) | **Get** /grid:servicerestart:request | Retrieve grid:servicerestart:request objects
+*GridServicerestartRequestAPI* | [**GridservicerestartrequestReferenceGet**](docs/GridServicerestartRequestAPI.md#gridservicerestartrequestreferenceget) | **Get** /grid:servicerestart:request/{reference} | Get a specific grid:servicerestart:request object
+*GridServicerestartRequestChangedobjectAPI* | [**GridservicerestartrequestchangedobjectGet**](docs/GridServicerestartRequestChangedobjectAPI.md#gridservicerestartrequestchangedobjectget) | **Get** /grid:servicerestart:request:changedobject | Retrieve grid:servicerestart:request:changedobject objects
+*GridServicerestartRequestChangedobjectAPI* | [**GridservicerestartrequestchangedobjectReferenceGet**](docs/GridServicerestartRequestChangedobjectAPI.md#gridservicerestartrequestchangedobjectreferenceget) | **Get** /grid:servicerestart:request:changedobject/{reference} | Get a specific grid:servicerestart:request:changedobject object
+*GridServicerestartStatusAPI* | [**GridservicerestartstatusGet**](docs/GridServicerestartStatusAPI.md#gridservicerestartstatusget) | **Get** /grid:servicerestart:status | Retrieve grid:servicerestart:status objects
+*GridServicerestartStatusAPI* | [**GridservicerestartstatusReferenceGet**](docs/GridServicerestartStatusAPI.md#gridservicerestartstatusreferenceget) | **Get** /grid:servicerestart:status/{reference} | Get a specific grid:servicerestart:status object
+*GridThreatinsightAPI* | [**GridthreatinsightGet**](docs/GridThreatinsightAPI.md#gridthreatinsightget) | **Get** /grid:threatinsight | Retrieve grid:threatinsight objects
+*GridThreatinsightAPI* | [**GridthreatinsightReferenceGet**](docs/GridThreatinsightAPI.md#gridthreatinsightreferenceget) | **Get** /grid:threatinsight/{reference} | Get a specific grid:threatinsight object
+*GridThreatinsightAPI* | [**GridthreatinsightReferencePut**](docs/GridThreatinsightAPI.md#gridthreatinsightreferenceput) | **Put** /grid:threatinsight/{reference} | Update a grid:threatinsight object
+*GridThreatprotectionAPI* | [**GridthreatprotectionGet**](docs/GridThreatprotectionAPI.md#gridthreatprotectionget) | **Get** /grid:threatprotection | Retrieve grid:threatprotection objects
+*GridThreatprotectionAPI* | [**GridthreatprotectionReferenceGet**](docs/GridThreatprotectionAPI.md#gridthreatprotectionreferenceget) | **Get** /grid:threatprotection/{reference} | Get a specific grid:threatprotection object
+*GridThreatprotectionAPI* | [**GridthreatprotectionReferencePut**](docs/GridThreatprotectionAPI.md#gridthreatprotectionreferenceput) | **Put** /grid:threatprotection/{reference} | Update a grid:threatprotection object
+*GridX509certificateAPI* | [**Gridx509certificateGet**](docs/GridX509certificateAPI.md#gridx509certificateget) | **Get** /grid:x509certificate | Retrieve grid:x509certificate objects
+*GridX509certificateAPI* | [**Gridx509certificateReferenceGet**](docs/GridX509certificateAPI.md#gridx509certificatereferenceget) | **Get** /grid:x509certificate/{reference} | Get a specific grid:x509certificate object
+*LicenseGridwideAPI* | [**LicensegridwideGet**](docs/LicenseGridwideAPI.md#licensegridwideget) | **Get** /license:gridwide | Retrieve license:gridwide objects
+*LicenseGridwideAPI* | [**LicensegridwideReferenceDelete**](docs/LicenseGridwideAPI.md#licensegridwidereferencedelete) | **Delete** /license:gridwide/{reference} | Delete a license:gridwide object
+*LicenseGridwideAPI* | [**LicensegridwideReferenceGet**](docs/LicenseGridwideAPI.md#licensegridwidereferenceget) | **Get** /license:gridwide/{reference} | Get a specific license:gridwide object
 *MastergridAPI* | [**Get**](docs/MastergridAPI.md#get) | **Get** /mastergrid | Retrieve mastergrid objects
 *MastergridAPI* | [**ReferenceGet**](docs/MastergridAPI.md#referenceget) | **Get** /mastergrid/{reference} | Get a specific mastergrid object
 *MastergridAPI* | [**ReferencePut**](docs/MastergridAPI.md#referenceput) | **Put** /mastergrid/{reference} | Update a mastergrid object
@@ -118,69 +169,125 @@ Class | Method | HTTP request | Description
 *MemberAPI* | [**ReferenceDelete**](docs/MemberAPI.md#referencedelete) | **Delete** /member/{reference} | Delete a member object
 *MemberAPI* | [**ReferenceGet**](docs/MemberAPI.md#referenceget) | **Get** /member/{reference} | Get a specific member object
 *MemberAPI* | [**ReferencePut**](docs/MemberAPI.md#referenceput) | **Put** /member/{reference} | Update a member object
-*MemberdnsAPI* | [**Get**](docs/MemberdnsAPI.md#get) | **Get** /member:dns | Retrieve member:dns objects
-*MemberdnsAPI* | [**ReferenceGet**](docs/MemberdnsAPI.md#referenceget) | **Get** /member:dns/{reference} | Get a specific member:dns object
-*MemberdnsAPI* | [**ReferencePut**](docs/MemberdnsAPI.md#referenceput) | **Put** /member:dns/{reference} | Update a member:dns object
-*MemberfiledistributionAPI* | [**Get**](docs/MemberfiledistributionAPI.md#get) | **Get** /member:filedistribution | Retrieve member:filedistribution objects
-*MemberfiledistributionAPI* | [**ReferenceGet**](docs/MemberfiledistributionAPI.md#referenceget) | **Get** /member:filedistribution/{reference} | Get a specific member:filedistribution object
-*MemberfiledistributionAPI* | [**ReferencePut**](docs/MemberfiledistributionAPI.md#referenceput) | **Put** /member:filedistribution/{reference} | Update a member:filedistribution object
-*MemberlicenseAPI* | [**Get**](docs/MemberlicenseAPI.md#get) | **Get** /member:license | Retrieve member:license objects
-*MemberlicenseAPI* | [**ReferenceDelete**](docs/MemberlicenseAPI.md#referencedelete) | **Delete** /member:license/{reference} | Delete a member:license object
-*MemberlicenseAPI* | [**ReferenceGet**](docs/MemberlicenseAPI.md#referenceget) | **Get** /member:license/{reference} | Get a specific member:license object
-*MemberthreatprotectionAPI* | [**Get**](docs/MemberthreatprotectionAPI.md#get) | **Get** /member:threatprotection | Retrieve member:threatprotection objects
-*MemberthreatprotectionAPI* | [**ReferenceGet**](docs/MemberthreatprotectionAPI.md#referenceget) | **Get** /member:threatprotection/{reference} | Get a specific member:threatprotection object
-*MemberthreatprotectionAPI* | [**ReferencePut**](docs/MemberthreatprotectionAPI.md#referenceput) | **Put** /member:threatprotection/{reference} | Update a member:threatprotection object
+*MemberDhcppropertiesAPI* | [**MemberdhcppropertiesGet**](docs/MemberDhcppropertiesAPI.md#memberdhcppropertiesget) | **Get** /member:dhcpproperties | Retrieve member:dhcpproperties objects
+*MemberDhcppropertiesAPI* | [**MemberdhcppropertiesReferenceGet**](docs/MemberDhcppropertiesAPI.md#memberdhcppropertiesreferenceget) | **Get** /member:dhcpproperties/{reference} | Get a specific member:dhcpproperties object
+*MemberDhcppropertiesAPI* | [**MemberdhcppropertiesReferencePut**](docs/MemberDhcppropertiesAPI.md#memberdhcppropertiesreferenceput) | **Put** /member:dhcpproperties/{reference} | Update a member:dhcpproperties object
+*MemberDnsAPI* | [**MemberdnsGet**](docs/MemberDnsAPI.md#memberdnsget) | **Get** /member:dns | Retrieve member:dns objects
+*MemberDnsAPI* | [**MemberdnsReferenceGet**](docs/MemberDnsAPI.md#memberdnsreferenceget) | **Get** /member:dns/{reference} | Get a specific member:dns object
+*MemberDnsAPI* | [**MemberdnsReferencePut**](docs/MemberDnsAPI.md#memberdnsreferenceput) | **Put** /member:dns/{reference} | Update a member:dns object
+*MemberFiledistributionAPI* | [**MemberfiledistributionGet**](docs/MemberFiledistributionAPI.md#memberfiledistributionget) | **Get** /member:filedistribution | Retrieve member:filedistribution objects
+*MemberFiledistributionAPI* | [**MemberfiledistributionReferenceGet**](docs/MemberFiledistributionAPI.md#memberfiledistributionreferenceget) | **Get** /member:filedistribution/{reference} | Get a specific member:filedistribution object
+*MemberFiledistributionAPI* | [**MemberfiledistributionReferencePut**](docs/MemberFiledistributionAPI.md#memberfiledistributionreferenceput) | **Put** /member:filedistribution/{reference} | Update a member:filedistribution object
+*MemberLicenseAPI* | [**MemberlicenseGet**](docs/MemberLicenseAPI.md#memberlicenseget) | **Get** /member:license | Retrieve member:license objects
+*MemberLicenseAPI* | [**MemberlicenseReferenceDelete**](docs/MemberLicenseAPI.md#memberlicensereferencedelete) | **Delete** /member:license/{reference} | Delete a member:license object
+*MemberLicenseAPI* | [**MemberlicenseReferenceGet**](docs/MemberLicenseAPI.md#memberlicensereferenceget) | **Get** /member:license/{reference} | Get a specific member:license object
+*MemberParentalcontrolAPI* | [**MemberparentalcontrolGet**](docs/MemberParentalcontrolAPI.md#memberparentalcontrolget) | **Get** /member:parentalcontrol | Retrieve member:parentalcontrol objects
+*MemberParentalcontrolAPI* | [**MemberparentalcontrolReferenceGet**](docs/MemberParentalcontrolAPI.md#memberparentalcontrolreferenceget) | **Get** /member:parentalcontrol/{reference} | Get a specific member:parentalcontrol object
+*MemberParentalcontrolAPI* | [**MemberparentalcontrolReferencePut**](docs/MemberParentalcontrolAPI.md#memberparentalcontrolreferenceput) | **Put** /member:parentalcontrol/{reference} | Update a member:parentalcontrol object
+*MemberThreatinsightAPI* | [**MemberthreatinsightGet**](docs/MemberThreatinsightAPI.md#memberthreatinsightget) | **Get** /member:threatinsight | Retrieve member:threatinsight objects
+*MemberThreatinsightAPI* | [**MemberthreatinsightReferenceGet**](docs/MemberThreatinsightAPI.md#memberthreatinsightreferenceget) | **Get** /member:threatinsight/{reference} | Get a specific member:threatinsight object
+*MemberThreatinsightAPI* | [**MemberthreatinsightReferencePut**](docs/MemberThreatinsightAPI.md#memberthreatinsightreferenceput) | **Put** /member:threatinsight/{reference} | Update a member:threatinsight object
+*MemberThreatprotectionAPI* | [**MemberthreatprotectionGet**](docs/MemberThreatprotectionAPI.md#memberthreatprotectionget) | **Get** /member:threatprotection | Retrieve member:threatprotection objects
+*MemberThreatprotectionAPI* | [**MemberthreatprotectionReferenceGet**](docs/MemberThreatprotectionAPI.md#memberthreatprotectionreferenceget) | **Get** /member:threatprotection/{reference} | Get a specific member:threatprotection object
+*MemberThreatprotectionAPI* | [**MemberthreatprotectionReferencePut**](docs/MemberThreatprotectionAPI.md#memberthreatprotectionreferenceput) | **Put** /member:threatprotection/{reference} | Update a member:threatprotection object
+*MembercloudsyncAPI* | [**Get**](docs/MembercloudsyncAPI.md#get) | **Get** /membercloudsync | Retrieve membercloudsync objects
+*MembercloudsyncAPI* | [**ReferenceGet**](docs/MembercloudsyncAPI.md#referenceget) | **Get** /membercloudsync/{reference} | Get a specific membercloudsync object
+*MembercloudsyncAPI* | [**ReferencePut**](docs/MembercloudsyncAPI.md#referenceput) | **Put** /membercloudsync/{reference} | Update a membercloudsync object
+*MemberdfpAPI* | [**Get**](docs/MemberdfpAPI.md#get) | **Get** /memberdfp | Retrieve memberdfp objects
+*MemberdfpAPI* | [**Post**](docs/MemberdfpAPI.md#post) | **Post** /memberdfp | Create a memberdfp object
+*MemberdfpAPI* | [**ReferenceDelete**](docs/MemberdfpAPI.md#referencedelete) | **Delete** /memberdfp/{reference} | Delete a memberdfp object
+*MemberdfpAPI* | [**ReferenceGet**](docs/MemberdfpAPI.md#referenceget) | **Get** /memberdfp/{reference} | Get a specific memberdfp object
+*MemberdfpAPI* | [**ReferencePut**](docs/MemberdfpAPI.md#referenceput) | **Put** /memberdfp/{reference} | Update a memberdfp object
+*NatgroupAPI* | [**Get**](docs/NatgroupAPI.md#get) | **Get** /natgroup | Retrieve natgroup objects
+*NatgroupAPI* | [**Post**](docs/NatgroupAPI.md#post) | **Post** /natgroup | Create a natgroup object
+*NatgroupAPI* | [**ReferenceDelete**](docs/NatgroupAPI.md#referencedelete) | **Delete** /natgroup/{reference} | Delete a natgroup object
+*NatgroupAPI* | [**ReferenceGet**](docs/NatgroupAPI.md#referenceget) | **Get** /natgroup/{reference} | Get a specific natgroup object
+*NatgroupAPI* | [**ReferencePut**](docs/NatgroupAPI.md#referenceput) | **Put** /natgroup/{reference} | Update a natgroup object
+*RestartservicestatusAPI* | [**Get**](docs/RestartservicestatusAPI.md#get) | **Get** /restartservicestatus | Retrieve restartservicestatus objects
+*RestartservicestatusAPI* | [**ReferenceGet**](docs/RestartservicestatusAPI.md#referenceget) | **Get** /restartservicestatus/{reference} | Get a specific restartservicestatus object
+*UpgradegroupAPI* | [**Get**](docs/UpgradegroupAPI.md#get) | **Get** /upgradegroup | Retrieve upgradegroup objects
+*UpgradegroupAPI* | [**Post**](docs/UpgradegroupAPI.md#post) | **Post** /upgradegroup | Create a upgradegroup object
+*UpgradegroupAPI* | [**ReferenceDelete**](docs/UpgradegroupAPI.md#referencedelete) | **Delete** /upgradegroup/{reference} | Delete a upgradegroup object
+*UpgradegroupAPI* | [**ReferenceGet**](docs/UpgradegroupAPI.md#referenceget) | **Get** /upgradegroup/{reference} | Get a specific upgradegroup object
+*UpgradegroupAPI* | [**ReferencePut**](docs/UpgradegroupAPI.md#referenceput) | **Put** /upgradegroup/{reference} | Update a upgradegroup object
+*UpgradescheduleAPI* | [**Get**](docs/UpgradescheduleAPI.md#get) | **Get** /upgradeschedule | Retrieve upgradeschedule objects
+*UpgradescheduleAPI* | [**ReferenceGet**](docs/UpgradescheduleAPI.md#referenceget) | **Get** /upgradeschedule/{reference} | Get a specific upgradeschedule object
+*UpgradescheduleAPI* | [**ReferencePut**](docs/UpgradescheduleAPI.md#referenceput) | **Put** /upgradeschedule/{reference} | Update a upgradeschedule object
+*UpgradestatusAPI* | [**Get**](docs/UpgradestatusAPI.md#get) | **Get** /upgradestatus | Retrieve upgradestatus objects
+*UpgradestatusAPI* | [**ReferenceGet**](docs/UpgradestatusAPI.md#referenceget) | **Get** /upgradestatus/{reference} | Get a specific upgradestatus object
+*UpgradestatusAPI* | [**ReferencePut**](docs/UpgradestatusAPI.md#referenceput) | **Put** /upgradestatus/{reference} | Update a upgradestatus object
 
 
 ## Documentation For Models
 
- - [CreateGridDashboardResponse](docs/CreateGridDashboardResponse.md)
- - [CreateGridDashboardResponseAsObject](docs/CreateGridDashboardResponseAsObject.md)
- - [CreateGridDnsResponse](docs/CreateGridDnsResponse.md)
- - [CreateGridDnsResponseAsObject](docs/CreateGridDnsResponseAsObject.md)
- - [CreateGridFiledistributionResponse](docs/CreateGridFiledistributionResponse.md)
- - [CreateGridFiledistributionResponseAsObject](docs/CreateGridFiledistributionResponseAsObject.md)
- - [CreateGridLicensePoolResponse](docs/CreateGridLicensePoolResponse.md)
- - [CreateGridLicensePoolResponseAsObject](docs/CreateGridLicensePoolResponseAsObject.md)
- - [CreateGridResponse](docs/CreateGridResponse.md)
- - [CreateGridResponseAsObject](docs/CreateGridResponseAsObject.md)
+ - [Captiveportal](docs/Captiveportal.md)
+ - [CaptiveportalFiles](docs/CaptiveportalFiles.md)
+ - [CreateExtensibleattributedefResponse](docs/CreateExtensibleattributedefResponse.md)
+ - [CreateExtensibleattributedefResponseAsObject](docs/CreateExtensibleattributedefResponseAsObject.md)
+ - [CreateGmcgroupResponse](docs/CreateGmcgroupResponse.md)
+ - [CreateGmcgroupResponseAsObject](docs/CreateGmcgroupResponseAsObject.md)
+ - [CreateGridServicerestartGroupOrderResponse](docs/CreateGridServicerestartGroupOrderResponse.md)
+ - [CreateGridServicerestartGroupOrderResponseAsObject](docs/CreateGridServicerestartGroupOrderResponseAsObject.md)
  - [CreateGridServicerestartGroupResponse](docs/CreateGridServicerestartGroupResponse.md)
  - [CreateGridServicerestartGroupResponseAsObject](docs/CreateGridServicerestartGroupResponseAsObject.md)
- - [CreateGridServicerestartRequestResponse](docs/CreateGridServicerestartRequestResponse.md)
- - [CreateGridServicerestartRequestResponseAsObject](docs/CreateGridServicerestartRequestResponseAsObject.md)
- - [CreateGridServicerestartStatusResponse](docs/CreateGridServicerestartStatusResponse.md)
- - [CreateGridServicerestartStatusResponseAsObject](docs/CreateGridServicerestartStatusResponseAsObject.md)
- - [CreateGridThreatinsightResponse](docs/CreateGridThreatinsightResponse.md)
- - [CreateGridThreatinsightResponseAsObject](docs/CreateGridThreatinsightResponseAsObject.md)
- - [CreateGridThreatprotectionResponse](docs/CreateGridThreatprotectionResponse.md)
- - [CreateGridThreatprotectionResponseAsObject](docs/CreateGridThreatprotectionResponseAsObject.md)
- - [CreateGridX509certificateResponse](docs/CreateGridX509certificateResponse.md)
- - [CreateGridX509certificateResponseAsObject](docs/CreateGridX509certificateResponseAsObject.md)
- - [CreateMastergridResponse](docs/CreateMastergridResponse.md)
- - [CreateMastergridResponseAsObject](docs/CreateMastergridResponseAsObject.md)
- - [CreateMemberDnsResponse](docs/CreateMemberDnsResponse.md)
- - [CreateMemberDnsResponseAsObject](docs/CreateMemberDnsResponseAsObject.md)
- - [CreateMemberFiledistributionResponse](docs/CreateMemberFiledistributionResponse.md)
- - [CreateMemberFiledistributionResponseAsObject](docs/CreateMemberFiledistributionResponseAsObject.md)
- - [CreateMemberLicenseResponse](docs/CreateMemberLicenseResponse.md)
- - [CreateMemberLicenseResponseAsObject](docs/CreateMemberLicenseResponseAsObject.md)
  - [CreateMemberResponse](docs/CreateMemberResponse.md)
  - [CreateMemberResponseAsObject](docs/CreateMemberResponseAsObject.md)
- - [CreateMemberThreatprotectionResponse](docs/CreateMemberThreatprotectionResponse.md)
- - [CreateMemberThreatprotectionResponseAsObject](docs/CreateMemberThreatprotectionResponseAsObject.md)
+ - [CreateMemberdfpResponse](docs/CreateMemberdfpResponse.md)
+ - [CreateMemberdfpResponseAsObject](docs/CreateMemberdfpResponseAsObject.md)
+ - [CreateNatgroupResponse](docs/CreateNatgroupResponse.md)
+ - [CreateNatgroupResponseAsObject](docs/CreateNatgroupResponseAsObject.md)
+ - [CreateUpgradegroupResponse](docs/CreateUpgradegroupResponse.md)
+ - [CreateUpgradegroupResponseAsObject](docs/CreateUpgradegroupResponseAsObject.md)
+ - [Distributionschedule](docs/Distributionschedule.md)
+ - [DistributionscheduleUpgradeGroups](docs/DistributionscheduleUpgradeGroups.md)
  - [ExtAttrs](docs/ExtAttrs.md)
+ - [Extensibleattributedef](docs/Extensibleattributedef.md)
+ - [ExtensibleattributedefDescendantsAction](docs/ExtensibleattributedefDescendantsAction.md)
+ - [ExtensibleattributedefListValues](docs/ExtensibleattributedefListValues.md)
+ - [GetCaptiveportalResponse](docs/GetCaptiveportalResponse.md)
+ - [GetCaptiveportalResponseObjectAsResult](docs/GetCaptiveportalResponseObjectAsResult.md)
+ - [GetDistributionscheduleResponse](docs/GetDistributionscheduleResponse.md)
+ - [GetDistributionscheduleResponseObjectAsResult](docs/GetDistributionscheduleResponseObjectAsResult.md)
+ - [GetExtensibleattributedefResponse](docs/GetExtensibleattributedefResponse.md)
+ - [GetExtensibleattributedefResponseObjectAsResult](docs/GetExtensibleattributedefResponseObjectAsResult.md)
+ - [GetGmcgroupResponse](docs/GetGmcgroupResponse.md)
+ - [GetGmcgroupResponseObjectAsResult](docs/GetGmcgroupResponseObjectAsResult.md)
+ - [GetGmcscheduleResponse](docs/GetGmcscheduleResponse.md)
+ - [GetGmcscheduleResponseObjectAsResult](docs/GetGmcscheduleResponseObjectAsResult.md)
+ - [GetGridCloudapiCloudstatisticsResponse](docs/GetGridCloudapiCloudstatisticsResponse.md)
+ - [GetGridCloudapiCloudstatisticsResponseObjectAsResult](docs/GetGridCloudapiCloudstatisticsResponseObjectAsResult.md)
+ - [GetGridCloudapiResponse](docs/GetGridCloudapiResponse.md)
+ - [GetGridCloudapiResponseObjectAsResult](docs/GetGridCloudapiResponseObjectAsResult.md)
+ - [GetGridCloudapiTenantResponse](docs/GetGridCloudapiTenantResponse.md)
+ - [GetGridCloudapiTenantResponseObjectAsResult](docs/GetGridCloudapiTenantResponseObjectAsResult.md)
+ - [GetGridCloudapiVmResponse](docs/GetGridCloudapiVmResponse.md)
+ - [GetGridCloudapiVmResponseObjectAsResult](docs/GetGridCloudapiVmResponseObjectAsResult.md)
+ - [GetGridCloudapiVmaddressResponse](docs/GetGridCloudapiVmaddressResponse.md)
+ - [GetGridCloudapiVmaddressResponseObjectAsResult](docs/GetGridCloudapiVmaddressResponseObjectAsResult.md)
  - [GetGridDashboardResponse](docs/GetGridDashboardResponse.md)
  - [GetGridDashboardResponseObjectAsResult](docs/GetGridDashboardResponseObjectAsResult.md)
+ - [GetGridDhcppropertiesResponse](docs/GetGridDhcppropertiesResponse.md)
+ - [GetGridDhcppropertiesResponseObjectAsResult](docs/GetGridDhcppropertiesResponseObjectAsResult.md)
  - [GetGridDnsResponse](docs/GetGridDnsResponse.md)
  - [GetGridDnsResponseObjectAsResult](docs/GetGridDnsResponseObjectAsResult.md)
  - [GetGridFiledistributionResponse](docs/GetGridFiledistributionResponse.md)
  - [GetGridFiledistributionResponseObjectAsResult](docs/GetGridFiledistributionResponseObjectAsResult.md)
+ - [GetGridLicensePoolContainerResponse](docs/GetGridLicensePoolContainerResponse.md)
+ - [GetGridLicensePoolContainerResponseObjectAsResult](docs/GetGridLicensePoolContainerResponseObjectAsResult.md)
  - [GetGridLicensePoolResponse](docs/GetGridLicensePoolResponse.md)
  - [GetGridLicensePoolResponseObjectAsResult](docs/GetGridLicensePoolResponseObjectAsResult.md)
+ - [GetGridMaxminddbinfoResponse](docs/GetGridMaxminddbinfoResponse.md)
+ - [GetGridMaxminddbinfoResponseObjectAsResult](docs/GetGridMaxminddbinfoResponseObjectAsResult.md)
+ - [GetGridMemberCloudapiResponse](docs/GetGridMemberCloudapiResponse.md)
+ - [GetGridMemberCloudapiResponseObjectAsResult](docs/GetGridMemberCloudapiResponseObjectAsResult.md)
  - [GetGridResponse](docs/GetGridResponse.md)
  - [GetGridResponseObjectAsResult](docs/GetGridResponseObjectAsResult.md)
+ - [GetGridServicerestartGroupOrderResponse](docs/GetGridServicerestartGroupOrderResponse.md)
+ - [GetGridServicerestartGroupOrderResponseObjectAsResult](docs/GetGridServicerestartGroupOrderResponseObjectAsResult.md)
  - [GetGridServicerestartGroupResponse](docs/GetGridServicerestartGroupResponse.md)
  - [GetGridServicerestartGroupResponseObjectAsResult](docs/GetGridServicerestartGroupResponseObjectAsResult.md)
+ - [GetGridServicerestartRequestChangedobjectResponse](docs/GetGridServicerestartRequestChangedobjectResponse.md)
+ - [GetGridServicerestartRequestChangedobjectResponseObjectAsResult](docs/GetGridServicerestartRequestChangedobjectResponseObjectAsResult.md)
  - [GetGridServicerestartRequestResponse](docs/GetGridServicerestartRequestResponse.md)
  - [GetGridServicerestartRequestResponseObjectAsResult](docs/GetGridServicerestartRequestResponseObjectAsResult.md)
  - [GetGridServicerestartStatusResponse](docs/GetGridServicerestartStatusResponse.md)
@@ -191,25 +298,67 @@ Class | Method | HTTP request | Description
  - [GetGridThreatprotectionResponseObjectAsResult](docs/GetGridThreatprotectionResponseObjectAsResult.md)
  - [GetGridX509certificateResponse](docs/GetGridX509certificateResponse.md)
  - [GetGridX509certificateResponseObjectAsResult](docs/GetGridX509certificateResponseObjectAsResult.md)
+ - [GetLicenseGridwideResponse](docs/GetLicenseGridwideResponse.md)
+ - [GetLicenseGridwideResponseObjectAsResult](docs/GetLicenseGridwideResponseObjectAsResult.md)
  - [GetMastergridResponse](docs/GetMastergridResponse.md)
  - [GetMastergridResponseObjectAsResult](docs/GetMastergridResponseObjectAsResult.md)
+ - [GetMemberDhcppropertiesResponse](docs/GetMemberDhcppropertiesResponse.md)
+ - [GetMemberDhcppropertiesResponseObjectAsResult](docs/GetMemberDhcppropertiesResponseObjectAsResult.md)
  - [GetMemberDnsResponse](docs/GetMemberDnsResponse.md)
  - [GetMemberDnsResponseObjectAsResult](docs/GetMemberDnsResponseObjectAsResult.md)
  - [GetMemberFiledistributionResponse](docs/GetMemberFiledistributionResponse.md)
  - [GetMemberFiledistributionResponseObjectAsResult](docs/GetMemberFiledistributionResponseObjectAsResult.md)
  - [GetMemberLicenseResponse](docs/GetMemberLicenseResponse.md)
  - [GetMemberLicenseResponseObjectAsResult](docs/GetMemberLicenseResponseObjectAsResult.md)
+ - [GetMemberParentalcontrolResponse](docs/GetMemberParentalcontrolResponse.md)
+ - [GetMemberParentalcontrolResponseObjectAsResult](docs/GetMemberParentalcontrolResponseObjectAsResult.md)
  - [GetMemberResponse](docs/GetMemberResponse.md)
  - [GetMemberResponseObjectAsResult](docs/GetMemberResponseObjectAsResult.md)
+ - [GetMemberThreatinsightResponse](docs/GetMemberThreatinsightResponse.md)
+ - [GetMemberThreatinsightResponseObjectAsResult](docs/GetMemberThreatinsightResponseObjectAsResult.md)
  - [GetMemberThreatprotectionResponse](docs/GetMemberThreatprotectionResponse.md)
  - [GetMemberThreatprotectionResponseObjectAsResult](docs/GetMemberThreatprotectionResponseObjectAsResult.md)
+ - [GetMembercloudsyncResponse](docs/GetMembercloudsyncResponse.md)
+ - [GetMembercloudsyncResponseObjectAsResult](docs/GetMembercloudsyncResponseObjectAsResult.md)
+ - [GetMemberdfpResponse](docs/GetMemberdfpResponse.md)
+ - [GetMemberdfpResponseObjectAsResult](docs/GetMemberdfpResponseObjectAsResult.md)
+ - [GetNatgroupResponse](docs/GetNatgroupResponse.md)
+ - [GetNatgroupResponseObjectAsResult](docs/GetNatgroupResponseObjectAsResult.md)
+ - [GetRestartservicestatusResponse](docs/GetRestartservicestatusResponse.md)
+ - [GetRestartservicestatusResponseObjectAsResult](docs/GetRestartservicestatusResponseObjectAsResult.md)
+ - [GetUpgradegroupResponse](docs/GetUpgradegroupResponse.md)
+ - [GetUpgradegroupResponseObjectAsResult](docs/GetUpgradegroupResponseObjectAsResult.md)
+ - [GetUpgradescheduleResponse](docs/GetUpgradescheduleResponse.md)
+ - [GetUpgradescheduleResponseObjectAsResult](docs/GetUpgradescheduleResponseObjectAsResult.md)
+ - [GetUpgradestatusResponse](docs/GetUpgradestatusResponse.md)
+ - [GetUpgradestatusResponseObjectAsResult](docs/GetUpgradestatusResponseObjectAsResult.md)
+ - [Gmcgroup](docs/Gmcgroup.md)
+ - [GmcgroupMembers](docs/GmcgroupMembers.md)
+ - [Gmcschedule](docs/Gmcschedule.md)
  - [Grid](docs/Grid.md)
  - [GridAutomatedTrafficCaptureSetting](docs/GridAutomatedTrafficCaptureSetting.md)
+ - [GridCloudapi](docs/GridCloudapi.md)
+ - [GridCloudapiAllowedApiAdmins](docs/GridCloudapiAllowedApiAdmins.md)
+ - [GridCloudapiCloudstatistics](docs/GridCloudapiCloudstatistics.md)
+ - [GridCloudapiGatewayConfig](docs/GridCloudapiGatewayConfig.md)
+ - [GridCloudapiTenant](docs/GridCloudapiTenant.md)
+ - [GridCloudapiTenantCloudInfo](docs/GridCloudapiTenantCloudInfo.md)
+ - [GridCloudapiVm](docs/GridCloudapiVm.md)
+ - [GridCloudapiVmCloudInfo](docs/GridCloudapiVmCloudInfo.md)
+ - [GridCloudapiVmaddress](docs/GridCloudapiVmaddress.md)
+ - [GridCloudapiVmaddressCloudInfo](docs/GridCloudapiVmaddressCloudInfo.md)
+ - [GridCloudapiVmaddressMsAdUserData](docs/GridCloudapiVmaddressMsAdUserData.md)
  - [GridConsentBannerSetting](docs/GridConsentBannerSetting.md)
  - [GridCspApiConfig](docs/GridCspApiConfig.md)
  - [GridCspGridSetting](docs/GridCspGridSetting.md)
  - [GridDashboard](docs/GridDashboard.md)
  - [GridDescendantsAction](docs/GridDescendantsAction.md)
+ - [GridDhcpproperties](docs/GridDhcpproperties.md)
+ - [GridDhcppropertiesIpv6Options](docs/GridDhcppropertiesIpv6Options.md)
+ - [GridDhcppropertiesLogicFilterRules](docs/GridDhcppropertiesLogicFilterRules.md)
+ - [GridDhcppropertiesOption60MatchRules](docs/GridDhcppropertiesOption60MatchRules.md)
+ - [GridDhcppropertiesOptions](docs/GridDhcppropertiesOptions.md)
+ - [GridDhcppropertiesRestartSetting](docs/GridDhcppropertiesRestartSetting.md)
  - [GridDns](docs/GridDns.md)
  - [GridDnsAllowQuery](docs/GridDnsAllowQuery.md)
  - [GridDnsAllowTransfer](docs/GridDnsAllowTransfer.md)
@@ -240,9 +389,15 @@ Class | Method | HTTP request | Description
  - [GridHttpProxyServerSetting](docs/GridHttpProxyServerSetting.md)
  - [GridInformationalBannerSetting](docs/GridInformationalBannerSetting.md)
  - [GridLicensePool](docs/GridLicensePool.md)
+ - [GridLicensePoolContainer](docs/GridLicensePoolContainer.md)
  - [GridLicensePoolSubpools](docs/GridLicensePoolSubpools.md)
  - [GridLockoutSetting](docs/GridLockoutSetting.md)
  - [GridLomUsers](docs/GridLomUsers.md)
+ - [GridMaxminddbinfo](docs/GridMaxminddbinfo.md)
+ - [GridMemberCloudapi](docs/GridMemberCloudapi.md)
+ - [GridMemberCloudapiAllowedApiAdmins](docs/GridMemberCloudapiAllowedApiAdmins.md)
+ - [GridMemberCloudapiGatewayConfig](docs/GridMemberCloudapiGatewayConfig.md)
+ - [GridMemberCloudapiMember](docs/GridMemberCloudapiMember.md)
  - [GridMsSetting](docs/GridMsSetting.md)
  - [GridNtpSetting](docs/GridNtpSetting.md)
  - [GridObjectsChangesTrackingSetting](docs/GridObjectsChangesTrackingSetting.md)
@@ -252,8 +407,10 @@ Class | Method | HTTP request | Description
  - [GridSecurityBannerSetting](docs/GridSecurityBannerSetting.md)
  - [GridSecuritySetting](docs/GridSecuritySetting.md)
  - [GridServicerestartGroup](docs/GridServicerestartGroup.md)
+ - [GridServicerestartGroupOrder](docs/GridServicerestartGroupOrder.md)
  - [GridServicerestartGroupRecurringSchedule](docs/GridServicerestartGroupRecurringSchedule.md)
  - [GridServicerestartRequest](docs/GridServicerestartRequest.md)
+ - [GridServicerestartRequestChangedobject](docs/GridServicerestartRequestChangedobject.md)
  - [GridServicerestartStatus](docs/GridServicerestartStatus.md)
  - [GridSnmpSetting](docs/GridSnmpSetting.md)
  - [GridSyslogServers](docs/GridSyslogServers.md)
@@ -273,6 +430,10 @@ Class | Method | HTTP request | Description
  - [GridTrapNotifications](docs/GridTrapNotifications.md)
  - [GridUpdatesDownloadMemberConfig](docs/GridUpdatesDownloadMemberConfig.md)
  - [GridX509certificate](docs/GridX509certificate.md)
+ - [GridcloudapigatewayconfigEndpointMapping](docs/GridcloudapigatewayconfigEndpointMapping.md)
+ - [GridcloudapitenantcloudinfoDelegatedMember](docs/GridcloudapitenantcloudinfoDelegatedMember.md)
+ - [GridcloudapivmaddresscloudinfoDelegatedMember](docs/GridcloudapivmaddresscloudinfoDelegatedMember.md)
+ - [GridcloudapivmcloudinfoDelegatedMember](docs/GridcloudapivmcloudinfoDelegatedMember.md)
  - [GriddnsattackmitigationDetectChr](docs/GriddnsattackmitigationDetectChr.md)
  - [GriddnsattackmitigationDetectNxdomainResponses](docs/GriddnsattackmitigationDetectNxdomainResponses.md)
  - [GriddnsattackmitigationDetectUdpDrop](docs/GriddnsattackmitigationDetectUdpDrop.md)
@@ -281,6 +442,7 @@ Class | Method | HTTP request | Description
  - [GriddnsscavengingsettingsEaExpressionList](docs/GriddnsscavengingsettingsEaExpressionList.md)
  - [GriddnsscavengingsettingsExpressionList](docs/GriddnsscavengingsettingsExpressionList.md)
  - [GriddnsscavengingsettingsScavengingSchedule](docs/GriddnsscavengingsettingsScavengingSchedule.md)
+ - [GridmembercloudapigatewayconfigEndpointMapping](docs/GridmembercloudapigatewayconfigEndpointMapping.md)
  - [GridntpsettingNtpAcl](docs/GridntpsettingNtpAcl.md)
  - [GridntpsettingNtpKeys](docs/GridntpsettingNtpKeys.md)
  - [GridntpsettingNtpServers](docs/GridntpsettingNtpServers.md)
@@ -293,18 +455,51 @@ Class | Method | HTTP request | Description
  - [GridsnmpsettingTrapReceivers](docs/GridsnmpsettingTrapReceivers.md)
  - [GridthreatprotectionnatrulesNatPorts](docs/GridthreatprotectionnatrulesNatPorts.md)
  - [GridtrafficcapturerecdnssettingKpiMonitoredDomains](docs/GridtrafficcapturerecdnssettingKpiMonitoredDomains.md)
+ - [LicenseGridwide](docs/LicenseGridwide.md)
+ - [ListCaptiveportalResponse](docs/ListCaptiveportalResponse.md)
+ - [ListCaptiveportalResponseObject](docs/ListCaptiveportalResponseObject.md)
+ - [ListDistributionscheduleResponse](docs/ListDistributionscheduleResponse.md)
+ - [ListDistributionscheduleResponseObject](docs/ListDistributionscheduleResponseObject.md)
+ - [ListExtensibleattributedefResponse](docs/ListExtensibleattributedefResponse.md)
+ - [ListExtensibleattributedefResponseObject](docs/ListExtensibleattributedefResponseObject.md)
+ - [ListGmcgroupResponse](docs/ListGmcgroupResponse.md)
+ - [ListGmcgroupResponseObject](docs/ListGmcgroupResponseObject.md)
+ - [ListGmcscheduleResponse](docs/ListGmcscheduleResponse.md)
+ - [ListGmcscheduleResponseObject](docs/ListGmcscheduleResponseObject.md)
+ - [ListGridCloudapiCloudstatisticsResponse](docs/ListGridCloudapiCloudstatisticsResponse.md)
+ - [ListGridCloudapiCloudstatisticsResponseObject](docs/ListGridCloudapiCloudstatisticsResponseObject.md)
+ - [ListGridCloudapiResponse](docs/ListGridCloudapiResponse.md)
+ - [ListGridCloudapiResponseObject](docs/ListGridCloudapiResponseObject.md)
+ - [ListGridCloudapiTenantResponse](docs/ListGridCloudapiTenantResponse.md)
+ - [ListGridCloudapiTenantResponseObject](docs/ListGridCloudapiTenantResponseObject.md)
+ - [ListGridCloudapiVmResponse](docs/ListGridCloudapiVmResponse.md)
+ - [ListGridCloudapiVmResponseObject](docs/ListGridCloudapiVmResponseObject.md)
+ - [ListGridCloudapiVmaddressResponse](docs/ListGridCloudapiVmaddressResponse.md)
+ - [ListGridCloudapiVmaddressResponseObject](docs/ListGridCloudapiVmaddressResponseObject.md)
  - [ListGridDashboardResponse](docs/ListGridDashboardResponse.md)
  - [ListGridDashboardResponseObject](docs/ListGridDashboardResponseObject.md)
+ - [ListGridDhcppropertiesResponse](docs/ListGridDhcppropertiesResponse.md)
+ - [ListGridDhcppropertiesResponseObject](docs/ListGridDhcppropertiesResponseObject.md)
  - [ListGridDnsResponse](docs/ListGridDnsResponse.md)
  - [ListGridDnsResponseObject](docs/ListGridDnsResponseObject.md)
  - [ListGridFiledistributionResponse](docs/ListGridFiledistributionResponse.md)
  - [ListGridFiledistributionResponseObject](docs/ListGridFiledistributionResponseObject.md)
+ - [ListGridLicensePoolContainerResponse](docs/ListGridLicensePoolContainerResponse.md)
+ - [ListGridLicensePoolContainerResponseObject](docs/ListGridLicensePoolContainerResponseObject.md)
  - [ListGridLicensePoolResponse](docs/ListGridLicensePoolResponse.md)
  - [ListGridLicensePoolResponseObject](docs/ListGridLicensePoolResponseObject.md)
+ - [ListGridMaxminddbinfoResponse](docs/ListGridMaxminddbinfoResponse.md)
+ - [ListGridMaxminddbinfoResponseObject](docs/ListGridMaxminddbinfoResponseObject.md)
+ - [ListGridMemberCloudapiResponse](docs/ListGridMemberCloudapiResponse.md)
+ - [ListGridMemberCloudapiResponseObject](docs/ListGridMemberCloudapiResponseObject.md)
  - [ListGridResponse](docs/ListGridResponse.md)
  - [ListGridResponseObject](docs/ListGridResponseObject.md)
+ - [ListGridServicerestartGroupOrderResponse](docs/ListGridServicerestartGroupOrderResponse.md)
+ - [ListGridServicerestartGroupOrderResponseObject](docs/ListGridServicerestartGroupOrderResponseObject.md)
  - [ListGridServicerestartGroupResponse](docs/ListGridServicerestartGroupResponse.md)
  - [ListGridServicerestartGroupResponseObject](docs/ListGridServicerestartGroupResponseObject.md)
+ - [ListGridServicerestartRequestChangedobjectResponse](docs/ListGridServicerestartRequestChangedobjectResponse.md)
+ - [ListGridServicerestartRequestChangedobjectResponseObject](docs/ListGridServicerestartRequestChangedobjectResponseObject.md)
  - [ListGridServicerestartRequestResponse](docs/ListGridServicerestartRequestResponse.md)
  - [ListGridServicerestartRequestResponseObject](docs/ListGridServicerestartRequestResponseObject.md)
  - [ListGridServicerestartStatusResponse](docs/ListGridServicerestartStatusResponse.md)
@@ -315,24 +510,52 @@ Class | Method | HTTP request | Description
  - [ListGridThreatprotectionResponseObject](docs/ListGridThreatprotectionResponseObject.md)
  - [ListGridX509certificateResponse](docs/ListGridX509certificateResponse.md)
  - [ListGridX509certificateResponseObject](docs/ListGridX509certificateResponseObject.md)
+ - [ListLicenseGridwideResponse](docs/ListLicenseGridwideResponse.md)
+ - [ListLicenseGridwideResponseObject](docs/ListLicenseGridwideResponseObject.md)
  - [ListMastergridResponse](docs/ListMastergridResponse.md)
  - [ListMastergridResponseObject](docs/ListMastergridResponseObject.md)
+ - [ListMemberDhcppropertiesResponse](docs/ListMemberDhcppropertiesResponse.md)
+ - [ListMemberDhcppropertiesResponseObject](docs/ListMemberDhcppropertiesResponseObject.md)
  - [ListMemberDnsResponse](docs/ListMemberDnsResponse.md)
  - [ListMemberDnsResponseObject](docs/ListMemberDnsResponseObject.md)
  - [ListMemberFiledistributionResponse](docs/ListMemberFiledistributionResponse.md)
  - [ListMemberFiledistributionResponseObject](docs/ListMemberFiledistributionResponseObject.md)
  - [ListMemberLicenseResponse](docs/ListMemberLicenseResponse.md)
  - [ListMemberLicenseResponseObject](docs/ListMemberLicenseResponseObject.md)
+ - [ListMemberParentalcontrolResponse](docs/ListMemberParentalcontrolResponse.md)
+ - [ListMemberParentalcontrolResponseObject](docs/ListMemberParentalcontrolResponseObject.md)
  - [ListMemberResponse](docs/ListMemberResponse.md)
  - [ListMemberResponseObject](docs/ListMemberResponseObject.md)
+ - [ListMemberThreatinsightResponse](docs/ListMemberThreatinsightResponse.md)
+ - [ListMemberThreatinsightResponseObject](docs/ListMemberThreatinsightResponseObject.md)
  - [ListMemberThreatprotectionResponse](docs/ListMemberThreatprotectionResponse.md)
  - [ListMemberThreatprotectionResponseObject](docs/ListMemberThreatprotectionResponseObject.md)
+ - [ListMembercloudsyncResponse](docs/ListMembercloudsyncResponse.md)
+ - [ListMembercloudsyncResponseObject](docs/ListMembercloudsyncResponseObject.md)
+ - [ListMemberdfpResponse](docs/ListMemberdfpResponse.md)
+ - [ListMemberdfpResponseObject](docs/ListMemberdfpResponseObject.md)
+ - [ListNatgroupResponse](docs/ListNatgroupResponse.md)
+ - [ListNatgroupResponseObject](docs/ListNatgroupResponseObject.md)
+ - [ListRestartservicestatusResponse](docs/ListRestartservicestatusResponse.md)
+ - [ListRestartservicestatusResponseObject](docs/ListRestartservicestatusResponseObject.md)
+ - [ListUpgradegroupResponse](docs/ListUpgradegroupResponse.md)
+ - [ListUpgradegroupResponseObject](docs/ListUpgradegroupResponseObject.md)
+ - [ListUpgradescheduleResponse](docs/ListUpgradescheduleResponse.md)
+ - [ListUpgradescheduleResponseObject](docs/ListUpgradescheduleResponseObject.md)
+ - [ListUpgradestatusResponse](docs/ListUpgradestatusResponse.md)
+ - [ListUpgradestatusResponseObject](docs/ListUpgradestatusResponseObject.md)
  - [Mastergrid](docs/Mastergrid.md)
  - [Member](docs/Member.md)
  - [MemberAdditionalIpList](docs/MemberAdditionalIpList.md)
  - [MemberAutomatedTrafficCaptureSetting](docs/MemberAutomatedTrafficCaptureSetting.md)
  - [MemberBgpAs](docs/MemberBgpAs.md)
  - [MemberCspMemberSetting](docs/MemberCspMemberSetting.md)
+ - [MemberDhcpproperties](docs/MemberDhcpproperties.md)
+ - [MemberDhcppropertiesDdnsZonePrimaries](docs/MemberDhcppropertiesDdnsZonePrimaries.md)
+ - [MemberDhcppropertiesIpv6Options](docs/MemberDhcppropertiesIpv6Options.md)
+ - [MemberDhcppropertiesLogicFilterRules](docs/MemberDhcppropertiesLogicFilterRules.md)
+ - [MemberDhcppropertiesOption60MatchRules](docs/MemberDhcppropertiesOption60MatchRules.md)
+ - [MemberDhcppropertiesOptions](docs/MemberDhcppropertiesOptions.md)
  - [MemberDns](docs/MemberDns.md)
  - [MemberDnsAdditionalIpListStruct](docs/MemberDnsAdditionalIpListStruct.md)
  - [MemberDnsAllowQuery](docs/MemberDnsAllowQuery.md)
@@ -373,12 +596,14 @@ Class | Method | HTTP request | Description
  - [MemberNodeInfo](docs/MemberNodeInfo.md)
  - [MemberNtpSetting](docs/MemberNtpSetting.md)
  - [MemberOspfList](docs/MemberOspfList.md)
+ - [MemberParentalcontrol](docs/MemberParentalcontrol.md)
  - [MemberPreProvisioning](docs/MemberPreProvisioning.md)
  - [MemberServiceStatus](docs/MemberServiceStatus.md)
  - [MemberSnmpSetting](docs/MemberSnmpSetting.md)
  - [MemberStaticRoutes](docs/MemberStaticRoutes.md)
  - [MemberSyslogProxySetting](docs/MemberSyslogProxySetting.md)
  - [MemberSyslogServers](docs/MemberSyslogServers.md)
+ - [MemberThreatinsight](docs/MemberThreatinsight.md)
  - [MemberThreatprotection](docs/MemberThreatprotection.md)
  - [MemberThreatprotectionNatRules](docs/MemberThreatprotectionNatRules.md)
  - [MemberThreatprotectionOutboundSettings](docs/MemberThreatprotectionOutboundSettings.md)
@@ -393,6 +618,8 @@ Class | Method | HTTP request | Description
  - [MemberadditionaliplistIpv4NetworkSetting](docs/MemberadditionaliplistIpv4NetworkSetting.md)
  - [MemberadditionaliplistIpv6NetworkSetting](docs/MemberadditionaliplistIpv6NetworkSetting.md)
  - [MemberbgpasNeighbors](docs/MemberbgpasNeighbors.md)
+ - [Membercloudsync](docs/Membercloudsync.md)
+ - [Memberdfp](docs/Memberdfp.md)
  - [MemberdnsattackmitigationDetectChr](docs/MemberdnsattackmitigationDetectChr.md)
  - [MemberdnsattackmitigationDetectNxdomainResponses](docs/MemberdnsattackmitigationDetectNxdomainResponses.md)
  - [MemberdnsattackmitigationDetectUdpDrop](docs/MemberdnsattackmitigationDetectUdpDrop.md)
@@ -417,18 +644,52 @@ Class | Method | HTTP request | Description
  - [MembersyslogproxysettingClientAcls](docs/MembersyslogproxysettingClientAcls.md)
  - [MemberthreatprotectionnatrulesNatPorts](docs/MemberthreatprotectionnatrulesNatPorts.md)
  - [MembertrafficcapturerecdnssettingKpiMonitoredDomains](docs/MembertrafficcapturerecdnssettingKpiMonitoredDomains.md)
+ - [Natgroup](docs/Natgroup.md)
+ - [Restartservicestatus](docs/Restartservicestatus.md)
+ - [UpdateCaptiveportalResponse](docs/UpdateCaptiveportalResponse.md)
+ - [UpdateCaptiveportalResponseAsObject](docs/UpdateCaptiveportalResponseAsObject.md)
+ - [UpdateDistributionscheduleResponse](docs/UpdateDistributionscheduleResponse.md)
+ - [UpdateDistributionscheduleResponseAsObject](docs/UpdateDistributionscheduleResponseAsObject.md)
+ - [UpdateExtensibleattributedefResponse](docs/UpdateExtensibleattributedefResponse.md)
+ - [UpdateExtensibleattributedefResponseAsObject](docs/UpdateExtensibleattributedefResponseAsObject.md)
+ - [UpdateGmcgroupResponse](docs/UpdateGmcgroupResponse.md)
+ - [UpdateGmcgroupResponseAsObject](docs/UpdateGmcgroupResponseAsObject.md)
+ - [UpdateGmcscheduleResponse](docs/UpdateGmcscheduleResponse.md)
+ - [UpdateGmcscheduleResponseAsObject](docs/UpdateGmcscheduleResponseAsObject.md)
+ - [UpdateGridCloudapiCloudstatisticsResponse](docs/UpdateGridCloudapiCloudstatisticsResponse.md)
+ - [UpdateGridCloudapiCloudstatisticsResponseAsObject](docs/UpdateGridCloudapiCloudstatisticsResponseAsObject.md)
+ - [UpdateGridCloudapiResponse](docs/UpdateGridCloudapiResponse.md)
+ - [UpdateGridCloudapiResponseAsObject](docs/UpdateGridCloudapiResponseAsObject.md)
+ - [UpdateGridCloudapiTenantResponse](docs/UpdateGridCloudapiTenantResponse.md)
+ - [UpdateGridCloudapiTenantResponseAsObject](docs/UpdateGridCloudapiTenantResponseAsObject.md)
+ - [UpdateGridCloudapiVmResponse](docs/UpdateGridCloudapiVmResponse.md)
+ - [UpdateGridCloudapiVmResponseAsObject](docs/UpdateGridCloudapiVmResponseAsObject.md)
+ - [UpdateGridCloudapiVmaddressResponse](docs/UpdateGridCloudapiVmaddressResponse.md)
+ - [UpdateGridCloudapiVmaddressResponseAsObject](docs/UpdateGridCloudapiVmaddressResponseAsObject.md)
  - [UpdateGridDashboardResponse](docs/UpdateGridDashboardResponse.md)
  - [UpdateGridDashboardResponseAsObject](docs/UpdateGridDashboardResponseAsObject.md)
+ - [UpdateGridDhcppropertiesResponse](docs/UpdateGridDhcppropertiesResponse.md)
+ - [UpdateGridDhcppropertiesResponseAsObject](docs/UpdateGridDhcppropertiesResponseAsObject.md)
  - [UpdateGridDnsResponse](docs/UpdateGridDnsResponse.md)
  - [UpdateGridDnsResponseAsObject](docs/UpdateGridDnsResponseAsObject.md)
  - [UpdateGridFiledistributionResponse](docs/UpdateGridFiledistributionResponse.md)
  - [UpdateGridFiledistributionResponseAsObject](docs/UpdateGridFiledistributionResponseAsObject.md)
+ - [UpdateGridLicensePoolContainerResponse](docs/UpdateGridLicensePoolContainerResponse.md)
+ - [UpdateGridLicensePoolContainerResponseAsObject](docs/UpdateGridLicensePoolContainerResponseAsObject.md)
  - [UpdateGridLicensePoolResponse](docs/UpdateGridLicensePoolResponse.md)
  - [UpdateGridLicensePoolResponseAsObject](docs/UpdateGridLicensePoolResponseAsObject.md)
+ - [UpdateGridMaxminddbinfoResponse](docs/UpdateGridMaxminddbinfoResponse.md)
+ - [UpdateGridMaxminddbinfoResponseAsObject](docs/UpdateGridMaxminddbinfoResponseAsObject.md)
+ - [UpdateGridMemberCloudapiResponse](docs/UpdateGridMemberCloudapiResponse.md)
+ - [UpdateGridMemberCloudapiResponseAsObject](docs/UpdateGridMemberCloudapiResponseAsObject.md)
  - [UpdateGridResponse](docs/UpdateGridResponse.md)
  - [UpdateGridResponseAsObject](docs/UpdateGridResponseAsObject.md)
+ - [UpdateGridServicerestartGroupOrderResponse](docs/UpdateGridServicerestartGroupOrderResponse.md)
+ - [UpdateGridServicerestartGroupOrderResponseAsObject](docs/UpdateGridServicerestartGroupOrderResponseAsObject.md)
  - [UpdateGridServicerestartGroupResponse](docs/UpdateGridServicerestartGroupResponse.md)
  - [UpdateGridServicerestartGroupResponseAsObject](docs/UpdateGridServicerestartGroupResponseAsObject.md)
+ - [UpdateGridServicerestartRequestChangedobjectResponse](docs/UpdateGridServicerestartRequestChangedobjectResponse.md)
+ - [UpdateGridServicerestartRequestChangedobjectResponseAsObject](docs/UpdateGridServicerestartRequestChangedobjectResponseAsObject.md)
  - [UpdateGridServicerestartRequestResponse](docs/UpdateGridServicerestartRequestResponse.md)
  - [UpdateGridServicerestartRequestResponseAsObject](docs/UpdateGridServicerestartRequestResponseAsObject.md)
  - [UpdateGridServicerestartStatusResponse](docs/UpdateGridServicerestartStatusResponse.md)
@@ -439,18 +700,47 @@ Class | Method | HTTP request | Description
  - [UpdateGridThreatprotectionResponseAsObject](docs/UpdateGridThreatprotectionResponseAsObject.md)
  - [UpdateGridX509certificateResponse](docs/UpdateGridX509certificateResponse.md)
  - [UpdateGridX509certificateResponseAsObject](docs/UpdateGridX509certificateResponseAsObject.md)
+ - [UpdateLicenseGridwideResponse](docs/UpdateLicenseGridwideResponse.md)
+ - [UpdateLicenseGridwideResponseAsObject](docs/UpdateLicenseGridwideResponseAsObject.md)
  - [UpdateMastergridResponse](docs/UpdateMastergridResponse.md)
  - [UpdateMastergridResponseAsObject](docs/UpdateMastergridResponseAsObject.md)
+ - [UpdateMemberDhcppropertiesResponse](docs/UpdateMemberDhcppropertiesResponse.md)
+ - [UpdateMemberDhcppropertiesResponseAsObject](docs/UpdateMemberDhcppropertiesResponseAsObject.md)
  - [UpdateMemberDnsResponse](docs/UpdateMemberDnsResponse.md)
  - [UpdateMemberDnsResponseAsObject](docs/UpdateMemberDnsResponseAsObject.md)
  - [UpdateMemberFiledistributionResponse](docs/UpdateMemberFiledistributionResponse.md)
  - [UpdateMemberFiledistributionResponseAsObject](docs/UpdateMemberFiledistributionResponseAsObject.md)
  - [UpdateMemberLicenseResponse](docs/UpdateMemberLicenseResponse.md)
  - [UpdateMemberLicenseResponseAsObject](docs/UpdateMemberLicenseResponseAsObject.md)
+ - [UpdateMemberParentalcontrolResponse](docs/UpdateMemberParentalcontrolResponse.md)
+ - [UpdateMemberParentalcontrolResponseAsObject](docs/UpdateMemberParentalcontrolResponseAsObject.md)
  - [UpdateMemberResponse](docs/UpdateMemberResponse.md)
  - [UpdateMemberResponseAsObject](docs/UpdateMemberResponseAsObject.md)
+ - [UpdateMemberThreatinsightResponse](docs/UpdateMemberThreatinsightResponse.md)
+ - [UpdateMemberThreatinsightResponseAsObject](docs/UpdateMemberThreatinsightResponseAsObject.md)
  - [UpdateMemberThreatprotectionResponse](docs/UpdateMemberThreatprotectionResponse.md)
  - [UpdateMemberThreatprotectionResponseAsObject](docs/UpdateMemberThreatprotectionResponseAsObject.md)
+ - [UpdateMembercloudsyncResponse](docs/UpdateMembercloudsyncResponse.md)
+ - [UpdateMembercloudsyncResponseAsObject](docs/UpdateMembercloudsyncResponseAsObject.md)
+ - [UpdateMemberdfpResponse](docs/UpdateMemberdfpResponse.md)
+ - [UpdateMemberdfpResponseAsObject](docs/UpdateMemberdfpResponseAsObject.md)
+ - [UpdateNatgroupResponse](docs/UpdateNatgroupResponse.md)
+ - [UpdateNatgroupResponseAsObject](docs/UpdateNatgroupResponseAsObject.md)
+ - [UpdateRestartservicestatusResponse](docs/UpdateRestartservicestatusResponse.md)
+ - [UpdateRestartservicestatusResponseAsObject](docs/UpdateRestartservicestatusResponseAsObject.md)
+ - [UpdateUpgradegroupResponse](docs/UpdateUpgradegroupResponse.md)
+ - [UpdateUpgradegroupResponseAsObject](docs/UpdateUpgradegroupResponseAsObject.md)
+ - [UpdateUpgradescheduleResponse](docs/UpdateUpgradescheduleResponse.md)
+ - [UpdateUpgradescheduleResponseAsObject](docs/UpdateUpgradescheduleResponseAsObject.md)
+ - [UpdateUpgradestatusResponse](docs/UpdateUpgradestatusResponse.md)
+ - [UpdateUpgradestatusResponseAsObject](docs/UpdateUpgradestatusResponseAsObject.md)
+ - [Upgradegroup](docs/Upgradegroup.md)
+ - [UpgradegroupMembers](docs/UpgradegroupMembers.md)
+ - [Upgradeschedule](docs/Upgradeschedule.md)
+ - [UpgradescheduleUpgradeGroups](docs/UpgradescheduleUpgradeGroups.md)
+ - [Upgradestatus](docs/Upgradestatus.md)
+ - [UpgradestatusHotfixes](docs/UpgradestatusHotfixes.md)
+ - [UpgradestatusSteps](docs/UpgradestatusSteps.md)
 
 
 ## Documentation For Authorization

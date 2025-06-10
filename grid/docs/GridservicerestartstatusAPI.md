@@ -1,17 +1,17 @@
-# GridservicerestartstatusAPI
+# GridServicerestartStatusAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](GridservicerestartstatusAPI.md#Get) | **Get** /grid:servicerestart:status | Retrieve grid:servicerestart:status objects
-[**ReferenceGet**](GridservicerestartstatusAPI.md#ReferenceGet) | **Get** /grid:servicerestart:status/{reference} | Get a specific grid:servicerestart:status object
+[**GridservicerestartstatusGet**](GridServicerestartStatusAPI.md#GridservicerestartstatusGet) | **Get** /grid:servicerestart:status | Retrieve grid:servicerestart:status objects
+[**GridservicerestartstatusReferenceGet**](GridServicerestartStatusAPI.md#GridservicerestartstatusReferenceGet) | **Get** /grid:servicerestart:status/{reference} | Get a specific grid:servicerestart:status object
 
 
 
-## Get
+## GridservicerestartstatusGet
 
-> ListGridServicerestartStatusResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridServicerestartStatusResponse GridservicerestartstatusGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:servicerestart:status objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridservicerestartstatusAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.GridServicerestartStatusAPI.GridservicerestartstatusGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridservicerestartstatusAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartStatusAPI.GridservicerestartstatusGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListGridServicerestartStatusResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridservicerestartstatusAPI.Get`: %v\n", resp)
+	// response from `GridservicerestartstatusGet`: ListGridServicerestartStatusResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartStatusAPI.GridservicerestartstatusGet`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridservicerestartstatusAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridServicerestartStatusAPIGridservicerestartstatusGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## GridservicerestartstatusReferenceGet
 
-> GetGridServicerestartStatusResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridServicerestartStatusResponse GridservicerestartstatusReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:servicerestart:status object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:servicerestart:status object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridservicerestartstatusAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridServicerestartStatusAPI.GridservicerestartstatusReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridservicerestartstatusAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartStatusAPI.GridservicerestartstatusReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetGridServicerestartStatusResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridservicerestartstatusAPI.ReferenceGet`: %v\n", resp)
+	// response from `GridservicerestartstatusReferenceGet`: GetGridServicerestartStatusResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartStatusAPI.GridservicerestartstatusReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridservicerestartstatusAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

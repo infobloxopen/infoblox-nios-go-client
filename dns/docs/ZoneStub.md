@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalNsGroup** | Pointer to **string** | A forward stub server name server group. | [optional] 
 **Fqdn** | Pointer to **string** | The name of this DNS zone. For a reverse zone, this is in \&quot;address/cidr\&quot; format. For other zones, this is in FQDN format. This value can be in unicode format. Note that for a reverse zone, the corresponding zone_format value should be set. | [optional] 
-**LockUnlockZone** | Pointer to **map[string]interface{}** |  | [optional] 
 **Locked** | Pointer to **bool** | If you enable this flag, other administrators cannot make conflicting changes. This is for administration purposes only. The zone will continue to serve DNS data even when it is locked. | [optional] 
 **LockedBy** | Pointer to **string** | The name of a superuser or the administrator who locked this zone. | [optional] [readonly] 
 **MaskPrefix** | Pointer to **string** | IPv4 Netmask or IPv6 prefix for this zone. | [optional] [readonly] 
@@ -308,31 +307,6 @@ SetFqdn sets Fqdn field to given value.
 `func (o *ZoneStub) HasFqdn() bool`
 
 HasFqdn returns a boolean if a field has been set.
-
-### GetLockUnlockZone
-
-`func (o *ZoneStub) GetLockUnlockZone() map[string]interface{}`
-
-GetLockUnlockZone returns the LockUnlockZone field if non-nil, zero value otherwise.
-
-### GetLockUnlockZoneOk
-
-`func (o *ZoneStub) GetLockUnlockZoneOk() (*map[string]interface{}, bool)`
-
-GetLockUnlockZoneOk returns a tuple with the LockUnlockZone field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLockUnlockZone
-
-`func (o *ZoneStub) SetLockUnlockZone(v map[string]interface{})`
-
-SetLockUnlockZone sets LockUnlockZone field to given value.
-
-### HasLockUnlockZone
-
-`func (o *ZoneStub) HasLockUnlockZone() bool`
-
-HasLockUnlockZone returns a boolean if a field has been set.
 
 ### GetLocked
 

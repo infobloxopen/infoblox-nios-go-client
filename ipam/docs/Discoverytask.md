@@ -12,9 +12,8 @@ Name | Type | Description | Notes
 **MemberName** | Pointer to **string** | The Grid member that runs the discovery. | [optional] 
 **MergeData** | Pointer to **bool** | Determines whether to replace or merge new data with existing data. | [optional] 
 **Mode** | Pointer to **string** | Network discovery scanning mode. | [optional] 
-**NetworkDiscoveryControl** | Pointer to **map[string]interface{}** |  | [optional] 
 **NetworkView** | Pointer to **string** | Name of the network view in which target networks for network discovery reside. | [optional] 
-**Networks** | Pointer to **[]map[string]interface{}** | The list of the networks on which the network discovery will be invoked. | [optional] 
+**Networks** | Pointer to **[]string** | The list of the networks on which the network discovery will be invoked. | [optional] 
 **PingRetries** | Pointer to **int64** | The number of times to perfrom ping for ICMP and FULL modes. | [optional] 
 **PingTimeout** | Pointer to **int64** | The ping timeout for ICMP and FULL modes. | [optional] 
 **ScheduledRun** | Pointer to [**DiscoverytaskScheduledRun**](DiscoverytaskScheduledRun.md) |  | [optional] 
@@ -247,31 +246,6 @@ SetMode sets Mode field to given value.
 
 HasMode returns a boolean if a field has been set.
 
-### GetNetworkDiscoveryControl
-
-`func (o *Discoverytask) GetNetworkDiscoveryControl() map[string]interface{}`
-
-GetNetworkDiscoveryControl returns the NetworkDiscoveryControl field if non-nil, zero value otherwise.
-
-### GetNetworkDiscoveryControlOk
-
-`func (o *Discoverytask) GetNetworkDiscoveryControlOk() (*map[string]interface{}, bool)`
-
-GetNetworkDiscoveryControlOk returns a tuple with the NetworkDiscoveryControl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNetworkDiscoveryControl
-
-`func (o *Discoverytask) SetNetworkDiscoveryControl(v map[string]interface{})`
-
-SetNetworkDiscoveryControl sets NetworkDiscoveryControl field to given value.
-
-### HasNetworkDiscoveryControl
-
-`func (o *Discoverytask) HasNetworkDiscoveryControl() bool`
-
-HasNetworkDiscoveryControl returns a boolean if a field has been set.
-
 ### GetNetworkView
 
 `func (o *Discoverytask) GetNetworkView() string`
@@ -299,20 +273,20 @@ HasNetworkView returns a boolean if a field has been set.
 
 ### GetNetworks
 
-`func (o *Discoverytask) GetNetworks() []map[string]interface{}`
+`func (o *Discoverytask) GetNetworks() []string`
 
 GetNetworks returns the Networks field if non-nil, zero value otherwise.
 
 ### GetNetworksOk
 
-`func (o *Discoverytask) GetNetworksOk() (*[]map[string]interface{}, bool)`
+`func (o *Discoverytask) GetNetworksOk() (*[]string, bool)`
 
 GetNetworksOk returns a tuple with the Networks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworks
 
-`func (o *Discoverytask) SetNetworks(v []map[string]interface{})`
+`func (o *Discoverytask) SetNetworks(v []string)`
 
 SetNetworks sets Networks field to given value.
 

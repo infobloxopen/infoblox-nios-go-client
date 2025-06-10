@@ -17,7 +17,8 @@ Name | Type | Description | Notes
 **DnsName** | Pointer to **string** | The name for an AAAA record in punycode format. | [optional] [readonly] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ForbidReclamation** | Pointer to **bool** | Determines if the reclamation is allowed for the record or not. | [optional] 
-**Ipv6addr** | Pointer to **string** | The IPv6 Address of the record. | [optional] 
+**Ipv6addr** | Pointer to [**RecordAaaaIpv6addr**](RecordAaaaIpv6addr.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**RecordAaaaMsAdUserData**](RecordAaaaMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | Name for the AAAA record in FQDN format. This value can be in unicode format. | [optional] 
@@ -376,20 +377,20 @@ HasForbidReclamation returns a boolean if a field has been set.
 
 ### GetIpv6addr
 
-`func (o *GetRecordAaaaResponse) GetIpv6addr() string`
+`func (o *GetRecordAaaaResponse) GetIpv6addr() RecordAaaaIpv6addr`
 
 GetIpv6addr returns the Ipv6addr field if non-nil, zero value otherwise.
 
 ### GetIpv6addrOk
 
-`func (o *GetRecordAaaaResponse) GetIpv6addrOk() (*string, bool)`
+`func (o *GetRecordAaaaResponse) GetIpv6addrOk() (*RecordAaaaIpv6addr, bool)`
 
 GetIpv6addrOk returns a tuple with the Ipv6addr field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv6addr
 
-`func (o *GetRecordAaaaResponse) SetIpv6addr(v string)`
+`func (o *GetRecordAaaaResponse) SetIpv6addr(v RecordAaaaIpv6addr)`
 
 SetIpv6addr sets Ipv6addr field to given value.
 
@@ -398,6 +399,31 @@ SetIpv6addr sets Ipv6addr field to given value.
 `func (o *GetRecordAaaaResponse) HasIpv6addr() bool`
 
 HasIpv6addr returns a boolean if a field has been set.
+
+### GetFuncCall
+
+`func (o *GetRecordAaaaResponse) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *GetRecordAaaaResponse) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *GetRecordAaaaResponse) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *GetRecordAaaaResponse) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
 
 ### GetLastQueried
 

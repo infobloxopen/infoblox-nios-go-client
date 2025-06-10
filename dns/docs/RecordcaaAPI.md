@@ -1,20 +1,20 @@
-# RecordcaaAPI
+# RecordCaaAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordcaaAPI.md#Get) | **Get** /record:caa | Retrieve record:caa objects
-[**Post**](RecordcaaAPI.md#Post) | **Post** /record:caa | Create a record:caa object
-[**ReferenceDelete**](RecordcaaAPI.md#ReferenceDelete) | **Delete** /record:caa/{reference} | Delete a record:caa object
-[**ReferenceGet**](RecordcaaAPI.md#ReferenceGet) | **Get** /record:caa/{reference} | Get a specific record:caa object
-[**ReferencePut**](RecordcaaAPI.md#ReferencePut) | **Put** /record:caa/{reference} | Update a record:caa object
+[**RecordcaaGet**](RecordCaaAPI.md#RecordcaaGet) | **Get** /record:caa | Retrieve record:caa objects
+[**RecordcaaPost**](RecordCaaAPI.md#RecordcaaPost) | **Post** /record:caa | Create a record:caa object
+[**RecordcaaReferenceDelete**](RecordCaaAPI.md#RecordcaaReferenceDelete) | **Delete** /record:caa/{reference} | Delete a record:caa object
+[**RecordcaaReferenceGet**](RecordCaaAPI.md#RecordcaaReferenceGet) | **Get** /record:caa/{reference} | Get a specific record:caa object
+[**RecordcaaReferencePut**](RecordCaaAPI.md#RecordcaaReferencePut) | **Put** /record:caa/{reference} | Update a record:caa object
 
 
 
-## Get
+## RecordcaaGet
 
-> ListRecordCaaResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordCaaResponse RecordcaaGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:caa objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcaaAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordCaaAPI.RecordcaaGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCaaAPI.RecordcaaGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordCaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcaaAPI.Get`: %v\n", resp)
+	// response from `RecordcaaGet`: ListRecordCaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCaaAPI.RecordcaaGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcaaAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCaaAPIRecordcaaGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordcaaPost
 
-> CreateRecordCaaResponse Post(ctx).RecordCaa(recordCaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordCaaResponse RecordcaaPost(ctx).RecordCaa(recordCaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:caa object
 
@@ -109,13 +109,13 @@ func main() {
 	recordCaa := *dns.NewRecordCaa() // RecordCaa | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcaaAPI.Post(context.Background()).RecordCaa(recordCaa).Execute()
+	resp, r, err := apiClient.RecordCaaAPI.RecordcaaPost(context.Background()).RecordCaa(recordCaa).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCaaAPI.RecordcaaPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordCaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcaaAPI.Post`: %v\n", resp)
+	// response from `RecordcaaPost`: CreateRecordCaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCaaAPI.RecordcaaPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcaaAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCaaAPIRecordcaaPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordcaaReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordcaaReferenceDelete(ctx, reference).Execute()
 
 Delete a record:caa object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:caa object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordcaaAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordCaaAPI.RecordcaaReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCaaAPI.RecordcaaReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcaaAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCaaAPIRecordcaaReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordcaaReferenceGet
 
-> GetRecordCaaResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordCaaResponse RecordcaaReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:caa object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:caa object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcaaAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordCaaAPI.RecordcaaReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCaaAPI.RecordcaaReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordCaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcaaAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordcaaReferenceGet`: GetRecordCaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCaaAPI.RecordcaaReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcaaAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCaaAPIRecordcaaReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordcaaReferencePut
 
-> UpdateRecordCaaResponse ReferencePut(ctx, reference).RecordCaa(recordCaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordCaaResponse RecordcaaReferencePut(ctx, reference).RecordCaa(recordCaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:caa object
 
@@ -318,13 +318,13 @@ func main() {
 	recordCaa := *dns.NewRecordCaa() // RecordCaa | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcaaAPI.ReferencePut(context.Background(), reference).RecordCaa(recordCaa).Execute()
+	resp, r, err := apiClient.RecordCaaAPI.RecordcaaReferencePut(context.Background(), reference).RecordCaa(recordCaa).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCaaAPI.RecordcaaReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordCaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcaaAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordcaaReferencePut`: UpdateRecordCaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCaaAPI.RecordcaaReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcaaAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCaaAPIRecordcaaReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

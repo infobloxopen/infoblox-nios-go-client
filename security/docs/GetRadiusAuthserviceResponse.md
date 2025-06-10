@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **AuthRetries** | Pointer to **int64** | The number of times to attempt to contact an authentication RADIUS server. | [optional] 
 **AuthTimeout** | Pointer to **int64** | The number of seconds to wait for a response from the RADIUS server. | [optional] 
 **CacheTtl** | Pointer to **int64** | The TTL of cached authentication data in seconds. | [optional] 
-**CheckRadiusServerSettings** | Pointer to **map[string]interface{}** |  | [optional] 
 **Comment** | Pointer to **string** | The RADIUS descriptive comment. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the RADIUS authentication service is disabled. | [optional] 
 **EnableCache** | Pointer to **bool** | Determines whether the authentication cache is enabled. | [optional] 
@@ -188,31 +187,6 @@ SetCacheTtl sets CacheTtl field to given value.
 `func (o *GetRadiusAuthserviceResponse) HasCacheTtl() bool`
 
 HasCacheTtl returns a boolean if a field has been set.
-
-### GetCheckRadiusServerSettings
-
-`func (o *GetRadiusAuthserviceResponse) GetCheckRadiusServerSettings() map[string]interface{}`
-
-GetCheckRadiusServerSettings returns the CheckRadiusServerSettings field if non-nil, zero value otherwise.
-
-### GetCheckRadiusServerSettingsOk
-
-`func (o *GetRadiusAuthserviceResponse) GetCheckRadiusServerSettingsOk() (*map[string]interface{}, bool)`
-
-GetCheckRadiusServerSettingsOk returns a tuple with the CheckRadiusServerSettings field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCheckRadiusServerSettings
-
-`func (o *GetRadiusAuthserviceResponse) SetCheckRadiusServerSettings(v map[string]interface{})`
-
-SetCheckRadiusServerSettings sets CheckRadiusServerSettings field to given value.
-
-### HasCheckRadiusServerSettings
-
-`func (o *GetRadiusAuthserviceResponse) HasCheckRadiusServerSettings() bool`
-
-HasCheckRadiusServerSettings returns a boolean if a field has been set.
 
 ### GetComment
 

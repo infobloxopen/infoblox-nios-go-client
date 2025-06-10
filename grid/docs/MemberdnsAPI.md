@@ -1,18 +1,18 @@
-# MemberdnsAPI
+# MemberDnsAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](MemberdnsAPI.md#Get) | **Get** /member:dns | Retrieve member:dns objects
-[**ReferenceGet**](MemberdnsAPI.md#ReferenceGet) | **Get** /member:dns/{reference} | Get a specific member:dns object
-[**ReferencePut**](MemberdnsAPI.md#ReferencePut) | **Put** /member:dns/{reference} | Update a member:dns object
+[**MemberdnsGet**](MemberDnsAPI.md#MemberdnsGet) | **Get** /member:dns | Retrieve member:dns objects
+[**MemberdnsReferenceGet**](MemberDnsAPI.md#MemberdnsReferenceGet) | **Get** /member:dns/{reference} | Get a specific member:dns object
+[**MemberdnsReferencePut**](MemberDnsAPI.md#MemberdnsReferencePut) | **Put** /member:dns/{reference} | Update a member:dns object
 
 
 
-## Get
+## MemberdnsGet
 
-> ListMemberDnsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListMemberDnsResponse MemberdnsGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve member:dns objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberdnsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.MemberDnsAPI.MemberdnsGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberdnsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberDnsAPI.MemberdnsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListMemberDnsResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberdnsAPI.Get`: %v\n", resp)
+	// response from `MemberdnsGet`: ListMemberDnsResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberDnsAPI.MemberdnsGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberdnsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberDnsAPIMemberdnsGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## MemberdnsReferenceGet
 
-> GetMemberDnsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMemberDnsResponse MemberdnsReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific member:dns object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the member:dns object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberdnsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MemberDnsAPI.MemberdnsReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberdnsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberDnsAPI.MemberdnsReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetMemberDnsResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberdnsAPI.ReferenceGet`: %v\n", resp)
+	// response from `MemberdnsReferenceGet`: GetMemberDnsResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberDnsAPI.MemberdnsReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberdnsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberDnsAPIMemberdnsReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## MemberdnsReferencePut
 
-> UpdateMemberDnsResponse ReferencePut(ctx, reference).MemberDns(memberDns).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateMemberDnsResponse MemberdnsReferencePut(ctx, reference).MemberDns(memberDns).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a member:dns object
 
@@ -180,13 +180,13 @@ func main() {
 	memberDns := *grid.NewMemberDns() // MemberDns | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberdnsAPI.ReferencePut(context.Background(), reference).MemberDns(memberDns).Execute()
+	resp, r, err := apiClient.MemberDnsAPI.MemberdnsReferencePut(context.Background(), reference).MemberDns(memberDns).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberdnsAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberDnsAPI.MemberdnsReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateMemberDnsResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberdnsAPI.ReferencePut`: %v\n", resp)
+	// response from `MemberdnsReferencePut`: UpdateMemberDnsResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberDnsAPI.MemberdnsReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberdnsAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberDnsAPIMemberdnsReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

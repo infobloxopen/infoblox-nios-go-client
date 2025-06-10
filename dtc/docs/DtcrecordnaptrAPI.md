@@ -1,20 +1,20 @@
-# DtcrecordnaptrAPI
+# DtcRecordNaptrAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcrecordnaptrAPI.md#Get) | **Get** /dtc:record:naptr | Retrieve dtc:record:naptr objects
-[**Post**](DtcrecordnaptrAPI.md#Post) | **Post** /dtc:record:naptr | Create a dtc:record:naptr object
-[**ReferenceDelete**](DtcrecordnaptrAPI.md#ReferenceDelete) | **Delete** /dtc:record:naptr/{reference} | Delete a dtc:record:naptr object
-[**ReferenceGet**](DtcrecordnaptrAPI.md#ReferenceGet) | **Get** /dtc:record:naptr/{reference} | Get a specific dtc:record:naptr object
-[**ReferencePut**](DtcrecordnaptrAPI.md#ReferencePut) | **Put** /dtc:record:naptr/{reference} | Update a dtc:record:naptr object
+[**DtcrecordnaptrGet**](DtcRecordNaptrAPI.md#DtcrecordnaptrGet) | **Get** /dtc:record:naptr | Retrieve dtc:record:naptr objects
+[**DtcrecordnaptrPost**](DtcRecordNaptrAPI.md#DtcrecordnaptrPost) | **Post** /dtc:record:naptr | Create a dtc:record:naptr object
+[**DtcrecordnaptrReferenceDelete**](DtcRecordNaptrAPI.md#DtcrecordnaptrReferenceDelete) | **Delete** /dtc:record:naptr/{reference} | Delete a dtc:record:naptr object
+[**DtcrecordnaptrReferenceGet**](DtcRecordNaptrAPI.md#DtcrecordnaptrReferenceGet) | **Get** /dtc:record:naptr/{reference} | Get a specific dtc:record:naptr object
+[**DtcrecordnaptrReferencePut**](DtcRecordNaptrAPI.md#DtcrecordnaptrReferencePut) | **Put** /dtc:record:naptr/{reference} | Update a dtc:record:naptr object
 
 
 
-## Get
+## DtcrecordnaptrGet
 
-> ListDtcRecordNaptrResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcRecordNaptrResponse DtcrecordnaptrGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:record:naptr objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordnaptrAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcRecordNaptrAPI.DtcrecordnaptrGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordnaptrAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordNaptrAPI.DtcrecordnaptrGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcRecordNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordnaptrAPI.Get`: %v\n", resp)
+	// response from `DtcrecordnaptrGet`: ListDtcRecordNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordNaptrAPI.DtcrecordnaptrGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordnaptrAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordNaptrAPIDtcrecordnaptrGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## DtcrecordnaptrPost
 
-> CreateDtcRecordNaptrResponse Post(ctx).DtcRecordNaptr(dtcRecordNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateDtcRecordNaptrResponse DtcrecordnaptrPost(ctx).DtcRecordNaptr(dtcRecordNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a dtc:record:naptr object
 
@@ -109,13 +109,13 @@ func main() {
 	dtcRecordNaptr := *dtc.NewDtcRecordNaptr() // DtcRecordNaptr | Object data to create
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordnaptrAPI.Post(context.Background()).DtcRecordNaptr(dtcRecordNaptr).Execute()
+	resp, r, err := apiClient.DtcRecordNaptrAPI.DtcrecordnaptrPost(context.Background()).DtcRecordNaptr(dtcRecordNaptr).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordnaptrAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordNaptrAPI.DtcrecordnaptrPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateDtcRecordNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordnaptrAPI.Post`: %v\n", resp)
+	// response from `DtcrecordnaptrPost`: CreateDtcRecordNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordNaptrAPI.DtcrecordnaptrPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordnaptrAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordNaptrAPIDtcrecordnaptrPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## DtcrecordnaptrReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> DtcrecordnaptrReferenceDelete(ctx, reference).Execute()
 
 Delete a dtc:record:naptr object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:record:naptr object
 
 	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtcrecordnaptrAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.DtcRecordNaptrAPI.DtcrecordnaptrReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordnaptrAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordNaptrAPI.DtcrecordnaptrReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordnaptrAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordNaptrAPIDtcrecordnaptrReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtcrecordnaptrReferenceGet
 
-> GetDtcRecordNaptrResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcRecordNaptrResponse DtcrecordnaptrReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:record:naptr object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:record:naptr object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordnaptrAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcRecordNaptrAPI.DtcrecordnaptrReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordnaptrAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordNaptrAPI.DtcrecordnaptrReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcRecordNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordnaptrAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtcrecordnaptrReferenceGet`: GetDtcRecordNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordNaptrAPI.DtcrecordnaptrReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordnaptrAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtcrecordnaptrReferencePut
 
-> UpdateDtcRecordNaptrResponse ReferencePut(ctx, reference).DtcRecordNaptr(dtcRecordNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcRecordNaptrResponse DtcrecordnaptrReferencePut(ctx, reference).DtcRecordNaptr(dtcRecordNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:record:naptr object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcRecordNaptr := *dtc.NewDtcRecordNaptr() // DtcRecordNaptr | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcrecordnaptrAPI.ReferencePut(context.Background(), reference).DtcRecordNaptr(dtcRecordNaptr).Execute()
+	resp, r, err := apiClient.DtcRecordNaptrAPI.DtcrecordnaptrReferencePut(context.Background(), reference).DtcRecordNaptr(dtcRecordNaptr).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcrecordnaptrAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordNaptrAPI.DtcrecordnaptrReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcRecordNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcrecordnaptrAPI.ReferencePut`: %v\n", resp)
+	// response from `DtcrecordnaptrReferencePut`: UpdateDtcRecordNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordNaptrAPI.DtcrecordnaptrReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcrecordnaptrAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
