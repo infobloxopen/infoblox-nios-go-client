@@ -89,13 +89,14 @@ Class | Method | HTTP request | Description
 *BulkhostnametemplateAPI* | [**ReferenceDelete**](docs/BulkhostnametemplateAPI.md#referencedelete) | **Delete** /bulkhostnametemplate/{reference} | Delete a bulkhostnametemplate object
 *BulkhostnametemplateAPI* | [**ReferenceGet**](docs/BulkhostnametemplateAPI.md#referenceget) | **Get** /bulkhostnametemplate/{reference} | Get a specific bulkhostnametemplate object
 *BulkhostnametemplateAPI* | [**ReferencePut**](docs/BulkhostnametemplateAPI.md#referenceput) | **Put** /bulkhostnametemplate/{reference} | Update a bulkhostnametemplate object
-*CapacityreportAPI* | [**Get**](docs/CapacityreportAPI.md#get) | **Get** /capacityreport | Retrieve capacityreport objects
-*CapacityreportAPI* | [**ReferenceGet**](docs/CapacityreportAPI.md#referenceget) | **Get** /capacityreport/{reference} | Get a specific capacityreport object
 *DiscoverytaskAPI* | [**Get**](docs/DiscoverytaskAPI.md#get) | **Get** /discoverytask | Retrieve discoverytask objects
 *DiscoverytaskAPI* | [**ReferenceGet**](docs/DiscoverytaskAPI.md#referenceget) | **Get** /discoverytask/{reference} | Get a specific discoverytask object
 *DiscoverytaskAPI* | [**ReferencePut**](docs/DiscoverytaskAPI.md#referenceput) | **Put** /discoverytask/{reference} | Update a discoverytask object
-*IpamstatisticsAPI* | [**Get**](docs/IpamstatisticsAPI.md#get) | **Get** /ipam:statistics | Retrieve ipam:statistics objects
-*IpamstatisticsAPI* | [**ReferenceGet**](docs/IpamstatisticsAPI.md#referenceget) | **Get** /ipam:statistics/{reference} | Get a specific ipam:statistics object
+*HostnamerewritepolicyAPI* | [**Get**](docs/HostnamerewritepolicyAPI.md#get) | **Get** /hostnamerewritepolicy | Retrieve hostnamerewritepolicy objects
+*HostnamerewritepolicyAPI* | [**ReferenceGet**](docs/HostnamerewritepolicyAPI.md#referenceget) | **Get** /hostnamerewritepolicy/{reference} | Get a specific hostnamerewritepolicy object
+*HostnamerewritepolicyAPI* | [**ReferencePut**](docs/HostnamerewritepolicyAPI.md#referenceput) | **Put** /hostnamerewritepolicy/{reference} | Update a hostnamerewritepolicy object
+*IpamStatisticsAPI* | [**IpamstatisticsGet**](docs/IpamStatisticsAPI.md#ipamstatisticsget) | **Get** /ipam:statistics | Retrieve ipam:statistics objects
+*IpamStatisticsAPI* | [**IpamstatisticsReferenceGet**](docs/IpamStatisticsAPI.md#ipamstatisticsreferenceget) | **Get** /ipam:statistics/{reference} | Get a specific ipam:statistics object
 *Ipv4addressAPI* | [**Get**](docs/Ipv4addressAPI.md#get) | **Get** /ipv4address | Retrieve ipv4address objects
 *Ipv4addressAPI* | [**ReferenceDelete**](docs/Ipv4addressAPI.md#referencedelete) | **Delete** /ipv4address/{reference} | Delete a ipv4address object
 *Ipv4addressAPI* | [**ReferenceGet**](docs/Ipv4addressAPI.md#referenceget) | **Get** /ipv4address/{reference} | Get a specific ipv4address object
@@ -119,11 +120,6 @@ Class | Method | HTTP request | Description
 *Ipv6networktemplateAPI* | [**ReferenceDelete**](docs/Ipv6networktemplateAPI.md#referencedelete) | **Delete** /ipv6networktemplate/{reference} | Delete a ipv6networktemplate object
 *Ipv6networktemplateAPI* | [**ReferenceGet**](docs/Ipv6networktemplateAPI.md#referenceget) | **Get** /ipv6networktemplate/{reference} | Get a specific ipv6networktemplate object
 *Ipv6networktemplateAPI* | [**ReferencePut**](docs/Ipv6networktemplateAPI.md#referenceput) | **Put** /ipv6networktemplate/{reference} | Update a ipv6networktemplate object
-*NatgroupAPI* | [**Get**](docs/NatgroupAPI.md#get) | **Get** /natgroup | Retrieve natgroup objects
-*NatgroupAPI* | [**Post**](docs/NatgroupAPI.md#post) | **Post** /natgroup | Create a natgroup object
-*NatgroupAPI* | [**ReferenceDelete**](docs/NatgroupAPI.md#referencedelete) | **Delete** /natgroup/{reference} | Delete a natgroup object
-*NatgroupAPI* | [**ReferenceGet**](docs/NatgroupAPI.md#referenceget) | **Get** /natgroup/{reference} | Get a specific natgroup object
-*NatgroupAPI* | [**ReferencePut**](docs/NatgroupAPI.md#referenceput) | **Put** /natgroup/{reference} | Update a natgroup object
 *NetworkAPI* | [**Get**](docs/NetworkAPI.md#get) | **Get** /network | Retrieve network objects
 *NetworkAPI* | [**Post**](docs/NetworkAPI.md#post) | **Post** /network | Create a network object
 *NetworkAPI* | [**ReferenceDelete**](docs/NetworkAPI.md#referencedelete) | **Delete** /network/{reference} | Delete a network object
@@ -131,7 +127,6 @@ Class | Method | HTTP request | Description
 *NetworkAPI* | [**ReferencePut**](docs/NetworkAPI.md#referenceput) | **Put** /network/{reference} | Update a network object
 *NetworkDiscoveryAPI* | [**Get**](docs/NetworkDiscoveryAPI.md#get) | **Get** /network_discovery | Retrieve network_discovery objects
 *NetworkDiscoveryAPI* | [**ReferenceGet**](docs/NetworkDiscoveryAPI.md#referenceget) | **Get** /network_discovery/{reference} | Get a specific network_discovery object
-*NetworkDiscoveryAPI* | [**ReferencePut**](docs/NetworkDiscoveryAPI.md#referenceput) | **Put** /network_discovery/{reference} | Update a network_discovery object
 *NetworkcontainerAPI* | [**Get**](docs/NetworkcontainerAPI.md#get) | **Get** /networkcontainer | Retrieve networkcontainer objects
 *NetworkcontainerAPI* | [**Post**](docs/NetworkcontainerAPI.md#post) | **Post** /networkcontainer | Create a networkcontainer object
 *NetworkcontainerAPI* | [**ReferenceDelete**](docs/NetworkcontainerAPI.md#referencedelete) | **Delete** /networkcontainer/{reference} | Delete a networkcontainer object
@@ -147,14 +142,13 @@ Class | Method | HTTP request | Description
 *NetworkviewAPI* | [**ReferenceDelete**](docs/NetworkviewAPI.md#referencedelete) | **Delete** /networkview/{reference} | Delete a networkview object
 *NetworkviewAPI* | [**ReferenceGet**](docs/NetworkviewAPI.md#referenceget) | **Get** /networkview/{reference} | Get a specific networkview object
 *NetworkviewAPI* | [**ReferencePut**](docs/NetworkviewAPI.md#referenceput) | **Put** /networkview/{reference} | Update a networkview object
-*RirAPI* | [**Get**](docs/RirAPI.md#get) | **Get** /rir | Retrieve rir objects
-*RirAPI* | [**ReferenceGet**](docs/RirAPI.md#referenceget) | **Get** /rir/{reference} | Get a specific rir object
-*RirAPI* | [**ReferencePut**](docs/RirAPI.md#referenceput) | **Put** /rir/{reference} | Update a rir object
-*RirorganizationAPI* | [**Get**](docs/RirorganizationAPI.md#get) | **Get** /rir:organization | Retrieve rir:organization objects
-*RirorganizationAPI* | [**Post**](docs/RirorganizationAPI.md#post) | **Post** /rir:organization | Create a rir:organization object
-*RirorganizationAPI* | [**ReferenceDelete**](docs/RirorganizationAPI.md#referencedelete) | **Delete** /rir:organization/{reference} | Delete a rir:organization object
-*RirorganizationAPI* | [**ReferenceGet**](docs/RirorganizationAPI.md#referenceget) | **Get** /rir:organization/{reference} | Get a specific rir:organization object
-*RirorganizationAPI* | [**ReferencePut**](docs/RirorganizationAPI.md#referenceput) | **Put** /rir:organization/{reference} | Update a rir:organization object
+*SuperhostAPI* | [**Get**](docs/SuperhostAPI.md#get) | **Get** /superhost | Retrieve superhost objects
+*SuperhostAPI* | [**Post**](docs/SuperhostAPI.md#post) | **Post** /superhost | Create a superhost object
+*SuperhostAPI* | [**ReferenceDelete**](docs/SuperhostAPI.md#referencedelete) | **Delete** /superhost/{reference} | Delete a superhost object
+*SuperhostAPI* | [**ReferenceGet**](docs/SuperhostAPI.md#referenceget) | **Get** /superhost/{reference} | Get a specific superhost object
+*SuperhostAPI* | [**ReferencePut**](docs/SuperhostAPI.md#referenceput) | **Put** /superhost/{reference} | Update a superhost object
+*SuperhostchildAPI* | [**Get**](docs/SuperhostchildAPI.md#get) | **Get** /superhostchild | Retrieve superhostchild objects
+*SuperhostchildAPI* | [**ReferenceGet**](docs/SuperhostchildAPI.md#referenceget) | **Get** /superhostchild/{reference} | Get a specific superhostchild object
 *VlanAPI* | [**Get**](docs/VlanAPI.md#get) | **Get** /vlan | Retrieve vlan objects
 *VlanAPI* | [**Post**](docs/VlanAPI.md#post) | **Post** /vlan | Create a vlan object
 *VlanAPI* | [**ReferenceDelete**](docs/VlanAPI.md#referencedelete) | **Delete** /vlan/{reference} | Delete a vlan object
@@ -178,32 +172,16 @@ Class | Method | HTTP request | Description
  - [BulkhostCloudInfo](docs/BulkhostCloudInfo.md)
  - [BulkhostcloudinfoDelegatedMember](docs/BulkhostcloudinfoDelegatedMember.md)
  - [Bulkhostnametemplate](docs/Bulkhostnametemplate.md)
- - [Capacityreport](docs/Capacityreport.md)
- - [CapacityreportObjectCounts](docs/CapacityreportObjectCounts.md)
  - [CreateBulkhostResponse](docs/CreateBulkhostResponse.md)
  - [CreateBulkhostResponseAsObject](docs/CreateBulkhostResponseAsObject.md)
  - [CreateBulkhostnametemplateResponse](docs/CreateBulkhostnametemplateResponse.md)
  - [CreateBulkhostnametemplateResponseAsObject](docs/CreateBulkhostnametemplateResponseAsObject.md)
- - [CreateCapacityreportResponse](docs/CreateCapacityreportResponse.md)
- - [CreateCapacityreportResponseAsObject](docs/CreateCapacityreportResponseAsObject.md)
- - [CreateDiscoverytaskResponse](docs/CreateDiscoverytaskResponse.md)
- - [CreateDiscoverytaskResponseAsObject](docs/CreateDiscoverytaskResponseAsObject.md)
- - [CreateIpamStatisticsResponse](docs/CreateIpamStatisticsResponse.md)
- - [CreateIpamStatisticsResponseAsObject](docs/CreateIpamStatisticsResponseAsObject.md)
- - [CreateIpv4addressResponse](docs/CreateIpv4addressResponse.md)
- - [CreateIpv4addressResponseAsObject](docs/CreateIpv4addressResponseAsObject.md)
- - [CreateIpv6addressResponse](docs/CreateIpv6addressResponse.md)
- - [CreateIpv6addressResponseAsObject](docs/CreateIpv6addressResponseAsObject.md)
  - [CreateIpv6networkResponse](docs/CreateIpv6networkResponse.md)
  - [CreateIpv6networkResponseAsObject](docs/CreateIpv6networkResponseAsObject.md)
  - [CreateIpv6networkcontainerResponse](docs/CreateIpv6networkcontainerResponse.md)
  - [CreateIpv6networkcontainerResponseAsObject](docs/CreateIpv6networkcontainerResponseAsObject.md)
  - [CreateIpv6networktemplateResponse](docs/CreateIpv6networktemplateResponse.md)
  - [CreateIpv6networktemplateResponseAsObject](docs/CreateIpv6networktemplateResponseAsObject.md)
- - [CreateNatgroupResponse](docs/CreateNatgroupResponse.md)
- - [CreateNatgroupResponseAsObject](docs/CreateNatgroupResponseAsObject.md)
- - [CreateNetworkDiscoveryResponse](docs/CreateNetworkDiscoveryResponse.md)
- - [CreateNetworkDiscoveryResponseAsObject](docs/CreateNetworkDiscoveryResponseAsObject.md)
  - [CreateNetworkResponse](docs/CreateNetworkResponse.md)
  - [CreateNetworkResponseAsObject](docs/CreateNetworkResponseAsObject.md)
  - [CreateNetworkcontainerResponse](docs/CreateNetworkcontainerResponse.md)
@@ -212,10 +190,8 @@ Class | Method | HTTP request | Description
  - [CreateNetworktemplateResponseAsObject](docs/CreateNetworktemplateResponseAsObject.md)
  - [CreateNetworkviewResponse](docs/CreateNetworkviewResponse.md)
  - [CreateNetworkviewResponseAsObject](docs/CreateNetworkviewResponseAsObject.md)
- - [CreateRirOrganizationResponse](docs/CreateRirOrganizationResponse.md)
- - [CreateRirOrganizationResponseAsObject](docs/CreateRirOrganizationResponseAsObject.md)
- - [CreateRirResponse](docs/CreateRirResponse.md)
- - [CreateRirResponseAsObject](docs/CreateRirResponseAsObject.md)
+ - [CreateSuperhostResponse](docs/CreateSuperhostResponse.md)
+ - [CreateSuperhostResponseAsObject](docs/CreateSuperhostResponseAsObject.md)
  - [CreateVlanResponse](docs/CreateVlanResponse.md)
  - [CreateVlanResponseAsObject](docs/CreateVlanResponseAsObject.md)
  - [CreateVlanrangeResponse](docs/CreateVlanrangeResponse.md)
@@ -227,14 +203,15 @@ Class | Method | HTTP request | Description
  - [DiscoverytaskTcpPorts](docs/DiscoverytaskTcpPorts.md)
  - [DiscoverytaskVservers](docs/DiscoverytaskVservers.md)
  - [ExtAttrs](docs/ExtAttrs.md)
+ - [FuncCall](docs/FuncCall.md)
  - [GetBulkhostResponse](docs/GetBulkhostResponse.md)
  - [GetBulkhostResponseObjectAsResult](docs/GetBulkhostResponseObjectAsResult.md)
  - [GetBulkhostnametemplateResponse](docs/GetBulkhostnametemplateResponse.md)
  - [GetBulkhostnametemplateResponseObjectAsResult](docs/GetBulkhostnametemplateResponseObjectAsResult.md)
- - [GetCapacityreportResponse](docs/GetCapacityreportResponse.md)
- - [GetCapacityreportResponseObjectAsResult](docs/GetCapacityreportResponseObjectAsResult.md)
  - [GetDiscoverytaskResponse](docs/GetDiscoverytaskResponse.md)
  - [GetDiscoverytaskResponseObjectAsResult](docs/GetDiscoverytaskResponseObjectAsResult.md)
+ - [GetHostnamerewritepolicyResponse](docs/GetHostnamerewritepolicyResponse.md)
+ - [GetHostnamerewritepolicyResponseObjectAsResult](docs/GetHostnamerewritepolicyResponseObjectAsResult.md)
  - [GetIpamStatisticsResponse](docs/GetIpamStatisticsResponse.md)
  - [GetIpamStatisticsResponseObjectAsResult](docs/GetIpamStatisticsResponseObjectAsResult.md)
  - [GetIpv4addressResponse](docs/GetIpv4addressResponse.md)
@@ -247,8 +224,6 @@ Class | Method | HTTP request | Description
  - [GetIpv6networkcontainerResponseObjectAsResult](docs/GetIpv6networkcontainerResponseObjectAsResult.md)
  - [GetIpv6networktemplateResponse](docs/GetIpv6networktemplateResponse.md)
  - [GetIpv6networktemplateResponseObjectAsResult](docs/GetIpv6networktemplateResponseObjectAsResult.md)
- - [GetNatgroupResponse](docs/GetNatgroupResponse.md)
- - [GetNatgroupResponseObjectAsResult](docs/GetNatgroupResponseObjectAsResult.md)
  - [GetNetworkDiscoveryResponse](docs/GetNetworkDiscoveryResponse.md)
  - [GetNetworkDiscoveryResponseObjectAsResult](docs/GetNetworkDiscoveryResponseObjectAsResult.md)
  - [GetNetworkResponse](docs/GetNetworkResponse.md)
@@ -259,16 +234,17 @@ Class | Method | HTTP request | Description
  - [GetNetworktemplateResponseObjectAsResult](docs/GetNetworktemplateResponseObjectAsResult.md)
  - [GetNetworkviewResponse](docs/GetNetworkviewResponse.md)
  - [GetNetworkviewResponseObjectAsResult](docs/GetNetworkviewResponseObjectAsResult.md)
- - [GetRirOrganizationResponse](docs/GetRirOrganizationResponse.md)
- - [GetRirOrganizationResponseObjectAsResult](docs/GetRirOrganizationResponseObjectAsResult.md)
- - [GetRirResponse](docs/GetRirResponse.md)
- - [GetRirResponseObjectAsResult](docs/GetRirResponseObjectAsResult.md)
+ - [GetSuperhostResponse](docs/GetSuperhostResponse.md)
+ - [GetSuperhostResponseObjectAsResult](docs/GetSuperhostResponseObjectAsResult.md)
+ - [GetSuperhostchildResponse](docs/GetSuperhostchildResponse.md)
+ - [GetSuperhostchildResponseObjectAsResult](docs/GetSuperhostchildResponseObjectAsResult.md)
  - [GetVlanResponse](docs/GetVlanResponse.md)
  - [GetVlanResponseObjectAsResult](docs/GetVlanResponseObjectAsResult.md)
  - [GetVlanrangeResponse](docs/GetVlanrangeResponse.md)
  - [GetVlanrangeResponseObjectAsResult](docs/GetVlanrangeResponseObjectAsResult.md)
  - [GetVlanviewResponse](docs/GetVlanviewResponse.md)
  - [GetVlanviewResponseObjectAsResult](docs/GetVlanviewResponseObjectAsResult.md)
+ - [Hostnamerewritepolicy](docs/Hostnamerewritepolicy.md)
  - [IpamStatistics](docs/IpamStatistics.md)
  - [IpamStatisticsMsAdUserData](docs/IpamStatisticsMsAdUserData.md)
  - [Ipv4address](docs/Ipv4address.md)
@@ -320,10 +296,10 @@ Class | Method | HTTP request | Description
  - [ListBulkhostResponseObject](docs/ListBulkhostResponseObject.md)
  - [ListBulkhostnametemplateResponse](docs/ListBulkhostnametemplateResponse.md)
  - [ListBulkhostnametemplateResponseObject](docs/ListBulkhostnametemplateResponseObject.md)
- - [ListCapacityreportResponse](docs/ListCapacityreportResponse.md)
- - [ListCapacityreportResponseObject](docs/ListCapacityreportResponseObject.md)
  - [ListDiscoverytaskResponse](docs/ListDiscoverytaskResponse.md)
  - [ListDiscoverytaskResponseObject](docs/ListDiscoverytaskResponseObject.md)
+ - [ListHostnamerewritepolicyResponse](docs/ListHostnamerewritepolicyResponse.md)
+ - [ListHostnamerewritepolicyResponseObject](docs/ListHostnamerewritepolicyResponseObject.md)
  - [ListIpamStatisticsResponse](docs/ListIpamStatisticsResponse.md)
  - [ListIpamStatisticsResponseObject](docs/ListIpamStatisticsResponseObject.md)
  - [ListIpv4addressResponse](docs/ListIpv4addressResponse.md)
@@ -336,8 +312,6 @@ Class | Method | HTTP request | Description
  - [ListIpv6networkcontainerResponseObject](docs/ListIpv6networkcontainerResponseObject.md)
  - [ListIpv6networktemplateResponse](docs/ListIpv6networktemplateResponse.md)
  - [ListIpv6networktemplateResponseObject](docs/ListIpv6networktemplateResponseObject.md)
- - [ListNatgroupResponse](docs/ListNatgroupResponse.md)
- - [ListNatgroupResponseObject](docs/ListNatgroupResponseObject.md)
  - [ListNetworkDiscoveryResponse](docs/ListNetworkDiscoveryResponse.md)
  - [ListNetworkDiscoveryResponseObject](docs/ListNetworkDiscoveryResponseObject.md)
  - [ListNetworkResponse](docs/ListNetworkResponse.md)
@@ -348,17 +322,16 @@ Class | Method | HTTP request | Description
  - [ListNetworktemplateResponseObject](docs/ListNetworktemplateResponseObject.md)
  - [ListNetworkviewResponse](docs/ListNetworkviewResponse.md)
  - [ListNetworkviewResponseObject](docs/ListNetworkviewResponseObject.md)
- - [ListRirOrganizationResponse](docs/ListRirOrganizationResponse.md)
- - [ListRirOrganizationResponseObject](docs/ListRirOrganizationResponseObject.md)
- - [ListRirResponse](docs/ListRirResponse.md)
- - [ListRirResponseObject](docs/ListRirResponseObject.md)
+ - [ListSuperhostResponse](docs/ListSuperhostResponse.md)
+ - [ListSuperhostResponseObject](docs/ListSuperhostResponseObject.md)
+ - [ListSuperhostchildResponse](docs/ListSuperhostchildResponse.md)
+ - [ListSuperhostchildResponseObject](docs/ListSuperhostchildResponseObject.md)
  - [ListVlanResponse](docs/ListVlanResponse.md)
  - [ListVlanResponseObject](docs/ListVlanResponseObject.md)
  - [ListVlanrangeResponse](docs/ListVlanrangeResponse.md)
  - [ListVlanrangeResponseObject](docs/ListVlanrangeResponseObject.md)
  - [ListVlanviewResponse](docs/ListVlanviewResponse.md)
  - [ListVlanviewResponseObject](docs/ListVlanviewResponseObject.md)
- - [Natgroup](docs/Natgroup.md)
  - [Network](docs/Network.md)
  - [NetworkCloudInfo](docs/NetworkCloudInfo.md)
  - [NetworkDiscovery](docs/NetworkDiscovery.md)
@@ -370,6 +343,8 @@ Class | Method | HTTP request | Description
  - [NetworkLogicFilterRules](docs/NetworkLogicFilterRules.md)
  - [NetworkMembers](docs/NetworkMembers.md)
  - [NetworkMsAdUserData](docs/NetworkMsAdUserData.md)
+ - [NetworkNetwork](docs/NetworkNetwork.md)
+ - [NetworkNetworkOneOf](docs/NetworkNetworkOneOf.md)
  - [NetworkOptions](docs/NetworkOptions.md)
  - [NetworkPortControlBlackoutSetting](docs/NetworkPortControlBlackoutSetting.md)
  - [NetworkSubscribeSettings](docs/NetworkSubscribeSettings.md)
@@ -385,6 +360,8 @@ Class | Method | HTTP request | Description
  - [NetworkcontainerIpamTrapSettings](docs/NetworkcontainerIpamTrapSettings.md)
  - [NetworkcontainerLogicFilterRules](docs/NetworkcontainerLogicFilterRules.md)
  - [NetworkcontainerMsAdUserData](docs/NetworkcontainerMsAdUserData.md)
+ - [NetworkcontainerNetwork](docs/NetworkcontainerNetwork.md)
+ - [NetworkcontainerNetworkOneOf](docs/NetworkcontainerNetworkOneOf.md)
  - [NetworkcontainerOptions](docs/NetworkcontainerOptions.md)
  - [NetworkcontainerPortControlBlackoutSetting](docs/NetworkcontainerPortControlBlackoutSetting.md)
  - [NetworkcontainerSubscribeSettings](docs/NetworkcontainerSubscribeSettings.md)
@@ -414,16 +391,16 @@ Class | Method | HTTP request | Description
  - [NetworkviewRemoteForwardZones](docs/NetworkviewRemoteForwardZones.md)
  - [NetworkviewRemoteReverseZones](docs/NetworkviewRemoteReverseZones.md)
  - [NetworkviewcloudinfoDelegatedMember](docs/NetworkviewcloudinfoDelegatedMember.md)
- - [Rir](docs/Rir.md)
- - [RirOrganization](docs/RirOrganization.md)
+ - [Superhost](docs/Superhost.md)
+ - [Superhostchild](docs/Superhostchild.md)
  - [UpdateBulkhostResponse](docs/UpdateBulkhostResponse.md)
  - [UpdateBulkhostResponseAsObject](docs/UpdateBulkhostResponseAsObject.md)
  - [UpdateBulkhostnametemplateResponse](docs/UpdateBulkhostnametemplateResponse.md)
  - [UpdateBulkhostnametemplateResponseAsObject](docs/UpdateBulkhostnametemplateResponseAsObject.md)
- - [UpdateCapacityreportResponse](docs/UpdateCapacityreportResponse.md)
- - [UpdateCapacityreportResponseAsObject](docs/UpdateCapacityreportResponseAsObject.md)
  - [UpdateDiscoverytaskResponse](docs/UpdateDiscoverytaskResponse.md)
  - [UpdateDiscoverytaskResponseAsObject](docs/UpdateDiscoverytaskResponseAsObject.md)
+ - [UpdateHostnamerewritepolicyResponse](docs/UpdateHostnamerewritepolicyResponse.md)
+ - [UpdateHostnamerewritepolicyResponseAsObject](docs/UpdateHostnamerewritepolicyResponseAsObject.md)
  - [UpdateIpamStatisticsResponse](docs/UpdateIpamStatisticsResponse.md)
  - [UpdateIpamStatisticsResponseAsObject](docs/UpdateIpamStatisticsResponseAsObject.md)
  - [UpdateIpv4addressResponse](docs/UpdateIpv4addressResponse.md)
@@ -436,8 +413,6 @@ Class | Method | HTTP request | Description
  - [UpdateIpv6networkcontainerResponseAsObject](docs/UpdateIpv6networkcontainerResponseAsObject.md)
  - [UpdateIpv6networktemplateResponse](docs/UpdateIpv6networktemplateResponse.md)
  - [UpdateIpv6networktemplateResponseAsObject](docs/UpdateIpv6networktemplateResponseAsObject.md)
- - [UpdateNatgroupResponse](docs/UpdateNatgroupResponse.md)
- - [UpdateNatgroupResponseAsObject](docs/UpdateNatgroupResponseAsObject.md)
  - [UpdateNetworkDiscoveryResponse](docs/UpdateNetworkDiscoveryResponse.md)
  - [UpdateNetworkDiscoveryResponseAsObject](docs/UpdateNetworkDiscoveryResponseAsObject.md)
  - [UpdateNetworkResponse](docs/UpdateNetworkResponse.md)
@@ -448,10 +423,10 @@ Class | Method | HTTP request | Description
  - [UpdateNetworktemplateResponseAsObject](docs/UpdateNetworktemplateResponseAsObject.md)
  - [UpdateNetworkviewResponse](docs/UpdateNetworkviewResponse.md)
  - [UpdateNetworkviewResponseAsObject](docs/UpdateNetworkviewResponseAsObject.md)
- - [UpdateRirOrganizationResponse](docs/UpdateRirOrganizationResponse.md)
- - [UpdateRirOrganizationResponseAsObject](docs/UpdateRirOrganizationResponseAsObject.md)
- - [UpdateRirResponse](docs/UpdateRirResponse.md)
- - [UpdateRirResponseAsObject](docs/UpdateRirResponseAsObject.md)
+ - [UpdateSuperhostResponse](docs/UpdateSuperhostResponse.md)
+ - [UpdateSuperhostResponseAsObject](docs/UpdateSuperhostResponseAsObject.md)
+ - [UpdateSuperhostchildResponse](docs/UpdateSuperhostchildResponse.md)
+ - [UpdateSuperhostchildResponseAsObject](docs/UpdateSuperhostchildResponseAsObject.md)
  - [UpdateVlanResponse](docs/UpdateVlanResponse.md)
  - [UpdateVlanResponseAsObject](docs/UpdateVlanResponseAsObject.md)
  - [UpdateVlanrangeResponse](docs/UpdateVlanrangeResponse.md)

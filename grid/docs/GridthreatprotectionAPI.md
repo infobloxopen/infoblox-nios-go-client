@@ -1,18 +1,18 @@
-# GridthreatprotectionAPI
+# GridThreatprotectionAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](GridthreatprotectionAPI.md#Get) | **Get** /grid:threatprotection | Retrieve grid:threatprotection objects
-[**ReferenceGet**](GridthreatprotectionAPI.md#ReferenceGet) | **Get** /grid:threatprotection/{reference} | Get a specific grid:threatprotection object
-[**ReferencePut**](GridthreatprotectionAPI.md#ReferencePut) | **Put** /grid:threatprotection/{reference} | Update a grid:threatprotection object
+[**GridthreatprotectionGet**](GridThreatprotectionAPI.md#GridthreatprotectionGet) | **Get** /grid:threatprotection | Retrieve grid:threatprotection objects
+[**GridthreatprotectionReferenceGet**](GridThreatprotectionAPI.md#GridthreatprotectionReferenceGet) | **Get** /grid:threatprotection/{reference} | Get a specific grid:threatprotection object
+[**GridthreatprotectionReferencePut**](GridThreatprotectionAPI.md#GridthreatprotectionReferencePut) | **Put** /grid:threatprotection/{reference} | Update a grid:threatprotection object
 
 
 
-## Get
+## GridthreatprotectionGet
 
-> ListGridThreatprotectionResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridThreatprotectionResponse GridthreatprotectionGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:threatprotection objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridthreatprotectionAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.GridThreatprotectionAPI.GridthreatprotectionGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridthreatprotectionAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatprotectionAPI.GridthreatprotectionGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListGridThreatprotectionResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridthreatprotectionAPI.Get`: %v\n", resp)
+	// response from `GridthreatprotectionGet`: ListGridThreatprotectionResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridThreatprotectionAPI.GridthreatprotectionGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridthreatprotectionAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridThreatprotectionAPIGridthreatprotectionGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## GridthreatprotectionReferenceGet
 
-> GetGridThreatprotectionResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridThreatprotectionResponse GridthreatprotectionReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:threatprotection object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:threatprotection object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridthreatprotectionAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridThreatprotectionAPI.GridthreatprotectionReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridthreatprotectionAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatprotectionAPI.GridthreatprotectionReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetGridThreatprotectionResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridthreatprotectionAPI.ReferenceGet`: %v\n", resp)
+	// response from `GridthreatprotectionReferenceGet`: GetGridThreatprotectionResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridThreatprotectionAPI.GridthreatprotectionReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridthreatprotectionAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## GridthreatprotectionReferencePut
 
-> UpdateGridThreatprotectionResponse ReferencePut(ctx, reference).GridThreatprotection(gridThreatprotection).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridThreatprotectionResponse GridthreatprotectionReferencePut(ctx, reference).GridThreatprotection(gridThreatprotection).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:threatprotection object
 
@@ -180,13 +180,13 @@ func main() {
 	gridThreatprotection := *grid.NewGridThreatprotection() // GridThreatprotection | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridthreatprotectionAPI.ReferencePut(context.Background(), reference).GridThreatprotection(gridThreatprotection).Execute()
+	resp, r, err := apiClient.GridThreatprotectionAPI.GridthreatprotectionReferencePut(context.Background(), reference).GridThreatprotection(gridThreatprotection).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridthreatprotectionAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatprotectionAPI.GridthreatprotectionReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateGridThreatprotectionResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridthreatprotectionAPI.ReferencePut`: %v\n", resp)
+	// response from `GridthreatprotectionReferencePut`: UpdateGridThreatprotectionResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridThreatprotectionAPI.GridthreatprotectionReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridthreatprotectionAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridThreatprotectionAPIGridthreatprotectionReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**AuthZones** | Pointer to **[]map[string]interface{}** | List of linked auth zones. | [optional] 
+**AuthZones** | Pointer to **[]string** | List of linked auth zones. | [optional] 
 **AutoConsolidatedMonitors** | Pointer to **bool** | Flag for enabling auto managing DTC Consolidated Monitors on related DTC Pools. | [optional] 
 **Comment** | Pointer to **string** | Comment for the DTC LBDN; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the DTC LBDN is disabled or not. When this is set to False, the fixed address is enabled. | [optional] 
@@ -68,20 +68,20 @@ HasRef returns a boolean if a field has been set.
 
 ### GetAuthZones
 
-`func (o *DtcLbdn) GetAuthZones() []map[string]interface{}`
+`func (o *DtcLbdn) GetAuthZones() []string`
 
 GetAuthZones returns the AuthZones field if non-nil, zero value otherwise.
 
 ### GetAuthZonesOk
 
-`func (o *DtcLbdn) GetAuthZonesOk() (*[]map[string]interface{}, bool)`
+`func (o *DtcLbdn) GetAuthZonesOk() (*[]string, bool)`
 
 GetAuthZonesOk returns a tuple with the AuthZones field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthZones
 
-`func (o *DtcLbdn) SetAuthZones(v []map[string]interface{})`
+`func (o *DtcLbdn) SetAuthZones(v []string)`
 
 SetAuthZones sets AuthZones field to given value.
 

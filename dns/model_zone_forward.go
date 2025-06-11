@@ -44,8 +44,7 @@ type ZoneForward struct {
 	// The information for the Grid members to which you want the Infoblox appliance to forward queries for a specified domain name.
 	ForwardingServers []ZoneForwardForwardingServers `json:"forwarding_servers,omitempty"`
 	// The name of this DNS zone. For a reverse zone, this is in \"address/cidr\" format. For other zones, this is in FQDN format. This value can be in unicode format. Note that for a reverse zone, the corresponding zone_format value should be set.
-	Fqdn           *string                `json:"fqdn,omitempty"`
-	LockUnlockZone map[string]interface{} `json:"lock_unlock_zone,omitempty"`
+	Fqdn *string `json:"fqdn,omitempty"`
 	// If you enable this flag, other administrators cannot make conflicting changes. This is for administration purposes only. The zone will continue to serve DNS data even when it is locked.
 	Locked *bool `json:"locked,omitempty"`
 	// The name of a superuser or the administrator who locked this zone.
@@ -507,38 +506,6 @@ func (o *ZoneForward) HasFqdn() bool {
 // SetFqdn gets a reference to the given string and assigns it to the Fqdn field.
 func (o *ZoneForward) SetFqdn(v string) {
 	o.Fqdn = &v
-}
-
-// GetLockUnlockZone returns the LockUnlockZone field value if set, zero value otherwise.
-func (o *ZoneForward) GetLockUnlockZone() map[string]interface{} {
-	if o == nil || IsNil(o.LockUnlockZone) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.LockUnlockZone
-}
-
-// GetLockUnlockZoneOk returns a tuple with the LockUnlockZone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneForward) GetLockUnlockZoneOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.LockUnlockZone) {
-		return map[string]interface{}{}, false
-	}
-	return o.LockUnlockZone, true
-}
-
-// HasLockUnlockZone returns a boolean if a field has been set.
-func (o *ZoneForward) HasLockUnlockZone() bool {
-	if o != nil && !IsNil(o.LockUnlockZone) {
-		return true
-	}
-
-	return false
-}
-
-// SetLockUnlockZone gets a reference to the given map[string]interface{} and assigns it to the LockUnlockZone field.
-func (o *ZoneForward) SetLockUnlockZone(v map[string]interface{}) {
-	o.LockUnlockZone = v
 }
 
 // GetLocked returns the Locked field value if set, zero value otherwise.
@@ -1037,9 +1004,6 @@ func (o ZoneForward) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Fqdn) {
 		toSerialize["fqdn"] = o.Fqdn
-	}
-	if !IsNil(o.LockUnlockZone) {
-		toSerialize["lock_unlock_zone"] = o.LockUnlockZone
 	}
 	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked

@@ -1,20 +1,20 @@
-# RecordsrvAPI
+# RecordSrvAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordsrvAPI.md#Get) | **Get** /record:srv | Retrieve record:srv objects
-[**Post**](RecordsrvAPI.md#Post) | **Post** /record:srv | Create a record:srv object
-[**ReferenceDelete**](RecordsrvAPI.md#ReferenceDelete) | **Delete** /record:srv/{reference} | Delete a record:srv object
-[**ReferenceGet**](RecordsrvAPI.md#ReferenceGet) | **Get** /record:srv/{reference} | Get a specific record:srv object
-[**ReferencePut**](RecordsrvAPI.md#ReferencePut) | **Put** /record:srv/{reference} | Update a record:srv object
+[**RecordsrvGet**](RecordSrvAPI.md#RecordsrvGet) | **Get** /record:srv | Retrieve record:srv objects
+[**RecordsrvPost**](RecordSrvAPI.md#RecordsrvPost) | **Post** /record:srv | Create a record:srv object
+[**RecordsrvReferenceDelete**](RecordSrvAPI.md#RecordsrvReferenceDelete) | **Delete** /record:srv/{reference} | Delete a record:srv object
+[**RecordsrvReferenceGet**](RecordSrvAPI.md#RecordsrvReferenceGet) | **Get** /record:srv/{reference} | Get a specific record:srv object
+[**RecordsrvReferencePut**](RecordSrvAPI.md#RecordsrvReferencePut) | **Put** /record:srv/{reference} | Update a record:srv object
 
 
 
-## Get
+## RecordsrvGet
 
-> ListRecordSrvResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordSrvResponse RecordsrvGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:srv objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordsrvAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordSrvAPI.RecordsrvGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordsrvAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordSrvAPI.RecordsrvGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordSrvResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordsrvAPI.Get`: %v\n", resp)
+	// response from `RecordsrvGet`: ListRecordSrvResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordSrvAPI.RecordsrvGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordsrvAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordSrvAPIRecordsrvGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordsrvPost
 
-> CreateRecordSrvResponse Post(ctx).RecordSrv(recordSrv).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordSrvResponse RecordsrvPost(ctx).RecordSrv(recordSrv).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:srv object
 
@@ -109,13 +109,13 @@ func main() {
 	recordSrv := *dns.NewRecordSrv() // RecordSrv | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordsrvAPI.Post(context.Background()).RecordSrv(recordSrv).Execute()
+	resp, r, err := apiClient.RecordSrvAPI.RecordsrvPost(context.Background()).RecordSrv(recordSrv).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordsrvAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordSrvAPI.RecordsrvPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordSrvResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordsrvAPI.Post`: %v\n", resp)
+	// response from `RecordsrvPost`: CreateRecordSrvResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordSrvAPI.RecordsrvPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordsrvAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordSrvAPIRecordsrvPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordsrvReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordsrvReferenceDelete(ctx, reference).Execute()
 
 Delete a record:srv object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:srv object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordsrvAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordSrvAPI.RecordsrvReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordsrvAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordSrvAPI.RecordsrvReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordsrvAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordSrvAPIRecordsrvReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordsrvReferenceGet
 
-> GetRecordSrvResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordSrvResponse RecordsrvReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:srv object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:srv object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordsrvAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordSrvAPI.RecordsrvReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordsrvAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordSrvAPI.RecordsrvReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordSrvResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordsrvAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordsrvReferenceGet`: GetRecordSrvResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordSrvAPI.RecordsrvReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordsrvAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordSrvAPIRecordsrvReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordsrvReferencePut
 
-> UpdateRecordSrvResponse ReferencePut(ctx, reference).RecordSrv(recordSrv).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordSrvResponse RecordsrvReferencePut(ctx, reference).RecordSrv(recordSrv).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:srv object
 
@@ -318,13 +318,13 @@ func main() {
 	recordSrv := *dns.NewRecordSrv() // RecordSrv | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordsrvAPI.ReferencePut(context.Background(), reference).RecordSrv(recordSrv).Execute()
+	resp, r, err := apiClient.RecordSrvAPI.RecordsrvReferencePut(context.Background(), reference).RecordSrv(recordSrv).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordsrvAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordSrvAPI.RecordsrvReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordSrvResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordsrvAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordsrvReferencePut`: UpdateRecordSrvResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordSrvAPI.RecordsrvReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordsrvAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordSrvAPIRecordsrvReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

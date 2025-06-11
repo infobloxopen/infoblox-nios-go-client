@@ -1,20 +1,20 @@
-# RecordrpzaipaddressAPI
+# RecordRpzAIpaddressAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordrpzaipaddressAPI.md#Get) | **Get** /record:rpz:a:ipaddress | Retrieve record:rpz:a:ipaddress objects
-[**Post**](RecordrpzaipaddressAPI.md#Post) | **Post** /record:rpz:a:ipaddress | Create a record:rpz:a:ipaddress object
-[**ReferenceDelete**](RecordrpzaipaddressAPI.md#ReferenceDelete) | **Delete** /record:rpz:a:ipaddress/{reference} | Delete a record:rpz:a:ipaddress object
-[**ReferenceGet**](RecordrpzaipaddressAPI.md#ReferenceGet) | **Get** /record:rpz:a:ipaddress/{reference} | Get a specific record:rpz:a:ipaddress object
-[**ReferencePut**](RecordrpzaipaddressAPI.md#ReferencePut) | **Put** /record:rpz:a:ipaddress/{reference} | Update a record:rpz:a:ipaddress object
+[**RecordrpzaipaddressGet**](RecordRpzAIpaddressAPI.md#RecordrpzaipaddressGet) | **Get** /record:rpz:a:ipaddress | Retrieve record:rpz:a:ipaddress objects
+[**RecordrpzaipaddressPost**](RecordRpzAIpaddressAPI.md#RecordrpzaipaddressPost) | **Post** /record:rpz:a:ipaddress | Create a record:rpz:a:ipaddress object
+[**RecordrpzaipaddressReferenceDelete**](RecordRpzAIpaddressAPI.md#RecordrpzaipaddressReferenceDelete) | **Delete** /record:rpz:a:ipaddress/{reference} | Delete a record:rpz:a:ipaddress object
+[**RecordrpzaipaddressReferenceGet**](RecordRpzAIpaddressAPI.md#RecordrpzaipaddressReferenceGet) | **Get** /record:rpz:a:ipaddress/{reference} | Get a specific record:rpz:a:ipaddress object
+[**RecordrpzaipaddressReferencePut**](RecordRpzAIpaddressAPI.md#RecordrpzaipaddressReferencePut) | **Put** /record:rpz:a:ipaddress/{reference} | Update a record:rpz:a:ipaddress object
 
 
 
-## Get
+## RecordrpzaipaddressGet
 
-> ListRecordRpzAIpaddressResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordRpzAIpaddressResponse RecordrpzaipaddressGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:rpz:a:ipaddress objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzaipaddressAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordRpzAIpaddressAPI.RecordrpzaipaddressGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzaipaddressAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzAIpaddressAPI.RecordrpzaipaddressGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordRpzAIpaddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzaipaddressAPI.Get`: %v\n", resp)
+	// response from `RecordrpzaipaddressGet`: ListRecordRpzAIpaddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzAIpaddressAPI.RecordrpzaipaddressGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzaipaddressAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzAIpaddressAPIRecordrpzaipaddressGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordrpzaipaddressPost
 
-> CreateRecordRpzAIpaddressResponse Post(ctx).RecordRpzAIpaddress(recordRpzAIpaddress).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordRpzAIpaddressResponse RecordrpzaipaddressPost(ctx).RecordRpzAIpaddress(recordRpzAIpaddress).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:rpz:a:ipaddress object
 
@@ -109,13 +109,13 @@ func main() {
 	recordRpzAIpaddress := *rpz.NewRecordRpzAIpaddress() // RecordRpzAIpaddress | Object data to create
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzaipaddressAPI.Post(context.Background()).RecordRpzAIpaddress(recordRpzAIpaddress).Execute()
+	resp, r, err := apiClient.RecordRpzAIpaddressAPI.RecordrpzaipaddressPost(context.Background()).RecordRpzAIpaddress(recordRpzAIpaddress).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzaipaddressAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzAIpaddressAPI.RecordrpzaipaddressPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordRpzAIpaddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzaipaddressAPI.Post`: %v\n", resp)
+	// response from `RecordrpzaipaddressPost`: CreateRecordRpzAIpaddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzAIpaddressAPI.RecordrpzaipaddressPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzaipaddressAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzAIpaddressAPIRecordrpzaipaddressPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordrpzaipaddressReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordrpzaipaddressReferenceDelete(ctx, reference).Execute()
 
 Delete a record:rpz:a:ipaddress object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:rpz:a:ipaddress object
 
 	apiClient := rpz.NewAPIClient()
-	r, err := apiClient.RecordrpzaipaddressAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordRpzAIpaddressAPI.RecordrpzaipaddressReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzaipaddressAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzAIpaddressAPI.RecordrpzaipaddressReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzaipaddressAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzAIpaddressAPIRecordrpzaipaddressReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordrpzaipaddressReferenceGet
 
-> GetRecordRpzAIpaddressResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordRpzAIpaddressResponse RecordrpzaipaddressReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:rpz:a:ipaddress object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:rpz:a:ipaddress object
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzaipaddressAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordRpzAIpaddressAPI.RecordrpzaipaddressReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzaipaddressAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzAIpaddressAPI.RecordrpzaipaddressReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordRpzAIpaddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzaipaddressAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordrpzaipaddressReferenceGet`: GetRecordRpzAIpaddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzAIpaddressAPI.RecordrpzaipaddressReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzaipaddressAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzAIpaddressAPIRecordrpzaipaddressReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordrpzaipaddressReferencePut
 
-> UpdateRecordRpzAIpaddressResponse ReferencePut(ctx, reference).RecordRpzAIpaddress(recordRpzAIpaddress).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordRpzAIpaddressResponse RecordrpzaipaddressReferencePut(ctx, reference).RecordRpzAIpaddress(recordRpzAIpaddress).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:rpz:a:ipaddress object
 
@@ -318,13 +318,13 @@ func main() {
 	recordRpzAIpaddress := *rpz.NewRecordRpzAIpaddress() // RecordRpzAIpaddress | Object data to update
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzaipaddressAPI.ReferencePut(context.Background(), reference).RecordRpzAIpaddress(recordRpzAIpaddress).Execute()
+	resp, r, err := apiClient.RecordRpzAIpaddressAPI.RecordrpzaipaddressReferencePut(context.Background(), reference).RecordRpzAIpaddress(recordRpzAIpaddress).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzaipaddressAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzAIpaddressAPI.RecordrpzaipaddressReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordRpzAIpaddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzaipaddressAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordrpzaipaddressReferencePut`: UpdateRecordRpzAIpaddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzAIpaddressAPI.RecordrpzaipaddressReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzaipaddressAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzAIpaddressAPIRecordrpzaipaddressReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

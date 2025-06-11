@@ -55,7 +55,7 @@ type Ipv6networkcontainer struct {
 	// Determines if the discovery for the network container should be immediately enabled.
 	EnableImmediateDiscovery *bool `json:"enable_immediate_discovery,omitempty"`
 	// The endpoints that provides data for the DHCP IPv6 Network Container.
-	EndpointSources []map[string]interface{} `json:"endpoint_sources,omitempty"`
+	EndpointSources []string `json:"endpoint_sources,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// This field contains the federated realms associated to this network container.
@@ -76,8 +76,7 @@ type Ipv6networkcontainer struct {
 	// The network container to which this network belongs, if any.
 	NetworkContainer *string `json:"network_container,omitempty"`
 	// The name of the network view in which this network resides.
-	NetworkView          *string                `json:"network_view,omitempty"`
-	NextAvailableNetwork map[string]interface{} `json:"next_available_network,omitempty"`
+	NetworkView *string `json:"network_view,omitempty"`
 	// An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object.
 	Options                    []Ipv6networkcontainerOptions                   `json:"options,omitempty"`
 	PortControlBlackoutSetting *Ipv6networkcontainerPortControlBlackoutSetting `json:"port_control_blackout_setting,omitempty"`
@@ -772,9 +771,9 @@ func (o *Ipv6networkcontainer) SetEnableImmediateDiscovery(v bool) {
 }
 
 // GetEndpointSources returns the EndpointSources field value if set, zero value otherwise.
-func (o *Ipv6networkcontainer) GetEndpointSources() []map[string]interface{} {
+func (o *Ipv6networkcontainer) GetEndpointSources() []string {
 	if o == nil || IsNil(o.EndpointSources) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.EndpointSources
@@ -782,7 +781,7 @@ func (o *Ipv6networkcontainer) GetEndpointSources() []map[string]interface{} {
 
 // GetEndpointSourcesOk returns a tuple with the EndpointSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6networkcontainer) GetEndpointSourcesOk() ([]map[string]interface{}, bool) {
+func (o *Ipv6networkcontainer) GetEndpointSourcesOk() ([]string, bool) {
 	if o == nil || IsNil(o.EndpointSources) {
 		return nil, false
 	}
@@ -798,8 +797,8 @@ func (o *Ipv6networkcontainer) HasEndpointSources() bool {
 	return false
 }
 
-// SetEndpointSources gets a reference to the given []map[string]interface{} and assigns it to the EndpointSources field.
-func (o *Ipv6networkcontainer) SetEndpointSources(v []map[string]interface{}) {
+// SetEndpointSources gets a reference to the given []string and assigns it to the EndpointSources field.
+func (o *Ipv6networkcontainer) SetEndpointSources(v []string) {
 	o.EndpointSources = v
 }
 
@@ -1153,38 +1152,6 @@ func (o *Ipv6networkcontainer) HasNetworkView() bool {
 // SetNetworkView gets a reference to the given string and assigns it to the NetworkView field.
 func (o *Ipv6networkcontainer) SetNetworkView(v string) {
 	o.NetworkView = &v
-}
-
-// GetNextAvailableNetwork returns the NextAvailableNetwork field value if set, zero value otherwise.
-func (o *Ipv6networkcontainer) GetNextAvailableNetwork() map[string]interface{} {
-	if o == nil || IsNil(o.NextAvailableNetwork) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NextAvailableNetwork
-}
-
-// GetNextAvailableNetworkOk returns a tuple with the NextAvailableNetwork field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Ipv6networkcontainer) GetNextAvailableNetworkOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NextAvailableNetwork) {
-		return map[string]interface{}{}, false
-	}
-	return o.NextAvailableNetwork, true
-}
-
-// HasNextAvailableNetwork returns a boolean if a field has been set.
-func (o *Ipv6networkcontainer) HasNextAvailableNetwork() bool {
-	if o != nil && !IsNil(o.NextAvailableNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetNextAvailableNetwork gets a reference to the given map[string]interface{} and assigns it to the NextAvailableNetwork field.
-func (o *Ipv6networkcontainer) SetNextAvailableNetwork(v map[string]interface{}) {
-	o.NextAvailableNetwork = v
 }
 
 // GetOptions returns the Options field value if set, zero value otherwise.
@@ -2377,9 +2344,6 @@ func (o Ipv6networkcontainer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
-	}
-	if !IsNil(o.NextAvailableNetwork) {
-		toSerialize["next_available_network"] = o.NextAvailableNetwork
 	}
 	if !IsNil(o.Options) {
 		toSerialize["options"] = o.Options

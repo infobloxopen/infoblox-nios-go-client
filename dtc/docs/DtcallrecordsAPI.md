@@ -1,18 +1,18 @@
-# DtcallrecordsAPI
+# DtcAllrecordsAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcallrecordsAPI.md#Get) | **Get** /dtc:allrecords | Retrieve dtc:allrecords objects
-[**ReferenceGet**](DtcallrecordsAPI.md#ReferenceGet) | **Get** /dtc:allrecords/{reference} | Get a specific dtc:allrecords object
-[**ReferencePut**](DtcallrecordsAPI.md#ReferencePut) | **Put** /dtc:allrecords/{reference} | Update a dtc:allrecords object
+[**DtcallrecordsGet**](DtcAllrecordsAPI.md#DtcallrecordsGet) | **Get** /dtc:allrecords | Retrieve dtc:allrecords objects
+[**DtcallrecordsReferenceGet**](DtcAllrecordsAPI.md#DtcallrecordsReferenceGet) | **Get** /dtc:allrecords/{reference} | Get a specific dtc:allrecords object
+[**DtcallrecordsReferencePut**](DtcAllrecordsAPI.md#DtcallrecordsReferencePut) | **Put** /dtc:allrecords/{reference} | Update a dtc:allrecords object
 
 
 
-## Get
+## DtcallrecordsGet
 
-> ListDtcAllrecordsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcAllrecordsResponse DtcallrecordsGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:allrecords objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcallrecordsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcAllrecordsAPI.DtcallrecordsGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcallrecordsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcAllrecordsAPI.DtcallrecordsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcAllrecordsResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcallrecordsAPI.Get`: %v\n", resp)
+	// response from `DtcallrecordsGet`: ListDtcAllrecordsResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcAllrecordsAPI.DtcallrecordsGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcallrecordsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcAllrecordsAPIDtcallrecordsGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtcallrecordsReferenceGet
 
-> GetDtcAllrecordsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcAllrecordsResponse DtcallrecordsReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:allrecords object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:allrecords object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcallrecordsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcAllrecordsAPI.DtcallrecordsReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcallrecordsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcAllrecordsAPI.DtcallrecordsReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcAllrecordsResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcallrecordsAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtcallrecordsReferenceGet`: GetDtcAllrecordsResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcAllrecordsAPI.DtcallrecordsReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcallrecordsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcAllrecordsAPIDtcallrecordsReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtcallrecordsReferencePut
 
-> UpdateDtcAllrecordsResponse ReferencePut(ctx, reference).DtcAllrecords(dtcAllrecords).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcAllrecordsResponse DtcallrecordsReferencePut(ctx, reference).DtcAllrecords(dtcAllrecords).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:allrecords object
 
@@ -180,13 +180,13 @@ func main() {
 	dtcAllrecords := *dtc.NewDtcAllrecords() // DtcAllrecords | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcallrecordsAPI.ReferencePut(context.Background(), reference).DtcAllrecords(dtcAllrecords).Execute()
+	resp, r, err := apiClient.DtcAllrecordsAPI.DtcallrecordsReferencePut(context.Background(), reference).DtcAllrecords(dtcAllrecords).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcallrecordsAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcAllrecordsAPI.DtcallrecordsReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcAllrecordsResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcallrecordsAPI.ReferencePut`: %v\n", resp)
+	// response from `DtcallrecordsReferencePut`: UpdateDtcAllrecordsResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcAllrecordsAPI.DtcallrecordsReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcallrecordsAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcAllrecordsAPIDtcallrecordsReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

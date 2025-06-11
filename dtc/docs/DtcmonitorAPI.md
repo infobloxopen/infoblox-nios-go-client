@@ -1,18 +1,18 @@
-# DtcmonitorAPI
+# DtcMonitorAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcmonitorAPI.md#Get) | **Get** /dtc:monitor | Retrieve dtc:monitor objects
-[**ReferenceGet**](DtcmonitorAPI.md#ReferenceGet) | **Get** /dtc:monitor/{reference} | Get a specific dtc:monitor object
-[**ReferencePut**](DtcmonitorAPI.md#ReferencePut) | **Put** /dtc:monitor/{reference} | Update a dtc:monitor object
+[**DtcmonitorGet**](DtcMonitorAPI.md#DtcmonitorGet) | **Get** /dtc:monitor | Retrieve dtc:monitor objects
+[**DtcmonitorReferenceGet**](DtcMonitorAPI.md#DtcmonitorReferenceGet) | **Get** /dtc:monitor/{reference} | Get a specific dtc:monitor object
+[**DtcmonitorReferencePut**](DtcMonitorAPI.md#DtcmonitorReferencePut) | **Put** /dtc:monitor/{reference} | Update a dtc:monitor object
 
 
 
-## Get
+## DtcmonitorGet
 
-> ListDtcMonitorResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcMonitorResponse DtcmonitorGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:monitor objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcMonitorAPI.DtcmonitorGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorAPI.DtcmonitorGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcMonitorResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorAPI.Get`: %v\n", resp)
+	// response from `DtcmonitorGet`: ListDtcMonitorResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorAPI.DtcmonitorGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorAPIDtcmonitorGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtcmonitorReferenceGet
 
-> GetDtcMonitorResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcMonitorResponse DtcmonitorReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:monitor object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:monitor object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcMonitorAPI.DtcmonitorReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorAPI.DtcmonitorReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcMonitorResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtcmonitorReferenceGet`: GetDtcMonitorResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorAPI.DtcmonitorReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorAPIDtcmonitorReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtcmonitorReferencePut
 
-> UpdateDtcMonitorResponse ReferencePut(ctx, reference).DtcMonitor(dtcMonitor).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcMonitorResponse DtcmonitorReferencePut(ctx, reference).DtcMonitor(dtcMonitor).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:monitor object
 
@@ -180,13 +180,13 @@ func main() {
 	dtcMonitor := *dtc.NewDtcMonitor() // DtcMonitor | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorAPI.ReferencePut(context.Background(), reference).DtcMonitor(dtcMonitor).Execute()
+	resp, r, err := apiClient.DtcMonitorAPI.DtcmonitorReferencePut(context.Background(), reference).DtcMonitor(dtcMonitor).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorAPI.DtcmonitorReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcMonitorResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorAPI.ReferencePut`: %v\n", resp)
+	// response from `DtcmonitorReferencePut`: UpdateDtcMonitorResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorAPI.DtcmonitorReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorAPIDtcmonitorReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

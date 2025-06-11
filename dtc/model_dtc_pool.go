@@ -45,7 +45,7 @@ type DtcPool struct {
 	// The preferred topology for load balancing.
 	LbPreferredTopology *string `json:"lb_preferred_topology,omitempty"`
 	// The monitors related to pool.
-	Monitors []map[string]interface{} `json:"monitors,omitempty"`
+	Monitors []string `json:"monitors,omitempty"`
 	// The DTC Pool display name.
 	Name *string `json:"name,omitempty"`
 	// For availability mode QUORUM, at least this many monitors must report the resource as up for it to be available
@@ -524,9 +524,9 @@ func (o *DtcPool) SetLbPreferredTopology(v string) {
 }
 
 // GetMonitors returns the Monitors field value if set, zero value otherwise.
-func (o *DtcPool) GetMonitors() []map[string]interface{} {
+func (o *DtcPool) GetMonitors() []string {
 	if o == nil || IsNil(o.Monitors) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Monitors
@@ -534,7 +534,7 @@ func (o *DtcPool) GetMonitors() []map[string]interface{} {
 
 // GetMonitorsOk returns a tuple with the Monitors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcPool) GetMonitorsOk() ([]map[string]interface{}, bool) {
+func (o *DtcPool) GetMonitorsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Monitors) {
 		return nil, false
 	}
@@ -550,8 +550,8 @@ func (o *DtcPool) HasMonitors() bool {
 	return false
 }
 
-// SetMonitors gets a reference to the given []map[string]interface{} and assigns it to the Monitors field.
-func (o *DtcPool) SetMonitors(v []map[string]interface{}) {
+// SetMonitors gets a reference to the given []string and assigns it to the Monitors field.
+func (o *DtcPool) SetMonitors(v []string) {
 	o.Monitors = v
 }
 

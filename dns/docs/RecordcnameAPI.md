@@ -1,20 +1,20 @@
-# RecordcnameAPI
+# RecordCnameAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordcnameAPI.md#Get) | **Get** /record:cname | Retrieve record:cname objects
-[**Post**](RecordcnameAPI.md#Post) | **Post** /record:cname | Create a record:cname object
-[**ReferenceDelete**](RecordcnameAPI.md#ReferenceDelete) | **Delete** /record:cname/{reference} | Delete a record:cname object
-[**ReferenceGet**](RecordcnameAPI.md#ReferenceGet) | **Get** /record:cname/{reference} | Get a specific record:cname object
-[**ReferencePut**](RecordcnameAPI.md#ReferencePut) | **Put** /record:cname/{reference} | Update a record:cname object
+[**RecordcnameGet**](RecordCnameAPI.md#RecordcnameGet) | **Get** /record:cname | Retrieve record:cname objects
+[**RecordcnamePost**](RecordCnameAPI.md#RecordcnamePost) | **Post** /record:cname | Create a record:cname object
+[**RecordcnameReferenceDelete**](RecordCnameAPI.md#RecordcnameReferenceDelete) | **Delete** /record:cname/{reference} | Delete a record:cname object
+[**RecordcnameReferenceGet**](RecordCnameAPI.md#RecordcnameReferenceGet) | **Get** /record:cname/{reference} | Get a specific record:cname object
+[**RecordcnameReferencePut**](RecordCnameAPI.md#RecordcnameReferencePut) | **Put** /record:cname/{reference} | Update a record:cname object
 
 
 
-## Get
+## RecordcnameGet
 
-> ListRecordCnameResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordCnameResponse RecordcnameGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:cname objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcnameAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordCnameAPI.RecordcnameGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcnameAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCnameAPI.RecordcnameGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcnameAPI.Get`: %v\n", resp)
+	// response from `RecordcnameGet`: ListRecordCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCnameAPI.RecordcnameGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcnameAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCnameAPIRecordcnameGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordcnamePost
 
-> CreateRecordCnameResponse Post(ctx).RecordCname(recordCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordCnameResponse RecordcnamePost(ctx).RecordCname(recordCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:cname object
 
@@ -109,13 +109,13 @@ func main() {
 	recordCname := *dns.NewRecordCname() // RecordCname | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcnameAPI.Post(context.Background()).RecordCname(recordCname).Execute()
+	resp, r, err := apiClient.RecordCnameAPI.RecordcnamePost(context.Background()).RecordCname(recordCname).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcnameAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCnameAPI.RecordcnamePost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcnameAPI.Post`: %v\n", resp)
+	// response from `RecordcnamePost`: CreateRecordCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCnameAPI.RecordcnamePost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcnameAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCnameAPIRecordcnamePostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordcnameReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordcnameReferenceDelete(ctx, reference).Execute()
 
 Delete a record:cname object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:cname object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordcnameAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordCnameAPI.RecordcnameReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcnameAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCnameAPI.RecordcnameReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcnameAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCnameAPIRecordcnameReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordcnameReferenceGet
 
-> GetRecordCnameResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordCnameResponse RecordcnameReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:cname object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:cname object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcnameAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordCnameAPI.RecordcnameReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcnameAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCnameAPI.RecordcnameReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcnameAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordcnameReferenceGet`: GetRecordCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCnameAPI.RecordcnameReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcnameAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCnameAPIRecordcnameReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordcnameReferencePut
 
-> UpdateRecordCnameResponse ReferencePut(ctx, reference).RecordCname(recordCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordCnameResponse RecordcnameReferencePut(ctx, reference).RecordCname(recordCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:cname object
 
@@ -318,13 +318,13 @@ func main() {
 	recordCname := *dns.NewRecordCname() // RecordCname | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcnameAPI.ReferencePut(context.Background(), reference).RecordCname(recordCname).Execute()
+	resp, r, err := apiClient.RecordCnameAPI.RecordcnameReferencePut(context.Background(), reference).RecordCname(recordCname).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcnameAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCnameAPI.RecordcnameReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcnameAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordcnameReferencePut`: UpdateRecordCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCnameAPI.RecordcnameReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcnameAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCnameAPIRecordcnameReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -1,20 +1,20 @@
-# RecordtxtAPI
+# RecordTxtAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordtxtAPI.md#Get) | **Get** /record:txt | Retrieve record:txt objects
-[**Post**](RecordtxtAPI.md#Post) | **Post** /record:txt | Create a record:txt object
-[**ReferenceDelete**](RecordtxtAPI.md#ReferenceDelete) | **Delete** /record:txt/{reference} | Delete a record:txt object
-[**ReferenceGet**](RecordtxtAPI.md#ReferenceGet) | **Get** /record:txt/{reference} | Get a specific record:txt object
-[**ReferencePut**](RecordtxtAPI.md#ReferencePut) | **Put** /record:txt/{reference} | Update a record:txt object
+[**RecordtxtGet**](RecordTxtAPI.md#RecordtxtGet) | **Get** /record:txt | Retrieve record:txt objects
+[**RecordtxtPost**](RecordTxtAPI.md#RecordtxtPost) | **Post** /record:txt | Create a record:txt object
+[**RecordtxtReferenceDelete**](RecordTxtAPI.md#RecordtxtReferenceDelete) | **Delete** /record:txt/{reference} | Delete a record:txt object
+[**RecordtxtReferenceGet**](RecordTxtAPI.md#RecordtxtReferenceGet) | **Get** /record:txt/{reference} | Get a specific record:txt object
+[**RecordtxtReferencePut**](RecordTxtAPI.md#RecordtxtReferencePut) | **Put** /record:txt/{reference} | Update a record:txt object
 
 
 
-## Get
+## RecordtxtGet
 
-> ListRecordTxtResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordTxtResponse RecordtxtGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:txt objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordtxtAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordTxtAPI.RecordtxtGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordtxtAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordTxtAPI.RecordtxtGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordTxtResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordtxtAPI.Get`: %v\n", resp)
+	// response from `RecordtxtGet`: ListRecordTxtResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordTxtAPI.RecordtxtGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordtxtAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordTxtAPIRecordtxtGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordtxtPost
 
-> CreateRecordTxtResponse Post(ctx).RecordTxt(recordTxt).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordTxtResponse RecordtxtPost(ctx).RecordTxt(recordTxt).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:txt object
 
@@ -109,13 +109,13 @@ func main() {
 	recordTxt := *dns.NewRecordTxt() // RecordTxt | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordtxtAPI.Post(context.Background()).RecordTxt(recordTxt).Execute()
+	resp, r, err := apiClient.RecordTxtAPI.RecordtxtPost(context.Background()).RecordTxt(recordTxt).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordtxtAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordTxtAPI.RecordtxtPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordTxtResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordtxtAPI.Post`: %v\n", resp)
+	// response from `RecordtxtPost`: CreateRecordTxtResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordTxtAPI.RecordtxtPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordtxtAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordTxtAPIRecordtxtPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordtxtReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordtxtReferenceDelete(ctx, reference).Execute()
 
 Delete a record:txt object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:txt object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordtxtAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordTxtAPI.RecordtxtReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordtxtAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordTxtAPI.RecordtxtReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordtxtAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordTxtAPIRecordtxtReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordtxtReferenceGet
 
-> GetRecordTxtResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordTxtResponse RecordtxtReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:txt object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:txt object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordtxtAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordTxtAPI.RecordtxtReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordtxtAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordTxtAPI.RecordtxtReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordTxtResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordtxtAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordtxtReferenceGet`: GetRecordTxtResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordTxtAPI.RecordtxtReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordtxtAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordTxtAPIRecordtxtReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordtxtReferencePut
 
-> UpdateRecordTxtResponse ReferencePut(ctx, reference).RecordTxt(recordTxt).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordTxtResponse RecordtxtReferencePut(ctx, reference).RecordTxt(recordTxt).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:txt object
 
@@ -318,13 +318,13 @@ func main() {
 	recordTxt := *dns.NewRecordTxt() // RecordTxt | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordtxtAPI.ReferencePut(context.Background(), reference).RecordTxt(recordTxt).Execute()
+	resp, r, err := apiClient.RecordTxtAPI.RecordtxtReferencePut(context.Background(), reference).RecordTxt(recordTxt).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordtxtAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordTxtAPI.RecordtxtReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordTxtResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordtxtAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordtxtReferencePut`: UpdateRecordTxtResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordTxtAPI.RecordtxtReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordtxtAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordTxtAPIRecordtxtReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

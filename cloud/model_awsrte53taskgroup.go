@@ -50,8 +50,7 @@ type Awsrte53taskgroup struct {
 	// Synchronizing child accounts is enabled or disabled.
 	SyncChildAccounts *bool `json:"sync_child_accounts,omitempty"`
 	// Indicate the overall sync status of this task group.
-	SyncStatus  *string                `json:"sync_status,omitempty"`
-	TaskControl map[string]interface{} `json:"task_control,omitempty"`
+	SyncStatus *string `json:"sync_status,omitempty"`
 	// List of AWS Route53 tasks in this group.
 	TaskList []Awsrte53taskgroupTaskList `json:"task_list,omitempty"`
 }
@@ -585,38 +584,6 @@ func (o *Awsrte53taskgroup) SetSyncStatus(v string) {
 	o.SyncStatus = &v
 }
 
-// GetTaskControl returns the TaskControl field value if set, zero value otherwise.
-func (o *Awsrte53taskgroup) GetTaskControl() map[string]interface{} {
-	if o == nil || IsNil(o.TaskControl) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.TaskControl
-}
-
-// GetTaskControlOk returns a tuple with the TaskControl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Awsrte53taskgroup) GetTaskControlOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.TaskControl) {
-		return map[string]interface{}{}, false
-	}
-	return o.TaskControl, true
-}
-
-// HasTaskControl returns a boolean if a field has been set.
-func (o *Awsrte53taskgroup) HasTaskControl() bool {
-	if o != nil && !IsNil(o.TaskControl) {
-		return true
-	}
-
-	return false
-}
-
-// SetTaskControl gets a reference to the given map[string]interface{} and assigns it to the TaskControl field.
-func (o *Awsrte53taskgroup) SetTaskControl(v map[string]interface{}) {
-	o.TaskControl = v
-}
-
 // GetTaskList returns the TaskList field value if set, zero value otherwise.
 func (o *Awsrte53taskgroup) GetTaskList() []Awsrte53taskgroupTaskList {
 	if o == nil || IsNil(o.TaskList) {
@@ -706,9 +673,6 @@ func (o Awsrte53taskgroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SyncStatus) {
 		toSerialize["sync_status"] = o.SyncStatus
-	}
-	if !IsNil(o.TaskControl) {
-		toSerialize["task_control"] = o.TaskControl
 	}
 	if !IsNil(o.TaskList) {
 		toSerialize["task_list"] = o.TaskList

@@ -1,20 +1,20 @@
-# RecordaAPI
+# RecordAAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordaAPI.md#Get) | **Get** /record:a | Retrieve record:a objects
-[**Post**](RecordaAPI.md#Post) | **Post** /record:a | Create a record:a object
-[**ReferenceDelete**](RecordaAPI.md#ReferenceDelete) | **Delete** /record:a/{reference} | Delete a record:a object
-[**ReferenceGet**](RecordaAPI.md#ReferenceGet) | **Get** /record:a/{reference} | Get a specific record:a object
-[**ReferencePut**](RecordaAPI.md#ReferencePut) | **Put** /record:a/{reference} | Update a record:a object
+[**RecordaGet**](RecordAAPI.md#RecordaGet) | **Get** /record:a | Retrieve record:a objects
+[**RecordaPost**](RecordAAPI.md#RecordaPost) | **Post** /record:a | Create a record:a object
+[**RecordaReferenceDelete**](RecordAAPI.md#RecordaReferenceDelete) | **Delete** /record:a/{reference} | Delete a record:a object
+[**RecordaReferenceGet**](RecordAAPI.md#RecordaReferenceGet) | **Get** /record:a/{reference} | Get a specific record:a object
+[**RecordaReferencePut**](RecordAAPI.md#RecordaReferencePut) | **Put** /record:a/{reference} | Update a record:a object
 
 
 
-## Get
+## RecordaGet
 
-> ListRecordAResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordAResponse RecordaGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:a objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordaAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordAAPI.RecordaGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordaAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordAAPI.RecordaGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordAResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordaAPI.Get`: %v\n", resp)
+	// response from `RecordaGet`: ListRecordAResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordAAPI.RecordaGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordaAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordAAPIRecordaGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordaPost
 
-> CreateRecordAResponse Post(ctx).RecordA(recordA).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordAResponse RecordaPost(ctx).RecordA(recordA).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:a object
 
@@ -109,13 +109,13 @@ func main() {
 	recordA := *dns.NewRecordA() // RecordA | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordaAPI.Post(context.Background()).RecordA(recordA).Execute()
+	resp, r, err := apiClient.RecordAAPI.RecordaPost(context.Background()).RecordA(recordA).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordaAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordAAPI.RecordaPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordAResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordaAPI.Post`: %v\n", resp)
+	// response from `RecordaPost`: CreateRecordAResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordAAPI.RecordaPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordaAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordAAPIRecordaPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordaReferenceDelete
 
-> ReferenceDelete(ctx, reference).RemoveAssociatedPtr(removeAssociatedPtr).Execute()
+> RecordaReferenceDelete(ctx, reference).RemoveAssociatedPtr(removeAssociatedPtr).Execute()
 
 Delete a record:a object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:a object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordaAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordAAPI.RecordaReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordaAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordAAPI.RecordaReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordaAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordAAPIRecordaReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -221,9 +221,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordaReferenceGet
 
-> GetRecordAResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordAResponse RecordaReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:a object
 
@@ -246,13 +246,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:a object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordaAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordAAPI.RecordaReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordaAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordAAPI.RecordaReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordAResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordaAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordaReferenceGet`: GetRecordAResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordAAPI.RecordaReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordaAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordAAPIRecordaReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -293,9 +293,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordaReferencePut
 
-> UpdateRecordAResponse ReferencePut(ctx, reference).RecordA(recordA).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordAResponse RecordaReferencePut(ctx, reference).RecordA(recordA).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:a object
 
@@ -319,13 +319,13 @@ func main() {
 	recordA := *dns.NewRecordA() // RecordA | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordaAPI.ReferencePut(context.Background(), reference).RecordA(recordA).Execute()
+	resp, r, err := apiClient.RecordAAPI.RecordaReferencePut(context.Background(), reference).RecordA(recordA).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordaAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordAAPI.RecordaReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordAResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordaAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordaReferencePut`: UpdateRecordAResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordAAPI.RecordaReferencePut`: %v\n", resp)
 }
 ```
 
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordaAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordAAPIRecordaReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -1,20 +1,20 @@
-# RecordrpzaaaaAPI
+# RecordRpzAaaaAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordrpzaaaaAPI.md#Get) | **Get** /record:rpz:aaaa | Retrieve record:rpz:aaaa objects
-[**Post**](RecordrpzaaaaAPI.md#Post) | **Post** /record:rpz:aaaa | Create a record:rpz:aaaa object
-[**ReferenceDelete**](RecordrpzaaaaAPI.md#ReferenceDelete) | **Delete** /record:rpz:aaaa/{reference} | Delete a record:rpz:aaaa object
-[**ReferenceGet**](RecordrpzaaaaAPI.md#ReferenceGet) | **Get** /record:rpz:aaaa/{reference} | Get a specific record:rpz:aaaa object
-[**ReferencePut**](RecordrpzaaaaAPI.md#ReferencePut) | **Put** /record:rpz:aaaa/{reference} | Update a record:rpz:aaaa object
+[**RecordrpzaaaaGet**](RecordRpzAaaaAPI.md#RecordrpzaaaaGet) | **Get** /record:rpz:aaaa | Retrieve record:rpz:aaaa objects
+[**RecordrpzaaaaPost**](RecordRpzAaaaAPI.md#RecordrpzaaaaPost) | **Post** /record:rpz:aaaa | Create a record:rpz:aaaa object
+[**RecordrpzaaaaReferenceDelete**](RecordRpzAaaaAPI.md#RecordrpzaaaaReferenceDelete) | **Delete** /record:rpz:aaaa/{reference} | Delete a record:rpz:aaaa object
+[**RecordrpzaaaaReferenceGet**](RecordRpzAaaaAPI.md#RecordrpzaaaaReferenceGet) | **Get** /record:rpz:aaaa/{reference} | Get a specific record:rpz:aaaa object
+[**RecordrpzaaaaReferencePut**](RecordRpzAaaaAPI.md#RecordrpzaaaaReferencePut) | **Put** /record:rpz:aaaa/{reference} | Update a record:rpz:aaaa object
 
 
 
-## Get
+## RecordrpzaaaaGet
 
-> ListRecordRpzAaaaResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordRpzAaaaResponse RecordrpzaaaaGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:rpz:aaaa objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzaaaaAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordRpzAaaaAPI.RecordrpzaaaaGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzaaaaAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzAaaaAPI.RecordrpzaaaaGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordRpzAaaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzaaaaAPI.Get`: %v\n", resp)
+	// response from `RecordrpzaaaaGet`: ListRecordRpzAaaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzAaaaAPI.RecordrpzaaaaGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzaaaaAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzAaaaAPIRecordrpzaaaaGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordrpzaaaaPost
 
-> CreateRecordRpzAaaaResponse Post(ctx).RecordRpzAaaa(recordRpzAaaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordRpzAaaaResponse RecordrpzaaaaPost(ctx).RecordRpzAaaa(recordRpzAaaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:rpz:aaaa object
 
@@ -109,13 +109,13 @@ func main() {
 	recordRpzAaaa := *rpz.NewRecordRpzAaaa() // RecordRpzAaaa | Object data to create
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzaaaaAPI.Post(context.Background()).RecordRpzAaaa(recordRpzAaaa).Execute()
+	resp, r, err := apiClient.RecordRpzAaaaAPI.RecordrpzaaaaPost(context.Background()).RecordRpzAaaa(recordRpzAaaa).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzaaaaAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzAaaaAPI.RecordrpzaaaaPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordRpzAaaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzaaaaAPI.Post`: %v\n", resp)
+	// response from `RecordrpzaaaaPost`: CreateRecordRpzAaaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzAaaaAPI.RecordrpzaaaaPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzaaaaAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzAaaaAPIRecordrpzaaaaPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordrpzaaaaReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordrpzaaaaReferenceDelete(ctx, reference).Execute()
 
 Delete a record:rpz:aaaa object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:rpz:aaaa object
 
 	apiClient := rpz.NewAPIClient()
-	r, err := apiClient.RecordrpzaaaaAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordRpzAaaaAPI.RecordrpzaaaaReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzaaaaAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzAaaaAPI.RecordrpzaaaaReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzaaaaAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzAaaaAPIRecordrpzaaaaReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordrpzaaaaReferenceGet
 
-> GetRecordRpzAaaaResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordRpzAaaaResponse RecordrpzaaaaReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:rpz:aaaa object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:rpz:aaaa object
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzaaaaAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordRpzAaaaAPI.RecordrpzaaaaReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzaaaaAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzAaaaAPI.RecordrpzaaaaReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordRpzAaaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzaaaaAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordrpzaaaaReferenceGet`: GetRecordRpzAaaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzAaaaAPI.RecordrpzaaaaReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzaaaaAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzAaaaAPIRecordrpzaaaaReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordrpzaaaaReferencePut
 
-> UpdateRecordRpzAaaaResponse ReferencePut(ctx, reference).RecordRpzAaaa(recordRpzAaaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordRpzAaaaResponse RecordrpzaaaaReferencePut(ctx, reference).RecordRpzAaaa(recordRpzAaaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:rpz:aaaa object
 
@@ -318,13 +318,13 @@ func main() {
 	recordRpzAaaa := *rpz.NewRecordRpzAaaa() // RecordRpzAaaa | Object data to update
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzaaaaAPI.ReferencePut(context.Background(), reference).RecordRpzAaaa(recordRpzAaaa).Execute()
+	resp, r, err := apiClient.RecordRpzAaaaAPI.RecordrpzaaaaReferencePut(context.Background(), reference).RecordRpzAaaa(recordRpzAaaa).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzaaaaAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzAaaaAPI.RecordrpzaaaaReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordRpzAaaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzaaaaAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordrpzaaaaReferencePut`: UpdateRecordRpzAaaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzAaaaAPI.RecordrpzaaaaReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzaaaaAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzAaaaAPIRecordrpzaaaaReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

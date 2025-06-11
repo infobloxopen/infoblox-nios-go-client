@@ -1,20 +1,20 @@
-# DtcmonitorsnmpAPI
+# DtcMonitorSnmpAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcmonitorsnmpAPI.md#Get) | **Get** /dtc:monitor:snmp | Retrieve dtc:monitor:snmp objects
-[**Post**](DtcmonitorsnmpAPI.md#Post) | **Post** /dtc:monitor:snmp | Create a dtc:monitor:snmp object
-[**ReferenceDelete**](DtcmonitorsnmpAPI.md#ReferenceDelete) | **Delete** /dtc:monitor:snmp/{reference} | Delete a dtc:monitor:snmp object
-[**ReferenceGet**](DtcmonitorsnmpAPI.md#ReferenceGet) | **Get** /dtc:monitor:snmp/{reference} | Get a specific dtc:monitor:snmp object
-[**ReferencePut**](DtcmonitorsnmpAPI.md#ReferencePut) | **Put** /dtc:monitor:snmp/{reference} | Update a dtc:monitor:snmp object
+[**DtcmonitorsnmpGet**](DtcMonitorSnmpAPI.md#DtcmonitorsnmpGet) | **Get** /dtc:monitor:snmp | Retrieve dtc:monitor:snmp objects
+[**DtcmonitorsnmpPost**](DtcMonitorSnmpAPI.md#DtcmonitorsnmpPost) | **Post** /dtc:monitor:snmp | Create a dtc:monitor:snmp object
+[**DtcmonitorsnmpReferenceDelete**](DtcMonitorSnmpAPI.md#DtcmonitorsnmpReferenceDelete) | **Delete** /dtc:monitor:snmp/{reference} | Delete a dtc:monitor:snmp object
+[**DtcmonitorsnmpReferenceGet**](DtcMonitorSnmpAPI.md#DtcmonitorsnmpReferenceGet) | **Get** /dtc:monitor:snmp/{reference} | Get a specific dtc:monitor:snmp object
+[**DtcmonitorsnmpReferencePut**](DtcMonitorSnmpAPI.md#DtcmonitorsnmpReferencePut) | **Put** /dtc:monitor:snmp/{reference} | Update a dtc:monitor:snmp object
 
 
 
-## Get
+## DtcmonitorsnmpGet
 
-> ListDtcMonitorSnmpResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcMonitorSnmpResponse DtcmonitorsnmpGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:monitor:snmp objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorsnmpAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcMonitorSnmpAPI.DtcmonitorsnmpGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorsnmpAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorSnmpAPI.DtcmonitorsnmpGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcMonitorSnmpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorsnmpAPI.Get`: %v\n", resp)
+	// response from `DtcmonitorsnmpGet`: ListDtcMonitorSnmpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorSnmpAPI.DtcmonitorsnmpGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorsnmpAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## DtcmonitorsnmpPost
 
-> CreateDtcMonitorSnmpResponse Post(ctx).DtcMonitorSnmp(dtcMonitorSnmp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateDtcMonitorSnmpResponse DtcmonitorsnmpPost(ctx).DtcMonitorSnmp(dtcMonitorSnmp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a dtc:monitor:snmp object
 
@@ -109,13 +109,13 @@ func main() {
 	dtcMonitorSnmp := *dtc.NewDtcMonitorSnmp() // DtcMonitorSnmp | Object data to create
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorsnmpAPI.Post(context.Background()).DtcMonitorSnmp(dtcMonitorSnmp).Execute()
+	resp, r, err := apiClient.DtcMonitorSnmpAPI.DtcmonitorsnmpPost(context.Background()).DtcMonitorSnmp(dtcMonitorSnmp).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorsnmpAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorSnmpAPI.DtcmonitorsnmpPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateDtcMonitorSnmpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorsnmpAPI.Post`: %v\n", resp)
+	// response from `DtcmonitorsnmpPost`: CreateDtcMonitorSnmpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorSnmpAPI.DtcmonitorsnmpPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorsnmpAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## DtcmonitorsnmpReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> DtcmonitorsnmpReferenceDelete(ctx, reference).Execute()
 
 Delete a dtc:monitor:snmp object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:monitor:snmp object
 
 	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtcmonitorsnmpAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.DtcMonitorSnmpAPI.DtcmonitorsnmpReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorsnmpAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorSnmpAPI.DtcmonitorsnmpReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorsnmpAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorSnmpAPIDtcmonitorsnmpReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtcmonitorsnmpReferenceGet
 
-> GetDtcMonitorSnmpResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcMonitorSnmpResponse DtcmonitorsnmpReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:monitor:snmp object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:monitor:snmp object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorsnmpAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcMonitorSnmpAPI.DtcmonitorsnmpReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorsnmpAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorSnmpAPI.DtcmonitorsnmpReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcMonitorSnmpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorsnmpAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtcmonitorsnmpReferenceGet`: GetDtcMonitorSnmpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorSnmpAPI.DtcmonitorsnmpReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorsnmpAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtcmonitorsnmpReferencePut
 
-> UpdateDtcMonitorSnmpResponse ReferencePut(ctx, reference).DtcMonitorSnmp(dtcMonitorSnmp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcMonitorSnmpResponse DtcmonitorsnmpReferencePut(ctx, reference).DtcMonitorSnmp(dtcMonitorSnmp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:monitor:snmp object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcMonitorSnmp := *dtc.NewDtcMonitorSnmp() // DtcMonitorSnmp | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorsnmpAPI.ReferencePut(context.Background(), reference).DtcMonitorSnmp(dtcMonitorSnmp).Execute()
+	resp, r, err := apiClient.DtcMonitorSnmpAPI.DtcmonitorsnmpReferencePut(context.Background(), reference).DtcMonitorSnmp(dtcMonitorSnmp).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorsnmpAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorSnmpAPI.DtcmonitorsnmpReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcMonitorSnmpResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorsnmpAPI.ReferencePut`: %v\n", resp)
+	// response from `DtcmonitorsnmpReferencePut`: UpdateDtcMonitorSnmpResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorSnmpAPI.DtcmonitorsnmpReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorsnmpAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

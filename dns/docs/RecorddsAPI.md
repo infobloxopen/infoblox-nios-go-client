@@ -1,18 +1,18 @@
-# RecorddsAPI
+# RecordDsAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecorddsAPI.md#Get) | **Get** /record:ds | Retrieve record:ds objects
-[**ReferenceDelete**](RecorddsAPI.md#ReferenceDelete) | **Delete** /record:ds/{reference} | Delete a record:ds object
-[**ReferenceGet**](RecorddsAPI.md#ReferenceGet) | **Get** /record:ds/{reference} | Get a specific record:ds object
+[**RecorddsGet**](RecordDsAPI.md#RecorddsGet) | **Get** /record:ds | Retrieve record:ds objects
+[**RecorddsReferenceDelete**](RecordDsAPI.md#RecorddsReferenceDelete) | **Delete** /record:ds/{reference} | Delete a record:ds object
+[**RecorddsReferenceGet**](RecordDsAPI.md#RecorddsReferenceGet) | **Get** /record:ds/{reference} | Get a specific record:ds object
 
 
 
-## Get
+## RecorddsGet
 
-> ListRecordDsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordDsResponse RecorddsGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:ds objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecorddsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordDsAPI.RecorddsGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDsAPI.RecorddsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordDsResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecorddsAPI.Get`: %v\n", resp)
+	// response from `RecorddsGet`: ListRecordDsResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordDsAPI.RecorddsGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecorddsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordDsAPIRecorddsGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecorddsReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecorddsReferenceDelete(ctx, reference).Execute()
 
 Delete a record:ds object
 
@@ -107,9 +107,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:ds object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecorddsAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordDsAPI.RecorddsReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddsAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDsAPI.RecorddsReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecorddsAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordDsAPIRecorddsReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -149,9 +149,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecorddsReferenceGet
 
-> GetRecordDsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordDsResponse RecorddsReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:ds object
 
@@ -174,13 +174,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:ds object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecorddsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordDsAPI.RecorddsReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDsAPI.RecorddsReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordDsResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecorddsAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecorddsReferenceGet`: GetRecordDsResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordDsAPI.RecorddsReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecorddsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordDsAPIRecorddsReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

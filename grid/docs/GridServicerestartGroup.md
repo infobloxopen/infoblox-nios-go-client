@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of this Restart Group. | [optional] 
 **Position** | Pointer to **int64** | The order to restart. | [optional] [readonly] 
 **RecurringSchedule** | Pointer to [**GridServicerestartGroupRecurringSchedule**](GridServicerestartGroupRecurringSchedule.md) |  | [optional] 
-**Requests** | Pointer to **[]map[string]interface{}** | The list of requests associated with a restart group. | [optional] [readonly] 
+**Requests** | Pointer to **[]string** | The list of requests associated with a restart group. | [optional] [readonly] 
 **Service** | Pointer to **string** | The applicable service for this Restart Group. | [optional] 
 **Status** | Pointer to **string** | The restart status for a restart group. | [optional] [readonly] 
 
@@ -289,20 +289,20 @@ HasRecurringSchedule returns a boolean if a field has been set.
 
 ### GetRequests
 
-`func (o *GridServicerestartGroup) GetRequests() []map[string]interface{}`
+`func (o *GridServicerestartGroup) GetRequests() []string`
 
 GetRequests returns the Requests field if non-nil, zero value otherwise.
 
 ### GetRequestsOk
 
-`func (o *GridServicerestartGroup) GetRequestsOk() (*[]map[string]interface{}, bool)`
+`func (o *GridServicerestartGroup) GetRequestsOk() (*[]string, bool)`
 
 GetRequestsOk returns a tuple with the Requests field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequests
 
-`func (o *GridServicerestartGroup) SetRequests(v []map[string]interface{})`
+`func (o *GridServicerestartGroup) SetRequests(v []string)`
 
 SetRequests sets Requests field to given value.
 

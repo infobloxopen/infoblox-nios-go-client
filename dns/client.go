@@ -25,35 +25,50 @@ type APIClient struct {
 	// API Services
 	AllnsgroupAPI AllnsgroupAPI
 	AllrecordsAPI AllrecordsAPI
+	DdnsPrincipalclusterAPI DdnsPrincipalclusterAPI
+	DdnsPrincipalclusterGroupAPI DdnsPrincipalclusterGroupAPI
 	Dns64groupAPI Dns64groupAPI
 	NsgroupAPI NsgroupAPI
-	NsgroupdelegationAPI NsgroupdelegationAPI
-	NsgroupforwardingmemberAPI NsgroupforwardingmemberAPI
-	NsgroupforwardstubserverAPI NsgroupforwardstubserverAPI
-	NsgroupstubmemberAPI NsgroupstubmemberAPI
-	RecordaAPI RecordaAPI
-	RecordaaaaAPI RecordaaaaAPI
-	RecordcaaAPI RecordcaaAPI
-	RecordcnameAPI RecordcnameAPI
-	RecorddhcidAPI RecorddhcidAPI
-	RecorddnameAPI RecorddnameAPI
-	RecorddnskeyAPI RecorddnskeyAPI
-	RecorddsAPI RecorddsAPI
-	RecordhostAPI RecordhostAPI
-	RecordmxAPI RecordmxAPI
+	NsgroupDelegationAPI NsgroupDelegationAPI
+	NsgroupForwardingmemberAPI NsgroupForwardingmemberAPI
+	NsgroupForwardstubserverAPI NsgroupForwardstubserverAPI
+	NsgroupStubmemberAPI NsgroupStubmemberAPI
+	OrderedresponsepolicyzonesAPI OrderedresponsepolicyzonesAPI
+	RecordAAPI RecordAAPI
+	RecordAaaaAPI RecordAaaaAPI
+	RecordAliasAPI RecordAliasAPI
+	RecordCaaAPI RecordCaaAPI
+	RecordCnameAPI RecordCnameAPI
+	RecordDhcidAPI RecordDhcidAPI
+	RecordDnameAPI RecordDnameAPI
+	RecordDnskeyAPI RecordDnskeyAPI
+	RecordDsAPI RecordDsAPI
+	RecordHostAPI RecordHostAPI
+	RecordHostIpv4addrAPI RecordHostIpv4addrAPI
+	RecordHostIpv6addrAPI RecordHostIpv6addrAPI
+	RecordMxAPI RecordMxAPI
+	RecordNaptrAPI RecordNaptrAPI
+	RecordNsAPI RecordNsAPI
+	RecordNsecAPI RecordNsecAPI
+	RecordNsec3API RecordNsec3API
+	RecordNsec3paramAPI RecordNsec3paramAPI
+	RecordPtrAPI RecordPtrAPI
+	RecordRrsigAPI RecordRrsigAPI
+	RecordSrvAPI RecordSrvAPI
+	RecordTlsaAPI RecordTlsaAPI
+	RecordTxtAPI RecordTxtAPI
+	RecordUnknownAPI RecordUnknownAPI
 	RecordnamepolicyAPI RecordnamepolicyAPI
-	RecordnaptrAPI RecordnaptrAPI
-	RecordnsAPI RecordnsAPI
-	RecordnsecAPI RecordnsecAPI
-	Recordnsec3API Recordnsec3API
-	Recordnsec3paramAPI Recordnsec3paramAPI
-	RecordptrAPI RecordptrAPI
-	RecordrrsigAPI RecordrrsigAPI
-	RecordsrvAPI RecordsrvAPI
-	RecordtlsaAPI RecordtlsaAPI
-	RecordtxtAPI RecordtxtAPI
-	RecordunknownAPI RecordunknownAPI
+	SharedrecordAAPI SharedrecordAAPI
+	SharedrecordAaaaAPI SharedrecordAaaaAPI
+	SharedrecordCnameAPI SharedrecordCnameAPI
+	SharedrecordMxAPI SharedrecordMxAPI
+	SharedrecordSrvAPI SharedrecordSrvAPI
+	SharedrecordTxtAPI SharedrecordTxtAPI
+	SharedrecordgroupAPI SharedrecordgroupAPI
+	ViewAPI ViewAPI
 	ZoneAuthAPI ZoneAuthAPI
+	ZoneAuthDiscrepancyAPI ZoneAuthDiscrepancyAPI
 	ZoneDelegatedAPI ZoneDelegatedAPI
 	ZoneForwardAPI ZoneForwardAPI
 	ZoneRpAPI ZoneRpAPI
@@ -81,35 +96,50 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 	// API Services
 	c.AllnsgroupAPI = (*AllnsgroupAPIService)(&c.Common)
 	c.AllrecordsAPI = (*AllrecordsAPIService)(&c.Common)
+	c.DdnsPrincipalclusterAPI = (*DdnsPrincipalclusterAPIService)(&c.Common)
+	c.DdnsPrincipalclusterGroupAPI = (*DdnsPrincipalclusterGroupAPIService)(&c.Common)
 	c.Dns64groupAPI = (*Dns64groupAPIService)(&c.Common)
 	c.NsgroupAPI = (*NsgroupAPIService)(&c.Common)
-	c.NsgroupdelegationAPI = (*NsgroupdelegationAPIService)(&c.Common)
-	c.NsgroupforwardingmemberAPI = (*NsgroupforwardingmemberAPIService)(&c.Common)
-	c.NsgroupforwardstubserverAPI = (*NsgroupforwardstubserverAPIService)(&c.Common)
-	c.NsgroupstubmemberAPI = (*NsgroupstubmemberAPIService)(&c.Common)
-	c.RecordaAPI = (*RecordaAPIService)(&c.Common)
-	c.RecordaaaaAPI = (*RecordaaaaAPIService)(&c.Common)
-	c.RecordcaaAPI = (*RecordcaaAPIService)(&c.Common)
-	c.RecordcnameAPI = (*RecordcnameAPIService)(&c.Common)
-	c.RecorddhcidAPI = (*RecorddhcidAPIService)(&c.Common)
-	c.RecorddnameAPI = (*RecorddnameAPIService)(&c.Common)
-	c.RecorddnskeyAPI = (*RecorddnskeyAPIService)(&c.Common)
-	c.RecorddsAPI = (*RecorddsAPIService)(&c.Common)
-	c.RecordhostAPI = (*RecordhostAPIService)(&c.Common)
-	c.RecordmxAPI = (*RecordmxAPIService)(&c.Common)
+	c.NsgroupDelegationAPI = (*NsgroupDelegationAPIService)(&c.Common)
+	c.NsgroupForwardingmemberAPI = (*NsgroupForwardingmemberAPIService)(&c.Common)
+	c.NsgroupForwardstubserverAPI = (*NsgroupForwardstubserverAPIService)(&c.Common)
+	c.NsgroupStubmemberAPI = (*NsgroupStubmemberAPIService)(&c.Common)
+	c.OrderedresponsepolicyzonesAPI = (*OrderedresponsepolicyzonesAPIService)(&c.Common)
+	c.RecordAAPI = (*RecordAAPIService)(&c.Common)
+	c.RecordAaaaAPI = (*RecordAaaaAPIService)(&c.Common)
+	c.RecordAliasAPI = (*RecordAliasAPIService)(&c.Common)
+	c.RecordCaaAPI = (*RecordCaaAPIService)(&c.Common)
+	c.RecordCnameAPI = (*RecordCnameAPIService)(&c.Common)
+	c.RecordDhcidAPI = (*RecordDhcidAPIService)(&c.Common)
+	c.RecordDnameAPI = (*RecordDnameAPIService)(&c.Common)
+	c.RecordDnskeyAPI = (*RecordDnskeyAPIService)(&c.Common)
+	c.RecordDsAPI = (*RecordDsAPIService)(&c.Common)
+	c.RecordHostAPI = (*RecordHostAPIService)(&c.Common)
+	c.RecordHostIpv4addrAPI = (*RecordHostIpv4addrAPIService)(&c.Common)
+	c.RecordHostIpv6addrAPI = (*RecordHostIpv6addrAPIService)(&c.Common)
+	c.RecordMxAPI = (*RecordMxAPIService)(&c.Common)
+	c.RecordNaptrAPI = (*RecordNaptrAPIService)(&c.Common)
+	c.RecordNsAPI = (*RecordNsAPIService)(&c.Common)
+	c.RecordNsecAPI = (*RecordNsecAPIService)(&c.Common)
+	c.RecordNsec3API = (*RecordNsec3APIService)(&c.Common)
+	c.RecordNsec3paramAPI = (*RecordNsec3paramAPIService)(&c.Common)
+	c.RecordPtrAPI = (*RecordPtrAPIService)(&c.Common)
+	c.RecordRrsigAPI = (*RecordRrsigAPIService)(&c.Common)
+	c.RecordSrvAPI = (*RecordSrvAPIService)(&c.Common)
+	c.RecordTlsaAPI = (*RecordTlsaAPIService)(&c.Common)
+	c.RecordTxtAPI = (*RecordTxtAPIService)(&c.Common)
+	c.RecordUnknownAPI = (*RecordUnknownAPIService)(&c.Common)
 	c.RecordnamepolicyAPI = (*RecordnamepolicyAPIService)(&c.Common)
-	c.RecordnaptrAPI = (*RecordnaptrAPIService)(&c.Common)
-	c.RecordnsAPI = (*RecordnsAPIService)(&c.Common)
-	c.RecordnsecAPI = (*RecordnsecAPIService)(&c.Common)
-	c.Recordnsec3API = (*Recordnsec3APIService)(&c.Common)
-	c.Recordnsec3paramAPI = (*Recordnsec3paramAPIService)(&c.Common)
-	c.RecordptrAPI = (*RecordptrAPIService)(&c.Common)
-	c.RecordrrsigAPI = (*RecordrrsigAPIService)(&c.Common)
-	c.RecordsrvAPI = (*RecordsrvAPIService)(&c.Common)
-	c.RecordtlsaAPI = (*RecordtlsaAPIService)(&c.Common)
-	c.RecordtxtAPI = (*RecordtxtAPIService)(&c.Common)
-	c.RecordunknownAPI = (*RecordunknownAPIService)(&c.Common)
+	c.SharedrecordAAPI = (*SharedrecordAAPIService)(&c.Common)
+	c.SharedrecordAaaaAPI = (*SharedrecordAaaaAPIService)(&c.Common)
+	c.SharedrecordCnameAPI = (*SharedrecordCnameAPIService)(&c.Common)
+	c.SharedrecordMxAPI = (*SharedrecordMxAPIService)(&c.Common)
+	c.SharedrecordSrvAPI = (*SharedrecordSrvAPIService)(&c.Common)
+	c.SharedrecordTxtAPI = (*SharedrecordTxtAPIService)(&c.Common)
+	c.SharedrecordgroupAPI = (*SharedrecordgroupAPIService)(&c.Common)
+	c.ViewAPI = (*ViewAPIService)(&c.Common)
 	c.ZoneAuthAPI = (*ZoneAuthAPIService)(&c.Common)
+	c.ZoneAuthDiscrepancyAPI = (*ZoneAuthDiscrepancyAPIService)(&c.Common)
 	c.ZoneDelegatedAPI = (*ZoneDelegatedAPIService)(&c.Common)
 	c.ZoneForwardAPI = (*ZoneForwardAPIService)(&c.Common)
 	c.ZoneRpAPI = (*ZoneRpAPIService)(&c.Common)

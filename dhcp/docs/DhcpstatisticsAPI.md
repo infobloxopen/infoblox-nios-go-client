@@ -1,17 +1,17 @@
-# DhcpstatisticsAPI
+# DhcpStatisticsAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DhcpstatisticsAPI.md#Get) | **Get** /dhcp:statistics | Retrieve dhcp:statistics objects
-[**ReferenceGet**](DhcpstatisticsAPI.md#ReferenceGet) | **Get** /dhcp:statistics/{reference} | Get a specific dhcp:statistics object
+[**DhcpstatisticsGet**](DhcpStatisticsAPI.md#DhcpstatisticsGet) | **Get** /dhcp:statistics | Retrieve dhcp:statistics objects
+[**DhcpstatisticsReferenceGet**](DhcpStatisticsAPI.md#DhcpstatisticsReferenceGet) | **Get** /dhcp:statistics/{reference} | Get a specific dhcp:statistics object
 
 
 
-## Get
+## DhcpstatisticsGet
 
-> ListDhcpStatisticsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDhcpStatisticsResponse DhcpstatisticsGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dhcp:statistics objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.DhcpstatisticsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DhcpStatisticsAPI.DhcpstatisticsGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpstatisticsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpStatisticsAPI.DhcpstatisticsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDhcpStatisticsResponse
-	fmt.Fprintf(os.Stdout, "Response from `DhcpstatisticsAPI.Get`: %v\n", resp)
+	// response from `DhcpstatisticsGet`: ListDhcpStatisticsResponse
+	fmt.Fprintf(os.Stdout, "Response from `DhcpStatisticsAPI.DhcpstatisticsGet`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DhcpstatisticsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DhcpStatisticsAPIDhcpstatisticsGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DhcpstatisticsReferenceGet
 
-> GetDhcpStatisticsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDhcpStatisticsResponse DhcpstatisticsReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dhcp:statistics object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dhcp:statistics object
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.DhcpstatisticsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DhcpStatisticsAPI.DhcpstatisticsReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpstatisticsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpStatisticsAPI.DhcpstatisticsReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDhcpStatisticsResponse
-	fmt.Fprintf(os.Stdout, "Response from `DhcpstatisticsAPI.ReferenceGet`: %v\n", resp)
+	// response from `DhcpstatisticsReferenceGet`: GetDhcpStatisticsResponse
+	fmt.Fprintf(os.Stdout, "Response from `DhcpStatisticsAPI.DhcpstatisticsReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DhcpstatisticsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

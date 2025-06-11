@@ -41,9 +41,9 @@ type RecordAaaa struct {
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// Determines if the reclamation is allowed for the record or not.
-	ForbidReclamation *bool `json:"forbid_reclamation,omitempty"`
-	// The IPv6 Address of the record.
-	Ipv6addr *string `json:"ipv6addr,omitempty"`
+	ForbidReclamation *bool               `json:"forbid_reclamation,omitempty"`
+	Ipv6addr          *RecordAaaaIpv6addr `json:"ipv6addr,omitempty"`
+	FuncCall          *FuncCall           `json:"func_call,omitempty"`
 	// The time of the last DNS query in Epoch seconds format.
 	LastQueried  *int64                  `json:"last_queried,omitempty"`
 	MsAdUserData *RecordAaaaMsAdUserData `json:"ms_ad_user_data,omitempty"`
@@ -499,9 +499,9 @@ func (o *RecordAaaa) SetForbidReclamation(v bool) {
 }
 
 // GetIpv6addr returns the Ipv6addr field value if set, zero value otherwise.
-func (o *RecordAaaa) GetIpv6addr() string {
+func (o *RecordAaaa) GetIpv6addr() RecordAaaaIpv6addr {
 	if o == nil || IsNil(o.Ipv6addr) {
-		var ret string
+		var ret RecordAaaaIpv6addr
 		return ret
 	}
 	return *o.Ipv6addr
@@ -509,7 +509,7 @@ func (o *RecordAaaa) GetIpv6addr() string {
 
 // GetIpv6addrOk returns a tuple with the Ipv6addr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecordAaaa) GetIpv6addrOk() (*string, bool) {
+func (o *RecordAaaa) GetIpv6addrOk() (*RecordAaaaIpv6addr, bool) {
 	if o == nil || IsNil(o.Ipv6addr) {
 		return nil, false
 	}
@@ -525,9 +525,41 @@ func (o *RecordAaaa) HasIpv6addr() bool {
 	return false
 }
 
-// SetIpv6addr gets a reference to the given string and assigns it to the Ipv6addr field.
-func (o *RecordAaaa) SetIpv6addr(v string) {
+// SetIpv6addr gets a reference to the given RecordAaaaIpv6addr and assigns it to the Ipv6addr field.
+func (o *RecordAaaa) SetIpv6addr(v RecordAaaaIpv6addr) {
 	o.Ipv6addr = &v
+}
+
+// GetFuncCall returns the FuncCall field value if set, zero value otherwise.
+func (o *RecordAaaa) GetFuncCall() FuncCall {
+	if o == nil || IsNil(o.FuncCall) {
+		var ret FuncCall
+		return ret
+	}
+	return *o.FuncCall
+}
+
+// GetFuncCallOk returns a tuple with the FuncCall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RecordAaaa) GetFuncCallOk() (*FuncCall, bool) {
+	if o == nil || IsNil(o.FuncCall) {
+		return nil, false
+	}
+	return o.FuncCall, true
+}
+
+// HasFuncCall returns a boolean if a field has been set.
+func (o *RecordAaaa) HasFuncCall() bool {
+	if o != nil && !IsNil(o.FuncCall) {
+		return true
+	}
+
+	return false
+}
+
+// SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
+func (o *RecordAaaa) SetFuncCall(v FuncCall) {
+	o.FuncCall = &v
 }
 
 // GetLastQueried returns the LastQueried field value if set, zero value otherwise.
@@ -901,6 +933,9 @@ func (o RecordAaaa) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ipv6addr) {
 		toSerialize["ipv6addr"] = o.Ipv6addr
+	}
+	if !IsNil(o.FuncCall) {
+		toSerialize["func_call"] = o.FuncCall
 	}
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried

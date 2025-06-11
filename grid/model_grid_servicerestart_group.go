@@ -39,7 +39,7 @@ type GridServicerestartGroup struct {
 	Position          *int64                                    `json:"position,omitempty"`
 	RecurringSchedule *GridServicerestartGroupRecurringSchedule `json:"recurring_schedule,omitempty"`
 	// The list of requests associated with a restart group.
-	Requests []map[string]interface{} `json:"requests,omitempty"`
+	Requests []string `json:"requests,omitempty"`
 	// The applicable service for this Restart Group.
 	Service *string `json:"service,omitempty"`
 	// The restart status for a restart group.
@@ -384,9 +384,9 @@ func (o *GridServicerestartGroup) SetRecurringSchedule(v GridServicerestartGroup
 }
 
 // GetRequests returns the Requests field value if set, zero value otherwise.
-func (o *GridServicerestartGroup) GetRequests() []map[string]interface{} {
+func (o *GridServicerestartGroup) GetRequests() []string {
 	if o == nil || IsNil(o.Requests) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Requests
@@ -394,7 +394,7 @@ func (o *GridServicerestartGroup) GetRequests() []map[string]interface{} {
 
 // GetRequestsOk returns a tuple with the Requests field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridServicerestartGroup) GetRequestsOk() ([]map[string]interface{}, bool) {
+func (o *GridServicerestartGroup) GetRequestsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Requests) {
 		return nil, false
 	}
@@ -410,8 +410,8 @@ func (o *GridServicerestartGroup) HasRequests() bool {
 	return false
 }
 
-// SetRequests gets a reference to the given []map[string]interface{} and assigns it to the Requests field.
-func (o *GridServicerestartGroup) SetRequests(v []map[string]interface{}) {
+// SetRequests gets a reference to the given []string and assigns it to the Requests field.
+func (o *GridServicerestartGroup) SetRequests(v []string) {
 	o.Requests = v
 }
 

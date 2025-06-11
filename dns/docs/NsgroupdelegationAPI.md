@@ -1,20 +1,20 @@
-# NsgroupdelegationAPI
+# NsgroupDelegationAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](NsgroupdelegationAPI.md#Get) | **Get** /nsgroup:delegation | Retrieve nsgroup:delegation objects
-[**Post**](NsgroupdelegationAPI.md#Post) | **Post** /nsgroup:delegation | Create a nsgroup:delegation object
-[**ReferenceDelete**](NsgroupdelegationAPI.md#ReferenceDelete) | **Delete** /nsgroup:delegation/{reference} | Delete a nsgroup:delegation object
-[**ReferenceGet**](NsgroupdelegationAPI.md#ReferenceGet) | **Get** /nsgroup:delegation/{reference} | Get a specific nsgroup:delegation object
-[**ReferencePut**](NsgroupdelegationAPI.md#ReferencePut) | **Put** /nsgroup:delegation/{reference} | Update a nsgroup:delegation object
+[**NsgroupdelegationGet**](NsgroupDelegationAPI.md#NsgroupdelegationGet) | **Get** /nsgroup:delegation | Retrieve nsgroup:delegation objects
+[**NsgroupdelegationPost**](NsgroupDelegationAPI.md#NsgroupdelegationPost) | **Post** /nsgroup:delegation | Create a nsgroup:delegation object
+[**NsgroupdelegationReferenceDelete**](NsgroupDelegationAPI.md#NsgroupdelegationReferenceDelete) | **Delete** /nsgroup:delegation/{reference} | Delete a nsgroup:delegation object
+[**NsgroupdelegationReferenceGet**](NsgroupDelegationAPI.md#NsgroupdelegationReferenceGet) | **Get** /nsgroup:delegation/{reference} | Get a specific nsgroup:delegation object
+[**NsgroupdelegationReferencePut**](NsgroupDelegationAPI.md#NsgroupdelegationReferencePut) | **Put** /nsgroup:delegation/{reference} | Update a nsgroup:delegation object
 
 
 
-## Get
+## NsgroupdelegationGet
 
-> ListNsgroupDelegationResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListNsgroupDelegationResponse NsgroupdelegationGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve nsgroup:delegation objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupdelegationAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.NsgroupDelegationAPI.NsgroupdelegationGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupdelegationAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupDelegationAPI.NsgroupdelegationGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListNsgroupDelegationResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupdelegationAPI.Get`: %v\n", resp)
+	// response from `NsgroupdelegationGet`: ListNsgroupDelegationResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupDelegationAPI.NsgroupdelegationGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupdelegationAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupDelegationAPINsgroupdelegationGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## NsgroupdelegationPost
 
-> CreateNsgroupDelegationResponse Post(ctx).NsgroupDelegation(nsgroupDelegation).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateNsgroupDelegationResponse NsgroupdelegationPost(ctx).NsgroupDelegation(nsgroupDelegation).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a nsgroup:delegation object
 
@@ -109,13 +109,13 @@ func main() {
 	nsgroupDelegation := *dns.NewNsgroupDelegation() // NsgroupDelegation | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupdelegationAPI.Post(context.Background()).NsgroupDelegation(nsgroupDelegation).Execute()
+	resp, r, err := apiClient.NsgroupDelegationAPI.NsgroupdelegationPost(context.Background()).NsgroupDelegation(nsgroupDelegation).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupdelegationAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupDelegationAPI.NsgroupdelegationPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateNsgroupDelegationResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupdelegationAPI.Post`: %v\n", resp)
+	// response from `NsgroupdelegationPost`: CreateNsgroupDelegationResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupDelegationAPI.NsgroupdelegationPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupdelegationAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupDelegationAPINsgroupdelegationPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## NsgroupdelegationReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> NsgroupdelegationReferenceDelete(ctx, reference).Execute()
 
 Delete a nsgroup:delegation object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the nsgroup:delegation object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.NsgroupdelegationAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.NsgroupDelegationAPI.NsgroupdelegationReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupdelegationAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupDelegationAPI.NsgroupdelegationReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupdelegationAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupDelegationAPINsgroupdelegationReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## NsgroupdelegationReferenceGet
 
-> GetNsgroupDelegationResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetNsgroupDelegationResponse NsgroupdelegationReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific nsgroup:delegation object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the nsgroup:delegation object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupdelegationAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.NsgroupDelegationAPI.NsgroupdelegationReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupdelegationAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupDelegationAPI.NsgroupdelegationReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetNsgroupDelegationResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupdelegationAPI.ReferenceGet`: %v\n", resp)
+	// response from `NsgroupdelegationReferenceGet`: GetNsgroupDelegationResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupDelegationAPI.NsgroupdelegationReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupdelegationAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupDelegationAPINsgroupdelegationReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## NsgroupdelegationReferencePut
 
-> UpdateNsgroupDelegationResponse ReferencePut(ctx, reference).NsgroupDelegation(nsgroupDelegation).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateNsgroupDelegationResponse NsgroupdelegationReferencePut(ctx, reference).NsgroupDelegation(nsgroupDelegation).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a nsgroup:delegation object
 
@@ -318,13 +318,13 @@ func main() {
 	nsgroupDelegation := *dns.NewNsgroupDelegation() // NsgroupDelegation | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupdelegationAPI.ReferencePut(context.Background(), reference).NsgroupDelegation(nsgroupDelegation).Execute()
+	resp, r, err := apiClient.NsgroupDelegationAPI.NsgroupdelegationReferencePut(context.Background(), reference).NsgroupDelegation(nsgroupDelegation).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupdelegationAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupDelegationAPI.NsgroupdelegationReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateNsgroupDelegationResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupdelegationAPI.ReferencePut`: %v\n", resp)
+	// response from `NsgroupdelegationReferencePut`: UpdateNsgroupDelegationResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupDelegationAPI.NsgroupdelegationReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupdelegationAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupDelegationAPINsgroupdelegationReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

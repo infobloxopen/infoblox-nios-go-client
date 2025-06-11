@@ -79,6 +79,8 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DhcpStatisticsAPI* | [**DhcpstatisticsGet**](docs/DhcpStatisticsAPI.md#dhcpstatisticsget) | **Get** /dhcp:statistics | Retrieve dhcp:statistics objects
+*DhcpStatisticsAPI* | [**DhcpstatisticsReferenceGet**](docs/DhcpStatisticsAPI.md#dhcpstatisticsreferenceget) | **Get** /dhcp:statistics/{reference} | Get a specific dhcp:statistics object
 *DhcpfailoverAPI* | [**Get**](docs/DhcpfailoverAPI.md#get) | **Get** /dhcpfailover | Retrieve dhcpfailover objects
 *DhcpfailoverAPI* | [**Post**](docs/DhcpfailoverAPI.md#post) | **Post** /dhcpfailover | Create a dhcpfailover object
 *DhcpfailoverAPI* | [**ReferenceDelete**](docs/DhcpfailoverAPI.md#referencedelete) | **Delete** /dhcpfailover/{reference} | Delete a dhcpfailover object
@@ -94,8 +96,6 @@ Class | Method | HTTP request | Description
 *DhcpoptionspaceAPI* | [**ReferenceDelete**](docs/DhcpoptionspaceAPI.md#referencedelete) | **Delete** /dhcpoptionspace/{reference} | Delete a dhcpoptionspace object
 *DhcpoptionspaceAPI* | [**ReferenceGet**](docs/DhcpoptionspaceAPI.md#referenceget) | **Get** /dhcpoptionspace/{reference} | Get a specific dhcpoptionspace object
 *DhcpoptionspaceAPI* | [**ReferencePut**](docs/DhcpoptionspaceAPI.md#referenceput) | **Put** /dhcpoptionspace/{reference} | Update a dhcpoptionspace object
-*DhcpstatisticsAPI* | [**Get**](docs/DhcpstatisticsAPI.md#get) | **Get** /dhcp:statistics | Retrieve dhcp:statistics objects
-*DhcpstatisticsAPI* | [**ReferenceGet**](docs/DhcpstatisticsAPI.md#referenceget) | **Get** /dhcp:statistics/{reference} | Get a specific dhcp:statistics object
 *FilterfingerprintAPI* | [**Get**](docs/FilterfingerprintAPI.md#get) | **Get** /filterfingerprint | Retrieve filterfingerprint objects
 *FilterfingerprintAPI* | [**Post**](docs/FilterfingerprintAPI.md#post) | **Post** /filterfingerprint | Create a filterfingerprint object
 *FilterfingerprintAPI* | [**ReferenceDelete**](docs/FilterfingerprintAPI.md#referencedelete) | **Delete** /filterfingerprint/{reference} | Delete a filterfingerprint object
@@ -136,9 +136,6 @@ Class | Method | HTTP request | Description
 *FixedaddresstemplateAPI* | [**ReferenceDelete**](docs/FixedaddresstemplateAPI.md#referencedelete) | **Delete** /fixedaddresstemplate/{reference} | Delete a fixedaddresstemplate object
 *FixedaddresstemplateAPI* | [**ReferenceGet**](docs/FixedaddresstemplateAPI.md#referenceget) | **Get** /fixedaddresstemplate/{reference} | Get a specific fixedaddresstemplate object
 *FixedaddresstemplateAPI* | [**ReferencePut**](docs/FixedaddresstemplateAPI.md#referenceput) | **Put** /fixedaddresstemplate/{reference} | Update a fixedaddresstemplate object
-*GriddhcppropertiesAPI* | [**Get**](docs/GriddhcppropertiesAPI.md#get) | **Get** /grid:dhcpproperties | Retrieve grid:dhcpproperties objects
-*GriddhcppropertiesAPI* | [**ReferenceGet**](docs/GriddhcppropertiesAPI.md#referenceget) | **Get** /grid:dhcpproperties/{reference} | Get a specific grid:dhcpproperties object
-*GriddhcppropertiesAPI* | [**ReferencePut**](docs/GriddhcppropertiesAPI.md#referenceput) | **Put** /grid:dhcpproperties/{reference} | Update a grid:dhcpproperties object
 *Ipv6dhcpoptiondefinitionAPI* | [**Get**](docs/Ipv6dhcpoptiondefinitionAPI.md#get) | **Get** /ipv6dhcpoptiondefinition | Retrieve ipv6dhcpoptiondefinition objects
 *Ipv6dhcpoptiondefinitionAPI* | [**Post**](docs/Ipv6dhcpoptiondefinitionAPI.md#post) | **Post** /ipv6dhcpoptiondefinition | Create a ipv6dhcpoptiondefinition object
 *Ipv6dhcpoptiondefinitionAPI* | [**ReferenceDelete**](docs/Ipv6dhcpoptiondefinitionAPI.md#referencedelete) | **Delete** /ipv6dhcpoptiondefinition/{reference} | Delete a ipv6dhcpoptiondefinition object
@@ -187,19 +184,6 @@ Class | Method | HTTP request | Description
 *MacfilteraddressAPI* | [**ReferenceDelete**](docs/MacfilteraddressAPI.md#referencedelete) | **Delete** /macfilteraddress/{reference} | Delete a macfilteraddress object
 *MacfilteraddressAPI* | [**ReferenceGet**](docs/MacfilteraddressAPI.md#referenceget) | **Get** /macfilteraddress/{reference} | Get a specific macfilteraddress object
 *MacfilteraddressAPI* | [**ReferencePut**](docs/MacfilteraddressAPI.md#referenceput) | **Put** /macfilteraddress/{reference} | Update a macfilteraddress object
-*MemberdhcppropertiesAPI* | [**Get**](docs/MemberdhcppropertiesAPI.md#get) | **Get** /member:dhcpproperties | Retrieve member:dhcpproperties objects
-*MemberdhcppropertiesAPI* | [**ReferenceGet**](docs/MemberdhcppropertiesAPI.md#referenceget) | **Get** /member:dhcpproperties/{reference} | Get a specific member:dhcpproperties object
-*MemberdhcppropertiesAPI* | [**ReferencePut**](docs/MemberdhcppropertiesAPI.md#referenceput) | **Put** /member:dhcpproperties/{reference} | Update a member:dhcpproperties object
-*MsserverdhcpAPI* | [**Get**](docs/MsserverdhcpAPI.md#get) | **Get** /msserver:dhcp | Retrieve msserver:dhcp objects
-*MsserverdhcpAPI* | [**Post**](docs/MsserverdhcpAPI.md#post) | **Post** /msserver:dhcp | Create a msserver:dhcp object
-*MsserverdhcpAPI* | [**ReferenceDelete**](docs/MsserverdhcpAPI.md#referencedelete) | **Delete** /msserver:dhcp/{reference} | Delete a msserver:dhcp object
-*MsserverdhcpAPI* | [**ReferenceGet**](docs/MsserverdhcpAPI.md#referenceget) | **Get** /msserver:dhcp/{reference} | Get a specific msserver:dhcp object
-*MsserverdhcpAPI* | [**ReferencePut**](docs/MsserverdhcpAPI.md#referenceput) | **Put** /msserver:dhcp/{reference} | Update a msserver:dhcp object
-*MssuperscopeAPI* | [**Get**](docs/MssuperscopeAPI.md#get) | **Get** /mssuperscope | Retrieve mssuperscope objects
-*MssuperscopeAPI* | [**Post**](docs/MssuperscopeAPI.md#post) | **Post** /mssuperscope | Create a mssuperscope object
-*MssuperscopeAPI* | [**ReferenceDelete**](docs/MssuperscopeAPI.md#referencedelete) | **Delete** /mssuperscope/{reference} | Delete a mssuperscope object
-*MssuperscopeAPI* | [**ReferenceGet**](docs/MssuperscopeAPI.md#referenceget) | **Get** /mssuperscope/{reference} | Get a specific mssuperscope object
-*MssuperscopeAPI* | [**ReferencePut**](docs/MssuperscopeAPI.md#referenceput) | **Put** /mssuperscope/{reference} | Update a mssuperscope object
 *OrderedrangesAPI* | [**Get**](docs/OrderedrangesAPI.md#get) | **Get** /orderedranges | Retrieve orderedranges objects
 *OrderedrangesAPI* | [**ReferenceGet**](docs/OrderedrangesAPI.md#referenceget) | **Get** /orderedranges/{reference} | Get a specific orderedranges object
 *OrderedrangesAPI* | [**ReferencePut**](docs/OrderedrangesAPI.md#referenceput) | **Put** /orderedranges/{reference} | Update a orderedranges object
@@ -227,8 +211,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [CreateDhcpStatisticsResponse](docs/CreateDhcpStatisticsResponse.md)
- - [CreateDhcpStatisticsResponseAsObject](docs/CreateDhcpStatisticsResponseAsObject.md)
  - [CreateDhcpfailoverResponse](docs/CreateDhcpfailoverResponse.md)
  - [CreateDhcpfailoverResponseAsObject](docs/CreateDhcpfailoverResponseAsObject.md)
  - [CreateDhcpoptiondefinitionResponse](docs/CreateDhcpoptiondefinitionResponse.md)
@@ -251,8 +233,6 @@ Class | Method | HTTP request | Description
  - [CreateFixedaddressResponseAsObject](docs/CreateFixedaddressResponseAsObject.md)
  - [CreateFixedaddresstemplateResponse](docs/CreateFixedaddresstemplateResponse.md)
  - [CreateFixedaddresstemplateResponseAsObject](docs/CreateFixedaddresstemplateResponseAsObject.md)
- - [CreateGridDhcppropertiesResponse](docs/CreateGridDhcppropertiesResponse.md)
- - [CreateGridDhcppropertiesResponseAsObject](docs/CreateGridDhcppropertiesResponseAsObject.md)
  - [CreateIpv6dhcpoptiondefinitionResponse](docs/CreateIpv6dhcpoptiondefinitionResponse.md)
  - [CreateIpv6dhcpoptiondefinitionResponseAsObject](docs/CreateIpv6dhcpoptiondefinitionResponseAsObject.md)
  - [CreateIpv6dhcpoptionspaceResponse](docs/CreateIpv6dhcpoptionspaceResponse.md)
@@ -269,18 +249,8 @@ Class | Method | HTTP request | Description
  - [CreateIpv6rangetemplateResponseAsObject](docs/CreateIpv6rangetemplateResponseAsObject.md)
  - [CreateIpv6sharednetworkResponse](docs/CreateIpv6sharednetworkResponse.md)
  - [CreateIpv6sharednetworkResponseAsObject](docs/CreateIpv6sharednetworkResponseAsObject.md)
- - [CreateLeaseResponse](docs/CreateLeaseResponse.md)
- - [CreateLeaseResponseAsObject](docs/CreateLeaseResponseAsObject.md)
  - [CreateMacfilteraddressResponse](docs/CreateMacfilteraddressResponse.md)
  - [CreateMacfilteraddressResponseAsObject](docs/CreateMacfilteraddressResponseAsObject.md)
- - [CreateMemberDhcppropertiesResponse](docs/CreateMemberDhcppropertiesResponse.md)
- - [CreateMemberDhcppropertiesResponseAsObject](docs/CreateMemberDhcppropertiesResponseAsObject.md)
- - [CreateMsserverDhcpResponse](docs/CreateMsserverDhcpResponse.md)
- - [CreateMsserverDhcpResponseAsObject](docs/CreateMsserverDhcpResponseAsObject.md)
- - [CreateMssuperscopeResponse](docs/CreateMssuperscopeResponse.md)
- - [CreateMssuperscopeResponseAsObject](docs/CreateMssuperscopeResponseAsObject.md)
- - [CreateOrderedrangesResponse](docs/CreateOrderedrangesResponse.md)
- - [CreateOrderedrangesResponseAsObject](docs/CreateOrderedrangesResponseAsObject.md)
  - [CreateRangeResponse](docs/CreateRangeResponse.md)
  - [CreateRangeResponseAsObject](docs/CreateRangeResponseAsObject.md)
  - [CreateRangetemplateResponse](docs/CreateRangetemplateResponse.md)
@@ -342,8 +312,6 @@ Class | Method | HTTP request | Description
  - [GetFixedaddressResponseObjectAsResult](docs/GetFixedaddressResponseObjectAsResult.md)
  - [GetFixedaddresstemplateResponse](docs/GetFixedaddresstemplateResponse.md)
  - [GetFixedaddresstemplateResponseObjectAsResult](docs/GetFixedaddresstemplateResponseObjectAsResult.md)
- - [GetGridDhcppropertiesResponse](docs/GetGridDhcppropertiesResponse.md)
- - [GetGridDhcppropertiesResponseObjectAsResult](docs/GetGridDhcppropertiesResponseObjectAsResult.md)
  - [GetIpv6dhcpoptiondefinitionResponse](docs/GetIpv6dhcpoptiondefinitionResponse.md)
  - [GetIpv6dhcpoptiondefinitionResponseObjectAsResult](docs/GetIpv6dhcpoptiondefinitionResponseObjectAsResult.md)
  - [GetIpv6dhcpoptionspaceResponse](docs/GetIpv6dhcpoptionspaceResponse.md)
@@ -364,12 +332,6 @@ Class | Method | HTTP request | Description
  - [GetLeaseResponseObjectAsResult](docs/GetLeaseResponseObjectAsResult.md)
  - [GetMacfilteraddressResponse](docs/GetMacfilteraddressResponse.md)
  - [GetMacfilteraddressResponseObjectAsResult](docs/GetMacfilteraddressResponseObjectAsResult.md)
- - [GetMemberDhcppropertiesResponse](docs/GetMemberDhcppropertiesResponse.md)
- - [GetMemberDhcppropertiesResponseObjectAsResult](docs/GetMemberDhcppropertiesResponseObjectAsResult.md)
- - [GetMsserverDhcpResponse](docs/GetMsserverDhcpResponse.md)
- - [GetMsserverDhcpResponseObjectAsResult](docs/GetMsserverDhcpResponseObjectAsResult.md)
- - [GetMssuperscopeResponse](docs/GetMssuperscopeResponse.md)
- - [GetMssuperscopeResponseObjectAsResult](docs/GetMssuperscopeResponseObjectAsResult.md)
  - [GetOrderedrangesResponse](docs/GetOrderedrangesResponse.md)
  - [GetOrderedrangesResponseObjectAsResult](docs/GetOrderedrangesResponseObjectAsResult.md)
  - [GetRangeResponse](docs/GetRangeResponse.md)
@@ -380,12 +342,6 @@ Class | Method | HTTP request | Description
  - [GetRoaminghostResponseObjectAsResult](docs/GetRoaminghostResponseObjectAsResult.md)
  - [GetSharednetworkResponse](docs/GetSharednetworkResponse.md)
  - [GetSharednetworkResponseObjectAsResult](docs/GetSharednetworkResponseObjectAsResult.md)
- - [GridDhcpproperties](docs/GridDhcpproperties.md)
- - [GridDhcppropertiesIpv6Options](docs/GridDhcppropertiesIpv6Options.md)
- - [GridDhcppropertiesLogicFilterRules](docs/GridDhcppropertiesLogicFilterRules.md)
- - [GridDhcppropertiesOption60MatchRules](docs/GridDhcppropertiesOption60MatchRules.md)
- - [GridDhcppropertiesOptions](docs/GridDhcppropertiesOptions.md)
- - [GridDhcppropertiesRestartSetting](docs/GridDhcppropertiesRestartSetting.md)
  - [Ipv6dhcpoptiondefinition](docs/Ipv6dhcpoptiondefinition.md)
  - [Ipv6dhcpoptionspace](docs/Ipv6dhcpoptionspace.md)
  - [Ipv6filteroption](docs/Ipv6filteroption.md)
@@ -454,8 +410,6 @@ Class | Method | HTTP request | Description
  - [ListFixedaddressResponseObject](docs/ListFixedaddressResponseObject.md)
  - [ListFixedaddresstemplateResponse](docs/ListFixedaddresstemplateResponse.md)
  - [ListFixedaddresstemplateResponseObject](docs/ListFixedaddresstemplateResponseObject.md)
- - [ListGridDhcppropertiesResponse](docs/ListGridDhcppropertiesResponse.md)
- - [ListGridDhcppropertiesResponseObject](docs/ListGridDhcppropertiesResponseObject.md)
  - [ListIpv6dhcpoptiondefinitionResponse](docs/ListIpv6dhcpoptiondefinitionResponse.md)
  - [ListIpv6dhcpoptiondefinitionResponseObject](docs/ListIpv6dhcpoptiondefinitionResponseObject.md)
  - [ListIpv6dhcpoptionspaceResponse](docs/ListIpv6dhcpoptionspaceResponse.md)
@@ -476,12 +430,6 @@ Class | Method | HTTP request | Description
  - [ListLeaseResponseObject](docs/ListLeaseResponseObject.md)
  - [ListMacfilteraddressResponse](docs/ListMacfilteraddressResponse.md)
  - [ListMacfilteraddressResponseObject](docs/ListMacfilteraddressResponseObject.md)
- - [ListMemberDhcppropertiesResponse](docs/ListMemberDhcppropertiesResponse.md)
- - [ListMemberDhcppropertiesResponseObject](docs/ListMemberDhcppropertiesResponseObject.md)
- - [ListMsserverDhcpResponse](docs/ListMsserverDhcpResponse.md)
- - [ListMsserverDhcpResponseObject](docs/ListMsserverDhcpResponseObject.md)
- - [ListMssuperscopeResponse](docs/ListMssuperscopeResponse.md)
- - [ListMssuperscopeResponseObject](docs/ListMssuperscopeResponseObject.md)
  - [ListOrderedrangesResponse](docs/ListOrderedrangesResponse.md)
  - [ListOrderedrangesResponseObject](docs/ListOrderedrangesResponseObject.md)
  - [ListRangeResponse](docs/ListRangeResponse.md)
@@ -493,14 +441,6 @@ Class | Method | HTTP request | Description
  - [ListSharednetworkResponse](docs/ListSharednetworkResponse.md)
  - [ListSharednetworkResponseObject](docs/ListSharednetworkResponseObject.md)
  - [Macfilteraddress](docs/Macfilteraddress.md)
- - [MemberDhcpproperties](docs/MemberDhcpproperties.md)
- - [MemberDhcppropertiesDdnsZonePrimaries](docs/MemberDhcppropertiesDdnsZonePrimaries.md)
- - [MemberDhcppropertiesIpv6Options](docs/MemberDhcppropertiesIpv6Options.md)
- - [MemberDhcppropertiesLogicFilterRules](docs/MemberDhcppropertiesLogicFilterRules.md)
- - [MemberDhcppropertiesOption60MatchRules](docs/MemberDhcppropertiesOption60MatchRules.md)
- - [MemberDhcppropertiesOptions](docs/MemberDhcppropertiesOptions.md)
- - [MsserverDhcp](docs/MsserverDhcp.md)
- - [Mssuperscope](docs/Mssuperscope.md)
  - [Orderedranges](docs/Orderedranges.md)
  - [Range](docs/Range.md)
  - [RangeCloudInfo](docs/RangeCloudInfo.md)
@@ -570,8 +510,6 @@ Class | Method | HTTP request | Description
  - [UpdateFixedaddressResponseAsObject](docs/UpdateFixedaddressResponseAsObject.md)
  - [UpdateFixedaddresstemplateResponse](docs/UpdateFixedaddresstemplateResponse.md)
  - [UpdateFixedaddresstemplateResponseAsObject](docs/UpdateFixedaddresstemplateResponseAsObject.md)
- - [UpdateGridDhcppropertiesResponse](docs/UpdateGridDhcppropertiesResponse.md)
- - [UpdateGridDhcppropertiesResponseAsObject](docs/UpdateGridDhcppropertiesResponseAsObject.md)
  - [UpdateIpv6dhcpoptiondefinitionResponse](docs/UpdateIpv6dhcpoptiondefinitionResponse.md)
  - [UpdateIpv6dhcpoptiondefinitionResponseAsObject](docs/UpdateIpv6dhcpoptiondefinitionResponseAsObject.md)
  - [UpdateIpv6dhcpoptionspaceResponse](docs/UpdateIpv6dhcpoptionspaceResponse.md)
@@ -592,12 +530,6 @@ Class | Method | HTTP request | Description
  - [UpdateLeaseResponseAsObject](docs/UpdateLeaseResponseAsObject.md)
  - [UpdateMacfilteraddressResponse](docs/UpdateMacfilteraddressResponse.md)
  - [UpdateMacfilteraddressResponseAsObject](docs/UpdateMacfilteraddressResponseAsObject.md)
- - [UpdateMemberDhcppropertiesResponse](docs/UpdateMemberDhcppropertiesResponse.md)
- - [UpdateMemberDhcppropertiesResponseAsObject](docs/UpdateMemberDhcppropertiesResponseAsObject.md)
- - [UpdateMsserverDhcpResponse](docs/UpdateMsserverDhcpResponse.md)
- - [UpdateMsserverDhcpResponseAsObject](docs/UpdateMsserverDhcpResponseAsObject.md)
- - [UpdateMssuperscopeResponse](docs/UpdateMssuperscopeResponse.md)
- - [UpdateMssuperscopeResponseAsObject](docs/UpdateMssuperscopeResponseAsObject.md)
  - [UpdateOrderedrangesResponse](docs/UpdateOrderedrangesResponse.md)
  - [UpdateOrderedrangesResponseAsObject](docs/UpdateOrderedrangesResponseAsObject.md)
  - [UpdateRangeResponse](docs/UpdateRangeResponse.md)

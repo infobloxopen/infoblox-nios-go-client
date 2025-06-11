@@ -52,7 +52,6 @@ Name | Type | Description | Notes
 **UpdateMetadata** | Pointer to **bool** | Whether to update metadata as a result of this network discovery. | [optional] 
 **UseIdentity** | Pointer to **bool** | If set true, all keystone connection will use \&quot;/identity\&quot; endpoint and port value will be ignored. | [optional] 
 **Username** | Pointer to **string** | Username used for connecting to the cloud management platform. | [optional] 
-**VdiscoveryControl** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -1272,31 +1271,6 @@ SetUsername sets Username field to given value.
 `func (o *Vdiscoverytask) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
-### GetVdiscoveryControl
-
-`func (o *Vdiscoverytask) GetVdiscoveryControl() map[string]interface{}`
-
-GetVdiscoveryControl returns the VdiscoveryControl field if non-nil, zero value otherwise.
-
-### GetVdiscoveryControlOk
-
-`func (o *Vdiscoverytask) GetVdiscoveryControlOk() (*map[string]interface{}, bool)`
-
-GetVdiscoveryControlOk returns a tuple with the VdiscoveryControl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVdiscoveryControl
-
-`func (o *Vdiscoverytask) SetVdiscoveryControl(v map[string]interface{})`
-
-SetVdiscoveryControl sets VdiscoveryControl field to given value.
-
-### HasVdiscoveryControl
-
-`func (o *Vdiscoverytask) HasVdiscoveryControl() bool`
-
-HasVdiscoveryControl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

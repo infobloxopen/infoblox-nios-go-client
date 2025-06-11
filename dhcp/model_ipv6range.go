@@ -41,7 +41,7 @@ type Ipv6range struct {
 	// The IPv6 Address end address of the DHCP IPv6 range.
 	EndAddr *string `json:"end_addr,omitempty"`
 	// The endpoints that provides data for the DHCP IPv6 Range object.
-	EndpointSources []map[string]interface{} `json:"endpoint_sources,omitempty"`
+	EndpointSources []string `json:"endpoint_sources,omitempty"`
 	// These are ranges of IP addresses that the appliance does not use to assign to clients. You can use these exclusion addresses as static IP addresses. They contain the start and end addresses of the exclusion range, and optionally,information about this exclusion range.
 	Exclude []Ipv6rangeExclude `json:"exclude,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
@@ -60,8 +60,7 @@ type Ipv6range struct {
 	// The network this range belongs to, in IPv6 Address/CIDR format.
 	Network *string `json:"network,omitempty"`
 	// The name of the network view in which this range resides.
-	NetworkView     *string                `json:"network_view,omitempty"`
-	NextAvailableIp map[string]interface{} `json:"next_available_ip,omitempty"`
+	NetworkView *string `json:"network_view,omitempty"`
 	// This field contains the Option filters to be applied to this IPv6 range. The appliance uses the matching rules of these filters to select the address range from which it assigns a lease.
 	OptionFilterRules          []Ipv6rangeOptionFilterRules         `json:"option_filter_rules,omitempty"`
 	PortControlBlackoutSetting *Ipv6rangePortControlBlackoutSetting `json:"port_control_blackout_setting,omitempty"`
@@ -494,9 +493,9 @@ func (o *Ipv6range) SetEndAddr(v string) {
 }
 
 // GetEndpointSources returns the EndpointSources field value if set, zero value otherwise.
-func (o *Ipv6range) GetEndpointSources() []map[string]interface{} {
+func (o *Ipv6range) GetEndpointSources() []string {
 	if o == nil || IsNil(o.EndpointSources) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.EndpointSources
@@ -504,7 +503,7 @@ func (o *Ipv6range) GetEndpointSources() []map[string]interface{} {
 
 // GetEndpointSourcesOk returns a tuple with the EndpointSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6range) GetEndpointSourcesOk() ([]map[string]interface{}, bool) {
+func (o *Ipv6range) GetEndpointSourcesOk() ([]string, bool) {
 	if o == nil || IsNil(o.EndpointSources) {
 		return nil, false
 	}
@@ -520,8 +519,8 @@ func (o *Ipv6range) HasEndpointSources() bool {
 	return false
 }
 
-// SetEndpointSources gets a reference to the given []map[string]interface{} and assigns it to the EndpointSources field.
-func (o *Ipv6range) SetEndpointSources(v []map[string]interface{}) {
+// SetEndpointSources gets a reference to the given []string and assigns it to the EndpointSources field.
+func (o *Ipv6range) SetEndpointSources(v []string) {
 	o.EndpointSources = v
 }
 
@@ -843,38 +842,6 @@ func (o *Ipv6range) HasNetworkView() bool {
 // SetNetworkView gets a reference to the given string and assigns it to the NetworkView field.
 func (o *Ipv6range) SetNetworkView(v string) {
 	o.NetworkView = &v
-}
-
-// GetNextAvailableIp returns the NextAvailableIp field value if set, zero value otherwise.
-func (o *Ipv6range) GetNextAvailableIp() map[string]interface{} {
-	if o == nil || IsNil(o.NextAvailableIp) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NextAvailableIp
-}
-
-// GetNextAvailableIpOk returns a tuple with the NextAvailableIp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Ipv6range) GetNextAvailableIpOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NextAvailableIp) {
-		return map[string]interface{}{}, false
-	}
-	return o.NextAvailableIp, true
-}
-
-// HasNextAvailableIp returns a boolean if a field has been set.
-func (o *Ipv6range) HasNextAvailableIp() bool {
-	if o != nil && !IsNil(o.NextAvailableIp) {
-		return true
-	}
-
-	return false
-}
-
-// SetNextAvailableIp gets a reference to the given map[string]interface{} and assigns it to the NextAvailableIp field.
-func (o *Ipv6range) SetNextAvailableIp(v map[string]interface{}) {
-	o.NextAvailableIp = v
 }
 
 // GetOptionFilterRules returns the OptionFilterRules field value if set, zero value otherwise.
@@ -1435,9 +1402,6 @@ func (o Ipv6range) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
-	}
-	if !IsNil(o.NextAvailableIp) {
-		toSerialize["next_available_ip"] = o.NextAvailableIp
 	}
 	if !IsNil(o.OptionFilterRules) {
 		toSerialize["option_filter_rules"] = o.OptionFilterRules

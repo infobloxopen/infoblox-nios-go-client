@@ -380,6 +380,33 @@ func (a *NetworkcontainerAPIService) PostExecute(r NetworkcontainerAPIPostReques
 			}
 		}
 	}
+	if r.networkcontainer.FuncCall != nil {
+		bodyForFuncCall := r.networkcontainer
+		if bodyForFuncCall.FuncCall.AttributeName == "" {
+			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+		}
+		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
+		if funcStr == "Network" {
+			if bodyForFuncCall.Network.String != nil {
+				return localVarReturnValue, nil, internal.ReportError("Network cannot be provided when function call is used")
+			} else {
+
+				var l NetworkcontainerNetwork
+				var m NetworkcontainerNetworkOneOf
+				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
+				m.Parameters = bodyForFuncCall.FuncCall.Parameters
+				m.ResultField = bodyForFuncCall.FuncCall.ResultField
+				m.Object = bodyForFuncCall.FuncCall.Object
+				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
+
+				l.NetworkcontainerNetworkOneOf = &m
+				l.String = nil
+				bodyForFuncCall.Network = &l
+				bodyForFuncCall.FuncCall = nil
+			}
+		}
+		r.networkcontainer = bodyForFuncCall
+	}
 	// body params
 	localVarPostBody = r.networkcontainer
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -756,6 +783,12 @@ func (a *NetworkcontainerAPIService) ReferencePutExecute(r NetworkcontainerAPIRe
 				}
 			}
 		}
+	}
+	if r.networkcontainer.FuncCall != nil {
+		bodyForFuncCall := r.networkcontainer
+		bodyForFuncCall.FuncCall = nil
+		bodyForFuncCall.Network = nil
+		r.networkcontainer = bodyForFuncCall
 	}
 	// body params
 	localVarPostBody = r.networkcontainer

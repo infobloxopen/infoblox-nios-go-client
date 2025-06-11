@@ -30,8 +30,7 @@ type RadiusAuthservice struct {
 	// The number of seconds to wait for a response from the RADIUS server.
 	AuthTimeout *int64 `json:"auth_timeout,omitempty"`
 	// The TTL of cached authentication data in seconds.
-	CacheTtl                  *int64                 `json:"cache_ttl,omitempty"`
-	CheckRadiusServerSettings map[string]interface{} `json:"check_radius_server_settings,omitempty"`
+	CacheTtl *int64 `json:"cache_ttl,omitempty"`
 	// The RADIUS descriptive comment.
 	Comment *string `json:"comment,omitempty"`
 	// Determines whether the RADIUS authentication service is disabled.
@@ -255,38 +254,6 @@ func (o *RadiusAuthservice) HasCacheTtl() bool {
 // SetCacheTtl gets a reference to the given int64 and assigns it to the CacheTtl field.
 func (o *RadiusAuthservice) SetCacheTtl(v int64) {
 	o.CacheTtl = &v
-}
-
-// GetCheckRadiusServerSettings returns the CheckRadiusServerSettings field value if set, zero value otherwise.
-func (o *RadiusAuthservice) GetCheckRadiusServerSettings() map[string]interface{} {
-	if o == nil || IsNil(o.CheckRadiusServerSettings) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.CheckRadiusServerSettings
-}
-
-// GetCheckRadiusServerSettingsOk returns a tuple with the CheckRadiusServerSettings field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RadiusAuthservice) GetCheckRadiusServerSettingsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.CheckRadiusServerSettings) {
-		return map[string]interface{}{}, false
-	}
-	return o.CheckRadiusServerSettings, true
-}
-
-// HasCheckRadiusServerSettings returns a boolean if a field has been set.
-func (o *RadiusAuthservice) HasCheckRadiusServerSettings() bool {
-	if o != nil && !IsNil(o.CheckRadiusServerSettings) {
-		return true
-	}
-
-	return false
-}
-
-// SetCheckRadiusServerSettings gets a reference to the given map[string]interface{} and assigns it to the CheckRadiusServerSettings field.
-func (o *RadiusAuthservice) SetCheckRadiusServerSettings(v map[string]interface{}) {
-	o.CheckRadiusServerSettings = v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -540,9 +507,6 @@ func (o RadiusAuthservice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CacheTtl) {
 		toSerialize["cache_ttl"] = o.CacheTtl
-	}
-	if !IsNil(o.CheckRadiusServerSettings) {
-		toSerialize["check_radius_server_settings"] = o.CheckRadiusServerSettings
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment

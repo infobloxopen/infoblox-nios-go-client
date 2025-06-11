@@ -34,8 +34,6 @@ Name | Type | Description | Notes
 **Secondary** | Pointer to **string** | The secondary server of a DHCP failover object. | [optional] 
 **SecondaryServerType** | Pointer to **string** | The type of the secondary server of DHCP Failover association object. | [optional] 
 **SecondaryState** | Pointer to **string** | The secondary server status of a DHCP failover object. | [optional] [readonly] 
-**SetDhcpFailoverPartnerDown** | Pointer to **map[string]interface{}** |  | [optional] 
-**SetDhcpFailoverSecondaryRecovery** | Pointer to **map[string]interface{}** |  | [optional] 
 **UseFailoverPort** | Pointer to **bool** | Use flag for: failover_port | [optional] 
 **UseMsSwitchoverInterval** | Pointer to **bool** | Use flag for: ms_switchover_interval | [optional] 
 **UseRecycleLeases** | Pointer to **bool** | Use flag for: recycle_leases | [optional] 
@@ -808,56 +806,6 @@ SetSecondaryState sets SecondaryState field to given value.
 `func (o *Dhcpfailover) HasSecondaryState() bool`
 
 HasSecondaryState returns a boolean if a field has been set.
-
-### GetSetDhcpFailoverPartnerDown
-
-`func (o *Dhcpfailover) GetSetDhcpFailoverPartnerDown() map[string]interface{}`
-
-GetSetDhcpFailoverPartnerDown returns the SetDhcpFailoverPartnerDown field if non-nil, zero value otherwise.
-
-### GetSetDhcpFailoverPartnerDownOk
-
-`func (o *Dhcpfailover) GetSetDhcpFailoverPartnerDownOk() (*map[string]interface{}, bool)`
-
-GetSetDhcpFailoverPartnerDownOk returns a tuple with the SetDhcpFailoverPartnerDown field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSetDhcpFailoverPartnerDown
-
-`func (o *Dhcpfailover) SetSetDhcpFailoverPartnerDown(v map[string]interface{})`
-
-SetSetDhcpFailoverPartnerDown sets SetDhcpFailoverPartnerDown field to given value.
-
-### HasSetDhcpFailoverPartnerDown
-
-`func (o *Dhcpfailover) HasSetDhcpFailoverPartnerDown() bool`
-
-HasSetDhcpFailoverPartnerDown returns a boolean if a field has been set.
-
-### GetSetDhcpFailoverSecondaryRecovery
-
-`func (o *Dhcpfailover) GetSetDhcpFailoverSecondaryRecovery() map[string]interface{}`
-
-GetSetDhcpFailoverSecondaryRecovery returns the SetDhcpFailoverSecondaryRecovery field if non-nil, zero value otherwise.
-
-### GetSetDhcpFailoverSecondaryRecoveryOk
-
-`func (o *Dhcpfailover) GetSetDhcpFailoverSecondaryRecoveryOk() (*map[string]interface{}, bool)`
-
-GetSetDhcpFailoverSecondaryRecoveryOk returns a tuple with the SetDhcpFailoverSecondaryRecovery field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSetDhcpFailoverSecondaryRecovery
-
-`func (o *Dhcpfailover) SetSetDhcpFailoverSecondaryRecovery(v map[string]interface{})`
-
-SetSetDhcpFailoverSecondaryRecovery sets SetDhcpFailoverSecondaryRecovery field to given value.
-
-### HasSetDhcpFailoverSecondaryRecovery
-
-`func (o *Dhcpfailover) HasSetDhcpFailoverSecondaryRecovery() bool`
-
-HasSetDhcpFailoverSecondaryRecovery returns a boolean if a field has been set.
 
 ### GetUseFailoverPort
 

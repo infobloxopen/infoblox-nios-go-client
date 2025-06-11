@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **EndVlanId** | Pointer to **int64** | End ID for VLAN View. | [optional] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | Name of the VLAN View. | [optional] 
-**NextAvailableVlanId** | Pointer to **map[string]interface{}** |  | [optional] 
 **PreCreateVlan** | Pointer to **bool** | If set on creation VLAN objects will be created once VLAN View created. | [optional] 
 **StartVlanId** | Pointer to **int64** | Start ID for VLAN View. | [optional] 
 **VlanNamePrefix** | Pointer to **string** | If set on creation prefix string will be used for VLAN name. | [optional] 
@@ -183,31 +182,6 @@ SetName sets Name field to given value.
 `func (o *Vlanview) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetNextAvailableVlanId
-
-`func (o *Vlanview) GetNextAvailableVlanId() map[string]interface{}`
-
-GetNextAvailableVlanId returns the NextAvailableVlanId field if non-nil, zero value otherwise.
-
-### GetNextAvailableVlanIdOk
-
-`func (o *Vlanview) GetNextAvailableVlanIdOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableVlanIdOk returns a tuple with the NextAvailableVlanId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableVlanId
-
-`func (o *Vlanview) SetNextAvailableVlanId(v map[string]interface{})`
-
-SetNextAvailableVlanId sets NextAvailableVlanId field to given value.
-
-### HasNextAvailableVlanId
-
-`func (o *Vlanview) HasNextAvailableVlanId() bool`
-
-HasNextAvailableVlanId returns a boolean if a field has been set.
 
 ### GetPreCreateVlan
 

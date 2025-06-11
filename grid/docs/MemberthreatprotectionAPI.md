@@ -1,18 +1,18 @@
-# MemberthreatprotectionAPI
+# MemberThreatprotectionAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](MemberthreatprotectionAPI.md#Get) | **Get** /member:threatprotection | Retrieve member:threatprotection objects
-[**ReferenceGet**](MemberthreatprotectionAPI.md#ReferenceGet) | **Get** /member:threatprotection/{reference} | Get a specific member:threatprotection object
-[**ReferencePut**](MemberthreatprotectionAPI.md#ReferencePut) | **Put** /member:threatprotection/{reference} | Update a member:threatprotection object
+[**MemberthreatprotectionGet**](MemberThreatprotectionAPI.md#MemberthreatprotectionGet) | **Get** /member:threatprotection | Retrieve member:threatprotection objects
+[**MemberthreatprotectionReferenceGet**](MemberThreatprotectionAPI.md#MemberthreatprotectionReferenceGet) | **Get** /member:threatprotection/{reference} | Get a specific member:threatprotection object
+[**MemberthreatprotectionReferencePut**](MemberThreatprotectionAPI.md#MemberthreatprotectionReferencePut) | **Put** /member:threatprotection/{reference} | Update a member:threatprotection object
 
 
 
-## Get
+## MemberthreatprotectionGet
 
-> ListMemberThreatprotectionResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListMemberThreatprotectionResponse MemberthreatprotectionGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve member:threatprotection objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberthreatprotectionAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.MemberThreatprotectionAPI.MemberthreatprotectionGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberthreatprotectionAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatprotectionAPI.MemberthreatprotectionGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListMemberThreatprotectionResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberthreatprotectionAPI.Get`: %v\n", resp)
+	// response from `MemberthreatprotectionGet`: ListMemberThreatprotectionResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberThreatprotectionAPI.MemberthreatprotectionGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberthreatprotectionAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberThreatprotectionAPIMemberthreatprotectionGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## MemberthreatprotectionReferenceGet
 
-> GetMemberThreatprotectionResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMemberThreatprotectionResponse MemberthreatprotectionReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific member:threatprotection object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the member:threatprotection object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberthreatprotectionAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MemberThreatprotectionAPI.MemberthreatprotectionReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberthreatprotectionAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatprotectionAPI.MemberthreatprotectionReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetMemberThreatprotectionResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberthreatprotectionAPI.ReferenceGet`: %v\n", resp)
+	// response from `MemberthreatprotectionReferenceGet`: GetMemberThreatprotectionResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberThreatprotectionAPI.MemberthreatprotectionReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberthreatprotectionAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## MemberthreatprotectionReferencePut
 
-> UpdateMemberThreatprotectionResponse ReferencePut(ctx, reference).MemberThreatprotection(memberThreatprotection).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateMemberThreatprotectionResponse MemberthreatprotectionReferencePut(ctx, reference).MemberThreatprotection(memberThreatprotection).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a member:threatprotection object
 
@@ -180,13 +180,13 @@ func main() {
 	memberThreatprotection := *grid.NewMemberThreatprotection() // MemberThreatprotection | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberthreatprotectionAPI.ReferencePut(context.Background(), reference).MemberThreatprotection(memberThreatprotection).Execute()
+	resp, r, err := apiClient.MemberThreatprotectionAPI.MemberthreatprotectionReferencePut(context.Background(), reference).MemberThreatprotection(memberThreatprotection).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberthreatprotectionAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatprotectionAPI.MemberthreatprotectionReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateMemberThreatprotectionResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberthreatprotectionAPI.ReferencePut`: %v\n", resp)
+	// response from `MemberthreatprotectionReferencePut`: UpdateMemberThreatprotectionResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberThreatprotectionAPI.MemberthreatprotectionReferencePut`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberthreatprotectionAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

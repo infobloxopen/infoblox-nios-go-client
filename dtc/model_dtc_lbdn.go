@@ -22,7 +22,7 @@ type DtcLbdn struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
 	// List of linked auth zones.
-	AuthZones []map[string]interface{} `json:"auth_zones,omitempty"`
+	AuthZones []string `json:"auth_zones,omitempty"`
 	// Flag for enabling auto managing DTC Consolidated Monitors on related DTC Pools.
 	AutoConsolidatedMonitors *bool `json:"auto_consolidated_monitors,omitempty"`
 	// Comment for the DTC LBDN; maximum 256 characters.
@@ -104,9 +104,9 @@ func (o *DtcLbdn) SetRef(v string) {
 }
 
 // GetAuthZones returns the AuthZones field value if set, zero value otherwise.
-func (o *DtcLbdn) GetAuthZones() []map[string]interface{} {
+func (o *DtcLbdn) GetAuthZones() []string {
 	if o == nil || IsNil(o.AuthZones) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.AuthZones
@@ -114,7 +114,7 @@ func (o *DtcLbdn) GetAuthZones() []map[string]interface{} {
 
 // GetAuthZonesOk returns a tuple with the AuthZones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcLbdn) GetAuthZonesOk() ([]map[string]interface{}, bool) {
+func (o *DtcLbdn) GetAuthZonesOk() ([]string, bool) {
 	if o == nil || IsNil(o.AuthZones) {
 		return nil, false
 	}
@@ -130,8 +130,8 @@ func (o *DtcLbdn) HasAuthZones() bool {
 	return false
 }
 
-// SetAuthZones gets a reference to the given []map[string]interface{} and assigns it to the AuthZones field.
-func (o *DtcLbdn) SetAuthZones(v []map[string]interface{}) {
+// SetAuthZones gets a reference to the given []string and assigns it to the AuthZones field.
+func (o *DtcLbdn) SetAuthZones(v []string) {
 	o.AuthZones = v
 }
 

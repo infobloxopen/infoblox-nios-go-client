@@ -1,20 +1,20 @@
-# RecordunknownAPI
+# RecordUnknownAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordunknownAPI.md#Get) | **Get** /record:unknown | Retrieve record:unknown objects
-[**Post**](RecordunknownAPI.md#Post) | **Post** /record:unknown | Create a record:unknown object
-[**ReferenceDelete**](RecordunknownAPI.md#ReferenceDelete) | **Delete** /record:unknown/{reference} | Delete a record:unknown object
-[**ReferenceGet**](RecordunknownAPI.md#ReferenceGet) | **Get** /record:unknown/{reference} | Get a specific record:unknown object
-[**ReferencePut**](RecordunknownAPI.md#ReferencePut) | **Put** /record:unknown/{reference} | Update a record:unknown object
+[**RecordunknownGet**](RecordUnknownAPI.md#RecordunknownGet) | **Get** /record:unknown | Retrieve record:unknown objects
+[**RecordunknownPost**](RecordUnknownAPI.md#RecordunknownPost) | **Post** /record:unknown | Create a record:unknown object
+[**RecordunknownReferenceDelete**](RecordUnknownAPI.md#RecordunknownReferenceDelete) | **Delete** /record:unknown/{reference} | Delete a record:unknown object
+[**RecordunknownReferenceGet**](RecordUnknownAPI.md#RecordunknownReferenceGet) | **Get** /record:unknown/{reference} | Get a specific record:unknown object
+[**RecordunknownReferencePut**](RecordUnknownAPI.md#RecordunknownReferencePut) | **Put** /record:unknown/{reference} | Update a record:unknown object
 
 
 
-## Get
+## RecordunknownGet
 
-> ListRecordUnknownResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordUnknownResponse RecordunknownGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:unknown objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordunknownAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordUnknownAPI.RecordunknownGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordunknownAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordUnknownAPI.RecordunknownGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordUnknownResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordunknownAPI.Get`: %v\n", resp)
+	// response from `RecordunknownGet`: ListRecordUnknownResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordUnknownAPI.RecordunknownGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordunknownAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordUnknownAPIRecordunknownGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordunknownPost
 
-> CreateRecordUnknownResponse Post(ctx).RecordUnknown(recordUnknown).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordUnknownResponse RecordunknownPost(ctx).RecordUnknown(recordUnknown).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:unknown object
 
@@ -109,13 +109,13 @@ func main() {
 	recordUnknown := *dns.NewRecordUnknown() // RecordUnknown | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordunknownAPI.Post(context.Background()).RecordUnknown(recordUnknown).Execute()
+	resp, r, err := apiClient.RecordUnknownAPI.RecordunknownPost(context.Background()).RecordUnknown(recordUnknown).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordunknownAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordUnknownAPI.RecordunknownPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordUnknownResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordunknownAPI.Post`: %v\n", resp)
+	// response from `RecordunknownPost`: CreateRecordUnknownResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordUnknownAPI.RecordunknownPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordunknownAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordUnknownAPIRecordunknownPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordunknownReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordunknownReferenceDelete(ctx, reference).Execute()
 
 Delete a record:unknown object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:unknown object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordunknownAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordUnknownAPI.RecordunknownReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordunknownAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordUnknownAPI.RecordunknownReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordunknownAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordUnknownAPIRecordunknownReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordunknownReferenceGet
 
-> GetRecordUnknownResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordUnknownResponse RecordunknownReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:unknown object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:unknown object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordunknownAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordUnknownAPI.RecordunknownReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordunknownAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordUnknownAPI.RecordunknownReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordUnknownResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordunknownAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordunknownReferenceGet`: GetRecordUnknownResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordUnknownAPI.RecordunknownReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordunknownAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordUnknownAPIRecordunknownReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordunknownReferencePut
 
-> UpdateRecordUnknownResponse ReferencePut(ctx, reference).RecordUnknown(recordUnknown).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordUnknownResponse RecordunknownReferencePut(ctx, reference).RecordUnknown(recordUnknown).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:unknown object
 
@@ -318,13 +318,13 @@ func main() {
 	recordUnknown := *dns.NewRecordUnknown() // RecordUnknown | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordunknownAPI.ReferencePut(context.Background(), reference).RecordUnknown(recordUnknown).Execute()
+	resp, r, err := apiClient.RecordUnknownAPI.RecordunknownReferencePut(context.Background(), reference).RecordUnknown(recordUnknown).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordunknownAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordUnknownAPI.RecordunknownReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordUnknownResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordunknownAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordunknownReferencePut`: UpdateRecordUnknownResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordUnknownAPI.RecordunknownReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordunknownAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordUnknownAPIRecordunknownReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

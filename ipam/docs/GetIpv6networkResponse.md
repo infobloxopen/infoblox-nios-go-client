@@ -34,8 +34,7 @@ Name | Type | Description | Notes
 **EnableDiscovery** | Pointer to **bool** | Determines whether a discovery is enabled or not for this network. When this is set to False, the network discovery is disabled. | [optional] 
 **EnableIfmapPublishing** | Pointer to **bool** | Determines if IFMAP publishing is enabled for the network. | [optional] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the network should be immediately enabled. | [optional] 
-**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP IPv6 Network object. | [optional] [readonly] 
-**ExpandNetwork** | Pointer to **map[string]interface{}** |  | [optional] 
+**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP IPv6 Network object. | [optional] [readonly] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FederatedRealms** | Pointer to [**[]Ipv6networkFederatedRealms**](Ipv6networkFederatedRealms.md) | This field contains the federated realms associated to this network | [optional] 
 **LastRirRegistrationUpdateSent** | Pointer to **int64** | The timestamp when the last RIR registration update was sent. | [optional] [readonly] 
@@ -48,9 +47,6 @@ Name | Type | Description | Notes
 **Network** | Pointer to **string** | The network address in IPv6 Address/CIDR format. For regular expression searches, only the IPv6 Address portion is supported. Searches for the CIDR portion is always an exact match. For example, both network containers 16::0/28 and 26::0/24 are matched by expression &#39;.6&#39; and only 26::0/24 is matched by &#39;.6/24&#39;. | [optional] 
 **NetworkContainer** | Pointer to **string** | The network container to which this network belongs, if any. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this network resides. | [optional] 
-**NextAvailableIp** | Pointer to **map[string]interface{}** |  | [optional] 
-**NextAvailableNetwork** | Pointer to **map[string]interface{}** |  | [optional] 
-**NextAvailableVlan** | Pointer to **map[string]interface{}** |  | [optional] 
 **Options** | Pointer to [**[]Ipv6networkOptions**](Ipv6networkOptions.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
 **PortControlBlackoutSetting** | Pointer to [**Ipv6networkPortControlBlackoutSetting**](Ipv6networkPortControlBlackoutSetting.md) |  | [optional] 
 **PreferredLifetime** | Pointer to **int64** | Use this method to set or retrieve the preferred lifetime value of a DHCP IPv6 Network object. | [optional] 
@@ -62,7 +58,6 @@ Name | Type | Description | Notes
 **RirRegistrationStatus** | Pointer to **string** | The registration status of the IPv6 network in RIR. | [optional] 
 **SamePortControlDiscoveryBlackout** | Pointer to **bool** | If the field is set to True, the discovery blackout setting will be used for port control blackout setting. | [optional] 
 **SendRirRequest** | Pointer to **bool** | Determines whether to send the RIR registration request. | [optional] 
-**SplitNetwork** | Pointer to **map[string]interface{}** |  | [optional] 
 **SubscribeSettings** | Pointer to [**Ipv6networkSubscribeSettings**](Ipv6networkSubscribeSettings.md) |  | [optional] 
 **Template** | Pointer to **string** | If set on creation, the network is created according to the values specified in the selected template. | [optional] 
 **Unmanaged** | Pointer to **bool** | Determines whether the DHCP IPv6 Network is unmanaged or not. | [optional] 
@@ -864,20 +859,20 @@ HasEnableImmediateDiscovery returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *GetIpv6networkResponse) GetEndpointSources() []map[string]interface{}`
+`func (o *GetIpv6networkResponse) GetEndpointSources() []string`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *GetIpv6networkResponse) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
+`func (o *GetIpv6networkResponse) GetEndpointSourcesOk() (*[]string, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *GetIpv6networkResponse) SetEndpointSources(v []map[string]interface{})`
+`func (o *GetIpv6networkResponse) SetEndpointSources(v []string)`
 
 SetEndpointSources sets EndpointSources field to given value.
 
@@ -886,31 +881,6 @@ SetEndpointSources sets EndpointSources field to given value.
 `func (o *GetIpv6networkResponse) HasEndpointSources() bool`
 
 HasEndpointSources returns a boolean if a field has been set.
-
-### GetExpandNetwork
-
-`func (o *GetIpv6networkResponse) GetExpandNetwork() map[string]interface{}`
-
-GetExpandNetwork returns the ExpandNetwork field if non-nil, zero value otherwise.
-
-### GetExpandNetworkOk
-
-`func (o *GetIpv6networkResponse) GetExpandNetworkOk() (*map[string]interface{}, bool)`
-
-GetExpandNetworkOk returns a tuple with the ExpandNetwork field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExpandNetwork
-
-`func (o *GetIpv6networkResponse) SetExpandNetwork(v map[string]interface{})`
-
-SetExpandNetwork sets ExpandNetwork field to given value.
-
-### HasExpandNetwork
-
-`func (o *GetIpv6networkResponse) HasExpandNetwork() bool`
-
-HasExpandNetwork returns a boolean if a field has been set.
 
 ### GetExtattrs
 
@@ -1212,81 +1182,6 @@ SetNetworkView sets NetworkView field to given value.
 
 HasNetworkView returns a boolean if a field has been set.
 
-### GetNextAvailableIp
-
-`func (o *GetIpv6networkResponse) GetNextAvailableIp() map[string]interface{}`
-
-GetNextAvailableIp returns the NextAvailableIp field if non-nil, zero value otherwise.
-
-### GetNextAvailableIpOk
-
-`func (o *GetIpv6networkResponse) GetNextAvailableIpOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableIpOk returns a tuple with the NextAvailableIp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableIp
-
-`func (o *GetIpv6networkResponse) SetNextAvailableIp(v map[string]interface{})`
-
-SetNextAvailableIp sets NextAvailableIp field to given value.
-
-### HasNextAvailableIp
-
-`func (o *GetIpv6networkResponse) HasNextAvailableIp() bool`
-
-HasNextAvailableIp returns a boolean if a field has been set.
-
-### GetNextAvailableNetwork
-
-`func (o *GetIpv6networkResponse) GetNextAvailableNetwork() map[string]interface{}`
-
-GetNextAvailableNetwork returns the NextAvailableNetwork field if non-nil, zero value otherwise.
-
-### GetNextAvailableNetworkOk
-
-`func (o *GetIpv6networkResponse) GetNextAvailableNetworkOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableNetworkOk returns a tuple with the NextAvailableNetwork field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableNetwork
-
-`func (o *GetIpv6networkResponse) SetNextAvailableNetwork(v map[string]interface{})`
-
-SetNextAvailableNetwork sets NextAvailableNetwork field to given value.
-
-### HasNextAvailableNetwork
-
-`func (o *GetIpv6networkResponse) HasNextAvailableNetwork() bool`
-
-HasNextAvailableNetwork returns a boolean if a field has been set.
-
-### GetNextAvailableVlan
-
-`func (o *GetIpv6networkResponse) GetNextAvailableVlan() map[string]interface{}`
-
-GetNextAvailableVlan returns the NextAvailableVlan field if non-nil, zero value otherwise.
-
-### GetNextAvailableVlanOk
-
-`func (o *GetIpv6networkResponse) GetNextAvailableVlanOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableVlanOk returns a tuple with the NextAvailableVlan field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableVlan
-
-`func (o *GetIpv6networkResponse) SetNextAvailableVlan(v map[string]interface{})`
-
-SetNextAvailableVlan sets NextAvailableVlan field to given value.
-
-### HasNextAvailableVlan
-
-`func (o *GetIpv6networkResponse) HasNextAvailableVlan() bool`
-
-HasNextAvailableVlan returns a boolean if a field has been set.
-
 ### GetOptions
 
 `func (o *GetIpv6networkResponse) GetOptions() []Ipv6networkOptions`
@@ -1561,31 +1456,6 @@ SetSendRirRequest sets SendRirRequest field to given value.
 `func (o *GetIpv6networkResponse) HasSendRirRequest() bool`
 
 HasSendRirRequest returns a boolean if a field has been set.
-
-### GetSplitNetwork
-
-`func (o *GetIpv6networkResponse) GetSplitNetwork() map[string]interface{}`
-
-GetSplitNetwork returns the SplitNetwork field if non-nil, zero value otherwise.
-
-### GetSplitNetworkOk
-
-`func (o *GetIpv6networkResponse) GetSplitNetworkOk() (*map[string]interface{}, bool)`
-
-GetSplitNetworkOk returns a tuple with the SplitNetwork field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSplitNetwork
-
-`func (o *GetIpv6networkResponse) SetSplitNetwork(v map[string]interface{})`
-
-SetSplitNetwork sets SplitNetwork field to given value.
-
-### HasSplitNetwork
-
-`func (o *GetIpv6networkResponse) HasSplitNetwork() bool`
-
-HasSplitNetwork returns a boolean if a field has been set.
 
 ### GetSubscribeSettings
 

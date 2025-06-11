@@ -1,0 +1,790 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Infoblox
+    url: https://www.infoblox.com
+  description: OpenAPI specification for Infoblox NIOS WAPI ACL objects
+  license:
+    name: Infoblox License
+    url: https://www.infoblox.com
+  termsOfService: https://www.infoblox.com
+  title: Infoblox ACL API
+  version: 2.13.6
+servers:
+- description: NIOS WAPI server
+  url: /wapi/v2.13.6
+tags:
+- description: Operations for namedacl objects
+  name: Namedacl
+paths:
+  /namedacl:
+    get:
+      description: Returns a list of namedacl objects matching the search criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNamedaclResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve namedacl objects
+      tags:
+      - Namedacl
+    post:
+      description: Creates a new namedacl object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Namedacl'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNamedaclResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a namedacl object
+      tags:
+      - Namedacl
+      x-tf-resource: nios_acl_namedacl
+      x-tf-datasource: nios_acl_namedacl
+      x-sdk-default-ext-attrs: true
+  /namedacl/{reference}:
+    delete:
+      description: Deletes a specific namedacl object by reference
+      parameters:
+      - description: Reference of the namedacl object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a namedacl object
+      tags:
+      - Namedacl
+    get:
+      description: Returns a specific namedacl object by reference
+      parameters:
+      - description: Reference of the namedacl object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetNamedaclResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific namedacl object
+      tags:
+      - Namedacl
+    put:
+      description: Updates a specific namedacl object by reference
+      parameters:
+      - description: Reference of the namedacl object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Namedacl'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateNamedaclResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a namedacl object
+      tags:
+      - Namedacl
+      x-sdk-default-ext-attrs: true
+components:
+  parameters:
+    ReturnFields:
+      description: Enter the field names followed by comma
+      explode: true
+      in: query
+      name: _return_fields
+      required: false
+      schema:
+        type: string
+      style: form
+    ReturnFieldsPlus:
+      description: "Enter the field names followed by comma, this returns the required\
+        \ fields along with the default fields"
+      explode: true
+      in: query
+      name: _return_fields+
+      required: false
+      schema:
+        type: string
+      style: form
+    MaxResults:
+      description: Enter the number of results to be fetched
+      explode: true
+      in: query
+      name: _max_results
+      required: false
+      schema:
+        format: int32
+        minimum: 1
+        type: integer
+      style: form
+    ReturnAsObject:
+      description: Select 1 if result is required as an object
+      explode: true
+      in: query
+      name: _return_as_object
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Paging:
+      description: Control paging of results
+      explode: true
+      in: query
+      name: _paging
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    PageId:
+      description: Page id for retrieving next page of results
+      explode: true
+      in: query
+      name: _page_id
+      required: false
+      schema:
+        type: string
+      style: form
+    ProxySearch:
+      description: Search Grid members for data
+      explode: true
+      in: query
+      name: _proxy_search
+      required: false
+      schema:
+        type: string
+      style: form
+    Schema:
+      description: Return schema for this object type
+      explode: true
+      in: query
+      name: _schema
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaVersion:
+      description: Schema version to use
+      explode: true
+      in: query
+      name: _schema_version
+      required: false
+      schema:
+        enum:
+        - 1
+        - 2
+        type: integer
+      style: form
+    GetDoc:
+      description: Return documentation with schema
+      explode: true
+      in: query
+      name: _get_doc
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaSearchable:
+      description: Return searchable fields with schema
+      explode: true
+      in: query
+      name: _schema_searchable
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Inheritance:
+      description: "If this option is set to True, fields which support inheritance,\
+        \ will display data properly."
+      explode: true
+      in: query
+      name: _inheritance
+      required: false
+      schema:
+        type: boolean
+      style: form
+    filters:
+      explode: false
+      in: query
+      name: filters
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    ExtAttrFilters:
+      explode: false
+      in: query
+      name: extattrfilter
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    Method:
+      description: Enter the method type for the request
+      explode: true
+      in: query
+      name: _method
+      required: false
+      schema:
+        type: string
+      style: form
+    Body:
+      explode: true
+      in: query
+      name: body
+      required: false
+      schema:
+        type: object
+      style: form
+  schemas:
+    ExtAttrs:
+      description: Extensible attributes associated with the object.
+      example:
+        value: ""
+      properties:
+        value:
+          description: The value of the extensible attribute.
+      required:
+      - value
+      type: object
+    Namedacl:
+      additionalProperties: false
+      example:
+        extattrs:
+          key:
+            value: ""
+        _ref: _ref
+        name: Example name
+        access_list:
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          permission: Example permission
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          permission: Example permission
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+        comment: Example comment
+        exploded_access_list:
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          permission: Example permission
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          permission: Example permission
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        access_list:
+          description: "The access control list of IPv4/IPv6 addresses, networks,\
+            \ TSIG-based anonymous access controls, and other named ACLs."
+          enum:
+          - addressac
+          items:
+            $ref: '#/components/schemas/NamedaclAccessList'
+          type: array
+        comment:
+          description: Comment for the named ACL; maximum 256 characters.
+          example: Example comment
+          type: string
+        exploded_access_list:
+          description: "The exploded access list for the named ACL. This list displays\
+            \ all the access control entries in a named ACL and its nested named ACLs,\
+            \ if applicable."
+          enum:
+          - addressac
+          items:
+            $ref: '#/components/schemas/NamedaclExplodedAccessList'
+          readOnly: true
+          type: array
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+        name:
+          description: The name of the named ACL.
+          example: Example name
+          type: string
+      type: object
+    NamedaclAccessList:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        permission: Example permission
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+      properties:
+        address:
+          description: The address this rule applies to or "Any".
+          example: Example address
+          type: string
+        permission:
+          description: The permission to use for this address.
+          enum:
+          - ALLOW
+          - DENY
+          example: Example permission
+          type: string
+        tsig_key:
+          description: "A generated TSIG key. If the external primary server is a\
+            \ NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT."
+          example: Example tsig_key
+          type: string
+        tsig_key_alg:
+          description: The TSIG key algorithm.
+          enum:
+          - HMAC-MD5
+          - HMAC-SHA256
+          example: Example tsig_key_alg
+          type: string
+        tsig_key_name:
+          description: "The name of the TSIG key. If 2.x TSIG compatibility is used,\
+            \ this is set to 'tsig_xfer' on retrieval, and ignored on insert or update."
+          example: Example tsig_key_name
+          type: string
+        use_tsig_key_name:
+          description: "Use flag for: tsig_key_name"
+          example: false
+          type: boolean
+      type: object
+    NamedaclExplodedAccessList:
+      example:
+        address: Example address
+        tsig_key_alg: Example tsig_key_alg
+        tsig_key: Example tsig_key
+        permission: Example permission
+        tsig_key_name: Example tsig_key_name
+        use_tsig_key_name: false
+      properties:
+        address:
+          description: The address this rule applies to or "Any".
+          example: Example address
+          type: string
+        permission:
+          description: The permission to use for this address.
+          enum:
+          - ALLOW
+          - DENY
+          example: Example permission
+          type: string
+        tsig_key:
+          description: "A generated TSIG key. If the external primary server is a\
+            \ NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT."
+          example: Example tsig_key
+          type: string
+        tsig_key_alg:
+          description: The TSIG key algorithm.
+          enum:
+          - HMAC-MD5
+          - HMAC-SHA256
+          example: Example tsig_key_alg
+          type: string
+        tsig_key_name:
+          description: "The name of the TSIG key. If 2.x TSIG compatibility is used,\
+            \ this is set to 'tsig_xfer' on retrieval, and ignored on insert or update."
+          example: Example tsig_key_name
+          type: string
+        use_tsig_key_name:
+          description: "Use flag for: tsig_key_name"
+          example: false
+          type: boolean
+      type: object
+    ListNamedaclResponse:
+      oneOf:
+      - description: The response format to retrieve __Namedacl__ objects.
+        items:
+          $ref: '#/components/schemas/Namedacl'
+        title: ListNamedaclResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListNamedaclResponseObject'
+    CreateNamedaclResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateNamedaclResponseAsObject'
+      - description: The response format to create __Namedacl__.
+        title: CreateNamedaclResponse
+        type: string
+    GetNamedaclResponse:
+      oneOf:
+      - $ref: '#/components/schemas/Namedacl'
+      - $ref: '#/components/schemas/GetNamedaclResponseObjectAsResult'
+    UpdateNamedaclResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateNamedaclResponseAsObject'
+      - description: The response format to update __Namedacl__ .
+        title: UpdateNamedaclResponse
+        type: string
+    ListNamedaclResponseObject:
+      description: The response format to retrieve __Namedacl__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/Namedacl'
+          type: array
+      title: ListNamedaclResponseObject
+      type: object
+    CreateNamedaclResponseAsObject:
+      description: The response format to create __Namedacl__ in object format.
+      example:
+        result:
+          extattrs:
+            key:
+              value: ""
+          _ref: _ref
+          name: Example name
+          access_list:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          comment: Example comment
+          exploded_access_list:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+      properties:
+        result:
+          $ref: '#/components/schemas/Namedacl'
+      title: CreateNamedaclResponseAsObject
+      type: object
+    GetNamedaclResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __Namedacl__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/Namedacl'
+      title: GetNamedaclResponseObjectAsResult
+      type: object
+    UpdateNamedaclResponseAsObject:
+      description: The response format to update __Namedacl__ in object format.
+      example:
+        result:
+          extattrs:
+            key:
+              value: ""
+          _ref: _ref
+          name: Example name
+          access_list:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          comment: Example comment
+          exploded_access_list:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+      properties:
+        result:
+          $ref: '#/components/schemas/Namedacl'
+      title: UpdateNamedaclResponseAsObject
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http

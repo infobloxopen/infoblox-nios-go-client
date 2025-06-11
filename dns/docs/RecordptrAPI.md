@@ -1,20 +1,20 @@
-# RecordptrAPI
+# RecordPtrAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordptrAPI.md#Get) | **Get** /record:ptr | Retrieve record:ptr objects
-[**Post**](RecordptrAPI.md#Post) | **Post** /record:ptr | Create a record:ptr object
-[**ReferenceDelete**](RecordptrAPI.md#ReferenceDelete) | **Delete** /record:ptr/{reference} | Delete a record:ptr object
-[**ReferenceGet**](RecordptrAPI.md#ReferenceGet) | **Get** /record:ptr/{reference} | Get a specific record:ptr object
-[**ReferencePut**](RecordptrAPI.md#ReferencePut) | **Put** /record:ptr/{reference} | Update a record:ptr object
+[**RecordptrGet**](RecordPtrAPI.md#RecordptrGet) | **Get** /record:ptr | Retrieve record:ptr objects
+[**RecordptrPost**](RecordPtrAPI.md#RecordptrPost) | **Post** /record:ptr | Create a record:ptr object
+[**RecordptrReferenceDelete**](RecordPtrAPI.md#RecordptrReferenceDelete) | **Delete** /record:ptr/{reference} | Delete a record:ptr object
+[**RecordptrReferenceGet**](RecordPtrAPI.md#RecordptrReferenceGet) | **Get** /record:ptr/{reference} | Get a specific record:ptr object
+[**RecordptrReferencePut**](RecordPtrAPI.md#RecordptrReferencePut) | **Put** /record:ptr/{reference} | Update a record:ptr object
 
 
 
-## Get
+## RecordptrGet
 
-> ListRecordPtrResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordPtrResponse RecordptrGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:ptr objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordptrAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordPtrAPI.RecordptrGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordptrAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordPtrAPI.RecordptrGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordPtrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordptrAPI.Get`: %v\n", resp)
+	// response from `RecordptrGet`: ListRecordPtrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordPtrAPI.RecordptrGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordptrAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordPtrAPIRecordptrGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordptrPost
 
-> CreateRecordPtrResponse Post(ctx).RecordPtr(recordPtr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordPtrResponse RecordptrPost(ctx).RecordPtr(recordPtr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:ptr object
 
@@ -109,13 +109,13 @@ func main() {
 	recordPtr := *dns.NewRecordPtr() // RecordPtr | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordptrAPI.Post(context.Background()).RecordPtr(recordPtr).Execute()
+	resp, r, err := apiClient.RecordPtrAPI.RecordptrPost(context.Background()).RecordPtr(recordPtr).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordptrAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordPtrAPI.RecordptrPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordPtrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordptrAPI.Post`: %v\n", resp)
+	// response from `RecordptrPost`: CreateRecordPtrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordPtrAPI.RecordptrPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordptrAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordPtrAPIRecordptrPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordptrReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordptrReferenceDelete(ctx, reference).Execute()
 
 Delete a record:ptr object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:ptr object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordptrAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordPtrAPI.RecordptrReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordptrAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordPtrAPI.RecordptrReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordptrAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordPtrAPIRecordptrReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordptrReferenceGet
 
-> GetRecordPtrResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordPtrResponse RecordptrReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:ptr object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:ptr object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordptrAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordPtrAPI.RecordptrReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordptrAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordPtrAPI.RecordptrReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordPtrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordptrAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordptrReferenceGet`: GetRecordPtrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordPtrAPI.RecordptrReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordptrAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordPtrAPIRecordptrReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordptrReferencePut
 
-> UpdateRecordPtrResponse ReferencePut(ctx, reference).RecordPtr(recordPtr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordPtrResponse RecordptrReferencePut(ctx, reference).RecordPtr(recordPtr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:ptr object
 
@@ -318,13 +318,13 @@ func main() {
 	recordPtr := *dns.NewRecordPtr() // RecordPtr | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordptrAPI.ReferencePut(context.Background(), reference).RecordPtr(recordPtr).Execute()
+	resp, r, err := apiClient.RecordPtrAPI.RecordptrReferencePut(context.Background(), reference).RecordPtr(recordPtr).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordptrAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordPtrAPI.RecordptrReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordPtrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordptrAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordptrReferencePut`: UpdateRecordPtrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordPtrAPI.RecordptrReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordptrAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordPtrAPIRecordptrReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

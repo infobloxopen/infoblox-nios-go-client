@@ -17,7 +17,8 @@ Name | Type | Description | Notes
 **DnsName** | Pointer to **string** | The name for an A record in punycode format. | [optional] [readonly] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ForbidReclamation** | Pointer to **bool** | Determines if the reclamation is allowed for the record or not. | [optional] 
-**Ipv4addr** | Pointer to **string** | The IPv4 Address of the record. | [optional] 
+**Ipv4addr** | Pointer to [**RecordAIpv4addr**](RecordAIpv4addr.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**RecordAMsAdUserData**](RecordAMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | Name for A record in FQDN format. This value can be in unicode format. | [optional] 
@@ -376,20 +377,20 @@ HasForbidReclamation returns a boolean if a field has been set.
 
 ### GetIpv4addr
 
-`func (o *GetRecordAResponse) GetIpv4addr() string`
+`func (o *GetRecordAResponse) GetIpv4addr() RecordAIpv4addr`
 
 GetIpv4addr returns the Ipv4addr field if non-nil, zero value otherwise.
 
 ### GetIpv4addrOk
 
-`func (o *GetRecordAResponse) GetIpv4addrOk() (*string, bool)`
+`func (o *GetRecordAResponse) GetIpv4addrOk() (*RecordAIpv4addr, bool)`
 
 GetIpv4addrOk returns a tuple with the Ipv4addr field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv4addr
 
-`func (o *GetRecordAResponse) SetIpv4addr(v string)`
+`func (o *GetRecordAResponse) SetIpv4addr(v RecordAIpv4addr)`
 
 SetIpv4addr sets Ipv4addr field to given value.
 
@@ -398,6 +399,31 @@ SetIpv4addr sets Ipv4addr field to given value.
 `func (o *GetRecordAResponse) HasIpv4addr() bool`
 
 HasIpv4addr returns a boolean if a field has been set.
+
+### GetFuncCall
+
+`func (o *GetRecordAResponse) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *GetRecordAResponse) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *GetRecordAResponse) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *GetRecordAResponse) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
 
 ### GetLastQueried
 

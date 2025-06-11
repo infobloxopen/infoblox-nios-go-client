@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **AcctTimeout** | Pointer to **int64** | The accounting retry period in milliseconds. | [optional] 
 **AuthRetries** | Pointer to **int64** | The number of the authentication/authorization retries before giving up and moving on to the next server. | [optional] 
 **AuthTimeout** | Pointer to **int64** | The authentication/authorization timeout period in milliseconds. | [optional] 
-**CheckTacacsplusServerSettings** | Pointer to **map[string]interface{}** |  | [optional] 
 **Comment** | Pointer to **string** | The TACACS+ authentication service descriptive comment. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the TACACS+ authentication service object is disabled. | [optional] 
 **Name** | Pointer to **string** | The TACACS+ authentication service name. | [optional] 
@@ -158,31 +157,6 @@ SetAuthTimeout sets AuthTimeout field to given value.
 `func (o *TacacsplusAuthservice) HasAuthTimeout() bool`
 
 HasAuthTimeout returns a boolean if a field has been set.
-
-### GetCheckTacacsplusServerSettings
-
-`func (o *TacacsplusAuthservice) GetCheckTacacsplusServerSettings() map[string]interface{}`
-
-GetCheckTacacsplusServerSettings returns the CheckTacacsplusServerSettings field if non-nil, zero value otherwise.
-
-### GetCheckTacacsplusServerSettingsOk
-
-`func (o *TacacsplusAuthservice) GetCheckTacacsplusServerSettingsOk() (*map[string]interface{}, bool)`
-
-GetCheckTacacsplusServerSettingsOk returns a tuple with the CheckTacacsplusServerSettings field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCheckTacacsplusServerSettings
-
-`func (o *TacacsplusAuthservice) SetCheckTacacsplusServerSettings(v map[string]interface{})`
-
-SetCheckTacacsplusServerSettings sets CheckTacacsplusServerSettings field to given value.
-
-### HasCheckTacacsplusServerSettings
-
-`func (o *TacacsplusAuthservice) HasCheckTacacsplusServerSettings() bool`
-
-HasCheckTacacsplusServerSettings returns a boolean if a field has been set.
 
 ### GetComment
 

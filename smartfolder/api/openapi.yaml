@@ -1,0 +1,1682 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Infoblox
+    url: https://www.infoblox.com
+  description: OpenAPI specification for Infoblox NIOS WAPI SMARTFOLDER objects
+  license:
+    name: Infoblox License
+    url: https://www.infoblox.com
+  termsOfService: https://www.infoblox.com
+  title: Infoblox SMARTFOLDER API
+  version: 2.13.6
+servers:
+- description: NIOS WAPI server
+  url: /wapi/v2.13.6
+tags:
+- description: Operations for smartfolder:children objects
+  name: SmartfolderChildren
+- description: Operations for smartfolder:global objects
+  name: SmartfolderGlobal
+- description: Operations for smartfolder:personal objects
+  name: SmartfolderPersonal
+paths:
+  /smartfolder:children:
+    get:
+      description: Returns a list of smartfolder:children objects matching the search
+        criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSmartfolderChildrenResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve smartfolder:children objects
+      tags:
+      - SmartfolderChildren
+  /smartfolder:children/{reference}:
+    get:
+      description: Returns a specific smartfolder:children object by reference
+      parameters:
+      - description: Reference of the smartfolder:children object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSmartfolderChildrenResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific smartfolder:children object
+      tags:
+      - SmartfolderChildren
+  /smartfolder:global:
+    get:
+      description: Returns a list of smartfolder:global objects matching the search
+        criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSmartfolderGlobalResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve smartfolder:global objects
+      tags:
+      - SmartfolderGlobal
+    post:
+      description: Creates a new smartfolder:global object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartfolderGlobal'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSmartfolderGlobalResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a smartfolder:global object
+      tags:
+      - SmartfolderGlobal
+      x-tf-resource: nios_smartfolder_smartfolder_global
+      x-tf-datasource: nios_smartfolder_smartfolder_global
+  /smartfolder:global/{reference}:
+    delete:
+      description: Deletes a specific smartfolder:global object by reference
+      parameters:
+      - description: Reference of the smartfolder:global object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a smartfolder:global object
+      tags:
+      - SmartfolderGlobal
+    get:
+      description: Returns a specific smartfolder:global object by reference
+      parameters:
+      - description: Reference of the smartfolder:global object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSmartfolderGlobalResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific smartfolder:global object
+      tags:
+      - SmartfolderGlobal
+    put:
+      description: Updates a specific smartfolder:global object by reference
+      parameters:
+      - description: Reference of the smartfolder:global object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartfolderGlobal'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateSmartfolderGlobalResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a smartfolder:global object
+      tags:
+      - SmartfolderGlobal
+  /smartfolder:personal:
+    get:
+      description: Returns a list of smartfolder:personal objects matching the search
+        criteria
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSmartfolderPersonalResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve smartfolder:personal objects
+      tags:
+      - SmartfolderPersonal
+    post:
+      description: Creates a new smartfolder:personal object
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartfolderPersonal'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSmartfolderPersonalResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a smartfolder:personal object
+      tags:
+      - SmartfolderPersonal
+      x-tf-resource: nios_smartfolder_smartfolder_personal
+      x-tf-datasource: nios_smartfolder_smartfolder_personal
+  /smartfolder:personal/{reference}:
+    delete:
+      description: Deletes a specific smartfolder:personal object by reference
+      parameters:
+      - description: Reference of the smartfolder:personal object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a smartfolder:personal object
+      tags:
+      - SmartfolderPersonal
+    get:
+      description: Returns a specific smartfolder:personal object by reference
+      parameters:
+      - description: Reference of the smartfolder:personal object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSmartfolderPersonalResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific smartfolder:personal object
+      tags:
+      - SmartfolderPersonal
+    put:
+      description: Updates a specific smartfolder:personal object by reference
+      parameters:
+      - description: Reference of the smartfolder:personal object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartfolderPersonal'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateSmartfolderPersonalResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a smartfolder:personal object
+      tags:
+      - SmartfolderPersonal
+components:
+  parameters:
+    ReturnFields:
+      description: Enter the field names followed by comma
+      explode: true
+      in: query
+      name: _return_fields
+      required: false
+      schema:
+        type: string
+      style: form
+    ReturnFieldsPlus:
+      description: "Enter the field names followed by comma, this returns the required\
+        \ fields along with the default fields"
+      explode: true
+      in: query
+      name: _return_fields+
+      required: false
+      schema:
+        type: string
+      style: form
+    MaxResults:
+      description: Enter the number of results to be fetched
+      explode: true
+      in: query
+      name: _max_results
+      required: false
+      schema:
+        format: int32
+        minimum: 1
+        type: integer
+      style: form
+    ReturnAsObject:
+      description: Select 1 if result is required as an object
+      explode: true
+      in: query
+      name: _return_as_object
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Paging:
+      description: Control paging of results
+      explode: true
+      in: query
+      name: _paging
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    PageId:
+      description: Page id for retrieving next page of results
+      explode: true
+      in: query
+      name: _page_id
+      required: false
+      schema:
+        type: string
+      style: form
+    ProxySearch:
+      description: Search Grid members for data
+      explode: true
+      in: query
+      name: _proxy_search
+      required: false
+      schema:
+        type: string
+      style: form
+    Schema:
+      description: Return schema for this object type
+      explode: true
+      in: query
+      name: _schema
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaVersion:
+      description: Schema version to use
+      explode: true
+      in: query
+      name: _schema_version
+      required: false
+      schema:
+        enum:
+        - 1
+        - 2
+        type: integer
+      style: form
+    GetDoc:
+      description: Return documentation with schema
+      explode: true
+      in: query
+      name: _get_doc
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaSearchable:
+      description: Return searchable fields with schema
+      explode: true
+      in: query
+      name: _schema_searchable
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Inheritance:
+      description: "If this option is set to True, fields which support inheritance,\
+        \ will display data properly."
+      explode: true
+      in: query
+      name: _inheritance
+      required: false
+      schema:
+        type: boolean
+      style: form
+    filters:
+      explode: false
+      in: query
+      name: filters
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    ExtAttrFilters:
+      explode: false
+      in: query
+      name: extattrfilter
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    Method:
+      description: Enter the method type for the request
+      explode: true
+      in: query
+      name: _method
+      required: false
+      schema:
+        type: string
+      style: form
+    Body:
+      explode: true
+      in: query
+      name: body
+      required: false
+      schema:
+        type: object
+      style: form
+  schemas:
+    ExtAttrs:
+      description: Extensible attributes associated with the object.
+      properties:
+        value:
+          description: The value of the extensible attribute.
+      required:
+      - value
+      type: object
+    SmartfolderChildren:
+      additionalProperties: false
+      example:
+        value_type: Example value_type
+        resource: Example resource
+        _ref: _ref
+        value:
+          value_boolean: false
+          value_integer: 1
+          value_string: Example value_string
+          value_date: 1
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        resource:
+          description: The object retuned by the Smart Folder query.
+          example: Example resource
+          readOnly: true
+          type: string
+        value:
+          $ref: '#/components/schemas/SmartfolderChildrenValue'
+        value_type:
+          description: The type of the returned value.
+          enum:
+          - STRING
+          - INTEGER
+          - BOOLEAN
+          - DATE
+          - ENUM
+          - EMAIL
+          - URL
+          - OBJTYPE
+          example: Example value_type
+          readOnly: true
+          type: string
+      type: object
+    SmartfolderChildrenValue:
+      example:
+        value_boolean: false
+        value_integer: 1
+        value_string: Example value_string
+        value_date: 1
+      properties:
+        value_integer:
+          description: The integer value of the Smart Folder query.
+          example: 1
+          type: integer
+        value_string:
+          description: The string value of the Smart Folder query.
+          example: Example value_string
+          type: string
+        value_date:
+          description: The timestamp value of the Smart Folder query.
+          example: 1
+          format: int64
+          type: integer
+        value_boolean:
+          description: The boolean value of the Smart Folder query.
+          example: false
+          type: boolean
+      type: object
+    ListSmartfolderChildrenResponse:
+      oneOf:
+      - description: The response format to retrieve __SmartfolderChildren__ objects.
+        items:
+          $ref: '#/components/schemas/SmartfolderChildren'
+        title: ListSmartfolderChildrenResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListSmartfolderChildrenResponseObject'
+    GetSmartfolderChildrenResponse:
+      oneOf:
+      - $ref: '#/components/schemas/SmartfolderChildren'
+      - $ref: '#/components/schemas/GetSmartfolderChildrenResponseObjectAsResult'
+    UpdateSmartfolderChildrenResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateSmartfolderChildrenResponseAsObject'
+      - description: The response format to update __SmartfolderChildren__ .
+        title: UpdateSmartfolderChildrenResponse
+        type: string
+    SmartfolderGlobal:
+      additionalProperties: false
+      example:
+        _ref: _ref
+        name: Example name
+        comment: Example comment
+        group_bys:
+        - value_type: Example value_type
+          enable_grouping: false
+          value: Example value
+        - value_type: Example value_type
+          enable_grouping: false
+          value: Example value
+        query_items:
+        - op_match: false
+          value_type: Example value_type
+          name: Example name
+          field_type: Example field_type
+          value:
+            value_boolean: false
+            value_integer: 1
+            value_string: Example value_string
+            value_date: 1
+          operator: Example operator
+        - op_match: false
+          value_type: Example value_type
+          name: Example name
+          field_type: Example field_type
+          value:
+            value_boolean: false
+            value_integer: 1
+            value_string: Example value_string
+            value_date: 1
+          operator: Example operator
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        comment:
+          description: The global Smart Folder descriptive comment.
+          example: Example comment
+          type: string
+        group_bys:
+          description: Global Smart Folder grouping rules.
+          enum:
+          - smartfolder:groupby
+          items:
+            $ref: '#/components/schemas/SmartfolderGlobalGroupBys'
+          type: array
+        name:
+          description: The global Smart Folder name.
+          example: Example name
+          type: string
+        query_items:
+          description: The global Smart Folder filter queries.
+          enum:
+          - smartfolder:queryitem
+          items:
+            $ref: '#/components/schemas/SmartfolderGlobalQueryItems'
+          type: array
+      type: object
+    SmartfolderGlobalGroupBys:
+      example:
+        value_type: Example value_type
+        enable_grouping: false
+        value: Example value
+      properties:
+        value:
+          description: The name of the Smart Folder grouping attribute.
+          example: Example value
+          type: string
+        value_type:
+          description: The type of the Smart Folder grouping attribute value.
+          enum:
+          - NORMAL
+          - EXTATTR
+          example: Example value_type
+          type: string
+        enable_grouping:
+          description: Determines whether the grouping is enabled.
+          example: false
+          type: boolean
+      type: object
+    SmartfolderGlobalQueryItems:
+      example:
+        op_match: false
+        value_type: Example value_type
+        name: Example name
+        field_type: Example field_type
+        value:
+          value_boolean: false
+          value_integer: 1
+          value_string: Example value_string
+          value_date: 1
+        operator: Example operator
+      properties:
+        name:
+          description: The Smart Folder query name.
+          example: Example name
+          type: string
+        field_type:
+          description: The Smart Folder query field type.
+          enum:
+          - NORMAL
+          - EXTATTR
+          example: Example field_type
+          type: string
+        operator:
+          description: The Smart Folder operator used in query.
+          enum:
+          - EQ
+          - GT
+          - GEQ
+          - LT
+          - LEQ
+          - HAS_VALUE
+          - BEGINS_WITH
+          - ENDS_WITH
+          - CONTAINS
+          - RELATIVE_DATE
+          - RISES_BY
+          - DROPS_BY
+          - INHERITANCE_STATE_EQUALS
+          - IP_ADDR_WITHIN
+          - SUFFIX_MATCH
+          - MATCH_EXPR
+          example: Example operator
+          type: string
+        op_match:
+          description: Determines whether the query operator should match.
+          example: false
+          type: boolean
+        value_type:
+          description: The Smart Folder query value type.
+          enum:
+          - STRING
+          - INTEGER
+          - BOOLEAN
+          - DATE
+          - ENUM
+          - EMAIL
+          - URL
+          - OBJTYPE
+          example: Example value_type
+          type: string
+        value:
+          $ref: '#/components/schemas/SmartfolderglobalqueryitemsValue'
+      type: object
+    SmartfolderglobalqueryitemsValue:
+      example:
+        value_boolean: false
+        value_integer: 1
+        value_string: Example value_string
+        value_date: 1
+      properties:
+        value_integer:
+          description: The integer value of the Smart Folder query.
+          example: 1
+          type: integer
+        value_string:
+          description: The string value of the Smart Folder query.
+          example: Example value_string
+          type: string
+        value_date:
+          description: The timestamp value of the Smart Folder query.
+          example: 1
+          format: int64
+          type: integer
+        value_boolean:
+          description: The boolean value of the Smart Folder query.
+          example: false
+          type: boolean
+      type: object
+    ListSmartfolderGlobalResponse:
+      oneOf:
+      - description: The response format to retrieve __SmartfolderGlobal__ objects.
+        items:
+          $ref: '#/components/schemas/SmartfolderGlobal'
+        title: ListSmartfolderGlobalResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListSmartfolderGlobalResponseObject'
+    CreateSmartfolderGlobalResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateSmartfolderGlobalResponseAsObject'
+      - description: The response format to create __SmartfolderGlobal__.
+        title: CreateSmartfolderGlobalResponse
+        type: string
+    GetSmartfolderGlobalResponse:
+      oneOf:
+      - $ref: '#/components/schemas/SmartfolderGlobal'
+      - $ref: '#/components/schemas/GetSmartfolderGlobalResponseObjectAsResult'
+    UpdateSmartfolderGlobalResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateSmartfolderGlobalResponseAsObject'
+      - description: The response format to update __SmartfolderGlobal__ .
+        title: UpdateSmartfolderGlobalResponse
+        type: string
+    SmartfolderPersonal:
+      additionalProperties: false
+      example:
+        _ref: _ref
+        name: Example name
+        comment: Example comment
+        group_bys:
+        - value_type: Example value_type
+          enable_grouping: false
+          value: Example value
+        - value_type: Example value_type
+          enable_grouping: false
+          value: Example value
+        query_items:
+        - op_match: false
+          value_type: Example value_type
+          name: Example name
+          field_type: Example field_type
+          value:
+            value_boolean: false
+            value_integer: 1
+            value_string: Example value_string
+            value_date: 1
+          operator: Example operator
+        - op_match: false
+          value_type: Example value_type
+          name: Example name
+          field_type: Example field_type
+          value:
+            value_boolean: false
+            value_integer: 1
+            value_string: Example value_string
+            value_date: 1
+          operator: Example operator
+        is_shortcut: false
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        comment:
+          description: The personal Smart Folder descriptive comment.
+          example: Example comment
+          type: string
+        group_bys:
+          description: The personal Smart Folder groupping rules.
+          enum:
+          - smartfolder:groupby
+          items:
+            $ref: '#/components/schemas/SmartfolderPersonalGroupBys'
+          type: array
+        is_shortcut:
+          description: Determines whether the personal Smart Folder is a shortcut.
+          example: false
+          readOnly: true
+          type: boolean
+        name:
+          description: The personal Smart Folder name.
+          example: Example name
+          type: string
+        query_items:
+          description: The personal Smart Folder filter queries.
+          enum:
+          - smartfolder:queryitem
+          items:
+            $ref: '#/components/schemas/SmartfolderPersonalQueryItems'
+          type: array
+      type: object
+    SmartfolderPersonalGroupBys:
+      example:
+        value_type: Example value_type
+        enable_grouping: false
+        value: Example value
+      properties:
+        value:
+          description: The name of the Smart Folder grouping attribute.
+          example: Example value
+          type: string
+        value_type:
+          description: The type of the Smart Folder grouping attribute value.
+          enum:
+          - NORMAL
+          - EXTATTR
+          example: Example value_type
+          type: string
+        enable_grouping:
+          description: Determines whether the grouping is enabled.
+          example: false
+          type: boolean
+      type: object
+    SmartfolderPersonalQueryItems:
+      example:
+        op_match: false
+        value_type: Example value_type
+        name: Example name
+        field_type: Example field_type
+        value:
+          value_boolean: false
+          value_integer: 1
+          value_string: Example value_string
+          value_date: 1
+        operator: Example operator
+      properties:
+        name:
+          description: The Smart Folder query name.
+          example: Example name
+          type: string
+        field_type:
+          description: The Smart Folder query field type.
+          enum:
+          - NORMAL
+          - EXTATTR
+          example: Example field_type
+          type: string
+        operator:
+          description: The Smart Folder operator used in query.
+          enum:
+          - EQ
+          - GT
+          - GEQ
+          - LT
+          - LEQ
+          - HAS_VALUE
+          - BEGINS_WITH
+          - ENDS_WITH
+          - CONTAINS
+          - RELATIVE_DATE
+          - RISES_BY
+          - DROPS_BY
+          - INHERITANCE_STATE_EQUALS
+          - IP_ADDR_WITHIN
+          - SUFFIX_MATCH
+          - MATCH_EXPR
+          example: Example operator
+          type: string
+        op_match:
+          description: Determines whether the query operator should match.
+          example: false
+          type: boolean
+        value_type:
+          description: The Smart Folder query value type.
+          enum:
+          - STRING
+          - INTEGER
+          - BOOLEAN
+          - DATE
+          - ENUM
+          - EMAIL
+          - URL
+          - OBJTYPE
+          example: Example value_type
+          type: string
+        value:
+          $ref: '#/components/schemas/SmartfolderpersonalqueryitemsValue'
+      type: object
+    SmartfolderpersonalqueryitemsValue:
+      example:
+        value_boolean: false
+        value_integer: 1
+        value_string: Example value_string
+        value_date: 1
+      properties:
+        value_integer:
+          description: The integer value of the Smart Folder query.
+          example: 1
+          type: integer
+        value_string:
+          description: The string value of the Smart Folder query.
+          example: Example value_string
+          type: string
+        value_date:
+          description: The timestamp value of the Smart Folder query.
+          example: 1
+          format: int64
+          type: integer
+        value_boolean:
+          description: The boolean value of the Smart Folder query.
+          example: false
+          type: boolean
+      type: object
+    ListSmartfolderPersonalResponse:
+      oneOf:
+      - description: The response format to retrieve __SmartfolderPersonal__ objects.
+        items:
+          $ref: '#/components/schemas/SmartfolderPersonal'
+        title: ListSmartfolderPersonalResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListSmartfolderPersonalResponseObject'
+    CreateSmartfolderPersonalResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateSmartfolderPersonalResponseAsObject'
+      - description: The response format to create __SmartfolderPersonal__.
+        title: CreateSmartfolderPersonalResponse
+        type: string
+    GetSmartfolderPersonalResponse:
+      oneOf:
+      - $ref: '#/components/schemas/SmartfolderPersonal'
+      - $ref: '#/components/schemas/GetSmartfolderPersonalResponseObjectAsResult'
+    UpdateSmartfolderPersonalResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateSmartfolderPersonalResponseAsObject'
+      - description: The response format to update __SmartfolderPersonal__ .
+        title: UpdateSmartfolderPersonalResponse
+        type: string
+    ListSmartfolderChildrenResponseObject:
+      description: The response format to retrieve __SmartfolderChildren__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/SmartfolderChildren'
+          type: array
+      title: ListSmartfolderChildrenResponseObject
+      type: object
+    GetSmartfolderChildrenResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __SmartfolderChildren__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/SmartfolderChildren'
+      title: GetSmartfolderChildrenResponseObjectAsResult
+      type: object
+    UpdateSmartfolderChildrenResponseAsObject:
+      description: The response format to update __SmartfolderChildren__ in object
+        format.
+      properties:
+        result:
+          $ref: '#/components/schemas/SmartfolderChildren'
+      title: UpdateSmartfolderChildrenResponseAsObject
+      type: object
+    ListSmartfolderGlobalResponseObject:
+      description: The response format to retrieve __SmartfolderGlobal__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/SmartfolderGlobal'
+          type: array
+      title: ListSmartfolderGlobalResponseObject
+      type: object
+    CreateSmartfolderGlobalResponseAsObject:
+      description: The response format to create __SmartfolderGlobal__ in object format.
+      example:
+        result:
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          group_bys:
+          - value_type: Example value_type
+            enable_grouping: false
+            value: Example value
+          - value_type: Example value_type
+            enable_grouping: false
+            value: Example value
+          query_items:
+          - op_match: false
+            value_type: Example value_type
+            name: Example name
+            field_type: Example field_type
+            value:
+              value_boolean: false
+              value_integer: 1
+              value_string: Example value_string
+              value_date: 1
+            operator: Example operator
+          - op_match: false
+            value_type: Example value_type
+            name: Example name
+            field_type: Example field_type
+            value:
+              value_boolean: false
+              value_integer: 1
+              value_string: Example value_string
+              value_date: 1
+            operator: Example operator
+      properties:
+        result:
+          $ref: '#/components/schemas/SmartfolderGlobal'
+      title: CreateSmartfolderGlobalResponseAsObject
+      type: object
+    GetSmartfolderGlobalResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __SmartfolderGlobal__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/SmartfolderGlobal'
+      title: GetSmartfolderGlobalResponseObjectAsResult
+      type: object
+    UpdateSmartfolderGlobalResponseAsObject:
+      description: The response format to update __SmartfolderGlobal__ in object format.
+      example:
+        result:
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          group_bys:
+          - value_type: Example value_type
+            enable_grouping: false
+            value: Example value
+          - value_type: Example value_type
+            enable_grouping: false
+            value: Example value
+          query_items:
+          - op_match: false
+            value_type: Example value_type
+            name: Example name
+            field_type: Example field_type
+            value:
+              value_boolean: false
+              value_integer: 1
+              value_string: Example value_string
+              value_date: 1
+            operator: Example operator
+          - op_match: false
+            value_type: Example value_type
+            name: Example name
+            field_type: Example field_type
+            value:
+              value_boolean: false
+              value_integer: 1
+              value_string: Example value_string
+              value_date: 1
+            operator: Example operator
+      properties:
+        result:
+          $ref: '#/components/schemas/SmartfolderGlobal'
+      title: UpdateSmartfolderGlobalResponseAsObject
+      type: object
+    ListSmartfolderPersonalResponseObject:
+      description: The response format to retrieve __SmartfolderPersonal__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/SmartfolderPersonal'
+          type: array
+      title: ListSmartfolderPersonalResponseObject
+      type: object
+    CreateSmartfolderPersonalResponseAsObject:
+      description: The response format to create __SmartfolderPersonal__ in object
+        format.
+      example:
+        result:
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          group_bys:
+          - value_type: Example value_type
+            enable_grouping: false
+            value: Example value
+          - value_type: Example value_type
+            enable_grouping: false
+            value: Example value
+          query_items:
+          - op_match: false
+            value_type: Example value_type
+            name: Example name
+            field_type: Example field_type
+            value:
+              value_boolean: false
+              value_integer: 1
+              value_string: Example value_string
+              value_date: 1
+            operator: Example operator
+          - op_match: false
+            value_type: Example value_type
+            name: Example name
+            field_type: Example field_type
+            value:
+              value_boolean: false
+              value_integer: 1
+              value_string: Example value_string
+              value_date: 1
+            operator: Example operator
+          is_shortcut: false
+      properties:
+        result:
+          $ref: '#/components/schemas/SmartfolderPersonal'
+      title: CreateSmartfolderPersonalResponseAsObject
+      type: object
+    GetSmartfolderPersonalResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __SmartfolderPersonal__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/SmartfolderPersonal'
+      title: GetSmartfolderPersonalResponseObjectAsResult
+      type: object
+    UpdateSmartfolderPersonalResponseAsObject:
+      description: The response format to update __SmartfolderPersonal__ in object
+        format.
+      example:
+        result:
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          group_bys:
+          - value_type: Example value_type
+            enable_grouping: false
+            value: Example value
+          - value_type: Example value_type
+            enable_grouping: false
+            value: Example value
+          query_items:
+          - op_match: false
+            value_type: Example value_type
+            name: Example name
+            field_type: Example field_type
+            value:
+              value_boolean: false
+              value_integer: 1
+              value_string: Example value_string
+              value_date: 1
+            operator: Example operator
+          - op_match: false
+            value_type: Example value_type
+            name: Example name
+            field_type: Example field_type
+            value:
+              value_boolean: false
+              value_integer: 1
+              value_string: Example value_string
+              value_date: 1
+            operator: Example operator
+          is_shortcut: false
+      properties:
+        result:
+          $ref: '#/components/schemas/SmartfolderPersonal'
+      title: UpdateSmartfolderPersonalResponseAsObject
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http

@@ -1,17 +1,17 @@
-# DiscoveryvrfAPI
+# DiscoveryVrfAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DiscoveryvrfAPI.md#Get) | **Get** /discovery:vrf | Retrieve discovery:vrf objects
-[**ReferenceGet**](DiscoveryvrfAPI.md#ReferenceGet) | **Get** /discovery:vrf/{reference} | Get a specific discovery:vrf object
+[**DiscoveryvrfGet**](DiscoveryVrfAPI.md#DiscoveryvrfGet) | **Get** /discovery:vrf | Retrieve discovery:vrf objects
+[**DiscoveryvrfReferenceGet**](DiscoveryVrfAPI.md#DiscoveryvrfReferenceGet) | **Get** /discovery:vrf/{reference} | Get a specific discovery:vrf object
 
 
 
-## Get
+## DiscoveryvrfGet
 
-> ListDiscoveryVrfResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoveryVrfResponse DiscoveryvrfGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:vrf objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryvrfAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoveryVrfAPI.DiscoveryvrfGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryvrfAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryVrfAPI.DiscoveryvrfGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDiscoveryVrfResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryvrfAPI.Get`: %v\n", resp)
+	// response from `DiscoveryvrfGet`: ListDiscoveryVrfResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryVrfAPI.DiscoveryvrfGet`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoveryvrfAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryVrfAPIDiscoveryvrfGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DiscoveryvrfReferenceGet
 
-> GetDiscoveryVrfResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoveryVrfResponse DiscoveryvrfReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:vrf object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:vrf object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryvrfAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoveryVrfAPI.DiscoveryvrfReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryvrfAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryVrfAPI.DiscoveryvrfReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDiscoveryVrfResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryvrfAPI.ReferenceGet`: %v\n", resp)
+	// response from `DiscoveryvrfReferenceGet`: GetDiscoveryVrfResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryVrfAPI.DiscoveryvrfReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoveryvrfAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

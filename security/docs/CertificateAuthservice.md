@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **AutoPopulateLogin** | Pointer to **string** | Specifies the value of the client certificate for automatically populating the NIOS login name. | [optional] 
-**CaCertificates** | Pointer to **[]map[string]interface{}** | The list of CA certificates. | [optional] 
+**CaCertificates** | Pointer to **[]string** | The list of CA certificates. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment for the certificate authentication service. | [optional] 
 **Disabled** | Pointer to **bool** | Determines if this certificate authentication service is enabled or disabled. | [optional] 
 **EnablePasswordRequest** | Pointer to **bool** | Determines if username/password authentication together with client certificate authentication is enabled or disabled. | [optional] 
@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **RemoteLookupService** | Pointer to **string** | The service that will be used for remote lookup. | [optional] 
 **RemoteLookupUsername** | Pointer to **string** | The username for the service account. | [optional] 
 **ResponseTimeout** | Pointer to **int64** | The validation timeout period in milliseconds. | [optional] 
-**TestOcspResponderSettings** | Pointer to **map[string]interface{}** |  | [optional] 
 **TrustModel** | Pointer to **string** | The OCSP trust model. | [optional] 
 **UserMatchType** | Pointer to **string** | Specifies how to search for a user. | [optional] 
 
@@ -95,20 +94,20 @@ HasAutoPopulateLogin returns a boolean if a field has been set.
 
 ### GetCaCertificates
 
-`func (o *CertificateAuthservice) GetCaCertificates() []map[string]interface{}`
+`func (o *CertificateAuthservice) GetCaCertificates() []string`
 
 GetCaCertificates returns the CaCertificates field if non-nil, zero value otherwise.
 
 ### GetCaCertificatesOk
 
-`func (o *CertificateAuthservice) GetCaCertificatesOk() (*[]map[string]interface{}, bool)`
+`func (o *CertificateAuthservice) GetCaCertificatesOk() (*[]string, bool)`
 
 GetCaCertificatesOk returns a tuple with the CaCertificates field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCaCertificates
 
-`func (o *CertificateAuthservice) SetCaCertificates(v []map[string]interface{})`
+`func (o *CertificateAuthservice) SetCaCertificates(v []string)`
 
 SetCaCertificates sets CaCertificates field to given value.
 
@@ -442,31 +441,6 @@ SetResponseTimeout sets ResponseTimeout field to given value.
 `func (o *CertificateAuthservice) HasResponseTimeout() bool`
 
 HasResponseTimeout returns a boolean if a field has been set.
-
-### GetTestOcspResponderSettings
-
-`func (o *CertificateAuthservice) GetTestOcspResponderSettings() map[string]interface{}`
-
-GetTestOcspResponderSettings returns the TestOcspResponderSettings field if non-nil, zero value otherwise.
-
-### GetTestOcspResponderSettingsOk
-
-`func (o *CertificateAuthservice) GetTestOcspResponderSettingsOk() (*map[string]interface{}, bool)`
-
-GetTestOcspResponderSettingsOk returns a tuple with the TestOcspResponderSettings field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTestOcspResponderSettings
-
-`func (o *CertificateAuthservice) SetTestOcspResponderSettings(v map[string]interface{})`
-
-SetTestOcspResponderSettings sets TestOcspResponderSettings field to given value.
-
-### HasTestOcspResponderSettings
-
-`func (o *CertificateAuthservice) HasTestOcspResponderSettings() bool`
-
-HasTestOcspResponderSettings returns a boolean if a field has been set.
 
 ### GetTrustModel
 

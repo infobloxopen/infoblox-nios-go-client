@@ -1,20 +1,20 @@
-# RecordnaptrAPI
+# RecordNaptrAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordnaptrAPI.md#Get) | **Get** /record:naptr | Retrieve record:naptr objects
-[**Post**](RecordnaptrAPI.md#Post) | **Post** /record:naptr | Create a record:naptr object
-[**ReferenceDelete**](RecordnaptrAPI.md#ReferenceDelete) | **Delete** /record:naptr/{reference} | Delete a record:naptr object
-[**ReferenceGet**](RecordnaptrAPI.md#ReferenceGet) | **Get** /record:naptr/{reference} | Get a specific record:naptr object
-[**ReferencePut**](RecordnaptrAPI.md#ReferencePut) | **Put** /record:naptr/{reference} | Update a record:naptr object
+[**RecordnaptrGet**](RecordNaptrAPI.md#RecordnaptrGet) | **Get** /record:naptr | Retrieve record:naptr objects
+[**RecordnaptrPost**](RecordNaptrAPI.md#RecordnaptrPost) | **Post** /record:naptr | Create a record:naptr object
+[**RecordnaptrReferenceDelete**](RecordNaptrAPI.md#RecordnaptrReferenceDelete) | **Delete** /record:naptr/{reference} | Delete a record:naptr object
+[**RecordnaptrReferenceGet**](RecordNaptrAPI.md#RecordnaptrReferenceGet) | **Get** /record:naptr/{reference} | Get a specific record:naptr object
+[**RecordnaptrReferencePut**](RecordNaptrAPI.md#RecordnaptrReferencePut) | **Put** /record:naptr/{reference} | Update a record:naptr object
 
 
 
-## Get
+## RecordnaptrGet
 
-> ListRecordNaptrResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordNaptrResponse RecordnaptrGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:naptr objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordnaptrAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordNaptrAPI.RecordnaptrGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordnaptrAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNaptrAPI.RecordnaptrGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordnaptrAPI.Get`: %v\n", resp)
+	// response from `RecordnaptrGet`: ListRecordNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordNaptrAPI.RecordnaptrGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordnaptrAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNaptrAPIRecordnaptrGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordnaptrPost
 
-> CreateRecordNaptrResponse Post(ctx).RecordNaptr(recordNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordNaptrResponse RecordnaptrPost(ctx).RecordNaptr(recordNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:naptr object
 
@@ -109,13 +109,13 @@ func main() {
 	recordNaptr := *dns.NewRecordNaptr() // RecordNaptr | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordnaptrAPI.Post(context.Background()).RecordNaptr(recordNaptr).Execute()
+	resp, r, err := apiClient.RecordNaptrAPI.RecordnaptrPost(context.Background()).RecordNaptr(recordNaptr).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordnaptrAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNaptrAPI.RecordnaptrPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordnaptrAPI.Post`: %v\n", resp)
+	// response from `RecordnaptrPost`: CreateRecordNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordNaptrAPI.RecordnaptrPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordnaptrAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNaptrAPIRecordnaptrPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordnaptrReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordnaptrReferenceDelete(ctx, reference).Execute()
 
 Delete a record:naptr object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:naptr object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordnaptrAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordNaptrAPI.RecordnaptrReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordnaptrAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNaptrAPI.RecordnaptrReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordnaptrAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNaptrAPIRecordnaptrReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordnaptrReferenceGet
 
-> GetRecordNaptrResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordNaptrResponse RecordnaptrReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:naptr object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:naptr object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordnaptrAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordNaptrAPI.RecordnaptrReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordnaptrAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNaptrAPI.RecordnaptrReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordnaptrAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordnaptrReferenceGet`: GetRecordNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordNaptrAPI.RecordnaptrReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordnaptrAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNaptrAPIRecordnaptrReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordnaptrReferencePut
 
-> UpdateRecordNaptrResponse ReferencePut(ctx, reference).RecordNaptr(recordNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordNaptrResponse RecordnaptrReferencePut(ctx, reference).RecordNaptr(recordNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:naptr object
 
@@ -318,13 +318,13 @@ func main() {
 	recordNaptr := *dns.NewRecordNaptr() // RecordNaptr | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordnaptrAPI.ReferencePut(context.Background(), reference).RecordNaptr(recordNaptr).Execute()
+	resp, r, err := apiClient.RecordNaptrAPI.RecordnaptrReferencePut(context.Background(), reference).RecordNaptr(recordNaptr).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordnaptrAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNaptrAPI.RecordnaptrReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordnaptrAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordnaptrReferencePut`: UpdateRecordNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordNaptrAPI.RecordnaptrReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordnaptrAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNaptrAPIRecordnaptrReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

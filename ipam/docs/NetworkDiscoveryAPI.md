@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Get**](NetworkDiscoveryAPI.md#Get) | **Get** /network_discovery | Retrieve network_discovery objects
 [**ReferenceGet**](NetworkDiscoveryAPI.md#ReferenceGet) | **Get** /network_discovery/{reference} | Get a specific network_discovery object
-[**ReferencePut**](NetworkDiscoveryAPI.md#ReferencePut) | **Put** /network_discovery/{reference} | Update a network_discovery object
 
 
 
@@ -147,80 +146,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferencePut
-
-> UpdateNetworkDiscoveryResponse ReferencePut(ctx, reference).NetworkDiscovery(networkDiscovery).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Update a network_discovery object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the network_discovery object
-	networkDiscovery := *ipam.NewNetworkDiscovery() // NetworkDiscovery | Object data to update
-
-	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkDiscoveryAPI.ReferencePut(context.Background(), reference).NetworkDiscovery(networkDiscovery).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkDiscoveryAPI.ReferencePut``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ReferencePut`: UpdateNetworkDiscoveryResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkDiscoveryAPI.ReferencePut`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the network_discovery object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NetworkDiscoveryAPIReferencePutRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**networkDiscovery** | [**NetworkDiscovery**](NetworkDiscovery.md) | Object data to update | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**UpdateNetworkDiscoveryResponse**](UpdateNetworkDiscoveryResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

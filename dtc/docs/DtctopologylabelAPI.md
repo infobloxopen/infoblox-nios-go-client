@@ -1,17 +1,17 @@
-# DtctopologylabelAPI
+# DtcTopologyLabelAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtctopologylabelAPI.md#Get) | **Get** /dtc:topology:label | Retrieve dtc:topology:label objects
-[**ReferenceGet**](DtctopologylabelAPI.md#ReferenceGet) | **Get** /dtc:topology:label/{reference} | Get a specific dtc:topology:label object
+[**DtctopologylabelGet**](DtcTopologyLabelAPI.md#DtctopologylabelGet) | **Get** /dtc:topology:label | Retrieve dtc:topology:label objects
+[**DtctopologylabelReferenceGet**](DtcTopologyLabelAPI.md#DtctopologylabelReferenceGet) | **Get** /dtc:topology:label/{reference} | Get a specific dtc:topology:label object
 
 
 
-## Get
+## DtctopologylabelGet
 
-> ListDtcTopologyLabelResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcTopologyLabelResponse DtctopologylabelGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:topology:label objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtctopologylabelAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcTopologyLabelAPI.DtctopologylabelGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtctopologylabelAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyLabelAPI.DtctopologylabelGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcTopologyLabelResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtctopologylabelAPI.Get`: %v\n", resp)
+	// response from `DtctopologylabelGet`: ListDtcTopologyLabelResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyLabelAPI.DtctopologylabelGet`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtctopologylabelAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyLabelAPIDtctopologylabelGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtctopologylabelReferenceGet
 
-> GetDtcTopologyLabelResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcTopologyLabelResponse DtctopologylabelReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:topology:label object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:topology:label object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtctopologylabelAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcTopologyLabelAPI.DtctopologylabelReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtctopologylabelAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyLabelAPI.DtctopologylabelReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcTopologyLabelResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtctopologylabelAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtctopologylabelReferenceGet`: GetDtcTopologyLabelResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyLabelAPI.DtctopologylabelReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtctopologylabelAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -28,7 +28,7 @@ type DtcTopology struct {
 	// Display name of the DTC Topology.
 	Name *string `json:"name,omitempty"`
 	// Topology rules.
-	Rules []map[string]interface{} `json:"rules,omitempty"`
+	Rules []string `json:"rules,omitempty"`
 }
 
 // NewDtcTopology instantiates a new DtcTopology object
@@ -177,9 +177,9 @@ func (o *DtcTopology) SetName(v string) {
 }
 
 // GetRules returns the Rules field value if set, zero value otherwise.
-func (o *DtcTopology) GetRules() []map[string]interface{} {
+func (o *DtcTopology) GetRules() []string {
 	if o == nil || IsNil(o.Rules) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Rules
@@ -187,7 +187,7 @@ func (o *DtcTopology) GetRules() []map[string]interface{} {
 
 // GetRulesOk returns a tuple with the Rules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcTopology) GetRulesOk() ([]map[string]interface{}, bool) {
+func (o *DtcTopology) GetRulesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Rules) {
 		return nil, false
 	}
@@ -203,8 +203,8 @@ func (o *DtcTopology) HasRules() bool {
 	return false
 }
 
-// SetRules gets a reference to the given []map[string]interface{} and assigns it to the Rules field.
-func (o *DtcTopology) SetRules(v []map[string]interface{}) {
+// SetRules gets a reference to the given []string and assigns it to the Rules field.
+func (o *DtcTopology) SetRules(v []string) {
 	o.Rules = v
 }
 

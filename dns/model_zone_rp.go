@@ -24,8 +24,7 @@ type ZoneRp struct {
 	// The IP address of the server that is serving this zone.
 	Address *string `json:"address,omitempty"`
 	// Comment for the zone; maximum 256 characters.
-	Comment        *string                `json:"comment,omitempty"`
-	CopyRpzRecords map[string]interface{} `json:"copy_rpz_records,omitempty"`
+	Comment *string `json:"comment,omitempty"`
 	// Determines whether a zone is disabled or not. When this is set to False, the zone is enabled.
 	Disable *bool `json:"disable,omitempty"`
 	// The displayed name of the DNS zone.
@@ -45,7 +44,6 @@ type ZoneRp struct {
 	GridPrimary []ZoneRpGridPrimary `json:"grid_primary,omitempty"`
 	// The list with Grid members that are secondary servers for this zone.
 	GridSecondaries []ZoneRpGridSecondaries `json:"grid_secondaries,omitempty"`
-	LockUnlockZone  map[string]interface{}  `json:"lock_unlock_zone,omitempty"`
 	// If you enable this flag, other administrators cannot make conflicting changes. This is for administration purposes only. The zone will continue to serve DNS data even when it is locked.
 	Locked *bool `json:"locked,omitempty"`
 	// The name of a superuser or the administrator who locked this zone.
@@ -233,38 +231,6 @@ func (o *ZoneRp) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ZoneRp) SetComment(v string) {
 	o.Comment = &v
-}
-
-// GetCopyRpzRecords returns the CopyRpzRecords field value if set, zero value otherwise.
-func (o *ZoneRp) GetCopyRpzRecords() map[string]interface{} {
-	if o == nil || IsNil(o.CopyRpzRecords) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.CopyRpzRecords
-}
-
-// GetCopyRpzRecordsOk returns a tuple with the CopyRpzRecords field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneRp) GetCopyRpzRecordsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.CopyRpzRecords) {
-		return map[string]interface{}{}, false
-	}
-	return o.CopyRpzRecords, true
-}
-
-// HasCopyRpzRecords returns a boolean if a field has been set.
-func (o *ZoneRp) HasCopyRpzRecords() bool {
-	if o != nil && !IsNil(o.CopyRpzRecords) {
-		return true
-	}
-
-	return false
-}
-
-// SetCopyRpzRecords gets a reference to the given map[string]interface{} and assigns it to the CopyRpzRecords field.
-func (o *ZoneRp) SetCopyRpzRecords(v map[string]interface{}) {
-	o.CopyRpzRecords = v
 }
 
 // GetDisable returns the Disable field value if set, zero value otherwise.
@@ -585,38 +551,6 @@ func (o *ZoneRp) HasGridSecondaries() bool {
 // SetGridSecondaries gets a reference to the given []ZoneRpGridSecondaries and assigns it to the GridSecondaries field.
 func (o *ZoneRp) SetGridSecondaries(v []ZoneRpGridSecondaries) {
 	o.GridSecondaries = v
-}
-
-// GetLockUnlockZone returns the LockUnlockZone field value if set, zero value otherwise.
-func (o *ZoneRp) GetLockUnlockZone() map[string]interface{} {
-	if o == nil || IsNil(o.LockUnlockZone) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.LockUnlockZone
-}
-
-// GetLockUnlockZoneOk returns a tuple with the LockUnlockZone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneRp) GetLockUnlockZoneOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.LockUnlockZone) {
-		return map[string]interface{}{}, false
-	}
-	return o.LockUnlockZone, true
-}
-
-// HasLockUnlockZone returns a boolean if a field has been set.
-func (o *ZoneRp) HasLockUnlockZone() bool {
-	if o != nil && !IsNil(o.LockUnlockZone) {
-		return true
-	}
-
-	return false
-}
-
-// SetLockUnlockZone gets a reference to the given map[string]interface{} and assigns it to the LockUnlockZone field.
-func (o *ZoneRp) SetLockUnlockZone(v map[string]interface{}) {
-	o.LockUnlockZone = v
 }
 
 // GetLocked returns the Locked field value if set, zero value otherwise.
@@ -1822,9 +1756,6 @@ func (o ZoneRp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.CopyRpzRecords) {
-		toSerialize["copy_rpz_records"] = o.CopyRpzRecords
-	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
@@ -1854,9 +1785,6 @@ func (o ZoneRp) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GridSecondaries) {
 		toSerialize["grid_secondaries"] = o.GridSecondaries
-	}
-	if !IsNil(o.LockUnlockZone) {
-		toSerialize["lock_unlock_zone"] = o.LockUnlockZone
 	}
 	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked

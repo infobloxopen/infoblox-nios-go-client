@@ -1,20 +1,20 @@
-# DtclbdnAPI
+# DtcLbdnAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtclbdnAPI.md#Get) | **Get** /dtc:lbdn | Retrieve dtc:lbdn objects
-[**Post**](DtclbdnAPI.md#Post) | **Post** /dtc:lbdn | Create a dtc:lbdn object
-[**ReferenceDelete**](DtclbdnAPI.md#ReferenceDelete) | **Delete** /dtc:lbdn/{reference} | Delete a dtc:lbdn object
-[**ReferenceGet**](DtclbdnAPI.md#ReferenceGet) | **Get** /dtc:lbdn/{reference} | Get a specific dtc:lbdn object
-[**ReferencePut**](DtclbdnAPI.md#ReferencePut) | **Put** /dtc:lbdn/{reference} | Update a dtc:lbdn object
+[**DtclbdnGet**](DtcLbdnAPI.md#DtclbdnGet) | **Get** /dtc:lbdn | Retrieve dtc:lbdn objects
+[**DtclbdnPost**](DtcLbdnAPI.md#DtclbdnPost) | **Post** /dtc:lbdn | Create a dtc:lbdn object
+[**DtclbdnReferenceDelete**](DtcLbdnAPI.md#DtclbdnReferenceDelete) | **Delete** /dtc:lbdn/{reference} | Delete a dtc:lbdn object
+[**DtclbdnReferenceGet**](DtcLbdnAPI.md#DtclbdnReferenceGet) | **Get** /dtc:lbdn/{reference} | Get a specific dtc:lbdn object
+[**DtclbdnReferencePut**](DtcLbdnAPI.md#DtclbdnReferencePut) | **Put** /dtc:lbdn/{reference} | Update a dtc:lbdn object
 
 
 
-## Get
+## DtclbdnGet
 
-> ListDtcLbdnResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcLbdnResponse DtclbdnGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:lbdn objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtclbdnAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcLbdnAPI.DtclbdnGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtclbdnAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcLbdnAPI.DtclbdnGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcLbdnResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtclbdnAPI.Get`: %v\n", resp)
+	// response from `DtclbdnGet`: ListDtcLbdnResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcLbdnAPI.DtclbdnGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtclbdnAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcLbdnAPIDtclbdnGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## DtclbdnPost
 
-> CreateDtcLbdnResponse Post(ctx).DtcLbdn(dtcLbdn).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateDtcLbdnResponse DtclbdnPost(ctx).DtcLbdn(dtcLbdn).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a dtc:lbdn object
 
@@ -109,13 +109,13 @@ func main() {
 	dtcLbdn := *dtc.NewDtcLbdn() // DtcLbdn | Object data to create
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtclbdnAPI.Post(context.Background()).DtcLbdn(dtcLbdn).Execute()
+	resp, r, err := apiClient.DtcLbdnAPI.DtclbdnPost(context.Background()).DtcLbdn(dtcLbdn).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtclbdnAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcLbdnAPI.DtclbdnPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateDtcLbdnResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtclbdnAPI.Post`: %v\n", resp)
+	// response from `DtclbdnPost`: CreateDtcLbdnResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcLbdnAPI.DtclbdnPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtclbdnAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcLbdnAPIDtclbdnPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## DtclbdnReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> DtclbdnReferenceDelete(ctx, reference).Execute()
 
 Delete a dtc:lbdn object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:lbdn object
 
 	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtclbdnAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.DtcLbdnAPI.DtclbdnReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtclbdnAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcLbdnAPI.DtclbdnReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtclbdnAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcLbdnAPIDtclbdnReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## DtclbdnReferenceGet
 
-> GetDtcLbdnResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcLbdnResponse DtclbdnReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:lbdn object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:lbdn object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtclbdnAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcLbdnAPI.DtclbdnReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtclbdnAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcLbdnAPI.DtclbdnReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcLbdnResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtclbdnAPI.ReferenceGet`: %v\n", resp)
+	// response from `DtclbdnReferenceGet`: GetDtcLbdnResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcLbdnAPI.DtclbdnReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtclbdnAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcLbdnAPIDtclbdnReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## DtclbdnReferencePut
 
-> UpdateDtcLbdnResponse ReferencePut(ctx, reference).DtcLbdn(dtcLbdn).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcLbdnResponse DtclbdnReferencePut(ctx, reference).DtcLbdn(dtcLbdn).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:lbdn object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcLbdn := *dtc.NewDtcLbdn() // DtcLbdn | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtclbdnAPI.ReferencePut(context.Background(), reference).DtcLbdn(dtcLbdn).Execute()
+	resp, r, err := apiClient.DtcLbdnAPI.DtclbdnReferencePut(context.Background(), reference).DtcLbdn(dtcLbdn).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtclbdnAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcLbdnAPI.DtclbdnReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcLbdnResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtclbdnAPI.ReferencePut`: %v\n", resp)
+	// response from `DtclbdnReferencePut`: UpdateDtcLbdnResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcLbdnAPI.DtclbdnReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtclbdnAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcLbdnAPIDtclbdnReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

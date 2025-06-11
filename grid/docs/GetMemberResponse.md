@@ -9,11 +9,8 @@ Name | Type | Description | Notes
 **AdditionalIpList** | Pointer to [**[]MemberAdditionalIpList**](MemberAdditionalIpList.md) | The additional IP list of a Grid member. This list contains additional interface information that can be used at the member level. Note that interface structure(s) with interface type set to &#39;MGMT&#39; are not supported. | [optional] 
 **AutomatedTrafficCaptureSetting** | Pointer to [**MemberAutomatedTrafficCaptureSetting**](MemberAutomatedTrafficCaptureSetting.md) |  | [optional] 
 **BgpAs** | Pointer to [**[]MemberBgpAs**](MemberBgpAs.md) | The BGP configuration for anycast for a Grid member. | [optional] 
-**CaptureTrafficControl** | Pointer to **map[string]interface{}** |  | [optional] 
-**CaptureTrafficStatus** | Pointer to **map[string]interface{}** |  | [optional] 
 **Comment** | Pointer to **string** | A descriptive comment of the Grid member. | [optional] 
 **ConfigAddrType** | Pointer to **string** | Address configuration type. | [optional] 
-**CreateToken** | Pointer to **map[string]interface{}** |  | [optional] 
 **CspAccessKey** | Pointer to **[]string** | CSP portal on-prem host access key | [optional] 
 **CspMemberSetting** | Pointer to [**MemberCspMemberSetting**](MemberCspMemberSetting.md) |  | [optional] 
 **DnsResolverSetting** | Pointer to [**MemberDnsResolverSetting**](MemberDnsResolverSetting.md) |  | [optional] 
@@ -37,7 +34,6 @@ Name | Type | Description | Notes
 **LomNetworkConfig** | Pointer to [**[]MemberLomNetworkConfig**](MemberLomNetworkConfig.md) | The Network configurations for LOM. | [optional] 
 **LomUsers** | Pointer to [**[]MemberLomUsers**](MemberLomUsers.md) | The list of LOM users. | [optional] 
 **MasterCandidate** | Pointer to **bool** | Determines if a Grid member is a Grid Master Candidate or not. This flag enables the Grid member to assume the role of the Grid Master as a disaster recovery measure. | [optional] 
-**MemberAdminOperation** | Pointer to **map[string]interface{}** |  | [optional] 
 **MemberServiceCommunication** | Pointer to [**[]MemberMemberServiceCommunication**](MemberMemberServiceCommunication.md) | Configure communication type for various services. | [optional] 
 **MgmtPortSetting** | Pointer to [**MemberMgmtPortSetting**](MemberMgmtPortSetting.md) |  | [optional] 
 **MmdbEaBuildTime** | Pointer to **int64** | Extensible attributes Topology database build time. | [optional] [readonly] 
@@ -50,10 +46,7 @@ Name | Type | Description | Notes
 **Platform** | Pointer to **string** | Hardware Platform. | [optional] 
 **PreProvisioning** | Pointer to [**MemberPreProvisioning**](MemberPreProvisioning.md) |  | [optional] 
 **PreserveIfOwnsDelegation** | Pointer to **bool** | Set this flag to \&quot;true\&quot; to prevent the deletion of the member if any delegated object remains attached to it. | [optional] 
-**ReadToken** | Pointer to **map[string]interface{}** |  | [optional] 
 **RemoteConsoleAccessEnable** | Pointer to **bool** | If set to True, superuser admins can access the Infoblox CLI from a remote location using an SSH (Secure Shell) v2 client. | [optional] 
-**Requestrestartservicestatus** | Pointer to **map[string]interface{}** |  | [optional] 
-**Restartservices** | Pointer to **map[string]interface{}** |  | [optional] 
 **RouterId** | Pointer to **int64** | Virutal router identifier. Provide this ID if \&quot;ha_enabled\&quot; is set to \&quot;true\&quot;. This is a unique VRID number (from 1 to 255) for the local subnet. | [optional] 
 **ServiceStatus** | Pointer to [**[]MemberServiceStatus**](MemberServiceStatus.md) | The service status list of a grid member. | [optional] [readonly] 
 **ServiceTypeConfiguration** | Pointer to **string** | Configure all services to the given type. | [optional] 
@@ -241,56 +234,6 @@ SetBgpAs sets BgpAs field to given value.
 
 HasBgpAs returns a boolean if a field has been set.
 
-### GetCaptureTrafficControl
-
-`func (o *GetMemberResponse) GetCaptureTrafficControl() map[string]interface{}`
-
-GetCaptureTrafficControl returns the CaptureTrafficControl field if non-nil, zero value otherwise.
-
-### GetCaptureTrafficControlOk
-
-`func (o *GetMemberResponse) GetCaptureTrafficControlOk() (*map[string]interface{}, bool)`
-
-GetCaptureTrafficControlOk returns a tuple with the CaptureTrafficControl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCaptureTrafficControl
-
-`func (o *GetMemberResponse) SetCaptureTrafficControl(v map[string]interface{})`
-
-SetCaptureTrafficControl sets CaptureTrafficControl field to given value.
-
-### HasCaptureTrafficControl
-
-`func (o *GetMemberResponse) HasCaptureTrafficControl() bool`
-
-HasCaptureTrafficControl returns a boolean if a field has been set.
-
-### GetCaptureTrafficStatus
-
-`func (o *GetMemberResponse) GetCaptureTrafficStatus() map[string]interface{}`
-
-GetCaptureTrafficStatus returns the CaptureTrafficStatus field if non-nil, zero value otherwise.
-
-### GetCaptureTrafficStatusOk
-
-`func (o *GetMemberResponse) GetCaptureTrafficStatusOk() (*map[string]interface{}, bool)`
-
-GetCaptureTrafficStatusOk returns a tuple with the CaptureTrafficStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCaptureTrafficStatus
-
-`func (o *GetMemberResponse) SetCaptureTrafficStatus(v map[string]interface{})`
-
-SetCaptureTrafficStatus sets CaptureTrafficStatus field to given value.
-
-### HasCaptureTrafficStatus
-
-`func (o *GetMemberResponse) HasCaptureTrafficStatus() bool`
-
-HasCaptureTrafficStatus returns a boolean if a field has been set.
-
 ### GetComment
 
 `func (o *GetMemberResponse) GetComment() string`
@@ -340,31 +283,6 @@ SetConfigAddrType sets ConfigAddrType field to given value.
 `func (o *GetMemberResponse) HasConfigAddrType() bool`
 
 HasConfigAddrType returns a boolean if a field has been set.
-
-### GetCreateToken
-
-`func (o *GetMemberResponse) GetCreateToken() map[string]interface{}`
-
-GetCreateToken returns the CreateToken field if non-nil, zero value otherwise.
-
-### GetCreateTokenOk
-
-`func (o *GetMemberResponse) GetCreateTokenOk() (*map[string]interface{}, bool)`
-
-GetCreateTokenOk returns a tuple with the CreateToken field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreateToken
-
-`func (o *GetMemberResponse) SetCreateToken(v map[string]interface{})`
-
-SetCreateToken sets CreateToken field to given value.
-
-### HasCreateToken
-
-`func (o *GetMemberResponse) HasCreateToken() bool`
-
-HasCreateToken returns a boolean if a field has been set.
 
 ### GetCspAccessKey
 
@@ -941,31 +859,6 @@ SetMasterCandidate sets MasterCandidate field to given value.
 
 HasMasterCandidate returns a boolean if a field has been set.
 
-### GetMemberAdminOperation
-
-`func (o *GetMemberResponse) GetMemberAdminOperation() map[string]interface{}`
-
-GetMemberAdminOperation returns the MemberAdminOperation field if non-nil, zero value otherwise.
-
-### GetMemberAdminOperationOk
-
-`func (o *GetMemberResponse) GetMemberAdminOperationOk() (*map[string]interface{}, bool)`
-
-GetMemberAdminOperationOk returns a tuple with the MemberAdminOperation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMemberAdminOperation
-
-`func (o *GetMemberResponse) SetMemberAdminOperation(v map[string]interface{})`
-
-SetMemberAdminOperation sets MemberAdminOperation field to given value.
-
-### HasMemberAdminOperation
-
-`func (o *GetMemberResponse) HasMemberAdminOperation() bool`
-
-HasMemberAdminOperation returns a boolean if a field has been set.
-
 ### GetMemberServiceCommunication
 
 `func (o *GetMemberResponse) GetMemberServiceCommunication() []MemberMemberServiceCommunication`
@@ -1266,31 +1159,6 @@ SetPreserveIfOwnsDelegation sets PreserveIfOwnsDelegation field to given value.
 
 HasPreserveIfOwnsDelegation returns a boolean if a field has been set.
 
-### GetReadToken
-
-`func (o *GetMemberResponse) GetReadToken() map[string]interface{}`
-
-GetReadToken returns the ReadToken field if non-nil, zero value otherwise.
-
-### GetReadTokenOk
-
-`func (o *GetMemberResponse) GetReadTokenOk() (*map[string]interface{}, bool)`
-
-GetReadTokenOk returns a tuple with the ReadToken field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadToken
-
-`func (o *GetMemberResponse) SetReadToken(v map[string]interface{})`
-
-SetReadToken sets ReadToken field to given value.
-
-### HasReadToken
-
-`func (o *GetMemberResponse) HasReadToken() bool`
-
-HasReadToken returns a boolean if a field has been set.
-
 ### GetRemoteConsoleAccessEnable
 
 `func (o *GetMemberResponse) GetRemoteConsoleAccessEnable() bool`
@@ -1315,56 +1183,6 @@ SetRemoteConsoleAccessEnable sets RemoteConsoleAccessEnable field to given value
 `func (o *GetMemberResponse) HasRemoteConsoleAccessEnable() bool`
 
 HasRemoteConsoleAccessEnable returns a boolean if a field has been set.
-
-### GetRequestrestartservicestatus
-
-`func (o *GetMemberResponse) GetRequestrestartservicestatus() map[string]interface{}`
-
-GetRequestrestartservicestatus returns the Requestrestartservicestatus field if non-nil, zero value otherwise.
-
-### GetRequestrestartservicestatusOk
-
-`func (o *GetMemberResponse) GetRequestrestartservicestatusOk() (*map[string]interface{}, bool)`
-
-GetRequestrestartservicestatusOk returns a tuple with the Requestrestartservicestatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestrestartservicestatus
-
-`func (o *GetMemberResponse) SetRequestrestartservicestatus(v map[string]interface{})`
-
-SetRequestrestartservicestatus sets Requestrestartservicestatus field to given value.
-
-### HasRequestrestartservicestatus
-
-`func (o *GetMemberResponse) HasRequestrestartservicestatus() bool`
-
-HasRequestrestartservicestatus returns a boolean if a field has been set.
-
-### GetRestartservices
-
-`func (o *GetMemberResponse) GetRestartservices() map[string]interface{}`
-
-GetRestartservices returns the Restartservices field if non-nil, zero value otherwise.
-
-### GetRestartservicesOk
-
-`func (o *GetMemberResponse) GetRestartservicesOk() (*map[string]interface{}, bool)`
-
-GetRestartservicesOk returns a tuple with the Restartservices field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRestartservices
-
-`func (o *GetMemberResponse) SetRestartservices(v map[string]interface{})`
-
-SetRestartservices sets Restartservices field to given value.
-
-### HasRestartservices
-
-`func (o *GetMemberResponse) HasRestartservices() bool`
-
-HasRestartservices returns a boolean if a field has been set.
 
 ### GetRouterId
 

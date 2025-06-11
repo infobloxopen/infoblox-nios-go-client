@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**CheckLdapServerSettings** | Pointer to **map[string]interface{}** |  | [optional] 
 **Comment** | Pointer to **string** | The LDAP descriptive comment. | [optional] 
 **Disable** | Pointer to **bool** | Determines if the LDAP authentication service is disabled. | [optional] 
 **EaMapping** | Pointer to [**[]LdapAuthServiceEaMapping**](LdapAuthServiceEaMapping.md) | The mapping LDAP fields to extensible attributes. | [optional] 
@@ -63,31 +62,6 @@ SetRef sets Ref field to given value.
 `func (o *LdapAuthService) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
-
-### GetCheckLdapServerSettings
-
-`func (o *LdapAuthService) GetCheckLdapServerSettings() map[string]interface{}`
-
-GetCheckLdapServerSettings returns the CheckLdapServerSettings field if non-nil, zero value otherwise.
-
-### GetCheckLdapServerSettingsOk
-
-`func (o *LdapAuthService) GetCheckLdapServerSettingsOk() (*map[string]interface{}, bool)`
-
-GetCheckLdapServerSettingsOk returns a tuple with the CheckLdapServerSettings field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCheckLdapServerSettings
-
-`func (o *LdapAuthService) SetCheckLdapServerSettings(v map[string]interface{})`
-
-SetCheckLdapServerSettings sets CheckLdapServerSettings field to given value.
-
-### HasCheckLdapServerSettings
-
-`func (o *LdapAuthService) HasCheckLdapServerSettings() bool`
-
-HasCheckLdapServerSettings returns a boolean if a field has been set.
 
 ### GetComment
 

@@ -1,20 +1,20 @@
-# RecordhostAPI
+# RecordHostAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordhostAPI.md#Get) | **Get** /record:host | Retrieve record:host objects
-[**Post**](RecordhostAPI.md#Post) | **Post** /record:host | Create a record:host object
-[**ReferenceDelete**](RecordhostAPI.md#ReferenceDelete) | **Delete** /record:host/{reference} | Delete a record:host object
-[**ReferenceGet**](RecordhostAPI.md#ReferenceGet) | **Get** /record:host/{reference} | Get a specific record:host object
-[**ReferencePut**](RecordhostAPI.md#ReferencePut) | **Put** /record:host/{reference} | Update a record:host object
+[**RecordhostGet**](RecordHostAPI.md#RecordhostGet) | **Get** /record:host | Retrieve record:host objects
+[**RecordhostPost**](RecordHostAPI.md#RecordhostPost) | **Post** /record:host | Create a record:host object
+[**RecordhostReferenceDelete**](RecordHostAPI.md#RecordhostReferenceDelete) | **Delete** /record:host/{reference} | Delete a record:host object
+[**RecordhostReferenceGet**](RecordHostAPI.md#RecordhostReferenceGet) | **Get** /record:host/{reference} | Get a specific record:host object
+[**RecordhostReferencePut**](RecordHostAPI.md#RecordhostReferencePut) | **Put** /record:host/{reference} | Update a record:host object
 
 
 
-## Get
+## RecordhostGet
 
-> ListRecordHostResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordHostResponse RecordhostGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:host objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordhostAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordHostAPI.RecordhostGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordhostAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostAPI.RecordhostGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordhostAPI.Get`: %v\n", resp)
+	// response from `RecordhostGet`: ListRecordHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordHostAPI.RecordhostGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordhostAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordHostAPIRecordhostGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## RecordhostPost
 
-> CreateRecordHostResponse Post(ctx).RecordHost(recordHost).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateRecordHostResponse RecordhostPost(ctx).RecordHost(recordHost).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a record:host object
 
@@ -109,13 +109,13 @@ func main() {
 	recordHost := *dns.NewRecordHost() // RecordHost | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordhostAPI.Post(context.Background()).RecordHost(recordHost).Execute()
+	resp, r, err := apiClient.RecordHostAPI.RecordhostPost(context.Background()).RecordHost(recordHost).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordhostAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostAPI.RecordhostPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateRecordHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordhostAPI.Post`: %v\n", resp)
+	// response from `RecordhostPost`: CreateRecordHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordHostAPI.RecordhostPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordhostAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordHostAPIRecordhostPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## RecordhostReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> RecordhostReferenceDelete(ctx, reference).Execute()
 
 Delete a record:host object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:host object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordhostAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.RecordHostAPI.RecordhostReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordhostAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostAPI.RecordhostReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordhostAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordHostAPIRecordhostReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## RecordhostReferenceGet
 
-> GetRecordHostResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordHostResponse RecordhostReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:host object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:host object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordhostAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordHostAPI.RecordhostReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordhostAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostAPI.RecordhostReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordhostAPI.ReferenceGet`: %v\n", resp)
+	// response from `RecordhostReferenceGet`: GetRecordHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordHostAPI.RecordhostReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordhostAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordHostAPIRecordhostReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## RecordhostReferencePut
 
-> UpdateRecordHostResponse ReferencePut(ctx, reference).RecordHost(recordHost).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordHostResponse RecordhostReferencePut(ctx, reference).RecordHost(recordHost).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:host object
 
@@ -318,13 +318,13 @@ func main() {
 	recordHost := *dns.NewRecordHost() // RecordHost | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordhostAPI.ReferencePut(context.Background(), reference).RecordHost(recordHost).Execute()
+	resp, r, err := apiClient.RecordHostAPI.RecordhostReferencePut(context.Background(), reference).RecordHost(recordHost).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordhostAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostAPI.RecordhostReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordHostResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordhostAPI.ReferencePut`: %v\n", resp)
+	// response from `RecordhostReferencePut`: UpdateRecordHostResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordHostAPI.RecordhostReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordhostAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordHostAPIRecordhostReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

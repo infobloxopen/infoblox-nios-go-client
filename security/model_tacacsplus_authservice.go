@@ -28,8 +28,7 @@ type TacacsplusAuthservice struct {
 	// The number of the authentication/authorization retries before giving up and moving on to the next server.
 	AuthRetries *int64 `json:"auth_retries,omitempty"`
 	// The authentication/authorization timeout period in milliseconds.
-	AuthTimeout                   *int64                 `json:"auth_timeout,omitempty"`
-	CheckTacacsplusServerSettings map[string]interface{} `json:"check_tacacsplus_server_settings,omitempty"`
+	AuthTimeout *int64 `json:"auth_timeout,omitempty"`
 	// The TACACS+ authentication service descriptive comment.
 	Comment *string `json:"comment,omitempty"`
 	// Determines whether the TACACS+ authentication service object is disabled.
@@ -217,38 +216,6 @@ func (o *TacacsplusAuthservice) SetAuthTimeout(v int64) {
 	o.AuthTimeout = &v
 }
 
-// GetCheckTacacsplusServerSettings returns the CheckTacacsplusServerSettings field value if set, zero value otherwise.
-func (o *TacacsplusAuthservice) GetCheckTacacsplusServerSettings() map[string]interface{} {
-	if o == nil || IsNil(o.CheckTacacsplusServerSettings) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.CheckTacacsplusServerSettings
-}
-
-// GetCheckTacacsplusServerSettingsOk returns a tuple with the CheckTacacsplusServerSettings field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TacacsplusAuthservice) GetCheckTacacsplusServerSettingsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.CheckTacacsplusServerSettings) {
-		return map[string]interface{}{}, false
-	}
-	return o.CheckTacacsplusServerSettings, true
-}
-
-// HasCheckTacacsplusServerSettings returns a boolean if a field has been set.
-func (o *TacacsplusAuthservice) HasCheckTacacsplusServerSettings() bool {
-	if o != nil && !IsNil(o.CheckTacacsplusServerSettings) {
-		return true
-	}
-
-	return false
-}
-
-// SetCheckTacacsplusServerSettings gets a reference to the given map[string]interface{} and assigns it to the CheckTacacsplusServerSettings field.
-func (o *TacacsplusAuthservice) SetCheckTacacsplusServerSettings(v map[string]interface{}) {
-	o.CheckTacacsplusServerSettings = v
-}
-
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *TacacsplusAuthservice) GetComment() string {
 	if o == nil || IsNil(o.Comment) {
@@ -401,9 +368,6 @@ func (o TacacsplusAuthservice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AuthTimeout) {
 		toSerialize["auth_timeout"] = o.AuthTimeout
-	}
-	if !IsNil(o.CheckTacacsplusServerSettings) {
-		toSerialize["check_tacacsplus_server_settings"] = o.CheckTacacsplusServerSettings
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment

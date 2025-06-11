@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **EnablePxeLeaseTime** | Pointer to **bool** | Set this to True if you want the DHCP server to use a different lease time for PXE clients. | [optional] 
 **EnableSnmpWarnings** | Pointer to **bool** | Determines if DHCP threshold warnings are send through SNMP. | [optional] 
 **EndAddr** | Pointer to **string** | The IPv4 Address end address of the range. | [optional] 
-**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP Range object. | [optional] [readonly] 
+**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP Range object. | [optional] [readonly] 
 **Exclude** | Pointer to [**[]RangeExclude**](RangeExclude.md) | These are ranges of IP addresses that the appliance does not use to assign to clients. You can use these exclusion addresses as static IP addresses. They contain the start and end addresses of the exclusion range, and optionally, information about this exclusion range. | [optional] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FailoverAssociation** | Pointer to **string** | The name of the failover association: the server in this failover association will serve the IPv4 range in case the main server is out of service. {range:range} must be set to &#39;FAILOVER&#39; or &#39;FAILOVER_MS&#39; if you want the failover association specified here to serve the range. | [optional] 
@@ -57,7 +57,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | This field contains the name of the Microsoft scope. | [optional] 
 **Network** | Pointer to **string** | The network to which this range belongs, in IPv4 Address/CIDR format. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this range resides. | [optional] 
-**NextAvailableIp** | Pointer to **map[string]interface{}** |  | [optional] 
 **Nextserver** | Pointer to **string** | The name in FQDN and/or IPv4 Address of the next server that the host needs to boot. | [optional] 
 **OptionFilterRules** | Pointer to [**[]RangeOptionFilterRules**](RangeOptionFilterRules.md) | This field contains the Option filters to be applied to this range. The appliance uses the matching rules of these filters to select the address range from which it assigns a lease. | [optional] 
 **Options** | Pointer to [**[]RangeOptions**](RangeOptions.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
@@ -825,20 +824,20 @@ HasEndAddr returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *GetRangeResponse) GetEndpointSources() []map[string]interface{}`
+`func (o *GetRangeResponse) GetEndpointSources() []string`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *GetRangeResponse) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
+`func (o *GetRangeResponse) GetEndpointSourcesOk() (*[]string, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *GetRangeResponse) SetEndpointSources(v []map[string]interface{})`
+`func (o *GetRangeResponse) SetEndpointSources(v []string)`
 
 SetEndpointSources sets EndpointSources field to given value.
 
@@ -1447,31 +1446,6 @@ SetNetworkView sets NetworkView field to given value.
 `func (o *GetRangeResponse) HasNetworkView() bool`
 
 HasNetworkView returns a boolean if a field has been set.
-
-### GetNextAvailableIp
-
-`func (o *GetRangeResponse) GetNextAvailableIp() map[string]interface{}`
-
-GetNextAvailableIp returns the NextAvailableIp field if non-nil, zero value otherwise.
-
-### GetNextAvailableIpOk
-
-`func (o *GetRangeResponse) GetNextAvailableIpOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableIpOk returns a tuple with the NextAvailableIp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableIp
-
-`func (o *GetRangeResponse) SetNextAvailableIp(v map[string]interface{})`
-
-SetNextAvailableIp sets NextAvailableIp field to given value.
-
-### HasNextAvailableIp
-
-`func (o *GetRangeResponse) HasNextAvailableIp() bool`
-
-HasNextAvailableIp returns a boolean if a field has been set.
 
 ### GetNextserver
 

@@ -1,0 +1,56 @@
+# GetSharedrecordMxResponseObjectAsResult
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Result** | Pointer to [**SharedrecordMx**](SharedrecordMx.md) |  | [optional] 
+
+## Methods
+
+### NewGetSharedrecordMxResponseObjectAsResult
+
+`func NewGetSharedrecordMxResponseObjectAsResult() *GetSharedrecordMxResponseObjectAsResult`
+
+NewGetSharedrecordMxResponseObjectAsResult instantiates a new GetSharedrecordMxResponseObjectAsResult object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewGetSharedrecordMxResponseObjectAsResultWithDefaults
+
+`func NewGetSharedrecordMxResponseObjectAsResultWithDefaults() *GetSharedrecordMxResponseObjectAsResult`
+
+NewGetSharedrecordMxResponseObjectAsResultWithDefaults instantiates a new GetSharedrecordMxResponseObjectAsResult object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetResult
+
+`func (o *GetSharedrecordMxResponseObjectAsResult) GetResult() SharedrecordMx`
+
+GetResult returns the Result field if non-nil, zero value otherwise.
+
+### GetResultOk
+
+`func (o *GetSharedrecordMxResponseObjectAsResult) GetResultOk() (*SharedrecordMx, bool)`
+
+GetResultOk returns a tuple with the Result field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResult
+
+`func (o *GetSharedrecordMxResponseObjectAsResult) SetResult(v SharedrecordMx)`
+
+SetResult sets Result field to given value.
+
+### HasResult
+
+`func (o *GetSharedrecordMxResponseObjectAsResult) HasResult() bool`
+
+HasResult returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

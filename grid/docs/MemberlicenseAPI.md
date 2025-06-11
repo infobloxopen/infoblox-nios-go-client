@@ -1,18 +1,18 @@
-# MemberlicenseAPI
+# MemberLicenseAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](MemberlicenseAPI.md#Get) | **Get** /member:license | Retrieve member:license objects
-[**ReferenceDelete**](MemberlicenseAPI.md#ReferenceDelete) | **Delete** /member:license/{reference} | Delete a member:license object
-[**ReferenceGet**](MemberlicenseAPI.md#ReferenceGet) | **Get** /member:license/{reference} | Get a specific member:license object
+[**MemberlicenseGet**](MemberLicenseAPI.md#MemberlicenseGet) | **Get** /member:license | Retrieve member:license objects
+[**MemberlicenseReferenceDelete**](MemberLicenseAPI.md#MemberlicenseReferenceDelete) | **Delete** /member:license/{reference} | Delete a member:license object
+[**MemberlicenseReferenceGet**](MemberLicenseAPI.md#MemberlicenseReferenceGet) | **Get** /member:license/{reference} | Get a specific member:license object
 
 
 
-## Get
+## MemberlicenseGet
 
-> ListMemberLicenseResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListMemberLicenseResponse MemberlicenseGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve member:license objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberlicenseAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.MemberLicenseAPI.MemberlicenseGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberlicenseAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberLicenseAPI.MemberlicenseGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListMemberLicenseResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberlicenseAPI.Get`: %v\n", resp)
+	// response from `MemberlicenseGet`: ListMemberLicenseResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberLicenseAPI.MemberlicenseGet`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberlicenseAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberLicenseAPIMemberlicenseGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## MemberlicenseReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> MemberlicenseReferenceDelete(ctx, reference).Execute()
 
 Delete a member:license object
 
@@ -107,9 +107,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the member:license object
 
 	apiClient := grid.NewAPIClient()
-	r, err := apiClient.MemberlicenseAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.MemberLicenseAPI.MemberlicenseReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberlicenseAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberLicenseAPI.MemberlicenseReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberlicenseAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberLicenseAPIMemberlicenseReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -149,9 +149,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## MemberlicenseReferenceGet
 
-> GetMemberLicenseResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMemberLicenseResponse MemberlicenseReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific member:license object
 
@@ -174,13 +174,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the member:license object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberlicenseAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MemberLicenseAPI.MemberlicenseReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberlicenseAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberLicenseAPI.MemberlicenseReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetMemberLicenseResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberlicenseAPI.ReferenceGet`: %v\n", resp)
+	// response from `MemberlicenseReferenceGet`: GetMemberLicenseResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberLicenseAPI.MemberlicenseReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberlicenseAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberLicenseAPIMemberlicenseReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

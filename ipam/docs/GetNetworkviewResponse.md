@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **DdnsZonePrimaries** | Pointer to [**[]NetworkviewDdnsZonePrimaries**](NetworkviewDdnsZonePrimaries.md) | An array of Ddns Zone Primary dhcpddns structs that lists the information of primary zone to wich DDNS updates should be sent. | [optional] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FederatedRealms** | Pointer to [**[]NetworkviewFederatedRealms**](NetworkviewFederatedRealms.md) | This field contains the federated realms associated to this network view | [optional] 
-**InternalForwardZones** | Pointer to **[]map[string]interface{}** | The list of linked authoritative DNS zones. | [optional] 
+**InternalForwardZones** | Pointer to **[]string** | The list of linked authoritative DNS zones. | [optional] 
 **IsDefault** | Pointer to **bool** | The NIOS appliance provides one default network view. You can rename the default view and change its settings, but you cannot delete it. There must always be at least one network view in the appliance. | [optional] [readonly] 
 **MgmPrivate** | Pointer to **bool** | This field controls whether this object is synchronized with the Multi-Grid Master. If this field is set to True, objects are not synchronized. | [optional] 
 **MsAdUserData** | Pointer to [**NetworkviewMsAdUserData**](NetworkviewMsAdUserData.md) |  | [optional] 
@@ -268,20 +268,20 @@ HasFederatedRealms returns a boolean if a field has been set.
 
 ### GetInternalForwardZones
 
-`func (o *GetNetworkviewResponse) GetInternalForwardZones() []map[string]interface{}`
+`func (o *GetNetworkviewResponse) GetInternalForwardZones() []string`
 
 GetInternalForwardZones returns the InternalForwardZones field if non-nil, zero value otherwise.
 
 ### GetInternalForwardZonesOk
 
-`func (o *GetNetworkviewResponse) GetInternalForwardZonesOk() (*[]map[string]interface{}, bool)`
+`func (o *GetNetworkviewResponse) GetInternalForwardZonesOk() (*[]string, bool)`
 
 GetInternalForwardZonesOk returns a tuple with the InternalForwardZones field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternalForwardZones
 
-`func (o *GetNetworkviewResponse) SetInternalForwardZones(v []map[string]interface{})`
+`func (o *GetNetworkviewResponse) SetInternalForwardZones(v []string)`
 
 SetInternalForwardZones sets InternalForwardZones field to given value.
 

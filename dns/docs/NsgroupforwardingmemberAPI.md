@@ -1,20 +1,20 @@
-# NsgroupforwardingmemberAPI
+# NsgroupForwardingmemberAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](NsgroupforwardingmemberAPI.md#Get) | **Get** /nsgroup:forwardingmember | Retrieve nsgroup:forwardingmember objects
-[**Post**](NsgroupforwardingmemberAPI.md#Post) | **Post** /nsgroup:forwardingmember | Create a nsgroup:forwardingmember object
-[**ReferenceDelete**](NsgroupforwardingmemberAPI.md#ReferenceDelete) | **Delete** /nsgroup:forwardingmember/{reference} | Delete a nsgroup:forwardingmember object
-[**ReferenceGet**](NsgroupforwardingmemberAPI.md#ReferenceGet) | **Get** /nsgroup:forwardingmember/{reference} | Get a specific nsgroup:forwardingmember object
-[**ReferencePut**](NsgroupforwardingmemberAPI.md#ReferencePut) | **Put** /nsgroup:forwardingmember/{reference} | Update a nsgroup:forwardingmember object
+[**NsgroupforwardingmemberGet**](NsgroupForwardingmemberAPI.md#NsgroupforwardingmemberGet) | **Get** /nsgroup:forwardingmember | Retrieve nsgroup:forwardingmember objects
+[**NsgroupforwardingmemberPost**](NsgroupForwardingmemberAPI.md#NsgroupforwardingmemberPost) | **Post** /nsgroup:forwardingmember | Create a nsgroup:forwardingmember object
+[**NsgroupforwardingmemberReferenceDelete**](NsgroupForwardingmemberAPI.md#NsgroupforwardingmemberReferenceDelete) | **Delete** /nsgroup:forwardingmember/{reference} | Delete a nsgroup:forwardingmember object
+[**NsgroupforwardingmemberReferenceGet**](NsgroupForwardingmemberAPI.md#NsgroupforwardingmemberReferenceGet) | **Get** /nsgroup:forwardingmember/{reference} | Get a specific nsgroup:forwardingmember object
+[**NsgroupforwardingmemberReferencePut**](NsgroupForwardingmemberAPI.md#NsgroupforwardingmemberReferencePut) | **Put** /nsgroup:forwardingmember/{reference} | Update a nsgroup:forwardingmember object
 
 
 
-## Get
+## NsgroupforwardingmemberGet
 
-> ListNsgroupForwardingmemberResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListNsgroupForwardingmemberResponse NsgroupforwardingmemberGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve nsgroup:forwardingmember objects
 
@@ -36,13 +36,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupforwardingmemberAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.NsgroupForwardingmemberAPI.NsgroupforwardingmemberGet(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardingmemberAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupForwardingmemberAPI.NsgroupforwardingmemberGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListNsgroupForwardingmemberResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupforwardingmemberAPI.Get`: %v\n", resp)
+	// response from `NsgroupforwardingmemberGet`: ListNsgroupForwardingmemberResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupForwardingmemberAPI.NsgroupforwardingmemberGet`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupforwardingmemberAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## NsgroupforwardingmemberPost
 
-> CreateNsgroupForwardingmemberResponse Post(ctx).NsgroupForwardingmember(nsgroupForwardingmember).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateNsgroupForwardingmemberResponse NsgroupforwardingmemberPost(ctx).NsgroupForwardingmember(nsgroupForwardingmember).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Create a nsgroup:forwardingmember object
 
@@ -109,13 +109,13 @@ func main() {
 	nsgroupForwardingmember := *dns.NewNsgroupForwardingmember() // NsgroupForwardingmember | Object data to create
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupforwardingmemberAPI.Post(context.Background()).NsgroupForwardingmember(nsgroupForwardingmember).Execute()
+	resp, r, err := apiClient.NsgroupForwardingmemberAPI.NsgroupforwardingmemberPost(context.Background()).NsgroupForwardingmember(nsgroupForwardingmember).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardingmemberAPI.Post``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupForwardingmemberAPI.NsgroupforwardingmemberPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Post`: CreateNsgroupForwardingmemberResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupforwardingmemberAPI.Post`: %v\n", resp)
+	// response from `NsgroupforwardingmemberPost`: CreateNsgroupForwardingmemberResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupForwardingmemberAPI.NsgroupforwardingmemberPost`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupforwardingmemberAPIPostRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +153,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## NsgroupforwardingmemberReferenceDelete
 
-> ReferenceDelete(ctx, reference).Execute()
+> NsgroupforwardingmemberReferenceDelete(ctx, reference).Execute()
 
 Delete a nsgroup:forwardingmember object
 
@@ -178,9 +178,9 @@ func main() {
 	reference := "reference_example" // string | Reference of the nsgroup:forwardingmember object
 
 	apiClient := dns.NewAPIClient()
-	r, err := apiClient.NsgroupforwardingmemberAPI.ReferenceDelete(context.Background(), reference).Execute()
+	r, err := apiClient.NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferenceDelete(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardingmemberAPI.ReferenceDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferenceDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupforwardingmemberAPIReferenceDeleteRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceDeleteRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## NsgroupforwardingmemberReferenceGet
 
-> GetNsgroupForwardingmemberResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetNsgroupForwardingmemberResponse NsgroupforwardingmemberReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific nsgroup:forwardingmember object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the nsgroup:forwardingmember object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupforwardingmemberAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferenceGet(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardingmemberAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferenceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetNsgroupForwardingmemberResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupforwardingmemberAPI.ReferenceGet`: %v\n", resp)
+	// response from `NsgroupforwardingmemberReferenceGet`: GetNsgroupForwardingmemberResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferenceGet`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupforwardingmemberAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## NsgroupforwardingmemberReferencePut
 
-> UpdateNsgroupForwardingmemberResponse ReferencePut(ctx, reference).NsgroupForwardingmember(nsgroupForwardingmember).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateNsgroupForwardingmemberResponse NsgroupforwardingmemberReferencePut(ctx, reference).NsgroupForwardingmember(nsgroupForwardingmember).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a nsgroup:forwardingmember object
 
@@ -318,13 +318,13 @@ func main() {
 	nsgroupForwardingmember := *dns.NewNsgroupForwardingmember() // NsgroupForwardingmember | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.NsgroupforwardingmemberAPI.ReferencePut(context.Background(), reference).NsgroupForwardingmember(nsgroupForwardingmember).Execute()
+	resp, r, err := apiClient.NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferencePut(context.Background(), reference).NsgroupForwardingmember(nsgroupForwardingmember).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupforwardingmemberAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferencePut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateNsgroupForwardingmemberResponse
-	fmt.Fprintf(os.Stdout, "Response from `NsgroupforwardingmemberAPI.ReferencePut`: %v\n", resp)
+	// response from `NsgroupforwardingmemberReferencePut`: UpdateNsgroupForwardingmemberResponse
+	fmt.Fprintf(os.Stdout, "Response from `NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferencePut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NsgroupforwardingmemberAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -380,6 +380,33 @@ func (a *NetworkAPIService) PostExecute(r NetworkAPIPostRequest) (*CreateNetwork
 			}
 		}
 	}
+	if r.network.FuncCall != nil {
+		bodyForFuncCall := r.network
+		if bodyForFuncCall.FuncCall.AttributeName == "" {
+			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+		}
+		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
+		if funcStr == "Network" {
+			if bodyForFuncCall.Network.String != nil {
+				return localVarReturnValue, nil, internal.ReportError("Network cannot be provided when function call is used")
+			} else {
+
+				var l NetworkNetwork
+				var m NetworkNetworkOneOf
+				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
+				m.Parameters = bodyForFuncCall.FuncCall.Parameters
+				m.ResultField = bodyForFuncCall.FuncCall.ResultField
+				m.Object = bodyForFuncCall.FuncCall.Object
+				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
+
+				l.NetworkNetworkOneOf = &m
+				l.String = nil
+				bodyForFuncCall.Network = &l
+				bodyForFuncCall.FuncCall = nil
+			}
+		}
+		r.network = bodyForFuncCall
+	}
 	// body params
 	localVarPostBody = r.network
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -746,6 +773,12 @@ func (a *NetworkAPIService) ReferencePutExecute(r NetworkAPIReferencePutRequest)
 				}
 			}
 		}
+	}
+	if r.network.FuncCall != nil {
+		bodyForFuncCall := r.network
+		bodyForFuncCall.FuncCall = nil
+		bodyForFuncCall.Network = nil
+		r.network = bodyForFuncCall
 	}
 	// body params
 	localVarPostBody = r.network

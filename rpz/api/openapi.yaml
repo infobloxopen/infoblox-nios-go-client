@@ -15,37 +15,35 @@ servers:
   url: /wapi/v2.13.6
 tags:
 - description: Operations for allrpzrecords objects
-  name: allrpzrecords
+  name: Allrpzrecords
 - description: Operations for record:rpz:a objects
-  name: record:rpz:a
+  name: RecordRpzA
 - description: Operations for record:rpz:aaaa objects
-  name: record:rpz:aaaa
+  name: RecordRpzAaaa
 - description: Operations for record:rpz:cname objects
-  name: record:rpz:cname
+  name: RecordRpzCname
 - description: Operations for record:rpz:mx objects
-  name: record:rpz:mx
+  name: RecordRpzMx
 - description: Operations for record:rpz:naptr objects
-  name: record:rpz:naptr
+  name: RecordRpzNaptr
 - description: Operations for record:rpz:ptr objects
-  name: record:rpz:ptr
+  name: RecordRpzPtr
 - description: Operations for record:rpz:srv objects
-  name: record:rpz:srv
+  name: RecordRpzSrv
 - description: Operations for record:rpz:txt objects
-  name: record:rpz:txt
+  name: RecordRpzTxt
 - description: Operations for record:rpz:a:ipaddress objects
-  name: record:rpz:a:ipaddress
+  name: RecordRpzAIpaddress
 - description: Operations for record:rpz:aaaa:ipaddress objects
-  name: record:rpz:aaaa:ipaddress
+  name: RecordRpzAaaaIpaddress
 - description: Operations for record:rpz:cname:ipaddress objects
-  name: record:rpz:cname:ipaddress
+  name: RecordRpzCnameIpaddress
 - description: Operations for record:rpz:cname:ipaddressdn objects
-  name: record:rpz:cname:ipaddressdn
+  name: RecordRpzCnameIpaddressdn
 - description: Operations for record:rpz:cname:clientipaddress objects
-  name: record:rpz:cname:clientipaddress
+  name: RecordRpzCnameClientipaddress
 - description: Operations for record:rpz:cname:clientipaddressdn objects
-  name: record:rpz:cname:clientipaddressdn
-- description: Operations for orderedresponsepolicyzones objects
-  name: orderedresponsepolicyzones
+  name: RecordRpzCnameClientipaddressdn
 paths:
   /allrpzrecords:
     get:
@@ -143,7 +141,7 @@ paths:
       - basicAuth: []
       summary: Retrieve allrpzrecords objects
       tags:
-      - allrpzrecords
+      - Allrpzrecords
   /allrpzrecords/{reference}:
     get:
       description: Returns a specific allrpzrecords object by reference
@@ -203,7 +201,7 @@ paths:
       - basicAuth: []
       summary: Get a specific allrpzrecords object
       tags:
-      - allrpzrecords
+      - Allrpzrecords
   /record:rpz:a:
     get:
       description: Returns a list of record:rpz:a objects matching the search criteria
@@ -300,7 +298,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:a objects
       tags:
-      - record:rpz:a
+      - RecordRpzA
     post:
       description: Creates a new record:rpz:a object
       parameters:
@@ -356,9 +354,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:a object
       tags:
-      - record:rpz:a
-      x-tf-resource: resource_nios_RecordRpzA
-      x-tf-datasource: datasource_nios_RecordRpzA
+      - RecordRpzA
+      x-tf-resource: nios_rpz_record_rpz_a
+      x-tf-datasource: nios_rpz_record_rpz_a
       x-sdk-default-ext-attrs: true
   /record:rpz:a/{reference}:
     delete:
@@ -387,7 +385,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:a object
       tags:
-      - record:rpz:a
+      - RecordRpzA
     get:
       description: Returns a specific record:rpz:a object by reference
       parameters:
@@ -446,7 +444,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:a object
       tags:
-      - record:rpz:a
+      - RecordRpzA
     put:
       description: Updates a specific record:rpz:a object by reference
       parameters:
@@ -512,7 +510,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:a object
       tags:
-      - record:rpz:a
+      - RecordRpzA
       x-sdk-default-ext-attrs: true
   /record:rpz:aaaa:
     get:
@@ -610,7 +608,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:aaaa objects
       tags:
-      - record:rpz:aaaa
+      - RecordRpzAaaa
     post:
       description: Creates a new record:rpz:aaaa object
       parameters:
@@ -666,9 +664,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:aaaa object
       tags:
-      - record:rpz:aaaa
-      x-tf-resource: resource_nios_RecordRpzAaaa
-      x-tf-datasource: datasource_nios_RecordRpzAaaa
+      - RecordRpzAaaa
+      x-tf-resource: nios_rpz_record_rpz_aaaa
+      x-tf-datasource: nios_rpz_record_rpz_aaaa
       x-sdk-default-ext-attrs: true
   /record:rpz:aaaa/{reference}:
     delete:
@@ -697,7 +695,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:aaaa object
       tags:
-      - record:rpz:aaaa
+      - RecordRpzAaaa
     get:
       description: Returns a specific record:rpz:aaaa object by reference
       parameters:
@@ -756,7 +754,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:aaaa object
       tags:
-      - record:rpz:aaaa
+      - RecordRpzAaaa
     put:
       description: Updates a specific record:rpz:aaaa object by reference
       parameters:
@@ -822,7 +820,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:aaaa object
       tags:
-      - record:rpz:aaaa
+      - RecordRpzAaaa
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:
     get:
@@ -921,7 +919,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:cname objects
       tags:
-      - record:rpz:cname
+      - RecordRpzCname
     post:
       description: Creates a new record:rpz:cname object
       parameters:
@@ -977,9 +975,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:cname object
       tags:
-      - record:rpz:cname
-      x-tf-resource: resource_nios_RecordRpzCname
-      x-tf-datasource: datasource_nios_RecordRpzCname
+      - RecordRpzCname
+      x-tf-resource: nios_rpz_record_rpz_cname
+      x-tf-datasource: nios_rpz_record_rpz_cname
       x-sdk-default-ext-attrs: true
   /record:rpz:cname/{reference}:
     delete:
@@ -1008,7 +1006,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:cname object
       tags:
-      - record:rpz:cname
+      - RecordRpzCname
     get:
       description: Returns a specific record:rpz:cname object by reference
       parameters:
@@ -1067,7 +1065,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:cname object
       tags:
-      - record:rpz:cname
+      - RecordRpzCname
     put:
       description: Updates a specific record:rpz:cname object by reference
       parameters:
@@ -1133,7 +1131,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:cname object
       tags:
-      - record:rpz:cname
+      - RecordRpzCname
       x-sdk-default-ext-attrs: true
   /record:rpz:mx:
     get:
@@ -1231,7 +1229,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:mx objects
       tags:
-      - record:rpz:mx
+      - RecordRpzMx
     post:
       description: Creates a new record:rpz:mx object
       parameters:
@@ -1287,9 +1285,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:mx object
       tags:
-      - record:rpz:mx
-      x-tf-resource: resource_nios_RecordRpzMx
-      x-tf-datasource: datasource_nios_RecordRpzMx
+      - RecordRpzMx
+      x-tf-resource: nios_rpz_record_rpz_mx
+      x-tf-datasource: nios_rpz_record_rpz_mx
       x-sdk-default-ext-attrs: true
   /record:rpz:mx/{reference}:
     delete:
@@ -1318,7 +1316,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:mx object
       tags:
-      - record:rpz:mx
+      - RecordRpzMx
     get:
       description: Returns a specific record:rpz:mx object by reference
       parameters:
@@ -1377,7 +1375,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:mx object
       tags:
-      - record:rpz:mx
+      - RecordRpzMx
     put:
       description: Updates a specific record:rpz:mx object by reference
       parameters:
@@ -1443,7 +1441,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:mx object
       tags:
-      - record:rpz:mx
+      - RecordRpzMx
       x-sdk-default-ext-attrs: true
   /record:rpz:naptr:
     get:
@@ -1542,7 +1540,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:naptr objects
       tags:
-      - record:rpz:naptr
+      - RecordRpzNaptr
     post:
       description: Creates a new record:rpz:naptr object
       parameters:
@@ -1598,9 +1596,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:naptr object
       tags:
-      - record:rpz:naptr
-      x-tf-resource: resource_nios_RecordRpzNaptr
-      x-tf-datasource: datasource_nios_RecordRpzNaptr
+      - RecordRpzNaptr
+      x-tf-resource: nios_rpz_record_rpz_naptr
+      x-tf-datasource: nios_rpz_record_rpz_naptr
       x-sdk-default-ext-attrs: true
   /record:rpz:naptr/{reference}:
     delete:
@@ -1629,7 +1627,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:naptr object
       tags:
-      - record:rpz:naptr
+      - RecordRpzNaptr
     get:
       description: Returns a specific record:rpz:naptr object by reference
       parameters:
@@ -1688,7 +1686,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:naptr object
       tags:
-      - record:rpz:naptr
+      - RecordRpzNaptr
     put:
       description: Updates a specific record:rpz:naptr object by reference
       parameters:
@@ -1754,7 +1752,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:naptr object
       tags:
-      - record:rpz:naptr
+      - RecordRpzNaptr
       x-sdk-default-ext-attrs: true
   /record:rpz:ptr:
     get:
@@ -1852,7 +1850,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:ptr objects
       tags:
-      - record:rpz:ptr
+      - RecordRpzPtr
     post:
       description: Creates a new record:rpz:ptr object
       parameters:
@@ -1908,9 +1906,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:ptr object
       tags:
-      - record:rpz:ptr
-      x-tf-resource: resource_nios_RecordRpzPtr
-      x-tf-datasource: datasource_nios_RecordRpzPtr
+      - RecordRpzPtr
+      x-tf-resource: nios_rpz_record_rpz_ptr
+      x-tf-datasource: nios_rpz_record_rpz_ptr
       x-sdk-default-ext-attrs: true
   /record:rpz:ptr/{reference}:
     delete:
@@ -1939,7 +1937,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:ptr object
       tags:
-      - record:rpz:ptr
+      - RecordRpzPtr
     get:
       description: Returns a specific record:rpz:ptr object by reference
       parameters:
@@ -1998,7 +1996,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:ptr object
       tags:
-      - record:rpz:ptr
+      - RecordRpzPtr
     put:
       description: Updates a specific record:rpz:ptr object by reference
       parameters:
@@ -2064,7 +2062,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:ptr object
       tags:
-      - record:rpz:ptr
+      - RecordRpzPtr
       x-sdk-default-ext-attrs: true
   /record:rpz:srv:
     get:
@@ -2162,7 +2160,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:srv objects
       tags:
-      - record:rpz:srv
+      - RecordRpzSrv
     post:
       description: Creates a new record:rpz:srv object
       parameters:
@@ -2218,9 +2216,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:srv object
       tags:
-      - record:rpz:srv
-      x-tf-resource: resource_nios_RecordRpzSrv
-      x-tf-datasource: datasource_nios_RecordRpzSrv
+      - RecordRpzSrv
+      x-tf-resource: nios_rpz_record_rpz_srv
+      x-tf-datasource: nios_rpz_record_rpz_srv
       x-sdk-default-ext-attrs: true
   /record:rpz:srv/{reference}:
     delete:
@@ -2249,7 +2247,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:srv object
       tags:
-      - record:rpz:srv
+      - RecordRpzSrv
     get:
       description: Returns a specific record:rpz:srv object by reference
       parameters:
@@ -2308,7 +2306,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:srv object
       tags:
-      - record:rpz:srv
+      - RecordRpzSrv
     put:
       description: Updates a specific record:rpz:srv object by reference
       parameters:
@@ -2374,7 +2372,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:srv object
       tags:
-      - record:rpz:srv
+      - RecordRpzSrv
       x-sdk-default-ext-attrs: true
   /record:rpz:txt:
     get:
@@ -2472,7 +2470,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:txt objects
       tags:
-      - record:rpz:txt
+      - RecordRpzTxt
     post:
       description: Creates a new record:rpz:txt object
       parameters:
@@ -2528,9 +2526,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:txt object
       tags:
-      - record:rpz:txt
-      x-tf-resource: resource_nios_RecordRpzTxt
-      x-tf-datasource: datasource_nios_RecordRpzTxt
+      - RecordRpzTxt
+      x-tf-resource: nios_rpz_record_rpz_txt
+      x-tf-datasource: nios_rpz_record_rpz_txt
       x-sdk-default-ext-attrs: true
   /record:rpz:txt/{reference}:
     delete:
@@ -2559,7 +2557,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:txt object
       tags:
-      - record:rpz:txt
+      - RecordRpzTxt
     get:
       description: Returns a specific record:rpz:txt object by reference
       parameters:
@@ -2618,7 +2616,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:txt object
       tags:
-      - record:rpz:txt
+      - RecordRpzTxt
     put:
       description: Updates a specific record:rpz:txt object by reference
       parameters:
@@ -2684,7 +2682,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:txt object
       tags:
-      - record:rpz:txt
+      - RecordRpzTxt
       x-sdk-default-ext-attrs: true
   /record:rpz:a:ipaddress:
     get:
@@ -2783,7 +2781,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:a:ipaddress objects
       tags:
-      - record:rpz:a:ipaddress
+      - RecordRpzAIpaddress
     post:
       description: Creates a new record:rpz:a:ipaddress object
       parameters:
@@ -2839,9 +2837,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:a:ipaddress object
       tags:
-      - record:rpz:a:ipaddress
-      x-tf-resource: resource_nios_RecordRpzAIpaddress
-      x-tf-datasource: datasource_nios_RecordRpzAIpaddress
+      - RecordRpzAIpaddress
+      x-tf-resource: nios_rpz_record_rpz_a_ipaddress
+      x-tf-datasource: nios_rpz_record_rpz_a_ipaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:a:ipaddress/{reference}:
     delete:
@@ -2870,7 +2868,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:a:ipaddress object
       tags:
-      - record:rpz:a:ipaddress
+      - RecordRpzAIpaddress
     get:
       description: Returns a specific record:rpz:a:ipaddress object by reference
       parameters:
@@ -2929,7 +2927,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:a:ipaddress object
       tags:
-      - record:rpz:a:ipaddress
+      - RecordRpzAIpaddress
     put:
       description: Updates a specific record:rpz:a:ipaddress object by reference
       parameters:
@@ -2995,7 +2993,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:a:ipaddress object
       tags:
-      - record:rpz:a:ipaddress
+      - RecordRpzAIpaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:aaaa:ipaddress:
     get:
@@ -3094,7 +3092,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:aaaa:ipaddress objects
       tags:
-      - record:rpz:aaaa:ipaddress
+      - RecordRpzAaaaIpaddress
     post:
       description: Creates a new record:rpz:aaaa:ipaddress object
       parameters:
@@ -3150,9 +3148,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:aaaa:ipaddress object
       tags:
-      - record:rpz:aaaa:ipaddress
-      x-tf-resource: resource_nios_RecordRpzAaaaIpaddress
-      x-tf-datasource: datasource_nios_RecordRpzAaaaIpaddress
+      - RecordRpzAaaaIpaddress
+      x-tf-resource: nios_rpz_record_rpz_aaaa_ipaddress
+      x-tf-datasource: nios_rpz_record_rpz_aaaa_ipaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:aaaa:ipaddress/{reference}:
     delete:
@@ -3181,7 +3179,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:aaaa:ipaddress object
       tags:
-      - record:rpz:aaaa:ipaddress
+      - RecordRpzAaaaIpaddress
     get:
       description: Returns a specific record:rpz:aaaa:ipaddress object by reference
       parameters:
@@ -3240,7 +3238,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:aaaa:ipaddress object
       tags:
-      - record:rpz:aaaa:ipaddress
+      - RecordRpzAaaaIpaddress
     put:
       description: Updates a specific record:rpz:aaaa:ipaddress object by reference
       parameters:
@@ -3306,7 +3304,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:aaaa:ipaddress object
       tags:
-      - record:rpz:aaaa:ipaddress
+      - RecordRpzAaaaIpaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:ipaddress:
     get:
@@ -3405,7 +3403,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:cname:ipaddress objects
       tags:
-      - record:rpz:cname:ipaddress
+      - RecordRpzCnameIpaddress
     post:
       description: Creates a new record:rpz:cname:ipaddress object
       parameters:
@@ -3461,9 +3459,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:cname:ipaddress object
       tags:
-      - record:rpz:cname:ipaddress
-      x-tf-resource: resource_nios_RecordRpzCnameIpaddress
-      x-tf-datasource: datasource_nios_RecordRpzCnameIpaddress
+      - RecordRpzCnameIpaddress
+      x-tf-resource: nios_rpz_record_rpz_cname_ipaddress
+      x-tf-datasource: nios_rpz_record_rpz_cname_ipaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:ipaddress/{reference}:
     delete:
@@ -3492,7 +3490,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:cname:ipaddress object
       tags:
-      - record:rpz:cname:ipaddress
+      - RecordRpzCnameIpaddress
     get:
       description: Returns a specific record:rpz:cname:ipaddress object by reference
       parameters:
@@ -3551,7 +3549,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:cname:ipaddress object
       tags:
-      - record:rpz:cname:ipaddress
+      - RecordRpzCnameIpaddress
     put:
       description: Updates a specific record:rpz:cname:ipaddress object by reference
       parameters:
@@ -3617,7 +3615,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:cname:ipaddress object
       tags:
-      - record:rpz:cname:ipaddress
+      - RecordRpzCnameIpaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:ipaddressdn:
     get:
@@ -3716,7 +3714,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:cname:ipaddressdn objects
       tags:
-      - record:rpz:cname:ipaddressdn
+      - RecordRpzCnameIpaddressdn
     post:
       description: Creates a new record:rpz:cname:ipaddressdn object
       parameters:
@@ -3772,9 +3770,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:cname:ipaddressdn object
       tags:
-      - record:rpz:cname:ipaddressdn
-      x-tf-resource: resource_nios_RecordRpzCnameIpaddressdn
-      x-tf-datasource: datasource_nios_RecordRpzCnameIpaddressdn
+      - RecordRpzCnameIpaddressdn
+      x-tf-resource: nios_rpz_record_rpz_cname_ipaddressdn
+      x-tf-datasource: nios_rpz_record_rpz_cname_ipaddressdn
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:ipaddressdn/{reference}:
     delete:
@@ -3803,7 +3801,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:cname:ipaddressdn object
       tags:
-      - record:rpz:cname:ipaddressdn
+      - RecordRpzCnameIpaddressdn
     get:
       description: Returns a specific record:rpz:cname:ipaddressdn object by reference
       parameters:
@@ -3862,7 +3860,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:cname:ipaddressdn object
       tags:
-      - record:rpz:cname:ipaddressdn
+      - RecordRpzCnameIpaddressdn
     put:
       description: Updates a specific record:rpz:cname:ipaddressdn object by reference
       parameters:
@@ -3928,7 +3926,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:cname:ipaddressdn object
       tags:
-      - record:rpz:cname:ipaddressdn
+      - RecordRpzCnameIpaddressdn
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:clientipaddress:
     get:
@@ -4027,7 +4025,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:cname:clientipaddress objects
       tags:
-      - record:rpz:cname:clientipaddress
+      - RecordRpzCnameClientipaddress
     post:
       description: Creates a new record:rpz:cname:clientipaddress object
       parameters:
@@ -4083,9 +4081,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:cname:clientipaddress object
       tags:
-      - record:rpz:cname:clientipaddress
-      x-tf-resource: resource_nios_RecordRpzCnameClientipaddress
-      x-tf-datasource: datasource_nios_RecordRpzCnameClientipaddress
+      - RecordRpzCnameClientipaddress
+      x-tf-resource: nios_rpz_record_rpz_cname_clientipaddress
+      x-tf-datasource: nios_rpz_record_rpz_cname_clientipaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:clientipaddress/{reference}:
     delete:
@@ -4114,7 +4112,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:cname:clientipaddress object
       tags:
-      - record:rpz:cname:clientipaddress
+      - RecordRpzCnameClientipaddress
     get:
       description: Returns a specific record:rpz:cname:clientipaddress object by reference
       parameters:
@@ -4173,7 +4171,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:cname:clientipaddress object
       tags:
-      - record:rpz:cname:clientipaddress
+      - RecordRpzCnameClientipaddress
     put:
       description: Updates a specific record:rpz:cname:clientipaddress object by reference
       parameters:
@@ -4239,7 +4237,7 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:cname:clientipaddress object
       tags:
-      - record:rpz:cname:clientipaddress
+      - RecordRpzCnameClientipaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:clientipaddressdn:
     get:
@@ -4338,7 +4336,7 @@ paths:
       - basicAuth: []
       summary: Retrieve record:rpz:cname:clientipaddressdn objects
       tags:
-      - record:rpz:cname:clientipaddressdn
+      - RecordRpzCnameClientipaddressdn
     post:
       description: Creates a new record:rpz:cname:clientipaddressdn object
       parameters:
@@ -4394,9 +4392,9 @@ paths:
       - basicAuth: []
       summary: Create a record:rpz:cname:clientipaddressdn object
       tags:
-      - record:rpz:cname:clientipaddressdn
-      x-tf-resource: resource_nios_RecordRpzCnameClientipaddressdn
-      x-tf-datasource: datasource_nios_RecordRpzCnameClientipaddressdn
+      - RecordRpzCnameClientipaddressdn
+      x-tf-resource: nios_rpz_record_rpz_cname_clientipaddressdn
+      x-tf-datasource: nios_rpz_record_rpz_cname_clientipaddressdn
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:clientipaddressdn/{reference}:
     delete:
@@ -4426,7 +4424,7 @@ paths:
       - basicAuth: []
       summary: Delete a record:rpz:cname:clientipaddressdn object
       tags:
-      - record:rpz:cname:clientipaddressdn
+      - RecordRpzCnameClientipaddressdn
     get:
       description: Returns a specific record:rpz:cname:clientipaddressdn object by
         reference
@@ -4486,7 +4484,7 @@ paths:
       - basicAuth: []
       summary: Get a specific record:rpz:cname:clientipaddressdn object
       tags:
-      - record:rpz:cname:clientipaddressdn
+      - RecordRpzCnameClientipaddressdn
     put:
       description: Updates a specific record:rpz:cname:clientipaddressdn object by
         reference
@@ -4553,232 +4551,8 @@ paths:
       - basicAuth: []
       summary: Update a record:rpz:cname:clientipaddressdn object
       tags:
-      - record:rpz:cname:clientipaddressdn
+      - RecordRpzCnameClientipaddressdn
       x-sdk-default-ext-attrs: true
-  /orderedresponsepolicyzones:
-    get:
-      description: Returns a list of orderedresponsepolicyzones objects matching the
-        search criteria
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Control paging of results
-        explode: true
-        in: query
-        name: _paging
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Page id for retrieving next page of results
-        explode: true
-        in: query
-        name: _page_id
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: false
-        in: query
-        name: filters
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      - explode: false
-        in: query
-        name: extattrfilter
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListOrderedresponsepolicyzonesResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Retrieve orderedresponsepolicyzones objects
-      tags:
-      - orderedresponsepolicyzones
-  /orderedresponsepolicyzones/{reference}:
-    get:
-      description: Returns a specific orderedresponsepolicyzones object by reference
-      parameters:
-      - description: Reference of the orderedresponsepolicyzones object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetOrderedresponsepolicyzonesResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Get a specific orderedresponsepolicyzones object
-      tags:
-      - orderedresponsepolicyzones
-    put:
-      description: Updates a specific orderedresponsepolicyzones object by reference
-      parameters:
-      - description: Reference of the orderedresponsepolicyzones object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Orderedresponsepolicyzones'
-        description: Object data to update
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateOrderedresponsepolicyzonesResponse'
-          description: Object updated successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Update a orderedresponsepolicyzones object
-      tags:
-      - orderedresponsepolicyzones
 components:
   parameters:
     ReturnFields:
@@ -5105,12 +4879,6 @@ components:
         title: ListAllrpzrecordsResponseArray
         type: array
       - $ref: '#/components/schemas/ListAllrpzrecordsResponseObject'
-    CreateAllrpzrecordsResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateAllrpzrecordsResponseAsObject'
-      - description: The response format to create __Allrpzrecords__.
-        title: CreateAllrpzrecordsResponse
-        type: string
     GetAllrpzrecordsResponse:
       oneOf:
       - $ref: '#/components/schemas/Allrpzrecords'
@@ -6596,56 +6364,6 @@ components:
           .
         title: UpdateRecordRpzCnameClientipaddressdnResponse
         type: string
-    Orderedresponsepolicyzones:
-      additionalProperties: false
-      example:
-        rp_zones:
-        - rp_zones
-        - rp_zones
-        view: Example view
-        _ref: _ref
-      properties:
-        _ref:
-          description: The reference to the object.
-          type: string
-        rp_zones:
-          description: An ordered list of Response Policy Zone names.
-          enum:
-          - string
-          items:
-            type: string
-          type: array
-        view:
-          description: The DNS View name.
-          example: Example view
-          type: string
-      type: object
-    ListOrderedresponsepolicyzonesResponse:
-      oneOf:
-      - description: The response format to retrieve __Orderedresponsepolicyzones__
-          objects.
-        items:
-          $ref: '#/components/schemas/Orderedresponsepolicyzones'
-        title: ListOrderedresponsepolicyzonesResponseArray
-        type: array
-      - $ref: '#/components/schemas/ListOrderedresponsepolicyzonesResponseObject'
-    CreateOrderedresponsepolicyzonesResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateOrderedresponsepolicyzonesResponseAsObject'
-      - description: The response format to create __Orderedresponsepolicyzones__.
-        title: CreateOrderedresponsepolicyzonesResponse
-        type: string
-    GetOrderedresponsepolicyzonesResponse:
-      oneOf:
-      - $ref: '#/components/schemas/Orderedresponsepolicyzones'
-      - $ref: '#/components/schemas/GetOrderedresponsepolicyzonesResponseObjectAsResult'
-    UpdateOrderedresponsepolicyzonesResponse:
-      oneOf:
-      - $ref: '#/components/schemas/UpdateOrderedresponsepolicyzonesResponseAsObject'
-      - description: The response format to update __Orderedresponsepolicyzones__
-          .
-        title: UpdateOrderedresponsepolicyzonesResponse
-        type: string
     ListAllrpzrecordsResponseObject:
       description: The response format to retrieve __Allrpzrecords__ objects.
       properties:
@@ -6654,13 +6372,6 @@ components:
             $ref: '#/components/schemas/Allrpzrecords'
           type: array
       title: ListAllrpzrecordsResponseObject
-      type: object
-    CreateAllrpzrecordsResponseAsObject:
-      description: The response format to create __Allrpzrecords__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Allrpzrecords'
-      title: CreateAllrpzrecordsResponseAsObject
       type: object
     GetAllrpzrecordsResponseObjectAsResult:
       additionalProperties: false
@@ -7578,48 +7289,6 @@ components:
         result:
           $ref: '#/components/schemas/RecordRpzCnameClientipaddressdn'
       title: UpdateRecordRpzCnameClientipaddressdnResponseAsObject
-      type: object
-    ListOrderedresponsepolicyzonesResponseObject:
-      description: The response format to retrieve __Orderedresponsepolicyzones__
-        objects.
-      properties:
-        result:
-          items:
-            $ref: '#/components/schemas/Orderedresponsepolicyzones'
-          type: array
-      title: ListOrderedresponsepolicyzonesResponseObject
-      type: object
-    CreateOrderedresponsepolicyzonesResponseAsObject:
-      description: The response format to create __Orderedresponsepolicyzones__ in
-        object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Orderedresponsepolicyzones'
-      title: CreateOrderedresponsepolicyzonesResponseAsObject
-      type: object
-    GetOrderedresponsepolicyzonesResponseObjectAsResult:
-      additionalProperties: false
-      description: The response format to retrieve __Orderedresponsepolicyzones__
-        objects.
-      properties:
-        result:
-          $ref: '#/components/schemas/Orderedresponsepolicyzones'
-      title: GetOrderedresponsepolicyzonesResponseObjectAsResult
-      type: object
-    UpdateOrderedresponsepolicyzonesResponseAsObject:
-      description: The response format to update __Orderedresponsepolicyzones__ in
-        object format.
-      example:
-        result:
-          rp_zones:
-          - rp_zones
-          - rp_zones
-          view: Example view
-          _ref: _ref
-      properties:
-        result:
-          $ref: '#/components/schemas/Orderedresponsepolicyzones'
-      title: UpdateOrderedresponsepolicyzonesResponseAsObject
       type: object
   securitySchemes:
     basicAuth:
