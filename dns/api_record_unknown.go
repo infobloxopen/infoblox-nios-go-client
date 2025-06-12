@@ -23,249 +23,78 @@ import (
 
 type RecordUnknownAPI interface {
 	/*
-		RecordunknownGet Retrieve record:unknown objects
-
-		Returns a list of record:unknown objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordUnknownAPIRecordunknownGetRequest
-	*/
-	RecordunknownGet(ctx context.Context) RecordUnknownAPIRecordunknownGetRequest
-
-	// RecordunknownGetExecute executes the request
-	//  @return ListRecordUnknownResponse
-	RecordunknownGetExecute(r RecordUnknownAPIRecordunknownGetRequest) (*ListRecordUnknownResponse, *http.Response, error)
-	/*
-		RecordunknownPost Create a record:unknown object
+		Create Create a record:unknown object
 
 		Creates a new record:unknown object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordUnknownAPIRecordunknownPostRequest
+		@return RecordUnknownAPICreateRequest
 	*/
-	RecordunknownPost(ctx context.Context) RecordUnknownAPIRecordunknownPostRequest
+	Create(ctx context.Context) RecordUnknownAPICreateRequest
 
-	// RecordunknownPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordUnknownResponse
-	RecordunknownPostExecute(r RecordUnknownAPIRecordunknownPostRequest) (*CreateRecordUnknownResponse, *http.Response, error)
+	CreateExecute(r RecordUnknownAPICreateRequest) (*CreateRecordUnknownResponse, *http.Response, error)
 	/*
-		RecordunknownReferenceDelete Delete a record:unknown object
+		Delete Delete a record:unknown object
 
 		Deletes a specific record:unknown object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:unknown object
-		@return RecordUnknownAPIRecordunknownReferenceDeleteRequest
+		@return RecordUnknownAPIDeleteRequest
 	*/
-	RecordunknownReferenceDelete(ctx context.Context, reference string) RecordUnknownAPIRecordunknownReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordUnknownAPIDeleteRequest
 
-	// RecordunknownReferenceDeleteExecute executes the request
-	RecordunknownReferenceDeleteExecute(r RecordUnknownAPIRecordunknownReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordUnknownAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecordunknownReferenceGet Get a specific record:unknown object
+		List Retrieve record:unknown objects
+
+		Returns a list of record:unknown objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordUnknownAPIListRequest
+	*/
+	List(ctx context.Context) RecordUnknownAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordUnknownResponse
+	ListExecute(r RecordUnknownAPIListRequest) (*ListRecordUnknownResponse, *http.Response, error)
+	/*
+		Read Get a specific record:unknown object
 
 		Returns a specific record:unknown object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:unknown object
-		@return RecordUnknownAPIRecordunknownReferenceGetRequest
+		@return RecordUnknownAPIReadRequest
 	*/
-	RecordunknownReferenceGet(ctx context.Context, reference string) RecordUnknownAPIRecordunknownReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordUnknownAPIReadRequest
 
-	// RecordunknownReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordUnknownResponse
-	RecordunknownReferenceGetExecute(r RecordUnknownAPIRecordunknownReferenceGetRequest) (*GetRecordUnknownResponse, *http.Response, error)
+	ReadExecute(r RecordUnknownAPIReadRequest) (*GetRecordUnknownResponse, *http.Response, error)
 	/*
-		RecordunknownReferencePut Update a record:unknown object
+		Update Update a record:unknown object
 
 		Updates a specific record:unknown object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:unknown object
-		@return RecordUnknownAPIRecordunknownReferencePutRequest
+		@return RecordUnknownAPIUpdateRequest
 	*/
-	RecordunknownReferencePut(ctx context.Context, reference string) RecordUnknownAPIRecordunknownReferencePutRequest
+	Update(ctx context.Context, reference string) RecordUnknownAPIUpdateRequest
 
-	// RecordunknownReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordUnknownResponse
-	RecordunknownReferencePutExecute(r RecordUnknownAPIRecordunknownReferencePutRequest) (*UpdateRecordUnknownResponse, *http.Response, error)
+	UpdateExecute(r RecordUnknownAPIUpdateRequest) (*UpdateRecordUnknownResponse, *http.Response, error)
 }
 
 // RecordUnknownAPIService RecordUnknownAPI service
 type RecordUnknownAPIService internal.Service
 
-type RecordUnknownAPIRecordunknownGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordUnknownAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r RecordUnknownAPIRecordunknownGetRequest) ReturnFields(returnFields string) RecordUnknownAPIRecordunknownGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordUnknownAPIRecordunknownGetRequest) ReturnFields2(returnFields2 string) RecordUnknownAPIRecordunknownGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r RecordUnknownAPIRecordunknownGetRequest) MaxResults(maxResults int32) RecordUnknownAPIRecordunknownGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordUnknownAPIRecordunknownGetRequest) ReturnAsObject(returnAsObject int32) RecordUnknownAPIRecordunknownGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r RecordUnknownAPIRecordunknownGetRequest) Paging(paging int32) RecordUnknownAPIRecordunknownGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r RecordUnknownAPIRecordunknownGetRequest) PageId(pageId string) RecordUnknownAPIRecordunknownGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r RecordUnknownAPIRecordunknownGetRequest) Filters(filters map[string]interface{}) RecordUnknownAPIRecordunknownGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r RecordUnknownAPIRecordunknownGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordUnknownAPIRecordunknownGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r RecordUnknownAPIRecordunknownGetRequest) Execute() (*ListRecordUnknownResponse, *http.Response, error) {
-	return r.ApiService.RecordunknownGetExecute(r)
-}
-
-/*
-RecordunknownGet Retrieve record:unknown objects
-
-Returns a list of record:unknown objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordUnknownAPIRecordunknownGetRequest
-*/
-func (a *RecordUnknownAPIService) RecordunknownGet(ctx context.Context) RecordUnknownAPIRecordunknownGetRequest {
-	return RecordUnknownAPIRecordunknownGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListRecordUnknownResponse
-func (a *RecordUnknownAPIService) RecordunknownGetExecute(r RecordUnknownAPIRecordunknownGetRequest) (*ListRecordUnknownResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListRecordUnknownResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordUnknownAPIService.RecordunknownGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:unknown"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordUnknownAPIRecordunknownPostRequest struct {
+type RecordUnknownAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     RecordUnknownAPI
 	recordUnknown  *RecordUnknown
@@ -275,43 +104,43 @@ type RecordUnknownAPIRecordunknownPostRequest struct {
 }
 
 // Object data to create
-func (r RecordUnknownAPIRecordunknownPostRequest) RecordUnknown(recordUnknown RecordUnknown) RecordUnknownAPIRecordunknownPostRequest {
+func (r RecordUnknownAPICreateRequest) RecordUnknown(recordUnknown RecordUnknown) RecordUnknownAPICreateRequest {
 	r.recordUnknown = &recordUnknown
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordUnknownAPIRecordunknownPostRequest) ReturnFields(returnFields string) RecordUnknownAPIRecordunknownPostRequest {
+func (r RecordUnknownAPICreateRequest) ReturnFields(returnFields string) RecordUnknownAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordUnknownAPIRecordunknownPostRequest) ReturnFields2(returnFields2 string) RecordUnknownAPIRecordunknownPostRequest {
+func (r RecordUnknownAPICreateRequest) ReturnFields2(returnFields2 string) RecordUnknownAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordUnknownAPIRecordunknownPostRequest) ReturnAsObject(returnAsObject int32) RecordUnknownAPIRecordunknownPostRequest {
+func (r RecordUnknownAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordUnknownAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordUnknownAPIRecordunknownPostRequest) Execute() (*CreateRecordUnknownResponse, *http.Response, error) {
-	return r.ApiService.RecordunknownPostExecute(r)
+func (r RecordUnknownAPICreateRequest) Execute() (*CreateRecordUnknownResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-RecordunknownPost Create a record:unknown object
+Create Create a record:unknown object
 
 Creates a new record:unknown object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordUnknownAPIRecordunknownPostRequest
+	@return RecordUnknownAPICreateRequest
 */
-func (a *RecordUnknownAPIService) RecordunknownPost(ctx context.Context) RecordUnknownAPIRecordunknownPostRequest {
-	return RecordUnknownAPIRecordunknownPostRequest{
+func (a *RecordUnknownAPIService) Create(ctx context.Context) RecordUnknownAPICreateRequest {
+	return RecordUnknownAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *RecordUnknownAPIService) RecordunknownPost(ctx context.Context) RecordU
 // Execute executes the request
 //
 //	@return CreateRecordUnknownResponse
-func (a *RecordUnknownAPIService) RecordunknownPostExecute(r RecordUnknownAPIRecordunknownPostRequest) (*CreateRecordUnknownResponse, *http.Response, error) {
+func (a *RecordUnknownAPIService) CreateExecute(r RecordUnknownAPICreateRequest) (*CreateRecordUnknownResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *RecordUnknownAPIService) RecordunknownPostExecute(r RecordUnknownAPIRec
 		localVarReturnValue *CreateRecordUnknownResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordUnknownAPIService.RecordunknownPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordUnknownAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *RecordUnknownAPIService) RecordunknownPostExecute(r RecordUnknownAPIRec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordUnknownAPIRecordunknownReferenceDeleteRequest struct {
+type RecordUnknownAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService RecordUnknownAPI
 	reference  string
 }
 
-func (r RecordUnknownAPIRecordunknownReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecordunknownReferenceDeleteExecute(r)
+func (r RecordUnknownAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-RecordunknownReferenceDelete Delete a record:unknown object
+Delete Delete a record:unknown object
 
 Deletes a specific record:unknown object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:unknown object
-	@return RecordUnknownAPIRecordunknownReferenceDeleteRequest
+	@return RecordUnknownAPIDeleteRequest
 */
-func (a *RecordUnknownAPIService) RecordunknownReferenceDelete(ctx context.Context, reference string) RecordUnknownAPIRecordunknownReferenceDeleteRequest {
-	return RecordUnknownAPIRecordunknownReferenceDeleteRequest{
+func (a *RecordUnknownAPIService) Delete(ctx context.Context, reference string) RecordUnknownAPIDeleteRequest {
+	return RecordUnknownAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *RecordUnknownAPIService) RecordunknownReferenceDelete(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *RecordUnknownAPIService) RecordunknownReferenceDeleteExecute(r RecordUnknownAPIRecordunknownReferenceDeleteRequest) (*http.Response, error) {
+func (a *RecordUnknownAPIService) DeleteExecute(r RecordUnknownAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordUnknownAPIService.RecordunknownReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordUnknownAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *RecordUnknownAPIService) RecordunknownReferenceDeleteExecute(r RecordUn
 	return localVarHTTPResponse, nil
 }
 
-type RecordUnknownAPIRecordunknownReferenceGetRequest struct {
+type RecordUnknownAPIListRequest struct {
+	ctx            context.Context
+	ApiService     RecordUnknownAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RecordUnknownAPIListRequest) ReturnFields(returnFields string) RecordUnknownAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordUnknownAPIListRequest) ReturnFields2(returnFields2 string) RecordUnknownAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r RecordUnknownAPIListRequest) MaxResults(maxResults int32) RecordUnknownAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordUnknownAPIListRequest) ReturnAsObject(returnAsObject int32) RecordUnknownAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r RecordUnknownAPIListRequest) Paging(paging int32) RecordUnknownAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r RecordUnknownAPIListRequest) PageId(pageId string) RecordUnknownAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r RecordUnknownAPIListRequest) Filters(filters map[string]interface{}) RecordUnknownAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r RecordUnknownAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordUnknownAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r RecordUnknownAPIListRequest) Execute() (*ListRecordUnknownResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve record:unknown objects
+
+Returns a list of record:unknown objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordUnknownAPIListRequest
+*/
+func (a *RecordUnknownAPIService) List(ctx context.Context) RecordUnknownAPIListRequest {
+	return RecordUnknownAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListRecordUnknownResponse
+func (a *RecordUnknownAPIService) ListExecute(r RecordUnknownAPIListRequest) (*ListRecordUnknownResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListRecordUnknownResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordUnknownAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:unknown"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordUnknownAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordUnknownAPI
 	reference      string
@@ -511,38 +511,38 @@ type RecordUnknownAPIRecordunknownReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordUnknownAPIRecordunknownReferenceGetRequest) ReturnFields(returnFields string) RecordUnknownAPIRecordunknownReferenceGetRequest {
+func (r RecordUnknownAPIReadRequest) ReturnFields(returnFields string) RecordUnknownAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordUnknownAPIRecordunknownReferenceGetRequest) ReturnFields2(returnFields2 string) RecordUnknownAPIRecordunknownReferenceGetRequest {
+func (r RecordUnknownAPIReadRequest) ReturnFields2(returnFields2 string) RecordUnknownAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordUnknownAPIRecordunknownReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordUnknownAPIRecordunknownReferenceGetRequest {
+func (r RecordUnknownAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordUnknownAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordUnknownAPIRecordunknownReferenceGetRequest) Execute() (*GetRecordUnknownResponse, *http.Response, error) {
-	return r.ApiService.RecordunknownReferenceGetExecute(r)
+func (r RecordUnknownAPIReadRequest) Execute() (*GetRecordUnknownResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordunknownReferenceGet Get a specific record:unknown object
+Read Get a specific record:unknown object
 
 Returns a specific record:unknown object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:unknown object
-	@return RecordUnknownAPIRecordunknownReferenceGetRequest
+	@return RecordUnknownAPIReadRequest
 */
-func (a *RecordUnknownAPIService) RecordunknownReferenceGet(ctx context.Context, reference string) RecordUnknownAPIRecordunknownReferenceGetRequest {
-	return RecordUnknownAPIRecordunknownReferenceGetRequest{
+func (a *RecordUnknownAPIService) Read(ctx context.Context, reference string) RecordUnknownAPIReadRequest {
+	return RecordUnknownAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RecordUnknownAPIService) RecordunknownReferenceGet(ctx context.Context,
 // Execute executes the request
 //
 //	@return GetRecordUnknownResponse
-func (a *RecordUnknownAPIService) RecordunknownReferenceGetExecute(r RecordUnknownAPIRecordunknownReferenceGetRequest) (*GetRecordUnknownResponse, *http.Response, error) {
+func (a *RecordUnknownAPIService) ReadExecute(r RecordUnknownAPIReadRequest) (*GetRecordUnknownResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RecordUnknownAPIService) RecordunknownReferenceGetExecute(r RecordUnkno
 		localVarReturnValue *GetRecordUnknownResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordUnknownAPIService.RecordunknownReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordUnknownAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *RecordUnknownAPIService) RecordunknownReferenceGetExecute(r RecordUnkno
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordUnknownAPIRecordunknownReferencePutRequest struct {
+type RecordUnknownAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     RecordUnknownAPI
 	reference      string
@@ -639,44 +639,44 @@ type RecordUnknownAPIRecordunknownReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RecordUnknownAPIRecordunknownReferencePutRequest) RecordUnknown(recordUnknown RecordUnknown) RecordUnknownAPIRecordunknownReferencePutRequest {
+func (r RecordUnknownAPIUpdateRequest) RecordUnknown(recordUnknown RecordUnknown) RecordUnknownAPIUpdateRequest {
 	r.recordUnknown = &recordUnknown
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordUnknownAPIRecordunknownReferencePutRequest) ReturnFields(returnFields string) RecordUnknownAPIRecordunknownReferencePutRequest {
+func (r RecordUnknownAPIUpdateRequest) ReturnFields(returnFields string) RecordUnknownAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordUnknownAPIRecordunknownReferencePutRequest) ReturnFields2(returnFields2 string) RecordUnknownAPIRecordunknownReferencePutRequest {
+func (r RecordUnknownAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordUnknownAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordUnknownAPIRecordunknownReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordUnknownAPIRecordunknownReferencePutRequest {
+func (r RecordUnknownAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordUnknownAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordUnknownAPIRecordunknownReferencePutRequest) Execute() (*UpdateRecordUnknownResponse, *http.Response, error) {
-	return r.ApiService.RecordunknownReferencePutExecute(r)
+func (r RecordUnknownAPIUpdateRequest) Execute() (*UpdateRecordUnknownResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordunknownReferencePut Update a record:unknown object
+Update Update a record:unknown object
 
 Updates a specific record:unknown object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:unknown object
-	@return RecordUnknownAPIRecordunknownReferencePutRequest
+	@return RecordUnknownAPIUpdateRequest
 */
-func (a *RecordUnknownAPIService) RecordunknownReferencePut(ctx context.Context, reference string) RecordUnknownAPIRecordunknownReferencePutRequest {
-	return RecordUnknownAPIRecordunknownReferencePutRequest{
+func (a *RecordUnknownAPIService) Update(ctx context.Context, reference string) RecordUnknownAPIUpdateRequest {
+	return RecordUnknownAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RecordUnknownAPIService) RecordunknownReferencePut(ctx context.Context,
 // Execute executes the request
 //
 //	@return UpdateRecordUnknownResponse
-func (a *RecordUnknownAPIService) RecordunknownReferencePutExecute(r RecordUnknownAPIRecordunknownReferencePutRequest) (*UpdateRecordUnknownResponse, *http.Response, error) {
+func (a *RecordUnknownAPIService) UpdateExecute(r RecordUnknownAPIUpdateRequest) (*UpdateRecordUnknownResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RecordUnknownAPIService) RecordunknownReferencePutExecute(r RecordUnkno
 		localVarReturnValue *UpdateRecordUnknownResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordUnknownAPIService.RecordunknownReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordUnknownAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

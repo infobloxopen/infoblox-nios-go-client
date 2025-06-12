@@ -23,78 +23,302 @@ import (
 
 type MsserverAdsitesSiteAPI interface {
 	/*
-		MsserveradsitessiteGet Retrieve msserver:adsites:site objects
-
-		Returns a list of msserver:adsites:site objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest
-	*/
-	MsserveradsitessiteGet(ctx context.Context) MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest
-
-	// MsserveradsitessiteGetExecute executes the request
-	//  @return ListMsserverAdsitesSiteResponse
-	MsserveradsitessiteGetExecute(r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) (*ListMsserverAdsitesSiteResponse, *http.Response, error)
-	/*
-		MsserveradsitessitePost Create a msserver:adsites:site object
+		Create Create a msserver:adsites:site object
 
 		Creates a new msserver:adsites:site object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MsserverAdsitesSiteAPIMsserveradsitessitePostRequest
+		@return MsserverAdsitesSiteAPICreateRequest
 	*/
-	MsserveradsitessitePost(ctx context.Context) MsserverAdsitesSiteAPIMsserveradsitessitePostRequest
+	Create(ctx context.Context) MsserverAdsitesSiteAPICreateRequest
 
-	// MsserveradsitessitePostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateMsserverAdsitesSiteResponse
-	MsserveradsitessitePostExecute(r MsserverAdsitesSiteAPIMsserveradsitessitePostRequest) (*CreateMsserverAdsitesSiteResponse, *http.Response, error)
+	CreateExecute(r MsserverAdsitesSiteAPICreateRequest) (*CreateMsserverAdsitesSiteResponse, *http.Response, error)
 	/*
-		MsserveradsitessiteReferenceDelete Delete a msserver:adsites:site object
+		Delete Delete a msserver:adsites:site object
 
 		Deletes a specific msserver:adsites:site object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver:adsites:site object
-		@return MsserverAdsitesSiteAPIMsserveradsitessiteReferenceDeleteRequest
+		@return MsserverAdsitesSiteAPIDeleteRequest
 	*/
-	MsserveradsitessiteReferenceDelete(ctx context.Context, reference string) MsserverAdsitesSiteAPIMsserveradsitessiteReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) MsserverAdsitesSiteAPIDeleteRequest
 
-	// MsserveradsitessiteReferenceDeleteExecute executes the request
-	MsserveradsitessiteReferenceDeleteExecute(r MsserverAdsitesSiteAPIMsserveradsitessiteReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r MsserverAdsitesSiteAPIDeleteRequest) (*http.Response, error)
 	/*
-		MsserveradsitessiteReferenceGet Get a specific msserver:adsites:site object
+		List Retrieve msserver:adsites:site objects
+
+		Returns a list of msserver:adsites:site objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return MsserverAdsitesSiteAPIListRequest
+	*/
+	List(ctx context.Context) MsserverAdsitesSiteAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListMsserverAdsitesSiteResponse
+	ListExecute(r MsserverAdsitesSiteAPIListRequest) (*ListMsserverAdsitesSiteResponse, *http.Response, error)
+	/*
+		Read Get a specific msserver:adsites:site object
 
 		Returns a specific msserver:adsites:site object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver:adsites:site object
-		@return MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest
+		@return MsserverAdsitesSiteAPIReadRequest
 	*/
-	MsserveradsitessiteReferenceGet(ctx context.Context, reference string) MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest
+	Read(ctx context.Context, reference string) MsserverAdsitesSiteAPIReadRequest
 
-	// MsserveradsitessiteReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMsserverAdsitesSiteResponse
-	MsserveradsitessiteReferenceGetExecute(r MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest) (*GetMsserverAdsitesSiteResponse, *http.Response, error)
+	ReadExecute(r MsserverAdsitesSiteAPIReadRequest) (*GetMsserverAdsitesSiteResponse, *http.Response, error)
 	/*
-		MsserveradsitessiteReferencePut Update a msserver:adsites:site object
+		Update Update a msserver:adsites:site object
 
 		Updates a specific msserver:adsites:site object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver:adsites:site object
-		@return MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest
+		@return MsserverAdsitesSiteAPIUpdateRequest
 	*/
-	MsserveradsitessiteReferencePut(ctx context.Context, reference string) MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest
+	Update(ctx context.Context, reference string) MsserverAdsitesSiteAPIUpdateRequest
 
-	// MsserveradsitessiteReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMsserverAdsitesSiteResponse
-	MsserveradsitessiteReferencePutExecute(r MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest) (*UpdateMsserverAdsitesSiteResponse, *http.Response, error)
+	UpdateExecute(r MsserverAdsitesSiteAPIUpdateRequest) (*UpdateMsserverAdsitesSiteResponse, *http.Response, error)
 }
 
 // MsserverAdsitesSiteAPIService MsserverAdsitesSiteAPI service
 type MsserverAdsitesSiteAPIService internal.Service
 
-type MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest struct {
+type MsserverAdsitesSiteAPICreateRequest struct {
+	ctx                 context.Context
+	ApiService          MsserverAdsitesSiteAPI
+	msserverAdsitesSite *MsserverAdsitesSite
+	returnFields        *string
+	returnFields2       *string
+	returnAsObject      *int32
+}
+
+// Object data to create
+func (r MsserverAdsitesSiteAPICreateRequest) MsserverAdsitesSite(msserverAdsitesSite MsserverAdsitesSite) MsserverAdsitesSiteAPICreateRequest {
+	r.msserverAdsitesSite = &msserverAdsitesSite
+	return r
+}
+
+// Enter the field names followed by comma
+func (r MsserverAdsitesSiteAPICreateRequest) ReturnFields(returnFields string) MsserverAdsitesSiteAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r MsserverAdsitesSiteAPICreateRequest) ReturnFields2(returnFields2 string) MsserverAdsitesSiteAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r MsserverAdsitesSiteAPICreateRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesSiteAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r MsserverAdsitesSiteAPICreateRequest) Execute() (*CreateMsserverAdsitesSiteResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a msserver:adsites:site object
+
+Creates a new msserver:adsites:site object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MsserverAdsitesSiteAPICreateRequest
+*/
+func (a *MsserverAdsitesSiteAPIService) Create(ctx context.Context) MsserverAdsitesSiteAPICreateRequest {
+	return MsserverAdsitesSiteAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateMsserverAdsitesSiteResponse
+func (a *MsserverAdsitesSiteAPIService) CreateExecute(r MsserverAdsitesSiteAPICreateRequest) (*CreateMsserverAdsitesSiteResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateMsserverAdsitesSiteResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesSiteAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/msserver:adsites:site"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.msserverAdsitesSite == nil {
+		return localVarReturnValue, nil, internal.ReportError("msserverAdsitesSite is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.msserverAdsitesSite
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MsserverAdsitesSiteAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService MsserverAdsitesSiteAPI
+	reference  string
+}
+
+func (r MsserverAdsitesSiteAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a msserver:adsites:site object
+
+Deletes a specific msserver:adsites:site object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the msserver:adsites:site object
+	@return MsserverAdsitesSiteAPIDeleteRequest
+*/
+func (a *MsserverAdsitesSiteAPIService) Delete(ctx context.Context, reference string) MsserverAdsitesSiteAPIDeleteRequest {
+	return MsserverAdsitesSiteAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *MsserverAdsitesSiteAPIService) DeleteExecute(r MsserverAdsitesSiteAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesSiteAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/msserver:adsites:site/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type MsserverAdsitesSiteAPIListRequest struct {
 	ctx            context.Context
 	ApiService     MsserverAdsitesSiteAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) ReturnFields(returnFields string) MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest {
+func (r MsserverAdsitesSiteAPIListRequest) ReturnFields(returnFields string) MsserverAdsitesSiteAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) ReturnFields2(returnFields2 string) MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest {
+func (r MsserverAdsitesSiteAPIListRequest) ReturnFields2(returnFields2 string) MsserverAdsitesSiteAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) MaxResults(maxResults int32) MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest {
+func (r MsserverAdsitesSiteAPIListRequest) MaxResults(maxResults int32) MsserverAdsitesSiteAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest {
+func (r MsserverAdsitesSiteAPIListRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesSiteAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) Paging(paging int32) MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest {
+func (r MsserverAdsitesSiteAPIListRequest) Paging(paging int32) MsserverAdsitesSiteAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) PageId(pageId string) MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest {
+func (r MsserverAdsitesSiteAPIListRequest) PageId(pageId string) MsserverAdsitesSiteAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) Filters(filters map[string]interface{}) MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest {
+func (r MsserverAdsitesSiteAPIListRequest) Filters(filters map[string]interface{}) MsserverAdsitesSiteAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest {
+func (r MsserverAdsitesSiteAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MsserverAdsitesSiteAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) Execute() (*ListMsserverAdsitesSiteResponse, *http.Response, error) {
-	return r.ApiService.MsserveradsitessiteGetExecute(r)
+func (r MsserverAdsitesSiteAPIListRequest) Execute() (*ListMsserverAdsitesSiteResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MsserveradsitessiteGet Retrieve msserver:adsites:site objects
+List Retrieve msserver:adsites:site objects
 
 Returns a list of msserver:adsites:site objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest
+	@return MsserverAdsitesSiteAPIListRequest
 */
-func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteGet(ctx context.Context) MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest {
-	return MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest{
+func (a *MsserverAdsitesSiteAPIService) List(ctx context.Context) MsserverAdsitesSiteAPIListRequest {
+	return MsserverAdsitesSiteAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteGet(ctx context.Conte
 // Execute executes the request
 //
 //	@return ListMsserverAdsitesSiteResponse
-func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteGetExecute(r MsserverAdsitesSiteAPIMsserveradsitessiteGetRequest) (*ListMsserverAdsitesSiteResponse, *http.Response, error) {
+func (a *MsserverAdsitesSiteAPIService) ListExecute(r MsserverAdsitesSiteAPIListRequest) (*ListMsserverAdsitesSiteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteGetExecute(r Msserver
 		localVarReturnValue *ListMsserverAdsitesSiteResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesSiteAPIService.MsserveradsitessiteGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesSiteAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteGetExecute(r Msserver
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MsserverAdsitesSiteAPIMsserveradsitessitePostRequest struct {
-	ctx                 context.Context
-	ApiService          MsserverAdsitesSiteAPI
-	msserverAdsitesSite *MsserverAdsitesSite
-	returnFields        *string
-	returnFields2       *string
-	returnAsObject      *int32
-}
-
-// Object data to create
-func (r MsserverAdsitesSiteAPIMsserveradsitessitePostRequest) MsserverAdsitesSite(msserverAdsitesSite MsserverAdsitesSite) MsserverAdsitesSiteAPIMsserveradsitessitePostRequest {
-	r.msserverAdsitesSite = &msserverAdsitesSite
-	return r
-}
-
-// Enter the field names followed by comma
-func (r MsserverAdsitesSiteAPIMsserveradsitessitePostRequest) ReturnFields(returnFields string) MsserverAdsitesSiteAPIMsserveradsitessitePostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAdsitesSiteAPIMsserveradsitessitePostRequest) ReturnFields2(returnFields2 string) MsserverAdsitesSiteAPIMsserveradsitessitePostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r MsserverAdsitesSiteAPIMsserveradsitessitePostRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesSiteAPIMsserveradsitessitePostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r MsserverAdsitesSiteAPIMsserveradsitessitePostRequest) Execute() (*CreateMsserverAdsitesSiteResponse, *http.Response, error) {
-	return r.ApiService.MsserveradsitessitePostExecute(r)
-}
-
-/*
-MsserveradsitessitePost Create a msserver:adsites:site object
-
-Creates a new msserver:adsites:site object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MsserverAdsitesSiteAPIMsserveradsitessitePostRequest
-*/
-func (a *MsserverAdsitesSiteAPIService) MsserveradsitessitePost(ctx context.Context) MsserverAdsitesSiteAPIMsserveradsitessitePostRequest {
-	return MsserverAdsitesSiteAPIMsserveradsitessitePostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateMsserverAdsitesSiteResponse
-func (a *MsserverAdsitesSiteAPIService) MsserveradsitessitePostExecute(r MsserverAdsitesSiteAPIMsserveradsitessitePostRequest) (*CreateMsserverAdsitesSiteResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateMsserverAdsitesSiteResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesSiteAPIService.MsserveradsitessitePost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/msserver:adsites:site"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.msserverAdsitesSite == nil {
-		return localVarReturnValue, nil, internal.ReportError("msserverAdsitesSite is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.msserverAdsitesSite
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MsserverAdsitesSiteAPIMsserveradsitessiteReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService MsserverAdsitesSiteAPI
-	reference  string
-}
-
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.MsserveradsitessiteReferenceDeleteExecute(r)
-}
-
-/*
-MsserveradsitessiteReferenceDelete Delete a msserver:adsites:site object
-
-Deletes a specific msserver:adsites:site object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the msserver:adsites:site object
-	@return MsserverAdsitesSiteAPIMsserveradsitessiteReferenceDeleteRequest
-*/
-func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferenceDelete(ctx context.Context, reference string) MsserverAdsitesSiteAPIMsserveradsitessiteReferenceDeleteRequest {
-	return MsserverAdsitesSiteAPIMsserveradsitessiteReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferenceDeleteExecute(r MsserverAdsitesSiteAPIMsserveradsitessiteReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesSiteAPIService.MsserveradsitessiteReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/msserver:adsites:site/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest struct {
+type MsserverAdsitesSiteAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     MsserverAdsitesSiteAPI
 	reference      string
@@ -499,38 +499,38 @@ type MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest) ReturnFields(returnFields string) MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest {
+func (r MsserverAdsitesSiteAPIReadRequest) ReturnFields(returnFields string) MsserverAdsitesSiteAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest) ReturnFields2(returnFields2 string) MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest {
+func (r MsserverAdsitesSiteAPIReadRequest) ReturnFields2(returnFields2 string) MsserverAdsitesSiteAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest {
+func (r MsserverAdsitesSiteAPIReadRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesSiteAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest) Execute() (*GetMsserverAdsitesSiteResponse, *http.Response, error) {
-	return r.ApiService.MsserveradsitessiteReferenceGetExecute(r)
+func (r MsserverAdsitesSiteAPIReadRequest) Execute() (*GetMsserverAdsitesSiteResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MsserveradsitessiteReferenceGet Get a specific msserver:adsites:site object
+Read Get a specific msserver:adsites:site object
 
 Returns a specific msserver:adsites:site object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the msserver:adsites:site object
-	@return MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest
+	@return MsserverAdsitesSiteAPIReadRequest
 */
-func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferenceGet(ctx context.Context, reference string) MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest {
-	return MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest{
+func (a *MsserverAdsitesSiteAPIService) Read(ctx context.Context, reference string) MsserverAdsitesSiteAPIReadRequest {
+	return MsserverAdsitesSiteAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferenceGet(ctx cont
 // Execute executes the request
 //
 //	@return GetMsserverAdsitesSiteResponse
-func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferenceGetExecute(r MsserverAdsitesSiteAPIMsserveradsitessiteReferenceGetRequest) (*GetMsserverAdsitesSiteResponse, *http.Response, error) {
+func (a *MsserverAdsitesSiteAPIService) ReadExecute(r MsserverAdsitesSiteAPIReadRequest) (*GetMsserverAdsitesSiteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferenceGetExecute(r
 		localVarReturnValue *GetMsserverAdsitesSiteResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesSiteAPIService.MsserveradsitessiteReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesSiteAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferenceGetExecute(r
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest struct {
+type MsserverAdsitesSiteAPIUpdateRequest struct {
 	ctx                 context.Context
 	ApiService          MsserverAdsitesSiteAPI
 	reference           string
@@ -627,44 +627,44 @@ type MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest struct {
 }
 
 // Object data to update
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest) MsserverAdsitesSite(msserverAdsitesSite MsserverAdsitesSite) MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest {
+func (r MsserverAdsitesSiteAPIUpdateRequest) MsserverAdsitesSite(msserverAdsitesSite MsserverAdsitesSite) MsserverAdsitesSiteAPIUpdateRequest {
 	r.msserverAdsitesSite = &msserverAdsitesSite
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest) ReturnFields(returnFields string) MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest {
+func (r MsserverAdsitesSiteAPIUpdateRequest) ReturnFields(returnFields string) MsserverAdsitesSiteAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest) ReturnFields2(returnFields2 string) MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest {
+func (r MsserverAdsitesSiteAPIUpdateRequest) ReturnFields2(returnFields2 string) MsserverAdsitesSiteAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest {
+func (r MsserverAdsitesSiteAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesSiteAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest) Execute() (*UpdateMsserverAdsitesSiteResponse, *http.Response, error) {
-	return r.ApiService.MsserveradsitessiteReferencePutExecute(r)
+func (r MsserverAdsitesSiteAPIUpdateRequest) Execute() (*UpdateMsserverAdsitesSiteResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-MsserveradsitessiteReferencePut Update a msserver:adsites:site object
+Update Update a msserver:adsites:site object
 
 Updates a specific msserver:adsites:site object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the msserver:adsites:site object
-	@return MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest
+	@return MsserverAdsitesSiteAPIUpdateRequest
 */
-func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferencePut(ctx context.Context, reference string) MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest {
-	return MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest{
+func (a *MsserverAdsitesSiteAPIService) Update(ctx context.Context, reference string) MsserverAdsitesSiteAPIUpdateRequest {
+	return MsserverAdsitesSiteAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferencePut(ctx cont
 // Execute executes the request
 //
 //	@return UpdateMsserverAdsitesSiteResponse
-func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferencePutExecute(r MsserverAdsitesSiteAPIMsserveradsitessiteReferencePutRequest) (*UpdateMsserverAdsitesSiteResponse, *http.Response, error) {
+func (a *MsserverAdsitesSiteAPIService) UpdateExecute(r MsserverAdsitesSiteAPIUpdateRequest) (*UpdateMsserverAdsitesSiteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *MsserverAdsitesSiteAPIService) MsserveradsitessiteReferencePutExecute(r
 		localVarReturnValue *UpdateMsserverAdsitesSiteResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesSiteAPIService.MsserveradsitessiteReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesSiteAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

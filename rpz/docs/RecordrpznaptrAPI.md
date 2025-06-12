@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RecordrpznaptrGet**](RecordRpzNaptrAPI.md#RecordrpznaptrGet) | **Get** /record:rpz:naptr | Retrieve record:rpz:naptr objects
-[**RecordrpznaptrPost**](RecordRpzNaptrAPI.md#RecordrpznaptrPost) | **Post** /record:rpz:naptr | Create a record:rpz:naptr object
-[**RecordrpznaptrReferenceDelete**](RecordRpzNaptrAPI.md#RecordrpznaptrReferenceDelete) | **Delete** /record:rpz:naptr/{reference} | Delete a record:rpz:naptr object
-[**RecordrpznaptrReferenceGet**](RecordRpzNaptrAPI.md#RecordrpznaptrReferenceGet) | **Get** /record:rpz:naptr/{reference} | Get a specific record:rpz:naptr object
-[**RecordrpznaptrReferencePut**](RecordRpzNaptrAPI.md#RecordrpznaptrReferencePut) | **Put** /record:rpz:naptr/{reference} | Update a record:rpz:naptr object
+[**Create**](RecordRpzNaptrAPI.md#Create) | **Post** /record:rpz:naptr | Create a record:rpz:naptr object
+[**Delete**](RecordRpzNaptrAPI.md#Delete) | **Delete** /record:rpz:naptr/{reference} | Delete a record:rpz:naptr object
+[**List**](RecordRpzNaptrAPI.md#List) | **Get** /record:rpz:naptr | Retrieve record:rpz:naptr objects
+[**Read**](RecordRpzNaptrAPI.md#Read) | **Get** /record:rpz:naptr/{reference} | Get a specific record:rpz:naptr object
+[**Update**](RecordRpzNaptrAPI.md#Update) | **Put** /record:rpz:naptr/{reference} | Update a record:rpz:naptr object
 
 
 
-## RecordrpznaptrGet
+## Create
 
-> ListRecordRpzNaptrResponse RecordrpznaptrGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateRecordRpzNaptrResponse Create(ctx).RecordRpzNaptr(recordRpzNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a record:rpz:naptr object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
+)
+
+func main() {
+	recordRpzNaptr := *rpz.NewRecordRpzNaptr() // RecordRpzNaptr | Object data to create
+
+	apiClient := rpz.NewAPIClient()
+	resp, r, err := apiClient.RecordRpzNaptrAPI.Create(context.Background()).RecordRpzNaptr(recordRpzNaptr).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzNaptrAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateRecordRpzNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzNaptrAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordRpzNaptrAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**recordRpzNaptr** | [**RecordRpzNaptr**](RecordRpzNaptr.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateRecordRpzNaptrResponse**](CreateRecordRpzNaptrResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a record:rpz:naptr object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the record:rpz:naptr object
+
+	apiClient := rpz.NewAPIClient()
+	r, err := apiClient.RecordRpzNaptrAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzNaptrAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the record:rpz:naptr object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordRpzNaptrAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListRecordRpzNaptrResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:rpz:naptr objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordRpzNaptrAPI.RecordrpznaptrGet(context.Background()).Execute()
+	resp, r, err := apiClient.RecordRpzNaptrAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzNaptrAPI.RecordrpznaptrGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzNaptrAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordrpznaptrGet`: ListRecordRpzNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordRpzNaptrAPI.RecordrpznaptrGet`: %v\n", resp)
+	// response from `List`: ListRecordRpzNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzNaptrAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordRpzNaptrAPIRecordrpznaptrGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzNaptrAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RecordrpznaptrPost
+## Read
 
-> CreateRecordRpzNaptrResponse RecordrpznaptrPost(ctx).RecordRpzNaptr(recordRpzNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a record:rpz:naptr object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
-)
-
-func main() {
-	recordRpzNaptr := *rpz.NewRecordRpzNaptr() // RecordRpzNaptr | Object data to create
-
-	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordRpzNaptrAPI.RecordrpznaptrPost(context.Background()).RecordRpzNaptr(recordRpzNaptr).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzNaptrAPI.RecordrpznaptrPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RecordrpznaptrPost`: CreateRecordRpzNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordRpzNaptrAPI.RecordrpznaptrPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordRpzNaptrAPIRecordrpznaptrPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordRpzNaptr** | [**RecordRpzNaptr**](RecordRpzNaptr.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateRecordRpzNaptrResponse**](CreateRecordRpzNaptrResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RecordrpznaptrReferenceDelete
-
-> RecordrpznaptrReferenceDelete(ctx, reference).Execute()
-
-Delete a record:rpz:naptr object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the record:rpz:naptr object
-
-	apiClient := rpz.NewAPIClient()
-	r, err := apiClient.RecordRpzNaptrAPI.RecordrpznaptrReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzNaptrAPI.RecordrpznaptrReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the record:rpz:naptr object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordRpzNaptrAPIRecordrpznaptrReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RecordrpznaptrReferenceGet
-
-> GetRecordRpzNaptrResponse RecordrpznaptrReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordRpzNaptrResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:rpz:naptr object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:rpz:naptr object
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordRpzNaptrAPI.RecordrpznaptrReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordRpzNaptrAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzNaptrAPI.RecordrpznaptrReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzNaptrAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordrpznaptrReferenceGet`: GetRecordRpzNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordRpzNaptrAPI.RecordrpznaptrReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordRpzNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzNaptrAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzNaptrAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RecordrpznaptrReferencePut
+## Update
 
-> UpdateRecordRpzNaptrResponse RecordrpznaptrReferencePut(ctx, reference).RecordRpzNaptr(recordRpzNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordRpzNaptrResponse Update(ctx, reference).RecordRpzNaptr(recordRpzNaptr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:rpz:naptr object
 
@@ -318,13 +318,13 @@ func main() {
 	recordRpzNaptr := *rpz.NewRecordRpzNaptr() // RecordRpzNaptr | Object data to update
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordRpzNaptrAPI.RecordrpznaptrReferencePut(context.Background(), reference).RecordRpzNaptr(recordRpzNaptr).Execute()
+	resp, r, err := apiClient.RecordRpzNaptrAPI.Update(context.Background(), reference).RecordRpzNaptr(recordRpzNaptr).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzNaptrAPI.RecordrpznaptrReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzNaptrAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordrpznaptrReferencePut`: UpdateRecordRpzNaptrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordRpzNaptrAPI.RecordrpznaptrReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateRecordRpzNaptrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzNaptrAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzNaptrAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

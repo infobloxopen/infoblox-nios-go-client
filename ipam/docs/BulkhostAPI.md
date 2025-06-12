@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](BulkhostAPI.md#Get) | **Get** /bulkhost | Retrieve bulkhost objects
-[**Post**](BulkhostAPI.md#Post) | **Post** /bulkhost | Create a bulkhost object
-[**ReferenceDelete**](BulkhostAPI.md#ReferenceDelete) | **Delete** /bulkhost/{reference} | Delete a bulkhost object
-[**ReferenceGet**](BulkhostAPI.md#ReferenceGet) | **Get** /bulkhost/{reference} | Get a specific bulkhost object
-[**ReferencePut**](BulkhostAPI.md#ReferencePut) | **Put** /bulkhost/{reference} | Update a bulkhost object
+[**Create**](BulkhostAPI.md#Create) | **Post** /bulkhost | Create a bulkhost object
+[**Delete**](BulkhostAPI.md#Delete) | **Delete** /bulkhost/{reference} | Delete a bulkhost object
+[**List**](BulkhostAPI.md#List) | **Get** /bulkhost | Retrieve bulkhost objects
+[**Read**](BulkhostAPI.md#Read) | **Get** /bulkhost/{reference} | Get a specific bulkhost object
+[**Update**](BulkhostAPI.md#Update) | **Put** /bulkhost/{reference} | Update a bulkhost object
 
 
 
-## Get
+## Create
 
-> ListBulkhostResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateBulkhostResponse Create(ctx).Bulkhost(bulkhost).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a bulkhost object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+)
+
+func main() {
+	bulkhost := *ipam.NewBulkhost() // Bulkhost | Object data to create
+
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.BulkhostAPI.Create(context.Background()).Bulkhost(bulkhost).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BulkhostAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateBulkhostResponse
+	fmt.Fprintf(os.Stdout, "Response from `BulkhostAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `BulkhostAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**bulkhost** | [**Bulkhost**](Bulkhost.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateBulkhostResponse**](CreateBulkhostResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a bulkhost object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the bulkhost object
+
+	apiClient := ipam.NewAPIClient()
+	r, err := apiClient.BulkhostAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BulkhostAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the bulkhost object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `BulkhostAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListBulkhostResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve bulkhost objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.BulkhostAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.BulkhostAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BulkhostAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `BulkhostAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListBulkhostResponse
-	fmt.Fprintf(os.Stdout, "Response from `BulkhostAPI.Get`: %v\n", resp)
+	// response from `List`: ListBulkhostResponse
+	fmt.Fprintf(os.Stdout, "Response from `BulkhostAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `BulkhostAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `BulkhostAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateBulkhostResponse Post(ctx).Bulkhost(bulkhost).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a bulkhost object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
-)
-
-func main() {
-	bulkhost := *ipam.NewBulkhost() // Bulkhost | Object data to create
-
-	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.BulkhostAPI.Post(context.Background()).Bulkhost(bulkhost).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BulkhostAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateBulkhostResponse
-	fmt.Fprintf(os.Stdout, "Response from `BulkhostAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `BulkhostAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**bulkhost** | [**Bulkhost**](Bulkhost.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateBulkhostResponse**](CreateBulkhostResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a bulkhost object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the bulkhost object
-
-	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.BulkhostAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BulkhostAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the bulkhost object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `BulkhostAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetBulkhostResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetBulkhostResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific bulkhost object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the bulkhost object
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.BulkhostAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.BulkhostAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BulkhostAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `BulkhostAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetBulkhostResponse
-	fmt.Fprintf(os.Stdout, "Response from `BulkhostAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetBulkhostResponse
+	fmt.Fprintf(os.Stdout, "Response from `BulkhostAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `BulkhostAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `BulkhostAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateBulkhostResponse ReferencePut(ctx, reference).Bulkhost(bulkhost).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateBulkhostResponse Update(ctx, reference).Bulkhost(bulkhost).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a bulkhost object
 
@@ -318,13 +318,13 @@ func main() {
 	bulkhost := *ipam.NewBulkhost() // Bulkhost | Object data to update
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.BulkhostAPI.ReferencePut(context.Background(), reference).Bulkhost(bulkhost).Execute()
+	resp, r, err := apiClient.BulkhostAPI.Update(context.Background(), reference).Bulkhost(bulkhost).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BulkhostAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `BulkhostAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateBulkhostResponse
-	fmt.Fprintf(os.Stdout, "Response from `BulkhostAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateBulkhostResponse
+	fmt.Fprintf(os.Stdout, "Response from `BulkhostAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `BulkhostAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `BulkhostAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

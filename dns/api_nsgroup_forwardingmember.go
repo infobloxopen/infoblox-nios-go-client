@@ -23,249 +23,78 @@ import (
 
 type NsgroupForwardingmemberAPI interface {
 	/*
-		NsgroupforwardingmemberGet Retrieve nsgroup:forwardingmember objects
-
-		Returns a list of nsgroup:forwardingmember objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest
-	*/
-	NsgroupforwardingmemberGet(ctx context.Context) NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest
-
-	// NsgroupforwardingmemberGetExecute executes the request
-	//  @return ListNsgroupForwardingmemberResponse
-	NsgroupforwardingmemberGetExecute(r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) (*ListNsgroupForwardingmemberResponse, *http.Response, error)
-	/*
-		NsgroupforwardingmemberPost Create a nsgroup:forwardingmember object
+		Create Create a nsgroup:forwardingmember object
 
 		Creates a new nsgroup:forwardingmember object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest
+		@return NsgroupForwardingmemberAPICreateRequest
 	*/
-	NsgroupforwardingmemberPost(ctx context.Context) NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest
+	Create(ctx context.Context) NsgroupForwardingmemberAPICreateRequest
 
-	// NsgroupforwardingmemberPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNsgroupForwardingmemberResponse
-	NsgroupforwardingmemberPostExecute(r NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest) (*CreateNsgroupForwardingmemberResponse, *http.Response, error)
+	CreateExecute(r NsgroupForwardingmemberAPICreateRequest) (*CreateNsgroupForwardingmemberResponse, *http.Response, error)
 	/*
-		NsgroupforwardingmemberReferenceDelete Delete a nsgroup:forwardingmember object
+		Delete Delete a nsgroup:forwardingmember object
 
 		Deletes a specific nsgroup:forwardingmember object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup:forwardingmember object
-		@return NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceDeleteRequest
+		@return NsgroupForwardingmemberAPIDeleteRequest
 	*/
-	NsgroupforwardingmemberReferenceDelete(ctx context.Context, reference string) NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NsgroupForwardingmemberAPIDeleteRequest
 
-	// NsgroupforwardingmemberReferenceDeleteExecute executes the request
-	NsgroupforwardingmemberReferenceDeleteExecute(r NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NsgroupForwardingmemberAPIDeleteRequest) (*http.Response, error)
 	/*
-		NsgroupforwardingmemberReferenceGet Get a specific nsgroup:forwardingmember object
+		List Retrieve nsgroup:forwardingmember objects
+
+		Returns a list of nsgroup:forwardingmember objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NsgroupForwardingmemberAPIListRequest
+	*/
+	List(ctx context.Context) NsgroupForwardingmemberAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNsgroupForwardingmemberResponse
+	ListExecute(r NsgroupForwardingmemberAPIListRequest) (*ListNsgroupForwardingmemberResponse, *http.Response, error)
+	/*
+		Read Get a specific nsgroup:forwardingmember object
 
 		Returns a specific nsgroup:forwardingmember object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup:forwardingmember object
-		@return NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest
+		@return NsgroupForwardingmemberAPIReadRequest
 	*/
-	NsgroupforwardingmemberReferenceGet(ctx context.Context, reference string) NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest
+	Read(ctx context.Context, reference string) NsgroupForwardingmemberAPIReadRequest
 
-	// NsgroupforwardingmemberReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNsgroupForwardingmemberResponse
-	NsgroupforwardingmemberReferenceGetExecute(r NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest) (*GetNsgroupForwardingmemberResponse, *http.Response, error)
+	ReadExecute(r NsgroupForwardingmemberAPIReadRequest) (*GetNsgroupForwardingmemberResponse, *http.Response, error)
 	/*
-		NsgroupforwardingmemberReferencePut Update a nsgroup:forwardingmember object
+		Update Update a nsgroup:forwardingmember object
 
 		Updates a specific nsgroup:forwardingmember object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup:forwardingmember object
-		@return NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest
+		@return NsgroupForwardingmemberAPIUpdateRequest
 	*/
-	NsgroupforwardingmemberReferencePut(ctx context.Context, reference string) NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest
+	Update(ctx context.Context, reference string) NsgroupForwardingmemberAPIUpdateRequest
 
-	// NsgroupforwardingmemberReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNsgroupForwardingmemberResponse
-	NsgroupforwardingmemberReferencePutExecute(r NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest) (*UpdateNsgroupForwardingmemberResponse, *http.Response, error)
+	UpdateExecute(r NsgroupForwardingmemberAPIUpdateRequest) (*UpdateNsgroupForwardingmemberResponse, *http.Response, error)
 }
 
 // NsgroupForwardingmemberAPIService NsgroupForwardingmemberAPI service
 type NsgroupForwardingmemberAPIService internal.Service
 
-type NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest struct {
-	ctx            context.Context
-	ApiService     NsgroupForwardingmemberAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) ReturnFields(returnFields string) NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) ReturnFields2(returnFields2 string) NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) MaxResults(maxResults int32) NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) Paging(paging int32) NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) PageId(pageId string) NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) Filters(filters map[string]interface{}) NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) Execute() (*ListNsgroupForwardingmemberResponse, *http.Response, error) {
-	return r.ApiService.NsgroupforwardingmemberGetExecute(r)
-}
-
-/*
-NsgroupforwardingmemberGet Retrieve nsgroup:forwardingmember objects
-
-Returns a list of nsgroup:forwardingmember objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest
-*/
-func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberGet(ctx context.Context) NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest {
-	return NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListNsgroupForwardingmemberResponse
-func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberGetExecute(r NsgroupForwardingmemberAPINsgroupforwardingmemberGetRequest) (*ListNsgroupForwardingmemberResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListNsgroupForwardingmemberResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardingmemberAPIService.NsgroupforwardingmemberGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/nsgroup:forwardingmember"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest struct {
+type NsgroupForwardingmemberAPICreateRequest struct {
 	ctx                     context.Context
 	ApiService              NsgroupForwardingmemberAPI
 	nsgroupForwardingmember *NsgroupForwardingmember
@@ -275,43 +104,43 @@ type NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest struct {
 }
 
 // Object data to create
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest) NsgroupForwardingmember(nsgroupForwardingmember NsgroupForwardingmember) NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest {
+func (r NsgroupForwardingmemberAPICreateRequest) NsgroupForwardingmember(nsgroupForwardingmember NsgroupForwardingmember) NsgroupForwardingmemberAPICreateRequest {
 	r.nsgroupForwardingmember = &nsgroupForwardingmember
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest) ReturnFields(returnFields string) NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest {
+func (r NsgroupForwardingmemberAPICreateRequest) ReturnFields(returnFields string) NsgroupForwardingmemberAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest) ReturnFields2(returnFields2 string) NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest {
+func (r NsgroupForwardingmemberAPICreateRequest) ReturnFields2(returnFields2 string) NsgroupForwardingmemberAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest {
+func (r NsgroupForwardingmemberAPICreateRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardingmemberAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest) Execute() (*CreateNsgroupForwardingmemberResponse, *http.Response, error) {
-	return r.ApiService.NsgroupforwardingmemberPostExecute(r)
+func (r NsgroupForwardingmemberAPICreateRequest) Execute() (*CreateNsgroupForwardingmemberResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-NsgroupforwardingmemberPost Create a nsgroup:forwardingmember object
+Create Create a nsgroup:forwardingmember object
 
 Creates a new nsgroup:forwardingmember object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest
+	@return NsgroupForwardingmemberAPICreateRequest
 */
-func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberPost(ctx context.Context) NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest {
-	return NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest{
+func (a *NsgroupForwardingmemberAPIService) Create(ctx context.Context) NsgroupForwardingmemberAPICreateRequest {
+	return NsgroupForwardingmemberAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberPost(ctx cont
 // Execute executes the request
 //
 //	@return CreateNsgroupForwardingmemberResponse
-func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberPostExecute(r NsgroupForwardingmemberAPINsgroupforwardingmemberPostRequest) (*CreateNsgroupForwardingmemberResponse, *http.Response, error) {
+func (a *NsgroupForwardingmemberAPIService) CreateExecute(r NsgroupForwardingmemberAPICreateRequest) (*CreateNsgroupForwardingmemberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberPostExecute(r
 		localVarReturnValue *CreateNsgroupForwardingmemberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardingmemberAPIService.NsgroupforwardingmemberPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardingmemberAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberPostExecute(r
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceDeleteRequest struct {
+type NsgroupForwardingmemberAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService NsgroupForwardingmemberAPI
 	reference  string
 }
 
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.NsgroupforwardingmemberReferenceDeleteExecute(r)
+func (r NsgroupForwardingmemberAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-NsgroupforwardingmemberReferenceDelete Delete a nsgroup:forwardingmember object
+Delete Delete a nsgroup:forwardingmember object
 
 Deletes a specific nsgroup:forwardingmember object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup:forwardingmember object
-	@return NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceDeleteRequest
+	@return NsgroupForwardingmemberAPIDeleteRequest
 */
-func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferenceDelete(ctx context.Context, reference string) NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceDeleteRequest {
-	return NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceDeleteRequest{
+func (a *NsgroupForwardingmemberAPIService) Delete(ctx context.Context, reference string) NsgroupForwardingmemberAPIDeleteRequest {
+	return NsgroupForwardingmemberAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferenceDele
 }
 
 // Execute executes the request
-func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferenceDeleteExecute(r NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceDeleteRequest) (*http.Response, error) {
+func (a *NsgroupForwardingmemberAPIService) DeleteExecute(r NsgroupForwardingmemberAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardingmemberAPIService.NsgroupforwardingmemberReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardingmemberAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferenceDele
 	return localVarHTTPResponse, nil
 }
 
-type NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest struct {
+type NsgroupForwardingmemberAPIListRequest struct {
+	ctx            context.Context
+	ApiService     NsgroupForwardingmemberAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r NsgroupForwardingmemberAPIListRequest) ReturnFields(returnFields string) NsgroupForwardingmemberAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NsgroupForwardingmemberAPIListRequest) ReturnFields2(returnFields2 string) NsgroupForwardingmemberAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r NsgroupForwardingmemberAPIListRequest) MaxResults(maxResults int32) NsgroupForwardingmemberAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NsgroupForwardingmemberAPIListRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardingmemberAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r NsgroupForwardingmemberAPIListRequest) Paging(paging int32) NsgroupForwardingmemberAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r NsgroupForwardingmemberAPIListRequest) PageId(pageId string) NsgroupForwardingmemberAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r NsgroupForwardingmemberAPIListRequest) Filters(filters map[string]interface{}) NsgroupForwardingmemberAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r NsgroupForwardingmemberAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NsgroupForwardingmemberAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r NsgroupForwardingmemberAPIListRequest) Execute() (*ListNsgroupForwardingmemberResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve nsgroup:forwardingmember objects
+
+Returns a list of nsgroup:forwardingmember objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NsgroupForwardingmemberAPIListRequest
+*/
+func (a *NsgroupForwardingmemberAPIService) List(ctx context.Context) NsgroupForwardingmemberAPIListRequest {
+	return NsgroupForwardingmemberAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListNsgroupForwardingmemberResponse
+func (a *NsgroupForwardingmemberAPIService) ListExecute(r NsgroupForwardingmemberAPIListRequest) (*ListNsgroupForwardingmemberResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListNsgroupForwardingmemberResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardingmemberAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/nsgroup:forwardingmember"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NsgroupForwardingmemberAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     NsgroupForwardingmemberAPI
 	reference      string
@@ -511,38 +511,38 @@ type NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest struct
 }
 
 // Enter the field names followed by comma
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest) ReturnFields(returnFields string) NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest {
+func (r NsgroupForwardingmemberAPIReadRequest) ReturnFields(returnFields string) NsgroupForwardingmemberAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest) ReturnFields2(returnFields2 string) NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest {
+func (r NsgroupForwardingmemberAPIReadRequest) ReturnFields2(returnFields2 string) NsgroupForwardingmemberAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest {
+func (r NsgroupForwardingmemberAPIReadRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardingmemberAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest) Execute() (*GetNsgroupForwardingmemberResponse, *http.Response, error) {
-	return r.ApiService.NsgroupforwardingmemberReferenceGetExecute(r)
+func (r NsgroupForwardingmemberAPIReadRequest) Execute() (*GetNsgroupForwardingmemberResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-NsgroupforwardingmemberReferenceGet Get a specific nsgroup:forwardingmember object
+Read Get a specific nsgroup:forwardingmember object
 
 Returns a specific nsgroup:forwardingmember object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup:forwardingmember object
-	@return NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest
+	@return NsgroupForwardingmemberAPIReadRequest
 */
-func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferenceGet(ctx context.Context, reference string) NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest {
-	return NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest{
+func (a *NsgroupForwardingmemberAPIService) Read(ctx context.Context, reference string) NsgroupForwardingmemberAPIReadRequest {
+	return NsgroupForwardingmemberAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferenceGet(
 // Execute executes the request
 //
 //	@return GetNsgroupForwardingmemberResponse
-func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferenceGetExecute(r NsgroupForwardingmemberAPINsgroupforwardingmemberReferenceGetRequest) (*GetNsgroupForwardingmemberResponse, *http.Response, error) {
+func (a *NsgroupForwardingmemberAPIService) ReadExecute(r NsgroupForwardingmemberAPIReadRequest) (*GetNsgroupForwardingmemberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferenceGetE
 		localVarReturnValue *GetNsgroupForwardingmemberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardingmemberAPIService.NsgroupforwardingmemberReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardingmemberAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferenceGetE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest struct {
+type NsgroupForwardingmemberAPIUpdateRequest struct {
 	ctx                     context.Context
 	ApiService              NsgroupForwardingmemberAPI
 	reference               string
@@ -639,44 +639,44 @@ type NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest struct
 }
 
 // Object data to update
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest) NsgroupForwardingmember(nsgroupForwardingmember NsgroupForwardingmember) NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest {
+func (r NsgroupForwardingmemberAPIUpdateRequest) NsgroupForwardingmember(nsgroupForwardingmember NsgroupForwardingmember) NsgroupForwardingmemberAPIUpdateRequest {
 	r.nsgroupForwardingmember = &nsgroupForwardingmember
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest) ReturnFields(returnFields string) NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest {
+func (r NsgroupForwardingmemberAPIUpdateRequest) ReturnFields(returnFields string) NsgroupForwardingmemberAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest) ReturnFields2(returnFields2 string) NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest {
+func (r NsgroupForwardingmemberAPIUpdateRequest) ReturnFields2(returnFields2 string) NsgroupForwardingmemberAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest {
+func (r NsgroupForwardingmemberAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardingmemberAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest) Execute() (*UpdateNsgroupForwardingmemberResponse, *http.Response, error) {
-	return r.ApiService.NsgroupforwardingmemberReferencePutExecute(r)
+func (r NsgroupForwardingmemberAPIUpdateRequest) Execute() (*UpdateNsgroupForwardingmemberResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-NsgroupforwardingmemberReferencePut Update a nsgroup:forwardingmember object
+Update Update a nsgroup:forwardingmember object
 
 Updates a specific nsgroup:forwardingmember object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup:forwardingmember object
-	@return NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest
+	@return NsgroupForwardingmemberAPIUpdateRequest
 */
-func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferencePut(ctx context.Context, reference string) NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest {
-	return NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest{
+func (a *NsgroupForwardingmemberAPIService) Update(ctx context.Context, reference string) NsgroupForwardingmemberAPIUpdateRequest {
+	return NsgroupForwardingmemberAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferencePut(
 // Execute executes the request
 //
 //	@return UpdateNsgroupForwardingmemberResponse
-func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferencePutExecute(r NsgroupForwardingmemberAPINsgroupforwardingmemberReferencePutRequest) (*UpdateNsgroupForwardingmemberResponse, *http.Response, error) {
+func (a *NsgroupForwardingmemberAPIService) UpdateExecute(r NsgroupForwardingmemberAPIUpdateRequest) (*UpdateNsgroupForwardingmemberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *NsgroupForwardingmemberAPIService) NsgroupforwardingmemberReferencePutE
 		localVarReturnValue *UpdateNsgroupForwardingmemberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardingmemberAPIService.NsgroupforwardingmemberReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardingmemberAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

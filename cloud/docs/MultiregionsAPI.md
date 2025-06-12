@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](MultiregionsAPI.md#Get) | **Get** /multiregions | Retrieve multiregions objects
-[**ReferenceGet**](MultiregionsAPI.md#ReferenceGet) | **Get** /multiregions/{reference} | Get a specific multiregions object
-[**ReferencePut**](MultiregionsAPI.md#ReferencePut) | **Put** /multiregions/{reference} | Update a multiregions object
+[**List**](MultiregionsAPI.md#List) | **Get** /multiregions | Retrieve multiregions objects
+[**Read**](MultiregionsAPI.md#Read) | **Get** /multiregions/{reference} | Get a specific multiregions object
+[**Update**](MultiregionsAPI.md#Update) | **Put** /multiregions/{reference} | Update a multiregions object
 
 
 
-## Get
+## List
 
-> ListMultiregionsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListMultiregionsResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve multiregions objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.MultiregionsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.MultiregionsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MultiregionsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MultiregionsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListMultiregionsResponse
-	fmt.Fprintf(os.Stdout, "Response from `MultiregionsAPI.Get`: %v\n", resp)
+	// response from `List`: ListMultiregionsResponse
+	fmt.Fprintf(os.Stdout, "Response from `MultiregionsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MultiregionsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MultiregionsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetMultiregionsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMultiregionsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific multiregions object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the multiregions object
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.MultiregionsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MultiregionsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MultiregionsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MultiregionsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetMultiregionsResponse
-	fmt.Fprintf(os.Stdout, "Response from `MultiregionsAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetMultiregionsResponse
+	fmt.Fprintf(os.Stdout, "Response from `MultiregionsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MultiregionsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MultiregionsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateMultiregionsResponse ReferencePut(ctx, reference).Multiregions(multiregions).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateMultiregionsResponse Update(ctx, reference).Multiregions(multiregions).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a multiregions object
 
@@ -180,13 +180,13 @@ func main() {
 	multiregions := *cloud.NewMultiregions() // Multiregions | Object data to update
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.MultiregionsAPI.ReferencePut(context.Background(), reference).Multiregions(multiregions).Execute()
+	resp, r, err := apiClient.MultiregionsAPI.Update(context.Background(), reference).Multiregions(multiregions).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MultiregionsAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MultiregionsAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateMultiregionsResponse
-	fmt.Fprintf(os.Stdout, "Response from `MultiregionsAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateMultiregionsResponse
+	fmt.Fprintf(os.Stdout, "Response from `MultiregionsAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MultiregionsAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MultiregionsAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

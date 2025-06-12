@@ -23,52 +23,52 @@ import (
 
 type HsmAllgroupsAPI interface {
 	/*
-		HsmallgroupsGet Retrieve hsm:allgroups objects
+		List Retrieve hsm:allgroups objects
 
 		Returns a list of hsm:allgroups objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return HsmAllgroupsAPIHsmallgroupsGetRequest
+		@return HsmAllgroupsAPIListRequest
 	*/
-	HsmallgroupsGet(ctx context.Context) HsmAllgroupsAPIHsmallgroupsGetRequest
+	List(ctx context.Context) HsmAllgroupsAPIListRequest
 
-	// HsmallgroupsGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListHsmAllgroupsResponse
-	HsmallgroupsGetExecute(r HsmAllgroupsAPIHsmallgroupsGetRequest) (*ListHsmAllgroupsResponse, *http.Response, error)
+	ListExecute(r HsmAllgroupsAPIListRequest) (*ListHsmAllgroupsResponse, *http.Response, error)
 	/*
-		HsmallgroupsReferenceGet Get a specific hsm:allgroups object
+		Read Get a specific hsm:allgroups object
 
 		Returns a specific hsm:allgroups object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the hsm:allgroups object
-		@return HsmAllgroupsAPIHsmallgroupsReferenceGetRequest
+		@return HsmAllgroupsAPIReadRequest
 	*/
-	HsmallgroupsReferenceGet(ctx context.Context, reference string) HsmAllgroupsAPIHsmallgroupsReferenceGetRequest
+	Read(ctx context.Context, reference string) HsmAllgroupsAPIReadRequest
 
-	// HsmallgroupsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetHsmAllgroupsResponse
-	HsmallgroupsReferenceGetExecute(r HsmAllgroupsAPIHsmallgroupsReferenceGetRequest) (*GetHsmAllgroupsResponse, *http.Response, error)
+	ReadExecute(r HsmAllgroupsAPIReadRequest) (*GetHsmAllgroupsResponse, *http.Response, error)
 	/*
-		HsmallgroupsReferencePut Update a hsm:allgroups object
+		Update Update a hsm:allgroups object
 
 		Updates a specific hsm:allgroups object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the hsm:allgroups object
-		@return HsmAllgroupsAPIHsmallgroupsReferencePutRequest
+		@return HsmAllgroupsAPIUpdateRequest
 	*/
-	HsmallgroupsReferencePut(ctx context.Context, reference string) HsmAllgroupsAPIHsmallgroupsReferencePutRequest
+	Update(ctx context.Context, reference string) HsmAllgroupsAPIUpdateRequest
 
-	// HsmallgroupsReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateHsmAllgroupsResponse
-	HsmallgroupsReferencePutExecute(r HsmAllgroupsAPIHsmallgroupsReferencePutRequest) (*UpdateHsmAllgroupsResponse, *http.Response, error)
+	UpdateExecute(r HsmAllgroupsAPIUpdateRequest) (*UpdateHsmAllgroupsResponse, *http.Response, error)
 }
 
 // HsmAllgroupsAPIService HsmAllgroupsAPI service
 type HsmAllgroupsAPIService internal.Service
 
-type HsmAllgroupsAPIHsmallgroupsGetRequest struct {
+type HsmAllgroupsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     HsmAllgroupsAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type HsmAllgroupsAPIHsmallgroupsGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r HsmAllgroupsAPIHsmallgroupsGetRequest) ReturnFields(returnFields string) HsmAllgroupsAPIHsmallgroupsGetRequest {
+func (r HsmAllgroupsAPIListRequest) ReturnFields(returnFields string) HsmAllgroupsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r HsmAllgroupsAPIHsmallgroupsGetRequest) ReturnFields2(returnFields2 string) HsmAllgroupsAPIHsmallgroupsGetRequest {
+func (r HsmAllgroupsAPIListRequest) ReturnFields2(returnFields2 string) HsmAllgroupsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r HsmAllgroupsAPIHsmallgroupsGetRequest) MaxResults(maxResults int32) HsmAllgroupsAPIHsmallgroupsGetRequest {
+func (r HsmAllgroupsAPIListRequest) MaxResults(maxResults int32) HsmAllgroupsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r HsmAllgroupsAPIHsmallgroupsGetRequest) ReturnAsObject(returnAsObject int32) HsmAllgroupsAPIHsmallgroupsGetRequest {
+func (r HsmAllgroupsAPIListRequest) ReturnAsObject(returnAsObject int32) HsmAllgroupsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r HsmAllgroupsAPIHsmallgroupsGetRequest) Paging(paging int32) HsmAllgroupsAPIHsmallgroupsGetRequest {
+func (r HsmAllgroupsAPIListRequest) Paging(paging int32) HsmAllgroupsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r HsmAllgroupsAPIHsmallgroupsGetRequest) PageId(pageId string) HsmAllgroupsAPIHsmallgroupsGetRequest {
+func (r HsmAllgroupsAPIListRequest) PageId(pageId string) HsmAllgroupsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r HsmAllgroupsAPIHsmallgroupsGetRequest) Filters(filters map[string]interface{}) HsmAllgroupsAPIHsmallgroupsGetRequest {
+func (r HsmAllgroupsAPIListRequest) Filters(filters map[string]interface{}) HsmAllgroupsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r HsmAllgroupsAPIHsmallgroupsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) HsmAllgroupsAPIHsmallgroupsGetRequest {
+func (r HsmAllgroupsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) HsmAllgroupsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r HsmAllgroupsAPIHsmallgroupsGetRequest) Execute() (*ListHsmAllgroupsResponse, *http.Response, error) {
-	return r.ApiService.HsmallgroupsGetExecute(r)
+func (r HsmAllgroupsAPIListRequest) Execute() (*ListHsmAllgroupsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-HsmallgroupsGet Retrieve hsm:allgroups objects
+List Retrieve hsm:allgroups objects
 
 Returns a list of hsm:allgroups objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return HsmAllgroupsAPIHsmallgroupsGetRequest
+	@return HsmAllgroupsAPIListRequest
 */
-func (a *HsmAllgroupsAPIService) HsmallgroupsGet(ctx context.Context) HsmAllgroupsAPIHsmallgroupsGetRequest {
-	return HsmAllgroupsAPIHsmallgroupsGetRequest{
+func (a *HsmAllgroupsAPIService) List(ctx context.Context) HsmAllgroupsAPIListRequest {
+	return HsmAllgroupsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *HsmAllgroupsAPIService) HsmallgroupsGet(ctx context.Context) HsmAllgrou
 // Execute executes the request
 //
 //	@return ListHsmAllgroupsResponse
-func (a *HsmAllgroupsAPIService) HsmallgroupsGetExecute(r HsmAllgroupsAPIHsmallgroupsGetRequest) (*ListHsmAllgroupsResponse, *http.Response, error) {
+func (a *HsmAllgroupsAPIService) ListExecute(r HsmAllgroupsAPIListRequest) (*ListHsmAllgroupsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *HsmAllgroupsAPIService) HsmallgroupsGetExecute(r HsmAllgroupsAPIHsmallg
 		localVarReturnValue *ListHsmAllgroupsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HsmAllgroupsAPIService.HsmallgroupsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HsmAllgroupsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *HsmAllgroupsAPIService) HsmallgroupsGetExecute(r HsmAllgroupsAPIHsmallg
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type HsmAllgroupsAPIHsmallgroupsReferenceGetRequest struct {
+type HsmAllgroupsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     HsmAllgroupsAPI
 	reference      string
@@ -249,38 +249,38 @@ type HsmAllgroupsAPIHsmallgroupsReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r HsmAllgroupsAPIHsmallgroupsReferenceGetRequest) ReturnFields(returnFields string) HsmAllgroupsAPIHsmallgroupsReferenceGetRequest {
+func (r HsmAllgroupsAPIReadRequest) ReturnFields(returnFields string) HsmAllgroupsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r HsmAllgroupsAPIHsmallgroupsReferenceGetRequest) ReturnFields2(returnFields2 string) HsmAllgroupsAPIHsmallgroupsReferenceGetRequest {
+func (r HsmAllgroupsAPIReadRequest) ReturnFields2(returnFields2 string) HsmAllgroupsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r HsmAllgroupsAPIHsmallgroupsReferenceGetRequest) ReturnAsObject(returnAsObject int32) HsmAllgroupsAPIHsmallgroupsReferenceGetRequest {
+func (r HsmAllgroupsAPIReadRequest) ReturnAsObject(returnAsObject int32) HsmAllgroupsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r HsmAllgroupsAPIHsmallgroupsReferenceGetRequest) Execute() (*GetHsmAllgroupsResponse, *http.Response, error) {
-	return r.ApiService.HsmallgroupsReferenceGetExecute(r)
+func (r HsmAllgroupsAPIReadRequest) Execute() (*GetHsmAllgroupsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-HsmallgroupsReferenceGet Get a specific hsm:allgroups object
+Read Get a specific hsm:allgroups object
 
 Returns a specific hsm:allgroups object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the hsm:allgroups object
-	@return HsmAllgroupsAPIHsmallgroupsReferenceGetRequest
+	@return HsmAllgroupsAPIReadRequest
 */
-func (a *HsmAllgroupsAPIService) HsmallgroupsReferenceGet(ctx context.Context, reference string) HsmAllgroupsAPIHsmallgroupsReferenceGetRequest {
-	return HsmAllgroupsAPIHsmallgroupsReferenceGetRequest{
+func (a *HsmAllgroupsAPIService) Read(ctx context.Context, reference string) HsmAllgroupsAPIReadRequest {
+	return HsmAllgroupsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *HsmAllgroupsAPIService) HsmallgroupsReferenceGet(ctx context.Context, r
 // Execute executes the request
 //
 //	@return GetHsmAllgroupsResponse
-func (a *HsmAllgroupsAPIService) HsmallgroupsReferenceGetExecute(r HsmAllgroupsAPIHsmallgroupsReferenceGetRequest) (*GetHsmAllgroupsResponse, *http.Response, error) {
+func (a *HsmAllgroupsAPIService) ReadExecute(r HsmAllgroupsAPIReadRequest) (*GetHsmAllgroupsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *HsmAllgroupsAPIService) HsmallgroupsReferenceGetExecute(r HsmAllgroupsA
 		localVarReturnValue *GetHsmAllgroupsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HsmAllgroupsAPIService.HsmallgroupsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HsmAllgroupsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *HsmAllgroupsAPIService) HsmallgroupsReferenceGetExecute(r HsmAllgroupsA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type HsmAllgroupsAPIHsmallgroupsReferencePutRequest struct {
+type HsmAllgroupsAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     HsmAllgroupsAPI
 	reference      string
@@ -377,44 +377,44 @@ type HsmAllgroupsAPIHsmallgroupsReferencePutRequest struct {
 }
 
 // Object data to update
-func (r HsmAllgroupsAPIHsmallgroupsReferencePutRequest) HsmAllgroups(hsmAllgroups HsmAllgroups) HsmAllgroupsAPIHsmallgroupsReferencePutRequest {
+func (r HsmAllgroupsAPIUpdateRequest) HsmAllgroups(hsmAllgroups HsmAllgroups) HsmAllgroupsAPIUpdateRequest {
 	r.hsmAllgroups = &hsmAllgroups
 	return r
 }
 
 // Enter the field names followed by comma
-func (r HsmAllgroupsAPIHsmallgroupsReferencePutRequest) ReturnFields(returnFields string) HsmAllgroupsAPIHsmallgroupsReferencePutRequest {
+func (r HsmAllgroupsAPIUpdateRequest) ReturnFields(returnFields string) HsmAllgroupsAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r HsmAllgroupsAPIHsmallgroupsReferencePutRequest) ReturnFields2(returnFields2 string) HsmAllgroupsAPIHsmallgroupsReferencePutRequest {
+func (r HsmAllgroupsAPIUpdateRequest) ReturnFields2(returnFields2 string) HsmAllgroupsAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r HsmAllgroupsAPIHsmallgroupsReferencePutRequest) ReturnAsObject(returnAsObject int32) HsmAllgroupsAPIHsmallgroupsReferencePutRequest {
+func (r HsmAllgroupsAPIUpdateRequest) ReturnAsObject(returnAsObject int32) HsmAllgroupsAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r HsmAllgroupsAPIHsmallgroupsReferencePutRequest) Execute() (*UpdateHsmAllgroupsResponse, *http.Response, error) {
-	return r.ApiService.HsmallgroupsReferencePutExecute(r)
+func (r HsmAllgroupsAPIUpdateRequest) Execute() (*UpdateHsmAllgroupsResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-HsmallgroupsReferencePut Update a hsm:allgroups object
+Update Update a hsm:allgroups object
 
 Updates a specific hsm:allgroups object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the hsm:allgroups object
-	@return HsmAllgroupsAPIHsmallgroupsReferencePutRequest
+	@return HsmAllgroupsAPIUpdateRequest
 */
-func (a *HsmAllgroupsAPIService) HsmallgroupsReferencePut(ctx context.Context, reference string) HsmAllgroupsAPIHsmallgroupsReferencePutRequest {
-	return HsmAllgroupsAPIHsmallgroupsReferencePutRequest{
+func (a *HsmAllgroupsAPIService) Update(ctx context.Context, reference string) HsmAllgroupsAPIUpdateRequest {
+	return HsmAllgroupsAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *HsmAllgroupsAPIService) HsmallgroupsReferencePut(ctx context.Context, r
 // Execute executes the request
 //
 //	@return UpdateHsmAllgroupsResponse
-func (a *HsmAllgroupsAPIService) HsmallgroupsReferencePutExecute(r HsmAllgroupsAPIHsmallgroupsReferencePutRequest) (*UpdateHsmAllgroupsResponse, *http.Response, error) {
+func (a *HsmAllgroupsAPIService) UpdateExecute(r HsmAllgroupsAPIUpdateRequest) (*UpdateHsmAllgroupsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *HsmAllgroupsAPIService) HsmallgroupsReferencePutExecute(r HsmAllgroupsA
 		localVarReturnValue *UpdateHsmAllgroupsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HsmAllgroupsAPIService.HsmallgroupsReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HsmAllgroupsAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

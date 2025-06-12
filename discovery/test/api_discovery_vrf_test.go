@@ -23,11 +23,11 @@ func TestDiscoveryVrfAPIService(t *testing.T) {
 
 	apiClient := discovery.NewAPIClient()
 
-	t.Run("Test DiscoveryVrfAPIService DiscoveryvrfGet", func(t *testing.T) {
+	t.Run("Test DiscoveryVrfAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DiscoveryVrfAPI.DiscoveryvrfGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DiscoveryVrfAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDiscoveryVrfAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryVrfAPIService DiscoveryvrfReferenceGet", func(t *testing.T) {
+	t.Run("Test DiscoveryVrfAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DiscoveryVrfAPI.DiscoveryvrfReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryVrfAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

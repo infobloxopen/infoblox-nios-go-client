@@ -23,52 +23,52 @@ import (
 
 type DiscoverytaskAPI interface {
 	/*
-		Get Retrieve discoverytask objects
+		List Retrieve discoverytask objects
 
 		Returns a list of discoverytask objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoverytaskAPIGetRequest
+		@return DiscoverytaskAPIListRequest
 	*/
-	Get(ctx context.Context) DiscoverytaskAPIGetRequest
+	List(ctx context.Context) DiscoverytaskAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDiscoverytaskResponse
-	GetExecute(r DiscoverytaskAPIGetRequest) (*ListDiscoverytaskResponse, *http.Response, error)
+	ListExecute(r DiscoverytaskAPIListRequest) (*ListDiscoverytaskResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific discoverytask object
+		Read Get a specific discoverytask object
 
 		Returns a specific discoverytask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discoverytask object
-		@return DiscoverytaskAPIReferenceGetRequest
+		@return DiscoverytaskAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) DiscoverytaskAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoverytaskAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoverytaskResponse
-	ReferenceGetExecute(r DiscoverytaskAPIReferenceGetRequest) (*GetDiscoverytaskResponse, *http.Response, error)
+	ReadExecute(r DiscoverytaskAPIReadRequest) (*GetDiscoverytaskResponse, *http.Response, error)
 	/*
-		ReferencePut Update a discoverytask object
+		Update Update a discoverytask object
 
 		Updates a specific discoverytask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discoverytask object
-		@return DiscoverytaskAPIReferencePutRequest
+		@return DiscoverytaskAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) DiscoverytaskAPIReferencePutRequest
+	Update(ctx context.Context, reference string) DiscoverytaskAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDiscoverytaskResponse
-	ReferencePutExecute(r DiscoverytaskAPIReferencePutRequest) (*UpdateDiscoverytaskResponse, *http.Response, error)
+	UpdateExecute(r DiscoverytaskAPIUpdateRequest) (*UpdateDiscoverytaskResponse, *http.Response, error)
 }
 
 // DiscoverytaskAPIService DiscoverytaskAPI service
 type DiscoverytaskAPIService internal.Service
 
-type DiscoverytaskAPIGetRequest struct {
+type DiscoverytaskAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DiscoverytaskAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type DiscoverytaskAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DiscoverytaskAPIGetRequest) ReturnFields(returnFields string) DiscoverytaskAPIGetRequest {
+func (r DiscoverytaskAPIListRequest) ReturnFields(returnFields string) DiscoverytaskAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoverytaskAPIGetRequest) ReturnFields2(returnFields2 string) DiscoverytaskAPIGetRequest {
+func (r DiscoverytaskAPIListRequest) ReturnFields2(returnFields2 string) DiscoverytaskAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoverytaskAPIGetRequest) MaxResults(maxResults int32) DiscoverytaskAPIGetRequest {
+func (r DiscoverytaskAPIListRequest) MaxResults(maxResults int32) DiscoverytaskAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoverytaskAPIGetRequest) ReturnAsObject(returnAsObject int32) DiscoverytaskAPIGetRequest {
+func (r DiscoverytaskAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoverytaskAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoverytaskAPIGetRequest) Paging(paging int32) DiscoverytaskAPIGetRequest {
+func (r DiscoverytaskAPIListRequest) Paging(paging int32) DiscoverytaskAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoverytaskAPIGetRequest) PageId(pageId string) DiscoverytaskAPIGetRequest {
+func (r DiscoverytaskAPIListRequest) PageId(pageId string) DiscoverytaskAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoverytaskAPIGetRequest) Filters(filters map[string]interface{}) DiscoverytaskAPIGetRequest {
+func (r DiscoverytaskAPIListRequest) Filters(filters map[string]interface{}) DiscoverytaskAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoverytaskAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoverytaskAPIGetRequest {
+func (r DiscoverytaskAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoverytaskAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoverytaskAPIGetRequest) Execute() (*ListDiscoverytaskResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r DiscoverytaskAPIListRequest) Execute() (*ListDiscoverytaskResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve discoverytask objects
+List Retrieve discoverytask objects
 
 Returns a list of discoverytask objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoverytaskAPIGetRequest
+	@return DiscoverytaskAPIListRequest
 */
-func (a *DiscoverytaskAPIService) Get(ctx context.Context) DiscoverytaskAPIGetRequest {
-	return DiscoverytaskAPIGetRequest{
+func (a *DiscoverytaskAPIService) List(ctx context.Context) DiscoverytaskAPIListRequest {
+	return DiscoverytaskAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *DiscoverytaskAPIService) Get(ctx context.Context) DiscoverytaskAPIGetRe
 // Execute executes the request
 //
 //	@return ListDiscoverytaskResponse
-func (a *DiscoverytaskAPIService) GetExecute(r DiscoverytaskAPIGetRequest) (*ListDiscoverytaskResponse, *http.Response, error) {
+func (a *DiscoverytaskAPIService) ListExecute(r DiscoverytaskAPIListRequest) (*ListDiscoverytaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *DiscoverytaskAPIService) GetExecute(r DiscoverytaskAPIGetRequest) (*Lis
 		localVarReturnValue *ListDiscoverytaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoverytaskAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoverytaskAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *DiscoverytaskAPIService) GetExecute(r DiscoverytaskAPIGetRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoverytaskAPIReferenceGetRequest struct {
+type DiscoverytaskAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DiscoverytaskAPI
 	reference      string
@@ -249,38 +249,38 @@ type DiscoverytaskAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DiscoverytaskAPIReferenceGetRequest) ReturnFields(returnFields string) DiscoverytaskAPIReferenceGetRequest {
+func (r DiscoverytaskAPIReadRequest) ReturnFields(returnFields string) DiscoverytaskAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoverytaskAPIReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoverytaskAPIReferenceGetRequest {
+func (r DiscoverytaskAPIReadRequest) ReturnFields2(returnFields2 string) DiscoverytaskAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoverytaskAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoverytaskAPIReferenceGetRequest {
+func (r DiscoverytaskAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoverytaskAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoverytaskAPIReferenceGetRequest) Execute() (*GetDiscoverytaskResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r DiscoverytaskAPIReadRequest) Execute() (*GetDiscoverytaskResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific discoverytask object
+Read Get a specific discoverytask object
 
 Returns a specific discoverytask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discoverytask object
-	@return DiscoverytaskAPIReferenceGetRequest
+	@return DiscoverytaskAPIReadRequest
 */
-func (a *DiscoverytaskAPIService) ReferenceGet(ctx context.Context, reference string) DiscoverytaskAPIReferenceGetRequest {
-	return DiscoverytaskAPIReferenceGetRequest{
+func (a *DiscoverytaskAPIService) Read(ctx context.Context, reference string) DiscoverytaskAPIReadRequest {
+	return DiscoverytaskAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *DiscoverytaskAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetDiscoverytaskResponse
-func (a *DiscoverytaskAPIService) ReferenceGetExecute(r DiscoverytaskAPIReferenceGetRequest) (*GetDiscoverytaskResponse, *http.Response, error) {
+func (a *DiscoverytaskAPIService) ReadExecute(r DiscoverytaskAPIReadRequest) (*GetDiscoverytaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *DiscoverytaskAPIService) ReferenceGetExecute(r DiscoverytaskAPIReferenc
 		localVarReturnValue *GetDiscoverytaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoverytaskAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoverytaskAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *DiscoverytaskAPIService) ReferenceGetExecute(r DiscoverytaskAPIReferenc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoverytaskAPIReferencePutRequest struct {
+type DiscoverytaskAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     DiscoverytaskAPI
 	reference      string
@@ -377,44 +377,44 @@ type DiscoverytaskAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DiscoverytaskAPIReferencePutRequest) Discoverytask(discoverytask Discoverytask) DiscoverytaskAPIReferencePutRequest {
+func (r DiscoverytaskAPIUpdateRequest) Discoverytask(discoverytask Discoverytask) DiscoverytaskAPIUpdateRequest {
 	r.discoverytask = &discoverytask
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DiscoverytaskAPIReferencePutRequest) ReturnFields(returnFields string) DiscoverytaskAPIReferencePutRequest {
+func (r DiscoverytaskAPIUpdateRequest) ReturnFields(returnFields string) DiscoverytaskAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoverytaskAPIReferencePutRequest) ReturnFields2(returnFields2 string) DiscoverytaskAPIReferencePutRequest {
+func (r DiscoverytaskAPIUpdateRequest) ReturnFields2(returnFields2 string) DiscoverytaskAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoverytaskAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) DiscoverytaskAPIReferencePutRequest {
+func (r DiscoverytaskAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DiscoverytaskAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoverytaskAPIReferencePutRequest) Execute() (*UpdateDiscoverytaskResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r DiscoverytaskAPIUpdateRequest) Execute() (*UpdateDiscoverytaskResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a discoverytask object
+Update Update a discoverytask object
 
 Updates a specific discoverytask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discoverytask object
-	@return DiscoverytaskAPIReferencePutRequest
+	@return DiscoverytaskAPIUpdateRequest
 */
-func (a *DiscoverytaskAPIService) ReferencePut(ctx context.Context, reference string) DiscoverytaskAPIReferencePutRequest {
-	return DiscoverytaskAPIReferencePutRequest{
+func (a *DiscoverytaskAPIService) Update(ctx context.Context, reference string) DiscoverytaskAPIUpdateRequest {
+	return DiscoverytaskAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *DiscoverytaskAPIService) ReferencePut(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return UpdateDiscoverytaskResponse
-func (a *DiscoverytaskAPIService) ReferencePutExecute(r DiscoverytaskAPIReferencePutRequest) (*UpdateDiscoverytaskResponse, *http.Response, error) {
+func (a *DiscoverytaskAPIService) UpdateExecute(r DiscoverytaskAPIUpdateRequest) (*UpdateDiscoverytaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *DiscoverytaskAPIService) ReferencePutExecute(r DiscoverytaskAPIReferenc
 		localVarReturnValue *UpdateDiscoverytaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoverytaskAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoverytaskAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

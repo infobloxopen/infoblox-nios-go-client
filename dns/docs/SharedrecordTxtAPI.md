@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SharedrecordtxtGet**](SharedrecordTxtAPI.md#SharedrecordtxtGet) | **Get** /sharedrecord:txt | Retrieve sharedrecord:txt objects
-[**SharedrecordtxtPost**](SharedrecordTxtAPI.md#SharedrecordtxtPost) | **Post** /sharedrecord:txt | Create a sharedrecord:txt object
-[**SharedrecordtxtReferenceDelete**](SharedrecordTxtAPI.md#SharedrecordtxtReferenceDelete) | **Delete** /sharedrecord:txt/{reference} | Delete a sharedrecord:txt object
-[**SharedrecordtxtReferenceGet**](SharedrecordTxtAPI.md#SharedrecordtxtReferenceGet) | **Get** /sharedrecord:txt/{reference} | Get a specific sharedrecord:txt object
-[**SharedrecordtxtReferencePut**](SharedrecordTxtAPI.md#SharedrecordtxtReferencePut) | **Put** /sharedrecord:txt/{reference} | Update a sharedrecord:txt object
+[**Create**](SharedrecordTxtAPI.md#Create) | **Post** /sharedrecord:txt | Create a sharedrecord:txt object
+[**Delete**](SharedrecordTxtAPI.md#Delete) | **Delete** /sharedrecord:txt/{reference} | Delete a sharedrecord:txt object
+[**List**](SharedrecordTxtAPI.md#List) | **Get** /sharedrecord:txt | Retrieve sharedrecord:txt objects
+[**Read**](SharedrecordTxtAPI.md#Read) | **Get** /sharedrecord:txt/{reference} | Get a specific sharedrecord:txt object
+[**Update**](SharedrecordTxtAPI.md#Update) | **Put** /sharedrecord:txt/{reference} | Update a sharedrecord:txt object
 
 
 
-## SharedrecordtxtGet
+## Create
 
-> ListSharedrecordTxtResponse SharedrecordtxtGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateSharedrecordTxtResponse Create(ctx).SharedrecordTxt(sharedrecordTxt).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a sharedrecord:txt object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	sharedrecordTxt := *dns.NewSharedrecordTxt() // SharedrecordTxt | Object data to create
+
+	apiClient := dns.NewAPIClient()
+	resp, r, err := apiClient.SharedrecordTxtAPI.Create(context.Background()).SharedrecordTxt(sharedrecordTxt).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SharedrecordTxtAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateSharedrecordTxtResponse
+	fmt.Fprintf(os.Stdout, "Response from `SharedrecordTxtAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SharedrecordTxtAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**sharedrecordTxt** | [**SharedrecordTxt**](SharedrecordTxt.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateSharedrecordTxtResponse**](CreateSharedrecordTxtResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a sharedrecord:txt object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the sharedrecord:txt object
+
+	apiClient := dns.NewAPIClient()
+	r, err := apiClient.SharedrecordTxtAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SharedrecordTxtAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the sharedrecord:txt object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SharedrecordTxtAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListSharedrecordTxtResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve sharedrecord:txt objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.SharedrecordTxtAPI.SharedrecordtxtGet(context.Background()).Execute()
+	resp, r, err := apiClient.SharedrecordTxtAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SharedrecordTxtAPI.SharedrecordtxtGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SharedrecordTxtAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SharedrecordtxtGet`: ListSharedrecordTxtResponse
-	fmt.Fprintf(os.Stdout, "Response from `SharedrecordTxtAPI.SharedrecordtxtGet`: %v\n", resp)
+	// response from `List`: ListSharedrecordTxtResponse
+	fmt.Fprintf(os.Stdout, "Response from `SharedrecordTxtAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SharedrecordTxtAPISharedrecordtxtGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SharedrecordTxtAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SharedrecordtxtPost
+## Read
 
-> CreateSharedrecordTxtResponse SharedrecordtxtPost(ctx).SharedrecordTxt(sharedrecordTxt).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a sharedrecord:txt object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	sharedrecordTxt := *dns.NewSharedrecordTxt() // SharedrecordTxt | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.SharedrecordTxtAPI.SharedrecordtxtPost(context.Background()).SharedrecordTxt(sharedrecordTxt).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SharedrecordTxtAPI.SharedrecordtxtPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SharedrecordtxtPost`: CreateSharedrecordTxtResponse
-	fmt.Fprintf(os.Stdout, "Response from `SharedrecordTxtAPI.SharedrecordtxtPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SharedrecordTxtAPISharedrecordtxtPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**sharedrecordTxt** | [**SharedrecordTxt**](SharedrecordTxt.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateSharedrecordTxtResponse**](CreateSharedrecordTxtResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SharedrecordtxtReferenceDelete
-
-> SharedrecordtxtReferenceDelete(ctx, reference).Execute()
-
-Delete a sharedrecord:txt object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the sharedrecord:txt object
-
-	apiClient := dns.NewAPIClient()
-	r, err := apiClient.SharedrecordTxtAPI.SharedrecordtxtReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SharedrecordTxtAPI.SharedrecordtxtReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the sharedrecord:txt object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SharedrecordTxtAPISharedrecordtxtReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SharedrecordtxtReferenceGet
-
-> GetSharedrecordTxtResponse SharedrecordtxtReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetSharedrecordTxtResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific sharedrecord:txt object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the sharedrecord:txt object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.SharedrecordTxtAPI.SharedrecordtxtReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.SharedrecordTxtAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SharedrecordTxtAPI.SharedrecordtxtReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SharedrecordTxtAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SharedrecordtxtReferenceGet`: GetSharedrecordTxtResponse
-	fmt.Fprintf(os.Stdout, "Response from `SharedrecordTxtAPI.SharedrecordtxtReferenceGet`: %v\n", resp)
+	// response from `Read`: GetSharedrecordTxtResponse
+	fmt.Fprintf(os.Stdout, "Response from `SharedrecordTxtAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SharedrecordTxtAPISharedrecordtxtReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SharedrecordTxtAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SharedrecordtxtReferencePut
+## Update
 
-> UpdateSharedrecordTxtResponse SharedrecordtxtReferencePut(ctx, reference).SharedrecordTxt(sharedrecordTxt).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateSharedrecordTxtResponse Update(ctx, reference).SharedrecordTxt(sharedrecordTxt).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a sharedrecord:txt object
 
@@ -318,13 +318,13 @@ func main() {
 	sharedrecordTxt := *dns.NewSharedrecordTxt() // SharedrecordTxt | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.SharedrecordTxtAPI.SharedrecordtxtReferencePut(context.Background(), reference).SharedrecordTxt(sharedrecordTxt).Execute()
+	resp, r, err := apiClient.SharedrecordTxtAPI.Update(context.Background(), reference).SharedrecordTxt(sharedrecordTxt).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SharedrecordTxtAPI.SharedrecordtxtReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SharedrecordTxtAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SharedrecordtxtReferencePut`: UpdateSharedrecordTxtResponse
-	fmt.Fprintf(os.Stdout, "Response from `SharedrecordTxtAPI.SharedrecordtxtReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateSharedrecordTxtResponse
+	fmt.Fprintf(os.Stdout, "Response from `SharedrecordTxtAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SharedrecordTxtAPISharedrecordtxtReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SharedrecordTxtAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

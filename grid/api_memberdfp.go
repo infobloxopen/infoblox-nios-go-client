@@ -23,249 +23,78 @@ import (
 
 type MemberdfpAPI interface {
 	/*
-		Get Retrieve memberdfp objects
-
-		Returns a list of memberdfp objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberdfpAPIGetRequest
-	*/
-	Get(ctx context.Context) MemberdfpAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListMemberdfpResponse
-	GetExecute(r MemberdfpAPIGetRequest) (*ListMemberdfpResponse, *http.Response, error)
-	/*
-		Post Create a memberdfp object
+		Create Create a memberdfp object
 
 		Creates a new memberdfp object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberdfpAPIPostRequest
+		@return MemberdfpAPICreateRequest
 	*/
-	Post(ctx context.Context) MemberdfpAPIPostRequest
+	Create(ctx context.Context) MemberdfpAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateMemberdfpResponse
-	PostExecute(r MemberdfpAPIPostRequest) (*CreateMemberdfpResponse, *http.Response, error)
+	CreateExecute(r MemberdfpAPICreateRequest) (*CreateMemberdfpResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a memberdfp object
+		Delete Delete a memberdfp object
 
 		Deletes a specific memberdfp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the memberdfp object
-		@return MemberdfpAPIReferenceDeleteRequest
+		@return MemberdfpAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) MemberdfpAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) MemberdfpAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r MemberdfpAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r MemberdfpAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific memberdfp object
+		List Retrieve memberdfp objects
+
+		Returns a list of memberdfp objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return MemberdfpAPIListRequest
+	*/
+	List(ctx context.Context) MemberdfpAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListMemberdfpResponse
+	ListExecute(r MemberdfpAPIListRequest) (*ListMemberdfpResponse, *http.Response, error)
+	/*
+		Read Get a specific memberdfp object
 
 		Returns a specific memberdfp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the memberdfp object
-		@return MemberdfpAPIReferenceGetRequest
+		@return MemberdfpAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) MemberdfpAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) MemberdfpAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMemberdfpResponse
-	ReferenceGetExecute(r MemberdfpAPIReferenceGetRequest) (*GetMemberdfpResponse, *http.Response, error)
+	ReadExecute(r MemberdfpAPIReadRequest) (*GetMemberdfpResponse, *http.Response, error)
 	/*
-		ReferencePut Update a memberdfp object
+		Update Update a memberdfp object
 
 		Updates a specific memberdfp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the memberdfp object
-		@return MemberdfpAPIReferencePutRequest
+		@return MemberdfpAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) MemberdfpAPIReferencePutRequest
+	Update(ctx context.Context, reference string) MemberdfpAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMemberdfpResponse
-	ReferencePutExecute(r MemberdfpAPIReferencePutRequest) (*UpdateMemberdfpResponse, *http.Response, error)
+	UpdateExecute(r MemberdfpAPIUpdateRequest) (*UpdateMemberdfpResponse, *http.Response, error)
 }
 
 // MemberdfpAPIService MemberdfpAPI service
 type MemberdfpAPIService internal.Service
 
-type MemberdfpAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberdfpAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r MemberdfpAPIGetRequest) ReturnFields(returnFields string) MemberdfpAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberdfpAPIGetRequest) ReturnFields2(returnFields2 string) MemberdfpAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r MemberdfpAPIGetRequest) MaxResults(maxResults int32) MemberdfpAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r MemberdfpAPIGetRequest) ReturnAsObject(returnAsObject int32) MemberdfpAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r MemberdfpAPIGetRequest) Paging(paging int32) MemberdfpAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r MemberdfpAPIGetRequest) PageId(pageId string) MemberdfpAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r MemberdfpAPIGetRequest) Filters(filters map[string]interface{}) MemberdfpAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r MemberdfpAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberdfpAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r MemberdfpAPIGetRequest) Execute() (*ListMemberdfpResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve memberdfp objects
-
-Returns a list of memberdfp objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberdfpAPIGetRequest
-*/
-func (a *MemberdfpAPIService) Get(ctx context.Context) MemberdfpAPIGetRequest {
-	return MemberdfpAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListMemberdfpResponse
-func (a *MemberdfpAPIService) GetExecute(r MemberdfpAPIGetRequest) (*ListMemberdfpResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListMemberdfpResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberdfpAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/memberdfp"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MemberdfpAPIPostRequest struct {
+type MemberdfpAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     MemberdfpAPI
 	memberdfp      *Memberdfp
@@ -275,43 +104,43 @@ type MemberdfpAPIPostRequest struct {
 }
 
 // Object data to create
-func (r MemberdfpAPIPostRequest) Memberdfp(memberdfp Memberdfp) MemberdfpAPIPostRequest {
+func (r MemberdfpAPICreateRequest) Memberdfp(memberdfp Memberdfp) MemberdfpAPICreateRequest {
 	r.memberdfp = &memberdfp
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MemberdfpAPIPostRequest) ReturnFields(returnFields string) MemberdfpAPIPostRequest {
+func (r MemberdfpAPICreateRequest) ReturnFields(returnFields string) MemberdfpAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberdfpAPIPostRequest) ReturnFields2(returnFields2 string) MemberdfpAPIPostRequest {
+func (r MemberdfpAPICreateRequest) ReturnFields2(returnFields2 string) MemberdfpAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberdfpAPIPostRequest) ReturnAsObject(returnAsObject int32) MemberdfpAPIPostRequest {
+func (r MemberdfpAPICreateRequest) ReturnAsObject(returnAsObject int32) MemberdfpAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberdfpAPIPostRequest) Execute() (*CreateMemberdfpResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r MemberdfpAPICreateRequest) Execute() (*CreateMemberdfpResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a memberdfp object
+Create Create a memberdfp object
 
 Creates a new memberdfp object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberdfpAPIPostRequest
+	@return MemberdfpAPICreateRequest
 */
-func (a *MemberdfpAPIService) Post(ctx context.Context) MemberdfpAPIPostRequest {
-	return MemberdfpAPIPostRequest{
+func (a *MemberdfpAPIService) Create(ctx context.Context) MemberdfpAPICreateRequest {
+	return MemberdfpAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *MemberdfpAPIService) Post(ctx context.Context) MemberdfpAPIPostRequest 
 // Execute executes the request
 //
 //	@return CreateMemberdfpResponse
-func (a *MemberdfpAPIService) PostExecute(r MemberdfpAPIPostRequest) (*CreateMemberdfpResponse, *http.Response, error) {
+func (a *MemberdfpAPIService) CreateExecute(r MemberdfpAPICreateRequest) (*CreateMemberdfpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *MemberdfpAPIService) PostExecute(r MemberdfpAPIPostRequest) (*CreateMem
 		localVarReturnValue *CreateMemberdfpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberdfpAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberdfpAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *MemberdfpAPIService) PostExecute(r MemberdfpAPIPostRequest) (*CreateMem
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberdfpAPIReferenceDeleteRequest struct {
+type MemberdfpAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService MemberdfpAPI
 	reference  string
 }
 
-func (r MemberdfpAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r MemberdfpAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a memberdfp object
+Delete Delete a memberdfp object
 
 Deletes a specific memberdfp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the memberdfp object
-	@return MemberdfpAPIReferenceDeleteRequest
+	@return MemberdfpAPIDeleteRequest
 */
-func (a *MemberdfpAPIService) ReferenceDelete(ctx context.Context, reference string) MemberdfpAPIReferenceDeleteRequest {
-	return MemberdfpAPIReferenceDeleteRequest{
+func (a *MemberdfpAPIService) Delete(ctx context.Context, reference string) MemberdfpAPIDeleteRequest {
+	return MemberdfpAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *MemberdfpAPIService) ReferenceDelete(ctx context.Context, reference str
 }
 
 // Execute executes the request
-func (a *MemberdfpAPIService) ReferenceDeleteExecute(r MemberdfpAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *MemberdfpAPIService) DeleteExecute(r MemberdfpAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberdfpAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberdfpAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *MemberdfpAPIService) ReferenceDeleteExecute(r MemberdfpAPIReferenceDele
 	return localVarHTTPResponse, nil
 }
 
-type MemberdfpAPIReferenceGetRequest struct {
+type MemberdfpAPIListRequest struct {
+	ctx            context.Context
+	ApiService     MemberdfpAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r MemberdfpAPIListRequest) ReturnFields(returnFields string) MemberdfpAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r MemberdfpAPIListRequest) ReturnFields2(returnFields2 string) MemberdfpAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r MemberdfpAPIListRequest) MaxResults(maxResults int32) MemberdfpAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r MemberdfpAPIListRequest) ReturnAsObject(returnAsObject int32) MemberdfpAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r MemberdfpAPIListRequest) Paging(paging int32) MemberdfpAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r MemberdfpAPIListRequest) PageId(pageId string) MemberdfpAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r MemberdfpAPIListRequest) Filters(filters map[string]interface{}) MemberdfpAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r MemberdfpAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberdfpAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r MemberdfpAPIListRequest) Execute() (*ListMemberdfpResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve memberdfp objects
+
+Returns a list of memberdfp objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MemberdfpAPIListRequest
+*/
+func (a *MemberdfpAPIService) List(ctx context.Context) MemberdfpAPIListRequest {
+	return MemberdfpAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListMemberdfpResponse
+func (a *MemberdfpAPIService) ListExecute(r MemberdfpAPIListRequest) (*ListMemberdfpResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListMemberdfpResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberdfpAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/memberdfp"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MemberdfpAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     MemberdfpAPI
 	reference      string
@@ -511,38 +511,38 @@ type MemberdfpAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MemberdfpAPIReferenceGetRequest) ReturnFields(returnFields string) MemberdfpAPIReferenceGetRequest {
+func (r MemberdfpAPIReadRequest) ReturnFields(returnFields string) MemberdfpAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberdfpAPIReferenceGetRequest) ReturnFields2(returnFields2 string) MemberdfpAPIReferenceGetRequest {
+func (r MemberdfpAPIReadRequest) ReturnFields2(returnFields2 string) MemberdfpAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberdfpAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) MemberdfpAPIReferenceGetRequest {
+func (r MemberdfpAPIReadRequest) ReturnAsObject(returnAsObject int32) MemberdfpAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberdfpAPIReferenceGetRequest) Execute() (*GetMemberdfpResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r MemberdfpAPIReadRequest) Execute() (*GetMemberdfpResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific memberdfp object
+Read Get a specific memberdfp object
 
 Returns a specific memberdfp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the memberdfp object
-	@return MemberdfpAPIReferenceGetRequest
+	@return MemberdfpAPIReadRequest
 */
-func (a *MemberdfpAPIService) ReferenceGet(ctx context.Context, reference string) MemberdfpAPIReferenceGetRequest {
-	return MemberdfpAPIReferenceGetRequest{
+func (a *MemberdfpAPIService) Read(ctx context.Context, reference string) MemberdfpAPIReadRequest {
+	return MemberdfpAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *MemberdfpAPIService) ReferenceGet(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return GetMemberdfpResponse
-func (a *MemberdfpAPIService) ReferenceGetExecute(r MemberdfpAPIReferenceGetRequest) (*GetMemberdfpResponse, *http.Response, error) {
+func (a *MemberdfpAPIService) ReadExecute(r MemberdfpAPIReadRequest) (*GetMemberdfpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *MemberdfpAPIService) ReferenceGetExecute(r MemberdfpAPIReferenceGetRequ
 		localVarReturnValue *GetMemberdfpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberdfpAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberdfpAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *MemberdfpAPIService) ReferenceGetExecute(r MemberdfpAPIReferenceGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberdfpAPIReferencePutRequest struct {
+type MemberdfpAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     MemberdfpAPI
 	reference      string
@@ -639,44 +639,44 @@ type MemberdfpAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r MemberdfpAPIReferencePutRequest) Memberdfp(memberdfp Memberdfp) MemberdfpAPIReferencePutRequest {
+func (r MemberdfpAPIUpdateRequest) Memberdfp(memberdfp Memberdfp) MemberdfpAPIUpdateRequest {
 	r.memberdfp = &memberdfp
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MemberdfpAPIReferencePutRequest) ReturnFields(returnFields string) MemberdfpAPIReferencePutRequest {
+func (r MemberdfpAPIUpdateRequest) ReturnFields(returnFields string) MemberdfpAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberdfpAPIReferencePutRequest) ReturnFields2(returnFields2 string) MemberdfpAPIReferencePutRequest {
+func (r MemberdfpAPIUpdateRequest) ReturnFields2(returnFields2 string) MemberdfpAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberdfpAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) MemberdfpAPIReferencePutRequest {
+func (r MemberdfpAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MemberdfpAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberdfpAPIReferencePutRequest) Execute() (*UpdateMemberdfpResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r MemberdfpAPIUpdateRequest) Execute() (*UpdateMemberdfpResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a memberdfp object
+Update Update a memberdfp object
 
 Updates a specific memberdfp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the memberdfp object
-	@return MemberdfpAPIReferencePutRequest
+	@return MemberdfpAPIUpdateRequest
 */
-func (a *MemberdfpAPIService) ReferencePut(ctx context.Context, reference string) MemberdfpAPIReferencePutRequest {
-	return MemberdfpAPIReferencePutRequest{
+func (a *MemberdfpAPIService) Update(ctx context.Context, reference string) MemberdfpAPIUpdateRequest {
+	return MemberdfpAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *MemberdfpAPIService) ReferencePut(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return UpdateMemberdfpResponse
-func (a *MemberdfpAPIService) ReferencePutExecute(r MemberdfpAPIReferencePutRequest) (*UpdateMemberdfpResponse, *http.Response, error) {
+func (a *MemberdfpAPIService) UpdateExecute(r MemberdfpAPIUpdateRequest) (*UpdateMemberdfpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *MemberdfpAPIService) ReferencePutExecute(r MemberdfpAPIReferencePutRequ
 		localVarReturnValue *UpdateMemberdfpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberdfpAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberdfpAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

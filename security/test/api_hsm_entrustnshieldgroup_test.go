@@ -23,11 +23,11 @@ func TestHsmEntrustnshieldgroupAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test HsmEntrustnshieldgroupAPIService HsmentrustnshieldgroupGet", func(t *testing.T) {
+	t.Run("Test HsmEntrustnshieldgroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.HsmEntrustnshieldgroupAPI.HsmentrustnshieldgroupGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.HsmEntrustnshieldgroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestHsmEntrustnshieldgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HsmEntrustnshieldgroupAPIService HsmentrustnshieldgroupPost", func(t *testing.T) {
+	t.Run("Test HsmEntrustnshieldgroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.HsmEntrustnshieldgroupAPI.HsmentrustnshieldgroupPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.HsmEntrustnshieldgroupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test HsmEntrustnshieldgroupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.HsmEntrustnshieldgroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestHsmEntrustnshieldgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HsmEntrustnshieldgroupAPIService HsmentrustnshieldgroupReferenceDelete", func(t *testing.T) {
+	t.Run("Test HsmEntrustnshieldgroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.HsmEntrustnshieldgroupAPI.HsmentrustnshieldgroupReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test HsmEntrustnshieldgroupAPIService HsmentrustnshieldgroupReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.HsmEntrustnshieldgroupAPI.HsmentrustnshieldgroupReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.HsmEntrustnshieldgroupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestHsmEntrustnshieldgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HsmEntrustnshieldgroupAPIService HsmentrustnshieldgroupReferencePut", func(t *testing.T) {
+	t.Run("Test HsmEntrustnshieldgroupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.HsmEntrustnshieldgroupAPI.HsmentrustnshieldgroupReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.HsmEntrustnshieldgroupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

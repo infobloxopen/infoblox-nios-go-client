@@ -23,52 +23,52 @@ import (
 
 type UserprofileAPI interface {
 	/*
-		Get Retrieve userprofile objects
+		List Retrieve userprofile objects
 
 		Returns a list of userprofile objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return UserprofileAPIGetRequest
+		@return UserprofileAPIListRequest
 	*/
-	Get(ctx context.Context) UserprofileAPIGetRequest
+	List(ctx context.Context) UserprofileAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListUserprofileResponse
-	GetExecute(r UserprofileAPIGetRequest) (*ListUserprofileResponse, *http.Response, error)
+	ListExecute(r UserprofileAPIListRequest) (*ListUserprofileResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific userprofile object
+		Read Get a specific userprofile object
 
 		Returns a specific userprofile object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the userprofile object
-		@return UserprofileAPIReferenceGetRequest
+		@return UserprofileAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) UserprofileAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) UserprofileAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetUserprofileResponse
-	ReferenceGetExecute(r UserprofileAPIReferenceGetRequest) (*GetUserprofileResponse, *http.Response, error)
+	ReadExecute(r UserprofileAPIReadRequest) (*GetUserprofileResponse, *http.Response, error)
 	/*
-		ReferencePut Update a userprofile object
+		Update Update a userprofile object
 
 		Updates a specific userprofile object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the userprofile object
-		@return UserprofileAPIReferencePutRequest
+		@return UserprofileAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) UserprofileAPIReferencePutRequest
+	Update(ctx context.Context, reference string) UserprofileAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateUserprofileResponse
-	ReferencePutExecute(r UserprofileAPIReferencePutRequest) (*UpdateUserprofileResponse, *http.Response, error)
+	UpdateExecute(r UserprofileAPIUpdateRequest) (*UpdateUserprofileResponse, *http.Response, error)
 }
 
 // UserprofileAPIService UserprofileAPI service
 type UserprofileAPIService internal.Service
 
-type UserprofileAPIGetRequest struct {
+type UserprofileAPIListRequest struct {
 	ctx            context.Context
 	ApiService     UserprofileAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type UserprofileAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r UserprofileAPIGetRequest) ReturnFields(returnFields string) UserprofileAPIGetRequest {
+func (r UserprofileAPIListRequest) ReturnFields(returnFields string) UserprofileAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UserprofileAPIGetRequest) ReturnFields2(returnFields2 string) UserprofileAPIGetRequest {
+func (r UserprofileAPIListRequest) ReturnFields2(returnFields2 string) UserprofileAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r UserprofileAPIGetRequest) MaxResults(maxResults int32) UserprofileAPIGetRequest {
+func (r UserprofileAPIListRequest) MaxResults(maxResults int32) UserprofileAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UserprofileAPIGetRequest) ReturnAsObject(returnAsObject int32) UserprofileAPIGetRequest {
+func (r UserprofileAPIListRequest) ReturnAsObject(returnAsObject int32) UserprofileAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r UserprofileAPIGetRequest) Paging(paging int32) UserprofileAPIGetRequest {
+func (r UserprofileAPIListRequest) Paging(paging int32) UserprofileAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r UserprofileAPIGetRequest) PageId(pageId string) UserprofileAPIGetRequest {
+func (r UserprofileAPIListRequest) PageId(pageId string) UserprofileAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r UserprofileAPIGetRequest) Filters(filters map[string]interface{}) UserprofileAPIGetRequest {
+func (r UserprofileAPIListRequest) Filters(filters map[string]interface{}) UserprofileAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r UserprofileAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) UserprofileAPIGetRequest {
+func (r UserprofileAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) UserprofileAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r UserprofileAPIGetRequest) Execute() (*ListUserprofileResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r UserprofileAPIListRequest) Execute() (*ListUserprofileResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve userprofile objects
+List Retrieve userprofile objects
 
 Returns a list of userprofile objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return UserprofileAPIGetRequest
+	@return UserprofileAPIListRequest
 */
-func (a *UserprofileAPIService) Get(ctx context.Context) UserprofileAPIGetRequest {
-	return UserprofileAPIGetRequest{
+func (a *UserprofileAPIService) List(ctx context.Context) UserprofileAPIListRequest {
+	return UserprofileAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *UserprofileAPIService) Get(ctx context.Context) UserprofileAPIGetReques
 // Execute executes the request
 //
 //	@return ListUserprofileResponse
-func (a *UserprofileAPIService) GetExecute(r UserprofileAPIGetRequest) (*ListUserprofileResponse, *http.Response, error) {
+func (a *UserprofileAPIService) ListExecute(r UserprofileAPIListRequest) (*ListUserprofileResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *UserprofileAPIService) GetExecute(r UserprofileAPIGetRequest) (*ListUse
 		localVarReturnValue *ListUserprofileResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UserprofileAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UserprofileAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *UserprofileAPIService) GetExecute(r UserprofileAPIGetRequest) (*ListUse
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UserprofileAPIReferenceGetRequest struct {
+type UserprofileAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     UserprofileAPI
 	reference      string
@@ -249,38 +249,38 @@ type UserprofileAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r UserprofileAPIReferenceGetRequest) ReturnFields(returnFields string) UserprofileAPIReferenceGetRequest {
+func (r UserprofileAPIReadRequest) ReturnFields(returnFields string) UserprofileAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UserprofileAPIReferenceGetRequest) ReturnFields2(returnFields2 string) UserprofileAPIReferenceGetRequest {
+func (r UserprofileAPIReadRequest) ReturnFields2(returnFields2 string) UserprofileAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UserprofileAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) UserprofileAPIReferenceGetRequest {
+func (r UserprofileAPIReadRequest) ReturnAsObject(returnAsObject int32) UserprofileAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r UserprofileAPIReferenceGetRequest) Execute() (*GetUserprofileResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r UserprofileAPIReadRequest) Execute() (*GetUserprofileResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific userprofile object
+Read Get a specific userprofile object
 
 Returns a specific userprofile object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the userprofile object
-	@return UserprofileAPIReferenceGetRequest
+	@return UserprofileAPIReadRequest
 */
-func (a *UserprofileAPIService) ReferenceGet(ctx context.Context, reference string) UserprofileAPIReferenceGetRequest {
-	return UserprofileAPIReferenceGetRequest{
+func (a *UserprofileAPIService) Read(ctx context.Context, reference string) UserprofileAPIReadRequest {
+	return UserprofileAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *UserprofileAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetUserprofileResponse
-func (a *UserprofileAPIService) ReferenceGetExecute(r UserprofileAPIReferenceGetRequest) (*GetUserprofileResponse, *http.Response, error) {
+func (a *UserprofileAPIService) ReadExecute(r UserprofileAPIReadRequest) (*GetUserprofileResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *UserprofileAPIService) ReferenceGetExecute(r UserprofileAPIReferenceGet
 		localVarReturnValue *GetUserprofileResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UserprofileAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UserprofileAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *UserprofileAPIService) ReferenceGetExecute(r UserprofileAPIReferenceGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UserprofileAPIReferencePutRequest struct {
+type UserprofileAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     UserprofileAPI
 	reference      string
@@ -377,44 +377,44 @@ type UserprofileAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r UserprofileAPIReferencePutRequest) Userprofile(userprofile Userprofile) UserprofileAPIReferencePutRequest {
+func (r UserprofileAPIUpdateRequest) Userprofile(userprofile Userprofile) UserprofileAPIUpdateRequest {
 	r.userprofile = &userprofile
 	return r
 }
 
 // Enter the field names followed by comma
-func (r UserprofileAPIReferencePutRequest) ReturnFields(returnFields string) UserprofileAPIReferencePutRequest {
+func (r UserprofileAPIUpdateRequest) ReturnFields(returnFields string) UserprofileAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UserprofileAPIReferencePutRequest) ReturnFields2(returnFields2 string) UserprofileAPIReferencePutRequest {
+func (r UserprofileAPIUpdateRequest) ReturnFields2(returnFields2 string) UserprofileAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UserprofileAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) UserprofileAPIReferencePutRequest {
+func (r UserprofileAPIUpdateRequest) ReturnAsObject(returnAsObject int32) UserprofileAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r UserprofileAPIReferencePutRequest) Execute() (*UpdateUserprofileResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r UserprofileAPIUpdateRequest) Execute() (*UpdateUserprofileResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a userprofile object
+Update Update a userprofile object
 
 Updates a specific userprofile object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the userprofile object
-	@return UserprofileAPIReferencePutRequest
+	@return UserprofileAPIUpdateRequest
 */
-func (a *UserprofileAPIService) ReferencePut(ctx context.Context, reference string) UserprofileAPIReferencePutRequest {
-	return UserprofileAPIReferencePutRequest{
+func (a *UserprofileAPIService) Update(ctx context.Context, reference string) UserprofileAPIUpdateRequest {
+	return UserprofileAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *UserprofileAPIService) ReferencePut(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return UpdateUserprofileResponse
-func (a *UserprofileAPIService) ReferencePutExecute(r UserprofileAPIReferencePutRequest) (*UpdateUserprofileResponse, *http.Response, error) {
+func (a *UserprofileAPIService) UpdateExecute(r UserprofileAPIUpdateRequest) (*UpdateUserprofileResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *UserprofileAPIService) ReferencePutExecute(r UserprofileAPIReferencePut
 		localVarReturnValue *UpdateUserprofileResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UserprofileAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UserprofileAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

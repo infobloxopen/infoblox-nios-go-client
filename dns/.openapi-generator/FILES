@@ -444,6 +444,8 @@ docs/RecordPtrAPI.md
 docs/RecordPtrAwsRte53RecordInfo.md
 docs/RecordPtrCloudInfo.md
 docs/RecordPtrDiscoveredData.md
+docs/RecordPtrIpv4addr.md
+docs/RecordPtrIpv4addrOneOf.md
 docs/RecordPtrIpv6addr.md
 docs/RecordPtrIpv6addrOneOf.md
 docs/RecordPtrMsAdUserData.md
@@ -1040,6 +1042,8 @@ model_record_ptr.go
 model_record_ptr_aws_rte53_record_info.go
 model_record_ptr_cloud_info.go
 model_record_ptr_discovered_data.go
+model_record_ptr_ipv4addr.go
+model_record_ptr_ipv4addr_one_of.go
 model_record_ptr_ipv6addr.go
 model_record_ptr_ipv6addr_one_of.go
 model_record_ptr_ms_ad_user_data.go

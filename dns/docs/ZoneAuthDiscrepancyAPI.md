@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](ZoneAuthDiscrepancyAPI.md#Get) | **Get** /zone_auth_discrepancy | Retrieve zone_auth_discrepancy objects
-[**ReferenceGet**](ZoneAuthDiscrepancyAPI.md#ReferenceGet) | **Get** /zone_auth_discrepancy/{reference} | Get a specific zone_auth_discrepancy object
+[**List**](ZoneAuthDiscrepancyAPI.md#List) | **Get** /zone_auth_discrepancy | Retrieve zone_auth_discrepancy objects
+[**Read**](ZoneAuthDiscrepancyAPI.md#Read) | **Get** /zone_auth_discrepancy/{reference} | Get a specific zone_auth_discrepancy object
 
 
 
-## Get
+## List
 
-> ListZoneAuthDiscrepancyResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListZoneAuthDiscrepancyResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve zone_auth_discrepancy objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneAuthDiscrepancyAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.ZoneAuthDiscrepancyAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneAuthDiscrepancyAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneAuthDiscrepancyAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListZoneAuthDiscrepancyResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneAuthDiscrepancyAPI.Get`: %v\n", resp)
+	// response from `List`: ListZoneAuthDiscrepancyResponse
+	fmt.Fprintf(os.Stdout, "Response from `ZoneAuthDiscrepancyAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ZoneAuthDiscrepancyAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ZoneAuthDiscrepancyAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetZoneAuthDiscrepancyResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetZoneAuthDiscrepancyResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific zone_auth_discrepancy object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the zone_auth_discrepancy object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneAuthDiscrepancyAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ZoneAuthDiscrepancyAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneAuthDiscrepancyAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneAuthDiscrepancyAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetZoneAuthDiscrepancyResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneAuthDiscrepancyAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetZoneAuthDiscrepancyResponse
+	fmt.Fprintf(os.Stdout, "Response from `ZoneAuthDiscrepancyAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ZoneAuthDiscrepancyAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ZoneAuthDiscrepancyAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

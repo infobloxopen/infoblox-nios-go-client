@@ -23,11 +23,11 @@ func TestDtcTopologyLabelAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcTopologyLabelAPIService DtctopologylabelGet", func(t *testing.T) {
+	t.Run("Test DtcTopologyLabelAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcTopologyLabelAPI.DtctopologylabelGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcTopologyLabelAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDtcTopologyLabelAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcTopologyLabelAPIService DtctopologylabelReferenceGet", func(t *testing.T) {
+	t.Run("Test DtcTopologyLabelAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcTopologyLabelAPI.DtctopologylabelReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcTopologyLabelAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

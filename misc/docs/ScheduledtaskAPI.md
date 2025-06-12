@@ -4,16 +4,83 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](ScheduledtaskAPI.md#Get) | **Get** /scheduledtask | Retrieve scheduledtask objects
-[**ReferenceDelete**](ScheduledtaskAPI.md#ReferenceDelete) | **Delete** /scheduledtask/{reference} | Delete a scheduledtask object
-[**ReferenceGet**](ScheduledtaskAPI.md#ReferenceGet) | **Get** /scheduledtask/{reference} | Get a specific scheduledtask object
-[**ReferencePut**](ScheduledtaskAPI.md#ReferencePut) | **Put** /scheduledtask/{reference} | Update a scheduledtask object
+[**Delete**](ScheduledtaskAPI.md#Delete) | **Delete** /scheduledtask/{reference} | Delete a scheduledtask object
+[**List**](ScheduledtaskAPI.md#List) | **Get** /scheduledtask | Retrieve scheduledtask objects
+[**Read**](ScheduledtaskAPI.md#Read) | **Get** /scheduledtask/{reference} | Get a specific scheduledtask object
+[**Update**](ScheduledtaskAPI.md#Update) | **Put** /scheduledtask/{reference} | Update a scheduledtask object
 
 
 
-## Get
+## Delete
 
-> ListScheduledtaskResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> Delete(ctx, reference).Execute()
+
+Delete a scheduledtask object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/misc"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the scheduledtask object
+
+	apiClient := misc.NewAPIClient()
+	r, err := apiClient.ScheduledtaskAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ScheduledtaskAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the scheduledtask object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ScheduledtaskAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListScheduledtaskResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve scheduledtask objects
 
@@ -35,13 +102,13 @@ import (
 func main() {
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.ScheduledtaskAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.ScheduledtaskAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ScheduledtaskAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ScheduledtaskAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListScheduledtaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `ScheduledtaskAPI.Get`: %v\n", resp)
+	// response from `List`: ListScheduledtaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `ScheduledtaskAPI.List`: %v\n", resp)
 }
 ```
 
@@ -51,7 +118,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ScheduledtaskAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ScheduledtaskAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -83,76 +150,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## Read
 
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a scheduledtask object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/misc"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the scheduledtask object
-
-	apiClient := misc.NewAPIClient()
-	r, err := apiClient.ScheduledtaskAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ScheduledtaskAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the scheduledtask object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ScheduledtaskAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetScheduledtaskResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetScheduledtaskResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific scheduledtask object
 
@@ -175,13 +175,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the scheduledtask object
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.ScheduledtaskAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ScheduledtaskAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ScheduledtaskAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ScheduledtaskAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetScheduledtaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `ScheduledtaskAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetScheduledtaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `ScheduledtaskAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ScheduledtaskAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ScheduledtaskAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -222,9 +222,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateScheduledtaskResponse ReferencePut(ctx, reference).Scheduledtask(scheduledtask).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateScheduledtaskResponse Update(ctx, reference).Scheduledtask(scheduledtask).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a scheduledtask object
 
@@ -248,13 +248,13 @@ func main() {
 	scheduledtask := *misc.NewScheduledtask() // Scheduledtask | Object data to update
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.ScheduledtaskAPI.ReferencePut(context.Background(), reference).Scheduledtask(scheduledtask).Execute()
+	resp, r, err := apiClient.ScheduledtaskAPI.Update(context.Background(), reference).Scheduledtask(scheduledtask).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ScheduledtaskAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ScheduledtaskAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateScheduledtaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `ScheduledtaskAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateScheduledtaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `ScheduledtaskAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ScheduledtaskAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ScheduledtaskAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

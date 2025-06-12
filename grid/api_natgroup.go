@@ -23,78 +23,302 @@ import (
 
 type NatgroupAPI interface {
 	/*
-		Get Retrieve natgroup objects
-
-		Returns a list of natgroup objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NatgroupAPIGetRequest
-	*/
-	Get(ctx context.Context) NatgroupAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListNatgroupResponse
-	GetExecute(r NatgroupAPIGetRequest) (*ListNatgroupResponse, *http.Response, error)
-	/*
-		Post Create a natgroup object
+		Create Create a natgroup object
 
 		Creates a new natgroup object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NatgroupAPIPostRequest
+		@return NatgroupAPICreateRequest
 	*/
-	Post(ctx context.Context) NatgroupAPIPostRequest
+	Create(ctx context.Context) NatgroupAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNatgroupResponse
-	PostExecute(r NatgroupAPIPostRequest) (*CreateNatgroupResponse, *http.Response, error)
+	CreateExecute(r NatgroupAPICreateRequest) (*CreateNatgroupResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a natgroup object
+		Delete Delete a natgroup object
 
 		Deletes a specific natgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the natgroup object
-		@return NatgroupAPIReferenceDeleteRequest
+		@return NatgroupAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) NatgroupAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NatgroupAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r NatgroupAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NatgroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific natgroup object
+		List Retrieve natgroup objects
+
+		Returns a list of natgroup objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NatgroupAPIListRequest
+	*/
+	List(ctx context.Context) NatgroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNatgroupResponse
+	ListExecute(r NatgroupAPIListRequest) (*ListNatgroupResponse, *http.Response, error)
+	/*
+		Read Get a specific natgroup object
 
 		Returns a specific natgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the natgroup object
-		@return NatgroupAPIReferenceGetRequest
+		@return NatgroupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) NatgroupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) NatgroupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNatgroupResponse
-	ReferenceGetExecute(r NatgroupAPIReferenceGetRequest) (*GetNatgroupResponse, *http.Response, error)
+	ReadExecute(r NatgroupAPIReadRequest) (*GetNatgroupResponse, *http.Response, error)
 	/*
-		ReferencePut Update a natgroup object
+		Update Update a natgroup object
 
 		Updates a specific natgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the natgroup object
-		@return NatgroupAPIReferencePutRequest
+		@return NatgroupAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) NatgroupAPIReferencePutRequest
+	Update(ctx context.Context, reference string) NatgroupAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNatgroupResponse
-	ReferencePutExecute(r NatgroupAPIReferencePutRequest) (*UpdateNatgroupResponse, *http.Response, error)
+	UpdateExecute(r NatgroupAPIUpdateRequest) (*UpdateNatgroupResponse, *http.Response, error)
 }
 
 // NatgroupAPIService NatgroupAPI service
 type NatgroupAPIService internal.Service
 
-type NatgroupAPIGetRequest struct {
+type NatgroupAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     NatgroupAPI
+	natgroup       *Natgroup
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r NatgroupAPICreateRequest) Natgroup(natgroup Natgroup) NatgroupAPICreateRequest {
+	r.natgroup = &natgroup
+	return r
+}
+
+// Enter the field names followed by comma
+func (r NatgroupAPICreateRequest) ReturnFields(returnFields string) NatgroupAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NatgroupAPICreateRequest) ReturnFields2(returnFields2 string) NatgroupAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NatgroupAPICreateRequest) ReturnAsObject(returnAsObject int32) NatgroupAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r NatgroupAPICreateRequest) Execute() (*CreateNatgroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a natgroup object
+
+Creates a new natgroup object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NatgroupAPICreateRequest
+*/
+func (a *NatgroupAPIService) Create(ctx context.Context) NatgroupAPICreateRequest {
+	return NatgroupAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateNatgroupResponse
+func (a *NatgroupAPIService) CreateExecute(r NatgroupAPICreateRequest) (*CreateNatgroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateNatgroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NatgroupAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/natgroup"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.natgroup == nil {
+		return localVarReturnValue, nil, internal.ReportError("natgroup is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.natgroup
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NatgroupAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService NatgroupAPI
+	reference  string
+}
+
+func (r NatgroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a natgroup object
+
+Deletes a specific natgroup object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the natgroup object
+	@return NatgroupAPIDeleteRequest
+*/
+func (a *NatgroupAPIService) Delete(ctx context.Context, reference string) NatgroupAPIDeleteRequest {
+	return NatgroupAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *NatgroupAPIService) DeleteExecute(r NatgroupAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NatgroupAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/natgroup/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type NatgroupAPIListRequest struct {
 	ctx            context.Context
 	ApiService     NatgroupAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type NatgroupAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r NatgroupAPIGetRequest) ReturnFields(returnFields string) NatgroupAPIGetRequest {
+func (r NatgroupAPIListRequest) ReturnFields(returnFields string) NatgroupAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NatgroupAPIGetRequest) ReturnFields2(returnFields2 string) NatgroupAPIGetRequest {
+func (r NatgroupAPIListRequest) ReturnFields2(returnFields2 string) NatgroupAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r NatgroupAPIGetRequest) MaxResults(maxResults int32) NatgroupAPIGetRequest {
+func (r NatgroupAPIListRequest) MaxResults(maxResults int32) NatgroupAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NatgroupAPIGetRequest) ReturnAsObject(returnAsObject int32) NatgroupAPIGetRequest {
+func (r NatgroupAPIListRequest) ReturnAsObject(returnAsObject int32) NatgroupAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r NatgroupAPIGetRequest) Paging(paging int32) NatgroupAPIGetRequest {
+func (r NatgroupAPIListRequest) Paging(paging int32) NatgroupAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r NatgroupAPIGetRequest) PageId(pageId string) NatgroupAPIGetRequest {
+func (r NatgroupAPIListRequest) PageId(pageId string) NatgroupAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r NatgroupAPIGetRequest) Filters(filters map[string]interface{}) NatgroupAPIGetRequest {
+func (r NatgroupAPIListRequest) Filters(filters map[string]interface{}) NatgroupAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r NatgroupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NatgroupAPIGetRequest {
+func (r NatgroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NatgroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r NatgroupAPIGetRequest) Execute() (*ListNatgroupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r NatgroupAPIListRequest) Execute() (*ListNatgroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve natgroup objects
+List Retrieve natgroup objects
 
 Returns a list of natgroup objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NatgroupAPIGetRequest
+	@return NatgroupAPIListRequest
 */
-func (a *NatgroupAPIService) Get(ctx context.Context) NatgroupAPIGetRequest {
-	return NatgroupAPIGetRequest{
+func (a *NatgroupAPIService) List(ctx context.Context) NatgroupAPIListRequest {
+	return NatgroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *NatgroupAPIService) Get(ctx context.Context) NatgroupAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListNatgroupResponse
-func (a *NatgroupAPIService) GetExecute(r NatgroupAPIGetRequest) (*ListNatgroupResponse, *http.Response, error) {
+func (a *NatgroupAPIService) ListExecute(r NatgroupAPIListRequest) (*ListNatgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *NatgroupAPIService) GetExecute(r NatgroupAPIGetRequest) (*ListNatgroupR
 		localVarReturnValue *ListNatgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NatgroupAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NatgroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *NatgroupAPIService) GetExecute(r NatgroupAPIGetRequest) (*ListNatgroupR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NatgroupAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     NatgroupAPI
-	natgroup       *Natgroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r NatgroupAPIPostRequest) Natgroup(natgroup Natgroup) NatgroupAPIPostRequest {
-	r.natgroup = &natgroup
-	return r
-}
-
-// Enter the field names followed by comma
-func (r NatgroupAPIPostRequest) ReturnFields(returnFields string) NatgroupAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NatgroupAPIPostRequest) ReturnFields2(returnFields2 string) NatgroupAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NatgroupAPIPostRequest) ReturnAsObject(returnAsObject int32) NatgroupAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r NatgroupAPIPostRequest) Execute() (*CreateNatgroupResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a natgroup object
-
-Creates a new natgroup object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NatgroupAPIPostRequest
-*/
-func (a *NatgroupAPIService) Post(ctx context.Context) NatgroupAPIPostRequest {
-	return NatgroupAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateNatgroupResponse
-func (a *NatgroupAPIService) PostExecute(r NatgroupAPIPostRequest) (*CreateNatgroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateNatgroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NatgroupAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/natgroup"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.natgroup == nil {
-		return localVarReturnValue, nil, internal.ReportError("natgroup is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.natgroup
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NatgroupAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService NatgroupAPI
-	reference  string
-}
-
-func (r NatgroupAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a natgroup object
-
-Deletes a specific natgroup object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the natgroup object
-	@return NatgroupAPIReferenceDeleteRequest
-*/
-func (a *NatgroupAPIService) ReferenceDelete(ctx context.Context, reference string) NatgroupAPIReferenceDeleteRequest {
-	return NatgroupAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *NatgroupAPIService) ReferenceDeleteExecute(r NatgroupAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NatgroupAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/natgroup/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type NatgroupAPIReferenceGetRequest struct {
+type NatgroupAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     NatgroupAPI
 	reference      string
@@ -499,38 +499,38 @@ type NatgroupAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r NatgroupAPIReferenceGetRequest) ReturnFields(returnFields string) NatgroupAPIReferenceGetRequest {
+func (r NatgroupAPIReadRequest) ReturnFields(returnFields string) NatgroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NatgroupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) NatgroupAPIReferenceGetRequest {
+func (r NatgroupAPIReadRequest) ReturnFields2(returnFields2 string) NatgroupAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NatgroupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) NatgroupAPIReferenceGetRequest {
+func (r NatgroupAPIReadRequest) ReturnAsObject(returnAsObject int32) NatgroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NatgroupAPIReferenceGetRequest) Execute() (*GetNatgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r NatgroupAPIReadRequest) Execute() (*GetNatgroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific natgroup object
+Read Get a specific natgroup object
 
 Returns a specific natgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the natgroup object
-	@return NatgroupAPIReferenceGetRequest
+	@return NatgroupAPIReadRequest
 */
-func (a *NatgroupAPIService) ReferenceGet(ctx context.Context, reference string) NatgroupAPIReferenceGetRequest {
-	return NatgroupAPIReferenceGetRequest{
+func (a *NatgroupAPIService) Read(ctx context.Context, reference string) NatgroupAPIReadRequest {
+	return NatgroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *NatgroupAPIService) ReferenceGet(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return GetNatgroupResponse
-func (a *NatgroupAPIService) ReferenceGetExecute(r NatgroupAPIReferenceGetRequest) (*GetNatgroupResponse, *http.Response, error) {
+func (a *NatgroupAPIService) ReadExecute(r NatgroupAPIReadRequest) (*GetNatgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *NatgroupAPIService) ReferenceGetExecute(r NatgroupAPIReferenceGetReques
 		localVarReturnValue *GetNatgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NatgroupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NatgroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *NatgroupAPIService) ReferenceGetExecute(r NatgroupAPIReferenceGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NatgroupAPIReferencePutRequest struct {
+type NatgroupAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     NatgroupAPI
 	reference      string
@@ -627,44 +627,44 @@ type NatgroupAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r NatgroupAPIReferencePutRequest) Natgroup(natgroup Natgroup) NatgroupAPIReferencePutRequest {
+func (r NatgroupAPIUpdateRequest) Natgroup(natgroup Natgroup) NatgroupAPIUpdateRequest {
 	r.natgroup = &natgroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NatgroupAPIReferencePutRequest) ReturnFields(returnFields string) NatgroupAPIReferencePutRequest {
+func (r NatgroupAPIUpdateRequest) ReturnFields(returnFields string) NatgroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NatgroupAPIReferencePutRequest) ReturnFields2(returnFields2 string) NatgroupAPIReferencePutRequest {
+func (r NatgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) NatgroupAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NatgroupAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) NatgroupAPIReferencePutRequest {
+func (r NatgroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NatgroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NatgroupAPIReferencePutRequest) Execute() (*UpdateNatgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r NatgroupAPIUpdateRequest) Execute() (*UpdateNatgroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a natgroup object
+Update Update a natgroup object
 
 Updates a specific natgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the natgroup object
-	@return NatgroupAPIReferencePutRequest
+	@return NatgroupAPIUpdateRequest
 */
-func (a *NatgroupAPIService) ReferencePut(ctx context.Context, reference string) NatgroupAPIReferencePutRequest {
-	return NatgroupAPIReferencePutRequest{
+func (a *NatgroupAPIService) Update(ctx context.Context, reference string) NatgroupAPIUpdateRequest {
+	return NatgroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *NatgroupAPIService) ReferencePut(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return UpdateNatgroupResponse
-func (a *NatgroupAPIService) ReferencePutExecute(r NatgroupAPIReferencePutRequest) (*UpdateNatgroupResponse, *http.Response, error) {
+func (a *NatgroupAPIService) UpdateExecute(r NatgroupAPIUpdateRequest) (*UpdateNatgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *NatgroupAPIService) ReferencePutExecute(r NatgroupAPIReferencePutReques
 		localVarReturnValue *UpdateNatgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NatgroupAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NatgroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

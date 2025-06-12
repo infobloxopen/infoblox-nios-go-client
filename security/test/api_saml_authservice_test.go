@@ -23,11 +23,11 @@ func TestSamlAuthserviceAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test SamlAuthserviceAPIService SamlauthserviceGet", func(t *testing.T) {
+	t.Run("Test SamlAuthserviceAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SamlAuthserviceAPI.SamlauthserviceGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SamlAuthserviceAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestSamlAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SamlAuthserviceAPIService SamlauthservicePost", func(t *testing.T) {
+	t.Run("Test SamlAuthserviceAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SamlAuthserviceAPI.SamlauthservicePost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.SamlAuthserviceAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SamlAuthserviceAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.SamlAuthserviceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestSamlAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SamlAuthserviceAPIService SamlauthserviceReferenceDelete", func(t *testing.T) {
+	t.Run("Test SamlAuthserviceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.SamlAuthserviceAPI.SamlauthserviceReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SamlAuthserviceAPIService SamlauthserviceReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.SamlAuthserviceAPI.SamlauthserviceReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SamlAuthserviceAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestSamlAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SamlAuthserviceAPIService SamlauthserviceReferencePut", func(t *testing.T) {
+	t.Run("Test SamlAuthserviceAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.SamlAuthserviceAPI.SamlauthserviceReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SamlAuthserviceAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

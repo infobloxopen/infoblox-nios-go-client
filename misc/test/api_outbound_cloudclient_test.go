@@ -23,11 +23,11 @@ func TestOutboundCloudclientAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test OutboundCloudclientAPIService OutboundcloudclientGet", func(t *testing.T) {
+	t.Run("Test OutboundCloudclientAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OutboundCloudclientAPI.OutboundcloudclientGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OutboundCloudclientAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestOutboundCloudclientAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OutboundCloudclientAPIService OutboundcloudclientReferenceGet", func(t *testing.T) {
+	t.Run("Test OutboundCloudclientAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.OutboundCloudclientAPI.OutboundcloudclientReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.OutboundCloudclientAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestOutboundCloudclientAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OutboundCloudclientAPIService OutboundcloudclientReferencePut", func(t *testing.T) {
+	t.Run("Test OutboundCloudclientAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.OutboundCloudclientAPI.OutboundcloudclientReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.OutboundCloudclientAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

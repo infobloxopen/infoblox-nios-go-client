@@ -23,11 +23,11 @@ func TestLocaluserAuthserviceAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test LocaluserAuthserviceAPIService LocaluserauthserviceGet", func(t *testing.T) {
+	t.Run("Test LocaluserAuthserviceAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.LocaluserAuthserviceAPI.LocaluserauthserviceGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.LocaluserAuthserviceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestLocaluserAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test LocaluserAuthserviceAPIService LocaluserauthserviceReferenceGet", func(t *testing.T) {
+	t.Run("Test LocaluserAuthserviceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.LocaluserAuthserviceAPI.LocaluserauthserviceReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.LocaluserAuthserviceAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

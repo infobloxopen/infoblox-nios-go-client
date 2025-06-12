@@ -23,11 +23,11 @@ func TestDtcMonitorPdpAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcMonitorPdpAPIService DtcmonitorpdpGet", func(t *testing.T) {
+	t.Run("Test DtcMonitorPdpAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcMonitorPdpAPI.DtcmonitorpdpGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorPdpAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDtcMonitorPdpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorPdpAPIService DtcmonitorpdpPost", func(t *testing.T) {
+	t.Run("Test DtcMonitorPdpAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcMonitorPdpAPI.DtcmonitorpdpPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DtcMonitorPdpAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DtcMonitorPdpAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DtcMonitorPdpAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDtcMonitorPdpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorPdpAPIService DtcmonitorpdpReferenceDelete", func(t *testing.T) {
+	t.Run("Test DtcMonitorPdpAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DtcMonitorPdpAPI.DtcmonitorpdpReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DtcMonitorPdpAPIService DtcmonitorpdpReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DtcMonitorPdpAPI.DtcmonitorpdpReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorPdpAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDtcMonitorPdpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorPdpAPIService DtcmonitorpdpReferencePut", func(t *testing.T) {
+	t.Run("Test DtcMonitorPdpAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcMonitorPdpAPI.DtcmonitorpdpReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorPdpAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

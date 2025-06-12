@@ -23,52 +23,52 @@ import (
 
 type DiscoveryGridpropertiesAPI interface {
 	/*
-		DiscoverygridpropertiesGet Retrieve discovery:gridproperties objects
+		List Retrieve discovery:gridproperties objects
 
 		Returns a list of discovery:gridproperties objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest
+		@return DiscoveryGridpropertiesAPIListRequest
 	*/
-	DiscoverygridpropertiesGet(ctx context.Context) DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest
+	List(ctx context.Context) DiscoveryGridpropertiesAPIListRequest
 
-	// DiscoverygridpropertiesGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDiscoveryGridpropertiesResponse
-	DiscoverygridpropertiesGetExecute(r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) (*ListDiscoveryGridpropertiesResponse, *http.Response, error)
+	ListExecute(r DiscoveryGridpropertiesAPIListRequest) (*ListDiscoveryGridpropertiesResponse, *http.Response, error)
 	/*
-		DiscoverygridpropertiesReferenceGet Get a specific discovery:gridproperties object
+		Read Get a specific discovery:gridproperties object
 
 		Returns a specific discovery:gridproperties object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:gridproperties object
-		@return DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest
+		@return DiscoveryGridpropertiesAPIReadRequest
 	*/
-	DiscoverygridpropertiesReferenceGet(ctx context.Context, reference string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoveryGridpropertiesAPIReadRequest
 
-	// DiscoverygridpropertiesReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoveryGridpropertiesResponse
-	DiscoverygridpropertiesReferenceGetExecute(r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest) (*GetDiscoveryGridpropertiesResponse, *http.Response, error)
+	ReadExecute(r DiscoveryGridpropertiesAPIReadRequest) (*GetDiscoveryGridpropertiesResponse, *http.Response, error)
 	/*
-		DiscoverygridpropertiesReferencePut Update a discovery:gridproperties object
+		Update Update a discovery:gridproperties object
 
 		Updates a specific discovery:gridproperties object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:gridproperties object
-		@return DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest
+		@return DiscoveryGridpropertiesAPIUpdateRequest
 	*/
-	DiscoverygridpropertiesReferencePut(ctx context.Context, reference string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest
+	Update(ctx context.Context, reference string) DiscoveryGridpropertiesAPIUpdateRequest
 
-	// DiscoverygridpropertiesReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDiscoveryGridpropertiesResponse
-	DiscoverygridpropertiesReferencePutExecute(r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest) (*UpdateDiscoveryGridpropertiesResponse, *http.Response, error)
+	UpdateExecute(r DiscoveryGridpropertiesAPIUpdateRequest) (*UpdateDiscoveryGridpropertiesResponse, *http.Response, error)
 }
 
 // DiscoveryGridpropertiesAPIService DiscoveryGridpropertiesAPI service
 type DiscoveryGridpropertiesAPIService internal.Service
 
-type DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest struct {
+type DiscoveryGridpropertiesAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DiscoveryGridpropertiesAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) ReturnFields(returnFields string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest {
+func (r DiscoveryGridpropertiesAPIListRequest) ReturnFields(returnFields string) DiscoveryGridpropertiesAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) ReturnFields2(returnFields2 string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest {
+func (r DiscoveryGridpropertiesAPIListRequest) ReturnFields2(returnFields2 string) DiscoveryGridpropertiesAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) MaxResults(maxResults int32) DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest {
+func (r DiscoveryGridpropertiesAPIListRequest) MaxResults(maxResults int32) DiscoveryGridpropertiesAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest {
+func (r DiscoveryGridpropertiesAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoveryGridpropertiesAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) Paging(paging int32) DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest {
+func (r DiscoveryGridpropertiesAPIListRequest) Paging(paging int32) DiscoveryGridpropertiesAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) PageId(pageId string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest {
+func (r DiscoveryGridpropertiesAPIListRequest) PageId(pageId string) DiscoveryGridpropertiesAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) Filters(filters map[string]interface{}) DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest {
+func (r DiscoveryGridpropertiesAPIListRequest) Filters(filters map[string]interface{}) DiscoveryGridpropertiesAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest {
+func (r DiscoveryGridpropertiesAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryGridpropertiesAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) Execute() (*ListDiscoveryGridpropertiesResponse, *http.Response, error) {
-	return r.ApiService.DiscoverygridpropertiesGetExecute(r)
+func (r DiscoveryGridpropertiesAPIListRequest) Execute() (*ListDiscoveryGridpropertiesResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DiscoverygridpropertiesGet Retrieve discovery:gridproperties objects
+List Retrieve discovery:gridproperties objects
 
 Returns a list of discovery:gridproperties objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest
+	@return DiscoveryGridpropertiesAPIListRequest
 */
-func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesGet(ctx context.Context) DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest {
-	return DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest{
+func (a *DiscoveryGridpropertiesAPIService) List(ctx context.Context) DiscoveryGridpropertiesAPIListRequest {
+	return DiscoveryGridpropertiesAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesGet(ctx conte
 // Execute executes the request
 //
 //	@return ListDiscoveryGridpropertiesResponse
-func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesGetExecute(r DiscoveryGridpropertiesAPIDiscoverygridpropertiesGetRequest) (*ListDiscoveryGridpropertiesResponse, *http.Response, error) {
+func (a *DiscoveryGridpropertiesAPIService) ListExecute(r DiscoveryGridpropertiesAPIListRequest) (*ListDiscoveryGridpropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesGetExecute(r 
 		localVarReturnValue *ListDiscoveryGridpropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryGridpropertiesAPIService.DiscoverygridpropertiesGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryGridpropertiesAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesGetExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest struct {
+type DiscoveryGridpropertiesAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DiscoveryGridpropertiesAPI
 	reference      string
@@ -249,38 +249,38 @@ type DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest struct
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest) ReturnFields(returnFields string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest {
+func (r DiscoveryGridpropertiesAPIReadRequest) ReturnFields(returnFields string) DiscoveryGridpropertiesAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest {
+func (r DiscoveryGridpropertiesAPIReadRequest) ReturnFields2(returnFields2 string) DiscoveryGridpropertiesAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest {
+func (r DiscoveryGridpropertiesAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoveryGridpropertiesAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest) Execute() (*GetDiscoveryGridpropertiesResponse, *http.Response, error) {
-	return r.ApiService.DiscoverygridpropertiesReferenceGetExecute(r)
+func (r DiscoveryGridpropertiesAPIReadRequest) Execute() (*GetDiscoveryGridpropertiesResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DiscoverygridpropertiesReferenceGet Get a specific discovery:gridproperties object
+Read Get a specific discovery:gridproperties object
 
 Returns a specific discovery:gridproperties object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:gridproperties object
-	@return DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest
+	@return DiscoveryGridpropertiesAPIReadRequest
 */
-func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesReferenceGet(ctx context.Context, reference string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest {
-	return DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest{
+func (a *DiscoveryGridpropertiesAPIService) Read(ctx context.Context, reference string) DiscoveryGridpropertiesAPIReadRequest {
+	return DiscoveryGridpropertiesAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesReferenceGet(
 // Execute executes the request
 //
 //	@return GetDiscoveryGridpropertiesResponse
-func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesReferenceGetExecute(r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferenceGetRequest) (*GetDiscoveryGridpropertiesResponse, *http.Response, error) {
+func (a *DiscoveryGridpropertiesAPIService) ReadExecute(r DiscoveryGridpropertiesAPIReadRequest) (*GetDiscoveryGridpropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesReferenceGetE
 		localVarReturnValue *GetDiscoveryGridpropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryGridpropertiesAPIService.DiscoverygridpropertiesReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryGridpropertiesAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesReferenceGetE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest struct {
+type DiscoveryGridpropertiesAPIUpdateRequest struct {
 	ctx                     context.Context
 	ApiService              DiscoveryGridpropertiesAPI
 	reference               string
@@ -377,44 +377,44 @@ type DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest struct
 }
 
 // Object data to update
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest) DiscoveryGridproperties(discoveryGridproperties DiscoveryGridproperties) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest {
+func (r DiscoveryGridpropertiesAPIUpdateRequest) DiscoveryGridproperties(discoveryGridproperties DiscoveryGridproperties) DiscoveryGridpropertiesAPIUpdateRequest {
 	r.discoveryGridproperties = &discoveryGridproperties
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest) ReturnFields(returnFields string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest {
+func (r DiscoveryGridpropertiesAPIUpdateRequest) ReturnFields(returnFields string) DiscoveryGridpropertiesAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest) ReturnFields2(returnFields2 string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest {
+func (r DiscoveryGridpropertiesAPIUpdateRequest) ReturnFields2(returnFields2 string) DiscoveryGridpropertiesAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest) ReturnAsObject(returnAsObject int32) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest {
+func (r DiscoveryGridpropertiesAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DiscoveryGridpropertiesAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest) Execute() (*UpdateDiscoveryGridpropertiesResponse, *http.Response, error) {
-	return r.ApiService.DiscoverygridpropertiesReferencePutExecute(r)
+func (r DiscoveryGridpropertiesAPIUpdateRequest) Execute() (*UpdateDiscoveryGridpropertiesResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DiscoverygridpropertiesReferencePut Update a discovery:gridproperties object
+Update Update a discovery:gridproperties object
 
 Updates a specific discovery:gridproperties object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:gridproperties object
-	@return DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest
+	@return DiscoveryGridpropertiesAPIUpdateRequest
 */
-func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesReferencePut(ctx context.Context, reference string) DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest {
-	return DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest{
+func (a *DiscoveryGridpropertiesAPIService) Update(ctx context.Context, reference string) DiscoveryGridpropertiesAPIUpdateRequest {
+	return DiscoveryGridpropertiesAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesReferencePut(
 // Execute executes the request
 //
 //	@return UpdateDiscoveryGridpropertiesResponse
-func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesReferencePutExecute(r DiscoveryGridpropertiesAPIDiscoverygridpropertiesReferencePutRequest) (*UpdateDiscoveryGridpropertiesResponse, *http.Response, error) {
+func (a *DiscoveryGridpropertiesAPIService) UpdateExecute(r DiscoveryGridpropertiesAPIUpdateRequest) (*UpdateDiscoveryGridpropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *DiscoveryGridpropertiesAPIService) DiscoverygridpropertiesReferencePutE
 		localVarReturnValue *UpdateDiscoveryGridpropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryGridpropertiesAPIService.DiscoverygridpropertiesReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryGridpropertiesAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

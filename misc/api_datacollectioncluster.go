@@ -23,78 +23,302 @@ import (
 
 type DatacollectionclusterAPI interface {
 	/*
-		Get Retrieve datacollectioncluster objects
-
-		Returns a list of datacollectioncluster objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DatacollectionclusterAPIGetRequest
-	*/
-	Get(ctx context.Context) DatacollectionclusterAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListDatacollectionclusterResponse
-	GetExecute(r DatacollectionclusterAPIGetRequest) (*ListDatacollectionclusterResponse, *http.Response, error)
-	/*
-		Post Create a datacollectioncluster object
+		Create Create a datacollectioncluster object
 
 		Creates a new datacollectioncluster object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DatacollectionclusterAPIPostRequest
+		@return DatacollectionclusterAPICreateRequest
 	*/
-	Post(ctx context.Context) DatacollectionclusterAPIPostRequest
+	Create(ctx context.Context) DatacollectionclusterAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDatacollectionclusterResponse
-	PostExecute(r DatacollectionclusterAPIPostRequest) (*CreateDatacollectionclusterResponse, *http.Response, error)
+	CreateExecute(r DatacollectionclusterAPICreateRequest) (*CreateDatacollectionclusterResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a datacollectioncluster object
+		Delete Delete a datacollectioncluster object
 
 		Deletes a specific datacollectioncluster object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the datacollectioncluster object
-		@return DatacollectionclusterAPIReferenceDeleteRequest
+		@return DatacollectionclusterAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) DatacollectionclusterAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DatacollectionclusterAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r DatacollectionclusterAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DatacollectionclusterAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific datacollectioncluster object
+		List Retrieve datacollectioncluster objects
+
+		Returns a list of datacollectioncluster objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DatacollectionclusterAPIListRequest
+	*/
+	List(ctx context.Context) DatacollectionclusterAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDatacollectionclusterResponse
+	ListExecute(r DatacollectionclusterAPIListRequest) (*ListDatacollectionclusterResponse, *http.Response, error)
+	/*
+		Read Get a specific datacollectioncluster object
 
 		Returns a specific datacollectioncluster object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the datacollectioncluster object
-		@return DatacollectionclusterAPIReferenceGetRequest
+		@return DatacollectionclusterAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) DatacollectionclusterAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) DatacollectionclusterAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDatacollectionclusterResponse
-	ReferenceGetExecute(r DatacollectionclusterAPIReferenceGetRequest) (*GetDatacollectionclusterResponse, *http.Response, error)
+	ReadExecute(r DatacollectionclusterAPIReadRequest) (*GetDatacollectionclusterResponse, *http.Response, error)
 	/*
-		ReferencePut Update a datacollectioncluster object
+		Update Update a datacollectioncluster object
 
 		Updates a specific datacollectioncluster object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the datacollectioncluster object
-		@return DatacollectionclusterAPIReferencePutRequest
+		@return DatacollectionclusterAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) DatacollectionclusterAPIReferencePutRequest
+	Update(ctx context.Context, reference string) DatacollectionclusterAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDatacollectionclusterResponse
-	ReferencePutExecute(r DatacollectionclusterAPIReferencePutRequest) (*UpdateDatacollectionclusterResponse, *http.Response, error)
+	UpdateExecute(r DatacollectionclusterAPIUpdateRequest) (*UpdateDatacollectionclusterResponse, *http.Response, error)
 }
 
 // DatacollectionclusterAPIService DatacollectionclusterAPI service
 type DatacollectionclusterAPIService internal.Service
 
-type DatacollectionclusterAPIGetRequest struct {
+type DatacollectionclusterAPICreateRequest struct {
+	ctx                   context.Context
+	ApiService            DatacollectionclusterAPI
+	datacollectioncluster *Datacollectioncluster
+	returnFields          *string
+	returnFields2         *string
+	returnAsObject        *int32
+}
+
+// Object data to create
+func (r DatacollectionclusterAPICreateRequest) Datacollectioncluster(datacollectioncluster Datacollectioncluster) DatacollectionclusterAPICreateRequest {
+	r.datacollectioncluster = &datacollectioncluster
+	return r
+}
+
+// Enter the field names followed by comma
+func (r DatacollectionclusterAPICreateRequest) ReturnFields(returnFields string) DatacollectionclusterAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DatacollectionclusterAPICreateRequest) ReturnFields2(returnFields2 string) DatacollectionclusterAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DatacollectionclusterAPICreateRequest) ReturnAsObject(returnAsObject int32) DatacollectionclusterAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r DatacollectionclusterAPICreateRequest) Execute() (*CreateDatacollectionclusterResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a datacollectioncluster object
+
+Creates a new datacollectioncluster object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DatacollectionclusterAPICreateRequest
+*/
+func (a *DatacollectionclusterAPIService) Create(ctx context.Context) DatacollectionclusterAPICreateRequest {
+	return DatacollectionclusterAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateDatacollectionclusterResponse
+func (a *DatacollectionclusterAPIService) CreateExecute(r DatacollectionclusterAPICreateRequest) (*CreateDatacollectionclusterResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateDatacollectionclusterResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DatacollectionclusterAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/datacollectioncluster"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.datacollectioncluster == nil {
+		return localVarReturnValue, nil, internal.ReportError("datacollectioncluster is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.datacollectioncluster
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DatacollectionclusterAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DatacollectionclusterAPI
+	reference  string
+}
+
+func (r DatacollectionclusterAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a datacollectioncluster object
+
+Deletes a specific datacollectioncluster object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the datacollectioncluster object
+	@return DatacollectionclusterAPIDeleteRequest
+*/
+func (a *DatacollectionclusterAPIService) Delete(ctx context.Context, reference string) DatacollectionclusterAPIDeleteRequest {
+	return DatacollectionclusterAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DatacollectionclusterAPIService) DeleteExecute(r DatacollectionclusterAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DatacollectionclusterAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/datacollectioncluster/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DatacollectionclusterAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DatacollectionclusterAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type DatacollectionclusterAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DatacollectionclusterAPIGetRequest) ReturnFields(returnFields string) DatacollectionclusterAPIGetRequest {
+func (r DatacollectionclusterAPIListRequest) ReturnFields(returnFields string) DatacollectionclusterAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DatacollectionclusterAPIGetRequest) ReturnFields2(returnFields2 string) DatacollectionclusterAPIGetRequest {
+func (r DatacollectionclusterAPIListRequest) ReturnFields2(returnFields2 string) DatacollectionclusterAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DatacollectionclusterAPIGetRequest) MaxResults(maxResults int32) DatacollectionclusterAPIGetRequest {
+func (r DatacollectionclusterAPIListRequest) MaxResults(maxResults int32) DatacollectionclusterAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DatacollectionclusterAPIGetRequest) ReturnAsObject(returnAsObject int32) DatacollectionclusterAPIGetRequest {
+func (r DatacollectionclusterAPIListRequest) ReturnAsObject(returnAsObject int32) DatacollectionclusterAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DatacollectionclusterAPIGetRequest) Paging(paging int32) DatacollectionclusterAPIGetRequest {
+func (r DatacollectionclusterAPIListRequest) Paging(paging int32) DatacollectionclusterAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DatacollectionclusterAPIGetRequest) PageId(pageId string) DatacollectionclusterAPIGetRequest {
+func (r DatacollectionclusterAPIListRequest) PageId(pageId string) DatacollectionclusterAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DatacollectionclusterAPIGetRequest) Filters(filters map[string]interface{}) DatacollectionclusterAPIGetRequest {
+func (r DatacollectionclusterAPIListRequest) Filters(filters map[string]interface{}) DatacollectionclusterAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DatacollectionclusterAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DatacollectionclusterAPIGetRequest {
+func (r DatacollectionclusterAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DatacollectionclusterAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DatacollectionclusterAPIGetRequest) Execute() (*ListDatacollectionclusterResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r DatacollectionclusterAPIListRequest) Execute() (*ListDatacollectionclusterResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve datacollectioncluster objects
+List Retrieve datacollectioncluster objects
 
 Returns a list of datacollectioncluster objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DatacollectionclusterAPIGetRequest
+	@return DatacollectionclusterAPIListRequest
 */
-func (a *DatacollectionclusterAPIService) Get(ctx context.Context) DatacollectionclusterAPIGetRequest {
-	return DatacollectionclusterAPIGetRequest{
+func (a *DatacollectionclusterAPIService) List(ctx context.Context) DatacollectionclusterAPIListRequest {
+	return DatacollectionclusterAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *DatacollectionclusterAPIService) Get(ctx context.Context) Datacollectio
 // Execute executes the request
 //
 //	@return ListDatacollectionclusterResponse
-func (a *DatacollectionclusterAPIService) GetExecute(r DatacollectionclusterAPIGetRequest) (*ListDatacollectionclusterResponse, *http.Response, error) {
+func (a *DatacollectionclusterAPIService) ListExecute(r DatacollectionclusterAPIListRequest) (*ListDatacollectionclusterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *DatacollectionclusterAPIService) GetExecute(r DatacollectionclusterAPIG
 		localVarReturnValue *ListDatacollectionclusterResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DatacollectionclusterAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DatacollectionclusterAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *DatacollectionclusterAPIService) GetExecute(r DatacollectionclusterAPIG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DatacollectionclusterAPIPostRequest struct {
-	ctx                   context.Context
-	ApiService            DatacollectionclusterAPI
-	datacollectioncluster *Datacollectioncluster
-	returnFields          *string
-	returnFields2         *string
-	returnAsObject        *int32
-}
-
-// Object data to create
-func (r DatacollectionclusterAPIPostRequest) Datacollectioncluster(datacollectioncluster Datacollectioncluster) DatacollectionclusterAPIPostRequest {
-	r.datacollectioncluster = &datacollectioncluster
-	return r
-}
-
-// Enter the field names followed by comma
-func (r DatacollectionclusterAPIPostRequest) ReturnFields(returnFields string) DatacollectionclusterAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DatacollectionclusterAPIPostRequest) ReturnFields2(returnFields2 string) DatacollectionclusterAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DatacollectionclusterAPIPostRequest) ReturnAsObject(returnAsObject int32) DatacollectionclusterAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DatacollectionclusterAPIPostRequest) Execute() (*CreateDatacollectionclusterResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a datacollectioncluster object
-
-Creates a new datacollectioncluster object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DatacollectionclusterAPIPostRequest
-*/
-func (a *DatacollectionclusterAPIService) Post(ctx context.Context) DatacollectionclusterAPIPostRequest {
-	return DatacollectionclusterAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateDatacollectionclusterResponse
-func (a *DatacollectionclusterAPIService) PostExecute(r DatacollectionclusterAPIPostRequest) (*CreateDatacollectionclusterResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateDatacollectionclusterResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DatacollectionclusterAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/datacollectioncluster"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.datacollectioncluster == nil {
-		return localVarReturnValue, nil, internal.ReportError("datacollectioncluster is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.datacollectioncluster
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DatacollectionclusterAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DatacollectionclusterAPI
-	reference  string
-}
-
-func (r DatacollectionclusterAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a datacollectioncluster object
-
-Deletes a specific datacollectioncluster object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the datacollectioncluster object
-	@return DatacollectionclusterAPIReferenceDeleteRequest
-*/
-func (a *DatacollectionclusterAPIService) ReferenceDelete(ctx context.Context, reference string) DatacollectionclusterAPIReferenceDeleteRequest {
-	return DatacollectionclusterAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DatacollectionclusterAPIService) ReferenceDeleteExecute(r DatacollectionclusterAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DatacollectionclusterAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/datacollectioncluster/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DatacollectionclusterAPIReferenceGetRequest struct {
+type DatacollectionclusterAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DatacollectionclusterAPI
 	reference      string
@@ -499,38 +499,38 @@ type DatacollectionclusterAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DatacollectionclusterAPIReferenceGetRequest) ReturnFields(returnFields string) DatacollectionclusterAPIReferenceGetRequest {
+func (r DatacollectionclusterAPIReadRequest) ReturnFields(returnFields string) DatacollectionclusterAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DatacollectionclusterAPIReferenceGetRequest) ReturnFields2(returnFields2 string) DatacollectionclusterAPIReferenceGetRequest {
+func (r DatacollectionclusterAPIReadRequest) ReturnFields2(returnFields2 string) DatacollectionclusterAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DatacollectionclusterAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) DatacollectionclusterAPIReferenceGetRequest {
+func (r DatacollectionclusterAPIReadRequest) ReturnAsObject(returnAsObject int32) DatacollectionclusterAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DatacollectionclusterAPIReferenceGetRequest) Execute() (*GetDatacollectionclusterResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r DatacollectionclusterAPIReadRequest) Execute() (*GetDatacollectionclusterResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific datacollectioncluster object
+Read Get a specific datacollectioncluster object
 
 Returns a specific datacollectioncluster object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the datacollectioncluster object
-	@return DatacollectionclusterAPIReferenceGetRequest
+	@return DatacollectionclusterAPIReadRequest
 */
-func (a *DatacollectionclusterAPIService) ReferenceGet(ctx context.Context, reference string) DatacollectionclusterAPIReferenceGetRequest {
-	return DatacollectionclusterAPIReferenceGetRequest{
+func (a *DatacollectionclusterAPIService) Read(ctx context.Context, reference string) DatacollectionclusterAPIReadRequest {
+	return DatacollectionclusterAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *DatacollectionclusterAPIService) ReferenceGet(ctx context.Context, refe
 // Execute executes the request
 //
 //	@return GetDatacollectionclusterResponse
-func (a *DatacollectionclusterAPIService) ReferenceGetExecute(r DatacollectionclusterAPIReferenceGetRequest) (*GetDatacollectionclusterResponse, *http.Response, error) {
+func (a *DatacollectionclusterAPIService) ReadExecute(r DatacollectionclusterAPIReadRequest) (*GetDatacollectionclusterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *DatacollectionclusterAPIService) ReferenceGetExecute(r Datacollectioncl
 		localVarReturnValue *GetDatacollectionclusterResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DatacollectionclusterAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DatacollectionclusterAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *DatacollectionclusterAPIService) ReferenceGetExecute(r Datacollectioncl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DatacollectionclusterAPIReferencePutRequest struct {
+type DatacollectionclusterAPIUpdateRequest struct {
 	ctx                   context.Context
 	ApiService            DatacollectionclusterAPI
 	reference             string
@@ -627,44 +627,44 @@ type DatacollectionclusterAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DatacollectionclusterAPIReferencePutRequest) Datacollectioncluster(datacollectioncluster Datacollectioncluster) DatacollectionclusterAPIReferencePutRequest {
+func (r DatacollectionclusterAPIUpdateRequest) Datacollectioncluster(datacollectioncluster Datacollectioncluster) DatacollectionclusterAPIUpdateRequest {
 	r.datacollectioncluster = &datacollectioncluster
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DatacollectionclusterAPIReferencePutRequest) ReturnFields(returnFields string) DatacollectionclusterAPIReferencePutRequest {
+func (r DatacollectionclusterAPIUpdateRequest) ReturnFields(returnFields string) DatacollectionclusterAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DatacollectionclusterAPIReferencePutRequest) ReturnFields2(returnFields2 string) DatacollectionclusterAPIReferencePutRequest {
+func (r DatacollectionclusterAPIUpdateRequest) ReturnFields2(returnFields2 string) DatacollectionclusterAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DatacollectionclusterAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) DatacollectionclusterAPIReferencePutRequest {
+func (r DatacollectionclusterAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DatacollectionclusterAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DatacollectionclusterAPIReferencePutRequest) Execute() (*UpdateDatacollectionclusterResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r DatacollectionclusterAPIUpdateRequest) Execute() (*UpdateDatacollectionclusterResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a datacollectioncluster object
+Update Update a datacollectioncluster object
 
 Updates a specific datacollectioncluster object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the datacollectioncluster object
-	@return DatacollectionclusterAPIReferencePutRequest
+	@return DatacollectionclusterAPIUpdateRequest
 */
-func (a *DatacollectionclusterAPIService) ReferencePut(ctx context.Context, reference string) DatacollectionclusterAPIReferencePutRequest {
-	return DatacollectionclusterAPIReferencePutRequest{
+func (a *DatacollectionclusterAPIService) Update(ctx context.Context, reference string) DatacollectionclusterAPIUpdateRequest {
+	return DatacollectionclusterAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *DatacollectionclusterAPIService) ReferencePut(ctx context.Context, refe
 // Execute executes the request
 //
 //	@return UpdateDatacollectionclusterResponse
-func (a *DatacollectionclusterAPIService) ReferencePutExecute(r DatacollectionclusterAPIReferencePutRequest) (*UpdateDatacollectionclusterResponse, *http.Response, error) {
+func (a *DatacollectionclusterAPIService) UpdateExecute(r DatacollectionclusterAPIUpdateRequest) (*UpdateDatacollectionclusterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *DatacollectionclusterAPIService) ReferencePutExecute(r Datacollectioncl
 		localVarReturnValue *UpdateDatacollectionclusterResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DatacollectionclusterAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DatacollectionclusterAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

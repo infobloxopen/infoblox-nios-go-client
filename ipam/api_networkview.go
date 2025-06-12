@@ -23,249 +23,78 @@ import (
 
 type NetworkviewAPI interface {
 	/*
-		Get Retrieve networkview objects
-
-		Returns a list of networkview objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NetworkviewAPIGetRequest
-	*/
-	Get(ctx context.Context) NetworkviewAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListNetworkviewResponse
-	GetExecute(r NetworkviewAPIGetRequest) (*ListNetworkviewResponse, *http.Response, error)
-	/*
-		Post Create a networkview object
+		Create Create a networkview object
 
 		Creates a new networkview object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NetworkviewAPIPostRequest
+		@return NetworkviewAPICreateRequest
 	*/
-	Post(ctx context.Context) NetworkviewAPIPostRequest
+	Create(ctx context.Context) NetworkviewAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNetworkviewResponse
-	PostExecute(r NetworkviewAPIPostRequest) (*CreateNetworkviewResponse, *http.Response, error)
+	CreateExecute(r NetworkviewAPICreateRequest) (*CreateNetworkviewResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a networkview object
+		Delete Delete a networkview object
 
 		Deletes a specific networkview object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the networkview object
-		@return NetworkviewAPIReferenceDeleteRequest
+		@return NetworkviewAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) NetworkviewAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NetworkviewAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r NetworkviewAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NetworkviewAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific networkview object
+		List Retrieve networkview objects
+
+		Returns a list of networkview objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NetworkviewAPIListRequest
+	*/
+	List(ctx context.Context) NetworkviewAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNetworkviewResponse
+	ListExecute(r NetworkviewAPIListRequest) (*ListNetworkviewResponse, *http.Response, error)
+	/*
+		Read Get a specific networkview object
 
 		Returns a specific networkview object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the networkview object
-		@return NetworkviewAPIReferenceGetRequest
+		@return NetworkviewAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) NetworkviewAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) NetworkviewAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNetworkviewResponse
-	ReferenceGetExecute(r NetworkviewAPIReferenceGetRequest) (*GetNetworkviewResponse, *http.Response, error)
+	ReadExecute(r NetworkviewAPIReadRequest) (*GetNetworkviewResponse, *http.Response, error)
 	/*
-		ReferencePut Update a networkview object
+		Update Update a networkview object
 
 		Updates a specific networkview object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the networkview object
-		@return NetworkviewAPIReferencePutRequest
+		@return NetworkviewAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) NetworkviewAPIReferencePutRequest
+	Update(ctx context.Context, reference string) NetworkviewAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNetworkviewResponse
-	ReferencePutExecute(r NetworkviewAPIReferencePutRequest) (*UpdateNetworkviewResponse, *http.Response, error)
+	UpdateExecute(r NetworkviewAPIUpdateRequest) (*UpdateNetworkviewResponse, *http.Response, error)
 }
 
 // NetworkviewAPIService NetworkviewAPI service
 type NetworkviewAPIService internal.Service
 
-type NetworkviewAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     NetworkviewAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r NetworkviewAPIGetRequest) ReturnFields(returnFields string) NetworkviewAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkviewAPIGetRequest) ReturnFields2(returnFields2 string) NetworkviewAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r NetworkviewAPIGetRequest) MaxResults(maxResults int32) NetworkviewAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NetworkviewAPIGetRequest) ReturnAsObject(returnAsObject int32) NetworkviewAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r NetworkviewAPIGetRequest) Paging(paging int32) NetworkviewAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r NetworkviewAPIGetRequest) PageId(pageId string) NetworkviewAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r NetworkviewAPIGetRequest) Filters(filters map[string]interface{}) NetworkviewAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r NetworkviewAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NetworkviewAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r NetworkviewAPIGetRequest) Execute() (*ListNetworkviewResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve networkview objects
-
-Returns a list of networkview objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NetworkviewAPIGetRequest
-*/
-func (a *NetworkviewAPIService) Get(ctx context.Context) NetworkviewAPIGetRequest {
-	return NetworkviewAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListNetworkviewResponse
-func (a *NetworkviewAPIService) GetExecute(r NetworkviewAPIGetRequest) (*ListNetworkviewResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListNetworkviewResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkviewAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/networkview"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NetworkviewAPIPostRequest struct {
+type NetworkviewAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     NetworkviewAPI
 	networkview    *Networkview
@@ -275,43 +104,43 @@ type NetworkviewAPIPostRequest struct {
 }
 
 // Object data to create
-func (r NetworkviewAPIPostRequest) Networkview(networkview Networkview) NetworkviewAPIPostRequest {
+func (r NetworkviewAPICreateRequest) Networkview(networkview Networkview) NetworkviewAPICreateRequest {
 	r.networkview = &networkview
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NetworkviewAPIPostRequest) ReturnFields(returnFields string) NetworkviewAPIPostRequest {
+func (r NetworkviewAPICreateRequest) ReturnFields(returnFields string) NetworkviewAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkviewAPIPostRequest) ReturnFields2(returnFields2 string) NetworkviewAPIPostRequest {
+func (r NetworkviewAPICreateRequest) ReturnFields2(returnFields2 string) NetworkviewAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworkviewAPIPostRequest) ReturnAsObject(returnAsObject int32) NetworkviewAPIPostRequest {
+func (r NetworkviewAPICreateRequest) ReturnAsObject(returnAsObject int32) NetworkviewAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NetworkviewAPIPostRequest) Execute() (*CreateNetworkviewResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r NetworkviewAPICreateRequest) Execute() (*CreateNetworkviewResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a networkview object
+Create Create a networkview object
 
 Creates a new networkview object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NetworkviewAPIPostRequest
+	@return NetworkviewAPICreateRequest
 */
-func (a *NetworkviewAPIService) Post(ctx context.Context) NetworkviewAPIPostRequest {
-	return NetworkviewAPIPostRequest{
+func (a *NetworkviewAPIService) Create(ctx context.Context) NetworkviewAPICreateRequest {
+	return NetworkviewAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *NetworkviewAPIService) Post(ctx context.Context) NetworkviewAPIPostRequ
 // Execute executes the request
 //
 //	@return CreateNetworkviewResponse
-func (a *NetworkviewAPIService) PostExecute(r NetworkviewAPIPostRequest) (*CreateNetworkviewResponse, *http.Response, error) {
+func (a *NetworkviewAPIService) CreateExecute(r NetworkviewAPICreateRequest) (*CreateNetworkviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *NetworkviewAPIService) PostExecute(r NetworkviewAPIPostRequest) (*Creat
 		localVarReturnValue *CreateNetworkviewResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkviewAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkviewAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *NetworkviewAPIService) PostExecute(r NetworkviewAPIPostRequest) (*Creat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NetworkviewAPIReferenceDeleteRequest struct {
+type NetworkviewAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService NetworkviewAPI
 	reference  string
 }
 
-func (r NetworkviewAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r NetworkviewAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a networkview object
+Delete Delete a networkview object
 
 Deletes a specific networkview object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the networkview object
-	@return NetworkviewAPIReferenceDeleteRequest
+	@return NetworkviewAPIDeleteRequest
 */
-func (a *NetworkviewAPIService) ReferenceDelete(ctx context.Context, reference string) NetworkviewAPIReferenceDeleteRequest {
-	return NetworkviewAPIReferenceDeleteRequest{
+func (a *NetworkviewAPIService) Delete(ctx context.Context, reference string) NetworkviewAPIDeleteRequest {
+	return NetworkviewAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *NetworkviewAPIService) ReferenceDelete(ctx context.Context, reference s
 }
 
 // Execute executes the request
-func (a *NetworkviewAPIService) ReferenceDeleteExecute(r NetworkviewAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *NetworkviewAPIService) DeleteExecute(r NetworkviewAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkviewAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkviewAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *NetworkviewAPIService) ReferenceDeleteExecute(r NetworkviewAPIReference
 	return localVarHTTPResponse, nil
 }
 
-type NetworkviewAPIReferenceGetRequest struct {
+type NetworkviewAPIListRequest struct {
+	ctx            context.Context
+	ApiService     NetworkviewAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r NetworkviewAPIListRequest) ReturnFields(returnFields string) NetworkviewAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NetworkviewAPIListRequest) ReturnFields2(returnFields2 string) NetworkviewAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r NetworkviewAPIListRequest) MaxResults(maxResults int32) NetworkviewAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NetworkviewAPIListRequest) ReturnAsObject(returnAsObject int32) NetworkviewAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r NetworkviewAPIListRequest) Paging(paging int32) NetworkviewAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r NetworkviewAPIListRequest) PageId(pageId string) NetworkviewAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r NetworkviewAPIListRequest) Filters(filters map[string]interface{}) NetworkviewAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r NetworkviewAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NetworkviewAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r NetworkviewAPIListRequest) Execute() (*ListNetworkviewResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve networkview objects
+
+Returns a list of networkview objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NetworkviewAPIListRequest
+*/
+func (a *NetworkviewAPIService) List(ctx context.Context) NetworkviewAPIListRequest {
+	return NetworkviewAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListNetworkviewResponse
+func (a *NetworkviewAPIService) ListExecute(r NetworkviewAPIListRequest) (*ListNetworkviewResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListNetworkviewResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkviewAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/networkview"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NetworkviewAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     NetworkviewAPI
 	reference      string
@@ -511,38 +511,38 @@ type NetworkviewAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r NetworkviewAPIReferenceGetRequest) ReturnFields(returnFields string) NetworkviewAPIReferenceGetRequest {
+func (r NetworkviewAPIReadRequest) ReturnFields(returnFields string) NetworkviewAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkviewAPIReferenceGetRequest) ReturnFields2(returnFields2 string) NetworkviewAPIReferenceGetRequest {
+func (r NetworkviewAPIReadRequest) ReturnFields2(returnFields2 string) NetworkviewAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworkviewAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) NetworkviewAPIReferenceGetRequest {
+func (r NetworkviewAPIReadRequest) ReturnAsObject(returnAsObject int32) NetworkviewAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NetworkviewAPIReferenceGetRequest) Execute() (*GetNetworkviewResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r NetworkviewAPIReadRequest) Execute() (*GetNetworkviewResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific networkview object
+Read Get a specific networkview object
 
 Returns a specific networkview object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the networkview object
-	@return NetworkviewAPIReferenceGetRequest
+	@return NetworkviewAPIReadRequest
 */
-func (a *NetworkviewAPIService) ReferenceGet(ctx context.Context, reference string) NetworkviewAPIReferenceGetRequest {
-	return NetworkviewAPIReferenceGetRequest{
+func (a *NetworkviewAPIService) Read(ctx context.Context, reference string) NetworkviewAPIReadRequest {
+	return NetworkviewAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *NetworkviewAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetNetworkviewResponse
-func (a *NetworkviewAPIService) ReferenceGetExecute(r NetworkviewAPIReferenceGetRequest) (*GetNetworkviewResponse, *http.Response, error) {
+func (a *NetworkviewAPIService) ReadExecute(r NetworkviewAPIReadRequest) (*GetNetworkviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *NetworkviewAPIService) ReferenceGetExecute(r NetworkviewAPIReferenceGet
 		localVarReturnValue *GetNetworkviewResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkviewAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkviewAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *NetworkviewAPIService) ReferenceGetExecute(r NetworkviewAPIReferenceGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NetworkviewAPIReferencePutRequest struct {
+type NetworkviewAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     NetworkviewAPI
 	reference      string
@@ -639,44 +639,44 @@ type NetworkviewAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r NetworkviewAPIReferencePutRequest) Networkview(networkview Networkview) NetworkviewAPIReferencePutRequest {
+func (r NetworkviewAPIUpdateRequest) Networkview(networkview Networkview) NetworkviewAPIUpdateRequest {
 	r.networkview = &networkview
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NetworkviewAPIReferencePutRequest) ReturnFields(returnFields string) NetworkviewAPIReferencePutRequest {
+func (r NetworkviewAPIUpdateRequest) ReturnFields(returnFields string) NetworkviewAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkviewAPIReferencePutRequest) ReturnFields2(returnFields2 string) NetworkviewAPIReferencePutRequest {
+func (r NetworkviewAPIUpdateRequest) ReturnFields2(returnFields2 string) NetworkviewAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworkviewAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) NetworkviewAPIReferencePutRequest {
+func (r NetworkviewAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NetworkviewAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NetworkviewAPIReferencePutRequest) Execute() (*UpdateNetworkviewResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r NetworkviewAPIUpdateRequest) Execute() (*UpdateNetworkviewResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a networkview object
+Update Update a networkview object
 
 Updates a specific networkview object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the networkview object
-	@return NetworkviewAPIReferencePutRequest
+	@return NetworkviewAPIUpdateRequest
 */
-func (a *NetworkviewAPIService) ReferencePut(ctx context.Context, reference string) NetworkviewAPIReferencePutRequest {
-	return NetworkviewAPIReferencePutRequest{
+func (a *NetworkviewAPIService) Update(ctx context.Context, reference string) NetworkviewAPIUpdateRequest {
+	return NetworkviewAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *NetworkviewAPIService) ReferencePut(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return UpdateNetworkviewResponse
-func (a *NetworkviewAPIService) ReferencePutExecute(r NetworkviewAPIReferencePutRequest) (*UpdateNetworkviewResponse, *http.Response, error) {
+func (a *NetworkviewAPIService) UpdateExecute(r NetworkviewAPIUpdateRequest) (*UpdateNetworkviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *NetworkviewAPIService) ReferencePutExecute(r NetworkviewAPIReferencePut
 		localVarReturnValue *UpdateNetworkviewResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkviewAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkviewAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

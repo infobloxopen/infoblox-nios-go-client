@@ -23,52 +23,52 @@ import (
 
 type CaptiveportalAPI interface {
 	/*
-		Get Retrieve captiveportal objects
+		List Retrieve captiveportal objects
 
 		Returns a list of captiveportal objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return CaptiveportalAPIGetRequest
+		@return CaptiveportalAPIListRequest
 	*/
-	Get(ctx context.Context) CaptiveportalAPIGetRequest
+	List(ctx context.Context) CaptiveportalAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListCaptiveportalResponse
-	GetExecute(r CaptiveportalAPIGetRequest) (*ListCaptiveportalResponse, *http.Response, error)
+	ListExecute(r CaptiveportalAPIListRequest) (*ListCaptiveportalResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific captiveportal object
+		Read Get a specific captiveportal object
 
 		Returns a specific captiveportal object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the captiveportal object
-		@return CaptiveportalAPIReferenceGetRequest
+		@return CaptiveportalAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) CaptiveportalAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) CaptiveportalAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetCaptiveportalResponse
-	ReferenceGetExecute(r CaptiveportalAPIReferenceGetRequest) (*GetCaptiveportalResponse, *http.Response, error)
+	ReadExecute(r CaptiveportalAPIReadRequest) (*GetCaptiveportalResponse, *http.Response, error)
 	/*
-		ReferencePut Update a captiveportal object
+		Update Update a captiveportal object
 
 		Updates a specific captiveportal object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the captiveportal object
-		@return CaptiveportalAPIReferencePutRequest
+		@return CaptiveportalAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) CaptiveportalAPIReferencePutRequest
+	Update(ctx context.Context, reference string) CaptiveportalAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateCaptiveportalResponse
-	ReferencePutExecute(r CaptiveportalAPIReferencePutRequest) (*UpdateCaptiveportalResponse, *http.Response, error)
+	UpdateExecute(r CaptiveportalAPIUpdateRequest) (*UpdateCaptiveportalResponse, *http.Response, error)
 }
 
 // CaptiveportalAPIService CaptiveportalAPI service
 type CaptiveportalAPIService internal.Service
 
-type CaptiveportalAPIGetRequest struct {
+type CaptiveportalAPIListRequest struct {
 	ctx            context.Context
 	ApiService     CaptiveportalAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type CaptiveportalAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r CaptiveportalAPIGetRequest) ReturnFields(returnFields string) CaptiveportalAPIGetRequest {
+func (r CaptiveportalAPIListRequest) ReturnFields(returnFields string) CaptiveportalAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CaptiveportalAPIGetRequest) ReturnFields2(returnFields2 string) CaptiveportalAPIGetRequest {
+func (r CaptiveportalAPIListRequest) ReturnFields2(returnFields2 string) CaptiveportalAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r CaptiveportalAPIGetRequest) MaxResults(maxResults int32) CaptiveportalAPIGetRequest {
+func (r CaptiveportalAPIListRequest) MaxResults(maxResults int32) CaptiveportalAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CaptiveportalAPIGetRequest) ReturnAsObject(returnAsObject int32) CaptiveportalAPIGetRequest {
+func (r CaptiveportalAPIListRequest) ReturnAsObject(returnAsObject int32) CaptiveportalAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r CaptiveportalAPIGetRequest) Paging(paging int32) CaptiveportalAPIGetRequest {
+func (r CaptiveportalAPIListRequest) Paging(paging int32) CaptiveportalAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r CaptiveportalAPIGetRequest) PageId(pageId string) CaptiveportalAPIGetRequest {
+func (r CaptiveportalAPIListRequest) PageId(pageId string) CaptiveportalAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r CaptiveportalAPIGetRequest) Filters(filters map[string]interface{}) CaptiveportalAPIGetRequest {
+func (r CaptiveportalAPIListRequest) Filters(filters map[string]interface{}) CaptiveportalAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r CaptiveportalAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) CaptiveportalAPIGetRequest {
+func (r CaptiveportalAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) CaptiveportalAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r CaptiveportalAPIGetRequest) Execute() (*ListCaptiveportalResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r CaptiveportalAPIListRequest) Execute() (*ListCaptiveportalResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve captiveportal objects
+List Retrieve captiveportal objects
 
 Returns a list of captiveportal objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return CaptiveportalAPIGetRequest
+	@return CaptiveportalAPIListRequest
 */
-func (a *CaptiveportalAPIService) Get(ctx context.Context) CaptiveportalAPIGetRequest {
-	return CaptiveportalAPIGetRequest{
+func (a *CaptiveportalAPIService) List(ctx context.Context) CaptiveportalAPIListRequest {
+	return CaptiveportalAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *CaptiveportalAPIService) Get(ctx context.Context) CaptiveportalAPIGetRe
 // Execute executes the request
 //
 //	@return ListCaptiveportalResponse
-func (a *CaptiveportalAPIService) GetExecute(r CaptiveportalAPIGetRequest) (*ListCaptiveportalResponse, *http.Response, error) {
+func (a *CaptiveportalAPIService) ListExecute(r CaptiveportalAPIListRequest) (*ListCaptiveportalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *CaptiveportalAPIService) GetExecute(r CaptiveportalAPIGetRequest) (*Lis
 		localVarReturnValue *ListCaptiveportalResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CaptiveportalAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CaptiveportalAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *CaptiveportalAPIService) GetExecute(r CaptiveportalAPIGetRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CaptiveportalAPIReferenceGetRequest struct {
+type CaptiveportalAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     CaptiveportalAPI
 	reference      string
@@ -249,38 +249,38 @@ type CaptiveportalAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r CaptiveportalAPIReferenceGetRequest) ReturnFields(returnFields string) CaptiveportalAPIReferenceGetRequest {
+func (r CaptiveportalAPIReadRequest) ReturnFields(returnFields string) CaptiveportalAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CaptiveportalAPIReferenceGetRequest) ReturnFields2(returnFields2 string) CaptiveportalAPIReferenceGetRequest {
+func (r CaptiveportalAPIReadRequest) ReturnFields2(returnFields2 string) CaptiveportalAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CaptiveportalAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) CaptiveportalAPIReferenceGetRequest {
+func (r CaptiveportalAPIReadRequest) ReturnAsObject(returnAsObject int32) CaptiveportalAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r CaptiveportalAPIReferenceGetRequest) Execute() (*GetCaptiveportalResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r CaptiveportalAPIReadRequest) Execute() (*GetCaptiveportalResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific captiveportal object
+Read Get a specific captiveportal object
 
 Returns a specific captiveportal object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the captiveportal object
-	@return CaptiveportalAPIReferenceGetRequest
+	@return CaptiveportalAPIReadRequest
 */
-func (a *CaptiveportalAPIService) ReferenceGet(ctx context.Context, reference string) CaptiveportalAPIReferenceGetRequest {
-	return CaptiveportalAPIReferenceGetRequest{
+func (a *CaptiveportalAPIService) Read(ctx context.Context, reference string) CaptiveportalAPIReadRequest {
+	return CaptiveportalAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *CaptiveportalAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetCaptiveportalResponse
-func (a *CaptiveportalAPIService) ReferenceGetExecute(r CaptiveportalAPIReferenceGetRequest) (*GetCaptiveportalResponse, *http.Response, error) {
+func (a *CaptiveportalAPIService) ReadExecute(r CaptiveportalAPIReadRequest) (*GetCaptiveportalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *CaptiveportalAPIService) ReferenceGetExecute(r CaptiveportalAPIReferenc
 		localVarReturnValue *GetCaptiveportalResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CaptiveportalAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CaptiveportalAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *CaptiveportalAPIService) ReferenceGetExecute(r CaptiveportalAPIReferenc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CaptiveportalAPIReferencePutRequest struct {
+type CaptiveportalAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     CaptiveportalAPI
 	reference      string
@@ -377,44 +377,44 @@ type CaptiveportalAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r CaptiveportalAPIReferencePutRequest) Captiveportal(captiveportal Captiveportal) CaptiveportalAPIReferencePutRequest {
+func (r CaptiveportalAPIUpdateRequest) Captiveportal(captiveportal Captiveportal) CaptiveportalAPIUpdateRequest {
 	r.captiveportal = &captiveportal
 	return r
 }
 
 // Enter the field names followed by comma
-func (r CaptiveportalAPIReferencePutRequest) ReturnFields(returnFields string) CaptiveportalAPIReferencePutRequest {
+func (r CaptiveportalAPIUpdateRequest) ReturnFields(returnFields string) CaptiveportalAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CaptiveportalAPIReferencePutRequest) ReturnFields2(returnFields2 string) CaptiveportalAPIReferencePutRequest {
+func (r CaptiveportalAPIUpdateRequest) ReturnFields2(returnFields2 string) CaptiveportalAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CaptiveportalAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) CaptiveportalAPIReferencePutRequest {
+func (r CaptiveportalAPIUpdateRequest) ReturnAsObject(returnAsObject int32) CaptiveportalAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r CaptiveportalAPIReferencePutRequest) Execute() (*UpdateCaptiveportalResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r CaptiveportalAPIUpdateRequest) Execute() (*UpdateCaptiveportalResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a captiveportal object
+Update Update a captiveportal object
 
 Updates a specific captiveportal object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the captiveportal object
-	@return CaptiveportalAPIReferencePutRequest
+	@return CaptiveportalAPIUpdateRequest
 */
-func (a *CaptiveportalAPIService) ReferencePut(ctx context.Context, reference string) CaptiveportalAPIReferencePutRequest {
-	return CaptiveportalAPIReferencePutRequest{
+func (a *CaptiveportalAPIService) Update(ctx context.Context, reference string) CaptiveportalAPIUpdateRequest {
+	return CaptiveportalAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *CaptiveportalAPIService) ReferencePut(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return UpdateCaptiveportalResponse
-func (a *CaptiveportalAPIService) ReferencePutExecute(r CaptiveportalAPIReferencePutRequest) (*UpdateCaptiveportalResponse, *http.Response, error) {
+func (a *CaptiveportalAPIService) UpdateExecute(r CaptiveportalAPIUpdateRequest) (*UpdateCaptiveportalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *CaptiveportalAPIService) ReferencePutExecute(r CaptiveportalAPIReferenc
 		localVarReturnValue *UpdateCaptiveportalResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CaptiveportalAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CaptiveportalAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

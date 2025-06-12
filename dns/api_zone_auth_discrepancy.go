@@ -23,38 +23,38 @@ import (
 
 type ZoneAuthDiscrepancyAPI interface {
 	/*
-		Get Retrieve zone_auth_discrepancy objects
+		List Retrieve zone_auth_discrepancy objects
 
 		Returns a list of zone_auth_discrepancy objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneAuthDiscrepancyAPIGetRequest
+		@return ZoneAuthDiscrepancyAPIListRequest
 	*/
-	Get(ctx context.Context) ZoneAuthDiscrepancyAPIGetRequest
+	List(ctx context.Context) ZoneAuthDiscrepancyAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListZoneAuthDiscrepancyResponse
-	GetExecute(r ZoneAuthDiscrepancyAPIGetRequest) (*ListZoneAuthDiscrepancyResponse, *http.Response, error)
+	ListExecute(r ZoneAuthDiscrepancyAPIListRequest) (*ListZoneAuthDiscrepancyResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific zone_auth_discrepancy object
+		Read Get a specific zone_auth_discrepancy object
 
 		Returns a specific zone_auth_discrepancy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_auth_discrepancy object
-		@return ZoneAuthDiscrepancyAPIReferenceGetRequest
+		@return ZoneAuthDiscrepancyAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ZoneAuthDiscrepancyAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ZoneAuthDiscrepancyAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetZoneAuthDiscrepancyResponse
-	ReferenceGetExecute(r ZoneAuthDiscrepancyAPIReferenceGetRequest) (*GetZoneAuthDiscrepancyResponse, *http.Response, error)
+	ReadExecute(r ZoneAuthDiscrepancyAPIReadRequest) (*GetZoneAuthDiscrepancyResponse, *http.Response, error)
 }
 
 // ZoneAuthDiscrepancyAPIService ZoneAuthDiscrepancyAPI service
 type ZoneAuthDiscrepancyAPIService internal.Service
 
-type ZoneAuthDiscrepancyAPIGetRequest struct {
+type ZoneAuthDiscrepancyAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ZoneAuthDiscrepancyAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type ZoneAuthDiscrepancyAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ZoneAuthDiscrepancyAPIGetRequest) ReturnFields(returnFields string) ZoneAuthDiscrepancyAPIGetRequest {
+func (r ZoneAuthDiscrepancyAPIListRequest) ReturnFields(returnFields string) ZoneAuthDiscrepancyAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneAuthDiscrepancyAPIGetRequest) ReturnFields2(returnFields2 string) ZoneAuthDiscrepancyAPIGetRequest {
+func (r ZoneAuthDiscrepancyAPIListRequest) ReturnFields2(returnFields2 string) ZoneAuthDiscrepancyAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ZoneAuthDiscrepancyAPIGetRequest) MaxResults(maxResults int32) ZoneAuthDiscrepancyAPIGetRequest {
+func (r ZoneAuthDiscrepancyAPIListRequest) MaxResults(maxResults int32) ZoneAuthDiscrepancyAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneAuthDiscrepancyAPIGetRequest) ReturnAsObject(returnAsObject int32) ZoneAuthDiscrepancyAPIGetRequest {
+func (r ZoneAuthDiscrepancyAPIListRequest) ReturnAsObject(returnAsObject int32) ZoneAuthDiscrepancyAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ZoneAuthDiscrepancyAPIGetRequest) Paging(paging int32) ZoneAuthDiscrepancyAPIGetRequest {
+func (r ZoneAuthDiscrepancyAPIListRequest) Paging(paging int32) ZoneAuthDiscrepancyAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ZoneAuthDiscrepancyAPIGetRequest) PageId(pageId string) ZoneAuthDiscrepancyAPIGetRequest {
+func (r ZoneAuthDiscrepancyAPIListRequest) PageId(pageId string) ZoneAuthDiscrepancyAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ZoneAuthDiscrepancyAPIGetRequest) Filters(filters map[string]interface{}) ZoneAuthDiscrepancyAPIGetRequest {
+func (r ZoneAuthDiscrepancyAPIListRequest) Filters(filters map[string]interface{}) ZoneAuthDiscrepancyAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ZoneAuthDiscrepancyAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneAuthDiscrepancyAPIGetRequest {
+func (r ZoneAuthDiscrepancyAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneAuthDiscrepancyAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ZoneAuthDiscrepancyAPIGetRequest) Execute() (*ListZoneAuthDiscrepancyResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r ZoneAuthDiscrepancyAPIListRequest) Execute() (*ListZoneAuthDiscrepancyResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve zone_auth_discrepancy objects
+List Retrieve zone_auth_discrepancy objects
 
 Returns a list of zone_auth_discrepancy objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneAuthDiscrepancyAPIGetRequest
+	@return ZoneAuthDiscrepancyAPIListRequest
 */
-func (a *ZoneAuthDiscrepancyAPIService) Get(ctx context.Context) ZoneAuthDiscrepancyAPIGetRequest {
-	return ZoneAuthDiscrepancyAPIGetRequest{
+func (a *ZoneAuthDiscrepancyAPIService) List(ctx context.Context) ZoneAuthDiscrepancyAPIListRequest {
+	return ZoneAuthDiscrepancyAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *ZoneAuthDiscrepancyAPIService) Get(ctx context.Context) ZoneAuthDiscrep
 // Execute executes the request
 //
 //	@return ListZoneAuthDiscrepancyResponse
-func (a *ZoneAuthDiscrepancyAPIService) GetExecute(r ZoneAuthDiscrepancyAPIGetRequest) (*ListZoneAuthDiscrepancyResponse, *http.Response, error) {
+func (a *ZoneAuthDiscrepancyAPIService) ListExecute(r ZoneAuthDiscrepancyAPIListRequest) (*ListZoneAuthDiscrepancyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *ZoneAuthDiscrepancyAPIService) GetExecute(r ZoneAuthDiscrepancyAPIGetRe
 		localVarReturnValue *ListZoneAuthDiscrepancyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthDiscrepancyAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthDiscrepancyAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *ZoneAuthDiscrepancyAPIService) GetExecute(r ZoneAuthDiscrepancyAPIGetRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneAuthDiscrepancyAPIReferenceGetRequest struct {
+type ZoneAuthDiscrepancyAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ZoneAuthDiscrepancyAPI
 	reference      string
@@ -235,38 +235,38 @@ type ZoneAuthDiscrepancyAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ZoneAuthDiscrepancyAPIReferenceGetRequest) ReturnFields(returnFields string) ZoneAuthDiscrepancyAPIReferenceGetRequest {
+func (r ZoneAuthDiscrepancyAPIReadRequest) ReturnFields(returnFields string) ZoneAuthDiscrepancyAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneAuthDiscrepancyAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ZoneAuthDiscrepancyAPIReferenceGetRequest {
+func (r ZoneAuthDiscrepancyAPIReadRequest) ReturnFields2(returnFields2 string) ZoneAuthDiscrepancyAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneAuthDiscrepancyAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ZoneAuthDiscrepancyAPIReferenceGetRequest {
+func (r ZoneAuthDiscrepancyAPIReadRequest) ReturnAsObject(returnAsObject int32) ZoneAuthDiscrepancyAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneAuthDiscrepancyAPIReferenceGetRequest) Execute() (*GetZoneAuthDiscrepancyResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r ZoneAuthDiscrepancyAPIReadRequest) Execute() (*GetZoneAuthDiscrepancyResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific zone_auth_discrepancy object
+Read Get a specific zone_auth_discrepancy object
 
 Returns a specific zone_auth_discrepancy object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_auth_discrepancy object
-	@return ZoneAuthDiscrepancyAPIReferenceGetRequest
+	@return ZoneAuthDiscrepancyAPIReadRequest
 */
-func (a *ZoneAuthDiscrepancyAPIService) ReferenceGet(ctx context.Context, reference string) ZoneAuthDiscrepancyAPIReferenceGetRequest {
-	return ZoneAuthDiscrepancyAPIReferenceGetRequest{
+func (a *ZoneAuthDiscrepancyAPIService) Read(ctx context.Context, reference string) ZoneAuthDiscrepancyAPIReadRequest {
+	return ZoneAuthDiscrepancyAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *ZoneAuthDiscrepancyAPIService) ReferenceGet(ctx context.Context, refere
 // Execute executes the request
 //
 //	@return GetZoneAuthDiscrepancyResponse
-func (a *ZoneAuthDiscrepancyAPIService) ReferenceGetExecute(r ZoneAuthDiscrepancyAPIReferenceGetRequest) (*GetZoneAuthDiscrepancyResponse, *http.Response, error) {
+func (a *ZoneAuthDiscrepancyAPIService) ReadExecute(r ZoneAuthDiscrepancyAPIReadRequest) (*GetZoneAuthDiscrepancyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *ZoneAuthDiscrepancyAPIService) ReferenceGetExecute(r ZoneAuthDiscrepanc
 		localVarReturnValue *GetZoneAuthDiscrepancyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthDiscrepancyAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthDiscrepancyAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

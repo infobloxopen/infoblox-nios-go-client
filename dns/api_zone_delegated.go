@@ -23,249 +23,78 @@ import (
 
 type ZoneDelegatedAPI interface {
 	/*
-		Get Retrieve zone_delegated objects
-
-		Returns a list of zone_delegated objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneDelegatedAPIGetRequest
-	*/
-	Get(ctx context.Context) ZoneDelegatedAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListZoneDelegatedResponse
-	GetExecute(r ZoneDelegatedAPIGetRequest) (*ListZoneDelegatedResponse, *http.Response, error)
-	/*
-		Post Create a zone_delegated object
+		Create Create a zone_delegated object
 
 		Creates a new zone_delegated object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneDelegatedAPIPostRequest
+		@return ZoneDelegatedAPICreateRequest
 	*/
-	Post(ctx context.Context) ZoneDelegatedAPIPostRequest
+	Create(ctx context.Context) ZoneDelegatedAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateZoneDelegatedResponse
-	PostExecute(r ZoneDelegatedAPIPostRequest) (*CreateZoneDelegatedResponse, *http.Response, error)
+	CreateExecute(r ZoneDelegatedAPICreateRequest) (*CreateZoneDelegatedResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a zone_delegated object
+		Delete Delete a zone_delegated object
 
 		Deletes a specific zone_delegated object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_delegated object
-		@return ZoneDelegatedAPIReferenceDeleteRequest
+		@return ZoneDelegatedAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) ZoneDelegatedAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ZoneDelegatedAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r ZoneDelegatedAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ZoneDelegatedAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific zone_delegated object
+		List Retrieve zone_delegated objects
+
+		Returns a list of zone_delegated objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ZoneDelegatedAPIListRequest
+	*/
+	List(ctx context.Context) ZoneDelegatedAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListZoneDelegatedResponse
+	ListExecute(r ZoneDelegatedAPIListRequest) (*ListZoneDelegatedResponse, *http.Response, error)
+	/*
+		Read Get a specific zone_delegated object
 
 		Returns a specific zone_delegated object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_delegated object
-		@return ZoneDelegatedAPIReferenceGetRequest
+		@return ZoneDelegatedAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ZoneDelegatedAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ZoneDelegatedAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetZoneDelegatedResponse
-	ReferenceGetExecute(r ZoneDelegatedAPIReferenceGetRequest) (*GetZoneDelegatedResponse, *http.Response, error)
+	ReadExecute(r ZoneDelegatedAPIReadRequest) (*GetZoneDelegatedResponse, *http.Response, error)
 	/*
-		ReferencePut Update a zone_delegated object
+		Update Update a zone_delegated object
 
 		Updates a specific zone_delegated object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_delegated object
-		@return ZoneDelegatedAPIReferencePutRequest
+		@return ZoneDelegatedAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) ZoneDelegatedAPIReferencePutRequest
+	Update(ctx context.Context, reference string) ZoneDelegatedAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateZoneDelegatedResponse
-	ReferencePutExecute(r ZoneDelegatedAPIReferencePutRequest) (*UpdateZoneDelegatedResponse, *http.Response, error)
+	UpdateExecute(r ZoneDelegatedAPIUpdateRequest) (*UpdateZoneDelegatedResponse, *http.Response, error)
 }
 
 // ZoneDelegatedAPIService ZoneDelegatedAPI service
 type ZoneDelegatedAPIService internal.Service
 
-type ZoneDelegatedAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     ZoneDelegatedAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r ZoneDelegatedAPIGetRequest) ReturnFields(returnFields string) ZoneDelegatedAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneDelegatedAPIGetRequest) ReturnFields2(returnFields2 string) ZoneDelegatedAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r ZoneDelegatedAPIGetRequest) MaxResults(maxResults int32) ZoneDelegatedAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ZoneDelegatedAPIGetRequest) ReturnAsObject(returnAsObject int32) ZoneDelegatedAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r ZoneDelegatedAPIGetRequest) Paging(paging int32) ZoneDelegatedAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r ZoneDelegatedAPIGetRequest) PageId(pageId string) ZoneDelegatedAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r ZoneDelegatedAPIGetRequest) Filters(filters map[string]interface{}) ZoneDelegatedAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r ZoneDelegatedAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneDelegatedAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r ZoneDelegatedAPIGetRequest) Execute() (*ListZoneDelegatedResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve zone_delegated objects
-
-Returns a list of zone_delegated objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneDelegatedAPIGetRequest
-*/
-func (a *ZoneDelegatedAPIService) Get(ctx context.Context) ZoneDelegatedAPIGetRequest {
-	return ZoneDelegatedAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListZoneDelegatedResponse
-func (a *ZoneDelegatedAPIService) GetExecute(r ZoneDelegatedAPIGetRequest) (*ListZoneDelegatedResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListZoneDelegatedResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneDelegatedAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/zone_delegated"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ZoneDelegatedAPIPostRequest struct {
+type ZoneDelegatedAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     ZoneDelegatedAPI
 	zoneDelegated  *ZoneDelegated
@@ -275,43 +104,43 @@ type ZoneDelegatedAPIPostRequest struct {
 }
 
 // Object data to create
-func (r ZoneDelegatedAPIPostRequest) ZoneDelegated(zoneDelegated ZoneDelegated) ZoneDelegatedAPIPostRequest {
+func (r ZoneDelegatedAPICreateRequest) ZoneDelegated(zoneDelegated ZoneDelegated) ZoneDelegatedAPICreateRequest {
 	r.zoneDelegated = &zoneDelegated
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ZoneDelegatedAPIPostRequest) ReturnFields(returnFields string) ZoneDelegatedAPIPostRequest {
+func (r ZoneDelegatedAPICreateRequest) ReturnFields(returnFields string) ZoneDelegatedAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneDelegatedAPIPostRequest) ReturnFields2(returnFields2 string) ZoneDelegatedAPIPostRequest {
+func (r ZoneDelegatedAPICreateRequest) ReturnFields2(returnFields2 string) ZoneDelegatedAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneDelegatedAPIPostRequest) ReturnAsObject(returnAsObject int32) ZoneDelegatedAPIPostRequest {
+func (r ZoneDelegatedAPICreateRequest) ReturnAsObject(returnAsObject int32) ZoneDelegatedAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneDelegatedAPIPostRequest) Execute() (*CreateZoneDelegatedResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r ZoneDelegatedAPICreateRequest) Execute() (*CreateZoneDelegatedResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a zone_delegated object
+Create Create a zone_delegated object
 
 Creates a new zone_delegated object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneDelegatedAPIPostRequest
+	@return ZoneDelegatedAPICreateRequest
 */
-func (a *ZoneDelegatedAPIService) Post(ctx context.Context) ZoneDelegatedAPIPostRequest {
-	return ZoneDelegatedAPIPostRequest{
+func (a *ZoneDelegatedAPIService) Create(ctx context.Context) ZoneDelegatedAPICreateRequest {
+	return ZoneDelegatedAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *ZoneDelegatedAPIService) Post(ctx context.Context) ZoneDelegatedAPIPost
 // Execute executes the request
 //
 //	@return CreateZoneDelegatedResponse
-func (a *ZoneDelegatedAPIService) PostExecute(r ZoneDelegatedAPIPostRequest) (*CreateZoneDelegatedResponse, *http.Response, error) {
+func (a *ZoneDelegatedAPIService) CreateExecute(r ZoneDelegatedAPICreateRequest) (*CreateZoneDelegatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *ZoneDelegatedAPIService) PostExecute(r ZoneDelegatedAPIPostRequest) (*C
 		localVarReturnValue *CreateZoneDelegatedResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneDelegatedAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneDelegatedAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *ZoneDelegatedAPIService) PostExecute(r ZoneDelegatedAPIPostRequest) (*C
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneDelegatedAPIReferenceDeleteRequest struct {
+type ZoneDelegatedAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService ZoneDelegatedAPI
 	reference  string
 }
 
-func (r ZoneDelegatedAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r ZoneDelegatedAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a zone_delegated object
+Delete Delete a zone_delegated object
 
 Deletes a specific zone_delegated object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_delegated object
-	@return ZoneDelegatedAPIReferenceDeleteRequest
+	@return ZoneDelegatedAPIDeleteRequest
 */
-func (a *ZoneDelegatedAPIService) ReferenceDelete(ctx context.Context, reference string) ZoneDelegatedAPIReferenceDeleteRequest {
-	return ZoneDelegatedAPIReferenceDeleteRequest{
+func (a *ZoneDelegatedAPIService) Delete(ctx context.Context, reference string) ZoneDelegatedAPIDeleteRequest {
+	return ZoneDelegatedAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *ZoneDelegatedAPIService) ReferenceDelete(ctx context.Context, reference
 }
 
 // Execute executes the request
-func (a *ZoneDelegatedAPIService) ReferenceDeleteExecute(r ZoneDelegatedAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *ZoneDelegatedAPIService) DeleteExecute(r ZoneDelegatedAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneDelegatedAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneDelegatedAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *ZoneDelegatedAPIService) ReferenceDeleteExecute(r ZoneDelegatedAPIRefer
 	return localVarHTTPResponse, nil
 }
 
-type ZoneDelegatedAPIReferenceGetRequest struct {
+type ZoneDelegatedAPIListRequest struct {
+	ctx            context.Context
+	ApiService     ZoneDelegatedAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r ZoneDelegatedAPIListRequest) ReturnFields(returnFields string) ZoneDelegatedAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ZoneDelegatedAPIListRequest) ReturnFields2(returnFields2 string) ZoneDelegatedAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r ZoneDelegatedAPIListRequest) MaxResults(maxResults int32) ZoneDelegatedAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ZoneDelegatedAPIListRequest) ReturnAsObject(returnAsObject int32) ZoneDelegatedAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r ZoneDelegatedAPIListRequest) Paging(paging int32) ZoneDelegatedAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r ZoneDelegatedAPIListRequest) PageId(pageId string) ZoneDelegatedAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r ZoneDelegatedAPIListRequest) Filters(filters map[string]interface{}) ZoneDelegatedAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r ZoneDelegatedAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneDelegatedAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r ZoneDelegatedAPIListRequest) Execute() (*ListZoneDelegatedResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve zone_delegated objects
+
+Returns a list of zone_delegated objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ZoneDelegatedAPIListRequest
+*/
+func (a *ZoneDelegatedAPIService) List(ctx context.Context) ZoneDelegatedAPIListRequest {
+	return ZoneDelegatedAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListZoneDelegatedResponse
+func (a *ZoneDelegatedAPIService) ListExecute(r ZoneDelegatedAPIListRequest) (*ListZoneDelegatedResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListZoneDelegatedResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneDelegatedAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/zone_delegated"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ZoneDelegatedAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ZoneDelegatedAPI
 	reference      string
@@ -511,38 +511,38 @@ type ZoneDelegatedAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ZoneDelegatedAPIReferenceGetRequest) ReturnFields(returnFields string) ZoneDelegatedAPIReferenceGetRequest {
+func (r ZoneDelegatedAPIReadRequest) ReturnFields(returnFields string) ZoneDelegatedAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneDelegatedAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ZoneDelegatedAPIReferenceGetRequest {
+func (r ZoneDelegatedAPIReadRequest) ReturnFields2(returnFields2 string) ZoneDelegatedAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneDelegatedAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ZoneDelegatedAPIReferenceGetRequest {
+func (r ZoneDelegatedAPIReadRequest) ReturnAsObject(returnAsObject int32) ZoneDelegatedAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneDelegatedAPIReferenceGetRequest) Execute() (*GetZoneDelegatedResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r ZoneDelegatedAPIReadRequest) Execute() (*GetZoneDelegatedResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific zone_delegated object
+Read Get a specific zone_delegated object
 
 Returns a specific zone_delegated object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_delegated object
-	@return ZoneDelegatedAPIReferenceGetRequest
+	@return ZoneDelegatedAPIReadRequest
 */
-func (a *ZoneDelegatedAPIService) ReferenceGet(ctx context.Context, reference string) ZoneDelegatedAPIReferenceGetRequest {
-	return ZoneDelegatedAPIReferenceGetRequest{
+func (a *ZoneDelegatedAPIService) Read(ctx context.Context, reference string) ZoneDelegatedAPIReadRequest {
+	return ZoneDelegatedAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *ZoneDelegatedAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetZoneDelegatedResponse
-func (a *ZoneDelegatedAPIService) ReferenceGetExecute(r ZoneDelegatedAPIReferenceGetRequest) (*GetZoneDelegatedResponse, *http.Response, error) {
+func (a *ZoneDelegatedAPIService) ReadExecute(r ZoneDelegatedAPIReadRequest) (*GetZoneDelegatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *ZoneDelegatedAPIService) ReferenceGetExecute(r ZoneDelegatedAPIReferenc
 		localVarReturnValue *GetZoneDelegatedResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneDelegatedAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneDelegatedAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *ZoneDelegatedAPIService) ReferenceGetExecute(r ZoneDelegatedAPIReferenc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneDelegatedAPIReferencePutRequest struct {
+type ZoneDelegatedAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     ZoneDelegatedAPI
 	reference      string
@@ -639,44 +639,44 @@ type ZoneDelegatedAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r ZoneDelegatedAPIReferencePutRequest) ZoneDelegated(zoneDelegated ZoneDelegated) ZoneDelegatedAPIReferencePutRequest {
+func (r ZoneDelegatedAPIUpdateRequest) ZoneDelegated(zoneDelegated ZoneDelegated) ZoneDelegatedAPIUpdateRequest {
 	r.zoneDelegated = &zoneDelegated
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ZoneDelegatedAPIReferencePutRequest) ReturnFields(returnFields string) ZoneDelegatedAPIReferencePutRequest {
+func (r ZoneDelegatedAPIUpdateRequest) ReturnFields(returnFields string) ZoneDelegatedAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneDelegatedAPIReferencePutRequest) ReturnFields2(returnFields2 string) ZoneDelegatedAPIReferencePutRequest {
+func (r ZoneDelegatedAPIUpdateRequest) ReturnFields2(returnFields2 string) ZoneDelegatedAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneDelegatedAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) ZoneDelegatedAPIReferencePutRequest {
+func (r ZoneDelegatedAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ZoneDelegatedAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneDelegatedAPIReferencePutRequest) Execute() (*UpdateZoneDelegatedResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r ZoneDelegatedAPIUpdateRequest) Execute() (*UpdateZoneDelegatedResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a zone_delegated object
+Update Update a zone_delegated object
 
 Updates a specific zone_delegated object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_delegated object
-	@return ZoneDelegatedAPIReferencePutRequest
+	@return ZoneDelegatedAPIUpdateRequest
 */
-func (a *ZoneDelegatedAPIService) ReferencePut(ctx context.Context, reference string) ZoneDelegatedAPIReferencePutRequest {
-	return ZoneDelegatedAPIReferencePutRequest{
+func (a *ZoneDelegatedAPIService) Update(ctx context.Context, reference string) ZoneDelegatedAPIUpdateRequest {
+	return ZoneDelegatedAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *ZoneDelegatedAPIService) ReferencePut(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return UpdateZoneDelegatedResponse
-func (a *ZoneDelegatedAPIService) ReferencePutExecute(r ZoneDelegatedAPIReferencePutRequest) (*UpdateZoneDelegatedResponse, *http.Response, error) {
+func (a *ZoneDelegatedAPIService) UpdateExecute(r ZoneDelegatedAPIUpdateRequest) (*UpdateZoneDelegatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *ZoneDelegatedAPIService) ReferencePutExecute(r ZoneDelegatedAPIReferenc
 		localVarReturnValue *UpdateZoneDelegatedResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneDelegatedAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneDelegatedAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

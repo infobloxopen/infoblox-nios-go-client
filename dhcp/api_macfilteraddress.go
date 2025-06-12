@@ -23,249 +23,78 @@ import (
 
 type MacfilteraddressAPI interface {
 	/*
-		Get Retrieve macfilteraddress objects
-
-		Returns a list of macfilteraddress objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MacfilteraddressAPIGetRequest
-	*/
-	Get(ctx context.Context) MacfilteraddressAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListMacfilteraddressResponse
-	GetExecute(r MacfilteraddressAPIGetRequest) (*ListMacfilteraddressResponse, *http.Response, error)
-	/*
-		Post Create a macfilteraddress object
+		Create Create a macfilteraddress object
 
 		Creates a new macfilteraddress object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MacfilteraddressAPIPostRequest
+		@return MacfilteraddressAPICreateRequest
 	*/
-	Post(ctx context.Context) MacfilteraddressAPIPostRequest
+	Create(ctx context.Context) MacfilteraddressAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateMacfilteraddressResponse
-	PostExecute(r MacfilteraddressAPIPostRequest) (*CreateMacfilteraddressResponse, *http.Response, error)
+	CreateExecute(r MacfilteraddressAPICreateRequest) (*CreateMacfilteraddressResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a macfilteraddress object
+		Delete Delete a macfilteraddress object
 
 		Deletes a specific macfilteraddress object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the macfilteraddress object
-		@return MacfilteraddressAPIReferenceDeleteRequest
+		@return MacfilteraddressAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) MacfilteraddressAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) MacfilteraddressAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r MacfilteraddressAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r MacfilteraddressAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific macfilteraddress object
+		List Retrieve macfilteraddress objects
+
+		Returns a list of macfilteraddress objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return MacfilteraddressAPIListRequest
+	*/
+	List(ctx context.Context) MacfilteraddressAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListMacfilteraddressResponse
+	ListExecute(r MacfilteraddressAPIListRequest) (*ListMacfilteraddressResponse, *http.Response, error)
+	/*
+		Read Get a specific macfilteraddress object
 
 		Returns a specific macfilteraddress object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the macfilteraddress object
-		@return MacfilteraddressAPIReferenceGetRequest
+		@return MacfilteraddressAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) MacfilteraddressAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) MacfilteraddressAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMacfilteraddressResponse
-	ReferenceGetExecute(r MacfilteraddressAPIReferenceGetRequest) (*GetMacfilteraddressResponse, *http.Response, error)
+	ReadExecute(r MacfilteraddressAPIReadRequest) (*GetMacfilteraddressResponse, *http.Response, error)
 	/*
-		ReferencePut Update a macfilteraddress object
+		Update Update a macfilteraddress object
 
 		Updates a specific macfilteraddress object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the macfilteraddress object
-		@return MacfilteraddressAPIReferencePutRequest
+		@return MacfilteraddressAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) MacfilteraddressAPIReferencePutRequest
+	Update(ctx context.Context, reference string) MacfilteraddressAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMacfilteraddressResponse
-	ReferencePutExecute(r MacfilteraddressAPIReferencePutRequest) (*UpdateMacfilteraddressResponse, *http.Response, error)
+	UpdateExecute(r MacfilteraddressAPIUpdateRequest) (*UpdateMacfilteraddressResponse, *http.Response, error)
 }
 
 // MacfilteraddressAPIService MacfilteraddressAPI service
 type MacfilteraddressAPIService internal.Service
 
-type MacfilteraddressAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     MacfilteraddressAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r MacfilteraddressAPIGetRequest) ReturnFields(returnFields string) MacfilteraddressAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MacfilteraddressAPIGetRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r MacfilteraddressAPIGetRequest) MaxResults(maxResults int32) MacfilteraddressAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r MacfilteraddressAPIGetRequest) ReturnAsObject(returnAsObject int32) MacfilteraddressAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r MacfilteraddressAPIGetRequest) Paging(paging int32) MacfilteraddressAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r MacfilteraddressAPIGetRequest) PageId(pageId string) MacfilteraddressAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r MacfilteraddressAPIGetRequest) Filters(filters map[string]interface{}) MacfilteraddressAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r MacfilteraddressAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MacfilteraddressAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r MacfilteraddressAPIGetRequest) Execute() (*ListMacfilteraddressResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve macfilteraddress objects
-
-Returns a list of macfilteraddress objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MacfilteraddressAPIGetRequest
-*/
-func (a *MacfilteraddressAPIService) Get(ctx context.Context) MacfilteraddressAPIGetRequest {
-	return MacfilteraddressAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListMacfilteraddressResponse
-func (a *MacfilteraddressAPIService) GetExecute(r MacfilteraddressAPIGetRequest) (*ListMacfilteraddressResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListMacfilteraddressResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MacfilteraddressAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/macfilteraddress"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MacfilteraddressAPIPostRequest struct {
+type MacfilteraddressAPICreateRequest struct {
 	ctx              context.Context
 	ApiService       MacfilteraddressAPI
 	macfilteraddress *Macfilteraddress
@@ -275,43 +104,43 @@ type MacfilteraddressAPIPostRequest struct {
 }
 
 // Object data to create
-func (r MacfilteraddressAPIPostRequest) Macfilteraddress(macfilteraddress Macfilteraddress) MacfilteraddressAPIPostRequest {
+func (r MacfilteraddressAPICreateRequest) Macfilteraddress(macfilteraddress Macfilteraddress) MacfilteraddressAPICreateRequest {
 	r.macfilteraddress = &macfilteraddress
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MacfilteraddressAPIPostRequest) ReturnFields(returnFields string) MacfilteraddressAPIPostRequest {
+func (r MacfilteraddressAPICreateRequest) ReturnFields(returnFields string) MacfilteraddressAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MacfilteraddressAPIPostRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPIPostRequest {
+func (r MacfilteraddressAPICreateRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MacfilteraddressAPIPostRequest) ReturnAsObject(returnAsObject int32) MacfilteraddressAPIPostRequest {
+func (r MacfilteraddressAPICreateRequest) ReturnAsObject(returnAsObject int32) MacfilteraddressAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MacfilteraddressAPIPostRequest) Execute() (*CreateMacfilteraddressResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r MacfilteraddressAPICreateRequest) Execute() (*CreateMacfilteraddressResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a macfilteraddress object
+Create Create a macfilteraddress object
 
 Creates a new macfilteraddress object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MacfilteraddressAPIPostRequest
+	@return MacfilteraddressAPICreateRequest
 */
-func (a *MacfilteraddressAPIService) Post(ctx context.Context) MacfilteraddressAPIPostRequest {
-	return MacfilteraddressAPIPostRequest{
+func (a *MacfilteraddressAPIService) Create(ctx context.Context) MacfilteraddressAPICreateRequest {
+	return MacfilteraddressAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *MacfilteraddressAPIService) Post(ctx context.Context) MacfilteraddressA
 // Execute executes the request
 //
 //	@return CreateMacfilteraddressResponse
-func (a *MacfilteraddressAPIService) PostExecute(r MacfilteraddressAPIPostRequest) (*CreateMacfilteraddressResponse, *http.Response, error) {
+func (a *MacfilteraddressAPIService) CreateExecute(r MacfilteraddressAPICreateRequest) (*CreateMacfilteraddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *MacfilteraddressAPIService) PostExecute(r MacfilteraddressAPIPostReques
 		localVarReturnValue *CreateMacfilteraddressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MacfilteraddressAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MacfilteraddressAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *MacfilteraddressAPIService) PostExecute(r MacfilteraddressAPIPostReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MacfilteraddressAPIReferenceDeleteRequest struct {
+type MacfilteraddressAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService MacfilteraddressAPI
 	reference  string
 }
 
-func (r MacfilteraddressAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r MacfilteraddressAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a macfilteraddress object
+Delete Delete a macfilteraddress object
 
 Deletes a specific macfilteraddress object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the macfilteraddress object
-	@return MacfilteraddressAPIReferenceDeleteRequest
+	@return MacfilteraddressAPIDeleteRequest
 */
-func (a *MacfilteraddressAPIService) ReferenceDelete(ctx context.Context, reference string) MacfilteraddressAPIReferenceDeleteRequest {
-	return MacfilteraddressAPIReferenceDeleteRequest{
+func (a *MacfilteraddressAPIService) Delete(ctx context.Context, reference string) MacfilteraddressAPIDeleteRequest {
+	return MacfilteraddressAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *MacfilteraddressAPIService) ReferenceDelete(ctx context.Context, refere
 }
 
 // Execute executes the request
-func (a *MacfilteraddressAPIService) ReferenceDeleteExecute(r MacfilteraddressAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *MacfilteraddressAPIService) DeleteExecute(r MacfilteraddressAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MacfilteraddressAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MacfilteraddressAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *MacfilteraddressAPIService) ReferenceDeleteExecute(r MacfilteraddressAP
 	return localVarHTTPResponse, nil
 }
 
-type MacfilteraddressAPIReferenceGetRequest struct {
+type MacfilteraddressAPIListRequest struct {
+	ctx            context.Context
+	ApiService     MacfilteraddressAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r MacfilteraddressAPIListRequest) ReturnFields(returnFields string) MacfilteraddressAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r MacfilteraddressAPIListRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r MacfilteraddressAPIListRequest) MaxResults(maxResults int32) MacfilteraddressAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r MacfilteraddressAPIListRequest) ReturnAsObject(returnAsObject int32) MacfilteraddressAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r MacfilteraddressAPIListRequest) Paging(paging int32) MacfilteraddressAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r MacfilteraddressAPIListRequest) PageId(pageId string) MacfilteraddressAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r MacfilteraddressAPIListRequest) Filters(filters map[string]interface{}) MacfilteraddressAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r MacfilteraddressAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MacfilteraddressAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r MacfilteraddressAPIListRequest) Execute() (*ListMacfilteraddressResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve macfilteraddress objects
+
+Returns a list of macfilteraddress objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MacfilteraddressAPIListRequest
+*/
+func (a *MacfilteraddressAPIService) List(ctx context.Context) MacfilteraddressAPIListRequest {
+	return MacfilteraddressAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListMacfilteraddressResponse
+func (a *MacfilteraddressAPIService) ListExecute(r MacfilteraddressAPIListRequest) (*ListMacfilteraddressResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListMacfilteraddressResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MacfilteraddressAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/macfilteraddress"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MacfilteraddressAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     MacfilteraddressAPI
 	reference      string
@@ -511,38 +511,38 @@ type MacfilteraddressAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MacfilteraddressAPIReferenceGetRequest) ReturnFields(returnFields string) MacfilteraddressAPIReferenceGetRequest {
+func (r MacfilteraddressAPIReadRequest) ReturnFields(returnFields string) MacfilteraddressAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MacfilteraddressAPIReferenceGetRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPIReferenceGetRequest {
+func (r MacfilteraddressAPIReadRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MacfilteraddressAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) MacfilteraddressAPIReferenceGetRequest {
+func (r MacfilteraddressAPIReadRequest) ReturnAsObject(returnAsObject int32) MacfilteraddressAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MacfilteraddressAPIReferenceGetRequest) Execute() (*GetMacfilteraddressResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r MacfilteraddressAPIReadRequest) Execute() (*GetMacfilteraddressResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific macfilteraddress object
+Read Get a specific macfilteraddress object
 
 Returns a specific macfilteraddress object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the macfilteraddress object
-	@return MacfilteraddressAPIReferenceGetRequest
+	@return MacfilteraddressAPIReadRequest
 */
-func (a *MacfilteraddressAPIService) ReferenceGet(ctx context.Context, reference string) MacfilteraddressAPIReferenceGetRequest {
-	return MacfilteraddressAPIReferenceGetRequest{
+func (a *MacfilteraddressAPIService) Read(ctx context.Context, reference string) MacfilteraddressAPIReadRequest {
+	return MacfilteraddressAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *MacfilteraddressAPIService) ReferenceGet(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return GetMacfilteraddressResponse
-func (a *MacfilteraddressAPIService) ReferenceGetExecute(r MacfilteraddressAPIReferenceGetRequest) (*GetMacfilteraddressResponse, *http.Response, error) {
+func (a *MacfilteraddressAPIService) ReadExecute(r MacfilteraddressAPIReadRequest) (*GetMacfilteraddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *MacfilteraddressAPIService) ReferenceGetExecute(r MacfilteraddressAPIRe
 		localVarReturnValue *GetMacfilteraddressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MacfilteraddressAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MacfilteraddressAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *MacfilteraddressAPIService) ReferenceGetExecute(r MacfilteraddressAPIRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MacfilteraddressAPIReferencePutRequest struct {
+type MacfilteraddressAPIUpdateRequest struct {
 	ctx              context.Context
 	ApiService       MacfilteraddressAPI
 	reference        string
@@ -639,44 +639,44 @@ type MacfilteraddressAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r MacfilteraddressAPIReferencePutRequest) Macfilteraddress(macfilteraddress Macfilteraddress) MacfilteraddressAPIReferencePutRequest {
+func (r MacfilteraddressAPIUpdateRequest) Macfilteraddress(macfilteraddress Macfilteraddress) MacfilteraddressAPIUpdateRequest {
 	r.macfilteraddress = &macfilteraddress
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MacfilteraddressAPIReferencePutRequest) ReturnFields(returnFields string) MacfilteraddressAPIReferencePutRequest {
+func (r MacfilteraddressAPIUpdateRequest) ReturnFields(returnFields string) MacfilteraddressAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MacfilteraddressAPIReferencePutRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPIReferencePutRequest {
+func (r MacfilteraddressAPIUpdateRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MacfilteraddressAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) MacfilteraddressAPIReferencePutRequest {
+func (r MacfilteraddressAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MacfilteraddressAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MacfilteraddressAPIReferencePutRequest) Execute() (*UpdateMacfilteraddressResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r MacfilteraddressAPIUpdateRequest) Execute() (*UpdateMacfilteraddressResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a macfilteraddress object
+Update Update a macfilteraddress object
 
 Updates a specific macfilteraddress object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the macfilteraddress object
-	@return MacfilteraddressAPIReferencePutRequest
+	@return MacfilteraddressAPIUpdateRequest
 */
-func (a *MacfilteraddressAPIService) ReferencePut(ctx context.Context, reference string) MacfilteraddressAPIReferencePutRequest {
-	return MacfilteraddressAPIReferencePutRequest{
+func (a *MacfilteraddressAPIService) Update(ctx context.Context, reference string) MacfilteraddressAPIUpdateRequest {
+	return MacfilteraddressAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *MacfilteraddressAPIService) ReferencePut(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return UpdateMacfilteraddressResponse
-func (a *MacfilteraddressAPIService) ReferencePutExecute(r MacfilteraddressAPIReferencePutRequest) (*UpdateMacfilteraddressResponse, *http.Response, error) {
+func (a *MacfilteraddressAPIService) UpdateExecute(r MacfilteraddressAPIUpdateRequest) (*UpdateMacfilteraddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *MacfilteraddressAPIService) ReferencePutExecute(r MacfilteraddressAPIRe
 		localVarReturnValue *UpdateMacfilteraddressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MacfilteraddressAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MacfilteraddressAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

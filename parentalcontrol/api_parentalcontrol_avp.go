@@ -23,78 +23,302 @@ import (
 
 type ParentalcontrolAvpAPI interface {
 	/*
-		ParentalcontrolavpGet Retrieve parentalcontrol:avp objects
-
-		Returns a list of parentalcontrol:avp objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ParentalcontrolAvpAPIParentalcontrolavpGetRequest
-	*/
-	ParentalcontrolavpGet(ctx context.Context) ParentalcontrolAvpAPIParentalcontrolavpGetRequest
-
-	// ParentalcontrolavpGetExecute executes the request
-	//  @return ListParentalcontrolAvpResponse
-	ParentalcontrolavpGetExecute(r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) (*ListParentalcontrolAvpResponse, *http.Response, error)
-	/*
-		ParentalcontrolavpPost Create a parentalcontrol:avp object
+		Create Create a parentalcontrol:avp object
 
 		Creates a new parentalcontrol:avp object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ParentalcontrolAvpAPIParentalcontrolavpPostRequest
+		@return ParentalcontrolAvpAPICreateRequest
 	*/
-	ParentalcontrolavpPost(ctx context.Context) ParentalcontrolAvpAPIParentalcontrolavpPostRequest
+	Create(ctx context.Context) ParentalcontrolAvpAPICreateRequest
 
-	// ParentalcontrolavpPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateParentalcontrolAvpResponse
-	ParentalcontrolavpPostExecute(r ParentalcontrolAvpAPIParentalcontrolavpPostRequest) (*CreateParentalcontrolAvpResponse, *http.Response, error)
+	CreateExecute(r ParentalcontrolAvpAPICreateRequest) (*CreateParentalcontrolAvpResponse, *http.Response, error)
 	/*
-		ParentalcontrolavpReferenceDelete Delete a parentalcontrol:avp object
+		Delete Delete a parentalcontrol:avp object
 
 		Deletes a specific parentalcontrol:avp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:avp object
-		@return ParentalcontrolAvpAPIParentalcontrolavpReferenceDeleteRequest
+		@return ParentalcontrolAvpAPIDeleteRequest
 	*/
-	ParentalcontrolavpReferenceDelete(ctx context.Context, reference string) ParentalcontrolAvpAPIParentalcontrolavpReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ParentalcontrolAvpAPIDeleteRequest
 
-	// ParentalcontrolavpReferenceDeleteExecute executes the request
-	ParentalcontrolavpReferenceDeleteExecute(r ParentalcontrolAvpAPIParentalcontrolavpReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ParentalcontrolAvpAPIDeleteRequest) (*http.Response, error)
 	/*
-		ParentalcontrolavpReferenceGet Get a specific parentalcontrol:avp object
+		List Retrieve parentalcontrol:avp objects
+
+		Returns a list of parentalcontrol:avp objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ParentalcontrolAvpAPIListRequest
+	*/
+	List(ctx context.Context) ParentalcontrolAvpAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListParentalcontrolAvpResponse
+	ListExecute(r ParentalcontrolAvpAPIListRequest) (*ListParentalcontrolAvpResponse, *http.Response, error)
+	/*
+		Read Get a specific parentalcontrol:avp object
 
 		Returns a specific parentalcontrol:avp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:avp object
-		@return ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest
+		@return ParentalcontrolAvpAPIReadRequest
 	*/
-	ParentalcontrolavpReferenceGet(ctx context.Context, reference string) ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest
+	Read(ctx context.Context, reference string) ParentalcontrolAvpAPIReadRequest
 
-	// ParentalcontrolavpReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetParentalcontrolAvpResponse
-	ParentalcontrolavpReferenceGetExecute(r ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest) (*GetParentalcontrolAvpResponse, *http.Response, error)
+	ReadExecute(r ParentalcontrolAvpAPIReadRequest) (*GetParentalcontrolAvpResponse, *http.Response, error)
 	/*
-		ParentalcontrolavpReferencePut Update a parentalcontrol:avp object
+		Update Update a parentalcontrol:avp object
 
 		Updates a specific parentalcontrol:avp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:avp object
-		@return ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest
+		@return ParentalcontrolAvpAPIUpdateRequest
 	*/
-	ParentalcontrolavpReferencePut(ctx context.Context, reference string) ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest
+	Update(ctx context.Context, reference string) ParentalcontrolAvpAPIUpdateRequest
 
-	// ParentalcontrolavpReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateParentalcontrolAvpResponse
-	ParentalcontrolavpReferencePutExecute(r ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest) (*UpdateParentalcontrolAvpResponse, *http.Response, error)
+	UpdateExecute(r ParentalcontrolAvpAPIUpdateRequest) (*UpdateParentalcontrolAvpResponse, *http.Response, error)
 }
 
 // ParentalcontrolAvpAPIService ParentalcontrolAvpAPI service
 type ParentalcontrolAvpAPIService internal.Service
 
-type ParentalcontrolAvpAPIParentalcontrolavpGetRequest struct {
+type ParentalcontrolAvpAPICreateRequest struct {
+	ctx                context.Context
+	ApiService         ParentalcontrolAvpAPI
+	parentalcontrolAvp *ParentalcontrolAvp
+	returnFields       *string
+	returnFields2      *string
+	returnAsObject     *int32
+}
+
+// Object data to create
+func (r ParentalcontrolAvpAPICreateRequest) ParentalcontrolAvp(parentalcontrolAvp ParentalcontrolAvp) ParentalcontrolAvpAPICreateRequest {
+	r.parentalcontrolAvp = &parentalcontrolAvp
+	return r
+}
+
+// Enter the field names followed by comma
+func (r ParentalcontrolAvpAPICreateRequest) ReturnFields(returnFields string) ParentalcontrolAvpAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ParentalcontrolAvpAPICreateRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ParentalcontrolAvpAPICreateRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolAvpAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r ParentalcontrolAvpAPICreateRequest) Execute() (*CreateParentalcontrolAvpResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a parentalcontrol:avp object
+
+Creates a new parentalcontrol:avp object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ParentalcontrolAvpAPICreateRequest
+*/
+func (a *ParentalcontrolAvpAPIService) Create(ctx context.Context) ParentalcontrolAvpAPICreateRequest {
+	return ParentalcontrolAvpAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateParentalcontrolAvpResponse
+func (a *ParentalcontrolAvpAPIService) CreateExecute(r ParentalcontrolAvpAPICreateRequest) (*CreateParentalcontrolAvpResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateParentalcontrolAvpResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolAvpAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/parentalcontrol:avp"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.parentalcontrolAvp == nil {
+		return localVarReturnValue, nil, internal.ReportError("parentalcontrolAvp is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.parentalcontrolAvp
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ParentalcontrolAvpAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService ParentalcontrolAvpAPI
+	reference  string
+}
+
+func (r ParentalcontrolAvpAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a parentalcontrol:avp object
+
+Deletes a specific parentalcontrol:avp object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the parentalcontrol:avp object
+	@return ParentalcontrolAvpAPIDeleteRequest
+*/
+func (a *ParentalcontrolAvpAPIService) Delete(ctx context.Context, reference string) ParentalcontrolAvpAPIDeleteRequest {
+	return ParentalcontrolAvpAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *ParentalcontrolAvpAPIService) DeleteExecute(r ParentalcontrolAvpAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolAvpAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/parentalcontrol:avp/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ParentalcontrolAvpAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ParentalcontrolAvpAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type ParentalcontrolAvpAPIParentalcontrolavpGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) ReturnFields(returnFields string) ParentalcontrolAvpAPIParentalcontrolavpGetRequest {
+func (r ParentalcontrolAvpAPIListRequest) ReturnFields(returnFields string) ParentalcontrolAvpAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPIParentalcontrolavpGetRequest {
+func (r ParentalcontrolAvpAPIListRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) MaxResults(maxResults int32) ParentalcontrolAvpAPIParentalcontrolavpGetRequest {
+func (r ParentalcontrolAvpAPIListRequest) MaxResults(maxResults int32) ParentalcontrolAvpAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolAvpAPIParentalcontrolavpGetRequest {
+func (r ParentalcontrolAvpAPIListRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolAvpAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) Paging(paging int32) ParentalcontrolAvpAPIParentalcontrolavpGetRequest {
+func (r ParentalcontrolAvpAPIListRequest) Paging(paging int32) ParentalcontrolAvpAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) PageId(pageId string) ParentalcontrolAvpAPIParentalcontrolavpGetRequest {
+func (r ParentalcontrolAvpAPIListRequest) PageId(pageId string) ParentalcontrolAvpAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) Filters(filters map[string]interface{}) ParentalcontrolAvpAPIParentalcontrolavpGetRequest {
+func (r ParentalcontrolAvpAPIListRequest) Filters(filters map[string]interface{}) ParentalcontrolAvpAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ParentalcontrolAvpAPIParentalcontrolavpGetRequest {
+func (r ParentalcontrolAvpAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ParentalcontrolAvpAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) Execute() (*ListParentalcontrolAvpResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolavpGetExecute(r)
+func (r ParentalcontrolAvpAPIListRequest) Execute() (*ListParentalcontrolAvpResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ParentalcontrolavpGet Retrieve parentalcontrol:avp objects
+List Retrieve parentalcontrol:avp objects
 
 Returns a list of parentalcontrol:avp objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ParentalcontrolAvpAPIParentalcontrolavpGetRequest
+	@return ParentalcontrolAvpAPIListRequest
 */
-func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpGet(ctx context.Context) ParentalcontrolAvpAPIParentalcontrolavpGetRequest {
-	return ParentalcontrolAvpAPIParentalcontrolavpGetRequest{
+func (a *ParentalcontrolAvpAPIService) List(ctx context.Context) ParentalcontrolAvpAPIListRequest {
+	return ParentalcontrolAvpAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpGet(ctx context.Context
 // Execute executes the request
 //
 //	@return ListParentalcontrolAvpResponse
-func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpGetExecute(r ParentalcontrolAvpAPIParentalcontrolavpGetRequest) (*ListParentalcontrolAvpResponse, *http.Response, error) {
+func (a *ParentalcontrolAvpAPIService) ListExecute(r ParentalcontrolAvpAPIListRequest) (*ListParentalcontrolAvpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpGetExecute(r Parentalco
 		localVarReturnValue *ListParentalcontrolAvpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolAvpAPIService.ParentalcontrolavpGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolAvpAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpGetExecute(r Parentalco
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ParentalcontrolAvpAPIParentalcontrolavpPostRequest struct {
-	ctx                context.Context
-	ApiService         ParentalcontrolAvpAPI
-	parentalcontrolAvp *ParentalcontrolAvp
-	returnFields       *string
-	returnFields2      *string
-	returnAsObject     *int32
-}
-
-// Object data to create
-func (r ParentalcontrolAvpAPIParentalcontrolavpPostRequest) ParentalcontrolAvp(parentalcontrolAvp ParentalcontrolAvp) ParentalcontrolAvpAPIParentalcontrolavpPostRequest {
-	r.parentalcontrolAvp = &parentalcontrolAvp
-	return r
-}
-
-// Enter the field names followed by comma
-func (r ParentalcontrolAvpAPIParentalcontrolavpPostRequest) ReturnFields(returnFields string) ParentalcontrolAvpAPIParentalcontrolavpPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolAvpAPIParentalcontrolavpPostRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPIParentalcontrolavpPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ParentalcontrolAvpAPIParentalcontrolavpPostRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolAvpAPIParentalcontrolavpPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r ParentalcontrolAvpAPIParentalcontrolavpPostRequest) Execute() (*CreateParentalcontrolAvpResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolavpPostExecute(r)
-}
-
-/*
-ParentalcontrolavpPost Create a parentalcontrol:avp object
-
-Creates a new parentalcontrol:avp object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ParentalcontrolAvpAPIParentalcontrolavpPostRequest
-*/
-func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpPost(ctx context.Context) ParentalcontrolAvpAPIParentalcontrolavpPostRequest {
-	return ParentalcontrolAvpAPIParentalcontrolavpPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateParentalcontrolAvpResponse
-func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpPostExecute(r ParentalcontrolAvpAPIParentalcontrolavpPostRequest) (*CreateParentalcontrolAvpResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateParentalcontrolAvpResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolAvpAPIService.ParentalcontrolavpPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/parentalcontrol:avp"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.parentalcontrolAvp == nil {
-		return localVarReturnValue, nil, internal.ReportError("parentalcontrolAvp is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.parentalcontrolAvp
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ParentalcontrolAvpAPIParentalcontrolavpReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService ParentalcontrolAvpAPI
-	reference  string
-}
-
-func (r ParentalcontrolAvpAPIParentalcontrolavpReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ParentalcontrolavpReferenceDeleteExecute(r)
-}
-
-/*
-ParentalcontrolavpReferenceDelete Delete a parentalcontrol:avp object
-
-Deletes a specific parentalcontrol:avp object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the parentalcontrol:avp object
-	@return ParentalcontrolAvpAPIParentalcontrolavpReferenceDeleteRequest
-*/
-func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferenceDelete(ctx context.Context, reference string) ParentalcontrolAvpAPIParentalcontrolavpReferenceDeleteRequest {
-	return ParentalcontrolAvpAPIParentalcontrolavpReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferenceDeleteExecute(r ParentalcontrolAvpAPIParentalcontrolavpReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolAvpAPIService.ParentalcontrolavpReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/parentalcontrol:avp/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest struct {
+type ParentalcontrolAvpAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ParentalcontrolAvpAPI
 	reference      string
@@ -499,38 +499,38 @@ type ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest) ReturnFields(returnFields string) ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest {
+func (r ParentalcontrolAvpAPIReadRequest) ReturnFields(returnFields string) ParentalcontrolAvpAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest {
+func (r ParentalcontrolAvpAPIReadRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest {
+func (r ParentalcontrolAvpAPIReadRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolAvpAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest) Execute() (*GetParentalcontrolAvpResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolavpReferenceGetExecute(r)
+func (r ParentalcontrolAvpAPIReadRequest) Execute() (*GetParentalcontrolAvpResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ParentalcontrolavpReferenceGet Get a specific parentalcontrol:avp object
+Read Get a specific parentalcontrol:avp object
 
 Returns a specific parentalcontrol:avp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the parentalcontrol:avp object
-	@return ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest
+	@return ParentalcontrolAvpAPIReadRequest
 */
-func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferenceGet(ctx context.Context, reference string) ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest {
-	return ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest{
+func (a *ParentalcontrolAvpAPIService) Read(ctx context.Context, reference string) ParentalcontrolAvpAPIReadRequest {
+	return ParentalcontrolAvpAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferenceGet(ctx contex
 // Execute executes the request
 //
 //	@return GetParentalcontrolAvpResponse
-func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferenceGetExecute(r ParentalcontrolAvpAPIParentalcontrolavpReferenceGetRequest) (*GetParentalcontrolAvpResponse, *http.Response, error) {
+func (a *ParentalcontrolAvpAPIService) ReadExecute(r ParentalcontrolAvpAPIReadRequest) (*GetParentalcontrolAvpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferenceGetExecute(r P
 		localVarReturnValue *GetParentalcontrolAvpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolAvpAPIService.ParentalcontrolavpReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolAvpAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferenceGetExecute(r P
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest struct {
+type ParentalcontrolAvpAPIUpdateRequest struct {
 	ctx                context.Context
 	ApiService         ParentalcontrolAvpAPI
 	reference          string
@@ -627,44 +627,44 @@ type ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest struct {
 }
 
 // Object data to update
-func (r ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest) ParentalcontrolAvp(parentalcontrolAvp ParentalcontrolAvp) ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest {
+func (r ParentalcontrolAvpAPIUpdateRequest) ParentalcontrolAvp(parentalcontrolAvp ParentalcontrolAvp) ParentalcontrolAvpAPIUpdateRequest {
 	r.parentalcontrolAvp = &parentalcontrolAvp
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest) ReturnFields(returnFields string) ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest {
+func (r ParentalcontrolAvpAPIUpdateRequest) ReturnFields(returnFields string) ParentalcontrolAvpAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest {
+func (r ParentalcontrolAvpAPIUpdateRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest {
+func (r ParentalcontrolAvpAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolAvpAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest) Execute() (*UpdateParentalcontrolAvpResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolavpReferencePutExecute(r)
+func (r ParentalcontrolAvpAPIUpdateRequest) Execute() (*UpdateParentalcontrolAvpResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ParentalcontrolavpReferencePut Update a parentalcontrol:avp object
+Update Update a parentalcontrol:avp object
 
 Updates a specific parentalcontrol:avp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the parentalcontrol:avp object
-	@return ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest
+	@return ParentalcontrolAvpAPIUpdateRequest
 */
-func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferencePut(ctx context.Context, reference string) ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest {
-	return ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest{
+func (a *ParentalcontrolAvpAPIService) Update(ctx context.Context, reference string) ParentalcontrolAvpAPIUpdateRequest {
+	return ParentalcontrolAvpAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferencePut(ctx contex
 // Execute executes the request
 //
 //	@return UpdateParentalcontrolAvpResponse
-func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferencePutExecute(r ParentalcontrolAvpAPIParentalcontrolavpReferencePutRequest) (*UpdateParentalcontrolAvpResponse, *http.Response, error) {
+func (a *ParentalcontrolAvpAPIService) UpdateExecute(r ParentalcontrolAvpAPIUpdateRequest) (*UpdateParentalcontrolAvpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *ParentalcontrolAvpAPIService) ParentalcontrolavpReferencePutExecute(r P
 		localVarReturnValue *UpdateParentalcontrolAvpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolAvpAPIService.ParentalcontrolavpReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolAvpAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

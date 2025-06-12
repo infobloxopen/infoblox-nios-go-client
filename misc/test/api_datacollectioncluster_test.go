@@ -23,11 +23,11 @@ func TestDatacollectionclusterAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test DatacollectionclusterAPIService Get", func(t *testing.T) {
+	t.Run("Test DatacollectionclusterAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DatacollectionclusterAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DatacollectionclusterAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDatacollectionclusterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DatacollectionclusterAPIService Post", func(t *testing.T) {
+	t.Run("Test DatacollectionclusterAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DatacollectionclusterAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DatacollectionclusterAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DatacollectionclusterAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DatacollectionclusterAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDatacollectionclusterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DatacollectionclusterAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test DatacollectionclusterAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DatacollectionclusterAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DatacollectionclusterAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DatacollectionclusterAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DatacollectionclusterAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDatacollectionclusterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DatacollectionclusterAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test DatacollectionclusterAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DatacollectionclusterAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DatacollectionclusterAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

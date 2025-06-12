@@ -166,7 +166,7 @@ type MemberDhcpproperties struct {
 	// Defines how the appliance releases DHCP leases. Valid values are \"RELEASE_MACHING_ID\", \"NEVER_RELEASE\", or \"ONE_LEASE_PER_CLIENT\". The default is \"RELEASE_MATCHING_ID\".
 	LeasePerClientSettings *string `json:"lease_per_client_settings,omitempty"`
 	// Determines the lease scavenging time value. When this field is set, the appliance permanently deletes the free and backup leases that remain in the database beyond a specified period of time. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day).
-	LeaseScavengeTime *int32 `json:"lease_scavenge_time,omitempty"`
+	LeaseScavengeTime *int64 `json:"lease_scavenge_time,omitempty"`
 	// This value specifies whether the grid member logs lease events. This setting overrides the Grid level setting.
 	LogLeaseEvents *bool `json:"log_lease_events,omitempty"`
 	// This field contains the logic filters to be applied on the Grid member. This list corresponds to the match rules that are written to the dhcpd configuration file.
@@ -2675,9 +2675,9 @@ func (o *MemberDhcpproperties) SetLeasePerClientSettings(v string) {
 }
 
 // GetLeaseScavengeTime returns the LeaseScavengeTime field value if set, zero value otherwise.
-func (o *MemberDhcpproperties) GetLeaseScavengeTime() int32 {
+func (o *MemberDhcpproperties) GetLeaseScavengeTime() int64 {
 	if o == nil || IsNil(o.LeaseScavengeTime) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LeaseScavengeTime
@@ -2685,7 +2685,7 @@ func (o *MemberDhcpproperties) GetLeaseScavengeTime() int32 {
 
 // GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberDhcpproperties) GetLeaseScavengeTimeOk() (*int32, bool) {
+func (o *MemberDhcpproperties) GetLeaseScavengeTimeOk() (*int64, bool) {
 	if o == nil || IsNil(o.LeaseScavengeTime) {
 		return nil, false
 	}
@@ -2701,8 +2701,8 @@ func (o *MemberDhcpproperties) HasLeaseScavengeTime() bool {
 	return false
 }
 
-// SetLeaseScavengeTime gets a reference to the given int32 and assigns it to the LeaseScavengeTime field.
-func (o *MemberDhcpproperties) SetLeaseScavengeTime(v int32) {
+// SetLeaseScavengeTime gets a reference to the given int64 and assigns it to the LeaseScavengeTime field.
+func (o *MemberDhcpproperties) SetLeaseScavengeTime(v int64) {
 	o.LeaseScavengeTime = &v
 }
 

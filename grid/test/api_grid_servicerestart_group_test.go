@@ -23,11 +23,11 @@ func TestGridServicerestartGroupAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test GridServicerestartGroupAPIService GridservicerestartgroupGet", func(t *testing.T) {
+	t.Run("Test GridServicerestartGroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridServicerestartGroupAPI.GridservicerestartgroupGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GridServicerestartGroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestGridServicerestartGroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridServicerestartGroupAPIService GridservicerestartgroupPost", func(t *testing.T) {
+	t.Run("Test GridServicerestartGroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridServicerestartGroupAPI.GridservicerestartgroupPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.GridServicerestartGroupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GridServicerestartGroupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.GridServicerestartGroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestGridServicerestartGroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridServicerestartGroupAPIService GridservicerestartgroupReferenceDelete", func(t *testing.T) {
+	t.Run("Test GridServicerestartGroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.GridServicerestartGroupAPI.GridservicerestartgroupReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test GridServicerestartGroupAPIService GridservicerestartgroupReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.GridServicerestartGroupAPI.GridservicerestartgroupReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridServicerestartGroupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestGridServicerestartGroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridServicerestartGroupAPIService GridservicerestartgroupReferencePut", func(t *testing.T) {
+	t.Run("Test GridServicerestartGroupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridServicerestartGroupAPI.GridservicerestartgroupReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridServicerestartGroupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

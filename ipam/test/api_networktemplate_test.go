@@ -23,11 +23,11 @@ func TestNetworktemplateAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test NetworktemplateAPIService Get", func(t *testing.T) {
+	t.Run("Test NetworktemplateAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NetworktemplateAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NetworktemplateAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNetworktemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworktemplateAPIService Post", func(t *testing.T) {
+	t.Run("Test NetworktemplateAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NetworktemplateAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NetworktemplateAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NetworktemplateAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NetworktemplateAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNetworktemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworktemplateAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test NetworktemplateAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NetworktemplateAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NetworktemplateAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NetworktemplateAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NetworktemplateAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNetworktemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworktemplateAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test NetworktemplateAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NetworktemplateAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NetworktemplateAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

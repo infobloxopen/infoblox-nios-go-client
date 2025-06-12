@@ -23,52 +23,52 @@ import (
 
 type GridThreatprotectionAPI interface {
 	/*
-		GridthreatprotectionGet Retrieve grid:threatprotection objects
+		List Retrieve grid:threatprotection objects
 
 		Returns a list of grid:threatprotection objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridThreatprotectionAPIGridthreatprotectionGetRequest
+		@return GridThreatprotectionAPIListRequest
 	*/
-	GridthreatprotectionGet(ctx context.Context) GridThreatprotectionAPIGridthreatprotectionGetRequest
+	List(ctx context.Context) GridThreatprotectionAPIListRequest
 
-	// GridthreatprotectionGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridThreatprotectionResponse
-	GridthreatprotectionGetExecute(r GridThreatprotectionAPIGridthreatprotectionGetRequest) (*ListGridThreatprotectionResponse, *http.Response, error)
+	ListExecute(r GridThreatprotectionAPIListRequest) (*ListGridThreatprotectionResponse, *http.Response, error)
 	/*
-		GridthreatprotectionReferenceGet Get a specific grid:threatprotection object
+		Read Get a specific grid:threatprotection object
 
 		Returns a specific grid:threatprotection object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:threatprotection object
-		@return GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest
+		@return GridThreatprotectionAPIReadRequest
 	*/
-	GridthreatprotectionReferenceGet(ctx context.Context, reference string) GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest
+	Read(ctx context.Context, reference string) GridThreatprotectionAPIReadRequest
 
-	// GridthreatprotectionReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridThreatprotectionResponse
-	GridthreatprotectionReferenceGetExecute(r GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest) (*GetGridThreatprotectionResponse, *http.Response, error)
+	ReadExecute(r GridThreatprotectionAPIReadRequest) (*GetGridThreatprotectionResponse, *http.Response, error)
 	/*
-		GridthreatprotectionReferencePut Update a grid:threatprotection object
+		Update Update a grid:threatprotection object
 
 		Updates a specific grid:threatprotection object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:threatprotection object
-		@return GridThreatprotectionAPIGridthreatprotectionReferencePutRequest
+		@return GridThreatprotectionAPIUpdateRequest
 	*/
-	GridthreatprotectionReferencePut(ctx context.Context, reference string) GridThreatprotectionAPIGridthreatprotectionReferencePutRequest
+	Update(ctx context.Context, reference string) GridThreatprotectionAPIUpdateRequest
 
-	// GridthreatprotectionReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridThreatprotectionResponse
-	GridthreatprotectionReferencePutExecute(r GridThreatprotectionAPIGridthreatprotectionReferencePutRequest) (*UpdateGridThreatprotectionResponse, *http.Response, error)
+	UpdateExecute(r GridThreatprotectionAPIUpdateRequest) (*UpdateGridThreatprotectionResponse, *http.Response, error)
 }
 
 // GridThreatprotectionAPIService GridThreatprotectionAPI service
 type GridThreatprotectionAPIService internal.Service
 
-type GridThreatprotectionAPIGridthreatprotectionGetRequest struct {
+type GridThreatprotectionAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridThreatprotectionAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type GridThreatprotectionAPIGridthreatprotectionGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridThreatprotectionAPIGridthreatprotectionGetRequest) ReturnFields(returnFields string) GridThreatprotectionAPIGridthreatprotectionGetRequest {
+func (r GridThreatprotectionAPIListRequest) ReturnFields(returnFields string) GridThreatprotectionAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridThreatprotectionAPIGridthreatprotectionGetRequest) ReturnFields2(returnFields2 string) GridThreatprotectionAPIGridthreatprotectionGetRequest {
+func (r GridThreatprotectionAPIListRequest) ReturnFields2(returnFields2 string) GridThreatprotectionAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridThreatprotectionAPIGridthreatprotectionGetRequest) MaxResults(maxResults int32) GridThreatprotectionAPIGridthreatprotectionGetRequest {
+func (r GridThreatprotectionAPIListRequest) MaxResults(maxResults int32) GridThreatprotectionAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridThreatprotectionAPIGridthreatprotectionGetRequest) ReturnAsObject(returnAsObject int32) GridThreatprotectionAPIGridthreatprotectionGetRequest {
+func (r GridThreatprotectionAPIListRequest) ReturnAsObject(returnAsObject int32) GridThreatprotectionAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridThreatprotectionAPIGridthreatprotectionGetRequest) Paging(paging int32) GridThreatprotectionAPIGridthreatprotectionGetRequest {
+func (r GridThreatprotectionAPIListRequest) Paging(paging int32) GridThreatprotectionAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridThreatprotectionAPIGridthreatprotectionGetRequest) PageId(pageId string) GridThreatprotectionAPIGridthreatprotectionGetRequest {
+func (r GridThreatprotectionAPIListRequest) PageId(pageId string) GridThreatprotectionAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridThreatprotectionAPIGridthreatprotectionGetRequest) Filters(filters map[string]interface{}) GridThreatprotectionAPIGridthreatprotectionGetRequest {
+func (r GridThreatprotectionAPIListRequest) Filters(filters map[string]interface{}) GridThreatprotectionAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridThreatprotectionAPIGridthreatprotectionGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridThreatprotectionAPIGridthreatprotectionGetRequest {
+func (r GridThreatprotectionAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridThreatprotectionAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridThreatprotectionAPIGridthreatprotectionGetRequest) Execute() (*ListGridThreatprotectionResponse, *http.Response, error) {
-	return r.ApiService.GridthreatprotectionGetExecute(r)
+func (r GridThreatprotectionAPIListRequest) Execute() (*ListGridThreatprotectionResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridthreatprotectionGet Retrieve grid:threatprotection objects
+List Retrieve grid:threatprotection objects
 
 Returns a list of grid:threatprotection objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridThreatprotectionAPIGridthreatprotectionGetRequest
+	@return GridThreatprotectionAPIListRequest
 */
-func (a *GridThreatprotectionAPIService) GridthreatprotectionGet(ctx context.Context) GridThreatprotectionAPIGridthreatprotectionGetRequest {
-	return GridThreatprotectionAPIGridthreatprotectionGetRequest{
+func (a *GridThreatprotectionAPIService) List(ctx context.Context) GridThreatprotectionAPIListRequest {
+	return GridThreatprotectionAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GridThreatprotectionAPIService) GridthreatprotectionGet(ctx context.Con
 // Execute executes the request
 //
 //	@return ListGridThreatprotectionResponse
-func (a *GridThreatprotectionAPIService) GridthreatprotectionGetExecute(r GridThreatprotectionAPIGridthreatprotectionGetRequest) (*ListGridThreatprotectionResponse, *http.Response, error) {
+func (a *GridThreatprotectionAPIService) ListExecute(r GridThreatprotectionAPIListRequest) (*ListGridThreatprotectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GridThreatprotectionAPIService) GridthreatprotectionGetExecute(r GridTh
 		localVarReturnValue *ListGridThreatprotectionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatprotectionAPIService.GridthreatprotectionGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatprotectionAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *GridThreatprotectionAPIService) GridthreatprotectionGetExecute(r GridTh
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest struct {
+type GridThreatprotectionAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridThreatprotectionAPI
 	reference      string
@@ -249,38 +249,38 @@ type GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest) ReturnFields(returnFields string) GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest {
+func (r GridThreatprotectionAPIReadRequest) ReturnFields(returnFields string) GridThreatprotectionAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest) ReturnFields2(returnFields2 string) GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest {
+func (r GridThreatprotectionAPIReadRequest) ReturnFields2(returnFields2 string) GridThreatprotectionAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest {
+func (r GridThreatprotectionAPIReadRequest) ReturnAsObject(returnAsObject int32) GridThreatprotectionAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest) Execute() (*GetGridThreatprotectionResponse, *http.Response, error) {
-	return r.ApiService.GridthreatprotectionReferenceGetExecute(r)
+func (r GridThreatprotectionAPIReadRequest) Execute() (*GetGridThreatprotectionResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridthreatprotectionReferenceGet Get a specific grid:threatprotection object
+Read Get a specific grid:threatprotection object
 
 Returns a specific grid:threatprotection object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:threatprotection object
-	@return GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest
+	@return GridThreatprotectionAPIReadRequest
 */
-func (a *GridThreatprotectionAPIService) GridthreatprotectionReferenceGet(ctx context.Context, reference string) GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest {
-	return GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest{
+func (a *GridThreatprotectionAPIService) Read(ctx context.Context, reference string) GridThreatprotectionAPIReadRequest {
+	return GridThreatprotectionAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GridThreatprotectionAPIService) GridthreatprotectionReferenceGet(ctx co
 // Execute executes the request
 //
 //	@return GetGridThreatprotectionResponse
-func (a *GridThreatprotectionAPIService) GridthreatprotectionReferenceGetExecute(r GridThreatprotectionAPIGridthreatprotectionReferenceGetRequest) (*GetGridThreatprotectionResponse, *http.Response, error) {
+func (a *GridThreatprotectionAPIService) ReadExecute(r GridThreatprotectionAPIReadRequest) (*GetGridThreatprotectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GridThreatprotectionAPIService) GridthreatprotectionReferenceGetExecute
 		localVarReturnValue *GetGridThreatprotectionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatprotectionAPIService.GridthreatprotectionReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatprotectionAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *GridThreatprotectionAPIService) GridthreatprotectionReferenceGetExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridThreatprotectionAPIGridthreatprotectionReferencePutRequest struct {
+type GridThreatprotectionAPIUpdateRequest struct {
 	ctx                  context.Context
 	ApiService           GridThreatprotectionAPI
 	reference            string
@@ -377,44 +377,44 @@ type GridThreatprotectionAPIGridthreatprotectionReferencePutRequest struct {
 }
 
 // Object data to update
-func (r GridThreatprotectionAPIGridthreatprotectionReferencePutRequest) GridThreatprotection(gridThreatprotection GridThreatprotection) GridThreatprotectionAPIGridthreatprotectionReferencePutRequest {
+func (r GridThreatprotectionAPIUpdateRequest) GridThreatprotection(gridThreatprotection GridThreatprotection) GridThreatprotectionAPIUpdateRequest {
 	r.gridThreatprotection = &gridThreatprotection
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridThreatprotectionAPIGridthreatprotectionReferencePutRequest) ReturnFields(returnFields string) GridThreatprotectionAPIGridthreatprotectionReferencePutRequest {
+func (r GridThreatprotectionAPIUpdateRequest) ReturnFields(returnFields string) GridThreatprotectionAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridThreatprotectionAPIGridthreatprotectionReferencePutRequest) ReturnFields2(returnFields2 string) GridThreatprotectionAPIGridthreatprotectionReferencePutRequest {
+func (r GridThreatprotectionAPIUpdateRequest) ReturnFields2(returnFields2 string) GridThreatprotectionAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridThreatprotectionAPIGridthreatprotectionReferencePutRequest) ReturnAsObject(returnAsObject int32) GridThreatprotectionAPIGridthreatprotectionReferencePutRequest {
+func (r GridThreatprotectionAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridThreatprotectionAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridThreatprotectionAPIGridthreatprotectionReferencePutRequest) Execute() (*UpdateGridThreatprotectionResponse, *http.Response, error) {
-	return r.ApiService.GridthreatprotectionReferencePutExecute(r)
+func (r GridThreatprotectionAPIUpdateRequest) Execute() (*UpdateGridThreatprotectionResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GridthreatprotectionReferencePut Update a grid:threatprotection object
+Update Update a grid:threatprotection object
 
 Updates a specific grid:threatprotection object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:threatprotection object
-	@return GridThreatprotectionAPIGridthreatprotectionReferencePutRequest
+	@return GridThreatprotectionAPIUpdateRequest
 */
-func (a *GridThreatprotectionAPIService) GridthreatprotectionReferencePut(ctx context.Context, reference string) GridThreatprotectionAPIGridthreatprotectionReferencePutRequest {
-	return GridThreatprotectionAPIGridthreatprotectionReferencePutRequest{
+func (a *GridThreatprotectionAPIService) Update(ctx context.Context, reference string) GridThreatprotectionAPIUpdateRequest {
+	return GridThreatprotectionAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GridThreatprotectionAPIService) GridthreatprotectionReferencePut(ctx co
 // Execute executes the request
 //
 //	@return UpdateGridThreatprotectionResponse
-func (a *GridThreatprotectionAPIService) GridthreatprotectionReferencePutExecute(r GridThreatprotectionAPIGridthreatprotectionReferencePutRequest) (*UpdateGridThreatprotectionResponse, *http.Response, error) {
+func (a *GridThreatprotectionAPIService) UpdateExecute(r GridThreatprotectionAPIUpdateRequest) (*UpdateGridThreatprotectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GridThreatprotectionAPIService) GridthreatprotectionReferencePutExecute
 		localVarReturnValue *UpdateGridThreatprotectionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatprotectionAPIService.GridthreatprotectionReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatprotectionAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

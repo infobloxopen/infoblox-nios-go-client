@@ -23,11 +23,11 @@ func TestRecordHostAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordHostAPIService RecordhostGet", func(t *testing.T) {
+	t.Run("Test RecordHostAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordHostAPI.RecordhostGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordHostAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRecordHostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordHostAPIService RecordhostPost", func(t *testing.T) {
+	t.Run("Test RecordHostAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordHostAPI.RecordhostPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RecordHostAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RecordHostAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RecordHostAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRecordHostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordHostAPIService RecordhostReferenceDelete", func(t *testing.T) {
+	t.Run("Test RecordHostAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RecordHostAPI.RecordhostReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RecordHostAPIService RecordhostReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RecordHostAPI.RecordhostReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordHostAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRecordHostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordHostAPIService RecordhostReferencePut", func(t *testing.T) {
+	t.Run("Test RecordHostAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordHostAPI.RecordhostReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordHostAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

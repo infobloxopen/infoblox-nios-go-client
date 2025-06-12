@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridmembercloudapiGet**](GridMemberCloudapiAPI.md#GridmembercloudapiGet) | **Get** /grid:member:cloudapi | Retrieve grid:member:cloudapi objects
-[**GridmembercloudapiReferenceGet**](GridMemberCloudapiAPI.md#GridmembercloudapiReferenceGet) | **Get** /grid:member:cloudapi/{reference} | Get a specific grid:member:cloudapi object
-[**GridmembercloudapiReferencePut**](GridMemberCloudapiAPI.md#GridmembercloudapiReferencePut) | **Put** /grid:member:cloudapi/{reference} | Update a grid:member:cloudapi object
+[**List**](GridMemberCloudapiAPI.md#List) | **Get** /grid:member:cloudapi | Retrieve grid:member:cloudapi objects
+[**Read**](GridMemberCloudapiAPI.md#Read) | **Get** /grid:member:cloudapi/{reference} | Get a specific grid:member:cloudapi object
+[**Update**](GridMemberCloudapiAPI.md#Update) | **Put** /grid:member:cloudapi/{reference} | Update a grid:member:cloudapi object
 
 
 
-## GridmembercloudapiGet
+## List
 
-> ListGridMemberCloudapiResponse GridmembercloudapiGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridMemberCloudapiResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:member:cloudapi objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridMemberCloudapiAPI.GridmembercloudapiGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridMemberCloudapiAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridMemberCloudapiAPI.GridmembercloudapiGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridMemberCloudapiAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridmembercloudapiGet`: ListGridMemberCloudapiResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridMemberCloudapiAPI.GridmembercloudapiGet`: %v\n", resp)
+	// response from `List`: ListGridMemberCloudapiResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridMemberCloudapiAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridMemberCloudapiAPIGridmembercloudapiGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridMemberCloudapiAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridmembercloudapiReferenceGet
+## Read
 
-> GetGridMemberCloudapiResponse GridmembercloudapiReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridMemberCloudapiResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:member:cloudapi object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:member:cloudapi object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridMemberCloudapiAPI.GridmembercloudapiReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridMemberCloudapiAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridMemberCloudapiAPI.GridmembercloudapiReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridMemberCloudapiAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridmembercloudapiReferenceGet`: GetGridMemberCloudapiResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridMemberCloudapiAPI.GridmembercloudapiReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridMemberCloudapiResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridMemberCloudapiAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridMemberCloudapiAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridmembercloudapiReferencePut
+## Update
 
-> UpdateGridMemberCloudapiResponse GridmembercloudapiReferencePut(ctx, reference).GridMemberCloudapi(gridMemberCloudapi).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridMemberCloudapiResponse Update(ctx, reference).GridMemberCloudapi(gridMemberCloudapi).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:member:cloudapi object
 
@@ -180,13 +180,13 @@ func main() {
 	gridMemberCloudapi := *grid.NewGridMemberCloudapi() // GridMemberCloudapi | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridMemberCloudapiAPI.GridmembercloudapiReferencePut(context.Background(), reference).GridMemberCloudapi(gridMemberCloudapi).Execute()
+	resp, r, err := apiClient.GridMemberCloudapiAPI.Update(context.Background(), reference).GridMemberCloudapi(gridMemberCloudapi).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridMemberCloudapiAPI.GridmembercloudapiReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridMemberCloudapiAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridmembercloudapiReferencePut`: UpdateGridMemberCloudapiResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridMemberCloudapiAPI.GridmembercloudapiReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGridMemberCloudapiResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridMemberCloudapiAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridMemberCloudapiAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

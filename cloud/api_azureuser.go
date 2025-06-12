@@ -23,78 +23,302 @@ import (
 
 type AzureuserAPI interface {
 	/*
-		Get Retrieve azureuser objects
-
-		Returns a list of azureuser objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AzureuserAPIGetRequest
-	*/
-	Get(ctx context.Context) AzureuserAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListAzureuserResponse
-	GetExecute(r AzureuserAPIGetRequest) (*ListAzureuserResponse, *http.Response, error)
-	/*
-		Post Create a azureuser object
+		Create Create a azureuser object
 
 		Creates a new azureuser object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AzureuserAPIPostRequest
+		@return AzureuserAPICreateRequest
 	*/
-	Post(ctx context.Context) AzureuserAPIPostRequest
+	Create(ctx context.Context) AzureuserAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateAzureuserResponse
-	PostExecute(r AzureuserAPIPostRequest) (*CreateAzureuserResponse, *http.Response, error)
+	CreateExecute(r AzureuserAPICreateRequest) (*CreateAzureuserResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a azureuser object
+		Delete Delete a azureuser object
 
 		Deletes a specific azureuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the azureuser object
-		@return AzureuserAPIReferenceDeleteRequest
+		@return AzureuserAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) AzureuserAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) AzureuserAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r AzureuserAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r AzureuserAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific azureuser object
+		List Retrieve azureuser objects
+
+		Returns a list of azureuser objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return AzureuserAPIListRequest
+	*/
+	List(ctx context.Context) AzureuserAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListAzureuserResponse
+	ListExecute(r AzureuserAPIListRequest) (*ListAzureuserResponse, *http.Response, error)
+	/*
+		Read Get a specific azureuser object
 
 		Returns a specific azureuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the azureuser object
-		@return AzureuserAPIReferenceGetRequest
+		@return AzureuserAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AzureuserAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AzureuserAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAzureuserResponse
-	ReferenceGetExecute(r AzureuserAPIReferenceGetRequest) (*GetAzureuserResponse, *http.Response, error)
+	ReadExecute(r AzureuserAPIReadRequest) (*GetAzureuserResponse, *http.Response, error)
 	/*
-		ReferencePut Update a azureuser object
+		Update Update a azureuser object
 
 		Updates a specific azureuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the azureuser object
-		@return AzureuserAPIReferencePutRequest
+		@return AzureuserAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) AzureuserAPIReferencePutRequest
+	Update(ctx context.Context, reference string) AzureuserAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateAzureuserResponse
-	ReferencePutExecute(r AzureuserAPIReferencePutRequest) (*UpdateAzureuserResponse, *http.Response, error)
+	UpdateExecute(r AzureuserAPIUpdateRequest) (*UpdateAzureuserResponse, *http.Response, error)
 }
 
 // AzureuserAPIService AzureuserAPI service
 type AzureuserAPIService internal.Service
 
-type AzureuserAPIGetRequest struct {
+type AzureuserAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     AzureuserAPI
+	azureuser      *Azureuser
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r AzureuserAPICreateRequest) Azureuser(azureuser Azureuser) AzureuserAPICreateRequest {
+	r.azureuser = &azureuser
+	return r
+}
+
+// Enter the field names followed by comma
+func (r AzureuserAPICreateRequest) ReturnFields(returnFields string) AzureuserAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r AzureuserAPICreateRequest) ReturnFields2(returnFields2 string) AzureuserAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r AzureuserAPICreateRequest) ReturnAsObject(returnAsObject int32) AzureuserAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r AzureuserAPICreateRequest) Execute() (*CreateAzureuserResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a azureuser object
+
+Creates a new azureuser object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return AzureuserAPICreateRequest
+*/
+func (a *AzureuserAPIService) Create(ctx context.Context) AzureuserAPICreateRequest {
+	return AzureuserAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateAzureuserResponse
+func (a *AzureuserAPIService) CreateExecute(r AzureuserAPICreateRequest) (*CreateAzureuserResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateAzureuserResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzureuserAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/azureuser"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.azureuser == nil {
+		return localVarReturnValue, nil, internal.ReportError("azureuser is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.azureuser
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type AzureuserAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService AzureuserAPI
+	reference  string
+}
+
+func (r AzureuserAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a azureuser object
+
+Deletes a specific azureuser object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the azureuser object
+	@return AzureuserAPIDeleteRequest
+*/
+func (a *AzureuserAPIService) Delete(ctx context.Context, reference string) AzureuserAPIDeleteRequest {
+	return AzureuserAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *AzureuserAPIService) DeleteExecute(r AzureuserAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzureuserAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/azureuser/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type AzureuserAPIListRequest struct {
 	ctx            context.Context
 	ApiService     AzureuserAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type AzureuserAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r AzureuserAPIGetRequest) ReturnFields(returnFields string) AzureuserAPIGetRequest {
+func (r AzureuserAPIListRequest) ReturnFields(returnFields string) AzureuserAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzureuserAPIGetRequest) ReturnFields2(returnFields2 string) AzureuserAPIGetRequest {
+func (r AzureuserAPIListRequest) ReturnFields2(returnFields2 string) AzureuserAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r AzureuserAPIGetRequest) MaxResults(maxResults int32) AzureuserAPIGetRequest {
+func (r AzureuserAPIListRequest) MaxResults(maxResults int32) AzureuserAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AzureuserAPIGetRequest) ReturnAsObject(returnAsObject int32) AzureuserAPIGetRequest {
+func (r AzureuserAPIListRequest) ReturnAsObject(returnAsObject int32) AzureuserAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r AzureuserAPIGetRequest) Paging(paging int32) AzureuserAPIGetRequest {
+func (r AzureuserAPIListRequest) Paging(paging int32) AzureuserAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r AzureuserAPIGetRequest) PageId(pageId string) AzureuserAPIGetRequest {
+func (r AzureuserAPIListRequest) PageId(pageId string) AzureuserAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r AzureuserAPIGetRequest) Filters(filters map[string]interface{}) AzureuserAPIGetRequest {
+func (r AzureuserAPIListRequest) Filters(filters map[string]interface{}) AzureuserAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r AzureuserAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AzureuserAPIGetRequest {
+func (r AzureuserAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AzureuserAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r AzureuserAPIGetRequest) Execute() (*ListAzureuserResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r AzureuserAPIListRequest) Execute() (*ListAzureuserResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve azureuser objects
+List Retrieve azureuser objects
 
 Returns a list of azureuser objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AzureuserAPIGetRequest
+	@return AzureuserAPIListRequest
 */
-func (a *AzureuserAPIService) Get(ctx context.Context) AzureuserAPIGetRequest {
-	return AzureuserAPIGetRequest{
+func (a *AzureuserAPIService) List(ctx context.Context) AzureuserAPIListRequest {
+	return AzureuserAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *AzureuserAPIService) Get(ctx context.Context) AzureuserAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListAzureuserResponse
-func (a *AzureuserAPIService) GetExecute(r AzureuserAPIGetRequest) (*ListAzureuserResponse, *http.Response, error) {
+func (a *AzureuserAPIService) ListExecute(r AzureuserAPIListRequest) (*ListAzureuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *AzureuserAPIService) GetExecute(r AzureuserAPIGetRequest) (*ListAzureus
 		localVarReturnValue *ListAzureuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzureuserAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzureuserAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *AzureuserAPIService) GetExecute(r AzureuserAPIGetRequest) (*ListAzureus
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AzureuserAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     AzureuserAPI
-	azureuser      *Azureuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r AzureuserAPIPostRequest) Azureuser(azureuser Azureuser) AzureuserAPIPostRequest {
-	r.azureuser = &azureuser
-	return r
-}
-
-// Enter the field names followed by comma
-func (r AzureuserAPIPostRequest) ReturnFields(returnFields string) AzureuserAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzureuserAPIPostRequest) ReturnFields2(returnFields2 string) AzureuserAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r AzureuserAPIPostRequest) ReturnAsObject(returnAsObject int32) AzureuserAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r AzureuserAPIPostRequest) Execute() (*CreateAzureuserResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a azureuser object
-
-Creates a new azureuser object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AzureuserAPIPostRequest
-*/
-func (a *AzureuserAPIService) Post(ctx context.Context) AzureuserAPIPostRequest {
-	return AzureuserAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateAzureuserResponse
-func (a *AzureuserAPIService) PostExecute(r AzureuserAPIPostRequest) (*CreateAzureuserResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateAzureuserResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzureuserAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/azureuser"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.azureuser == nil {
-		return localVarReturnValue, nil, internal.ReportError("azureuser is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.azureuser
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type AzureuserAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService AzureuserAPI
-	reference  string
-}
-
-func (r AzureuserAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a azureuser object
-
-Deletes a specific azureuser object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the azureuser object
-	@return AzureuserAPIReferenceDeleteRequest
-*/
-func (a *AzureuserAPIService) ReferenceDelete(ctx context.Context, reference string) AzureuserAPIReferenceDeleteRequest {
-	return AzureuserAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *AzureuserAPIService) ReferenceDeleteExecute(r AzureuserAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzureuserAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/azureuser/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type AzureuserAPIReferenceGetRequest struct {
+type AzureuserAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     AzureuserAPI
 	reference      string
@@ -499,38 +499,38 @@ type AzureuserAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r AzureuserAPIReferenceGetRequest) ReturnFields(returnFields string) AzureuserAPIReferenceGetRequest {
+func (r AzureuserAPIReadRequest) ReturnFields(returnFields string) AzureuserAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzureuserAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AzureuserAPIReferenceGetRequest {
+func (r AzureuserAPIReadRequest) ReturnFields2(returnFields2 string) AzureuserAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AzureuserAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AzureuserAPIReferenceGetRequest {
+func (r AzureuserAPIReadRequest) ReturnAsObject(returnAsObject int32) AzureuserAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AzureuserAPIReferenceGetRequest) Execute() (*GetAzureuserResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r AzureuserAPIReadRequest) Execute() (*GetAzureuserResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific azureuser object
+Read Get a specific azureuser object
 
 Returns a specific azureuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the azureuser object
-	@return AzureuserAPIReferenceGetRequest
+	@return AzureuserAPIReadRequest
 */
-func (a *AzureuserAPIService) ReferenceGet(ctx context.Context, reference string) AzureuserAPIReferenceGetRequest {
-	return AzureuserAPIReferenceGetRequest{
+func (a *AzureuserAPIService) Read(ctx context.Context, reference string) AzureuserAPIReadRequest {
+	return AzureuserAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *AzureuserAPIService) ReferenceGet(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return GetAzureuserResponse
-func (a *AzureuserAPIService) ReferenceGetExecute(r AzureuserAPIReferenceGetRequest) (*GetAzureuserResponse, *http.Response, error) {
+func (a *AzureuserAPIService) ReadExecute(r AzureuserAPIReadRequest) (*GetAzureuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *AzureuserAPIService) ReferenceGetExecute(r AzureuserAPIReferenceGetRequ
 		localVarReturnValue *GetAzureuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzureuserAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzureuserAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *AzureuserAPIService) ReferenceGetExecute(r AzureuserAPIReferenceGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AzureuserAPIReferencePutRequest struct {
+type AzureuserAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     AzureuserAPI
 	reference      string
@@ -627,44 +627,44 @@ type AzureuserAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r AzureuserAPIReferencePutRequest) Azureuser(azureuser Azureuser) AzureuserAPIReferencePutRequest {
+func (r AzureuserAPIUpdateRequest) Azureuser(azureuser Azureuser) AzureuserAPIUpdateRequest {
 	r.azureuser = &azureuser
 	return r
 }
 
 // Enter the field names followed by comma
-func (r AzureuserAPIReferencePutRequest) ReturnFields(returnFields string) AzureuserAPIReferencePutRequest {
+func (r AzureuserAPIUpdateRequest) ReturnFields(returnFields string) AzureuserAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzureuserAPIReferencePutRequest) ReturnFields2(returnFields2 string) AzureuserAPIReferencePutRequest {
+func (r AzureuserAPIUpdateRequest) ReturnFields2(returnFields2 string) AzureuserAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AzureuserAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) AzureuserAPIReferencePutRequest {
+func (r AzureuserAPIUpdateRequest) ReturnAsObject(returnAsObject int32) AzureuserAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AzureuserAPIReferencePutRequest) Execute() (*UpdateAzureuserResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r AzureuserAPIUpdateRequest) Execute() (*UpdateAzureuserResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a azureuser object
+Update Update a azureuser object
 
 Updates a specific azureuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the azureuser object
-	@return AzureuserAPIReferencePutRequest
+	@return AzureuserAPIUpdateRequest
 */
-func (a *AzureuserAPIService) ReferencePut(ctx context.Context, reference string) AzureuserAPIReferencePutRequest {
-	return AzureuserAPIReferencePutRequest{
+func (a *AzureuserAPIService) Update(ctx context.Context, reference string) AzureuserAPIUpdateRequest {
+	return AzureuserAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *AzureuserAPIService) ReferencePut(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return UpdateAzureuserResponse
-func (a *AzureuserAPIService) ReferencePutExecute(r AzureuserAPIReferencePutRequest) (*UpdateAzureuserResponse, *http.Response, error) {
+func (a *AzureuserAPIService) UpdateExecute(r AzureuserAPIUpdateRequest) (*UpdateAzureuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *AzureuserAPIService) ReferencePutExecute(r AzureuserAPIReferencePutRequ
 		localVarReturnValue *UpdateAzureuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzureuserAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzureuserAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

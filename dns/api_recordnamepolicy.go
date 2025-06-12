@@ -23,78 +23,302 @@ import (
 
 type RecordnamepolicyAPI interface {
 	/*
-		Get Retrieve recordnamepolicy objects
-
-		Returns a list of recordnamepolicy objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordnamepolicyAPIGetRequest
-	*/
-	Get(ctx context.Context) RecordnamepolicyAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListRecordnamepolicyResponse
-	GetExecute(r RecordnamepolicyAPIGetRequest) (*ListRecordnamepolicyResponse, *http.Response, error)
-	/*
-		Post Create a recordnamepolicy object
+		Create Create a recordnamepolicy object
 
 		Creates a new recordnamepolicy object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordnamepolicyAPIPostRequest
+		@return RecordnamepolicyAPICreateRequest
 	*/
-	Post(ctx context.Context) RecordnamepolicyAPIPostRequest
+	Create(ctx context.Context) RecordnamepolicyAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordnamepolicyResponse
-	PostExecute(r RecordnamepolicyAPIPostRequest) (*CreateRecordnamepolicyResponse, *http.Response, error)
+	CreateExecute(r RecordnamepolicyAPICreateRequest) (*CreateRecordnamepolicyResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a recordnamepolicy object
+		Delete Delete a recordnamepolicy object
 
 		Deletes a specific recordnamepolicy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the recordnamepolicy object
-		@return RecordnamepolicyAPIReferenceDeleteRequest
+		@return RecordnamepolicyAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) RecordnamepolicyAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordnamepolicyAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r RecordnamepolicyAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordnamepolicyAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific recordnamepolicy object
+		List Retrieve recordnamepolicy objects
+
+		Returns a list of recordnamepolicy objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordnamepolicyAPIListRequest
+	*/
+	List(ctx context.Context) RecordnamepolicyAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordnamepolicyResponse
+	ListExecute(r RecordnamepolicyAPIListRequest) (*ListRecordnamepolicyResponse, *http.Response, error)
+	/*
+		Read Get a specific recordnamepolicy object
 
 		Returns a specific recordnamepolicy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the recordnamepolicy object
-		@return RecordnamepolicyAPIReferenceGetRequest
+		@return RecordnamepolicyAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) RecordnamepolicyAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordnamepolicyAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordnamepolicyResponse
-	ReferenceGetExecute(r RecordnamepolicyAPIReferenceGetRequest) (*GetRecordnamepolicyResponse, *http.Response, error)
+	ReadExecute(r RecordnamepolicyAPIReadRequest) (*GetRecordnamepolicyResponse, *http.Response, error)
 	/*
-		ReferencePut Update a recordnamepolicy object
+		Update Update a recordnamepolicy object
 
 		Updates a specific recordnamepolicy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the recordnamepolicy object
-		@return RecordnamepolicyAPIReferencePutRequest
+		@return RecordnamepolicyAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) RecordnamepolicyAPIReferencePutRequest
+	Update(ctx context.Context, reference string) RecordnamepolicyAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordnamepolicyResponse
-	ReferencePutExecute(r RecordnamepolicyAPIReferencePutRequest) (*UpdateRecordnamepolicyResponse, *http.Response, error)
+	UpdateExecute(r RecordnamepolicyAPIUpdateRequest) (*UpdateRecordnamepolicyResponse, *http.Response, error)
 }
 
 // RecordnamepolicyAPIService RecordnamepolicyAPI service
 type RecordnamepolicyAPIService internal.Service
 
-type RecordnamepolicyAPIGetRequest struct {
+type RecordnamepolicyAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       RecordnamepolicyAPI
+	recordnamepolicy *Recordnamepolicy
+	returnFields     *string
+	returnFields2    *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r RecordnamepolicyAPICreateRequest) Recordnamepolicy(recordnamepolicy Recordnamepolicy) RecordnamepolicyAPICreateRequest {
+	r.recordnamepolicy = &recordnamepolicy
+	return r
+}
+
+// Enter the field names followed by comma
+func (r RecordnamepolicyAPICreateRequest) ReturnFields(returnFields string) RecordnamepolicyAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordnamepolicyAPICreateRequest) ReturnFields2(returnFields2 string) RecordnamepolicyAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordnamepolicyAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordnamepolicyAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r RecordnamepolicyAPICreateRequest) Execute() (*CreateRecordnamepolicyResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a recordnamepolicy object
+
+Creates a new recordnamepolicy object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordnamepolicyAPICreateRequest
+*/
+func (a *RecordnamepolicyAPIService) Create(ctx context.Context) RecordnamepolicyAPICreateRequest {
+	return RecordnamepolicyAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateRecordnamepolicyResponse
+func (a *RecordnamepolicyAPIService) CreateExecute(r RecordnamepolicyAPICreateRequest) (*CreateRecordnamepolicyResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateRecordnamepolicyResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordnamepolicyAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/recordnamepolicy"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.recordnamepolicy == nil {
+		return localVarReturnValue, nil, internal.ReportError("recordnamepolicy is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.recordnamepolicy
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordnamepolicyAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RecordnamepolicyAPI
+	reference  string
+}
+
+func (r RecordnamepolicyAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a recordnamepolicy object
+
+Deletes a specific recordnamepolicy object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the recordnamepolicy object
+	@return RecordnamepolicyAPIDeleteRequest
+*/
+func (a *RecordnamepolicyAPIService) Delete(ctx context.Context, reference string) RecordnamepolicyAPIDeleteRequest {
+	return RecordnamepolicyAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RecordnamepolicyAPIService) DeleteExecute(r RecordnamepolicyAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordnamepolicyAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/recordnamepolicy/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RecordnamepolicyAPIListRequest struct {
 	ctx            context.Context
 	ApiService     RecordnamepolicyAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type RecordnamepolicyAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordnamepolicyAPIGetRequest) ReturnFields(returnFields string) RecordnamepolicyAPIGetRequest {
+func (r RecordnamepolicyAPIListRequest) ReturnFields(returnFields string) RecordnamepolicyAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordnamepolicyAPIGetRequest) ReturnFields2(returnFields2 string) RecordnamepolicyAPIGetRequest {
+func (r RecordnamepolicyAPIListRequest) ReturnFields2(returnFields2 string) RecordnamepolicyAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordnamepolicyAPIGetRequest) MaxResults(maxResults int32) RecordnamepolicyAPIGetRequest {
+func (r RecordnamepolicyAPIListRequest) MaxResults(maxResults int32) RecordnamepolicyAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordnamepolicyAPIGetRequest) ReturnAsObject(returnAsObject int32) RecordnamepolicyAPIGetRequest {
+func (r RecordnamepolicyAPIListRequest) ReturnAsObject(returnAsObject int32) RecordnamepolicyAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordnamepolicyAPIGetRequest) Paging(paging int32) RecordnamepolicyAPIGetRequest {
+func (r RecordnamepolicyAPIListRequest) Paging(paging int32) RecordnamepolicyAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordnamepolicyAPIGetRequest) PageId(pageId string) RecordnamepolicyAPIGetRequest {
+func (r RecordnamepolicyAPIListRequest) PageId(pageId string) RecordnamepolicyAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordnamepolicyAPIGetRequest) Filters(filters map[string]interface{}) RecordnamepolicyAPIGetRequest {
+func (r RecordnamepolicyAPIListRequest) Filters(filters map[string]interface{}) RecordnamepolicyAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordnamepolicyAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordnamepolicyAPIGetRequest {
+func (r RecordnamepolicyAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordnamepolicyAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordnamepolicyAPIGetRequest) Execute() (*ListRecordnamepolicyResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r RecordnamepolicyAPIListRequest) Execute() (*ListRecordnamepolicyResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve recordnamepolicy objects
+List Retrieve recordnamepolicy objects
 
 Returns a list of recordnamepolicy objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordnamepolicyAPIGetRequest
+	@return RecordnamepolicyAPIListRequest
 */
-func (a *RecordnamepolicyAPIService) Get(ctx context.Context) RecordnamepolicyAPIGetRequest {
-	return RecordnamepolicyAPIGetRequest{
+func (a *RecordnamepolicyAPIService) List(ctx context.Context) RecordnamepolicyAPIListRequest {
+	return RecordnamepolicyAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *RecordnamepolicyAPIService) Get(ctx context.Context) RecordnamepolicyAP
 // Execute executes the request
 //
 //	@return ListRecordnamepolicyResponse
-func (a *RecordnamepolicyAPIService) GetExecute(r RecordnamepolicyAPIGetRequest) (*ListRecordnamepolicyResponse, *http.Response, error) {
+func (a *RecordnamepolicyAPIService) ListExecute(r RecordnamepolicyAPIListRequest) (*ListRecordnamepolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *RecordnamepolicyAPIService) GetExecute(r RecordnamepolicyAPIGetRequest)
 		localVarReturnValue *ListRecordnamepolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordnamepolicyAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordnamepolicyAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *RecordnamepolicyAPIService) GetExecute(r RecordnamepolicyAPIGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordnamepolicyAPIPostRequest struct {
-	ctx              context.Context
-	ApiService       RecordnamepolicyAPI
-	recordnamepolicy *Recordnamepolicy
-	returnFields     *string
-	returnFields2    *string
-	returnAsObject   *int32
-}
-
-// Object data to create
-func (r RecordnamepolicyAPIPostRequest) Recordnamepolicy(recordnamepolicy Recordnamepolicy) RecordnamepolicyAPIPostRequest {
-	r.recordnamepolicy = &recordnamepolicy
-	return r
-}
-
-// Enter the field names followed by comma
-func (r RecordnamepolicyAPIPostRequest) ReturnFields(returnFields string) RecordnamepolicyAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordnamepolicyAPIPostRequest) ReturnFields2(returnFields2 string) RecordnamepolicyAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordnamepolicyAPIPostRequest) ReturnAsObject(returnAsObject int32) RecordnamepolicyAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r RecordnamepolicyAPIPostRequest) Execute() (*CreateRecordnamepolicyResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a recordnamepolicy object
-
-Creates a new recordnamepolicy object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordnamepolicyAPIPostRequest
-*/
-func (a *RecordnamepolicyAPIService) Post(ctx context.Context) RecordnamepolicyAPIPostRequest {
-	return RecordnamepolicyAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateRecordnamepolicyResponse
-func (a *RecordnamepolicyAPIService) PostExecute(r RecordnamepolicyAPIPostRequest) (*CreateRecordnamepolicyResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateRecordnamepolicyResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordnamepolicyAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/recordnamepolicy"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.recordnamepolicy == nil {
-		return localVarReturnValue, nil, internal.ReportError("recordnamepolicy is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.recordnamepolicy
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordnamepolicyAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RecordnamepolicyAPI
-	reference  string
-}
-
-func (r RecordnamepolicyAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a recordnamepolicy object
-
-Deletes a specific recordnamepolicy object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the recordnamepolicy object
-	@return RecordnamepolicyAPIReferenceDeleteRequest
-*/
-func (a *RecordnamepolicyAPIService) ReferenceDelete(ctx context.Context, reference string) RecordnamepolicyAPIReferenceDeleteRequest {
-	return RecordnamepolicyAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RecordnamepolicyAPIService) ReferenceDeleteExecute(r RecordnamepolicyAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordnamepolicyAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/recordnamepolicy/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RecordnamepolicyAPIReferenceGetRequest struct {
+type RecordnamepolicyAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordnamepolicyAPI
 	reference      string
@@ -499,38 +499,38 @@ type RecordnamepolicyAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordnamepolicyAPIReferenceGetRequest) ReturnFields(returnFields string) RecordnamepolicyAPIReferenceGetRequest {
+func (r RecordnamepolicyAPIReadRequest) ReturnFields(returnFields string) RecordnamepolicyAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordnamepolicyAPIReferenceGetRequest) ReturnFields2(returnFields2 string) RecordnamepolicyAPIReferenceGetRequest {
+func (r RecordnamepolicyAPIReadRequest) ReturnFields2(returnFields2 string) RecordnamepolicyAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordnamepolicyAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordnamepolicyAPIReferenceGetRequest {
+func (r RecordnamepolicyAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordnamepolicyAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordnamepolicyAPIReferenceGetRequest) Execute() (*GetRecordnamepolicyResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r RecordnamepolicyAPIReadRequest) Execute() (*GetRecordnamepolicyResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific recordnamepolicy object
+Read Get a specific recordnamepolicy object
 
 Returns a specific recordnamepolicy object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the recordnamepolicy object
-	@return RecordnamepolicyAPIReferenceGetRequest
+	@return RecordnamepolicyAPIReadRequest
 */
-func (a *RecordnamepolicyAPIService) ReferenceGet(ctx context.Context, reference string) RecordnamepolicyAPIReferenceGetRequest {
-	return RecordnamepolicyAPIReferenceGetRequest{
+func (a *RecordnamepolicyAPIService) Read(ctx context.Context, reference string) RecordnamepolicyAPIReadRequest {
+	return RecordnamepolicyAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *RecordnamepolicyAPIService) ReferenceGet(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return GetRecordnamepolicyResponse
-func (a *RecordnamepolicyAPIService) ReferenceGetExecute(r RecordnamepolicyAPIReferenceGetRequest) (*GetRecordnamepolicyResponse, *http.Response, error) {
+func (a *RecordnamepolicyAPIService) ReadExecute(r RecordnamepolicyAPIReadRequest) (*GetRecordnamepolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *RecordnamepolicyAPIService) ReferenceGetExecute(r RecordnamepolicyAPIRe
 		localVarReturnValue *GetRecordnamepolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordnamepolicyAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordnamepolicyAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *RecordnamepolicyAPIService) ReferenceGetExecute(r RecordnamepolicyAPIRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordnamepolicyAPIReferencePutRequest struct {
+type RecordnamepolicyAPIUpdateRequest struct {
 	ctx              context.Context
 	ApiService       RecordnamepolicyAPI
 	reference        string
@@ -627,44 +627,44 @@ type RecordnamepolicyAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RecordnamepolicyAPIReferencePutRequest) Recordnamepolicy(recordnamepolicy Recordnamepolicy) RecordnamepolicyAPIReferencePutRequest {
+func (r RecordnamepolicyAPIUpdateRequest) Recordnamepolicy(recordnamepolicy Recordnamepolicy) RecordnamepolicyAPIUpdateRequest {
 	r.recordnamepolicy = &recordnamepolicy
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordnamepolicyAPIReferencePutRequest) ReturnFields(returnFields string) RecordnamepolicyAPIReferencePutRequest {
+func (r RecordnamepolicyAPIUpdateRequest) ReturnFields(returnFields string) RecordnamepolicyAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordnamepolicyAPIReferencePutRequest) ReturnFields2(returnFields2 string) RecordnamepolicyAPIReferencePutRequest {
+func (r RecordnamepolicyAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordnamepolicyAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordnamepolicyAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordnamepolicyAPIReferencePutRequest {
+func (r RecordnamepolicyAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordnamepolicyAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordnamepolicyAPIReferencePutRequest) Execute() (*UpdateRecordnamepolicyResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r RecordnamepolicyAPIUpdateRequest) Execute() (*UpdateRecordnamepolicyResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a recordnamepolicy object
+Update Update a recordnamepolicy object
 
 Updates a specific recordnamepolicy object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the recordnamepolicy object
-	@return RecordnamepolicyAPIReferencePutRequest
+	@return RecordnamepolicyAPIUpdateRequest
 */
-func (a *RecordnamepolicyAPIService) ReferencePut(ctx context.Context, reference string) RecordnamepolicyAPIReferencePutRequest {
-	return RecordnamepolicyAPIReferencePutRequest{
+func (a *RecordnamepolicyAPIService) Update(ctx context.Context, reference string) RecordnamepolicyAPIUpdateRequest {
+	return RecordnamepolicyAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *RecordnamepolicyAPIService) ReferencePut(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return UpdateRecordnamepolicyResponse
-func (a *RecordnamepolicyAPIService) ReferencePutExecute(r RecordnamepolicyAPIReferencePutRequest) (*UpdateRecordnamepolicyResponse, *http.Response, error) {
+func (a *RecordnamepolicyAPIService) UpdateExecute(r RecordnamepolicyAPIUpdateRequest) (*UpdateRecordnamepolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *RecordnamepolicyAPIService) ReferencePutExecute(r RecordnamepolicyAPIRe
 		localVarReturnValue *UpdateRecordnamepolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordnamepolicyAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordnamepolicyAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

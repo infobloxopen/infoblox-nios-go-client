@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridservicerestartrequestchangedobjectGet**](GridServicerestartRequestChangedobjectAPI.md#GridservicerestartrequestchangedobjectGet) | **Get** /grid:servicerestart:request:changedobject | Retrieve grid:servicerestart:request:changedobject objects
-[**GridservicerestartrequestchangedobjectReferenceGet**](GridServicerestartRequestChangedobjectAPI.md#GridservicerestartrequestchangedobjectReferenceGet) | **Get** /grid:servicerestart:request:changedobject/{reference} | Get a specific grid:servicerestart:request:changedobject object
+[**List**](GridServicerestartRequestChangedobjectAPI.md#List) | **Get** /grid:servicerestart:request:changedobject | Retrieve grid:servicerestart:request:changedobject objects
+[**Read**](GridServicerestartRequestChangedobjectAPI.md#Read) | **Get** /grid:servicerestart:request:changedobject/{reference} | Get a specific grid:servicerestart:request:changedobject object
 
 
 
-## GridservicerestartrequestchangedobjectGet
+## List
 
-> ListGridServicerestartRequestChangedobjectResponse GridservicerestartrequestchangedobjectGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridServicerestartRequestChangedobjectResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:servicerestart:request:changedobject objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridServicerestartRequestChangedobjectAPI.GridservicerestartrequestchangedobjectGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridServicerestartRequestChangedobjectAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartRequestChangedobjectAPI.GridservicerestartrequestchangedobjectGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartRequestChangedobjectAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridservicerestartrequestchangedobjectGet`: ListGridServicerestartRequestChangedobjectResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartRequestChangedobjectAPI.GridservicerestartrequestchangedobjectGet`: %v\n", resp)
+	// response from `List`: ListGridServicerestartRequestChangedobjectResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartRequestChangedobjectAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridServicerestartRequestChangedobjectAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridservicerestartrequestchangedobjectReferenceGet
+## Read
 
-> GetGridServicerestartRequestChangedobjectResponse GridservicerestartrequestchangedobjectReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridServicerestartRequestChangedobjectResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:servicerestart:request:changedobject object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:servicerestart:request:changedobject object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridServicerestartRequestChangedobjectAPI.GridservicerestartrequestchangedobjectReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridServicerestartRequestChangedobjectAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartRequestChangedobjectAPI.GridservicerestartrequestchangedobjectReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartRequestChangedobjectAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridservicerestartrequestchangedobjectReferenceGet`: GetGridServicerestartRequestChangedobjectResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartRequestChangedobjectAPI.GridservicerestartrequestchangedobjectReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridServicerestartRequestChangedobjectResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartRequestChangedobjectAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridServicerestartRequestChangedobjectAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

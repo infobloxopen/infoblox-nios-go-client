@@ -23,78 +23,302 @@ import (
 
 type ThreatinsightAllowlistAPI interface {
 	/*
-		ThreatinsightallowlistGet Retrieve threatinsight:allowlist objects
-
-		Returns a list of threatinsight:allowlist objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest
-	*/
-	ThreatinsightallowlistGet(ctx context.Context) ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest
-
-	// ThreatinsightallowlistGetExecute executes the request
-	//  @return ListThreatinsightAllowlistResponse
-	ThreatinsightallowlistGetExecute(r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) (*ListThreatinsightAllowlistResponse, *http.Response, error)
-	/*
-		ThreatinsightallowlistPost Create a threatinsight:allowlist object
+		Create Create a threatinsight:allowlist object
 
 		Creates a new threatinsight:allowlist object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest
+		@return ThreatinsightAllowlistAPICreateRequest
 	*/
-	ThreatinsightallowlistPost(ctx context.Context) ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest
+	Create(ctx context.Context) ThreatinsightAllowlistAPICreateRequest
 
-	// ThreatinsightallowlistPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateThreatinsightAllowlistResponse
-	ThreatinsightallowlistPostExecute(r ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest) (*CreateThreatinsightAllowlistResponse, *http.Response, error)
+	CreateExecute(r ThreatinsightAllowlistAPICreateRequest) (*CreateThreatinsightAllowlistResponse, *http.Response, error)
 	/*
-		ThreatinsightallowlistReferenceDelete Delete a threatinsight:allowlist object
+		Delete Delete a threatinsight:allowlist object
 
 		Deletes a specific threatinsight:allowlist object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatinsight:allowlist object
-		@return ThreatinsightAllowlistAPIThreatinsightallowlistReferenceDeleteRequest
+		@return ThreatinsightAllowlistAPIDeleteRequest
 	*/
-	ThreatinsightallowlistReferenceDelete(ctx context.Context, reference string) ThreatinsightAllowlistAPIThreatinsightallowlistReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ThreatinsightAllowlistAPIDeleteRequest
 
-	// ThreatinsightallowlistReferenceDeleteExecute executes the request
-	ThreatinsightallowlistReferenceDeleteExecute(r ThreatinsightAllowlistAPIThreatinsightallowlistReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ThreatinsightAllowlistAPIDeleteRequest) (*http.Response, error)
 	/*
-		ThreatinsightallowlistReferenceGet Get a specific threatinsight:allowlist object
+		List Retrieve threatinsight:allowlist objects
+
+		Returns a list of threatinsight:allowlist objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ThreatinsightAllowlistAPIListRequest
+	*/
+	List(ctx context.Context) ThreatinsightAllowlistAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListThreatinsightAllowlistResponse
+	ListExecute(r ThreatinsightAllowlistAPIListRequest) (*ListThreatinsightAllowlistResponse, *http.Response, error)
+	/*
+		Read Get a specific threatinsight:allowlist object
 
 		Returns a specific threatinsight:allowlist object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatinsight:allowlist object
-		@return ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest
+		@return ThreatinsightAllowlistAPIReadRequest
 	*/
-	ThreatinsightallowlistReferenceGet(ctx context.Context, reference string) ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest
+	Read(ctx context.Context, reference string) ThreatinsightAllowlistAPIReadRequest
 
-	// ThreatinsightallowlistReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetThreatinsightAllowlistResponse
-	ThreatinsightallowlistReferenceGetExecute(r ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest) (*GetThreatinsightAllowlistResponse, *http.Response, error)
+	ReadExecute(r ThreatinsightAllowlistAPIReadRequest) (*GetThreatinsightAllowlistResponse, *http.Response, error)
 	/*
-		ThreatinsightallowlistReferencePut Update a threatinsight:allowlist object
+		Update Update a threatinsight:allowlist object
 
 		Updates a specific threatinsight:allowlist object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatinsight:allowlist object
-		@return ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest
+		@return ThreatinsightAllowlistAPIUpdateRequest
 	*/
-	ThreatinsightallowlistReferencePut(ctx context.Context, reference string) ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest
+	Update(ctx context.Context, reference string) ThreatinsightAllowlistAPIUpdateRequest
 
-	// ThreatinsightallowlistReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateThreatinsightAllowlistResponse
-	ThreatinsightallowlistReferencePutExecute(r ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest) (*UpdateThreatinsightAllowlistResponse, *http.Response, error)
+	UpdateExecute(r ThreatinsightAllowlistAPIUpdateRequest) (*UpdateThreatinsightAllowlistResponse, *http.Response, error)
 }
 
 // ThreatinsightAllowlistAPIService ThreatinsightAllowlistAPI service
 type ThreatinsightAllowlistAPIService internal.Service
 
-type ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest struct {
+type ThreatinsightAllowlistAPICreateRequest struct {
+	ctx                    context.Context
+	ApiService             ThreatinsightAllowlistAPI
+	threatinsightAllowlist *ThreatinsightAllowlist
+	returnFields           *string
+	returnFields2          *string
+	returnAsObject         *int32
+}
+
+// Object data to create
+func (r ThreatinsightAllowlistAPICreateRequest) ThreatinsightAllowlist(threatinsightAllowlist ThreatinsightAllowlist) ThreatinsightAllowlistAPICreateRequest {
+	r.threatinsightAllowlist = &threatinsightAllowlist
+	return r
+}
+
+// Enter the field names followed by comma
+func (r ThreatinsightAllowlistAPICreateRequest) ReturnFields(returnFields string) ThreatinsightAllowlistAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ThreatinsightAllowlistAPICreateRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ThreatinsightAllowlistAPICreateRequest) ReturnAsObject(returnAsObject int32) ThreatinsightAllowlistAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r ThreatinsightAllowlistAPICreateRequest) Execute() (*CreateThreatinsightAllowlistResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a threatinsight:allowlist object
+
+Creates a new threatinsight:allowlist object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ThreatinsightAllowlistAPICreateRequest
+*/
+func (a *ThreatinsightAllowlistAPIService) Create(ctx context.Context) ThreatinsightAllowlistAPICreateRequest {
+	return ThreatinsightAllowlistAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateThreatinsightAllowlistResponse
+func (a *ThreatinsightAllowlistAPIService) CreateExecute(r ThreatinsightAllowlistAPICreateRequest) (*CreateThreatinsightAllowlistResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateThreatinsightAllowlistResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightAllowlistAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/threatinsight:allowlist"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.threatinsightAllowlist == nil {
+		return localVarReturnValue, nil, internal.ReportError("threatinsightAllowlist is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.threatinsightAllowlist
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ThreatinsightAllowlistAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService ThreatinsightAllowlistAPI
+	reference  string
+}
+
+func (r ThreatinsightAllowlistAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a threatinsight:allowlist object
+
+Deletes a specific threatinsight:allowlist object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the threatinsight:allowlist object
+	@return ThreatinsightAllowlistAPIDeleteRequest
+*/
+func (a *ThreatinsightAllowlistAPIService) Delete(ctx context.Context, reference string) ThreatinsightAllowlistAPIDeleteRequest {
+	return ThreatinsightAllowlistAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *ThreatinsightAllowlistAPIService) DeleteExecute(r ThreatinsightAllowlistAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightAllowlistAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/threatinsight:allowlist/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ThreatinsightAllowlistAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ThreatinsightAllowlistAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) ReturnFields(returnFields string) ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest {
+func (r ThreatinsightAllowlistAPIListRequest) ReturnFields(returnFields string) ThreatinsightAllowlistAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest {
+func (r ThreatinsightAllowlistAPIListRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) MaxResults(maxResults int32) ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest {
+func (r ThreatinsightAllowlistAPIListRequest) MaxResults(maxResults int32) ThreatinsightAllowlistAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) ReturnAsObject(returnAsObject int32) ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest {
+func (r ThreatinsightAllowlistAPIListRequest) ReturnAsObject(returnAsObject int32) ThreatinsightAllowlistAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) Paging(paging int32) ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest {
+func (r ThreatinsightAllowlistAPIListRequest) Paging(paging int32) ThreatinsightAllowlistAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) PageId(pageId string) ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest {
+func (r ThreatinsightAllowlistAPIListRequest) PageId(pageId string) ThreatinsightAllowlistAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) Filters(filters map[string]interface{}) ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest {
+func (r ThreatinsightAllowlistAPIListRequest) Filters(filters map[string]interface{}) ThreatinsightAllowlistAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest {
+func (r ThreatinsightAllowlistAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatinsightAllowlistAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) Execute() (*ListThreatinsightAllowlistResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightallowlistGetExecute(r)
+func (r ThreatinsightAllowlistAPIListRequest) Execute() (*ListThreatinsightAllowlistResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ThreatinsightallowlistGet Retrieve threatinsight:allowlist objects
+List Retrieve threatinsight:allowlist objects
 
 Returns a list of threatinsight:allowlist objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest
+	@return ThreatinsightAllowlistAPIListRequest
 */
-func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistGet(ctx context.Context) ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest {
-	return ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest{
+func (a *ThreatinsightAllowlistAPIService) List(ctx context.Context) ThreatinsightAllowlistAPIListRequest {
+	return ThreatinsightAllowlistAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistGet(ctx context
 // Execute executes the request
 //
 //	@return ListThreatinsightAllowlistResponse
-func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistGetExecute(r ThreatinsightAllowlistAPIThreatinsightallowlistGetRequest) (*ListThreatinsightAllowlistResponse, *http.Response, error) {
+func (a *ThreatinsightAllowlistAPIService) ListExecute(r ThreatinsightAllowlistAPIListRequest) (*ListThreatinsightAllowlistResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistGetExecute(r Th
 		localVarReturnValue *ListThreatinsightAllowlistResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightAllowlistAPIService.ThreatinsightallowlistGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightAllowlistAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistGetExecute(r Th
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest struct {
-	ctx                    context.Context
-	ApiService             ThreatinsightAllowlistAPI
-	threatinsightAllowlist *ThreatinsightAllowlist
-	returnFields           *string
-	returnFields2          *string
-	returnAsObject         *int32
-}
-
-// Object data to create
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest) ThreatinsightAllowlist(threatinsightAllowlist ThreatinsightAllowlist) ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest {
-	r.threatinsightAllowlist = &threatinsightAllowlist
-	return r
-}
-
-// Enter the field names followed by comma
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest) ReturnFields(returnFields string) ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest) ReturnAsObject(returnAsObject int32) ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest) Execute() (*CreateThreatinsightAllowlistResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightallowlistPostExecute(r)
-}
-
-/*
-ThreatinsightallowlistPost Create a threatinsight:allowlist object
-
-Creates a new threatinsight:allowlist object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest
-*/
-func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistPost(ctx context.Context) ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest {
-	return ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateThreatinsightAllowlistResponse
-func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistPostExecute(r ThreatinsightAllowlistAPIThreatinsightallowlistPostRequest) (*CreateThreatinsightAllowlistResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateThreatinsightAllowlistResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightAllowlistAPIService.ThreatinsightallowlistPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/threatinsight:allowlist"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.threatinsightAllowlist == nil {
-		return localVarReturnValue, nil, internal.ReportError("threatinsightAllowlist is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.threatinsightAllowlist
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ThreatinsightAllowlistAPIThreatinsightallowlistReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService ThreatinsightAllowlistAPI
-	reference  string
-}
-
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ThreatinsightallowlistReferenceDeleteExecute(r)
-}
-
-/*
-ThreatinsightallowlistReferenceDelete Delete a threatinsight:allowlist object
-
-Deletes a specific threatinsight:allowlist object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the threatinsight:allowlist object
-	@return ThreatinsightAllowlistAPIThreatinsightallowlistReferenceDeleteRequest
-*/
-func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferenceDelete(ctx context.Context, reference string) ThreatinsightAllowlistAPIThreatinsightallowlistReferenceDeleteRequest {
-	return ThreatinsightAllowlistAPIThreatinsightallowlistReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferenceDeleteExecute(r ThreatinsightAllowlistAPIThreatinsightallowlistReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightAllowlistAPIService.ThreatinsightallowlistReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/threatinsight:allowlist/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest struct {
+type ThreatinsightAllowlistAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ThreatinsightAllowlistAPI
 	reference      string
@@ -499,38 +499,38 @@ type ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest) ReturnFields(returnFields string) ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest {
+func (r ThreatinsightAllowlistAPIReadRequest) ReturnFields(returnFields string) ThreatinsightAllowlistAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest {
+func (r ThreatinsightAllowlistAPIReadRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest) ReturnAsObject(returnAsObject int32) ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest {
+func (r ThreatinsightAllowlistAPIReadRequest) ReturnAsObject(returnAsObject int32) ThreatinsightAllowlistAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest) Execute() (*GetThreatinsightAllowlistResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightallowlistReferenceGetExecute(r)
+func (r ThreatinsightAllowlistAPIReadRequest) Execute() (*GetThreatinsightAllowlistResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ThreatinsightallowlistReferenceGet Get a specific threatinsight:allowlist object
+Read Get a specific threatinsight:allowlist object
 
 Returns a specific threatinsight:allowlist object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatinsight:allowlist object
-	@return ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest
+	@return ThreatinsightAllowlistAPIReadRequest
 */
-func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferenceGet(ctx context.Context, reference string) ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest {
-	return ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest{
+func (a *ThreatinsightAllowlistAPIService) Read(ctx context.Context, reference string) ThreatinsightAllowlistAPIReadRequest {
+	return ThreatinsightAllowlistAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferenceGet(ct
 // Execute executes the request
 //
 //	@return GetThreatinsightAllowlistResponse
-func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferenceGetExecute(r ThreatinsightAllowlistAPIThreatinsightallowlistReferenceGetRequest) (*GetThreatinsightAllowlistResponse, *http.Response, error) {
+func (a *ThreatinsightAllowlistAPIService) ReadExecute(r ThreatinsightAllowlistAPIReadRequest) (*GetThreatinsightAllowlistResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferenceGetExe
 		localVarReturnValue *GetThreatinsightAllowlistResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightAllowlistAPIService.ThreatinsightallowlistReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightAllowlistAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferenceGetExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest struct {
+type ThreatinsightAllowlistAPIUpdateRequest struct {
 	ctx                    context.Context
 	ApiService             ThreatinsightAllowlistAPI
 	reference              string
@@ -627,44 +627,44 @@ type ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest struct {
 }
 
 // Object data to update
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest) ThreatinsightAllowlist(threatinsightAllowlist ThreatinsightAllowlist) ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest {
+func (r ThreatinsightAllowlistAPIUpdateRequest) ThreatinsightAllowlist(threatinsightAllowlist ThreatinsightAllowlist) ThreatinsightAllowlistAPIUpdateRequest {
 	r.threatinsightAllowlist = &threatinsightAllowlist
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest) ReturnFields(returnFields string) ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest {
+func (r ThreatinsightAllowlistAPIUpdateRequest) ReturnFields(returnFields string) ThreatinsightAllowlistAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest {
+func (r ThreatinsightAllowlistAPIUpdateRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest) ReturnAsObject(returnAsObject int32) ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest {
+func (r ThreatinsightAllowlistAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ThreatinsightAllowlistAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest) Execute() (*UpdateThreatinsightAllowlistResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightallowlistReferencePutExecute(r)
+func (r ThreatinsightAllowlistAPIUpdateRequest) Execute() (*UpdateThreatinsightAllowlistResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ThreatinsightallowlistReferencePut Update a threatinsight:allowlist object
+Update Update a threatinsight:allowlist object
 
 Updates a specific threatinsight:allowlist object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatinsight:allowlist object
-	@return ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest
+	@return ThreatinsightAllowlistAPIUpdateRequest
 */
-func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferencePut(ctx context.Context, reference string) ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest {
-	return ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest{
+func (a *ThreatinsightAllowlistAPIService) Update(ctx context.Context, reference string) ThreatinsightAllowlistAPIUpdateRequest {
+	return ThreatinsightAllowlistAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferencePut(ct
 // Execute executes the request
 //
 //	@return UpdateThreatinsightAllowlistResponse
-func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferencePutExecute(r ThreatinsightAllowlistAPIThreatinsightallowlistReferencePutRequest) (*UpdateThreatinsightAllowlistResponse, *http.Response, error) {
+func (a *ThreatinsightAllowlistAPIService) UpdateExecute(r ThreatinsightAllowlistAPIUpdateRequest) (*UpdateThreatinsightAllowlistResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *ThreatinsightAllowlistAPIService) ThreatinsightallowlistReferencePutExe
 		localVarReturnValue *UpdateThreatinsightAllowlistResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightAllowlistAPIService.ThreatinsightallowlistReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightAllowlistAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

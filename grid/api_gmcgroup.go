@@ -23,78 +23,302 @@ import (
 
 type GmcgroupAPI interface {
 	/*
-		Get Retrieve gmcgroup objects
-
-		Returns a list of gmcgroup objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GmcgroupAPIGetRequest
-	*/
-	Get(ctx context.Context) GmcgroupAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListGmcgroupResponse
-	GetExecute(r GmcgroupAPIGetRequest) (*ListGmcgroupResponse, *http.Response, error)
-	/*
-		Post Create a gmcgroup object
+		Create Create a gmcgroup object
 
 		Creates a new gmcgroup object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GmcgroupAPIPostRequest
+		@return GmcgroupAPICreateRequest
 	*/
-	Post(ctx context.Context) GmcgroupAPIPostRequest
+	Create(ctx context.Context) GmcgroupAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateGmcgroupResponse
-	PostExecute(r GmcgroupAPIPostRequest) (*CreateGmcgroupResponse, *http.Response, error)
+	CreateExecute(r GmcgroupAPICreateRequest) (*CreateGmcgroupResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a gmcgroup object
+		Delete Delete a gmcgroup object
 
 		Deletes a specific gmcgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gmcgroup object
-		@return GmcgroupAPIReferenceDeleteRequest
+		@return GmcgroupAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) GmcgroupAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) GmcgroupAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r GmcgroupAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r GmcgroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific gmcgroup object
+		List Retrieve gmcgroup objects
+
+		Returns a list of gmcgroup objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return GmcgroupAPIListRequest
+	*/
+	List(ctx context.Context) GmcgroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListGmcgroupResponse
+	ListExecute(r GmcgroupAPIListRequest) (*ListGmcgroupResponse, *http.Response, error)
+	/*
+		Read Get a specific gmcgroup object
 
 		Returns a specific gmcgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gmcgroup object
-		@return GmcgroupAPIReferenceGetRequest
+		@return GmcgroupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) GmcgroupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) GmcgroupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGmcgroupResponse
-	ReferenceGetExecute(r GmcgroupAPIReferenceGetRequest) (*GetGmcgroupResponse, *http.Response, error)
+	ReadExecute(r GmcgroupAPIReadRequest) (*GetGmcgroupResponse, *http.Response, error)
 	/*
-		ReferencePut Update a gmcgroup object
+		Update Update a gmcgroup object
 
 		Updates a specific gmcgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gmcgroup object
-		@return GmcgroupAPIReferencePutRequest
+		@return GmcgroupAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) GmcgroupAPIReferencePutRequest
+	Update(ctx context.Context, reference string) GmcgroupAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGmcgroupResponse
-	ReferencePutExecute(r GmcgroupAPIReferencePutRequest) (*UpdateGmcgroupResponse, *http.Response, error)
+	UpdateExecute(r GmcgroupAPIUpdateRequest) (*UpdateGmcgroupResponse, *http.Response, error)
 }
 
 // GmcgroupAPIService GmcgroupAPI service
 type GmcgroupAPIService internal.Service
 
-type GmcgroupAPIGetRequest struct {
+type GmcgroupAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     GmcgroupAPI
+	gmcgroup       *Gmcgroup
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r GmcgroupAPICreateRequest) Gmcgroup(gmcgroup Gmcgroup) GmcgroupAPICreateRequest {
+	r.gmcgroup = &gmcgroup
+	return r
+}
+
+// Enter the field names followed by comma
+func (r GmcgroupAPICreateRequest) ReturnFields(returnFields string) GmcgroupAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r GmcgroupAPICreateRequest) ReturnFields2(returnFields2 string) GmcgroupAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r GmcgroupAPICreateRequest) ReturnAsObject(returnAsObject int32) GmcgroupAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r GmcgroupAPICreateRequest) Execute() (*CreateGmcgroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a gmcgroup object
+
+Creates a new gmcgroup object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return GmcgroupAPICreateRequest
+*/
+func (a *GmcgroupAPIService) Create(ctx context.Context) GmcgroupAPICreateRequest {
+	return GmcgroupAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateGmcgroupResponse
+func (a *GmcgroupAPIService) CreateExecute(r GmcgroupAPICreateRequest) (*CreateGmcgroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateGmcgroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcgroupAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/gmcgroup"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.gmcgroup == nil {
+		return localVarReturnValue, nil, internal.ReportError("gmcgroup is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.gmcgroup
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GmcgroupAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService GmcgroupAPI
+	reference  string
+}
+
+func (r GmcgroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a gmcgroup object
+
+Deletes a specific gmcgroup object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the gmcgroup object
+	@return GmcgroupAPIDeleteRequest
+*/
+func (a *GmcgroupAPIService) Delete(ctx context.Context, reference string) GmcgroupAPIDeleteRequest {
+	return GmcgroupAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *GmcgroupAPIService) DeleteExecute(r GmcgroupAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcgroupAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/gmcgroup/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type GmcgroupAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GmcgroupAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type GmcgroupAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GmcgroupAPIGetRequest) ReturnFields(returnFields string) GmcgroupAPIGetRequest {
+func (r GmcgroupAPIListRequest) ReturnFields(returnFields string) GmcgroupAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcgroupAPIGetRequest) ReturnFields2(returnFields2 string) GmcgroupAPIGetRequest {
+func (r GmcgroupAPIListRequest) ReturnFields2(returnFields2 string) GmcgroupAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GmcgroupAPIGetRequest) MaxResults(maxResults int32) GmcgroupAPIGetRequest {
+func (r GmcgroupAPIListRequest) MaxResults(maxResults int32) GmcgroupAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GmcgroupAPIGetRequest) ReturnAsObject(returnAsObject int32) GmcgroupAPIGetRequest {
+func (r GmcgroupAPIListRequest) ReturnAsObject(returnAsObject int32) GmcgroupAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GmcgroupAPIGetRequest) Paging(paging int32) GmcgroupAPIGetRequest {
+func (r GmcgroupAPIListRequest) Paging(paging int32) GmcgroupAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GmcgroupAPIGetRequest) PageId(pageId string) GmcgroupAPIGetRequest {
+func (r GmcgroupAPIListRequest) PageId(pageId string) GmcgroupAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GmcgroupAPIGetRequest) Filters(filters map[string]interface{}) GmcgroupAPIGetRequest {
+func (r GmcgroupAPIListRequest) Filters(filters map[string]interface{}) GmcgroupAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GmcgroupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GmcgroupAPIGetRequest {
+func (r GmcgroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GmcgroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GmcgroupAPIGetRequest) Execute() (*ListGmcgroupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r GmcgroupAPIListRequest) Execute() (*ListGmcgroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve gmcgroup objects
+List Retrieve gmcgroup objects
 
 Returns a list of gmcgroup objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GmcgroupAPIGetRequest
+	@return GmcgroupAPIListRequest
 */
-func (a *GmcgroupAPIService) Get(ctx context.Context) GmcgroupAPIGetRequest {
-	return GmcgroupAPIGetRequest{
+func (a *GmcgroupAPIService) List(ctx context.Context) GmcgroupAPIListRequest {
+	return GmcgroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *GmcgroupAPIService) Get(ctx context.Context) GmcgroupAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListGmcgroupResponse
-func (a *GmcgroupAPIService) GetExecute(r GmcgroupAPIGetRequest) (*ListGmcgroupResponse, *http.Response, error) {
+func (a *GmcgroupAPIService) ListExecute(r GmcgroupAPIListRequest) (*ListGmcgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *GmcgroupAPIService) GetExecute(r GmcgroupAPIGetRequest) (*ListGmcgroupR
 		localVarReturnValue *ListGmcgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcgroupAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcgroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *GmcgroupAPIService) GetExecute(r GmcgroupAPIGetRequest) (*ListGmcgroupR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GmcgroupAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     GmcgroupAPI
-	gmcgroup       *Gmcgroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r GmcgroupAPIPostRequest) Gmcgroup(gmcgroup Gmcgroup) GmcgroupAPIPostRequest {
-	r.gmcgroup = &gmcgroup
-	return r
-}
-
-// Enter the field names followed by comma
-func (r GmcgroupAPIPostRequest) ReturnFields(returnFields string) GmcgroupAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcgroupAPIPostRequest) ReturnFields2(returnFields2 string) GmcgroupAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r GmcgroupAPIPostRequest) ReturnAsObject(returnAsObject int32) GmcgroupAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r GmcgroupAPIPostRequest) Execute() (*CreateGmcgroupResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a gmcgroup object
-
-Creates a new gmcgroup object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GmcgroupAPIPostRequest
-*/
-func (a *GmcgroupAPIService) Post(ctx context.Context) GmcgroupAPIPostRequest {
-	return GmcgroupAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateGmcgroupResponse
-func (a *GmcgroupAPIService) PostExecute(r GmcgroupAPIPostRequest) (*CreateGmcgroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateGmcgroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcgroupAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/gmcgroup"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.gmcgroup == nil {
-		return localVarReturnValue, nil, internal.ReportError("gmcgroup is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.gmcgroup
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GmcgroupAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService GmcgroupAPI
-	reference  string
-}
-
-func (r GmcgroupAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a gmcgroup object
-
-Deletes a specific gmcgroup object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the gmcgroup object
-	@return GmcgroupAPIReferenceDeleteRequest
-*/
-func (a *GmcgroupAPIService) ReferenceDelete(ctx context.Context, reference string) GmcgroupAPIReferenceDeleteRequest {
-	return GmcgroupAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *GmcgroupAPIService) ReferenceDeleteExecute(r GmcgroupAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcgroupAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/gmcgroup/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type GmcgroupAPIReferenceGetRequest struct {
+type GmcgroupAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GmcgroupAPI
 	reference      string
@@ -499,38 +499,38 @@ type GmcgroupAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GmcgroupAPIReferenceGetRequest) ReturnFields(returnFields string) GmcgroupAPIReferenceGetRequest {
+func (r GmcgroupAPIReadRequest) ReturnFields(returnFields string) GmcgroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcgroupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) GmcgroupAPIReferenceGetRequest {
+func (r GmcgroupAPIReadRequest) ReturnFields2(returnFields2 string) GmcgroupAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GmcgroupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) GmcgroupAPIReferenceGetRequest {
+func (r GmcgroupAPIReadRequest) ReturnAsObject(returnAsObject int32) GmcgroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GmcgroupAPIReferenceGetRequest) Execute() (*GetGmcgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r GmcgroupAPIReadRequest) Execute() (*GetGmcgroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific gmcgroup object
+Read Get a specific gmcgroup object
 
 Returns a specific gmcgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the gmcgroup object
-	@return GmcgroupAPIReferenceGetRequest
+	@return GmcgroupAPIReadRequest
 */
-func (a *GmcgroupAPIService) ReferenceGet(ctx context.Context, reference string) GmcgroupAPIReferenceGetRequest {
-	return GmcgroupAPIReferenceGetRequest{
+func (a *GmcgroupAPIService) Read(ctx context.Context, reference string) GmcgroupAPIReadRequest {
+	return GmcgroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *GmcgroupAPIService) ReferenceGet(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return GetGmcgroupResponse
-func (a *GmcgroupAPIService) ReferenceGetExecute(r GmcgroupAPIReferenceGetRequest) (*GetGmcgroupResponse, *http.Response, error) {
+func (a *GmcgroupAPIService) ReadExecute(r GmcgroupAPIReadRequest) (*GetGmcgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *GmcgroupAPIService) ReferenceGetExecute(r GmcgroupAPIReferenceGetReques
 		localVarReturnValue *GetGmcgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcgroupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcgroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *GmcgroupAPIService) ReferenceGetExecute(r GmcgroupAPIReferenceGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GmcgroupAPIReferencePutRequest struct {
+type GmcgroupAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     GmcgroupAPI
 	reference      string
@@ -627,44 +627,44 @@ type GmcgroupAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r GmcgroupAPIReferencePutRequest) Gmcgroup(gmcgroup Gmcgroup) GmcgroupAPIReferencePutRequest {
+func (r GmcgroupAPIUpdateRequest) Gmcgroup(gmcgroup Gmcgroup) GmcgroupAPIUpdateRequest {
 	r.gmcgroup = &gmcgroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GmcgroupAPIReferencePutRequest) ReturnFields(returnFields string) GmcgroupAPIReferencePutRequest {
+func (r GmcgroupAPIUpdateRequest) ReturnFields(returnFields string) GmcgroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcgroupAPIReferencePutRequest) ReturnFields2(returnFields2 string) GmcgroupAPIReferencePutRequest {
+func (r GmcgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) GmcgroupAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GmcgroupAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) GmcgroupAPIReferencePutRequest {
+func (r GmcgroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GmcgroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GmcgroupAPIReferencePutRequest) Execute() (*UpdateGmcgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r GmcgroupAPIUpdateRequest) Execute() (*UpdateGmcgroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a gmcgroup object
+Update Update a gmcgroup object
 
 Updates a specific gmcgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the gmcgroup object
-	@return GmcgroupAPIReferencePutRequest
+	@return GmcgroupAPIUpdateRequest
 */
-func (a *GmcgroupAPIService) ReferencePut(ctx context.Context, reference string) GmcgroupAPIReferencePutRequest {
-	return GmcgroupAPIReferencePutRequest{
+func (a *GmcgroupAPIService) Update(ctx context.Context, reference string) GmcgroupAPIUpdateRequest {
+	return GmcgroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *GmcgroupAPIService) ReferencePut(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return UpdateGmcgroupResponse
-func (a *GmcgroupAPIService) ReferencePutExecute(r GmcgroupAPIReferencePutRequest) (*UpdateGmcgroupResponse, *http.Response, error) {
+func (a *GmcgroupAPIService) UpdateExecute(r GmcgroupAPIUpdateRequest) (*UpdateGmcgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *GmcgroupAPIService) ReferencePutExecute(r GmcgroupAPIReferencePutReques
 		localVarReturnValue *UpdateGmcgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcgroupAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcgroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

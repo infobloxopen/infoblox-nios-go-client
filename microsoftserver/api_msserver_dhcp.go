@@ -23,78 +23,302 @@ import (
 
 type MsserverDhcpAPI interface {
 	/*
-		MsserverdhcpGet Retrieve msserver:dhcp objects
-
-		Returns a list of msserver:dhcp objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MsserverDhcpAPIMsserverdhcpGetRequest
-	*/
-	MsserverdhcpGet(ctx context.Context) MsserverDhcpAPIMsserverdhcpGetRequest
-
-	// MsserverdhcpGetExecute executes the request
-	//  @return ListMsserverDhcpResponse
-	MsserverdhcpGetExecute(r MsserverDhcpAPIMsserverdhcpGetRequest) (*ListMsserverDhcpResponse, *http.Response, error)
-	/*
-		MsserverdhcpPost Create a msserver:dhcp object
+		Create Create a msserver:dhcp object
 
 		Creates a new msserver:dhcp object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MsserverDhcpAPIMsserverdhcpPostRequest
+		@return MsserverDhcpAPICreateRequest
 	*/
-	MsserverdhcpPost(ctx context.Context) MsserverDhcpAPIMsserverdhcpPostRequest
+	Create(ctx context.Context) MsserverDhcpAPICreateRequest
 
-	// MsserverdhcpPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateMsserverDhcpResponse
-	MsserverdhcpPostExecute(r MsserverDhcpAPIMsserverdhcpPostRequest) (*CreateMsserverDhcpResponse, *http.Response, error)
+	CreateExecute(r MsserverDhcpAPICreateRequest) (*CreateMsserverDhcpResponse, *http.Response, error)
 	/*
-		MsserverdhcpReferenceDelete Delete a msserver:dhcp object
+		Delete Delete a msserver:dhcp object
 
 		Deletes a specific msserver:dhcp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver:dhcp object
-		@return MsserverDhcpAPIMsserverdhcpReferenceDeleteRequest
+		@return MsserverDhcpAPIDeleteRequest
 	*/
-	MsserverdhcpReferenceDelete(ctx context.Context, reference string) MsserverDhcpAPIMsserverdhcpReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) MsserverDhcpAPIDeleteRequest
 
-	// MsserverdhcpReferenceDeleteExecute executes the request
-	MsserverdhcpReferenceDeleteExecute(r MsserverDhcpAPIMsserverdhcpReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r MsserverDhcpAPIDeleteRequest) (*http.Response, error)
 	/*
-		MsserverdhcpReferenceGet Get a specific msserver:dhcp object
+		List Retrieve msserver:dhcp objects
+
+		Returns a list of msserver:dhcp objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return MsserverDhcpAPIListRequest
+	*/
+	List(ctx context.Context) MsserverDhcpAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListMsserverDhcpResponse
+	ListExecute(r MsserverDhcpAPIListRequest) (*ListMsserverDhcpResponse, *http.Response, error)
+	/*
+		Read Get a specific msserver:dhcp object
 
 		Returns a specific msserver:dhcp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver:dhcp object
-		@return MsserverDhcpAPIMsserverdhcpReferenceGetRequest
+		@return MsserverDhcpAPIReadRequest
 	*/
-	MsserverdhcpReferenceGet(ctx context.Context, reference string) MsserverDhcpAPIMsserverdhcpReferenceGetRequest
+	Read(ctx context.Context, reference string) MsserverDhcpAPIReadRequest
 
-	// MsserverdhcpReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMsserverDhcpResponse
-	MsserverdhcpReferenceGetExecute(r MsserverDhcpAPIMsserverdhcpReferenceGetRequest) (*GetMsserverDhcpResponse, *http.Response, error)
+	ReadExecute(r MsserverDhcpAPIReadRequest) (*GetMsserverDhcpResponse, *http.Response, error)
 	/*
-		MsserverdhcpReferencePut Update a msserver:dhcp object
+		Update Update a msserver:dhcp object
 
 		Updates a specific msserver:dhcp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver:dhcp object
-		@return MsserverDhcpAPIMsserverdhcpReferencePutRequest
+		@return MsserverDhcpAPIUpdateRequest
 	*/
-	MsserverdhcpReferencePut(ctx context.Context, reference string) MsserverDhcpAPIMsserverdhcpReferencePutRequest
+	Update(ctx context.Context, reference string) MsserverDhcpAPIUpdateRequest
 
-	// MsserverdhcpReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMsserverDhcpResponse
-	MsserverdhcpReferencePutExecute(r MsserverDhcpAPIMsserverdhcpReferencePutRequest) (*UpdateMsserverDhcpResponse, *http.Response, error)
+	UpdateExecute(r MsserverDhcpAPIUpdateRequest) (*UpdateMsserverDhcpResponse, *http.Response, error)
 }
 
 // MsserverDhcpAPIService MsserverDhcpAPI service
 type MsserverDhcpAPIService internal.Service
 
-type MsserverDhcpAPIMsserverdhcpGetRequest struct {
+type MsserverDhcpAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     MsserverDhcpAPI
+	msserverDhcp   *MsserverDhcp
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r MsserverDhcpAPICreateRequest) MsserverDhcp(msserverDhcp MsserverDhcp) MsserverDhcpAPICreateRequest {
+	r.msserverDhcp = &msserverDhcp
+	return r
+}
+
+// Enter the field names followed by comma
+func (r MsserverDhcpAPICreateRequest) ReturnFields(returnFields string) MsserverDhcpAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r MsserverDhcpAPICreateRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r MsserverDhcpAPICreateRequest) ReturnAsObject(returnAsObject int32) MsserverDhcpAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r MsserverDhcpAPICreateRequest) Execute() (*CreateMsserverDhcpResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a msserver:dhcp object
+
+Creates a new msserver:dhcp object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MsserverDhcpAPICreateRequest
+*/
+func (a *MsserverDhcpAPIService) Create(ctx context.Context) MsserverDhcpAPICreateRequest {
+	return MsserverDhcpAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateMsserverDhcpResponse
+func (a *MsserverDhcpAPIService) CreateExecute(r MsserverDhcpAPICreateRequest) (*CreateMsserverDhcpResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateMsserverDhcpResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDhcpAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/msserver:dhcp"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.msserverDhcp == nil {
+		return localVarReturnValue, nil, internal.ReportError("msserverDhcp is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.msserverDhcp
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MsserverDhcpAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService MsserverDhcpAPI
+	reference  string
+}
+
+func (r MsserverDhcpAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a msserver:dhcp object
+
+Deletes a specific msserver:dhcp object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the msserver:dhcp object
+	@return MsserverDhcpAPIDeleteRequest
+*/
+func (a *MsserverDhcpAPIService) Delete(ctx context.Context, reference string) MsserverDhcpAPIDeleteRequest {
+	return MsserverDhcpAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *MsserverDhcpAPIService) DeleteExecute(r MsserverDhcpAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDhcpAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/msserver:dhcp/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type MsserverDhcpAPIListRequest struct {
 	ctx            context.Context
 	ApiService     MsserverDhcpAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type MsserverDhcpAPIMsserverdhcpGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MsserverDhcpAPIMsserverdhcpGetRequest) ReturnFields(returnFields string) MsserverDhcpAPIMsserverdhcpGetRequest {
+func (r MsserverDhcpAPIListRequest) ReturnFields(returnFields string) MsserverDhcpAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDhcpAPIMsserverdhcpGetRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPIMsserverdhcpGetRequest {
+func (r MsserverDhcpAPIListRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MsserverDhcpAPIMsserverdhcpGetRequest) MaxResults(maxResults int32) MsserverDhcpAPIMsserverdhcpGetRequest {
+func (r MsserverDhcpAPIListRequest) MaxResults(maxResults int32) MsserverDhcpAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverDhcpAPIMsserverdhcpGetRequest) ReturnAsObject(returnAsObject int32) MsserverDhcpAPIMsserverdhcpGetRequest {
+func (r MsserverDhcpAPIListRequest) ReturnAsObject(returnAsObject int32) MsserverDhcpAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MsserverDhcpAPIMsserverdhcpGetRequest) Paging(paging int32) MsserverDhcpAPIMsserverdhcpGetRequest {
+func (r MsserverDhcpAPIListRequest) Paging(paging int32) MsserverDhcpAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MsserverDhcpAPIMsserverdhcpGetRequest) PageId(pageId string) MsserverDhcpAPIMsserverdhcpGetRequest {
+func (r MsserverDhcpAPIListRequest) PageId(pageId string) MsserverDhcpAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MsserverDhcpAPIMsserverdhcpGetRequest) Filters(filters map[string]interface{}) MsserverDhcpAPIMsserverdhcpGetRequest {
+func (r MsserverDhcpAPIListRequest) Filters(filters map[string]interface{}) MsserverDhcpAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MsserverDhcpAPIMsserverdhcpGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MsserverDhcpAPIMsserverdhcpGetRequest {
+func (r MsserverDhcpAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MsserverDhcpAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MsserverDhcpAPIMsserverdhcpGetRequest) Execute() (*ListMsserverDhcpResponse, *http.Response, error) {
-	return r.ApiService.MsserverdhcpGetExecute(r)
+func (r MsserverDhcpAPIListRequest) Execute() (*ListMsserverDhcpResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MsserverdhcpGet Retrieve msserver:dhcp objects
+List Retrieve msserver:dhcp objects
 
 Returns a list of msserver:dhcp objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MsserverDhcpAPIMsserverdhcpGetRequest
+	@return MsserverDhcpAPIListRequest
 */
-func (a *MsserverDhcpAPIService) MsserverdhcpGet(ctx context.Context) MsserverDhcpAPIMsserverdhcpGetRequest {
-	return MsserverDhcpAPIMsserverdhcpGetRequest{
+func (a *MsserverDhcpAPIService) List(ctx context.Context) MsserverDhcpAPIListRequest {
+	return MsserverDhcpAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *MsserverDhcpAPIService) MsserverdhcpGet(ctx context.Context) MsserverDh
 // Execute executes the request
 //
 //	@return ListMsserverDhcpResponse
-func (a *MsserverDhcpAPIService) MsserverdhcpGetExecute(r MsserverDhcpAPIMsserverdhcpGetRequest) (*ListMsserverDhcpResponse, *http.Response, error) {
+func (a *MsserverDhcpAPIService) ListExecute(r MsserverDhcpAPIListRequest) (*ListMsserverDhcpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *MsserverDhcpAPIService) MsserverdhcpGetExecute(r MsserverDhcpAPIMsserve
 		localVarReturnValue *ListMsserverDhcpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDhcpAPIService.MsserverdhcpGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDhcpAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *MsserverDhcpAPIService) MsserverdhcpGetExecute(r MsserverDhcpAPIMsserve
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MsserverDhcpAPIMsserverdhcpPostRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDhcpAPI
-	msserverDhcp   *MsserverDhcp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r MsserverDhcpAPIMsserverdhcpPostRequest) MsserverDhcp(msserverDhcp MsserverDhcp) MsserverDhcpAPIMsserverdhcpPostRequest {
-	r.msserverDhcp = &msserverDhcp
-	return r
-}
-
-// Enter the field names followed by comma
-func (r MsserverDhcpAPIMsserverdhcpPostRequest) ReturnFields(returnFields string) MsserverDhcpAPIMsserverdhcpPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDhcpAPIMsserverdhcpPostRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPIMsserverdhcpPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r MsserverDhcpAPIMsserverdhcpPostRequest) ReturnAsObject(returnAsObject int32) MsserverDhcpAPIMsserverdhcpPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r MsserverDhcpAPIMsserverdhcpPostRequest) Execute() (*CreateMsserverDhcpResponse, *http.Response, error) {
-	return r.ApiService.MsserverdhcpPostExecute(r)
-}
-
-/*
-MsserverdhcpPost Create a msserver:dhcp object
-
-Creates a new msserver:dhcp object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MsserverDhcpAPIMsserverdhcpPostRequest
-*/
-func (a *MsserverDhcpAPIService) MsserverdhcpPost(ctx context.Context) MsserverDhcpAPIMsserverdhcpPostRequest {
-	return MsserverDhcpAPIMsserverdhcpPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateMsserverDhcpResponse
-func (a *MsserverDhcpAPIService) MsserverdhcpPostExecute(r MsserverDhcpAPIMsserverdhcpPostRequest) (*CreateMsserverDhcpResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateMsserverDhcpResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDhcpAPIService.MsserverdhcpPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/msserver:dhcp"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.msserverDhcp == nil {
-		return localVarReturnValue, nil, internal.ReportError("msserverDhcp is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.msserverDhcp
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MsserverDhcpAPIMsserverdhcpReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService MsserverDhcpAPI
-	reference  string
-}
-
-func (r MsserverDhcpAPIMsserverdhcpReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.MsserverdhcpReferenceDeleteExecute(r)
-}
-
-/*
-MsserverdhcpReferenceDelete Delete a msserver:dhcp object
-
-Deletes a specific msserver:dhcp object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the msserver:dhcp object
-	@return MsserverDhcpAPIMsserverdhcpReferenceDeleteRequest
-*/
-func (a *MsserverDhcpAPIService) MsserverdhcpReferenceDelete(ctx context.Context, reference string) MsserverDhcpAPIMsserverdhcpReferenceDeleteRequest {
-	return MsserverDhcpAPIMsserverdhcpReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *MsserverDhcpAPIService) MsserverdhcpReferenceDeleteExecute(r MsserverDhcpAPIMsserverdhcpReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDhcpAPIService.MsserverdhcpReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/msserver:dhcp/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type MsserverDhcpAPIMsserverdhcpReferenceGetRequest struct {
+type MsserverDhcpAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     MsserverDhcpAPI
 	reference      string
@@ -499,38 +499,38 @@ type MsserverDhcpAPIMsserverdhcpReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MsserverDhcpAPIMsserverdhcpReferenceGetRequest) ReturnFields(returnFields string) MsserverDhcpAPIMsserverdhcpReferenceGetRequest {
+func (r MsserverDhcpAPIReadRequest) ReturnFields(returnFields string) MsserverDhcpAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDhcpAPIMsserverdhcpReferenceGetRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPIMsserverdhcpReferenceGetRequest {
+func (r MsserverDhcpAPIReadRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverDhcpAPIMsserverdhcpReferenceGetRequest) ReturnAsObject(returnAsObject int32) MsserverDhcpAPIMsserverdhcpReferenceGetRequest {
+func (r MsserverDhcpAPIReadRequest) ReturnAsObject(returnAsObject int32) MsserverDhcpAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MsserverDhcpAPIMsserverdhcpReferenceGetRequest) Execute() (*GetMsserverDhcpResponse, *http.Response, error) {
-	return r.ApiService.MsserverdhcpReferenceGetExecute(r)
+func (r MsserverDhcpAPIReadRequest) Execute() (*GetMsserverDhcpResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MsserverdhcpReferenceGet Get a specific msserver:dhcp object
+Read Get a specific msserver:dhcp object
 
 Returns a specific msserver:dhcp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the msserver:dhcp object
-	@return MsserverDhcpAPIMsserverdhcpReferenceGetRequest
+	@return MsserverDhcpAPIReadRequest
 */
-func (a *MsserverDhcpAPIService) MsserverdhcpReferenceGet(ctx context.Context, reference string) MsserverDhcpAPIMsserverdhcpReferenceGetRequest {
-	return MsserverDhcpAPIMsserverdhcpReferenceGetRequest{
+func (a *MsserverDhcpAPIService) Read(ctx context.Context, reference string) MsserverDhcpAPIReadRequest {
+	return MsserverDhcpAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *MsserverDhcpAPIService) MsserverdhcpReferenceGet(ctx context.Context, r
 // Execute executes the request
 //
 //	@return GetMsserverDhcpResponse
-func (a *MsserverDhcpAPIService) MsserverdhcpReferenceGetExecute(r MsserverDhcpAPIMsserverdhcpReferenceGetRequest) (*GetMsserverDhcpResponse, *http.Response, error) {
+func (a *MsserverDhcpAPIService) ReadExecute(r MsserverDhcpAPIReadRequest) (*GetMsserverDhcpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *MsserverDhcpAPIService) MsserverdhcpReferenceGetExecute(r MsserverDhcpA
 		localVarReturnValue *GetMsserverDhcpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDhcpAPIService.MsserverdhcpReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDhcpAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *MsserverDhcpAPIService) MsserverdhcpReferenceGetExecute(r MsserverDhcpA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MsserverDhcpAPIMsserverdhcpReferencePutRequest struct {
+type MsserverDhcpAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     MsserverDhcpAPI
 	reference      string
@@ -627,44 +627,44 @@ type MsserverDhcpAPIMsserverdhcpReferencePutRequest struct {
 }
 
 // Object data to update
-func (r MsserverDhcpAPIMsserverdhcpReferencePutRequest) MsserverDhcp(msserverDhcp MsserverDhcp) MsserverDhcpAPIMsserverdhcpReferencePutRequest {
+func (r MsserverDhcpAPIUpdateRequest) MsserverDhcp(msserverDhcp MsserverDhcp) MsserverDhcpAPIUpdateRequest {
 	r.msserverDhcp = &msserverDhcp
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MsserverDhcpAPIMsserverdhcpReferencePutRequest) ReturnFields(returnFields string) MsserverDhcpAPIMsserverdhcpReferencePutRequest {
+func (r MsserverDhcpAPIUpdateRequest) ReturnFields(returnFields string) MsserverDhcpAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDhcpAPIMsserverdhcpReferencePutRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPIMsserverdhcpReferencePutRequest {
+func (r MsserverDhcpAPIUpdateRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverDhcpAPIMsserverdhcpReferencePutRequest) ReturnAsObject(returnAsObject int32) MsserverDhcpAPIMsserverdhcpReferencePutRequest {
+func (r MsserverDhcpAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MsserverDhcpAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MsserverDhcpAPIMsserverdhcpReferencePutRequest) Execute() (*UpdateMsserverDhcpResponse, *http.Response, error) {
-	return r.ApiService.MsserverdhcpReferencePutExecute(r)
+func (r MsserverDhcpAPIUpdateRequest) Execute() (*UpdateMsserverDhcpResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-MsserverdhcpReferencePut Update a msserver:dhcp object
+Update Update a msserver:dhcp object
 
 Updates a specific msserver:dhcp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the msserver:dhcp object
-	@return MsserverDhcpAPIMsserverdhcpReferencePutRequest
+	@return MsserverDhcpAPIUpdateRequest
 */
-func (a *MsserverDhcpAPIService) MsserverdhcpReferencePut(ctx context.Context, reference string) MsserverDhcpAPIMsserverdhcpReferencePutRequest {
-	return MsserverDhcpAPIMsserverdhcpReferencePutRequest{
+func (a *MsserverDhcpAPIService) Update(ctx context.Context, reference string) MsserverDhcpAPIUpdateRequest {
+	return MsserverDhcpAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *MsserverDhcpAPIService) MsserverdhcpReferencePut(ctx context.Context, r
 // Execute executes the request
 //
 //	@return UpdateMsserverDhcpResponse
-func (a *MsserverDhcpAPIService) MsserverdhcpReferencePutExecute(r MsserverDhcpAPIMsserverdhcpReferencePutRequest) (*UpdateMsserverDhcpResponse, *http.Response, error) {
+func (a *MsserverDhcpAPIService) UpdateExecute(r MsserverDhcpAPIUpdateRequest) (*UpdateMsserverDhcpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *MsserverDhcpAPIService) MsserverdhcpReferencePutExecute(r MsserverDhcpA
 		localVarReturnValue *UpdateMsserverDhcpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDhcpAPIService.MsserverdhcpReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDhcpAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

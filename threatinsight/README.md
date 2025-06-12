@@ -79,18 +79,18 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ThreatinsightAllowlistAPI* | [**ThreatinsightallowlistGet**](docs/ThreatinsightAllowlistAPI.md#threatinsightallowlistget) | **Get** /threatinsight:allowlist | Retrieve threatinsight:allowlist objects
-*ThreatinsightAllowlistAPI* | [**ThreatinsightallowlistPost**](docs/ThreatinsightAllowlistAPI.md#threatinsightallowlistpost) | **Post** /threatinsight:allowlist | Create a threatinsight:allowlist object
-*ThreatinsightAllowlistAPI* | [**ThreatinsightallowlistReferenceDelete**](docs/ThreatinsightAllowlistAPI.md#threatinsightallowlistreferencedelete) | **Delete** /threatinsight:allowlist/{reference} | Delete a threatinsight:allowlist object
-*ThreatinsightAllowlistAPI* | [**ThreatinsightallowlistReferenceGet**](docs/ThreatinsightAllowlistAPI.md#threatinsightallowlistreferenceget) | **Get** /threatinsight:allowlist/{reference} | Get a specific threatinsight:allowlist object
-*ThreatinsightAllowlistAPI* | [**ThreatinsightallowlistReferencePut**](docs/ThreatinsightAllowlistAPI.md#threatinsightallowlistreferenceput) | **Put** /threatinsight:allowlist/{reference} | Update a threatinsight:allowlist object
-*ThreatinsightCloudclientAPI* | [**ThreatinsightcloudclientGet**](docs/ThreatinsightCloudclientAPI.md#threatinsightcloudclientget) | **Get** /threatinsight:cloudclient | Retrieve threatinsight:cloudclient objects
-*ThreatinsightCloudclientAPI* | [**ThreatinsightcloudclientReferenceGet**](docs/ThreatinsightCloudclientAPI.md#threatinsightcloudclientreferenceget) | **Get** /threatinsight:cloudclient/{reference} | Get a specific threatinsight:cloudclient object
-*ThreatinsightCloudclientAPI* | [**ThreatinsightcloudclientReferencePut**](docs/ThreatinsightCloudclientAPI.md#threatinsightcloudclientreferenceput) | **Put** /threatinsight:cloudclient/{reference} | Update a threatinsight:cloudclient object
-*ThreatinsightInsightAllowlistAPI* | [**ThreatinsightinsightAllowlistGet**](docs/ThreatinsightInsightAllowlistAPI.md#threatinsightinsightallowlistget) | **Get** /threatinsight:insight_allowlist | Retrieve threatinsight:insight_allowlist objects
-*ThreatinsightInsightAllowlistAPI* | [**ThreatinsightinsightAllowlistReferenceGet**](docs/ThreatinsightInsightAllowlistAPI.md#threatinsightinsightallowlistreferenceget) | **Get** /threatinsight:insight_allowlist/{reference} | Get a specific threatinsight:insight_allowlist object
-*ThreatinsightModulesetAPI* | [**ThreatinsightmodulesetGet**](docs/ThreatinsightModulesetAPI.md#threatinsightmodulesetget) | **Get** /threatinsight:moduleset | Retrieve threatinsight:moduleset objects
-*ThreatinsightModulesetAPI* | [**ThreatinsightmodulesetReferenceGet**](docs/ThreatinsightModulesetAPI.md#threatinsightmodulesetreferenceget) | **Get** /threatinsight:moduleset/{reference} | Get a specific threatinsight:moduleset object
+*ThreatinsightAllowlistAPI* | [**Create**](docs/ThreatinsightAllowlistAPI.md#create) | **Post** /threatinsight:allowlist | Create a threatinsight:allowlist object
+*ThreatinsightAllowlistAPI* | [**Delete**](docs/ThreatinsightAllowlistAPI.md#delete) | **Delete** /threatinsight:allowlist/{reference} | Delete a threatinsight:allowlist object
+*ThreatinsightAllowlistAPI* | [**List**](docs/ThreatinsightAllowlistAPI.md#list) | **Get** /threatinsight:allowlist | Retrieve threatinsight:allowlist objects
+*ThreatinsightAllowlistAPI* | [**Read**](docs/ThreatinsightAllowlistAPI.md#read) | **Get** /threatinsight:allowlist/{reference} | Get a specific threatinsight:allowlist object
+*ThreatinsightAllowlistAPI* | [**Update**](docs/ThreatinsightAllowlistAPI.md#update) | **Put** /threatinsight:allowlist/{reference} | Update a threatinsight:allowlist object
+*ThreatinsightCloudclientAPI* | [**List**](docs/ThreatinsightCloudclientAPI.md#list) | **Get** /threatinsight:cloudclient | Retrieve threatinsight:cloudclient objects
+*ThreatinsightCloudclientAPI* | [**Read**](docs/ThreatinsightCloudclientAPI.md#read) | **Get** /threatinsight:cloudclient/{reference} | Get a specific threatinsight:cloudclient object
+*ThreatinsightCloudclientAPI* | [**Update**](docs/ThreatinsightCloudclientAPI.md#update) | **Put** /threatinsight:cloudclient/{reference} | Update a threatinsight:cloudclient object
+*ThreatinsightInsightAllowlistAPI* | [**List**](docs/ThreatinsightInsightAllowlistAPI.md#list) | **Get** /threatinsight:insight_allowlist | Retrieve threatinsight:insight_allowlist objects
+*ThreatinsightInsightAllowlistAPI* | [**Read**](docs/ThreatinsightInsightAllowlistAPI.md#read) | **Get** /threatinsight:insight_allowlist/{reference} | Get a specific threatinsight:insight_allowlist object
+*ThreatinsightModulesetAPI* | [**List**](docs/ThreatinsightModulesetAPI.md#list) | **Get** /threatinsight:moduleset | Retrieve threatinsight:moduleset objects
+*ThreatinsightModulesetAPI* | [**Read**](docs/ThreatinsightModulesetAPI.md#read) | **Get** /threatinsight:moduleset/{reference} | Get a specific threatinsight:moduleset object
 
 
 ## Documentation For Models

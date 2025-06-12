@@ -48,6 +48,7 @@ paths:
   /allrpzrecords:
     get:
       description: Returns a list of allrpzrecords objects matching the search criteria
+      operationId: AllrpzrecordsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -145,6 +146,7 @@ paths:
   /allrpzrecords/{reference}:
     get:
       description: Returns a specific allrpzrecords object by reference
+      operationId: AllrpzrecordsRead
       parameters:
       - description: Reference of the allrpzrecords object
         explode: false
@@ -205,6 +207,7 @@ paths:
   /record:rpz:a:
     get:
       description: Returns a list of record:rpz:a objects matching the search criteria
+      operationId: RecordRpzAList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -301,6 +304,7 @@ paths:
       - RecordRpzA
     post:
       description: Creates a new record:rpz:a object
+      operationId: RecordRpzACreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -361,6 +365,7 @@ paths:
   /record:rpz:a/{reference}:
     delete:
       description: Deletes a specific record:rpz:a object by reference
+      operationId: RecordRpzADelete
       parameters:
       - description: Reference of the record:rpz:a object
         explode: false
@@ -388,6 +393,7 @@ paths:
       - RecordRpzA
     get:
       description: Returns a specific record:rpz:a object by reference
+      operationId: RecordRpzARead
       parameters:
       - description: Reference of the record:rpz:a object
         explode: false
@@ -447,6 +453,7 @@ paths:
       - RecordRpzA
     put:
       description: Updates a specific record:rpz:a object by reference
+      operationId: RecordRpzAUpdate
       parameters:
       - description: Reference of the record:rpz:a object
         explode: false
@@ -515,6 +522,7 @@ paths:
   /record:rpz:aaaa:
     get:
       description: Returns a list of record:rpz:aaaa objects matching the search criteria
+      operationId: RecordRpzAaaaList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -611,6 +619,7 @@ paths:
       - RecordRpzAaaa
     post:
       description: Creates a new record:rpz:aaaa object
+      operationId: RecordRpzAaaaCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -671,6 +680,7 @@ paths:
   /record:rpz:aaaa/{reference}:
     delete:
       description: Deletes a specific record:rpz:aaaa object by reference
+      operationId: RecordRpzAaaaDelete
       parameters:
       - description: Reference of the record:rpz:aaaa object
         explode: false
@@ -698,6 +708,7 @@ paths:
       - RecordRpzAaaa
     get:
       description: Returns a specific record:rpz:aaaa object by reference
+      operationId: RecordRpzAaaaRead
       parameters:
       - description: Reference of the record:rpz:aaaa object
         explode: false
@@ -757,6 +768,7 @@ paths:
       - RecordRpzAaaa
     put:
       description: Updates a specific record:rpz:aaaa object by reference
+      operationId: RecordRpzAaaaUpdate
       parameters:
       - description: Reference of the record:rpz:aaaa object
         explode: false
@@ -826,6 +838,7 @@ paths:
     get:
       description: Returns a list of record:rpz:cname objects matching the search
         criteria
+      operationId: RecordRpzCnameList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -922,6 +935,7 @@ paths:
       - RecordRpzCname
     post:
       description: Creates a new record:rpz:cname object
+      operationId: RecordRpzCnameCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -982,6 +996,7 @@ paths:
   /record:rpz:cname/{reference}:
     delete:
       description: Deletes a specific record:rpz:cname object by reference
+      operationId: RecordRpzCnameDelete
       parameters:
       - description: Reference of the record:rpz:cname object
         explode: false
@@ -1009,6 +1024,7 @@ paths:
       - RecordRpzCname
     get:
       description: Returns a specific record:rpz:cname object by reference
+      operationId: RecordRpzCnameRead
       parameters:
       - description: Reference of the record:rpz:cname object
         explode: false
@@ -1068,6 +1084,7 @@ paths:
       - RecordRpzCname
     put:
       description: Updates a specific record:rpz:cname object by reference
+      operationId: RecordRpzCnameUpdate
       parameters:
       - description: Reference of the record:rpz:cname object
         explode: false
@@ -1136,6 +1153,7 @@ paths:
   /record:rpz:mx:
     get:
       description: Returns a list of record:rpz:mx objects matching the search criteria
+      operationId: RecordRpzMxList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1232,6 +1250,7 @@ paths:
       - RecordRpzMx
     post:
       description: Creates a new record:rpz:mx object
+      operationId: RecordRpzMxCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1292,6 +1311,7 @@ paths:
   /record:rpz:mx/{reference}:
     delete:
       description: Deletes a specific record:rpz:mx object by reference
+      operationId: RecordRpzMxDelete
       parameters:
       - description: Reference of the record:rpz:mx object
         explode: false
@@ -1319,6 +1339,7 @@ paths:
       - RecordRpzMx
     get:
       description: Returns a specific record:rpz:mx object by reference
+      operationId: RecordRpzMxRead
       parameters:
       - description: Reference of the record:rpz:mx object
         explode: false
@@ -1378,6 +1399,7 @@ paths:
       - RecordRpzMx
     put:
       description: Updates a specific record:rpz:mx object by reference
+      operationId: RecordRpzMxUpdate
       parameters:
       - description: Reference of the record:rpz:mx object
         explode: false
@@ -1447,6 +1469,7 @@ paths:
     get:
       description: Returns a list of record:rpz:naptr objects matching the search
         criteria
+      operationId: RecordRpzNaptrList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1543,6 +1566,7 @@ paths:
       - RecordRpzNaptr
     post:
       description: Creates a new record:rpz:naptr object
+      operationId: RecordRpzNaptrCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1603,6 +1627,7 @@ paths:
   /record:rpz:naptr/{reference}:
     delete:
       description: Deletes a specific record:rpz:naptr object by reference
+      operationId: RecordRpzNaptrDelete
       parameters:
       - description: Reference of the record:rpz:naptr object
         explode: false
@@ -1630,6 +1655,7 @@ paths:
       - RecordRpzNaptr
     get:
       description: Returns a specific record:rpz:naptr object by reference
+      operationId: RecordRpzNaptrRead
       parameters:
       - description: Reference of the record:rpz:naptr object
         explode: false
@@ -1689,6 +1715,7 @@ paths:
       - RecordRpzNaptr
     put:
       description: Updates a specific record:rpz:naptr object by reference
+      operationId: RecordRpzNaptrUpdate
       parameters:
       - description: Reference of the record:rpz:naptr object
         explode: false
@@ -1757,6 +1784,7 @@ paths:
   /record:rpz:ptr:
     get:
       description: Returns a list of record:rpz:ptr objects matching the search criteria
+      operationId: RecordRpzPtrList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1853,6 +1881,7 @@ paths:
       - RecordRpzPtr
     post:
       description: Creates a new record:rpz:ptr object
+      operationId: RecordRpzPtrCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1913,6 +1942,7 @@ paths:
   /record:rpz:ptr/{reference}:
     delete:
       description: Deletes a specific record:rpz:ptr object by reference
+      operationId: RecordRpzPtrDelete
       parameters:
       - description: Reference of the record:rpz:ptr object
         explode: false
@@ -1940,6 +1970,7 @@ paths:
       - RecordRpzPtr
     get:
       description: Returns a specific record:rpz:ptr object by reference
+      operationId: RecordRpzPtrRead
       parameters:
       - description: Reference of the record:rpz:ptr object
         explode: false
@@ -1999,6 +2030,7 @@ paths:
       - RecordRpzPtr
     put:
       description: Updates a specific record:rpz:ptr object by reference
+      operationId: RecordRpzPtrUpdate
       parameters:
       - description: Reference of the record:rpz:ptr object
         explode: false
@@ -2067,6 +2099,7 @@ paths:
   /record:rpz:srv:
     get:
       description: Returns a list of record:rpz:srv objects matching the search criteria
+      operationId: RecordRpzSrvList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2163,6 +2196,7 @@ paths:
       - RecordRpzSrv
     post:
       description: Creates a new record:rpz:srv object
+      operationId: RecordRpzSrvCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2223,6 +2257,7 @@ paths:
   /record:rpz:srv/{reference}:
     delete:
       description: Deletes a specific record:rpz:srv object by reference
+      operationId: RecordRpzSrvDelete
       parameters:
       - description: Reference of the record:rpz:srv object
         explode: false
@@ -2250,6 +2285,7 @@ paths:
       - RecordRpzSrv
     get:
       description: Returns a specific record:rpz:srv object by reference
+      operationId: RecordRpzSrvRead
       parameters:
       - description: Reference of the record:rpz:srv object
         explode: false
@@ -2309,6 +2345,7 @@ paths:
       - RecordRpzSrv
     put:
       description: Updates a specific record:rpz:srv object by reference
+      operationId: RecordRpzSrvUpdate
       parameters:
       - description: Reference of the record:rpz:srv object
         explode: false
@@ -2377,6 +2414,7 @@ paths:
   /record:rpz:txt:
     get:
       description: Returns a list of record:rpz:txt objects matching the search criteria
+      operationId: RecordRpzTxtList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2473,6 +2511,7 @@ paths:
       - RecordRpzTxt
     post:
       description: Creates a new record:rpz:txt object
+      operationId: RecordRpzTxtCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2533,6 +2572,7 @@ paths:
   /record:rpz:txt/{reference}:
     delete:
       description: Deletes a specific record:rpz:txt object by reference
+      operationId: RecordRpzTxtDelete
       parameters:
       - description: Reference of the record:rpz:txt object
         explode: false
@@ -2560,6 +2600,7 @@ paths:
       - RecordRpzTxt
     get:
       description: Returns a specific record:rpz:txt object by reference
+      operationId: RecordRpzTxtRead
       parameters:
       - description: Reference of the record:rpz:txt object
         explode: false
@@ -2619,6 +2660,7 @@ paths:
       - RecordRpzTxt
     put:
       description: Updates a specific record:rpz:txt object by reference
+      operationId: RecordRpzTxtUpdate
       parameters:
       - description: Reference of the record:rpz:txt object
         explode: false
@@ -2688,6 +2730,7 @@ paths:
     get:
       description: Returns a list of record:rpz:a:ipaddress objects matching the search
         criteria
+      operationId: RecordRpzAIpaddressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2784,6 +2827,7 @@ paths:
       - RecordRpzAIpaddress
     post:
       description: Creates a new record:rpz:a:ipaddress object
+      operationId: RecordRpzAIpaddressCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2844,6 +2888,7 @@ paths:
   /record:rpz:a:ipaddress/{reference}:
     delete:
       description: Deletes a specific record:rpz:a:ipaddress object by reference
+      operationId: RecordRpzAIpaddressDelete
       parameters:
       - description: Reference of the record:rpz:a:ipaddress object
         explode: false
@@ -2871,6 +2916,7 @@ paths:
       - RecordRpzAIpaddress
     get:
       description: Returns a specific record:rpz:a:ipaddress object by reference
+      operationId: RecordRpzAIpaddressRead
       parameters:
       - description: Reference of the record:rpz:a:ipaddress object
         explode: false
@@ -2930,6 +2976,7 @@ paths:
       - RecordRpzAIpaddress
     put:
       description: Updates a specific record:rpz:a:ipaddress object by reference
+      operationId: RecordRpzAIpaddressUpdate
       parameters:
       - description: Reference of the record:rpz:a:ipaddress object
         explode: false
@@ -2999,6 +3046,7 @@ paths:
     get:
       description: Returns a list of record:rpz:aaaa:ipaddress objects matching the
         search criteria
+      operationId: RecordRpzAaaaIpaddressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3095,6 +3143,7 @@ paths:
       - RecordRpzAaaaIpaddress
     post:
       description: Creates a new record:rpz:aaaa:ipaddress object
+      operationId: RecordRpzAaaaIpaddressCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3155,6 +3204,7 @@ paths:
   /record:rpz:aaaa:ipaddress/{reference}:
     delete:
       description: Deletes a specific record:rpz:aaaa:ipaddress object by reference
+      operationId: RecordRpzAaaaIpaddressDelete
       parameters:
       - description: Reference of the record:rpz:aaaa:ipaddress object
         explode: false
@@ -3182,6 +3232,7 @@ paths:
       - RecordRpzAaaaIpaddress
     get:
       description: Returns a specific record:rpz:aaaa:ipaddress object by reference
+      operationId: RecordRpzAaaaIpaddressRead
       parameters:
       - description: Reference of the record:rpz:aaaa:ipaddress object
         explode: false
@@ -3241,6 +3292,7 @@ paths:
       - RecordRpzAaaaIpaddress
     put:
       description: Updates a specific record:rpz:aaaa:ipaddress object by reference
+      operationId: RecordRpzAaaaIpaddressUpdate
       parameters:
       - description: Reference of the record:rpz:aaaa:ipaddress object
         explode: false
@@ -3310,6 +3362,7 @@ paths:
     get:
       description: Returns a list of record:rpz:cname:ipaddress objects matching the
         search criteria
+      operationId: RecordRpzCnameIpaddressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3406,6 +3459,7 @@ paths:
       - RecordRpzCnameIpaddress
     post:
       description: Creates a new record:rpz:cname:ipaddress object
+      operationId: RecordRpzCnameIpaddressCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3466,6 +3520,7 @@ paths:
   /record:rpz:cname:ipaddress/{reference}:
     delete:
       description: Deletes a specific record:rpz:cname:ipaddress object by reference
+      operationId: RecordRpzCnameIpaddressDelete
       parameters:
       - description: Reference of the record:rpz:cname:ipaddress object
         explode: false
@@ -3493,6 +3548,7 @@ paths:
       - RecordRpzCnameIpaddress
     get:
       description: Returns a specific record:rpz:cname:ipaddress object by reference
+      operationId: RecordRpzCnameIpaddressRead
       parameters:
       - description: Reference of the record:rpz:cname:ipaddress object
         explode: false
@@ -3552,6 +3608,7 @@ paths:
       - RecordRpzCnameIpaddress
     put:
       description: Updates a specific record:rpz:cname:ipaddress object by reference
+      operationId: RecordRpzCnameIpaddressUpdate
       parameters:
       - description: Reference of the record:rpz:cname:ipaddress object
         explode: false
@@ -3621,6 +3678,7 @@ paths:
     get:
       description: Returns a list of record:rpz:cname:ipaddressdn objects matching
         the search criteria
+      operationId: RecordRpzCnameIpaddressdnList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3717,6 +3775,7 @@ paths:
       - RecordRpzCnameIpaddressdn
     post:
       description: Creates a new record:rpz:cname:ipaddressdn object
+      operationId: RecordRpzCnameIpaddressdnCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3777,6 +3836,7 @@ paths:
   /record:rpz:cname:ipaddressdn/{reference}:
     delete:
       description: Deletes a specific record:rpz:cname:ipaddressdn object by reference
+      operationId: RecordRpzCnameIpaddressdnDelete
       parameters:
       - description: Reference of the record:rpz:cname:ipaddressdn object
         explode: false
@@ -3804,6 +3864,7 @@ paths:
       - RecordRpzCnameIpaddressdn
     get:
       description: Returns a specific record:rpz:cname:ipaddressdn object by reference
+      operationId: RecordRpzCnameIpaddressdnRead
       parameters:
       - description: Reference of the record:rpz:cname:ipaddressdn object
         explode: false
@@ -3863,6 +3924,7 @@ paths:
       - RecordRpzCnameIpaddressdn
     put:
       description: Updates a specific record:rpz:cname:ipaddressdn object by reference
+      operationId: RecordRpzCnameIpaddressdnUpdate
       parameters:
       - description: Reference of the record:rpz:cname:ipaddressdn object
         explode: false
@@ -3932,6 +3994,7 @@ paths:
     get:
       description: Returns a list of record:rpz:cname:clientipaddress objects matching
         the search criteria
+      operationId: RecordRpzCnameClientipaddressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4028,6 +4091,7 @@ paths:
       - RecordRpzCnameClientipaddress
     post:
       description: Creates a new record:rpz:cname:clientipaddress object
+      operationId: RecordRpzCnameClientipaddressCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4088,6 +4152,7 @@ paths:
   /record:rpz:cname:clientipaddress/{reference}:
     delete:
       description: Deletes a specific record:rpz:cname:clientipaddress object by reference
+      operationId: RecordRpzCnameClientipaddressDelete
       parameters:
       - description: Reference of the record:rpz:cname:clientipaddress object
         explode: false
@@ -4115,6 +4180,7 @@ paths:
       - RecordRpzCnameClientipaddress
     get:
       description: Returns a specific record:rpz:cname:clientipaddress object by reference
+      operationId: RecordRpzCnameClientipaddressRead
       parameters:
       - description: Reference of the record:rpz:cname:clientipaddress object
         explode: false
@@ -4174,6 +4240,7 @@ paths:
       - RecordRpzCnameClientipaddress
     put:
       description: Updates a specific record:rpz:cname:clientipaddress object by reference
+      operationId: RecordRpzCnameClientipaddressUpdate
       parameters:
       - description: Reference of the record:rpz:cname:clientipaddress object
         explode: false
@@ -4243,6 +4310,7 @@ paths:
     get:
       description: Returns a list of record:rpz:cname:clientipaddressdn objects matching
         the search criteria
+      operationId: RecordRpzCnameClientipaddressdnList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4339,6 +4407,7 @@ paths:
       - RecordRpzCnameClientipaddressdn
     post:
       description: Creates a new record:rpz:cname:clientipaddressdn object
+      operationId: RecordRpzCnameClientipaddressdnCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4400,6 +4469,7 @@ paths:
     delete:
       description: Deletes a specific record:rpz:cname:clientipaddressdn object by
         reference
+      operationId: RecordRpzCnameClientipaddressdnDelete
       parameters:
       - description: Reference of the record:rpz:cname:clientipaddressdn object
         explode: false
@@ -4428,6 +4498,7 @@ paths:
     get:
       description: Returns a specific record:rpz:cname:clientipaddressdn object by
         reference
+      operationId: RecordRpzCnameClientipaddressdnRead
       parameters:
       - description: Reference of the record:rpz:cname:clientipaddressdn object
         explode: false
@@ -4488,6 +4559,7 @@ paths:
     put:
       description: Updates a specific record:rpz:cname:clientipaddressdn object by
         reference
+      operationId: RecordRpzCnameClientipaddressdnUpdate
       parameters:
       - description: Reference of the record:rpz:cname:clientipaddressdn object
         explode: false

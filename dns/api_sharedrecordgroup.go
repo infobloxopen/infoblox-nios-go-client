@@ -23,249 +23,78 @@ import (
 
 type SharedrecordgroupAPI interface {
 	/*
-		Get Retrieve sharedrecordgroup objects
-
-		Returns a list of sharedrecordgroup objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SharedrecordgroupAPIGetRequest
-	*/
-	Get(ctx context.Context) SharedrecordgroupAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListSharedrecordgroupResponse
-	GetExecute(r SharedrecordgroupAPIGetRequest) (*ListSharedrecordgroupResponse, *http.Response, error)
-	/*
-		Post Create a sharedrecordgroup object
+		Create Create a sharedrecordgroup object
 
 		Creates a new sharedrecordgroup object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SharedrecordgroupAPIPostRequest
+		@return SharedrecordgroupAPICreateRequest
 	*/
-	Post(ctx context.Context) SharedrecordgroupAPIPostRequest
+	Create(ctx context.Context) SharedrecordgroupAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateSharedrecordgroupResponse
-	PostExecute(r SharedrecordgroupAPIPostRequest) (*CreateSharedrecordgroupResponse, *http.Response, error)
+	CreateExecute(r SharedrecordgroupAPICreateRequest) (*CreateSharedrecordgroupResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a sharedrecordgroup object
+		Delete Delete a sharedrecordgroup object
 
 		Deletes a specific sharedrecordgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the sharedrecordgroup object
-		@return SharedrecordgroupAPIReferenceDeleteRequest
+		@return SharedrecordgroupAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) SharedrecordgroupAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) SharedrecordgroupAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r SharedrecordgroupAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r SharedrecordgroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific sharedrecordgroup object
+		List Retrieve sharedrecordgroup objects
+
+		Returns a list of sharedrecordgroup objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return SharedrecordgroupAPIListRequest
+	*/
+	List(ctx context.Context) SharedrecordgroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListSharedrecordgroupResponse
+	ListExecute(r SharedrecordgroupAPIListRequest) (*ListSharedrecordgroupResponse, *http.Response, error)
+	/*
+		Read Get a specific sharedrecordgroup object
 
 		Returns a specific sharedrecordgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the sharedrecordgroup object
-		@return SharedrecordgroupAPIReferenceGetRequest
+		@return SharedrecordgroupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) SharedrecordgroupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) SharedrecordgroupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSharedrecordgroupResponse
-	ReferenceGetExecute(r SharedrecordgroupAPIReferenceGetRequest) (*GetSharedrecordgroupResponse, *http.Response, error)
+	ReadExecute(r SharedrecordgroupAPIReadRequest) (*GetSharedrecordgroupResponse, *http.Response, error)
 	/*
-		ReferencePut Update a sharedrecordgroup object
+		Update Update a sharedrecordgroup object
 
 		Updates a specific sharedrecordgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the sharedrecordgroup object
-		@return SharedrecordgroupAPIReferencePutRequest
+		@return SharedrecordgroupAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) SharedrecordgroupAPIReferencePutRequest
+	Update(ctx context.Context, reference string) SharedrecordgroupAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateSharedrecordgroupResponse
-	ReferencePutExecute(r SharedrecordgroupAPIReferencePutRequest) (*UpdateSharedrecordgroupResponse, *http.Response, error)
+	UpdateExecute(r SharedrecordgroupAPIUpdateRequest) (*UpdateSharedrecordgroupResponse, *http.Response, error)
 }
 
 // SharedrecordgroupAPIService SharedrecordgroupAPI service
 type SharedrecordgroupAPIService internal.Service
 
-type SharedrecordgroupAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     SharedrecordgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r SharedrecordgroupAPIGetRequest) ReturnFields(returnFields string) SharedrecordgroupAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordgroupAPIGetRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r SharedrecordgroupAPIGetRequest) MaxResults(maxResults int32) SharedrecordgroupAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r SharedrecordgroupAPIGetRequest) ReturnAsObject(returnAsObject int32) SharedrecordgroupAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r SharedrecordgroupAPIGetRequest) Paging(paging int32) SharedrecordgroupAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r SharedrecordgroupAPIGetRequest) PageId(pageId string) SharedrecordgroupAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r SharedrecordgroupAPIGetRequest) Filters(filters map[string]interface{}) SharedrecordgroupAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r SharedrecordgroupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SharedrecordgroupAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r SharedrecordgroupAPIGetRequest) Execute() (*ListSharedrecordgroupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve sharedrecordgroup objects
-
-Returns a list of sharedrecordgroup objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SharedrecordgroupAPIGetRequest
-*/
-func (a *SharedrecordgroupAPIService) Get(ctx context.Context) SharedrecordgroupAPIGetRequest {
-	return SharedrecordgroupAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListSharedrecordgroupResponse
-func (a *SharedrecordgroupAPIService) GetExecute(r SharedrecordgroupAPIGetRequest) (*ListSharedrecordgroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListSharedrecordgroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharedrecordgroupAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/sharedrecordgroup"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type SharedrecordgroupAPIPostRequest struct {
+type SharedrecordgroupAPICreateRequest struct {
 	ctx               context.Context
 	ApiService        SharedrecordgroupAPI
 	sharedrecordgroup *Sharedrecordgroup
@@ -275,43 +104,43 @@ type SharedrecordgroupAPIPostRequest struct {
 }
 
 // Object data to create
-func (r SharedrecordgroupAPIPostRequest) Sharedrecordgroup(sharedrecordgroup Sharedrecordgroup) SharedrecordgroupAPIPostRequest {
+func (r SharedrecordgroupAPICreateRequest) Sharedrecordgroup(sharedrecordgroup Sharedrecordgroup) SharedrecordgroupAPICreateRequest {
 	r.sharedrecordgroup = &sharedrecordgroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r SharedrecordgroupAPIPostRequest) ReturnFields(returnFields string) SharedrecordgroupAPIPostRequest {
+func (r SharedrecordgroupAPICreateRequest) ReturnFields(returnFields string) SharedrecordgroupAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordgroupAPIPostRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPIPostRequest {
+func (r SharedrecordgroupAPICreateRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SharedrecordgroupAPIPostRequest) ReturnAsObject(returnAsObject int32) SharedrecordgroupAPIPostRequest {
+func (r SharedrecordgroupAPICreateRequest) ReturnAsObject(returnAsObject int32) SharedrecordgroupAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SharedrecordgroupAPIPostRequest) Execute() (*CreateSharedrecordgroupResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r SharedrecordgroupAPICreateRequest) Execute() (*CreateSharedrecordgroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a sharedrecordgroup object
+Create Create a sharedrecordgroup object
 
 Creates a new sharedrecordgroup object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SharedrecordgroupAPIPostRequest
+	@return SharedrecordgroupAPICreateRequest
 */
-func (a *SharedrecordgroupAPIService) Post(ctx context.Context) SharedrecordgroupAPIPostRequest {
-	return SharedrecordgroupAPIPostRequest{
+func (a *SharedrecordgroupAPIService) Create(ctx context.Context) SharedrecordgroupAPICreateRequest {
+	return SharedrecordgroupAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *SharedrecordgroupAPIService) Post(ctx context.Context) Sharedrecordgrou
 // Execute executes the request
 //
 //	@return CreateSharedrecordgroupResponse
-func (a *SharedrecordgroupAPIService) PostExecute(r SharedrecordgroupAPIPostRequest) (*CreateSharedrecordgroupResponse, *http.Response, error) {
+func (a *SharedrecordgroupAPIService) CreateExecute(r SharedrecordgroupAPICreateRequest) (*CreateSharedrecordgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *SharedrecordgroupAPIService) PostExecute(r SharedrecordgroupAPIPostRequ
 		localVarReturnValue *CreateSharedrecordgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharedrecordgroupAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharedrecordgroupAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *SharedrecordgroupAPIService) PostExecute(r SharedrecordgroupAPIPostRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SharedrecordgroupAPIReferenceDeleteRequest struct {
+type SharedrecordgroupAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService SharedrecordgroupAPI
 	reference  string
 }
 
-func (r SharedrecordgroupAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r SharedrecordgroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a sharedrecordgroup object
+Delete Delete a sharedrecordgroup object
 
 Deletes a specific sharedrecordgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the sharedrecordgroup object
-	@return SharedrecordgroupAPIReferenceDeleteRequest
+	@return SharedrecordgroupAPIDeleteRequest
 */
-func (a *SharedrecordgroupAPIService) ReferenceDelete(ctx context.Context, reference string) SharedrecordgroupAPIReferenceDeleteRequest {
-	return SharedrecordgroupAPIReferenceDeleteRequest{
+func (a *SharedrecordgroupAPIService) Delete(ctx context.Context, reference string) SharedrecordgroupAPIDeleteRequest {
+	return SharedrecordgroupAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *SharedrecordgroupAPIService) ReferenceDelete(ctx context.Context, refer
 }
 
 // Execute executes the request
-func (a *SharedrecordgroupAPIService) ReferenceDeleteExecute(r SharedrecordgroupAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *SharedrecordgroupAPIService) DeleteExecute(r SharedrecordgroupAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharedrecordgroupAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharedrecordgroupAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *SharedrecordgroupAPIService) ReferenceDeleteExecute(r Sharedrecordgroup
 	return localVarHTTPResponse, nil
 }
 
-type SharedrecordgroupAPIReferenceGetRequest struct {
+type SharedrecordgroupAPIListRequest struct {
+	ctx            context.Context
+	ApiService     SharedrecordgroupAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r SharedrecordgroupAPIListRequest) ReturnFields(returnFields string) SharedrecordgroupAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r SharedrecordgroupAPIListRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r SharedrecordgroupAPIListRequest) MaxResults(maxResults int32) SharedrecordgroupAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r SharedrecordgroupAPIListRequest) ReturnAsObject(returnAsObject int32) SharedrecordgroupAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r SharedrecordgroupAPIListRequest) Paging(paging int32) SharedrecordgroupAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r SharedrecordgroupAPIListRequest) PageId(pageId string) SharedrecordgroupAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r SharedrecordgroupAPIListRequest) Filters(filters map[string]interface{}) SharedrecordgroupAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r SharedrecordgroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SharedrecordgroupAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r SharedrecordgroupAPIListRequest) Execute() (*ListSharedrecordgroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve sharedrecordgroup objects
+
+Returns a list of sharedrecordgroup objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SharedrecordgroupAPIListRequest
+*/
+func (a *SharedrecordgroupAPIService) List(ctx context.Context) SharedrecordgroupAPIListRequest {
+	return SharedrecordgroupAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListSharedrecordgroupResponse
+func (a *SharedrecordgroupAPIService) ListExecute(r SharedrecordgroupAPIListRequest) (*ListSharedrecordgroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListSharedrecordgroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharedrecordgroupAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/sharedrecordgroup"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SharedrecordgroupAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     SharedrecordgroupAPI
 	reference      string
@@ -511,38 +511,38 @@ type SharedrecordgroupAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r SharedrecordgroupAPIReferenceGetRequest) ReturnFields(returnFields string) SharedrecordgroupAPIReferenceGetRequest {
+func (r SharedrecordgroupAPIReadRequest) ReturnFields(returnFields string) SharedrecordgroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordgroupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPIReferenceGetRequest {
+func (r SharedrecordgroupAPIReadRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SharedrecordgroupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) SharedrecordgroupAPIReferenceGetRequest {
+func (r SharedrecordgroupAPIReadRequest) ReturnAsObject(returnAsObject int32) SharedrecordgroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SharedrecordgroupAPIReferenceGetRequest) Execute() (*GetSharedrecordgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r SharedrecordgroupAPIReadRequest) Execute() (*GetSharedrecordgroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific sharedrecordgroup object
+Read Get a specific sharedrecordgroup object
 
 Returns a specific sharedrecordgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the sharedrecordgroup object
-	@return SharedrecordgroupAPIReferenceGetRequest
+	@return SharedrecordgroupAPIReadRequest
 */
-func (a *SharedrecordgroupAPIService) ReferenceGet(ctx context.Context, reference string) SharedrecordgroupAPIReferenceGetRequest {
-	return SharedrecordgroupAPIReferenceGetRequest{
+func (a *SharedrecordgroupAPIService) Read(ctx context.Context, reference string) SharedrecordgroupAPIReadRequest {
+	return SharedrecordgroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *SharedrecordgroupAPIService) ReferenceGet(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return GetSharedrecordgroupResponse
-func (a *SharedrecordgroupAPIService) ReferenceGetExecute(r SharedrecordgroupAPIReferenceGetRequest) (*GetSharedrecordgroupResponse, *http.Response, error) {
+func (a *SharedrecordgroupAPIService) ReadExecute(r SharedrecordgroupAPIReadRequest) (*GetSharedrecordgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *SharedrecordgroupAPIService) ReferenceGetExecute(r SharedrecordgroupAPI
 		localVarReturnValue *GetSharedrecordgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharedrecordgroupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharedrecordgroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *SharedrecordgroupAPIService) ReferenceGetExecute(r SharedrecordgroupAPI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SharedrecordgroupAPIReferencePutRequest struct {
+type SharedrecordgroupAPIUpdateRequest struct {
 	ctx               context.Context
 	ApiService        SharedrecordgroupAPI
 	reference         string
@@ -639,44 +639,44 @@ type SharedrecordgroupAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r SharedrecordgroupAPIReferencePutRequest) Sharedrecordgroup(sharedrecordgroup Sharedrecordgroup) SharedrecordgroupAPIReferencePutRequest {
+func (r SharedrecordgroupAPIUpdateRequest) Sharedrecordgroup(sharedrecordgroup Sharedrecordgroup) SharedrecordgroupAPIUpdateRequest {
 	r.sharedrecordgroup = &sharedrecordgroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r SharedrecordgroupAPIReferencePutRequest) ReturnFields(returnFields string) SharedrecordgroupAPIReferencePutRequest {
+func (r SharedrecordgroupAPIUpdateRequest) ReturnFields(returnFields string) SharedrecordgroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordgroupAPIReferencePutRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPIReferencePutRequest {
+func (r SharedrecordgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SharedrecordgroupAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) SharedrecordgroupAPIReferencePutRequest {
+func (r SharedrecordgroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) SharedrecordgroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SharedrecordgroupAPIReferencePutRequest) Execute() (*UpdateSharedrecordgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r SharedrecordgroupAPIUpdateRequest) Execute() (*UpdateSharedrecordgroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a sharedrecordgroup object
+Update Update a sharedrecordgroup object
 
 Updates a specific sharedrecordgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the sharedrecordgroup object
-	@return SharedrecordgroupAPIReferencePutRequest
+	@return SharedrecordgroupAPIUpdateRequest
 */
-func (a *SharedrecordgroupAPIService) ReferencePut(ctx context.Context, reference string) SharedrecordgroupAPIReferencePutRequest {
-	return SharedrecordgroupAPIReferencePutRequest{
+func (a *SharedrecordgroupAPIService) Update(ctx context.Context, reference string) SharedrecordgroupAPIUpdateRequest {
+	return SharedrecordgroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *SharedrecordgroupAPIService) ReferencePut(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return UpdateSharedrecordgroupResponse
-func (a *SharedrecordgroupAPIService) ReferencePutExecute(r SharedrecordgroupAPIReferencePutRequest) (*UpdateSharedrecordgroupResponse, *http.Response, error) {
+func (a *SharedrecordgroupAPIService) UpdateExecute(r SharedrecordgroupAPIUpdateRequest) (*UpdateSharedrecordgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *SharedrecordgroupAPIService) ReferencePutExecute(r SharedrecordgroupAPI
 		localVarReturnValue *UpdateSharedrecordgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharedrecordgroupAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharedrecordgroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

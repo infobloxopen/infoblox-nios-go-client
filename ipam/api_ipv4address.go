@@ -23,65 +23,154 @@ import (
 
 type Ipv4addressAPI interface {
 	/*
-		Get Retrieve ipv4address objects
-
-		Returns a list of ipv4address objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Ipv4addressAPIGetRequest
-	*/
-	Get(ctx context.Context) Ipv4addressAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListIpv4addressResponse
-	GetExecute(r Ipv4addressAPIGetRequest) (*ListIpv4addressResponse, *http.Response, error)
-	/*
-		ReferenceDelete Delete a ipv4address object
+		Delete Delete a ipv4address object
 
 		Deletes a specific ipv4address object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv4address object
-		@return Ipv4addressAPIReferenceDeleteRequest
+		@return Ipv4addressAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) Ipv4addressAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) Ipv4addressAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r Ipv4addressAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r Ipv4addressAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific ipv4address object
+		List Retrieve ipv4address objects
+
+		Returns a list of ipv4address objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return Ipv4addressAPIListRequest
+	*/
+	List(ctx context.Context) Ipv4addressAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListIpv4addressResponse
+	ListExecute(r Ipv4addressAPIListRequest) (*ListIpv4addressResponse, *http.Response, error)
+	/*
+		Read Get a specific ipv4address object
 
 		Returns a specific ipv4address object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv4address object
-		@return Ipv4addressAPIReferenceGetRequest
+		@return Ipv4addressAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) Ipv4addressAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) Ipv4addressAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetIpv4addressResponse
-	ReferenceGetExecute(r Ipv4addressAPIReferenceGetRequest) (*GetIpv4addressResponse, *http.Response, error)
+	ReadExecute(r Ipv4addressAPIReadRequest) (*GetIpv4addressResponse, *http.Response, error)
 	/*
-		ReferencePut Update a ipv4address object
+		Update Update a ipv4address object
 
 		Updates a specific ipv4address object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv4address object
-		@return Ipv4addressAPIReferencePutRequest
+		@return Ipv4addressAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) Ipv4addressAPIReferencePutRequest
+	Update(ctx context.Context, reference string) Ipv4addressAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateIpv4addressResponse
-	ReferencePutExecute(r Ipv4addressAPIReferencePutRequest) (*UpdateIpv4addressResponse, *http.Response, error)
+	UpdateExecute(r Ipv4addressAPIUpdateRequest) (*UpdateIpv4addressResponse, *http.Response, error)
 }
 
 // Ipv4addressAPIService Ipv4addressAPI service
 type Ipv4addressAPIService internal.Service
 
-type Ipv4addressAPIGetRequest struct {
+type Ipv4addressAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService Ipv4addressAPI
+	reference  string
+}
+
+func (r Ipv4addressAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a ipv4address object
+
+Deletes a specific ipv4address object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the ipv4address object
+	@return Ipv4addressAPIDeleteRequest
+*/
+func (a *Ipv4addressAPIService) Delete(ctx context.Context, reference string) Ipv4addressAPIDeleteRequest {
+	return Ipv4addressAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *Ipv4addressAPIService) DeleteExecute(r Ipv4addressAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv4addressAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ipv4address/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type Ipv4addressAPIListRequest struct {
 	ctx            context.Context
 	ApiService     Ipv4addressAPI
 	returnFields   *string
@@ -95,65 +184,65 @@ type Ipv4addressAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r Ipv4addressAPIGetRequest) ReturnFields(returnFields string) Ipv4addressAPIGetRequest {
+func (r Ipv4addressAPIListRequest) ReturnFields(returnFields string) Ipv4addressAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv4addressAPIGetRequest) ReturnFields2(returnFields2 string) Ipv4addressAPIGetRequest {
+func (r Ipv4addressAPIListRequest) ReturnFields2(returnFields2 string) Ipv4addressAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r Ipv4addressAPIGetRequest) MaxResults(maxResults int32) Ipv4addressAPIGetRequest {
+func (r Ipv4addressAPIListRequest) MaxResults(maxResults int32) Ipv4addressAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv4addressAPIGetRequest) ReturnAsObject(returnAsObject int32) Ipv4addressAPIGetRequest {
+func (r Ipv4addressAPIListRequest) ReturnAsObject(returnAsObject int32) Ipv4addressAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r Ipv4addressAPIGetRequest) Paging(paging int32) Ipv4addressAPIGetRequest {
+func (r Ipv4addressAPIListRequest) Paging(paging int32) Ipv4addressAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r Ipv4addressAPIGetRequest) PageId(pageId string) Ipv4addressAPIGetRequest {
+func (r Ipv4addressAPIListRequest) PageId(pageId string) Ipv4addressAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r Ipv4addressAPIGetRequest) Filters(filters map[string]interface{}) Ipv4addressAPIGetRequest {
+func (r Ipv4addressAPIListRequest) Filters(filters map[string]interface{}) Ipv4addressAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r Ipv4addressAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv4addressAPIGetRequest {
+func (r Ipv4addressAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv4addressAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r Ipv4addressAPIGetRequest) Execute() (*ListIpv4addressResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r Ipv4addressAPIListRequest) Execute() (*ListIpv4addressResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve ipv4address objects
+List Retrieve ipv4address objects
 
 Returns a list of ipv4address objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Ipv4addressAPIGetRequest
+	@return Ipv4addressAPIListRequest
 */
-func (a *Ipv4addressAPIService) Get(ctx context.Context) Ipv4addressAPIGetRequest {
-	return Ipv4addressAPIGetRequest{
+func (a *Ipv4addressAPIService) List(ctx context.Context) Ipv4addressAPIListRequest {
+	return Ipv4addressAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -162,7 +251,7 @@ func (a *Ipv4addressAPIService) Get(ctx context.Context) Ipv4addressAPIGetReques
 // Execute executes the request
 //
 //	@return ListIpv4addressResponse
-func (a *Ipv4addressAPIService) GetExecute(r Ipv4addressAPIGetRequest) (*ListIpv4addressResponse, *http.Response, error) {
+func (a *Ipv4addressAPIService) ListExecute(r Ipv4addressAPIListRequest) (*ListIpv4addressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -170,7 +259,7 @@ func (a *Ipv4addressAPIService) GetExecute(r Ipv4addressAPIGetRequest) (*ListIpv
 		localVarReturnValue *ListIpv4addressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv4addressAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv4addressAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -252,96 +341,7 @@ func (a *Ipv4addressAPIService) GetExecute(r Ipv4addressAPIGetRequest) (*ListIpv
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv4addressAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService Ipv4addressAPI
-	reference  string
-}
-
-func (r Ipv4addressAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a ipv4address object
-
-Deletes a specific ipv4address object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the ipv4address object
-	@return Ipv4addressAPIReferenceDeleteRequest
-*/
-func (a *Ipv4addressAPIService) ReferenceDelete(ctx context.Context, reference string) Ipv4addressAPIReferenceDeleteRequest {
-	return Ipv4addressAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *Ipv4addressAPIService) ReferenceDeleteExecute(r Ipv4addressAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv4addressAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ipv4address/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type Ipv4addressAPIReferenceGetRequest struct {
+type Ipv4addressAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     Ipv4addressAPI
 	reference      string
@@ -351,38 +351,38 @@ type Ipv4addressAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r Ipv4addressAPIReferenceGetRequest) ReturnFields(returnFields string) Ipv4addressAPIReferenceGetRequest {
+func (r Ipv4addressAPIReadRequest) ReturnFields(returnFields string) Ipv4addressAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv4addressAPIReferenceGetRequest) ReturnFields2(returnFields2 string) Ipv4addressAPIReferenceGetRequest {
+func (r Ipv4addressAPIReadRequest) ReturnFields2(returnFields2 string) Ipv4addressAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv4addressAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) Ipv4addressAPIReferenceGetRequest {
+func (r Ipv4addressAPIReadRequest) ReturnAsObject(returnAsObject int32) Ipv4addressAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv4addressAPIReferenceGetRequest) Execute() (*GetIpv4addressResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r Ipv4addressAPIReadRequest) Execute() (*GetIpv4addressResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific ipv4address object
+Read Get a specific ipv4address object
 
 Returns a specific ipv4address object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv4address object
-	@return Ipv4addressAPIReferenceGetRequest
+	@return Ipv4addressAPIReadRequest
 */
-func (a *Ipv4addressAPIService) ReferenceGet(ctx context.Context, reference string) Ipv4addressAPIReferenceGetRequest {
-	return Ipv4addressAPIReferenceGetRequest{
+func (a *Ipv4addressAPIService) Read(ctx context.Context, reference string) Ipv4addressAPIReadRequest {
+	return Ipv4addressAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -392,7 +392,7 @@ func (a *Ipv4addressAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetIpv4addressResponse
-func (a *Ipv4addressAPIService) ReferenceGetExecute(r Ipv4addressAPIReferenceGetRequest) (*GetIpv4addressResponse, *http.Response, error) {
+func (a *Ipv4addressAPIService) ReadExecute(r Ipv4addressAPIReadRequest) (*GetIpv4addressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -400,7 +400,7 @@ func (a *Ipv4addressAPIService) ReferenceGetExecute(r Ipv4addressAPIReferenceGet
 		localVarReturnValue *GetIpv4addressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv4addressAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv4addressAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -468,7 +468,7 @@ func (a *Ipv4addressAPIService) ReferenceGetExecute(r Ipv4addressAPIReferenceGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv4addressAPIReferencePutRequest struct {
+type Ipv4addressAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     Ipv4addressAPI
 	reference      string
@@ -479,44 +479,44 @@ type Ipv4addressAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r Ipv4addressAPIReferencePutRequest) Ipv4address(ipv4address Ipv4address) Ipv4addressAPIReferencePutRequest {
+func (r Ipv4addressAPIUpdateRequest) Ipv4address(ipv4address Ipv4address) Ipv4addressAPIUpdateRequest {
 	r.ipv4address = &ipv4address
 	return r
 }
 
 // Enter the field names followed by comma
-func (r Ipv4addressAPIReferencePutRequest) ReturnFields(returnFields string) Ipv4addressAPIReferencePutRequest {
+func (r Ipv4addressAPIUpdateRequest) ReturnFields(returnFields string) Ipv4addressAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv4addressAPIReferencePutRequest) ReturnFields2(returnFields2 string) Ipv4addressAPIReferencePutRequest {
+func (r Ipv4addressAPIUpdateRequest) ReturnFields2(returnFields2 string) Ipv4addressAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv4addressAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) Ipv4addressAPIReferencePutRequest {
+func (r Ipv4addressAPIUpdateRequest) ReturnAsObject(returnAsObject int32) Ipv4addressAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv4addressAPIReferencePutRequest) Execute() (*UpdateIpv4addressResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r Ipv4addressAPIUpdateRequest) Execute() (*UpdateIpv4addressResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a ipv4address object
+Update Update a ipv4address object
 
 Updates a specific ipv4address object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv4address object
-	@return Ipv4addressAPIReferencePutRequest
+	@return Ipv4addressAPIUpdateRequest
 */
-func (a *Ipv4addressAPIService) ReferencePut(ctx context.Context, reference string) Ipv4addressAPIReferencePutRequest {
-	return Ipv4addressAPIReferencePutRequest{
+func (a *Ipv4addressAPIService) Update(ctx context.Context, reference string) Ipv4addressAPIUpdateRequest {
+	return Ipv4addressAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -526,7 +526,7 @@ func (a *Ipv4addressAPIService) ReferencePut(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return UpdateIpv4addressResponse
-func (a *Ipv4addressAPIService) ReferencePutExecute(r Ipv4addressAPIReferencePutRequest) (*UpdateIpv4addressResponse, *http.Response, error) {
+func (a *Ipv4addressAPIService) UpdateExecute(r Ipv4addressAPIUpdateRequest) (*UpdateIpv4addressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -534,7 +534,7 @@ func (a *Ipv4addressAPIService) ReferencePutExecute(r Ipv4addressAPIReferencePut
 		localVarReturnValue *UpdateIpv4addressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv4addressAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv4addressAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -23,52 +23,52 @@ import (
 
 type DiscoveryDiagnostictaskAPI interface {
 	/*
-		DiscoverydiagnostictaskGet Retrieve discovery:diagnostictask objects
+		List Retrieve discovery:diagnostictask objects
 
 		Returns a list of discovery:diagnostictask objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest
+		@return DiscoveryDiagnostictaskAPIListRequest
 	*/
-	DiscoverydiagnostictaskGet(ctx context.Context) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest
+	List(ctx context.Context) DiscoveryDiagnostictaskAPIListRequest
 
-	// DiscoverydiagnostictaskGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDiscoveryDiagnostictaskResponse
-	DiscoverydiagnostictaskGetExecute(r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) (*ListDiscoveryDiagnostictaskResponse, *http.Response, error)
+	ListExecute(r DiscoveryDiagnostictaskAPIListRequest) (*ListDiscoveryDiagnostictaskResponse, *http.Response, error)
 	/*
-		DiscoverydiagnostictaskReferenceGet Get a specific discovery:diagnostictask object
+		Read Get a specific discovery:diagnostictask object
 
 		Returns a specific discovery:diagnostictask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:diagnostictask object
-		@return DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest
+		@return DiscoveryDiagnostictaskAPIReadRequest
 	*/
-	DiscoverydiagnostictaskReferenceGet(ctx context.Context, reference string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoveryDiagnostictaskAPIReadRequest
 
-	// DiscoverydiagnostictaskReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoveryDiagnostictaskResponse
-	DiscoverydiagnostictaskReferenceGetExecute(r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest) (*GetDiscoveryDiagnostictaskResponse, *http.Response, error)
+	ReadExecute(r DiscoveryDiagnostictaskAPIReadRequest) (*GetDiscoveryDiagnostictaskResponse, *http.Response, error)
 	/*
-		DiscoverydiagnostictaskReferencePut Update a discovery:diagnostictask object
+		Update Update a discovery:diagnostictask object
 
 		Updates a specific discovery:diagnostictask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:diagnostictask object
-		@return DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest
+		@return DiscoveryDiagnostictaskAPIUpdateRequest
 	*/
-	DiscoverydiagnostictaskReferencePut(ctx context.Context, reference string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest
+	Update(ctx context.Context, reference string) DiscoveryDiagnostictaskAPIUpdateRequest
 
-	// DiscoverydiagnostictaskReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDiscoveryDiagnostictaskResponse
-	DiscoverydiagnostictaskReferencePutExecute(r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest) (*UpdateDiscoveryDiagnostictaskResponse, *http.Response, error)
+	UpdateExecute(r DiscoveryDiagnostictaskAPIUpdateRequest) (*UpdateDiscoveryDiagnostictaskResponse, *http.Response, error)
 }
 
 // DiscoveryDiagnostictaskAPIService DiscoveryDiagnostictaskAPI service
 type DiscoveryDiagnostictaskAPIService internal.Service
 
-type DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest struct {
+type DiscoveryDiagnostictaskAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DiscoveryDiagnostictaskAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) ReturnFields(returnFields string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest {
+func (r DiscoveryDiagnostictaskAPIListRequest) ReturnFields(returnFields string) DiscoveryDiagnostictaskAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) ReturnFields2(returnFields2 string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest {
+func (r DiscoveryDiagnostictaskAPIListRequest) ReturnFields2(returnFields2 string) DiscoveryDiagnostictaskAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) MaxResults(maxResults int32) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest {
+func (r DiscoveryDiagnostictaskAPIListRequest) MaxResults(maxResults int32) DiscoveryDiagnostictaskAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest {
+func (r DiscoveryDiagnostictaskAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoveryDiagnostictaskAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) Paging(paging int32) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest {
+func (r DiscoveryDiagnostictaskAPIListRequest) Paging(paging int32) DiscoveryDiagnostictaskAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) PageId(pageId string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest {
+func (r DiscoveryDiagnostictaskAPIListRequest) PageId(pageId string) DiscoveryDiagnostictaskAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) Filters(filters map[string]interface{}) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest {
+func (r DiscoveryDiagnostictaskAPIListRequest) Filters(filters map[string]interface{}) DiscoveryDiagnostictaskAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest {
+func (r DiscoveryDiagnostictaskAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryDiagnostictaskAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) Execute() (*ListDiscoveryDiagnostictaskResponse, *http.Response, error) {
-	return r.ApiService.DiscoverydiagnostictaskGetExecute(r)
+func (r DiscoveryDiagnostictaskAPIListRequest) Execute() (*ListDiscoveryDiagnostictaskResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DiscoverydiagnostictaskGet Retrieve discovery:diagnostictask objects
+List Retrieve discovery:diagnostictask objects
 
 Returns a list of discovery:diagnostictask objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest
+	@return DiscoveryDiagnostictaskAPIListRequest
 */
-func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskGet(ctx context.Context) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest {
-	return DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest{
+func (a *DiscoveryDiagnostictaskAPIService) List(ctx context.Context) DiscoveryDiagnostictaskAPIListRequest {
+	return DiscoveryDiagnostictaskAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskGet(ctx conte
 // Execute executes the request
 //
 //	@return ListDiscoveryDiagnostictaskResponse
-func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskGetExecute(r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskGetRequest) (*ListDiscoveryDiagnostictaskResponse, *http.Response, error) {
+func (a *DiscoveryDiagnostictaskAPIService) ListExecute(r DiscoveryDiagnostictaskAPIListRequest) (*ListDiscoveryDiagnostictaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskGetExecute(r 
 		localVarReturnValue *ListDiscoveryDiagnostictaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDiagnostictaskAPIService.DiscoverydiagnostictaskGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDiagnostictaskAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskGetExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest struct {
+type DiscoveryDiagnostictaskAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DiscoveryDiagnostictaskAPI
 	reference      string
@@ -249,38 +249,38 @@ type DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest struct
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest) ReturnFields(returnFields string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest {
+func (r DiscoveryDiagnostictaskAPIReadRequest) ReturnFields(returnFields string) DiscoveryDiagnostictaskAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest {
+func (r DiscoveryDiagnostictaskAPIReadRequest) ReturnFields2(returnFields2 string) DiscoveryDiagnostictaskAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest {
+func (r DiscoveryDiagnostictaskAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoveryDiagnostictaskAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest) Execute() (*GetDiscoveryDiagnostictaskResponse, *http.Response, error) {
-	return r.ApiService.DiscoverydiagnostictaskReferenceGetExecute(r)
+func (r DiscoveryDiagnostictaskAPIReadRequest) Execute() (*GetDiscoveryDiagnostictaskResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DiscoverydiagnostictaskReferenceGet Get a specific discovery:diagnostictask object
+Read Get a specific discovery:diagnostictask object
 
 Returns a specific discovery:diagnostictask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:diagnostictask object
-	@return DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest
+	@return DiscoveryDiagnostictaskAPIReadRequest
 */
-func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskReferenceGet(ctx context.Context, reference string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest {
-	return DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest{
+func (a *DiscoveryDiagnostictaskAPIService) Read(ctx context.Context, reference string) DiscoveryDiagnostictaskAPIReadRequest {
+	return DiscoveryDiagnostictaskAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskReferenceGet(
 // Execute executes the request
 //
 //	@return GetDiscoveryDiagnostictaskResponse
-func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskReferenceGetExecute(r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferenceGetRequest) (*GetDiscoveryDiagnostictaskResponse, *http.Response, error) {
+func (a *DiscoveryDiagnostictaskAPIService) ReadExecute(r DiscoveryDiagnostictaskAPIReadRequest) (*GetDiscoveryDiagnostictaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskReferenceGetE
 		localVarReturnValue *GetDiscoveryDiagnostictaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDiagnostictaskAPIService.DiscoverydiagnostictaskReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDiagnostictaskAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskReferenceGetE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest struct {
+type DiscoveryDiagnostictaskAPIUpdateRequest struct {
 	ctx                     context.Context
 	ApiService              DiscoveryDiagnostictaskAPI
 	reference               string
@@ -377,44 +377,44 @@ type DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest struct
 }
 
 // Object data to update
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest) DiscoveryDiagnostictask(discoveryDiagnostictask DiscoveryDiagnostictask) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest {
+func (r DiscoveryDiagnostictaskAPIUpdateRequest) DiscoveryDiagnostictask(discoveryDiagnostictask DiscoveryDiagnostictask) DiscoveryDiagnostictaskAPIUpdateRequest {
 	r.discoveryDiagnostictask = &discoveryDiagnostictask
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest) ReturnFields(returnFields string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest {
+func (r DiscoveryDiagnostictaskAPIUpdateRequest) ReturnFields(returnFields string) DiscoveryDiagnostictaskAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest) ReturnFields2(returnFields2 string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest {
+func (r DiscoveryDiagnostictaskAPIUpdateRequest) ReturnFields2(returnFields2 string) DiscoveryDiagnostictaskAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest) ReturnAsObject(returnAsObject int32) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest {
+func (r DiscoveryDiagnostictaskAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DiscoveryDiagnostictaskAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest) Execute() (*UpdateDiscoveryDiagnostictaskResponse, *http.Response, error) {
-	return r.ApiService.DiscoverydiagnostictaskReferencePutExecute(r)
+func (r DiscoveryDiagnostictaskAPIUpdateRequest) Execute() (*UpdateDiscoveryDiagnostictaskResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DiscoverydiagnostictaskReferencePut Update a discovery:diagnostictask object
+Update Update a discovery:diagnostictask object
 
 Updates a specific discovery:diagnostictask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:diagnostictask object
-	@return DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest
+	@return DiscoveryDiagnostictaskAPIUpdateRequest
 */
-func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskReferencePut(ctx context.Context, reference string) DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest {
-	return DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest{
+func (a *DiscoveryDiagnostictaskAPIService) Update(ctx context.Context, reference string) DiscoveryDiagnostictaskAPIUpdateRequest {
+	return DiscoveryDiagnostictaskAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskReferencePut(
 // Execute executes the request
 //
 //	@return UpdateDiscoveryDiagnostictaskResponse
-func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskReferencePutExecute(r DiscoveryDiagnostictaskAPIDiscoverydiagnostictaskReferencePutRequest) (*UpdateDiscoveryDiagnostictaskResponse, *http.Response, error) {
+func (a *DiscoveryDiagnostictaskAPIService) UpdateExecute(r DiscoveryDiagnostictaskAPIUpdateRequest) (*UpdateDiscoveryDiagnostictaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *DiscoveryDiagnostictaskAPIService) DiscoverydiagnostictaskReferencePutE
 		localVarReturnValue *UpdateDiscoveryDiagnostictaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDiagnostictaskAPIService.DiscoverydiagnostictaskReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDiagnostictaskAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

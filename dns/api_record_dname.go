@@ -23,249 +23,78 @@ import (
 
 type RecordDnameAPI interface {
 	/*
-		RecorddnameGet Retrieve record:dname objects
-
-		Returns a list of record:dname objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordDnameAPIRecorddnameGetRequest
-	*/
-	RecorddnameGet(ctx context.Context) RecordDnameAPIRecorddnameGetRequest
-
-	// RecorddnameGetExecute executes the request
-	//  @return ListRecordDnameResponse
-	RecorddnameGetExecute(r RecordDnameAPIRecorddnameGetRequest) (*ListRecordDnameResponse, *http.Response, error)
-	/*
-		RecorddnamePost Create a record:dname object
+		Create Create a record:dname object
 
 		Creates a new record:dname object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordDnameAPIRecorddnamePostRequest
+		@return RecordDnameAPICreateRequest
 	*/
-	RecorddnamePost(ctx context.Context) RecordDnameAPIRecorddnamePostRequest
+	Create(ctx context.Context) RecordDnameAPICreateRequest
 
-	// RecorddnamePostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordDnameResponse
-	RecorddnamePostExecute(r RecordDnameAPIRecorddnamePostRequest) (*CreateRecordDnameResponse, *http.Response, error)
+	CreateExecute(r RecordDnameAPICreateRequest) (*CreateRecordDnameResponse, *http.Response, error)
 	/*
-		RecorddnameReferenceDelete Delete a record:dname object
+		Delete Delete a record:dname object
 
 		Deletes a specific record:dname object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:dname object
-		@return RecordDnameAPIRecorddnameReferenceDeleteRequest
+		@return RecordDnameAPIDeleteRequest
 	*/
-	RecorddnameReferenceDelete(ctx context.Context, reference string) RecordDnameAPIRecorddnameReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordDnameAPIDeleteRequest
 
-	// RecorddnameReferenceDeleteExecute executes the request
-	RecorddnameReferenceDeleteExecute(r RecordDnameAPIRecorddnameReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordDnameAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecorddnameReferenceGet Get a specific record:dname object
+		List Retrieve record:dname objects
+
+		Returns a list of record:dname objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordDnameAPIListRequest
+	*/
+	List(ctx context.Context) RecordDnameAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordDnameResponse
+	ListExecute(r RecordDnameAPIListRequest) (*ListRecordDnameResponse, *http.Response, error)
+	/*
+		Read Get a specific record:dname object
 
 		Returns a specific record:dname object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:dname object
-		@return RecordDnameAPIRecorddnameReferenceGetRequest
+		@return RecordDnameAPIReadRequest
 	*/
-	RecorddnameReferenceGet(ctx context.Context, reference string) RecordDnameAPIRecorddnameReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordDnameAPIReadRequest
 
-	// RecorddnameReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordDnameResponse
-	RecorddnameReferenceGetExecute(r RecordDnameAPIRecorddnameReferenceGetRequest) (*GetRecordDnameResponse, *http.Response, error)
+	ReadExecute(r RecordDnameAPIReadRequest) (*GetRecordDnameResponse, *http.Response, error)
 	/*
-		RecorddnameReferencePut Update a record:dname object
+		Update Update a record:dname object
 
 		Updates a specific record:dname object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:dname object
-		@return RecordDnameAPIRecorddnameReferencePutRequest
+		@return RecordDnameAPIUpdateRequest
 	*/
-	RecorddnameReferencePut(ctx context.Context, reference string) RecordDnameAPIRecorddnameReferencePutRequest
+	Update(ctx context.Context, reference string) RecordDnameAPIUpdateRequest
 
-	// RecorddnameReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordDnameResponse
-	RecorddnameReferencePutExecute(r RecordDnameAPIRecorddnameReferencePutRequest) (*UpdateRecordDnameResponse, *http.Response, error)
+	UpdateExecute(r RecordDnameAPIUpdateRequest) (*UpdateRecordDnameResponse, *http.Response, error)
 }
 
 // RecordDnameAPIService RecordDnameAPI service
 type RecordDnameAPIService internal.Service
 
-type RecordDnameAPIRecorddnameGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordDnameAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r RecordDnameAPIRecorddnameGetRequest) ReturnFields(returnFields string) RecordDnameAPIRecorddnameGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDnameAPIRecorddnameGetRequest) ReturnFields2(returnFields2 string) RecordDnameAPIRecorddnameGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r RecordDnameAPIRecorddnameGetRequest) MaxResults(maxResults int32) RecordDnameAPIRecorddnameGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordDnameAPIRecorddnameGetRequest) ReturnAsObject(returnAsObject int32) RecordDnameAPIRecorddnameGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r RecordDnameAPIRecorddnameGetRequest) Paging(paging int32) RecordDnameAPIRecorddnameGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r RecordDnameAPIRecorddnameGetRequest) PageId(pageId string) RecordDnameAPIRecorddnameGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r RecordDnameAPIRecorddnameGetRequest) Filters(filters map[string]interface{}) RecordDnameAPIRecorddnameGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r RecordDnameAPIRecorddnameGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordDnameAPIRecorddnameGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r RecordDnameAPIRecorddnameGetRequest) Execute() (*ListRecordDnameResponse, *http.Response, error) {
-	return r.ApiService.RecorddnameGetExecute(r)
-}
-
-/*
-RecorddnameGet Retrieve record:dname objects
-
-Returns a list of record:dname objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordDnameAPIRecorddnameGetRequest
-*/
-func (a *RecordDnameAPIService) RecorddnameGet(ctx context.Context) RecordDnameAPIRecorddnameGetRequest {
-	return RecordDnameAPIRecorddnameGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListRecordDnameResponse
-func (a *RecordDnameAPIService) RecorddnameGetExecute(r RecordDnameAPIRecorddnameGetRequest) (*ListRecordDnameResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListRecordDnameResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnameAPIService.RecorddnameGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:dname"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordDnameAPIRecorddnamePostRequest struct {
+type RecordDnameAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     RecordDnameAPI
 	recordDname    *RecordDname
@@ -275,43 +104,43 @@ type RecordDnameAPIRecorddnamePostRequest struct {
 }
 
 // Object data to create
-func (r RecordDnameAPIRecorddnamePostRequest) RecordDname(recordDname RecordDname) RecordDnameAPIRecorddnamePostRequest {
+func (r RecordDnameAPICreateRequest) RecordDname(recordDname RecordDname) RecordDnameAPICreateRequest {
 	r.recordDname = &recordDname
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordDnameAPIRecorddnamePostRequest) ReturnFields(returnFields string) RecordDnameAPIRecorddnamePostRequest {
+func (r RecordDnameAPICreateRequest) ReturnFields(returnFields string) RecordDnameAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDnameAPIRecorddnamePostRequest) ReturnFields2(returnFields2 string) RecordDnameAPIRecorddnamePostRequest {
+func (r RecordDnameAPICreateRequest) ReturnFields2(returnFields2 string) RecordDnameAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordDnameAPIRecorddnamePostRequest) ReturnAsObject(returnAsObject int32) RecordDnameAPIRecorddnamePostRequest {
+func (r RecordDnameAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordDnameAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordDnameAPIRecorddnamePostRequest) Execute() (*CreateRecordDnameResponse, *http.Response, error) {
-	return r.ApiService.RecorddnamePostExecute(r)
+func (r RecordDnameAPICreateRequest) Execute() (*CreateRecordDnameResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-RecorddnamePost Create a record:dname object
+Create Create a record:dname object
 
 Creates a new record:dname object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordDnameAPIRecorddnamePostRequest
+	@return RecordDnameAPICreateRequest
 */
-func (a *RecordDnameAPIService) RecorddnamePost(ctx context.Context) RecordDnameAPIRecorddnamePostRequest {
-	return RecordDnameAPIRecorddnamePostRequest{
+func (a *RecordDnameAPIService) Create(ctx context.Context) RecordDnameAPICreateRequest {
+	return RecordDnameAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *RecordDnameAPIService) RecorddnamePost(ctx context.Context) RecordDname
 // Execute executes the request
 //
 //	@return CreateRecordDnameResponse
-func (a *RecordDnameAPIService) RecorddnamePostExecute(r RecordDnameAPIRecorddnamePostRequest) (*CreateRecordDnameResponse, *http.Response, error) {
+func (a *RecordDnameAPIService) CreateExecute(r RecordDnameAPICreateRequest) (*CreateRecordDnameResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *RecordDnameAPIService) RecorddnamePostExecute(r RecordDnameAPIRecorddna
 		localVarReturnValue *CreateRecordDnameResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnameAPIService.RecorddnamePost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnameAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *RecordDnameAPIService) RecorddnamePostExecute(r RecordDnameAPIRecorddna
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordDnameAPIRecorddnameReferenceDeleteRequest struct {
+type RecordDnameAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService RecordDnameAPI
 	reference  string
 }
 
-func (r RecordDnameAPIRecorddnameReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecorddnameReferenceDeleteExecute(r)
+func (r RecordDnameAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-RecorddnameReferenceDelete Delete a record:dname object
+Delete Delete a record:dname object
 
 Deletes a specific record:dname object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:dname object
-	@return RecordDnameAPIRecorddnameReferenceDeleteRequest
+	@return RecordDnameAPIDeleteRequest
 */
-func (a *RecordDnameAPIService) RecorddnameReferenceDelete(ctx context.Context, reference string) RecordDnameAPIRecorddnameReferenceDeleteRequest {
-	return RecordDnameAPIRecorddnameReferenceDeleteRequest{
+func (a *RecordDnameAPIService) Delete(ctx context.Context, reference string) RecordDnameAPIDeleteRequest {
+	return RecordDnameAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *RecordDnameAPIService) RecorddnameReferenceDelete(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *RecordDnameAPIService) RecorddnameReferenceDeleteExecute(r RecordDnameAPIRecorddnameReferenceDeleteRequest) (*http.Response, error) {
+func (a *RecordDnameAPIService) DeleteExecute(r RecordDnameAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnameAPIService.RecorddnameReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnameAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *RecordDnameAPIService) RecorddnameReferenceDeleteExecute(r RecordDnameA
 	return localVarHTTPResponse, nil
 }
 
-type RecordDnameAPIRecorddnameReferenceGetRequest struct {
+type RecordDnameAPIListRequest struct {
+	ctx            context.Context
+	ApiService     RecordDnameAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RecordDnameAPIListRequest) ReturnFields(returnFields string) RecordDnameAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordDnameAPIListRequest) ReturnFields2(returnFields2 string) RecordDnameAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r RecordDnameAPIListRequest) MaxResults(maxResults int32) RecordDnameAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordDnameAPIListRequest) ReturnAsObject(returnAsObject int32) RecordDnameAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r RecordDnameAPIListRequest) Paging(paging int32) RecordDnameAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r RecordDnameAPIListRequest) PageId(pageId string) RecordDnameAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r RecordDnameAPIListRequest) Filters(filters map[string]interface{}) RecordDnameAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r RecordDnameAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordDnameAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r RecordDnameAPIListRequest) Execute() (*ListRecordDnameResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve record:dname objects
+
+Returns a list of record:dname objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordDnameAPIListRequest
+*/
+func (a *RecordDnameAPIService) List(ctx context.Context) RecordDnameAPIListRequest {
+	return RecordDnameAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListRecordDnameResponse
+func (a *RecordDnameAPIService) ListExecute(r RecordDnameAPIListRequest) (*ListRecordDnameResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListRecordDnameResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnameAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:dname"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordDnameAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordDnameAPI
 	reference      string
@@ -511,38 +511,38 @@ type RecordDnameAPIRecorddnameReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordDnameAPIRecorddnameReferenceGetRequest) ReturnFields(returnFields string) RecordDnameAPIRecorddnameReferenceGetRequest {
+func (r RecordDnameAPIReadRequest) ReturnFields(returnFields string) RecordDnameAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDnameAPIRecorddnameReferenceGetRequest) ReturnFields2(returnFields2 string) RecordDnameAPIRecorddnameReferenceGetRequest {
+func (r RecordDnameAPIReadRequest) ReturnFields2(returnFields2 string) RecordDnameAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordDnameAPIRecorddnameReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordDnameAPIRecorddnameReferenceGetRequest {
+func (r RecordDnameAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordDnameAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordDnameAPIRecorddnameReferenceGetRequest) Execute() (*GetRecordDnameResponse, *http.Response, error) {
-	return r.ApiService.RecorddnameReferenceGetExecute(r)
+func (r RecordDnameAPIReadRequest) Execute() (*GetRecordDnameResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecorddnameReferenceGet Get a specific record:dname object
+Read Get a specific record:dname object
 
 Returns a specific record:dname object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:dname object
-	@return RecordDnameAPIRecorddnameReferenceGetRequest
+	@return RecordDnameAPIReadRequest
 */
-func (a *RecordDnameAPIService) RecorddnameReferenceGet(ctx context.Context, reference string) RecordDnameAPIRecorddnameReferenceGetRequest {
-	return RecordDnameAPIRecorddnameReferenceGetRequest{
+func (a *RecordDnameAPIService) Read(ctx context.Context, reference string) RecordDnameAPIReadRequest {
+	return RecordDnameAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RecordDnameAPIService) RecorddnameReferenceGet(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return GetRecordDnameResponse
-func (a *RecordDnameAPIService) RecorddnameReferenceGetExecute(r RecordDnameAPIRecorddnameReferenceGetRequest) (*GetRecordDnameResponse, *http.Response, error) {
+func (a *RecordDnameAPIService) ReadExecute(r RecordDnameAPIReadRequest) (*GetRecordDnameResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RecordDnameAPIService) RecorddnameReferenceGetExecute(r RecordDnameAPIR
 		localVarReturnValue *GetRecordDnameResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnameAPIService.RecorddnameReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnameAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *RecordDnameAPIService) RecorddnameReferenceGetExecute(r RecordDnameAPIR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordDnameAPIRecorddnameReferencePutRequest struct {
+type RecordDnameAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     RecordDnameAPI
 	reference      string
@@ -639,44 +639,44 @@ type RecordDnameAPIRecorddnameReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RecordDnameAPIRecorddnameReferencePutRequest) RecordDname(recordDname RecordDname) RecordDnameAPIRecorddnameReferencePutRequest {
+func (r RecordDnameAPIUpdateRequest) RecordDname(recordDname RecordDname) RecordDnameAPIUpdateRequest {
 	r.recordDname = &recordDname
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordDnameAPIRecorddnameReferencePutRequest) ReturnFields(returnFields string) RecordDnameAPIRecorddnameReferencePutRequest {
+func (r RecordDnameAPIUpdateRequest) ReturnFields(returnFields string) RecordDnameAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDnameAPIRecorddnameReferencePutRequest) ReturnFields2(returnFields2 string) RecordDnameAPIRecorddnameReferencePutRequest {
+func (r RecordDnameAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordDnameAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordDnameAPIRecorddnameReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordDnameAPIRecorddnameReferencePutRequest {
+func (r RecordDnameAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordDnameAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordDnameAPIRecorddnameReferencePutRequest) Execute() (*UpdateRecordDnameResponse, *http.Response, error) {
-	return r.ApiService.RecorddnameReferencePutExecute(r)
+func (r RecordDnameAPIUpdateRequest) Execute() (*UpdateRecordDnameResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecorddnameReferencePut Update a record:dname object
+Update Update a record:dname object
 
 Updates a specific record:dname object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:dname object
-	@return RecordDnameAPIRecorddnameReferencePutRequest
+	@return RecordDnameAPIUpdateRequest
 */
-func (a *RecordDnameAPIService) RecorddnameReferencePut(ctx context.Context, reference string) RecordDnameAPIRecorddnameReferencePutRequest {
-	return RecordDnameAPIRecorddnameReferencePutRequest{
+func (a *RecordDnameAPIService) Update(ctx context.Context, reference string) RecordDnameAPIUpdateRequest {
+	return RecordDnameAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RecordDnameAPIService) RecorddnameReferencePut(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return UpdateRecordDnameResponse
-func (a *RecordDnameAPIService) RecorddnameReferencePutExecute(r RecordDnameAPIRecorddnameReferencePutRequest) (*UpdateRecordDnameResponse, *http.Response, error) {
+func (a *RecordDnameAPIService) UpdateExecute(r RecordDnameAPIUpdateRequest) (*UpdateRecordDnameResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RecordDnameAPIService) RecorddnameReferencePutExecute(r RecordDnameAPIR
 		localVarReturnValue *UpdateRecordDnameResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnameAPIService.RecorddnameReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnameAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -23,249 +23,78 @@ import (
 
 type DtcTopologyAPI interface {
 	/*
-		DtctopologyGet Retrieve dtc:topology objects
-
-		Returns a list of dtc:topology objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcTopologyAPIDtctopologyGetRequest
-	*/
-	DtctopologyGet(ctx context.Context) DtcTopologyAPIDtctopologyGetRequest
-
-	// DtctopologyGetExecute executes the request
-	//  @return ListDtcTopologyResponse
-	DtctopologyGetExecute(r DtcTopologyAPIDtctopologyGetRequest) (*ListDtcTopologyResponse, *http.Response, error)
-	/*
-		DtctopologyPost Create a dtc:topology object
+		Create Create a dtc:topology object
 
 		Creates a new dtc:topology object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcTopologyAPIDtctopologyPostRequest
+		@return DtcTopologyAPICreateRequest
 	*/
-	DtctopologyPost(ctx context.Context) DtcTopologyAPIDtctopologyPostRequest
+	Create(ctx context.Context) DtcTopologyAPICreateRequest
 
-	// DtctopologyPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDtcTopologyResponse
-	DtctopologyPostExecute(r DtcTopologyAPIDtctopologyPostRequest) (*CreateDtcTopologyResponse, *http.Response, error)
+	CreateExecute(r DtcTopologyAPICreateRequest) (*CreateDtcTopologyResponse, *http.Response, error)
 	/*
-		DtctopologyReferenceDelete Delete a dtc:topology object
+		Delete Delete a dtc:topology object
 
 		Deletes a specific dtc:topology object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:topology object
-		@return DtcTopologyAPIDtctopologyReferenceDeleteRequest
+		@return DtcTopologyAPIDeleteRequest
 	*/
-	DtctopologyReferenceDelete(ctx context.Context, reference string) DtcTopologyAPIDtctopologyReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DtcTopologyAPIDeleteRequest
 
-	// DtctopologyReferenceDeleteExecute executes the request
-	DtctopologyReferenceDeleteExecute(r DtcTopologyAPIDtctopologyReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DtcTopologyAPIDeleteRequest) (*http.Response, error)
 	/*
-		DtctopologyReferenceGet Get a specific dtc:topology object
+		List Retrieve dtc:topology objects
+
+		Returns a list of dtc:topology objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DtcTopologyAPIListRequest
+	*/
+	List(ctx context.Context) DtcTopologyAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDtcTopologyResponse
+	ListExecute(r DtcTopologyAPIListRequest) (*ListDtcTopologyResponse, *http.Response, error)
+	/*
+		Read Get a specific dtc:topology object
 
 		Returns a specific dtc:topology object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:topology object
-		@return DtcTopologyAPIDtctopologyReferenceGetRequest
+		@return DtcTopologyAPIReadRequest
 	*/
-	DtctopologyReferenceGet(ctx context.Context, reference string) DtcTopologyAPIDtctopologyReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcTopologyAPIReadRequest
 
-	// DtctopologyReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcTopologyResponse
-	DtctopologyReferenceGetExecute(r DtcTopologyAPIDtctopologyReferenceGetRequest) (*GetDtcTopologyResponse, *http.Response, error)
+	ReadExecute(r DtcTopologyAPIReadRequest) (*GetDtcTopologyResponse, *http.Response, error)
 	/*
-		DtctopologyReferencePut Update a dtc:topology object
+		Update Update a dtc:topology object
 
 		Updates a specific dtc:topology object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:topology object
-		@return DtcTopologyAPIDtctopologyReferencePutRequest
+		@return DtcTopologyAPIUpdateRequest
 	*/
-	DtctopologyReferencePut(ctx context.Context, reference string) DtcTopologyAPIDtctopologyReferencePutRequest
+	Update(ctx context.Context, reference string) DtcTopologyAPIUpdateRequest
 
-	// DtctopologyReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcTopologyResponse
-	DtctopologyReferencePutExecute(r DtcTopologyAPIDtctopologyReferencePutRequest) (*UpdateDtcTopologyResponse, *http.Response, error)
+	UpdateExecute(r DtcTopologyAPIUpdateRequest) (*UpdateDtcTopologyResponse, *http.Response, error)
 }
 
 // DtcTopologyAPIService DtcTopologyAPI service
 type DtcTopologyAPIService internal.Service
 
-type DtcTopologyAPIDtctopologyGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcTopologyAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r DtcTopologyAPIDtctopologyGetRequest) ReturnFields(returnFields string) DtcTopologyAPIDtctopologyGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyAPIDtctopologyGetRequest) ReturnFields2(returnFields2 string) DtcTopologyAPIDtctopologyGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r DtcTopologyAPIDtctopologyGetRequest) MaxResults(maxResults int32) DtcTopologyAPIDtctopologyGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DtcTopologyAPIDtctopologyGetRequest) ReturnAsObject(returnAsObject int32) DtcTopologyAPIDtctopologyGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r DtcTopologyAPIDtctopologyGetRequest) Paging(paging int32) DtcTopologyAPIDtctopologyGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r DtcTopologyAPIDtctopologyGetRequest) PageId(pageId string) DtcTopologyAPIDtctopologyGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r DtcTopologyAPIDtctopologyGetRequest) Filters(filters map[string]interface{}) DtcTopologyAPIDtctopologyGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r DtcTopologyAPIDtctopologyGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcTopologyAPIDtctopologyGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r DtcTopologyAPIDtctopologyGetRequest) Execute() (*ListDtcTopologyResponse, *http.Response, error) {
-	return r.ApiService.DtctopologyGetExecute(r)
-}
-
-/*
-DtctopologyGet Retrieve dtc:topology objects
-
-Returns a list of dtc:topology objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcTopologyAPIDtctopologyGetRequest
-*/
-func (a *DtcTopologyAPIService) DtctopologyGet(ctx context.Context) DtcTopologyAPIDtctopologyGetRequest {
-	return DtcTopologyAPIDtctopologyGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListDtcTopologyResponse
-func (a *DtcTopologyAPIService) DtctopologyGetExecute(r DtcTopologyAPIDtctopologyGetRequest) (*ListDtcTopologyResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListDtcTopologyResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyAPIService.DtctopologyGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:topology"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DtcTopologyAPIDtctopologyPostRequest struct {
+type DtcTopologyAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     DtcTopologyAPI
 	dtcTopology    *DtcTopology
@@ -275,43 +104,43 @@ type DtcTopologyAPIDtctopologyPostRequest struct {
 }
 
 // Object data to create
-func (r DtcTopologyAPIDtctopologyPostRequest) DtcTopology(dtcTopology DtcTopology) DtcTopologyAPIDtctopologyPostRequest {
+func (r DtcTopologyAPICreateRequest) DtcTopology(dtcTopology DtcTopology) DtcTopologyAPICreateRequest {
 	r.dtcTopology = &dtcTopology
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcTopologyAPIDtctopologyPostRequest) ReturnFields(returnFields string) DtcTopologyAPIDtctopologyPostRequest {
+func (r DtcTopologyAPICreateRequest) ReturnFields(returnFields string) DtcTopologyAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyAPIDtctopologyPostRequest) ReturnFields2(returnFields2 string) DtcTopologyAPIDtctopologyPostRequest {
+func (r DtcTopologyAPICreateRequest) ReturnFields2(returnFields2 string) DtcTopologyAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcTopologyAPIDtctopologyPostRequest) ReturnAsObject(returnAsObject int32) DtcTopologyAPIDtctopologyPostRequest {
+func (r DtcTopologyAPICreateRequest) ReturnAsObject(returnAsObject int32) DtcTopologyAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcTopologyAPIDtctopologyPostRequest) Execute() (*CreateDtcTopologyResponse, *http.Response, error) {
-	return r.ApiService.DtctopologyPostExecute(r)
+func (r DtcTopologyAPICreateRequest) Execute() (*CreateDtcTopologyResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-DtctopologyPost Create a dtc:topology object
+Create Create a dtc:topology object
 
 Creates a new dtc:topology object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcTopologyAPIDtctopologyPostRequest
+	@return DtcTopologyAPICreateRequest
 */
-func (a *DtcTopologyAPIService) DtctopologyPost(ctx context.Context) DtcTopologyAPIDtctopologyPostRequest {
-	return DtcTopologyAPIDtctopologyPostRequest{
+func (a *DtcTopologyAPIService) Create(ctx context.Context) DtcTopologyAPICreateRequest {
+	return DtcTopologyAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *DtcTopologyAPIService) DtctopologyPost(ctx context.Context) DtcTopology
 // Execute executes the request
 //
 //	@return CreateDtcTopologyResponse
-func (a *DtcTopologyAPIService) DtctopologyPostExecute(r DtcTopologyAPIDtctopologyPostRequest) (*CreateDtcTopologyResponse, *http.Response, error) {
+func (a *DtcTopologyAPIService) CreateExecute(r DtcTopologyAPICreateRequest) (*CreateDtcTopologyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *DtcTopologyAPIService) DtctopologyPostExecute(r DtcTopologyAPIDtctopolo
 		localVarReturnValue *CreateDtcTopologyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyAPIService.DtctopologyPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *DtcTopologyAPIService) DtctopologyPostExecute(r DtcTopologyAPIDtctopolo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcTopologyAPIDtctopologyReferenceDeleteRequest struct {
+type DtcTopologyAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService DtcTopologyAPI
 	reference  string
 }
 
-func (r DtcTopologyAPIDtctopologyReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DtctopologyReferenceDeleteExecute(r)
+func (r DtcTopologyAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-DtctopologyReferenceDelete Delete a dtc:topology object
+Delete Delete a dtc:topology object
 
 Deletes a specific dtc:topology object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:topology object
-	@return DtcTopologyAPIDtctopologyReferenceDeleteRequest
+	@return DtcTopologyAPIDeleteRequest
 */
-func (a *DtcTopologyAPIService) DtctopologyReferenceDelete(ctx context.Context, reference string) DtcTopologyAPIDtctopologyReferenceDeleteRequest {
-	return DtcTopologyAPIDtctopologyReferenceDeleteRequest{
+func (a *DtcTopologyAPIService) Delete(ctx context.Context, reference string) DtcTopologyAPIDeleteRequest {
+	return DtcTopologyAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *DtcTopologyAPIService) DtctopologyReferenceDelete(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *DtcTopologyAPIService) DtctopologyReferenceDeleteExecute(r DtcTopologyAPIDtctopologyReferenceDeleteRequest) (*http.Response, error) {
+func (a *DtcTopologyAPIService) DeleteExecute(r DtcTopologyAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyAPIService.DtctopologyReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *DtcTopologyAPIService) DtctopologyReferenceDeleteExecute(r DtcTopologyA
 	return localVarHTTPResponse, nil
 }
 
-type DtcTopologyAPIDtctopologyReferenceGetRequest struct {
+type DtcTopologyAPIListRequest struct {
+	ctx            context.Context
+	ApiService     DtcTopologyAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DtcTopologyAPIListRequest) ReturnFields(returnFields string) DtcTopologyAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DtcTopologyAPIListRequest) ReturnFields2(returnFields2 string) DtcTopologyAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r DtcTopologyAPIListRequest) MaxResults(maxResults int32) DtcTopologyAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DtcTopologyAPIListRequest) ReturnAsObject(returnAsObject int32) DtcTopologyAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r DtcTopologyAPIListRequest) Paging(paging int32) DtcTopologyAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r DtcTopologyAPIListRequest) PageId(pageId string) DtcTopologyAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r DtcTopologyAPIListRequest) Filters(filters map[string]interface{}) DtcTopologyAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r DtcTopologyAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcTopologyAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r DtcTopologyAPIListRequest) Execute() (*ListDtcTopologyResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve dtc:topology objects
+
+Returns a list of dtc:topology objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DtcTopologyAPIListRequest
+*/
+func (a *DtcTopologyAPIService) List(ctx context.Context) DtcTopologyAPIListRequest {
+	return DtcTopologyAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListDtcTopologyResponse
+func (a *DtcTopologyAPIService) ListExecute(r DtcTopologyAPIListRequest) (*ListDtcTopologyResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListDtcTopologyResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:topology"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DtcTopologyAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DtcTopologyAPI
 	reference      string
@@ -511,38 +511,38 @@ type DtcTopologyAPIDtctopologyReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcTopologyAPIDtctopologyReferenceGetRequest) ReturnFields(returnFields string) DtcTopologyAPIDtctopologyReferenceGetRequest {
+func (r DtcTopologyAPIReadRequest) ReturnFields(returnFields string) DtcTopologyAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyAPIDtctopologyReferenceGetRequest) ReturnFields2(returnFields2 string) DtcTopologyAPIDtctopologyReferenceGetRequest {
+func (r DtcTopologyAPIReadRequest) ReturnFields2(returnFields2 string) DtcTopologyAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcTopologyAPIDtctopologyReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcTopologyAPIDtctopologyReferenceGetRequest {
+func (r DtcTopologyAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcTopologyAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcTopologyAPIDtctopologyReferenceGetRequest) Execute() (*GetDtcTopologyResponse, *http.Response, error) {
-	return r.ApiService.DtctopologyReferenceGetExecute(r)
+func (r DtcTopologyAPIReadRequest) Execute() (*GetDtcTopologyResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtctopologyReferenceGet Get a specific dtc:topology object
+Read Get a specific dtc:topology object
 
 Returns a specific dtc:topology object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:topology object
-	@return DtcTopologyAPIDtctopologyReferenceGetRequest
+	@return DtcTopologyAPIReadRequest
 */
-func (a *DtcTopologyAPIService) DtctopologyReferenceGet(ctx context.Context, reference string) DtcTopologyAPIDtctopologyReferenceGetRequest {
-	return DtcTopologyAPIDtctopologyReferenceGetRequest{
+func (a *DtcTopologyAPIService) Read(ctx context.Context, reference string) DtcTopologyAPIReadRequest {
+	return DtcTopologyAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *DtcTopologyAPIService) DtctopologyReferenceGet(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return GetDtcTopologyResponse
-func (a *DtcTopologyAPIService) DtctopologyReferenceGetExecute(r DtcTopologyAPIDtctopologyReferenceGetRequest) (*GetDtcTopologyResponse, *http.Response, error) {
+func (a *DtcTopologyAPIService) ReadExecute(r DtcTopologyAPIReadRequest) (*GetDtcTopologyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *DtcTopologyAPIService) DtctopologyReferenceGetExecute(r DtcTopologyAPID
 		localVarReturnValue *GetDtcTopologyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyAPIService.DtctopologyReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *DtcTopologyAPIService) DtctopologyReferenceGetExecute(r DtcTopologyAPID
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcTopologyAPIDtctopologyReferencePutRequest struct {
+type DtcTopologyAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     DtcTopologyAPI
 	reference      string
@@ -639,44 +639,44 @@ type DtcTopologyAPIDtctopologyReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DtcTopologyAPIDtctopologyReferencePutRequest) DtcTopology(dtcTopology DtcTopology) DtcTopologyAPIDtctopologyReferencePutRequest {
+func (r DtcTopologyAPIUpdateRequest) DtcTopology(dtcTopology DtcTopology) DtcTopologyAPIUpdateRequest {
 	r.dtcTopology = &dtcTopology
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcTopologyAPIDtctopologyReferencePutRequest) ReturnFields(returnFields string) DtcTopologyAPIDtctopologyReferencePutRequest {
+func (r DtcTopologyAPIUpdateRequest) ReturnFields(returnFields string) DtcTopologyAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyAPIDtctopologyReferencePutRequest) ReturnFields2(returnFields2 string) DtcTopologyAPIDtctopologyReferencePutRequest {
+func (r DtcTopologyAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcTopologyAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcTopologyAPIDtctopologyReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcTopologyAPIDtctopologyReferencePutRequest {
+func (r DtcTopologyAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcTopologyAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcTopologyAPIDtctopologyReferencePutRequest) Execute() (*UpdateDtcTopologyResponse, *http.Response, error) {
-	return r.ApiService.DtctopologyReferencePutExecute(r)
+func (r DtcTopologyAPIUpdateRequest) Execute() (*UpdateDtcTopologyResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtctopologyReferencePut Update a dtc:topology object
+Update Update a dtc:topology object
 
 Updates a specific dtc:topology object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:topology object
-	@return DtcTopologyAPIDtctopologyReferencePutRequest
+	@return DtcTopologyAPIUpdateRequest
 */
-func (a *DtcTopologyAPIService) DtctopologyReferencePut(ctx context.Context, reference string) DtcTopologyAPIDtctopologyReferencePutRequest {
-	return DtcTopologyAPIDtctopologyReferencePutRequest{
+func (a *DtcTopologyAPIService) Update(ctx context.Context, reference string) DtcTopologyAPIUpdateRequest {
+	return DtcTopologyAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *DtcTopologyAPIService) DtctopologyReferencePut(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return UpdateDtcTopologyResponse
-func (a *DtcTopologyAPIService) DtctopologyReferencePutExecute(r DtcTopologyAPIDtctopologyReferencePutRequest) (*UpdateDtcTopologyResponse, *http.Response, error) {
+func (a *DtcTopologyAPIService) UpdateExecute(r DtcTopologyAPIUpdateRequest) (*UpdateDtcTopologyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *DtcTopologyAPIService) DtctopologyReferencePutExecute(r DtcTopologyAPID
 		localVarReturnValue *UpdateDtcTopologyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyAPIService.DtctopologyReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

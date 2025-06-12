@@ -23,11 +23,11 @@ func TestParentalcontrolAvpAPIService(t *testing.T) {
 
 	apiClient := parentalcontrol.NewAPIClient()
 
-	t.Run("Test ParentalcontrolAvpAPIService ParentalcontrolavpGet", func(t *testing.T) {
+	t.Run("Test ParentalcontrolAvpAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ParentalcontrolAvpAPI.ParentalcontrolavpGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolAvpAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestParentalcontrolAvpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolAvpAPIService ParentalcontrolavpPost", func(t *testing.T) {
+	t.Run("Test ParentalcontrolAvpAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ParentalcontrolAvpAPI.ParentalcontrolavpPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ParentalcontrolAvpAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ParentalcontrolAvpAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ParentalcontrolAvpAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestParentalcontrolAvpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolAvpAPIService ParentalcontrolavpReferenceDelete", func(t *testing.T) {
+	t.Run("Test ParentalcontrolAvpAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ParentalcontrolAvpAPI.ParentalcontrolavpReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ParentalcontrolAvpAPIService ParentalcontrolavpReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ParentalcontrolAvpAPI.ParentalcontrolavpReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolAvpAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestParentalcontrolAvpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolAvpAPIService ParentalcontrolavpReferencePut", func(t *testing.T) {
+	t.Run("Test ParentalcontrolAvpAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ParentalcontrolAvpAPI.ParentalcontrolavpReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolAvpAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

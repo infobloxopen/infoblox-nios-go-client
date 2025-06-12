@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SamlauthserviceGet**](SamlAuthserviceAPI.md#SamlauthserviceGet) | **Get** /saml:authservice | Retrieve saml:authservice objects
-[**SamlauthservicePost**](SamlAuthserviceAPI.md#SamlauthservicePost) | **Post** /saml:authservice | Create a saml:authservice object
-[**SamlauthserviceReferenceDelete**](SamlAuthserviceAPI.md#SamlauthserviceReferenceDelete) | **Delete** /saml:authservice/{reference} | Delete a saml:authservice object
-[**SamlauthserviceReferenceGet**](SamlAuthserviceAPI.md#SamlauthserviceReferenceGet) | **Get** /saml:authservice/{reference} | Get a specific saml:authservice object
-[**SamlauthserviceReferencePut**](SamlAuthserviceAPI.md#SamlauthserviceReferencePut) | **Put** /saml:authservice/{reference} | Update a saml:authservice object
+[**Create**](SamlAuthserviceAPI.md#Create) | **Post** /saml:authservice | Create a saml:authservice object
+[**Delete**](SamlAuthserviceAPI.md#Delete) | **Delete** /saml:authservice/{reference} | Delete a saml:authservice object
+[**List**](SamlAuthserviceAPI.md#List) | **Get** /saml:authservice | Retrieve saml:authservice objects
+[**Read**](SamlAuthserviceAPI.md#Read) | **Get** /saml:authservice/{reference} | Get a specific saml:authservice object
+[**Update**](SamlAuthserviceAPI.md#Update) | **Put** /saml:authservice/{reference} | Update a saml:authservice object
 
 
 
-## SamlauthserviceGet
+## Create
 
-> ListSamlAuthserviceResponse SamlauthserviceGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateSamlAuthserviceResponse Create(ctx).SamlAuthservice(samlAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a saml:authservice object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	samlAuthservice := *security.NewSamlAuthservice() // SamlAuthservice | Object data to create
+
+	apiClient := security.NewAPIClient()
+	resp, r, err := apiClient.SamlAuthserviceAPI.Create(context.Background()).SamlAuthservice(samlAuthservice).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SamlAuthserviceAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateSamlAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `SamlAuthserviceAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SamlAuthserviceAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**samlAuthservice** | [**SamlAuthservice**](SamlAuthservice.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateSamlAuthserviceResponse**](CreateSamlAuthserviceResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a saml:authservice object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the saml:authservice object
+
+	apiClient := security.NewAPIClient()
+	r, err := apiClient.SamlAuthserviceAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SamlAuthserviceAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the saml:authservice object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SamlAuthserviceAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListSamlAuthserviceResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve saml:authservice objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.SamlAuthserviceAPI.SamlauthserviceGet(context.Background()).Execute()
+	resp, r, err := apiClient.SamlAuthserviceAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SamlAuthserviceAPI.SamlauthserviceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SamlAuthserviceAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SamlauthserviceGet`: ListSamlAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `SamlAuthserviceAPI.SamlauthserviceGet`: %v\n", resp)
+	// response from `List`: ListSamlAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `SamlAuthserviceAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SamlAuthserviceAPISamlauthserviceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SamlAuthserviceAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SamlauthservicePost
+## Read
 
-> CreateSamlAuthserviceResponse SamlauthservicePost(ctx).SamlAuthservice(samlAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a saml:authservice object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	samlAuthservice := *security.NewSamlAuthservice() // SamlAuthservice | Object data to create
-
-	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.SamlAuthserviceAPI.SamlauthservicePost(context.Background()).SamlAuthservice(samlAuthservice).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SamlAuthserviceAPI.SamlauthservicePost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SamlauthservicePost`: CreateSamlAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `SamlAuthserviceAPI.SamlauthservicePost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SamlAuthserviceAPISamlauthservicePostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**samlAuthservice** | [**SamlAuthservice**](SamlAuthservice.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateSamlAuthserviceResponse**](CreateSamlAuthserviceResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SamlauthserviceReferenceDelete
-
-> SamlauthserviceReferenceDelete(ctx, reference).Execute()
-
-Delete a saml:authservice object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the saml:authservice object
-
-	apiClient := security.NewAPIClient()
-	r, err := apiClient.SamlAuthserviceAPI.SamlauthserviceReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SamlAuthserviceAPI.SamlauthserviceReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the saml:authservice object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SamlAuthserviceAPISamlauthserviceReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SamlauthserviceReferenceGet
-
-> GetSamlAuthserviceResponse SamlauthserviceReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetSamlAuthserviceResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific saml:authservice object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the saml:authservice object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.SamlAuthserviceAPI.SamlauthserviceReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.SamlAuthserviceAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SamlAuthserviceAPI.SamlauthserviceReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SamlAuthserviceAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SamlauthserviceReferenceGet`: GetSamlAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `SamlAuthserviceAPI.SamlauthserviceReferenceGet`: %v\n", resp)
+	// response from `Read`: GetSamlAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `SamlAuthserviceAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SamlAuthserviceAPISamlauthserviceReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SamlAuthserviceAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SamlauthserviceReferencePut
+## Update
 
-> UpdateSamlAuthserviceResponse SamlauthserviceReferencePut(ctx, reference).SamlAuthservice(samlAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateSamlAuthserviceResponse Update(ctx, reference).SamlAuthservice(samlAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a saml:authservice object
 
@@ -318,13 +318,13 @@ func main() {
 	samlAuthservice := *security.NewSamlAuthservice() // SamlAuthservice | Object data to update
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.SamlAuthserviceAPI.SamlauthserviceReferencePut(context.Background(), reference).SamlAuthservice(samlAuthservice).Execute()
+	resp, r, err := apiClient.SamlAuthserviceAPI.Update(context.Background(), reference).SamlAuthservice(samlAuthservice).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SamlAuthserviceAPI.SamlauthserviceReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SamlAuthserviceAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SamlauthserviceReferencePut`: UpdateSamlAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `SamlAuthserviceAPI.SamlauthserviceReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateSamlAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `SamlAuthserviceAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SamlAuthserviceAPISamlauthserviceReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SamlAuthserviceAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

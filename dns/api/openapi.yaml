@@ -118,6 +118,7 @@ paths:
   /record:a:
     get:
       description: Returns a list of record:a objects matching the search criteria
+      operationId: RecordAList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -214,6 +215,7 @@ paths:
       - RecordA
     post:
       description: Creates a new record:a object
+      operationId: RecordACreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -277,6 +279,7 @@ paths:
   /record:a/{reference}:
     delete:
       description: Deletes a specific record:a object by reference
+      operationId: RecordADelete
       parameters:
       - description: Reference of the record:a object
         explode: false
@@ -313,6 +316,7 @@ paths:
       - RecordA
     get:
       description: Returns a specific record:a object by reference
+      operationId: RecordARead
       parameters:
       - description: Reference of the record:a object
         explode: false
@@ -372,6 +376,7 @@ paths:
       - RecordA
     put:
       description: Updates a specific record:a object by reference
+      operationId: RecordAUpdate
       parameters:
       - description: Reference of the record:a object
         explode: false
@@ -443,6 +448,7 @@ paths:
   /record:aaaa:
     get:
       description: Returns a list of record:aaaa objects matching the search criteria
+      operationId: RecordAaaaList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -539,6 +545,7 @@ paths:
       - RecordAaaa
     post:
       description: Creates a new record:aaaa object
+      operationId: RecordAaaaCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -602,6 +609,7 @@ paths:
   /record:aaaa/{reference}:
     delete:
       description: Deletes a specific record:aaaa object by reference
+      operationId: RecordAaaaDelete
       parameters:
       - description: Reference of the record:aaaa object
         explode: false
@@ -638,6 +646,7 @@ paths:
       - RecordAaaa
     get:
       description: Returns a specific record:aaaa object by reference
+      operationId: RecordAaaaRead
       parameters:
       - description: Reference of the record:aaaa object
         explode: false
@@ -697,6 +706,7 @@ paths:
       - RecordAaaa
     put:
       description: Updates a specific record:aaaa object by reference
+      operationId: RecordAaaaUpdate
       parameters:
       - description: Reference of the record:aaaa object
         explode: false
@@ -768,6 +778,7 @@ paths:
   /record:alias:
     get:
       description: Returns a list of record:alias objects matching the search criteria
+      operationId: RecordAliasList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -864,6 +875,7 @@ paths:
       - RecordAlias
     post:
       description: Creates a new record:alias object
+      operationId: RecordAliasCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -924,6 +936,7 @@ paths:
   /record:alias/{reference}:
     delete:
       description: Deletes a specific record:alias object by reference
+      operationId: RecordAliasDelete
       parameters:
       - description: Reference of the record:alias object
         explode: false
@@ -951,6 +964,7 @@ paths:
       - RecordAlias
     get:
       description: Returns a specific record:alias object by reference
+      operationId: RecordAliasRead
       parameters:
       - description: Reference of the record:alias object
         explode: false
@@ -1010,6 +1024,7 @@ paths:
       - RecordAlias
     put:
       description: Updates a specific record:alias object by reference
+      operationId: RecordAliasUpdate
       parameters:
       - description: Reference of the record:alias object
         explode: false
@@ -1078,6 +1093,7 @@ paths:
   /record:cname:
     get:
       description: Returns a list of record:cname objects matching the search criteria
+      operationId: RecordCnameList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1174,6 +1190,7 @@ paths:
       - RecordCname
     post:
       description: Creates a new record:cname object
+      operationId: RecordCnameCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1234,6 +1251,7 @@ paths:
   /record:cname/{reference}:
     delete:
       description: Deletes a specific record:cname object by reference
+      operationId: RecordCnameDelete
       parameters:
       - description: Reference of the record:cname object
         explode: false
@@ -1261,6 +1279,7 @@ paths:
       - RecordCname
     get:
       description: Returns a specific record:cname object by reference
+      operationId: RecordCnameRead
       parameters:
       - description: Reference of the record:cname object
         explode: false
@@ -1320,6 +1339,7 @@ paths:
       - RecordCname
     put:
       description: Updates a specific record:cname object by reference
+      operationId: RecordCnameUpdate
       parameters:
       - description: Reference of the record:cname object
         explode: false
@@ -1388,6 +1408,7 @@ paths:
   /record:mx:
     get:
       description: Returns a list of record:mx objects matching the search criteria
+      operationId: RecordMxList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1484,6 +1505,7 @@ paths:
       - RecordMx
     post:
       description: Creates a new record:mx object
+      operationId: RecordMxCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1544,6 +1566,7 @@ paths:
   /record:mx/{reference}:
     delete:
       description: Deletes a specific record:mx object by reference
+      operationId: RecordMxDelete
       parameters:
       - description: Reference of the record:mx object
         explode: false
@@ -1571,6 +1594,7 @@ paths:
       - RecordMx
     get:
       description: Returns a specific record:mx object by reference
+      operationId: RecordMxRead
       parameters:
       - description: Reference of the record:mx object
         explode: false
@@ -1630,6 +1654,7 @@ paths:
       - RecordMx
     put:
       description: Updates a specific record:mx object by reference
+      operationId: RecordMxUpdate
       parameters:
       - description: Reference of the record:mx object
         explode: false
@@ -1698,6 +1723,7 @@ paths:
   /record:txt:
     get:
       description: Returns a list of record:txt objects matching the search criteria
+      operationId: RecordTxtList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1794,6 +1820,7 @@ paths:
       - RecordTxt
     post:
       description: Creates a new record:txt object
+      operationId: RecordTxtCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1854,6 +1881,7 @@ paths:
   /record:txt/{reference}:
     delete:
       description: Deletes a specific record:txt object by reference
+      operationId: RecordTxtDelete
       parameters:
       - description: Reference of the record:txt object
         explode: false
@@ -1881,6 +1909,7 @@ paths:
       - RecordTxt
     get:
       description: Returns a specific record:txt object by reference
+      operationId: RecordTxtRead
       parameters:
       - description: Reference of the record:txt object
         explode: false
@@ -1940,6 +1969,7 @@ paths:
       - RecordTxt
     put:
       description: Updates a specific record:txt object by reference
+      operationId: RecordTxtUpdate
       parameters:
       - description: Reference of the record:txt object
         explode: false
@@ -2008,6 +2038,7 @@ paths:
   /record:ptr:
     get:
       description: Returns a list of record:ptr objects matching the search criteria
+      operationId: RecordPtrList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2104,6 +2135,7 @@ paths:
       - RecordPtr
     post:
       description: Creates a new record:ptr object
+      operationId: RecordPtrCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2162,11 +2194,13 @@ paths:
       x-tf-datasource: nios_dns_record_ptr
       x-sdk-default-ext-attrs: true
       x-sdk-post-function-call:
+      - Ipv4addr
       - Ipv6addr
       x-tf-function-call: true
   /record:ptr/{reference}:
     delete:
       description: Deletes a specific record:ptr object by reference
+      operationId: RecordPtrDelete
       parameters:
       - description: Reference of the record:ptr object
         explode: false
@@ -2194,6 +2228,7 @@ paths:
       - RecordPtr
     get:
       description: Returns a specific record:ptr object by reference
+      operationId: RecordPtrRead
       parameters:
       - description: Reference of the record:ptr object
         explode: false
@@ -2253,6 +2288,7 @@ paths:
       - RecordPtr
     put:
       description: Updates a specific record:ptr object by reference
+      operationId: RecordPtrUpdate
       parameters:
       - description: Reference of the record:ptr object
         explode: false
@@ -2319,11 +2355,13 @@ paths:
       - RecordPtr
       x-sdk-default-ext-attrs: true
       x-sdk-put-function-call:
+      - Ipv4addr
       - Ipv6addr
       x-tf-function-call: true
   /record:srv:
     get:
       description: Returns a list of record:srv objects matching the search criteria
+      operationId: RecordSrvList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2420,6 +2458,7 @@ paths:
       - RecordSrv
     post:
       description: Creates a new record:srv object
+      operationId: RecordSrvCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2480,6 +2519,7 @@ paths:
   /record:srv/{reference}:
     delete:
       description: Deletes a specific record:srv object by reference
+      operationId: RecordSrvDelete
       parameters:
       - description: Reference of the record:srv object
         explode: false
@@ -2507,6 +2547,7 @@ paths:
       - RecordSrv
     get:
       description: Returns a specific record:srv object by reference
+      operationId: RecordSrvRead
       parameters:
       - description: Reference of the record:srv object
         explode: false
@@ -2566,6 +2607,7 @@ paths:
       - RecordSrv
     put:
       description: Updates a specific record:srv object by reference
+      operationId: RecordSrvUpdate
       parameters:
       - description: Reference of the record:srv object
         explode: false
@@ -2634,6 +2676,7 @@ paths:
   /record:ns:
     get:
       description: Returns a list of record:ns objects matching the search criteria
+      operationId: RecordNsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2730,6 +2773,7 @@ paths:
       - RecordNs
     post:
       description: Creates a new record:ns object
+      operationId: RecordNsCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2789,6 +2833,7 @@ paths:
   /record:ns/{reference}:
     delete:
       description: Deletes a specific record:ns object by reference
+      operationId: RecordNsDelete
       parameters:
       - description: Reference of the record:ns object
         explode: false
@@ -2816,6 +2861,7 @@ paths:
       - RecordNs
     get:
       description: Returns a specific record:ns object by reference
+      operationId: RecordNsRead
       parameters:
       - description: Reference of the record:ns object
         explode: false
@@ -2875,6 +2921,7 @@ paths:
       - RecordNs
     put:
       description: Updates a specific record:ns object by reference
+      operationId: RecordNsUpdate
       parameters:
       - description: Reference of the record:ns object
         explode: false
@@ -2942,6 +2989,7 @@ paths:
   /record:host:
     get:
       description: Returns a list of record:host objects matching the search criteria
+      operationId: RecordHostList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3038,6 +3086,7 @@ paths:
       - RecordHost
     post:
       description: Creates a new record:host object
+      operationId: RecordHostCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3098,6 +3147,7 @@ paths:
   /record:host/{reference}:
     delete:
       description: Deletes a specific record:host object by reference
+      operationId: RecordHostDelete
       parameters:
       - description: Reference of the record:host object
         explode: false
@@ -3125,6 +3175,7 @@ paths:
       - RecordHost
     get:
       description: Returns a specific record:host object by reference
+      operationId: RecordHostRead
       parameters:
       - description: Reference of the record:host object
         explode: false
@@ -3184,6 +3235,7 @@ paths:
       - RecordHost
     put:
       description: Updates a specific record:host object by reference
+      operationId: RecordHostUpdate
       parameters:
       - description: Reference of the record:host object
         explode: false
@@ -3252,6 +3304,7 @@ paths:
   /record:dname:
     get:
       description: Returns a list of record:dname objects matching the search criteria
+      operationId: RecordDnameList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3348,6 +3401,7 @@ paths:
       - RecordDname
     post:
       description: Creates a new record:dname object
+      operationId: RecordDnameCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3408,6 +3462,7 @@ paths:
   /record:dname/{reference}:
     delete:
       description: Deletes a specific record:dname object by reference
+      operationId: RecordDnameDelete
       parameters:
       - description: Reference of the record:dname object
         explode: false
@@ -3435,6 +3490,7 @@ paths:
       - RecordDname
     get:
       description: Returns a specific record:dname object by reference
+      operationId: RecordDnameRead
       parameters:
       - description: Reference of the record:dname object
         explode: false
@@ -3494,6 +3550,7 @@ paths:
       - RecordDname
     put:
       description: Updates a specific record:dname object by reference
+      operationId: RecordDnameUpdate
       parameters:
       - description: Reference of the record:dname object
         explode: false
@@ -3562,6 +3619,7 @@ paths:
   /record:naptr:
     get:
       description: Returns a list of record:naptr objects matching the search criteria
+      operationId: RecordNaptrList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3658,6 +3716,7 @@ paths:
       - RecordNaptr
     post:
       description: Creates a new record:naptr object
+      operationId: RecordNaptrCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3718,6 +3777,7 @@ paths:
   /record:naptr/{reference}:
     delete:
       description: Deletes a specific record:naptr object by reference
+      operationId: RecordNaptrDelete
       parameters:
       - description: Reference of the record:naptr object
         explode: false
@@ -3745,6 +3805,7 @@ paths:
       - RecordNaptr
     get:
       description: Returns a specific record:naptr object by reference
+      operationId: RecordNaptrRead
       parameters:
       - description: Reference of the record:naptr object
         explode: false
@@ -3804,6 +3865,7 @@ paths:
       - RecordNaptr
     put:
       description: Updates a specific record:naptr object by reference
+      operationId: RecordNaptrUpdate
       parameters:
       - description: Reference of the record:naptr object
         explode: false
@@ -3872,6 +3934,7 @@ paths:
   /record:tlsa:
     get:
       description: Returns a list of record:tlsa objects matching the search criteria
+      operationId: RecordTlsaList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3968,6 +4031,7 @@ paths:
       - RecordTlsa
     post:
       description: Creates a new record:tlsa object
+      operationId: RecordTlsaCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4028,6 +4092,7 @@ paths:
   /record:tlsa/{reference}:
     delete:
       description: Deletes a specific record:tlsa object by reference
+      operationId: RecordTlsaDelete
       parameters:
       - description: Reference of the record:tlsa object
         explode: false
@@ -4055,6 +4120,7 @@ paths:
       - RecordTlsa
     get:
       description: Returns a specific record:tlsa object by reference
+      operationId: RecordTlsaRead
       parameters:
       - description: Reference of the record:tlsa object
         explode: false
@@ -4114,6 +4180,7 @@ paths:
       - RecordTlsa
     put:
       description: Updates a specific record:tlsa object by reference
+      operationId: RecordTlsaUpdate
       parameters:
       - description: Reference of the record:tlsa object
         explode: false
@@ -4182,6 +4249,7 @@ paths:
   /record:caa:
     get:
       description: Returns a list of record:caa objects matching the search criteria
+      operationId: RecordCaaList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4278,6 +4346,7 @@ paths:
       - RecordCaa
     post:
       description: Creates a new record:caa object
+      operationId: RecordCaaCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4338,6 +4407,7 @@ paths:
   /record:caa/{reference}:
     delete:
       description: Deletes a specific record:caa object by reference
+      operationId: RecordCaaDelete
       parameters:
       - description: Reference of the record:caa object
         explode: false
@@ -4365,6 +4435,7 @@ paths:
       - RecordCaa
     get:
       description: Returns a specific record:caa object by reference
+      operationId: RecordCaaRead
       parameters:
       - description: Reference of the record:caa object
         explode: false
@@ -4424,6 +4495,7 @@ paths:
       - RecordCaa
     put:
       description: Updates a specific record:caa object by reference
+      operationId: RecordCaaUpdate
       parameters:
       - description: Reference of the record:caa object
         explode: false
@@ -4492,6 +4564,7 @@ paths:
   /record:dhcid:
     get:
       description: Returns a list of record:dhcid objects matching the search criteria
+      operationId: RecordDhcidList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4589,6 +4662,7 @@ paths:
   /record:dhcid/{reference}:
     delete:
       description: Deletes a specific record:dhcid object by reference
+      operationId: RecordDhcidDelete
       parameters:
       - description: Reference of the record:dhcid object
         explode: false
@@ -4616,6 +4690,7 @@ paths:
       - RecordDhcid
     get:
       description: Returns a specific record:dhcid object by reference
+      operationId: RecordDhcidRead
       parameters:
       - description: Reference of the record:dhcid object
         explode: false
@@ -4676,6 +4751,7 @@ paths:
   /record:dnskey:
     get:
       description: Returns a list of record:dnskey objects matching the search criteria
+      operationId: RecordDnskeyList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4773,6 +4849,7 @@ paths:
   /record:dnskey/{reference}:
     get:
       description: Returns a specific record:dnskey object by reference
+      operationId: RecordDnskeyRead
       parameters:
       - description: Reference of the record:dnskey object
         explode: false
@@ -4833,6 +4910,7 @@ paths:
   /record:ds:
     get:
       description: Returns a list of record:ds objects matching the search criteria
+      operationId: RecordDsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4930,6 +5008,7 @@ paths:
   /record:ds/{reference}:
     delete:
       description: Deletes a specific record:ds object by reference
+      operationId: RecordDsDelete
       parameters:
       - description: Reference of the record:ds object
         explode: false
@@ -4957,6 +5036,7 @@ paths:
       - RecordDs
     get:
       description: Returns a specific record:ds object by reference
+      operationId: RecordDsRead
       parameters:
       - description: Reference of the record:ds object
         explode: false
@@ -5017,6 +5097,7 @@ paths:
   /record:nsec:
     get:
       description: Returns a list of record:nsec objects matching the search criteria
+      operationId: RecordNsecList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5114,6 +5195,7 @@ paths:
   /record:nsec/{reference}:
     get:
       description: Returns a specific record:nsec object by reference
+      operationId: RecordNsecRead
       parameters:
       - description: Reference of the record:nsec object
         explode: false
@@ -5174,6 +5256,7 @@ paths:
   /record:nsec3:
     get:
       description: Returns a list of record:nsec3 objects matching the search criteria
+      operationId: RecordNsec3List
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5271,6 +5354,7 @@ paths:
   /record:nsec3/{reference}:
     get:
       description: Returns a specific record:nsec3 object by reference
+      operationId: RecordNsec3Read
       parameters:
       - description: Reference of the record:nsec3 object
         explode: false
@@ -5332,6 +5416,7 @@ paths:
     get:
       description: Returns a list of record:nsec3param objects matching the search
         criteria
+      operationId: RecordNsec3paramList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5429,6 +5514,7 @@ paths:
   /record:nsec3param/{reference}:
     get:
       description: Returns a specific record:nsec3param object by reference
+      operationId: RecordNsec3paramRead
       parameters:
       - description: Reference of the record:nsec3param object
         explode: false
@@ -5489,6 +5575,7 @@ paths:
   /record:rrsig:
     get:
       description: Returns a list of record:rrsig objects matching the search criteria
+      operationId: RecordRrsigList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5586,6 +5673,7 @@ paths:
   /record:rrsig/{reference}:
     get:
       description: Returns a specific record:rrsig object by reference
+      operationId: RecordRrsigRead
       parameters:
       - description: Reference of the record:rrsig object
         explode: false
@@ -5646,6 +5734,7 @@ paths:
   /record:unknown:
     get:
       description: Returns a list of record:unknown objects matching the search criteria
+      operationId: RecordUnknownList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5742,6 +5831,7 @@ paths:
       - RecordUnknown
     post:
       description: Creates a new record:unknown object
+      operationId: RecordUnknownCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5802,6 +5892,7 @@ paths:
   /record:unknown/{reference}:
     delete:
       description: Deletes a specific record:unknown object by reference
+      operationId: RecordUnknownDelete
       parameters:
       - description: Reference of the record:unknown object
         explode: false
@@ -5829,6 +5920,7 @@ paths:
       - RecordUnknown
     get:
       description: Returns a specific record:unknown object by reference
+      operationId: RecordUnknownRead
       parameters:
       - description: Reference of the record:unknown object
         explode: false
@@ -5888,6 +5980,7 @@ paths:
       - RecordUnknown
     put:
       description: Updates a specific record:unknown object by reference
+      operationId: RecordUnknownUpdate
       parameters:
       - description: Reference of the record:unknown object
         explode: false
@@ -5957,6 +6050,7 @@ paths:
     get:
       description: Returns a list of record:host_ipv4addr objects matching the search
         criteria
+      operationId: RecordHostIpv4addrList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6054,6 +6148,7 @@ paths:
   /record:host_ipv4addr/{reference}:
     get:
       description: Returns a specific record:host_ipv4addr object by reference
+      operationId: RecordHostIpv4addrRead
       parameters:
       - description: Reference of the record:host_ipv4addr object
         explode: false
@@ -6113,6 +6208,7 @@ paths:
       - RecordHostIpv4addr
     put:
       description: Updates a specific record:host_ipv4addr object by reference
+      operationId: RecordHostIpv4addrUpdate
       parameters:
       - description: Reference of the record:host_ipv4addr object
         explode: false
@@ -6181,6 +6277,7 @@ paths:
     get:
       description: Returns a list of record:host_ipv6addr objects matching the search
         criteria
+      operationId: RecordHostIpv6addrList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6278,6 +6375,7 @@ paths:
   /record:host_ipv6addr/{reference}:
     get:
       description: Returns a specific record:host_ipv6addr object by reference
+      operationId: RecordHostIpv6addrRead
       parameters:
       - description: Reference of the record:host_ipv6addr object
         explode: false
@@ -6337,6 +6435,7 @@ paths:
       - RecordHostIpv6addr
     put:
       description: Updates a specific record:host_ipv6addr object by reference
+      operationId: RecordHostIpv6addrUpdate
       parameters:
       - description: Reference of the record:host_ipv6addr object
         explode: false
@@ -6404,6 +6503,7 @@ paths:
   /zone_auth:
     get:
       description: Returns a list of zone_auth objects matching the search criteria
+      operationId: ZoneAuthList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6500,6 +6600,7 @@ paths:
       - ZoneAuth
     post:
       description: Creates a new zone_auth object
+      operationId: ZoneAuthCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6560,6 +6661,7 @@ paths:
   /zone_auth/{reference}:
     delete:
       description: Deletes a specific zone_auth object by reference
+      operationId: ZoneAuthDelete
       parameters:
       - description: Reference of the zone_auth object
         explode: false
@@ -6598,6 +6700,7 @@ paths:
       - ZoneAuth
     get:
       description: Returns a specific zone_auth object by reference
+      operationId: ZoneAuthRead
       parameters:
       - description: Reference of the zone_auth object
         explode: false
@@ -6657,6 +6760,7 @@ paths:
       - ZoneAuth
     put:
       description: Updates a specific zone_auth object by reference
+      operationId: ZoneAuthUpdate
       parameters:
       - description: Reference of the zone_auth object
         explode: false
@@ -6725,6 +6829,7 @@ paths:
   /zone_delegated:
     get:
       description: Returns a list of zone_delegated objects matching the search criteria
+      operationId: ZoneDelegatedList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6821,6 +6926,7 @@ paths:
       - ZoneDelegated
     post:
       description: Creates a new zone_delegated object
+      operationId: ZoneDelegatedCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6881,6 +6987,7 @@ paths:
   /zone_delegated/{reference}:
     delete:
       description: Deletes a specific zone_delegated object by reference
+      operationId: ZoneDelegatedDelete
       parameters:
       - description: Reference of the zone_delegated object
         explode: false
@@ -6908,6 +7015,7 @@ paths:
       - ZoneDelegated
     get:
       description: Returns a specific zone_delegated object by reference
+      operationId: ZoneDelegatedRead
       parameters:
       - description: Reference of the zone_delegated object
         explode: false
@@ -6967,6 +7075,7 @@ paths:
       - ZoneDelegated
     put:
       description: Updates a specific zone_delegated object by reference
+      operationId: ZoneDelegatedUpdate
       parameters:
       - description: Reference of the zone_delegated object
         explode: false
@@ -7035,6 +7144,7 @@ paths:
   /zone_forward:
     get:
       description: Returns a list of zone_forward objects matching the search criteria
+      operationId: ZoneForwardList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7131,6 +7241,7 @@ paths:
       - ZoneForward
     post:
       description: Creates a new zone_forward object
+      operationId: ZoneForwardCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7191,6 +7302,7 @@ paths:
   /zone_forward/{reference}:
     delete:
       description: Deletes a specific zone_forward object by reference
+      operationId: ZoneForwardDelete
       parameters:
       - description: Reference of the zone_forward object
         explode: false
@@ -7218,6 +7330,7 @@ paths:
       - ZoneForward
     get:
       description: Returns a specific zone_forward object by reference
+      operationId: ZoneForwardRead
       parameters:
       - description: Reference of the zone_forward object
         explode: false
@@ -7277,6 +7390,7 @@ paths:
       - ZoneForward
     put:
       description: Updates a specific zone_forward object by reference
+      operationId: ZoneForwardUpdate
       parameters:
       - description: Reference of the zone_forward object
         explode: false
@@ -7345,6 +7459,7 @@ paths:
   /zone_stub:
     get:
       description: Returns a list of zone_stub objects matching the search criteria
+      operationId: ZoneStubList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7441,6 +7556,7 @@ paths:
       - ZoneStub
     post:
       description: Creates a new zone_stub object
+      operationId: ZoneStubCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7501,6 +7617,7 @@ paths:
   /zone_stub/{reference}:
     delete:
       description: Deletes a specific zone_stub object by reference
+      operationId: ZoneStubDelete
       parameters:
       - description: Reference of the zone_stub object
         explode: false
@@ -7528,6 +7645,7 @@ paths:
       - ZoneStub
     get:
       description: Returns a specific zone_stub object by reference
+      operationId: ZoneStubRead
       parameters:
       - description: Reference of the zone_stub object
         explode: false
@@ -7587,6 +7705,7 @@ paths:
       - ZoneStub
     put:
       description: Updates a specific zone_stub object by reference
+      operationId: ZoneStubUpdate
       parameters:
       - description: Reference of the zone_stub object
         explode: false
@@ -7655,6 +7774,7 @@ paths:
   /zone_rp:
     get:
       description: Returns a list of zone_rp objects matching the search criteria
+      operationId: ZoneRpList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7751,6 +7871,7 @@ paths:
       - ZoneRp
     post:
       description: Creates a new zone_rp object
+      operationId: ZoneRpCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7811,6 +7932,7 @@ paths:
   /zone_rp/{reference}:
     delete:
       description: Deletes a specific zone_rp object by reference
+      operationId: ZoneRpDelete
       parameters:
       - description: Reference of the zone_rp object
         explode: false
@@ -7838,6 +7960,7 @@ paths:
       - ZoneRp
     get:
       description: Returns a specific zone_rp object by reference
+      operationId: ZoneRpRead
       parameters:
       - description: Reference of the zone_rp object
         explode: false
@@ -7897,6 +8020,7 @@ paths:
       - ZoneRp
     put:
       description: Updates a specific zone_rp object by reference
+      operationId: ZoneRpUpdate
       parameters:
       - description: Reference of the zone_rp object
         explode: false
@@ -7966,6 +8090,7 @@ paths:
     get:
       description: Returns a list of zone_auth_discrepancy objects matching the search
         criteria
+      operationId: ZoneAuthDiscrepancyList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8063,6 +8188,7 @@ paths:
   /zone_auth_discrepancy/{reference}:
     get:
       description: Returns a specific zone_auth_discrepancy object by reference
+      operationId: ZoneAuthDiscrepancyRead
       parameters:
       - description: Reference of the zone_auth_discrepancy object
         explode: false
@@ -8123,6 +8249,7 @@ paths:
   /allrecords:
     get:
       description: Returns a list of allrecords objects matching the search criteria
+      operationId: AllrecordsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8220,6 +8347,7 @@ paths:
   /allrecords/{reference}:
     get:
       description: Returns a specific allrecords object by reference
+      operationId: AllrecordsRead
       parameters:
       - description: Reference of the allrecords object
         explode: false
@@ -8281,6 +8409,7 @@ paths:
     get:
       description: Returns a list of recordnamepolicy objects matching the search
         criteria
+      operationId: RecordnamepolicyList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8377,6 +8506,7 @@ paths:
       - Recordnamepolicy
     post:
       description: Creates a new recordnamepolicy object
+      operationId: RecordnamepolicyCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8436,6 +8566,7 @@ paths:
   /recordnamepolicy/{reference}:
     delete:
       description: Deletes a specific recordnamepolicy object by reference
+      operationId: RecordnamepolicyDelete
       parameters:
       - description: Reference of the recordnamepolicy object
         explode: false
@@ -8463,6 +8594,7 @@ paths:
       - Recordnamepolicy
     get:
       description: Returns a specific recordnamepolicy object by reference
+      operationId: RecordnamepolicyRead
       parameters:
       - description: Reference of the recordnamepolicy object
         explode: false
@@ -8522,6 +8654,7 @@ paths:
       - Recordnamepolicy
     put:
       description: Updates a specific recordnamepolicy object by reference
+      operationId: RecordnamepolicyUpdate
       parameters:
       - description: Reference of the recordnamepolicy object
         explode: false
@@ -8589,6 +8722,7 @@ paths:
   /dns64group:
     get:
       description: Returns a list of dns64group objects matching the search criteria
+      operationId: Dns64groupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8685,6 +8819,7 @@ paths:
       - Dns64group
     post:
       description: Creates a new dns64group object
+      operationId: Dns64groupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8745,6 +8880,7 @@ paths:
   /dns64group/{reference}:
     delete:
       description: Deletes a specific dns64group object by reference
+      operationId: Dns64groupDelete
       parameters:
       - description: Reference of the dns64group object
         explode: false
@@ -8772,6 +8908,7 @@ paths:
       - Dns64group
     get:
       description: Returns a specific dns64group object by reference
+      operationId: Dns64groupRead
       parameters:
       - description: Reference of the dns64group object
         explode: false
@@ -8831,6 +8968,7 @@ paths:
       - Dns64group
     put:
       description: Updates a specific dns64group object by reference
+      operationId: Dns64groupUpdate
       parameters:
       - description: Reference of the dns64group object
         explode: false
@@ -8899,6 +9037,7 @@ paths:
   /allnsgroup:
     get:
       description: Returns a list of allnsgroup objects matching the search criteria
+      operationId: AllnsgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8996,6 +9135,7 @@ paths:
   /allnsgroup/{reference}:
     get:
       description: Returns a specific allnsgroup object by reference
+      operationId: AllnsgroupRead
       parameters:
       - description: Reference of the allnsgroup object
         explode: false
@@ -9057,6 +9197,7 @@ paths:
     get:
       description: Returns a list of ddns:principalcluster objects matching the search
         criteria
+      operationId: DdnsPrincipalclusterList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9153,6 +9294,7 @@ paths:
       - DdnsPrincipalcluster
     post:
       description: Creates a new ddns:principalcluster object
+      operationId: DdnsPrincipalclusterCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9212,6 +9354,7 @@ paths:
   /ddns:principalcluster/{reference}:
     delete:
       description: Deletes a specific ddns:principalcluster object by reference
+      operationId: DdnsPrincipalclusterDelete
       parameters:
       - description: Reference of the ddns:principalcluster object
         explode: false
@@ -9239,6 +9382,7 @@ paths:
       - DdnsPrincipalcluster
     get:
       description: Returns a specific ddns:principalcluster object by reference
+      operationId: DdnsPrincipalclusterRead
       parameters:
       - description: Reference of the ddns:principalcluster object
         explode: false
@@ -9298,6 +9442,7 @@ paths:
       - DdnsPrincipalcluster
     put:
       description: Updates a specific ddns:principalcluster object by reference
+      operationId: DdnsPrincipalclusterUpdate
       parameters:
       - description: Reference of the ddns:principalcluster object
         explode: false
@@ -9366,6 +9511,7 @@ paths:
     get:
       description: Returns a list of ddns:principalcluster:group objects matching
         the search criteria
+      operationId: DdnsPrincipalclusterGroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9462,6 +9608,7 @@ paths:
       - DdnsPrincipalclusterGroup
     post:
       description: Creates a new ddns:principalcluster:group object
+      operationId: DdnsPrincipalclusterGroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9521,6 +9668,7 @@ paths:
   /ddns:principalcluster:group/{reference}:
     delete:
       description: Deletes a specific ddns:principalcluster:group object by reference
+      operationId: DdnsPrincipalclusterGroupDelete
       parameters:
       - description: Reference of the ddns:principalcluster:group object
         explode: false
@@ -9548,6 +9696,7 @@ paths:
       - DdnsPrincipalclusterGroup
     get:
       description: Returns a specific ddns:principalcluster:group object by reference
+      operationId: DdnsPrincipalclusterGroupRead
       parameters:
       - description: Reference of the ddns:principalcluster:group object
         explode: false
@@ -9607,6 +9756,7 @@ paths:
       - DdnsPrincipalclusterGroup
     put:
       description: Updates a specific ddns:principalcluster:group object by reference
+      operationId: DdnsPrincipalclusterGroupUpdate
       parameters:
       - description: Reference of the ddns:principalcluster:group object
         explode: false
@@ -9675,6 +9825,7 @@ paths:
     get:
       description: Returns a list of orderedresponsepolicyzones objects matching the
         search criteria
+      operationId: OrderedresponsepolicyzonesList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9772,6 +9923,7 @@ paths:
   /orderedresponsepolicyzones/{reference}:
     get:
       description: Returns a specific orderedresponsepolicyzones object by reference
+      operationId: OrderedresponsepolicyzonesRead
       parameters:
       - description: Reference of the orderedresponsepolicyzones object
         explode: false
@@ -9831,6 +9983,7 @@ paths:
       - Orderedresponsepolicyzones
     put:
       description: Updates a specific orderedresponsepolicyzones object by reference
+      operationId: OrderedresponsepolicyzonesUpdate
       parameters:
       - description: Reference of the orderedresponsepolicyzones object
         explode: false
@@ -9898,6 +10051,7 @@ paths:
   /sharedrecord:a:
     get:
       description: Returns a list of sharedrecord:a objects matching the search criteria
+      operationId: SharedrecordAList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9994,6 +10148,7 @@ paths:
       - SharedrecordA
     post:
       description: Creates a new sharedrecord:a object
+      operationId: SharedrecordACreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -10054,6 +10209,7 @@ paths:
   /sharedrecord:a/{reference}:
     delete:
       description: Deletes a specific sharedrecord:a object by reference
+      operationId: SharedrecordADelete
       parameters:
       - description: Reference of the sharedrecord:a object
         explode: false
@@ -10081,6 +10237,7 @@ paths:
       - SharedrecordA
     get:
       description: Returns a specific sharedrecord:a object by reference
+      operationId: SharedrecordARead
       parameters:
       - description: Reference of the sharedrecord:a object
         explode: false
@@ -10140,6 +10297,7 @@ paths:
       - SharedrecordA
     put:
       description: Updates a specific sharedrecord:a object by reference
+      operationId: SharedrecordAUpdate
       parameters:
       - description: Reference of the sharedrecord:a object
         explode: false
@@ -10209,6 +10367,7 @@ paths:
     get:
       description: Returns a list of sharedrecord:aaaa objects matching the search
         criteria
+      operationId: SharedrecordAaaaList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -10305,6 +10464,7 @@ paths:
       - SharedrecordAaaa
     post:
       description: Creates a new sharedrecord:aaaa object
+      operationId: SharedrecordAaaaCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -10365,6 +10525,7 @@ paths:
   /sharedrecord:aaaa/{reference}:
     delete:
       description: Deletes a specific sharedrecord:aaaa object by reference
+      operationId: SharedrecordAaaaDelete
       parameters:
       - description: Reference of the sharedrecord:aaaa object
         explode: false
@@ -10392,6 +10553,7 @@ paths:
       - SharedrecordAaaa
     get:
       description: Returns a specific sharedrecord:aaaa object by reference
+      operationId: SharedrecordAaaaRead
       parameters:
       - description: Reference of the sharedrecord:aaaa object
         explode: false
@@ -10451,6 +10613,7 @@ paths:
       - SharedrecordAaaa
     put:
       description: Updates a specific sharedrecord:aaaa object by reference
+      operationId: SharedrecordAaaaUpdate
       parameters:
       - description: Reference of the sharedrecord:aaaa object
         explode: false
@@ -10520,6 +10683,7 @@ paths:
     get:
       description: Returns a list of sharedrecord:cname objects matching the search
         criteria
+      operationId: SharedrecordCnameList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -10616,6 +10780,7 @@ paths:
       - SharedrecordCname
     post:
       description: Creates a new sharedrecord:cname object
+      operationId: SharedrecordCnameCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -10676,6 +10841,7 @@ paths:
   /sharedrecord:cname/{reference}:
     delete:
       description: Deletes a specific sharedrecord:cname object by reference
+      operationId: SharedrecordCnameDelete
       parameters:
       - description: Reference of the sharedrecord:cname object
         explode: false
@@ -10703,6 +10869,7 @@ paths:
       - SharedrecordCname
     get:
       description: Returns a specific sharedrecord:cname object by reference
+      operationId: SharedrecordCnameRead
       parameters:
       - description: Reference of the sharedrecord:cname object
         explode: false
@@ -10762,6 +10929,7 @@ paths:
       - SharedrecordCname
     put:
       description: Updates a specific sharedrecord:cname object by reference
+      operationId: SharedrecordCnameUpdate
       parameters:
       - description: Reference of the sharedrecord:cname object
         explode: false
@@ -10830,6 +10998,7 @@ paths:
   /sharedrecord:mx:
     get:
       description: Returns a list of sharedrecord:mx objects matching the search criteria
+      operationId: SharedrecordMxList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -10926,6 +11095,7 @@ paths:
       - SharedrecordMx
     post:
       description: Creates a new sharedrecord:mx object
+      operationId: SharedrecordMxCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -10986,6 +11156,7 @@ paths:
   /sharedrecord:mx/{reference}:
     delete:
       description: Deletes a specific sharedrecord:mx object by reference
+      operationId: SharedrecordMxDelete
       parameters:
       - description: Reference of the sharedrecord:mx object
         explode: false
@@ -11013,6 +11184,7 @@ paths:
       - SharedrecordMx
     get:
       description: Returns a specific sharedrecord:mx object by reference
+      operationId: SharedrecordMxRead
       parameters:
       - description: Reference of the sharedrecord:mx object
         explode: false
@@ -11072,6 +11244,7 @@ paths:
       - SharedrecordMx
     put:
       description: Updates a specific sharedrecord:mx object by reference
+      operationId: SharedrecordMxUpdate
       parameters:
       - description: Reference of the sharedrecord:mx object
         explode: false
@@ -11141,6 +11314,7 @@ paths:
     get:
       description: Returns a list of sharedrecord:srv objects matching the search
         criteria
+      operationId: SharedrecordSrvList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -11237,6 +11411,7 @@ paths:
       - SharedrecordSrv
     post:
       description: Creates a new sharedrecord:srv object
+      operationId: SharedrecordSrvCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -11297,6 +11472,7 @@ paths:
   /sharedrecord:srv/{reference}:
     delete:
       description: Deletes a specific sharedrecord:srv object by reference
+      operationId: SharedrecordSrvDelete
       parameters:
       - description: Reference of the sharedrecord:srv object
         explode: false
@@ -11324,6 +11500,7 @@ paths:
       - SharedrecordSrv
     get:
       description: Returns a specific sharedrecord:srv object by reference
+      operationId: SharedrecordSrvRead
       parameters:
       - description: Reference of the sharedrecord:srv object
         explode: false
@@ -11383,6 +11560,7 @@ paths:
       - SharedrecordSrv
     put:
       description: Updates a specific sharedrecord:srv object by reference
+      operationId: SharedrecordSrvUpdate
       parameters:
       - description: Reference of the sharedrecord:srv object
         explode: false
@@ -11452,6 +11630,7 @@ paths:
     get:
       description: Returns a list of sharedrecord:txt objects matching the search
         criteria
+      operationId: SharedrecordTxtList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -11548,6 +11727,7 @@ paths:
       - SharedrecordTxt
     post:
       description: Creates a new sharedrecord:txt object
+      operationId: SharedrecordTxtCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -11608,6 +11788,7 @@ paths:
   /sharedrecord:txt/{reference}:
     delete:
       description: Deletes a specific sharedrecord:txt object by reference
+      operationId: SharedrecordTxtDelete
       parameters:
       - description: Reference of the sharedrecord:txt object
         explode: false
@@ -11635,6 +11816,7 @@ paths:
       - SharedrecordTxt
     get:
       description: Returns a specific sharedrecord:txt object by reference
+      operationId: SharedrecordTxtRead
       parameters:
       - description: Reference of the sharedrecord:txt object
         explode: false
@@ -11694,6 +11876,7 @@ paths:
       - SharedrecordTxt
     put:
       description: Updates a specific sharedrecord:txt object by reference
+      operationId: SharedrecordTxtUpdate
       parameters:
       - description: Reference of the sharedrecord:txt object
         explode: false
@@ -11763,6 +11946,7 @@ paths:
     get:
       description: Returns a list of sharedrecordgroup objects matching the search
         criteria
+      operationId: SharedrecordgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -11859,6 +12043,7 @@ paths:
       - Sharedrecordgroup
     post:
       description: Creates a new sharedrecordgroup object
+      operationId: SharedrecordgroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -11919,6 +12104,7 @@ paths:
   /sharedrecordgroup/{reference}:
     delete:
       description: Deletes a specific sharedrecordgroup object by reference
+      operationId: SharedrecordgroupDelete
       parameters:
       - description: Reference of the sharedrecordgroup object
         explode: false
@@ -11946,6 +12132,7 @@ paths:
       - Sharedrecordgroup
     get:
       description: Returns a specific sharedrecordgroup object by reference
+      operationId: SharedrecordgroupRead
       parameters:
       - description: Reference of the sharedrecordgroup object
         explode: false
@@ -12005,6 +12192,7 @@ paths:
       - Sharedrecordgroup
     put:
       description: Updates a specific sharedrecordgroup object by reference
+      operationId: SharedrecordgroupUpdate
       parameters:
       - description: Reference of the sharedrecordgroup object
         explode: false
@@ -12073,6 +12261,7 @@ paths:
   /view:
     get:
       description: Returns a list of view objects matching the search criteria
+      operationId: ViewList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -12170,6 +12359,7 @@ paths:
   /view/{reference}:
     get:
       description: Returns a specific view object by reference
+      operationId: ViewRead
       parameters:
       - description: Reference of the view object
         explode: false
@@ -12229,6 +12419,7 @@ paths:
       - View
     put:
       description: Updates a specific view object by reference
+      operationId: ViewUpdate
       parameters:
       - description: Reference of the view object
         explode: false
@@ -12297,6 +12488,7 @@ paths:
   /nsgroup:
     get:
       description: Returns a list of nsgroup objects matching the search criteria
+      operationId: NsgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -12393,6 +12585,7 @@ paths:
       - Nsgroup
     post:
       description: Creates a new nsgroup object
+      operationId: NsgroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -12453,6 +12646,7 @@ paths:
   /nsgroup/{reference}:
     delete:
       description: Deletes a specific nsgroup object by reference
+      operationId: NsgroupDelete
       parameters:
       - description: Reference of the nsgroup object
         explode: false
@@ -12480,6 +12674,7 @@ paths:
       - Nsgroup
     get:
       description: Returns a specific nsgroup object by reference
+      operationId: NsgroupRead
       parameters:
       - description: Reference of the nsgroup object
         explode: false
@@ -12539,6 +12734,7 @@ paths:
       - Nsgroup
     put:
       description: Updates a specific nsgroup object by reference
+      operationId: NsgroupUpdate
       parameters:
       - description: Reference of the nsgroup object
         explode: false
@@ -12608,6 +12804,7 @@ paths:
     get:
       description: Returns a list of nsgroup:delegation objects matching the search
         criteria
+      operationId: NsgroupDelegationList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -12704,6 +12901,7 @@ paths:
       - NsgroupDelegation
     post:
       description: Creates a new nsgroup:delegation object
+      operationId: NsgroupDelegationCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -12764,6 +12962,7 @@ paths:
   /nsgroup:delegation/{reference}:
     delete:
       description: Deletes a specific nsgroup:delegation object by reference
+      operationId: NsgroupDelegationDelete
       parameters:
       - description: Reference of the nsgroup:delegation object
         explode: false
@@ -12791,6 +12990,7 @@ paths:
       - NsgroupDelegation
     get:
       description: Returns a specific nsgroup:delegation object by reference
+      operationId: NsgroupDelegationRead
       parameters:
       - description: Reference of the nsgroup:delegation object
         explode: false
@@ -12850,6 +13050,7 @@ paths:
       - NsgroupDelegation
     put:
       description: Updates a specific nsgroup:delegation object by reference
+      operationId: NsgroupDelegationUpdate
       parameters:
       - description: Reference of the nsgroup:delegation object
         explode: false
@@ -12919,6 +13120,7 @@ paths:
     get:
       description: Returns a list of nsgroup:forwardingmember objects matching the
         search criteria
+      operationId: NsgroupForwardingmemberList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -13015,6 +13217,7 @@ paths:
       - NsgroupForwardingmember
     post:
       description: Creates a new nsgroup:forwardingmember object
+      operationId: NsgroupForwardingmemberCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -13075,6 +13278,7 @@ paths:
   /nsgroup:forwardingmember/{reference}:
     delete:
       description: Deletes a specific nsgroup:forwardingmember object by reference
+      operationId: NsgroupForwardingmemberDelete
       parameters:
       - description: Reference of the nsgroup:forwardingmember object
         explode: false
@@ -13102,6 +13306,7 @@ paths:
       - NsgroupForwardingmember
     get:
       description: Returns a specific nsgroup:forwardingmember object by reference
+      operationId: NsgroupForwardingmemberRead
       parameters:
       - description: Reference of the nsgroup:forwardingmember object
         explode: false
@@ -13161,6 +13366,7 @@ paths:
       - NsgroupForwardingmember
     put:
       description: Updates a specific nsgroup:forwardingmember object by reference
+      operationId: NsgroupForwardingmemberUpdate
       parameters:
       - description: Reference of the nsgroup:forwardingmember object
         explode: false
@@ -13230,6 +13436,7 @@ paths:
     get:
       description: Returns a list of nsgroup:forwardstubserver objects matching the
         search criteria
+      operationId: NsgroupForwardstubserverList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -13326,6 +13533,7 @@ paths:
       - NsgroupForwardstubserver
     post:
       description: Creates a new nsgroup:forwardstubserver object
+      operationId: NsgroupForwardstubserverCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -13386,6 +13594,7 @@ paths:
   /nsgroup:forwardstubserver/{reference}:
     delete:
       description: Deletes a specific nsgroup:forwardstubserver object by reference
+      operationId: NsgroupForwardstubserverDelete
       parameters:
       - description: Reference of the nsgroup:forwardstubserver object
         explode: false
@@ -13413,6 +13622,7 @@ paths:
       - NsgroupForwardstubserver
     get:
       description: Returns a specific nsgroup:forwardstubserver object by reference
+      operationId: NsgroupForwardstubserverRead
       parameters:
       - description: Reference of the nsgroup:forwardstubserver object
         explode: false
@@ -13472,6 +13682,7 @@ paths:
       - NsgroupForwardstubserver
     put:
       description: Updates a specific nsgroup:forwardstubserver object by reference
+      operationId: NsgroupForwardstubserverUpdate
       parameters:
       - description: Reference of the nsgroup:forwardstubserver object
         explode: false
@@ -13541,6 +13752,7 @@ paths:
     get:
       description: Returns a list of nsgroup:stubmember objects matching the search
         criteria
+      operationId: NsgroupStubmemberList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -13637,6 +13849,7 @@ paths:
       - NsgroupStubmember
     post:
       description: Creates a new nsgroup:stubmember object
+      operationId: NsgroupStubmemberCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -13697,6 +13910,7 @@ paths:
   /nsgroup:stubmember/{reference}:
     delete:
       description: Deletes a specific nsgroup:stubmember object by reference
+      operationId: NsgroupStubmemberDelete
       parameters:
       - description: Reference of the nsgroup:stubmember object
         explode: false
@@ -13724,6 +13938,7 @@ paths:
       - NsgroupStubmember
     get:
       description: Returns a specific nsgroup:stubmember object by reference
+      operationId: NsgroupStubmemberRead
       parameters:
       - description: Reference of the nsgroup:stubmember object
         explode: false
@@ -13783,6 +13998,7 @@ paths:
       - NsgroupStubmember
     put:
       description: Updates a specific nsgroup:stubmember object by reference
+      operationId: NsgroupStubmemberUpdate
       parameters:
       - description: Reference of the nsgroup:stubmember object
         explode: false
@@ -18021,7 +18237,7 @@ components:
           device_vendor: Example device_vendor
           v_entity_type: Example v_entity_type
         ddns_protected: false
-        ipv4addr: Example ipv4addr
+        ipv4addr: RecordPtr_ipv4addr
         ttl: 1
         dns_name: Example dns_name
         ms_ad_user_data:
@@ -18096,13 +18312,11 @@ components:
           example: false
           type: boolean
         ipv4addr:
-          description: The IPv4 Address of the record.
-          example: Example ipv4addr
-          type: string
-        ipv6addr:
-          $ref: '#/components/schemas/RecordPtr_ipv6addr'
+          $ref: '#/components/schemas/RecordPtr_ipv4addr'
         func_call:
           $ref: '#/components/schemas/FuncCall'
+        ipv6addr:
+          $ref: '#/components/schemas/RecordPtr_ipv6addr'
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
           example: 1
@@ -21411,6 +21625,7 @@ components:
             \ bit indicates \"secure entry point property\". If it is not zero, the\
             \ key is a key signing key (KSK type). Otherwise, the key type is ZSK."
           example: 1
+          format: int64
           readOnly: true
           type: integer
         key_tag:
@@ -34754,6 +34969,26 @@ components:
           $ref: '#/components/schemas/RecordTxt'
       title: UpdateRecordTxtResponseAsObject
       type: object
+    RecordPtr_ipv4addr_oneOf:
+      description: "record:ptr: The IPv4 Address of the record."
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+      type: object
+    RecordPtr_ipv4addr:
+      description: The IPv4 Address of the record.
+      oneOf:
+      - description: "record:ptr: The IPv4 Address of the record."
+        type: string
+      - $ref: '#/components/schemas/RecordPtr_ipv4addr_oneOf'
     RecordPtr_ipv6addr_oneOf:
       description: "record:ptr: The IPv6 Address of the record."
       properties:
@@ -34932,7 +35167,7 @@ components:
             device_vendor: Example device_vendor
             v_entity_type: Example v_entity_type
           ddns_protected: false
-          ipv4addr: Example ipv4addr
+          ipv4addr: RecordPtr_ipv4addr
           ttl: 1
           dns_name: Example dns_name
           ms_ad_user_data:
@@ -35104,7 +35339,7 @@ components:
             device_vendor: Example device_vendor
             v_entity_type: Example v_entity_type
           ddns_protected: false
-          ipv4addr: Example ipv4addr
+          ipv4addr: RecordPtr_ipv4addr
           ttl: 1
           dns_name: Example dns_name
           ms_ad_user_data:

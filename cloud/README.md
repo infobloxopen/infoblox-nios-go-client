@@ -79,39 +79,39 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*Awsrte53taskgroupAPI* | [**Get**](docs/Awsrte53taskgroupAPI.md#get) | **Get** /awsrte53taskgroup | Retrieve awsrte53taskgroup objects
-*Awsrte53taskgroupAPI* | [**Post**](docs/Awsrte53taskgroupAPI.md#post) | **Post** /awsrte53taskgroup | Create a awsrte53taskgroup object
-*Awsrte53taskgroupAPI* | [**ReferenceDelete**](docs/Awsrte53taskgroupAPI.md#referencedelete) | **Delete** /awsrte53taskgroup/{reference} | Delete a awsrte53taskgroup object
-*Awsrte53taskgroupAPI* | [**ReferenceGet**](docs/Awsrte53taskgroupAPI.md#referenceget) | **Get** /awsrte53taskgroup/{reference} | Get a specific awsrte53taskgroup object
-*Awsrte53taskgroupAPI* | [**ReferencePut**](docs/Awsrte53taskgroupAPI.md#referenceput) | **Put** /awsrte53taskgroup/{reference} | Update a awsrte53taskgroup object
-*AwsuserAPI* | [**Get**](docs/AwsuserAPI.md#get) | **Get** /awsuser | Retrieve awsuser objects
-*AwsuserAPI* | [**Post**](docs/AwsuserAPI.md#post) | **Post** /awsuser | Create a awsuser object
-*AwsuserAPI* | [**ReferenceDelete**](docs/AwsuserAPI.md#referencedelete) | **Delete** /awsuser/{reference} | Delete a awsuser object
-*AwsuserAPI* | [**ReferenceGet**](docs/AwsuserAPI.md#referenceget) | **Get** /awsuser/{reference} | Get a specific awsuser object
-*AwsuserAPI* | [**ReferencePut**](docs/AwsuserAPI.md#referenceput) | **Put** /awsuser/{reference} | Update a awsuser object
-*AzurednstaskgroupAPI* | [**Get**](docs/AzurednstaskgroupAPI.md#get) | **Get** /azurednstaskgroup | Retrieve azurednstaskgroup objects
-*AzurednstaskgroupAPI* | [**Post**](docs/AzurednstaskgroupAPI.md#post) | **Post** /azurednstaskgroup | Create a azurednstaskgroup object
-*AzurednstaskgroupAPI* | [**ReferenceDelete**](docs/AzurednstaskgroupAPI.md#referencedelete) | **Delete** /azurednstaskgroup/{reference} | Delete a azurednstaskgroup object
-*AzurednstaskgroupAPI* | [**ReferenceGet**](docs/AzurednstaskgroupAPI.md#referenceget) | **Get** /azurednstaskgroup/{reference} | Get a specific azurednstaskgroup object
-*AzurednstaskgroupAPI* | [**ReferencePut**](docs/AzurednstaskgroupAPI.md#referenceput) | **Put** /azurednstaskgroup/{reference} | Update a azurednstaskgroup object
-*AzureuserAPI* | [**Get**](docs/AzureuserAPI.md#get) | **Get** /azureuser | Retrieve azureuser objects
-*AzureuserAPI* | [**Post**](docs/AzureuserAPI.md#post) | **Post** /azureuser | Create a azureuser object
-*AzureuserAPI* | [**ReferenceDelete**](docs/AzureuserAPI.md#referencedelete) | **Delete** /azureuser/{reference} | Delete a azureuser object
-*AzureuserAPI* | [**ReferenceGet**](docs/AzureuserAPI.md#referenceget) | **Get** /azureuser/{reference} | Get a specific azureuser object
-*AzureuserAPI* | [**ReferencePut**](docs/AzureuserAPI.md#referenceput) | **Put** /azureuser/{reference} | Update a azureuser object
-*GcpdnstaskgroupAPI* | [**Get**](docs/GcpdnstaskgroupAPI.md#get) | **Get** /gcpdnstaskgroup | Retrieve gcpdnstaskgroup objects
-*GcpdnstaskgroupAPI* | [**Post**](docs/GcpdnstaskgroupAPI.md#post) | **Post** /gcpdnstaskgroup | Create a gcpdnstaskgroup object
-*GcpdnstaskgroupAPI* | [**ReferenceDelete**](docs/GcpdnstaskgroupAPI.md#referencedelete) | **Delete** /gcpdnstaskgroup/{reference} | Delete a gcpdnstaskgroup object
-*GcpdnstaskgroupAPI* | [**ReferenceGet**](docs/GcpdnstaskgroupAPI.md#referenceget) | **Get** /gcpdnstaskgroup/{reference} | Get a specific gcpdnstaskgroup object
-*GcpdnstaskgroupAPI* | [**ReferencePut**](docs/GcpdnstaskgroupAPI.md#referenceput) | **Put** /gcpdnstaskgroup/{reference} | Update a gcpdnstaskgroup object
-*GcpuserAPI* | [**Get**](docs/GcpuserAPI.md#get) | **Get** /gcpuser | Retrieve gcpuser objects
-*GcpuserAPI* | [**Post**](docs/GcpuserAPI.md#post) | **Post** /gcpuser | Create a gcpuser object
-*GcpuserAPI* | [**ReferenceDelete**](docs/GcpuserAPI.md#referencedelete) | **Delete** /gcpuser/{reference} | Delete a gcpuser object
-*GcpuserAPI* | [**ReferenceGet**](docs/GcpuserAPI.md#referenceget) | **Get** /gcpuser/{reference} | Get a specific gcpuser object
-*GcpuserAPI* | [**ReferencePut**](docs/GcpuserAPI.md#referenceput) | **Put** /gcpuser/{reference} | Update a gcpuser object
-*MultiregionsAPI* | [**Get**](docs/MultiregionsAPI.md#get) | **Get** /multiregions | Retrieve multiregions objects
-*MultiregionsAPI* | [**ReferenceGet**](docs/MultiregionsAPI.md#referenceget) | **Get** /multiregions/{reference} | Get a specific multiregions object
-*MultiregionsAPI* | [**ReferencePut**](docs/MultiregionsAPI.md#referenceput) | **Put** /multiregions/{reference} | Update a multiregions object
+*Awsrte53taskgroupAPI* | [**Create**](docs/Awsrte53taskgroupAPI.md#create) | **Post** /awsrte53taskgroup | Create a awsrte53taskgroup object
+*Awsrte53taskgroupAPI* | [**Delete**](docs/Awsrte53taskgroupAPI.md#delete) | **Delete** /awsrte53taskgroup/{reference} | Delete a awsrte53taskgroup object
+*Awsrte53taskgroupAPI* | [**List**](docs/Awsrte53taskgroupAPI.md#list) | **Get** /awsrte53taskgroup | Retrieve awsrte53taskgroup objects
+*Awsrte53taskgroupAPI* | [**Read**](docs/Awsrte53taskgroupAPI.md#read) | **Get** /awsrte53taskgroup/{reference} | Get a specific awsrte53taskgroup object
+*Awsrte53taskgroupAPI* | [**Update**](docs/Awsrte53taskgroupAPI.md#update) | **Put** /awsrte53taskgroup/{reference} | Update a awsrte53taskgroup object
+*AwsuserAPI* | [**Create**](docs/AwsuserAPI.md#create) | **Post** /awsuser | Create a awsuser object
+*AwsuserAPI* | [**Delete**](docs/AwsuserAPI.md#delete) | **Delete** /awsuser/{reference} | Delete a awsuser object
+*AwsuserAPI* | [**List**](docs/AwsuserAPI.md#list) | **Get** /awsuser | Retrieve awsuser objects
+*AwsuserAPI* | [**Read**](docs/AwsuserAPI.md#read) | **Get** /awsuser/{reference} | Get a specific awsuser object
+*AwsuserAPI* | [**Update**](docs/AwsuserAPI.md#update) | **Put** /awsuser/{reference} | Update a awsuser object
+*AzurednstaskgroupAPI* | [**Create**](docs/AzurednstaskgroupAPI.md#create) | **Post** /azurednstaskgroup | Create a azurednstaskgroup object
+*AzurednstaskgroupAPI* | [**Delete**](docs/AzurednstaskgroupAPI.md#delete) | **Delete** /azurednstaskgroup/{reference} | Delete a azurednstaskgroup object
+*AzurednstaskgroupAPI* | [**List**](docs/AzurednstaskgroupAPI.md#list) | **Get** /azurednstaskgroup | Retrieve azurednstaskgroup objects
+*AzurednstaskgroupAPI* | [**Read**](docs/AzurednstaskgroupAPI.md#read) | **Get** /azurednstaskgroup/{reference} | Get a specific azurednstaskgroup object
+*AzurednstaskgroupAPI* | [**Update**](docs/AzurednstaskgroupAPI.md#update) | **Put** /azurednstaskgroup/{reference} | Update a azurednstaskgroup object
+*AzureuserAPI* | [**Create**](docs/AzureuserAPI.md#create) | **Post** /azureuser | Create a azureuser object
+*AzureuserAPI* | [**Delete**](docs/AzureuserAPI.md#delete) | **Delete** /azureuser/{reference} | Delete a azureuser object
+*AzureuserAPI* | [**List**](docs/AzureuserAPI.md#list) | **Get** /azureuser | Retrieve azureuser objects
+*AzureuserAPI* | [**Read**](docs/AzureuserAPI.md#read) | **Get** /azureuser/{reference} | Get a specific azureuser object
+*AzureuserAPI* | [**Update**](docs/AzureuserAPI.md#update) | **Put** /azureuser/{reference} | Update a azureuser object
+*GcpdnstaskgroupAPI* | [**Create**](docs/GcpdnstaskgroupAPI.md#create) | **Post** /gcpdnstaskgroup | Create a gcpdnstaskgroup object
+*GcpdnstaskgroupAPI* | [**Delete**](docs/GcpdnstaskgroupAPI.md#delete) | **Delete** /gcpdnstaskgroup/{reference} | Delete a gcpdnstaskgroup object
+*GcpdnstaskgroupAPI* | [**List**](docs/GcpdnstaskgroupAPI.md#list) | **Get** /gcpdnstaskgroup | Retrieve gcpdnstaskgroup objects
+*GcpdnstaskgroupAPI* | [**Read**](docs/GcpdnstaskgroupAPI.md#read) | **Get** /gcpdnstaskgroup/{reference} | Get a specific gcpdnstaskgroup object
+*GcpdnstaskgroupAPI* | [**Update**](docs/GcpdnstaskgroupAPI.md#update) | **Put** /gcpdnstaskgroup/{reference} | Update a gcpdnstaskgroup object
+*GcpuserAPI* | [**Create**](docs/GcpuserAPI.md#create) | **Post** /gcpuser | Create a gcpuser object
+*GcpuserAPI* | [**Delete**](docs/GcpuserAPI.md#delete) | **Delete** /gcpuser/{reference} | Delete a gcpuser object
+*GcpuserAPI* | [**List**](docs/GcpuserAPI.md#list) | **Get** /gcpuser | Retrieve gcpuser objects
+*GcpuserAPI* | [**Read**](docs/GcpuserAPI.md#read) | **Get** /gcpuser/{reference} | Get a specific gcpuser object
+*GcpuserAPI* | [**Update**](docs/GcpuserAPI.md#update) | **Put** /gcpuser/{reference} | Update a gcpuser object
+*MultiregionsAPI* | [**List**](docs/MultiregionsAPI.md#list) | **Get** /multiregions | Retrieve multiregions objects
+*MultiregionsAPI* | [**Read**](docs/MultiregionsAPI.md#read) | **Get** /multiregions/{reference} | Get a specific multiregions object
+*MultiregionsAPI* | [**Update**](docs/MultiregionsAPI.md#update) | **Put** /multiregions/{reference} | Update a multiregions object
 
 
 ## Documentation For Models

@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DiscoverycredentialgroupGet**](DiscoveryCredentialgroupAPI.md#DiscoverycredentialgroupGet) | **Get** /discovery:credentialgroup | Retrieve discovery:credentialgroup objects
-[**DiscoverycredentialgroupPost**](DiscoveryCredentialgroupAPI.md#DiscoverycredentialgroupPost) | **Post** /discovery:credentialgroup | Create a discovery:credentialgroup object
-[**DiscoverycredentialgroupReferenceDelete**](DiscoveryCredentialgroupAPI.md#DiscoverycredentialgroupReferenceDelete) | **Delete** /discovery:credentialgroup/{reference} | Delete a discovery:credentialgroup object
-[**DiscoverycredentialgroupReferenceGet**](DiscoveryCredentialgroupAPI.md#DiscoverycredentialgroupReferenceGet) | **Get** /discovery:credentialgroup/{reference} | Get a specific discovery:credentialgroup object
-[**DiscoverycredentialgroupReferencePut**](DiscoveryCredentialgroupAPI.md#DiscoverycredentialgroupReferencePut) | **Put** /discovery:credentialgroup/{reference} | Update a discovery:credentialgroup object
+[**Create**](DiscoveryCredentialgroupAPI.md#Create) | **Post** /discovery:credentialgroup | Create a discovery:credentialgroup object
+[**Delete**](DiscoveryCredentialgroupAPI.md#Delete) | **Delete** /discovery:credentialgroup/{reference} | Delete a discovery:credentialgroup object
+[**List**](DiscoveryCredentialgroupAPI.md#List) | **Get** /discovery:credentialgroup | Retrieve discovery:credentialgroup objects
+[**Read**](DiscoveryCredentialgroupAPI.md#Read) | **Get** /discovery:credentialgroup/{reference} | Get a specific discovery:credentialgroup object
+[**Update**](DiscoveryCredentialgroupAPI.md#Update) | **Put** /discovery:credentialgroup/{reference} | Update a discovery:credentialgroup object
 
 
 
-## DiscoverycredentialgroupGet
+## Create
 
-> ListDiscoveryCredentialgroupResponse DiscoverycredentialgroupGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateDiscoveryCredentialgroupResponse Create(ctx).DiscoveryCredentialgroup(discoveryCredentialgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a discovery:credentialgroup object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/discovery"
+)
+
+func main() {
+	discoveryCredentialgroup := *discovery.NewDiscoveryCredentialgroup() // DiscoveryCredentialgroup | Object data to create
+
+	apiClient := discovery.NewAPIClient()
+	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.Create(context.Background()).DiscoveryCredentialgroup(discoveryCredentialgroup).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateDiscoveryCredentialgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**discoveryCredentialgroup** | [**DiscoveryCredentialgroup**](DiscoveryCredentialgroup.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateDiscoveryCredentialgroupResponse**](CreateDiscoveryCredentialgroupResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a discovery:credentialgroup object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/discovery"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the discovery:credentialgroup object
+
+	apiClient := discovery.NewAPIClient()
+	r, err := apiClient.DiscoveryCredentialgroupAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the discovery:credentialgroup object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListDiscoveryCredentialgroupResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:credentialgroup objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupGet(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DiscoverycredentialgroupGet`: ListDiscoveryCredentialgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupGet`: %v\n", resp)
+	// response from `List`: ListDiscoveryCredentialgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DiscoverycredentialgroupPost
+## Read
 
-> CreateDiscoveryCredentialgroupResponse DiscoverycredentialgroupPost(ctx).DiscoveryCredentialgroup(discoveryCredentialgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a discovery:credentialgroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/discovery"
-)
-
-func main() {
-	discoveryCredentialgroup := *discovery.NewDiscoveryCredentialgroup() // DiscoveryCredentialgroup | Object data to create
-
-	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupPost(context.Background()).DiscoveryCredentialgroup(discoveryCredentialgroup).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DiscoverycredentialgroupPost`: CreateDiscoveryCredentialgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**discoveryCredentialgroup** | [**DiscoveryCredentialgroup**](DiscoveryCredentialgroup.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateDiscoveryCredentialgroupResponse**](CreateDiscoveryCredentialgroupResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DiscoverycredentialgroupReferenceDelete
-
-> DiscoverycredentialgroupReferenceDelete(ctx, reference).Execute()
-
-Delete a discovery:credentialgroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/discovery"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the discovery:credentialgroup object
-
-	apiClient := discovery.NewAPIClient()
-	r, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the discovery:credentialgroup object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DiscoverycredentialgroupReferenceGet
-
-> GetDiscoveryCredentialgroupResponse DiscoverycredentialgroupReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoveryCredentialgroupResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:credentialgroup object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:credentialgroup object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DiscoverycredentialgroupReferenceGet`: GetDiscoveryCredentialgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDiscoveryCredentialgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DiscoverycredentialgroupReferencePut
+## Update
 
-> UpdateDiscoveryCredentialgroupResponse DiscoverycredentialgroupReferencePut(ctx, reference).DiscoveryCredentialgroup(discoveryCredentialgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDiscoveryCredentialgroupResponse Update(ctx, reference).DiscoveryCredentialgroup(discoveryCredentialgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a discovery:credentialgroup object
 
@@ -318,13 +318,13 @@ func main() {
 	discoveryCredentialgroup := *discovery.NewDiscoveryCredentialgroup() // DiscoveryCredentialgroup | Object data to update
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferencePut(context.Background(), reference).DiscoveryCredentialgroup(discoveryCredentialgroup).Execute()
+	resp, r, err := apiClient.DiscoveryCredentialgroupAPI.Update(context.Background(), reference).DiscoveryCredentialgroup(discoveryCredentialgroup).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryCredentialgroupAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DiscoverycredentialgroupReferencePut`: UpdateDiscoveryCredentialgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDiscoveryCredentialgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryCredentialgroupAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryCredentialgroupAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

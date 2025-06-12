@@ -23,249 +23,78 @@ import (
 
 type FilternacAPI interface {
 	/*
-		Get Retrieve filternac objects
-
-		Returns a list of filternac objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FilternacAPIGetRequest
-	*/
-	Get(ctx context.Context) FilternacAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListFilternacResponse
-	GetExecute(r FilternacAPIGetRequest) (*ListFilternacResponse, *http.Response, error)
-	/*
-		Post Create a filternac object
+		Create Create a filternac object
 
 		Creates a new filternac object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FilternacAPIPostRequest
+		@return FilternacAPICreateRequest
 	*/
-	Post(ctx context.Context) FilternacAPIPostRequest
+	Create(ctx context.Context) FilternacAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateFilternacResponse
-	PostExecute(r FilternacAPIPostRequest) (*CreateFilternacResponse, *http.Response, error)
+	CreateExecute(r FilternacAPICreateRequest) (*CreateFilternacResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a filternac object
+		Delete Delete a filternac object
 
 		Deletes a specific filternac object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filternac object
-		@return FilternacAPIReferenceDeleteRequest
+		@return FilternacAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) FilternacAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) FilternacAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r FilternacAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r FilternacAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific filternac object
+		List Retrieve filternac objects
+
+		Returns a list of filternac objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return FilternacAPIListRequest
+	*/
+	List(ctx context.Context) FilternacAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListFilternacResponse
+	ListExecute(r FilternacAPIListRequest) (*ListFilternacResponse, *http.Response, error)
+	/*
+		Read Get a specific filternac object
 
 		Returns a specific filternac object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filternac object
-		@return FilternacAPIReferenceGetRequest
+		@return FilternacAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) FilternacAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) FilternacAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetFilternacResponse
-	ReferenceGetExecute(r FilternacAPIReferenceGetRequest) (*GetFilternacResponse, *http.Response, error)
+	ReadExecute(r FilternacAPIReadRequest) (*GetFilternacResponse, *http.Response, error)
 	/*
-		ReferencePut Update a filternac object
+		Update Update a filternac object
 
 		Updates a specific filternac object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filternac object
-		@return FilternacAPIReferencePutRequest
+		@return FilternacAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) FilternacAPIReferencePutRequest
+	Update(ctx context.Context, reference string) FilternacAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateFilternacResponse
-	ReferencePutExecute(r FilternacAPIReferencePutRequest) (*UpdateFilternacResponse, *http.Response, error)
+	UpdateExecute(r FilternacAPIUpdateRequest) (*UpdateFilternacResponse, *http.Response, error)
 }
 
 // FilternacAPIService FilternacAPI service
 type FilternacAPIService internal.Service
 
-type FilternacAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     FilternacAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r FilternacAPIGetRequest) ReturnFields(returnFields string) FilternacAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilternacAPIGetRequest) ReturnFields2(returnFields2 string) FilternacAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r FilternacAPIGetRequest) MaxResults(maxResults int32) FilternacAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r FilternacAPIGetRequest) ReturnAsObject(returnAsObject int32) FilternacAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r FilternacAPIGetRequest) Paging(paging int32) FilternacAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r FilternacAPIGetRequest) PageId(pageId string) FilternacAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r FilternacAPIGetRequest) Filters(filters map[string]interface{}) FilternacAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r FilternacAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) FilternacAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r FilternacAPIGetRequest) Execute() (*ListFilternacResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve filternac objects
-
-Returns a list of filternac objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FilternacAPIGetRequest
-*/
-func (a *FilternacAPIService) Get(ctx context.Context) FilternacAPIGetRequest {
-	return FilternacAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListFilternacResponse
-func (a *FilternacAPIService) GetExecute(r FilternacAPIGetRequest) (*ListFilternacResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListFilternacResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilternacAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/filternac"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type FilternacAPIPostRequest struct {
+type FilternacAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     FilternacAPI
 	filternac      *Filternac
@@ -275,43 +104,43 @@ type FilternacAPIPostRequest struct {
 }
 
 // Object data to create
-func (r FilternacAPIPostRequest) Filternac(filternac Filternac) FilternacAPIPostRequest {
+func (r FilternacAPICreateRequest) Filternac(filternac Filternac) FilternacAPICreateRequest {
 	r.filternac = &filternac
 	return r
 }
 
 // Enter the field names followed by comma
-func (r FilternacAPIPostRequest) ReturnFields(returnFields string) FilternacAPIPostRequest {
+func (r FilternacAPICreateRequest) ReturnFields(returnFields string) FilternacAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilternacAPIPostRequest) ReturnFields2(returnFields2 string) FilternacAPIPostRequest {
+func (r FilternacAPICreateRequest) ReturnFields2(returnFields2 string) FilternacAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilternacAPIPostRequest) ReturnAsObject(returnAsObject int32) FilternacAPIPostRequest {
+func (r FilternacAPICreateRequest) ReturnAsObject(returnAsObject int32) FilternacAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FilternacAPIPostRequest) Execute() (*CreateFilternacResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r FilternacAPICreateRequest) Execute() (*CreateFilternacResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a filternac object
+Create Create a filternac object
 
 Creates a new filternac object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FilternacAPIPostRequest
+	@return FilternacAPICreateRequest
 */
-func (a *FilternacAPIService) Post(ctx context.Context) FilternacAPIPostRequest {
-	return FilternacAPIPostRequest{
+func (a *FilternacAPIService) Create(ctx context.Context) FilternacAPICreateRequest {
+	return FilternacAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *FilternacAPIService) Post(ctx context.Context) FilternacAPIPostRequest 
 // Execute executes the request
 //
 //	@return CreateFilternacResponse
-func (a *FilternacAPIService) PostExecute(r FilternacAPIPostRequest) (*CreateFilternacResponse, *http.Response, error) {
+func (a *FilternacAPIService) CreateExecute(r FilternacAPICreateRequest) (*CreateFilternacResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *FilternacAPIService) PostExecute(r FilternacAPIPostRequest) (*CreateFil
 		localVarReturnValue *CreateFilternacResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilternacAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilternacAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *FilternacAPIService) PostExecute(r FilternacAPIPostRequest) (*CreateFil
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FilternacAPIReferenceDeleteRequest struct {
+type FilternacAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService FilternacAPI
 	reference  string
 }
 
-func (r FilternacAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r FilternacAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a filternac object
+Delete Delete a filternac object
 
 Deletes a specific filternac object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the filternac object
-	@return FilternacAPIReferenceDeleteRequest
+	@return FilternacAPIDeleteRequest
 */
-func (a *FilternacAPIService) ReferenceDelete(ctx context.Context, reference string) FilternacAPIReferenceDeleteRequest {
-	return FilternacAPIReferenceDeleteRequest{
+func (a *FilternacAPIService) Delete(ctx context.Context, reference string) FilternacAPIDeleteRequest {
+	return FilternacAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *FilternacAPIService) ReferenceDelete(ctx context.Context, reference str
 }
 
 // Execute executes the request
-func (a *FilternacAPIService) ReferenceDeleteExecute(r FilternacAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *FilternacAPIService) DeleteExecute(r FilternacAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilternacAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilternacAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *FilternacAPIService) ReferenceDeleteExecute(r FilternacAPIReferenceDele
 	return localVarHTTPResponse, nil
 }
 
-type FilternacAPIReferenceGetRequest struct {
+type FilternacAPIListRequest struct {
+	ctx            context.Context
+	ApiService     FilternacAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r FilternacAPIListRequest) ReturnFields(returnFields string) FilternacAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r FilternacAPIListRequest) ReturnFields2(returnFields2 string) FilternacAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r FilternacAPIListRequest) MaxResults(maxResults int32) FilternacAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r FilternacAPIListRequest) ReturnAsObject(returnAsObject int32) FilternacAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r FilternacAPIListRequest) Paging(paging int32) FilternacAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r FilternacAPIListRequest) PageId(pageId string) FilternacAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r FilternacAPIListRequest) Filters(filters map[string]interface{}) FilternacAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r FilternacAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) FilternacAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r FilternacAPIListRequest) Execute() (*ListFilternacResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve filternac objects
+
+Returns a list of filternac objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return FilternacAPIListRequest
+*/
+func (a *FilternacAPIService) List(ctx context.Context) FilternacAPIListRequest {
+	return FilternacAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListFilternacResponse
+func (a *FilternacAPIService) ListExecute(r FilternacAPIListRequest) (*ListFilternacResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListFilternacResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilternacAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/filternac"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type FilternacAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     FilternacAPI
 	reference      string
@@ -511,38 +511,38 @@ type FilternacAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r FilternacAPIReferenceGetRequest) ReturnFields(returnFields string) FilternacAPIReferenceGetRequest {
+func (r FilternacAPIReadRequest) ReturnFields(returnFields string) FilternacAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilternacAPIReferenceGetRequest) ReturnFields2(returnFields2 string) FilternacAPIReferenceGetRequest {
+func (r FilternacAPIReadRequest) ReturnFields2(returnFields2 string) FilternacAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilternacAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) FilternacAPIReferenceGetRequest {
+func (r FilternacAPIReadRequest) ReturnAsObject(returnAsObject int32) FilternacAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FilternacAPIReferenceGetRequest) Execute() (*GetFilternacResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r FilternacAPIReadRequest) Execute() (*GetFilternacResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific filternac object
+Read Get a specific filternac object
 
 Returns a specific filternac object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the filternac object
-	@return FilternacAPIReferenceGetRequest
+	@return FilternacAPIReadRequest
 */
-func (a *FilternacAPIService) ReferenceGet(ctx context.Context, reference string) FilternacAPIReferenceGetRequest {
-	return FilternacAPIReferenceGetRequest{
+func (a *FilternacAPIService) Read(ctx context.Context, reference string) FilternacAPIReadRequest {
+	return FilternacAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *FilternacAPIService) ReferenceGet(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return GetFilternacResponse
-func (a *FilternacAPIService) ReferenceGetExecute(r FilternacAPIReferenceGetRequest) (*GetFilternacResponse, *http.Response, error) {
+func (a *FilternacAPIService) ReadExecute(r FilternacAPIReadRequest) (*GetFilternacResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *FilternacAPIService) ReferenceGetExecute(r FilternacAPIReferenceGetRequ
 		localVarReturnValue *GetFilternacResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilternacAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilternacAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *FilternacAPIService) ReferenceGetExecute(r FilternacAPIReferenceGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FilternacAPIReferencePutRequest struct {
+type FilternacAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     FilternacAPI
 	reference      string
@@ -639,44 +639,44 @@ type FilternacAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r FilternacAPIReferencePutRequest) Filternac(filternac Filternac) FilternacAPIReferencePutRequest {
+func (r FilternacAPIUpdateRequest) Filternac(filternac Filternac) FilternacAPIUpdateRequest {
 	r.filternac = &filternac
 	return r
 }
 
 // Enter the field names followed by comma
-func (r FilternacAPIReferencePutRequest) ReturnFields(returnFields string) FilternacAPIReferencePutRequest {
+func (r FilternacAPIUpdateRequest) ReturnFields(returnFields string) FilternacAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilternacAPIReferencePutRequest) ReturnFields2(returnFields2 string) FilternacAPIReferencePutRequest {
+func (r FilternacAPIUpdateRequest) ReturnFields2(returnFields2 string) FilternacAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilternacAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) FilternacAPIReferencePutRequest {
+func (r FilternacAPIUpdateRequest) ReturnAsObject(returnAsObject int32) FilternacAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FilternacAPIReferencePutRequest) Execute() (*UpdateFilternacResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r FilternacAPIUpdateRequest) Execute() (*UpdateFilternacResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a filternac object
+Update Update a filternac object
 
 Updates a specific filternac object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the filternac object
-	@return FilternacAPIReferencePutRequest
+	@return FilternacAPIUpdateRequest
 */
-func (a *FilternacAPIService) ReferencePut(ctx context.Context, reference string) FilternacAPIReferencePutRequest {
-	return FilternacAPIReferencePutRequest{
+func (a *FilternacAPIService) Update(ctx context.Context, reference string) FilternacAPIUpdateRequest {
+	return FilternacAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *FilternacAPIService) ReferencePut(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return UpdateFilternacResponse
-func (a *FilternacAPIService) ReferencePutExecute(r FilternacAPIReferencePutRequest) (*UpdateFilternacResponse, *http.Response, error) {
+func (a *FilternacAPIService) UpdateExecute(r FilternacAPIUpdateRequest) (*UpdateFilternacResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *FilternacAPIService) ReferencePutExecute(r FilternacAPIReferencePutRequ
 		localVarReturnValue *UpdateFilternacResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilternacAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilternacAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -23,78 +23,302 @@ import (
 
 type GcpdnstaskgroupAPI interface {
 	/*
-		Get Retrieve gcpdnstaskgroup objects
-
-		Returns a list of gcpdnstaskgroup objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GcpdnstaskgroupAPIGetRequest
-	*/
-	Get(ctx context.Context) GcpdnstaskgroupAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListGcpdnstaskgroupResponse
-	GetExecute(r GcpdnstaskgroupAPIGetRequest) (*ListGcpdnstaskgroupResponse, *http.Response, error)
-	/*
-		Post Create a gcpdnstaskgroup object
+		Create Create a gcpdnstaskgroup object
 
 		Creates a new gcpdnstaskgroup object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GcpdnstaskgroupAPIPostRequest
+		@return GcpdnstaskgroupAPICreateRequest
 	*/
-	Post(ctx context.Context) GcpdnstaskgroupAPIPostRequest
+	Create(ctx context.Context) GcpdnstaskgroupAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateGcpdnstaskgroupResponse
-	PostExecute(r GcpdnstaskgroupAPIPostRequest) (*CreateGcpdnstaskgroupResponse, *http.Response, error)
+	CreateExecute(r GcpdnstaskgroupAPICreateRequest) (*CreateGcpdnstaskgroupResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a gcpdnstaskgroup object
+		Delete Delete a gcpdnstaskgroup object
 
 		Deletes a specific gcpdnstaskgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gcpdnstaskgroup object
-		@return GcpdnstaskgroupAPIReferenceDeleteRequest
+		@return GcpdnstaskgroupAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) GcpdnstaskgroupAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) GcpdnstaskgroupAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r GcpdnstaskgroupAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r GcpdnstaskgroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific gcpdnstaskgroup object
+		List Retrieve gcpdnstaskgroup objects
+
+		Returns a list of gcpdnstaskgroup objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return GcpdnstaskgroupAPIListRequest
+	*/
+	List(ctx context.Context) GcpdnstaskgroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListGcpdnstaskgroupResponse
+	ListExecute(r GcpdnstaskgroupAPIListRequest) (*ListGcpdnstaskgroupResponse, *http.Response, error)
+	/*
+		Read Get a specific gcpdnstaskgroup object
 
 		Returns a specific gcpdnstaskgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gcpdnstaskgroup object
-		@return GcpdnstaskgroupAPIReferenceGetRequest
+		@return GcpdnstaskgroupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) GcpdnstaskgroupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) GcpdnstaskgroupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGcpdnstaskgroupResponse
-	ReferenceGetExecute(r GcpdnstaskgroupAPIReferenceGetRequest) (*GetGcpdnstaskgroupResponse, *http.Response, error)
+	ReadExecute(r GcpdnstaskgroupAPIReadRequest) (*GetGcpdnstaskgroupResponse, *http.Response, error)
 	/*
-		ReferencePut Update a gcpdnstaskgroup object
+		Update Update a gcpdnstaskgroup object
 
 		Updates a specific gcpdnstaskgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gcpdnstaskgroup object
-		@return GcpdnstaskgroupAPIReferencePutRequest
+		@return GcpdnstaskgroupAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) GcpdnstaskgroupAPIReferencePutRequest
+	Update(ctx context.Context, reference string) GcpdnstaskgroupAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGcpdnstaskgroupResponse
-	ReferencePutExecute(r GcpdnstaskgroupAPIReferencePutRequest) (*UpdateGcpdnstaskgroupResponse, *http.Response, error)
+	UpdateExecute(r GcpdnstaskgroupAPIUpdateRequest) (*UpdateGcpdnstaskgroupResponse, *http.Response, error)
 }
 
 // GcpdnstaskgroupAPIService GcpdnstaskgroupAPI service
 type GcpdnstaskgroupAPIService internal.Service
 
-type GcpdnstaskgroupAPIGetRequest struct {
+type GcpdnstaskgroupAPICreateRequest struct {
+	ctx             context.Context
+	ApiService      GcpdnstaskgroupAPI
+	gcpdnstaskgroup *Gcpdnstaskgroup
+	returnFields    *string
+	returnFields2   *string
+	returnAsObject  *int32
+}
+
+// Object data to create
+func (r GcpdnstaskgroupAPICreateRequest) Gcpdnstaskgroup(gcpdnstaskgroup Gcpdnstaskgroup) GcpdnstaskgroupAPICreateRequest {
+	r.gcpdnstaskgroup = &gcpdnstaskgroup
+	return r
+}
+
+// Enter the field names followed by comma
+func (r GcpdnstaskgroupAPICreateRequest) ReturnFields(returnFields string) GcpdnstaskgroupAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r GcpdnstaskgroupAPICreateRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r GcpdnstaskgroupAPICreateRequest) ReturnAsObject(returnAsObject int32) GcpdnstaskgroupAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r GcpdnstaskgroupAPICreateRequest) Execute() (*CreateGcpdnstaskgroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a gcpdnstaskgroup object
+
+Creates a new gcpdnstaskgroup object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return GcpdnstaskgroupAPICreateRequest
+*/
+func (a *GcpdnstaskgroupAPIService) Create(ctx context.Context) GcpdnstaskgroupAPICreateRequest {
+	return GcpdnstaskgroupAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateGcpdnstaskgroupResponse
+func (a *GcpdnstaskgroupAPIService) CreateExecute(r GcpdnstaskgroupAPICreateRequest) (*CreateGcpdnstaskgroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateGcpdnstaskgroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpdnstaskgroupAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/gcpdnstaskgroup"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.gcpdnstaskgroup == nil {
+		return localVarReturnValue, nil, internal.ReportError("gcpdnstaskgroup is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.gcpdnstaskgroup
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GcpdnstaskgroupAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService GcpdnstaskgroupAPI
+	reference  string
+}
+
+func (r GcpdnstaskgroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a gcpdnstaskgroup object
+
+Deletes a specific gcpdnstaskgroup object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the gcpdnstaskgroup object
+	@return GcpdnstaskgroupAPIDeleteRequest
+*/
+func (a *GcpdnstaskgroupAPIService) Delete(ctx context.Context, reference string) GcpdnstaskgroupAPIDeleteRequest {
+	return GcpdnstaskgroupAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *GcpdnstaskgroupAPIService) DeleteExecute(r GcpdnstaskgroupAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpdnstaskgroupAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/gcpdnstaskgroup/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type GcpdnstaskgroupAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GcpdnstaskgroupAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type GcpdnstaskgroupAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GcpdnstaskgroupAPIGetRequest) ReturnFields(returnFields string) GcpdnstaskgroupAPIGetRequest {
+func (r GcpdnstaskgroupAPIListRequest) ReturnFields(returnFields string) GcpdnstaskgroupAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpdnstaskgroupAPIGetRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPIGetRequest {
+func (r GcpdnstaskgroupAPIListRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GcpdnstaskgroupAPIGetRequest) MaxResults(maxResults int32) GcpdnstaskgroupAPIGetRequest {
+func (r GcpdnstaskgroupAPIListRequest) MaxResults(maxResults int32) GcpdnstaskgroupAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GcpdnstaskgroupAPIGetRequest) ReturnAsObject(returnAsObject int32) GcpdnstaskgroupAPIGetRequest {
+func (r GcpdnstaskgroupAPIListRequest) ReturnAsObject(returnAsObject int32) GcpdnstaskgroupAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GcpdnstaskgroupAPIGetRequest) Paging(paging int32) GcpdnstaskgroupAPIGetRequest {
+func (r GcpdnstaskgroupAPIListRequest) Paging(paging int32) GcpdnstaskgroupAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GcpdnstaskgroupAPIGetRequest) PageId(pageId string) GcpdnstaskgroupAPIGetRequest {
+func (r GcpdnstaskgroupAPIListRequest) PageId(pageId string) GcpdnstaskgroupAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GcpdnstaskgroupAPIGetRequest) Filters(filters map[string]interface{}) GcpdnstaskgroupAPIGetRequest {
+func (r GcpdnstaskgroupAPIListRequest) Filters(filters map[string]interface{}) GcpdnstaskgroupAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GcpdnstaskgroupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GcpdnstaskgroupAPIGetRequest {
+func (r GcpdnstaskgroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GcpdnstaskgroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GcpdnstaskgroupAPIGetRequest) Execute() (*ListGcpdnstaskgroupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r GcpdnstaskgroupAPIListRequest) Execute() (*ListGcpdnstaskgroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve gcpdnstaskgroup objects
+List Retrieve gcpdnstaskgroup objects
 
 Returns a list of gcpdnstaskgroup objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GcpdnstaskgroupAPIGetRequest
+	@return GcpdnstaskgroupAPIListRequest
 */
-func (a *GcpdnstaskgroupAPIService) Get(ctx context.Context) GcpdnstaskgroupAPIGetRequest {
-	return GcpdnstaskgroupAPIGetRequest{
+func (a *GcpdnstaskgroupAPIService) List(ctx context.Context) GcpdnstaskgroupAPIListRequest {
+	return GcpdnstaskgroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *GcpdnstaskgroupAPIService) Get(ctx context.Context) GcpdnstaskgroupAPIG
 // Execute executes the request
 //
 //	@return ListGcpdnstaskgroupResponse
-func (a *GcpdnstaskgroupAPIService) GetExecute(r GcpdnstaskgroupAPIGetRequest) (*ListGcpdnstaskgroupResponse, *http.Response, error) {
+func (a *GcpdnstaskgroupAPIService) ListExecute(r GcpdnstaskgroupAPIListRequest) (*ListGcpdnstaskgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *GcpdnstaskgroupAPIService) GetExecute(r GcpdnstaskgroupAPIGetRequest) (
 		localVarReturnValue *ListGcpdnstaskgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpdnstaskgroupAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpdnstaskgroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *GcpdnstaskgroupAPIService) GetExecute(r GcpdnstaskgroupAPIGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GcpdnstaskgroupAPIPostRequest struct {
-	ctx             context.Context
-	ApiService      GcpdnstaskgroupAPI
-	gcpdnstaskgroup *Gcpdnstaskgroup
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
-}
-
-// Object data to create
-func (r GcpdnstaskgroupAPIPostRequest) Gcpdnstaskgroup(gcpdnstaskgroup Gcpdnstaskgroup) GcpdnstaskgroupAPIPostRequest {
-	r.gcpdnstaskgroup = &gcpdnstaskgroup
-	return r
-}
-
-// Enter the field names followed by comma
-func (r GcpdnstaskgroupAPIPostRequest) ReturnFields(returnFields string) GcpdnstaskgroupAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpdnstaskgroupAPIPostRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r GcpdnstaskgroupAPIPostRequest) ReturnAsObject(returnAsObject int32) GcpdnstaskgroupAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r GcpdnstaskgroupAPIPostRequest) Execute() (*CreateGcpdnstaskgroupResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a gcpdnstaskgroup object
-
-Creates a new gcpdnstaskgroup object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GcpdnstaskgroupAPIPostRequest
-*/
-func (a *GcpdnstaskgroupAPIService) Post(ctx context.Context) GcpdnstaskgroupAPIPostRequest {
-	return GcpdnstaskgroupAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateGcpdnstaskgroupResponse
-func (a *GcpdnstaskgroupAPIService) PostExecute(r GcpdnstaskgroupAPIPostRequest) (*CreateGcpdnstaskgroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateGcpdnstaskgroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpdnstaskgroupAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/gcpdnstaskgroup"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.gcpdnstaskgroup == nil {
-		return localVarReturnValue, nil, internal.ReportError("gcpdnstaskgroup is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.gcpdnstaskgroup
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GcpdnstaskgroupAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService GcpdnstaskgroupAPI
-	reference  string
-}
-
-func (r GcpdnstaskgroupAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a gcpdnstaskgroup object
-
-Deletes a specific gcpdnstaskgroup object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the gcpdnstaskgroup object
-	@return GcpdnstaskgroupAPIReferenceDeleteRequest
-*/
-func (a *GcpdnstaskgroupAPIService) ReferenceDelete(ctx context.Context, reference string) GcpdnstaskgroupAPIReferenceDeleteRequest {
-	return GcpdnstaskgroupAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *GcpdnstaskgroupAPIService) ReferenceDeleteExecute(r GcpdnstaskgroupAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpdnstaskgroupAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/gcpdnstaskgroup/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type GcpdnstaskgroupAPIReferenceGetRequest struct {
+type GcpdnstaskgroupAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GcpdnstaskgroupAPI
 	reference      string
@@ -499,38 +499,38 @@ type GcpdnstaskgroupAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GcpdnstaskgroupAPIReferenceGetRequest) ReturnFields(returnFields string) GcpdnstaskgroupAPIReferenceGetRequest {
+func (r GcpdnstaskgroupAPIReadRequest) ReturnFields(returnFields string) GcpdnstaskgroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpdnstaskgroupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPIReferenceGetRequest {
+func (r GcpdnstaskgroupAPIReadRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GcpdnstaskgroupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) GcpdnstaskgroupAPIReferenceGetRequest {
+func (r GcpdnstaskgroupAPIReadRequest) ReturnAsObject(returnAsObject int32) GcpdnstaskgroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GcpdnstaskgroupAPIReferenceGetRequest) Execute() (*GetGcpdnstaskgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r GcpdnstaskgroupAPIReadRequest) Execute() (*GetGcpdnstaskgroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific gcpdnstaskgroup object
+Read Get a specific gcpdnstaskgroup object
 
 Returns a specific gcpdnstaskgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the gcpdnstaskgroup object
-	@return GcpdnstaskgroupAPIReferenceGetRequest
+	@return GcpdnstaskgroupAPIReadRequest
 */
-func (a *GcpdnstaskgroupAPIService) ReferenceGet(ctx context.Context, reference string) GcpdnstaskgroupAPIReferenceGetRequest {
-	return GcpdnstaskgroupAPIReferenceGetRequest{
+func (a *GcpdnstaskgroupAPIService) Read(ctx context.Context, reference string) GcpdnstaskgroupAPIReadRequest {
+	return GcpdnstaskgroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *GcpdnstaskgroupAPIService) ReferenceGet(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return GetGcpdnstaskgroupResponse
-func (a *GcpdnstaskgroupAPIService) ReferenceGetExecute(r GcpdnstaskgroupAPIReferenceGetRequest) (*GetGcpdnstaskgroupResponse, *http.Response, error) {
+func (a *GcpdnstaskgroupAPIService) ReadExecute(r GcpdnstaskgroupAPIReadRequest) (*GetGcpdnstaskgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *GcpdnstaskgroupAPIService) ReferenceGetExecute(r GcpdnstaskgroupAPIRefe
 		localVarReturnValue *GetGcpdnstaskgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpdnstaskgroupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpdnstaskgroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *GcpdnstaskgroupAPIService) ReferenceGetExecute(r GcpdnstaskgroupAPIRefe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GcpdnstaskgroupAPIReferencePutRequest struct {
+type GcpdnstaskgroupAPIUpdateRequest struct {
 	ctx             context.Context
 	ApiService      GcpdnstaskgroupAPI
 	reference       string
@@ -627,44 +627,44 @@ type GcpdnstaskgroupAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r GcpdnstaskgroupAPIReferencePutRequest) Gcpdnstaskgroup(gcpdnstaskgroup Gcpdnstaskgroup) GcpdnstaskgroupAPIReferencePutRequest {
+func (r GcpdnstaskgroupAPIUpdateRequest) Gcpdnstaskgroup(gcpdnstaskgroup Gcpdnstaskgroup) GcpdnstaskgroupAPIUpdateRequest {
 	r.gcpdnstaskgroup = &gcpdnstaskgroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GcpdnstaskgroupAPIReferencePutRequest) ReturnFields(returnFields string) GcpdnstaskgroupAPIReferencePutRequest {
+func (r GcpdnstaskgroupAPIUpdateRequest) ReturnFields(returnFields string) GcpdnstaskgroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpdnstaskgroupAPIReferencePutRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPIReferencePutRequest {
+func (r GcpdnstaskgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GcpdnstaskgroupAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) GcpdnstaskgroupAPIReferencePutRequest {
+func (r GcpdnstaskgroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GcpdnstaskgroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GcpdnstaskgroupAPIReferencePutRequest) Execute() (*UpdateGcpdnstaskgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r GcpdnstaskgroupAPIUpdateRequest) Execute() (*UpdateGcpdnstaskgroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a gcpdnstaskgroup object
+Update Update a gcpdnstaskgroup object
 
 Updates a specific gcpdnstaskgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the gcpdnstaskgroup object
-	@return GcpdnstaskgroupAPIReferencePutRequest
+	@return GcpdnstaskgroupAPIUpdateRequest
 */
-func (a *GcpdnstaskgroupAPIService) ReferencePut(ctx context.Context, reference string) GcpdnstaskgroupAPIReferencePutRequest {
-	return GcpdnstaskgroupAPIReferencePutRequest{
+func (a *GcpdnstaskgroupAPIService) Update(ctx context.Context, reference string) GcpdnstaskgroupAPIUpdateRequest {
+	return GcpdnstaskgroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *GcpdnstaskgroupAPIService) ReferencePut(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return UpdateGcpdnstaskgroupResponse
-func (a *GcpdnstaskgroupAPIService) ReferencePutExecute(r GcpdnstaskgroupAPIReferencePutRequest) (*UpdateGcpdnstaskgroupResponse, *http.Response, error) {
+func (a *GcpdnstaskgroupAPIService) UpdateExecute(r GcpdnstaskgroupAPIUpdateRequest) (*UpdateGcpdnstaskgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *GcpdnstaskgroupAPIService) ReferencePutExecute(r GcpdnstaskgroupAPIRefe
 		localVarReturnValue *UpdateGcpdnstaskgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpdnstaskgroupAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpdnstaskgroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

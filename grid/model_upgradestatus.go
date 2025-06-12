@@ -88,17 +88,17 @@ type Upgradestatus struct {
 	// The list of upgrade process steps.
 	Steps []UpgradestatusSteps `json:"steps,omitempty"`
 	// The number of steps done.
-	StepsCompleted *int32 `json:"steps_completed,omitempty"`
+	StepsCompleted *int64 `json:"steps_completed,omitempty"`
 	// Total number steps in the upgrade process.
-	StepsTotal *int32 `json:"steps_total,omitempty"`
+	StepsTotal *int64 `json:"steps_total,omitempty"`
 	// The type of subelements to be requested. If 'type' is 'GROUP', or 'VNODE', then 'upgrade_group' or 'member' should have proper values for an operation to return data specific for the values passed. Otherwise, overall data is returned for every group or physical node.
 	SubelementType *string `json:"subelement_type,omitempty"`
 	// Number of subelements that have accomplished an upgrade.
-	SubelementsCompleted *int32 `json:"subelements_completed,omitempty"`
+	SubelementsCompleted *int64 `json:"subelements_completed,omitempty"`
 	// The upgrade process information of subelements.
 	SubelementsStatus []string `json:"subelements_status,omitempty"`
 	// Number of subelements number in a certain group, virtual node, or the Grid.
-	SubelementsTotal *int32 `json:"subelements_total,omitempty"`
+	SubelementsTotal *int64 `json:"subelements_total,omitempty"`
 	// The type of upper level elements to be requested.
 	Type *string `json:"type,omitempty"`
 	// Upgrade group that participates in the upgrade process.
@@ -1221,9 +1221,9 @@ func (o *Upgradestatus) SetSteps(v []UpgradestatusSteps) {
 }
 
 // GetStepsCompleted returns the StepsCompleted field value if set, zero value otherwise.
-func (o *Upgradestatus) GetStepsCompleted() int32 {
+func (o *Upgradestatus) GetStepsCompleted() int64 {
 	if o == nil || IsNil(o.StepsCompleted) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.StepsCompleted
@@ -1231,7 +1231,7 @@ func (o *Upgradestatus) GetStepsCompleted() int32 {
 
 // GetStepsCompletedOk returns a tuple with the StepsCompleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Upgradestatus) GetStepsCompletedOk() (*int32, bool) {
+func (o *Upgradestatus) GetStepsCompletedOk() (*int64, bool) {
 	if o == nil || IsNil(o.StepsCompleted) {
 		return nil, false
 	}
@@ -1247,15 +1247,15 @@ func (o *Upgradestatus) HasStepsCompleted() bool {
 	return false
 }
 
-// SetStepsCompleted gets a reference to the given int32 and assigns it to the StepsCompleted field.
-func (o *Upgradestatus) SetStepsCompleted(v int32) {
+// SetStepsCompleted gets a reference to the given int64 and assigns it to the StepsCompleted field.
+func (o *Upgradestatus) SetStepsCompleted(v int64) {
 	o.StepsCompleted = &v
 }
 
 // GetStepsTotal returns the StepsTotal field value if set, zero value otherwise.
-func (o *Upgradestatus) GetStepsTotal() int32 {
+func (o *Upgradestatus) GetStepsTotal() int64 {
 	if o == nil || IsNil(o.StepsTotal) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.StepsTotal
@@ -1263,7 +1263,7 @@ func (o *Upgradestatus) GetStepsTotal() int32 {
 
 // GetStepsTotalOk returns a tuple with the StepsTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Upgradestatus) GetStepsTotalOk() (*int32, bool) {
+func (o *Upgradestatus) GetStepsTotalOk() (*int64, bool) {
 	if o == nil || IsNil(o.StepsTotal) {
 		return nil, false
 	}
@@ -1279,8 +1279,8 @@ func (o *Upgradestatus) HasStepsTotal() bool {
 	return false
 }
 
-// SetStepsTotal gets a reference to the given int32 and assigns it to the StepsTotal field.
-func (o *Upgradestatus) SetStepsTotal(v int32) {
+// SetStepsTotal gets a reference to the given int64 and assigns it to the StepsTotal field.
+func (o *Upgradestatus) SetStepsTotal(v int64) {
 	o.StepsTotal = &v
 }
 
@@ -1317,9 +1317,9 @@ func (o *Upgradestatus) SetSubelementType(v string) {
 }
 
 // GetSubelementsCompleted returns the SubelementsCompleted field value if set, zero value otherwise.
-func (o *Upgradestatus) GetSubelementsCompleted() int32 {
+func (o *Upgradestatus) GetSubelementsCompleted() int64 {
 	if o == nil || IsNil(o.SubelementsCompleted) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SubelementsCompleted
@@ -1327,7 +1327,7 @@ func (o *Upgradestatus) GetSubelementsCompleted() int32 {
 
 // GetSubelementsCompletedOk returns a tuple with the SubelementsCompleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Upgradestatus) GetSubelementsCompletedOk() (*int32, bool) {
+func (o *Upgradestatus) GetSubelementsCompletedOk() (*int64, bool) {
 	if o == nil || IsNil(o.SubelementsCompleted) {
 		return nil, false
 	}
@@ -1343,8 +1343,8 @@ func (o *Upgradestatus) HasSubelementsCompleted() bool {
 	return false
 }
 
-// SetSubelementsCompleted gets a reference to the given int32 and assigns it to the SubelementsCompleted field.
-func (o *Upgradestatus) SetSubelementsCompleted(v int32) {
+// SetSubelementsCompleted gets a reference to the given int64 and assigns it to the SubelementsCompleted field.
+func (o *Upgradestatus) SetSubelementsCompleted(v int64) {
 	o.SubelementsCompleted = &v
 }
 
@@ -1381,9 +1381,9 @@ func (o *Upgradestatus) SetSubelementsStatus(v []string) {
 }
 
 // GetSubelementsTotal returns the SubelementsTotal field value if set, zero value otherwise.
-func (o *Upgradestatus) GetSubelementsTotal() int32 {
+func (o *Upgradestatus) GetSubelementsTotal() int64 {
 	if o == nil || IsNil(o.SubelementsTotal) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SubelementsTotal
@@ -1391,7 +1391,7 @@ func (o *Upgradestatus) GetSubelementsTotal() int32 {
 
 // GetSubelementsTotalOk returns a tuple with the SubelementsTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Upgradestatus) GetSubelementsTotalOk() (*int32, bool) {
+func (o *Upgradestatus) GetSubelementsTotalOk() (*int64, bool) {
 	if o == nil || IsNil(o.SubelementsTotal) {
 		return nil, false
 	}
@@ -1407,8 +1407,8 @@ func (o *Upgradestatus) HasSubelementsTotal() bool {
 	return false
 }
 
-// SetSubelementsTotal gets a reference to the given int32 and assigns it to the SubelementsTotal field.
-func (o *Upgradestatus) SetSubelementsTotal(v int32) {
+// SetSubelementsTotal gets a reference to the given int64 and assigns it to the SubelementsTotal field.
+func (o *Upgradestatus) SetSubelementsTotal(v int64) {
 	o.SubelementsTotal = &v
 }
 

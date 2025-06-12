@@ -23,38 +23,38 @@ import (
 
 type RecordDnskeyAPI interface {
 	/*
-		RecorddnskeyGet Retrieve record:dnskey objects
+		List Retrieve record:dnskey objects
 
 		Returns a list of record:dnskey objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordDnskeyAPIRecorddnskeyGetRequest
+		@return RecordDnskeyAPIListRequest
 	*/
-	RecorddnskeyGet(ctx context.Context) RecordDnskeyAPIRecorddnskeyGetRequest
+	List(ctx context.Context) RecordDnskeyAPIListRequest
 
-	// RecorddnskeyGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListRecordDnskeyResponse
-	RecorddnskeyGetExecute(r RecordDnskeyAPIRecorddnskeyGetRequest) (*ListRecordDnskeyResponse, *http.Response, error)
+	ListExecute(r RecordDnskeyAPIListRequest) (*ListRecordDnskeyResponse, *http.Response, error)
 	/*
-		RecorddnskeyReferenceGet Get a specific record:dnskey object
+		Read Get a specific record:dnskey object
 
 		Returns a specific record:dnskey object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:dnskey object
-		@return RecordDnskeyAPIRecorddnskeyReferenceGetRequest
+		@return RecordDnskeyAPIReadRequest
 	*/
-	RecorddnskeyReferenceGet(ctx context.Context, reference string) RecordDnskeyAPIRecorddnskeyReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordDnskeyAPIReadRequest
 
-	// RecorddnskeyReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordDnskeyResponse
-	RecorddnskeyReferenceGetExecute(r RecordDnskeyAPIRecorddnskeyReferenceGetRequest) (*GetRecordDnskeyResponse, *http.Response, error)
+	ReadExecute(r RecordDnskeyAPIReadRequest) (*GetRecordDnskeyResponse, *http.Response, error)
 }
 
 // RecordDnskeyAPIService RecordDnskeyAPI service
 type RecordDnskeyAPIService internal.Service
 
-type RecordDnskeyAPIRecorddnskeyGetRequest struct {
+type RecordDnskeyAPIListRequest struct {
 	ctx            context.Context
 	ApiService     RecordDnskeyAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type RecordDnskeyAPIRecorddnskeyGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordDnskeyAPIRecorddnskeyGetRequest) ReturnFields(returnFields string) RecordDnskeyAPIRecorddnskeyGetRequest {
+func (r RecordDnskeyAPIListRequest) ReturnFields(returnFields string) RecordDnskeyAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDnskeyAPIRecorddnskeyGetRequest) ReturnFields2(returnFields2 string) RecordDnskeyAPIRecorddnskeyGetRequest {
+func (r RecordDnskeyAPIListRequest) ReturnFields2(returnFields2 string) RecordDnskeyAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordDnskeyAPIRecorddnskeyGetRequest) MaxResults(maxResults int32) RecordDnskeyAPIRecorddnskeyGetRequest {
+func (r RecordDnskeyAPIListRequest) MaxResults(maxResults int32) RecordDnskeyAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordDnskeyAPIRecorddnskeyGetRequest) ReturnAsObject(returnAsObject int32) RecordDnskeyAPIRecorddnskeyGetRequest {
+func (r RecordDnskeyAPIListRequest) ReturnAsObject(returnAsObject int32) RecordDnskeyAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordDnskeyAPIRecorddnskeyGetRequest) Paging(paging int32) RecordDnskeyAPIRecorddnskeyGetRequest {
+func (r RecordDnskeyAPIListRequest) Paging(paging int32) RecordDnskeyAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordDnskeyAPIRecorddnskeyGetRequest) PageId(pageId string) RecordDnskeyAPIRecorddnskeyGetRequest {
+func (r RecordDnskeyAPIListRequest) PageId(pageId string) RecordDnskeyAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordDnskeyAPIRecorddnskeyGetRequest) Filters(filters map[string]interface{}) RecordDnskeyAPIRecorddnskeyGetRequest {
+func (r RecordDnskeyAPIListRequest) Filters(filters map[string]interface{}) RecordDnskeyAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordDnskeyAPIRecorddnskeyGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordDnskeyAPIRecorddnskeyGetRequest {
+func (r RecordDnskeyAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordDnskeyAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordDnskeyAPIRecorddnskeyGetRequest) Execute() (*ListRecordDnskeyResponse, *http.Response, error) {
-	return r.ApiService.RecorddnskeyGetExecute(r)
+func (r RecordDnskeyAPIListRequest) Execute() (*ListRecordDnskeyResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RecorddnskeyGet Retrieve record:dnskey objects
+List Retrieve record:dnskey objects
 
 Returns a list of record:dnskey objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordDnskeyAPIRecorddnskeyGetRequest
+	@return RecordDnskeyAPIListRequest
 */
-func (a *RecordDnskeyAPIService) RecorddnskeyGet(ctx context.Context) RecordDnskeyAPIRecorddnskeyGetRequest {
-	return RecordDnskeyAPIRecorddnskeyGetRequest{
+func (a *RecordDnskeyAPIService) List(ctx context.Context) RecordDnskeyAPIListRequest {
+	return RecordDnskeyAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *RecordDnskeyAPIService) RecorddnskeyGet(ctx context.Context) RecordDnsk
 // Execute executes the request
 //
 //	@return ListRecordDnskeyResponse
-func (a *RecordDnskeyAPIService) RecorddnskeyGetExecute(r RecordDnskeyAPIRecorddnskeyGetRequest) (*ListRecordDnskeyResponse, *http.Response, error) {
+func (a *RecordDnskeyAPIService) ListExecute(r RecordDnskeyAPIListRequest) (*ListRecordDnskeyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *RecordDnskeyAPIService) RecorddnskeyGetExecute(r RecordDnskeyAPIRecordd
 		localVarReturnValue *ListRecordDnskeyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnskeyAPIService.RecorddnskeyGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnskeyAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *RecordDnskeyAPIService) RecorddnskeyGetExecute(r RecordDnskeyAPIRecordd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordDnskeyAPIRecorddnskeyReferenceGetRequest struct {
+type RecordDnskeyAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordDnskeyAPI
 	reference      string
@@ -235,38 +235,38 @@ type RecordDnskeyAPIRecorddnskeyReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordDnskeyAPIRecorddnskeyReferenceGetRequest) ReturnFields(returnFields string) RecordDnskeyAPIRecorddnskeyReferenceGetRequest {
+func (r RecordDnskeyAPIReadRequest) ReturnFields(returnFields string) RecordDnskeyAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDnskeyAPIRecorddnskeyReferenceGetRequest) ReturnFields2(returnFields2 string) RecordDnskeyAPIRecorddnskeyReferenceGetRequest {
+func (r RecordDnskeyAPIReadRequest) ReturnFields2(returnFields2 string) RecordDnskeyAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordDnskeyAPIRecorddnskeyReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordDnskeyAPIRecorddnskeyReferenceGetRequest {
+func (r RecordDnskeyAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordDnskeyAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordDnskeyAPIRecorddnskeyReferenceGetRequest) Execute() (*GetRecordDnskeyResponse, *http.Response, error) {
-	return r.ApiService.RecorddnskeyReferenceGetExecute(r)
+func (r RecordDnskeyAPIReadRequest) Execute() (*GetRecordDnskeyResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecorddnskeyReferenceGet Get a specific record:dnskey object
+Read Get a specific record:dnskey object
 
 Returns a specific record:dnskey object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:dnskey object
-	@return RecordDnskeyAPIRecorddnskeyReferenceGetRequest
+	@return RecordDnskeyAPIReadRequest
 */
-func (a *RecordDnskeyAPIService) RecorddnskeyReferenceGet(ctx context.Context, reference string) RecordDnskeyAPIRecorddnskeyReferenceGetRequest {
-	return RecordDnskeyAPIRecorddnskeyReferenceGetRequest{
+func (a *RecordDnskeyAPIService) Read(ctx context.Context, reference string) RecordDnskeyAPIReadRequest {
+	return RecordDnskeyAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *RecordDnskeyAPIService) RecorddnskeyReferenceGet(ctx context.Context, r
 // Execute executes the request
 //
 //	@return GetRecordDnskeyResponse
-func (a *RecordDnskeyAPIService) RecorddnskeyReferenceGetExecute(r RecordDnskeyAPIRecorddnskeyReferenceGetRequest) (*GetRecordDnskeyResponse, *http.Response, error) {
+func (a *RecordDnskeyAPIService) ReadExecute(r RecordDnskeyAPIReadRequest) (*GetRecordDnskeyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *RecordDnskeyAPIService) RecorddnskeyReferenceGetExecute(r RecordDnskeyA
 		localVarReturnValue *GetRecordDnskeyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnskeyAPIService.RecorddnskeyReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDnskeyAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

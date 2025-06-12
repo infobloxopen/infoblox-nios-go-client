@@ -23,78 +23,302 @@ import (
 
 type DtcRecordAaaaAPI interface {
 	/*
-		DtcrecordaaaaGet Retrieve dtc:record:aaaa objects
-
-		Returns a list of dtc:record:aaaa objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcRecordAaaaAPIDtcrecordaaaaGetRequest
-	*/
-	DtcrecordaaaaGet(ctx context.Context) DtcRecordAaaaAPIDtcrecordaaaaGetRequest
-
-	// DtcrecordaaaaGetExecute executes the request
-	//  @return ListDtcRecordAaaaResponse
-	DtcrecordaaaaGetExecute(r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) (*ListDtcRecordAaaaResponse, *http.Response, error)
-	/*
-		DtcrecordaaaaPost Create a dtc:record:aaaa object
+		Create Create a dtc:record:aaaa object
 
 		Creates a new dtc:record:aaaa object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcRecordAaaaAPIDtcrecordaaaaPostRequest
+		@return DtcRecordAaaaAPICreateRequest
 	*/
-	DtcrecordaaaaPost(ctx context.Context) DtcRecordAaaaAPIDtcrecordaaaaPostRequest
+	Create(ctx context.Context) DtcRecordAaaaAPICreateRequest
 
-	// DtcrecordaaaaPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDtcRecordAaaaResponse
-	DtcrecordaaaaPostExecute(r DtcRecordAaaaAPIDtcrecordaaaaPostRequest) (*CreateDtcRecordAaaaResponse, *http.Response, error)
+	CreateExecute(r DtcRecordAaaaAPICreateRequest) (*CreateDtcRecordAaaaResponse, *http.Response, error)
 	/*
-		DtcrecordaaaaReferenceDelete Delete a dtc:record:aaaa object
+		Delete Delete a dtc:record:aaaa object
 
 		Deletes a specific dtc:record:aaaa object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:record:aaaa object
-		@return DtcRecordAaaaAPIDtcrecordaaaaReferenceDeleteRequest
+		@return DtcRecordAaaaAPIDeleteRequest
 	*/
-	DtcrecordaaaaReferenceDelete(ctx context.Context, reference string) DtcRecordAaaaAPIDtcrecordaaaaReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DtcRecordAaaaAPIDeleteRequest
 
-	// DtcrecordaaaaReferenceDeleteExecute executes the request
-	DtcrecordaaaaReferenceDeleteExecute(r DtcRecordAaaaAPIDtcrecordaaaaReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DtcRecordAaaaAPIDeleteRequest) (*http.Response, error)
 	/*
-		DtcrecordaaaaReferenceGet Get a specific dtc:record:aaaa object
+		List Retrieve dtc:record:aaaa objects
+
+		Returns a list of dtc:record:aaaa objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DtcRecordAaaaAPIListRequest
+	*/
+	List(ctx context.Context) DtcRecordAaaaAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDtcRecordAaaaResponse
+	ListExecute(r DtcRecordAaaaAPIListRequest) (*ListDtcRecordAaaaResponse, *http.Response, error)
+	/*
+		Read Get a specific dtc:record:aaaa object
 
 		Returns a specific dtc:record:aaaa object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:record:aaaa object
-		@return DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest
+		@return DtcRecordAaaaAPIReadRequest
 	*/
-	DtcrecordaaaaReferenceGet(ctx context.Context, reference string) DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcRecordAaaaAPIReadRequest
 
-	// DtcrecordaaaaReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcRecordAaaaResponse
-	DtcrecordaaaaReferenceGetExecute(r DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest) (*GetDtcRecordAaaaResponse, *http.Response, error)
+	ReadExecute(r DtcRecordAaaaAPIReadRequest) (*GetDtcRecordAaaaResponse, *http.Response, error)
 	/*
-		DtcrecordaaaaReferencePut Update a dtc:record:aaaa object
+		Update Update a dtc:record:aaaa object
 
 		Updates a specific dtc:record:aaaa object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:record:aaaa object
-		@return DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest
+		@return DtcRecordAaaaAPIUpdateRequest
 	*/
-	DtcrecordaaaaReferencePut(ctx context.Context, reference string) DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest
+	Update(ctx context.Context, reference string) DtcRecordAaaaAPIUpdateRequest
 
-	// DtcrecordaaaaReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcRecordAaaaResponse
-	DtcrecordaaaaReferencePutExecute(r DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest) (*UpdateDtcRecordAaaaResponse, *http.Response, error)
+	UpdateExecute(r DtcRecordAaaaAPIUpdateRequest) (*UpdateDtcRecordAaaaResponse, *http.Response, error)
 }
 
 // DtcRecordAaaaAPIService DtcRecordAaaaAPI service
 type DtcRecordAaaaAPIService internal.Service
 
-type DtcRecordAaaaAPIDtcrecordaaaaGetRequest struct {
+type DtcRecordAaaaAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     DtcRecordAaaaAPI
+	dtcRecordAaaa  *DtcRecordAaaa
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r DtcRecordAaaaAPICreateRequest) DtcRecordAaaa(dtcRecordAaaa DtcRecordAaaa) DtcRecordAaaaAPICreateRequest {
+	r.dtcRecordAaaa = &dtcRecordAaaa
+	return r
+}
+
+// Enter the field names followed by comma
+func (r DtcRecordAaaaAPICreateRequest) ReturnFields(returnFields string) DtcRecordAaaaAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DtcRecordAaaaAPICreateRequest) ReturnFields2(returnFields2 string) DtcRecordAaaaAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DtcRecordAaaaAPICreateRequest) ReturnAsObject(returnAsObject int32) DtcRecordAaaaAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r DtcRecordAaaaAPICreateRequest) Execute() (*CreateDtcRecordAaaaResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a dtc:record:aaaa object
+
+Creates a new dtc:record:aaaa object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DtcRecordAaaaAPICreateRequest
+*/
+func (a *DtcRecordAaaaAPIService) Create(ctx context.Context) DtcRecordAaaaAPICreateRequest {
+	return DtcRecordAaaaAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateDtcRecordAaaaResponse
+func (a *DtcRecordAaaaAPIService) CreateExecute(r DtcRecordAaaaAPICreateRequest) (*CreateDtcRecordAaaaResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateDtcRecordAaaaResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordAaaaAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:record:aaaa"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.dtcRecordAaaa == nil {
+		return localVarReturnValue, nil, internal.ReportError("dtcRecordAaaa is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.dtcRecordAaaa
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DtcRecordAaaaAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DtcRecordAaaaAPI
+	reference  string
+}
+
+func (r DtcRecordAaaaAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a dtc:record:aaaa object
+
+Deletes a specific dtc:record:aaaa object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the dtc:record:aaaa object
+	@return DtcRecordAaaaAPIDeleteRequest
+*/
+func (a *DtcRecordAaaaAPIService) Delete(ctx context.Context, reference string) DtcRecordAaaaAPIDeleteRequest {
+	return DtcRecordAaaaAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DtcRecordAaaaAPIService) DeleteExecute(r DtcRecordAaaaAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordAaaaAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:record:aaaa/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DtcRecordAaaaAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DtcRecordAaaaAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type DtcRecordAaaaAPIDtcrecordaaaaGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) ReturnFields(returnFields string) DtcRecordAaaaAPIDtcrecordaaaaGetRequest {
+func (r DtcRecordAaaaAPIListRequest) ReturnFields(returnFields string) DtcRecordAaaaAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) ReturnFields2(returnFields2 string) DtcRecordAaaaAPIDtcrecordaaaaGetRequest {
+func (r DtcRecordAaaaAPIListRequest) ReturnFields2(returnFields2 string) DtcRecordAaaaAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) MaxResults(maxResults int32) DtcRecordAaaaAPIDtcrecordaaaaGetRequest {
+func (r DtcRecordAaaaAPIListRequest) MaxResults(maxResults int32) DtcRecordAaaaAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) ReturnAsObject(returnAsObject int32) DtcRecordAaaaAPIDtcrecordaaaaGetRequest {
+func (r DtcRecordAaaaAPIListRequest) ReturnAsObject(returnAsObject int32) DtcRecordAaaaAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) Paging(paging int32) DtcRecordAaaaAPIDtcrecordaaaaGetRequest {
+func (r DtcRecordAaaaAPIListRequest) Paging(paging int32) DtcRecordAaaaAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) PageId(pageId string) DtcRecordAaaaAPIDtcrecordaaaaGetRequest {
+func (r DtcRecordAaaaAPIListRequest) PageId(pageId string) DtcRecordAaaaAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) Filters(filters map[string]interface{}) DtcRecordAaaaAPIDtcrecordaaaaGetRequest {
+func (r DtcRecordAaaaAPIListRequest) Filters(filters map[string]interface{}) DtcRecordAaaaAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcRecordAaaaAPIDtcrecordaaaaGetRequest {
+func (r DtcRecordAaaaAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcRecordAaaaAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) Execute() (*ListDtcRecordAaaaResponse, *http.Response, error) {
-	return r.ApiService.DtcrecordaaaaGetExecute(r)
+func (r DtcRecordAaaaAPIListRequest) Execute() (*ListDtcRecordAaaaResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DtcrecordaaaaGet Retrieve dtc:record:aaaa objects
+List Retrieve dtc:record:aaaa objects
 
 Returns a list of dtc:record:aaaa objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcRecordAaaaAPIDtcrecordaaaaGetRequest
+	@return DtcRecordAaaaAPIListRequest
 */
-func (a *DtcRecordAaaaAPIService) DtcrecordaaaaGet(ctx context.Context) DtcRecordAaaaAPIDtcrecordaaaaGetRequest {
-	return DtcRecordAaaaAPIDtcrecordaaaaGetRequest{
+func (a *DtcRecordAaaaAPIService) List(ctx context.Context) DtcRecordAaaaAPIListRequest {
+	return DtcRecordAaaaAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *DtcRecordAaaaAPIService) DtcrecordaaaaGet(ctx context.Context) DtcRecor
 // Execute executes the request
 //
 //	@return ListDtcRecordAaaaResponse
-func (a *DtcRecordAaaaAPIService) DtcrecordaaaaGetExecute(r DtcRecordAaaaAPIDtcrecordaaaaGetRequest) (*ListDtcRecordAaaaResponse, *http.Response, error) {
+func (a *DtcRecordAaaaAPIService) ListExecute(r DtcRecordAaaaAPIListRequest) (*ListDtcRecordAaaaResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *DtcRecordAaaaAPIService) DtcrecordaaaaGetExecute(r DtcRecordAaaaAPIDtcr
 		localVarReturnValue *ListDtcRecordAaaaResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordAaaaAPIService.DtcrecordaaaaGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordAaaaAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *DtcRecordAaaaAPIService) DtcrecordaaaaGetExecute(r DtcRecordAaaaAPIDtcr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcRecordAaaaAPIDtcrecordaaaaPostRequest struct {
-	ctx            context.Context
-	ApiService     DtcRecordAaaaAPI
-	dtcRecordAaaa  *DtcRecordAaaa
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r DtcRecordAaaaAPIDtcrecordaaaaPostRequest) DtcRecordAaaa(dtcRecordAaaa DtcRecordAaaa) DtcRecordAaaaAPIDtcrecordaaaaPostRequest {
-	r.dtcRecordAaaa = &dtcRecordAaaa
-	return r
-}
-
-// Enter the field names followed by comma
-func (r DtcRecordAaaaAPIDtcrecordaaaaPostRequest) ReturnFields(returnFields string) DtcRecordAaaaAPIDtcrecordaaaaPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordAaaaAPIDtcrecordaaaaPostRequest) ReturnFields2(returnFields2 string) DtcRecordAaaaAPIDtcrecordaaaaPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DtcRecordAaaaAPIDtcrecordaaaaPostRequest) ReturnAsObject(returnAsObject int32) DtcRecordAaaaAPIDtcrecordaaaaPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DtcRecordAaaaAPIDtcrecordaaaaPostRequest) Execute() (*CreateDtcRecordAaaaResponse, *http.Response, error) {
-	return r.ApiService.DtcrecordaaaaPostExecute(r)
-}
-
-/*
-DtcrecordaaaaPost Create a dtc:record:aaaa object
-
-Creates a new dtc:record:aaaa object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcRecordAaaaAPIDtcrecordaaaaPostRequest
-*/
-func (a *DtcRecordAaaaAPIService) DtcrecordaaaaPost(ctx context.Context) DtcRecordAaaaAPIDtcrecordaaaaPostRequest {
-	return DtcRecordAaaaAPIDtcrecordaaaaPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateDtcRecordAaaaResponse
-func (a *DtcRecordAaaaAPIService) DtcrecordaaaaPostExecute(r DtcRecordAaaaAPIDtcrecordaaaaPostRequest) (*CreateDtcRecordAaaaResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateDtcRecordAaaaResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordAaaaAPIService.DtcrecordaaaaPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:record:aaaa"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.dtcRecordAaaa == nil {
-		return localVarReturnValue, nil, internal.ReportError("dtcRecordAaaa is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.dtcRecordAaaa
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DtcRecordAaaaAPIDtcrecordaaaaReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DtcRecordAaaaAPI
-	reference  string
-}
-
-func (r DtcRecordAaaaAPIDtcrecordaaaaReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DtcrecordaaaaReferenceDeleteExecute(r)
-}
-
-/*
-DtcrecordaaaaReferenceDelete Delete a dtc:record:aaaa object
-
-Deletes a specific dtc:record:aaaa object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the dtc:record:aaaa object
-	@return DtcRecordAaaaAPIDtcrecordaaaaReferenceDeleteRequest
-*/
-func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferenceDelete(ctx context.Context, reference string) DtcRecordAaaaAPIDtcrecordaaaaReferenceDeleteRequest {
-	return DtcRecordAaaaAPIDtcrecordaaaaReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferenceDeleteExecute(r DtcRecordAaaaAPIDtcrecordaaaaReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordAaaaAPIService.DtcrecordaaaaReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:record:aaaa/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest struct {
+type DtcRecordAaaaAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DtcRecordAaaaAPI
 	reference      string
@@ -499,38 +499,38 @@ type DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest) ReturnFields(returnFields string) DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest {
+func (r DtcRecordAaaaAPIReadRequest) ReturnFields(returnFields string) DtcRecordAaaaAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest) ReturnFields2(returnFields2 string) DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest {
+func (r DtcRecordAaaaAPIReadRequest) ReturnFields2(returnFields2 string) DtcRecordAaaaAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest {
+func (r DtcRecordAaaaAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcRecordAaaaAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest) Execute() (*GetDtcRecordAaaaResponse, *http.Response, error) {
-	return r.ApiService.DtcrecordaaaaReferenceGetExecute(r)
+func (r DtcRecordAaaaAPIReadRequest) Execute() (*GetDtcRecordAaaaResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtcrecordaaaaReferenceGet Get a specific dtc:record:aaaa object
+Read Get a specific dtc:record:aaaa object
 
 Returns a specific dtc:record:aaaa object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:record:aaaa object
-	@return DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest
+	@return DtcRecordAaaaAPIReadRequest
 */
-func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferenceGet(ctx context.Context, reference string) DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest {
-	return DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest{
+func (a *DtcRecordAaaaAPIService) Read(ctx context.Context, reference string) DtcRecordAaaaAPIReadRequest {
+	return DtcRecordAaaaAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferenceGet(ctx context.Context,
 // Execute executes the request
 //
 //	@return GetDtcRecordAaaaResponse
-func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferenceGetExecute(r DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest) (*GetDtcRecordAaaaResponse, *http.Response, error) {
+func (a *DtcRecordAaaaAPIService) ReadExecute(r DtcRecordAaaaAPIReadRequest) (*GetDtcRecordAaaaResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferenceGetExecute(r DtcRecordAa
 		localVarReturnValue *GetDtcRecordAaaaResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordAaaaAPIService.DtcrecordaaaaReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordAaaaAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferenceGetExecute(r DtcRecordAa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest struct {
+type DtcRecordAaaaAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     DtcRecordAaaaAPI
 	reference      string
@@ -627,44 +627,44 @@ type DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest) DtcRecordAaaa(dtcRecordAaaa DtcRecordAaaa) DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest {
+func (r DtcRecordAaaaAPIUpdateRequest) DtcRecordAaaa(dtcRecordAaaa DtcRecordAaaa) DtcRecordAaaaAPIUpdateRequest {
 	r.dtcRecordAaaa = &dtcRecordAaaa
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest) ReturnFields(returnFields string) DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest {
+func (r DtcRecordAaaaAPIUpdateRequest) ReturnFields(returnFields string) DtcRecordAaaaAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest) ReturnFields2(returnFields2 string) DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest {
+func (r DtcRecordAaaaAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcRecordAaaaAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest {
+func (r DtcRecordAaaaAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcRecordAaaaAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest) Execute() (*UpdateDtcRecordAaaaResponse, *http.Response, error) {
-	return r.ApiService.DtcrecordaaaaReferencePutExecute(r)
+func (r DtcRecordAaaaAPIUpdateRequest) Execute() (*UpdateDtcRecordAaaaResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtcrecordaaaaReferencePut Update a dtc:record:aaaa object
+Update Update a dtc:record:aaaa object
 
 Updates a specific dtc:record:aaaa object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:record:aaaa object
-	@return DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest
+	@return DtcRecordAaaaAPIUpdateRequest
 */
-func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferencePut(ctx context.Context, reference string) DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest {
-	return DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest{
+func (a *DtcRecordAaaaAPIService) Update(ctx context.Context, reference string) DtcRecordAaaaAPIUpdateRequest {
+	return DtcRecordAaaaAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferencePut(ctx context.Context,
 // Execute executes the request
 //
 //	@return UpdateDtcRecordAaaaResponse
-func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferencePutExecute(r DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest) (*UpdateDtcRecordAaaaResponse, *http.Response, error) {
+func (a *DtcRecordAaaaAPIService) UpdateExecute(r DtcRecordAaaaAPIUpdateRequest) (*UpdateDtcRecordAaaaResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *DtcRecordAaaaAPIService) DtcrecordaaaaReferencePutExecute(r DtcRecordAa
 		localVarReturnValue *UpdateDtcRecordAaaaResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordAaaaAPIService.DtcrecordaaaaReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordAaaaAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

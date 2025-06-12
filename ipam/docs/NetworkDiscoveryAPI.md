@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](NetworkDiscoveryAPI.md#Get) | **Get** /network_discovery | Retrieve network_discovery objects
-[**ReferenceGet**](NetworkDiscoveryAPI.md#ReferenceGet) | **Get** /network_discovery/{reference} | Get a specific network_discovery object
+[**List**](NetworkDiscoveryAPI.md#List) | **Get** /network_discovery | Retrieve network_discovery objects
+[**Read**](NetworkDiscoveryAPI.md#Read) | **Get** /network_discovery/{reference} | Get a specific network_discovery object
 
 
 
-## Get
+## List
 
-> ListNetworkDiscoveryResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListNetworkDiscoveryResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve network_discovery objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkDiscoveryAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.NetworkDiscoveryAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkDiscoveryAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkDiscoveryAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListNetworkDiscoveryResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkDiscoveryAPI.Get`: %v\n", resp)
+	// response from `List`: ListNetworkDiscoveryResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkDiscoveryAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NetworkDiscoveryAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NetworkDiscoveryAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetNetworkDiscoveryResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetNetworkDiscoveryResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific network_discovery object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the network_discovery object
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkDiscoveryAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.NetworkDiscoveryAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkDiscoveryAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkDiscoveryAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetNetworkDiscoveryResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkDiscoveryAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetNetworkDiscoveryResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkDiscoveryAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NetworkDiscoveryAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NetworkDiscoveryAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

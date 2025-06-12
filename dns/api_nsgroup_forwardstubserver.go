@@ -23,249 +23,78 @@ import (
 
 type NsgroupForwardstubserverAPI interface {
 	/*
-		NsgroupforwardstubserverGet Retrieve nsgroup:forwardstubserver objects
-
-		Returns a list of nsgroup:forwardstubserver objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest
-	*/
-	NsgroupforwardstubserverGet(ctx context.Context) NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest
-
-	// NsgroupforwardstubserverGetExecute executes the request
-	//  @return ListNsgroupForwardstubserverResponse
-	NsgroupforwardstubserverGetExecute(r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) (*ListNsgroupForwardstubserverResponse, *http.Response, error)
-	/*
-		NsgroupforwardstubserverPost Create a nsgroup:forwardstubserver object
+		Create Create a nsgroup:forwardstubserver object
 
 		Creates a new nsgroup:forwardstubserver object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest
+		@return NsgroupForwardstubserverAPICreateRequest
 	*/
-	NsgroupforwardstubserverPost(ctx context.Context) NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest
+	Create(ctx context.Context) NsgroupForwardstubserverAPICreateRequest
 
-	// NsgroupforwardstubserverPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNsgroupForwardstubserverResponse
-	NsgroupforwardstubserverPostExecute(r NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest) (*CreateNsgroupForwardstubserverResponse, *http.Response, error)
+	CreateExecute(r NsgroupForwardstubserverAPICreateRequest) (*CreateNsgroupForwardstubserverResponse, *http.Response, error)
 	/*
-		NsgroupforwardstubserverReferenceDelete Delete a nsgroup:forwardstubserver object
+		Delete Delete a nsgroup:forwardstubserver object
 
 		Deletes a specific nsgroup:forwardstubserver object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup:forwardstubserver object
-		@return NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceDeleteRequest
+		@return NsgroupForwardstubserverAPIDeleteRequest
 	*/
-	NsgroupforwardstubserverReferenceDelete(ctx context.Context, reference string) NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NsgroupForwardstubserverAPIDeleteRequest
 
-	// NsgroupforwardstubserverReferenceDeleteExecute executes the request
-	NsgroupforwardstubserverReferenceDeleteExecute(r NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NsgroupForwardstubserverAPIDeleteRequest) (*http.Response, error)
 	/*
-		NsgroupforwardstubserverReferenceGet Get a specific nsgroup:forwardstubserver object
+		List Retrieve nsgroup:forwardstubserver objects
+
+		Returns a list of nsgroup:forwardstubserver objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NsgroupForwardstubserverAPIListRequest
+	*/
+	List(ctx context.Context) NsgroupForwardstubserverAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNsgroupForwardstubserverResponse
+	ListExecute(r NsgroupForwardstubserverAPIListRequest) (*ListNsgroupForwardstubserverResponse, *http.Response, error)
+	/*
+		Read Get a specific nsgroup:forwardstubserver object
 
 		Returns a specific nsgroup:forwardstubserver object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup:forwardstubserver object
-		@return NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest
+		@return NsgroupForwardstubserverAPIReadRequest
 	*/
-	NsgroupforwardstubserverReferenceGet(ctx context.Context, reference string) NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest
+	Read(ctx context.Context, reference string) NsgroupForwardstubserverAPIReadRequest
 
-	// NsgroupforwardstubserverReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNsgroupForwardstubserverResponse
-	NsgroupforwardstubserverReferenceGetExecute(r NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest) (*GetNsgroupForwardstubserverResponse, *http.Response, error)
+	ReadExecute(r NsgroupForwardstubserverAPIReadRequest) (*GetNsgroupForwardstubserverResponse, *http.Response, error)
 	/*
-		NsgroupforwardstubserverReferencePut Update a nsgroup:forwardstubserver object
+		Update Update a nsgroup:forwardstubserver object
 
 		Updates a specific nsgroup:forwardstubserver object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup:forwardstubserver object
-		@return NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest
+		@return NsgroupForwardstubserverAPIUpdateRequest
 	*/
-	NsgroupforwardstubserverReferencePut(ctx context.Context, reference string) NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest
+	Update(ctx context.Context, reference string) NsgroupForwardstubserverAPIUpdateRequest
 
-	// NsgroupforwardstubserverReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNsgroupForwardstubserverResponse
-	NsgroupforwardstubserverReferencePutExecute(r NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest) (*UpdateNsgroupForwardstubserverResponse, *http.Response, error)
+	UpdateExecute(r NsgroupForwardstubserverAPIUpdateRequest) (*UpdateNsgroupForwardstubserverResponse, *http.Response, error)
 }
 
 // NsgroupForwardstubserverAPIService NsgroupForwardstubserverAPI service
 type NsgroupForwardstubserverAPIService internal.Service
 
-type NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest struct {
-	ctx            context.Context
-	ApiService     NsgroupForwardstubserverAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) ReturnFields(returnFields string) NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) MaxResults(maxResults int32) NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) Paging(paging int32) NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) PageId(pageId string) NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) Filters(filters map[string]interface{}) NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) Execute() (*ListNsgroupForwardstubserverResponse, *http.Response, error) {
-	return r.ApiService.NsgroupforwardstubserverGetExecute(r)
-}
-
-/*
-NsgroupforwardstubserverGet Retrieve nsgroup:forwardstubserver objects
-
-Returns a list of nsgroup:forwardstubserver objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest
-*/
-func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverGet(ctx context.Context) NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest {
-	return NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListNsgroupForwardstubserverResponse
-func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverGetExecute(r NsgroupForwardstubserverAPINsgroupforwardstubserverGetRequest) (*ListNsgroupForwardstubserverResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListNsgroupForwardstubserverResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardstubserverAPIService.NsgroupforwardstubserverGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/nsgroup:forwardstubserver"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest struct {
+type NsgroupForwardstubserverAPICreateRequest struct {
 	ctx                      context.Context
 	ApiService               NsgroupForwardstubserverAPI
 	nsgroupForwardstubserver *NsgroupForwardstubserver
@@ -275,43 +104,43 @@ type NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest struct {
 }
 
 // Object data to create
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest) NsgroupForwardstubserver(nsgroupForwardstubserver NsgroupForwardstubserver) NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest {
+func (r NsgroupForwardstubserverAPICreateRequest) NsgroupForwardstubserver(nsgroupForwardstubserver NsgroupForwardstubserver) NsgroupForwardstubserverAPICreateRequest {
 	r.nsgroupForwardstubserver = &nsgroupForwardstubserver
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest) ReturnFields(returnFields string) NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest {
+func (r NsgroupForwardstubserverAPICreateRequest) ReturnFields(returnFields string) NsgroupForwardstubserverAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest {
+func (r NsgroupForwardstubserverAPICreateRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest {
+func (r NsgroupForwardstubserverAPICreateRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardstubserverAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest) Execute() (*CreateNsgroupForwardstubserverResponse, *http.Response, error) {
-	return r.ApiService.NsgroupforwardstubserverPostExecute(r)
+func (r NsgroupForwardstubserverAPICreateRequest) Execute() (*CreateNsgroupForwardstubserverResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-NsgroupforwardstubserverPost Create a nsgroup:forwardstubserver object
+Create Create a nsgroup:forwardstubserver object
 
 Creates a new nsgroup:forwardstubserver object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest
+	@return NsgroupForwardstubserverAPICreateRequest
 */
-func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverPost(ctx context.Context) NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest {
-	return NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest{
+func (a *NsgroupForwardstubserverAPIService) Create(ctx context.Context) NsgroupForwardstubserverAPICreateRequest {
+	return NsgroupForwardstubserverAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverPost(ctx co
 // Execute executes the request
 //
 //	@return CreateNsgroupForwardstubserverResponse
-func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverPostExecute(r NsgroupForwardstubserverAPINsgroupforwardstubserverPostRequest) (*CreateNsgroupForwardstubserverResponse, *http.Response, error) {
+func (a *NsgroupForwardstubserverAPIService) CreateExecute(r NsgroupForwardstubserverAPICreateRequest) (*CreateNsgroupForwardstubserverResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverPostExecute
 		localVarReturnValue *CreateNsgroupForwardstubserverResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardstubserverAPIService.NsgroupforwardstubserverPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardstubserverAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverPostExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceDeleteRequest struct {
+type NsgroupForwardstubserverAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService NsgroupForwardstubserverAPI
 	reference  string
 }
 
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.NsgroupforwardstubserverReferenceDeleteExecute(r)
+func (r NsgroupForwardstubserverAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-NsgroupforwardstubserverReferenceDelete Delete a nsgroup:forwardstubserver object
+Delete Delete a nsgroup:forwardstubserver object
 
 Deletes a specific nsgroup:forwardstubserver object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup:forwardstubserver object
-	@return NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceDeleteRequest
+	@return NsgroupForwardstubserverAPIDeleteRequest
 */
-func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferenceDelete(ctx context.Context, reference string) NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceDeleteRequest {
-	return NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceDeleteRequest{
+func (a *NsgroupForwardstubserverAPIService) Delete(ctx context.Context, reference string) NsgroupForwardstubserverAPIDeleteRequest {
+	return NsgroupForwardstubserverAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferenceDe
 }
 
 // Execute executes the request
-func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferenceDeleteExecute(r NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceDeleteRequest) (*http.Response, error) {
+func (a *NsgroupForwardstubserverAPIService) DeleteExecute(r NsgroupForwardstubserverAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardstubserverAPIService.NsgroupforwardstubserverReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardstubserverAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferenceDe
 	return localVarHTTPResponse, nil
 }
 
-type NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest struct {
+type NsgroupForwardstubserverAPIListRequest struct {
+	ctx            context.Context
+	ApiService     NsgroupForwardstubserverAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r NsgroupForwardstubserverAPIListRequest) ReturnFields(returnFields string) NsgroupForwardstubserverAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NsgroupForwardstubserverAPIListRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r NsgroupForwardstubserverAPIListRequest) MaxResults(maxResults int32) NsgroupForwardstubserverAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NsgroupForwardstubserverAPIListRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardstubserverAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r NsgroupForwardstubserverAPIListRequest) Paging(paging int32) NsgroupForwardstubserverAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r NsgroupForwardstubserverAPIListRequest) PageId(pageId string) NsgroupForwardstubserverAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r NsgroupForwardstubserverAPIListRequest) Filters(filters map[string]interface{}) NsgroupForwardstubserverAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r NsgroupForwardstubserverAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NsgroupForwardstubserverAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r NsgroupForwardstubserverAPIListRequest) Execute() (*ListNsgroupForwardstubserverResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve nsgroup:forwardstubserver objects
+
+Returns a list of nsgroup:forwardstubserver objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NsgroupForwardstubserverAPIListRequest
+*/
+func (a *NsgroupForwardstubserverAPIService) List(ctx context.Context) NsgroupForwardstubserverAPIListRequest {
+	return NsgroupForwardstubserverAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListNsgroupForwardstubserverResponse
+func (a *NsgroupForwardstubserverAPIService) ListExecute(r NsgroupForwardstubserverAPIListRequest) (*ListNsgroupForwardstubserverResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListNsgroupForwardstubserverResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardstubserverAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/nsgroup:forwardstubserver"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NsgroupForwardstubserverAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     NsgroupForwardstubserverAPI
 	reference      string
@@ -511,38 +511,38 @@ type NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest stru
 }
 
 // Enter the field names followed by comma
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest) ReturnFields(returnFields string) NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest {
+func (r NsgroupForwardstubserverAPIReadRequest) ReturnFields(returnFields string) NsgroupForwardstubserverAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest {
+func (r NsgroupForwardstubserverAPIReadRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest {
+func (r NsgroupForwardstubserverAPIReadRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardstubserverAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest) Execute() (*GetNsgroupForwardstubserverResponse, *http.Response, error) {
-	return r.ApiService.NsgroupforwardstubserverReferenceGetExecute(r)
+func (r NsgroupForwardstubserverAPIReadRequest) Execute() (*GetNsgroupForwardstubserverResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-NsgroupforwardstubserverReferenceGet Get a specific nsgroup:forwardstubserver object
+Read Get a specific nsgroup:forwardstubserver object
 
 Returns a specific nsgroup:forwardstubserver object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup:forwardstubserver object
-	@return NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest
+	@return NsgroupForwardstubserverAPIReadRequest
 */
-func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferenceGet(ctx context.Context, reference string) NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest {
-	return NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest{
+func (a *NsgroupForwardstubserverAPIService) Read(ctx context.Context, reference string) NsgroupForwardstubserverAPIReadRequest {
+	return NsgroupForwardstubserverAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferenceGe
 // Execute executes the request
 //
 //	@return GetNsgroupForwardstubserverResponse
-func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferenceGetExecute(r NsgroupForwardstubserverAPINsgroupforwardstubserverReferenceGetRequest) (*GetNsgroupForwardstubserverResponse, *http.Response, error) {
+func (a *NsgroupForwardstubserverAPIService) ReadExecute(r NsgroupForwardstubserverAPIReadRequest) (*GetNsgroupForwardstubserverResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferenceGe
 		localVarReturnValue *GetNsgroupForwardstubserverResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardstubserverAPIService.NsgroupforwardstubserverReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardstubserverAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferenceGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest struct {
+type NsgroupForwardstubserverAPIUpdateRequest struct {
 	ctx                      context.Context
 	ApiService               NsgroupForwardstubserverAPI
 	reference                string
@@ -639,44 +639,44 @@ type NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest stru
 }
 
 // Object data to update
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest) NsgroupForwardstubserver(nsgroupForwardstubserver NsgroupForwardstubserver) NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest {
+func (r NsgroupForwardstubserverAPIUpdateRequest) NsgroupForwardstubserver(nsgroupForwardstubserver NsgroupForwardstubserver) NsgroupForwardstubserverAPIUpdateRequest {
 	r.nsgroupForwardstubserver = &nsgroupForwardstubserver
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest) ReturnFields(returnFields string) NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest {
+func (r NsgroupForwardstubserverAPIUpdateRequest) ReturnFields(returnFields string) NsgroupForwardstubserverAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest {
+func (r NsgroupForwardstubserverAPIUpdateRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest {
+func (r NsgroupForwardstubserverAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NsgroupForwardstubserverAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest) Execute() (*UpdateNsgroupForwardstubserverResponse, *http.Response, error) {
-	return r.ApiService.NsgroupforwardstubserverReferencePutExecute(r)
+func (r NsgroupForwardstubserverAPIUpdateRequest) Execute() (*UpdateNsgroupForwardstubserverResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-NsgroupforwardstubserverReferencePut Update a nsgroup:forwardstubserver object
+Update Update a nsgroup:forwardstubserver object
 
 Updates a specific nsgroup:forwardstubserver object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup:forwardstubserver object
-	@return NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest
+	@return NsgroupForwardstubserverAPIUpdateRequest
 */
-func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferencePut(ctx context.Context, reference string) NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest {
-	return NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest{
+func (a *NsgroupForwardstubserverAPIService) Update(ctx context.Context, reference string) NsgroupForwardstubserverAPIUpdateRequest {
+	return NsgroupForwardstubserverAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferencePu
 // Execute executes the request
 //
 //	@return UpdateNsgroupForwardstubserverResponse
-func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferencePutExecute(r NsgroupForwardstubserverAPINsgroupforwardstubserverReferencePutRequest) (*UpdateNsgroupForwardstubserverResponse, *http.Response, error) {
+func (a *NsgroupForwardstubserverAPIService) UpdateExecute(r NsgroupForwardstubserverAPIUpdateRequest) (*UpdateNsgroupForwardstubserverResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *NsgroupForwardstubserverAPIService) NsgroupforwardstubserverReferencePu
 		localVarReturnValue *UpdateNsgroupForwardstubserverResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardstubserverAPIService.NsgroupforwardstubserverReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupForwardstubserverAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

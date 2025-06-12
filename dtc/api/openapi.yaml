@@ -62,6 +62,7 @@ paths:
   /dtc:
     get:
       description: Returns a list of dtc objects matching the search criteria
+      operationId: DtcList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -159,6 +160,7 @@ paths:
   /dtc/{reference}:
     get:
       description: Returns a specific dtc object by reference
+      operationId: DtcRead
       parameters:
       - description: Reference of the dtc object
         explode: false
@@ -219,6 +221,7 @@ paths:
   /dtc:server:
     get:
       description: Returns a list of dtc:server objects matching the search criteria
+      operationId: DtcServerList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -315,6 +318,7 @@ paths:
       - DtcServer
     post:
       description: Creates a new dtc:server object
+      operationId: DtcServerCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -375,6 +379,7 @@ paths:
   /dtc:server/{reference}:
     delete:
       description: Deletes a specific dtc:server object by reference
+      operationId: DtcServerDelete
       parameters:
       - description: Reference of the dtc:server object
         explode: false
@@ -402,6 +407,7 @@ paths:
       - DtcServer
     get:
       description: Returns a specific dtc:server object by reference
+      operationId: DtcServerRead
       parameters:
       - description: Reference of the dtc:server object
         explode: false
@@ -461,6 +467,7 @@ paths:
       - DtcServer
     put:
       description: Updates a specific dtc:server object by reference
+      operationId: DtcServerUpdate
       parameters:
       - description: Reference of the dtc:server object
         explode: false
@@ -529,6 +536,7 @@ paths:
   /dtc:pool:
     get:
       description: Returns a list of dtc:pool objects matching the search criteria
+      operationId: DtcPoolList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -625,6 +633,7 @@ paths:
       - DtcPool
     post:
       description: Creates a new dtc:pool object
+      operationId: DtcPoolCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -685,6 +694,7 @@ paths:
   /dtc:pool/{reference}:
     delete:
       description: Deletes a specific dtc:pool object by reference
+      operationId: DtcPoolDelete
       parameters:
       - description: Reference of the dtc:pool object
         explode: false
@@ -712,6 +722,7 @@ paths:
       - DtcPool
     get:
       description: Returns a specific dtc:pool object by reference
+      operationId: DtcPoolRead
       parameters:
       - description: Reference of the dtc:pool object
         explode: false
@@ -771,6 +782,7 @@ paths:
       - DtcPool
     put:
       description: Updates a specific dtc:pool object by reference
+      operationId: DtcPoolUpdate
       parameters:
       - description: Reference of the dtc:pool object
         explode: false
@@ -839,6 +851,7 @@ paths:
   /dtc:topology:
     get:
       description: Returns a list of dtc:topology objects matching the search criteria
+      operationId: DtcTopologyList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -935,6 +948,7 @@ paths:
       - DtcTopology
     post:
       description: Creates a new dtc:topology object
+      operationId: DtcTopologyCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -995,6 +1009,7 @@ paths:
   /dtc:topology/{reference}:
     delete:
       description: Deletes a specific dtc:topology object by reference
+      operationId: DtcTopologyDelete
       parameters:
       - description: Reference of the dtc:topology object
         explode: false
@@ -1022,6 +1037,7 @@ paths:
       - DtcTopology
     get:
       description: Returns a specific dtc:topology object by reference
+      operationId: DtcTopologyRead
       parameters:
       - description: Reference of the dtc:topology object
         explode: false
@@ -1081,6 +1097,7 @@ paths:
       - DtcTopology
     put:
       description: Updates a specific dtc:topology object by reference
+      operationId: DtcTopologyUpdate
       parameters:
       - description: Reference of the dtc:topology object
         explode: false
@@ -1149,6 +1166,7 @@ paths:
   /dtc:lbdn:
     get:
       description: Returns a list of dtc:lbdn objects matching the search criteria
+      operationId: DtcLbdnList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1245,6 +1263,7 @@ paths:
       - DtcLbdn
     post:
       description: Creates a new dtc:lbdn object
+      operationId: DtcLbdnCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1305,6 +1324,7 @@ paths:
   /dtc:lbdn/{reference}:
     delete:
       description: Deletes a specific dtc:lbdn object by reference
+      operationId: DtcLbdnDelete
       parameters:
       - description: Reference of the dtc:lbdn object
         explode: false
@@ -1332,6 +1352,7 @@ paths:
       - DtcLbdn
     get:
       description: Returns a specific dtc:lbdn object by reference
+      operationId: DtcLbdnRead
       parameters:
       - description: Reference of the dtc:lbdn object
         explode: false
@@ -1391,6 +1412,7 @@ paths:
       - DtcLbdn
     put:
       description: Updates a specific dtc:lbdn object by reference
+      operationId: DtcLbdnUpdate
       parameters:
       - description: Reference of the dtc:lbdn object
         explode: false
@@ -1459,6 +1481,7 @@ paths:
   /dtc:monitor:
     get:
       description: Returns a list of dtc:monitor objects matching the search criteria
+      operationId: DtcMonitorList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1556,6 +1579,7 @@ paths:
   /dtc:monitor/{reference}:
     get:
       description: Returns a specific dtc:monitor object by reference
+      operationId: DtcMonitorRead
       parameters:
       - description: Reference of the dtc:monitor object
         explode: false
@@ -1615,6 +1639,7 @@ paths:
       - DtcMonitor
     put:
       description: Updates a specific dtc:monitor object by reference
+      operationId: DtcMonitorUpdate
       parameters:
       - description: Reference of the dtc:monitor object
         explode: false
@@ -1684,6 +1709,7 @@ paths:
     get:
       description: Returns a list of dtc:monitor:http objects matching the search
         criteria
+      operationId: DtcMonitorHttpList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1780,6 +1806,7 @@ paths:
       - DtcMonitorHttp
     post:
       description: Creates a new dtc:monitor:http object
+      operationId: DtcMonitorHttpCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1840,6 +1867,7 @@ paths:
   /dtc:monitor:http/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:http object by reference
+      operationId: DtcMonitorHttpDelete
       parameters:
       - description: Reference of the dtc:monitor:http object
         explode: false
@@ -1867,6 +1895,7 @@ paths:
       - DtcMonitorHttp
     get:
       description: Returns a specific dtc:monitor:http object by reference
+      operationId: DtcMonitorHttpRead
       parameters:
       - description: Reference of the dtc:monitor:http object
         explode: false
@@ -1926,6 +1955,7 @@ paths:
       - DtcMonitorHttp
     put:
       description: Updates a specific dtc:monitor:http object by reference
+      operationId: DtcMonitorHttpUpdate
       parameters:
       - description: Reference of the dtc:monitor:http object
         explode: false
@@ -1995,6 +2025,7 @@ paths:
     get:
       description: Returns a list of dtc:monitor:icmp objects matching the search
         criteria
+      operationId: DtcMonitorIcmpList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2091,6 +2122,7 @@ paths:
       - DtcMonitorIcmp
     post:
       description: Creates a new dtc:monitor:icmp object
+      operationId: DtcMonitorIcmpCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2151,6 +2183,7 @@ paths:
   /dtc:monitor:icmp/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:icmp object by reference
+      operationId: DtcMonitorIcmpDelete
       parameters:
       - description: Reference of the dtc:monitor:icmp object
         explode: false
@@ -2178,6 +2211,7 @@ paths:
       - DtcMonitorIcmp
     get:
       description: Returns a specific dtc:monitor:icmp object by reference
+      operationId: DtcMonitorIcmpRead
       parameters:
       - description: Reference of the dtc:monitor:icmp object
         explode: false
@@ -2237,6 +2271,7 @@ paths:
       - DtcMonitorIcmp
     put:
       description: Updates a specific dtc:monitor:icmp object by reference
+      operationId: DtcMonitorIcmpUpdate
       parameters:
       - description: Reference of the dtc:monitor:icmp object
         explode: false
@@ -2305,6 +2340,7 @@ paths:
   /dtc:monitor:pdp:
     get:
       description: Returns a list of dtc:monitor:pdp objects matching the search criteria
+      operationId: DtcMonitorPdpList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2401,6 +2437,7 @@ paths:
       - DtcMonitorPdp
     post:
       description: Creates a new dtc:monitor:pdp object
+      operationId: DtcMonitorPdpCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2461,6 +2498,7 @@ paths:
   /dtc:monitor:pdp/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:pdp object by reference
+      operationId: DtcMonitorPdpDelete
       parameters:
       - description: Reference of the dtc:monitor:pdp object
         explode: false
@@ -2488,6 +2526,7 @@ paths:
       - DtcMonitorPdp
     get:
       description: Returns a specific dtc:monitor:pdp object by reference
+      operationId: DtcMonitorPdpRead
       parameters:
       - description: Reference of the dtc:monitor:pdp object
         explode: false
@@ -2547,6 +2586,7 @@ paths:
       - DtcMonitorPdp
     put:
       description: Updates a specific dtc:monitor:pdp object by reference
+      operationId: DtcMonitorPdpUpdate
       parameters:
       - description: Reference of the dtc:monitor:pdp object
         explode: false
@@ -2615,6 +2655,7 @@ paths:
   /dtc:monitor:sip:
     get:
       description: Returns a list of dtc:monitor:sip objects matching the search criteria
+      operationId: DtcMonitorSipList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2711,6 +2752,7 @@ paths:
       - DtcMonitorSip
     post:
       description: Creates a new dtc:monitor:sip object
+      operationId: DtcMonitorSipCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2771,6 +2813,7 @@ paths:
   /dtc:monitor:sip/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:sip object by reference
+      operationId: DtcMonitorSipDelete
       parameters:
       - description: Reference of the dtc:monitor:sip object
         explode: false
@@ -2798,6 +2841,7 @@ paths:
       - DtcMonitorSip
     get:
       description: Returns a specific dtc:monitor:sip object by reference
+      operationId: DtcMonitorSipRead
       parameters:
       - description: Reference of the dtc:monitor:sip object
         explode: false
@@ -2857,6 +2901,7 @@ paths:
       - DtcMonitorSip
     put:
       description: Updates a specific dtc:monitor:sip object by reference
+      operationId: DtcMonitorSipUpdate
       parameters:
       - description: Reference of the dtc:monitor:sip object
         explode: false
@@ -2926,6 +2971,7 @@ paths:
     get:
       description: Returns a list of dtc:monitor:snmp objects matching the search
         criteria
+      operationId: DtcMonitorSnmpList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3022,6 +3068,7 @@ paths:
       - DtcMonitorSnmp
     post:
       description: Creates a new dtc:monitor:snmp object
+      operationId: DtcMonitorSnmpCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3082,6 +3129,7 @@ paths:
   /dtc:monitor:snmp/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:snmp object by reference
+      operationId: DtcMonitorSnmpDelete
       parameters:
       - description: Reference of the dtc:monitor:snmp object
         explode: false
@@ -3109,6 +3157,7 @@ paths:
       - DtcMonitorSnmp
     get:
       description: Returns a specific dtc:monitor:snmp object by reference
+      operationId: DtcMonitorSnmpRead
       parameters:
       - description: Reference of the dtc:monitor:snmp object
         explode: false
@@ -3168,6 +3217,7 @@ paths:
       - DtcMonitorSnmp
     put:
       description: Updates a specific dtc:monitor:snmp object by reference
+      operationId: DtcMonitorSnmpUpdate
       parameters:
       - description: Reference of the dtc:monitor:snmp object
         explode: false
@@ -3236,6 +3286,7 @@ paths:
   /dtc:monitor:tcp:
     get:
       description: Returns a list of dtc:monitor:tcp objects matching the search criteria
+      operationId: DtcMonitorTcpList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3332,6 +3383,7 @@ paths:
       - DtcMonitorTcp
     post:
       description: Creates a new dtc:monitor:tcp object
+      operationId: DtcMonitorTcpCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3392,6 +3444,7 @@ paths:
   /dtc:monitor:tcp/{reference}:
     delete:
       description: Deletes a specific dtc:monitor:tcp object by reference
+      operationId: DtcMonitorTcpDelete
       parameters:
       - description: Reference of the dtc:monitor:tcp object
         explode: false
@@ -3419,6 +3472,7 @@ paths:
       - DtcMonitorTcp
     get:
       description: Returns a specific dtc:monitor:tcp object by reference
+      operationId: DtcMonitorTcpRead
       parameters:
       - description: Reference of the dtc:monitor:tcp object
         explode: false
@@ -3478,6 +3532,7 @@ paths:
       - DtcMonitorTcp
     put:
       description: Updates a specific dtc:monitor:tcp object by reference
+      operationId: DtcMonitorTcpUpdate
       parameters:
       - description: Reference of the dtc:monitor:tcp object
         explode: false
@@ -3546,6 +3601,7 @@ paths:
   /dtc:record:a:
     get:
       description: Returns a list of dtc:record:a objects matching the search criteria
+      operationId: DtcRecordAList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3642,6 +3698,7 @@ paths:
       - DtcRecordA
     post:
       description: Creates a new dtc:record:a object
+      operationId: DtcRecordACreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3701,6 +3758,7 @@ paths:
   /dtc:record:a/{reference}:
     delete:
       description: Deletes a specific dtc:record:a object by reference
+      operationId: DtcRecordADelete
       parameters:
       - description: Reference of the dtc:record:a object
         explode: false
@@ -3728,6 +3786,7 @@ paths:
       - DtcRecordA
     get:
       description: Returns a specific dtc:record:a object by reference
+      operationId: DtcRecordARead
       parameters:
       - description: Reference of the dtc:record:a object
         explode: false
@@ -3787,6 +3846,7 @@ paths:
       - DtcRecordA
     put:
       description: Updates a specific dtc:record:a object by reference
+      operationId: DtcRecordAUpdate
       parameters:
       - description: Reference of the dtc:record:a object
         explode: false
@@ -3854,6 +3914,7 @@ paths:
   /dtc:record:aaaa:
     get:
       description: Returns a list of dtc:record:aaaa objects matching the search criteria
+      operationId: DtcRecordAaaaList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3950,6 +4011,7 @@ paths:
       - DtcRecordAaaa
     post:
       description: Creates a new dtc:record:aaaa object
+      operationId: DtcRecordAaaaCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4009,6 +4071,7 @@ paths:
   /dtc:record:aaaa/{reference}:
     delete:
       description: Deletes a specific dtc:record:aaaa object by reference
+      operationId: DtcRecordAaaaDelete
       parameters:
       - description: Reference of the dtc:record:aaaa object
         explode: false
@@ -4036,6 +4099,7 @@ paths:
       - DtcRecordAaaa
     get:
       description: Returns a specific dtc:record:aaaa object by reference
+      operationId: DtcRecordAaaaRead
       parameters:
       - description: Reference of the dtc:record:aaaa object
         explode: false
@@ -4095,6 +4159,7 @@ paths:
       - DtcRecordAaaa
     put:
       description: Updates a specific dtc:record:aaaa object by reference
+      operationId: DtcRecordAaaaUpdate
       parameters:
       - description: Reference of the dtc:record:aaaa object
         explode: false
@@ -4163,6 +4228,7 @@ paths:
     get:
       description: Returns a list of dtc:record:cname objects matching the search
         criteria
+      operationId: DtcRecordCnameList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4259,6 +4325,7 @@ paths:
       - DtcRecordCname
     post:
       description: Creates a new dtc:record:cname object
+      operationId: DtcRecordCnameCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4318,6 +4385,7 @@ paths:
   /dtc:record:cname/{reference}:
     delete:
       description: Deletes a specific dtc:record:cname object by reference
+      operationId: DtcRecordCnameDelete
       parameters:
       - description: Reference of the dtc:record:cname object
         explode: false
@@ -4345,6 +4413,7 @@ paths:
       - DtcRecordCname
     get:
       description: Returns a specific dtc:record:cname object by reference
+      operationId: DtcRecordCnameRead
       parameters:
       - description: Reference of the dtc:record:cname object
         explode: false
@@ -4404,6 +4473,7 @@ paths:
       - DtcRecordCname
     put:
       description: Updates a specific dtc:record:cname object by reference
+      operationId: DtcRecordCnameUpdate
       parameters:
       - description: Reference of the dtc:record:cname object
         explode: false
@@ -4472,6 +4542,7 @@ paths:
     get:
       description: Returns a list of dtc:record:naptr objects matching the search
         criteria
+      operationId: DtcRecordNaptrList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4568,6 +4639,7 @@ paths:
       - DtcRecordNaptr
     post:
       description: Creates a new dtc:record:naptr object
+      operationId: DtcRecordNaptrCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4627,6 +4699,7 @@ paths:
   /dtc:record:naptr/{reference}:
     delete:
       description: Deletes a specific dtc:record:naptr object by reference
+      operationId: DtcRecordNaptrDelete
       parameters:
       - description: Reference of the dtc:record:naptr object
         explode: false
@@ -4654,6 +4727,7 @@ paths:
       - DtcRecordNaptr
     get:
       description: Returns a specific dtc:record:naptr object by reference
+      operationId: DtcRecordNaptrRead
       parameters:
       - description: Reference of the dtc:record:naptr object
         explode: false
@@ -4713,6 +4787,7 @@ paths:
       - DtcRecordNaptr
     put:
       description: Updates a specific dtc:record:naptr object by reference
+      operationId: DtcRecordNaptrUpdate
       parameters:
       - description: Reference of the dtc:record:naptr object
         explode: false
@@ -4780,6 +4855,7 @@ paths:
   /dtc:record:srv:
     get:
       description: Returns a list of dtc:record:srv objects matching the search criteria
+      operationId: DtcRecordSrvList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4876,6 +4952,7 @@ paths:
       - DtcRecordSrv
     post:
       description: Creates a new dtc:record:srv object
+      operationId: DtcRecordSrvCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4935,6 +5012,7 @@ paths:
   /dtc:record:srv/{reference}:
     delete:
       description: Deletes a specific dtc:record:srv object by reference
+      operationId: DtcRecordSrvDelete
       parameters:
       - description: Reference of the dtc:record:srv object
         explode: false
@@ -4962,6 +5040,7 @@ paths:
       - DtcRecordSrv
     get:
       description: Returns a specific dtc:record:srv object by reference
+      operationId: DtcRecordSrvRead
       parameters:
       - description: Reference of the dtc:record:srv object
         explode: false
@@ -5021,6 +5100,7 @@ paths:
       - DtcRecordSrv
     put:
       description: Updates a specific dtc:record:srv object by reference
+      operationId: DtcRecordSrvUpdate
       parameters:
       - description: Reference of the dtc:record:srv object
         explode: false
@@ -5088,6 +5168,7 @@ paths:
   /dtc:certificate:
     get:
       description: Returns a list of dtc:certificate objects matching the search criteria
+      operationId: DtcCertificateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5185,6 +5266,7 @@ paths:
   /dtc:certificate/{reference}:
     get:
       description: Returns a specific dtc:certificate object by reference
+      operationId: DtcCertificateRead
       parameters:
       - description: Reference of the dtc:certificate object
         explode: false
@@ -5245,6 +5327,7 @@ paths:
   /dtc:allrecords:
     get:
       description: Returns a list of dtc:allrecords objects matching the search criteria
+      operationId: DtcAllrecordsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5342,6 +5425,7 @@ paths:
   /dtc:allrecords/{reference}:
     get:
       description: Returns a specific dtc:allrecords object by reference
+      operationId: DtcAllrecordsRead
       parameters:
       - description: Reference of the dtc:allrecords object
         explode: false
@@ -5401,6 +5485,7 @@ paths:
       - DtcAllrecords
     put:
       description: Updates a specific dtc:allrecords object by reference
+      operationId: DtcAllrecordsUpdate
       parameters:
       - description: Reference of the dtc:allrecords object
         explode: false
@@ -5468,6 +5553,7 @@ paths:
   /dtc:object:
     get:
       description: Returns a list of dtc:object objects matching the search criteria
+      operationId: DtcObjectList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5565,6 +5651,7 @@ paths:
   /dtc:object/{reference}:
     get:
       description: Returns a specific dtc:object object by reference
+      operationId: DtcObjectRead
       parameters:
       - description: Reference of the dtc:object object
         explode: false
@@ -5624,6 +5711,7 @@ paths:
       - DtcObject
     put:
       description: Updates a specific dtc:object object by reference
+      operationId: DtcObjectUpdate
       parameters:
       - description: Reference of the dtc:object object
         explode: false
@@ -5693,6 +5781,7 @@ paths:
     get:
       description: Returns a list of dtc:topology:rule objects matching the search
         criteria
+      operationId: DtcTopologyRuleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5790,6 +5879,7 @@ paths:
   /dtc:topology:rule/{reference}:
     get:
       description: Returns a specific dtc:topology:rule object by reference
+      operationId: DtcTopologyRuleRead
       parameters:
       - description: Reference of the dtc:topology:rule object
         explode: false
@@ -5849,6 +5939,7 @@ paths:
       - DtcTopologyRule
     put:
       description: Updates a specific dtc:topology:rule object by reference
+      operationId: DtcTopologyRuleUpdate
       parameters:
       - description: Reference of the dtc:topology:rule object
         explode: false
@@ -5917,6 +6008,7 @@ paths:
     get:
       description: Returns a list of dtc:topology:label objects matching the search
         criteria
+      operationId: DtcTopologyLabelList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6014,6 +6106,7 @@ paths:
   /dtc:topology:label/{reference}:
     get:
       description: Returns a specific dtc:topology:label object by reference
+      operationId: DtcTopologyLabelRead
       parameters:
       - description: Reference of the dtc:topology:label object
         explode: false

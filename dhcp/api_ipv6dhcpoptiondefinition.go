@@ -23,78 +23,302 @@ import (
 
 type Ipv6dhcpoptiondefinitionAPI interface {
 	/*
-		Get Retrieve ipv6dhcpoptiondefinition objects
-
-		Returns a list of ipv6dhcpoptiondefinition objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Ipv6dhcpoptiondefinitionAPIGetRequest
-	*/
-	Get(ctx context.Context) Ipv6dhcpoptiondefinitionAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListIpv6dhcpoptiondefinitionResponse
-	GetExecute(r Ipv6dhcpoptiondefinitionAPIGetRequest) (*ListIpv6dhcpoptiondefinitionResponse, *http.Response, error)
-	/*
-		Post Create a ipv6dhcpoptiondefinition object
+		Create Create a ipv6dhcpoptiondefinition object
 
 		Creates a new ipv6dhcpoptiondefinition object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Ipv6dhcpoptiondefinitionAPIPostRequest
+		@return Ipv6dhcpoptiondefinitionAPICreateRequest
 	*/
-	Post(ctx context.Context) Ipv6dhcpoptiondefinitionAPIPostRequest
+	Create(ctx context.Context) Ipv6dhcpoptiondefinitionAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateIpv6dhcpoptiondefinitionResponse
-	PostExecute(r Ipv6dhcpoptiondefinitionAPIPostRequest) (*CreateIpv6dhcpoptiondefinitionResponse, *http.Response, error)
+	CreateExecute(r Ipv6dhcpoptiondefinitionAPICreateRequest) (*CreateIpv6dhcpoptiondefinitionResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a ipv6dhcpoptiondefinition object
+		Delete Delete a ipv6dhcpoptiondefinition object
 
 		Deletes a specific ipv6dhcpoptiondefinition object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6dhcpoptiondefinition object
-		@return Ipv6dhcpoptiondefinitionAPIReferenceDeleteRequest
+		@return Ipv6dhcpoptiondefinitionAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r Ipv6dhcpoptiondefinitionAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r Ipv6dhcpoptiondefinitionAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific ipv6dhcpoptiondefinition object
+		List Retrieve ipv6dhcpoptiondefinition objects
+
+		Returns a list of ipv6dhcpoptiondefinition objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return Ipv6dhcpoptiondefinitionAPIListRequest
+	*/
+	List(ctx context.Context) Ipv6dhcpoptiondefinitionAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListIpv6dhcpoptiondefinitionResponse
+	ListExecute(r Ipv6dhcpoptiondefinitionAPIListRequest) (*ListIpv6dhcpoptiondefinitionResponse, *http.Response, error)
+	/*
+		Read Get a specific ipv6dhcpoptiondefinition object
 
 		Returns a specific ipv6dhcpoptiondefinition object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6dhcpoptiondefinition object
-		@return Ipv6dhcpoptiondefinitionAPIReferenceGetRequest
+		@return Ipv6dhcpoptiondefinitionAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetIpv6dhcpoptiondefinitionResponse
-	ReferenceGetExecute(r Ipv6dhcpoptiondefinitionAPIReferenceGetRequest) (*GetIpv6dhcpoptiondefinitionResponse, *http.Response, error)
+	ReadExecute(r Ipv6dhcpoptiondefinitionAPIReadRequest) (*GetIpv6dhcpoptiondefinitionResponse, *http.Response, error)
 	/*
-		ReferencePut Update a ipv6dhcpoptiondefinition object
+		Update Update a ipv6dhcpoptiondefinition object
 
 		Updates a specific ipv6dhcpoptiondefinition object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6dhcpoptiondefinition object
-		@return Ipv6dhcpoptiondefinitionAPIReferencePutRequest
+		@return Ipv6dhcpoptiondefinitionAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIReferencePutRequest
+	Update(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateIpv6dhcpoptiondefinitionResponse
-	ReferencePutExecute(r Ipv6dhcpoptiondefinitionAPIReferencePutRequest) (*UpdateIpv6dhcpoptiondefinitionResponse, *http.Response, error)
+	UpdateExecute(r Ipv6dhcpoptiondefinitionAPIUpdateRequest) (*UpdateIpv6dhcpoptiondefinitionResponse, *http.Response, error)
 }
 
 // Ipv6dhcpoptiondefinitionAPIService Ipv6dhcpoptiondefinitionAPI service
 type Ipv6dhcpoptiondefinitionAPIService internal.Service
 
-type Ipv6dhcpoptiondefinitionAPIGetRequest struct {
+type Ipv6dhcpoptiondefinitionAPICreateRequest struct {
+	ctx                      context.Context
+	ApiService               Ipv6dhcpoptiondefinitionAPI
+	ipv6dhcpoptiondefinition *Ipv6dhcpoptiondefinition
+	returnFields             *string
+	returnFields2            *string
+	returnAsObject           *int32
+}
+
+// Object data to create
+func (r Ipv6dhcpoptiondefinitionAPICreateRequest) Ipv6dhcpoptiondefinition(ipv6dhcpoptiondefinition Ipv6dhcpoptiondefinition) Ipv6dhcpoptiondefinitionAPICreateRequest {
+	r.ipv6dhcpoptiondefinition = &ipv6dhcpoptiondefinition
+	return r
+}
+
+// Enter the field names followed by comma
+func (r Ipv6dhcpoptiondefinitionAPICreateRequest) ReturnFields(returnFields string) Ipv6dhcpoptiondefinitionAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r Ipv6dhcpoptiondefinitionAPICreateRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptiondefinitionAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r Ipv6dhcpoptiondefinitionAPICreateRequest) ReturnAsObject(returnAsObject int32) Ipv6dhcpoptiondefinitionAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r Ipv6dhcpoptiondefinitionAPICreateRequest) Execute() (*CreateIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a ipv6dhcpoptiondefinition object
+
+Creates a new ipv6dhcpoptiondefinition object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return Ipv6dhcpoptiondefinitionAPICreateRequest
+*/
+func (a *Ipv6dhcpoptiondefinitionAPIService) Create(ctx context.Context) Ipv6dhcpoptiondefinitionAPICreateRequest {
+	return Ipv6dhcpoptiondefinitionAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateIpv6dhcpoptiondefinitionResponse
+func (a *Ipv6dhcpoptiondefinitionAPIService) CreateExecute(r Ipv6dhcpoptiondefinitionAPICreateRequest) (*CreateIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateIpv6dhcpoptiondefinitionResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6dhcpoptiondefinitionAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ipv6dhcpoptiondefinition"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.ipv6dhcpoptiondefinition == nil {
+		return localVarReturnValue, nil, internal.ReportError("ipv6dhcpoptiondefinition is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.ipv6dhcpoptiondefinition
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type Ipv6dhcpoptiondefinitionAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService Ipv6dhcpoptiondefinitionAPI
+	reference  string
+}
+
+func (r Ipv6dhcpoptiondefinitionAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a ipv6dhcpoptiondefinition object
+
+Deletes a specific ipv6dhcpoptiondefinition object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the ipv6dhcpoptiondefinition object
+	@return Ipv6dhcpoptiondefinitionAPIDeleteRequest
+*/
+func (a *Ipv6dhcpoptiondefinitionAPIService) Delete(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIDeleteRequest {
+	return Ipv6dhcpoptiondefinitionAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *Ipv6dhcpoptiondefinitionAPIService) DeleteExecute(r Ipv6dhcpoptiondefinitionAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6dhcpoptiondefinitionAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ipv6dhcpoptiondefinition/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type Ipv6dhcpoptiondefinitionAPIListRequest struct {
 	ctx            context.Context
 	ApiService     Ipv6dhcpoptiondefinitionAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type Ipv6dhcpoptiondefinitionAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r Ipv6dhcpoptiondefinitionAPIGetRequest) ReturnFields(returnFields string) Ipv6dhcpoptiondefinitionAPIGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIListRequest) ReturnFields(returnFields string) Ipv6dhcpoptiondefinitionAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6dhcpoptiondefinitionAPIGetRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptiondefinitionAPIGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIListRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptiondefinitionAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r Ipv6dhcpoptiondefinitionAPIGetRequest) MaxResults(maxResults int32) Ipv6dhcpoptiondefinitionAPIGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIListRequest) MaxResults(maxResults int32) Ipv6dhcpoptiondefinitionAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6dhcpoptiondefinitionAPIGetRequest) ReturnAsObject(returnAsObject int32) Ipv6dhcpoptiondefinitionAPIGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIListRequest) ReturnAsObject(returnAsObject int32) Ipv6dhcpoptiondefinitionAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r Ipv6dhcpoptiondefinitionAPIGetRequest) Paging(paging int32) Ipv6dhcpoptiondefinitionAPIGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIListRequest) Paging(paging int32) Ipv6dhcpoptiondefinitionAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r Ipv6dhcpoptiondefinitionAPIGetRequest) PageId(pageId string) Ipv6dhcpoptiondefinitionAPIGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIListRequest) PageId(pageId string) Ipv6dhcpoptiondefinitionAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r Ipv6dhcpoptiondefinitionAPIGetRequest) Filters(filters map[string]interface{}) Ipv6dhcpoptiondefinitionAPIGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIListRequest) Filters(filters map[string]interface{}) Ipv6dhcpoptiondefinitionAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r Ipv6dhcpoptiondefinitionAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6dhcpoptiondefinitionAPIGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6dhcpoptiondefinitionAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r Ipv6dhcpoptiondefinitionAPIGetRequest) Execute() (*ListIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r Ipv6dhcpoptiondefinitionAPIListRequest) Execute() (*ListIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve ipv6dhcpoptiondefinition objects
+List Retrieve ipv6dhcpoptiondefinition objects
 
 Returns a list of ipv6dhcpoptiondefinition objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Ipv6dhcpoptiondefinitionAPIGetRequest
+	@return Ipv6dhcpoptiondefinitionAPIListRequest
 */
-func (a *Ipv6dhcpoptiondefinitionAPIService) Get(ctx context.Context) Ipv6dhcpoptiondefinitionAPIGetRequest {
-	return Ipv6dhcpoptiondefinitionAPIGetRequest{
+func (a *Ipv6dhcpoptiondefinitionAPIService) List(ctx context.Context) Ipv6dhcpoptiondefinitionAPIListRequest {
+	return Ipv6dhcpoptiondefinitionAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *Ipv6dhcpoptiondefinitionAPIService) Get(ctx context.Context) Ipv6dhcpop
 // Execute executes the request
 //
 //	@return ListIpv6dhcpoptiondefinitionResponse
-func (a *Ipv6dhcpoptiondefinitionAPIService) GetExecute(r Ipv6dhcpoptiondefinitionAPIGetRequest) (*ListIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
+func (a *Ipv6dhcpoptiondefinitionAPIService) ListExecute(r Ipv6dhcpoptiondefinitionAPIListRequest) (*ListIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *Ipv6dhcpoptiondefinitionAPIService) GetExecute(r Ipv6dhcpoptiondefiniti
 		localVarReturnValue *ListIpv6dhcpoptiondefinitionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6dhcpoptiondefinitionAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6dhcpoptiondefinitionAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *Ipv6dhcpoptiondefinitionAPIService) GetExecute(r Ipv6dhcpoptiondefiniti
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv6dhcpoptiondefinitionAPIPostRequest struct {
-	ctx                      context.Context
-	ApiService               Ipv6dhcpoptiondefinitionAPI
-	ipv6dhcpoptiondefinition *Ipv6dhcpoptiondefinition
-	returnFields             *string
-	returnFields2            *string
-	returnAsObject           *int32
-}
-
-// Object data to create
-func (r Ipv6dhcpoptiondefinitionAPIPostRequest) Ipv6dhcpoptiondefinition(ipv6dhcpoptiondefinition Ipv6dhcpoptiondefinition) Ipv6dhcpoptiondefinitionAPIPostRequest {
-	r.ipv6dhcpoptiondefinition = &ipv6dhcpoptiondefinition
-	return r
-}
-
-// Enter the field names followed by comma
-func (r Ipv6dhcpoptiondefinitionAPIPostRequest) ReturnFields(returnFields string) Ipv6dhcpoptiondefinitionAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6dhcpoptiondefinitionAPIPostRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptiondefinitionAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r Ipv6dhcpoptiondefinitionAPIPostRequest) ReturnAsObject(returnAsObject int32) Ipv6dhcpoptiondefinitionAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r Ipv6dhcpoptiondefinitionAPIPostRequest) Execute() (*CreateIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a ipv6dhcpoptiondefinition object
-
-Creates a new ipv6dhcpoptiondefinition object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Ipv6dhcpoptiondefinitionAPIPostRequest
-*/
-func (a *Ipv6dhcpoptiondefinitionAPIService) Post(ctx context.Context) Ipv6dhcpoptiondefinitionAPIPostRequest {
-	return Ipv6dhcpoptiondefinitionAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateIpv6dhcpoptiondefinitionResponse
-func (a *Ipv6dhcpoptiondefinitionAPIService) PostExecute(r Ipv6dhcpoptiondefinitionAPIPostRequest) (*CreateIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateIpv6dhcpoptiondefinitionResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6dhcpoptiondefinitionAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ipv6dhcpoptiondefinition"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.ipv6dhcpoptiondefinition == nil {
-		return localVarReturnValue, nil, internal.ReportError("ipv6dhcpoptiondefinition is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.ipv6dhcpoptiondefinition
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type Ipv6dhcpoptiondefinitionAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService Ipv6dhcpoptiondefinitionAPI
-	reference  string
-}
-
-func (r Ipv6dhcpoptiondefinitionAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a ipv6dhcpoptiondefinition object
-
-Deletes a specific ipv6dhcpoptiondefinition object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the ipv6dhcpoptiondefinition object
-	@return Ipv6dhcpoptiondefinitionAPIReferenceDeleteRequest
-*/
-func (a *Ipv6dhcpoptiondefinitionAPIService) ReferenceDelete(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIReferenceDeleteRequest {
-	return Ipv6dhcpoptiondefinitionAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *Ipv6dhcpoptiondefinitionAPIService) ReferenceDeleteExecute(r Ipv6dhcpoptiondefinitionAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6dhcpoptiondefinitionAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ipv6dhcpoptiondefinition/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type Ipv6dhcpoptiondefinitionAPIReferenceGetRequest struct {
+type Ipv6dhcpoptiondefinitionAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     Ipv6dhcpoptiondefinitionAPI
 	reference      string
@@ -499,38 +499,38 @@ type Ipv6dhcpoptiondefinitionAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r Ipv6dhcpoptiondefinitionAPIReferenceGetRequest) ReturnFields(returnFields string) Ipv6dhcpoptiondefinitionAPIReferenceGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIReadRequest) ReturnFields(returnFields string) Ipv6dhcpoptiondefinitionAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6dhcpoptiondefinitionAPIReferenceGetRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptiondefinitionAPIReferenceGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIReadRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptiondefinitionAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6dhcpoptiondefinitionAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) Ipv6dhcpoptiondefinitionAPIReferenceGetRequest {
+func (r Ipv6dhcpoptiondefinitionAPIReadRequest) ReturnAsObject(returnAsObject int32) Ipv6dhcpoptiondefinitionAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6dhcpoptiondefinitionAPIReferenceGetRequest) Execute() (*GetIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r Ipv6dhcpoptiondefinitionAPIReadRequest) Execute() (*GetIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific ipv6dhcpoptiondefinition object
+Read Get a specific ipv6dhcpoptiondefinition object
 
 Returns a specific ipv6dhcpoptiondefinition object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6dhcpoptiondefinition object
-	@return Ipv6dhcpoptiondefinitionAPIReferenceGetRequest
+	@return Ipv6dhcpoptiondefinitionAPIReadRequest
 */
-func (a *Ipv6dhcpoptiondefinitionAPIService) ReferenceGet(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIReferenceGetRequest {
-	return Ipv6dhcpoptiondefinitionAPIReferenceGetRequest{
+func (a *Ipv6dhcpoptiondefinitionAPIService) Read(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIReadRequest {
+	return Ipv6dhcpoptiondefinitionAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *Ipv6dhcpoptiondefinitionAPIService) ReferenceGet(ctx context.Context, r
 // Execute executes the request
 //
 //	@return GetIpv6dhcpoptiondefinitionResponse
-func (a *Ipv6dhcpoptiondefinitionAPIService) ReferenceGetExecute(r Ipv6dhcpoptiondefinitionAPIReferenceGetRequest) (*GetIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
+func (a *Ipv6dhcpoptiondefinitionAPIService) ReadExecute(r Ipv6dhcpoptiondefinitionAPIReadRequest) (*GetIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *Ipv6dhcpoptiondefinitionAPIService) ReferenceGetExecute(r Ipv6dhcpoptio
 		localVarReturnValue *GetIpv6dhcpoptiondefinitionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6dhcpoptiondefinitionAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6dhcpoptiondefinitionAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *Ipv6dhcpoptiondefinitionAPIService) ReferenceGetExecute(r Ipv6dhcpoptio
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv6dhcpoptiondefinitionAPIReferencePutRequest struct {
+type Ipv6dhcpoptiondefinitionAPIUpdateRequest struct {
 	ctx                      context.Context
 	ApiService               Ipv6dhcpoptiondefinitionAPI
 	reference                string
@@ -627,44 +627,44 @@ type Ipv6dhcpoptiondefinitionAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r Ipv6dhcpoptiondefinitionAPIReferencePutRequest) Ipv6dhcpoptiondefinition(ipv6dhcpoptiondefinition Ipv6dhcpoptiondefinition) Ipv6dhcpoptiondefinitionAPIReferencePutRequest {
+func (r Ipv6dhcpoptiondefinitionAPIUpdateRequest) Ipv6dhcpoptiondefinition(ipv6dhcpoptiondefinition Ipv6dhcpoptiondefinition) Ipv6dhcpoptiondefinitionAPIUpdateRequest {
 	r.ipv6dhcpoptiondefinition = &ipv6dhcpoptiondefinition
 	return r
 }
 
 // Enter the field names followed by comma
-func (r Ipv6dhcpoptiondefinitionAPIReferencePutRequest) ReturnFields(returnFields string) Ipv6dhcpoptiondefinitionAPIReferencePutRequest {
+func (r Ipv6dhcpoptiondefinitionAPIUpdateRequest) ReturnFields(returnFields string) Ipv6dhcpoptiondefinitionAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6dhcpoptiondefinitionAPIReferencePutRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptiondefinitionAPIReferencePutRequest {
+func (r Ipv6dhcpoptiondefinitionAPIUpdateRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptiondefinitionAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6dhcpoptiondefinitionAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) Ipv6dhcpoptiondefinitionAPIReferencePutRequest {
+func (r Ipv6dhcpoptiondefinitionAPIUpdateRequest) ReturnAsObject(returnAsObject int32) Ipv6dhcpoptiondefinitionAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6dhcpoptiondefinitionAPIReferencePutRequest) Execute() (*UpdateIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r Ipv6dhcpoptiondefinitionAPIUpdateRequest) Execute() (*UpdateIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a ipv6dhcpoptiondefinition object
+Update Update a ipv6dhcpoptiondefinition object
 
 Updates a specific ipv6dhcpoptiondefinition object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6dhcpoptiondefinition object
-	@return Ipv6dhcpoptiondefinitionAPIReferencePutRequest
+	@return Ipv6dhcpoptiondefinitionAPIUpdateRequest
 */
-func (a *Ipv6dhcpoptiondefinitionAPIService) ReferencePut(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIReferencePutRequest {
-	return Ipv6dhcpoptiondefinitionAPIReferencePutRequest{
+func (a *Ipv6dhcpoptiondefinitionAPIService) Update(ctx context.Context, reference string) Ipv6dhcpoptiondefinitionAPIUpdateRequest {
+	return Ipv6dhcpoptiondefinitionAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *Ipv6dhcpoptiondefinitionAPIService) ReferencePut(ctx context.Context, r
 // Execute executes the request
 //
 //	@return UpdateIpv6dhcpoptiondefinitionResponse
-func (a *Ipv6dhcpoptiondefinitionAPIService) ReferencePutExecute(r Ipv6dhcpoptiondefinitionAPIReferencePutRequest) (*UpdateIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
+func (a *Ipv6dhcpoptiondefinitionAPIService) UpdateExecute(r Ipv6dhcpoptiondefinitionAPIUpdateRequest) (*UpdateIpv6dhcpoptiondefinitionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *Ipv6dhcpoptiondefinitionAPIService) ReferencePutExecute(r Ipv6dhcpoptio
 		localVarReturnValue *UpdateIpv6dhcpoptiondefinitionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6dhcpoptiondefinitionAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6dhcpoptiondefinitionAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

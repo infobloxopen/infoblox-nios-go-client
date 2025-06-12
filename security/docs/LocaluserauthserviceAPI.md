@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**LocaluserauthserviceGet**](LocaluserAuthserviceAPI.md#LocaluserauthserviceGet) | **Get** /localuser:authservice | Retrieve localuser:authservice objects
-[**LocaluserauthserviceReferenceGet**](LocaluserAuthserviceAPI.md#LocaluserauthserviceReferenceGet) | **Get** /localuser:authservice/{reference} | Get a specific localuser:authservice object
+[**List**](LocaluserAuthserviceAPI.md#List) | **Get** /localuser:authservice | Retrieve localuser:authservice objects
+[**Read**](LocaluserAuthserviceAPI.md#Read) | **Get** /localuser:authservice/{reference} | Get a specific localuser:authservice object
 
 
 
-## LocaluserauthserviceGet
+## List
 
-> ListLocaluserAuthserviceResponse LocaluserauthserviceGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListLocaluserAuthserviceResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve localuser:authservice objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.LocaluserAuthserviceAPI.LocaluserauthserviceGet(context.Background()).Execute()
+	resp, r, err := apiClient.LocaluserAuthserviceAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LocaluserAuthserviceAPI.LocaluserauthserviceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `LocaluserAuthserviceAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `LocaluserauthserviceGet`: ListLocaluserAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `LocaluserAuthserviceAPI.LocaluserauthserviceGet`: %v\n", resp)
+	// response from `List`: ListLocaluserAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `LocaluserAuthserviceAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `LocaluserAuthserviceAPILocaluserauthserviceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `LocaluserAuthserviceAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## LocaluserauthserviceReferenceGet
+## Read
 
-> GetLocaluserAuthserviceResponse LocaluserauthserviceReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetLocaluserAuthserviceResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific localuser:authservice object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the localuser:authservice object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.LocaluserAuthserviceAPI.LocaluserauthserviceReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.LocaluserAuthserviceAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LocaluserAuthserviceAPI.LocaluserauthserviceReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `LocaluserAuthserviceAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `LocaluserauthserviceReferenceGet`: GetLocaluserAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `LocaluserAuthserviceAPI.LocaluserauthserviceReferenceGet`: %v\n", resp)
+	// response from `Read`: GetLocaluserAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `LocaluserAuthserviceAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `LocaluserAuthserviceAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

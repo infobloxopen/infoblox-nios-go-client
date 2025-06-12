@@ -23,38 +23,38 @@ import (
 
 type MsserverAdsitesDomainAPI interface {
 	/*
-		MsserveradsitesdomainGet Retrieve msserver:adsites:domain objects
+		List Retrieve msserver:adsites:domain objects
 
 		Returns a list of msserver:adsites:domain objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest
+		@return MsserverAdsitesDomainAPIListRequest
 	*/
-	MsserveradsitesdomainGet(ctx context.Context) MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest
+	List(ctx context.Context) MsserverAdsitesDomainAPIListRequest
 
-	// MsserveradsitesdomainGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListMsserverAdsitesDomainResponse
-	MsserveradsitesdomainGetExecute(r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) (*ListMsserverAdsitesDomainResponse, *http.Response, error)
+	ListExecute(r MsserverAdsitesDomainAPIListRequest) (*ListMsserverAdsitesDomainResponse, *http.Response, error)
 	/*
-		MsserveradsitesdomainReferenceGet Get a specific msserver:adsites:domain object
+		Read Get a specific msserver:adsites:domain object
 
 		Returns a specific msserver:adsites:domain object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver:adsites:domain object
-		@return MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest
+		@return MsserverAdsitesDomainAPIReadRequest
 	*/
-	MsserveradsitesdomainReferenceGet(ctx context.Context, reference string) MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest
+	Read(ctx context.Context, reference string) MsserverAdsitesDomainAPIReadRequest
 
-	// MsserveradsitesdomainReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMsserverAdsitesDomainResponse
-	MsserveradsitesdomainReferenceGetExecute(r MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest) (*GetMsserverAdsitesDomainResponse, *http.Response, error)
+	ReadExecute(r MsserverAdsitesDomainAPIReadRequest) (*GetMsserverAdsitesDomainResponse, *http.Response, error)
 }
 
 // MsserverAdsitesDomainAPIService MsserverAdsitesDomainAPI service
 type MsserverAdsitesDomainAPIService internal.Service
 
-type MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest struct {
+type MsserverAdsitesDomainAPIListRequest struct {
 	ctx            context.Context
 	ApiService     MsserverAdsitesDomainAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) ReturnFields(returnFields string) MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest {
+func (r MsserverAdsitesDomainAPIListRequest) ReturnFields(returnFields string) MsserverAdsitesDomainAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) ReturnFields2(returnFields2 string) MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest {
+func (r MsserverAdsitesDomainAPIListRequest) ReturnFields2(returnFields2 string) MsserverAdsitesDomainAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) MaxResults(maxResults int32) MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest {
+func (r MsserverAdsitesDomainAPIListRequest) MaxResults(maxResults int32) MsserverAdsitesDomainAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest {
+func (r MsserverAdsitesDomainAPIListRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesDomainAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) Paging(paging int32) MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest {
+func (r MsserverAdsitesDomainAPIListRequest) Paging(paging int32) MsserverAdsitesDomainAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) PageId(pageId string) MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest {
+func (r MsserverAdsitesDomainAPIListRequest) PageId(pageId string) MsserverAdsitesDomainAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) Filters(filters map[string]interface{}) MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest {
+func (r MsserverAdsitesDomainAPIListRequest) Filters(filters map[string]interface{}) MsserverAdsitesDomainAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest {
+func (r MsserverAdsitesDomainAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MsserverAdsitesDomainAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) Execute() (*ListMsserverAdsitesDomainResponse, *http.Response, error) {
-	return r.ApiService.MsserveradsitesdomainGetExecute(r)
+func (r MsserverAdsitesDomainAPIListRequest) Execute() (*ListMsserverAdsitesDomainResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MsserveradsitesdomainGet Retrieve msserver:adsites:domain objects
+List Retrieve msserver:adsites:domain objects
 
 Returns a list of msserver:adsites:domain objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest
+	@return MsserverAdsitesDomainAPIListRequest
 */
-func (a *MsserverAdsitesDomainAPIService) MsserveradsitesdomainGet(ctx context.Context) MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest {
-	return MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest{
+func (a *MsserverAdsitesDomainAPIService) List(ctx context.Context) MsserverAdsitesDomainAPIListRequest {
+	return MsserverAdsitesDomainAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *MsserverAdsitesDomainAPIService) MsserveradsitesdomainGet(ctx context.C
 // Execute executes the request
 //
 //	@return ListMsserverAdsitesDomainResponse
-func (a *MsserverAdsitesDomainAPIService) MsserveradsitesdomainGetExecute(r MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest) (*ListMsserverAdsitesDomainResponse, *http.Response, error) {
+func (a *MsserverAdsitesDomainAPIService) ListExecute(r MsserverAdsitesDomainAPIListRequest) (*ListMsserverAdsitesDomainResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *MsserverAdsitesDomainAPIService) MsserveradsitesdomainGetExecute(r Msse
 		localVarReturnValue *ListMsserverAdsitesDomainResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesDomainAPIService.MsserveradsitesdomainGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesDomainAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *MsserverAdsitesDomainAPIService) MsserveradsitesdomainGetExecute(r Msse
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest struct {
+type MsserverAdsitesDomainAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     MsserverAdsitesDomainAPI
 	reference      string
@@ -235,38 +235,38 @@ type MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest) ReturnFields(returnFields string) MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest {
+func (r MsserverAdsitesDomainAPIReadRequest) ReturnFields(returnFields string) MsserverAdsitesDomainAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest) ReturnFields2(returnFields2 string) MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest {
+func (r MsserverAdsitesDomainAPIReadRequest) ReturnFields2(returnFields2 string) MsserverAdsitesDomainAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest {
+func (r MsserverAdsitesDomainAPIReadRequest) ReturnAsObject(returnAsObject int32) MsserverAdsitesDomainAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest) Execute() (*GetMsserverAdsitesDomainResponse, *http.Response, error) {
-	return r.ApiService.MsserveradsitesdomainReferenceGetExecute(r)
+func (r MsserverAdsitesDomainAPIReadRequest) Execute() (*GetMsserverAdsitesDomainResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MsserveradsitesdomainReferenceGet Get a specific msserver:adsites:domain object
+Read Get a specific msserver:adsites:domain object
 
 Returns a specific msserver:adsites:domain object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the msserver:adsites:domain object
-	@return MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest
+	@return MsserverAdsitesDomainAPIReadRequest
 */
-func (a *MsserverAdsitesDomainAPIService) MsserveradsitesdomainReferenceGet(ctx context.Context, reference string) MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest {
-	return MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest{
+func (a *MsserverAdsitesDomainAPIService) Read(ctx context.Context, reference string) MsserverAdsitesDomainAPIReadRequest {
+	return MsserverAdsitesDomainAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *MsserverAdsitesDomainAPIService) MsserveradsitesdomainReferenceGet(ctx 
 // Execute executes the request
 //
 //	@return GetMsserverAdsitesDomainResponse
-func (a *MsserverAdsitesDomainAPIService) MsserveradsitesdomainReferenceGetExecute(r MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest) (*GetMsserverAdsitesDomainResponse, *http.Response, error) {
+func (a *MsserverAdsitesDomainAPIService) ReadExecute(r MsserverAdsitesDomainAPIReadRequest) (*GetMsserverAdsitesDomainResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *MsserverAdsitesDomainAPIService) MsserveradsitesdomainReferenceGetExecu
 		localVarReturnValue *GetMsserverAdsitesDomainResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesDomainAPIService.MsserveradsitesdomainReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAdsitesDomainAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

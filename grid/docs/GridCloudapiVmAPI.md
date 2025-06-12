@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridcloudapivmGet**](GridCloudapiVmAPI.md#GridcloudapivmGet) | **Get** /grid:cloudapi:vm | Retrieve grid:cloudapi:vm objects
-[**GridcloudapivmReferenceGet**](GridCloudapiVmAPI.md#GridcloudapivmReferenceGet) | **Get** /grid:cloudapi:vm/{reference} | Get a specific grid:cloudapi:vm object
-[**GridcloudapivmReferencePut**](GridCloudapiVmAPI.md#GridcloudapivmReferencePut) | **Put** /grid:cloudapi:vm/{reference} | Update a grid:cloudapi:vm object
+[**List**](GridCloudapiVmAPI.md#List) | **Get** /grid:cloudapi:vm | Retrieve grid:cloudapi:vm objects
+[**Read**](GridCloudapiVmAPI.md#Read) | **Get** /grid:cloudapi:vm/{reference} | Get a specific grid:cloudapi:vm object
+[**Update**](GridCloudapiVmAPI.md#Update) | **Put** /grid:cloudapi:vm/{reference} | Update a grid:cloudapi:vm object
 
 
 
-## GridcloudapivmGet
+## List
 
-> ListGridCloudapiVmResponse GridcloudapivmGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridCloudapiVmResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:cloudapi:vm objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiVmAPI.GridcloudapivmGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridCloudapiVmAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiVmAPI.GridcloudapivmGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiVmAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapivmGet`: ListGridCloudapiVmResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiVmAPI.GridcloudapivmGet`: %v\n", resp)
+	// response from `List`: ListGridCloudapiVmResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiVmAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiVmAPIGridcloudapivmGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiVmAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridcloudapivmReferenceGet
+## Read
 
-> GetGridCloudapiVmResponse GridcloudapivmReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridCloudapiVmResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:cloudapi:vm object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:cloudapi:vm object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiVmAPI.GridcloudapivmReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridCloudapiVmAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiVmAPI.GridcloudapivmReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiVmAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapivmReferenceGet`: GetGridCloudapiVmResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiVmAPI.GridcloudapivmReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridCloudapiVmResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiVmAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiVmAPIGridcloudapivmReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiVmAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridcloudapivmReferencePut
+## Update
 
-> UpdateGridCloudapiVmResponse GridcloudapivmReferencePut(ctx, reference).GridCloudapiVm(gridCloudapiVm).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridCloudapiVmResponse Update(ctx, reference).GridCloudapiVm(gridCloudapiVm).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:cloudapi:vm object
 
@@ -180,13 +180,13 @@ func main() {
 	gridCloudapiVm := *grid.NewGridCloudapiVm() // GridCloudapiVm | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiVmAPI.GridcloudapivmReferencePut(context.Background(), reference).GridCloudapiVm(gridCloudapiVm).Execute()
+	resp, r, err := apiClient.GridCloudapiVmAPI.Update(context.Background(), reference).GridCloudapiVm(gridCloudapiVm).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiVmAPI.GridcloudapivmReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiVmAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapivmReferencePut`: UpdateGridCloudapiVmResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiVmAPI.GridcloudapivmReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGridCloudapiVmResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiVmAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiVmAPIGridcloudapivmReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiVmAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ThreatprotectionprofileruleGet**](ThreatprotectionProfileRuleAPI.md#ThreatprotectionprofileruleGet) | **Get** /threatprotection:profile:rule | Retrieve threatprotection:profile:rule objects
-[**ThreatprotectionprofileruleReferenceGet**](ThreatprotectionProfileRuleAPI.md#ThreatprotectionprofileruleReferenceGet) | **Get** /threatprotection:profile:rule/{reference} | Get a specific threatprotection:profile:rule object
-[**ThreatprotectionprofileruleReferencePut**](ThreatprotectionProfileRuleAPI.md#ThreatprotectionprofileruleReferencePut) | **Put** /threatprotection:profile:rule/{reference} | Update a threatprotection:profile:rule object
+[**List**](ThreatprotectionProfileRuleAPI.md#List) | **Get** /threatprotection:profile:rule | Retrieve threatprotection:profile:rule objects
+[**Read**](ThreatprotectionProfileRuleAPI.md#Read) | **Get** /threatprotection:profile:rule/{reference} | Get a specific threatprotection:profile:rule object
+[**Update**](ThreatprotectionProfileRuleAPI.md#Update) | **Put** /threatprotection:profile:rule/{reference} | Update a threatprotection:profile:rule object
 
 
 
-## ThreatprotectionprofileruleGet
+## List
 
-> ListThreatprotectionProfileRuleResponse ThreatprotectionprofileruleGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListThreatprotectionProfileRuleResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve threatprotection:profile:rule objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionProfileRuleAPI.ThreatprotectionprofileruleGet(context.Background()).Execute()
+	resp, r, err := apiClient.ThreatprotectionProfileRuleAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileRuleAPI.ThreatprotectionprofileruleGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileRuleAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatprotectionprofileruleGet`: ListThreatprotectionProfileRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileRuleAPI.ThreatprotectionprofileruleGet`: %v\n", resp)
+	// response from `List`: ListThreatprotectionProfileRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileRuleAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatprotectionProfileRuleAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ThreatprotectionprofileruleReferenceGet
+## Read
 
-> GetThreatprotectionProfileRuleResponse ThreatprotectionprofileruleReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetThreatprotectionProfileRuleResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific threatprotection:profile:rule object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the threatprotection:profile:rule object
 
 	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionProfileRuleAPI.ThreatprotectionprofileruleReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ThreatprotectionProfileRuleAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileRuleAPI.ThreatprotectionprofileruleReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileRuleAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatprotectionprofileruleReferenceGet`: GetThreatprotectionProfileRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileRuleAPI.ThreatprotectionprofileruleReferenceGet`: %v\n", resp)
+	// response from `Read`: GetThreatprotectionProfileRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileRuleAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatprotectionProfileRuleAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ThreatprotectionprofileruleReferencePut
+## Update
 
-> UpdateThreatprotectionProfileRuleResponse ThreatprotectionprofileruleReferencePut(ctx, reference).ThreatprotectionProfileRule(threatprotectionProfileRule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateThreatprotectionProfileRuleResponse Update(ctx, reference).ThreatprotectionProfileRule(threatprotectionProfileRule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a threatprotection:profile:rule object
 
@@ -180,13 +180,13 @@ func main() {
 	threatprotectionProfileRule := *threatprotection.NewThreatprotectionProfileRule() // ThreatprotectionProfileRule | Object data to update
 
 	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionProfileRuleAPI.ThreatprotectionprofileruleReferencePut(context.Background(), reference).ThreatprotectionProfileRule(threatprotectionProfileRule).Execute()
+	resp, r, err := apiClient.ThreatprotectionProfileRuleAPI.Update(context.Background(), reference).ThreatprotectionProfileRule(threatprotectionProfileRule).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileRuleAPI.ThreatprotectionprofileruleReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileRuleAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatprotectionprofileruleReferencePut`: UpdateThreatprotectionProfileRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileRuleAPI.ThreatprotectionprofileruleReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateThreatprotectionProfileRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileRuleAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatprotectionProfileRuleAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

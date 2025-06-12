@@ -23,249 +23,78 @@ import (
 
 type DtcMonitorTcpAPI interface {
 	/*
-		DtcmonitortcpGet Retrieve dtc:monitor:tcp objects
-
-		Returns a list of dtc:monitor:tcp objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcMonitorTcpAPIDtcmonitortcpGetRequest
-	*/
-	DtcmonitortcpGet(ctx context.Context) DtcMonitorTcpAPIDtcmonitortcpGetRequest
-
-	// DtcmonitortcpGetExecute executes the request
-	//  @return ListDtcMonitorTcpResponse
-	DtcmonitortcpGetExecute(r DtcMonitorTcpAPIDtcmonitortcpGetRequest) (*ListDtcMonitorTcpResponse, *http.Response, error)
-	/*
-		DtcmonitortcpPost Create a dtc:monitor:tcp object
+		Create Create a dtc:monitor:tcp object
 
 		Creates a new dtc:monitor:tcp object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcMonitorTcpAPIDtcmonitortcpPostRequest
+		@return DtcMonitorTcpAPICreateRequest
 	*/
-	DtcmonitortcpPost(ctx context.Context) DtcMonitorTcpAPIDtcmonitortcpPostRequest
+	Create(ctx context.Context) DtcMonitorTcpAPICreateRequest
 
-	// DtcmonitortcpPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDtcMonitorTcpResponse
-	DtcmonitortcpPostExecute(r DtcMonitorTcpAPIDtcmonitortcpPostRequest) (*CreateDtcMonitorTcpResponse, *http.Response, error)
+	CreateExecute(r DtcMonitorTcpAPICreateRequest) (*CreateDtcMonitorTcpResponse, *http.Response, error)
 	/*
-		DtcmonitortcpReferenceDelete Delete a dtc:monitor:tcp object
+		Delete Delete a dtc:monitor:tcp object
 
 		Deletes a specific dtc:monitor:tcp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:tcp object
-		@return DtcMonitorTcpAPIDtcmonitortcpReferenceDeleteRequest
+		@return DtcMonitorTcpAPIDeleteRequest
 	*/
-	DtcmonitortcpReferenceDelete(ctx context.Context, reference string) DtcMonitorTcpAPIDtcmonitortcpReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DtcMonitorTcpAPIDeleteRequest
 
-	// DtcmonitortcpReferenceDeleteExecute executes the request
-	DtcmonitortcpReferenceDeleteExecute(r DtcMonitorTcpAPIDtcmonitortcpReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DtcMonitorTcpAPIDeleteRequest) (*http.Response, error)
 	/*
-		DtcmonitortcpReferenceGet Get a specific dtc:monitor:tcp object
+		List Retrieve dtc:monitor:tcp objects
+
+		Returns a list of dtc:monitor:tcp objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DtcMonitorTcpAPIListRequest
+	*/
+	List(ctx context.Context) DtcMonitorTcpAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDtcMonitorTcpResponse
+	ListExecute(r DtcMonitorTcpAPIListRequest) (*ListDtcMonitorTcpResponse, *http.Response, error)
+	/*
+		Read Get a specific dtc:monitor:tcp object
 
 		Returns a specific dtc:monitor:tcp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:tcp object
-		@return DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest
+		@return DtcMonitorTcpAPIReadRequest
 	*/
-	DtcmonitortcpReferenceGet(ctx context.Context, reference string) DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcMonitorTcpAPIReadRequest
 
-	// DtcmonitortcpReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcMonitorTcpResponse
-	DtcmonitortcpReferenceGetExecute(r DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest) (*GetDtcMonitorTcpResponse, *http.Response, error)
+	ReadExecute(r DtcMonitorTcpAPIReadRequest) (*GetDtcMonitorTcpResponse, *http.Response, error)
 	/*
-		DtcmonitortcpReferencePut Update a dtc:monitor:tcp object
+		Update Update a dtc:monitor:tcp object
 
 		Updates a specific dtc:monitor:tcp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:tcp object
-		@return DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest
+		@return DtcMonitorTcpAPIUpdateRequest
 	*/
-	DtcmonitortcpReferencePut(ctx context.Context, reference string) DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest
+	Update(ctx context.Context, reference string) DtcMonitorTcpAPIUpdateRequest
 
-	// DtcmonitortcpReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcMonitorTcpResponse
-	DtcmonitortcpReferencePutExecute(r DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest) (*UpdateDtcMonitorTcpResponse, *http.Response, error)
+	UpdateExecute(r DtcMonitorTcpAPIUpdateRequest) (*UpdateDtcMonitorTcpResponse, *http.Response, error)
 }
 
 // DtcMonitorTcpAPIService DtcMonitorTcpAPI service
 type DtcMonitorTcpAPIService internal.Service
 
-type DtcMonitorTcpAPIDtcmonitortcpGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorTcpAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r DtcMonitorTcpAPIDtcmonitortcpGetRequest) ReturnFields(returnFields string) DtcMonitorTcpAPIDtcmonitortcpGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorTcpAPIDtcmonitortcpGetRequest) ReturnFields2(returnFields2 string) DtcMonitorTcpAPIDtcmonitortcpGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r DtcMonitorTcpAPIDtcmonitortcpGetRequest) MaxResults(maxResults int32) DtcMonitorTcpAPIDtcmonitortcpGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DtcMonitorTcpAPIDtcmonitortcpGetRequest) ReturnAsObject(returnAsObject int32) DtcMonitorTcpAPIDtcmonitortcpGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r DtcMonitorTcpAPIDtcmonitortcpGetRequest) Paging(paging int32) DtcMonitorTcpAPIDtcmonitortcpGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r DtcMonitorTcpAPIDtcmonitortcpGetRequest) PageId(pageId string) DtcMonitorTcpAPIDtcmonitortcpGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r DtcMonitorTcpAPIDtcmonitortcpGetRequest) Filters(filters map[string]interface{}) DtcMonitorTcpAPIDtcmonitortcpGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r DtcMonitorTcpAPIDtcmonitortcpGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcMonitorTcpAPIDtcmonitortcpGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r DtcMonitorTcpAPIDtcmonitortcpGetRequest) Execute() (*ListDtcMonitorTcpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitortcpGetExecute(r)
-}
-
-/*
-DtcmonitortcpGet Retrieve dtc:monitor:tcp objects
-
-Returns a list of dtc:monitor:tcp objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcMonitorTcpAPIDtcmonitortcpGetRequest
-*/
-func (a *DtcMonitorTcpAPIService) DtcmonitortcpGet(ctx context.Context) DtcMonitorTcpAPIDtcmonitortcpGetRequest {
-	return DtcMonitorTcpAPIDtcmonitortcpGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListDtcMonitorTcpResponse
-func (a *DtcMonitorTcpAPIService) DtcmonitortcpGetExecute(r DtcMonitorTcpAPIDtcmonitortcpGetRequest) (*ListDtcMonitorTcpResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListDtcMonitorTcpResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorTcpAPIService.DtcmonitortcpGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:monitor:tcp"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DtcMonitorTcpAPIDtcmonitortcpPostRequest struct {
+type DtcMonitorTcpAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     DtcMonitorTcpAPI
 	dtcMonitorTcp  *DtcMonitorTcp
@@ -275,43 +104,43 @@ type DtcMonitorTcpAPIDtcmonitortcpPostRequest struct {
 }
 
 // Object data to create
-func (r DtcMonitorTcpAPIDtcmonitortcpPostRequest) DtcMonitorTcp(dtcMonitorTcp DtcMonitorTcp) DtcMonitorTcpAPIDtcmonitortcpPostRequest {
+func (r DtcMonitorTcpAPICreateRequest) DtcMonitorTcp(dtcMonitorTcp DtcMonitorTcp) DtcMonitorTcpAPICreateRequest {
 	r.dtcMonitorTcp = &dtcMonitorTcp
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorTcpAPIDtcmonitortcpPostRequest) ReturnFields(returnFields string) DtcMonitorTcpAPIDtcmonitortcpPostRequest {
+func (r DtcMonitorTcpAPICreateRequest) ReturnFields(returnFields string) DtcMonitorTcpAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorTcpAPIDtcmonitortcpPostRequest) ReturnFields2(returnFields2 string) DtcMonitorTcpAPIDtcmonitortcpPostRequest {
+func (r DtcMonitorTcpAPICreateRequest) ReturnFields2(returnFields2 string) DtcMonitorTcpAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorTcpAPIDtcmonitortcpPostRequest) ReturnAsObject(returnAsObject int32) DtcMonitorTcpAPIDtcmonitortcpPostRequest {
+func (r DtcMonitorTcpAPICreateRequest) ReturnAsObject(returnAsObject int32) DtcMonitorTcpAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorTcpAPIDtcmonitortcpPostRequest) Execute() (*CreateDtcMonitorTcpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitortcpPostExecute(r)
+func (r DtcMonitorTcpAPICreateRequest) Execute() (*CreateDtcMonitorTcpResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-DtcmonitortcpPost Create a dtc:monitor:tcp object
+Create Create a dtc:monitor:tcp object
 
 Creates a new dtc:monitor:tcp object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcMonitorTcpAPIDtcmonitortcpPostRequest
+	@return DtcMonitorTcpAPICreateRequest
 */
-func (a *DtcMonitorTcpAPIService) DtcmonitortcpPost(ctx context.Context) DtcMonitorTcpAPIDtcmonitortcpPostRequest {
-	return DtcMonitorTcpAPIDtcmonitortcpPostRequest{
+func (a *DtcMonitorTcpAPIService) Create(ctx context.Context) DtcMonitorTcpAPICreateRequest {
+	return DtcMonitorTcpAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *DtcMonitorTcpAPIService) DtcmonitortcpPost(ctx context.Context) DtcMoni
 // Execute executes the request
 //
 //	@return CreateDtcMonitorTcpResponse
-func (a *DtcMonitorTcpAPIService) DtcmonitortcpPostExecute(r DtcMonitorTcpAPIDtcmonitortcpPostRequest) (*CreateDtcMonitorTcpResponse, *http.Response, error) {
+func (a *DtcMonitorTcpAPIService) CreateExecute(r DtcMonitorTcpAPICreateRequest) (*CreateDtcMonitorTcpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *DtcMonitorTcpAPIService) DtcmonitortcpPostExecute(r DtcMonitorTcpAPIDtc
 		localVarReturnValue *CreateDtcMonitorTcpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorTcpAPIService.DtcmonitortcpPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorTcpAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *DtcMonitorTcpAPIService) DtcmonitortcpPostExecute(r DtcMonitorTcpAPIDtc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcMonitorTcpAPIDtcmonitortcpReferenceDeleteRequest struct {
+type DtcMonitorTcpAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService DtcMonitorTcpAPI
 	reference  string
 }
 
-func (r DtcMonitorTcpAPIDtcmonitortcpReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DtcmonitortcpReferenceDeleteExecute(r)
+func (r DtcMonitorTcpAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-DtcmonitortcpReferenceDelete Delete a dtc:monitor:tcp object
+Delete Delete a dtc:monitor:tcp object
 
 Deletes a specific dtc:monitor:tcp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:tcp object
-	@return DtcMonitorTcpAPIDtcmonitortcpReferenceDeleteRequest
+	@return DtcMonitorTcpAPIDeleteRequest
 */
-func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferenceDelete(ctx context.Context, reference string) DtcMonitorTcpAPIDtcmonitortcpReferenceDeleteRequest {
-	return DtcMonitorTcpAPIDtcmonitortcpReferenceDeleteRequest{
+func (a *DtcMonitorTcpAPIService) Delete(ctx context.Context, reference string) DtcMonitorTcpAPIDeleteRequest {
+	return DtcMonitorTcpAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferenceDelete(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferenceDeleteExecute(r DtcMonitorTcpAPIDtcmonitortcpReferenceDeleteRequest) (*http.Response, error) {
+func (a *DtcMonitorTcpAPIService) DeleteExecute(r DtcMonitorTcpAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorTcpAPIService.DtcmonitortcpReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorTcpAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferenceDeleteExecute(r DtcMonit
 	return localVarHTTPResponse, nil
 }
 
-type DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest struct {
+type DtcMonitorTcpAPIListRequest struct {
+	ctx            context.Context
+	ApiService     DtcMonitorTcpAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DtcMonitorTcpAPIListRequest) ReturnFields(returnFields string) DtcMonitorTcpAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DtcMonitorTcpAPIListRequest) ReturnFields2(returnFields2 string) DtcMonitorTcpAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r DtcMonitorTcpAPIListRequest) MaxResults(maxResults int32) DtcMonitorTcpAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DtcMonitorTcpAPIListRequest) ReturnAsObject(returnAsObject int32) DtcMonitorTcpAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r DtcMonitorTcpAPIListRequest) Paging(paging int32) DtcMonitorTcpAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r DtcMonitorTcpAPIListRequest) PageId(pageId string) DtcMonitorTcpAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r DtcMonitorTcpAPIListRequest) Filters(filters map[string]interface{}) DtcMonitorTcpAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r DtcMonitorTcpAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcMonitorTcpAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r DtcMonitorTcpAPIListRequest) Execute() (*ListDtcMonitorTcpResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve dtc:monitor:tcp objects
+
+Returns a list of dtc:monitor:tcp objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DtcMonitorTcpAPIListRequest
+*/
+func (a *DtcMonitorTcpAPIService) List(ctx context.Context) DtcMonitorTcpAPIListRequest {
+	return DtcMonitorTcpAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListDtcMonitorTcpResponse
+func (a *DtcMonitorTcpAPIService) ListExecute(r DtcMonitorTcpAPIListRequest) (*ListDtcMonitorTcpResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListDtcMonitorTcpResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorTcpAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:monitor:tcp"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DtcMonitorTcpAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DtcMonitorTcpAPI
 	reference      string
@@ -511,38 +511,38 @@ type DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest) ReturnFields(returnFields string) DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest {
+func (r DtcMonitorTcpAPIReadRequest) ReturnFields(returnFields string) DtcMonitorTcpAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest) ReturnFields2(returnFields2 string) DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest {
+func (r DtcMonitorTcpAPIReadRequest) ReturnFields2(returnFields2 string) DtcMonitorTcpAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest {
+func (r DtcMonitorTcpAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcMonitorTcpAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest) Execute() (*GetDtcMonitorTcpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitortcpReferenceGetExecute(r)
+func (r DtcMonitorTcpAPIReadRequest) Execute() (*GetDtcMonitorTcpResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtcmonitortcpReferenceGet Get a specific dtc:monitor:tcp object
+Read Get a specific dtc:monitor:tcp object
 
 Returns a specific dtc:monitor:tcp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:tcp object
-	@return DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest
+	@return DtcMonitorTcpAPIReadRequest
 */
-func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferenceGet(ctx context.Context, reference string) DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest {
-	return DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest{
+func (a *DtcMonitorTcpAPIService) Read(ctx context.Context, reference string) DtcMonitorTcpAPIReadRequest {
+	return DtcMonitorTcpAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferenceGet(ctx context.Context,
 // Execute executes the request
 //
 //	@return GetDtcMonitorTcpResponse
-func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferenceGetExecute(r DtcMonitorTcpAPIDtcmonitortcpReferenceGetRequest) (*GetDtcMonitorTcpResponse, *http.Response, error) {
+func (a *DtcMonitorTcpAPIService) ReadExecute(r DtcMonitorTcpAPIReadRequest) (*GetDtcMonitorTcpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferenceGetExecute(r DtcMonitorT
 		localVarReturnValue *GetDtcMonitorTcpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorTcpAPIService.DtcmonitortcpReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorTcpAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferenceGetExecute(r DtcMonitorT
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest struct {
+type DtcMonitorTcpAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     DtcMonitorTcpAPI
 	reference      string
@@ -639,44 +639,44 @@ type DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest) DtcMonitorTcp(dtcMonitorTcp DtcMonitorTcp) DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest {
+func (r DtcMonitorTcpAPIUpdateRequest) DtcMonitorTcp(dtcMonitorTcp DtcMonitorTcp) DtcMonitorTcpAPIUpdateRequest {
 	r.dtcMonitorTcp = &dtcMonitorTcp
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest) ReturnFields(returnFields string) DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest {
+func (r DtcMonitorTcpAPIUpdateRequest) ReturnFields(returnFields string) DtcMonitorTcpAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest) ReturnFields2(returnFields2 string) DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest {
+func (r DtcMonitorTcpAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcMonitorTcpAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest {
+func (r DtcMonitorTcpAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcMonitorTcpAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest) Execute() (*UpdateDtcMonitorTcpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitortcpReferencePutExecute(r)
+func (r DtcMonitorTcpAPIUpdateRequest) Execute() (*UpdateDtcMonitorTcpResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtcmonitortcpReferencePut Update a dtc:monitor:tcp object
+Update Update a dtc:monitor:tcp object
 
 Updates a specific dtc:monitor:tcp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:tcp object
-	@return DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest
+	@return DtcMonitorTcpAPIUpdateRequest
 */
-func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferencePut(ctx context.Context, reference string) DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest {
-	return DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest{
+func (a *DtcMonitorTcpAPIService) Update(ctx context.Context, reference string) DtcMonitorTcpAPIUpdateRequest {
+	return DtcMonitorTcpAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferencePut(ctx context.Context,
 // Execute executes the request
 //
 //	@return UpdateDtcMonitorTcpResponse
-func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferencePutExecute(r DtcMonitorTcpAPIDtcmonitortcpReferencePutRequest) (*UpdateDtcMonitorTcpResponse, *http.Response, error) {
+func (a *DtcMonitorTcpAPIService) UpdateExecute(r DtcMonitorTcpAPIUpdateRequest) (*UpdateDtcMonitorTcpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *DtcMonitorTcpAPIService) DtcmonitortcpReferencePutExecute(r DtcMonitorT
 		localVarReturnValue *UpdateDtcMonitorTcpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorTcpAPIService.DtcmonitortcpReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorTcpAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

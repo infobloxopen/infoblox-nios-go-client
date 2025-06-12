@@ -23,52 +23,52 @@ import (
 
 type RecordHostIpv4addrAPI interface {
 	/*
-		RecordhostIpv4addrGet Retrieve record:host_ipv4addr objects
+		List Retrieve record:host_ipv4addr objects
 
 		Returns a list of record:host_ipv4addr objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest
+		@return RecordHostIpv4addrAPIListRequest
 	*/
-	RecordhostIpv4addrGet(ctx context.Context) RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest
+	List(ctx context.Context) RecordHostIpv4addrAPIListRequest
 
-	// RecordhostIpv4addrGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListRecordHostIpv4addrResponse
-	RecordhostIpv4addrGetExecute(r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) (*ListRecordHostIpv4addrResponse, *http.Response, error)
+	ListExecute(r RecordHostIpv4addrAPIListRequest) (*ListRecordHostIpv4addrResponse, *http.Response, error)
 	/*
-		RecordhostIpv4addrReferenceGet Get a specific record:host_ipv4addr object
+		Read Get a specific record:host_ipv4addr object
 
 		Returns a specific record:host_ipv4addr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:host_ipv4addr object
-		@return RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest
+		@return RecordHostIpv4addrAPIReadRequest
 	*/
-	RecordhostIpv4addrReferenceGet(ctx context.Context, reference string) RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordHostIpv4addrAPIReadRequest
 
-	// RecordhostIpv4addrReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordHostIpv4addrResponse
-	RecordhostIpv4addrReferenceGetExecute(r RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest) (*GetRecordHostIpv4addrResponse, *http.Response, error)
+	ReadExecute(r RecordHostIpv4addrAPIReadRequest) (*GetRecordHostIpv4addrResponse, *http.Response, error)
 	/*
-		RecordhostIpv4addrReferencePut Update a record:host_ipv4addr object
+		Update Update a record:host_ipv4addr object
 
 		Updates a specific record:host_ipv4addr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:host_ipv4addr object
-		@return RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest
+		@return RecordHostIpv4addrAPIUpdateRequest
 	*/
-	RecordhostIpv4addrReferencePut(ctx context.Context, reference string) RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest
+	Update(ctx context.Context, reference string) RecordHostIpv4addrAPIUpdateRequest
 
-	// RecordhostIpv4addrReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordHostIpv4addrResponse
-	RecordhostIpv4addrReferencePutExecute(r RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest) (*UpdateRecordHostIpv4addrResponse, *http.Response, error)
+	UpdateExecute(r RecordHostIpv4addrAPIUpdateRequest) (*UpdateRecordHostIpv4addrResponse, *http.Response, error)
 }
 
 // RecordHostIpv4addrAPIService RecordHostIpv4addrAPI service
 type RecordHostIpv4addrAPIService internal.Service
 
-type RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest struct {
+type RecordHostIpv4addrAPIListRequest struct {
 	ctx            context.Context
 	ApiService     RecordHostIpv4addrAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) ReturnFields(returnFields string) RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest {
+func (r RecordHostIpv4addrAPIListRequest) ReturnFields(returnFields string) RecordHostIpv4addrAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) ReturnFields2(returnFields2 string) RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest {
+func (r RecordHostIpv4addrAPIListRequest) ReturnFields2(returnFields2 string) RecordHostIpv4addrAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) MaxResults(maxResults int32) RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest {
+func (r RecordHostIpv4addrAPIListRequest) MaxResults(maxResults int32) RecordHostIpv4addrAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) ReturnAsObject(returnAsObject int32) RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest {
+func (r RecordHostIpv4addrAPIListRequest) ReturnAsObject(returnAsObject int32) RecordHostIpv4addrAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) Paging(paging int32) RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest {
+func (r RecordHostIpv4addrAPIListRequest) Paging(paging int32) RecordHostIpv4addrAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) PageId(pageId string) RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest {
+func (r RecordHostIpv4addrAPIListRequest) PageId(pageId string) RecordHostIpv4addrAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) Filters(filters map[string]interface{}) RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest {
+func (r RecordHostIpv4addrAPIListRequest) Filters(filters map[string]interface{}) RecordHostIpv4addrAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest {
+func (r RecordHostIpv4addrAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordHostIpv4addrAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) Execute() (*ListRecordHostIpv4addrResponse, *http.Response, error) {
-	return r.ApiService.RecordhostIpv4addrGetExecute(r)
+func (r RecordHostIpv4addrAPIListRequest) Execute() (*ListRecordHostIpv4addrResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RecordhostIpv4addrGet Retrieve record:host_ipv4addr objects
+List Retrieve record:host_ipv4addr objects
 
 Returns a list of record:host_ipv4addr objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest
+	@return RecordHostIpv4addrAPIListRequest
 */
-func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrGet(ctx context.Context) RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest {
-	return RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest{
+func (a *RecordHostIpv4addrAPIService) List(ctx context.Context) RecordHostIpv4addrAPIListRequest {
+	return RecordHostIpv4addrAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrGet(ctx context.Context
 // Execute executes the request
 //
 //	@return ListRecordHostIpv4addrResponse
-func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrGetExecute(r RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest) (*ListRecordHostIpv4addrResponse, *http.Response, error) {
+func (a *RecordHostIpv4addrAPIService) ListExecute(r RecordHostIpv4addrAPIListRequest) (*ListRecordHostIpv4addrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrGetExecute(r RecordHost
 		localVarReturnValue *ListRecordHostIpv4addrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordHostIpv4addrAPIService.RecordhostIpv4addrGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordHostIpv4addrAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrGetExecute(r RecordHost
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest struct {
+type RecordHostIpv4addrAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordHostIpv4addrAPI
 	reference      string
@@ -249,38 +249,38 @@ type RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest) ReturnFields(returnFields string) RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest {
+func (r RecordHostIpv4addrAPIReadRequest) ReturnFields(returnFields string) RecordHostIpv4addrAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest) ReturnFields2(returnFields2 string) RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest {
+func (r RecordHostIpv4addrAPIReadRequest) ReturnFields2(returnFields2 string) RecordHostIpv4addrAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest {
+func (r RecordHostIpv4addrAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordHostIpv4addrAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest) Execute() (*GetRecordHostIpv4addrResponse, *http.Response, error) {
-	return r.ApiService.RecordhostIpv4addrReferenceGetExecute(r)
+func (r RecordHostIpv4addrAPIReadRequest) Execute() (*GetRecordHostIpv4addrResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordhostIpv4addrReferenceGet Get a specific record:host_ipv4addr object
+Read Get a specific record:host_ipv4addr object
 
 Returns a specific record:host_ipv4addr object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:host_ipv4addr object
-	@return RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest
+	@return RecordHostIpv4addrAPIReadRequest
 */
-func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrReferenceGet(ctx context.Context, reference string) RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest {
-	return RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest{
+func (a *RecordHostIpv4addrAPIService) Read(ctx context.Context, reference string) RecordHostIpv4addrAPIReadRequest {
+	return RecordHostIpv4addrAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrReferenceGet(ctx contex
 // Execute executes the request
 //
 //	@return GetRecordHostIpv4addrResponse
-func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrReferenceGetExecute(r RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest) (*GetRecordHostIpv4addrResponse, *http.Response, error) {
+func (a *RecordHostIpv4addrAPIService) ReadExecute(r RecordHostIpv4addrAPIReadRequest) (*GetRecordHostIpv4addrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrReferenceGetExecute(r R
 		localVarReturnValue *GetRecordHostIpv4addrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordHostIpv4addrAPIService.RecordhostIpv4addrReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordHostIpv4addrAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrReferenceGetExecute(r R
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest struct {
+type RecordHostIpv4addrAPIUpdateRequest struct {
 	ctx                context.Context
 	ApiService         RecordHostIpv4addrAPI
 	reference          string
@@ -377,44 +377,44 @@ type RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest) RecordHostIpv4addr(recordHostIpv4addr RecordHostIpv4addr) RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest {
+func (r RecordHostIpv4addrAPIUpdateRequest) RecordHostIpv4addr(recordHostIpv4addr RecordHostIpv4addr) RecordHostIpv4addrAPIUpdateRequest {
 	r.recordHostIpv4addr = &recordHostIpv4addr
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest) ReturnFields(returnFields string) RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest {
+func (r RecordHostIpv4addrAPIUpdateRequest) ReturnFields(returnFields string) RecordHostIpv4addrAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest) ReturnFields2(returnFields2 string) RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest {
+func (r RecordHostIpv4addrAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordHostIpv4addrAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest {
+func (r RecordHostIpv4addrAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordHostIpv4addrAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest) Execute() (*UpdateRecordHostIpv4addrResponse, *http.Response, error) {
-	return r.ApiService.RecordhostIpv4addrReferencePutExecute(r)
+func (r RecordHostIpv4addrAPIUpdateRequest) Execute() (*UpdateRecordHostIpv4addrResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordhostIpv4addrReferencePut Update a record:host_ipv4addr object
+Update Update a record:host_ipv4addr object
 
 Updates a specific record:host_ipv4addr object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:host_ipv4addr object
-	@return RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest
+	@return RecordHostIpv4addrAPIUpdateRequest
 */
-func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrReferencePut(ctx context.Context, reference string) RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest {
-	return RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest{
+func (a *RecordHostIpv4addrAPIService) Update(ctx context.Context, reference string) RecordHostIpv4addrAPIUpdateRequest {
+	return RecordHostIpv4addrAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrReferencePut(ctx contex
 // Execute executes the request
 //
 //	@return UpdateRecordHostIpv4addrResponse
-func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrReferencePutExecute(r RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest) (*UpdateRecordHostIpv4addrResponse, *http.Response, error) {
+func (a *RecordHostIpv4addrAPIService) UpdateExecute(r RecordHostIpv4addrAPIUpdateRequest) (*UpdateRecordHostIpv4addrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *RecordHostIpv4addrAPIService) RecordhostIpv4addrReferencePutExecute(r R
 		localVarReturnValue *UpdateRecordHostIpv4addrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordHostIpv4addrAPIService.RecordhostIpv4addrReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordHostIpv4addrAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

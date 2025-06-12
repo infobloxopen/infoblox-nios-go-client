@@ -23,249 +23,78 @@ import (
 
 type NamedaclAPI interface {
 	/*
-		Get Retrieve namedacl objects
-
-		Returns a list of namedacl objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NamedaclAPIGetRequest
-	*/
-	Get(ctx context.Context) NamedaclAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListNamedaclResponse
-	GetExecute(r NamedaclAPIGetRequest) (*ListNamedaclResponse, *http.Response, error)
-	/*
-		Post Create a namedacl object
+		Create Create a namedacl object
 
 		Creates a new namedacl object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NamedaclAPIPostRequest
+		@return NamedaclAPICreateRequest
 	*/
-	Post(ctx context.Context) NamedaclAPIPostRequest
+	Create(ctx context.Context) NamedaclAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNamedaclResponse
-	PostExecute(r NamedaclAPIPostRequest) (*CreateNamedaclResponse, *http.Response, error)
+	CreateExecute(r NamedaclAPICreateRequest) (*CreateNamedaclResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a namedacl object
+		Delete Delete a namedacl object
 
 		Deletes a specific namedacl object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the namedacl object
-		@return NamedaclAPIReferenceDeleteRequest
+		@return NamedaclAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) NamedaclAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NamedaclAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r NamedaclAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NamedaclAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific namedacl object
+		List Retrieve namedacl objects
+
+		Returns a list of namedacl objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NamedaclAPIListRequest
+	*/
+	List(ctx context.Context) NamedaclAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNamedaclResponse
+	ListExecute(r NamedaclAPIListRequest) (*ListNamedaclResponse, *http.Response, error)
+	/*
+		Read Get a specific namedacl object
 
 		Returns a specific namedacl object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the namedacl object
-		@return NamedaclAPIReferenceGetRequest
+		@return NamedaclAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) NamedaclAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) NamedaclAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNamedaclResponse
-	ReferenceGetExecute(r NamedaclAPIReferenceGetRequest) (*GetNamedaclResponse, *http.Response, error)
+	ReadExecute(r NamedaclAPIReadRequest) (*GetNamedaclResponse, *http.Response, error)
 	/*
-		ReferencePut Update a namedacl object
+		Update Update a namedacl object
 
 		Updates a specific namedacl object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the namedacl object
-		@return NamedaclAPIReferencePutRequest
+		@return NamedaclAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) NamedaclAPIReferencePutRequest
+	Update(ctx context.Context, reference string) NamedaclAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNamedaclResponse
-	ReferencePutExecute(r NamedaclAPIReferencePutRequest) (*UpdateNamedaclResponse, *http.Response, error)
+	UpdateExecute(r NamedaclAPIUpdateRequest) (*UpdateNamedaclResponse, *http.Response, error)
 }
 
 // NamedaclAPIService NamedaclAPI service
 type NamedaclAPIService internal.Service
 
-type NamedaclAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     NamedaclAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r NamedaclAPIGetRequest) ReturnFields(returnFields string) NamedaclAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NamedaclAPIGetRequest) ReturnFields2(returnFields2 string) NamedaclAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r NamedaclAPIGetRequest) MaxResults(maxResults int32) NamedaclAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NamedaclAPIGetRequest) ReturnAsObject(returnAsObject int32) NamedaclAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r NamedaclAPIGetRequest) Paging(paging int32) NamedaclAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r NamedaclAPIGetRequest) PageId(pageId string) NamedaclAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r NamedaclAPIGetRequest) Filters(filters map[string]interface{}) NamedaclAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r NamedaclAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NamedaclAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r NamedaclAPIGetRequest) Execute() (*ListNamedaclResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve namedacl objects
-
-Returns a list of namedacl objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NamedaclAPIGetRequest
-*/
-func (a *NamedaclAPIService) Get(ctx context.Context) NamedaclAPIGetRequest {
-	return NamedaclAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListNamedaclResponse
-func (a *NamedaclAPIService) GetExecute(r NamedaclAPIGetRequest) (*ListNamedaclResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListNamedaclResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NamedaclAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/namedacl"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NamedaclAPIPostRequest struct {
+type NamedaclAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     NamedaclAPI
 	namedacl       *Namedacl
@@ -275,43 +104,43 @@ type NamedaclAPIPostRequest struct {
 }
 
 // Object data to create
-func (r NamedaclAPIPostRequest) Namedacl(namedacl Namedacl) NamedaclAPIPostRequest {
+func (r NamedaclAPICreateRequest) Namedacl(namedacl Namedacl) NamedaclAPICreateRequest {
 	r.namedacl = &namedacl
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NamedaclAPIPostRequest) ReturnFields(returnFields string) NamedaclAPIPostRequest {
+func (r NamedaclAPICreateRequest) ReturnFields(returnFields string) NamedaclAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NamedaclAPIPostRequest) ReturnFields2(returnFields2 string) NamedaclAPIPostRequest {
+func (r NamedaclAPICreateRequest) ReturnFields2(returnFields2 string) NamedaclAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NamedaclAPIPostRequest) ReturnAsObject(returnAsObject int32) NamedaclAPIPostRequest {
+func (r NamedaclAPICreateRequest) ReturnAsObject(returnAsObject int32) NamedaclAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NamedaclAPIPostRequest) Execute() (*CreateNamedaclResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r NamedaclAPICreateRequest) Execute() (*CreateNamedaclResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a namedacl object
+Create Create a namedacl object
 
 Creates a new namedacl object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NamedaclAPIPostRequest
+	@return NamedaclAPICreateRequest
 */
-func (a *NamedaclAPIService) Post(ctx context.Context) NamedaclAPIPostRequest {
-	return NamedaclAPIPostRequest{
+func (a *NamedaclAPIService) Create(ctx context.Context) NamedaclAPICreateRequest {
+	return NamedaclAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *NamedaclAPIService) Post(ctx context.Context) NamedaclAPIPostRequest {
 // Execute executes the request
 //
 //	@return CreateNamedaclResponse
-func (a *NamedaclAPIService) PostExecute(r NamedaclAPIPostRequest) (*CreateNamedaclResponse, *http.Response, error) {
+func (a *NamedaclAPIService) CreateExecute(r NamedaclAPICreateRequest) (*CreateNamedaclResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *NamedaclAPIService) PostExecute(r NamedaclAPIPostRequest) (*CreateNamed
 		localVarReturnValue *CreateNamedaclResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NamedaclAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NamedaclAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *NamedaclAPIService) PostExecute(r NamedaclAPIPostRequest) (*CreateNamed
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NamedaclAPIReferenceDeleteRequest struct {
+type NamedaclAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService NamedaclAPI
 	reference  string
 }
 
-func (r NamedaclAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r NamedaclAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a namedacl object
+Delete Delete a namedacl object
 
 Deletes a specific namedacl object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the namedacl object
-	@return NamedaclAPIReferenceDeleteRequest
+	@return NamedaclAPIDeleteRequest
 */
-func (a *NamedaclAPIService) ReferenceDelete(ctx context.Context, reference string) NamedaclAPIReferenceDeleteRequest {
-	return NamedaclAPIReferenceDeleteRequest{
+func (a *NamedaclAPIService) Delete(ctx context.Context, reference string) NamedaclAPIDeleteRequest {
+	return NamedaclAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *NamedaclAPIService) ReferenceDelete(ctx context.Context, reference stri
 }
 
 // Execute executes the request
-func (a *NamedaclAPIService) ReferenceDeleteExecute(r NamedaclAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *NamedaclAPIService) DeleteExecute(r NamedaclAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NamedaclAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NamedaclAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *NamedaclAPIService) ReferenceDeleteExecute(r NamedaclAPIReferenceDelete
 	return localVarHTTPResponse, nil
 }
 
-type NamedaclAPIReferenceGetRequest struct {
+type NamedaclAPIListRequest struct {
+	ctx            context.Context
+	ApiService     NamedaclAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r NamedaclAPIListRequest) ReturnFields(returnFields string) NamedaclAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NamedaclAPIListRequest) ReturnFields2(returnFields2 string) NamedaclAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r NamedaclAPIListRequest) MaxResults(maxResults int32) NamedaclAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NamedaclAPIListRequest) ReturnAsObject(returnAsObject int32) NamedaclAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r NamedaclAPIListRequest) Paging(paging int32) NamedaclAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r NamedaclAPIListRequest) PageId(pageId string) NamedaclAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r NamedaclAPIListRequest) Filters(filters map[string]interface{}) NamedaclAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r NamedaclAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NamedaclAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r NamedaclAPIListRequest) Execute() (*ListNamedaclResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve namedacl objects
+
+Returns a list of namedacl objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NamedaclAPIListRequest
+*/
+func (a *NamedaclAPIService) List(ctx context.Context) NamedaclAPIListRequest {
+	return NamedaclAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListNamedaclResponse
+func (a *NamedaclAPIService) ListExecute(r NamedaclAPIListRequest) (*ListNamedaclResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListNamedaclResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NamedaclAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/namedacl"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NamedaclAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     NamedaclAPI
 	reference      string
@@ -511,38 +511,38 @@ type NamedaclAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r NamedaclAPIReferenceGetRequest) ReturnFields(returnFields string) NamedaclAPIReferenceGetRequest {
+func (r NamedaclAPIReadRequest) ReturnFields(returnFields string) NamedaclAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NamedaclAPIReferenceGetRequest) ReturnFields2(returnFields2 string) NamedaclAPIReferenceGetRequest {
+func (r NamedaclAPIReadRequest) ReturnFields2(returnFields2 string) NamedaclAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NamedaclAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) NamedaclAPIReferenceGetRequest {
+func (r NamedaclAPIReadRequest) ReturnAsObject(returnAsObject int32) NamedaclAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NamedaclAPIReferenceGetRequest) Execute() (*GetNamedaclResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r NamedaclAPIReadRequest) Execute() (*GetNamedaclResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific namedacl object
+Read Get a specific namedacl object
 
 Returns a specific namedacl object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the namedacl object
-	@return NamedaclAPIReferenceGetRequest
+	@return NamedaclAPIReadRequest
 */
-func (a *NamedaclAPIService) ReferenceGet(ctx context.Context, reference string) NamedaclAPIReferenceGetRequest {
-	return NamedaclAPIReferenceGetRequest{
+func (a *NamedaclAPIService) Read(ctx context.Context, reference string) NamedaclAPIReadRequest {
+	return NamedaclAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *NamedaclAPIService) ReferenceGet(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return GetNamedaclResponse
-func (a *NamedaclAPIService) ReferenceGetExecute(r NamedaclAPIReferenceGetRequest) (*GetNamedaclResponse, *http.Response, error) {
+func (a *NamedaclAPIService) ReadExecute(r NamedaclAPIReadRequest) (*GetNamedaclResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *NamedaclAPIService) ReferenceGetExecute(r NamedaclAPIReferenceGetReques
 		localVarReturnValue *GetNamedaclResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NamedaclAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NamedaclAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *NamedaclAPIService) ReferenceGetExecute(r NamedaclAPIReferenceGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NamedaclAPIReferencePutRequest struct {
+type NamedaclAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     NamedaclAPI
 	reference      string
@@ -639,44 +639,44 @@ type NamedaclAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r NamedaclAPIReferencePutRequest) Namedacl(namedacl Namedacl) NamedaclAPIReferencePutRequest {
+func (r NamedaclAPIUpdateRequest) Namedacl(namedacl Namedacl) NamedaclAPIUpdateRequest {
 	r.namedacl = &namedacl
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NamedaclAPIReferencePutRequest) ReturnFields(returnFields string) NamedaclAPIReferencePutRequest {
+func (r NamedaclAPIUpdateRequest) ReturnFields(returnFields string) NamedaclAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NamedaclAPIReferencePutRequest) ReturnFields2(returnFields2 string) NamedaclAPIReferencePutRequest {
+func (r NamedaclAPIUpdateRequest) ReturnFields2(returnFields2 string) NamedaclAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NamedaclAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) NamedaclAPIReferencePutRequest {
+func (r NamedaclAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NamedaclAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NamedaclAPIReferencePutRequest) Execute() (*UpdateNamedaclResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r NamedaclAPIUpdateRequest) Execute() (*UpdateNamedaclResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a namedacl object
+Update Update a namedacl object
 
 Updates a specific namedacl object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the namedacl object
-	@return NamedaclAPIReferencePutRequest
+	@return NamedaclAPIUpdateRequest
 */
-func (a *NamedaclAPIService) ReferencePut(ctx context.Context, reference string) NamedaclAPIReferencePutRequest {
-	return NamedaclAPIReferencePutRequest{
+func (a *NamedaclAPIService) Update(ctx context.Context, reference string) NamedaclAPIUpdateRequest {
+	return NamedaclAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *NamedaclAPIService) ReferencePut(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return UpdateNamedaclResponse
-func (a *NamedaclAPIService) ReferencePutExecute(r NamedaclAPIReferencePutRequest) (*UpdateNamedaclResponse, *http.Response, error) {
+func (a *NamedaclAPIService) UpdateExecute(r NamedaclAPIUpdateRequest) (*UpdateNamedaclResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *NamedaclAPIService) ReferencePutExecute(r NamedaclAPIReferencePutReques
 		localVarReturnValue *UpdateNamedaclResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NamedaclAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NamedaclAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

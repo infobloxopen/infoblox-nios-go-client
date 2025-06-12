@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **IgnoreDhcpOptionListRequest** | Pointer to **bool** | If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested. | [optional] 
 **IgnoreId** | Pointer to **string** | Indicates whether the appliance will ignore DHCP client IDs or MAC addresses. Valid values are \&quot;NONE\&quot;, \&quot;CLIENT\&quot;, or \&quot;MACADDR\&quot;. The default is \&quot;NONE\&quot;. | [optional] 
 **IgnoreMacAddresses** | Pointer to **[]string** | A list of MAC addresses the appliance will ignore. | [optional] 
-**LeaseScavengeTime** | Pointer to **int32** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int64** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogicFilterRules** | Pointer to [**[]SharednetworkLogicFilterRules**](SharednetworkLogicFilterRules.md) | This field contains the logic filters to be applied on the this shared network. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **MsAdUserData** | Pointer to [**SharednetworkMsAdUserData**](SharednetworkMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the IPv6 Shared Network. | [optional] 
@@ -629,20 +629,20 @@ HasIgnoreMacAddresses returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *GetSharednetworkResponse) GetLeaseScavengeTime() int32`
+`func (o *GetSharednetworkResponse) GetLeaseScavengeTime() int64`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *GetSharednetworkResponse) GetLeaseScavengeTimeOk() (*int32, bool)`
+`func (o *GetSharednetworkResponse) GetLeaseScavengeTimeOk() (*int64, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *GetSharednetworkResponse) SetLeaseScavengeTime(v int32)`
+`func (o *GetSharednetworkResponse) SetLeaseScavengeTime(v int64)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 

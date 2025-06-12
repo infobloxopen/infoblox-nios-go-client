@@ -23,52 +23,52 @@ import (
 
 type ViewAPI interface {
 	/*
-		Get Retrieve view objects
+		List Retrieve view objects
 
 		Returns a list of view objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ViewAPIGetRequest
+		@return ViewAPIListRequest
 	*/
-	Get(ctx context.Context) ViewAPIGetRequest
+	List(ctx context.Context) ViewAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListViewResponse
-	GetExecute(r ViewAPIGetRequest) (*ListViewResponse, *http.Response, error)
+	ListExecute(r ViewAPIListRequest) (*ListViewResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific view object
+		Read Get a specific view object
 
 		Returns a specific view object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the view object
-		@return ViewAPIReferenceGetRequest
+		@return ViewAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ViewAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ViewAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetViewResponse
-	ReferenceGetExecute(r ViewAPIReferenceGetRequest) (*GetViewResponse, *http.Response, error)
+	ReadExecute(r ViewAPIReadRequest) (*GetViewResponse, *http.Response, error)
 	/*
-		ReferencePut Update a view object
+		Update Update a view object
 
 		Updates a specific view object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the view object
-		@return ViewAPIReferencePutRequest
+		@return ViewAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) ViewAPIReferencePutRequest
+	Update(ctx context.Context, reference string) ViewAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateViewResponse
-	ReferencePutExecute(r ViewAPIReferencePutRequest) (*UpdateViewResponse, *http.Response, error)
+	UpdateExecute(r ViewAPIUpdateRequest) (*UpdateViewResponse, *http.Response, error)
 }
 
 // ViewAPIService ViewAPI service
 type ViewAPIService internal.Service
 
-type ViewAPIGetRequest struct {
+type ViewAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ViewAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type ViewAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ViewAPIGetRequest) ReturnFields(returnFields string) ViewAPIGetRequest {
+func (r ViewAPIListRequest) ReturnFields(returnFields string) ViewAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ViewAPIGetRequest) ReturnFields2(returnFields2 string) ViewAPIGetRequest {
+func (r ViewAPIListRequest) ReturnFields2(returnFields2 string) ViewAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ViewAPIGetRequest) MaxResults(maxResults int32) ViewAPIGetRequest {
+func (r ViewAPIListRequest) MaxResults(maxResults int32) ViewAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ViewAPIGetRequest) ReturnAsObject(returnAsObject int32) ViewAPIGetRequest {
+func (r ViewAPIListRequest) ReturnAsObject(returnAsObject int32) ViewAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ViewAPIGetRequest) Paging(paging int32) ViewAPIGetRequest {
+func (r ViewAPIListRequest) Paging(paging int32) ViewAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ViewAPIGetRequest) PageId(pageId string) ViewAPIGetRequest {
+func (r ViewAPIListRequest) PageId(pageId string) ViewAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ViewAPIGetRequest) Filters(filters map[string]interface{}) ViewAPIGetRequest {
+func (r ViewAPIListRequest) Filters(filters map[string]interface{}) ViewAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ViewAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ViewAPIGetRequest {
+func (r ViewAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ViewAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ViewAPIGetRequest) Execute() (*ListViewResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r ViewAPIListRequest) Execute() (*ListViewResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve view objects
+List Retrieve view objects
 
 Returns a list of view objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ViewAPIGetRequest
+	@return ViewAPIListRequest
 */
-func (a *ViewAPIService) Get(ctx context.Context) ViewAPIGetRequest {
-	return ViewAPIGetRequest{
+func (a *ViewAPIService) List(ctx context.Context) ViewAPIListRequest {
+	return ViewAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *ViewAPIService) Get(ctx context.Context) ViewAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListViewResponse
-func (a *ViewAPIService) GetExecute(r ViewAPIGetRequest) (*ListViewResponse, *http.Response, error) {
+func (a *ViewAPIService) ListExecute(r ViewAPIListRequest) (*ListViewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *ViewAPIService) GetExecute(r ViewAPIGetRequest) (*ListViewResponse, *ht
 		localVarReturnValue *ListViewResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *ViewAPIService) GetExecute(r ViewAPIGetRequest) (*ListViewResponse, *ht
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ViewAPIReferenceGetRequest struct {
+type ViewAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ViewAPI
 	reference      string
@@ -249,38 +249,38 @@ type ViewAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ViewAPIReferenceGetRequest) ReturnFields(returnFields string) ViewAPIReferenceGetRequest {
+func (r ViewAPIReadRequest) ReturnFields(returnFields string) ViewAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ViewAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ViewAPIReferenceGetRequest {
+func (r ViewAPIReadRequest) ReturnFields2(returnFields2 string) ViewAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ViewAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ViewAPIReferenceGetRequest {
+func (r ViewAPIReadRequest) ReturnAsObject(returnAsObject int32) ViewAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ViewAPIReferenceGetRequest) Execute() (*GetViewResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r ViewAPIReadRequest) Execute() (*GetViewResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific view object
+Read Get a specific view object
 
 Returns a specific view object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the view object
-	@return ViewAPIReferenceGetRequest
+	@return ViewAPIReadRequest
 */
-func (a *ViewAPIService) ReferenceGet(ctx context.Context, reference string) ViewAPIReferenceGetRequest {
-	return ViewAPIReferenceGetRequest{
+func (a *ViewAPIService) Read(ctx context.Context, reference string) ViewAPIReadRequest {
+	return ViewAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *ViewAPIService) ReferenceGet(ctx context.Context, reference string) Vie
 // Execute executes the request
 //
 //	@return GetViewResponse
-func (a *ViewAPIService) ReferenceGetExecute(r ViewAPIReferenceGetRequest) (*GetViewResponse, *http.Response, error) {
+func (a *ViewAPIService) ReadExecute(r ViewAPIReadRequest) (*GetViewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *ViewAPIService) ReferenceGetExecute(r ViewAPIReferenceGetRequest) (*Get
 		localVarReturnValue *GetViewResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *ViewAPIService) ReferenceGetExecute(r ViewAPIReferenceGetRequest) (*Get
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ViewAPIReferencePutRequest struct {
+type ViewAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     ViewAPI
 	reference      string
@@ -377,44 +377,44 @@ type ViewAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r ViewAPIReferencePutRequest) View(view View) ViewAPIReferencePutRequest {
+func (r ViewAPIUpdateRequest) View(view View) ViewAPIUpdateRequest {
 	r.view = &view
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ViewAPIReferencePutRequest) ReturnFields(returnFields string) ViewAPIReferencePutRequest {
+func (r ViewAPIUpdateRequest) ReturnFields(returnFields string) ViewAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ViewAPIReferencePutRequest) ReturnFields2(returnFields2 string) ViewAPIReferencePutRequest {
+func (r ViewAPIUpdateRequest) ReturnFields2(returnFields2 string) ViewAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ViewAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) ViewAPIReferencePutRequest {
+func (r ViewAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ViewAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ViewAPIReferencePutRequest) Execute() (*UpdateViewResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r ViewAPIUpdateRequest) Execute() (*UpdateViewResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a view object
+Update Update a view object
 
 Updates a specific view object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the view object
-	@return ViewAPIReferencePutRequest
+	@return ViewAPIUpdateRequest
 */
-func (a *ViewAPIService) ReferencePut(ctx context.Context, reference string) ViewAPIReferencePutRequest {
-	return ViewAPIReferencePutRequest{
+func (a *ViewAPIService) Update(ctx context.Context, reference string) ViewAPIUpdateRequest {
+	return ViewAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *ViewAPIService) ReferencePut(ctx context.Context, reference string) Vie
 // Execute executes the request
 //
 //	@return UpdateViewResponse
-func (a *ViewAPIService) ReferencePutExecute(r ViewAPIReferencePutRequest) (*UpdateViewResponse, *http.Response, error) {
+func (a *ViewAPIService) UpdateExecute(r ViewAPIUpdateRequest) (*UpdateViewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *ViewAPIService) ReferencePutExecute(r ViewAPIReferencePutRequest) (*Upd
 		localVarReturnValue *UpdateViewResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ViewAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

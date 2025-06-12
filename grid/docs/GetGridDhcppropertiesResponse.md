@@ -67,7 +67,7 @@ Name | Type | Description | Notes
 **KdcServer** | Pointer to **string** | The IPv4 address or FQDN of the Kerberos server for DHCPv4 GSS-TSIG authentication. | [optional] 
 **LeaseLoggingMember** | Pointer to **string** | The Grid member on which you want to store the DHCP lease history log. Infoblox recommends that you dedicate a member other than the master as a logging member. If possible, use this member solely for storing the DHCP lease history log. If you do not select a member, no logging can occur. | [optional] 
 **LeasePerClientSettings** | Pointer to **string** | Defines how the appliance releases DHCP leases. Valid values are \&quot;RELEASE_MACHING_ID\&quot;, \&quot;NEVER_RELEASE\&quot;, or \&quot;ONE_LEASE_PER_CLIENT\&quot;. The default is \&quot;RELEASE_MATCHING_ID\&quot;. | [optional] 
-**LeaseScavengeTime** | Pointer to **int32** | Determines the lease scavenging time value. When this field is set, the appliance permanently deletes the free and backup leases, that remain in the database beyond a specified period of time. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int64** | Determines the lease scavenging time value. When this field is set, the appliance permanently deletes the free and backup leases, that remain in the database beyond a specified period of time. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogLeaseEvents** | Pointer to **bool** | This value specifies whether the Grid DHCP members log lease events is enabled or not. | [optional] 
 **LogicFilterRules** | Pointer to [**[]GridDhcppropertiesLogicFilterRules**](GridDhcppropertiesLogicFilterRules.md) | This field contains the logic filters to be applied on the Infoblox Grid. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **LowWaterMark** | Pointer to **int64** | Determines the low watermark value. If the percent of allocated addresses drops below this watermark, the appliance makes a syslog entry and if enabled, sends an e-mail notification. | [optional] 
@@ -1687,20 +1687,20 @@ HasLeasePerClientSettings returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *GetGridDhcppropertiesResponse) GetLeaseScavengeTime() int32`
+`func (o *GetGridDhcppropertiesResponse) GetLeaseScavengeTime() int64`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *GetGridDhcppropertiesResponse) GetLeaseScavengeTimeOk() (*int32, bool)`
+`func (o *GetGridDhcppropertiesResponse) GetLeaseScavengeTimeOk() (*int64, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *GetGridDhcppropertiesResponse) SetLeaseScavengeTime(v int32)`
+`func (o *GetGridDhcppropertiesResponse) SetLeaseScavengeTime(v int64)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 

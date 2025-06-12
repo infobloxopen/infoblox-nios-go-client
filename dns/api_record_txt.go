@@ -23,249 +23,78 @@ import (
 
 type RecordTxtAPI interface {
 	/*
-		RecordtxtGet Retrieve record:txt objects
-
-		Returns a list of record:txt objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordTxtAPIRecordtxtGetRequest
-	*/
-	RecordtxtGet(ctx context.Context) RecordTxtAPIRecordtxtGetRequest
-
-	// RecordtxtGetExecute executes the request
-	//  @return ListRecordTxtResponse
-	RecordtxtGetExecute(r RecordTxtAPIRecordtxtGetRequest) (*ListRecordTxtResponse, *http.Response, error)
-	/*
-		RecordtxtPost Create a record:txt object
+		Create Create a record:txt object
 
 		Creates a new record:txt object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordTxtAPIRecordtxtPostRequest
+		@return RecordTxtAPICreateRequest
 	*/
-	RecordtxtPost(ctx context.Context) RecordTxtAPIRecordtxtPostRequest
+	Create(ctx context.Context) RecordTxtAPICreateRequest
 
-	// RecordtxtPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordTxtResponse
-	RecordtxtPostExecute(r RecordTxtAPIRecordtxtPostRequest) (*CreateRecordTxtResponse, *http.Response, error)
+	CreateExecute(r RecordTxtAPICreateRequest) (*CreateRecordTxtResponse, *http.Response, error)
 	/*
-		RecordtxtReferenceDelete Delete a record:txt object
+		Delete Delete a record:txt object
 
 		Deletes a specific record:txt object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:txt object
-		@return RecordTxtAPIRecordtxtReferenceDeleteRequest
+		@return RecordTxtAPIDeleteRequest
 	*/
-	RecordtxtReferenceDelete(ctx context.Context, reference string) RecordTxtAPIRecordtxtReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordTxtAPIDeleteRequest
 
-	// RecordtxtReferenceDeleteExecute executes the request
-	RecordtxtReferenceDeleteExecute(r RecordTxtAPIRecordtxtReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordTxtAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecordtxtReferenceGet Get a specific record:txt object
+		List Retrieve record:txt objects
+
+		Returns a list of record:txt objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordTxtAPIListRequest
+	*/
+	List(ctx context.Context) RecordTxtAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordTxtResponse
+	ListExecute(r RecordTxtAPIListRequest) (*ListRecordTxtResponse, *http.Response, error)
+	/*
+		Read Get a specific record:txt object
 
 		Returns a specific record:txt object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:txt object
-		@return RecordTxtAPIRecordtxtReferenceGetRequest
+		@return RecordTxtAPIReadRequest
 	*/
-	RecordtxtReferenceGet(ctx context.Context, reference string) RecordTxtAPIRecordtxtReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordTxtAPIReadRequest
 
-	// RecordtxtReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordTxtResponse
-	RecordtxtReferenceGetExecute(r RecordTxtAPIRecordtxtReferenceGetRequest) (*GetRecordTxtResponse, *http.Response, error)
+	ReadExecute(r RecordTxtAPIReadRequest) (*GetRecordTxtResponse, *http.Response, error)
 	/*
-		RecordtxtReferencePut Update a record:txt object
+		Update Update a record:txt object
 
 		Updates a specific record:txt object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:txt object
-		@return RecordTxtAPIRecordtxtReferencePutRequest
+		@return RecordTxtAPIUpdateRequest
 	*/
-	RecordtxtReferencePut(ctx context.Context, reference string) RecordTxtAPIRecordtxtReferencePutRequest
+	Update(ctx context.Context, reference string) RecordTxtAPIUpdateRequest
 
-	// RecordtxtReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordTxtResponse
-	RecordtxtReferencePutExecute(r RecordTxtAPIRecordtxtReferencePutRequest) (*UpdateRecordTxtResponse, *http.Response, error)
+	UpdateExecute(r RecordTxtAPIUpdateRequest) (*UpdateRecordTxtResponse, *http.Response, error)
 }
 
 // RecordTxtAPIService RecordTxtAPI service
 type RecordTxtAPIService internal.Service
 
-type RecordTxtAPIRecordtxtGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordTxtAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r RecordTxtAPIRecordtxtGetRequest) ReturnFields(returnFields string) RecordTxtAPIRecordtxtGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTxtAPIRecordtxtGetRequest) ReturnFields2(returnFields2 string) RecordTxtAPIRecordtxtGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r RecordTxtAPIRecordtxtGetRequest) MaxResults(maxResults int32) RecordTxtAPIRecordtxtGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordTxtAPIRecordtxtGetRequest) ReturnAsObject(returnAsObject int32) RecordTxtAPIRecordtxtGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r RecordTxtAPIRecordtxtGetRequest) Paging(paging int32) RecordTxtAPIRecordtxtGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r RecordTxtAPIRecordtxtGetRequest) PageId(pageId string) RecordTxtAPIRecordtxtGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r RecordTxtAPIRecordtxtGetRequest) Filters(filters map[string]interface{}) RecordTxtAPIRecordtxtGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r RecordTxtAPIRecordtxtGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordTxtAPIRecordtxtGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r RecordTxtAPIRecordtxtGetRequest) Execute() (*ListRecordTxtResponse, *http.Response, error) {
-	return r.ApiService.RecordtxtGetExecute(r)
-}
-
-/*
-RecordtxtGet Retrieve record:txt objects
-
-Returns a list of record:txt objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordTxtAPIRecordtxtGetRequest
-*/
-func (a *RecordTxtAPIService) RecordtxtGet(ctx context.Context) RecordTxtAPIRecordtxtGetRequest {
-	return RecordTxtAPIRecordtxtGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListRecordTxtResponse
-func (a *RecordTxtAPIService) RecordtxtGetExecute(r RecordTxtAPIRecordtxtGetRequest) (*ListRecordTxtResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListRecordTxtResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTxtAPIService.RecordtxtGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:txt"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordTxtAPIRecordtxtPostRequest struct {
+type RecordTxtAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     RecordTxtAPI
 	recordTxt      *RecordTxt
@@ -275,43 +104,43 @@ type RecordTxtAPIRecordtxtPostRequest struct {
 }
 
 // Object data to create
-func (r RecordTxtAPIRecordtxtPostRequest) RecordTxt(recordTxt RecordTxt) RecordTxtAPIRecordtxtPostRequest {
+func (r RecordTxtAPICreateRequest) RecordTxt(recordTxt RecordTxt) RecordTxtAPICreateRequest {
 	r.recordTxt = &recordTxt
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordTxtAPIRecordtxtPostRequest) ReturnFields(returnFields string) RecordTxtAPIRecordtxtPostRequest {
+func (r RecordTxtAPICreateRequest) ReturnFields(returnFields string) RecordTxtAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTxtAPIRecordtxtPostRequest) ReturnFields2(returnFields2 string) RecordTxtAPIRecordtxtPostRequest {
+func (r RecordTxtAPICreateRequest) ReturnFields2(returnFields2 string) RecordTxtAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordTxtAPIRecordtxtPostRequest) ReturnAsObject(returnAsObject int32) RecordTxtAPIRecordtxtPostRequest {
+func (r RecordTxtAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordTxtAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordTxtAPIRecordtxtPostRequest) Execute() (*CreateRecordTxtResponse, *http.Response, error) {
-	return r.ApiService.RecordtxtPostExecute(r)
+func (r RecordTxtAPICreateRequest) Execute() (*CreateRecordTxtResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-RecordtxtPost Create a record:txt object
+Create Create a record:txt object
 
 Creates a new record:txt object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordTxtAPIRecordtxtPostRequest
+	@return RecordTxtAPICreateRequest
 */
-func (a *RecordTxtAPIService) RecordtxtPost(ctx context.Context) RecordTxtAPIRecordtxtPostRequest {
-	return RecordTxtAPIRecordtxtPostRequest{
+func (a *RecordTxtAPIService) Create(ctx context.Context) RecordTxtAPICreateRequest {
+	return RecordTxtAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *RecordTxtAPIService) RecordtxtPost(ctx context.Context) RecordTxtAPIRec
 // Execute executes the request
 //
 //	@return CreateRecordTxtResponse
-func (a *RecordTxtAPIService) RecordtxtPostExecute(r RecordTxtAPIRecordtxtPostRequest) (*CreateRecordTxtResponse, *http.Response, error) {
+func (a *RecordTxtAPIService) CreateExecute(r RecordTxtAPICreateRequest) (*CreateRecordTxtResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *RecordTxtAPIService) RecordtxtPostExecute(r RecordTxtAPIRecordtxtPostRe
 		localVarReturnValue *CreateRecordTxtResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTxtAPIService.RecordtxtPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTxtAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *RecordTxtAPIService) RecordtxtPostExecute(r RecordTxtAPIRecordtxtPostRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordTxtAPIRecordtxtReferenceDeleteRequest struct {
+type RecordTxtAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService RecordTxtAPI
 	reference  string
 }
 
-func (r RecordTxtAPIRecordtxtReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecordtxtReferenceDeleteExecute(r)
+func (r RecordTxtAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-RecordtxtReferenceDelete Delete a record:txt object
+Delete Delete a record:txt object
 
 Deletes a specific record:txt object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:txt object
-	@return RecordTxtAPIRecordtxtReferenceDeleteRequest
+	@return RecordTxtAPIDeleteRequest
 */
-func (a *RecordTxtAPIService) RecordtxtReferenceDelete(ctx context.Context, reference string) RecordTxtAPIRecordtxtReferenceDeleteRequest {
-	return RecordTxtAPIRecordtxtReferenceDeleteRequest{
+func (a *RecordTxtAPIService) Delete(ctx context.Context, reference string) RecordTxtAPIDeleteRequest {
+	return RecordTxtAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *RecordTxtAPIService) RecordtxtReferenceDelete(ctx context.Context, refe
 }
 
 // Execute executes the request
-func (a *RecordTxtAPIService) RecordtxtReferenceDeleteExecute(r RecordTxtAPIRecordtxtReferenceDeleteRequest) (*http.Response, error) {
+func (a *RecordTxtAPIService) DeleteExecute(r RecordTxtAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTxtAPIService.RecordtxtReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTxtAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *RecordTxtAPIService) RecordtxtReferenceDeleteExecute(r RecordTxtAPIReco
 	return localVarHTTPResponse, nil
 }
 
-type RecordTxtAPIRecordtxtReferenceGetRequest struct {
+type RecordTxtAPIListRequest struct {
+	ctx            context.Context
+	ApiService     RecordTxtAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RecordTxtAPIListRequest) ReturnFields(returnFields string) RecordTxtAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordTxtAPIListRequest) ReturnFields2(returnFields2 string) RecordTxtAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r RecordTxtAPIListRequest) MaxResults(maxResults int32) RecordTxtAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordTxtAPIListRequest) ReturnAsObject(returnAsObject int32) RecordTxtAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r RecordTxtAPIListRequest) Paging(paging int32) RecordTxtAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r RecordTxtAPIListRequest) PageId(pageId string) RecordTxtAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r RecordTxtAPIListRequest) Filters(filters map[string]interface{}) RecordTxtAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r RecordTxtAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordTxtAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r RecordTxtAPIListRequest) Execute() (*ListRecordTxtResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve record:txt objects
+
+Returns a list of record:txt objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordTxtAPIListRequest
+*/
+func (a *RecordTxtAPIService) List(ctx context.Context) RecordTxtAPIListRequest {
+	return RecordTxtAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListRecordTxtResponse
+func (a *RecordTxtAPIService) ListExecute(r RecordTxtAPIListRequest) (*ListRecordTxtResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListRecordTxtResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTxtAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:txt"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordTxtAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordTxtAPI
 	reference      string
@@ -511,38 +511,38 @@ type RecordTxtAPIRecordtxtReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordTxtAPIRecordtxtReferenceGetRequest) ReturnFields(returnFields string) RecordTxtAPIRecordtxtReferenceGetRequest {
+func (r RecordTxtAPIReadRequest) ReturnFields(returnFields string) RecordTxtAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTxtAPIRecordtxtReferenceGetRequest) ReturnFields2(returnFields2 string) RecordTxtAPIRecordtxtReferenceGetRequest {
+func (r RecordTxtAPIReadRequest) ReturnFields2(returnFields2 string) RecordTxtAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordTxtAPIRecordtxtReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordTxtAPIRecordtxtReferenceGetRequest {
+func (r RecordTxtAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordTxtAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordTxtAPIRecordtxtReferenceGetRequest) Execute() (*GetRecordTxtResponse, *http.Response, error) {
-	return r.ApiService.RecordtxtReferenceGetExecute(r)
+func (r RecordTxtAPIReadRequest) Execute() (*GetRecordTxtResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordtxtReferenceGet Get a specific record:txt object
+Read Get a specific record:txt object
 
 Returns a specific record:txt object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:txt object
-	@return RecordTxtAPIRecordtxtReferenceGetRequest
+	@return RecordTxtAPIReadRequest
 */
-func (a *RecordTxtAPIService) RecordtxtReferenceGet(ctx context.Context, reference string) RecordTxtAPIRecordtxtReferenceGetRequest {
-	return RecordTxtAPIRecordtxtReferenceGetRequest{
+func (a *RecordTxtAPIService) Read(ctx context.Context, reference string) RecordTxtAPIReadRequest {
+	return RecordTxtAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RecordTxtAPIService) RecordtxtReferenceGet(ctx context.Context, referen
 // Execute executes the request
 //
 //	@return GetRecordTxtResponse
-func (a *RecordTxtAPIService) RecordtxtReferenceGetExecute(r RecordTxtAPIRecordtxtReferenceGetRequest) (*GetRecordTxtResponse, *http.Response, error) {
+func (a *RecordTxtAPIService) ReadExecute(r RecordTxtAPIReadRequest) (*GetRecordTxtResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RecordTxtAPIService) RecordtxtReferenceGetExecute(r RecordTxtAPIRecordt
 		localVarReturnValue *GetRecordTxtResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTxtAPIService.RecordtxtReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTxtAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *RecordTxtAPIService) RecordtxtReferenceGetExecute(r RecordTxtAPIRecordt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordTxtAPIRecordtxtReferencePutRequest struct {
+type RecordTxtAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     RecordTxtAPI
 	reference      string
@@ -639,44 +639,44 @@ type RecordTxtAPIRecordtxtReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RecordTxtAPIRecordtxtReferencePutRequest) RecordTxt(recordTxt RecordTxt) RecordTxtAPIRecordtxtReferencePutRequest {
+func (r RecordTxtAPIUpdateRequest) RecordTxt(recordTxt RecordTxt) RecordTxtAPIUpdateRequest {
 	r.recordTxt = &recordTxt
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordTxtAPIRecordtxtReferencePutRequest) ReturnFields(returnFields string) RecordTxtAPIRecordtxtReferencePutRequest {
+func (r RecordTxtAPIUpdateRequest) ReturnFields(returnFields string) RecordTxtAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTxtAPIRecordtxtReferencePutRequest) ReturnFields2(returnFields2 string) RecordTxtAPIRecordtxtReferencePutRequest {
+func (r RecordTxtAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordTxtAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordTxtAPIRecordtxtReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordTxtAPIRecordtxtReferencePutRequest {
+func (r RecordTxtAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordTxtAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordTxtAPIRecordtxtReferencePutRequest) Execute() (*UpdateRecordTxtResponse, *http.Response, error) {
-	return r.ApiService.RecordtxtReferencePutExecute(r)
+func (r RecordTxtAPIUpdateRequest) Execute() (*UpdateRecordTxtResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordtxtReferencePut Update a record:txt object
+Update Update a record:txt object
 
 Updates a specific record:txt object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:txt object
-	@return RecordTxtAPIRecordtxtReferencePutRequest
+	@return RecordTxtAPIUpdateRequest
 */
-func (a *RecordTxtAPIService) RecordtxtReferencePut(ctx context.Context, reference string) RecordTxtAPIRecordtxtReferencePutRequest {
-	return RecordTxtAPIRecordtxtReferencePutRequest{
+func (a *RecordTxtAPIService) Update(ctx context.Context, reference string) RecordTxtAPIUpdateRequest {
+	return RecordTxtAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RecordTxtAPIService) RecordtxtReferencePut(ctx context.Context, referen
 // Execute executes the request
 //
 //	@return UpdateRecordTxtResponse
-func (a *RecordTxtAPIService) RecordtxtReferencePutExecute(r RecordTxtAPIRecordtxtReferencePutRequest) (*UpdateRecordTxtResponse, *http.Response, error) {
+func (a *RecordTxtAPIService) UpdateExecute(r RecordTxtAPIUpdateRequest) (*UpdateRecordTxtResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RecordTxtAPIService) RecordtxtReferencePutExecute(r RecordTxtAPIRecordt
 		localVarReturnValue *UpdateRecordTxtResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTxtAPIService.RecordtxtReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTxtAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -23,38 +23,38 @@ import (
 
 type DtcCertificateAPI interface {
 	/*
-		DtccertificateGet Retrieve dtc:certificate objects
+		List Retrieve dtc:certificate objects
 
 		Returns a list of dtc:certificate objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcCertificateAPIDtccertificateGetRequest
+		@return DtcCertificateAPIListRequest
 	*/
-	DtccertificateGet(ctx context.Context) DtcCertificateAPIDtccertificateGetRequest
+	List(ctx context.Context) DtcCertificateAPIListRequest
 
-	// DtccertificateGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDtcCertificateResponse
-	DtccertificateGetExecute(r DtcCertificateAPIDtccertificateGetRequest) (*ListDtcCertificateResponse, *http.Response, error)
+	ListExecute(r DtcCertificateAPIListRequest) (*ListDtcCertificateResponse, *http.Response, error)
 	/*
-		DtccertificateReferenceGet Get a specific dtc:certificate object
+		Read Get a specific dtc:certificate object
 
 		Returns a specific dtc:certificate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:certificate object
-		@return DtcCertificateAPIDtccertificateReferenceGetRequest
+		@return DtcCertificateAPIReadRequest
 	*/
-	DtccertificateReferenceGet(ctx context.Context, reference string) DtcCertificateAPIDtccertificateReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcCertificateAPIReadRequest
 
-	// DtccertificateReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcCertificateResponse
-	DtccertificateReferenceGetExecute(r DtcCertificateAPIDtccertificateReferenceGetRequest) (*GetDtcCertificateResponse, *http.Response, error)
+	ReadExecute(r DtcCertificateAPIReadRequest) (*GetDtcCertificateResponse, *http.Response, error)
 }
 
 // DtcCertificateAPIService DtcCertificateAPI service
 type DtcCertificateAPIService internal.Service
 
-type DtcCertificateAPIDtccertificateGetRequest struct {
+type DtcCertificateAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DtcCertificateAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type DtcCertificateAPIDtccertificateGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcCertificateAPIDtccertificateGetRequest) ReturnFields(returnFields string) DtcCertificateAPIDtccertificateGetRequest {
+func (r DtcCertificateAPIListRequest) ReturnFields(returnFields string) DtcCertificateAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcCertificateAPIDtccertificateGetRequest) ReturnFields2(returnFields2 string) DtcCertificateAPIDtccertificateGetRequest {
+func (r DtcCertificateAPIListRequest) ReturnFields2(returnFields2 string) DtcCertificateAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DtcCertificateAPIDtccertificateGetRequest) MaxResults(maxResults int32) DtcCertificateAPIDtccertificateGetRequest {
+func (r DtcCertificateAPIListRequest) MaxResults(maxResults int32) DtcCertificateAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcCertificateAPIDtccertificateGetRequest) ReturnAsObject(returnAsObject int32) DtcCertificateAPIDtccertificateGetRequest {
+func (r DtcCertificateAPIListRequest) ReturnAsObject(returnAsObject int32) DtcCertificateAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DtcCertificateAPIDtccertificateGetRequest) Paging(paging int32) DtcCertificateAPIDtccertificateGetRequest {
+func (r DtcCertificateAPIListRequest) Paging(paging int32) DtcCertificateAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DtcCertificateAPIDtccertificateGetRequest) PageId(pageId string) DtcCertificateAPIDtccertificateGetRequest {
+func (r DtcCertificateAPIListRequest) PageId(pageId string) DtcCertificateAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DtcCertificateAPIDtccertificateGetRequest) Filters(filters map[string]interface{}) DtcCertificateAPIDtccertificateGetRequest {
+func (r DtcCertificateAPIListRequest) Filters(filters map[string]interface{}) DtcCertificateAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DtcCertificateAPIDtccertificateGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcCertificateAPIDtccertificateGetRequest {
+func (r DtcCertificateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcCertificateAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DtcCertificateAPIDtccertificateGetRequest) Execute() (*ListDtcCertificateResponse, *http.Response, error) {
-	return r.ApiService.DtccertificateGetExecute(r)
+func (r DtcCertificateAPIListRequest) Execute() (*ListDtcCertificateResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DtccertificateGet Retrieve dtc:certificate objects
+List Retrieve dtc:certificate objects
 
 Returns a list of dtc:certificate objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcCertificateAPIDtccertificateGetRequest
+	@return DtcCertificateAPIListRequest
 */
-func (a *DtcCertificateAPIService) DtccertificateGet(ctx context.Context) DtcCertificateAPIDtccertificateGetRequest {
-	return DtcCertificateAPIDtccertificateGetRequest{
+func (a *DtcCertificateAPIService) List(ctx context.Context) DtcCertificateAPIListRequest {
+	return DtcCertificateAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *DtcCertificateAPIService) DtccertificateGet(ctx context.Context) DtcCer
 // Execute executes the request
 //
 //	@return ListDtcCertificateResponse
-func (a *DtcCertificateAPIService) DtccertificateGetExecute(r DtcCertificateAPIDtccertificateGetRequest) (*ListDtcCertificateResponse, *http.Response, error) {
+func (a *DtcCertificateAPIService) ListExecute(r DtcCertificateAPIListRequest) (*ListDtcCertificateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *DtcCertificateAPIService) DtccertificateGetExecute(r DtcCertificateAPID
 		localVarReturnValue *ListDtcCertificateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcCertificateAPIService.DtccertificateGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcCertificateAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *DtcCertificateAPIService) DtccertificateGetExecute(r DtcCertificateAPID
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcCertificateAPIDtccertificateReferenceGetRequest struct {
+type DtcCertificateAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DtcCertificateAPI
 	reference      string
@@ -235,38 +235,38 @@ type DtcCertificateAPIDtccertificateReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcCertificateAPIDtccertificateReferenceGetRequest) ReturnFields(returnFields string) DtcCertificateAPIDtccertificateReferenceGetRequest {
+func (r DtcCertificateAPIReadRequest) ReturnFields(returnFields string) DtcCertificateAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcCertificateAPIDtccertificateReferenceGetRequest) ReturnFields2(returnFields2 string) DtcCertificateAPIDtccertificateReferenceGetRequest {
+func (r DtcCertificateAPIReadRequest) ReturnFields2(returnFields2 string) DtcCertificateAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcCertificateAPIDtccertificateReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcCertificateAPIDtccertificateReferenceGetRequest {
+func (r DtcCertificateAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcCertificateAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcCertificateAPIDtccertificateReferenceGetRequest) Execute() (*GetDtcCertificateResponse, *http.Response, error) {
-	return r.ApiService.DtccertificateReferenceGetExecute(r)
+func (r DtcCertificateAPIReadRequest) Execute() (*GetDtcCertificateResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtccertificateReferenceGet Get a specific dtc:certificate object
+Read Get a specific dtc:certificate object
 
 Returns a specific dtc:certificate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:certificate object
-	@return DtcCertificateAPIDtccertificateReferenceGetRequest
+	@return DtcCertificateAPIReadRequest
 */
-func (a *DtcCertificateAPIService) DtccertificateReferenceGet(ctx context.Context, reference string) DtcCertificateAPIDtccertificateReferenceGetRequest {
-	return DtcCertificateAPIDtccertificateReferenceGetRequest{
+func (a *DtcCertificateAPIService) Read(ctx context.Context, reference string) DtcCertificateAPIReadRequest {
+	return DtcCertificateAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *DtcCertificateAPIService) DtccertificateReferenceGet(ctx context.Contex
 // Execute executes the request
 //
 //	@return GetDtcCertificateResponse
-func (a *DtcCertificateAPIService) DtccertificateReferenceGetExecute(r DtcCertificateAPIDtccertificateReferenceGetRequest) (*GetDtcCertificateResponse, *http.Response, error) {
+func (a *DtcCertificateAPIService) ReadExecute(r DtcCertificateAPIReadRequest) (*GetDtcCertificateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *DtcCertificateAPIService) DtccertificateReferenceGetExecute(r DtcCertif
 		localVarReturnValue *GetDtcCertificateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcCertificateAPIService.DtccertificateReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcCertificateAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

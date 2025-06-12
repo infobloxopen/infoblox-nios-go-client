@@ -23,11 +23,11 @@ func TestAdminroleAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test AdminroleAPIService Get", func(t *testing.T) {
+	t.Run("Test AdminroleAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AdminroleAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminroleAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestAdminroleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdminroleAPIService Post", func(t *testing.T) {
+	t.Run("Test AdminroleAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AdminroleAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.AdminroleAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdminroleAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AdminroleAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestAdminroleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdminroleAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test AdminroleAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.AdminroleAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AdminroleAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.AdminroleAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AdminroleAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestAdminroleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdminroleAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test AdminroleAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.AdminroleAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AdminroleAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

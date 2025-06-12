@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](AllrpzrecordsAPI.md#Get) | **Get** /allrpzrecords | Retrieve allrpzrecords objects
-[**ReferenceGet**](AllrpzrecordsAPI.md#ReferenceGet) | **Get** /allrpzrecords/{reference} | Get a specific allrpzrecords object
+[**List**](AllrpzrecordsAPI.md#List) | **Get** /allrpzrecords | Retrieve allrpzrecords objects
+[**Read**](AllrpzrecordsAPI.md#Read) | **Get** /allrpzrecords/{reference} | Get a specific allrpzrecords object
 
 
 
-## Get
+## List
 
-> ListAllrpzrecordsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListAllrpzrecordsResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve allrpzrecords objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.AllrpzrecordsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.AllrpzrecordsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AllrpzrecordsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AllrpzrecordsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListAllrpzrecordsResponse
-	fmt.Fprintf(os.Stdout, "Response from `AllrpzrecordsAPI.Get`: %v\n", resp)
+	// response from `List`: ListAllrpzrecordsResponse
+	fmt.Fprintf(os.Stdout, "Response from `AllrpzrecordsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AllrpzrecordsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AllrpzrecordsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetAllrpzrecordsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetAllrpzrecordsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific allrpzrecords object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the allrpzrecords object
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.AllrpzrecordsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.AllrpzrecordsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AllrpzrecordsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AllrpzrecordsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetAllrpzrecordsResponse
-	fmt.Fprintf(os.Stdout, "Response from `AllrpzrecordsAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetAllrpzrecordsResponse
+	fmt.Fprintf(os.Stdout, "Response from `AllrpzrecordsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AllrpzrecordsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AllrpzrecordsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

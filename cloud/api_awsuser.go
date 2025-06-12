@@ -23,78 +23,302 @@ import (
 
 type AwsuserAPI interface {
 	/*
-		Get Retrieve awsuser objects
-
-		Returns a list of awsuser objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AwsuserAPIGetRequest
-	*/
-	Get(ctx context.Context) AwsuserAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListAwsuserResponse
-	GetExecute(r AwsuserAPIGetRequest) (*ListAwsuserResponse, *http.Response, error)
-	/*
-		Post Create a awsuser object
+		Create Create a awsuser object
 
 		Creates a new awsuser object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AwsuserAPIPostRequest
+		@return AwsuserAPICreateRequest
 	*/
-	Post(ctx context.Context) AwsuserAPIPostRequest
+	Create(ctx context.Context) AwsuserAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateAwsuserResponse
-	PostExecute(r AwsuserAPIPostRequest) (*CreateAwsuserResponse, *http.Response, error)
+	CreateExecute(r AwsuserAPICreateRequest) (*CreateAwsuserResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a awsuser object
+		Delete Delete a awsuser object
 
 		Deletes a specific awsuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the awsuser object
-		@return AwsuserAPIReferenceDeleteRequest
+		@return AwsuserAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) AwsuserAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) AwsuserAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r AwsuserAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r AwsuserAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific awsuser object
+		List Retrieve awsuser objects
+
+		Returns a list of awsuser objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return AwsuserAPIListRequest
+	*/
+	List(ctx context.Context) AwsuserAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListAwsuserResponse
+	ListExecute(r AwsuserAPIListRequest) (*ListAwsuserResponse, *http.Response, error)
+	/*
+		Read Get a specific awsuser object
 
 		Returns a specific awsuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the awsuser object
-		@return AwsuserAPIReferenceGetRequest
+		@return AwsuserAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AwsuserAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AwsuserAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAwsuserResponse
-	ReferenceGetExecute(r AwsuserAPIReferenceGetRequest) (*GetAwsuserResponse, *http.Response, error)
+	ReadExecute(r AwsuserAPIReadRequest) (*GetAwsuserResponse, *http.Response, error)
 	/*
-		ReferencePut Update a awsuser object
+		Update Update a awsuser object
 
 		Updates a specific awsuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the awsuser object
-		@return AwsuserAPIReferencePutRequest
+		@return AwsuserAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) AwsuserAPIReferencePutRequest
+	Update(ctx context.Context, reference string) AwsuserAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateAwsuserResponse
-	ReferencePutExecute(r AwsuserAPIReferencePutRequest) (*UpdateAwsuserResponse, *http.Response, error)
+	UpdateExecute(r AwsuserAPIUpdateRequest) (*UpdateAwsuserResponse, *http.Response, error)
 }
 
 // AwsuserAPIService AwsuserAPI service
 type AwsuserAPIService internal.Service
 
-type AwsuserAPIGetRequest struct {
+type AwsuserAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     AwsuserAPI
+	awsuser        *Awsuser
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r AwsuserAPICreateRequest) Awsuser(awsuser Awsuser) AwsuserAPICreateRequest {
+	r.awsuser = &awsuser
+	return r
+}
+
+// Enter the field names followed by comma
+func (r AwsuserAPICreateRequest) ReturnFields(returnFields string) AwsuserAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r AwsuserAPICreateRequest) ReturnFields2(returnFields2 string) AwsuserAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r AwsuserAPICreateRequest) ReturnAsObject(returnAsObject int32) AwsuserAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r AwsuserAPICreateRequest) Execute() (*CreateAwsuserResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a awsuser object
+
+Creates a new awsuser object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return AwsuserAPICreateRequest
+*/
+func (a *AwsuserAPIService) Create(ctx context.Context) AwsuserAPICreateRequest {
+	return AwsuserAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateAwsuserResponse
+func (a *AwsuserAPIService) CreateExecute(r AwsuserAPICreateRequest) (*CreateAwsuserResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateAwsuserResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AwsuserAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/awsuser"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.awsuser == nil {
+		return localVarReturnValue, nil, internal.ReportError("awsuser is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.awsuser
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type AwsuserAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService AwsuserAPI
+	reference  string
+}
+
+func (r AwsuserAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a awsuser object
+
+Deletes a specific awsuser object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the awsuser object
+	@return AwsuserAPIDeleteRequest
+*/
+func (a *AwsuserAPIService) Delete(ctx context.Context, reference string) AwsuserAPIDeleteRequest {
+	return AwsuserAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *AwsuserAPIService) DeleteExecute(r AwsuserAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AwsuserAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/awsuser/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type AwsuserAPIListRequest struct {
 	ctx            context.Context
 	ApiService     AwsuserAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type AwsuserAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r AwsuserAPIGetRequest) ReturnFields(returnFields string) AwsuserAPIGetRequest {
+func (r AwsuserAPIListRequest) ReturnFields(returnFields string) AwsuserAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AwsuserAPIGetRequest) ReturnFields2(returnFields2 string) AwsuserAPIGetRequest {
+func (r AwsuserAPIListRequest) ReturnFields2(returnFields2 string) AwsuserAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r AwsuserAPIGetRequest) MaxResults(maxResults int32) AwsuserAPIGetRequest {
+func (r AwsuserAPIListRequest) MaxResults(maxResults int32) AwsuserAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AwsuserAPIGetRequest) ReturnAsObject(returnAsObject int32) AwsuserAPIGetRequest {
+func (r AwsuserAPIListRequest) ReturnAsObject(returnAsObject int32) AwsuserAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r AwsuserAPIGetRequest) Paging(paging int32) AwsuserAPIGetRequest {
+func (r AwsuserAPIListRequest) Paging(paging int32) AwsuserAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r AwsuserAPIGetRequest) PageId(pageId string) AwsuserAPIGetRequest {
+func (r AwsuserAPIListRequest) PageId(pageId string) AwsuserAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r AwsuserAPIGetRequest) Filters(filters map[string]interface{}) AwsuserAPIGetRequest {
+func (r AwsuserAPIListRequest) Filters(filters map[string]interface{}) AwsuserAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r AwsuserAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AwsuserAPIGetRequest {
+func (r AwsuserAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AwsuserAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r AwsuserAPIGetRequest) Execute() (*ListAwsuserResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r AwsuserAPIListRequest) Execute() (*ListAwsuserResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve awsuser objects
+List Retrieve awsuser objects
 
 Returns a list of awsuser objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AwsuserAPIGetRequest
+	@return AwsuserAPIListRequest
 */
-func (a *AwsuserAPIService) Get(ctx context.Context) AwsuserAPIGetRequest {
-	return AwsuserAPIGetRequest{
+func (a *AwsuserAPIService) List(ctx context.Context) AwsuserAPIListRequest {
+	return AwsuserAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *AwsuserAPIService) Get(ctx context.Context) AwsuserAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListAwsuserResponse
-func (a *AwsuserAPIService) GetExecute(r AwsuserAPIGetRequest) (*ListAwsuserResponse, *http.Response, error) {
+func (a *AwsuserAPIService) ListExecute(r AwsuserAPIListRequest) (*ListAwsuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *AwsuserAPIService) GetExecute(r AwsuserAPIGetRequest) (*ListAwsuserResp
 		localVarReturnValue *ListAwsuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AwsuserAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AwsuserAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *AwsuserAPIService) GetExecute(r AwsuserAPIGetRequest) (*ListAwsuserResp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AwsuserAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     AwsuserAPI
-	awsuser        *Awsuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r AwsuserAPIPostRequest) Awsuser(awsuser Awsuser) AwsuserAPIPostRequest {
-	r.awsuser = &awsuser
-	return r
-}
-
-// Enter the field names followed by comma
-func (r AwsuserAPIPostRequest) ReturnFields(returnFields string) AwsuserAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AwsuserAPIPostRequest) ReturnFields2(returnFields2 string) AwsuserAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r AwsuserAPIPostRequest) ReturnAsObject(returnAsObject int32) AwsuserAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r AwsuserAPIPostRequest) Execute() (*CreateAwsuserResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a awsuser object
-
-Creates a new awsuser object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AwsuserAPIPostRequest
-*/
-func (a *AwsuserAPIService) Post(ctx context.Context) AwsuserAPIPostRequest {
-	return AwsuserAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateAwsuserResponse
-func (a *AwsuserAPIService) PostExecute(r AwsuserAPIPostRequest) (*CreateAwsuserResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateAwsuserResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AwsuserAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/awsuser"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.awsuser == nil {
-		return localVarReturnValue, nil, internal.ReportError("awsuser is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.awsuser
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type AwsuserAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService AwsuserAPI
-	reference  string
-}
-
-func (r AwsuserAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a awsuser object
-
-Deletes a specific awsuser object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the awsuser object
-	@return AwsuserAPIReferenceDeleteRequest
-*/
-func (a *AwsuserAPIService) ReferenceDelete(ctx context.Context, reference string) AwsuserAPIReferenceDeleteRequest {
-	return AwsuserAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *AwsuserAPIService) ReferenceDeleteExecute(r AwsuserAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AwsuserAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/awsuser/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type AwsuserAPIReferenceGetRequest struct {
+type AwsuserAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     AwsuserAPI
 	reference      string
@@ -499,38 +499,38 @@ type AwsuserAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r AwsuserAPIReferenceGetRequest) ReturnFields(returnFields string) AwsuserAPIReferenceGetRequest {
+func (r AwsuserAPIReadRequest) ReturnFields(returnFields string) AwsuserAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AwsuserAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AwsuserAPIReferenceGetRequest {
+func (r AwsuserAPIReadRequest) ReturnFields2(returnFields2 string) AwsuserAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AwsuserAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AwsuserAPIReferenceGetRequest {
+func (r AwsuserAPIReadRequest) ReturnAsObject(returnAsObject int32) AwsuserAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AwsuserAPIReferenceGetRequest) Execute() (*GetAwsuserResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r AwsuserAPIReadRequest) Execute() (*GetAwsuserResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific awsuser object
+Read Get a specific awsuser object
 
 Returns a specific awsuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the awsuser object
-	@return AwsuserAPIReferenceGetRequest
+	@return AwsuserAPIReadRequest
 */
-func (a *AwsuserAPIService) ReferenceGet(ctx context.Context, reference string) AwsuserAPIReferenceGetRequest {
-	return AwsuserAPIReferenceGetRequest{
+func (a *AwsuserAPIService) Read(ctx context.Context, reference string) AwsuserAPIReadRequest {
+	return AwsuserAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *AwsuserAPIService) ReferenceGet(ctx context.Context, reference string) 
 // Execute executes the request
 //
 //	@return GetAwsuserResponse
-func (a *AwsuserAPIService) ReferenceGetExecute(r AwsuserAPIReferenceGetRequest) (*GetAwsuserResponse, *http.Response, error) {
+func (a *AwsuserAPIService) ReadExecute(r AwsuserAPIReadRequest) (*GetAwsuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *AwsuserAPIService) ReferenceGetExecute(r AwsuserAPIReferenceGetRequest)
 		localVarReturnValue *GetAwsuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AwsuserAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AwsuserAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *AwsuserAPIService) ReferenceGetExecute(r AwsuserAPIReferenceGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AwsuserAPIReferencePutRequest struct {
+type AwsuserAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     AwsuserAPI
 	reference      string
@@ -627,44 +627,44 @@ type AwsuserAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r AwsuserAPIReferencePutRequest) Awsuser(awsuser Awsuser) AwsuserAPIReferencePutRequest {
+func (r AwsuserAPIUpdateRequest) Awsuser(awsuser Awsuser) AwsuserAPIUpdateRequest {
 	r.awsuser = &awsuser
 	return r
 }
 
 // Enter the field names followed by comma
-func (r AwsuserAPIReferencePutRequest) ReturnFields(returnFields string) AwsuserAPIReferencePutRequest {
+func (r AwsuserAPIUpdateRequest) ReturnFields(returnFields string) AwsuserAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AwsuserAPIReferencePutRequest) ReturnFields2(returnFields2 string) AwsuserAPIReferencePutRequest {
+func (r AwsuserAPIUpdateRequest) ReturnFields2(returnFields2 string) AwsuserAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AwsuserAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) AwsuserAPIReferencePutRequest {
+func (r AwsuserAPIUpdateRequest) ReturnAsObject(returnAsObject int32) AwsuserAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AwsuserAPIReferencePutRequest) Execute() (*UpdateAwsuserResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r AwsuserAPIUpdateRequest) Execute() (*UpdateAwsuserResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a awsuser object
+Update Update a awsuser object
 
 Updates a specific awsuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the awsuser object
-	@return AwsuserAPIReferencePutRequest
+	@return AwsuserAPIUpdateRequest
 */
-func (a *AwsuserAPIService) ReferencePut(ctx context.Context, reference string) AwsuserAPIReferencePutRequest {
-	return AwsuserAPIReferencePutRequest{
+func (a *AwsuserAPIService) Update(ctx context.Context, reference string) AwsuserAPIUpdateRequest {
+	return AwsuserAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *AwsuserAPIService) ReferencePut(ctx context.Context, reference string) 
 // Execute executes the request
 //
 //	@return UpdateAwsuserResponse
-func (a *AwsuserAPIService) ReferencePutExecute(r AwsuserAPIReferencePutRequest) (*UpdateAwsuserResponse, *http.Response, error) {
+func (a *AwsuserAPIService) UpdateExecute(r AwsuserAPIUpdateRequest) (*UpdateAwsuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *AwsuserAPIService) ReferencePutExecute(r AwsuserAPIReferencePutRequest)
 		localVarReturnValue *UpdateAwsuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AwsuserAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AwsuserAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

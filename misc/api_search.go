@@ -23,38 +23,38 @@ import (
 
 type SearchAPI interface {
 	/*
-		Get Retrieve search objects
+		List Retrieve search objects
 
 		Returns a list of search objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SearchAPIGetRequest
+		@return SearchAPIListRequest
 	*/
-	Get(ctx context.Context) SearchAPIGetRequest
+	List(ctx context.Context) SearchAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListSearchResponse
-	GetExecute(r SearchAPIGetRequest) (*ListSearchResponse, *http.Response, error)
+	ListExecute(r SearchAPIListRequest) (*ListSearchResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific search object
+		Read Get a specific search object
 
 		Returns a specific search object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the search object
-		@return SearchAPIReferenceGetRequest
+		@return SearchAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) SearchAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) SearchAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSearchResponse
-	ReferenceGetExecute(r SearchAPIReferenceGetRequest) (*GetSearchResponse, *http.Response, error)
+	ReadExecute(r SearchAPIReadRequest) (*GetSearchResponse, *http.Response, error)
 }
 
 // SearchAPIService SearchAPI service
 type SearchAPIService internal.Service
 
-type SearchAPIGetRequest struct {
+type SearchAPIListRequest struct {
 	ctx            context.Context
 	ApiService     SearchAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type SearchAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r SearchAPIGetRequest) ReturnFields(returnFields string) SearchAPIGetRequest {
+func (r SearchAPIListRequest) ReturnFields(returnFields string) SearchAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SearchAPIGetRequest) ReturnFields2(returnFields2 string) SearchAPIGetRequest {
+func (r SearchAPIListRequest) ReturnFields2(returnFields2 string) SearchAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r SearchAPIGetRequest) MaxResults(maxResults int32) SearchAPIGetRequest {
+func (r SearchAPIListRequest) MaxResults(maxResults int32) SearchAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SearchAPIGetRequest) ReturnAsObject(returnAsObject int32) SearchAPIGetRequest {
+func (r SearchAPIListRequest) ReturnAsObject(returnAsObject int32) SearchAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r SearchAPIGetRequest) Paging(paging int32) SearchAPIGetRequest {
+func (r SearchAPIListRequest) Paging(paging int32) SearchAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r SearchAPIGetRequest) PageId(pageId string) SearchAPIGetRequest {
+func (r SearchAPIListRequest) PageId(pageId string) SearchAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r SearchAPIGetRequest) Filters(filters map[string]interface{}) SearchAPIGetRequest {
+func (r SearchAPIListRequest) Filters(filters map[string]interface{}) SearchAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r SearchAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SearchAPIGetRequest {
+func (r SearchAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SearchAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r SearchAPIGetRequest) Execute() (*ListSearchResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r SearchAPIListRequest) Execute() (*ListSearchResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve search objects
+List Retrieve search objects
 
 Returns a list of search objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SearchAPIGetRequest
+	@return SearchAPIListRequest
 */
-func (a *SearchAPIService) Get(ctx context.Context) SearchAPIGetRequest {
-	return SearchAPIGetRequest{
+func (a *SearchAPIService) List(ctx context.Context) SearchAPIListRequest {
+	return SearchAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *SearchAPIService) Get(ctx context.Context) SearchAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListSearchResponse
-func (a *SearchAPIService) GetExecute(r SearchAPIGetRequest) (*ListSearchResponse, *http.Response, error) {
+func (a *SearchAPIService) ListExecute(r SearchAPIListRequest) (*ListSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *SearchAPIService) GetExecute(r SearchAPIGetRequest) (*ListSearchRespons
 		localVarReturnValue *ListSearchResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SearchAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SearchAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *SearchAPIService) GetExecute(r SearchAPIGetRequest) (*ListSearchRespons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SearchAPIReferenceGetRequest struct {
+type SearchAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     SearchAPI
 	reference      string
@@ -235,38 +235,38 @@ type SearchAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r SearchAPIReferenceGetRequest) ReturnFields(returnFields string) SearchAPIReferenceGetRequest {
+func (r SearchAPIReadRequest) ReturnFields(returnFields string) SearchAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SearchAPIReferenceGetRequest) ReturnFields2(returnFields2 string) SearchAPIReferenceGetRequest {
+func (r SearchAPIReadRequest) ReturnFields2(returnFields2 string) SearchAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SearchAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) SearchAPIReferenceGetRequest {
+func (r SearchAPIReadRequest) ReturnAsObject(returnAsObject int32) SearchAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SearchAPIReferenceGetRequest) Execute() (*GetSearchResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r SearchAPIReadRequest) Execute() (*GetSearchResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific search object
+Read Get a specific search object
 
 Returns a specific search object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the search object
-	@return SearchAPIReferenceGetRequest
+	@return SearchAPIReadRequest
 */
-func (a *SearchAPIService) ReferenceGet(ctx context.Context, reference string) SearchAPIReferenceGetRequest {
-	return SearchAPIReferenceGetRequest{
+func (a *SearchAPIService) Read(ctx context.Context, reference string) SearchAPIReadRequest {
+	return SearchAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *SearchAPIService) ReferenceGet(ctx context.Context, reference string) S
 // Execute executes the request
 //
 //	@return GetSearchResponse
-func (a *SearchAPIService) ReferenceGetExecute(r SearchAPIReferenceGetRequest) (*GetSearchResponse, *http.Response, error) {
+func (a *SearchAPIService) ReadExecute(r SearchAPIReadRequest) (*GetSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *SearchAPIService) ReferenceGetExecute(r SearchAPIReferenceGetRequest) (
 		localVarReturnValue *GetSearchResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SearchAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SearchAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

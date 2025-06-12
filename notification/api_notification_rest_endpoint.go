@@ -23,249 +23,78 @@ import (
 
 type NotificationRestEndpointAPI interface {
 	/*
-		NotificationrestendpointGet Retrieve notification:rest:endpoint objects
-
-		Returns a list of notification:rest:endpoint objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NotificationRestEndpointAPINotificationrestendpointGetRequest
-	*/
-	NotificationrestendpointGet(ctx context.Context) NotificationRestEndpointAPINotificationrestendpointGetRequest
-
-	// NotificationrestendpointGetExecute executes the request
-	//  @return ListNotificationRestEndpointResponse
-	NotificationrestendpointGetExecute(r NotificationRestEndpointAPINotificationrestendpointGetRequest) (*ListNotificationRestEndpointResponse, *http.Response, error)
-	/*
-		NotificationrestendpointPost Create a notification:rest:endpoint object
+		Create Create a notification:rest:endpoint object
 
 		Creates a new notification:rest:endpoint object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NotificationRestEndpointAPINotificationrestendpointPostRequest
+		@return NotificationRestEndpointAPICreateRequest
 	*/
-	NotificationrestendpointPost(ctx context.Context) NotificationRestEndpointAPINotificationrestendpointPostRequest
+	Create(ctx context.Context) NotificationRestEndpointAPICreateRequest
 
-	// NotificationrestendpointPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNotificationRestEndpointResponse
-	NotificationrestendpointPostExecute(r NotificationRestEndpointAPINotificationrestendpointPostRequest) (*CreateNotificationRestEndpointResponse, *http.Response, error)
+	CreateExecute(r NotificationRestEndpointAPICreateRequest) (*CreateNotificationRestEndpointResponse, *http.Response, error)
 	/*
-		NotificationrestendpointReferenceDelete Delete a notification:rest:endpoint object
+		Delete Delete a notification:rest:endpoint object
 
 		Deletes a specific notification:rest:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the notification:rest:endpoint object
-		@return NotificationRestEndpointAPINotificationrestendpointReferenceDeleteRequest
+		@return NotificationRestEndpointAPIDeleteRequest
 	*/
-	NotificationrestendpointReferenceDelete(ctx context.Context, reference string) NotificationRestEndpointAPINotificationrestendpointReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NotificationRestEndpointAPIDeleteRequest
 
-	// NotificationrestendpointReferenceDeleteExecute executes the request
-	NotificationrestendpointReferenceDeleteExecute(r NotificationRestEndpointAPINotificationrestendpointReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NotificationRestEndpointAPIDeleteRequest) (*http.Response, error)
 	/*
-		NotificationrestendpointReferenceGet Get a specific notification:rest:endpoint object
+		List Retrieve notification:rest:endpoint objects
+
+		Returns a list of notification:rest:endpoint objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NotificationRestEndpointAPIListRequest
+	*/
+	List(ctx context.Context) NotificationRestEndpointAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNotificationRestEndpointResponse
+	ListExecute(r NotificationRestEndpointAPIListRequest) (*ListNotificationRestEndpointResponse, *http.Response, error)
+	/*
+		Read Get a specific notification:rest:endpoint object
 
 		Returns a specific notification:rest:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the notification:rest:endpoint object
-		@return NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest
+		@return NotificationRestEndpointAPIReadRequest
 	*/
-	NotificationrestendpointReferenceGet(ctx context.Context, reference string) NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest
+	Read(ctx context.Context, reference string) NotificationRestEndpointAPIReadRequest
 
-	// NotificationrestendpointReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNotificationRestEndpointResponse
-	NotificationrestendpointReferenceGetExecute(r NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest) (*GetNotificationRestEndpointResponse, *http.Response, error)
+	ReadExecute(r NotificationRestEndpointAPIReadRequest) (*GetNotificationRestEndpointResponse, *http.Response, error)
 	/*
-		NotificationrestendpointReferencePut Update a notification:rest:endpoint object
+		Update Update a notification:rest:endpoint object
 
 		Updates a specific notification:rest:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the notification:rest:endpoint object
-		@return NotificationRestEndpointAPINotificationrestendpointReferencePutRequest
+		@return NotificationRestEndpointAPIUpdateRequest
 	*/
-	NotificationrestendpointReferencePut(ctx context.Context, reference string) NotificationRestEndpointAPINotificationrestendpointReferencePutRequest
+	Update(ctx context.Context, reference string) NotificationRestEndpointAPIUpdateRequest
 
-	// NotificationrestendpointReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNotificationRestEndpointResponse
-	NotificationrestendpointReferencePutExecute(r NotificationRestEndpointAPINotificationrestendpointReferencePutRequest) (*UpdateNotificationRestEndpointResponse, *http.Response, error)
+	UpdateExecute(r NotificationRestEndpointAPIUpdateRequest) (*UpdateNotificationRestEndpointResponse, *http.Response, error)
 }
 
 // NotificationRestEndpointAPIService NotificationRestEndpointAPI service
 type NotificationRestEndpointAPIService internal.Service
 
-type NotificationRestEndpointAPINotificationrestendpointGetRequest struct {
-	ctx            context.Context
-	ApiService     NotificationRestEndpointAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r NotificationRestEndpointAPINotificationrestendpointGetRequest) ReturnFields(returnFields string) NotificationRestEndpointAPINotificationrestendpointGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRestEndpointAPINotificationrestendpointGetRequest) ReturnFields2(returnFields2 string) NotificationRestEndpointAPINotificationrestendpointGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r NotificationRestEndpointAPINotificationrestendpointGetRequest) MaxResults(maxResults int32) NotificationRestEndpointAPINotificationrestendpointGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NotificationRestEndpointAPINotificationrestendpointGetRequest) ReturnAsObject(returnAsObject int32) NotificationRestEndpointAPINotificationrestendpointGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r NotificationRestEndpointAPINotificationrestendpointGetRequest) Paging(paging int32) NotificationRestEndpointAPINotificationrestendpointGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r NotificationRestEndpointAPINotificationrestendpointGetRequest) PageId(pageId string) NotificationRestEndpointAPINotificationrestendpointGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r NotificationRestEndpointAPINotificationrestendpointGetRequest) Filters(filters map[string]interface{}) NotificationRestEndpointAPINotificationrestendpointGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r NotificationRestEndpointAPINotificationrestendpointGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NotificationRestEndpointAPINotificationrestendpointGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r NotificationRestEndpointAPINotificationrestendpointGetRequest) Execute() (*ListNotificationRestEndpointResponse, *http.Response, error) {
-	return r.ApiService.NotificationrestendpointGetExecute(r)
-}
-
-/*
-NotificationrestendpointGet Retrieve notification:rest:endpoint objects
-
-Returns a list of notification:rest:endpoint objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NotificationRestEndpointAPINotificationrestendpointGetRequest
-*/
-func (a *NotificationRestEndpointAPIService) NotificationrestendpointGet(ctx context.Context) NotificationRestEndpointAPINotificationrestendpointGetRequest {
-	return NotificationRestEndpointAPINotificationrestendpointGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListNotificationRestEndpointResponse
-func (a *NotificationRestEndpointAPIService) NotificationrestendpointGetExecute(r NotificationRestEndpointAPINotificationrestendpointGetRequest) (*ListNotificationRestEndpointResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListNotificationRestEndpointResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestEndpointAPIService.NotificationrestendpointGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/notification:rest:endpoint"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NotificationRestEndpointAPINotificationrestendpointPostRequest struct {
+type NotificationRestEndpointAPICreateRequest struct {
 	ctx                      context.Context
 	ApiService               NotificationRestEndpointAPI
 	notificationRestEndpoint *NotificationRestEndpoint
@@ -275,43 +104,43 @@ type NotificationRestEndpointAPINotificationrestendpointPostRequest struct {
 }
 
 // Object data to create
-func (r NotificationRestEndpointAPINotificationrestendpointPostRequest) NotificationRestEndpoint(notificationRestEndpoint NotificationRestEndpoint) NotificationRestEndpointAPINotificationrestendpointPostRequest {
+func (r NotificationRestEndpointAPICreateRequest) NotificationRestEndpoint(notificationRestEndpoint NotificationRestEndpoint) NotificationRestEndpointAPICreateRequest {
 	r.notificationRestEndpoint = &notificationRestEndpoint
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NotificationRestEndpointAPINotificationrestendpointPostRequest) ReturnFields(returnFields string) NotificationRestEndpointAPINotificationrestendpointPostRequest {
+func (r NotificationRestEndpointAPICreateRequest) ReturnFields(returnFields string) NotificationRestEndpointAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRestEndpointAPINotificationrestendpointPostRequest) ReturnFields2(returnFields2 string) NotificationRestEndpointAPINotificationrestendpointPostRequest {
+func (r NotificationRestEndpointAPICreateRequest) ReturnFields2(returnFields2 string) NotificationRestEndpointAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NotificationRestEndpointAPINotificationrestendpointPostRequest) ReturnAsObject(returnAsObject int32) NotificationRestEndpointAPINotificationrestendpointPostRequest {
+func (r NotificationRestEndpointAPICreateRequest) ReturnAsObject(returnAsObject int32) NotificationRestEndpointAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NotificationRestEndpointAPINotificationrestendpointPostRequest) Execute() (*CreateNotificationRestEndpointResponse, *http.Response, error) {
-	return r.ApiService.NotificationrestendpointPostExecute(r)
+func (r NotificationRestEndpointAPICreateRequest) Execute() (*CreateNotificationRestEndpointResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-NotificationrestendpointPost Create a notification:rest:endpoint object
+Create Create a notification:rest:endpoint object
 
 Creates a new notification:rest:endpoint object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NotificationRestEndpointAPINotificationrestendpointPostRequest
+	@return NotificationRestEndpointAPICreateRequest
 */
-func (a *NotificationRestEndpointAPIService) NotificationrestendpointPost(ctx context.Context) NotificationRestEndpointAPINotificationrestendpointPostRequest {
-	return NotificationRestEndpointAPINotificationrestendpointPostRequest{
+func (a *NotificationRestEndpointAPIService) Create(ctx context.Context) NotificationRestEndpointAPICreateRequest {
+	return NotificationRestEndpointAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *NotificationRestEndpointAPIService) NotificationrestendpointPost(ctx co
 // Execute executes the request
 //
 //	@return CreateNotificationRestEndpointResponse
-func (a *NotificationRestEndpointAPIService) NotificationrestendpointPostExecute(r NotificationRestEndpointAPINotificationrestendpointPostRequest) (*CreateNotificationRestEndpointResponse, *http.Response, error) {
+func (a *NotificationRestEndpointAPIService) CreateExecute(r NotificationRestEndpointAPICreateRequest) (*CreateNotificationRestEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *NotificationRestEndpointAPIService) NotificationrestendpointPostExecute
 		localVarReturnValue *CreateNotificationRestEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestEndpointAPIService.NotificationrestendpointPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestEndpointAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *NotificationRestEndpointAPIService) NotificationrestendpointPostExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NotificationRestEndpointAPINotificationrestendpointReferenceDeleteRequest struct {
+type NotificationRestEndpointAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService NotificationRestEndpointAPI
 	reference  string
 }
 
-func (r NotificationRestEndpointAPINotificationrestendpointReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.NotificationrestendpointReferenceDeleteExecute(r)
+func (r NotificationRestEndpointAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-NotificationrestendpointReferenceDelete Delete a notification:rest:endpoint object
+Delete Delete a notification:rest:endpoint object
 
 Deletes a specific notification:rest:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the notification:rest:endpoint object
-	@return NotificationRestEndpointAPINotificationrestendpointReferenceDeleteRequest
+	@return NotificationRestEndpointAPIDeleteRequest
 */
-func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferenceDelete(ctx context.Context, reference string) NotificationRestEndpointAPINotificationrestendpointReferenceDeleteRequest {
-	return NotificationRestEndpointAPINotificationrestendpointReferenceDeleteRequest{
+func (a *NotificationRestEndpointAPIService) Delete(ctx context.Context, reference string) NotificationRestEndpointAPIDeleteRequest {
+	return NotificationRestEndpointAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferenceDe
 }
 
 // Execute executes the request
-func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferenceDeleteExecute(r NotificationRestEndpointAPINotificationrestendpointReferenceDeleteRequest) (*http.Response, error) {
+func (a *NotificationRestEndpointAPIService) DeleteExecute(r NotificationRestEndpointAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestEndpointAPIService.NotificationrestendpointReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestEndpointAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferenceDe
 	return localVarHTTPResponse, nil
 }
 
-type NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest struct {
+type NotificationRestEndpointAPIListRequest struct {
+	ctx            context.Context
+	ApiService     NotificationRestEndpointAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r NotificationRestEndpointAPIListRequest) ReturnFields(returnFields string) NotificationRestEndpointAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NotificationRestEndpointAPIListRequest) ReturnFields2(returnFields2 string) NotificationRestEndpointAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r NotificationRestEndpointAPIListRequest) MaxResults(maxResults int32) NotificationRestEndpointAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NotificationRestEndpointAPIListRequest) ReturnAsObject(returnAsObject int32) NotificationRestEndpointAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r NotificationRestEndpointAPIListRequest) Paging(paging int32) NotificationRestEndpointAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r NotificationRestEndpointAPIListRequest) PageId(pageId string) NotificationRestEndpointAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r NotificationRestEndpointAPIListRequest) Filters(filters map[string]interface{}) NotificationRestEndpointAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r NotificationRestEndpointAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NotificationRestEndpointAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r NotificationRestEndpointAPIListRequest) Execute() (*ListNotificationRestEndpointResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve notification:rest:endpoint objects
+
+Returns a list of notification:rest:endpoint objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NotificationRestEndpointAPIListRequest
+*/
+func (a *NotificationRestEndpointAPIService) List(ctx context.Context) NotificationRestEndpointAPIListRequest {
+	return NotificationRestEndpointAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListNotificationRestEndpointResponse
+func (a *NotificationRestEndpointAPIService) ListExecute(r NotificationRestEndpointAPIListRequest) (*ListNotificationRestEndpointResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListNotificationRestEndpointResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestEndpointAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/notification:rest:endpoint"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NotificationRestEndpointAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     NotificationRestEndpointAPI
 	reference      string
@@ -511,38 +511,38 @@ type NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest stru
 }
 
 // Enter the field names followed by comma
-func (r NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest) ReturnFields(returnFields string) NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest {
+func (r NotificationRestEndpointAPIReadRequest) ReturnFields(returnFields string) NotificationRestEndpointAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest) ReturnFields2(returnFields2 string) NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest {
+func (r NotificationRestEndpointAPIReadRequest) ReturnFields2(returnFields2 string) NotificationRestEndpointAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest) ReturnAsObject(returnAsObject int32) NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest {
+func (r NotificationRestEndpointAPIReadRequest) ReturnAsObject(returnAsObject int32) NotificationRestEndpointAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest) Execute() (*GetNotificationRestEndpointResponse, *http.Response, error) {
-	return r.ApiService.NotificationrestendpointReferenceGetExecute(r)
+func (r NotificationRestEndpointAPIReadRequest) Execute() (*GetNotificationRestEndpointResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-NotificationrestendpointReferenceGet Get a specific notification:rest:endpoint object
+Read Get a specific notification:rest:endpoint object
 
 Returns a specific notification:rest:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the notification:rest:endpoint object
-	@return NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest
+	@return NotificationRestEndpointAPIReadRequest
 */
-func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferenceGet(ctx context.Context, reference string) NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest {
-	return NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest{
+func (a *NotificationRestEndpointAPIService) Read(ctx context.Context, reference string) NotificationRestEndpointAPIReadRequest {
+	return NotificationRestEndpointAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferenceGe
 // Execute executes the request
 //
 //	@return GetNotificationRestEndpointResponse
-func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferenceGetExecute(r NotificationRestEndpointAPINotificationrestendpointReferenceGetRequest) (*GetNotificationRestEndpointResponse, *http.Response, error) {
+func (a *NotificationRestEndpointAPIService) ReadExecute(r NotificationRestEndpointAPIReadRequest) (*GetNotificationRestEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferenceGe
 		localVarReturnValue *GetNotificationRestEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestEndpointAPIService.NotificationrestendpointReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestEndpointAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferenceGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NotificationRestEndpointAPINotificationrestendpointReferencePutRequest struct {
+type NotificationRestEndpointAPIUpdateRequest struct {
 	ctx                      context.Context
 	ApiService               NotificationRestEndpointAPI
 	reference                string
@@ -639,44 +639,44 @@ type NotificationRestEndpointAPINotificationrestendpointReferencePutRequest stru
 }
 
 // Object data to update
-func (r NotificationRestEndpointAPINotificationrestendpointReferencePutRequest) NotificationRestEndpoint(notificationRestEndpoint NotificationRestEndpoint) NotificationRestEndpointAPINotificationrestendpointReferencePutRequest {
+func (r NotificationRestEndpointAPIUpdateRequest) NotificationRestEndpoint(notificationRestEndpoint NotificationRestEndpoint) NotificationRestEndpointAPIUpdateRequest {
 	r.notificationRestEndpoint = &notificationRestEndpoint
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NotificationRestEndpointAPINotificationrestendpointReferencePutRequest) ReturnFields(returnFields string) NotificationRestEndpointAPINotificationrestendpointReferencePutRequest {
+func (r NotificationRestEndpointAPIUpdateRequest) ReturnFields(returnFields string) NotificationRestEndpointAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRestEndpointAPINotificationrestendpointReferencePutRequest) ReturnFields2(returnFields2 string) NotificationRestEndpointAPINotificationrestendpointReferencePutRequest {
+func (r NotificationRestEndpointAPIUpdateRequest) ReturnFields2(returnFields2 string) NotificationRestEndpointAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NotificationRestEndpointAPINotificationrestendpointReferencePutRequest) ReturnAsObject(returnAsObject int32) NotificationRestEndpointAPINotificationrestendpointReferencePutRequest {
+func (r NotificationRestEndpointAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NotificationRestEndpointAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NotificationRestEndpointAPINotificationrestendpointReferencePutRequest) Execute() (*UpdateNotificationRestEndpointResponse, *http.Response, error) {
-	return r.ApiService.NotificationrestendpointReferencePutExecute(r)
+func (r NotificationRestEndpointAPIUpdateRequest) Execute() (*UpdateNotificationRestEndpointResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-NotificationrestendpointReferencePut Update a notification:rest:endpoint object
+Update Update a notification:rest:endpoint object
 
 Updates a specific notification:rest:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the notification:rest:endpoint object
-	@return NotificationRestEndpointAPINotificationrestendpointReferencePutRequest
+	@return NotificationRestEndpointAPIUpdateRequest
 */
-func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferencePut(ctx context.Context, reference string) NotificationRestEndpointAPINotificationrestendpointReferencePutRequest {
-	return NotificationRestEndpointAPINotificationrestendpointReferencePutRequest{
+func (a *NotificationRestEndpointAPIService) Update(ctx context.Context, reference string) NotificationRestEndpointAPIUpdateRequest {
+	return NotificationRestEndpointAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferencePu
 // Execute executes the request
 //
 //	@return UpdateNotificationRestEndpointResponse
-func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferencePutExecute(r NotificationRestEndpointAPINotificationrestendpointReferencePutRequest) (*UpdateNotificationRestEndpointResponse, *http.Response, error) {
+func (a *NotificationRestEndpointAPIService) UpdateExecute(r NotificationRestEndpointAPIUpdateRequest) (*UpdateNotificationRestEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *NotificationRestEndpointAPIService) NotificationrestendpointReferencePu
 		localVarReturnValue *UpdateNotificationRestEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestEndpointAPIService.NotificationrestendpointReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestEndpointAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

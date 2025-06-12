@@ -23,78 +23,302 @@ import (
 
 type UpgradegroupAPI interface {
 	/*
-		Get Retrieve upgradegroup objects
-
-		Returns a list of upgradegroup objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return UpgradegroupAPIGetRequest
-	*/
-	Get(ctx context.Context) UpgradegroupAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListUpgradegroupResponse
-	GetExecute(r UpgradegroupAPIGetRequest) (*ListUpgradegroupResponse, *http.Response, error)
-	/*
-		Post Create a upgradegroup object
+		Create Create a upgradegroup object
 
 		Creates a new upgradegroup object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return UpgradegroupAPIPostRequest
+		@return UpgradegroupAPICreateRequest
 	*/
-	Post(ctx context.Context) UpgradegroupAPIPostRequest
+	Create(ctx context.Context) UpgradegroupAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateUpgradegroupResponse
-	PostExecute(r UpgradegroupAPIPostRequest) (*CreateUpgradegroupResponse, *http.Response, error)
+	CreateExecute(r UpgradegroupAPICreateRequest) (*CreateUpgradegroupResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a upgradegroup object
+		Delete Delete a upgradegroup object
 
 		Deletes a specific upgradegroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the upgradegroup object
-		@return UpgradegroupAPIReferenceDeleteRequest
+		@return UpgradegroupAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) UpgradegroupAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) UpgradegroupAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r UpgradegroupAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r UpgradegroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific upgradegroup object
+		List Retrieve upgradegroup objects
+
+		Returns a list of upgradegroup objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return UpgradegroupAPIListRequest
+	*/
+	List(ctx context.Context) UpgradegroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListUpgradegroupResponse
+	ListExecute(r UpgradegroupAPIListRequest) (*ListUpgradegroupResponse, *http.Response, error)
+	/*
+		Read Get a specific upgradegroup object
 
 		Returns a specific upgradegroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the upgradegroup object
-		@return UpgradegroupAPIReferenceGetRequest
+		@return UpgradegroupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) UpgradegroupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) UpgradegroupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetUpgradegroupResponse
-	ReferenceGetExecute(r UpgradegroupAPIReferenceGetRequest) (*GetUpgradegroupResponse, *http.Response, error)
+	ReadExecute(r UpgradegroupAPIReadRequest) (*GetUpgradegroupResponse, *http.Response, error)
 	/*
-		ReferencePut Update a upgradegroup object
+		Update Update a upgradegroup object
 
 		Updates a specific upgradegroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the upgradegroup object
-		@return UpgradegroupAPIReferencePutRequest
+		@return UpgradegroupAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) UpgradegroupAPIReferencePutRequest
+	Update(ctx context.Context, reference string) UpgradegroupAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateUpgradegroupResponse
-	ReferencePutExecute(r UpgradegroupAPIReferencePutRequest) (*UpdateUpgradegroupResponse, *http.Response, error)
+	UpdateExecute(r UpgradegroupAPIUpdateRequest) (*UpdateUpgradegroupResponse, *http.Response, error)
 }
 
 // UpgradegroupAPIService UpgradegroupAPI service
 type UpgradegroupAPIService internal.Service
 
-type UpgradegroupAPIGetRequest struct {
+type UpgradegroupAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     UpgradegroupAPI
+	upgradegroup   *Upgradegroup
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r UpgradegroupAPICreateRequest) Upgradegroup(upgradegroup Upgradegroup) UpgradegroupAPICreateRequest {
+	r.upgradegroup = &upgradegroup
+	return r
+}
+
+// Enter the field names followed by comma
+func (r UpgradegroupAPICreateRequest) ReturnFields(returnFields string) UpgradegroupAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r UpgradegroupAPICreateRequest) ReturnFields2(returnFields2 string) UpgradegroupAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r UpgradegroupAPICreateRequest) ReturnAsObject(returnAsObject int32) UpgradegroupAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r UpgradegroupAPICreateRequest) Execute() (*CreateUpgradegroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a upgradegroup object
+
+Creates a new upgradegroup object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return UpgradegroupAPICreateRequest
+*/
+func (a *UpgradegroupAPIService) Create(ctx context.Context) UpgradegroupAPICreateRequest {
+	return UpgradegroupAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateUpgradegroupResponse
+func (a *UpgradegroupAPIService) CreateExecute(r UpgradegroupAPICreateRequest) (*CreateUpgradegroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateUpgradegroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradegroupAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/upgradegroup"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.upgradegroup == nil {
+		return localVarReturnValue, nil, internal.ReportError("upgradegroup is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.upgradegroup
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpgradegroupAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService UpgradegroupAPI
+	reference  string
+}
+
+func (r UpgradegroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a upgradegroup object
+
+Deletes a specific upgradegroup object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the upgradegroup object
+	@return UpgradegroupAPIDeleteRequest
+*/
+func (a *UpgradegroupAPIService) Delete(ctx context.Context, reference string) UpgradegroupAPIDeleteRequest {
+	return UpgradegroupAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *UpgradegroupAPIService) DeleteExecute(r UpgradegroupAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradegroupAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/upgradegroup/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type UpgradegroupAPIListRequest struct {
 	ctx            context.Context
 	ApiService     UpgradegroupAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type UpgradegroupAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r UpgradegroupAPIGetRequest) ReturnFields(returnFields string) UpgradegroupAPIGetRequest {
+func (r UpgradegroupAPIListRequest) ReturnFields(returnFields string) UpgradegroupAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradegroupAPIGetRequest) ReturnFields2(returnFields2 string) UpgradegroupAPIGetRequest {
+func (r UpgradegroupAPIListRequest) ReturnFields2(returnFields2 string) UpgradegroupAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r UpgradegroupAPIGetRequest) MaxResults(maxResults int32) UpgradegroupAPIGetRequest {
+func (r UpgradegroupAPIListRequest) MaxResults(maxResults int32) UpgradegroupAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UpgradegroupAPIGetRequest) ReturnAsObject(returnAsObject int32) UpgradegroupAPIGetRequest {
+func (r UpgradegroupAPIListRequest) ReturnAsObject(returnAsObject int32) UpgradegroupAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r UpgradegroupAPIGetRequest) Paging(paging int32) UpgradegroupAPIGetRequest {
+func (r UpgradegroupAPIListRequest) Paging(paging int32) UpgradegroupAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r UpgradegroupAPIGetRequest) PageId(pageId string) UpgradegroupAPIGetRequest {
+func (r UpgradegroupAPIListRequest) PageId(pageId string) UpgradegroupAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r UpgradegroupAPIGetRequest) Filters(filters map[string]interface{}) UpgradegroupAPIGetRequest {
+func (r UpgradegroupAPIListRequest) Filters(filters map[string]interface{}) UpgradegroupAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r UpgradegroupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) UpgradegroupAPIGetRequest {
+func (r UpgradegroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) UpgradegroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r UpgradegroupAPIGetRequest) Execute() (*ListUpgradegroupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r UpgradegroupAPIListRequest) Execute() (*ListUpgradegroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve upgradegroup objects
+List Retrieve upgradegroup objects
 
 Returns a list of upgradegroup objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return UpgradegroupAPIGetRequest
+	@return UpgradegroupAPIListRequest
 */
-func (a *UpgradegroupAPIService) Get(ctx context.Context) UpgradegroupAPIGetRequest {
-	return UpgradegroupAPIGetRequest{
+func (a *UpgradegroupAPIService) List(ctx context.Context) UpgradegroupAPIListRequest {
+	return UpgradegroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *UpgradegroupAPIService) Get(ctx context.Context) UpgradegroupAPIGetRequ
 // Execute executes the request
 //
 //	@return ListUpgradegroupResponse
-func (a *UpgradegroupAPIService) GetExecute(r UpgradegroupAPIGetRequest) (*ListUpgradegroupResponse, *http.Response, error) {
+func (a *UpgradegroupAPIService) ListExecute(r UpgradegroupAPIListRequest) (*ListUpgradegroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *UpgradegroupAPIService) GetExecute(r UpgradegroupAPIGetRequest) (*ListU
 		localVarReturnValue *ListUpgradegroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradegroupAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradegroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *UpgradegroupAPIService) GetExecute(r UpgradegroupAPIGetRequest) (*ListU
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradegroupAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     UpgradegroupAPI
-	upgradegroup   *Upgradegroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r UpgradegroupAPIPostRequest) Upgradegroup(upgradegroup Upgradegroup) UpgradegroupAPIPostRequest {
-	r.upgradegroup = &upgradegroup
-	return r
-}
-
-// Enter the field names followed by comma
-func (r UpgradegroupAPIPostRequest) ReturnFields(returnFields string) UpgradegroupAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradegroupAPIPostRequest) ReturnFields2(returnFields2 string) UpgradegroupAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r UpgradegroupAPIPostRequest) ReturnAsObject(returnAsObject int32) UpgradegroupAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r UpgradegroupAPIPostRequest) Execute() (*CreateUpgradegroupResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a upgradegroup object
-
-Creates a new upgradegroup object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return UpgradegroupAPIPostRequest
-*/
-func (a *UpgradegroupAPIService) Post(ctx context.Context) UpgradegroupAPIPostRequest {
-	return UpgradegroupAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateUpgradegroupResponse
-func (a *UpgradegroupAPIService) PostExecute(r UpgradegroupAPIPostRequest) (*CreateUpgradegroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateUpgradegroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradegroupAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/upgradegroup"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.upgradegroup == nil {
-		return localVarReturnValue, nil, internal.ReportError("upgradegroup is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.upgradegroup
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type UpgradegroupAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService UpgradegroupAPI
-	reference  string
-}
-
-func (r UpgradegroupAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a upgradegroup object
-
-Deletes a specific upgradegroup object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the upgradegroup object
-	@return UpgradegroupAPIReferenceDeleteRequest
-*/
-func (a *UpgradegroupAPIService) ReferenceDelete(ctx context.Context, reference string) UpgradegroupAPIReferenceDeleteRequest {
-	return UpgradegroupAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *UpgradegroupAPIService) ReferenceDeleteExecute(r UpgradegroupAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradegroupAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/upgradegroup/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type UpgradegroupAPIReferenceGetRequest struct {
+type UpgradegroupAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     UpgradegroupAPI
 	reference      string
@@ -499,38 +499,38 @@ type UpgradegroupAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r UpgradegroupAPIReferenceGetRequest) ReturnFields(returnFields string) UpgradegroupAPIReferenceGetRequest {
+func (r UpgradegroupAPIReadRequest) ReturnFields(returnFields string) UpgradegroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradegroupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) UpgradegroupAPIReferenceGetRequest {
+func (r UpgradegroupAPIReadRequest) ReturnFields2(returnFields2 string) UpgradegroupAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UpgradegroupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) UpgradegroupAPIReferenceGetRequest {
+func (r UpgradegroupAPIReadRequest) ReturnAsObject(returnAsObject int32) UpgradegroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r UpgradegroupAPIReferenceGetRequest) Execute() (*GetUpgradegroupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r UpgradegroupAPIReadRequest) Execute() (*GetUpgradegroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific upgradegroup object
+Read Get a specific upgradegroup object
 
 Returns a specific upgradegroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the upgradegroup object
-	@return UpgradegroupAPIReferenceGetRequest
+	@return UpgradegroupAPIReadRequest
 */
-func (a *UpgradegroupAPIService) ReferenceGet(ctx context.Context, reference string) UpgradegroupAPIReferenceGetRequest {
-	return UpgradegroupAPIReferenceGetRequest{
+func (a *UpgradegroupAPIService) Read(ctx context.Context, reference string) UpgradegroupAPIReadRequest {
+	return UpgradegroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *UpgradegroupAPIService) ReferenceGet(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return GetUpgradegroupResponse
-func (a *UpgradegroupAPIService) ReferenceGetExecute(r UpgradegroupAPIReferenceGetRequest) (*GetUpgradegroupResponse, *http.Response, error) {
+func (a *UpgradegroupAPIService) ReadExecute(r UpgradegroupAPIReadRequest) (*GetUpgradegroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *UpgradegroupAPIService) ReferenceGetExecute(r UpgradegroupAPIReferenceG
 		localVarReturnValue *GetUpgradegroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradegroupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradegroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *UpgradegroupAPIService) ReferenceGetExecute(r UpgradegroupAPIReferenceG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradegroupAPIReferencePutRequest struct {
+type UpgradegroupAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     UpgradegroupAPI
 	reference      string
@@ -627,44 +627,44 @@ type UpgradegroupAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r UpgradegroupAPIReferencePutRequest) Upgradegroup(upgradegroup Upgradegroup) UpgradegroupAPIReferencePutRequest {
+func (r UpgradegroupAPIUpdateRequest) Upgradegroup(upgradegroup Upgradegroup) UpgradegroupAPIUpdateRequest {
 	r.upgradegroup = &upgradegroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r UpgradegroupAPIReferencePutRequest) ReturnFields(returnFields string) UpgradegroupAPIReferencePutRequest {
+func (r UpgradegroupAPIUpdateRequest) ReturnFields(returnFields string) UpgradegroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradegroupAPIReferencePutRequest) ReturnFields2(returnFields2 string) UpgradegroupAPIReferencePutRequest {
+func (r UpgradegroupAPIUpdateRequest) ReturnFields2(returnFields2 string) UpgradegroupAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UpgradegroupAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) UpgradegroupAPIReferencePutRequest {
+func (r UpgradegroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) UpgradegroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r UpgradegroupAPIReferencePutRequest) Execute() (*UpdateUpgradegroupResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r UpgradegroupAPIUpdateRequest) Execute() (*UpdateUpgradegroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a upgradegroup object
+Update Update a upgradegroup object
 
 Updates a specific upgradegroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the upgradegroup object
-	@return UpgradegroupAPIReferencePutRequest
+	@return UpgradegroupAPIUpdateRequest
 */
-func (a *UpgradegroupAPIService) ReferencePut(ctx context.Context, reference string) UpgradegroupAPIReferencePutRequest {
-	return UpgradegroupAPIReferencePutRequest{
+func (a *UpgradegroupAPIService) Update(ctx context.Context, reference string) UpgradegroupAPIUpdateRequest {
+	return UpgradegroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *UpgradegroupAPIService) ReferencePut(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return UpdateUpgradegroupResponse
-func (a *UpgradegroupAPIService) ReferencePutExecute(r UpgradegroupAPIReferencePutRequest) (*UpdateUpgradegroupResponse, *http.Response, error) {
+func (a *UpgradegroupAPIService) UpdateExecute(r UpgradegroupAPIUpdateRequest) (*UpdateUpgradegroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *UpgradegroupAPIService) ReferencePutExecute(r UpgradegroupAPIReferenceP
 		localVarReturnValue *UpdateUpgradegroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradegroupAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradegroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

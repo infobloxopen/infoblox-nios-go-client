@@ -23,11 +23,11 @@ func TestFilterrelayagentAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test FilterrelayagentAPIService Get", func(t *testing.T) {
+	t.Run("Test FilterrelayagentAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FilterrelayagentAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.FilterrelayagentAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestFilterrelayagentAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FilterrelayagentAPIService Post", func(t *testing.T) {
+	t.Run("Test FilterrelayagentAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FilterrelayagentAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.FilterrelayagentAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FilterrelayagentAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.FilterrelayagentAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestFilterrelayagentAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FilterrelayagentAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test FilterrelayagentAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.FilterrelayagentAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test FilterrelayagentAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.FilterrelayagentAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FilterrelayagentAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestFilterrelayagentAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FilterrelayagentAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test FilterrelayagentAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.FilterrelayagentAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FilterrelayagentAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

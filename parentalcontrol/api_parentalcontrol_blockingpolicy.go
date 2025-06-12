@@ -23,78 +23,302 @@ import (
 
 type ParentalcontrolBlockingpolicyAPI interface {
 	/*
-		ParentalcontrolblockingpolicyGet Retrieve parentalcontrol:blockingpolicy objects
-
-		Returns a list of parentalcontrol:blockingpolicy objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest
-	*/
-	ParentalcontrolblockingpolicyGet(ctx context.Context) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest
-
-	// ParentalcontrolblockingpolicyGetExecute executes the request
-	//  @return ListParentalcontrolBlockingpolicyResponse
-	ParentalcontrolblockingpolicyGetExecute(r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) (*ListParentalcontrolBlockingpolicyResponse, *http.Response, error)
-	/*
-		ParentalcontrolblockingpolicyPost Create a parentalcontrol:blockingpolicy object
+		Create Create a parentalcontrol:blockingpolicy object
 
 		Creates a new parentalcontrol:blockingpolicy object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest
+		@return ParentalcontrolBlockingpolicyAPICreateRequest
 	*/
-	ParentalcontrolblockingpolicyPost(ctx context.Context) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest
+	Create(ctx context.Context) ParentalcontrolBlockingpolicyAPICreateRequest
 
-	// ParentalcontrolblockingpolicyPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateParentalcontrolBlockingpolicyResponse
-	ParentalcontrolblockingpolicyPostExecute(r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest) (*CreateParentalcontrolBlockingpolicyResponse, *http.Response, error)
+	CreateExecute(r ParentalcontrolBlockingpolicyAPICreateRequest) (*CreateParentalcontrolBlockingpolicyResponse, *http.Response, error)
 	/*
-		ParentalcontrolblockingpolicyReferenceDelete Delete a parentalcontrol:blockingpolicy object
+		Delete Delete a parentalcontrol:blockingpolicy object
 
 		Deletes a specific parentalcontrol:blockingpolicy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:blockingpolicy object
-		@return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceDeleteRequest
+		@return ParentalcontrolBlockingpolicyAPIDeleteRequest
 	*/
-	ParentalcontrolblockingpolicyReferenceDelete(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIDeleteRequest
 
-	// ParentalcontrolblockingpolicyReferenceDeleteExecute executes the request
-	ParentalcontrolblockingpolicyReferenceDeleteExecute(r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ParentalcontrolBlockingpolicyAPIDeleteRequest) (*http.Response, error)
 	/*
-		ParentalcontrolblockingpolicyReferenceGet Get a specific parentalcontrol:blockingpolicy object
+		List Retrieve parentalcontrol:blockingpolicy objects
+
+		Returns a list of parentalcontrol:blockingpolicy objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ParentalcontrolBlockingpolicyAPIListRequest
+	*/
+	List(ctx context.Context) ParentalcontrolBlockingpolicyAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListParentalcontrolBlockingpolicyResponse
+	ListExecute(r ParentalcontrolBlockingpolicyAPIListRequest) (*ListParentalcontrolBlockingpolicyResponse, *http.Response, error)
+	/*
+		Read Get a specific parentalcontrol:blockingpolicy object
 
 		Returns a specific parentalcontrol:blockingpolicy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:blockingpolicy object
-		@return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest
+		@return ParentalcontrolBlockingpolicyAPIReadRequest
 	*/
-	ParentalcontrolblockingpolicyReferenceGet(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest
+	Read(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIReadRequest
 
-	// ParentalcontrolblockingpolicyReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetParentalcontrolBlockingpolicyResponse
-	ParentalcontrolblockingpolicyReferenceGetExecute(r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest) (*GetParentalcontrolBlockingpolicyResponse, *http.Response, error)
+	ReadExecute(r ParentalcontrolBlockingpolicyAPIReadRequest) (*GetParentalcontrolBlockingpolicyResponse, *http.Response, error)
 	/*
-		ParentalcontrolblockingpolicyReferencePut Update a parentalcontrol:blockingpolicy object
+		Update Update a parentalcontrol:blockingpolicy object
 
 		Updates a specific parentalcontrol:blockingpolicy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:blockingpolicy object
-		@return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest
+		@return ParentalcontrolBlockingpolicyAPIUpdateRequest
 	*/
-	ParentalcontrolblockingpolicyReferencePut(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest
+	Update(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIUpdateRequest
 
-	// ParentalcontrolblockingpolicyReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateParentalcontrolBlockingpolicyResponse
-	ParentalcontrolblockingpolicyReferencePutExecute(r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest) (*UpdateParentalcontrolBlockingpolicyResponse, *http.Response, error)
+	UpdateExecute(r ParentalcontrolBlockingpolicyAPIUpdateRequest) (*UpdateParentalcontrolBlockingpolicyResponse, *http.Response, error)
 }
 
 // ParentalcontrolBlockingpolicyAPIService ParentalcontrolBlockingpolicyAPI service
 type ParentalcontrolBlockingpolicyAPIService internal.Service
 
-type ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest struct {
+type ParentalcontrolBlockingpolicyAPICreateRequest struct {
+	ctx                           context.Context
+	ApiService                    ParentalcontrolBlockingpolicyAPI
+	parentalcontrolBlockingpolicy *ParentalcontrolBlockingpolicy
+	returnFields                  *string
+	returnFields2                 *string
+	returnAsObject                *int32
+}
+
+// Object data to create
+func (r ParentalcontrolBlockingpolicyAPICreateRequest) ParentalcontrolBlockingpolicy(parentalcontrolBlockingpolicy ParentalcontrolBlockingpolicy) ParentalcontrolBlockingpolicyAPICreateRequest {
+	r.parentalcontrolBlockingpolicy = &parentalcontrolBlockingpolicy
+	return r
+}
+
+// Enter the field names followed by comma
+func (r ParentalcontrolBlockingpolicyAPICreateRequest) ReturnFields(returnFields string) ParentalcontrolBlockingpolicyAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ParentalcontrolBlockingpolicyAPICreateRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ParentalcontrolBlockingpolicyAPICreateRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolBlockingpolicyAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r ParentalcontrolBlockingpolicyAPICreateRequest) Execute() (*CreateParentalcontrolBlockingpolicyResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a parentalcontrol:blockingpolicy object
+
+Creates a new parentalcontrol:blockingpolicy object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ParentalcontrolBlockingpolicyAPICreateRequest
+*/
+func (a *ParentalcontrolBlockingpolicyAPIService) Create(ctx context.Context) ParentalcontrolBlockingpolicyAPICreateRequest {
+	return ParentalcontrolBlockingpolicyAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateParentalcontrolBlockingpolicyResponse
+func (a *ParentalcontrolBlockingpolicyAPIService) CreateExecute(r ParentalcontrolBlockingpolicyAPICreateRequest) (*CreateParentalcontrolBlockingpolicyResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateParentalcontrolBlockingpolicyResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolBlockingpolicyAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/parentalcontrol:blockingpolicy"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.parentalcontrolBlockingpolicy == nil {
+		return localVarReturnValue, nil, internal.ReportError("parentalcontrolBlockingpolicy is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.parentalcontrolBlockingpolicy
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ParentalcontrolBlockingpolicyAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService ParentalcontrolBlockingpolicyAPI
+	reference  string
+}
+
+func (r ParentalcontrolBlockingpolicyAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a parentalcontrol:blockingpolicy object
+
+Deletes a specific parentalcontrol:blockingpolicy object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the parentalcontrol:blockingpolicy object
+	@return ParentalcontrolBlockingpolicyAPIDeleteRequest
+*/
+func (a *ParentalcontrolBlockingpolicyAPIService) Delete(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIDeleteRequest {
+	return ParentalcontrolBlockingpolicyAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *ParentalcontrolBlockingpolicyAPIService) DeleteExecute(r ParentalcontrolBlockingpolicyAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolBlockingpolicyAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/parentalcontrol:blockingpolicy/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ParentalcontrolBlockingpolicyAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ParentalcontrolBlockingpolicyAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest str
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) ReturnFields(returnFields string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIListRequest) ReturnFields(returnFields string) ParentalcontrolBlockingpolicyAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIListRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) MaxResults(maxResults int32) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIListRequest) MaxResults(maxResults int32) ParentalcontrolBlockingpolicyAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIListRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolBlockingpolicyAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) Paging(paging int32) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIListRequest) Paging(paging int32) ParentalcontrolBlockingpolicyAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) PageId(pageId string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIListRequest) PageId(pageId string) ParentalcontrolBlockingpolicyAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) Filters(filters map[string]interface{}) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIListRequest) Filters(filters map[string]interface{}) ParentalcontrolBlockingpolicyAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ParentalcontrolBlockingpolicyAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) Execute() (*ListParentalcontrolBlockingpolicyResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolblockingpolicyGetExecute(r)
+func (r ParentalcontrolBlockingpolicyAPIListRequest) Execute() (*ListParentalcontrolBlockingpolicyResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ParentalcontrolblockingpolicyGet Retrieve parentalcontrol:blockingpolicy objects
+List Retrieve parentalcontrol:blockingpolicy objects
 
 Returns a list of parentalcontrol:blockingpolicy objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest
+	@return ParentalcontrolBlockingpolicyAPIListRequest
 */
-func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyGet(ctx context.Context) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest {
-	return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest{
+func (a *ParentalcontrolBlockingpolicyAPIService) List(ctx context.Context) ParentalcontrolBlockingpolicyAPIListRequest {
+	return ParentalcontrolBlockingpolicyAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyG
 // Execute executes the request
 //
 //	@return ListParentalcontrolBlockingpolicyResponse
-func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyGetExecute(r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyGetRequest) (*ListParentalcontrolBlockingpolicyResponse, *http.Response, error) {
+func (a *ParentalcontrolBlockingpolicyAPIService) ListExecute(r ParentalcontrolBlockingpolicyAPIListRequest) (*ListParentalcontrolBlockingpolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyG
 		localVarReturnValue *ListParentalcontrolBlockingpolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolBlockingpolicyAPIService.ParentalcontrolblockingpolicyGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolBlockingpolicyAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest struct {
-	ctx                           context.Context
-	ApiService                    ParentalcontrolBlockingpolicyAPI
-	parentalcontrolBlockingpolicy *ParentalcontrolBlockingpolicy
-	returnFields                  *string
-	returnFields2                 *string
-	returnAsObject                *int32
-}
-
-// Object data to create
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest) ParentalcontrolBlockingpolicy(parentalcontrolBlockingpolicy ParentalcontrolBlockingpolicy) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest {
-	r.parentalcontrolBlockingpolicy = &parentalcontrolBlockingpolicy
-	return r
-}
-
-// Enter the field names followed by comma
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest) ReturnFields(returnFields string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest) Execute() (*CreateParentalcontrolBlockingpolicyResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolblockingpolicyPostExecute(r)
-}
-
-/*
-ParentalcontrolblockingpolicyPost Create a parentalcontrol:blockingpolicy object
-
-Creates a new parentalcontrol:blockingpolicy object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest
-*/
-func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyPost(ctx context.Context) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest {
-	return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateParentalcontrolBlockingpolicyResponse
-func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyPostExecute(r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyPostRequest) (*CreateParentalcontrolBlockingpolicyResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateParentalcontrolBlockingpolicyResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolBlockingpolicyAPIService.ParentalcontrolblockingpolicyPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/parentalcontrol:blockingpolicy"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.parentalcontrolBlockingpolicy == nil {
-		return localVarReturnValue, nil, internal.ReportError("parentalcontrolBlockingpolicy is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.parentalcontrolBlockingpolicy
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService ParentalcontrolBlockingpolicyAPI
-	reference  string
-}
-
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ParentalcontrolblockingpolicyReferenceDeleteExecute(r)
-}
-
-/*
-ParentalcontrolblockingpolicyReferenceDelete Delete a parentalcontrol:blockingpolicy object
-
-Deletes a specific parentalcontrol:blockingpolicy object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the parentalcontrol:blockingpolicy object
-	@return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceDeleteRequest
-*/
-func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyReferenceDelete(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceDeleteRequest {
-	return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyReferenceDeleteExecute(r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolBlockingpolicyAPIService.ParentalcontrolblockingpolicyReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/parentalcontrol:blockingpolicy/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest struct {
+type ParentalcontrolBlockingpolicyAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ParentalcontrolBlockingpolicyAPI
 	reference      string
@@ -499,38 +499,38 @@ type ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRe
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest) ReturnFields(returnFields string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIReadRequest) ReturnFields(returnFields string) ParentalcontrolBlockingpolicyAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIReadRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest {
+func (r ParentalcontrolBlockingpolicyAPIReadRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolBlockingpolicyAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest) Execute() (*GetParentalcontrolBlockingpolicyResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolblockingpolicyReferenceGetExecute(r)
+func (r ParentalcontrolBlockingpolicyAPIReadRequest) Execute() (*GetParentalcontrolBlockingpolicyResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ParentalcontrolblockingpolicyReferenceGet Get a specific parentalcontrol:blockingpolicy object
+Read Get a specific parentalcontrol:blockingpolicy object
 
 Returns a specific parentalcontrol:blockingpolicy object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the parentalcontrol:blockingpolicy object
-	@return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest
+	@return ParentalcontrolBlockingpolicyAPIReadRequest
 */
-func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyReferenceGet(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest {
-	return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest{
+func (a *ParentalcontrolBlockingpolicyAPIService) Read(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIReadRequest {
+	return ParentalcontrolBlockingpolicyAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyR
 // Execute executes the request
 //
 //	@return GetParentalcontrolBlockingpolicyResponse
-func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyReferenceGetExecute(r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferenceGetRequest) (*GetParentalcontrolBlockingpolicyResponse, *http.Response, error) {
+func (a *ParentalcontrolBlockingpolicyAPIService) ReadExecute(r ParentalcontrolBlockingpolicyAPIReadRequest) (*GetParentalcontrolBlockingpolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyR
 		localVarReturnValue *GetParentalcontrolBlockingpolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolBlockingpolicyAPIService.ParentalcontrolblockingpolicyReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolBlockingpolicyAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest struct {
+type ParentalcontrolBlockingpolicyAPIUpdateRequest struct {
 	ctx                           context.Context
 	ApiService                    ParentalcontrolBlockingpolicyAPI
 	reference                     string
@@ -627,44 +627,44 @@ type ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRe
 }
 
 // Object data to update
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest) ParentalcontrolBlockingpolicy(parentalcontrolBlockingpolicy ParentalcontrolBlockingpolicy) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest {
+func (r ParentalcontrolBlockingpolicyAPIUpdateRequest) ParentalcontrolBlockingpolicy(parentalcontrolBlockingpolicy ParentalcontrolBlockingpolicy) ParentalcontrolBlockingpolicyAPIUpdateRequest {
 	r.parentalcontrolBlockingpolicy = &parentalcontrolBlockingpolicy
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest) ReturnFields(returnFields string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest {
+func (r ParentalcontrolBlockingpolicyAPIUpdateRequest) ReturnFields(returnFields string) ParentalcontrolBlockingpolicyAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest {
+func (r ParentalcontrolBlockingpolicyAPIUpdateRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest {
+func (r ParentalcontrolBlockingpolicyAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolBlockingpolicyAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest) Execute() (*UpdateParentalcontrolBlockingpolicyResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolblockingpolicyReferencePutExecute(r)
+func (r ParentalcontrolBlockingpolicyAPIUpdateRequest) Execute() (*UpdateParentalcontrolBlockingpolicyResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ParentalcontrolblockingpolicyReferencePut Update a parentalcontrol:blockingpolicy object
+Update Update a parentalcontrol:blockingpolicy object
 
 Updates a specific parentalcontrol:blockingpolicy object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the parentalcontrol:blockingpolicy object
-	@return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest
+	@return ParentalcontrolBlockingpolicyAPIUpdateRequest
 */
-func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyReferencePut(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest {
-	return ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest{
+func (a *ParentalcontrolBlockingpolicyAPIService) Update(ctx context.Context, reference string) ParentalcontrolBlockingpolicyAPIUpdateRequest {
+	return ParentalcontrolBlockingpolicyAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyR
 // Execute executes the request
 //
 //	@return UpdateParentalcontrolBlockingpolicyResponse
-func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyReferencePutExecute(r ParentalcontrolBlockingpolicyAPIParentalcontrolblockingpolicyReferencePutRequest) (*UpdateParentalcontrolBlockingpolicyResponse, *http.Response, error) {
+func (a *ParentalcontrolBlockingpolicyAPIService) UpdateExecute(r ParentalcontrolBlockingpolicyAPIUpdateRequest) (*UpdateParentalcontrolBlockingpolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ParentalcontrolblockingpolicyR
 		localVarReturnValue *UpdateParentalcontrolBlockingpolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolBlockingpolicyAPIService.ParentalcontrolblockingpolicyReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolBlockingpolicyAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

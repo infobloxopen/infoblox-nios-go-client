@@ -23,11 +23,11 @@ func TestMultiregionsAPIService(t *testing.T) {
 
 	apiClient := cloud.NewAPIClient()
 
-	t.Run("Test MultiregionsAPIService Get", func(t *testing.T) {
+	t.Run("Test MultiregionsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MultiregionsAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MultiregionsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestMultiregionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MultiregionsAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test MultiregionsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MultiregionsAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MultiregionsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestMultiregionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MultiregionsAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test MultiregionsAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MultiregionsAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MultiregionsAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

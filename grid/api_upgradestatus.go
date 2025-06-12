@@ -23,52 +23,52 @@ import (
 
 type UpgradestatusAPI interface {
 	/*
-		Get Retrieve upgradestatus objects
+		List Retrieve upgradestatus objects
 
 		Returns a list of upgradestatus objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return UpgradestatusAPIGetRequest
+		@return UpgradestatusAPIListRequest
 	*/
-	Get(ctx context.Context) UpgradestatusAPIGetRequest
+	List(ctx context.Context) UpgradestatusAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListUpgradestatusResponse
-	GetExecute(r UpgradestatusAPIGetRequest) (*ListUpgradestatusResponse, *http.Response, error)
+	ListExecute(r UpgradestatusAPIListRequest) (*ListUpgradestatusResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific upgradestatus object
+		Read Get a specific upgradestatus object
 
 		Returns a specific upgradestatus object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the upgradestatus object
-		@return UpgradestatusAPIReferenceGetRequest
+		@return UpgradestatusAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) UpgradestatusAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) UpgradestatusAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetUpgradestatusResponse
-	ReferenceGetExecute(r UpgradestatusAPIReferenceGetRequest) (*GetUpgradestatusResponse, *http.Response, error)
+	ReadExecute(r UpgradestatusAPIReadRequest) (*GetUpgradestatusResponse, *http.Response, error)
 	/*
-		ReferencePut Update a upgradestatus object
+		Update Update a upgradestatus object
 
 		Updates a specific upgradestatus object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the upgradestatus object
-		@return UpgradestatusAPIReferencePutRequest
+		@return UpgradestatusAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) UpgradestatusAPIReferencePutRequest
+	Update(ctx context.Context, reference string) UpgradestatusAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateUpgradestatusResponse
-	ReferencePutExecute(r UpgradestatusAPIReferencePutRequest) (*UpdateUpgradestatusResponse, *http.Response, error)
+	UpdateExecute(r UpgradestatusAPIUpdateRequest) (*UpdateUpgradestatusResponse, *http.Response, error)
 }
 
 // UpgradestatusAPIService UpgradestatusAPI service
 type UpgradestatusAPIService internal.Service
 
-type UpgradestatusAPIGetRequest struct {
+type UpgradestatusAPIListRequest struct {
 	ctx            context.Context
 	ApiService     UpgradestatusAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type UpgradestatusAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r UpgradestatusAPIGetRequest) ReturnFields(returnFields string) UpgradestatusAPIGetRequest {
+func (r UpgradestatusAPIListRequest) ReturnFields(returnFields string) UpgradestatusAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradestatusAPIGetRequest) ReturnFields2(returnFields2 string) UpgradestatusAPIGetRequest {
+func (r UpgradestatusAPIListRequest) ReturnFields2(returnFields2 string) UpgradestatusAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r UpgradestatusAPIGetRequest) MaxResults(maxResults int32) UpgradestatusAPIGetRequest {
+func (r UpgradestatusAPIListRequest) MaxResults(maxResults int32) UpgradestatusAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UpgradestatusAPIGetRequest) ReturnAsObject(returnAsObject int32) UpgradestatusAPIGetRequest {
+func (r UpgradestatusAPIListRequest) ReturnAsObject(returnAsObject int32) UpgradestatusAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r UpgradestatusAPIGetRequest) Paging(paging int32) UpgradestatusAPIGetRequest {
+func (r UpgradestatusAPIListRequest) Paging(paging int32) UpgradestatusAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r UpgradestatusAPIGetRequest) PageId(pageId string) UpgradestatusAPIGetRequest {
+func (r UpgradestatusAPIListRequest) PageId(pageId string) UpgradestatusAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r UpgradestatusAPIGetRequest) Filters(filters map[string]interface{}) UpgradestatusAPIGetRequest {
+func (r UpgradestatusAPIListRequest) Filters(filters map[string]interface{}) UpgradestatusAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r UpgradestatusAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) UpgradestatusAPIGetRequest {
+func (r UpgradestatusAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) UpgradestatusAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r UpgradestatusAPIGetRequest) Execute() (*ListUpgradestatusResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r UpgradestatusAPIListRequest) Execute() (*ListUpgradestatusResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve upgradestatus objects
+List Retrieve upgradestatus objects
 
 Returns a list of upgradestatus objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return UpgradestatusAPIGetRequest
+	@return UpgradestatusAPIListRequest
 */
-func (a *UpgradestatusAPIService) Get(ctx context.Context) UpgradestatusAPIGetRequest {
-	return UpgradestatusAPIGetRequest{
+func (a *UpgradestatusAPIService) List(ctx context.Context) UpgradestatusAPIListRequest {
+	return UpgradestatusAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *UpgradestatusAPIService) Get(ctx context.Context) UpgradestatusAPIGetRe
 // Execute executes the request
 //
 //	@return ListUpgradestatusResponse
-func (a *UpgradestatusAPIService) GetExecute(r UpgradestatusAPIGetRequest) (*ListUpgradestatusResponse, *http.Response, error) {
+func (a *UpgradestatusAPIService) ListExecute(r UpgradestatusAPIListRequest) (*ListUpgradestatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *UpgradestatusAPIService) GetExecute(r UpgradestatusAPIGetRequest) (*Lis
 		localVarReturnValue *ListUpgradestatusResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradestatusAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradestatusAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *UpgradestatusAPIService) GetExecute(r UpgradestatusAPIGetRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradestatusAPIReferenceGetRequest struct {
+type UpgradestatusAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     UpgradestatusAPI
 	reference      string
@@ -249,38 +249,38 @@ type UpgradestatusAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r UpgradestatusAPIReferenceGetRequest) ReturnFields(returnFields string) UpgradestatusAPIReferenceGetRequest {
+func (r UpgradestatusAPIReadRequest) ReturnFields(returnFields string) UpgradestatusAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradestatusAPIReferenceGetRequest) ReturnFields2(returnFields2 string) UpgradestatusAPIReferenceGetRequest {
+func (r UpgradestatusAPIReadRequest) ReturnFields2(returnFields2 string) UpgradestatusAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UpgradestatusAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) UpgradestatusAPIReferenceGetRequest {
+func (r UpgradestatusAPIReadRequest) ReturnAsObject(returnAsObject int32) UpgradestatusAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r UpgradestatusAPIReferenceGetRequest) Execute() (*GetUpgradestatusResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r UpgradestatusAPIReadRequest) Execute() (*GetUpgradestatusResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific upgradestatus object
+Read Get a specific upgradestatus object
 
 Returns a specific upgradestatus object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the upgradestatus object
-	@return UpgradestatusAPIReferenceGetRequest
+	@return UpgradestatusAPIReadRequest
 */
-func (a *UpgradestatusAPIService) ReferenceGet(ctx context.Context, reference string) UpgradestatusAPIReferenceGetRequest {
-	return UpgradestatusAPIReferenceGetRequest{
+func (a *UpgradestatusAPIService) Read(ctx context.Context, reference string) UpgradestatusAPIReadRequest {
+	return UpgradestatusAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *UpgradestatusAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetUpgradestatusResponse
-func (a *UpgradestatusAPIService) ReferenceGetExecute(r UpgradestatusAPIReferenceGetRequest) (*GetUpgradestatusResponse, *http.Response, error) {
+func (a *UpgradestatusAPIService) ReadExecute(r UpgradestatusAPIReadRequest) (*GetUpgradestatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *UpgradestatusAPIService) ReferenceGetExecute(r UpgradestatusAPIReferenc
 		localVarReturnValue *GetUpgradestatusResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradestatusAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradestatusAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *UpgradestatusAPIService) ReferenceGetExecute(r UpgradestatusAPIReferenc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradestatusAPIReferencePutRequest struct {
+type UpgradestatusAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     UpgradestatusAPI
 	reference      string
@@ -377,44 +377,44 @@ type UpgradestatusAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r UpgradestatusAPIReferencePutRequest) Upgradestatus(upgradestatus Upgradestatus) UpgradestatusAPIReferencePutRequest {
+func (r UpgradestatusAPIUpdateRequest) Upgradestatus(upgradestatus Upgradestatus) UpgradestatusAPIUpdateRequest {
 	r.upgradestatus = &upgradestatus
 	return r
 }
 
 // Enter the field names followed by comma
-func (r UpgradestatusAPIReferencePutRequest) ReturnFields(returnFields string) UpgradestatusAPIReferencePutRequest {
+func (r UpgradestatusAPIUpdateRequest) ReturnFields(returnFields string) UpgradestatusAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradestatusAPIReferencePutRequest) ReturnFields2(returnFields2 string) UpgradestatusAPIReferencePutRequest {
+func (r UpgradestatusAPIUpdateRequest) ReturnFields2(returnFields2 string) UpgradestatusAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UpgradestatusAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) UpgradestatusAPIReferencePutRequest {
+func (r UpgradestatusAPIUpdateRequest) ReturnAsObject(returnAsObject int32) UpgradestatusAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r UpgradestatusAPIReferencePutRequest) Execute() (*UpdateUpgradestatusResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r UpgradestatusAPIUpdateRequest) Execute() (*UpdateUpgradestatusResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a upgradestatus object
+Update Update a upgradestatus object
 
 Updates a specific upgradestatus object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the upgradestatus object
-	@return UpgradestatusAPIReferencePutRequest
+	@return UpgradestatusAPIUpdateRequest
 */
-func (a *UpgradestatusAPIService) ReferencePut(ctx context.Context, reference string) UpgradestatusAPIReferencePutRequest {
-	return UpgradestatusAPIReferencePutRequest{
+func (a *UpgradestatusAPIService) Update(ctx context.Context, reference string) UpgradestatusAPIUpdateRequest {
+	return UpgradestatusAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *UpgradestatusAPIService) ReferencePut(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return UpdateUpgradestatusResponse
-func (a *UpgradestatusAPIService) ReferencePutExecute(r UpgradestatusAPIReferencePutRequest) (*UpdateUpgradestatusResponse, *http.Response, error) {
+func (a *UpgradestatusAPIService) UpdateExecute(r UpgradestatusAPIUpdateRequest) (*UpdateUpgradestatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *UpgradestatusAPIService) ReferencePutExecute(r UpgradestatusAPIReferenc
 		localVarReturnValue *UpdateUpgradestatusResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradestatusAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradestatusAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

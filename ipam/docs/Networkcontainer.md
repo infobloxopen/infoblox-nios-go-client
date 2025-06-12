@@ -45,7 +45,7 @@ Name | Type | Description | Notes
 **IpamTrapSettings** | Pointer to [**NetworkcontainerIpamTrapSettings**](NetworkcontainerIpamTrapSettings.md) |  | [optional] 
 **LastRirRegistrationUpdateSent** | Pointer to **int64** | The timestamp when the last RIR registration update was sent. | [optional] [readonly] 
 **LastRirRegistrationUpdateStatus** | Pointer to **string** | Last RIR registration update status. | [optional] [readonly] 
-**LeaseScavengeTime** | Pointer to **int32** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int64** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogicFilterRules** | Pointer to [**[]NetworkcontainerLogicFilterRules**](NetworkcontainerLogicFilterRules.md) | This field contains the logic filters to be applied on the this network container. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **LowWaterMark** | Pointer to **int64** | The percentage of DHCP network container usage below which the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **LowWaterMarkReset** | Pointer to **int64** | The percentage of DHCP network container usage threshold below which network container usage is not expected and may warrant your attention. When the low watermark is crossed, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The low watermark reset value must be higher than the low watermark value. | [optional] 
@@ -1151,20 +1151,20 @@ HasLastRirRegistrationUpdateStatus returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *Networkcontainer) GetLeaseScavengeTime() int32`
+`func (o *Networkcontainer) GetLeaseScavengeTime() int64`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *Networkcontainer) GetLeaseScavengeTimeOk() (*int32, bool)`
+`func (o *Networkcontainer) GetLeaseScavengeTimeOk() (*int64, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *Networkcontainer) SetLeaseScavengeTime(v int32)`
+`func (o *Networkcontainer) SetLeaseScavengeTime(v int64)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 

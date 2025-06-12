@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GriddhcppropertiesGet**](GridDhcppropertiesAPI.md#GriddhcppropertiesGet) | **Get** /grid:dhcpproperties | Retrieve grid:dhcpproperties objects
-[**GriddhcppropertiesReferenceGet**](GridDhcppropertiesAPI.md#GriddhcppropertiesReferenceGet) | **Get** /grid:dhcpproperties/{reference} | Get a specific grid:dhcpproperties object
-[**GriddhcppropertiesReferencePut**](GridDhcppropertiesAPI.md#GriddhcppropertiesReferencePut) | **Put** /grid:dhcpproperties/{reference} | Update a grid:dhcpproperties object
+[**List**](GridDhcppropertiesAPI.md#List) | **Get** /grid:dhcpproperties | Retrieve grid:dhcpproperties objects
+[**Read**](GridDhcppropertiesAPI.md#Read) | **Get** /grid:dhcpproperties/{reference} | Get a specific grid:dhcpproperties object
+[**Update**](GridDhcppropertiesAPI.md#Update) | **Put** /grid:dhcpproperties/{reference} | Update a grid:dhcpproperties object
 
 
 
-## GriddhcppropertiesGet
+## List
 
-> ListGridDhcppropertiesResponse GriddhcppropertiesGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridDhcppropertiesResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:dhcpproperties objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridDhcppropertiesAPI.GriddhcppropertiesGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridDhcppropertiesAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridDhcppropertiesAPI.GriddhcppropertiesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridDhcppropertiesAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GriddhcppropertiesGet`: ListGridDhcppropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridDhcppropertiesAPI.GriddhcppropertiesGet`: %v\n", resp)
+	// response from `List`: ListGridDhcppropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridDhcppropertiesAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridDhcppropertiesAPIGriddhcppropertiesGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridDhcppropertiesAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GriddhcppropertiesReferenceGet
+## Read
 
-> GetGridDhcppropertiesResponse GriddhcppropertiesReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridDhcppropertiesResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:dhcpproperties object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:dhcpproperties object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridDhcppropertiesAPI.GriddhcppropertiesReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridDhcppropertiesAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridDhcppropertiesAPI.GriddhcppropertiesReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridDhcppropertiesAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GriddhcppropertiesReferenceGet`: GetGridDhcppropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridDhcppropertiesAPI.GriddhcppropertiesReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridDhcppropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridDhcppropertiesAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridDhcppropertiesAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GriddhcppropertiesReferencePut
+## Update
 
-> UpdateGridDhcppropertiesResponse GriddhcppropertiesReferencePut(ctx, reference).GridDhcpproperties(gridDhcpproperties).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridDhcppropertiesResponse Update(ctx, reference).GridDhcpproperties(gridDhcpproperties).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:dhcpproperties object
 
@@ -180,13 +180,13 @@ func main() {
 	gridDhcpproperties := *grid.NewGridDhcpproperties() // GridDhcpproperties | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridDhcppropertiesAPI.GriddhcppropertiesReferencePut(context.Background(), reference).GridDhcpproperties(gridDhcpproperties).Execute()
+	resp, r, err := apiClient.GridDhcppropertiesAPI.Update(context.Background(), reference).GridDhcpproperties(gridDhcpproperties).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridDhcppropertiesAPI.GriddhcppropertiesReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridDhcppropertiesAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GriddhcppropertiesReferencePut`: UpdateGridDhcppropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridDhcppropertiesAPI.GriddhcppropertiesReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGridDhcppropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridDhcppropertiesAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridDhcppropertiesAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

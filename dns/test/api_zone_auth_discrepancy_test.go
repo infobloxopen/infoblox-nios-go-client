@@ -23,11 +23,11 @@ func TestZoneAuthDiscrepancyAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test ZoneAuthDiscrepancyAPIService Get", func(t *testing.T) {
+	t.Run("Test ZoneAuthDiscrepancyAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ZoneAuthDiscrepancyAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ZoneAuthDiscrepancyAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestZoneAuthDiscrepancyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneAuthDiscrepancyAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test ZoneAuthDiscrepancyAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ZoneAuthDiscrepancyAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ZoneAuthDiscrepancyAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

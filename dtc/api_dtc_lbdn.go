@@ -23,249 +23,78 @@ import (
 
 type DtcLbdnAPI interface {
 	/*
-		DtclbdnGet Retrieve dtc:lbdn objects
-
-		Returns a list of dtc:lbdn objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcLbdnAPIDtclbdnGetRequest
-	*/
-	DtclbdnGet(ctx context.Context) DtcLbdnAPIDtclbdnGetRequest
-
-	// DtclbdnGetExecute executes the request
-	//  @return ListDtcLbdnResponse
-	DtclbdnGetExecute(r DtcLbdnAPIDtclbdnGetRequest) (*ListDtcLbdnResponse, *http.Response, error)
-	/*
-		DtclbdnPost Create a dtc:lbdn object
+		Create Create a dtc:lbdn object
 
 		Creates a new dtc:lbdn object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcLbdnAPIDtclbdnPostRequest
+		@return DtcLbdnAPICreateRequest
 	*/
-	DtclbdnPost(ctx context.Context) DtcLbdnAPIDtclbdnPostRequest
+	Create(ctx context.Context) DtcLbdnAPICreateRequest
 
-	// DtclbdnPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDtcLbdnResponse
-	DtclbdnPostExecute(r DtcLbdnAPIDtclbdnPostRequest) (*CreateDtcLbdnResponse, *http.Response, error)
+	CreateExecute(r DtcLbdnAPICreateRequest) (*CreateDtcLbdnResponse, *http.Response, error)
 	/*
-		DtclbdnReferenceDelete Delete a dtc:lbdn object
+		Delete Delete a dtc:lbdn object
 
 		Deletes a specific dtc:lbdn object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:lbdn object
-		@return DtcLbdnAPIDtclbdnReferenceDeleteRequest
+		@return DtcLbdnAPIDeleteRequest
 	*/
-	DtclbdnReferenceDelete(ctx context.Context, reference string) DtcLbdnAPIDtclbdnReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DtcLbdnAPIDeleteRequest
 
-	// DtclbdnReferenceDeleteExecute executes the request
-	DtclbdnReferenceDeleteExecute(r DtcLbdnAPIDtclbdnReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DtcLbdnAPIDeleteRequest) (*http.Response, error)
 	/*
-		DtclbdnReferenceGet Get a specific dtc:lbdn object
+		List Retrieve dtc:lbdn objects
+
+		Returns a list of dtc:lbdn objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DtcLbdnAPIListRequest
+	*/
+	List(ctx context.Context) DtcLbdnAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDtcLbdnResponse
+	ListExecute(r DtcLbdnAPIListRequest) (*ListDtcLbdnResponse, *http.Response, error)
+	/*
+		Read Get a specific dtc:lbdn object
 
 		Returns a specific dtc:lbdn object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:lbdn object
-		@return DtcLbdnAPIDtclbdnReferenceGetRequest
+		@return DtcLbdnAPIReadRequest
 	*/
-	DtclbdnReferenceGet(ctx context.Context, reference string) DtcLbdnAPIDtclbdnReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcLbdnAPIReadRequest
 
-	// DtclbdnReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcLbdnResponse
-	DtclbdnReferenceGetExecute(r DtcLbdnAPIDtclbdnReferenceGetRequest) (*GetDtcLbdnResponse, *http.Response, error)
+	ReadExecute(r DtcLbdnAPIReadRequest) (*GetDtcLbdnResponse, *http.Response, error)
 	/*
-		DtclbdnReferencePut Update a dtc:lbdn object
+		Update Update a dtc:lbdn object
 
 		Updates a specific dtc:lbdn object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:lbdn object
-		@return DtcLbdnAPIDtclbdnReferencePutRequest
+		@return DtcLbdnAPIUpdateRequest
 	*/
-	DtclbdnReferencePut(ctx context.Context, reference string) DtcLbdnAPIDtclbdnReferencePutRequest
+	Update(ctx context.Context, reference string) DtcLbdnAPIUpdateRequest
 
-	// DtclbdnReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcLbdnResponse
-	DtclbdnReferencePutExecute(r DtcLbdnAPIDtclbdnReferencePutRequest) (*UpdateDtcLbdnResponse, *http.Response, error)
+	UpdateExecute(r DtcLbdnAPIUpdateRequest) (*UpdateDtcLbdnResponse, *http.Response, error)
 }
 
 // DtcLbdnAPIService DtcLbdnAPI service
 type DtcLbdnAPIService internal.Service
 
-type DtcLbdnAPIDtclbdnGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcLbdnAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r DtcLbdnAPIDtclbdnGetRequest) ReturnFields(returnFields string) DtcLbdnAPIDtclbdnGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcLbdnAPIDtclbdnGetRequest) ReturnFields2(returnFields2 string) DtcLbdnAPIDtclbdnGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r DtcLbdnAPIDtclbdnGetRequest) MaxResults(maxResults int32) DtcLbdnAPIDtclbdnGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DtcLbdnAPIDtclbdnGetRequest) ReturnAsObject(returnAsObject int32) DtcLbdnAPIDtclbdnGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r DtcLbdnAPIDtclbdnGetRequest) Paging(paging int32) DtcLbdnAPIDtclbdnGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r DtcLbdnAPIDtclbdnGetRequest) PageId(pageId string) DtcLbdnAPIDtclbdnGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r DtcLbdnAPIDtclbdnGetRequest) Filters(filters map[string]interface{}) DtcLbdnAPIDtclbdnGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r DtcLbdnAPIDtclbdnGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcLbdnAPIDtclbdnGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r DtcLbdnAPIDtclbdnGetRequest) Execute() (*ListDtcLbdnResponse, *http.Response, error) {
-	return r.ApiService.DtclbdnGetExecute(r)
-}
-
-/*
-DtclbdnGet Retrieve dtc:lbdn objects
-
-Returns a list of dtc:lbdn objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcLbdnAPIDtclbdnGetRequest
-*/
-func (a *DtcLbdnAPIService) DtclbdnGet(ctx context.Context) DtcLbdnAPIDtclbdnGetRequest {
-	return DtcLbdnAPIDtclbdnGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListDtcLbdnResponse
-func (a *DtcLbdnAPIService) DtclbdnGetExecute(r DtcLbdnAPIDtclbdnGetRequest) (*ListDtcLbdnResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListDtcLbdnResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcLbdnAPIService.DtclbdnGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:lbdn"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DtcLbdnAPIDtclbdnPostRequest struct {
+type DtcLbdnAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     DtcLbdnAPI
 	dtcLbdn        *DtcLbdn
@@ -275,43 +104,43 @@ type DtcLbdnAPIDtclbdnPostRequest struct {
 }
 
 // Object data to create
-func (r DtcLbdnAPIDtclbdnPostRequest) DtcLbdn(dtcLbdn DtcLbdn) DtcLbdnAPIDtclbdnPostRequest {
+func (r DtcLbdnAPICreateRequest) DtcLbdn(dtcLbdn DtcLbdn) DtcLbdnAPICreateRequest {
 	r.dtcLbdn = &dtcLbdn
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcLbdnAPIDtclbdnPostRequest) ReturnFields(returnFields string) DtcLbdnAPIDtclbdnPostRequest {
+func (r DtcLbdnAPICreateRequest) ReturnFields(returnFields string) DtcLbdnAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcLbdnAPIDtclbdnPostRequest) ReturnFields2(returnFields2 string) DtcLbdnAPIDtclbdnPostRequest {
+func (r DtcLbdnAPICreateRequest) ReturnFields2(returnFields2 string) DtcLbdnAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcLbdnAPIDtclbdnPostRequest) ReturnAsObject(returnAsObject int32) DtcLbdnAPIDtclbdnPostRequest {
+func (r DtcLbdnAPICreateRequest) ReturnAsObject(returnAsObject int32) DtcLbdnAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcLbdnAPIDtclbdnPostRequest) Execute() (*CreateDtcLbdnResponse, *http.Response, error) {
-	return r.ApiService.DtclbdnPostExecute(r)
+func (r DtcLbdnAPICreateRequest) Execute() (*CreateDtcLbdnResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-DtclbdnPost Create a dtc:lbdn object
+Create Create a dtc:lbdn object
 
 Creates a new dtc:lbdn object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcLbdnAPIDtclbdnPostRequest
+	@return DtcLbdnAPICreateRequest
 */
-func (a *DtcLbdnAPIService) DtclbdnPost(ctx context.Context) DtcLbdnAPIDtclbdnPostRequest {
-	return DtcLbdnAPIDtclbdnPostRequest{
+func (a *DtcLbdnAPIService) Create(ctx context.Context) DtcLbdnAPICreateRequest {
+	return DtcLbdnAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *DtcLbdnAPIService) DtclbdnPost(ctx context.Context) DtcLbdnAPIDtclbdnPo
 // Execute executes the request
 //
 //	@return CreateDtcLbdnResponse
-func (a *DtcLbdnAPIService) DtclbdnPostExecute(r DtcLbdnAPIDtclbdnPostRequest) (*CreateDtcLbdnResponse, *http.Response, error) {
+func (a *DtcLbdnAPIService) CreateExecute(r DtcLbdnAPICreateRequest) (*CreateDtcLbdnResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *DtcLbdnAPIService) DtclbdnPostExecute(r DtcLbdnAPIDtclbdnPostRequest) (
 		localVarReturnValue *CreateDtcLbdnResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcLbdnAPIService.DtclbdnPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcLbdnAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *DtcLbdnAPIService) DtclbdnPostExecute(r DtcLbdnAPIDtclbdnPostRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcLbdnAPIDtclbdnReferenceDeleteRequest struct {
+type DtcLbdnAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService DtcLbdnAPI
 	reference  string
 }
 
-func (r DtcLbdnAPIDtclbdnReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DtclbdnReferenceDeleteExecute(r)
+func (r DtcLbdnAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-DtclbdnReferenceDelete Delete a dtc:lbdn object
+Delete Delete a dtc:lbdn object
 
 Deletes a specific dtc:lbdn object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:lbdn object
-	@return DtcLbdnAPIDtclbdnReferenceDeleteRequest
+	@return DtcLbdnAPIDeleteRequest
 */
-func (a *DtcLbdnAPIService) DtclbdnReferenceDelete(ctx context.Context, reference string) DtcLbdnAPIDtclbdnReferenceDeleteRequest {
-	return DtcLbdnAPIDtclbdnReferenceDeleteRequest{
+func (a *DtcLbdnAPIService) Delete(ctx context.Context, reference string) DtcLbdnAPIDeleteRequest {
+	return DtcLbdnAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *DtcLbdnAPIService) DtclbdnReferenceDelete(ctx context.Context, referenc
 }
 
 // Execute executes the request
-func (a *DtcLbdnAPIService) DtclbdnReferenceDeleteExecute(r DtcLbdnAPIDtclbdnReferenceDeleteRequest) (*http.Response, error) {
+func (a *DtcLbdnAPIService) DeleteExecute(r DtcLbdnAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcLbdnAPIService.DtclbdnReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcLbdnAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *DtcLbdnAPIService) DtclbdnReferenceDeleteExecute(r DtcLbdnAPIDtclbdnRef
 	return localVarHTTPResponse, nil
 }
 
-type DtcLbdnAPIDtclbdnReferenceGetRequest struct {
+type DtcLbdnAPIListRequest struct {
+	ctx            context.Context
+	ApiService     DtcLbdnAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DtcLbdnAPIListRequest) ReturnFields(returnFields string) DtcLbdnAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DtcLbdnAPIListRequest) ReturnFields2(returnFields2 string) DtcLbdnAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r DtcLbdnAPIListRequest) MaxResults(maxResults int32) DtcLbdnAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DtcLbdnAPIListRequest) ReturnAsObject(returnAsObject int32) DtcLbdnAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r DtcLbdnAPIListRequest) Paging(paging int32) DtcLbdnAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r DtcLbdnAPIListRequest) PageId(pageId string) DtcLbdnAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r DtcLbdnAPIListRequest) Filters(filters map[string]interface{}) DtcLbdnAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r DtcLbdnAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcLbdnAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r DtcLbdnAPIListRequest) Execute() (*ListDtcLbdnResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve dtc:lbdn objects
+
+Returns a list of dtc:lbdn objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DtcLbdnAPIListRequest
+*/
+func (a *DtcLbdnAPIService) List(ctx context.Context) DtcLbdnAPIListRequest {
+	return DtcLbdnAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListDtcLbdnResponse
+func (a *DtcLbdnAPIService) ListExecute(r DtcLbdnAPIListRequest) (*ListDtcLbdnResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListDtcLbdnResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcLbdnAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:lbdn"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DtcLbdnAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DtcLbdnAPI
 	reference      string
@@ -511,38 +511,38 @@ type DtcLbdnAPIDtclbdnReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcLbdnAPIDtclbdnReferenceGetRequest) ReturnFields(returnFields string) DtcLbdnAPIDtclbdnReferenceGetRequest {
+func (r DtcLbdnAPIReadRequest) ReturnFields(returnFields string) DtcLbdnAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcLbdnAPIDtclbdnReferenceGetRequest) ReturnFields2(returnFields2 string) DtcLbdnAPIDtclbdnReferenceGetRequest {
+func (r DtcLbdnAPIReadRequest) ReturnFields2(returnFields2 string) DtcLbdnAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcLbdnAPIDtclbdnReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcLbdnAPIDtclbdnReferenceGetRequest {
+func (r DtcLbdnAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcLbdnAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcLbdnAPIDtclbdnReferenceGetRequest) Execute() (*GetDtcLbdnResponse, *http.Response, error) {
-	return r.ApiService.DtclbdnReferenceGetExecute(r)
+func (r DtcLbdnAPIReadRequest) Execute() (*GetDtcLbdnResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtclbdnReferenceGet Get a specific dtc:lbdn object
+Read Get a specific dtc:lbdn object
 
 Returns a specific dtc:lbdn object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:lbdn object
-	@return DtcLbdnAPIDtclbdnReferenceGetRequest
+	@return DtcLbdnAPIReadRequest
 */
-func (a *DtcLbdnAPIService) DtclbdnReferenceGet(ctx context.Context, reference string) DtcLbdnAPIDtclbdnReferenceGetRequest {
-	return DtcLbdnAPIDtclbdnReferenceGetRequest{
+func (a *DtcLbdnAPIService) Read(ctx context.Context, reference string) DtcLbdnAPIReadRequest {
+	return DtcLbdnAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *DtcLbdnAPIService) DtclbdnReferenceGet(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return GetDtcLbdnResponse
-func (a *DtcLbdnAPIService) DtclbdnReferenceGetExecute(r DtcLbdnAPIDtclbdnReferenceGetRequest) (*GetDtcLbdnResponse, *http.Response, error) {
+func (a *DtcLbdnAPIService) ReadExecute(r DtcLbdnAPIReadRequest) (*GetDtcLbdnResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *DtcLbdnAPIService) DtclbdnReferenceGetExecute(r DtcLbdnAPIDtclbdnRefere
 		localVarReturnValue *GetDtcLbdnResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcLbdnAPIService.DtclbdnReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcLbdnAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *DtcLbdnAPIService) DtclbdnReferenceGetExecute(r DtcLbdnAPIDtclbdnRefere
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcLbdnAPIDtclbdnReferencePutRequest struct {
+type DtcLbdnAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     DtcLbdnAPI
 	reference      string
@@ -639,44 +639,44 @@ type DtcLbdnAPIDtclbdnReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DtcLbdnAPIDtclbdnReferencePutRequest) DtcLbdn(dtcLbdn DtcLbdn) DtcLbdnAPIDtclbdnReferencePutRequest {
+func (r DtcLbdnAPIUpdateRequest) DtcLbdn(dtcLbdn DtcLbdn) DtcLbdnAPIUpdateRequest {
 	r.dtcLbdn = &dtcLbdn
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcLbdnAPIDtclbdnReferencePutRequest) ReturnFields(returnFields string) DtcLbdnAPIDtclbdnReferencePutRequest {
+func (r DtcLbdnAPIUpdateRequest) ReturnFields(returnFields string) DtcLbdnAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcLbdnAPIDtclbdnReferencePutRequest) ReturnFields2(returnFields2 string) DtcLbdnAPIDtclbdnReferencePutRequest {
+func (r DtcLbdnAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcLbdnAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcLbdnAPIDtclbdnReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcLbdnAPIDtclbdnReferencePutRequest {
+func (r DtcLbdnAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcLbdnAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcLbdnAPIDtclbdnReferencePutRequest) Execute() (*UpdateDtcLbdnResponse, *http.Response, error) {
-	return r.ApiService.DtclbdnReferencePutExecute(r)
+func (r DtcLbdnAPIUpdateRequest) Execute() (*UpdateDtcLbdnResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtclbdnReferencePut Update a dtc:lbdn object
+Update Update a dtc:lbdn object
 
 Updates a specific dtc:lbdn object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:lbdn object
-	@return DtcLbdnAPIDtclbdnReferencePutRequest
+	@return DtcLbdnAPIUpdateRequest
 */
-func (a *DtcLbdnAPIService) DtclbdnReferencePut(ctx context.Context, reference string) DtcLbdnAPIDtclbdnReferencePutRequest {
-	return DtcLbdnAPIDtclbdnReferencePutRequest{
+func (a *DtcLbdnAPIService) Update(ctx context.Context, reference string) DtcLbdnAPIUpdateRequest {
+	return DtcLbdnAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *DtcLbdnAPIService) DtclbdnReferencePut(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return UpdateDtcLbdnResponse
-func (a *DtcLbdnAPIService) DtclbdnReferencePutExecute(r DtcLbdnAPIDtclbdnReferencePutRequest) (*UpdateDtcLbdnResponse, *http.Response, error) {
+func (a *DtcLbdnAPIService) UpdateExecute(r DtcLbdnAPIUpdateRequest) (*UpdateDtcLbdnResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *DtcLbdnAPIService) DtclbdnReferencePutExecute(r DtcLbdnAPIDtclbdnRefere
 		localVarReturnValue *UpdateDtcLbdnResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcLbdnAPIService.DtclbdnReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcLbdnAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

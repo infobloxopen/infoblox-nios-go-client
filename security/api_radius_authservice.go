@@ -23,78 +23,302 @@ import (
 
 type RadiusAuthserviceAPI interface {
 	/*
-		RadiusauthserviceGet Retrieve radius:authservice objects
-
-		Returns a list of radius:authservice objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RadiusAuthserviceAPIRadiusauthserviceGetRequest
-	*/
-	RadiusauthserviceGet(ctx context.Context) RadiusAuthserviceAPIRadiusauthserviceGetRequest
-
-	// RadiusauthserviceGetExecute executes the request
-	//  @return ListRadiusAuthserviceResponse
-	RadiusauthserviceGetExecute(r RadiusAuthserviceAPIRadiusauthserviceGetRequest) (*ListRadiusAuthserviceResponse, *http.Response, error)
-	/*
-		RadiusauthservicePost Create a radius:authservice object
+		Create Create a radius:authservice object
 
 		Creates a new radius:authservice object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RadiusAuthserviceAPIRadiusauthservicePostRequest
+		@return RadiusAuthserviceAPICreateRequest
 	*/
-	RadiusauthservicePost(ctx context.Context) RadiusAuthserviceAPIRadiusauthservicePostRequest
+	Create(ctx context.Context) RadiusAuthserviceAPICreateRequest
 
-	// RadiusauthservicePostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRadiusAuthserviceResponse
-	RadiusauthservicePostExecute(r RadiusAuthserviceAPIRadiusauthservicePostRequest) (*CreateRadiusAuthserviceResponse, *http.Response, error)
+	CreateExecute(r RadiusAuthserviceAPICreateRequest) (*CreateRadiusAuthserviceResponse, *http.Response, error)
 	/*
-		RadiusauthserviceReferenceDelete Delete a radius:authservice object
+		Delete Delete a radius:authservice object
 
 		Deletes a specific radius:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the radius:authservice object
-		@return RadiusAuthserviceAPIRadiusauthserviceReferenceDeleteRequest
+		@return RadiusAuthserviceAPIDeleteRequest
 	*/
-	RadiusauthserviceReferenceDelete(ctx context.Context, reference string) RadiusAuthserviceAPIRadiusauthserviceReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RadiusAuthserviceAPIDeleteRequest
 
-	// RadiusauthserviceReferenceDeleteExecute executes the request
-	RadiusauthserviceReferenceDeleteExecute(r RadiusAuthserviceAPIRadiusauthserviceReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RadiusAuthserviceAPIDeleteRequest) (*http.Response, error)
 	/*
-		RadiusauthserviceReferenceGet Get a specific radius:authservice object
+		List Retrieve radius:authservice objects
+
+		Returns a list of radius:authservice objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RadiusAuthserviceAPIListRequest
+	*/
+	List(ctx context.Context) RadiusAuthserviceAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRadiusAuthserviceResponse
+	ListExecute(r RadiusAuthserviceAPIListRequest) (*ListRadiusAuthserviceResponse, *http.Response, error)
+	/*
+		Read Get a specific radius:authservice object
 
 		Returns a specific radius:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the radius:authservice object
-		@return RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest
+		@return RadiusAuthserviceAPIReadRequest
 	*/
-	RadiusauthserviceReferenceGet(ctx context.Context, reference string) RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest
+	Read(ctx context.Context, reference string) RadiusAuthserviceAPIReadRequest
 
-	// RadiusauthserviceReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRadiusAuthserviceResponse
-	RadiusauthserviceReferenceGetExecute(r RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest) (*GetRadiusAuthserviceResponse, *http.Response, error)
+	ReadExecute(r RadiusAuthserviceAPIReadRequest) (*GetRadiusAuthserviceResponse, *http.Response, error)
 	/*
-		RadiusauthserviceReferencePut Update a radius:authservice object
+		Update Update a radius:authservice object
 
 		Updates a specific radius:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the radius:authservice object
-		@return RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest
+		@return RadiusAuthserviceAPIUpdateRequest
 	*/
-	RadiusauthserviceReferencePut(ctx context.Context, reference string) RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest
+	Update(ctx context.Context, reference string) RadiusAuthserviceAPIUpdateRequest
 
-	// RadiusauthserviceReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRadiusAuthserviceResponse
-	RadiusauthserviceReferencePutExecute(r RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest) (*UpdateRadiusAuthserviceResponse, *http.Response, error)
+	UpdateExecute(r RadiusAuthserviceAPIUpdateRequest) (*UpdateRadiusAuthserviceResponse, *http.Response, error)
 }
 
 // RadiusAuthserviceAPIService RadiusAuthserviceAPI service
 type RadiusAuthserviceAPIService internal.Service
 
-type RadiusAuthserviceAPIRadiusauthserviceGetRequest struct {
+type RadiusAuthserviceAPICreateRequest struct {
+	ctx               context.Context
+	ApiService        RadiusAuthserviceAPI
+	radiusAuthservice *RadiusAuthservice
+	returnFields      *string
+	returnFields2     *string
+	returnAsObject    *int32
+}
+
+// Object data to create
+func (r RadiusAuthserviceAPICreateRequest) RadiusAuthservice(radiusAuthservice RadiusAuthservice) RadiusAuthserviceAPICreateRequest {
+	r.radiusAuthservice = &radiusAuthservice
+	return r
+}
+
+// Enter the field names followed by comma
+func (r RadiusAuthserviceAPICreateRequest) ReturnFields(returnFields string) RadiusAuthserviceAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RadiusAuthserviceAPICreateRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RadiusAuthserviceAPICreateRequest) ReturnAsObject(returnAsObject int32) RadiusAuthserviceAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r RadiusAuthserviceAPICreateRequest) Execute() (*CreateRadiusAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a radius:authservice object
+
+Creates a new radius:authservice object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RadiusAuthserviceAPICreateRequest
+*/
+func (a *RadiusAuthserviceAPIService) Create(ctx context.Context) RadiusAuthserviceAPICreateRequest {
+	return RadiusAuthserviceAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateRadiusAuthserviceResponse
+func (a *RadiusAuthserviceAPIService) CreateExecute(r RadiusAuthserviceAPICreateRequest) (*CreateRadiusAuthserviceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateRadiusAuthserviceResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RadiusAuthserviceAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/radius:authservice"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.radiusAuthservice == nil {
+		return localVarReturnValue, nil, internal.ReportError("radiusAuthservice is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.radiusAuthservice
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RadiusAuthserviceAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RadiusAuthserviceAPI
+	reference  string
+}
+
+func (r RadiusAuthserviceAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a radius:authservice object
+
+Deletes a specific radius:authservice object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the radius:authservice object
+	@return RadiusAuthserviceAPIDeleteRequest
+*/
+func (a *RadiusAuthserviceAPIService) Delete(ctx context.Context, reference string) RadiusAuthserviceAPIDeleteRequest {
+	return RadiusAuthserviceAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RadiusAuthserviceAPIService) DeleteExecute(r RadiusAuthserviceAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RadiusAuthserviceAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/radius:authservice/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RadiusAuthserviceAPIListRequest struct {
 	ctx            context.Context
 	ApiService     RadiusAuthserviceAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type RadiusAuthserviceAPIRadiusauthserviceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RadiusAuthserviceAPIRadiusauthserviceGetRequest) ReturnFields(returnFields string) RadiusAuthserviceAPIRadiusauthserviceGetRequest {
+func (r RadiusAuthserviceAPIListRequest) ReturnFields(returnFields string) RadiusAuthserviceAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RadiusAuthserviceAPIRadiusauthserviceGetRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPIRadiusauthserviceGetRequest {
+func (r RadiusAuthserviceAPIListRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RadiusAuthserviceAPIRadiusauthserviceGetRequest) MaxResults(maxResults int32) RadiusAuthserviceAPIRadiusauthserviceGetRequest {
+func (r RadiusAuthserviceAPIListRequest) MaxResults(maxResults int32) RadiusAuthserviceAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RadiusAuthserviceAPIRadiusauthserviceGetRequest) ReturnAsObject(returnAsObject int32) RadiusAuthserviceAPIRadiusauthserviceGetRequest {
+func (r RadiusAuthserviceAPIListRequest) ReturnAsObject(returnAsObject int32) RadiusAuthserviceAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RadiusAuthserviceAPIRadiusauthserviceGetRequest) Paging(paging int32) RadiusAuthserviceAPIRadiusauthserviceGetRequest {
+func (r RadiusAuthserviceAPIListRequest) Paging(paging int32) RadiusAuthserviceAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RadiusAuthserviceAPIRadiusauthserviceGetRequest) PageId(pageId string) RadiusAuthserviceAPIRadiusauthserviceGetRequest {
+func (r RadiusAuthserviceAPIListRequest) PageId(pageId string) RadiusAuthserviceAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RadiusAuthserviceAPIRadiusauthserviceGetRequest) Filters(filters map[string]interface{}) RadiusAuthserviceAPIRadiusauthserviceGetRequest {
+func (r RadiusAuthserviceAPIListRequest) Filters(filters map[string]interface{}) RadiusAuthserviceAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RadiusAuthserviceAPIRadiusauthserviceGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RadiusAuthserviceAPIRadiusauthserviceGetRequest {
+func (r RadiusAuthserviceAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RadiusAuthserviceAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RadiusAuthserviceAPIRadiusauthserviceGetRequest) Execute() (*ListRadiusAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.RadiusauthserviceGetExecute(r)
+func (r RadiusAuthserviceAPIListRequest) Execute() (*ListRadiusAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RadiusauthserviceGet Retrieve radius:authservice objects
+List Retrieve radius:authservice objects
 
 Returns a list of radius:authservice objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RadiusAuthserviceAPIRadiusauthserviceGetRequest
+	@return RadiusAuthserviceAPIListRequest
 */
-func (a *RadiusAuthserviceAPIService) RadiusauthserviceGet(ctx context.Context) RadiusAuthserviceAPIRadiusauthserviceGetRequest {
-	return RadiusAuthserviceAPIRadiusauthserviceGetRequest{
+func (a *RadiusAuthserviceAPIService) List(ctx context.Context) RadiusAuthserviceAPIListRequest {
+	return RadiusAuthserviceAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *RadiusAuthserviceAPIService) RadiusauthserviceGet(ctx context.Context) 
 // Execute executes the request
 //
 //	@return ListRadiusAuthserviceResponse
-func (a *RadiusAuthserviceAPIService) RadiusauthserviceGetExecute(r RadiusAuthserviceAPIRadiusauthserviceGetRequest) (*ListRadiusAuthserviceResponse, *http.Response, error) {
+func (a *RadiusAuthserviceAPIService) ListExecute(r RadiusAuthserviceAPIListRequest) (*ListRadiusAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *RadiusAuthserviceAPIService) RadiusauthserviceGetExecute(r RadiusAuthse
 		localVarReturnValue *ListRadiusAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RadiusAuthserviceAPIService.RadiusauthserviceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RadiusAuthserviceAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *RadiusAuthserviceAPIService) RadiusauthserviceGetExecute(r RadiusAuthse
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RadiusAuthserviceAPIRadiusauthservicePostRequest struct {
-	ctx               context.Context
-	ApiService        RadiusAuthserviceAPI
-	radiusAuthservice *RadiusAuthservice
-	returnFields      *string
-	returnFields2     *string
-	returnAsObject    *int32
-}
-
-// Object data to create
-func (r RadiusAuthserviceAPIRadiusauthservicePostRequest) RadiusAuthservice(radiusAuthservice RadiusAuthservice) RadiusAuthserviceAPIRadiusauthservicePostRequest {
-	r.radiusAuthservice = &radiusAuthservice
-	return r
-}
-
-// Enter the field names followed by comma
-func (r RadiusAuthserviceAPIRadiusauthservicePostRequest) ReturnFields(returnFields string) RadiusAuthserviceAPIRadiusauthservicePostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RadiusAuthserviceAPIRadiusauthservicePostRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPIRadiusauthservicePostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RadiusAuthserviceAPIRadiusauthservicePostRequest) ReturnAsObject(returnAsObject int32) RadiusAuthserviceAPIRadiusauthservicePostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r RadiusAuthserviceAPIRadiusauthservicePostRequest) Execute() (*CreateRadiusAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.RadiusauthservicePostExecute(r)
-}
-
-/*
-RadiusauthservicePost Create a radius:authservice object
-
-Creates a new radius:authservice object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RadiusAuthserviceAPIRadiusauthservicePostRequest
-*/
-func (a *RadiusAuthserviceAPIService) RadiusauthservicePost(ctx context.Context) RadiusAuthserviceAPIRadiusauthservicePostRequest {
-	return RadiusAuthserviceAPIRadiusauthservicePostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateRadiusAuthserviceResponse
-func (a *RadiusAuthserviceAPIService) RadiusauthservicePostExecute(r RadiusAuthserviceAPIRadiusauthservicePostRequest) (*CreateRadiusAuthserviceResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateRadiusAuthserviceResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RadiusAuthserviceAPIService.RadiusauthservicePost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/radius:authservice"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.radiusAuthservice == nil {
-		return localVarReturnValue, nil, internal.ReportError("radiusAuthservice is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.radiusAuthservice
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RadiusAuthserviceAPIRadiusauthserviceReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RadiusAuthserviceAPI
-	reference  string
-}
-
-func (r RadiusAuthserviceAPIRadiusauthserviceReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RadiusauthserviceReferenceDeleteExecute(r)
-}
-
-/*
-RadiusauthserviceReferenceDelete Delete a radius:authservice object
-
-Deletes a specific radius:authservice object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the radius:authservice object
-	@return RadiusAuthserviceAPIRadiusauthserviceReferenceDeleteRequest
-*/
-func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferenceDelete(ctx context.Context, reference string) RadiusAuthserviceAPIRadiusauthserviceReferenceDeleteRequest {
-	return RadiusAuthserviceAPIRadiusauthserviceReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferenceDeleteExecute(r RadiusAuthserviceAPIRadiusauthserviceReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RadiusAuthserviceAPIService.RadiusauthserviceReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/radius:authservice/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest struct {
+type RadiusAuthserviceAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RadiusAuthserviceAPI
 	reference      string
@@ -499,38 +499,38 @@ type RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest) ReturnFields(returnFields string) RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest {
+func (r RadiusAuthserviceAPIReadRequest) ReturnFields(returnFields string) RadiusAuthserviceAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest {
+func (r RadiusAuthserviceAPIReadRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest) ReturnAsObject(returnAsObject int32) RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest {
+func (r RadiusAuthserviceAPIReadRequest) ReturnAsObject(returnAsObject int32) RadiusAuthserviceAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest) Execute() (*GetRadiusAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.RadiusauthserviceReferenceGetExecute(r)
+func (r RadiusAuthserviceAPIReadRequest) Execute() (*GetRadiusAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RadiusauthserviceReferenceGet Get a specific radius:authservice object
+Read Get a specific radius:authservice object
 
 Returns a specific radius:authservice object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the radius:authservice object
-	@return RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest
+	@return RadiusAuthserviceAPIReadRequest
 */
-func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferenceGet(ctx context.Context, reference string) RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest {
-	return RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest{
+func (a *RadiusAuthserviceAPIService) Read(ctx context.Context, reference string) RadiusAuthserviceAPIReadRequest {
+	return RadiusAuthserviceAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferenceGet(ctx context.
 // Execute executes the request
 //
 //	@return GetRadiusAuthserviceResponse
-func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferenceGetExecute(r RadiusAuthserviceAPIRadiusauthserviceReferenceGetRequest) (*GetRadiusAuthserviceResponse, *http.Response, error) {
+func (a *RadiusAuthserviceAPIService) ReadExecute(r RadiusAuthserviceAPIReadRequest) (*GetRadiusAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferenceGetExecute(r Rad
 		localVarReturnValue *GetRadiusAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RadiusAuthserviceAPIService.RadiusauthserviceReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RadiusAuthserviceAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferenceGetExecute(r Rad
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest struct {
+type RadiusAuthserviceAPIUpdateRequest struct {
 	ctx               context.Context
 	ApiService        RadiusAuthserviceAPI
 	reference         string
@@ -627,44 +627,44 @@ type RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest) RadiusAuthservice(radiusAuthservice RadiusAuthservice) RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest {
+func (r RadiusAuthserviceAPIUpdateRequest) RadiusAuthservice(radiusAuthservice RadiusAuthservice) RadiusAuthserviceAPIUpdateRequest {
 	r.radiusAuthservice = &radiusAuthservice
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest) ReturnFields(returnFields string) RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest {
+func (r RadiusAuthserviceAPIUpdateRequest) ReturnFields(returnFields string) RadiusAuthserviceAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest {
+func (r RadiusAuthserviceAPIUpdateRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest) ReturnAsObject(returnAsObject int32) RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest {
+func (r RadiusAuthserviceAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RadiusAuthserviceAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest) Execute() (*UpdateRadiusAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.RadiusauthserviceReferencePutExecute(r)
+func (r RadiusAuthserviceAPIUpdateRequest) Execute() (*UpdateRadiusAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RadiusauthserviceReferencePut Update a radius:authservice object
+Update Update a radius:authservice object
 
 Updates a specific radius:authservice object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the radius:authservice object
-	@return RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest
+	@return RadiusAuthserviceAPIUpdateRequest
 */
-func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferencePut(ctx context.Context, reference string) RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest {
-	return RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest{
+func (a *RadiusAuthserviceAPIService) Update(ctx context.Context, reference string) RadiusAuthserviceAPIUpdateRequest {
+	return RadiusAuthserviceAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferencePut(ctx context.
 // Execute executes the request
 //
 //	@return UpdateRadiusAuthserviceResponse
-func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferencePutExecute(r RadiusAuthserviceAPIRadiusauthserviceReferencePutRequest) (*UpdateRadiusAuthserviceResponse, *http.Response, error) {
+func (a *RadiusAuthserviceAPIService) UpdateExecute(r RadiusAuthserviceAPIUpdateRequest) (*UpdateRadiusAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *RadiusAuthserviceAPIService) RadiusauthserviceReferencePutExecute(r Rad
 		localVarReturnValue *UpdateRadiusAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RadiusAuthserviceAPIService.RadiusauthserviceReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RadiusAuthserviceAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

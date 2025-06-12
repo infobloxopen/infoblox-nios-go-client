@@ -23,52 +23,52 @@ import (
 
 type DistributionscheduleAPI interface {
 	/*
-		Get Retrieve distributionschedule objects
+		List Retrieve distributionschedule objects
 
 		Returns a list of distributionschedule objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DistributionscheduleAPIGetRequest
+		@return DistributionscheduleAPIListRequest
 	*/
-	Get(ctx context.Context) DistributionscheduleAPIGetRequest
+	List(ctx context.Context) DistributionscheduleAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDistributionscheduleResponse
-	GetExecute(r DistributionscheduleAPIGetRequest) (*ListDistributionscheduleResponse, *http.Response, error)
+	ListExecute(r DistributionscheduleAPIListRequest) (*ListDistributionscheduleResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific distributionschedule object
+		Read Get a specific distributionschedule object
 
 		Returns a specific distributionschedule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the distributionschedule object
-		@return DistributionscheduleAPIReferenceGetRequest
+		@return DistributionscheduleAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) DistributionscheduleAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) DistributionscheduleAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDistributionscheduleResponse
-	ReferenceGetExecute(r DistributionscheduleAPIReferenceGetRequest) (*GetDistributionscheduleResponse, *http.Response, error)
+	ReadExecute(r DistributionscheduleAPIReadRequest) (*GetDistributionscheduleResponse, *http.Response, error)
 	/*
-		ReferencePut Update a distributionschedule object
+		Update Update a distributionschedule object
 
 		Updates a specific distributionschedule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the distributionschedule object
-		@return DistributionscheduleAPIReferencePutRequest
+		@return DistributionscheduleAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) DistributionscheduleAPIReferencePutRequest
+	Update(ctx context.Context, reference string) DistributionscheduleAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDistributionscheduleResponse
-	ReferencePutExecute(r DistributionscheduleAPIReferencePutRequest) (*UpdateDistributionscheduleResponse, *http.Response, error)
+	UpdateExecute(r DistributionscheduleAPIUpdateRequest) (*UpdateDistributionscheduleResponse, *http.Response, error)
 }
 
 // DistributionscheduleAPIService DistributionscheduleAPI service
 type DistributionscheduleAPIService internal.Service
 
-type DistributionscheduleAPIGetRequest struct {
+type DistributionscheduleAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DistributionscheduleAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type DistributionscheduleAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DistributionscheduleAPIGetRequest) ReturnFields(returnFields string) DistributionscheduleAPIGetRequest {
+func (r DistributionscheduleAPIListRequest) ReturnFields(returnFields string) DistributionscheduleAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DistributionscheduleAPIGetRequest) ReturnFields2(returnFields2 string) DistributionscheduleAPIGetRequest {
+func (r DistributionscheduleAPIListRequest) ReturnFields2(returnFields2 string) DistributionscheduleAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DistributionscheduleAPIGetRequest) MaxResults(maxResults int32) DistributionscheduleAPIGetRequest {
+func (r DistributionscheduleAPIListRequest) MaxResults(maxResults int32) DistributionscheduleAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DistributionscheduleAPIGetRequest) ReturnAsObject(returnAsObject int32) DistributionscheduleAPIGetRequest {
+func (r DistributionscheduleAPIListRequest) ReturnAsObject(returnAsObject int32) DistributionscheduleAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DistributionscheduleAPIGetRequest) Paging(paging int32) DistributionscheduleAPIGetRequest {
+func (r DistributionscheduleAPIListRequest) Paging(paging int32) DistributionscheduleAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DistributionscheduleAPIGetRequest) PageId(pageId string) DistributionscheduleAPIGetRequest {
+func (r DistributionscheduleAPIListRequest) PageId(pageId string) DistributionscheduleAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DistributionscheduleAPIGetRequest) Filters(filters map[string]interface{}) DistributionscheduleAPIGetRequest {
+func (r DistributionscheduleAPIListRequest) Filters(filters map[string]interface{}) DistributionscheduleAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DistributionscheduleAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DistributionscheduleAPIGetRequest {
+func (r DistributionscheduleAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DistributionscheduleAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DistributionscheduleAPIGetRequest) Execute() (*ListDistributionscheduleResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r DistributionscheduleAPIListRequest) Execute() (*ListDistributionscheduleResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve distributionschedule objects
+List Retrieve distributionschedule objects
 
 Returns a list of distributionschedule objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DistributionscheduleAPIGetRequest
+	@return DistributionscheduleAPIListRequest
 */
-func (a *DistributionscheduleAPIService) Get(ctx context.Context) DistributionscheduleAPIGetRequest {
-	return DistributionscheduleAPIGetRequest{
+func (a *DistributionscheduleAPIService) List(ctx context.Context) DistributionscheduleAPIListRequest {
+	return DistributionscheduleAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *DistributionscheduleAPIService) Get(ctx context.Context) Distributionsc
 // Execute executes the request
 //
 //	@return ListDistributionscheduleResponse
-func (a *DistributionscheduleAPIService) GetExecute(r DistributionscheduleAPIGetRequest) (*ListDistributionscheduleResponse, *http.Response, error) {
+func (a *DistributionscheduleAPIService) ListExecute(r DistributionscheduleAPIListRequest) (*ListDistributionscheduleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *DistributionscheduleAPIService) GetExecute(r DistributionscheduleAPIGet
 		localVarReturnValue *ListDistributionscheduleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DistributionscheduleAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DistributionscheduleAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *DistributionscheduleAPIService) GetExecute(r DistributionscheduleAPIGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DistributionscheduleAPIReferenceGetRequest struct {
+type DistributionscheduleAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DistributionscheduleAPI
 	reference      string
@@ -249,38 +249,38 @@ type DistributionscheduleAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DistributionscheduleAPIReferenceGetRequest) ReturnFields(returnFields string) DistributionscheduleAPIReferenceGetRequest {
+func (r DistributionscheduleAPIReadRequest) ReturnFields(returnFields string) DistributionscheduleAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DistributionscheduleAPIReferenceGetRequest) ReturnFields2(returnFields2 string) DistributionscheduleAPIReferenceGetRequest {
+func (r DistributionscheduleAPIReadRequest) ReturnFields2(returnFields2 string) DistributionscheduleAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DistributionscheduleAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) DistributionscheduleAPIReferenceGetRequest {
+func (r DistributionscheduleAPIReadRequest) ReturnAsObject(returnAsObject int32) DistributionscheduleAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DistributionscheduleAPIReferenceGetRequest) Execute() (*GetDistributionscheduleResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r DistributionscheduleAPIReadRequest) Execute() (*GetDistributionscheduleResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific distributionschedule object
+Read Get a specific distributionschedule object
 
 Returns a specific distributionschedule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the distributionschedule object
-	@return DistributionscheduleAPIReferenceGetRequest
+	@return DistributionscheduleAPIReadRequest
 */
-func (a *DistributionscheduleAPIService) ReferenceGet(ctx context.Context, reference string) DistributionscheduleAPIReferenceGetRequest {
-	return DistributionscheduleAPIReferenceGetRequest{
+func (a *DistributionscheduleAPIService) Read(ctx context.Context, reference string) DistributionscheduleAPIReadRequest {
+	return DistributionscheduleAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *DistributionscheduleAPIService) ReferenceGet(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return GetDistributionscheduleResponse
-func (a *DistributionscheduleAPIService) ReferenceGetExecute(r DistributionscheduleAPIReferenceGetRequest) (*GetDistributionscheduleResponse, *http.Response, error) {
+func (a *DistributionscheduleAPIService) ReadExecute(r DistributionscheduleAPIReadRequest) (*GetDistributionscheduleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *DistributionscheduleAPIService) ReferenceGetExecute(r Distributionsched
 		localVarReturnValue *GetDistributionscheduleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DistributionscheduleAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DistributionscheduleAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *DistributionscheduleAPIService) ReferenceGetExecute(r Distributionsched
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DistributionscheduleAPIReferencePutRequest struct {
+type DistributionscheduleAPIUpdateRequest struct {
 	ctx                  context.Context
 	ApiService           DistributionscheduleAPI
 	reference            string
@@ -377,44 +377,44 @@ type DistributionscheduleAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DistributionscheduleAPIReferencePutRequest) Distributionschedule(distributionschedule Distributionschedule) DistributionscheduleAPIReferencePutRequest {
+func (r DistributionscheduleAPIUpdateRequest) Distributionschedule(distributionschedule Distributionschedule) DistributionscheduleAPIUpdateRequest {
 	r.distributionschedule = &distributionschedule
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DistributionscheduleAPIReferencePutRequest) ReturnFields(returnFields string) DistributionscheduleAPIReferencePutRequest {
+func (r DistributionscheduleAPIUpdateRequest) ReturnFields(returnFields string) DistributionscheduleAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DistributionscheduleAPIReferencePutRequest) ReturnFields2(returnFields2 string) DistributionscheduleAPIReferencePutRequest {
+func (r DistributionscheduleAPIUpdateRequest) ReturnFields2(returnFields2 string) DistributionscheduleAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DistributionscheduleAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) DistributionscheduleAPIReferencePutRequest {
+func (r DistributionscheduleAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DistributionscheduleAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DistributionscheduleAPIReferencePutRequest) Execute() (*UpdateDistributionscheduleResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r DistributionscheduleAPIUpdateRequest) Execute() (*UpdateDistributionscheduleResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a distributionschedule object
+Update Update a distributionschedule object
 
 Updates a specific distributionschedule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the distributionschedule object
-	@return DistributionscheduleAPIReferencePutRequest
+	@return DistributionscheduleAPIUpdateRequest
 */
-func (a *DistributionscheduleAPIService) ReferencePut(ctx context.Context, reference string) DistributionscheduleAPIReferencePutRequest {
-	return DistributionscheduleAPIReferencePutRequest{
+func (a *DistributionscheduleAPIService) Update(ctx context.Context, reference string) DistributionscheduleAPIUpdateRequest {
+	return DistributionscheduleAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *DistributionscheduleAPIService) ReferencePut(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return UpdateDistributionscheduleResponse
-func (a *DistributionscheduleAPIService) ReferencePutExecute(r DistributionscheduleAPIReferencePutRequest) (*UpdateDistributionscheduleResponse, *http.Response, error) {
+func (a *DistributionscheduleAPIService) UpdateExecute(r DistributionscheduleAPIUpdateRequest) (*UpdateDistributionscheduleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *DistributionscheduleAPIService) ReferencePutExecute(r Distributionsched
 		localVarReturnValue *UpdateDistributionscheduleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DistributionscheduleAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DistributionscheduleAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

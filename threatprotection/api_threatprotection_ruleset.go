@@ -23,65 +23,154 @@ import (
 
 type ThreatprotectionRulesetAPI interface {
 	/*
-		ThreatprotectionrulesetGet Retrieve threatprotection:ruleset objects
-
-		Returns a list of threatprotection:ruleset objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest
-	*/
-	ThreatprotectionrulesetGet(ctx context.Context) ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest
-
-	// ThreatprotectionrulesetGetExecute executes the request
-	//  @return ListThreatprotectionRulesetResponse
-	ThreatprotectionrulesetGetExecute(r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) (*ListThreatprotectionRulesetResponse, *http.Response, error)
-	/*
-		ThreatprotectionrulesetReferenceDelete Delete a threatprotection:ruleset object
+		Delete Delete a threatprotection:ruleset object
 
 		Deletes a specific threatprotection:ruleset object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatprotection:ruleset object
-		@return ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceDeleteRequest
+		@return ThreatprotectionRulesetAPIDeleteRequest
 	*/
-	ThreatprotectionrulesetReferenceDelete(ctx context.Context, reference string) ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ThreatprotectionRulesetAPIDeleteRequest
 
-	// ThreatprotectionrulesetReferenceDeleteExecute executes the request
-	ThreatprotectionrulesetReferenceDeleteExecute(r ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ThreatprotectionRulesetAPIDeleteRequest) (*http.Response, error)
 	/*
-		ThreatprotectionrulesetReferenceGet Get a specific threatprotection:ruleset object
+		List Retrieve threatprotection:ruleset objects
+
+		Returns a list of threatprotection:ruleset objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ThreatprotectionRulesetAPIListRequest
+	*/
+	List(ctx context.Context) ThreatprotectionRulesetAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListThreatprotectionRulesetResponse
+	ListExecute(r ThreatprotectionRulesetAPIListRequest) (*ListThreatprotectionRulesetResponse, *http.Response, error)
+	/*
+		Read Get a specific threatprotection:ruleset object
 
 		Returns a specific threatprotection:ruleset object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatprotection:ruleset object
-		@return ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest
+		@return ThreatprotectionRulesetAPIReadRequest
 	*/
-	ThreatprotectionrulesetReferenceGet(ctx context.Context, reference string) ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest
+	Read(ctx context.Context, reference string) ThreatprotectionRulesetAPIReadRequest
 
-	// ThreatprotectionrulesetReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetThreatprotectionRulesetResponse
-	ThreatprotectionrulesetReferenceGetExecute(r ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest) (*GetThreatprotectionRulesetResponse, *http.Response, error)
+	ReadExecute(r ThreatprotectionRulesetAPIReadRequest) (*GetThreatprotectionRulesetResponse, *http.Response, error)
 	/*
-		ThreatprotectionrulesetReferencePut Update a threatprotection:ruleset object
+		Update Update a threatprotection:ruleset object
 
 		Updates a specific threatprotection:ruleset object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatprotection:ruleset object
-		@return ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest
+		@return ThreatprotectionRulesetAPIUpdateRequest
 	*/
-	ThreatprotectionrulesetReferencePut(ctx context.Context, reference string) ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest
+	Update(ctx context.Context, reference string) ThreatprotectionRulesetAPIUpdateRequest
 
-	// ThreatprotectionrulesetReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateThreatprotectionRulesetResponse
-	ThreatprotectionrulesetReferencePutExecute(r ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest) (*UpdateThreatprotectionRulesetResponse, *http.Response, error)
+	UpdateExecute(r ThreatprotectionRulesetAPIUpdateRequest) (*UpdateThreatprotectionRulesetResponse, *http.Response, error)
 }
 
 // ThreatprotectionRulesetAPIService ThreatprotectionRulesetAPI service
 type ThreatprotectionRulesetAPIService internal.Service
 
-type ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest struct {
+type ThreatprotectionRulesetAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService ThreatprotectionRulesetAPI
+	reference  string
+}
+
+func (r ThreatprotectionRulesetAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a threatprotection:ruleset object
+
+Deletes a specific threatprotection:ruleset object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the threatprotection:ruleset object
+	@return ThreatprotectionRulesetAPIDeleteRequest
+*/
+func (a *ThreatprotectionRulesetAPIService) Delete(ctx context.Context, reference string) ThreatprotectionRulesetAPIDeleteRequest {
+	return ThreatprotectionRulesetAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *ThreatprotectionRulesetAPIService) DeleteExecute(r ThreatprotectionRulesetAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRulesetAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/threatprotection:ruleset/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ThreatprotectionRulesetAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ThreatprotectionRulesetAPI
 	returnFields   *string
@@ -95,65 +184,65 @@ type ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) ReturnFields(returnFields string) ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest {
+func (r ThreatprotectionRulesetAPIListRequest) ReturnFields(returnFields string) ThreatprotectionRulesetAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) ReturnFields2(returnFields2 string) ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest {
+func (r ThreatprotectionRulesetAPIListRequest) ReturnFields2(returnFields2 string) ThreatprotectionRulesetAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) MaxResults(maxResults int32) ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest {
+func (r ThreatprotectionRulesetAPIListRequest) MaxResults(maxResults int32) ThreatprotectionRulesetAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest {
+func (r ThreatprotectionRulesetAPIListRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionRulesetAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) Paging(paging int32) ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest {
+func (r ThreatprotectionRulesetAPIListRequest) Paging(paging int32) ThreatprotectionRulesetAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) PageId(pageId string) ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest {
+func (r ThreatprotectionRulesetAPIListRequest) PageId(pageId string) ThreatprotectionRulesetAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) Filters(filters map[string]interface{}) ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest {
+func (r ThreatprotectionRulesetAPIListRequest) Filters(filters map[string]interface{}) ThreatprotectionRulesetAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest {
+func (r ThreatprotectionRulesetAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatprotectionRulesetAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) Execute() (*ListThreatprotectionRulesetResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectionrulesetGetExecute(r)
+func (r ThreatprotectionRulesetAPIListRequest) Execute() (*ListThreatprotectionRulesetResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ThreatprotectionrulesetGet Retrieve threatprotection:ruleset objects
+List Retrieve threatprotection:ruleset objects
 
 Returns a list of threatprotection:ruleset objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest
+	@return ThreatprotectionRulesetAPIListRequest
 */
-func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetGet(ctx context.Context) ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest {
-	return ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest{
+func (a *ThreatprotectionRulesetAPIService) List(ctx context.Context) ThreatprotectionRulesetAPIListRequest {
+	return ThreatprotectionRulesetAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -162,7 +251,7 @@ func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetGet(ctx conte
 // Execute executes the request
 //
 //	@return ListThreatprotectionRulesetResponse
-func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetGetExecute(r ThreatprotectionRulesetAPIThreatprotectionrulesetGetRequest) (*ListThreatprotectionRulesetResponse, *http.Response, error) {
+func (a *ThreatprotectionRulesetAPIService) ListExecute(r ThreatprotectionRulesetAPIListRequest) (*ListThreatprotectionRulesetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -170,7 +259,7 @@ func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetGetExecute(r 
 		localVarReturnValue *ListThreatprotectionRulesetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRulesetAPIService.ThreatprotectionrulesetGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRulesetAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -252,96 +341,7 @@ func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetGetExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService ThreatprotectionRulesetAPI
-	reference  string
-}
-
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ThreatprotectionrulesetReferenceDeleteExecute(r)
-}
-
-/*
-ThreatprotectionrulesetReferenceDelete Delete a threatprotection:ruleset object
-
-Deletes a specific threatprotection:ruleset object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the threatprotection:ruleset object
-	@return ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceDeleteRequest
-*/
-func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferenceDelete(ctx context.Context, reference string) ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceDeleteRequest {
-	return ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferenceDeleteExecute(r ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRulesetAPIService.ThreatprotectionrulesetReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/threatprotection:ruleset/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest struct {
+type ThreatprotectionRulesetAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ThreatprotectionRulesetAPI
 	reference      string
@@ -351,38 +351,38 @@ type ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest struct
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest) ReturnFields(returnFields string) ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest {
+func (r ThreatprotectionRulesetAPIReadRequest) ReturnFields(returnFields string) ThreatprotectionRulesetAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest) ReturnFields2(returnFields2 string) ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest {
+func (r ThreatprotectionRulesetAPIReadRequest) ReturnFields2(returnFields2 string) ThreatprotectionRulesetAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest {
+func (r ThreatprotectionRulesetAPIReadRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionRulesetAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest) Execute() (*GetThreatprotectionRulesetResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectionrulesetReferenceGetExecute(r)
+func (r ThreatprotectionRulesetAPIReadRequest) Execute() (*GetThreatprotectionRulesetResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ThreatprotectionrulesetReferenceGet Get a specific threatprotection:ruleset object
+Read Get a specific threatprotection:ruleset object
 
 Returns a specific threatprotection:ruleset object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatprotection:ruleset object
-	@return ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest
+	@return ThreatprotectionRulesetAPIReadRequest
 */
-func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferenceGet(ctx context.Context, reference string) ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest {
-	return ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest{
+func (a *ThreatprotectionRulesetAPIService) Read(ctx context.Context, reference string) ThreatprotectionRulesetAPIReadRequest {
+	return ThreatprotectionRulesetAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -392,7 +392,7 @@ func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferenceGet(
 // Execute executes the request
 //
 //	@return GetThreatprotectionRulesetResponse
-func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferenceGetExecute(r ThreatprotectionRulesetAPIThreatprotectionrulesetReferenceGetRequest) (*GetThreatprotectionRulesetResponse, *http.Response, error) {
+func (a *ThreatprotectionRulesetAPIService) ReadExecute(r ThreatprotectionRulesetAPIReadRequest) (*GetThreatprotectionRulesetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -400,7 +400,7 @@ func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferenceGetE
 		localVarReturnValue *GetThreatprotectionRulesetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRulesetAPIService.ThreatprotectionrulesetReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRulesetAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -468,7 +468,7 @@ func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferenceGetE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest struct {
+type ThreatprotectionRulesetAPIUpdateRequest struct {
 	ctx                     context.Context
 	ApiService              ThreatprotectionRulesetAPI
 	reference               string
@@ -479,44 +479,44 @@ type ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest struct
 }
 
 // Object data to update
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest) ThreatprotectionRuleset(threatprotectionRuleset ThreatprotectionRuleset) ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest {
+func (r ThreatprotectionRulesetAPIUpdateRequest) ThreatprotectionRuleset(threatprotectionRuleset ThreatprotectionRuleset) ThreatprotectionRulesetAPIUpdateRequest {
 	r.threatprotectionRuleset = &threatprotectionRuleset
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest) ReturnFields(returnFields string) ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest {
+func (r ThreatprotectionRulesetAPIUpdateRequest) ReturnFields(returnFields string) ThreatprotectionRulesetAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest) ReturnFields2(returnFields2 string) ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest {
+func (r ThreatprotectionRulesetAPIUpdateRequest) ReturnFields2(returnFields2 string) ThreatprotectionRulesetAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest {
+func (r ThreatprotectionRulesetAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionRulesetAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest) Execute() (*UpdateThreatprotectionRulesetResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectionrulesetReferencePutExecute(r)
+func (r ThreatprotectionRulesetAPIUpdateRequest) Execute() (*UpdateThreatprotectionRulesetResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ThreatprotectionrulesetReferencePut Update a threatprotection:ruleset object
+Update Update a threatprotection:ruleset object
 
 Updates a specific threatprotection:ruleset object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatprotection:ruleset object
-	@return ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest
+	@return ThreatprotectionRulesetAPIUpdateRequest
 */
-func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferencePut(ctx context.Context, reference string) ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest {
-	return ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest{
+func (a *ThreatprotectionRulesetAPIService) Update(ctx context.Context, reference string) ThreatprotectionRulesetAPIUpdateRequest {
+	return ThreatprotectionRulesetAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -526,7 +526,7 @@ func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferencePut(
 // Execute executes the request
 //
 //	@return UpdateThreatprotectionRulesetResponse
-func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferencePutExecute(r ThreatprotectionRulesetAPIThreatprotectionrulesetReferencePutRequest) (*UpdateThreatprotectionRulesetResponse, *http.Response, error) {
+func (a *ThreatprotectionRulesetAPIService) UpdateExecute(r ThreatprotectionRulesetAPIUpdateRequest) (*UpdateThreatprotectionRulesetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -534,7 +534,7 @@ func (a *ThreatprotectionRulesetAPIService) ThreatprotectionrulesetReferencePutE
 		localVarReturnValue *UpdateThreatprotectionRulesetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRulesetAPIService.ThreatprotectionrulesetReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRulesetAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

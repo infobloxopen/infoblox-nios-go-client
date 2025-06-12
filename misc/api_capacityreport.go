@@ -23,38 +23,38 @@ import (
 
 type CapacityreportAPI interface {
 	/*
-		Get Retrieve capacityreport objects
+		List Retrieve capacityreport objects
 
 		Returns a list of capacityreport objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return CapacityreportAPIGetRequest
+		@return CapacityreportAPIListRequest
 	*/
-	Get(ctx context.Context) CapacityreportAPIGetRequest
+	List(ctx context.Context) CapacityreportAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListCapacityreportResponse
-	GetExecute(r CapacityreportAPIGetRequest) (*ListCapacityreportResponse, *http.Response, error)
+	ListExecute(r CapacityreportAPIListRequest) (*ListCapacityreportResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific capacityreport object
+		Read Get a specific capacityreport object
 
 		Returns a specific capacityreport object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the capacityreport object
-		@return CapacityreportAPIReferenceGetRequest
+		@return CapacityreportAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) CapacityreportAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) CapacityreportAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetCapacityreportResponse
-	ReferenceGetExecute(r CapacityreportAPIReferenceGetRequest) (*GetCapacityreportResponse, *http.Response, error)
+	ReadExecute(r CapacityreportAPIReadRequest) (*GetCapacityreportResponse, *http.Response, error)
 }
 
 // CapacityreportAPIService CapacityreportAPI service
 type CapacityreportAPIService internal.Service
 
-type CapacityreportAPIGetRequest struct {
+type CapacityreportAPIListRequest struct {
 	ctx            context.Context
 	ApiService     CapacityreportAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type CapacityreportAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r CapacityreportAPIGetRequest) ReturnFields(returnFields string) CapacityreportAPIGetRequest {
+func (r CapacityreportAPIListRequest) ReturnFields(returnFields string) CapacityreportAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CapacityreportAPIGetRequest) ReturnFields2(returnFields2 string) CapacityreportAPIGetRequest {
+func (r CapacityreportAPIListRequest) ReturnFields2(returnFields2 string) CapacityreportAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r CapacityreportAPIGetRequest) MaxResults(maxResults int32) CapacityreportAPIGetRequest {
+func (r CapacityreportAPIListRequest) MaxResults(maxResults int32) CapacityreportAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CapacityreportAPIGetRequest) ReturnAsObject(returnAsObject int32) CapacityreportAPIGetRequest {
+func (r CapacityreportAPIListRequest) ReturnAsObject(returnAsObject int32) CapacityreportAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r CapacityreportAPIGetRequest) Paging(paging int32) CapacityreportAPIGetRequest {
+func (r CapacityreportAPIListRequest) Paging(paging int32) CapacityreportAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r CapacityreportAPIGetRequest) PageId(pageId string) CapacityreportAPIGetRequest {
+func (r CapacityreportAPIListRequest) PageId(pageId string) CapacityreportAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r CapacityreportAPIGetRequest) Filters(filters map[string]interface{}) CapacityreportAPIGetRequest {
+func (r CapacityreportAPIListRequest) Filters(filters map[string]interface{}) CapacityreportAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r CapacityreportAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) CapacityreportAPIGetRequest {
+func (r CapacityreportAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) CapacityreportAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r CapacityreportAPIGetRequest) Execute() (*ListCapacityreportResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r CapacityreportAPIListRequest) Execute() (*ListCapacityreportResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve capacityreport objects
+List Retrieve capacityreport objects
 
 Returns a list of capacityreport objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return CapacityreportAPIGetRequest
+	@return CapacityreportAPIListRequest
 */
-func (a *CapacityreportAPIService) Get(ctx context.Context) CapacityreportAPIGetRequest {
-	return CapacityreportAPIGetRequest{
+func (a *CapacityreportAPIService) List(ctx context.Context) CapacityreportAPIListRequest {
+	return CapacityreportAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *CapacityreportAPIService) Get(ctx context.Context) CapacityreportAPIGet
 // Execute executes the request
 //
 //	@return ListCapacityreportResponse
-func (a *CapacityreportAPIService) GetExecute(r CapacityreportAPIGetRequest) (*ListCapacityreportResponse, *http.Response, error) {
+func (a *CapacityreportAPIService) ListExecute(r CapacityreportAPIListRequest) (*ListCapacityreportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *CapacityreportAPIService) GetExecute(r CapacityreportAPIGetRequest) (*L
 		localVarReturnValue *ListCapacityreportResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CapacityreportAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CapacityreportAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *CapacityreportAPIService) GetExecute(r CapacityreportAPIGetRequest) (*L
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CapacityreportAPIReferenceGetRequest struct {
+type CapacityreportAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     CapacityreportAPI
 	reference      string
@@ -235,38 +235,38 @@ type CapacityreportAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r CapacityreportAPIReferenceGetRequest) ReturnFields(returnFields string) CapacityreportAPIReferenceGetRequest {
+func (r CapacityreportAPIReadRequest) ReturnFields(returnFields string) CapacityreportAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CapacityreportAPIReferenceGetRequest) ReturnFields2(returnFields2 string) CapacityreportAPIReferenceGetRequest {
+func (r CapacityreportAPIReadRequest) ReturnFields2(returnFields2 string) CapacityreportAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CapacityreportAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) CapacityreportAPIReferenceGetRequest {
+func (r CapacityreportAPIReadRequest) ReturnAsObject(returnAsObject int32) CapacityreportAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r CapacityreportAPIReferenceGetRequest) Execute() (*GetCapacityreportResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r CapacityreportAPIReadRequest) Execute() (*GetCapacityreportResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific capacityreport object
+Read Get a specific capacityreport object
 
 Returns a specific capacityreport object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the capacityreport object
-	@return CapacityreportAPIReferenceGetRequest
+	@return CapacityreportAPIReadRequest
 */
-func (a *CapacityreportAPIService) ReferenceGet(ctx context.Context, reference string) CapacityreportAPIReferenceGetRequest {
-	return CapacityreportAPIReferenceGetRequest{
+func (a *CapacityreportAPIService) Read(ctx context.Context, reference string) CapacityreportAPIReadRequest {
+	return CapacityreportAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *CapacityreportAPIService) ReferenceGet(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return GetCapacityreportResponse
-func (a *CapacityreportAPIService) ReferenceGetExecute(r CapacityreportAPIReferenceGetRequest) (*GetCapacityreportResponse, *http.Response, error) {
+func (a *CapacityreportAPIService) ReadExecute(r CapacityreportAPIReadRequest) (*GetCapacityreportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *CapacityreportAPIService) ReferenceGetExecute(r CapacityreportAPIRefere
 		localVarReturnValue *GetCapacityreportResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CapacityreportAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CapacityreportAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

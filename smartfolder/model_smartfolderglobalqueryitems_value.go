@@ -20,7 +20,7 @@ var _ MappedNullable = &SmartfolderglobalqueryitemsValue{}
 // SmartfolderglobalqueryitemsValue struct for SmartfolderglobalqueryitemsValue
 type SmartfolderglobalqueryitemsValue struct {
 	// The integer value of the Smart Folder query.
-	ValueInteger *int32 `json:"value_integer,omitempty"`
+	ValueInteger *int64 `json:"value_integer,omitempty"`
 	// The string value of the Smart Folder query.
 	ValueString *string `json:"value_string,omitempty"`
 	// The timestamp value of the Smart Folder query.
@@ -50,9 +50,9 @@ func NewSmartfolderglobalqueryitemsValueWithDefaults() *Smartfolderglobalqueryit
 }
 
 // GetValueInteger returns the ValueInteger field value if set, zero value otherwise.
-func (o *SmartfolderglobalqueryitemsValue) GetValueInteger() int32 {
+func (o *SmartfolderglobalqueryitemsValue) GetValueInteger() int64 {
 	if o == nil || IsNil(o.ValueInteger) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ValueInteger
@@ -60,7 +60,7 @@ func (o *SmartfolderglobalqueryitemsValue) GetValueInteger() int32 {
 
 // GetValueIntegerOk returns a tuple with the ValueInteger field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SmartfolderglobalqueryitemsValue) GetValueIntegerOk() (*int32, bool) {
+func (o *SmartfolderglobalqueryitemsValue) GetValueIntegerOk() (*int64, bool) {
 	if o == nil || IsNil(o.ValueInteger) {
 		return nil, false
 	}
@@ -76,8 +76,8 @@ func (o *SmartfolderglobalqueryitemsValue) HasValueInteger() bool {
 	return false
 }
 
-// SetValueInteger gets a reference to the given int32 and assigns it to the ValueInteger field.
-func (o *SmartfolderglobalqueryitemsValue) SetValueInteger(v int32) {
+// SetValueInteger gets a reference to the given int64 and assigns it to the ValueInteger field.
+func (o *SmartfolderglobalqueryitemsValue) SetValueInteger(v int64) {
 	o.ValueInteger = &v
 }
 

@@ -79,134 +79,134 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DhcpStatisticsAPI* | [**DhcpstatisticsGet**](docs/DhcpStatisticsAPI.md#dhcpstatisticsget) | **Get** /dhcp:statistics | Retrieve dhcp:statistics objects
-*DhcpStatisticsAPI* | [**DhcpstatisticsReferenceGet**](docs/DhcpStatisticsAPI.md#dhcpstatisticsreferenceget) | **Get** /dhcp:statistics/{reference} | Get a specific dhcp:statistics object
-*DhcpfailoverAPI* | [**Get**](docs/DhcpfailoverAPI.md#get) | **Get** /dhcpfailover | Retrieve dhcpfailover objects
-*DhcpfailoverAPI* | [**Post**](docs/DhcpfailoverAPI.md#post) | **Post** /dhcpfailover | Create a dhcpfailover object
-*DhcpfailoverAPI* | [**ReferenceDelete**](docs/DhcpfailoverAPI.md#referencedelete) | **Delete** /dhcpfailover/{reference} | Delete a dhcpfailover object
-*DhcpfailoverAPI* | [**ReferenceGet**](docs/DhcpfailoverAPI.md#referenceget) | **Get** /dhcpfailover/{reference} | Get a specific dhcpfailover object
-*DhcpfailoverAPI* | [**ReferencePut**](docs/DhcpfailoverAPI.md#referenceput) | **Put** /dhcpfailover/{reference} | Update a dhcpfailover object
-*DhcpoptiondefinitionAPI* | [**Get**](docs/DhcpoptiondefinitionAPI.md#get) | **Get** /dhcpoptiondefinition | Retrieve dhcpoptiondefinition objects
-*DhcpoptiondefinitionAPI* | [**Post**](docs/DhcpoptiondefinitionAPI.md#post) | **Post** /dhcpoptiondefinition | Create a dhcpoptiondefinition object
-*DhcpoptiondefinitionAPI* | [**ReferenceDelete**](docs/DhcpoptiondefinitionAPI.md#referencedelete) | **Delete** /dhcpoptiondefinition/{reference} | Delete a dhcpoptiondefinition object
-*DhcpoptiondefinitionAPI* | [**ReferenceGet**](docs/DhcpoptiondefinitionAPI.md#referenceget) | **Get** /dhcpoptiondefinition/{reference} | Get a specific dhcpoptiondefinition object
-*DhcpoptiondefinitionAPI* | [**ReferencePut**](docs/DhcpoptiondefinitionAPI.md#referenceput) | **Put** /dhcpoptiondefinition/{reference} | Update a dhcpoptiondefinition object
-*DhcpoptionspaceAPI* | [**Get**](docs/DhcpoptionspaceAPI.md#get) | **Get** /dhcpoptionspace | Retrieve dhcpoptionspace objects
-*DhcpoptionspaceAPI* | [**Post**](docs/DhcpoptionspaceAPI.md#post) | **Post** /dhcpoptionspace | Create a dhcpoptionspace object
-*DhcpoptionspaceAPI* | [**ReferenceDelete**](docs/DhcpoptionspaceAPI.md#referencedelete) | **Delete** /dhcpoptionspace/{reference} | Delete a dhcpoptionspace object
-*DhcpoptionspaceAPI* | [**ReferenceGet**](docs/DhcpoptionspaceAPI.md#referenceget) | **Get** /dhcpoptionspace/{reference} | Get a specific dhcpoptionspace object
-*DhcpoptionspaceAPI* | [**ReferencePut**](docs/DhcpoptionspaceAPI.md#referenceput) | **Put** /dhcpoptionspace/{reference} | Update a dhcpoptionspace object
-*FilterfingerprintAPI* | [**Get**](docs/FilterfingerprintAPI.md#get) | **Get** /filterfingerprint | Retrieve filterfingerprint objects
-*FilterfingerprintAPI* | [**Post**](docs/FilterfingerprintAPI.md#post) | **Post** /filterfingerprint | Create a filterfingerprint object
-*FilterfingerprintAPI* | [**ReferenceDelete**](docs/FilterfingerprintAPI.md#referencedelete) | **Delete** /filterfingerprint/{reference} | Delete a filterfingerprint object
-*FilterfingerprintAPI* | [**ReferenceGet**](docs/FilterfingerprintAPI.md#referenceget) | **Get** /filterfingerprint/{reference} | Get a specific filterfingerprint object
-*FilterfingerprintAPI* | [**ReferencePut**](docs/FilterfingerprintAPI.md#referenceput) | **Put** /filterfingerprint/{reference} | Update a filterfingerprint object
-*FiltermacAPI* | [**Get**](docs/FiltermacAPI.md#get) | **Get** /filtermac | Retrieve filtermac objects
-*FiltermacAPI* | [**Post**](docs/FiltermacAPI.md#post) | **Post** /filtermac | Create a filtermac object
-*FiltermacAPI* | [**ReferenceDelete**](docs/FiltermacAPI.md#referencedelete) | **Delete** /filtermac/{reference} | Delete a filtermac object
-*FiltermacAPI* | [**ReferenceGet**](docs/FiltermacAPI.md#referenceget) | **Get** /filtermac/{reference} | Get a specific filtermac object
-*FiltermacAPI* | [**ReferencePut**](docs/FiltermacAPI.md#referenceput) | **Put** /filtermac/{reference} | Update a filtermac object
-*FilternacAPI* | [**Get**](docs/FilternacAPI.md#get) | **Get** /filternac | Retrieve filternac objects
-*FilternacAPI* | [**Post**](docs/FilternacAPI.md#post) | **Post** /filternac | Create a filternac object
-*FilternacAPI* | [**ReferenceDelete**](docs/FilternacAPI.md#referencedelete) | **Delete** /filternac/{reference} | Delete a filternac object
-*FilternacAPI* | [**ReferenceGet**](docs/FilternacAPI.md#referenceget) | **Get** /filternac/{reference} | Get a specific filternac object
-*FilternacAPI* | [**ReferencePut**](docs/FilternacAPI.md#referenceput) | **Put** /filternac/{reference} | Update a filternac object
-*FilteroptionAPI* | [**Get**](docs/FilteroptionAPI.md#get) | **Get** /filteroption | Retrieve filteroption objects
-*FilteroptionAPI* | [**Post**](docs/FilteroptionAPI.md#post) | **Post** /filteroption | Create a filteroption object
-*FilteroptionAPI* | [**ReferenceDelete**](docs/FilteroptionAPI.md#referencedelete) | **Delete** /filteroption/{reference} | Delete a filteroption object
-*FilteroptionAPI* | [**ReferenceGet**](docs/FilteroptionAPI.md#referenceget) | **Get** /filteroption/{reference} | Get a specific filteroption object
-*FilteroptionAPI* | [**ReferencePut**](docs/FilteroptionAPI.md#referenceput) | **Put** /filteroption/{reference} | Update a filteroption object
-*FilterrelayagentAPI* | [**Get**](docs/FilterrelayagentAPI.md#get) | **Get** /filterrelayagent | Retrieve filterrelayagent objects
-*FilterrelayagentAPI* | [**Post**](docs/FilterrelayagentAPI.md#post) | **Post** /filterrelayagent | Create a filterrelayagent object
-*FilterrelayagentAPI* | [**ReferenceDelete**](docs/FilterrelayagentAPI.md#referencedelete) | **Delete** /filterrelayagent/{reference} | Delete a filterrelayagent object
-*FilterrelayagentAPI* | [**ReferenceGet**](docs/FilterrelayagentAPI.md#referenceget) | **Get** /filterrelayagent/{reference} | Get a specific filterrelayagent object
-*FilterrelayagentAPI* | [**ReferencePut**](docs/FilterrelayagentAPI.md#referenceput) | **Put** /filterrelayagent/{reference} | Update a filterrelayagent object
-*FingerprintAPI* | [**Get**](docs/FingerprintAPI.md#get) | **Get** /fingerprint | Retrieve fingerprint objects
-*FingerprintAPI* | [**Post**](docs/FingerprintAPI.md#post) | **Post** /fingerprint | Create a fingerprint object
-*FingerprintAPI* | [**ReferenceDelete**](docs/FingerprintAPI.md#referencedelete) | **Delete** /fingerprint/{reference} | Delete a fingerprint object
-*FingerprintAPI* | [**ReferenceGet**](docs/FingerprintAPI.md#referenceget) | **Get** /fingerprint/{reference} | Get a specific fingerprint object
-*FingerprintAPI* | [**ReferencePut**](docs/FingerprintAPI.md#referenceput) | **Put** /fingerprint/{reference} | Update a fingerprint object
-*FixedaddressAPI* | [**Get**](docs/FixedaddressAPI.md#get) | **Get** /fixedaddress | Retrieve fixedaddress objects
-*FixedaddressAPI* | [**Post**](docs/FixedaddressAPI.md#post) | **Post** /fixedaddress | Create a fixedaddress object
-*FixedaddressAPI* | [**ReferenceDelete**](docs/FixedaddressAPI.md#referencedelete) | **Delete** /fixedaddress/{reference} | Delete a fixedaddress object
-*FixedaddressAPI* | [**ReferenceGet**](docs/FixedaddressAPI.md#referenceget) | **Get** /fixedaddress/{reference} | Get a specific fixedaddress object
-*FixedaddressAPI* | [**ReferencePut**](docs/FixedaddressAPI.md#referenceput) | **Put** /fixedaddress/{reference} | Update a fixedaddress object
-*FixedaddresstemplateAPI* | [**Get**](docs/FixedaddresstemplateAPI.md#get) | **Get** /fixedaddresstemplate | Retrieve fixedaddresstemplate objects
-*FixedaddresstemplateAPI* | [**Post**](docs/FixedaddresstemplateAPI.md#post) | **Post** /fixedaddresstemplate | Create a fixedaddresstemplate object
-*FixedaddresstemplateAPI* | [**ReferenceDelete**](docs/FixedaddresstemplateAPI.md#referencedelete) | **Delete** /fixedaddresstemplate/{reference} | Delete a fixedaddresstemplate object
-*FixedaddresstemplateAPI* | [**ReferenceGet**](docs/FixedaddresstemplateAPI.md#referenceget) | **Get** /fixedaddresstemplate/{reference} | Get a specific fixedaddresstemplate object
-*FixedaddresstemplateAPI* | [**ReferencePut**](docs/FixedaddresstemplateAPI.md#referenceput) | **Put** /fixedaddresstemplate/{reference} | Update a fixedaddresstemplate object
-*Ipv6dhcpoptiondefinitionAPI* | [**Get**](docs/Ipv6dhcpoptiondefinitionAPI.md#get) | **Get** /ipv6dhcpoptiondefinition | Retrieve ipv6dhcpoptiondefinition objects
-*Ipv6dhcpoptiondefinitionAPI* | [**Post**](docs/Ipv6dhcpoptiondefinitionAPI.md#post) | **Post** /ipv6dhcpoptiondefinition | Create a ipv6dhcpoptiondefinition object
-*Ipv6dhcpoptiondefinitionAPI* | [**ReferenceDelete**](docs/Ipv6dhcpoptiondefinitionAPI.md#referencedelete) | **Delete** /ipv6dhcpoptiondefinition/{reference} | Delete a ipv6dhcpoptiondefinition object
-*Ipv6dhcpoptiondefinitionAPI* | [**ReferenceGet**](docs/Ipv6dhcpoptiondefinitionAPI.md#referenceget) | **Get** /ipv6dhcpoptiondefinition/{reference} | Get a specific ipv6dhcpoptiondefinition object
-*Ipv6dhcpoptiondefinitionAPI* | [**ReferencePut**](docs/Ipv6dhcpoptiondefinitionAPI.md#referenceput) | **Put** /ipv6dhcpoptiondefinition/{reference} | Update a ipv6dhcpoptiondefinition object
-*Ipv6dhcpoptionspaceAPI* | [**Get**](docs/Ipv6dhcpoptionspaceAPI.md#get) | **Get** /ipv6dhcpoptionspace | Retrieve ipv6dhcpoptionspace objects
-*Ipv6dhcpoptionspaceAPI* | [**Post**](docs/Ipv6dhcpoptionspaceAPI.md#post) | **Post** /ipv6dhcpoptionspace | Create a ipv6dhcpoptionspace object
-*Ipv6dhcpoptionspaceAPI* | [**ReferenceDelete**](docs/Ipv6dhcpoptionspaceAPI.md#referencedelete) | **Delete** /ipv6dhcpoptionspace/{reference} | Delete a ipv6dhcpoptionspace object
-*Ipv6dhcpoptionspaceAPI* | [**ReferenceGet**](docs/Ipv6dhcpoptionspaceAPI.md#referenceget) | **Get** /ipv6dhcpoptionspace/{reference} | Get a specific ipv6dhcpoptionspace object
-*Ipv6dhcpoptionspaceAPI* | [**ReferencePut**](docs/Ipv6dhcpoptionspaceAPI.md#referenceput) | **Put** /ipv6dhcpoptionspace/{reference} | Update a ipv6dhcpoptionspace object
-*Ipv6filteroptionAPI* | [**Get**](docs/Ipv6filteroptionAPI.md#get) | **Get** /ipv6filteroption | Retrieve ipv6filteroption objects
-*Ipv6filteroptionAPI* | [**Post**](docs/Ipv6filteroptionAPI.md#post) | **Post** /ipv6filteroption | Create a ipv6filteroption object
-*Ipv6filteroptionAPI* | [**ReferenceDelete**](docs/Ipv6filteroptionAPI.md#referencedelete) | **Delete** /ipv6filteroption/{reference} | Delete a ipv6filteroption object
-*Ipv6filteroptionAPI* | [**ReferenceGet**](docs/Ipv6filteroptionAPI.md#referenceget) | **Get** /ipv6filteroption/{reference} | Get a specific ipv6filteroption object
-*Ipv6filteroptionAPI* | [**ReferencePut**](docs/Ipv6filteroptionAPI.md#referenceput) | **Put** /ipv6filteroption/{reference} | Update a ipv6filteroption object
-*Ipv6fixedaddressAPI* | [**Get**](docs/Ipv6fixedaddressAPI.md#get) | **Get** /ipv6fixedaddress | Retrieve ipv6fixedaddress objects
-*Ipv6fixedaddressAPI* | [**Post**](docs/Ipv6fixedaddressAPI.md#post) | **Post** /ipv6fixedaddress | Create a ipv6fixedaddress object
-*Ipv6fixedaddressAPI* | [**ReferenceDelete**](docs/Ipv6fixedaddressAPI.md#referencedelete) | **Delete** /ipv6fixedaddress/{reference} | Delete a ipv6fixedaddress object
-*Ipv6fixedaddressAPI* | [**ReferenceGet**](docs/Ipv6fixedaddressAPI.md#referenceget) | **Get** /ipv6fixedaddress/{reference} | Get a specific ipv6fixedaddress object
-*Ipv6fixedaddressAPI* | [**ReferencePut**](docs/Ipv6fixedaddressAPI.md#referenceput) | **Put** /ipv6fixedaddress/{reference} | Update a ipv6fixedaddress object
-*Ipv6fixedaddresstemplateAPI* | [**Get**](docs/Ipv6fixedaddresstemplateAPI.md#get) | **Get** /ipv6fixedaddresstemplate | Retrieve ipv6fixedaddresstemplate objects
-*Ipv6fixedaddresstemplateAPI* | [**Post**](docs/Ipv6fixedaddresstemplateAPI.md#post) | **Post** /ipv6fixedaddresstemplate | Create a ipv6fixedaddresstemplate object
-*Ipv6fixedaddresstemplateAPI* | [**ReferenceDelete**](docs/Ipv6fixedaddresstemplateAPI.md#referencedelete) | **Delete** /ipv6fixedaddresstemplate/{reference} | Delete a ipv6fixedaddresstemplate object
-*Ipv6fixedaddresstemplateAPI* | [**ReferenceGet**](docs/Ipv6fixedaddresstemplateAPI.md#referenceget) | **Get** /ipv6fixedaddresstemplate/{reference} | Get a specific ipv6fixedaddresstemplate object
-*Ipv6fixedaddresstemplateAPI* | [**ReferencePut**](docs/Ipv6fixedaddresstemplateAPI.md#referenceput) | **Put** /ipv6fixedaddresstemplate/{reference} | Update a ipv6fixedaddresstemplate object
-*Ipv6rangeAPI* | [**Get**](docs/Ipv6rangeAPI.md#get) | **Get** /ipv6range | Retrieve ipv6range objects
-*Ipv6rangeAPI* | [**Post**](docs/Ipv6rangeAPI.md#post) | **Post** /ipv6range | Create a ipv6range object
-*Ipv6rangeAPI* | [**ReferenceDelete**](docs/Ipv6rangeAPI.md#referencedelete) | **Delete** /ipv6range/{reference} | Delete a ipv6range object
-*Ipv6rangeAPI* | [**ReferenceGet**](docs/Ipv6rangeAPI.md#referenceget) | **Get** /ipv6range/{reference} | Get a specific ipv6range object
-*Ipv6rangeAPI* | [**ReferencePut**](docs/Ipv6rangeAPI.md#referenceput) | **Put** /ipv6range/{reference} | Update a ipv6range object
-*Ipv6rangetemplateAPI* | [**Get**](docs/Ipv6rangetemplateAPI.md#get) | **Get** /ipv6rangetemplate | Retrieve ipv6rangetemplate objects
-*Ipv6rangetemplateAPI* | [**Post**](docs/Ipv6rangetemplateAPI.md#post) | **Post** /ipv6rangetemplate | Create a ipv6rangetemplate object
-*Ipv6rangetemplateAPI* | [**ReferenceDelete**](docs/Ipv6rangetemplateAPI.md#referencedelete) | **Delete** /ipv6rangetemplate/{reference} | Delete a ipv6rangetemplate object
-*Ipv6rangetemplateAPI* | [**ReferenceGet**](docs/Ipv6rangetemplateAPI.md#referenceget) | **Get** /ipv6rangetemplate/{reference} | Get a specific ipv6rangetemplate object
-*Ipv6rangetemplateAPI* | [**ReferencePut**](docs/Ipv6rangetemplateAPI.md#referenceput) | **Put** /ipv6rangetemplate/{reference} | Update a ipv6rangetemplate object
-*Ipv6sharednetworkAPI* | [**Get**](docs/Ipv6sharednetworkAPI.md#get) | **Get** /ipv6sharednetwork | Retrieve ipv6sharednetwork objects
-*Ipv6sharednetworkAPI* | [**Post**](docs/Ipv6sharednetworkAPI.md#post) | **Post** /ipv6sharednetwork | Create a ipv6sharednetwork object
-*Ipv6sharednetworkAPI* | [**ReferenceDelete**](docs/Ipv6sharednetworkAPI.md#referencedelete) | **Delete** /ipv6sharednetwork/{reference} | Delete a ipv6sharednetwork object
-*Ipv6sharednetworkAPI* | [**ReferenceGet**](docs/Ipv6sharednetworkAPI.md#referenceget) | **Get** /ipv6sharednetwork/{reference} | Get a specific ipv6sharednetwork object
-*Ipv6sharednetworkAPI* | [**ReferencePut**](docs/Ipv6sharednetworkAPI.md#referenceput) | **Put** /ipv6sharednetwork/{reference} | Update a ipv6sharednetwork object
-*LeaseAPI* | [**Get**](docs/LeaseAPI.md#get) | **Get** /lease | Retrieve lease objects
-*LeaseAPI* | [**ReferenceDelete**](docs/LeaseAPI.md#referencedelete) | **Delete** /lease/{reference} | Delete a lease object
-*LeaseAPI* | [**ReferenceGet**](docs/LeaseAPI.md#referenceget) | **Get** /lease/{reference} | Get a specific lease object
-*MacfilteraddressAPI* | [**Get**](docs/MacfilteraddressAPI.md#get) | **Get** /macfilteraddress | Retrieve macfilteraddress objects
-*MacfilteraddressAPI* | [**Post**](docs/MacfilteraddressAPI.md#post) | **Post** /macfilteraddress | Create a macfilteraddress object
-*MacfilteraddressAPI* | [**ReferenceDelete**](docs/MacfilteraddressAPI.md#referencedelete) | **Delete** /macfilteraddress/{reference} | Delete a macfilteraddress object
-*MacfilteraddressAPI* | [**ReferenceGet**](docs/MacfilteraddressAPI.md#referenceget) | **Get** /macfilteraddress/{reference} | Get a specific macfilteraddress object
-*MacfilteraddressAPI* | [**ReferencePut**](docs/MacfilteraddressAPI.md#referenceput) | **Put** /macfilteraddress/{reference} | Update a macfilteraddress object
-*OrderedrangesAPI* | [**Get**](docs/OrderedrangesAPI.md#get) | **Get** /orderedranges | Retrieve orderedranges objects
-*OrderedrangesAPI* | [**ReferenceGet**](docs/OrderedrangesAPI.md#referenceget) | **Get** /orderedranges/{reference} | Get a specific orderedranges object
-*OrderedrangesAPI* | [**ReferencePut**](docs/OrderedrangesAPI.md#referenceput) | **Put** /orderedranges/{reference} | Update a orderedranges object
-*RangeAPI* | [**Get**](docs/RangeAPI.md#get) | **Get** /range | Retrieve range objects
-*RangeAPI* | [**Post**](docs/RangeAPI.md#post) | **Post** /range | Create a range object
-*RangeAPI* | [**ReferenceDelete**](docs/RangeAPI.md#referencedelete) | **Delete** /range/{reference} | Delete a range object
-*RangeAPI* | [**ReferenceGet**](docs/RangeAPI.md#referenceget) | **Get** /range/{reference} | Get a specific range object
-*RangeAPI* | [**ReferencePut**](docs/RangeAPI.md#referenceput) | **Put** /range/{reference} | Update a range object
-*RangetemplateAPI* | [**Get**](docs/RangetemplateAPI.md#get) | **Get** /rangetemplate | Retrieve rangetemplate objects
-*RangetemplateAPI* | [**Post**](docs/RangetemplateAPI.md#post) | **Post** /rangetemplate | Create a rangetemplate object
-*RangetemplateAPI* | [**ReferenceDelete**](docs/RangetemplateAPI.md#referencedelete) | **Delete** /rangetemplate/{reference} | Delete a rangetemplate object
-*RangetemplateAPI* | [**ReferenceGet**](docs/RangetemplateAPI.md#referenceget) | **Get** /rangetemplate/{reference} | Get a specific rangetemplate object
-*RangetemplateAPI* | [**ReferencePut**](docs/RangetemplateAPI.md#referenceput) | **Put** /rangetemplate/{reference} | Update a rangetemplate object
-*RoaminghostAPI* | [**Get**](docs/RoaminghostAPI.md#get) | **Get** /roaminghost | Retrieve roaminghost objects
-*RoaminghostAPI* | [**Post**](docs/RoaminghostAPI.md#post) | **Post** /roaminghost | Create a roaminghost object
-*RoaminghostAPI* | [**ReferenceDelete**](docs/RoaminghostAPI.md#referencedelete) | **Delete** /roaminghost/{reference} | Delete a roaminghost object
-*RoaminghostAPI* | [**ReferenceGet**](docs/RoaminghostAPI.md#referenceget) | **Get** /roaminghost/{reference} | Get a specific roaminghost object
-*RoaminghostAPI* | [**ReferencePut**](docs/RoaminghostAPI.md#referenceput) | **Put** /roaminghost/{reference} | Update a roaminghost object
-*SharednetworkAPI* | [**Get**](docs/SharednetworkAPI.md#get) | **Get** /sharednetwork | Retrieve sharednetwork objects
-*SharednetworkAPI* | [**Post**](docs/SharednetworkAPI.md#post) | **Post** /sharednetwork | Create a sharednetwork object
-*SharednetworkAPI* | [**ReferenceDelete**](docs/SharednetworkAPI.md#referencedelete) | **Delete** /sharednetwork/{reference} | Delete a sharednetwork object
-*SharednetworkAPI* | [**ReferenceGet**](docs/SharednetworkAPI.md#referenceget) | **Get** /sharednetwork/{reference} | Get a specific sharednetwork object
-*SharednetworkAPI* | [**ReferencePut**](docs/SharednetworkAPI.md#referenceput) | **Put** /sharednetwork/{reference} | Update a sharednetwork object
+*DhcpStatisticsAPI* | [**List**](docs/DhcpStatisticsAPI.md#list) | **Get** /dhcp:statistics | Retrieve dhcp:statistics objects
+*DhcpStatisticsAPI* | [**Read**](docs/DhcpStatisticsAPI.md#read) | **Get** /dhcp:statistics/{reference} | Get a specific dhcp:statistics object
+*DhcpfailoverAPI* | [**Create**](docs/DhcpfailoverAPI.md#create) | **Post** /dhcpfailover | Create a dhcpfailover object
+*DhcpfailoverAPI* | [**Delete**](docs/DhcpfailoverAPI.md#delete) | **Delete** /dhcpfailover/{reference} | Delete a dhcpfailover object
+*DhcpfailoverAPI* | [**List**](docs/DhcpfailoverAPI.md#list) | **Get** /dhcpfailover | Retrieve dhcpfailover objects
+*DhcpfailoverAPI* | [**Read**](docs/DhcpfailoverAPI.md#read) | **Get** /dhcpfailover/{reference} | Get a specific dhcpfailover object
+*DhcpfailoverAPI* | [**Update**](docs/DhcpfailoverAPI.md#update) | **Put** /dhcpfailover/{reference} | Update a dhcpfailover object
+*DhcpoptiondefinitionAPI* | [**Create**](docs/DhcpoptiondefinitionAPI.md#create) | **Post** /dhcpoptiondefinition | Create a dhcpoptiondefinition object
+*DhcpoptiondefinitionAPI* | [**Delete**](docs/DhcpoptiondefinitionAPI.md#delete) | **Delete** /dhcpoptiondefinition/{reference} | Delete a dhcpoptiondefinition object
+*DhcpoptiondefinitionAPI* | [**List**](docs/DhcpoptiondefinitionAPI.md#list) | **Get** /dhcpoptiondefinition | Retrieve dhcpoptiondefinition objects
+*DhcpoptiondefinitionAPI* | [**Read**](docs/DhcpoptiondefinitionAPI.md#read) | **Get** /dhcpoptiondefinition/{reference} | Get a specific dhcpoptiondefinition object
+*DhcpoptiondefinitionAPI* | [**Update**](docs/DhcpoptiondefinitionAPI.md#update) | **Put** /dhcpoptiondefinition/{reference} | Update a dhcpoptiondefinition object
+*DhcpoptionspaceAPI* | [**Create**](docs/DhcpoptionspaceAPI.md#create) | **Post** /dhcpoptionspace | Create a dhcpoptionspace object
+*DhcpoptionspaceAPI* | [**Delete**](docs/DhcpoptionspaceAPI.md#delete) | **Delete** /dhcpoptionspace/{reference} | Delete a dhcpoptionspace object
+*DhcpoptionspaceAPI* | [**List**](docs/DhcpoptionspaceAPI.md#list) | **Get** /dhcpoptionspace | Retrieve dhcpoptionspace objects
+*DhcpoptionspaceAPI* | [**Read**](docs/DhcpoptionspaceAPI.md#read) | **Get** /dhcpoptionspace/{reference} | Get a specific dhcpoptionspace object
+*DhcpoptionspaceAPI* | [**Update**](docs/DhcpoptionspaceAPI.md#update) | **Put** /dhcpoptionspace/{reference} | Update a dhcpoptionspace object
+*FilterfingerprintAPI* | [**Create**](docs/FilterfingerprintAPI.md#create) | **Post** /filterfingerprint | Create a filterfingerprint object
+*FilterfingerprintAPI* | [**Delete**](docs/FilterfingerprintAPI.md#delete) | **Delete** /filterfingerprint/{reference} | Delete a filterfingerprint object
+*FilterfingerprintAPI* | [**List**](docs/FilterfingerprintAPI.md#list) | **Get** /filterfingerprint | Retrieve filterfingerprint objects
+*FilterfingerprintAPI* | [**Read**](docs/FilterfingerprintAPI.md#read) | **Get** /filterfingerprint/{reference} | Get a specific filterfingerprint object
+*FilterfingerprintAPI* | [**Update**](docs/FilterfingerprintAPI.md#update) | **Put** /filterfingerprint/{reference} | Update a filterfingerprint object
+*FiltermacAPI* | [**Create**](docs/FiltermacAPI.md#create) | **Post** /filtermac | Create a filtermac object
+*FiltermacAPI* | [**Delete**](docs/FiltermacAPI.md#delete) | **Delete** /filtermac/{reference} | Delete a filtermac object
+*FiltermacAPI* | [**List**](docs/FiltermacAPI.md#list) | **Get** /filtermac | Retrieve filtermac objects
+*FiltermacAPI* | [**Read**](docs/FiltermacAPI.md#read) | **Get** /filtermac/{reference} | Get a specific filtermac object
+*FiltermacAPI* | [**Update**](docs/FiltermacAPI.md#update) | **Put** /filtermac/{reference} | Update a filtermac object
+*FilternacAPI* | [**Create**](docs/FilternacAPI.md#create) | **Post** /filternac | Create a filternac object
+*FilternacAPI* | [**Delete**](docs/FilternacAPI.md#delete) | **Delete** /filternac/{reference} | Delete a filternac object
+*FilternacAPI* | [**List**](docs/FilternacAPI.md#list) | **Get** /filternac | Retrieve filternac objects
+*FilternacAPI* | [**Read**](docs/FilternacAPI.md#read) | **Get** /filternac/{reference} | Get a specific filternac object
+*FilternacAPI* | [**Update**](docs/FilternacAPI.md#update) | **Put** /filternac/{reference} | Update a filternac object
+*FilteroptionAPI* | [**Create**](docs/FilteroptionAPI.md#create) | **Post** /filteroption | Create a filteroption object
+*FilteroptionAPI* | [**Delete**](docs/FilteroptionAPI.md#delete) | **Delete** /filteroption/{reference} | Delete a filteroption object
+*FilteroptionAPI* | [**List**](docs/FilteroptionAPI.md#list) | **Get** /filteroption | Retrieve filteroption objects
+*FilteroptionAPI* | [**Read**](docs/FilteroptionAPI.md#read) | **Get** /filteroption/{reference} | Get a specific filteroption object
+*FilteroptionAPI* | [**Update**](docs/FilteroptionAPI.md#update) | **Put** /filteroption/{reference} | Update a filteroption object
+*FilterrelayagentAPI* | [**Create**](docs/FilterrelayagentAPI.md#create) | **Post** /filterrelayagent | Create a filterrelayagent object
+*FilterrelayagentAPI* | [**Delete**](docs/FilterrelayagentAPI.md#delete) | **Delete** /filterrelayagent/{reference} | Delete a filterrelayagent object
+*FilterrelayagentAPI* | [**List**](docs/FilterrelayagentAPI.md#list) | **Get** /filterrelayagent | Retrieve filterrelayagent objects
+*FilterrelayagentAPI* | [**Read**](docs/FilterrelayagentAPI.md#read) | **Get** /filterrelayagent/{reference} | Get a specific filterrelayagent object
+*FilterrelayagentAPI* | [**Update**](docs/FilterrelayagentAPI.md#update) | **Put** /filterrelayagent/{reference} | Update a filterrelayagent object
+*FingerprintAPI* | [**Create**](docs/FingerprintAPI.md#create) | **Post** /fingerprint | Create a fingerprint object
+*FingerprintAPI* | [**Delete**](docs/FingerprintAPI.md#delete) | **Delete** /fingerprint/{reference} | Delete a fingerprint object
+*FingerprintAPI* | [**List**](docs/FingerprintAPI.md#list) | **Get** /fingerprint | Retrieve fingerprint objects
+*FingerprintAPI* | [**Read**](docs/FingerprintAPI.md#read) | **Get** /fingerprint/{reference} | Get a specific fingerprint object
+*FingerprintAPI* | [**Update**](docs/FingerprintAPI.md#update) | **Put** /fingerprint/{reference} | Update a fingerprint object
+*FixedaddressAPI* | [**Create**](docs/FixedaddressAPI.md#create) | **Post** /fixedaddress | Create a fixedaddress object
+*FixedaddressAPI* | [**Delete**](docs/FixedaddressAPI.md#delete) | **Delete** /fixedaddress/{reference} | Delete a fixedaddress object
+*FixedaddressAPI* | [**List**](docs/FixedaddressAPI.md#list) | **Get** /fixedaddress | Retrieve fixedaddress objects
+*FixedaddressAPI* | [**Read**](docs/FixedaddressAPI.md#read) | **Get** /fixedaddress/{reference} | Get a specific fixedaddress object
+*FixedaddressAPI* | [**Update**](docs/FixedaddressAPI.md#update) | **Put** /fixedaddress/{reference} | Update a fixedaddress object
+*FixedaddresstemplateAPI* | [**Create**](docs/FixedaddresstemplateAPI.md#create) | **Post** /fixedaddresstemplate | Create a fixedaddresstemplate object
+*FixedaddresstemplateAPI* | [**Delete**](docs/FixedaddresstemplateAPI.md#delete) | **Delete** /fixedaddresstemplate/{reference} | Delete a fixedaddresstemplate object
+*FixedaddresstemplateAPI* | [**List**](docs/FixedaddresstemplateAPI.md#list) | **Get** /fixedaddresstemplate | Retrieve fixedaddresstemplate objects
+*FixedaddresstemplateAPI* | [**Read**](docs/FixedaddresstemplateAPI.md#read) | **Get** /fixedaddresstemplate/{reference} | Get a specific fixedaddresstemplate object
+*FixedaddresstemplateAPI* | [**Update**](docs/FixedaddresstemplateAPI.md#update) | **Put** /fixedaddresstemplate/{reference} | Update a fixedaddresstemplate object
+*Ipv6dhcpoptiondefinitionAPI* | [**Create**](docs/Ipv6dhcpoptiondefinitionAPI.md#create) | **Post** /ipv6dhcpoptiondefinition | Create a ipv6dhcpoptiondefinition object
+*Ipv6dhcpoptiondefinitionAPI* | [**Delete**](docs/Ipv6dhcpoptiondefinitionAPI.md#delete) | **Delete** /ipv6dhcpoptiondefinition/{reference} | Delete a ipv6dhcpoptiondefinition object
+*Ipv6dhcpoptiondefinitionAPI* | [**List**](docs/Ipv6dhcpoptiondefinitionAPI.md#list) | **Get** /ipv6dhcpoptiondefinition | Retrieve ipv6dhcpoptiondefinition objects
+*Ipv6dhcpoptiondefinitionAPI* | [**Read**](docs/Ipv6dhcpoptiondefinitionAPI.md#read) | **Get** /ipv6dhcpoptiondefinition/{reference} | Get a specific ipv6dhcpoptiondefinition object
+*Ipv6dhcpoptiondefinitionAPI* | [**Update**](docs/Ipv6dhcpoptiondefinitionAPI.md#update) | **Put** /ipv6dhcpoptiondefinition/{reference} | Update a ipv6dhcpoptiondefinition object
+*Ipv6dhcpoptionspaceAPI* | [**Create**](docs/Ipv6dhcpoptionspaceAPI.md#create) | **Post** /ipv6dhcpoptionspace | Create a ipv6dhcpoptionspace object
+*Ipv6dhcpoptionspaceAPI* | [**Delete**](docs/Ipv6dhcpoptionspaceAPI.md#delete) | **Delete** /ipv6dhcpoptionspace/{reference} | Delete a ipv6dhcpoptionspace object
+*Ipv6dhcpoptionspaceAPI* | [**List**](docs/Ipv6dhcpoptionspaceAPI.md#list) | **Get** /ipv6dhcpoptionspace | Retrieve ipv6dhcpoptionspace objects
+*Ipv6dhcpoptionspaceAPI* | [**Read**](docs/Ipv6dhcpoptionspaceAPI.md#read) | **Get** /ipv6dhcpoptionspace/{reference} | Get a specific ipv6dhcpoptionspace object
+*Ipv6dhcpoptionspaceAPI* | [**Update**](docs/Ipv6dhcpoptionspaceAPI.md#update) | **Put** /ipv6dhcpoptionspace/{reference} | Update a ipv6dhcpoptionspace object
+*Ipv6filteroptionAPI* | [**Create**](docs/Ipv6filteroptionAPI.md#create) | **Post** /ipv6filteroption | Create a ipv6filteroption object
+*Ipv6filteroptionAPI* | [**Delete**](docs/Ipv6filteroptionAPI.md#delete) | **Delete** /ipv6filteroption/{reference} | Delete a ipv6filteroption object
+*Ipv6filteroptionAPI* | [**List**](docs/Ipv6filteroptionAPI.md#list) | **Get** /ipv6filteroption | Retrieve ipv6filteroption objects
+*Ipv6filteroptionAPI* | [**Read**](docs/Ipv6filteroptionAPI.md#read) | **Get** /ipv6filteroption/{reference} | Get a specific ipv6filteroption object
+*Ipv6filteroptionAPI* | [**Update**](docs/Ipv6filteroptionAPI.md#update) | **Put** /ipv6filteroption/{reference} | Update a ipv6filteroption object
+*Ipv6fixedaddressAPI* | [**Create**](docs/Ipv6fixedaddressAPI.md#create) | **Post** /ipv6fixedaddress | Create a ipv6fixedaddress object
+*Ipv6fixedaddressAPI* | [**Delete**](docs/Ipv6fixedaddressAPI.md#delete) | **Delete** /ipv6fixedaddress/{reference} | Delete a ipv6fixedaddress object
+*Ipv6fixedaddressAPI* | [**List**](docs/Ipv6fixedaddressAPI.md#list) | **Get** /ipv6fixedaddress | Retrieve ipv6fixedaddress objects
+*Ipv6fixedaddressAPI* | [**Read**](docs/Ipv6fixedaddressAPI.md#read) | **Get** /ipv6fixedaddress/{reference} | Get a specific ipv6fixedaddress object
+*Ipv6fixedaddressAPI* | [**Update**](docs/Ipv6fixedaddressAPI.md#update) | **Put** /ipv6fixedaddress/{reference} | Update a ipv6fixedaddress object
+*Ipv6fixedaddresstemplateAPI* | [**Create**](docs/Ipv6fixedaddresstemplateAPI.md#create) | **Post** /ipv6fixedaddresstemplate | Create a ipv6fixedaddresstemplate object
+*Ipv6fixedaddresstemplateAPI* | [**Delete**](docs/Ipv6fixedaddresstemplateAPI.md#delete) | **Delete** /ipv6fixedaddresstemplate/{reference} | Delete a ipv6fixedaddresstemplate object
+*Ipv6fixedaddresstemplateAPI* | [**List**](docs/Ipv6fixedaddresstemplateAPI.md#list) | **Get** /ipv6fixedaddresstemplate | Retrieve ipv6fixedaddresstemplate objects
+*Ipv6fixedaddresstemplateAPI* | [**Read**](docs/Ipv6fixedaddresstemplateAPI.md#read) | **Get** /ipv6fixedaddresstemplate/{reference} | Get a specific ipv6fixedaddresstemplate object
+*Ipv6fixedaddresstemplateAPI* | [**Update**](docs/Ipv6fixedaddresstemplateAPI.md#update) | **Put** /ipv6fixedaddresstemplate/{reference} | Update a ipv6fixedaddresstemplate object
+*Ipv6rangeAPI* | [**Create**](docs/Ipv6rangeAPI.md#create) | **Post** /ipv6range | Create a ipv6range object
+*Ipv6rangeAPI* | [**Delete**](docs/Ipv6rangeAPI.md#delete) | **Delete** /ipv6range/{reference} | Delete a ipv6range object
+*Ipv6rangeAPI* | [**List**](docs/Ipv6rangeAPI.md#list) | **Get** /ipv6range | Retrieve ipv6range objects
+*Ipv6rangeAPI* | [**Read**](docs/Ipv6rangeAPI.md#read) | **Get** /ipv6range/{reference} | Get a specific ipv6range object
+*Ipv6rangeAPI* | [**Update**](docs/Ipv6rangeAPI.md#update) | **Put** /ipv6range/{reference} | Update a ipv6range object
+*Ipv6rangetemplateAPI* | [**Create**](docs/Ipv6rangetemplateAPI.md#create) | **Post** /ipv6rangetemplate | Create a ipv6rangetemplate object
+*Ipv6rangetemplateAPI* | [**Delete**](docs/Ipv6rangetemplateAPI.md#delete) | **Delete** /ipv6rangetemplate/{reference} | Delete a ipv6rangetemplate object
+*Ipv6rangetemplateAPI* | [**List**](docs/Ipv6rangetemplateAPI.md#list) | **Get** /ipv6rangetemplate | Retrieve ipv6rangetemplate objects
+*Ipv6rangetemplateAPI* | [**Read**](docs/Ipv6rangetemplateAPI.md#read) | **Get** /ipv6rangetemplate/{reference} | Get a specific ipv6rangetemplate object
+*Ipv6rangetemplateAPI* | [**Update**](docs/Ipv6rangetemplateAPI.md#update) | **Put** /ipv6rangetemplate/{reference} | Update a ipv6rangetemplate object
+*Ipv6sharednetworkAPI* | [**Create**](docs/Ipv6sharednetworkAPI.md#create) | **Post** /ipv6sharednetwork | Create a ipv6sharednetwork object
+*Ipv6sharednetworkAPI* | [**Delete**](docs/Ipv6sharednetworkAPI.md#delete) | **Delete** /ipv6sharednetwork/{reference} | Delete a ipv6sharednetwork object
+*Ipv6sharednetworkAPI* | [**List**](docs/Ipv6sharednetworkAPI.md#list) | **Get** /ipv6sharednetwork | Retrieve ipv6sharednetwork objects
+*Ipv6sharednetworkAPI* | [**Read**](docs/Ipv6sharednetworkAPI.md#read) | **Get** /ipv6sharednetwork/{reference} | Get a specific ipv6sharednetwork object
+*Ipv6sharednetworkAPI* | [**Update**](docs/Ipv6sharednetworkAPI.md#update) | **Put** /ipv6sharednetwork/{reference} | Update a ipv6sharednetwork object
+*LeaseAPI* | [**Delete**](docs/LeaseAPI.md#delete) | **Delete** /lease/{reference} | Delete a lease object
+*LeaseAPI* | [**List**](docs/LeaseAPI.md#list) | **Get** /lease | Retrieve lease objects
+*LeaseAPI* | [**Read**](docs/LeaseAPI.md#read) | **Get** /lease/{reference} | Get a specific lease object
+*MacfilteraddressAPI* | [**Create**](docs/MacfilteraddressAPI.md#create) | **Post** /macfilteraddress | Create a macfilteraddress object
+*MacfilteraddressAPI* | [**Delete**](docs/MacfilteraddressAPI.md#delete) | **Delete** /macfilteraddress/{reference} | Delete a macfilteraddress object
+*MacfilteraddressAPI* | [**List**](docs/MacfilteraddressAPI.md#list) | **Get** /macfilteraddress | Retrieve macfilteraddress objects
+*MacfilteraddressAPI* | [**Read**](docs/MacfilteraddressAPI.md#read) | **Get** /macfilteraddress/{reference} | Get a specific macfilteraddress object
+*MacfilteraddressAPI* | [**Update**](docs/MacfilteraddressAPI.md#update) | **Put** /macfilteraddress/{reference} | Update a macfilteraddress object
+*OrderedrangesAPI* | [**List**](docs/OrderedrangesAPI.md#list) | **Get** /orderedranges | Retrieve orderedranges objects
+*OrderedrangesAPI* | [**Read**](docs/OrderedrangesAPI.md#read) | **Get** /orderedranges/{reference} | Get a specific orderedranges object
+*OrderedrangesAPI* | [**Update**](docs/OrderedrangesAPI.md#update) | **Put** /orderedranges/{reference} | Update a orderedranges object
+*RangeAPI* | [**Create**](docs/RangeAPI.md#create) | **Post** /range | Create a range object
+*RangeAPI* | [**Delete**](docs/RangeAPI.md#delete) | **Delete** /range/{reference} | Delete a range object
+*RangeAPI* | [**List**](docs/RangeAPI.md#list) | **Get** /range | Retrieve range objects
+*RangeAPI* | [**Read**](docs/RangeAPI.md#read) | **Get** /range/{reference} | Get a specific range object
+*RangeAPI* | [**Update**](docs/RangeAPI.md#update) | **Put** /range/{reference} | Update a range object
+*RangetemplateAPI* | [**Create**](docs/RangetemplateAPI.md#create) | **Post** /rangetemplate | Create a rangetemplate object
+*RangetemplateAPI* | [**Delete**](docs/RangetemplateAPI.md#delete) | **Delete** /rangetemplate/{reference} | Delete a rangetemplate object
+*RangetemplateAPI* | [**List**](docs/RangetemplateAPI.md#list) | **Get** /rangetemplate | Retrieve rangetemplate objects
+*RangetemplateAPI* | [**Read**](docs/RangetemplateAPI.md#read) | **Get** /rangetemplate/{reference} | Get a specific rangetemplate object
+*RangetemplateAPI* | [**Update**](docs/RangetemplateAPI.md#update) | **Put** /rangetemplate/{reference} | Update a rangetemplate object
+*RoaminghostAPI* | [**Create**](docs/RoaminghostAPI.md#create) | **Post** /roaminghost | Create a roaminghost object
+*RoaminghostAPI* | [**Delete**](docs/RoaminghostAPI.md#delete) | **Delete** /roaminghost/{reference} | Delete a roaminghost object
+*RoaminghostAPI* | [**List**](docs/RoaminghostAPI.md#list) | **Get** /roaminghost | Retrieve roaminghost objects
+*RoaminghostAPI* | [**Read**](docs/RoaminghostAPI.md#read) | **Get** /roaminghost/{reference} | Get a specific roaminghost object
+*RoaminghostAPI* | [**Update**](docs/RoaminghostAPI.md#update) | **Put** /roaminghost/{reference} | Update a roaminghost object
+*SharednetworkAPI* | [**Create**](docs/SharednetworkAPI.md#create) | **Post** /sharednetwork | Create a sharednetwork object
+*SharednetworkAPI* | [**Delete**](docs/SharednetworkAPI.md#delete) | **Delete** /sharednetwork/{reference} | Delete a sharednetwork object
+*SharednetworkAPI* | [**List**](docs/SharednetworkAPI.md#list) | **Get** /sharednetwork | Retrieve sharednetwork objects
+*SharednetworkAPI* | [**Read**](docs/SharednetworkAPI.md#read) | **Get** /sharednetwork/{reference} | Get a specific sharednetwork object
+*SharednetworkAPI* | [**Update**](docs/SharednetworkAPI.md#update) | **Put** /sharednetwork/{reference} | Update a sharednetwork object
 
 
 ## Documentation For Models

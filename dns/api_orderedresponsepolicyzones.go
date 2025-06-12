@@ -23,52 +23,52 @@ import (
 
 type OrderedresponsepolicyzonesAPI interface {
 	/*
-		Get Retrieve orderedresponsepolicyzones objects
+		List Retrieve orderedresponsepolicyzones objects
 
 		Returns a list of orderedresponsepolicyzones objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return OrderedresponsepolicyzonesAPIGetRequest
+		@return OrderedresponsepolicyzonesAPIListRequest
 	*/
-	Get(ctx context.Context) OrderedresponsepolicyzonesAPIGetRequest
+	List(ctx context.Context) OrderedresponsepolicyzonesAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListOrderedresponsepolicyzonesResponse
-	GetExecute(r OrderedresponsepolicyzonesAPIGetRequest) (*ListOrderedresponsepolicyzonesResponse, *http.Response, error)
+	ListExecute(r OrderedresponsepolicyzonesAPIListRequest) (*ListOrderedresponsepolicyzonesResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific orderedresponsepolicyzones object
+		Read Get a specific orderedresponsepolicyzones object
 
 		Returns a specific orderedresponsepolicyzones object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the orderedresponsepolicyzones object
-		@return OrderedresponsepolicyzonesAPIReferenceGetRequest
+		@return OrderedresponsepolicyzonesAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) OrderedresponsepolicyzonesAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) OrderedresponsepolicyzonesAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetOrderedresponsepolicyzonesResponse
-	ReferenceGetExecute(r OrderedresponsepolicyzonesAPIReferenceGetRequest) (*GetOrderedresponsepolicyzonesResponse, *http.Response, error)
+	ReadExecute(r OrderedresponsepolicyzonesAPIReadRequest) (*GetOrderedresponsepolicyzonesResponse, *http.Response, error)
 	/*
-		ReferencePut Update a orderedresponsepolicyzones object
+		Update Update a orderedresponsepolicyzones object
 
 		Updates a specific orderedresponsepolicyzones object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the orderedresponsepolicyzones object
-		@return OrderedresponsepolicyzonesAPIReferencePutRequest
+		@return OrderedresponsepolicyzonesAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) OrderedresponsepolicyzonesAPIReferencePutRequest
+	Update(ctx context.Context, reference string) OrderedresponsepolicyzonesAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateOrderedresponsepolicyzonesResponse
-	ReferencePutExecute(r OrderedresponsepolicyzonesAPIReferencePutRequest) (*UpdateOrderedresponsepolicyzonesResponse, *http.Response, error)
+	UpdateExecute(r OrderedresponsepolicyzonesAPIUpdateRequest) (*UpdateOrderedresponsepolicyzonesResponse, *http.Response, error)
 }
 
 // OrderedresponsepolicyzonesAPIService OrderedresponsepolicyzonesAPI service
 type OrderedresponsepolicyzonesAPIService internal.Service
 
-type OrderedresponsepolicyzonesAPIGetRequest struct {
+type OrderedresponsepolicyzonesAPIListRequest struct {
 	ctx            context.Context
 	ApiService     OrderedresponsepolicyzonesAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type OrderedresponsepolicyzonesAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r OrderedresponsepolicyzonesAPIGetRequest) ReturnFields(returnFields string) OrderedresponsepolicyzonesAPIGetRequest {
+func (r OrderedresponsepolicyzonesAPIListRequest) ReturnFields(returnFields string) OrderedresponsepolicyzonesAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedresponsepolicyzonesAPIGetRequest) ReturnFields2(returnFields2 string) OrderedresponsepolicyzonesAPIGetRequest {
+func (r OrderedresponsepolicyzonesAPIListRequest) ReturnFields2(returnFields2 string) OrderedresponsepolicyzonesAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r OrderedresponsepolicyzonesAPIGetRequest) MaxResults(maxResults int32) OrderedresponsepolicyzonesAPIGetRequest {
+func (r OrderedresponsepolicyzonesAPIListRequest) MaxResults(maxResults int32) OrderedresponsepolicyzonesAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r OrderedresponsepolicyzonesAPIGetRequest) ReturnAsObject(returnAsObject int32) OrderedresponsepolicyzonesAPIGetRequest {
+func (r OrderedresponsepolicyzonesAPIListRequest) ReturnAsObject(returnAsObject int32) OrderedresponsepolicyzonesAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r OrderedresponsepolicyzonesAPIGetRequest) Paging(paging int32) OrderedresponsepolicyzonesAPIGetRequest {
+func (r OrderedresponsepolicyzonesAPIListRequest) Paging(paging int32) OrderedresponsepolicyzonesAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r OrderedresponsepolicyzonesAPIGetRequest) PageId(pageId string) OrderedresponsepolicyzonesAPIGetRequest {
+func (r OrderedresponsepolicyzonesAPIListRequest) PageId(pageId string) OrderedresponsepolicyzonesAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r OrderedresponsepolicyzonesAPIGetRequest) Filters(filters map[string]interface{}) OrderedresponsepolicyzonesAPIGetRequest {
+func (r OrderedresponsepolicyzonesAPIListRequest) Filters(filters map[string]interface{}) OrderedresponsepolicyzonesAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r OrderedresponsepolicyzonesAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) OrderedresponsepolicyzonesAPIGetRequest {
+func (r OrderedresponsepolicyzonesAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) OrderedresponsepolicyzonesAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r OrderedresponsepolicyzonesAPIGetRequest) Execute() (*ListOrderedresponsepolicyzonesResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r OrderedresponsepolicyzonesAPIListRequest) Execute() (*ListOrderedresponsepolicyzonesResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve orderedresponsepolicyzones objects
+List Retrieve orderedresponsepolicyzones objects
 
 Returns a list of orderedresponsepolicyzones objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return OrderedresponsepolicyzonesAPIGetRequest
+	@return OrderedresponsepolicyzonesAPIListRequest
 */
-func (a *OrderedresponsepolicyzonesAPIService) Get(ctx context.Context) OrderedresponsepolicyzonesAPIGetRequest {
-	return OrderedresponsepolicyzonesAPIGetRequest{
+func (a *OrderedresponsepolicyzonesAPIService) List(ctx context.Context) OrderedresponsepolicyzonesAPIListRequest {
+	return OrderedresponsepolicyzonesAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *OrderedresponsepolicyzonesAPIService) Get(ctx context.Context) Orderedr
 // Execute executes the request
 //
 //	@return ListOrderedresponsepolicyzonesResponse
-func (a *OrderedresponsepolicyzonesAPIService) GetExecute(r OrderedresponsepolicyzonesAPIGetRequest) (*ListOrderedresponsepolicyzonesResponse, *http.Response, error) {
+func (a *OrderedresponsepolicyzonesAPIService) ListExecute(r OrderedresponsepolicyzonesAPIListRequest) (*ListOrderedresponsepolicyzonesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *OrderedresponsepolicyzonesAPIService) GetExecute(r Orderedresponsepolic
 		localVarReturnValue *ListOrderedresponsepolicyzonesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedresponsepolicyzonesAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedresponsepolicyzonesAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *OrderedresponsepolicyzonesAPIService) GetExecute(r Orderedresponsepolic
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type OrderedresponsepolicyzonesAPIReferenceGetRequest struct {
+type OrderedresponsepolicyzonesAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     OrderedresponsepolicyzonesAPI
 	reference      string
@@ -249,38 +249,38 @@ type OrderedresponsepolicyzonesAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r OrderedresponsepolicyzonesAPIReferenceGetRequest) ReturnFields(returnFields string) OrderedresponsepolicyzonesAPIReferenceGetRequest {
+func (r OrderedresponsepolicyzonesAPIReadRequest) ReturnFields(returnFields string) OrderedresponsepolicyzonesAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedresponsepolicyzonesAPIReferenceGetRequest) ReturnFields2(returnFields2 string) OrderedresponsepolicyzonesAPIReferenceGetRequest {
+func (r OrderedresponsepolicyzonesAPIReadRequest) ReturnFields2(returnFields2 string) OrderedresponsepolicyzonesAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r OrderedresponsepolicyzonesAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) OrderedresponsepolicyzonesAPIReferenceGetRequest {
+func (r OrderedresponsepolicyzonesAPIReadRequest) ReturnAsObject(returnAsObject int32) OrderedresponsepolicyzonesAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r OrderedresponsepolicyzonesAPIReferenceGetRequest) Execute() (*GetOrderedresponsepolicyzonesResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r OrderedresponsepolicyzonesAPIReadRequest) Execute() (*GetOrderedresponsepolicyzonesResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific orderedresponsepolicyzones object
+Read Get a specific orderedresponsepolicyzones object
 
 Returns a specific orderedresponsepolicyzones object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the orderedresponsepolicyzones object
-	@return OrderedresponsepolicyzonesAPIReferenceGetRequest
+	@return OrderedresponsepolicyzonesAPIReadRequest
 */
-func (a *OrderedresponsepolicyzonesAPIService) ReferenceGet(ctx context.Context, reference string) OrderedresponsepolicyzonesAPIReferenceGetRequest {
-	return OrderedresponsepolicyzonesAPIReferenceGetRequest{
+func (a *OrderedresponsepolicyzonesAPIService) Read(ctx context.Context, reference string) OrderedresponsepolicyzonesAPIReadRequest {
+	return OrderedresponsepolicyzonesAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *OrderedresponsepolicyzonesAPIService) ReferenceGet(ctx context.Context,
 // Execute executes the request
 //
 //	@return GetOrderedresponsepolicyzonesResponse
-func (a *OrderedresponsepolicyzonesAPIService) ReferenceGetExecute(r OrderedresponsepolicyzonesAPIReferenceGetRequest) (*GetOrderedresponsepolicyzonesResponse, *http.Response, error) {
+func (a *OrderedresponsepolicyzonesAPIService) ReadExecute(r OrderedresponsepolicyzonesAPIReadRequest) (*GetOrderedresponsepolicyzonesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *OrderedresponsepolicyzonesAPIService) ReferenceGetExecute(r Orderedresp
 		localVarReturnValue *GetOrderedresponsepolicyzonesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedresponsepolicyzonesAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedresponsepolicyzonesAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *OrderedresponsepolicyzonesAPIService) ReferenceGetExecute(r Orderedresp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type OrderedresponsepolicyzonesAPIReferencePutRequest struct {
+type OrderedresponsepolicyzonesAPIUpdateRequest struct {
 	ctx                        context.Context
 	ApiService                 OrderedresponsepolicyzonesAPI
 	reference                  string
@@ -377,44 +377,44 @@ type OrderedresponsepolicyzonesAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r OrderedresponsepolicyzonesAPIReferencePutRequest) Orderedresponsepolicyzones(orderedresponsepolicyzones Orderedresponsepolicyzones) OrderedresponsepolicyzonesAPIReferencePutRequest {
+func (r OrderedresponsepolicyzonesAPIUpdateRequest) Orderedresponsepolicyzones(orderedresponsepolicyzones Orderedresponsepolicyzones) OrderedresponsepolicyzonesAPIUpdateRequest {
 	r.orderedresponsepolicyzones = &orderedresponsepolicyzones
 	return r
 }
 
 // Enter the field names followed by comma
-func (r OrderedresponsepolicyzonesAPIReferencePutRequest) ReturnFields(returnFields string) OrderedresponsepolicyzonesAPIReferencePutRequest {
+func (r OrderedresponsepolicyzonesAPIUpdateRequest) ReturnFields(returnFields string) OrderedresponsepolicyzonesAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedresponsepolicyzonesAPIReferencePutRequest) ReturnFields2(returnFields2 string) OrderedresponsepolicyzonesAPIReferencePutRequest {
+func (r OrderedresponsepolicyzonesAPIUpdateRequest) ReturnFields2(returnFields2 string) OrderedresponsepolicyzonesAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r OrderedresponsepolicyzonesAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) OrderedresponsepolicyzonesAPIReferencePutRequest {
+func (r OrderedresponsepolicyzonesAPIUpdateRequest) ReturnAsObject(returnAsObject int32) OrderedresponsepolicyzonesAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r OrderedresponsepolicyzonesAPIReferencePutRequest) Execute() (*UpdateOrderedresponsepolicyzonesResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r OrderedresponsepolicyzonesAPIUpdateRequest) Execute() (*UpdateOrderedresponsepolicyzonesResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a orderedresponsepolicyzones object
+Update Update a orderedresponsepolicyzones object
 
 Updates a specific orderedresponsepolicyzones object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the orderedresponsepolicyzones object
-	@return OrderedresponsepolicyzonesAPIReferencePutRequest
+	@return OrderedresponsepolicyzonesAPIUpdateRequest
 */
-func (a *OrderedresponsepolicyzonesAPIService) ReferencePut(ctx context.Context, reference string) OrderedresponsepolicyzonesAPIReferencePutRequest {
-	return OrderedresponsepolicyzonesAPIReferencePutRequest{
+func (a *OrderedresponsepolicyzonesAPIService) Update(ctx context.Context, reference string) OrderedresponsepolicyzonesAPIUpdateRequest {
+	return OrderedresponsepolicyzonesAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *OrderedresponsepolicyzonesAPIService) ReferencePut(ctx context.Context,
 // Execute executes the request
 //
 //	@return UpdateOrderedresponsepolicyzonesResponse
-func (a *OrderedresponsepolicyzonesAPIService) ReferencePutExecute(r OrderedresponsepolicyzonesAPIReferencePutRequest) (*UpdateOrderedresponsepolicyzonesResponse, *http.Response, error) {
+func (a *OrderedresponsepolicyzonesAPIService) UpdateExecute(r OrderedresponsepolicyzonesAPIUpdateRequest) (*UpdateOrderedresponsepolicyzonesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *OrderedresponsepolicyzonesAPIService) ReferencePutExecute(r Orderedresp
 		localVarReturnValue *UpdateOrderedresponsepolicyzonesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedresponsepolicyzonesAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedresponsepolicyzonesAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -23,52 +23,52 @@ import (
 
 type MemberDhcppropertiesAPI interface {
 	/*
-		MemberdhcppropertiesGet Retrieve member:dhcpproperties objects
+		List Retrieve member:dhcpproperties objects
 
 		Returns a list of member:dhcpproperties objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest
+		@return MemberDhcppropertiesAPIListRequest
 	*/
-	MemberdhcppropertiesGet(ctx context.Context) MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest
+	List(ctx context.Context) MemberDhcppropertiesAPIListRequest
 
-	// MemberdhcppropertiesGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListMemberDhcppropertiesResponse
-	MemberdhcppropertiesGetExecute(r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) (*ListMemberDhcppropertiesResponse, *http.Response, error)
+	ListExecute(r MemberDhcppropertiesAPIListRequest) (*ListMemberDhcppropertiesResponse, *http.Response, error)
 	/*
-		MemberdhcppropertiesReferenceGet Get a specific member:dhcpproperties object
+		Read Get a specific member:dhcpproperties object
 
 		Returns a specific member:dhcpproperties object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:dhcpproperties object
-		@return MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest
+		@return MemberDhcppropertiesAPIReadRequest
 	*/
-	MemberdhcppropertiesReferenceGet(ctx context.Context, reference string) MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest
+	Read(ctx context.Context, reference string) MemberDhcppropertiesAPIReadRequest
 
-	// MemberdhcppropertiesReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMemberDhcppropertiesResponse
-	MemberdhcppropertiesReferenceGetExecute(r MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest) (*GetMemberDhcppropertiesResponse, *http.Response, error)
+	ReadExecute(r MemberDhcppropertiesAPIReadRequest) (*GetMemberDhcppropertiesResponse, *http.Response, error)
 	/*
-		MemberdhcppropertiesReferencePut Update a member:dhcpproperties object
+		Update Update a member:dhcpproperties object
 
 		Updates a specific member:dhcpproperties object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:dhcpproperties object
-		@return MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest
+		@return MemberDhcppropertiesAPIUpdateRequest
 	*/
-	MemberdhcppropertiesReferencePut(ctx context.Context, reference string) MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest
+	Update(ctx context.Context, reference string) MemberDhcppropertiesAPIUpdateRequest
 
-	// MemberdhcppropertiesReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMemberDhcppropertiesResponse
-	MemberdhcppropertiesReferencePutExecute(r MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest) (*UpdateMemberDhcppropertiesResponse, *http.Response, error)
+	UpdateExecute(r MemberDhcppropertiesAPIUpdateRequest) (*UpdateMemberDhcppropertiesResponse, *http.Response, error)
 }
 
 // MemberDhcppropertiesAPIService MemberDhcppropertiesAPI service
 type MemberDhcppropertiesAPIService internal.Service
 
-type MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest struct {
+type MemberDhcppropertiesAPIListRequest struct {
 	ctx            context.Context
 	ApiService     MemberDhcppropertiesAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) ReturnFields(returnFields string) MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest {
+func (r MemberDhcppropertiesAPIListRequest) ReturnFields(returnFields string) MemberDhcppropertiesAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) ReturnFields2(returnFields2 string) MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest {
+func (r MemberDhcppropertiesAPIListRequest) ReturnFields2(returnFields2 string) MemberDhcppropertiesAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) MaxResults(maxResults int32) MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest {
+func (r MemberDhcppropertiesAPIListRequest) MaxResults(maxResults int32) MemberDhcppropertiesAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) ReturnAsObject(returnAsObject int32) MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest {
+func (r MemberDhcppropertiesAPIListRequest) ReturnAsObject(returnAsObject int32) MemberDhcppropertiesAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) Paging(paging int32) MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest {
+func (r MemberDhcppropertiesAPIListRequest) Paging(paging int32) MemberDhcppropertiesAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) PageId(pageId string) MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest {
+func (r MemberDhcppropertiesAPIListRequest) PageId(pageId string) MemberDhcppropertiesAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) Filters(filters map[string]interface{}) MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest {
+func (r MemberDhcppropertiesAPIListRequest) Filters(filters map[string]interface{}) MemberDhcppropertiesAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest {
+func (r MemberDhcppropertiesAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberDhcppropertiesAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) Execute() (*ListMemberDhcppropertiesResponse, *http.Response, error) {
-	return r.ApiService.MemberdhcppropertiesGetExecute(r)
+func (r MemberDhcppropertiesAPIListRequest) Execute() (*ListMemberDhcppropertiesResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MemberdhcppropertiesGet Retrieve member:dhcpproperties objects
+List Retrieve member:dhcpproperties objects
 
 Returns a list of member:dhcpproperties objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest
+	@return MemberDhcppropertiesAPIListRequest
 */
-func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesGet(ctx context.Context) MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest {
-	return MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest{
+func (a *MemberDhcppropertiesAPIService) List(ctx context.Context) MemberDhcppropertiesAPIListRequest {
+	return MemberDhcppropertiesAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesGet(ctx context.Con
 // Execute executes the request
 //
 //	@return ListMemberDhcppropertiesResponse
-func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesGetExecute(r MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest) (*ListMemberDhcppropertiesResponse, *http.Response, error) {
+func (a *MemberDhcppropertiesAPIService) ListExecute(r MemberDhcppropertiesAPIListRequest) (*ListMemberDhcppropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesGetExecute(r Member
 		localVarReturnValue *ListMemberDhcppropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDhcppropertiesAPIService.MemberdhcppropertiesGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDhcppropertiesAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesGetExecute(r Member
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest struct {
+type MemberDhcppropertiesAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     MemberDhcppropertiesAPI
 	reference      string
@@ -249,38 +249,38 @@ type MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest) ReturnFields(returnFields string) MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest {
+func (r MemberDhcppropertiesAPIReadRequest) ReturnFields(returnFields string) MemberDhcppropertiesAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest) ReturnFields2(returnFields2 string) MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest {
+func (r MemberDhcppropertiesAPIReadRequest) ReturnFields2(returnFields2 string) MemberDhcppropertiesAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest) ReturnAsObject(returnAsObject int32) MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest {
+func (r MemberDhcppropertiesAPIReadRequest) ReturnAsObject(returnAsObject int32) MemberDhcppropertiesAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest) Execute() (*GetMemberDhcppropertiesResponse, *http.Response, error) {
-	return r.ApiService.MemberdhcppropertiesReferenceGetExecute(r)
+func (r MemberDhcppropertiesAPIReadRequest) Execute() (*GetMemberDhcppropertiesResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MemberdhcppropertiesReferenceGet Get a specific member:dhcpproperties object
+Read Get a specific member:dhcpproperties object
 
 Returns a specific member:dhcpproperties object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:dhcpproperties object
-	@return MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest
+	@return MemberDhcppropertiesAPIReadRequest
 */
-func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesReferenceGet(ctx context.Context, reference string) MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest {
-	return MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest{
+func (a *MemberDhcppropertiesAPIService) Read(ctx context.Context, reference string) MemberDhcppropertiesAPIReadRequest {
+	return MemberDhcppropertiesAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesReferenceGet(ctx co
 // Execute executes the request
 //
 //	@return GetMemberDhcppropertiesResponse
-func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesReferenceGetExecute(r MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest) (*GetMemberDhcppropertiesResponse, *http.Response, error) {
+func (a *MemberDhcppropertiesAPIService) ReadExecute(r MemberDhcppropertiesAPIReadRequest) (*GetMemberDhcppropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesReferenceGetExecute
 		localVarReturnValue *GetMemberDhcppropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDhcppropertiesAPIService.MemberdhcppropertiesReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDhcppropertiesAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesReferenceGetExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest struct {
+type MemberDhcppropertiesAPIUpdateRequest struct {
 	ctx                  context.Context
 	ApiService           MemberDhcppropertiesAPI
 	reference            string
@@ -377,44 +377,44 @@ type MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest struct {
 }
 
 // Object data to update
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest) MemberDhcpproperties(memberDhcpproperties MemberDhcpproperties) MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest {
+func (r MemberDhcppropertiesAPIUpdateRequest) MemberDhcpproperties(memberDhcpproperties MemberDhcpproperties) MemberDhcppropertiesAPIUpdateRequest {
 	r.memberDhcpproperties = &memberDhcpproperties
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest) ReturnFields(returnFields string) MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest {
+func (r MemberDhcppropertiesAPIUpdateRequest) ReturnFields(returnFields string) MemberDhcppropertiesAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest) ReturnFields2(returnFields2 string) MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest {
+func (r MemberDhcppropertiesAPIUpdateRequest) ReturnFields2(returnFields2 string) MemberDhcppropertiesAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest) ReturnAsObject(returnAsObject int32) MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest {
+func (r MemberDhcppropertiesAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MemberDhcppropertiesAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest) Execute() (*UpdateMemberDhcppropertiesResponse, *http.Response, error) {
-	return r.ApiService.MemberdhcppropertiesReferencePutExecute(r)
+func (r MemberDhcppropertiesAPIUpdateRequest) Execute() (*UpdateMemberDhcppropertiesResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-MemberdhcppropertiesReferencePut Update a member:dhcpproperties object
+Update Update a member:dhcpproperties object
 
 Updates a specific member:dhcpproperties object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:dhcpproperties object
-	@return MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest
+	@return MemberDhcppropertiesAPIUpdateRequest
 */
-func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesReferencePut(ctx context.Context, reference string) MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest {
-	return MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest{
+func (a *MemberDhcppropertiesAPIService) Update(ctx context.Context, reference string) MemberDhcppropertiesAPIUpdateRequest {
+	return MemberDhcppropertiesAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesReferencePut(ctx co
 // Execute executes the request
 //
 //	@return UpdateMemberDhcppropertiesResponse
-func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesReferencePutExecute(r MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest) (*UpdateMemberDhcppropertiesResponse, *http.Response, error) {
+func (a *MemberDhcppropertiesAPIService) UpdateExecute(r MemberDhcppropertiesAPIUpdateRequest) (*UpdateMemberDhcppropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *MemberDhcppropertiesAPIService) MemberdhcppropertiesReferencePutExecute
 		localVarReturnValue *UpdateMemberDhcppropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDhcppropertiesAPIService.MemberdhcppropertiesReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDhcppropertiesAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

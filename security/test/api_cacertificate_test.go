@@ -23,11 +23,24 @@ func TestCacertificateAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test CacertificateAPIService Get", func(t *testing.T) {
+	t.Run("Test CacertificateAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.CacertificateAPI.Get(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.CacertificateAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CacertificateAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.CacertificateAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,26 +48,13 @@ func TestCacertificateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CacertificateAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test CacertificateAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.CacertificateAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CacertificateAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.CacertificateAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.CacertificateAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

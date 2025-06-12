@@ -23,249 +23,78 @@ import (
 
 type RecordTlsaAPI interface {
 	/*
-		RecordtlsaGet Retrieve record:tlsa objects
-
-		Returns a list of record:tlsa objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordTlsaAPIRecordtlsaGetRequest
-	*/
-	RecordtlsaGet(ctx context.Context) RecordTlsaAPIRecordtlsaGetRequest
-
-	// RecordtlsaGetExecute executes the request
-	//  @return ListRecordTlsaResponse
-	RecordtlsaGetExecute(r RecordTlsaAPIRecordtlsaGetRequest) (*ListRecordTlsaResponse, *http.Response, error)
-	/*
-		RecordtlsaPost Create a record:tlsa object
+		Create Create a record:tlsa object
 
 		Creates a new record:tlsa object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordTlsaAPIRecordtlsaPostRequest
+		@return RecordTlsaAPICreateRequest
 	*/
-	RecordtlsaPost(ctx context.Context) RecordTlsaAPIRecordtlsaPostRequest
+	Create(ctx context.Context) RecordTlsaAPICreateRequest
 
-	// RecordtlsaPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordTlsaResponse
-	RecordtlsaPostExecute(r RecordTlsaAPIRecordtlsaPostRequest) (*CreateRecordTlsaResponse, *http.Response, error)
+	CreateExecute(r RecordTlsaAPICreateRequest) (*CreateRecordTlsaResponse, *http.Response, error)
 	/*
-		RecordtlsaReferenceDelete Delete a record:tlsa object
+		Delete Delete a record:tlsa object
 
 		Deletes a specific record:tlsa object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:tlsa object
-		@return RecordTlsaAPIRecordtlsaReferenceDeleteRequest
+		@return RecordTlsaAPIDeleteRequest
 	*/
-	RecordtlsaReferenceDelete(ctx context.Context, reference string) RecordTlsaAPIRecordtlsaReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordTlsaAPIDeleteRequest
 
-	// RecordtlsaReferenceDeleteExecute executes the request
-	RecordtlsaReferenceDeleteExecute(r RecordTlsaAPIRecordtlsaReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordTlsaAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecordtlsaReferenceGet Get a specific record:tlsa object
+		List Retrieve record:tlsa objects
+
+		Returns a list of record:tlsa objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordTlsaAPIListRequest
+	*/
+	List(ctx context.Context) RecordTlsaAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordTlsaResponse
+	ListExecute(r RecordTlsaAPIListRequest) (*ListRecordTlsaResponse, *http.Response, error)
+	/*
+		Read Get a specific record:tlsa object
 
 		Returns a specific record:tlsa object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:tlsa object
-		@return RecordTlsaAPIRecordtlsaReferenceGetRequest
+		@return RecordTlsaAPIReadRequest
 	*/
-	RecordtlsaReferenceGet(ctx context.Context, reference string) RecordTlsaAPIRecordtlsaReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordTlsaAPIReadRequest
 
-	// RecordtlsaReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordTlsaResponse
-	RecordtlsaReferenceGetExecute(r RecordTlsaAPIRecordtlsaReferenceGetRequest) (*GetRecordTlsaResponse, *http.Response, error)
+	ReadExecute(r RecordTlsaAPIReadRequest) (*GetRecordTlsaResponse, *http.Response, error)
 	/*
-		RecordtlsaReferencePut Update a record:tlsa object
+		Update Update a record:tlsa object
 
 		Updates a specific record:tlsa object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:tlsa object
-		@return RecordTlsaAPIRecordtlsaReferencePutRequest
+		@return RecordTlsaAPIUpdateRequest
 	*/
-	RecordtlsaReferencePut(ctx context.Context, reference string) RecordTlsaAPIRecordtlsaReferencePutRequest
+	Update(ctx context.Context, reference string) RecordTlsaAPIUpdateRequest
 
-	// RecordtlsaReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordTlsaResponse
-	RecordtlsaReferencePutExecute(r RecordTlsaAPIRecordtlsaReferencePutRequest) (*UpdateRecordTlsaResponse, *http.Response, error)
+	UpdateExecute(r RecordTlsaAPIUpdateRequest) (*UpdateRecordTlsaResponse, *http.Response, error)
 }
 
 // RecordTlsaAPIService RecordTlsaAPI service
 type RecordTlsaAPIService internal.Service
 
-type RecordTlsaAPIRecordtlsaGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordTlsaAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r RecordTlsaAPIRecordtlsaGetRequest) ReturnFields(returnFields string) RecordTlsaAPIRecordtlsaGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTlsaAPIRecordtlsaGetRequest) ReturnFields2(returnFields2 string) RecordTlsaAPIRecordtlsaGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r RecordTlsaAPIRecordtlsaGetRequest) MaxResults(maxResults int32) RecordTlsaAPIRecordtlsaGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordTlsaAPIRecordtlsaGetRequest) ReturnAsObject(returnAsObject int32) RecordTlsaAPIRecordtlsaGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r RecordTlsaAPIRecordtlsaGetRequest) Paging(paging int32) RecordTlsaAPIRecordtlsaGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r RecordTlsaAPIRecordtlsaGetRequest) PageId(pageId string) RecordTlsaAPIRecordtlsaGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r RecordTlsaAPIRecordtlsaGetRequest) Filters(filters map[string]interface{}) RecordTlsaAPIRecordtlsaGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r RecordTlsaAPIRecordtlsaGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordTlsaAPIRecordtlsaGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r RecordTlsaAPIRecordtlsaGetRequest) Execute() (*ListRecordTlsaResponse, *http.Response, error) {
-	return r.ApiService.RecordtlsaGetExecute(r)
-}
-
-/*
-RecordtlsaGet Retrieve record:tlsa objects
-
-Returns a list of record:tlsa objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordTlsaAPIRecordtlsaGetRequest
-*/
-func (a *RecordTlsaAPIService) RecordtlsaGet(ctx context.Context) RecordTlsaAPIRecordtlsaGetRequest {
-	return RecordTlsaAPIRecordtlsaGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListRecordTlsaResponse
-func (a *RecordTlsaAPIService) RecordtlsaGetExecute(r RecordTlsaAPIRecordtlsaGetRequest) (*ListRecordTlsaResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListRecordTlsaResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTlsaAPIService.RecordtlsaGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:tlsa"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordTlsaAPIRecordtlsaPostRequest struct {
+type RecordTlsaAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     RecordTlsaAPI
 	recordTlsa     *RecordTlsa
@@ -275,43 +104,43 @@ type RecordTlsaAPIRecordtlsaPostRequest struct {
 }
 
 // Object data to create
-func (r RecordTlsaAPIRecordtlsaPostRequest) RecordTlsa(recordTlsa RecordTlsa) RecordTlsaAPIRecordtlsaPostRequest {
+func (r RecordTlsaAPICreateRequest) RecordTlsa(recordTlsa RecordTlsa) RecordTlsaAPICreateRequest {
 	r.recordTlsa = &recordTlsa
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordTlsaAPIRecordtlsaPostRequest) ReturnFields(returnFields string) RecordTlsaAPIRecordtlsaPostRequest {
+func (r RecordTlsaAPICreateRequest) ReturnFields(returnFields string) RecordTlsaAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTlsaAPIRecordtlsaPostRequest) ReturnFields2(returnFields2 string) RecordTlsaAPIRecordtlsaPostRequest {
+func (r RecordTlsaAPICreateRequest) ReturnFields2(returnFields2 string) RecordTlsaAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordTlsaAPIRecordtlsaPostRequest) ReturnAsObject(returnAsObject int32) RecordTlsaAPIRecordtlsaPostRequest {
+func (r RecordTlsaAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordTlsaAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordTlsaAPIRecordtlsaPostRequest) Execute() (*CreateRecordTlsaResponse, *http.Response, error) {
-	return r.ApiService.RecordtlsaPostExecute(r)
+func (r RecordTlsaAPICreateRequest) Execute() (*CreateRecordTlsaResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-RecordtlsaPost Create a record:tlsa object
+Create Create a record:tlsa object
 
 Creates a new record:tlsa object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordTlsaAPIRecordtlsaPostRequest
+	@return RecordTlsaAPICreateRequest
 */
-func (a *RecordTlsaAPIService) RecordtlsaPost(ctx context.Context) RecordTlsaAPIRecordtlsaPostRequest {
-	return RecordTlsaAPIRecordtlsaPostRequest{
+func (a *RecordTlsaAPIService) Create(ctx context.Context) RecordTlsaAPICreateRequest {
+	return RecordTlsaAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *RecordTlsaAPIService) RecordtlsaPost(ctx context.Context) RecordTlsaAPI
 // Execute executes the request
 //
 //	@return CreateRecordTlsaResponse
-func (a *RecordTlsaAPIService) RecordtlsaPostExecute(r RecordTlsaAPIRecordtlsaPostRequest) (*CreateRecordTlsaResponse, *http.Response, error) {
+func (a *RecordTlsaAPIService) CreateExecute(r RecordTlsaAPICreateRequest) (*CreateRecordTlsaResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *RecordTlsaAPIService) RecordtlsaPostExecute(r RecordTlsaAPIRecordtlsaPo
 		localVarReturnValue *CreateRecordTlsaResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTlsaAPIService.RecordtlsaPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTlsaAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *RecordTlsaAPIService) RecordtlsaPostExecute(r RecordTlsaAPIRecordtlsaPo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordTlsaAPIRecordtlsaReferenceDeleteRequest struct {
+type RecordTlsaAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService RecordTlsaAPI
 	reference  string
 }
 
-func (r RecordTlsaAPIRecordtlsaReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecordtlsaReferenceDeleteExecute(r)
+func (r RecordTlsaAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-RecordtlsaReferenceDelete Delete a record:tlsa object
+Delete Delete a record:tlsa object
 
 Deletes a specific record:tlsa object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:tlsa object
-	@return RecordTlsaAPIRecordtlsaReferenceDeleteRequest
+	@return RecordTlsaAPIDeleteRequest
 */
-func (a *RecordTlsaAPIService) RecordtlsaReferenceDelete(ctx context.Context, reference string) RecordTlsaAPIRecordtlsaReferenceDeleteRequest {
-	return RecordTlsaAPIRecordtlsaReferenceDeleteRequest{
+func (a *RecordTlsaAPIService) Delete(ctx context.Context, reference string) RecordTlsaAPIDeleteRequest {
+	return RecordTlsaAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *RecordTlsaAPIService) RecordtlsaReferenceDelete(ctx context.Context, re
 }
 
 // Execute executes the request
-func (a *RecordTlsaAPIService) RecordtlsaReferenceDeleteExecute(r RecordTlsaAPIRecordtlsaReferenceDeleteRequest) (*http.Response, error) {
+func (a *RecordTlsaAPIService) DeleteExecute(r RecordTlsaAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTlsaAPIService.RecordtlsaReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTlsaAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *RecordTlsaAPIService) RecordtlsaReferenceDeleteExecute(r RecordTlsaAPIR
 	return localVarHTTPResponse, nil
 }
 
-type RecordTlsaAPIRecordtlsaReferenceGetRequest struct {
+type RecordTlsaAPIListRequest struct {
+	ctx            context.Context
+	ApiService     RecordTlsaAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RecordTlsaAPIListRequest) ReturnFields(returnFields string) RecordTlsaAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordTlsaAPIListRequest) ReturnFields2(returnFields2 string) RecordTlsaAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r RecordTlsaAPIListRequest) MaxResults(maxResults int32) RecordTlsaAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordTlsaAPIListRequest) ReturnAsObject(returnAsObject int32) RecordTlsaAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r RecordTlsaAPIListRequest) Paging(paging int32) RecordTlsaAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r RecordTlsaAPIListRequest) PageId(pageId string) RecordTlsaAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r RecordTlsaAPIListRequest) Filters(filters map[string]interface{}) RecordTlsaAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r RecordTlsaAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordTlsaAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r RecordTlsaAPIListRequest) Execute() (*ListRecordTlsaResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve record:tlsa objects
+
+Returns a list of record:tlsa objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordTlsaAPIListRequest
+*/
+func (a *RecordTlsaAPIService) List(ctx context.Context) RecordTlsaAPIListRequest {
+	return RecordTlsaAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListRecordTlsaResponse
+func (a *RecordTlsaAPIService) ListExecute(r RecordTlsaAPIListRequest) (*ListRecordTlsaResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListRecordTlsaResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTlsaAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:tlsa"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordTlsaAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordTlsaAPI
 	reference      string
@@ -511,38 +511,38 @@ type RecordTlsaAPIRecordtlsaReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordTlsaAPIRecordtlsaReferenceGetRequest) ReturnFields(returnFields string) RecordTlsaAPIRecordtlsaReferenceGetRequest {
+func (r RecordTlsaAPIReadRequest) ReturnFields(returnFields string) RecordTlsaAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTlsaAPIRecordtlsaReferenceGetRequest) ReturnFields2(returnFields2 string) RecordTlsaAPIRecordtlsaReferenceGetRequest {
+func (r RecordTlsaAPIReadRequest) ReturnFields2(returnFields2 string) RecordTlsaAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordTlsaAPIRecordtlsaReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordTlsaAPIRecordtlsaReferenceGetRequest {
+func (r RecordTlsaAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordTlsaAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordTlsaAPIRecordtlsaReferenceGetRequest) Execute() (*GetRecordTlsaResponse, *http.Response, error) {
-	return r.ApiService.RecordtlsaReferenceGetExecute(r)
+func (r RecordTlsaAPIReadRequest) Execute() (*GetRecordTlsaResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordtlsaReferenceGet Get a specific record:tlsa object
+Read Get a specific record:tlsa object
 
 Returns a specific record:tlsa object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:tlsa object
-	@return RecordTlsaAPIRecordtlsaReferenceGetRequest
+	@return RecordTlsaAPIReadRequest
 */
-func (a *RecordTlsaAPIService) RecordtlsaReferenceGet(ctx context.Context, reference string) RecordTlsaAPIRecordtlsaReferenceGetRequest {
-	return RecordTlsaAPIRecordtlsaReferenceGetRequest{
+func (a *RecordTlsaAPIService) Read(ctx context.Context, reference string) RecordTlsaAPIReadRequest {
+	return RecordTlsaAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RecordTlsaAPIService) RecordtlsaReferenceGet(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return GetRecordTlsaResponse
-func (a *RecordTlsaAPIService) RecordtlsaReferenceGetExecute(r RecordTlsaAPIRecordtlsaReferenceGetRequest) (*GetRecordTlsaResponse, *http.Response, error) {
+func (a *RecordTlsaAPIService) ReadExecute(r RecordTlsaAPIReadRequest) (*GetRecordTlsaResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RecordTlsaAPIService) RecordtlsaReferenceGetExecute(r RecordTlsaAPIReco
 		localVarReturnValue *GetRecordTlsaResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTlsaAPIService.RecordtlsaReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTlsaAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *RecordTlsaAPIService) RecordtlsaReferenceGetExecute(r RecordTlsaAPIReco
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordTlsaAPIRecordtlsaReferencePutRequest struct {
+type RecordTlsaAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     RecordTlsaAPI
 	reference      string
@@ -639,44 +639,44 @@ type RecordTlsaAPIRecordtlsaReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RecordTlsaAPIRecordtlsaReferencePutRequest) RecordTlsa(recordTlsa RecordTlsa) RecordTlsaAPIRecordtlsaReferencePutRequest {
+func (r RecordTlsaAPIUpdateRequest) RecordTlsa(recordTlsa RecordTlsa) RecordTlsaAPIUpdateRequest {
 	r.recordTlsa = &recordTlsa
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordTlsaAPIRecordtlsaReferencePutRequest) ReturnFields(returnFields string) RecordTlsaAPIRecordtlsaReferencePutRequest {
+func (r RecordTlsaAPIUpdateRequest) ReturnFields(returnFields string) RecordTlsaAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTlsaAPIRecordtlsaReferencePutRequest) ReturnFields2(returnFields2 string) RecordTlsaAPIRecordtlsaReferencePutRequest {
+func (r RecordTlsaAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordTlsaAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordTlsaAPIRecordtlsaReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordTlsaAPIRecordtlsaReferencePutRequest {
+func (r RecordTlsaAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordTlsaAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordTlsaAPIRecordtlsaReferencePutRequest) Execute() (*UpdateRecordTlsaResponse, *http.Response, error) {
-	return r.ApiService.RecordtlsaReferencePutExecute(r)
+func (r RecordTlsaAPIUpdateRequest) Execute() (*UpdateRecordTlsaResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordtlsaReferencePut Update a record:tlsa object
+Update Update a record:tlsa object
 
 Updates a specific record:tlsa object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:tlsa object
-	@return RecordTlsaAPIRecordtlsaReferencePutRequest
+	@return RecordTlsaAPIUpdateRequest
 */
-func (a *RecordTlsaAPIService) RecordtlsaReferencePut(ctx context.Context, reference string) RecordTlsaAPIRecordtlsaReferencePutRequest {
-	return RecordTlsaAPIRecordtlsaReferencePutRequest{
+func (a *RecordTlsaAPIService) Update(ctx context.Context, reference string) RecordTlsaAPIUpdateRequest {
+	return RecordTlsaAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RecordTlsaAPIService) RecordtlsaReferencePut(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return UpdateRecordTlsaResponse
-func (a *RecordTlsaAPIService) RecordtlsaReferencePutExecute(r RecordTlsaAPIRecordtlsaReferencePutRequest) (*UpdateRecordTlsaResponse, *http.Response, error) {
+func (a *RecordTlsaAPIService) UpdateExecute(r RecordTlsaAPIUpdateRequest) (*UpdateRecordTlsaResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RecordTlsaAPIService) RecordtlsaReferencePutExecute(r RecordTlsaAPIReco
 		localVarReturnValue *UpdateRecordTlsaResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTlsaAPIService.RecordtlsaReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordTlsaAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

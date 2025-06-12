@@ -23,52 +23,52 @@ import (
 
 type MastergridAPI interface {
 	/*
-		Get Retrieve mastergrid objects
+		List Retrieve mastergrid objects
 
 		Returns a list of mastergrid objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MastergridAPIGetRequest
+		@return MastergridAPIListRequest
 	*/
-	Get(ctx context.Context) MastergridAPIGetRequest
+	List(ctx context.Context) MastergridAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListMastergridResponse
-	GetExecute(r MastergridAPIGetRequest) (*ListMastergridResponse, *http.Response, error)
+	ListExecute(r MastergridAPIListRequest) (*ListMastergridResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific mastergrid object
+		Read Get a specific mastergrid object
 
 		Returns a specific mastergrid object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the mastergrid object
-		@return MastergridAPIReferenceGetRequest
+		@return MastergridAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) MastergridAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) MastergridAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMastergridResponse
-	ReferenceGetExecute(r MastergridAPIReferenceGetRequest) (*GetMastergridResponse, *http.Response, error)
+	ReadExecute(r MastergridAPIReadRequest) (*GetMastergridResponse, *http.Response, error)
 	/*
-		ReferencePut Update a mastergrid object
+		Update Update a mastergrid object
 
 		Updates a specific mastergrid object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the mastergrid object
-		@return MastergridAPIReferencePutRequest
+		@return MastergridAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) MastergridAPIReferencePutRequest
+	Update(ctx context.Context, reference string) MastergridAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMastergridResponse
-	ReferencePutExecute(r MastergridAPIReferencePutRequest) (*UpdateMastergridResponse, *http.Response, error)
+	UpdateExecute(r MastergridAPIUpdateRequest) (*UpdateMastergridResponse, *http.Response, error)
 }
 
 // MastergridAPIService MastergridAPI service
 type MastergridAPIService internal.Service
 
-type MastergridAPIGetRequest struct {
+type MastergridAPIListRequest struct {
 	ctx            context.Context
 	ApiService     MastergridAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type MastergridAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MastergridAPIGetRequest) ReturnFields(returnFields string) MastergridAPIGetRequest {
+func (r MastergridAPIListRequest) ReturnFields(returnFields string) MastergridAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MastergridAPIGetRequest) ReturnFields2(returnFields2 string) MastergridAPIGetRequest {
+func (r MastergridAPIListRequest) ReturnFields2(returnFields2 string) MastergridAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MastergridAPIGetRequest) MaxResults(maxResults int32) MastergridAPIGetRequest {
+func (r MastergridAPIListRequest) MaxResults(maxResults int32) MastergridAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MastergridAPIGetRequest) ReturnAsObject(returnAsObject int32) MastergridAPIGetRequest {
+func (r MastergridAPIListRequest) ReturnAsObject(returnAsObject int32) MastergridAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MastergridAPIGetRequest) Paging(paging int32) MastergridAPIGetRequest {
+func (r MastergridAPIListRequest) Paging(paging int32) MastergridAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MastergridAPIGetRequest) PageId(pageId string) MastergridAPIGetRequest {
+func (r MastergridAPIListRequest) PageId(pageId string) MastergridAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MastergridAPIGetRequest) Filters(filters map[string]interface{}) MastergridAPIGetRequest {
+func (r MastergridAPIListRequest) Filters(filters map[string]interface{}) MastergridAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MastergridAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MastergridAPIGetRequest {
+func (r MastergridAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MastergridAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MastergridAPIGetRequest) Execute() (*ListMastergridResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r MastergridAPIListRequest) Execute() (*ListMastergridResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve mastergrid objects
+List Retrieve mastergrid objects
 
 Returns a list of mastergrid objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MastergridAPIGetRequest
+	@return MastergridAPIListRequest
 */
-func (a *MastergridAPIService) Get(ctx context.Context) MastergridAPIGetRequest {
-	return MastergridAPIGetRequest{
+func (a *MastergridAPIService) List(ctx context.Context) MastergridAPIListRequest {
+	return MastergridAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *MastergridAPIService) Get(ctx context.Context) MastergridAPIGetRequest 
 // Execute executes the request
 //
 //	@return ListMastergridResponse
-func (a *MastergridAPIService) GetExecute(r MastergridAPIGetRequest) (*ListMastergridResponse, *http.Response, error) {
+func (a *MastergridAPIService) ListExecute(r MastergridAPIListRequest) (*ListMastergridResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *MastergridAPIService) GetExecute(r MastergridAPIGetRequest) (*ListMaste
 		localVarReturnValue *ListMastergridResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MastergridAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MastergridAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *MastergridAPIService) GetExecute(r MastergridAPIGetRequest) (*ListMaste
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MastergridAPIReferenceGetRequest struct {
+type MastergridAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     MastergridAPI
 	reference      string
@@ -249,38 +249,38 @@ type MastergridAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MastergridAPIReferenceGetRequest) ReturnFields(returnFields string) MastergridAPIReferenceGetRequest {
+func (r MastergridAPIReadRequest) ReturnFields(returnFields string) MastergridAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MastergridAPIReferenceGetRequest) ReturnFields2(returnFields2 string) MastergridAPIReferenceGetRequest {
+func (r MastergridAPIReadRequest) ReturnFields2(returnFields2 string) MastergridAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MastergridAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) MastergridAPIReferenceGetRequest {
+func (r MastergridAPIReadRequest) ReturnAsObject(returnAsObject int32) MastergridAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MastergridAPIReferenceGetRequest) Execute() (*GetMastergridResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r MastergridAPIReadRequest) Execute() (*GetMastergridResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific mastergrid object
+Read Get a specific mastergrid object
 
 Returns a specific mastergrid object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the mastergrid object
-	@return MastergridAPIReferenceGetRequest
+	@return MastergridAPIReadRequest
 */
-func (a *MastergridAPIService) ReferenceGet(ctx context.Context, reference string) MastergridAPIReferenceGetRequest {
-	return MastergridAPIReferenceGetRequest{
+func (a *MastergridAPIService) Read(ctx context.Context, reference string) MastergridAPIReadRequest {
+	return MastergridAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *MastergridAPIService) ReferenceGet(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return GetMastergridResponse
-func (a *MastergridAPIService) ReferenceGetExecute(r MastergridAPIReferenceGetRequest) (*GetMastergridResponse, *http.Response, error) {
+func (a *MastergridAPIService) ReadExecute(r MastergridAPIReadRequest) (*GetMastergridResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *MastergridAPIService) ReferenceGetExecute(r MastergridAPIReferenceGetRe
 		localVarReturnValue *GetMastergridResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MastergridAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MastergridAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *MastergridAPIService) ReferenceGetExecute(r MastergridAPIReferenceGetRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MastergridAPIReferencePutRequest struct {
+type MastergridAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     MastergridAPI
 	reference      string
@@ -377,44 +377,44 @@ type MastergridAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r MastergridAPIReferencePutRequest) Mastergrid(mastergrid Mastergrid) MastergridAPIReferencePutRequest {
+func (r MastergridAPIUpdateRequest) Mastergrid(mastergrid Mastergrid) MastergridAPIUpdateRequest {
 	r.mastergrid = &mastergrid
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MastergridAPIReferencePutRequest) ReturnFields(returnFields string) MastergridAPIReferencePutRequest {
+func (r MastergridAPIUpdateRequest) ReturnFields(returnFields string) MastergridAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MastergridAPIReferencePutRequest) ReturnFields2(returnFields2 string) MastergridAPIReferencePutRequest {
+func (r MastergridAPIUpdateRequest) ReturnFields2(returnFields2 string) MastergridAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MastergridAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) MastergridAPIReferencePutRequest {
+func (r MastergridAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MastergridAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MastergridAPIReferencePutRequest) Execute() (*UpdateMastergridResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r MastergridAPIUpdateRequest) Execute() (*UpdateMastergridResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a mastergrid object
+Update Update a mastergrid object
 
 Updates a specific mastergrid object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the mastergrid object
-	@return MastergridAPIReferencePutRequest
+	@return MastergridAPIUpdateRequest
 */
-func (a *MastergridAPIService) ReferencePut(ctx context.Context, reference string) MastergridAPIReferencePutRequest {
-	return MastergridAPIReferencePutRequest{
+func (a *MastergridAPIService) Update(ctx context.Context, reference string) MastergridAPIUpdateRequest {
+	return MastergridAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *MastergridAPIService) ReferencePut(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return UpdateMastergridResponse
-func (a *MastergridAPIService) ReferencePutExecute(r MastergridAPIReferencePutRequest) (*UpdateMastergridResponse, *http.Response, error) {
+func (a *MastergridAPIService) UpdateExecute(r MastergridAPIUpdateRequest) (*UpdateMastergridResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *MastergridAPIService) ReferencePutExecute(r MastergridAPIReferencePutRe
 		localVarReturnValue *UpdateMastergridResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MastergridAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MastergridAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

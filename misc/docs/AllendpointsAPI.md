@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](AllendpointsAPI.md#Get) | **Get** /allendpoints | Retrieve allendpoints objects
-[**ReferenceGet**](AllendpointsAPI.md#ReferenceGet) | **Get** /allendpoints/{reference} | Get a specific allendpoints object
+[**List**](AllendpointsAPI.md#List) | **Get** /allendpoints | Retrieve allendpoints objects
+[**Read**](AllendpointsAPI.md#Read) | **Get** /allendpoints/{reference} | Get a specific allendpoints object
 
 
 
-## Get
+## List
 
-> ListAllendpointsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListAllendpointsResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve allendpoints objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.AllendpointsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.AllendpointsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AllendpointsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AllendpointsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListAllendpointsResponse
-	fmt.Fprintf(os.Stdout, "Response from `AllendpointsAPI.Get`: %v\n", resp)
+	// response from `List`: ListAllendpointsResponse
+	fmt.Fprintf(os.Stdout, "Response from `AllendpointsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AllendpointsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AllendpointsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetAllendpointsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetAllendpointsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific allendpoints object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the allendpoints object
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.AllendpointsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.AllendpointsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AllendpointsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AllendpointsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetAllendpointsResponse
-	fmt.Fprintf(os.Stdout, "Response from `AllendpointsAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetAllendpointsResponse
+	fmt.Fprintf(os.Stdout, "Response from `AllendpointsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AllendpointsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AllendpointsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

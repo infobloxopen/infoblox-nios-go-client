@@ -23,249 +23,78 @@ import (
 
 type AdmingroupAPI interface {
 	/*
-		Get Retrieve admingroup objects
-
-		Returns a list of admingroup objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AdmingroupAPIGetRequest
-	*/
-	Get(ctx context.Context) AdmingroupAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListAdmingroupResponse
-	GetExecute(r AdmingroupAPIGetRequest) (*ListAdmingroupResponse, *http.Response, error)
-	/*
-		Post Create a admingroup object
+		Create Create a admingroup object
 
 		Creates a new admingroup object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AdmingroupAPIPostRequest
+		@return AdmingroupAPICreateRequest
 	*/
-	Post(ctx context.Context) AdmingroupAPIPostRequest
+	Create(ctx context.Context) AdmingroupAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateAdmingroupResponse
-	PostExecute(r AdmingroupAPIPostRequest) (*CreateAdmingroupResponse, *http.Response, error)
+	CreateExecute(r AdmingroupAPICreateRequest) (*CreateAdmingroupResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a admingroup object
+		Delete Delete a admingroup object
 
 		Deletes a specific admingroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the admingroup object
-		@return AdmingroupAPIReferenceDeleteRequest
+		@return AdmingroupAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) AdmingroupAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) AdmingroupAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r AdmingroupAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r AdmingroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific admingroup object
+		List Retrieve admingroup objects
+
+		Returns a list of admingroup objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return AdmingroupAPIListRequest
+	*/
+	List(ctx context.Context) AdmingroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListAdmingroupResponse
+	ListExecute(r AdmingroupAPIListRequest) (*ListAdmingroupResponse, *http.Response, error)
+	/*
+		Read Get a specific admingroup object
 
 		Returns a specific admingroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the admingroup object
-		@return AdmingroupAPIReferenceGetRequest
+		@return AdmingroupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AdmingroupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AdmingroupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAdmingroupResponse
-	ReferenceGetExecute(r AdmingroupAPIReferenceGetRequest) (*GetAdmingroupResponse, *http.Response, error)
+	ReadExecute(r AdmingroupAPIReadRequest) (*GetAdmingroupResponse, *http.Response, error)
 	/*
-		ReferencePut Update a admingroup object
+		Update Update a admingroup object
 
 		Updates a specific admingroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the admingroup object
-		@return AdmingroupAPIReferencePutRequest
+		@return AdmingroupAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) AdmingroupAPIReferencePutRequest
+	Update(ctx context.Context, reference string) AdmingroupAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateAdmingroupResponse
-	ReferencePutExecute(r AdmingroupAPIReferencePutRequest) (*UpdateAdmingroupResponse, *http.Response, error)
+	UpdateExecute(r AdmingroupAPIUpdateRequest) (*UpdateAdmingroupResponse, *http.Response, error)
 }
 
 // AdmingroupAPIService AdmingroupAPI service
 type AdmingroupAPIService internal.Service
 
-type AdmingroupAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     AdmingroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r AdmingroupAPIGetRequest) ReturnFields(returnFields string) AdmingroupAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdmingroupAPIGetRequest) ReturnFields2(returnFields2 string) AdmingroupAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r AdmingroupAPIGetRequest) MaxResults(maxResults int32) AdmingroupAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r AdmingroupAPIGetRequest) ReturnAsObject(returnAsObject int32) AdmingroupAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r AdmingroupAPIGetRequest) Paging(paging int32) AdmingroupAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r AdmingroupAPIGetRequest) PageId(pageId string) AdmingroupAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r AdmingroupAPIGetRequest) Filters(filters map[string]interface{}) AdmingroupAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r AdmingroupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AdmingroupAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r AdmingroupAPIGetRequest) Execute() (*ListAdmingroupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve admingroup objects
-
-Returns a list of admingroup objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AdmingroupAPIGetRequest
-*/
-func (a *AdmingroupAPIService) Get(ctx context.Context) AdmingroupAPIGetRequest {
-	return AdmingroupAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListAdmingroupResponse
-func (a *AdmingroupAPIService) GetExecute(r AdmingroupAPIGetRequest) (*ListAdmingroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListAdmingroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdmingroupAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/admingroup"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type AdmingroupAPIPostRequest struct {
+type AdmingroupAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     AdmingroupAPI
 	admingroup     *Admingroup
@@ -275,43 +104,43 @@ type AdmingroupAPIPostRequest struct {
 }
 
 // Object data to create
-func (r AdmingroupAPIPostRequest) Admingroup(admingroup Admingroup) AdmingroupAPIPostRequest {
+func (r AdmingroupAPICreateRequest) Admingroup(admingroup Admingroup) AdmingroupAPICreateRequest {
 	r.admingroup = &admingroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r AdmingroupAPIPostRequest) ReturnFields(returnFields string) AdmingroupAPIPostRequest {
+func (r AdmingroupAPICreateRequest) ReturnFields(returnFields string) AdmingroupAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdmingroupAPIPostRequest) ReturnFields2(returnFields2 string) AdmingroupAPIPostRequest {
+func (r AdmingroupAPICreateRequest) ReturnFields2(returnFields2 string) AdmingroupAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdmingroupAPIPostRequest) ReturnAsObject(returnAsObject int32) AdmingroupAPIPostRequest {
+func (r AdmingroupAPICreateRequest) ReturnAsObject(returnAsObject int32) AdmingroupAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AdmingroupAPIPostRequest) Execute() (*CreateAdmingroupResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r AdmingroupAPICreateRequest) Execute() (*CreateAdmingroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a admingroup object
+Create Create a admingroup object
 
 Creates a new admingroup object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AdmingroupAPIPostRequest
+	@return AdmingroupAPICreateRequest
 */
-func (a *AdmingroupAPIService) Post(ctx context.Context) AdmingroupAPIPostRequest {
-	return AdmingroupAPIPostRequest{
+func (a *AdmingroupAPIService) Create(ctx context.Context) AdmingroupAPICreateRequest {
+	return AdmingroupAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *AdmingroupAPIService) Post(ctx context.Context) AdmingroupAPIPostReques
 // Execute executes the request
 //
 //	@return CreateAdmingroupResponse
-func (a *AdmingroupAPIService) PostExecute(r AdmingroupAPIPostRequest) (*CreateAdmingroupResponse, *http.Response, error) {
+func (a *AdmingroupAPIService) CreateExecute(r AdmingroupAPICreateRequest) (*CreateAdmingroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *AdmingroupAPIService) PostExecute(r AdmingroupAPIPostRequest) (*CreateA
 		localVarReturnValue *CreateAdmingroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdmingroupAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdmingroupAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *AdmingroupAPIService) PostExecute(r AdmingroupAPIPostRequest) (*CreateA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AdmingroupAPIReferenceDeleteRequest struct {
+type AdmingroupAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService AdmingroupAPI
 	reference  string
 }
 
-func (r AdmingroupAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r AdmingroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a admingroup object
+Delete Delete a admingroup object
 
 Deletes a specific admingroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the admingroup object
-	@return AdmingroupAPIReferenceDeleteRequest
+	@return AdmingroupAPIDeleteRequest
 */
-func (a *AdmingroupAPIService) ReferenceDelete(ctx context.Context, reference string) AdmingroupAPIReferenceDeleteRequest {
-	return AdmingroupAPIReferenceDeleteRequest{
+func (a *AdmingroupAPIService) Delete(ctx context.Context, reference string) AdmingroupAPIDeleteRequest {
+	return AdmingroupAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *AdmingroupAPIService) ReferenceDelete(ctx context.Context, reference st
 }
 
 // Execute executes the request
-func (a *AdmingroupAPIService) ReferenceDeleteExecute(r AdmingroupAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *AdmingroupAPIService) DeleteExecute(r AdmingroupAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdmingroupAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdmingroupAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *AdmingroupAPIService) ReferenceDeleteExecute(r AdmingroupAPIReferenceDe
 	return localVarHTTPResponse, nil
 }
 
-type AdmingroupAPIReferenceGetRequest struct {
+type AdmingroupAPIListRequest struct {
+	ctx            context.Context
+	ApiService     AdmingroupAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r AdmingroupAPIListRequest) ReturnFields(returnFields string) AdmingroupAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r AdmingroupAPIListRequest) ReturnFields2(returnFields2 string) AdmingroupAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r AdmingroupAPIListRequest) MaxResults(maxResults int32) AdmingroupAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r AdmingroupAPIListRequest) ReturnAsObject(returnAsObject int32) AdmingroupAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r AdmingroupAPIListRequest) Paging(paging int32) AdmingroupAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r AdmingroupAPIListRequest) PageId(pageId string) AdmingroupAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r AdmingroupAPIListRequest) Filters(filters map[string]interface{}) AdmingroupAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r AdmingroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AdmingroupAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r AdmingroupAPIListRequest) Execute() (*ListAdmingroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve admingroup objects
+
+Returns a list of admingroup objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return AdmingroupAPIListRequest
+*/
+func (a *AdmingroupAPIService) List(ctx context.Context) AdmingroupAPIListRequest {
+	return AdmingroupAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListAdmingroupResponse
+func (a *AdmingroupAPIService) ListExecute(r AdmingroupAPIListRequest) (*ListAdmingroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListAdmingroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdmingroupAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/admingroup"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type AdmingroupAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     AdmingroupAPI
 	reference      string
@@ -511,38 +511,38 @@ type AdmingroupAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r AdmingroupAPIReferenceGetRequest) ReturnFields(returnFields string) AdmingroupAPIReferenceGetRequest {
+func (r AdmingroupAPIReadRequest) ReturnFields(returnFields string) AdmingroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdmingroupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AdmingroupAPIReferenceGetRequest {
+func (r AdmingroupAPIReadRequest) ReturnFields2(returnFields2 string) AdmingroupAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdmingroupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AdmingroupAPIReferenceGetRequest {
+func (r AdmingroupAPIReadRequest) ReturnAsObject(returnAsObject int32) AdmingroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AdmingroupAPIReferenceGetRequest) Execute() (*GetAdmingroupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r AdmingroupAPIReadRequest) Execute() (*GetAdmingroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific admingroup object
+Read Get a specific admingroup object
 
 Returns a specific admingroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the admingroup object
-	@return AdmingroupAPIReferenceGetRequest
+	@return AdmingroupAPIReadRequest
 */
-func (a *AdmingroupAPIService) ReferenceGet(ctx context.Context, reference string) AdmingroupAPIReferenceGetRequest {
-	return AdmingroupAPIReferenceGetRequest{
+func (a *AdmingroupAPIService) Read(ctx context.Context, reference string) AdmingroupAPIReadRequest {
+	return AdmingroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *AdmingroupAPIService) ReferenceGet(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return GetAdmingroupResponse
-func (a *AdmingroupAPIService) ReferenceGetExecute(r AdmingroupAPIReferenceGetRequest) (*GetAdmingroupResponse, *http.Response, error) {
+func (a *AdmingroupAPIService) ReadExecute(r AdmingroupAPIReadRequest) (*GetAdmingroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *AdmingroupAPIService) ReferenceGetExecute(r AdmingroupAPIReferenceGetRe
 		localVarReturnValue *GetAdmingroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdmingroupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdmingroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *AdmingroupAPIService) ReferenceGetExecute(r AdmingroupAPIReferenceGetRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AdmingroupAPIReferencePutRequest struct {
+type AdmingroupAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     AdmingroupAPI
 	reference      string
@@ -639,44 +639,44 @@ type AdmingroupAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r AdmingroupAPIReferencePutRequest) Admingroup(admingroup Admingroup) AdmingroupAPIReferencePutRequest {
+func (r AdmingroupAPIUpdateRequest) Admingroup(admingroup Admingroup) AdmingroupAPIUpdateRequest {
 	r.admingroup = &admingroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r AdmingroupAPIReferencePutRequest) ReturnFields(returnFields string) AdmingroupAPIReferencePutRequest {
+func (r AdmingroupAPIUpdateRequest) ReturnFields(returnFields string) AdmingroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdmingroupAPIReferencePutRequest) ReturnFields2(returnFields2 string) AdmingroupAPIReferencePutRequest {
+func (r AdmingroupAPIUpdateRequest) ReturnFields2(returnFields2 string) AdmingroupAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdmingroupAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) AdmingroupAPIReferencePutRequest {
+func (r AdmingroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) AdmingroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AdmingroupAPIReferencePutRequest) Execute() (*UpdateAdmingroupResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r AdmingroupAPIUpdateRequest) Execute() (*UpdateAdmingroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a admingroup object
+Update Update a admingroup object
 
 Updates a specific admingroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the admingroup object
-	@return AdmingroupAPIReferencePutRequest
+	@return AdmingroupAPIUpdateRequest
 */
-func (a *AdmingroupAPIService) ReferencePut(ctx context.Context, reference string) AdmingroupAPIReferencePutRequest {
-	return AdmingroupAPIReferencePutRequest{
+func (a *AdmingroupAPIService) Update(ctx context.Context, reference string) AdmingroupAPIUpdateRequest {
+	return AdmingroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *AdmingroupAPIService) ReferencePut(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return UpdateAdmingroupResponse
-func (a *AdmingroupAPIService) ReferencePutExecute(r AdmingroupAPIReferencePutRequest) (*UpdateAdmingroupResponse, *http.Response, error) {
+func (a *AdmingroupAPIService) UpdateExecute(r AdmingroupAPIUpdateRequest) (*UpdateAdmingroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *AdmingroupAPIService) ReferencePutExecute(r AdmingroupAPIReferencePutRe
 		localVarReturnValue *UpdateAdmingroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdmingroupAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdmingroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

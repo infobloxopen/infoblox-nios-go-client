@@ -23,11 +23,11 @@ func TestIpv6filteroptionAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test Ipv6filteroptionAPIService Get", func(t *testing.T) {
+	t.Run("Test Ipv6filteroptionAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6filteroptionAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Ipv6filteroptionAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestIpv6filteroptionAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6filteroptionAPIService Post", func(t *testing.T) {
+	t.Run("Test Ipv6filteroptionAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6filteroptionAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.Ipv6filteroptionAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test Ipv6filteroptionAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Ipv6filteroptionAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestIpv6filteroptionAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6filteroptionAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test Ipv6filteroptionAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.Ipv6filteroptionAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test Ipv6filteroptionAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.Ipv6filteroptionAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6filteroptionAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestIpv6filteroptionAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6filteroptionAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test Ipv6filteroptionAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.Ipv6filteroptionAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6filteroptionAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

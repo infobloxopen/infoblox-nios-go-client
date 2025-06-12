@@ -23,11 +23,11 @@ func TestParentalcontrolSubscriberAPIService(t *testing.T) {
 
 	apiClient := parentalcontrol.NewAPIClient()
 
-	t.Run("Test ParentalcontrolSubscriberAPIService ParentalcontrolsubscriberGet", func(t *testing.T) {
+	t.Run("Test ParentalcontrolSubscriberAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolSubscriberAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestParentalcontrolSubscriberAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolSubscriberAPIService ParentalcontrolsubscriberReferenceGet", func(t *testing.T) {
+	t.Run("Test ParentalcontrolSubscriberAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolSubscriberAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestParentalcontrolSubscriberAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolSubscriberAPIService ParentalcontrolsubscriberReferencePut", func(t *testing.T) {
+	t.Run("Test ParentalcontrolSubscriberAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolSubscriberAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

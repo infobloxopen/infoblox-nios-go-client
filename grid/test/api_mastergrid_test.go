@@ -23,11 +23,11 @@ func TestMastergridAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test MastergridAPIService Get", func(t *testing.T) {
+	t.Run("Test MastergridAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MastergridAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MastergridAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestMastergridAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MastergridAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test MastergridAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MastergridAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MastergridAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestMastergridAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MastergridAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test MastergridAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MastergridAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MastergridAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

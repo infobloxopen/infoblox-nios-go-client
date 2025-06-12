@@ -23,249 +23,78 @@ import (
 
 type ZoneForwardAPI interface {
 	/*
-		Get Retrieve zone_forward objects
-
-		Returns a list of zone_forward objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneForwardAPIGetRequest
-	*/
-	Get(ctx context.Context) ZoneForwardAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListZoneForwardResponse
-	GetExecute(r ZoneForwardAPIGetRequest) (*ListZoneForwardResponse, *http.Response, error)
-	/*
-		Post Create a zone_forward object
+		Create Create a zone_forward object
 
 		Creates a new zone_forward object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneForwardAPIPostRequest
+		@return ZoneForwardAPICreateRequest
 	*/
-	Post(ctx context.Context) ZoneForwardAPIPostRequest
+	Create(ctx context.Context) ZoneForwardAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateZoneForwardResponse
-	PostExecute(r ZoneForwardAPIPostRequest) (*CreateZoneForwardResponse, *http.Response, error)
+	CreateExecute(r ZoneForwardAPICreateRequest) (*CreateZoneForwardResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a zone_forward object
+		Delete Delete a zone_forward object
 
 		Deletes a specific zone_forward object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_forward object
-		@return ZoneForwardAPIReferenceDeleteRequest
+		@return ZoneForwardAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) ZoneForwardAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ZoneForwardAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r ZoneForwardAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ZoneForwardAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific zone_forward object
+		List Retrieve zone_forward objects
+
+		Returns a list of zone_forward objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ZoneForwardAPIListRequest
+	*/
+	List(ctx context.Context) ZoneForwardAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListZoneForwardResponse
+	ListExecute(r ZoneForwardAPIListRequest) (*ListZoneForwardResponse, *http.Response, error)
+	/*
+		Read Get a specific zone_forward object
 
 		Returns a specific zone_forward object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_forward object
-		@return ZoneForwardAPIReferenceGetRequest
+		@return ZoneForwardAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ZoneForwardAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ZoneForwardAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetZoneForwardResponse
-	ReferenceGetExecute(r ZoneForwardAPIReferenceGetRequest) (*GetZoneForwardResponse, *http.Response, error)
+	ReadExecute(r ZoneForwardAPIReadRequest) (*GetZoneForwardResponse, *http.Response, error)
 	/*
-		ReferencePut Update a zone_forward object
+		Update Update a zone_forward object
 
 		Updates a specific zone_forward object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_forward object
-		@return ZoneForwardAPIReferencePutRequest
+		@return ZoneForwardAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) ZoneForwardAPIReferencePutRequest
+	Update(ctx context.Context, reference string) ZoneForwardAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateZoneForwardResponse
-	ReferencePutExecute(r ZoneForwardAPIReferencePutRequest) (*UpdateZoneForwardResponse, *http.Response, error)
+	UpdateExecute(r ZoneForwardAPIUpdateRequest) (*UpdateZoneForwardResponse, *http.Response, error)
 }
 
 // ZoneForwardAPIService ZoneForwardAPI service
 type ZoneForwardAPIService internal.Service
 
-type ZoneForwardAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     ZoneForwardAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r ZoneForwardAPIGetRequest) ReturnFields(returnFields string) ZoneForwardAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneForwardAPIGetRequest) ReturnFields2(returnFields2 string) ZoneForwardAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r ZoneForwardAPIGetRequest) MaxResults(maxResults int32) ZoneForwardAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ZoneForwardAPIGetRequest) ReturnAsObject(returnAsObject int32) ZoneForwardAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r ZoneForwardAPIGetRequest) Paging(paging int32) ZoneForwardAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r ZoneForwardAPIGetRequest) PageId(pageId string) ZoneForwardAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r ZoneForwardAPIGetRequest) Filters(filters map[string]interface{}) ZoneForwardAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r ZoneForwardAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneForwardAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r ZoneForwardAPIGetRequest) Execute() (*ListZoneForwardResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve zone_forward objects
-
-Returns a list of zone_forward objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneForwardAPIGetRequest
-*/
-func (a *ZoneForwardAPIService) Get(ctx context.Context) ZoneForwardAPIGetRequest {
-	return ZoneForwardAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListZoneForwardResponse
-func (a *ZoneForwardAPIService) GetExecute(r ZoneForwardAPIGetRequest) (*ListZoneForwardResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListZoneForwardResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneForwardAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/zone_forward"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ZoneForwardAPIPostRequest struct {
+type ZoneForwardAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     ZoneForwardAPI
 	zoneForward    *ZoneForward
@@ -275,43 +104,43 @@ type ZoneForwardAPIPostRequest struct {
 }
 
 // Object data to create
-func (r ZoneForwardAPIPostRequest) ZoneForward(zoneForward ZoneForward) ZoneForwardAPIPostRequest {
+func (r ZoneForwardAPICreateRequest) ZoneForward(zoneForward ZoneForward) ZoneForwardAPICreateRequest {
 	r.zoneForward = &zoneForward
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ZoneForwardAPIPostRequest) ReturnFields(returnFields string) ZoneForwardAPIPostRequest {
+func (r ZoneForwardAPICreateRequest) ReturnFields(returnFields string) ZoneForwardAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneForwardAPIPostRequest) ReturnFields2(returnFields2 string) ZoneForwardAPIPostRequest {
+func (r ZoneForwardAPICreateRequest) ReturnFields2(returnFields2 string) ZoneForwardAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneForwardAPIPostRequest) ReturnAsObject(returnAsObject int32) ZoneForwardAPIPostRequest {
+func (r ZoneForwardAPICreateRequest) ReturnAsObject(returnAsObject int32) ZoneForwardAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneForwardAPIPostRequest) Execute() (*CreateZoneForwardResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r ZoneForwardAPICreateRequest) Execute() (*CreateZoneForwardResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a zone_forward object
+Create Create a zone_forward object
 
 Creates a new zone_forward object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneForwardAPIPostRequest
+	@return ZoneForwardAPICreateRequest
 */
-func (a *ZoneForwardAPIService) Post(ctx context.Context) ZoneForwardAPIPostRequest {
-	return ZoneForwardAPIPostRequest{
+func (a *ZoneForwardAPIService) Create(ctx context.Context) ZoneForwardAPICreateRequest {
+	return ZoneForwardAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *ZoneForwardAPIService) Post(ctx context.Context) ZoneForwardAPIPostRequ
 // Execute executes the request
 //
 //	@return CreateZoneForwardResponse
-func (a *ZoneForwardAPIService) PostExecute(r ZoneForwardAPIPostRequest) (*CreateZoneForwardResponse, *http.Response, error) {
+func (a *ZoneForwardAPIService) CreateExecute(r ZoneForwardAPICreateRequest) (*CreateZoneForwardResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *ZoneForwardAPIService) PostExecute(r ZoneForwardAPIPostRequest) (*Creat
 		localVarReturnValue *CreateZoneForwardResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneForwardAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneForwardAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *ZoneForwardAPIService) PostExecute(r ZoneForwardAPIPostRequest) (*Creat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneForwardAPIReferenceDeleteRequest struct {
+type ZoneForwardAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService ZoneForwardAPI
 	reference  string
 }
 
-func (r ZoneForwardAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r ZoneForwardAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a zone_forward object
+Delete Delete a zone_forward object
 
 Deletes a specific zone_forward object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_forward object
-	@return ZoneForwardAPIReferenceDeleteRequest
+	@return ZoneForwardAPIDeleteRequest
 */
-func (a *ZoneForwardAPIService) ReferenceDelete(ctx context.Context, reference string) ZoneForwardAPIReferenceDeleteRequest {
-	return ZoneForwardAPIReferenceDeleteRequest{
+func (a *ZoneForwardAPIService) Delete(ctx context.Context, reference string) ZoneForwardAPIDeleteRequest {
+	return ZoneForwardAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *ZoneForwardAPIService) ReferenceDelete(ctx context.Context, reference s
 }
 
 // Execute executes the request
-func (a *ZoneForwardAPIService) ReferenceDeleteExecute(r ZoneForwardAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *ZoneForwardAPIService) DeleteExecute(r ZoneForwardAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneForwardAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneForwardAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *ZoneForwardAPIService) ReferenceDeleteExecute(r ZoneForwardAPIReference
 	return localVarHTTPResponse, nil
 }
 
-type ZoneForwardAPIReferenceGetRequest struct {
+type ZoneForwardAPIListRequest struct {
+	ctx            context.Context
+	ApiService     ZoneForwardAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r ZoneForwardAPIListRequest) ReturnFields(returnFields string) ZoneForwardAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ZoneForwardAPIListRequest) ReturnFields2(returnFields2 string) ZoneForwardAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r ZoneForwardAPIListRequest) MaxResults(maxResults int32) ZoneForwardAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ZoneForwardAPIListRequest) ReturnAsObject(returnAsObject int32) ZoneForwardAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r ZoneForwardAPIListRequest) Paging(paging int32) ZoneForwardAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r ZoneForwardAPIListRequest) PageId(pageId string) ZoneForwardAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r ZoneForwardAPIListRequest) Filters(filters map[string]interface{}) ZoneForwardAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r ZoneForwardAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneForwardAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r ZoneForwardAPIListRequest) Execute() (*ListZoneForwardResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve zone_forward objects
+
+Returns a list of zone_forward objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ZoneForwardAPIListRequest
+*/
+func (a *ZoneForwardAPIService) List(ctx context.Context) ZoneForwardAPIListRequest {
+	return ZoneForwardAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListZoneForwardResponse
+func (a *ZoneForwardAPIService) ListExecute(r ZoneForwardAPIListRequest) (*ListZoneForwardResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListZoneForwardResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneForwardAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/zone_forward"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ZoneForwardAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ZoneForwardAPI
 	reference      string
@@ -511,38 +511,38 @@ type ZoneForwardAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ZoneForwardAPIReferenceGetRequest) ReturnFields(returnFields string) ZoneForwardAPIReferenceGetRequest {
+func (r ZoneForwardAPIReadRequest) ReturnFields(returnFields string) ZoneForwardAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneForwardAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ZoneForwardAPIReferenceGetRequest {
+func (r ZoneForwardAPIReadRequest) ReturnFields2(returnFields2 string) ZoneForwardAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneForwardAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ZoneForwardAPIReferenceGetRequest {
+func (r ZoneForwardAPIReadRequest) ReturnAsObject(returnAsObject int32) ZoneForwardAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneForwardAPIReferenceGetRequest) Execute() (*GetZoneForwardResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r ZoneForwardAPIReadRequest) Execute() (*GetZoneForwardResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific zone_forward object
+Read Get a specific zone_forward object
 
 Returns a specific zone_forward object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_forward object
-	@return ZoneForwardAPIReferenceGetRequest
+	@return ZoneForwardAPIReadRequest
 */
-func (a *ZoneForwardAPIService) ReferenceGet(ctx context.Context, reference string) ZoneForwardAPIReferenceGetRequest {
-	return ZoneForwardAPIReferenceGetRequest{
+func (a *ZoneForwardAPIService) Read(ctx context.Context, reference string) ZoneForwardAPIReadRequest {
+	return ZoneForwardAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *ZoneForwardAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetZoneForwardResponse
-func (a *ZoneForwardAPIService) ReferenceGetExecute(r ZoneForwardAPIReferenceGetRequest) (*GetZoneForwardResponse, *http.Response, error) {
+func (a *ZoneForwardAPIService) ReadExecute(r ZoneForwardAPIReadRequest) (*GetZoneForwardResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *ZoneForwardAPIService) ReferenceGetExecute(r ZoneForwardAPIReferenceGet
 		localVarReturnValue *GetZoneForwardResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneForwardAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneForwardAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *ZoneForwardAPIService) ReferenceGetExecute(r ZoneForwardAPIReferenceGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneForwardAPIReferencePutRequest struct {
+type ZoneForwardAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     ZoneForwardAPI
 	reference      string
@@ -639,44 +639,44 @@ type ZoneForwardAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r ZoneForwardAPIReferencePutRequest) ZoneForward(zoneForward ZoneForward) ZoneForwardAPIReferencePutRequest {
+func (r ZoneForwardAPIUpdateRequest) ZoneForward(zoneForward ZoneForward) ZoneForwardAPIUpdateRequest {
 	r.zoneForward = &zoneForward
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ZoneForwardAPIReferencePutRequest) ReturnFields(returnFields string) ZoneForwardAPIReferencePutRequest {
+func (r ZoneForwardAPIUpdateRequest) ReturnFields(returnFields string) ZoneForwardAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneForwardAPIReferencePutRequest) ReturnFields2(returnFields2 string) ZoneForwardAPIReferencePutRequest {
+func (r ZoneForwardAPIUpdateRequest) ReturnFields2(returnFields2 string) ZoneForwardAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneForwardAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) ZoneForwardAPIReferencePutRequest {
+func (r ZoneForwardAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ZoneForwardAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneForwardAPIReferencePutRequest) Execute() (*UpdateZoneForwardResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r ZoneForwardAPIUpdateRequest) Execute() (*UpdateZoneForwardResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a zone_forward object
+Update Update a zone_forward object
 
 Updates a specific zone_forward object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_forward object
-	@return ZoneForwardAPIReferencePutRequest
+	@return ZoneForwardAPIUpdateRequest
 */
-func (a *ZoneForwardAPIService) ReferencePut(ctx context.Context, reference string) ZoneForwardAPIReferencePutRequest {
-	return ZoneForwardAPIReferencePutRequest{
+func (a *ZoneForwardAPIService) Update(ctx context.Context, reference string) ZoneForwardAPIUpdateRequest {
+	return ZoneForwardAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *ZoneForwardAPIService) ReferencePut(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return UpdateZoneForwardResponse
-func (a *ZoneForwardAPIService) ReferencePutExecute(r ZoneForwardAPIReferencePutRequest) (*UpdateZoneForwardResponse, *http.Response, error) {
+func (a *ZoneForwardAPIService) UpdateExecute(r ZoneForwardAPIUpdateRequest) (*UpdateZoneForwardResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *ZoneForwardAPIService) ReferencePutExecute(r ZoneForwardAPIReferencePut
 		localVarReturnValue *UpdateZoneForwardResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneForwardAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneForwardAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -23,11 +23,11 @@ func TestGridThreatprotectionAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test GridThreatprotectionAPIService GridthreatprotectionGet", func(t *testing.T) {
+	t.Run("Test GridThreatprotectionAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridThreatprotectionAPI.GridthreatprotectionGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GridThreatprotectionAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestGridThreatprotectionAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridThreatprotectionAPIService GridthreatprotectionReferenceGet", func(t *testing.T) {
+	t.Run("Test GridThreatprotectionAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridThreatprotectionAPI.GridthreatprotectionReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridThreatprotectionAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestGridThreatprotectionAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridThreatprotectionAPIService GridthreatprotectionReferencePut", func(t *testing.T) {
+	t.Run("Test GridThreatprotectionAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridThreatprotectionAPI.GridthreatprotectionReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridThreatprotectionAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

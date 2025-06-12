@@ -23,11 +23,24 @@ func TestScheduledtaskAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test ScheduledtaskAPIService Get", func(t *testing.T) {
+	t.Run("Test ScheduledtaskAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ScheduledtaskAPI.Get(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ScheduledtaskAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ScheduledtaskAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ScheduledtaskAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,26 +48,13 @@ func TestScheduledtaskAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScheduledtaskAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test ScheduledtaskAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ScheduledtaskAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ScheduledtaskAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ScheduledtaskAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ScheduledtaskAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,13 +62,13 @@ func TestScheduledtaskAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScheduledtaskAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test ScheduledtaskAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ScheduledtaskAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ScheduledtaskAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,249 +23,78 @@ import (
 
 type ZoneAuthAPI interface {
 	/*
-		Get Retrieve zone_auth objects
-
-		Returns a list of zone_auth objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneAuthAPIGetRequest
-	*/
-	Get(ctx context.Context) ZoneAuthAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListZoneAuthResponse
-	GetExecute(r ZoneAuthAPIGetRequest) (*ListZoneAuthResponse, *http.Response, error)
-	/*
-		Post Create a zone_auth object
+		Create Create a zone_auth object
 
 		Creates a new zone_auth object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneAuthAPIPostRequest
+		@return ZoneAuthAPICreateRequest
 	*/
-	Post(ctx context.Context) ZoneAuthAPIPostRequest
+	Create(ctx context.Context) ZoneAuthAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateZoneAuthResponse
-	PostExecute(r ZoneAuthAPIPostRequest) (*CreateZoneAuthResponse, *http.Response, error)
+	CreateExecute(r ZoneAuthAPICreateRequest) (*CreateZoneAuthResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a zone_auth object
+		Delete Delete a zone_auth object
 
 		Deletes a specific zone_auth object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_auth object
-		@return ZoneAuthAPIReferenceDeleteRequest
+		@return ZoneAuthAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) ZoneAuthAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ZoneAuthAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r ZoneAuthAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ZoneAuthAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific zone_auth object
+		List Retrieve zone_auth objects
+
+		Returns a list of zone_auth objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ZoneAuthAPIListRequest
+	*/
+	List(ctx context.Context) ZoneAuthAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListZoneAuthResponse
+	ListExecute(r ZoneAuthAPIListRequest) (*ListZoneAuthResponse, *http.Response, error)
+	/*
+		Read Get a specific zone_auth object
 
 		Returns a specific zone_auth object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_auth object
-		@return ZoneAuthAPIReferenceGetRequest
+		@return ZoneAuthAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ZoneAuthAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ZoneAuthAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetZoneAuthResponse
-	ReferenceGetExecute(r ZoneAuthAPIReferenceGetRequest) (*GetZoneAuthResponse, *http.Response, error)
+	ReadExecute(r ZoneAuthAPIReadRequest) (*GetZoneAuthResponse, *http.Response, error)
 	/*
-		ReferencePut Update a zone_auth object
+		Update Update a zone_auth object
 
 		Updates a specific zone_auth object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_auth object
-		@return ZoneAuthAPIReferencePutRequest
+		@return ZoneAuthAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) ZoneAuthAPIReferencePutRequest
+	Update(ctx context.Context, reference string) ZoneAuthAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateZoneAuthResponse
-	ReferencePutExecute(r ZoneAuthAPIReferencePutRequest) (*UpdateZoneAuthResponse, *http.Response, error)
+	UpdateExecute(r ZoneAuthAPIUpdateRequest) (*UpdateZoneAuthResponse, *http.Response, error)
 }
 
 // ZoneAuthAPIService ZoneAuthAPI service
 type ZoneAuthAPIService internal.Service
 
-type ZoneAuthAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     ZoneAuthAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r ZoneAuthAPIGetRequest) ReturnFields(returnFields string) ZoneAuthAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneAuthAPIGetRequest) ReturnFields2(returnFields2 string) ZoneAuthAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r ZoneAuthAPIGetRequest) MaxResults(maxResults int32) ZoneAuthAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ZoneAuthAPIGetRequest) ReturnAsObject(returnAsObject int32) ZoneAuthAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r ZoneAuthAPIGetRequest) Paging(paging int32) ZoneAuthAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r ZoneAuthAPIGetRequest) PageId(pageId string) ZoneAuthAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r ZoneAuthAPIGetRequest) Filters(filters map[string]interface{}) ZoneAuthAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r ZoneAuthAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneAuthAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r ZoneAuthAPIGetRequest) Execute() (*ListZoneAuthResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve zone_auth objects
-
-Returns a list of zone_auth objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneAuthAPIGetRequest
-*/
-func (a *ZoneAuthAPIService) Get(ctx context.Context) ZoneAuthAPIGetRequest {
-	return ZoneAuthAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListZoneAuthResponse
-func (a *ZoneAuthAPIService) GetExecute(r ZoneAuthAPIGetRequest) (*ListZoneAuthResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListZoneAuthResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/zone_auth"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ZoneAuthAPIPostRequest struct {
+type ZoneAuthAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     ZoneAuthAPI
 	zoneAuth       *ZoneAuth
@@ -275,43 +104,43 @@ type ZoneAuthAPIPostRequest struct {
 }
 
 // Object data to create
-func (r ZoneAuthAPIPostRequest) ZoneAuth(zoneAuth ZoneAuth) ZoneAuthAPIPostRequest {
+func (r ZoneAuthAPICreateRequest) ZoneAuth(zoneAuth ZoneAuth) ZoneAuthAPICreateRequest {
 	r.zoneAuth = &zoneAuth
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ZoneAuthAPIPostRequest) ReturnFields(returnFields string) ZoneAuthAPIPostRequest {
+func (r ZoneAuthAPICreateRequest) ReturnFields(returnFields string) ZoneAuthAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneAuthAPIPostRequest) ReturnFields2(returnFields2 string) ZoneAuthAPIPostRequest {
+func (r ZoneAuthAPICreateRequest) ReturnFields2(returnFields2 string) ZoneAuthAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneAuthAPIPostRequest) ReturnAsObject(returnAsObject int32) ZoneAuthAPIPostRequest {
+func (r ZoneAuthAPICreateRequest) ReturnAsObject(returnAsObject int32) ZoneAuthAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneAuthAPIPostRequest) Execute() (*CreateZoneAuthResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r ZoneAuthAPICreateRequest) Execute() (*CreateZoneAuthResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a zone_auth object
+Create Create a zone_auth object
 
 Creates a new zone_auth object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneAuthAPIPostRequest
+	@return ZoneAuthAPICreateRequest
 */
-func (a *ZoneAuthAPIService) Post(ctx context.Context) ZoneAuthAPIPostRequest {
-	return ZoneAuthAPIPostRequest{
+func (a *ZoneAuthAPIService) Create(ctx context.Context) ZoneAuthAPICreateRequest {
+	return ZoneAuthAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *ZoneAuthAPIService) Post(ctx context.Context) ZoneAuthAPIPostRequest {
 // Execute executes the request
 //
 //	@return CreateZoneAuthResponse
-func (a *ZoneAuthAPIService) PostExecute(r ZoneAuthAPIPostRequest) (*CreateZoneAuthResponse, *http.Response, error) {
+func (a *ZoneAuthAPIService) CreateExecute(r ZoneAuthAPICreateRequest) (*CreateZoneAuthResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *ZoneAuthAPIService) PostExecute(r ZoneAuthAPIPostRequest) (*CreateZoneA
 		localVarReturnValue *CreateZoneAuthResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,7 +241,7 @@ func (a *ZoneAuthAPIService) PostExecute(r ZoneAuthAPIPostRequest) (*CreateZoneA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneAuthAPIReferenceDeleteRequest struct {
+type ZoneAuthAPIDeleteRequest struct {
 	ctx            context.Context
 	ApiService     ZoneAuthAPI
 	reference      string
@@ -420,26 +249,26 @@ type ZoneAuthAPIReferenceDeleteRequest struct {
 }
 
 // Remove subzones delete option. Determines whether all child objects should be removed alongside with the parent zone or child objects should be assigned to another parental zone. By default child objects are deleted with the parent zone.
-func (r ZoneAuthAPIReferenceDeleteRequest) RemoveSubzones(removeSubzones bool) ZoneAuthAPIReferenceDeleteRequest {
+func (r ZoneAuthAPIDeleteRequest) RemoveSubzones(removeSubzones bool) ZoneAuthAPIDeleteRequest {
 	r.removeSubzones = &removeSubzones
 	return r
 }
 
-func (r ZoneAuthAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r ZoneAuthAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a zone_auth object
+Delete Delete a zone_auth object
 
 Deletes a specific zone_auth object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_auth object
-	@return ZoneAuthAPIReferenceDeleteRequest
+	@return ZoneAuthAPIDeleteRequest
 */
-func (a *ZoneAuthAPIService) ReferenceDelete(ctx context.Context, reference string) ZoneAuthAPIReferenceDeleteRequest {
-	return ZoneAuthAPIReferenceDeleteRequest{
+func (a *ZoneAuthAPIService) Delete(ctx context.Context, reference string) ZoneAuthAPIDeleteRequest {
+	return ZoneAuthAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -447,14 +276,14 @@ func (a *ZoneAuthAPIService) ReferenceDelete(ctx context.Context, reference stri
 }
 
 // Execute executes the request
-func (a *ZoneAuthAPIService) ReferenceDeleteExecute(r ZoneAuthAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *ZoneAuthAPIService) DeleteExecute(r ZoneAuthAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -511,7 +340,178 @@ func (a *ZoneAuthAPIService) ReferenceDeleteExecute(r ZoneAuthAPIReferenceDelete
 	return localVarHTTPResponse, nil
 }
 
-type ZoneAuthAPIReferenceGetRequest struct {
+type ZoneAuthAPIListRequest struct {
+	ctx            context.Context
+	ApiService     ZoneAuthAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r ZoneAuthAPIListRequest) ReturnFields(returnFields string) ZoneAuthAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ZoneAuthAPIListRequest) ReturnFields2(returnFields2 string) ZoneAuthAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r ZoneAuthAPIListRequest) MaxResults(maxResults int32) ZoneAuthAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ZoneAuthAPIListRequest) ReturnAsObject(returnAsObject int32) ZoneAuthAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r ZoneAuthAPIListRequest) Paging(paging int32) ZoneAuthAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r ZoneAuthAPIListRequest) PageId(pageId string) ZoneAuthAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r ZoneAuthAPIListRequest) Filters(filters map[string]interface{}) ZoneAuthAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r ZoneAuthAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneAuthAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r ZoneAuthAPIListRequest) Execute() (*ListZoneAuthResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve zone_auth objects
+
+Returns a list of zone_auth objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ZoneAuthAPIListRequest
+*/
+func (a *ZoneAuthAPIService) List(ctx context.Context) ZoneAuthAPIListRequest {
+	return ZoneAuthAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListZoneAuthResponse
+func (a *ZoneAuthAPIService) ListExecute(r ZoneAuthAPIListRequest) (*ListZoneAuthResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListZoneAuthResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/zone_auth"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ZoneAuthAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ZoneAuthAPI
 	reference      string
@@ -521,38 +521,38 @@ type ZoneAuthAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ZoneAuthAPIReferenceGetRequest) ReturnFields(returnFields string) ZoneAuthAPIReferenceGetRequest {
+func (r ZoneAuthAPIReadRequest) ReturnFields(returnFields string) ZoneAuthAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneAuthAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ZoneAuthAPIReferenceGetRequest {
+func (r ZoneAuthAPIReadRequest) ReturnFields2(returnFields2 string) ZoneAuthAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneAuthAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ZoneAuthAPIReferenceGetRequest {
+func (r ZoneAuthAPIReadRequest) ReturnAsObject(returnAsObject int32) ZoneAuthAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneAuthAPIReferenceGetRequest) Execute() (*GetZoneAuthResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r ZoneAuthAPIReadRequest) Execute() (*GetZoneAuthResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific zone_auth object
+Read Get a specific zone_auth object
 
 Returns a specific zone_auth object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_auth object
-	@return ZoneAuthAPIReferenceGetRequest
+	@return ZoneAuthAPIReadRequest
 */
-func (a *ZoneAuthAPIService) ReferenceGet(ctx context.Context, reference string) ZoneAuthAPIReferenceGetRequest {
-	return ZoneAuthAPIReferenceGetRequest{
+func (a *ZoneAuthAPIService) Read(ctx context.Context, reference string) ZoneAuthAPIReadRequest {
+	return ZoneAuthAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -562,7 +562,7 @@ func (a *ZoneAuthAPIService) ReferenceGet(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return GetZoneAuthResponse
-func (a *ZoneAuthAPIService) ReferenceGetExecute(r ZoneAuthAPIReferenceGetRequest) (*GetZoneAuthResponse, *http.Response, error) {
+func (a *ZoneAuthAPIService) ReadExecute(r ZoneAuthAPIReadRequest) (*GetZoneAuthResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -570,7 +570,7 @@ func (a *ZoneAuthAPIService) ReferenceGetExecute(r ZoneAuthAPIReferenceGetReques
 		localVarReturnValue *GetZoneAuthResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -638,7 +638,7 @@ func (a *ZoneAuthAPIService) ReferenceGetExecute(r ZoneAuthAPIReferenceGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneAuthAPIReferencePutRequest struct {
+type ZoneAuthAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     ZoneAuthAPI
 	reference      string
@@ -649,44 +649,44 @@ type ZoneAuthAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r ZoneAuthAPIReferencePutRequest) ZoneAuth(zoneAuth ZoneAuth) ZoneAuthAPIReferencePutRequest {
+func (r ZoneAuthAPIUpdateRequest) ZoneAuth(zoneAuth ZoneAuth) ZoneAuthAPIUpdateRequest {
 	r.zoneAuth = &zoneAuth
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ZoneAuthAPIReferencePutRequest) ReturnFields(returnFields string) ZoneAuthAPIReferencePutRequest {
+func (r ZoneAuthAPIUpdateRequest) ReturnFields(returnFields string) ZoneAuthAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneAuthAPIReferencePutRequest) ReturnFields2(returnFields2 string) ZoneAuthAPIReferencePutRequest {
+func (r ZoneAuthAPIUpdateRequest) ReturnFields2(returnFields2 string) ZoneAuthAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneAuthAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) ZoneAuthAPIReferencePutRequest {
+func (r ZoneAuthAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ZoneAuthAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneAuthAPIReferencePutRequest) Execute() (*UpdateZoneAuthResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r ZoneAuthAPIUpdateRequest) Execute() (*UpdateZoneAuthResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a zone_auth object
+Update Update a zone_auth object
 
 Updates a specific zone_auth object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_auth object
-	@return ZoneAuthAPIReferencePutRequest
+	@return ZoneAuthAPIUpdateRequest
 */
-func (a *ZoneAuthAPIService) ReferencePut(ctx context.Context, reference string) ZoneAuthAPIReferencePutRequest {
-	return ZoneAuthAPIReferencePutRequest{
+func (a *ZoneAuthAPIService) Update(ctx context.Context, reference string) ZoneAuthAPIUpdateRequest {
+	return ZoneAuthAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -696,7 +696,7 @@ func (a *ZoneAuthAPIService) ReferencePut(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return UpdateZoneAuthResponse
-func (a *ZoneAuthAPIService) ReferencePutExecute(r ZoneAuthAPIReferencePutRequest) (*UpdateZoneAuthResponse, *http.Response, error) {
+func (a *ZoneAuthAPIService) UpdateExecute(r ZoneAuthAPIUpdateRequest) (*UpdateZoneAuthResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -704,7 +704,7 @@ func (a *ZoneAuthAPIService) ReferencePutExecute(r ZoneAuthAPIReferencePutReques
 		localVarReturnValue *UpdateZoneAuthResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneAuthAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

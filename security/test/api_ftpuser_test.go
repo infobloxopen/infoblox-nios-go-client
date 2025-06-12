@@ -23,11 +23,11 @@ func TestFtpuserAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test FtpuserAPIService Get", func(t *testing.T) {
+	t.Run("Test FtpuserAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FtpuserAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.FtpuserAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestFtpuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FtpuserAPIService Post", func(t *testing.T) {
+	t.Run("Test FtpuserAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FtpuserAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.FtpuserAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FtpuserAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.FtpuserAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestFtpuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FtpuserAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test FtpuserAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.FtpuserAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test FtpuserAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.FtpuserAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FtpuserAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestFtpuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FtpuserAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test FtpuserAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.FtpuserAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FtpuserAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

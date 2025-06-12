@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ThreatprotectionprofileGet**](ThreatprotectionProfileAPI.md#ThreatprotectionprofileGet) | **Get** /threatprotection:profile | Retrieve threatprotection:profile objects
-[**ThreatprotectionprofilePost**](ThreatprotectionProfileAPI.md#ThreatprotectionprofilePost) | **Post** /threatprotection:profile | Create a threatprotection:profile object
-[**ThreatprotectionprofileReferenceDelete**](ThreatprotectionProfileAPI.md#ThreatprotectionprofileReferenceDelete) | **Delete** /threatprotection:profile/{reference} | Delete a threatprotection:profile object
-[**ThreatprotectionprofileReferenceGet**](ThreatprotectionProfileAPI.md#ThreatprotectionprofileReferenceGet) | **Get** /threatprotection:profile/{reference} | Get a specific threatprotection:profile object
-[**ThreatprotectionprofileReferencePut**](ThreatprotectionProfileAPI.md#ThreatprotectionprofileReferencePut) | **Put** /threatprotection:profile/{reference} | Update a threatprotection:profile object
+[**Create**](ThreatprotectionProfileAPI.md#Create) | **Post** /threatprotection:profile | Create a threatprotection:profile object
+[**Delete**](ThreatprotectionProfileAPI.md#Delete) | **Delete** /threatprotection:profile/{reference} | Delete a threatprotection:profile object
+[**List**](ThreatprotectionProfileAPI.md#List) | **Get** /threatprotection:profile | Retrieve threatprotection:profile objects
+[**Read**](ThreatprotectionProfileAPI.md#Read) | **Get** /threatprotection:profile/{reference} | Get a specific threatprotection:profile object
+[**Update**](ThreatprotectionProfileAPI.md#Update) | **Put** /threatprotection:profile/{reference} | Update a threatprotection:profile object
 
 
 
-## ThreatprotectionprofileGet
+## Create
 
-> ListThreatprotectionProfileResponse ThreatprotectionprofileGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateThreatprotectionProfileResponse Create(ctx).ThreatprotectionProfile(threatprotectionProfile).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a threatprotection:profile object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/threatprotection"
+)
+
+func main() {
+	threatprotectionProfile := *threatprotection.NewThreatprotectionProfile() // ThreatprotectionProfile | Object data to create
+
+	apiClient := threatprotection.NewAPIClient()
+	resp, r, err := apiClient.ThreatprotectionProfileAPI.Create(context.Background()).ThreatprotectionProfile(threatprotectionProfile).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateThreatprotectionProfileResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ThreatprotectionProfileAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**threatprotectionProfile** | [**ThreatprotectionProfile**](ThreatprotectionProfile.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateThreatprotectionProfileResponse**](CreateThreatprotectionProfileResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a threatprotection:profile object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/threatprotection"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the threatprotection:profile object
+
+	apiClient := threatprotection.NewAPIClient()
+	r, err := apiClient.ThreatprotectionProfileAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the threatprotection:profile object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ThreatprotectionProfileAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListThreatprotectionProfileResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve threatprotection:profile objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionProfileAPI.ThreatprotectionprofileGet(context.Background()).Execute()
+	resp, r, err := apiClient.ThreatprotectionProfileAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileAPI.ThreatprotectionprofileGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatprotectionprofileGet`: ListThreatprotectionProfileResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileAPI.ThreatprotectionprofileGet`: %v\n", resp)
+	// response from `List`: ListThreatprotectionProfileResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatprotectionProfileAPIThreatprotectionprofileGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatprotectionProfileAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ThreatprotectionprofilePost
+## Read
 
-> CreateThreatprotectionProfileResponse ThreatprotectionprofilePost(ctx).ThreatprotectionProfile(threatprotectionProfile).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a threatprotection:profile object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/threatprotection"
-)
-
-func main() {
-	threatprotectionProfile := *threatprotection.NewThreatprotectionProfile() // ThreatprotectionProfile | Object data to create
-
-	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionProfileAPI.ThreatprotectionprofilePost(context.Background()).ThreatprotectionProfile(threatprotectionProfile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileAPI.ThreatprotectionprofilePost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ThreatprotectionprofilePost`: CreateThreatprotectionProfileResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileAPI.ThreatprotectionprofilePost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ThreatprotectionProfileAPIThreatprotectionprofilePostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**threatprotectionProfile** | [**ThreatprotectionProfile**](ThreatprotectionProfile.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateThreatprotectionProfileResponse**](CreateThreatprotectionProfileResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ThreatprotectionprofileReferenceDelete
-
-> ThreatprotectionprofileReferenceDelete(ctx, reference).Execute()
-
-Delete a threatprotection:profile object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/threatprotection"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the threatprotection:profile object
-
-	apiClient := threatprotection.NewAPIClient()
-	r, err := apiClient.ThreatprotectionProfileAPI.ThreatprotectionprofileReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileAPI.ThreatprotectionprofileReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the threatprotection:profile object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ThreatprotectionProfileAPIThreatprotectionprofileReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ThreatprotectionprofileReferenceGet
-
-> GetThreatprotectionProfileResponse ThreatprotectionprofileReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetThreatprotectionProfileResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific threatprotection:profile object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the threatprotection:profile object
 
 	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionProfileAPI.ThreatprotectionprofileReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ThreatprotectionProfileAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileAPI.ThreatprotectionprofileReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatprotectionprofileReferenceGet`: GetThreatprotectionProfileResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileAPI.ThreatprotectionprofileReferenceGet`: %v\n", resp)
+	// response from `Read`: GetThreatprotectionProfileResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatprotectionProfileAPIThreatprotectionprofileReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatprotectionProfileAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ThreatprotectionprofileReferencePut
+## Update
 
-> UpdateThreatprotectionProfileResponse ThreatprotectionprofileReferencePut(ctx, reference).ThreatprotectionProfile(threatprotectionProfile).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateThreatprotectionProfileResponse Update(ctx, reference).ThreatprotectionProfile(threatprotectionProfile).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a threatprotection:profile object
 
@@ -318,13 +318,13 @@ func main() {
 	threatprotectionProfile := *threatprotection.NewThreatprotectionProfile() // ThreatprotectionProfile | Object data to update
 
 	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionProfileAPI.ThreatprotectionprofileReferencePut(context.Background(), reference).ThreatprotectionProfile(threatprotectionProfile).Execute()
+	resp, r, err := apiClient.ThreatprotectionProfileAPI.Update(context.Background(), reference).ThreatprotectionProfile(threatprotectionProfile).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileAPI.ThreatprotectionprofileReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionProfileAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatprotectionprofileReferencePut`: UpdateThreatprotectionProfileResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileAPI.ThreatprotectionprofileReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateThreatprotectionProfileResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionProfileAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatprotectionProfileAPIThreatprotectionprofileReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatprotectionProfileAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

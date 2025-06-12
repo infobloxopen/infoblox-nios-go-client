@@ -23,11 +23,11 @@ func TestCapacityreportAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test CapacityreportAPIService Get", func(t *testing.T) {
+	t.Run("Test CapacityreportAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.CapacityreportAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CapacityreportAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestCapacityreportAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CapacityreportAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test CapacityreportAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.CapacityreportAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.CapacityreportAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

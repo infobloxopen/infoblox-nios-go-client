@@ -23,11 +23,11 @@ func TestRecordNsec3paramAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordNsec3paramAPIService Recordnsec3paramGet", func(t *testing.T) {
+	t.Run("Test RecordNsec3paramAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordNsec3paramAPI.Recordnsec3paramGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordNsec3paramAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestRecordNsec3paramAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordNsec3paramAPIService Recordnsec3paramReferenceGet", func(t *testing.T) {
+	t.Run("Test RecordNsec3paramAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordNsec3paramAPI.Recordnsec3paramReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordNsec3paramAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,11 +23,11 @@ func TestMsserverAdsitesDomainAPIService(t *testing.T) {
 
 	apiClient := microsoftserver.NewAPIClient()
 
-	t.Run("Test MsserverAdsitesDomainAPIService MsserveradsitesdomainGet", func(t *testing.T) {
+	t.Run("Test MsserverAdsitesDomainAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MsserverAdsitesDomainAPI.MsserveradsitesdomainGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MsserverAdsitesDomainAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestMsserverAdsitesDomainAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MsserverAdsitesDomainAPIService MsserveradsitesdomainReferenceGet", func(t *testing.T) {
+	t.Run("Test MsserverAdsitesDomainAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MsserverAdsitesDomainAPI.MsserveradsitesdomainReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MsserverAdsitesDomainAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

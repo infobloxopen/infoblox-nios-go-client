@@ -23,11 +23,11 @@ func TestSmartfolderPersonalAPIService(t *testing.T) {
 
 	apiClient := smartfolder.NewAPIClient()
 
-	t.Run("Test SmartfolderPersonalAPIService SmartfolderpersonalGet", func(t *testing.T) {
+	t.Run("Test SmartfolderPersonalAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SmartfolderPersonalAPI.SmartfolderpersonalGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SmartfolderPersonalAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestSmartfolderPersonalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SmartfolderPersonalAPIService SmartfolderpersonalPost", func(t *testing.T) {
+	t.Run("Test SmartfolderPersonalAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SmartfolderPersonalAPI.SmartfolderpersonalPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.SmartfolderPersonalAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SmartfolderPersonalAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.SmartfolderPersonalAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestSmartfolderPersonalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SmartfolderPersonalAPIService SmartfolderpersonalReferenceDelete", func(t *testing.T) {
+	t.Run("Test SmartfolderPersonalAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.SmartfolderPersonalAPI.SmartfolderpersonalReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SmartfolderPersonalAPIService SmartfolderpersonalReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.SmartfolderPersonalAPI.SmartfolderpersonalReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SmartfolderPersonalAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestSmartfolderPersonalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SmartfolderPersonalAPIService SmartfolderpersonalReferencePut", func(t *testing.T) {
+	t.Run("Test SmartfolderPersonalAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.SmartfolderPersonalAPI.SmartfolderpersonalReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SmartfolderPersonalAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

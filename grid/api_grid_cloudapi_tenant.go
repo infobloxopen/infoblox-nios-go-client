@@ -23,52 +23,52 @@ import (
 
 type GridCloudapiTenantAPI interface {
 	/*
-		GridcloudapitenantGet Retrieve grid:cloudapi:tenant objects
+		List Retrieve grid:cloudapi:tenant objects
 
 		Returns a list of grid:cloudapi:tenant objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridCloudapiTenantAPIGridcloudapitenantGetRequest
+		@return GridCloudapiTenantAPIListRequest
 	*/
-	GridcloudapitenantGet(ctx context.Context) GridCloudapiTenantAPIGridcloudapitenantGetRequest
+	List(ctx context.Context) GridCloudapiTenantAPIListRequest
 
-	// GridcloudapitenantGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridCloudapiTenantResponse
-	GridcloudapitenantGetExecute(r GridCloudapiTenantAPIGridcloudapitenantGetRequest) (*ListGridCloudapiTenantResponse, *http.Response, error)
+	ListExecute(r GridCloudapiTenantAPIListRequest) (*ListGridCloudapiTenantResponse, *http.Response, error)
 	/*
-		GridcloudapitenantReferenceGet Get a specific grid:cloudapi:tenant object
+		Read Get a specific grid:cloudapi:tenant object
 
 		Returns a specific grid:cloudapi:tenant object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:cloudapi:tenant object
-		@return GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest
+		@return GridCloudapiTenantAPIReadRequest
 	*/
-	GridcloudapitenantReferenceGet(ctx context.Context, reference string) GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest
+	Read(ctx context.Context, reference string) GridCloudapiTenantAPIReadRequest
 
-	// GridcloudapitenantReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridCloudapiTenantResponse
-	GridcloudapitenantReferenceGetExecute(r GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest) (*GetGridCloudapiTenantResponse, *http.Response, error)
+	ReadExecute(r GridCloudapiTenantAPIReadRequest) (*GetGridCloudapiTenantResponse, *http.Response, error)
 	/*
-		GridcloudapitenantReferencePut Update a grid:cloudapi:tenant object
+		Update Update a grid:cloudapi:tenant object
 
 		Updates a specific grid:cloudapi:tenant object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:cloudapi:tenant object
-		@return GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest
+		@return GridCloudapiTenantAPIUpdateRequest
 	*/
-	GridcloudapitenantReferencePut(ctx context.Context, reference string) GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest
+	Update(ctx context.Context, reference string) GridCloudapiTenantAPIUpdateRequest
 
-	// GridcloudapitenantReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridCloudapiTenantResponse
-	GridcloudapitenantReferencePutExecute(r GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest) (*UpdateGridCloudapiTenantResponse, *http.Response, error)
+	UpdateExecute(r GridCloudapiTenantAPIUpdateRequest) (*UpdateGridCloudapiTenantResponse, *http.Response, error)
 }
 
 // GridCloudapiTenantAPIService GridCloudapiTenantAPI service
 type GridCloudapiTenantAPIService internal.Service
 
-type GridCloudapiTenantAPIGridcloudapitenantGetRequest struct {
+type GridCloudapiTenantAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridCloudapiTenantAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type GridCloudapiTenantAPIGridcloudapitenantGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridCloudapiTenantAPIGridcloudapitenantGetRequest) ReturnFields(returnFields string) GridCloudapiTenantAPIGridcloudapitenantGetRequest {
+func (r GridCloudapiTenantAPIListRequest) ReturnFields(returnFields string) GridCloudapiTenantAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridCloudapiTenantAPIGridcloudapitenantGetRequest) ReturnFields2(returnFields2 string) GridCloudapiTenantAPIGridcloudapitenantGetRequest {
+func (r GridCloudapiTenantAPIListRequest) ReturnFields2(returnFields2 string) GridCloudapiTenantAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridCloudapiTenantAPIGridcloudapitenantGetRequest) MaxResults(maxResults int32) GridCloudapiTenantAPIGridcloudapitenantGetRequest {
+func (r GridCloudapiTenantAPIListRequest) MaxResults(maxResults int32) GridCloudapiTenantAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridCloudapiTenantAPIGridcloudapitenantGetRequest) ReturnAsObject(returnAsObject int32) GridCloudapiTenantAPIGridcloudapitenantGetRequest {
+func (r GridCloudapiTenantAPIListRequest) ReturnAsObject(returnAsObject int32) GridCloudapiTenantAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridCloudapiTenantAPIGridcloudapitenantGetRequest) Paging(paging int32) GridCloudapiTenantAPIGridcloudapitenantGetRequest {
+func (r GridCloudapiTenantAPIListRequest) Paging(paging int32) GridCloudapiTenantAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridCloudapiTenantAPIGridcloudapitenantGetRequest) PageId(pageId string) GridCloudapiTenantAPIGridcloudapitenantGetRequest {
+func (r GridCloudapiTenantAPIListRequest) PageId(pageId string) GridCloudapiTenantAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridCloudapiTenantAPIGridcloudapitenantGetRequest) Filters(filters map[string]interface{}) GridCloudapiTenantAPIGridcloudapitenantGetRequest {
+func (r GridCloudapiTenantAPIListRequest) Filters(filters map[string]interface{}) GridCloudapiTenantAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridCloudapiTenantAPIGridcloudapitenantGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridCloudapiTenantAPIGridcloudapitenantGetRequest {
+func (r GridCloudapiTenantAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridCloudapiTenantAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridCloudapiTenantAPIGridcloudapitenantGetRequest) Execute() (*ListGridCloudapiTenantResponse, *http.Response, error) {
-	return r.ApiService.GridcloudapitenantGetExecute(r)
+func (r GridCloudapiTenantAPIListRequest) Execute() (*ListGridCloudapiTenantResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridcloudapitenantGet Retrieve grid:cloudapi:tenant objects
+List Retrieve grid:cloudapi:tenant objects
 
 Returns a list of grid:cloudapi:tenant objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridCloudapiTenantAPIGridcloudapitenantGetRequest
+	@return GridCloudapiTenantAPIListRequest
 */
-func (a *GridCloudapiTenantAPIService) GridcloudapitenantGet(ctx context.Context) GridCloudapiTenantAPIGridcloudapitenantGetRequest {
-	return GridCloudapiTenantAPIGridcloudapitenantGetRequest{
+func (a *GridCloudapiTenantAPIService) List(ctx context.Context) GridCloudapiTenantAPIListRequest {
+	return GridCloudapiTenantAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GridCloudapiTenantAPIService) GridcloudapitenantGet(ctx context.Context
 // Execute executes the request
 //
 //	@return ListGridCloudapiTenantResponse
-func (a *GridCloudapiTenantAPIService) GridcloudapitenantGetExecute(r GridCloudapiTenantAPIGridcloudapitenantGetRequest) (*ListGridCloudapiTenantResponse, *http.Response, error) {
+func (a *GridCloudapiTenantAPIService) ListExecute(r GridCloudapiTenantAPIListRequest) (*ListGridCloudapiTenantResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GridCloudapiTenantAPIService) GridcloudapitenantGetExecute(r GridClouda
 		localVarReturnValue *ListGridCloudapiTenantResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiTenantAPIService.GridcloudapitenantGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiTenantAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *GridCloudapiTenantAPIService) GridcloudapitenantGetExecute(r GridClouda
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest struct {
+type GridCloudapiTenantAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridCloudapiTenantAPI
 	reference      string
@@ -249,38 +249,38 @@ type GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest) ReturnFields(returnFields string) GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest {
+func (r GridCloudapiTenantAPIReadRequest) ReturnFields(returnFields string) GridCloudapiTenantAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest) ReturnFields2(returnFields2 string) GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest {
+func (r GridCloudapiTenantAPIReadRequest) ReturnFields2(returnFields2 string) GridCloudapiTenantAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest {
+func (r GridCloudapiTenantAPIReadRequest) ReturnAsObject(returnAsObject int32) GridCloudapiTenantAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest) Execute() (*GetGridCloudapiTenantResponse, *http.Response, error) {
-	return r.ApiService.GridcloudapitenantReferenceGetExecute(r)
+func (r GridCloudapiTenantAPIReadRequest) Execute() (*GetGridCloudapiTenantResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridcloudapitenantReferenceGet Get a specific grid:cloudapi:tenant object
+Read Get a specific grid:cloudapi:tenant object
 
 Returns a specific grid:cloudapi:tenant object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:cloudapi:tenant object
-	@return GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest
+	@return GridCloudapiTenantAPIReadRequest
 */
-func (a *GridCloudapiTenantAPIService) GridcloudapitenantReferenceGet(ctx context.Context, reference string) GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest {
-	return GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest{
+func (a *GridCloudapiTenantAPIService) Read(ctx context.Context, reference string) GridCloudapiTenantAPIReadRequest {
+	return GridCloudapiTenantAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GridCloudapiTenantAPIService) GridcloudapitenantReferenceGet(ctx contex
 // Execute executes the request
 //
 //	@return GetGridCloudapiTenantResponse
-func (a *GridCloudapiTenantAPIService) GridcloudapitenantReferenceGetExecute(r GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest) (*GetGridCloudapiTenantResponse, *http.Response, error) {
+func (a *GridCloudapiTenantAPIService) ReadExecute(r GridCloudapiTenantAPIReadRequest) (*GetGridCloudapiTenantResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GridCloudapiTenantAPIService) GridcloudapitenantReferenceGetExecute(r G
 		localVarReturnValue *GetGridCloudapiTenantResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiTenantAPIService.GridcloudapitenantReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiTenantAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *GridCloudapiTenantAPIService) GridcloudapitenantReferenceGetExecute(r G
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest struct {
+type GridCloudapiTenantAPIUpdateRequest struct {
 	ctx                context.Context
 	ApiService         GridCloudapiTenantAPI
 	reference          string
@@ -377,44 +377,44 @@ type GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest struct {
 }
 
 // Object data to update
-func (r GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest) GridCloudapiTenant(gridCloudapiTenant GridCloudapiTenant) GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest {
+func (r GridCloudapiTenantAPIUpdateRequest) GridCloudapiTenant(gridCloudapiTenant GridCloudapiTenant) GridCloudapiTenantAPIUpdateRequest {
 	r.gridCloudapiTenant = &gridCloudapiTenant
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest) ReturnFields(returnFields string) GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest {
+func (r GridCloudapiTenantAPIUpdateRequest) ReturnFields(returnFields string) GridCloudapiTenantAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest) ReturnFields2(returnFields2 string) GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest {
+func (r GridCloudapiTenantAPIUpdateRequest) ReturnFields2(returnFields2 string) GridCloudapiTenantAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest) ReturnAsObject(returnAsObject int32) GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest {
+func (r GridCloudapiTenantAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridCloudapiTenantAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest) Execute() (*UpdateGridCloudapiTenantResponse, *http.Response, error) {
-	return r.ApiService.GridcloudapitenantReferencePutExecute(r)
+func (r GridCloudapiTenantAPIUpdateRequest) Execute() (*UpdateGridCloudapiTenantResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GridcloudapitenantReferencePut Update a grid:cloudapi:tenant object
+Update Update a grid:cloudapi:tenant object
 
 Updates a specific grid:cloudapi:tenant object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:cloudapi:tenant object
-	@return GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest
+	@return GridCloudapiTenantAPIUpdateRequest
 */
-func (a *GridCloudapiTenantAPIService) GridcloudapitenantReferencePut(ctx context.Context, reference string) GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest {
-	return GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest{
+func (a *GridCloudapiTenantAPIService) Update(ctx context.Context, reference string) GridCloudapiTenantAPIUpdateRequest {
+	return GridCloudapiTenantAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GridCloudapiTenantAPIService) GridcloudapitenantReferencePut(ctx contex
 // Execute executes the request
 //
 //	@return UpdateGridCloudapiTenantResponse
-func (a *GridCloudapiTenantAPIService) GridcloudapitenantReferencePutExecute(r GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest) (*UpdateGridCloudapiTenantResponse, *http.Response, error) {
+func (a *GridCloudapiTenantAPIService) UpdateExecute(r GridCloudapiTenantAPIUpdateRequest) (*UpdateGridCloudapiTenantResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GridCloudapiTenantAPIService) GridcloudapitenantReferencePutExecute(r G
 		localVarReturnValue *UpdateGridCloudapiTenantResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiTenantAPIService.GridcloudapitenantReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiTenantAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

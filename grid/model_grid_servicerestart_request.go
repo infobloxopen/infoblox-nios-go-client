@@ -34,7 +34,7 @@ type GridServicerestartRequest struct {
 	// Indicates if restart is needed.
 	Needed *string `json:"needed,omitempty"`
 	// The order to restart.
-	Order *int32 `json:"order,omitempty"`
+	Order *int64 `json:"order,omitempty"`
 	// The result of the restart operation.
 	Result *string `json:"result,omitempty"`
 	// The service to restart.
@@ -285,9 +285,9 @@ func (o *GridServicerestartRequest) SetNeeded(v string) {
 }
 
 // GetOrder returns the Order field value if set, zero value otherwise.
-func (o *GridServicerestartRequest) GetOrder() int32 {
+func (o *GridServicerestartRequest) GetOrder() int64 {
 	if o == nil || IsNil(o.Order) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Order
@@ -295,7 +295,7 @@ func (o *GridServicerestartRequest) GetOrder() int32 {
 
 // GetOrderOk returns a tuple with the Order field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridServicerestartRequest) GetOrderOk() (*int32, bool) {
+func (o *GridServicerestartRequest) GetOrderOk() (*int64, bool) {
 	if o == nil || IsNil(o.Order) {
 		return nil, false
 	}
@@ -311,8 +311,8 @@ func (o *GridServicerestartRequest) HasOrder() bool {
 	return false
 }
 
-// SetOrder gets a reference to the given int32 and assigns it to the Order field.
-func (o *GridServicerestartRequest) SetOrder(v int32) {
+// SetOrder gets a reference to the given int64 and assigns it to the Order field.
+func (o *GridServicerestartRequest) SetOrder(v int64) {
 	o.Order = &v
 }
 

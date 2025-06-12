@@ -23,11 +23,11 @@ func TestThreatinsightCloudclientAPIService(t *testing.T) {
 
 	apiClient := threatinsight.NewAPIClient()
 
-	t.Run("Test ThreatinsightCloudclientAPIService ThreatinsightcloudclientGet", func(t *testing.T) {
+	t.Run("Test ThreatinsightCloudclientAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ThreatinsightCloudclientAPI.ThreatinsightcloudclientGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ThreatinsightCloudclientAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestThreatinsightCloudclientAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatinsightCloudclientAPIService ThreatinsightcloudclientReferenceGet", func(t *testing.T) {
+	t.Run("Test ThreatinsightCloudclientAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ThreatinsightCloudclientAPI.ThreatinsightcloudclientReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ThreatinsightCloudclientAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestThreatinsightCloudclientAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatinsightCloudclientAPIService ThreatinsightcloudclientReferencePut", func(t *testing.T) {
+	t.Run("Test ThreatinsightCloudclientAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ThreatinsightCloudclientAPI.ThreatinsightcloudclientReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ThreatinsightCloudclientAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

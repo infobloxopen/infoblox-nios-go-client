@@ -23,249 +23,78 @@ import (
 
 type DtcMonitorPdpAPI interface {
 	/*
-		DtcmonitorpdpGet Retrieve dtc:monitor:pdp objects
-
-		Returns a list of dtc:monitor:pdp objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcMonitorPdpAPIDtcmonitorpdpGetRequest
-	*/
-	DtcmonitorpdpGet(ctx context.Context) DtcMonitorPdpAPIDtcmonitorpdpGetRequest
-
-	// DtcmonitorpdpGetExecute executes the request
-	//  @return ListDtcMonitorPdpResponse
-	DtcmonitorpdpGetExecute(r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) (*ListDtcMonitorPdpResponse, *http.Response, error)
-	/*
-		DtcmonitorpdpPost Create a dtc:monitor:pdp object
+		Create Create a dtc:monitor:pdp object
 
 		Creates a new dtc:monitor:pdp object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcMonitorPdpAPIDtcmonitorpdpPostRequest
+		@return DtcMonitorPdpAPICreateRequest
 	*/
-	DtcmonitorpdpPost(ctx context.Context) DtcMonitorPdpAPIDtcmonitorpdpPostRequest
+	Create(ctx context.Context) DtcMonitorPdpAPICreateRequest
 
-	// DtcmonitorpdpPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDtcMonitorPdpResponse
-	DtcmonitorpdpPostExecute(r DtcMonitorPdpAPIDtcmonitorpdpPostRequest) (*CreateDtcMonitorPdpResponse, *http.Response, error)
+	CreateExecute(r DtcMonitorPdpAPICreateRequest) (*CreateDtcMonitorPdpResponse, *http.Response, error)
 	/*
-		DtcmonitorpdpReferenceDelete Delete a dtc:monitor:pdp object
+		Delete Delete a dtc:monitor:pdp object
 
 		Deletes a specific dtc:monitor:pdp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:pdp object
-		@return DtcMonitorPdpAPIDtcmonitorpdpReferenceDeleteRequest
+		@return DtcMonitorPdpAPIDeleteRequest
 	*/
-	DtcmonitorpdpReferenceDelete(ctx context.Context, reference string) DtcMonitorPdpAPIDtcmonitorpdpReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DtcMonitorPdpAPIDeleteRequest
 
-	// DtcmonitorpdpReferenceDeleteExecute executes the request
-	DtcmonitorpdpReferenceDeleteExecute(r DtcMonitorPdpAPIDtcmonitorpdpReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DtcMonitorPdpAPIDeleteRequest) (*http.Response, error)
 	/*
-		DtcmonitorpdpReferenceGet Get a specific dtc:monitor:pdp object
+		List Retrieve dtc:monitor:pdp objects
+
+		Returns a list of dtc:monitor:pdp objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DtcMonitorPdpAPIListRequest
+	*/
+	List(ctx context.Context) DtcMonitorPdpAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDtcMonitorPdpResponse
+	ListExecute(r DtcMonitorPdpAPIListRequest) (*ListDtcMonitorPdpResponse, *http.Response, error)
+	/*
+		Read Get a specific dtc:monitor:pdp object
 
 		Returns a specific dtc:monitor:pdp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:pdp object
-		@return DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest
+		@return DtcMonitorPdpAPIReadRequest
 	*/
-	DtcmonitorpdpReferenceGet(ctx context.Context, reference string) DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcMonitorPdpAPIReadRequest
 
-	// DtcmonitorpdpReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcMonitorPdpResponse
-	DtcmonitorpdpReferenceGetExecute(r DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest) (*GetDtcMonitorPdpResponse, *http.Response, error)
+	ReadExecute(r DtcMonitorPdpAPIReadRequest) (*GetDtcMonitorPdpResponse, *http.Response, error)
 	/*
-		DtcmonitorpdpReferencePut Update a dtc:monitor:pdp object
+		Update Update a dtc:monitor:pdp object
 
 		Updates a specific dtc:monitor:pdp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:pdp object
-		@return DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest
+		@return DtcMonitorPdpAPIUpdateRequest
 	*/
-	DtcmonitorpdpReferencePut(ctx context.Context, reference string) DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest
+	Update(ctx context.Context, reference string) DtcMonitorPdpAPIUpdateRequest
 
-	// DtcmonitorpdpReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcMonitorPdpResponse
-	DtcmonitorpdpReferencePutExecute(r DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest) (*UpdateDtcMonitorPdpResponse, *http.Response, error)
+	UpdateExecute(r DtcMonitorPdpAPIUpdateRequest) (*UpdateDtcMonitorPdpResponse, *http.Response, error)
 }
 
 // DtcMonitorPdpAPIService DtcMonitorPdpAPI service
 type DtcMonitorPdpAPIService internal.Service
 
-type DtcMonitorPdpAPIDtcmonitorpdpGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorPdpAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) ReturnFields(returnFields string) DtcMonitorPdpAPIDtcmonitorpdpGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPIDtcmonitorpdpGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) MaxResults(maxResults int32) DtcMonitorPdpAPIDtcmonitorpdpGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) ReturnAsObject(returnAsObject int32) DtcMonitorPdpAPIDtcmonitorpdpGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) Paging(paging int32) DtcMonitorPdpAPIDtcmonitorpdpGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) PageId(pageId string) DtcMonitorPdpAPIDtcmonitorpdpGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) Filters(filters map[string]interface{}) DtcMonitorPdpAPIDtcmonitorpdpGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcMonitorPdpAPIDtcmonitorpdpGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) Execute() (*ListDtcMonitorPdpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorpdpGetExecute(r)
-}
-
-/*
-DtcmonitorpdpGet Retrieve dtc:monitor:pdp objects
-
-Returns a list of dtc:monitor:pdp objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcMonitorPdpAPIDtcmonitorpdpGetRequest
-*/
-func (a *DtcMonitorPdpAPIService) DtcmonitorpdpGet(ctx context.Context) DtcMonitorPdpAPIDtcmonitorpdpGetRequest {
-	return DtcMonitorPdpAPIDtcmonitorpdpGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListDtcMonitorPdpResponse
-func (a *DtcMonitorPdpAPIService) DtcmonitorpdpGetExecute(r DtcMonitorPdpAPIDtcmonitorpdpGetRequest) (*ListDtcMonitorPdpResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListDtcMonitorPdpResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorPdpAPIService.DtcmonitorpdpGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:monitor:pdp"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DtcMonitorPdpAPIDtcmonitorpdpPostRequest struct {
+type DtcMonitorPdpAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     DtcMonitorPdpAPI
 	dtcMonitorPdp  *DtcMonitorPdp
@@ -275,43 +104,43 @@ type DtcMonitorPdpAPIDtcmonitorpdpPostRequest struct {
 }
 
 // Object data to create
-func (r DtcMonitorPdpAPIDtcmonitorpdpPostRequest) DtcMonitorPdp(dtcMonitorPdp DtcMonitorPdp) DtcMonitorPdpAPIDtcmonitorpdpPostRequest {
+func (r DtcMonitorPdpAPICreateRequest) DtcMonitorPdp(dtcMonitorPdp DtcMonitorPdp) DtcMonitorPdpAPICreateRequest {
 	r.dtcMonitorPdp = &dtcMonitorPdp
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorPdpAPIDtcmonitorpdpPostRequest) ReturnFields(returnFields string) DtcMonitorPdpAPIDtcmonitorpdpPostRequest {
+func (r DtcMonitorPdpAPICreateRequest) ReturnFields(returnFields string) DtcMonitorPdpAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorPdpAPIDtcmonitorpdpPostRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPIDtcmonitorpdpPostRequest {
+func (r DtcMonitorPdpAPICreateRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorPdpAPIDtcmonitorpdpPostRequest) ReturnAsObject(returnAsObject int32) DtcMonitorPdpAPIDtcmonitorpdpPostRequest {
+func (r DtcMonitorPdpAPICreateRequest) ReturnAsObject(returnAsObject int32) DtcMonitorPdpAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorPdpAPIDtcmonitorpdpPostRequest) Execute() (*CreateDtcMonitorPdpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorpdpPostExecute(r)
+func (r DtcMonitorPdpAPICreateRequest) Execute() (*CreateDtcMonitorPdpResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-DtcmonitorpdpPost Create a dtc:monitor:pdp object
+Create Create a dtc:monitor:pdp object
 
 Creates a new dtc:monitor:pdp object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcMonitorPdpAPIDtcmonitorpdpPostRequest
+	@return DtcMonitorPdpAPICreateRequest
 */
-func (a *DtcMonitorPdpAPIService) DtcmonitorpdpPost(ctx context.Context) DtcMonitorPdpAPIDtcmonitorpdpPostRequest {
-	return DtcMonitorPdpAPIDtcmonitorpdpPostRequest{
+func (a *DtcMonitorPdpAPIService) Create(ctx context.Context) DtcMonitorPdpAPICreateRequest {
+	return DtcMonitorPdpAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *DtcMonitorPdpAPIService) DtcmonitorpdpPost(ctx context.Context) DtcMoni
 // Execute executes the request
 //
 //	@return CreateDtcMonitorPdpResponse
-func (a *DtcMonitorPdpAPIService) DtcmonitorpdpPostExecute(r DtcMonitorPdpAPIDtcmonitorpdpPostRequest) (*CreateDtcMonitorPdpResponse, *http.Response, error) {
+func (a *DtcMonitorPdpAPIService) CreateExecute(r DtcMonitorPdpAPICreateRequest) (*CreateDtcMonitorPdpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *DtcMonitorPdpAPIService) DtcmonitorpdpPostExecute(r DtcMonitorPdpAPIDtc
 		localVarReturnValue *CreateDtcMonitorPdpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorPdpAPIService.DtcmonitorpdpPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorPdpAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *DtcMonitorPdpAPIService) DtcmonitorpdpPostExecute(r DtcMonitorPdpAPIDtc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcMonitorPdpAPIDtcmonitorpdpReferenceDeleteRequest struct {
+type DtcMonitorPdpAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService DtcMonitorPdpAPI
 	reference  string
 }
 
-func (r DtcMonitorPdpAPIDtcmonitorpdpReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DtcmonitorpdpReferenceDeleteExecute(r)
+func (r DtcMonitorPdpAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-DtcmonitorpdpReferenceDelete Delete a dtc:monitor:pdp object
+Delete Delete a dtc:monitor:pdp object
 
 Deletes a specific dtc:monitor:pdp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:pdp object
-	@return DtcMonitorPdpAPIDtcmonitorpdpReferenceDeleteRequest
+	@return DtcMonitorPdpAPIDeleteRequest
 */
-func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferenceDelete(ctx context.Context, reference string) DtcMonitorPdpAPIDtcmonitorpdpReferenceDeleteRequest {
-	return DtcMonitorPdpAPIDtcmonitorpdpReferenceDeleteRequest{
+func (a *DtcMonitorPdpAPIService) Delete(ctx context.Context, reference string) DtcMonitorPdpAPIDeleteRequest {
+	return DtcMonitorPdpAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferenceDelete(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferenceDeleteExecute(r DtcMonitorPdpAPIDtcmonitorpdpReferenceDeleteRequest) (*http.Response, error) {
+func (a *DtcMonitorPdpAPIService) DeleteExecute(r DtcMonitorPdpAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorPdpAPIService.DtcmonitorpdpReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorPdpAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferenceDeleteExecute(r DtcMonit
 	return localVarHTTPResponse, nil
 }
 
-type DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest struct {
+type DtcMonitorPdpAPIListRequest struct {
+	ctx            context.Context
+	ApiService     DtcMonitorPdpAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DtcMonitorPdpAPIListRequest) ReturnFields(returnFields string) DtcMonitorPdpAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DtcMonitorPdpAPIListRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r DtcMonitorPdpAPIListRequest) MaxResults(maxResults int32) DtcMonitorPdpAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DtcMonitorPdpAPIListRequest) ReturnAsObject(returnAsObject int32) DtcMonitorPdpAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r DtcMonitorPdpAPIListRequest) Paging(paging int32) DtcMonitorPdpAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r DtcMonitorPdpAPIListRequest) PageId(pageId string) DtcMonitorPdpAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r DtcMonitorPdpAPIListRequest) Filters(filters map[string]interface{}) DtcMonitorPdpAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r DtcMonitorPdpAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcMonitorPdpAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r DtcMonitorPdpAPIListRequest) Execute() (*ListDtcMonitorPdpResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve dtc:monitor:pdp objects
+
+Returns a list of dtc:monitor:pdp objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DtcMonitorPdpAPIListRequest
+*/
+func (a *DtcMonitorPdpAPIService) List(ctx context.Context) DtcMonitorPdpAPIListRequest {
+	return DtcMonitorPdpAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListDtcMonitorPdpResponse
+func (a *DtcMonitorPdpAPIService) ListExecute(r DtcMonitorPdpAPIListRequest) (*ListDtcMonitorPdpResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListDtcMonitorPdpResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorPdpAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:monitor:pdp"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DtcMonitorPdpAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DtcMonitorPdpAPI
 	reference      string
@@ -511,38 +511,38 @@ type DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest) ReturnFields(returnFields string) DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest {
+func (r DtcMonitorPdpAPIReadRequest) ReturnFields(returnFields string) DtcMonitorPdpAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest {
+func (r DtcMonitorPdpAPIReadRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest {
+func (r DtcMonitorPdpAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcMonitorPdpAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest) Execute() (*GetDtcMonitorPdpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorpdpReferenceGetExecute(r)
+func (r DtcMonitorPdpAPIReadRequest) Execute() (*GetDtcMonitorPdpResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtcmonitorpdpReferenceGet Get a specific dtc:monitor:pdp object
+Read Get a specific dtc:monitor:pdp object
 
 Returns a specific dtc:monitor:pdp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:pdp object
-	@return DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest
+	@return DtcMonitorPdpAPIReadRequest
 */
-func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferenceGet(ctx context.Context, reference string) DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest {
-	return DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest{
+func (a *DtcMonitorPdpAPIService) Read(ctx context.Context, reference string) DtcMonitorPdpAPIReadRequest {
+	return DtcMonitorPdpAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferenceGet(ctx context.Context,
 // Execute executes the request
 //
 //	@return GetDtcMonitorPdpResponse
-func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferenceGetExecute(r DtcMonitorPdpAPIDtcmonitorpdpReferenceGetRequest) (*GetDtcMonitorPdpResponse, *http.Response, error) {
+func (a *DtcMonitorPdpAPIService) ReadExecute(r DtcMonitorPdpAPIReadRequest) (*GetDtcMonitorPdpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferenceGetExecute(r DtcMonitorP
 		localVarReturnValue *GetDtcMonitorPdpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorPdpAPIService.DtcmonitorpdpReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorPdpAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferenceGetExecute(r DtcMonitorP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest struct {
+type DtcMonitorPdpAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     DtcMonitorPdpAPI
 	reference      string
@@ -639,44 +639,44 @@ type DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest) DtcMonitorPdp(dtcMonitorPdp DtcMonitorPdp) DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest {
+func (r DtcMonitorPdpAPIUpdateRequest) DtcMonitorPdp(dtcMonitorPdp DtcMonitorPdp) DtcMonitorPdpAPIUpdateRequest {
 	r.dtcMonitorPdp = &dtcMonitorPdp
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest) ReturnFields(returnFields string) DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest {
+func (r DtcMonitorPdpAPIUpdateRequest) ReturnFields(returnFields string) DtcMonitorPdpAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest {
+func (r DtcMonitorPdpAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest {
+func (r DtcMonitorPdpAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcMonitorPdpAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest) Execute() (*UpdateDtcMonitorPdpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorpdpReferencePutExecute(r)
+func (r DtcMonitorPdpAPIUpdateRequest) Execute() (*UpdateDtcMonitorPdpResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtcmonitorpdpReferencePut Update a dtc:monitor:pdp object
+Update Update a dtc:monitor:pdp object
 
 Updates a specific dtc:monitor:pdp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:pdp object
-	@return DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest
+	@return DtcMonitorPdpAPIUpdateRequest
 */
-func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferencePut(ctx context.Context, reference string) DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest {
-	return DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest{
+func (a *DtcMonitorPdpAPIService) Update(ctx context.Context, reference string) DtcMonitorPdpAPIUpdateRequest {
+	return DtcMonitorPdpAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferencePut(ctx context.Context,
 // Execute executes the request
 //
 //	@return UpdateDtcMonitorPdpResponse
-func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferencePutExecute(r DtcMonitorPdpAPIDtcmonitorpdpReferencePutRequest) (*UpdateDtcMonitorPdpResponse, *http.Response, error) {
+func (a *DtcMonitorPdpAPIService) UpdateExecute(r DtcMonitorPdpAPIUpdateRequest) (*UpdateDtcMonitorPdpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *DtcMonitorPdpAPIService) DtcmonitorpdpReferencePutExecute(r DtcMonitorP
 		localVarReturnValue *UpdateDtcMonitorPdpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorPdpAPIService.DtcmonitorpdpReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorPdpAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

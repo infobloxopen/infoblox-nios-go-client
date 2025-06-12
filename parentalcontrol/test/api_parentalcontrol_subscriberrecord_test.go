@@ -23,11 +23,11 @@ func TestParentalcontrolSubscriberrecordAPIService(t *testing.T) {
 
 	apiClient := parentalcontrol.NewAPIClient()
 
-	t.Run("Test ParentalcontrolSubscriberrecordAPIService ParentalcontrolsubscriberrecordGet", func(t *testing.T) {
+	t.Run("Test ParentalcontrolSubscriberrecordAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ParentalcontrolSubscriberrecordAPI.ParentalcontrolsubscriberrecordGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolSubscriberrecordAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestParentalcontrolSubscriberrecordAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolSubscriberrecordAPIService ParentalcontrolsubscriberrecordPost", func(t *testing.T) {
+	t.Run("Test ParentalcontrolSubscriberrecordAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ParentalcontrolSubscriberrecordAPI.ParentalcontrolsubscriberrecordPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ParentalcontrolSubscriberrecordAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ParentalcontrolSubscriberrecordAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ParentalcontrolSubscriberrecordAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestParentalcontrolSubscriberrecordAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolSubscriberrecordAPIService ParentalcontrolsubscriberrecordReferenceDelete", func(t *testing.T) {
+	t.Run("Test ParentalcontrolSubscriberrecordAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ParentalcontrolSubscriberrecordAPI.ParentalcontrolsubscriberrecordReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ParentalcontrolSubscriberrecordAPIService ParentalcontrolsubscriberrecordReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ParentalcontrolSubscriberrecordAPI.ParentalcontrolsubscriberrecordReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolSubscriberrecordAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestParentalcontrolSubscriberrecordAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolSubscriberrecordAPIService ParentalcontrolsubscriberrecordReferencePut", func(t *testing.T) {
+	t.Run("Test ParentalcontrolSubscriberrecordAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ParentalcontrolSubscriberrecordAPI.ParentalcontrolsubscriberrecordReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolSubscriberrecordAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

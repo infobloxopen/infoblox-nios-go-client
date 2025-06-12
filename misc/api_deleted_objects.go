@@ -23,38 +23,38 @@ import (
 
 type DeletedObjectsAPI interface {
 	/*
-		Get Retrieve deleted_objects objects
+		List Retrieve deleted_objects objects
 
 		Returns a list of deleted_objects objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DeletedObjectsAPIGetRequest
+		@return DeletedObjectsAPIListRequest
 	*/
-	Get(ctx context.Context) DeletedObjectsAPIGetRequest
+	List(ctx context.Context) DeletedObjectsAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDeletedObjectsResponse
-	GetExecute(r DeletedObjectsAPIGetRequest) (*ListDeletedObjectsResponse, *http.Response, error)
+	ListExecute(r DeletedObjectsAPIListRequest) (*ListDeletedObjectsResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific deleted_objects object
+		Read Get a specific deleted_objects object
 
 		Returns a specific deleted_objects object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the deleted_objects object
-		@return DeletedObjectsAPIReferenceGetRequest
+		@return DeletedObjectsAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) DeletedObjectsAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) DeletedObjectsAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDeletedObjectsResponse
-	ReferenceGetExecute(r DeletedObjectsAPIReferenceGetRequest) (*GetDeletedObjectsResponse, *http.Response, error)
+	ReadExecute(r DeletedObjectsAPIReadRequest) (*GetDeletedObjectsResponse, *http.Response, error)
 }
 
 // DeletedObjectsAPIService DeletedObjectsAPI service
 type DeletedObjectsAPIService internal.Service
 
-type DeletedObjectsAPIGetRequest struct {
+type DeletedObjectsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DeletedObjectsAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type DeletedObjectsAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DeletedObjectsAPIGetRequest) ReturnFields(returnFields string) DeletedObjectsAPIGetRequest {
+func (r DeletedObjectsAPIListRequest) ReturnFields(returnFields string) DeletedObjectsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DeletedObjectsAPIGetRequest) ReturnFields2(returnFields2 string) DeletedObjectsAPIGetRequest {
+func (r DeletedObjectsAPIListRequest) ReturnFields2(returnFields2 string) DeletedObjectsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DeletedObjectsAPIGetRequest) MaxResults(maxResults int32) DeletedObjectsAPIGetRequest {
+func (r DeletedObjectsAPIListRequest) MaxResults(maxResults int32) DeletedObjectsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DeletedObjectsAPIGetRequest) ReturnAsObject(returnAsObject int32) DeletedObjectsAPIGetRequest {
+func (r DeletedObjectsAPIListRequest) ReturnAsObject(returnAsObject int32) DeletedObjectsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DeletedObjectsAPIGetRequest) Paging(paging int32) DeletedObjectsAPIGetRequest {
+func (r DeletedObjectsAPIListRequest) Paging(paging int32) DeletedObjectsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DeletedObjectsAPIGetRequest) PageId(pageId string) DeletedObjectsAPIGetRequest {
+func (r DeletedObjectsAPIListRequest) PageId(pageId string) DeletedObjectsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DeletedObjectsAPIGetRequest) Filters(filters map[string]interface{}) DeletedObjectsAPIGetRequest {
+func (r DeletedObjectsAPIListRequest) Filters(filters map[string]interface{}) DeletedObjectsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DeletedObjectsAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DeletedObjectsAPIGetRequest {
+func (r DeletedObjectsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DeletedObjectsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DeletedObjectsAPIGetRequest) Execute() (*ListDeletedObjectsResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r DeletedObjectsAPIListRequest) Execute() (*ListDeletedObjectsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve deleted_objects objects
+List Retrieve deleted_objects objects
 
 Returns a list of deleted_objects objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DeletedObjectsAPIGetRequest
+	@return DeletedObjectsAPIListRequest
 */
-func (a *DeletedObjectsAPIService) Get(ctx context.Context) DeletedObjectsAPIGetRequest {
-	return DeletedObjectsAPIGetRequest{
+func (a *DeletedObjectsAPIService) List(ctx context.Context) DeletedObjectsAPIListRequest {
+	return DeletedObjectsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *DeletedObjectsAPIService) Get(ctx context.Context) DeletedObjectsAPIGet
 // Execute executes the request
 //
 //	@return ListDeletedObjectsResponse
-func (a *DeletedObjectsAPIService) GetExecute(r DeletedObjectsAPIGetRequest) (*ListDeletedObjectsResponse, *http.Response, error) {
+func (a *DeletedObjectsAPIService) ListExecute(r DeletedObjectsAPIListRequest) (*ListDeletedObjectsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *DeletedObjectsAPIService) GetExecute(r DeletedObjectsAPIGetRequest) (*L
 		localVarReturnValue *ListDeletedObjectsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DeletedObjectsAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DeletedObjectsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *DeletedObjectsAPIService) GetExecute(r DeletedObjectsAPIGetRequest) (*L
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DeletedObjectsAPIReferenceGetRequest struct {
+type DeletedObjectsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DeletedObjectsAPI
 	reference      string
@@ -235,38 +235,38 @@ type DeletedObjectsAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DeletedObjectsAPIReferenceGetRequest) ReturnFields(returnFields string) DeletedObjectsAPIReferenceGetRequest {
+func (r DeletedObjectsAPIReadRequest) ReturnFields(returnFields string) DeletedObjectsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DeletedObjectsAPIReferenceGetRequest) ReturnFields2(returnFields2 string) DeletedObjectsAPIReferenceGetRequest {
+func (r DeletedObjectsAPIReadRequest) ReturnFields2(returnFields2 string) DeletedObjectsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DeletedObjectsAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) DeletedObjectsAPIReferenceGetRequest {
+func (r DeletedObjectsAPIReadRequest) ReturnAsObject(returnAsObject int32) DeletedObjectsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DeletedObjectsAPIReferenceGetRequest) Execute() (*GetDeletedObjectsResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r DeletedObjectsAPIReadRequest) Execute() (*GetDeletedObjectsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific deleted_objects object
+Read Get a specific deleted_objects object
 
 Returns a specific deleted_objects object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the deleted_objects object
-	@return DeletedObjectsAPIReferenceGetRequest
+	@return DeletedObjectsAPIReadRequest
 */
-func (a *DeletedObjectsAPIService) ReferenceGet(ctx context.Context, reference string) DeletedObjectsAPIReferenceGetRequest {
-	return DeletedObjectsAPIReferenceGetRequest{
+func (a *DeletedObjectsAPIService) Read(ctx context.Context, reference string) DeletedObjectsAPIReadRequest {
+	return DeletedObjectsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *DeletedObjectsAPIService) ReferenceGet(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return GetDeletedObjectsResponse
-func (a *DeletedObjectsAPIService) ReferenceGetExecute(r DeletedObjectsAPIReferenceGetRequest) (*GetDeletedObjectsResponse, *http.Response, error) {
+func (a *DeletedObjectsAPIService) ReadExecute(r DeletedObjectsAPIReadRequest) (*GetDeletedObjectsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *DeletedObjectsAPIService) ReferenceGetExecute(r DeletedObjectsAPIRefere
 		localVarReturnValue *GetDeletedObjectsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DeletedObjectsAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DeletedObjectsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

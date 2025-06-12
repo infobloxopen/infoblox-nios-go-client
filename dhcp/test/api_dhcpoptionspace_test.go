@@ -23,11 +23,11 @@ func TestDhcpoptionspaceAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test DhcpoptionspaceAPIService Get", func(t *testing.T) {
+	t.Run("Test DhcpoptionspaceAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DhcpoptionspaceAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DhcpoptionspaceAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDhcpoptionspaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DhcpoptionspaceAPIService Post", func(t *testing.T) {
+	t.Run("Test DhcpoptionspaceAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DhcpoptionspaceAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DhcpoptionspaceAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DhcpoptionspaceAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DhcpoptionspaceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDhcpoptionspaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DhcpoptionspaceAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test DhcpoptionspaceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DhcpoptionspaceAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DhcpoptionspaceAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DhcpoptionspaceAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DhcpoptionspaceAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDhcpoptionspaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DhcpoptionspaceAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test DhcpoptionspaceAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DhcpoptionspaceAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DhcpoptionspaceAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -35,6 +35,7 @@ paths:
     get:
       description: Returns a list of threatprotection:grid:rule objects matching the
         search criteria
+      operationId: ThreatprotectionGridRuleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -131,6 +132,7 @@ paths:
       - ThreatprotectionGridRule
     post:
       description: Creates a new threatprotection:grid:rule object
+      operationId: ThreatprotectionGridRuleCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -190,6 +192,7 @@ paths:
   /threatprotection:grid:rule/{reference}:
     delete:
       description: Deletes a specific threatprotection:grid:rule object by reference
+      operationId: ThreatprotectionGridRuleDelete
       parameters:
       - description: Reference of the threatprotection:grid:rule object
         explode: false
@@ -217,6 +220,7 @@ paths:
       - ThreatprotectionGridRule
     get:
       description: Returns a specific threatprotection:grid:rule object by reference
+      operationId: ThreatprotectionGridRuleRead
       parameters:
       - description: Reference of the threatprotection:grid:rule object
         explode: false
@@ -276,6 +280,7 @@ paths:
       - ThreatprotectionGridRule
     put:
       description: Updates a specific threatprotection:grid:rule object by reference
+      operationId: ThreatprotectionGridRuleUpdate
       parameters:
       - description: Reference of the threatprotection:grid:rule object
         explode: false
@@ -344,6 +349,7 @@ paths:
     get:
       description: Returns a list of threatprotection:profile objects matching the
         search criteria
+      operationId: ThreatprotectionProfileList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -440,6 +446,7 @@ paths:
       - ThreatprotectionProfile
     post:
       description: Creates a new threatprotection:profile object
+      operationId: ThreatprotectionProfileCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -500,6 +507,7 @@ paths:
   /threatprotection:profile/{reference}:
     delete:
       description: Deletes a specific threatprotection:profile object by reference
+      operationId: ThreatprotectionProfileDelete
       parameters:
       - description: Reference of the threatprotection:profile object
         explode: false
@@ -527,6 +535,7 @@ paths:
       - ThreatprotectionProfile
     get:
       description: Returns a specific threatprotection:profile object by reference
+      operationId: ThreatprotectionProfileRead
       parameters:
       - description: Reference of the threatprotection:profile object
         explode: false
@@ -586,6 +595,7 @@ paths:
       - ThreatprotectionProfile
     put:
       description: Updates a specific threatprotection:profile object by reference
+      operationId: ThreatprotectionProfileUpdate
       parameters:
       - description: Reference of the threatprotection:profile object
         explode: false
@@ -655,6 +665,7 @@ paths:
     get:
       description: Returns a list of threatprotection:profile:rule objects matching
         the search criteria
+      operationId: ThreatprotectionProfileRuleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -752,6 +763,7 @@ paths:
   /threatprotection:profile:rule/{reference}:
     get:
       description: Returns a specific threatprotection:profile:rule object by reference
+      operationId: ThreatprotectionProfileRuleRead
       parameters:
       - description: Reference of the threatprotection:profile:rule object
         explode: false
@@ -811,6 +823,7 @@ paths:
       - ThreatprotectionProfileRule
     put:
       description: Updates a specific threatprotection:profile:rule object by reference
+      operationId: ThreatprotectionProfileRuleUpdate
       parameters:
       - description: Reference of the threatprotection:profile:rule object
         explode: false
@@ -879,6 +892,7 @@ paths:
     get:
       description: Returns a list of threatprotection:rule objects matching the search
         criteria
+      operationId: ThreatprotectionRuleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -976,6 +990,7 @@ paths:
   /threatprotection:rule/{reference}:
     get:
       description: Returns a specific threatprotection:rule object by reference
+      operationId: ThreatprotectionRuleRead
       parameters:
       - description: Reference of the threatprotection:rule object
         explode: false
@@ -1035,6 +1050,7 @@ paths:
       - ThreatprotectionRule
     put:
       description: Updates a specific threatprotection:rule object by reference
+      operationId: ThreatprotectionRuleUpdate
       parameters:
       - description: Reference of the threatprotection:rule object
         explode: false
@@ -1103,6 +1119,7 @@ paths:
     get:
       description: Returns a list of threatprotection:rulecategory objects matching
         the search criteria
+      operationId: ThreatprotectionRulecategoryList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1200,6 +1217,7 @@ paths:
   /threatprotection:rulecategory/{reference}:
     get:
       description: Returns a specific threatprotection:rulecategory object by reference
+      operationId: ThreatprotectionRulecategoryRead
       parameters:
       - description: Reference of the threatprotection:rulecategory object
         explode: false
@@ -1261,6 +1279,7 @@ paths:
     get:
       description: Returns a list of threatprotection:ruleset objects matching the
         search criteria
+      operationId: ThreatprotectionRulesetList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1358,6 +1377,7 @@ paths:
   /threatprotection:ruleset/{reference}:
     delete:
       description: Deletes a specific threatprotection:ruleset object by reference
+      operationId: ThreatprotectionRulesetDelete
       parameters:
       - description: Reference of the threatprotection:ruleset object
         explode: false
@@ -1385,6 +1405,7 @@ paths:
       - ThreatprotectionRuleset
     get:
       description: Returns a specific threatprotection:ruleset object by reference
+      operationId: ThreatprotectionRulesetRead
       parameters:
       - description: Reference of the threatprotection:ruleset object
         explode: false
@@ -1444,6 +1465,7 @@ paths:
       - ThreatprotectionRuleset
     put:
       description: Updates a specific threatprotection:ruleset object by reference
+      operationId: ThreatprotectionRulesetUpdate
       parameters:
       - description: Reference of the threatprotection:ruleset object
         explode: false
@@ -1512,6 +1534,7 @@ paths:
     get:
       description: Returns a list of threatprotection:ruletemplate objects matching
         the search criteria
+      operationId: ThreatprotectionRuletemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1609,6 +1632,7 @@ paths:
   /threatprotection:ruletemplate/{reference}:
     get:
       description: Returns a specific threatprotection:ruletemplate object by reference
+      operationId: ThreatprotectionRuletemplateRead
       parameters:
       - description: Reference of the threatprotection:ruletemplate object
         explode: false
@@ -1670,6 +1694,7 @@ paths:
     get:
       description: Returns a list of threatprotection:statistics objects matching
         the search criteria
+      operationId: ThreatprotectionStatisticsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1767,6 +1792,7 @@ paths:
   /threatprotection:statistics/{reference}:
     get:
       description: Returns a specific threatprotection:statistics object by reference
+      operationId: ThreatprotectionStatisticsRead
       parameters:
       - description: Reference of the threatprotection:statistics object
         explode: false

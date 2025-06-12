@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **HighWaterMarkReset** | Pointer to **int64** | The percentage of DHCP range usage below which the corresponding SNMP trap is reset. A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The high watermark reset value must be lower than the high watermark value. | [optional] 
 **IgnoreDhcpOptionListRequest** | Pointer to **bool** | If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested. | [optional] 
 **KnownClients** | Pointer to **string** | Permission for known clients. If set to &#39;Deny&#39; known clients will be denied IP addresses. Known clients include roaming hosts and clients with fixed addresses or DHCP host entries. Unknown clients include clients that are not roaming hosts and clients that do not have fixed addresses or DHCP host entries. | [optional] 
-**LeaseScavengeTime** | Pointer to **int32** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int64** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogicFilterRules** | Pointer to [**[]RangetemplateLogicFilterRules**](RangetemplateLogicFilterRules.md) | This field contains the logic filters to be applied on this range. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **LowWaterMark** | Pointer to **int64** | The percentage of DHCP range usage below which the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **LowWaterMarkReset** | Pointer to **int64** | The percentage of DHCP range usage threshold below which range usage is not expected and may warrant your attention. When the low watermark is crossed, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The low watermark reset value must be higher than the low watermark value. | [optional] 
@@ -691,20 +691,20 @@ HasKnownClients returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *GetRangetemplateResponse) GetLeaseScavengeTime() int32`
+`func (o *GetRangetemplateResponse) GetLeaseScavengeTime() int64`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *GetRangetemplateResponse) GetLeaseScavengeTimeOk() (*int32, bool)`
+`func (o *GetRangetemplateResponse) GetLeaseScavengeTimeOk() (*int64, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *GetRangetemplateResponse) SetLeaseScavengeTime(v int32)`
+`func (o *GetRangetemplateResponse) SetLeaseScavengeTime(v int64)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 

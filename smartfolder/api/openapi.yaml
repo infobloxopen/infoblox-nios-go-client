@@ -25,6 +25,7 @@ paths:
     get:
       description: Returns a list of smartfolder:children objects matching the search
         criteria
+      operationId: SmartfolderChildrenList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -122,6 +123,7 @@ paths:
   /smartfolder:children/{reference}:
     get:
       description: Returns a specific smartfolder:children object by reference
+      operationId: SmartfolderChildrenRead
       parameters:
       - description: Reference of the smartfolder:children object
         explode: false
@@ -183,6 +185,7 @@ paths:
     get:
       description: Returns a list of smartfolder:global objects matching the search
         criteria
+      operationId: SmartfolderGlobalList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -279,6 +282,7 @@ paths:
       - SmartfolderGlobal
     post:
       description: Creates a new smartfolder:global object
+      operationId: SmartfolderGlobalCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -338,6 +342,7 @@ paths:
   /smartfolder:global/{reference}:
     delete:
       description: Deletes a specific smartfolder:global object by reference
+      operationId: SmartfolderGlobalDelete
       parameters:
       - description: Reference of the smartfolder:global object
         explode: false
@@ -365,6 +370,7 @@ paths:
       - SmartfolderGlobal
     get:
       description: Returns a specific smartfolder:global object by reference
+      operationId: SmartfolderGlobalRead
       parameters:
       - description: Reference of the smartfolder:global object
         explode: false
@@ -424,6 +430,7 @@ paths:
       - SmartfolderGlobal
     put:
       description: Updates a specific smartfolder:global object by reference
+      operationId: SmartfolderGlobalUpdate
       parameters:
       - description: Reference of the smartfolder:global object
         explode: false
@@ -492,6 +499,7 @@ paths:
     get:
       description: Returns a list of smartfolder:personal objects matching the search
         criteria
+      operationId: SmartfolderPersonalList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -588,6 +596,7 @@ paths:
       - SmartfolderPersonal
     post:
       description: Creates a new smartfolder:personal object
+      operationId: SmartfolderPersonalCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -647,6 +656,7 @@ paths:
   /smartfolder:personal/{reference}:
     delete:
       description: Deletes a specific smartfolder:personal object by reference
+      operationId: SmartfolderPersonalDelete
       parameters:
       - description: Reference of the smartfolder:personal object
         explode: false
@@ -674,6 +684,7 @@ paths:
       - SmartfolderPersonal
     get:
       description: Returns a specific smartfolder:personal object by reference
+      operationId: SmartfolderPersonalRead
       parameters:
       - description: Reference of the smartfolder:personal object
         explode: false
@@ -733,6 +744,7 @@ paths:
       - SmartfolderPersonal
     put:
       description: Updates a specific smartfolder:personal object by reference
+      operationId: SmartfolderPersonalUpdate
       parameters:
       - description: Reference of the smartfolder:personal object
         explode: false
@@ -1020,6 +1032,7 @@ components:
         value_integer:
           description: The integer value of the Smart Folder query.
           example: 1
+          format: int64
           type: integer
         value_string:
           description: The string value of the Smart Folder query.
@@ -1211,6 +1224,7 @@ components:
         value_integer:
           description: The integer value of the Smart Folder query.
           example: 1
+          format: int64
           type: integer
         value_string:
           description: The string value of the Smart Folder query.
@@ -1414,6 +1428,7 @@ components:
         value_integer:
           description: The integer value of the Smart Folder query.
           example: 1
+          format: int64
           type: integer
         value_string:
           description: The string value of the Smart Folder query.

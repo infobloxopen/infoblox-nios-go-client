@@ -23,249 +23,78 @@ import (
 
 type RecordRpzCnameClientipaddressAPI interface {
 	/*
-		RecordrpzcnameclientipaddressGet Retrieve record:rpz:cname:clientipaddress objects
-
-		Returns a list of record:rpz:cname:clientipaddress objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest
-	*/
-	RecordrpzcnameclientipaddressGet(ctx context.Context) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest
-
-	// RecordrpzcnameclientipaddressGetExecute executes the request
-	//  @return ListRecordRpzCnameClientipaddressResponse
-	RecordrpzcnameclientipaddressGetExecute(r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) (*ListRecordRpzCnameClientipaddressResponse, *http.Response, error)
-	/*
-		RecordrpzcnameclientipaddressPost Create a record:rpz:cname:clientipaddress object
+		Create Create a record:rpz:cname:clientipaddress object
 
 		Creates a new record:rpz:cname:clientipaddress object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest
+		@return RecordRpzCnameClientipaddressAPICreateRequest
 	*/
-	RecordrpzcnameclientipaddressPost(ctx context.Context) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest
+	Create(ctx context.Context) RecordRpzCnameClientipaddressAPICreateRequest
 
-	// RecordrpzcnameclientipaddressPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordRpzCnameClientipaddressResponse
-	RecordrpzcnameclientipaddressPostExecute(r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest) (*CreateRecordRpzCnameClientipaddressResponse, *http.Response, error)
+	CreateExecute(r RecordRpzCnameClientipaddressAPICreateRequest) (*CreateRecordRpzCnameClientipaddressResponse, *http.Response, error)
 	/*
-		RecordrpzcnameclientipaddressReferenceDelete Delete a record:rpz:cname:clientipaddress object
+		Delete Delete a record:rpz:cname:clientipaddress object
 
 		Deletes a specific record:rpz:cname:clientipaddress object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:cname:clientipaddress object
-		@return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceDeleteRequest
+		@return RecordRpzCnameClientipaddressAPIDeleteRequest
 	*/
-	RecordrpzcnameclientipaddressReferenceDelete(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIDeleteRequest
 
-	// RecordrpzcnameclientipaddressReferenceDeleteExecute executes the request
-	RecordrpzcnameclientipaddressReferenceDeleteExecute(r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordRpzCnameClientipaddressAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecordrpzcnameclientipaddressReferenceGet Get a specific record:rpz:cname:clientipaddress object
+		List Retrieve record:rpz:cname:clientipaddress objects
+
+		Returns a list of record:rpz:cname:clientipaddress objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordRpzCnameClientipaddressAPIListRequest
+	*/
+	List(ctx context.Context) RecordRpzCnameClientipaddressAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordRpzCnameClientipaddressResponse
+	ListExecute(r RecordRpzCnameClientipaddressAPIListRequest) (*ListRecordRpzCnameClientipaddressResponse, *http.Response, error)
+	/*
+		Read Get a specific record:rpz:cname:clientipaddress object
 
 		Returns a specific record:rpz:cname:clientipaddress object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:cname:clientipaddress object
-		@return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest
+		@return RecordRpzCnameClientipaddressAPIReadRequest
 	*/
-	RecordrpzcnameclientipaddressReferenceGet(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIReadRequest
 
-	// RecordrpzcnameclientipaddressReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordRpzCnameClientipaddressResponse
-	RecordrpzcnameclientipaddressReferenceGetExecute(r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest) (*GetRecordRpzCnameClientipaddressResponse, *http.Response, error)
+	ReadExecute(r RecordRpzCnameClientipaddressAPIReadRequest) (*GetRecordRpzCnameClientipaddressResponse, *http.Response, error)
 	/*
-		RecordrpzcnameclientipaddressReferencePut Update a record:rpz:cname:clientipaddress object
+		Update Update a record:rpz:cname:clientipaddress object
 
 		Updates a specific record:rpz:cname:clientipaddress object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:cname:clientipaddress object
-		@return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest
+		@return RecordRpzCnameClientipaddressAPIUpdateRequest
 	*/
-	RecordrpzcnameclientipaddressReferencePut(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest
+	Update(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIUpdateRequest
 
-	// RecordrpzcnameclientipaddressReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordRpzCnameClientipaddressResponse
-	RecordrpzcnameclientipaddressReferencePutExecute(r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest) (*UpdateRecordRpzCnameClientipaddressResponse, *http.Response, error)
+	UpdateExecute(r RecordRpzCnameClientipaddressAPIUpdateRequest) (*UpdateRecordRpzCnameClientipaddressResponse, *http.Response, error)
 }
 
 // RecordRpzCnameClientipaddressAPIService RecordRpzCnameClientipaddressAPI service
 type RecordRpzCnameClientipaddressAPIService internal.Service
 
-type RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordRpzCnameClientipaddressAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) ReturnFields(returnFields string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) ReturnFields2(returnFields2 string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) MaxResults(maxResults int32) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) Paging(paging int32) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) PageId(pageId string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) Filters(filters map[string]interface{}) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) Execute() (*ListRecordRpzCnameClientipaddressResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzcnameclientipaddressGetExecute(r)
-}
-
-/*
-RecordrpzcnameclientipaddressGet Retrieve record:rpz:cname:clientipaddress objects
-
-Returns a list of record:rpz:cname:clientipaddress objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest
-*/
-func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressGet(ctx context.Context) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest {
-	return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListRecordRpzCnameClientipaddressResponse
-func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressGetExecute(r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressGetRequest) (*ListRecordRpzCnameClientipaddressResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListRecordRpzCnameClientipaddressResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameClientipaddressAPIService.RecordrpzcnameclientipaddressGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:rpz:cname:clientipaddress"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest struct {
+type RecordRpzCnameClientipaddressAPICreateRequest struct {
 	ctx                           context.Context
 	ApiService                    RecordRpzCnameClientipaddressAPI
 	recordRpzCnameClientipaddress *RecordRpzCnameClientipaddress
@@ -275,43 +104,43 @@ type RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest st
 }
 
 // Object data to create
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest) RecordRpzCnameClientipaddress(recordRpzCnameClientipaddress RecordRpzCnameClientipaddress) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest {
+func (r RecordRpzCnameClientipaddressAPICreateRequest) RecordRpzCnameClientipaddress(recordRpzCnameClientipaddress RecordRpzCnameClientipaddress) RecordRpzCnameClientipaddressAPICreateRequest {
 	r.recordRpzCnameClientipaddress = &recordRpzCnameClientipaddress
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest) ReturnFields(returnFields string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest {
+func (r RecordRpzCnameClientipaddressAPICreateRequest) ReturnFields(returnFields string) RecordRpzCnameClientipaddressAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest) ReturnFields2(returnFields2 string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest {
+func (r RecordRpzCnameClientipaddressAPICreateRequest) ReturnFields2(returnFields2 string) RecordRpzCnameClientipaddressAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest {
+func (r RecordRpzCnameClientipaddressAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameClientipaddressAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest) Execute() (*CreateRecordRpzCnameClientipaddressResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzcnameclientipaddressPostExecute(r)
+func (r RecordRpzCnameClientipaddressAPICreateRequest) Execute() (*CreateRecordRpzCnameClientipaddressResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-RecordrpzcnameclientipaddressPost Create a record:rpz:cname:clientipaddress object
+Create Create a record:rpz:cname:clientipaddress object
 
 Creates a new record:rpz:cname:clientipaddress object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest
+	@return RecordRpzCnameClientipaddressAPICreateRequest
 */
-func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressPost(ctx context.Context) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest {
-	return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest{
+func (a *RecordRpzCnameClientipaddressAPIService) Create(ctx context.Context) RecordRpzCnameClientipaddressAPICreateRequest {
+	return RecordRpzCnameClientipaddressAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressP
 // Execute executes the request
 //
 //	@return CreateRecordRpzCnameClientipaddressResponse
-func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressPostExecute(r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressPostRequest) (*CreateRecordRpzCnameClientipaddressResponse, *http.Response, error) {
+func (a *RecordRpzCnameClientipaddressAPIService) CreateExecute(r RecordRpzCnameClientipaddressAPICreateRequest) (*CreateRecordRpzCnameClientipaddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressP
 		localVarReturnValue *CreateRecordRpzCnameClientipaddressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameClientipaddressAPIService.RecordrpzcnameclientipaddressPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameClientipaddressAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceDeleteRequest struct {
+type RecordRpzCnameClientipaddressAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService RecordRpzCnameClientipaddressAPI
 	reference  string
 }
 
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecordrpzcnameclientipaddressReferenceDeleteExecute(r)
+func (r RecordRpzCnameClientipaddressAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-RecordrpzcnameclientipaddressReferenceDelete Delete a record:rpz:cname:clientipaddress object
+Delete Delete a record:rpz:cname:clientipaddress object
 
 Deletes a specific record:rpz:cname:clientipaddress object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:cname:clientipaddress object
-	@return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceDeleteRequest
+	@return RecordRpzCnameClientipaddressAPIDeleteRequest
 */
-func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressReferenceDelete(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceDeleteRequest {
-	return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceDeleteRequest{
+func (a *RecordRpzCnameClientipaddressAPIService) Delete(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIDeleteRequest {
+	return RecordRpzCnameClientipaddressAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressR
 }
 
 // Execute executes the request
-func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressReferenceDeleteExecute(r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceDeleteRequest) (*http.Response, error) {
+func (a *RecordRpzCnameClientipaddressAPIService) DeleteExecute(r RecordRpzCnameClientipaddressAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameClientipaddressAPIService.RecordrpzcnameclientipaddressReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameClientipaddressAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressR
 	return localVarHTTPResponse, nil
 }
 
-type RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest struct {
+type RecordRpzCnameClientipaddressAPIListRequest struct {
+	ctx            context.Context
+	ApiService     RecordRpzCnameClientipaddressAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RecordRpzCnameClientipaddressAPIListRequest) ReturnFields(returnFields string) RecordRpzCnameClientipaddressAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordRpzCnameClientipaddressAPIListRequest) ReturnFields2(returnFields2 string) RecordRpzCnameClientipaddressAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r RecordRpzCnameClientipaddressAPIListRequest) MaxResults(maxResults int32) RecordRpzCnameClientipaddressAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordRpzCnameClientipaddressAPIListRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameClientipaddressAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r RecordRpzCnameClientipaddressAPIListRequest) Paging(paging int32) RecordRpzCnameClientipaddressAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r RecordRpzCnameClientipaddressAPIListRequest) PageId(pageId string) RecordRpzCnameClientipaddressAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r RecordRpzCnameClientipaddressAPIListRequest) Filters(filters map[string]interface{}) RecordRpzCnameClientipaddressAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r RecordRpzCnameClientipaddressAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRpzCnameClientipaddressAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r RecordRpzCnameClientipaddressAPIListRequest) Execute() (*ListRecordRpzCnameClientipaddressResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve record:rpz:cname:clientipaddress objects
+
+Returns a list of record:rpz:cname:clientipaddress objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordRpzCnameClientipaddressAPIListRequest
+*/
+func (a *RecordRpzCnameClientipaddressAPIService) List(ctx context.Context) RecordRpzCnameClientipaddressAPIListRequest {
+	return RecordRpzCnameClientipaddressAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListRecordRpzCnameClientipaddressResponse
+func (a *RecordRpzCnameClientipaddressAPIService) ListExecute(r RecordRpzCnameClientipaddressAPIListRequest) (*ListRecordRpzCnameClientipaddressResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListRecordRpzCnameClientipaddressResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameClientipaddressAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:rpz:cname:clientipaddress"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordRpzCnameClientipaddressAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordRpzCnameClientipaddressAPI
 	reference      string
@@ -511,38 +511,38 @@ type RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRe
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest) ReturnFields(returnFields string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest {
+func (r RecordRpzCnameClientipaddressAPIReadRequest) ReturnFields(returnFields string) RecordRpzCnameClientipaddressAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest) ReturnFields2(returnFields2 string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest {
+func (r RecordRpzCnameClientipaddressAPIReadRequest) ReturnFields2(returnFields2 string) RecordRpzCnameClientipaddressAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest {
+func (r RecordRpzCnameClientipaddressAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameClientipaddressAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest) Execute() (*GetRecordRpzCnameClientipaddressResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzcnameclientipaddressReferenceGetExecute(r)
+func (r RecordRpzCnameClientipaddressAPIReadRequest) Execute() (*GetRecordRpzCnameClientipaddressResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordrpzcnameclientipaddressReferenceGet Get a specific record:rpz:cname:clientipaddress object
+Read Get a specific record:rpz:cname:clientipaddress object
 
 Returns a specific record:rpz:cname:clientipaddress object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:cname:clientipaddress object
-	@return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest
+	@return RecordRpzCnameClientipaddressAPIReadRequest
 */
-func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressReferenceGet(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest {
-	return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest{
+func (a *RecordRpzCnameClientipaddressAPIService) Read(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIReadRequest {
+	return RecordRpzCnameClientipaddressAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressR
 // Execute executes the request
 //
 //	@return GetRecordRpzCnameClientipaddressResponse
-func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressReferenceGetExecute(r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferenceGetRequest) (*GetRecordRpzCnameClientipaddressResponse, *http.Response, error) {
+func (a *RecordRpzCnameClientipaddressAPIService) ReadExecute(r RecordRpzCnameClientipaddressAPIReadRequest) (*GetRecordRpzCnameClientipaddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressR
 		localVarReturnValue *GetRecordRpzCnameClientipaddressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameClientipaddressAPIService.RecordrpzcnameclientipaddressReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameClientipaddressAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest struct {
+type RecordRpzCnameClientipaddressAPIUpdateRequest struct {
 	ctx                           context.Context
 	ApiService                    RecordRpzCnameClientipaddressAPI
 	reference                     string
@@ -639,44 +639,44 @@ type RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRe
 }
 
 // Object data to update
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest) RecordRpzCnameClientipaddress(recordRpzCnameClientipaddress RecordRpzCnameClientipaddress) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest {
+func (r RecordRpzCnameClientipaddressAPIUpdateRequest) RecordRpzCnameClientipaddress(recordRpzCnameClientipaddress RecordRpzCnameClientipaddress) RecordRpzCnameClientipaddressAPIUpdateRequest {
 	r.recordRpzCnameClientipaddress = &recordRpzCnameClientipaddress
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest) ReturnFields(returnFields string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest {
+func (r RecordRpzCnameClientipaddressAPIUpdateRequest) ReturnFields(returnFields string) RecordRpzCnameClientipaddressAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest) ReturnFields2(returnFields2 string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest {
+func (r RecordRpzCnameClientipaddressAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordRpzCnameClientipaddressAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest {
+func (r RecordRpzCnameClientipaddressAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameClientipaddressAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest) Execute() (*UpdateRecordRpzCnameClientipaddressResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzcnameclientipaddressReferencePutExecute(r)
+func (r RecordRpzCnameClientipaddressAPIUpdateRequest) Execute() (*UpdateRecordRpzCnameClientipaddressResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordrpzcnameclientipaddressReferencePut Update a record:rpz:cname:clientipaddress object
+Update Update a record:rpz:cname:clientipaddress object
 
 Updates a specific record:rpz:cname:clientipaddress object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:cname:clientipaddress object
-	@return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest
+	@return RecordRpzCnameClientipaddressAPIUpdateRequest
 */
-func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressReferencePut(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest {
-	return RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest{
+func (a *RecordRpzCnameClientipaddressAPIService) Update(ctx context.Context, reference string) RecordRpzCnameClientipaddressAPIUpdateRequest {
+	return RecordRpzCnameClientipaddressAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressR
 // Execute executes the request
 //
 //	@return UpdateRecordRpzCnameClientipaddressResponse
-func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressReferencePutExecute(r RecordRpzCnameClientipaddressAPIRecordrpzcnameclientipaddressReferencePutRequest) (*UpdateRecordRpzCnameClientipaddressResponse, *http.Response, error) {
+func (a *RecordRpzCnameClientipaddressAPIService) UpdateExecute(r RecordRpzCnameClientipaddressAPIUpdateRequest) (*UpdateRecordRpzCnameClientipaddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RecordRpzCnameClientipaddressAPIService) RecordrpzcnameclientipaddressR
 		localVarReturnValue *UpdateRecordRpzCnameClientipaddressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameClientipaddressAPIService.RecordrpzcnameclientipaddressReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameClientipaddressAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

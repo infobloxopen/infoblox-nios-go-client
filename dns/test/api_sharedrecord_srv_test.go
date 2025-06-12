@@ -23,11 +23,11 @@ func TestSharedrecordSrvAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test SharedrecordSrvAPIService SharedrecordsrvGet", func(t *testing.T) {
+	t.Run("Test SharedrecordSrvAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SharedrecordSrvAPI.SharedrecordsrvGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SharedrecordSrvAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestSharedrecordSrvAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SharedrecordSrvAPIService SharedrecordsrvPost", func(t *testing.T) {
+	t.Run("Test SharedrecordSrvAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SharedrecordSrvAPI.SharedrecordsrvPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.SharedrecordSrvAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SharedrecordSrvAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.SharedrecordSrvAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestSharedrecordSrvAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SharedrecordSrvAPIService SharedrecordsrvReferenceDelete", func(t *testing.T) {
+	t.Run("Test SharedrecordSrvAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.SharedrecordSrvAPI.SharedrecordsrvReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SharedrecordSrvAPIService SharedrecordsrvReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.SharedrecordSrvAPI.SharedrecordsrvReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SharedrecordSrvAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestSharedrecordSrvAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SharedrecordSrvAPIService SharedrecordsrvReferencePut", func(t *testing.T) {
+	t.Run("Test SharedrecordSrvAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.SharedrecordSrvAPI.SharedrecordsrvReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SharedrecordSrvAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

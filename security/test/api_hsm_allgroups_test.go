@@ -23,11 +23,11 @@ func TestHsmAllgroupsAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test HsmAllgroupsAPIService HsmallgroupsGet", func(t *testing.T) {
+	t.Run("Test HsmAllgroupsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.HsmAllgroupsAPI.HsmallgroupsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.HsmAllgroupsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestHsmAllgroupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HsmAllgroupsAPIService HsmallgroupsReferenceGet", func(t *testing.T) {
+	t.Run("Test HsmAllgroupsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.HsmAllgroupsAPI.HsmallgroupsReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.HsmAllgroupsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestHsmAllgroupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HsmAllgroupsAPIService HsmallgroupsReferencePut", func(t *testing.T) {
+	t.Run("Test HsmAllgroupsAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.HsmAllgroupsAPI.HsmallgroupsReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.HsmAllgroupsAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

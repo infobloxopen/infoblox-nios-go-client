@@ -23,38 +23,38 @@ import (
 
 type GridServicerestartStatusAPI interface {
 	/*
-		GridservicerestartstatusGet Retrieve grid:servicerestart:status objects
+		List Retrieve grid:servicerestart:status objects
 
 		Returns a list of grid:servicerestart:status objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridServicerestartStatusAPIGridservicerestartstatusGetRequest
+		@return GridServicerestartStatusAPIListRequest
 	*/
-	GridservicerestartstatusGet(ctx context.Context) GridServicerestartStatusAPIGridservicerestartstatusGetRequest
+	List(ctx context.Context) GridServicerestartStatusAPIListRequest
 
-	// GridservicerestartstatusGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridServicerestartStatusResponse
-	GridservicerestartstatusGetExecute(r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) (*ListGridServicerestartStatusResponse, *http.Response, error)
+	ListExecute(r GridServicerestartStatusAPIListRequest) (*ListGridServicerestartStatusResponse, *http.Response, error)
 	/*
-		GridservicerestartstatusReferenceGet Get a specific grid:servicerestart:status object
+		Read Get a specific grid:servicerestart:status object
 
 		Returns a specific grid:servicerestart:status object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:servicerestart:status object
-		@return GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest
+		@return GridServicerestartStatusAPIReadRequest
 	*/
-	GridservicerestartstatusReferenceGet(ctx context.Context, reference string) GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest
+	Read(ctx context.Context, reference string) GridServicerestartStatusAPIReadRequest
 
-	// GridservicerestartstatusReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridServicerestartStatusResponse
-	GridservicerestartstatusReferenceGetExecute(r GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest) (*GetGridServicerestartStatusResponse, *http.Response, error)
+	ReadExecute(r GridServicerestartStatusAPIReadRequest) (*GetGridServicerestartStatusResponse, *http.Response, error)
 }
 
 // GridServicerestartStatusAPIService GridServicerestartStatusAPI service
 type GridServicerestartStatusAPIService internal.Service
 
-type GridServicerestartStatusAPIGridservicerestartstatusGetRequest struct {
+type GridServicerestartStatusAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridServicerestartStatusAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type GridServicerestartStatusAPIGridservicerestartstatusGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) ReturnFields(returnFields string) GridServicerestartStatusAPIGridservicerestartstatusGetRequest {
+func (r GridServicerestartStatusAPIListRequest) ReturnFields(returnFields string) GridServicerestartStatusAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) ReturnFields2(returnFields2 string) GridServicerestartStatusAPIGridservicerestartstatusGetRequest {
+func (r GridServicerestartStatusAPIListRequest) ReturnFields2(returnFields2 string) GridServicerestartStatusAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) MaxResults(maxResults int32) GridServicerestartStatusAPIGridservicerestartstatusGetRequest {
+func (r GridServicerestartStatusAPIListRequest) MaxResults(maxResults int32) GridServicerestartStatusAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) ReturnAsObject(returnAsObject int32) GridServicerestartStatusAPIGridservicerestartstatusGetRequest {
+func (r GridServicerestartStatusAPIListRequest) ReturnAsObject(returnAsObject int32) GridServicerestartStatusAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) Paging(paging int32) GridServicerestartStatusAPIGridservicerestartstatusGetRequest {
+func (r GridServicerestartStatusAPIListRequest) Paging(paging int32) GridServicerestartStatusAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) PageId(pageId string) GridServicerestartStatusAPIGridservicerestartstatusGetRequest {
+func (r GridServicerestartStatusAPIListRequest) PageId(pageId string) GridServicerestartStatusAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) Filters(filters map[string]interface{}) GridServicerestartStatusAPIGridservicerestartstatusGetRequest {
+func (r GridServicerestartStatusAPIListRequest) Filters(filters map[string]interface{}) GridServicerestartStatusAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridServicerestartStatusAPIGridservicerestartstatusGetRequest {
+func (r GridServicerestartStatusAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridServicerestartStatusAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) Execute() (*ListGridServicerestartStatusResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartstatusGetExecute(r)
+func (r GridServicerestartStatusAPIListRequest) Execute() (*ListGridServicerestartStatusResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridservicerestartstatusGet Retrieve grid:servicerestart:status objects
+List Retrieve grid:servicerestart:status objects
 
 Returns a list of grid:servicerestart:status objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridServicerestartStatusAPIGridservicerestartstatusGetRequest
+	@return GridServicerestartStatusAPIListRequest
 */
-func (a *GridServicerestartStatusAPIService) GridservicerestartstatusGet(ctx context.Context) GridServicerestartStatusAPIGridservicerestartstatusGetRequest {
-	return GridServicerestartStatusAPIGridservicerestartstatusGetRequest{
+func (a *GridServicerestartStatusAPIService) List(ctx context.Context) GridServicerestartStatusAPIListRequest {
+	return GridServicerestartStatusAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *GridServicerestartStatusAPIService) GridservicerestartstatusGet(ctx con
 // Execute executes the request
 //
 //	@return ListGridServicerestartStatusResponse
-func (a *GridServicerestartStatusAPIService) GridservicerestartstatusGetExecute(r GridServicerestartStatusAPIGridservicerestartstatusGetRequest) (*ListGridServicerestartStatusResponse, *http.Response, error) {
+func (a *GridServicerestartStatusAPIService) ListExecute(r GridServicerestartStatusAPIListRequest) (*ListGridServicerestartStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *GridServicerestartStatusAPIService) GridservicerestartstatusGetExecute(
 		localVarReturnValue *ListGridServicerestartStatusResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartStatusAPIService.GridservicerestartstatusGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartStatusAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *GridServicerestartStatusAPIService) GridservicerestartstatusGetExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest struct {
+type GridServicerestartStatusAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridServicerestartStatusAPI
 	reference      string
@@ -235,38 +235,38 @@ type GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest stru
 }
 
 // Enter the field names followed by comma
-func (r GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest) ReturnFields(returnFields string) GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest {
+func (r GridServicerestartStatusAPIReadRequest) ReturnFields(returnFields string) GridServicerestartStatusAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest) ReturnFields2(returnFields2 string) GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest {
+func (r GridServicerestartStatusAPIReadRequest) ReturnFields2(returnFields2 string) GridServicerestartStatusAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest {
+func (r GridServicerestartStatusAPIReadRequest) ReturnAsObject(returnAsObject int32) GridServicerestartStatusAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest) Execute() (*GetGridServicerestartStatusResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartstatusReferenceGetExecute(r)
+func (r GridServicerestartStatusAPIReadRequest) Execute() (*GetGridServicerestartStatusResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridservicerestartstatusReferenceGet Get a specific grid:servicerestart:status object
+Read Get a specific grid:servicerestart:status object
 
 Returns a specific grid:servicerestart:status object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:servicerestart:status object
-	@return GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest
+	@return GridServicerestartStatusAPIReadRequest
 */
-func (a *GridServicerestartStatusAPIService) GridservicerestartstatusReferenceGet(ctx context.Context, reference string) GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest {
-	return GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest{
+func (a *GridServicerestartStatusAPIService) Read(ctx context.Context, reference string) GridServicerestartStatusAPIReadRequest {
+	return GridServicerestartStatusAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *GridServicerestartStatusAPIService) GridservicerestartstatusReferenceGe
 // Execute executes the request
 //
 //	@return GetGridServicerestartStatusResponse
-func (a *GridServicerestartStatusAPIService) GridservicerestartstatusReferenceGetExecute(r GridServicerestartStatusAPIGridservicerestartstatusReferenceGetRequest) (*GetGridServicerestartStatusResponse, *http.Response, error) {
+func (a *GridServicerestartStatusAPIService) ReadExecute(r GridServicerestartStatusAPIReadRequest) (*GetGridServicerestartStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *GridServicerestartStatusAPIService) GridservicerestartstatusReferenceGe
 		localVarReturnValue *GetGridServicerestartStatusResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartStatusAPIService.GridservicerestartstatusReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartStatusAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

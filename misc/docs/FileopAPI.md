@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](FileopAPI.md#Get) | **Get** /fileop | Retrieve fileop objects
-[**ReferenceGet**](FileopAPI.md#ReferenceGet) | **Get** /fileop/{reference} | Get a specific fileop object
+[**List**](FileopAPI.md#List) | **Get** /fileop | Retrieve fileop objects
+[**Read**](FileopAPI.md#Read) | **Get** /fileop/{reference} | Get a specific fileop object
 
 
 
-## Get
+## List
 
-> ListFileopResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListFileopResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve fileop objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.FileopAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.FileopAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FileopAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FileopAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListFileopResponse
-	fmt.Fprintf(os.Stdout, "Response from `FileopAPI.Get`: %v\n", resp)
+	// response from `List`: ListFileopResponse
+	fmt.Fprintf(os.Stdout, "Response from `FileopAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FileopAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FileopAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetFileopResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetFileopResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific fileop object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the fileop object
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.FileopAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.FileopAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FileopAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FileopAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetFileopResponse
-	fmt.Fprintf(os.Stdout, "Response from `FileopAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetFileopResponse
+	fmt.Fprintf(os.Stdout, "Response from `FileopAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FileopAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FileopAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

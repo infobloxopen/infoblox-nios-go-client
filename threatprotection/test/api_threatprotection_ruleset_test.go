@@ -23,11 +23,24 @@ func TestThreatprotectionRulesetAPIService(t *testing.T) {
 
 	apiClient := threatprotection.NewAPIClient()
 
-	t.Run("Test ThreatprotectionRulesetAPIService ThreatprotectionrulesetGet", func(t *testing.T) {
+	t.Run("Test ThreatprotectionRulesetAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ThreatprotectionRulesetAPI.ThreatprotectionrulesetGet(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ThreatprotectionRulesetAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ThreatprotectionRulesetAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ThreatprotectionRulesetAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,26 +48,13 @@ func TestThreatprotectionRulesetAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatprotectionRulesetAPIService ThreatprotectionrulesetReferenceDelete", func(t *testing.T) {
+	t.Run("Test ThreatprotectionRulesetAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ThreatprotectionRulesetAPI.ThreatprotectionrulesetReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ThreatprotectionRulesetAPIService ThreatprotectionrulesetReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ThreatprotectionRulesetAPI.ThreatprotectionrulesetReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ThreatprotectionRulesetAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,13 +62,13 @@ func TestThreatprotectionRulesetAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatprotectionRulesetAPIService ThreatprotectionrulesetReferencePut", func(t *testing.T) {
+	t.Run("Test ThreatprotectionRulesetAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ThreatprotectionRulesetAPI.ThreatprotectionrulesetReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ThreatprotectionRulesetAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

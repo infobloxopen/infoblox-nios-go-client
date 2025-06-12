@@ -23,52 +23,52 @@ import (
 
 type DiscoveryMemberpropertiesAPI interface {
 	/*
-		DiscoverymemberpropertiesGet Retrieve discovery:memberproperties objects
+		List Retrieve discovery:memberproperties objects
 
 		Returns a list of discovery:memberproperties objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest
+		@return DiscoveryMemberpropertiesAPIListRequest
 	*/
-	DiscoverymemberpropertiesGet(ctx context.Context) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest
+	List(ctx context.Context) DiscoveryMemberpropertiesAPIListRequest
 
-	// DiscoverymemberpropertiesGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDiscoveryMemberpropertiesResponse
-	DiscoverymemberpropertiesGetExecute(r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) (*ListDiscoveryMemberpropertiesResponse, *http.Response, error)
+	ListExecute(r DiscoveryMemberpropertiesAPIListRequest) (*ListDiscoveryMemberpropertiesResponse, *http.Response, error)
 	/*
-		DiscoverymemberpropertiesReferenceGet Get a specific discovery:memberproperties object
+		Read Get a specific discovery:memberproperties object
 
 		Returns a specific discovery:memberproperties object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:memberproperties object
-		@return DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest
+		@return DiscoveryMemberpropertiesAPIReadRequest
 	*/
-	DiscoverymemberpropertiesReferenceGet(ctx context.Context, reference string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoveryMemberpropertiesAPIReadRequest
 
-	// DiscoverymemberpropertiesReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoveryMemberpropertiesResponse
-	DiscoverymemberpropertiesReferenceGetExecute(r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest) (*GetDiscoveryMemberpropertiesResponse, *http.Response, error)
+	ReadExecute(r DiscoveryMemberpropertiesAPIReadRequest) (*GetDiscoveryMemberpropertiesResponse, *http.Response, error)
 	/*
-		DiscoverymemberpropertiesReferencePut Update a discovery:memberproperties object
+		Update Update a discovery:memberproperties object
 
 		Updates a specific discovery:memberproperties object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:memberproperties object
-		@return DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest
+		@return DiscoveryMemberpropertiesAPIUpdateRequest
 	*/
-	DiscoverymemberpropertiesReferencePut(ctx context.Context, reference string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest
+	Update(ctx context.Context, reference string) DiscoveryMemberpropertiesAPIUpdateRequest
 
-	// DiscoverymemberpropertiesReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDiscoveryMemberpropertiesResponse
-	DiscoverymemberpropertiesReferencePutExecute(r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest) (*UpdateDiscoveryMemberpropertiesResponse, *http.Response, error)
+	UpdateExecute(r DiscoveryMemberpropertiesAPIUpdateRequest) (*UpdateDiscoveryMemberpropertiesResponse, *http.Response, error)
 }
 
 // DiscoveryMemberpropertiesAPIService DiscoveryMemberpropertiesAPI service
 type DiscoveryMemberpropertiesAPIService internal.Service
 
-type DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest struct {
+type DiscoveryMemberpropertiesAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DiscoveryMemberpropertiesAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) ReturnFields(returnFields string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest {
+func (r DiscoveryMemberpropertiesAPIListRequest) ReturnFields(returnFields string) DiscoveryMemberpropertiesAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) ReturnFields2(returnFields2 string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest {
+func (r DiscoveryMemberpropertiesAPIListRequest) ReturnFields2(returnFields2 string) DiscoveryMemberpropertiesAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) MaxResults(maxResults int32) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest {
+func (r DiscoveryMemberpropertiesAPIListRequest) MaxResults(maxResults int32) DiscoveryMemberpropertiesAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest {
+func (r DiscoveryMemberpropertiesAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoveryMemberpropertiesAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) Paging(paging int32) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest {
+func (r DiscoveryMemberpropertiesAPIListRequest) Paging(paging int32) DiscoveryMemberpropertiesAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) PageId(pageId string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest {
+func (r DiscoveryMemberpropertiesAPIListRequest) PageId(pageId string) DiscoveryMemberpropertiesAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) Filters(filters map[string]interface{}) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest {
+func (r DiscoveryMemberpropertiesAPIListRequest) Filters(filters map[string]interface{}) DiscoveryMemberpropertiesAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest {
+func (r DiscoveryMemberpropertiesAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryMemberpropertiesAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) Execute() (*ListDiscoveryMemberpropertiesResponse, *http.Response, error) {
-	return r.ApiService.DiscoverymemberpropertiesGetExecute(r)
+func (r DiscoveryMemberpropertiesAPIListRequest) Execute() (*ListDiscoveryMemberpropertiesResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DiscoverymemberpropertiesGet Retrieve discovery:memberproperties objects
+List Retrieve discovery:memberproperties objects
 
 Returns a list of discovery:memberproperties objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest
+	@return DiscoveryMemberpropertiesAPIListRequest
 */
-func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesGet(ctx context.Context) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest {
-	return DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest{
+func (a *DiscoveryMemberpropertiesAPIService) List(ctx context.Context) DiscoveryMemberpropertiesAPIListRequest {
+	return DiscoveryMemberpropertiesAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesGet(ctx c
 // Execute executes the request
 //
 //	@return ListDiscoveryMemberpropertiesResponse
-func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesGetExecute(r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesGetRequest) (*ListDiscoveryMemberpropertiesResponse, *http.Response, error) {
+func (a *DiscoveryMemberpropertiesAPIService) ListExecute(r DiscoveryMemberpropertiesAPIListRequest) (*ListDiscoveryMemberpropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesGetExecut
 		localVarReturnValue *ListDiscoveryMemberpropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryMemberpropertiesAPIService.DiscoverymemberpropertiesGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryMemberpropertiesAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesGetExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest struct {
+type DiscoveryMemberpropertiesAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DiscoveryMemberpropertiesAPI
 	reference      string
@@ -249,38 +249,38 @@ type DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest st
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest) ReturnFields(returnFields string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest {
+func (r DiscoveryMemberpropertiesAPIReadRequest) ReturnFields(returnFields string) DiscoveryMemberpropertiesAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest {
+func (r DiscoveryMemberpropertiesAPIReadRequest) ReturnFields2(returnFields2 string) DiscoveryMemberpropertiesAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest {
+func (r DiscoveryMemberpropertiesAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoveryMemberpropertiesAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest) Execute() (*GetDiscoveryMemberpropertiesResponse, *http.Response, error) {
-	return r.ApiService.DiscoverymemberpropertiesReferenceGetExecute(r)
+func (r DiscoveryMemberpropertiesAPIReadRequest) Execute() (*GetDiscoveryMemberpropertiesResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DiscoverymemberpropertiesReferenceGet Get a specific discovery:memberproperties object
+Read Get a specific discovery:memberproperties object
 
 Returns a specific discovery:memberproperties object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:memberproperties object
-	@return DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest
+	@return DiscoveryMemberpropertiesAPIReadRequest
 */
-func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesReferenceGet(ctx context.Context, reference string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest {
-	return DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest{
+func (a *DiscoveryMemberpropertiesAPIService) Read(ctx context.Context, reference string) DiscoveryMemberpropertiesAPIReadRequest {
+	return DiscoveryMemberpropertiesAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesReference
 // Execute executes the request
 //
 //	@return GetDiscoveryMemberpropertiesResponse
-func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesReferenceGetExecute(r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferenceGetRequest) (*GetDiscoveryMemberpropertiesResponse, *http.Response, error) {
+func (a *DiscoveryMemberpropertiesAPIService) ReadExecute(r DiscoveryMemberpropertiesAPIReadRequest) (*GetDiscoveryMemberpropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesReference
 		localVarReturnValue *GetDiscoveryMemberpropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryMemberpropertiesAPIService.DiscoverymemberpropertiesReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryMemberpropertiesAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesReference
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest struct {
+type DiscoveryMemberpropertiesAPIUpdateRequest struct {
 	ctx                       context.Context
 	ApiService                DiscoveryMemberpropertiesAPI
 	reference                 string
@@ -377,44 +377,44 @@ type DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest st
 }
 
 // Object data to update
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest) DiscoveryMemberproperties(discoveryMemberproperties DiscoveryMemberproperties) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest {
+func (r DiscoveryMemberpropertiesAPIUpdateRequest) DiscoveryMemberproperties(discoveryMemberproperties DiscoveryMemberproperties) DiscoveryMemberpropertiesAPIUpdateRequest {
 	r.discoveryMemberproperties = &discoveryMemberproperties
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest) ReturnFields(returnFields string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest {
+func (r DiscoveryMemberpropertiesAPIUpdateRequest) ReturnFields(returnFields string) DiscoveryMemberpropertiesAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest) ReturnFields2(returnFields2 string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest {
+func (r DiscoveryMemberpropertiesAPIUpdateRequest) ReturnFields2(returnFields2 string) DiscoveryMemberpropertiesAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest) ReturnAsObject(returnAsObject int32) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest {
+func (r DiscoveryMemberpropertiesAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DiscoveryMemberpropertiesAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest) Execute() (*UpdateDiscoveryMemberpropertiesResponse, *http.Response, error) {
-	return r.ApiService.DiscoverymemberpropertiesReferencePutExecute(r)
+func (r DiscoveryMemberpropertiesAPIUpdateRequest) Execute() (*UpdateDiscoveryMemberpropertiesResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DiscoverymemberpropertiesReferencePut Update a discovery:memberproperties object
+Update Update a discovery:memberproperties object
 
 Updates a specific discovery:memberproperties object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:memberproperties object
-	@return DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest
+	@return DiscoveryMemberpropertiesAPIUpdateRequest
 */
-func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesReferencePut(ctx context.Context, reference string) DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest {
-	return DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest{
+func (a *DiscoveryMemberpropertiesAPIService) Update(ctx context.Context, reference string) DiscoveryMemberpropertiesAPIUpdateRequest {
+	return DiscoveryMemberpropertiesAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesReference
 // Execute executes the request
 //
 //	@return UpdateDiscoveryMemberpropertiesResponse
-func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesReferencePutExecute(r DiscoveryMemberpropertiesAPIDiscoverymemberpropertiesReferencePutRequest) (*UpdateDiscoveryMemberpropertiesResponse, *http.Response, error) {
+func (a *DiscoveryMemberpropertiesAPIService) UpdateExecute(r DiscoveryMemberpropertiesAPIUpdateRequest) (*UpdateDiscoveryMemberpropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *DiscoveryMemberpropertiesAPIService) DiscoverymemberpropertiesReference
 		localVarReturnValue *UpdateDiscoveryMemberpropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryMemberpropertiesAPIService.DiscoverymemberpropertiesReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryMemberpropertiesAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

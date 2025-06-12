@@ -23,11 +23,11 @@ func TestRadiusAuthserviceAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test RadiusAuthserviceAPIService RadiusauthserviceGet", func(t *testing.T) {
+	t.Run("Test RadiusAuthserviceAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RadiusAuthserviceAPI.RadiusauthserviceGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RadiusAuthserviceAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRadiusAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RadiusAuthserviceAPIService RadiusauthservicePost", func(t *testing.T) {
+	t.Run("Test RadiusAuthserviceAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RadiusAuthserviceAPI.RadiusauthservicePost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RadiusAuthserviceAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RadiusAuthserviceAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RadiusAuthserviceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRadiusAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RadiusAuthserviceAPIService RadiusauthserviceReferenceDelete", func(t *testing.T) {
+	t.Run("Test RadiusAuthserviceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RadiusAuthserviceAPI.RadiusauthserviceReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RadiusAuthserviceAPIService RadiusauthserviceReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RadiusAuthserviceAPI.RadiusauthserviceReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RadiusAuthserviceAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRadiusAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RadiusAuthserviceAPIService RadiusauthserviceReferencePut", func(t *testing.T) {
+	t.Run("Test RadiusAuthserviceAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RadiusAuthserviceAPI.RadiusauthserviceReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RadiusAuthserviceAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

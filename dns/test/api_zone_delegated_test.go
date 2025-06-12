@@ -23,11 +23,11 @@ func TestZoneDelegatedAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test ZoneDelegatedAPIService Get", func(t *testing.T) {
+	t.Run("Test ZoneDelegatedAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ZoneDelegatedAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ZoneDelegatedAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestZoneDelegatedAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneDelegatedAPIService Post", func(t *testing.T) {
+	t.Run("Test ZoneDelegatedAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ZoneDelegatedAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ZoneDelegatedAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ZoneDelegatedAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ZoneDelegatedAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestZoneDelegatedAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneDelegatedAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test ZoneDelegatedAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ZoneDelegatedAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ZoneDelegatedAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ZoneDelegatedAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ZoneDelegatedAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestZoneDelegatedAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneDelegatedAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test ZoneDelegatedAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ZoneDelegatedAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ZoneDelegatedAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

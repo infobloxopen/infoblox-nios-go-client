@@ -23,249 +23,78 @@ import (
 
 type ParentalcontrolSubscribersiteAPI interface {
 	/*
-		ParentalcontrolsubscribersiteGet Retrieve parentalcontrol:subscribersite objects
-
-		Returns a list of parentalcontrol:subscribersite objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest
-	*/
-	ParentalcontrolsubscribersiteGet(ctx context.Context) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest
-
-	// ParentalcontrolsubscribersiteGetExecute executes the request
-	//  @return ListParentalcontrolSubscribersiteResponse
-	ParentalcontrolsubscribersiteGetExecute(r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) (*ListParentalcontrolSubscribersiteResponse, *http.Response, error)
-	/*
-		ParentalcontrolsubscribersitePost Create a parentalcontrol:subscribersite object
+		Create Create a parentalcontrol:subscribersite object
 
 		Creates a new parentalcontrol:subscribersite object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest
+		@return ParentalcontrolSubscribersiteAPICreateRequest
 	*/
-	ParentalcontrolsubscribersitePost(ctx context.Context) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest
+	Create(ctx context.Context) ParentalcontrolSubscribersiteAPICreateRequest
 
-	// ParentalcontrolsubscribersitePostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateParentalcontrolSubscribersiteResponse
-	ParentalcontrolsubscribersitePostExecute(r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest) (*CreateParentalcontrolSubscribersiteResponse, *http.Response, error)
+	CreateExecute(r ParentalcontrolSubscribersiteAPICreateRequest) (*CreateParentalcontrolSubscribersiteResponse, *http.Response, error)
 	/*
-		ParentalcontrolsubscribersiteReferenceDelete Delete a parentalcontrol:subscribersite object
+		Delete Delete a parentalcontrol:subscribersite object
 
 		Deletes a specific parentalcontrol:subscribersite object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:subscribersite object
-		@return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceDeleteRequest
+		@return ParentalcontrolSubscribersiteAPIDeleteRequest
 	*/
-	ParentalcontrolsubscribersiteReferenceDelete(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIDeleteRequest
 
-	// ParentalcontrolsubscribersiteReferenceDeleteExecute executes the request
-	ParentalcontrolsubscribersiteReferenceDeleteExecute(r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ParentalcontrolSubscribersiteAPIDeleteRequest) (*http.Response, error)
 	/*
-		ParentalcontrolsubscribersiteReferenceGet Get a specific parentalcontrol:subscribersite object
+		List Retrieve parentalcontrol:subscribersite objects
+
+		Returns a list of parentalcontrol:subscribersite objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ParentalcontrolSubscribersiteAPIListRequest
+	*/
+	List(ctx context.Context) ParentalcontrolSubscribersiteAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListParentalcontrolSubscribersiteResponse
+	ListExecute(r ParentalcontrolSubscribersiteAPIListRequest) (*ListParentalcontrolSubscribersiteResponse, *http.Response, error)
+	/*
+		Read Get a specific parentalcontrol:subscribersite object
 
 		Returns a specific parentalcontrol:subscribersite object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:subscribersite object
-		@return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest
+		@return ParentalcontrolSubscribersiteAPIReadRequest
 	*/
-	ParentalcontrolsubscribersiteReferenceGet(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest
+	Read(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIReadRequest
 
-	// ParentalcontrolsubscribersiteReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetParentalcontrolSubscribersiteResponse
-	ParentalcontrolsubscribersiteReferenceGetExecute(r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest) (*GetParentalcontrolSubscribersiteResponse, *http.Response, error)
+	ReadExecute(r ParentalcontrolSubscribersiteAPIReadRequest) (*GetParentalcontrolSubscribersiteResponse, *http.Response, error)
 	/*
-		ParentalcontrolsubscribersiteReferencePut Update a parentalcontrol:subscribersite object
+		Update Update a parentalcontrol:subscribersite object
 
 		Updates a specific parentalcontrol:subscribersite object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:subscribersite object
-		@return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest
+		@return ParentalcontrolSubscribersiteAPIUpdateRequest
 	*/
-	ParentalcontrolsubscribersiteReferencePut(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest
+	Update(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIUpdateRequest
 
-	// ParentalcontrolsubscribersiteReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateParentalcontrolSubscribersiteResponse
-	ParentalcontrolsubscribersiteReferencePutExecute(r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest) (*UpdateParentalcontrolSubscribersiteResponse, *http.Response, error)
+	UpdateExecute(r ParentalcontrolSubscribersiteAPIUpdateRequest) (*UpdateParentalcontrolSubscribersiteResponse, *http.Response, error)
 }
 
 // ParentalcontrolSubscribersiteAPIService ParentalcontrolSubscribersiteAPI service
 type ParentalcontrolSubscribersiteAPIService internal.Service
 
-type ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest struct {
-	ctx            context.Context
-	ApiService     ParentalcontrolSubscribersiteAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) ReturnFields(returnFields string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) MaxResults(maxResults int32) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) Paging(paging int32) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) PageId(pageId string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) Filters(filters map[string]interface{}) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) Execute() (*ListParentalcontrolSubscribersiteResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolsubscribersiteGetExecute(r)
-}
-
-/*
-ParentalcontrolsubscribersiteGet Retrieve parentalcontrol:subscribersite objects
-
-Returns a list of parentalcontrol:subscribersite objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest
-*/
-func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteGet(ctx context.Context) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest {
-	return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListParentalcontrolSubscribersiteResponse
-func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteGetExecute(r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest) (*ListParentalcontrolSubscribersiteResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListParentalcontrolSubscribersiteResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscribersiteAPIService.ParentalcontrolsubscribersiteGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/parentalcontrol:subscribersite"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest struct {
+type ParentalcontrolSubscribersiteAPICreateRequest struct {
 	ctx                           context.Context
 	ApiService                    ParentalcontrolSubscribersiteAPI
 	parentalcontrolSubscribersite *ParentalcontrolSubscribersite
@@ -275,43 +104,43 @@ type ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest st
 }
 
 // Object data to create
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest) ParentalcontrolSubscribersite(parentalcontrolSubscribersite ParentalcontrolSubscribersite) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest {
+func (r ParentalcontrolSubscribersiteAPICreateRequest) ParentalcontrolSubscribersite(parentalcontrolSubscribersite ParentalcontrolSubscribersite) ParentalcontrolSubscribersiteAPICreateRequest {
 	r.parentalcontrolSubscribersite = &parentalcontrolSubscribersite
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest) ReturnFields(returnFields string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest {
+func (r ParentalcontrolSubscribersiteAPICreateRequest) ReturnFields(returnFields string) ParentalcontrolSubscribersiteAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest {
+func (r ParentalcontrolSubscribersiteAPICreateRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscribersiteAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest {
+func (r ParentalcontrolSubscribersiteAPICreateRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscribersiteAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest) Execute() (*CreateParentalcontrolSubscribersiteResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolsubscribersitePostExecute(r)
+func (r ParentalcontrolSubscribersiteAPICreateRequest) Execute() (*CreateParentalcontrolSubscribersiteResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-ParentalcontrolsubscribersitePost Create a parentalcontrol:subscribersite object
+Create Create a parentalcontrol:subscribersite object
 
 Creates a new parentalcontrol:subscribersite object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest
+	@return ParentalcontrolSubscribersiteAPICreateRequest
 */
-func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersitePost(ctx context.Context) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest {
-	return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest{
+func (a *ParentalcontrolSubscribersiteAPIService) Create(ctx context.Context) ParentalcontrolSubscribersiteAPICreateRequest {
+	return ParentalcontrolSubscribersiteAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteP
 // Execute executes the request
 //
 //	@return CreateParentalcontrolSubscribersiteResponse
-func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersitePostExecute(r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest) (*CreateParentalcontrolSubscribersiteResponse, *http.Response, error) {
+func (a *ParentalcontrolSubscribersiteAPIService) CreateExecute(r ParentalcontrolSubscribersiteAPICreateRequest) (*CreateParentalcontrolSubscribersiteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteP
 		localVarReturnValue *CreateParentalcontrolSubscribersiteResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscribersiteAPIService.ParentalcontrolsubscribersitePost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscribersiteAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceDeleteRequest struct {
+type ParentalcontrolSubscribersiteAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService ParentalcontrolSubscribersiteAPI
 	reference  string
 }
 
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ParentalcontrolsubscribersiteReferenceDeleteExecute(r)
+func (r ParentalcontrolSubscribersiteAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ParentalcontrolsubscribersiteReferenceDelete Delete a parentalcontrol:subscribersite object
+Delete Delete a parentalcontrol:subscribersite object
 
 Deletes a specific parentalcontrol:subscribersite object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the parentalcontrol:subscribersite object
-	@return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceDeleteRequest
+	@return ParentalcontrolSubscribersiteAPIDeleteRequest
 */
-func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteReferenceDelete(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceDeleteRequest {
-	return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceDeleteRequest{
+func (a *ParentalcontrolSubscribersiteAPIService) Delete(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIDeleteRequest {
+	return ParentalcontrolSubscribersiteAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteR
 }
 
 // Execute executes the request
-func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteReferenceDeleteExecute(r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceDeleteRequest) (*http.Response, error) {
+func (a *ParentalcontrolSubscribersiteAPIService) DeleteExecute(r ParentalcontrolSubscribersiteAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscribersiteAPIService.ParentalcontrolsubscribersiteReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscribersiteAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteR
 	return localVarHTTPResponse, nil
 }
 
-type ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest struct {
+type ParentalcontrolSubscribersiteAPIListRequest struct {
+	ctx            context.Context
+	ApiService     ParentalcontrolSubscribersiteAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r ParentalcontrolSubscribersiteAPIListRequest) ReturnFields(returnFields string) ParentalcontrolSubscribersiteAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ParentalcontrolSubscribersiteAPIListRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscribersiteAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r ParentalcontrolSubscribersiteAPIListRequest) MaxResults(maxResults int32) ParentalcontrolSubscribersiteAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ParentalcontrolSubscribersiteAPIListRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscribersiteAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r ParentalcontrolSubscribersiteAPIListRequest) Paging(paging int32) ParentalcontrolSubscribersiteAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r ParentalcontrolSubscribersiteAPIListRequest) PageId(pageId string) ParentalcontrolSubscribersiteAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r ParentalcontrolSubscribersiteAPIListRequest) Filters(filters map[string]interface{}) ParentalcontrolSubscribersiteAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r ParentalcontrolSubscribersiteAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ParentalcontrolSubscribersiteAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r ParentalcontrolSubscribersiteAPIListRequest) Execute() (*ListParentalcontrolSubscribersiteResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve parentalcontrol:subscribersite objects
+
+Returns a list of parentalcontrol:subscribersite objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ParentalcontrolSubscribersiteAPIListRequest
+*/
+func (a *ParentalcontrolSubscribersiteAPIService) List(ctx context.Context) ParentalcontrolSubscribersiteAPIListRequest {
+	return ParentalcontrolSubscribersiteAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListParentalcontrolSubscribersiteResponse
+func (a *ParentalcontrolSubscribersiteAPIService) ListExecute(r ParentalcontrolSubscribersiteAPIListRequest) (*ListParentalcontrolSubscribersiteResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListParentalcontrolSubscribersiteResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscribersiteAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/parentalcontrol:subscribersite"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ParentalcontrolSubscribersiteAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ParentalcontrolSubscribersiteAPI
 	reference      string
@@ -511,38 +511,38 @@ type ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRe
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest) ReturnFields(returnFields string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest {
+func (r ParentalcontrolSubscribersiteAPIReadRequest) ReturnFields(returnFields string) ParentalcontrolSubscribersiteAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest {
+func (r ParentalcontrolSubscribersiteAPIReadRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscribersiteAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest {
+func (r ParentalcontrolSubscribersiteAPIReadRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscribersiteAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest) Execute() (*GetParentalcontrolSubscribersiteResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolsubscribersiteReferenceGetExecute(r)
+func (r ParentalcontrolSubscribersiteAPIReadRequest) Execute() (*GetParentalcontrolSubscribersiteResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ParentalcontrolsubscribersiteReferenceGet Get a specific parentalcontrol:subscribersite object
+Read Get a specific parentalcontrol:subscribersite object
 
 Returns a specific parentalcontrol:subscribersite object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the parentalcontrol:subscribersite object
-	@return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest
+	@return ParentalcontrolSubscribersiteAPIReadRequest
 */
-func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteReferenceGet(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest {
-	return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest{
+func (a *ParentalcontrolSubscribersiteAPIService) Read(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIReadRequest {
+	return ParentalcontrolSubscribersiteAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteR
 // Execute executes the request
 //
 //	@return GetParentalcontrolSubscribersiteResponse
-func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteReferenceGetExecute(r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest) (*GetParentalcontrolSubscribersiteResponse, *http.Response, error) {
+func (a *ParentalcontrolSubscribersiteAPIService) ReadExecute(r ParentalcontrolSubscribersiteAPIReadRequest) (*GetParentalcontrolSubscribersiteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteR
 		localVarReturnValue *GetParentalcontrolSubscribersiteResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscribersiteAPIService.ParentalcontrolsubscribersiteReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscribersiteAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest struct {
+type ParentalcontrolSubscribersiteAPIUpdateRequest struct {
 	ctx                           context.Context
 	ApiService                    ParentalcontrolSubscribersiteAPI
 	reference                     string
@@ -639,44 +639,44 @@ type ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRe
 }
 
 // Object data to update
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest) ParentalcontrolSubscribersite(parentalcontrolSubscribersite ParentalcontrolSubscribersite) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest {
+func (r ParentalcontrolSubscribersiteAPIUpdateRequest) ParentalcontrolSubscribersite(parentalcontrolSubscribersite ParentalcontrolSubscribersite) ParentalcontrolSubscribersiteAPIUpdateRequest {
 	r.parentalcontrolSubscribersite = &parentalcontrolSubscribersite
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest) ReturnFields(returnFields string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest {
+func (r ParentalcontrolSubscribersiteAPIUpdateRequest) ReturnFields(returnFields string) ParentalcontrolSubscribersiteAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest {
+func (r ParentalcontrolSubscribersiteAPIUpdateRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscribersiteAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest {
+func (r ParentalcontrolSubscribersiteAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscribersiteAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest) Execute() (*UpdateParentalcontrolSubscribersiteResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolsubscribersiteReferencePutExecute(r)
+func (r ParentalcontrolSubscribersiteAPIUpdateRequest) Execute() (*UpdateParentalcontrolSubscribersiteResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ParentalcontrolsubscribersiteReferencePut Update a parentalcontrol:subscribersite object
+Update Update a parentalcontrol:subscribersite object
 
 Updates a specific parentalcontrol:subscribersite object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the parentalcontrol:subscribersite object
-	@return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest
+	@return ParentalcontrolSubscribersiteAPIUpdateRequest
 */
-func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteReferencePut(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest {
-	return ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest{
+func (a *ParentalcontrolSubscribersiteAPIService) Update(ctx context.Context, reference string) ParentalcontrolSubscribersiteAPIUpdateRequest {
+	return ParentalcontrolSubscribersiteAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteR
 // Execute executes the request
 //
 //	@return UpdateParentalcontrolSubscribersiteResponse
-func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteReferencePutExecute(r ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest) (*UpdateParentalcontrolSubscribersiteResponse, *http.Response, error) {
+func (a *ParentalcontrolSubscribersiteAPIService) UpdateExecute(r ParentalcontrolSubscribersiteAPIUpdateRequest) (*UpdateParentalcontrolSubscribersiteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *ParentalcontrolSubscribersiteAPIService) ParentalcontrolsubscribersiteR
 		localVarReturnValue *UpdateParentalcontrolSubscribersiteResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscribersiteAPIService.ParentalcontrolsubscribersiteReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscribersiteAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

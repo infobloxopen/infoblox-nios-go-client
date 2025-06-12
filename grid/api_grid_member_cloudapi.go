@@ -23,52 +23,52 @@ import (
 
 type GridMemberCloudapiAPI interface {
 	/*
-		GridmembercloudapiGet Retrieve grid:member:cloudapi objects
+		List Retrieve grid:member:cloudapi objects
 
 		Returns a list of grid:member:cloudapi objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridMemberCloudapiAPIGridmembercloudapiGetRequest
+		@return GridMemberCloudapiAPIListRequest
 	*/
-	GridmembercloudapiGet(ctx context.Context) GridMemberCloudapiAPIGridmembercloudapiGetRequest
+	List(ctx context.Context) GridMemberCloudapiAPIListRequest
 
-	// GridmembercloudapiGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridMemberCloudapiResponse
-	GridmembercloudapiGetExecute(r GridMemberCloudapiAPIGridmembercloudapiGetRequest) (*ListGridMemberCloudapiResponse, *http.Response, error)
+	ListExecute(r GridMemberCloudapiAPIListRequest) (*ListGridMemberCloudapiResponse, *http.Response, error)
 	/*
-		GridmembercloudapiReferenceGet Get a specific grid:member:cloudapi object
+		Read Get a specific grid:member:cloudapi object
 
 		Returns a specific grid:member:cloudapi object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:member:cloudapi object
-		@return GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest
+		@return GridMemberCloudapiAPIReadRequest
 	*/
-	GridmembercloudapiReferenceGet(ctx context.Context, reference string) GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest
+	Read(ctx context.Context, reference string) GridMemberCloudapiAPIReadRequest
 
-	// GridmembercloudapiReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridMemberCloudapiResponse
-	GridmembercloudapiReferenceGetExecute(r GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest) (*GetGridMemberCloudapiResponse, *http.Response, error)
+	ReadExecute(r GridMemberCloudapiAPIReadRequest) (*GetGridMemberCloudapiResponse, *http.Response, error)
 	/*
-		GridmembercloudapiReferencePut Update a grid:member:cloudapi object
+		Update Update a grid:member:cloudapi object
 
 		Updates a specific grid:member:cloudapi object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:member:cloudapi object
-		@return GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest
+		@return GridMemberCloudapiAPIUpdateRequest
 	*/
-	GridmembercloudapiReferencePut(ctx context.Context, reference string) GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest
+	Update(ctx context.Context, reference string) GridMemberCloudapiAPIUpdateRequest
 
-	// GridmembercloudapiReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridMemberCloudapiResponse
-	GridmembercloudapiReferencePutExecute(r GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest) (*UpdateGridMemberCloudapiResponse, *http.Response, error)
+	UpdateExecute(r GridMemberCloudapiAPIUpdateRequest) (*UpdateGridMemberCloudapiResponse, *http.Response, error)
 }
 
 // GridMemberCloudapiAPIService GridMemberCloudapiAPI service
 type GridMemberCloudapiAPIService internal.Service
 
-type GridMemberCloudapiAPIGridmembercloudapiGetRequest struct {
+type GridMemberCloudapiAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridMemberCloudapiAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type GridMemberCloudapiAPIGridmembercloudapiGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridMemberCloudapiAPIGridmembercloudapiGetRequest) ReturnFields(returnFields string) GridMemberCloudapiAPIGridmembercloudapiGetRequest {
+func (r GridMemberCloudapiAPIListRequest) ReturnFields(returnFields string) GridMemberCloudapiAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridMemberCloudapiAPIGridmembercloudapiGetRequest) ReturnFields2(returnFields2 string) GridMemberCloudapiAPIGridmembercloudapiGetRequest {
+func (r GridMemberCloudapiAPIListRequest) ReturnFields2(returnFields2 string) GridMemberCloudapiAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridMemberCloudapiAPIGridmembercloudapiGetRequest) MaxResults(maxResults int32) GridMemberCloudapiAPIGridmembercloudapiGetRequest {
+func (r GridMemberCloudapiAPIListRequest) MaxResults(maxResults int32) GridMemberCloudapiAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridMemberCloudapiAPIGridmembercloudapiGetRequest) ReturnAsObject(returnAsObject int32) GridMemberCloudapiAPIGridmembercloudapiGetRequest {
+func (r GridMemberCloudapiAPIListRequest) ReturnAsObject(returnAsObject int32) GridMemberCloudapiAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridMemberCloudapiAPIGridmembercloudapiGetRequest) Paging(paging int32) GridMemberCloudapiAPIGridmembercloudapiGetRequest {
+func (r GridMemberCloudapiAPIListRequest) Paging(paging int32) GridMemberCloudapiAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridMemberCloudapiAPIGridmembercloudapiGetRequest) PageId(pageId string) GridMemberCloudapiAPIGridmembercloudapiGetRequest {
+func (r GridMemberCloudapiAPIListRequest) PageId(pageId string) GridMemberCloudapiAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridMemberCloudapiAPIGridmembercloudapiGetRequest) Filters(filters map[string]interface{}) GridMemberCloudapiAPIGridmembercloudapiGetRequest {
+func (r GridMemberCloudapiAPIListRequest) Filters(filters map[string]interface{}) GridMemberCloudapiAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridMemberCloudapiAPIGridmembercloudapiGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridMemberCloudapiAPIGridmembercloudapiGetRequest {
+func (r GridMemberCloudapiAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridMemberCloudapiAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridMemberCloudapiAPIGridmembercloudapiGetRequest) Execute() (*ListGridMemberCloudapiResponse, *http.Response, error) {
-	return r.ApiService.GridmembercloudapiGetExecute(r)
+func (r GridMemberCloudapiAPIListRequest) Execute() (*ListGridMemberCloudapiResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridmembercloudapiGet Retrieve grid:member:cloudapi objects
+List Retrieve grid:member:cloudapi objects
 
 Returns a list of grid:member:cloudapi objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridMemberCloudapiAPIGridmembercloudapiGetRequest
+	@return GridMemberCloudapiAPIListRequest
 */
-func (a *GridMemberCloudapiAPIService) GridmembercloudapiGet(ctx context.Context) GridMemberCloudapiAPIGridmembercloudapiGetRequest {
-	return GridMemberCloudapiAPIGridmembercloudapiGetRequest{
+func (a *GridMemberCloudapiAPIService) List(ctx context.Context) GridMemberCloudapiAPIListRequest {
+	return GridMemberCloudapiAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GridMemberCloudapiAPIService) GridmembercloudapiGet(ctx context.Context
 // Execute executes the request
 //
 //	@return ListGridMemberCloudapiResponse
-func (a *GridMemberCloudapiAPIService) GridmembercloudapiGetExecute(r GridMemberCloudapiAPIGridmembercloudapiGetRequest) (*ListGridMemberCloudapiResponse, *http.Response, error) {
+func (a *GridMemberCloudapiAPIService) ListExecute(r GridMemberCloudapiAPIListRequest) (*ListGridMemberCloudapiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GridMemberCloudapiAPIService) GridmembercloudapiGetExecute(r GridMember
 		localVarReturnValue *ListGridMemberCloudapiResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridMemberCloudapiAPIService.GridmembercloudapiGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridMemberCloudapiAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *GridMemberCloudapiAPIService) GridmembercloudapiGetExecute(r GridMember
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest struct {
+type GridMemberCloudapiAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridMemberCloudapiAPI
 	reference      string
@@ -249,38 +249,38 @@ type GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest) ReturnFields(returnFields string) GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest {
+func (r GridMemberCloudapiAPIReadRequest) ReturnFields(returnFields string) GridMemberCloudapiAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest) ReturnFields2(returnFields2 string) GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest {
+func (r GridMemberCloudapiAPIReadRequest) ReturnFields2(returnFields2 string) GridMemberCloudapiAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest {
+func (r GridMemberCloudapiAPIReadRequest) ReturnAsObject(returnAsObject int32) GridMemberCloudapiAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest) Execute() (*GetGridMemberCloudapiResponse, *http.Response, error) {
-	return r.ApiService.GridmembercloudapiReferenceGetExecute(r)
+func (r GridMemberCloudapiAPIReadRequest) Execute() (*GetGridMemberCloudapiResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridmembercloudapiReferenceGet Get a specific grid:member:cloudapi object
+Read Get a specific grid:member:cloudapi object
 
 Returns a specific grid:member:cloudapi object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:member:cloudapi object
-	@return GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest
+	@return GridMemberCloudapiAPIReadRequest
 */
-func (a *GridMemberCloudapiAPIService) GridmembercloudapiReferenceGet(ctx context.Context, reference string) GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest {
-	return GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest{
+func (a *GridMemberCloudapiAPIService) Read(ctx context.Context, reference string) GridMemberCloudapiAPIReadRequest {
+	return GridMemberCloudapiAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GridMemberCloudapiAPIService) GridmembercloudapiReferenceGet(ctx contex
 // Execute executes the request
 //
 //	@return GetGridMemberCloudapiResponse
-func (a *GridMemberCloudapiAPIService) GridmembercloudapiReferenceGetExecute(r GridMemberCloudapiAPIGridmembercloudapiReferenceGetRequest) (*GetGridMemberCloudapiResponse, *http.Response, error) {
+func (a *GridMemberCloudapiAPIService) ReadExecute(r GridMemberCloudapiAPIReadRequest) (*GetGridMemberCloudapiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GridMemberCloudapiAPIService) GridmembercloudapiReferenceGetExecute(r G
 		localVarReturnValue *GetGridMemberCloudapiResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridMemberCloudapiAPIService.GridmembercloudapiReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridMemberCloudapiAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *GridMemberCloudapiAPIService) GridmembercloudapiReferenceGetExecute(r G
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest struct {
+type GridMemberCloudapiAPIUpdateRequest struct {
 	ctx                context.Context
 	ApiService         GridMemberCloudapiAPI
 	reference          string
@@ -377,44 +377,44 @@ type GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest struct {
 }
 
 // Object data to update
-func (r GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest) GridMemberCloudapi(gridMemberCloudapi GridMemberCloudapi) GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest {
+func (r GridMemberCloudapiAPIUpdateRequest) GridMemberCloudapi(gridMemberCloudapi GridMemberCloudapi) GridMemberCloudapiAPIUpdateRequest {
 	r.gridMemberCloudapi = &gridMemberCloudapi
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest) ReturnFields(returnFields string) GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest {
+func (r GridMemberCloudapiAPIUpdateRequest) ReturnFields(returnFields string) GridMemberCloudapiAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest) ReturnFields2(returnFields2 string) GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest {
+func (r GridMemberCloudapiAPIUpdateRequest) ReturnFields2(returnFields2 string) GridMemberCloudapiAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest) ReturnAsObject(returnAsObject int32) GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest {
+func (r GridMemberCloudapiAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridMemberCloudapiAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest) Execute() (*UpdateGridMemberCloudapiResponse, *http.Response, error) {
-	return r.ApiService.GridmembercloudapiReferencePutExecute(r)
+func (r GridMemberCloudapiAPIUpdateRequest) Execute() (*UpdateGridMemberCloudapiResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GridmembercloudapiReferencePut Update a grid:member:cloudapi object
+Update Update a grid:member:cloudapi object
 
 Updates a specific grid:member:cloudapi object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:member:cloudapi object
-	@return GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest
+	@return GridMemberCloudapiAPIUpdateRequest
 */
-func (a *GridMemberCloudapiAPIService) GridmembercloudapiReferencePut(ctx context.Context, reference string) GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest {
-	return GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest{
+func (a *GridMemberCloudapiAPIService) Update(ctx context.Context, reference string) GridMemberCloudapiAPIUpdateRequest {
+	return GridMemberCloudapiAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GridMemberCloudapiAPIService) GridmembercloudapiReferencePut(ctx contex
 // Execute executes the request
 //
 //	@return UpdateGridMemberCloudapiResponse
-func (a *GridMemberCloudapiAPIService) GridmembercloudapiReferencePutExecute(r GridMemberCloudapiAPIGridmembercloudapiReferencePutRequest) (*UpdateGridMemberCloudapiResponse, *http.Response, error) {
+func (a *GridMemberCloudapiAPIService) UpdateExecute(r GridMemberCloudapiAPIUpdateRequest) (*UpdateGridMemberCloudapiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GridMemberCloudapiAPIService) GridmembercloudapiReferencePutExecute(r G
 		localVarReturnValue *UpdateGridMemberCloudapiResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridMemberCloudapiAPIService.GridmembercloudapiReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridMemberCloudapiAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

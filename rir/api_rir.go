@@ -23,52 +23,52 @@ import (
 
 type RirAPI interface {
 	/*
-		Get Retrieve rir objects
+		List Retrieve rir objects
 
 		Returns a list of rir objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RirAPIGetRequest
+		@return RirAPIListRequest
 	*/
-	Get(ctx context.Context) RirAPIGetRequest
+	List(ctx context.Context) RirAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListRirResponse
-	GetExecute(r RirAPIGetRequest) (*ListRirResponse, *http.Response, error)
+	ListExecute(r RirAPIListRequest) (*ListRirResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific rir object
+		Read Get a specific rir object
 
 		Returns a specific rir object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the rir object
-		@return RirAPIReferenceGetRequest
+		@return RirAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) RirAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) RirAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRirResponse
-	ReferenceGetExecute(r RirAPIReferenceGetRequest) (*GetRirResponse, *http.Response, error)
+	ReadExecute(r RirAPIReadRequest) (*GetRirResponse, *http.Response, error)
 	/*
-		ReferencePut Update a rir object
+		Update Update a rir object
 
 		Updates a specific rir object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the rir object
-		@return RirAPIReferencePutRequest
+		@return RirAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) RirAPIReferencePutRequest
+	Update(ctx context.Context, reference string) RirAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRirResponse
-	ReferencePutExecute(r RirAPIReferencePutRequest) (*UpdateRirResponse, *http.Response, error)
+	UpdateExecute(r RirAPIUpdateRequest) (*UpdateRirResponse, *http.Response, error)
 }
 
 // RirAPIService RirAPI service
 type RirAPIService internal.Service
 
-type RirAPIGetRequest struct {
+type RirAPIListRequest struct {
 	ctx            context.Context
 	ApiService     RirAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type RirAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RirAPIGetRequest) ReturnFields(returnFields string) RirAPIGetRequest {
+func (r RirAPIListRequest) ReturnFields(returnFields string) RirAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirAPIGetRequest) ReturnFields2(returnFields2 string) RirAPIGetRequest {
+func (r RirAPIListRequest) ReturnFields2(returnFields2 string) RirAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RirAPIGetRequest) MaxResults(maxResults int32) RirAPIGetRequest {
+func (r RirAPIListRequest) MaxResults(maxResults int32) RirAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RirAPIGetRequest) ReturnAsObject(returnAsObject int32) RirAPIGetRequest {
+func (r RirAPIListRequest) ReturnAsObject(returnAsObject int32) RirAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RirAPIGetRequest) Paging(paging int32) RirAPIGetRequest {
+func (r RirAPIListRequest) Paging(paging int32) RirAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RirAPIGetRequest) PageId(pageId string) RirAPIGetRequest {
+func (r RirAPIListRequest) PageId(pageId string) RirAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RirAPIGetRequest) Filters(filters map[string]interface{}) RirAPIGetRequest {
+func (r RirAPIListRequest) Filters(filters map[string]interface{}) RirAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RirAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RirAPIGetRequest {
+func (r RirAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RirAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RirAPIGetRequest) Execute() (*ListRirResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r RirAPIListRequest) Execute() (*ListRirResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve rir objects
+List Retrieve rir objects
 
 Returns a list of rir objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RirAPIGetRequest
+	@return RirAPIListRequest
 */
-func (a *RirAPIService) Get(ctx context.Context) RirAPIGetRequest {
-	return RirAPIGetRequest{
+func (a *RirAPIService) List(ctx context.Context) RirAPIListRequest {
+	return RirAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *RirAPIService) Get(ctx context.Context) RirAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListRirResponse
-func (a *RirAPIService) GetExecute(r RirAPIGetRequest) (*ListRirResponse, *http.Response, error) {
+func (a *RirAPIService) ListExecute(r RirAPIListRequest) (*ListRirResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *RirAPIService) GetExecute(r RirAPIGetRequest) (*ListRirResponse, *http.
 		localVarReturnValue *ListRirResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *RirAPIService) GetExecute(r RirAPIGetRequest) (*ListRirResponse, *http.
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RirAPIReferenceGetRequest struct {
+type RirAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RirAPI
 	reference      string
@@ -249,38 +249,38 @@ type RirAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RirAPIReferenceGetRequest) ReturnFields(returnFields string) RirAPIReferenceGetRequest {
+func (r RirAPIReadRequest) ReturnFields(returnFields string) RirAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirAPIReferenceGetRequest) ReturnFields2(returnFields2 string) RirAPIReferenceGetRequest {
+func (r RirAPIReadRequest) ReturnFields2(returnFields2 string) RirAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RirAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) RirAPIReferenceGetRequest {
+func (r RirAPIReadRequest) ReturnAsObject(returnAsObject int32) RirAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RirAPIReferenceGetRequest) Execute() (*GetRirResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r RirAPIReadRequest) Execute() (*GetRirResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific rir object
+Read Get a specific rir object
 
 Returns a specific rir object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the rir object
-	@return RirAPIReferenceGetRequest
+	@return RirAPIReadRequest
 */
-func (a *RirAPIService) ReferenceGet(ctx context.Context, reference string) RirAPIReferenceGetRequest {
-	return RirAPIReferenceGetRequest{
+func (a *RirAPIService) Read(ctx context.Context, reference string) RirAPIReadRequest {
+	return RirAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *RirAPIService) ReferenceGet(ctx context.Context, reference string) RirA
 // Execute executes the request
 //
 //	@return GetRirResponse
-func (a *RirAPIService) ReferenceGetExecute(r RirAPIReferenceGetRequest) (*GetRirResponse, *http.Response, error) {
+func (a *RirAPIService) ReadExecute(r RirAPIReadRequest) (*GetRirResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *RirAPIService) ReferenceGetExecute(r RirAPIReferenceGetRequest) (*GetRi
 		localVarReturnValue *GetRirResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *RirAPIService) ReferenceGetExecute(r RirAPIReferenceGetRequest) (*GetRi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RirAPIReferencePutRequest struct {
+type RirAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     RirAPI
 	reference      string
@@ -377,44 +377,44 @@ type RirAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RirAPIReferencePutRequest) Rir(rir Rir) RirAPIReferencePutRequest {
+func (r RirAPIUpdateRequest) Rir(rir Rir) RirAPIUpdateRequest {
 	r.rir = &rir
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RirAPIReferencePutRequest) ReturnFields(returnFields string) RirAPIReferencePutRequest {
+func (r RirAPIUpdateRequest) ReturnFields(returnFields string) RirAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirAPIReferencePutRequest) ReturnFields2(returnFields2 string) RirAPIReferencePutRequest {
+func (r RirAPIUpdateRequest) ReturnFields2(returnFields2 string) RirAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RirAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) RirAPIReferencePutRequest {
+func (r RirAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RirAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RirAPIReferencePutRequest) Execute() (*UpdateRirResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r RirAPIUpdateRequest) Execute() (*UpdateRirResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a rir object
+Update Update a rir object
 
 Updates a specific rir object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the rir object
-	@return RirAPIReferencePutRequest
+	@return RirAPIUpdateRequest
 */
-func (a *RirAPIService) ReferencePut(ctx context.Context, reference string) RirAPIReferencePutRequest {
-	return RirAPIReferencePutRequest{
+func (a *RirAPIService) Update(ctx context.Context, reference string) RirAPIUpdateRequest {
+	return RirAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *RirAPIService) ReferencePut(ctx context.Context, reference string) RirA
 // Execute executes the request
 //
 //	@return UpdateRirResponse
-func (a *RirAPIService) ReferencePutExecute(r RirAPIReferencePutRequest) (*UpdateRirResponse, *http.Response, error) {
+func (a *RirAPIService) UpdateExecute(r RirAPIUpdateRequest) (*UpdateRirResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *RirAPIService) ReferencePutExecute(r RirAPIReferencePutRequest) (*Updat
 		localVarReturnValue *UpdateRirResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

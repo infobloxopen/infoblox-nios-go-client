@@ -23,11 +23,11 @@ func TestTaxiiAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test TaxiiAPIService Get", func(t *testing.T) {
+	t.Run("Test TaxiiAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.TaxiiAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TaxiiAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestTaxiiAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TaxiiAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test TaxiiAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.TaxiiAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.TaxiiAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestTaxiiAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TaxiiAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test TaxiiAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.TaxiiAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.TaxiiAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

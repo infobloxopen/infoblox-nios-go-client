@@ -33,6 +33,7 @@ paths:
     get:
       description: Returns a list of awsrte53taskgroup objects matching the search
         criteria
+      operationId: Awsrte53taskgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -129,6 +130,7 @@ paths:
       - Awsrte53taskgroup
     post:
       description: Creates a new awsrte53taskgroup object
+      operationId: Awsrte53taskgroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -188,6 +190,7 @@ paths:
   /awsrte53taskgroup/{reference}:
     delete:
       description: Deletes a specific awsrte53taskgroup object by reference
+      operationId: Awsrte53taskgroupDelete
       parameters:
       - description: Reference of the awsrte53taskgroup object
         explode: false
@@ -215,6 +218,7 @@ paths:
       - Awsrte53taskgroup
     get:
       description: Returns a specific awsrte53taskgroup object by reference
+      operationId: Awsrte53taskgroupRead
       parameters:
       - description: Reference of the awsrte53taskgroup object
         explode: false
@@ -274,6 +278,7 @@ paths:
       - Awsrte53taskgroup
     put:
       description: Updates a specific awsrte53taskgroup object by reference
+      operationId: Awsrte53taskgroupUpdate
       parameters:
       - description: Reference of the awsrte53taskgroup object
         explode: false
@@ -341,6 +346,7 @@ paths:
   /awsuser:
     get:
       description: Returns a list of awsuser objects matching the search criteria
+      operationId: AwsuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -437,6 +443,7 @@ paths:
       - Awsuser
     post:
       description: Creates a new awsuser object
+      operationId: AwsuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -496,6 +503,7 @@ paths:
   /awsuser/{reference}:
     delete:
       description: Deletes a specific awsuser object by reference
+      operationId: AwsuserDelete
       parameters:
       - description: Reference of the awsuser object
         explode: false
@@ -523,6 +531,7 @@ paths:
       - Awsuser
     get:
       description: Returns a specific awsuser object by reference
+      operationId: AwsuserRead
       parameters:
       - description: Reference of the awsuser object
         explode: false
@@ -582,6 +591,7 @@ paths:
       - Awsuser
     put:
       description: Updates a specific awsuser object by reference
+      operationId: AwsuserUpdate
       parameters:
       - description: Reference of the awsuser object
         explode: false
@@ -650,6 +660,7 @@ paths:
     get:
       description: Returns a list of azurednstaskgroup objects matching the search
         criteria
+      operationId: AzurednstaskgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -746,6 +757,7 @@ paths:
       - Azurednstaskgroup
     post:
       description: Creates a new azurednstaskgroup object
+      operationId: AzurednstaskgroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -805,6 +817,7 @@ paths:
   /azurednstaskgroup/{reference}:
     delete:
       description: Deletes a specific azurednstaskgroup object by reference
+      operationId: AzurednstaskgroupDelete
       parameters:
       - description: Reference of the azurednstaskgroup object
         explode: false
@@ -832,6 +845,7 @@ paths:
       - Azurednstaskgroup
     get:
       description: Returns a specific azurednstaskgroup object by reference
+      operationId: AzurednstaskgroupRead
       parameters:
       - description: Reference of the azurednstaskgroup object
         explode: false
@@ -891,6 +905,7 @@ paths:
       - Azurednstaskgroup
     put:
       description: Updates a specific azurednstaskgroup object by reference
+      operationId: AzurednstaskgroupUpdate
       parameters:
       - description: Reference of the azurednstaskgroup object
         explode: false
@@ -958,6 +973,7 @@ paths:
   /azureuser:
     get:
       description: Returns a list of azureuser objects matching the search criteria
+      operationId: AzureuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1054,6 +1070,7 @@ paths:
       - Azureuser
     post:
       description: Creates a new azureuser object
+      operationId: AzureuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1113,6 +1130,7 @@ paths:
   /azureuser/{reference}:
     delete:
       description: Deletes a specific azureuser object by reference
+      operationId: AzureuserDelete
       parameters:
       - description: Reference of the azureuser object
         explode: false
@@ -1140,6 +1158,7 @@ paths:
       - Azureuser
     get:
       description: Returns a specific azureuser object by reference
+      operationId: AzureuserRead
       parameters:
       - description: Reference of the azureuser object
         explode: false
@@ -1199,6 +1218,7 @@ paths:
       - Azureuser
     put:
       description: Updates a specific azureuser object by reference
+      operationId: AzureuserUpdate
       parameters:
       - description: Reference of the azureuser object
         explode: false
@@ -1266,6 +1286,7 @@ paths:
   /gcpdnstaskgroup:
     get:
       description: Returns a list of gcpdnstaskgroup objects matching the search criteria
+      operationId: GcpdnstaskgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1362,6 +1383,7 @@ paths:
       - Gcpdnstaskgroup
     post:
       description: Creates a new gcpdnstaskgroup object
+      operationId: GcpdnstaskgroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1421,6 +1443,7 @@ paths:
   /gcpdnstaskgroup/{reference}:
     delete:
       description: Deletes a specific gcpdnstaskgroup object by reference
+      operationId: GcpdnstaskgroupDelete
       parameters:
       - description: Reference of the gcpdnstaskgroup object
         explode: false
@@ -1448,6 +1471,7 @@ paths:
       - Gcpdnstaskgroup
     get:
       description: Returns a specific gcpdnstaskgroup object by reference
+      operationId: GcpdnstaskgroupRead
       parameters:
       - description: Reference of the gcpdnstaskgroup object
         explode: false
@@ -1507,6 +1531,7 @@ paths:
       - Gcpdnstaskgroup
     put:
       description: Updates a specific gcpdnstaskgroup object by reference
+      operationId: GcpdnstaskgroupUpdate
       parameters:
       - description: Reference of the gcpdnstaskgroup object
         explode: false
@@ -1574,6 +1599,7 @@ paths:
   /gcpuser:
     get:
       description: Returns a list of gcpuser objects matching the search criteria
+      operationId: GcpuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1670,6 +1696,7 @@ paths:
       - Gcpuser
     post:
       description: Creates a new gcpuser object
+      operationId: GcpuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1729,6 +1756,7 @@ paths:
   /gcpuser/{reference}:
     delete:
       description: Deletes a specific gcpuser object by reference
+      operationId: GcpuserDelete
       parameters:
       - description: Reference of the gcpuser object
         explode: false
@@ -1756,6 +1784,7 @@ paths:
       - Gcpuser
     get:
       description: Returns a specific gcpuser object by reference
+      operationId: GcpuserRead
       parameters:
       - description: Reference of the gcpuser object
         explode: false
@@ -1815,6 +1844,7 @@ paths:
       - Gcpuser
     put:
       description: Updates a specific gcpuser object by reference
+      operationId: GcpuserUpdate
       parameters:
       - description: Reference of the gcpuser object
         explode: false
@@ -1882,6 +1912,7 @@ paths:
   /multiregions:
     get:
       description: Returns a list of multiregions objects matching the search criteria
+      operationId: MultiregionsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1979,6 +2010,7 @@ paths:
   /multiregions/{reference}:
     get:
       description: Returns a specific multiregions object by reference
+      operationId: MultiregionsRead
       parameters:
       - description: Reference of the multiregions object
         explode: false
@@ -2038,6 +2070,7 @@ paths:
       - Multiregions
     put:
       description: Updates a specific multiregions object by reference
+      operationId: MultiregionsUpdate
       parameters:
       - description: Reference of the multiregions object
         explode: false

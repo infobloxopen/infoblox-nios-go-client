@@ -23,38 +23,38 @@ import (
 
 type AllrpzrecordsAPI interface {
 	/*
-		Get Retrieve allrpzrecords objects
+		List Retrieve allrpzrecords objects
 
 		Returns a list of allrpzrecords objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AllrpzrecordsAPIGetRequest
+		@return AllrpzrecordsAPIListRequest
 	*/
-	Get(ctx context.Context) AllrpzrecordsAPIGetRequest
+	List(ctx context.Context) AllrpzrecordsAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListAllrpzrecordsResponse
-	GetExecute(r AllrpzrecordsAPIGetRequest) (*ListAllrpzrecordsResponse, *http.Response, error)
+	ListExecute(r AllrpzrecordsAPIListRequest) (*ListAllrpzrecordsResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific allrpzrecords object
+		Read Get a specific allrpzrecords object
 
 		Returns a specific allrpzrecords object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the allrpzrecords object
-		@return AllrpzrecordsAPIReferenceGetRequest
+		@return AllrpzrecordsAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AllrpzrecordsAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AllrpzrecordsAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAllrpzrecordsResponse
-	ReferenceGetExecute(r AllrpzrecordsAPIReferenceGetRequest) (*GetAllrpzrecordsResponse, *http.Response, error)
+	ReadExecute(r AllrpzrecordsAPIReadRequest) (*GetAllrpzrecordsResponse, *http.Response, error)
 }
 
 // AllrpzrecordsAPIService AllrpzrecordsAPI service
 type AllrpzrecordsAPIService internal.Service
 
-type AllrpzrecordsAPIGetRequest struct {
+type AllrpzrecordsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     AllrpzrecordsAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type AllrpzrecordsAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r AllrpzrecordsAPIGetRequest) ReturnFields(returnFields string) AllrpzrecordsAPIGetRequest {
+func (r AllrpzrecordsAPIListRequest) ReturnFields(returnFields string) AllrpzrecordsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AllrpzrecordsAPIGetRequest) ReturnFields2(returnFields2 string) AllrpzrecordsAPIGetRequest {
+func (r AllrpzrecordsAPIListRequest) ReturnFields2(returnFields2 string) AllrpzrecordsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r AllrpzrecordsAPIGetRequest) MaxResults(maxResults int32) AllrpzrecordsAPIGetRequest {
+func (r AllrpzrecordsAPIListRequest) MaxResults(maxResults int32) AllrpzrecordsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AllrpzrecordsAPIGetRequest) ReturnAsObject(returnAsObject int32) AllrpzrecordsAPIGetRequest {
+func (r AllrpzrecordsAPIListRequest) ReturnAsObject(returnAsObject int32) AllrpzrecordsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r AllrpzrecordsAPIGetRequest) Paging(paging int32) AllrpzrecordsAPIGetRequest {
+func (r AllrpzrecordsAPIListRequest) Paging(paging int32) AllrpzrecordsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r AllrpzrecordsAPIGetRequest) PageId(pageId string) AllrpzrecordsAPIGetRequest {
+func (r AllrpzrecordsAPIListRequest) PageId(pageId string) AllrpzrecordsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r AllrpzrecordsAPIGetRequest) Filters(filters map[string]interface{}) AllrpzrecordsAPIGetRequest {
+func (r AllrpzrecordsAPIListRequest) Filters(filters map[string]interface{}) AllrpzrecordsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r AllrpzrecordsAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AllrpzrecordsAPIGetRequest {
+func (r AllrpzrecordsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AllrpzrecordsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r AllrpzrecordsAPIGetRequest) Execute() (*ListAllrpzrecordsResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r AllrpzrecordsAPIListRequest) Execute() (*ListAllrpzrecordsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve allrpzrecords objects
+List Retrieve allrpzrecords objects
 
 Returns a list of allrpzrecords objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AllrpzrecordsAPIGetRequest
+	@return AllrpzrecordsAPIListRequest
 */
-func (a *AllrpzrecordsAPIService) Get(ctx context.Context) AllrpzrecordsAPIGetRequest {
-	return AllrpzrecordsAPIGetRequest{
+func (a *AllrpzrecordsAPIService) List(ctx context.Context) AllrpzrecordsAPIListRequest {
+	return AllrpzrecordsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *AllrpzrecordsAPIService) Get(ctx context.Context) AllrpzrecordsAPIGetRe
 // Execute executes the request
 //
 //	@return ListAllrpzrecordsResponse
-func (a *AllrpzrecordsAPIService) GetExecute(r AllrpzrecordsAPIGetRequest) (*ListAllrpzrecordsResponse, *http.Response, error) {
+func (a *AllrpzrecordsAPIService) ListExecute(r AllrpzrecordsAPIListRequest) (*ListAllrpzrecordsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *AllrpzrecordsAPIService) GetExecute(r AllrpzrecordsAPIGetRequest) (*Lis
 		localVarReturnValue *ListAllrpzrecordsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllrpzrecordsAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllrpzrecordsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *AllrpzrecordsAPIService) GetExecute(r AllrpzrecordsAPIGetRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AllrpzrecordsAPIReferenceGetRequest struct {
+type AllrpzrecordsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     AllrpzrecordsAPI
 	reference      string
@@ -235,38 +235,38 @@ type AllrpzrecordsAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r AllrpzrecordsAPIReferenceGetRequest) ReturnFields(returnFields string) AllrpzrecordsAPIReferenceGetRequest {
+func (r AllrpzrecordsAPIReadRequest) ReturnFields(returnFields string) AllrpzrecordsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AllrpzrecordsAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AllrpzrecordsAPIReferenceGetRequest {
+func (r AllrpzrecordsAPIReadRequest) ReturnFields2(returnFields2 string) AllrpzrecordsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AllrpzrecordsAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AllrpzrecordsAPIReferenceGetRequest {
+func (r AllrpzrecordsAPIReadRequest) ReturnAsObject(returnAsObject int32) AllrpzrecordsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AllrpzrecordsAPIReferenceGetRequest) Execute() (*GetAllrpzrecordsResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r AllrpzrecordsAPIReadRequest) Execute() (*GetAllrpzrecordsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific allrpzrecords object
+Read Get a specific allrpzrecords object
 
 Returns a specific allrpzrecords object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the allrpzrecords object
-	@return AllrpzrecordsAPIReferenceGetRequest
+	@return AllrpzrecordsAPIReadRequest
 */
-func (a *AllrpzrecordsAPIService) ReferenceGet(ctx context.Context, reference string) AllrpzrecordsAPIReferenceGetRequest {
-	return AllrpzrecordsAPIReferenceGetRequest{
+func (a *AllrpzrecordsAPIService) Read(ctx context.Context, reference string) AllrpzrecordsAPIReadRequest {
+	return AllrpzrecordsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *AllrpzrecordsAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetAllrpzrecordsResponse
-func (a *AllrpzrecordsAPIService) ReferenceGetExecute(r AllrpzrecordsAPIReferenceGetRequest) (*GetAllrpzrecordsResponse, *http.Response, error) {
+func (a *AllrpzrecordsAPIService) ReadExecute(r AllrpzrecordsAPIReadRequest) (*GetAllrpzrecordsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *AllrpzrecordsAPIService) ReferenceGetExecute(r AllrpzrecordsAPIReferenc
 		localVarReturnValue *GetAllrpzrecordsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllrpzrecordsAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllrpzrecordsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

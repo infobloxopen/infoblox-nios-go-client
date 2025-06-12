@@ -23,11 +23,11 @@ func TestUserprofileAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test UserprofileAPIService Get", func(t *testing.T) {
+	t.Run("Test UserprofileAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UserprofileAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UserprofileAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestUserprofileAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UserprofileAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test UserprofileAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.UserprofileAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.UserprofileAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestUserprofileAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UserprofileAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test UserprofileAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.UserprofileAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.UserprofileAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

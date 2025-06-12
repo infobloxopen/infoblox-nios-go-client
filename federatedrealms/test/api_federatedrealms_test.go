@@ -23,11 +23,11 @@ func TestFederatedrealmsAPIService(t *testing.T) {
 
 	apiClient := federatedrealms.NewAPIClient()
 
-	t.Run("Test FederatedrealmsAPIService Get", func(t *testing.T) {
+	t.Run("Test FederatedrealmsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FederatedrealmsAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.FederatedrealmsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestFederatedrealmsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FederatedrealmsAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test FederatedrealmsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.FederatedrealmsAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FederatedrealmsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

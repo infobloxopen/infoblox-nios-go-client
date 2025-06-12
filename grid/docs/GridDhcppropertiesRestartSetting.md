@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Delay** | Pointer to **int64** | The time duration to delay a restart for a restart group. | [optional] 
-**Timeout** | Pointer to **int32** | The duration of timeout for a restart group. The value \&quot;-1\&quot; means infinite. | [optional] 
+**Timeout** | Pointer to **int64** | The duration of timeout for a restart group. The value \&quot;-1\&quot; means infinite. | [optional] 
 **RestartOffline** | Pointer to **bool** | Determines whether the Grid should try to restart offline member. | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasDelay returns a boolean if a field has been set.
 
 ### GetTimeout
 
-`func (o *GridDhcppropertiesRestartSetting) GetTimeout() int32`
+`func (o *GridDhcppropertiesRestartSetting) GetTimeout() int64`
 
 GetTimeout returns the Timeout field if non-nil, zero value otherwise.
 
 ### GetTimeoutOk
 
-`func (o *GridDhcppropertiesRestartSetting) GetTimeoutOk() (*int32, bool)`
+`func (o *GridDhcppropertiesRestartSetting) GetTimeoutOk() (*int64, bool)`
 
 GetTimeoutOk returns a tuple with the Timeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeout
 
-`func (o *GridDhcppropertiesRestartSetting) SetTimeout(v int32)`
+`func (o *GridDhcppropertiesRestartSetting) SetTimeout(v int64)`
 
 SetTimeout sets Timeout field to given value.
 

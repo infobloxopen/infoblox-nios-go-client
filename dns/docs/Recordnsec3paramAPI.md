@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Recordnsec3paramGet**](RecordNsec3paramAPI.md#Recordnsec3paramGet) | **Get** /record:nsec3param | Retrieve record:nsec3param objects
-[**Recordnsec3paramReferenceGet**](RecordNsec3paramAPI.md#Recordnsec3paramReferenceGet) | **Get** /record:nsec3param/{reference} | Get a specific record:nsec3param object
+[**List**](RecordNsec3paramAPI.md#List) | **Get** /record:nsec3param | Retrieve record:nsec3param objects
+[**Read**](RecordNsec3paramAPI.md#Read) | **Get** /record:nsec3param/{reference} | Get a specific record:nsec3param object
 
 
 
-## Recordnsec3paramGet
+## List
 
-> ListRecordNsec3paramResponse Recordnsec3paramGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordNsec3paramResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:nsec3param objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordNsec3paramAPI.Recordnsec3paramGet(context.Background()).Execute()
+	resp, r, err := apiClient.RecordNsec3paramAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordNsec3paramAPI.Recordnsec3paramGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNsec3paramAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Recordnsec3paramGet`: ListRecordNsec3paramResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordNsec3paramAPI.Recordnsec3paramGet`: %v\n", resp)
+	// response from `List`: ListRecordNsec3paramResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordNsec3paramAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordNsec3paramAPIRecordnsec3paramGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNsec3paramAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Recordnsec3paramReferenceGet
+## Read
 
-> GetRecordNsec3paramResponse Recordnsec3paramReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordNsec3paramResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:nsec3param object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:nsec3param object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordNsec3paramAPI.Recordnsec3paramReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordNsec3paramAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordNsec3paramAPI.Recordnsec3paramReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNsec3paramAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Recordnsec3paramReferenceGet`: GetRecordNsec3paramResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordNsec3paramAPI.Recordnsec3paramReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordNsec3paramResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordNsec3paramAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordNsec3paramAPIRecordnsec3paramReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNsec3paramAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

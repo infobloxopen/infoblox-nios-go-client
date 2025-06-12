@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ResultField** | Pointer to **string** | The result field of the function. | [optional] 
 **Object** | Pointer to **string** | The object to be called. | [optional] 
 **ObjectParameters** | Pointer to **map[string]interface{}** | The parameters for the object. | [optional] 
+**ObjectRef** | Pointer to **string** | A WAPI object reference on which the function calls. Either _object or _object_ref must be set. | [optional] 
 
 ## Methods
 
@@ -174,6 +175,31 @@ SetObjectParameters sets ObjectParameters field to given value.
 `func (o *FuncCall) HasObjectParameters() bool`
 
 HasObjectParameters returns a boolean if a field has been set.
+
+### GetObjectRef
+
+`func (o *FuncCall) GetObjectRef() string`
+
+GetObjectRef returns the ObjectRef field if non-nil, zero value otherwise.
+
+### GetObjectRefOk
+
+`func (o *FuncCall) GetObjectRefOk() (*string, bool)`
+
+GetObjectRefOk returns a tuple with the ObjectRef field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectRef
+
+`func (o *FuncCall) SetObjectRef(v string)`
+
+SetObjectRef sets ObjectRef field to given value.
+
+### HasObjectRef
+
+`func (o *FuncCall) HasObjectRef() bool`
+
+HasObjectRef returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

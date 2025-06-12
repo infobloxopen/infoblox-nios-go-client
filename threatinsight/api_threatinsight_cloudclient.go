@@ -23,52 +23,52 @@ import (
 
 type ThreatinsightCloudclientAPI interface {
 	/*
-		ThreatinsightcloudclientGet Retrieve threatinsight:cloudclient objects
+		List Retrieve threatinsight:cloudclient objects
 
 		Returns a list of threatinsight:cloudclient objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest
+		@return ThreatinsightCloudclientAPIListRequest
 	*/
-	ThreatinsightcloudclientGet(ctx context.Context) ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest
+	List(ctx context.Context) ThreatinsightCloudclientAPIListRequest
 
-	// ThreatinsightcloudclientGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListThreatinsightCloudclientResponse
-	ThreatinsightcloudclientGetExecute(r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) (*ListThreatinsightCloudclientResponse, *http.Response, error)
+	ListExecute(r ThreatinsightCloudclientAPIListRequest) (*ListThreatinsightCloudclientResponse, *http.Response, error)
 	/*
-		ThreatinsightcloudclientReferenceGet Get a specific threatinsight:cloudclient object
+		Read Get a specific threatinsight:cloudclient object
 
 		Returns a specific threatinsight:cloudclient object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatinsight:cloudclient object
-		@return ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest
+		@return ThreatinsightCloudclientAPIReadRequest
 	*/
-	ThreatinsightcloudclientReferenceGet(ctx context.Context, reference string) ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest
+	Read(ctx context.Context, reference string) ThreatinsightCloudclientAPIReadRequest
 
-	// ThreatinsightcloudclientReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetThreatinsightCloudclientResponse
-	ThreatinsightcloudclientReferenceGetExecute(r ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest) (*GetThreatinsightCloudclientResponse, *http.Response, error)
+	ReadExecute(r ThreatinsightCloudclientAPIReadRequest) (*GetThreatinsightCloudclientResponse, *http.Response, error)
 	/*
-		ThreatinsightcloudclientReferencePut Update a threatinsight:cloudclient object
+		Update Update a threatinsight:cloudclient object
 
 		Updates a specific threatinsight:cloudclient object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatinsight:cloudclient object
-		@return ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest
+		@return ThreatinsightCloudclientAPIUpdateRequest
 	*/
-	ThreatinsightcloudclientReferencePut(ctx context.Context, reference string) ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest
+	Update(ctx context.Context, reference string) ThreatinsightCloudclientAPIUpdateRequest
 
-	// ThreatinsightcloudclientReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateThreatinsightCloudclientResponse
-	ThreatinsightcloudclientReferencePutExecute(r ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest) (*UpdateThreatinsightCloudclientResponse, *http.Response, error)
+	UpdateExecute(r ThreatinsightCloudclientAPIUpdateRequest) (*UpdateThreatinsightCloudclientResponse, *http.Response, error)
 }
 
 // ThreatinsightCloudclientAPIService ThreatinsightCloudclientAPI service
 type ThreatinsightCloudclientAPIService internal.Service
 
-type ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest struct {
+type ThreatinsightCloudclientAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ThreatinsightCloudclientAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) ReturnFields(returnFields string) ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest {
+func (r ThreatinsightCloudclientAPIListRequest) ReturnFields(returnFields string) ThreatinsightCloudclientAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) ReturnFields2(returnFields2 string) ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest {
+func (r ThreatinsightCloudclientAPIListRequest) ReturnFields2(returnFields2 string) ThreatinsightCloudclientAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) MaxResults(maxResults int32) ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest {
+func (r ThreatinsightCloudclientAPIListRequest) MaxResults(maxResults int32) ThreatinsightCloudclientAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) ReturnAsObject(returnAsObject int32) ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest {
+func (r ThreatinsightCloudclientAPIListRequest) ReturnAsObject(returnAsObject int32) ThreatinsightCloudclientAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) Paging(paging int32) ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest {
+func (r ThreatinsightCloudclientAPIListRequest) Paging(paging int32) ThreatinsightCloudclientAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) PageId(pageId string) ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest {
+func (r ThreatinsightCloudclientAPIListRequest) PageId(pageId string) ThreatinsightCloudclientAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) Filters(filters map[string]interface{}) ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest {
+func (r ThreatinsightCloudclientAPIListRequest) Filters(filters map[string]interface{}) ThreatinsightCloudclientAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest {
+func (r ThreatinsightCloudclientAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatinsightCloudclientAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) Execute() (*ListThreatinsightCloudclientResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightcloudclientGetExecute(r)
+func (r ThreatinsightCloudclientAPIListRequest) Execute() (*ListThreatinsightCloudclientResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ThreatinsightcloudclientGet Retrieve threatinsight:cloudclient objects
+List Retrieve threatinsight:cloudclient objects
 
 Returns a list of threatinsight:cloudclient objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest
+	@return ThreatinsightCloudclientAPIListRequest
 */
-func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientGet(ctx context.Context) ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest {
-	return ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest{
+func (a *ThreatinsightCloudclientAPIService) List(ctx context.Context) ThreatinsightCloudclientAPIListRequest {
+	return ThreatinsightCloudclientAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientGet(ctx con
 // Execute executes the request
 //
 //	@return ListThreatinsightCloudclientResponse
-func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientGetExecute(r ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest) (*ListThreatinsightCloudclientResponse, *http.Response, error) {
+func (a *ThreatinsightCloudclientAPIService) ListExecute(r ThreatinsightCloudclientAPIListRequest) (*ListThreatinsightCloudclientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientGetExecute(
 		localVarReturnValue *ListThreatinsightCloudclientResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightCloudclientAPIService.ThreatinsightcloudclientGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightCloudclientAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientGetExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest struct {
+type ThreatinsightCloudclientAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ThreatinsightCloudclientAPI
 	reference      string
@@ -249,38 +249,38 @@ type ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest stru
 }
 
 // Enter the field names followed by comma
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest) ReturnFields(returnFields string) ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest {
+func (r ThreatinsightCloudclientAPIReadRequest) ReturnFields(returnFields string) ThreatinsightCloudclientAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest) ReturnFields2(returnFields2 string) ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest {
+func (r ThreatinsightCloudclientAPIReadRequest) ReturnFields2(returnFields2 string) ThreatinsightCloudclientAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest) ReturnAsObject(returnAsObject int32) ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest {
+func (r ThreatinsightCloudclientAPIReadRequest) ReturnAsObject(returnAsObject int32) ThreatinsightCloudclientAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest) Execute() (*GetThreatinsightCloudclientResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightcloudclientReferenceGetExecute(r)
+func (r ThreatinsightCloudclientAPIReadRequest) Execute() (*GetThreatinsightCloudclientResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ThreatinsightcloudclientReferenceGet Get a specific threatinsight:cloudclient object
+Read Get a specific threatinsight:cloudclient object
 
 Returns a specific threatinsight:cloudclient object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatinsight:cloudclient object
-	@return ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest
+	@return ThreatinsightCloudclientAPIReadRequest
 */
-func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientReferenceGet(ctx context.Context, reference string) ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest {
-	return ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest{
+func (a *ThreatinsightCloudclientAPIService) Read(ctx context.Context, reference string) ThreatinsightCloudclientAPIReadRequest {
+	return ThreatinsightCloudclientAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientReferenceGe
 // Execute executes the request
 //
 //	@return GetThreatinsightCloudclientResponse
-func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientReferenceGetExecute(r ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest) (*GetThreatinsightCloudclientResponse, *http.Response, error) {
+func (a *ThreatinsightCloudclientAPIService) ReadExecute(r ThreatinsightCloudclientAPIReadRequest) (*GetThreatinsightCloudclientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientReferenceGe
 		localVarReturnValue *GetThreatinsightCloudclientResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightCloudclientAPIService.ThreatinsightcloudclientReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightCloudclientAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientReferenceGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest struct {
+type ThreatinsightCloudclientAPIUpdateRequest struct {
 	ctx                      context.Context
 	ApiService               ThreatinsightCloudclientAPI
 	reference                string
@@ -377,44 +377,44 @@ type ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest stru
 }
 
 // Object data to update
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest) ThreatinsightCloudclient(threatinsightCloudclient ThreatinsightCloudclient) ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest {
+func (r ThreatinsightCloudclientAPIUpdateRequest) ThreatinsightCloudclient(threatinsightCloudclient ThreatinsightCloudclient) ThreatinsightCloudclientAPIUpdateRequest {
 	r.threatinsightCloudclient = &threatinsightCloudclient
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest) ReturnFields(returnFields string) ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest {
+func (r ThreatinsightCloudclientAPIUpdateRequest) ReturnFields(returnFields string) ThreatinsightCloudclientAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest) ReturnFields2(returnFields2 string) ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest {
+func (r ThreatinsightCloudclientAPIUpdateRequest) ReturnFields2(returnFields2 string) ThreatinsightCloudclientAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest) ReturnAsObject(returnAsObject int32) ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest {
+func (r ThreatinsightCloudclientAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ThreatinsightCloudclientAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest) Execute() (*UpdateThreatinsightCloudclientResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightcloudclientReferencePutExecute(r)
+func (r ThreatinsightCloudclientAPIUpdateRequest) Execute() (*UpdateThreatinsightCloudclientResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ThreatinsightcloudclientReferencePut Update a threatinsight:cloudclient object
+Update Update a threatinsight:cloudclient object
 
 Updates a specific threatinsight:cloudclient object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatinsight:cloudclient object
-	@return ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest
+	@return ThreatinsightCloudclientAPIUpdateRequest
 */
-func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientReferencePut(ctx context.Context, reference string) ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest {
-	return ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest{
+func (a *ThreatinsightCloudclientAPIService) Update(ctx context.Context, reference string) ThreatinsightCloudclientAPIUpdateRequest {
+	return ThreatinsightCloudclientAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientReferencePu
 // Execute executes the request
 //
 //	@return UpdateThreatinsightCloudclientResponse
-func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientReferencePutExecute(r ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest) (*UpdateThreatinsightCloudclientResponse, *http.Response, error) {
+func (a *ThreatinsightCloudclientAPIService) UpdateExecute(r ThreatinsightCloudclientAPIUpdateRequest) (*UpdateThreatinsightCloudclientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *ThreatinsightCloudclientAPIService) ThreatinsightcloudclientReferencePu
 		localVarReturnValue *UpdateThreatinsightCloudclientResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightCloudclientAPIService.ThreatinsightcloudclientReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightCloudclientAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

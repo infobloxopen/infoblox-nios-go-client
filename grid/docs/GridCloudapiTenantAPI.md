@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridcloudapitenantGet**](GridCloudapiTenantAPI.md#GridcloudapitenantGet) | **Get** /grid:cloudapi:tenant | Retrieve grid:cloudapi:tenant objects
-[**GridcloudapitenantReferenceGet**](GridCloudapiTenantAPI.md#GridcloudapitenantReferenceGet) | **Get** /grid:cloudapi:tenant/{reference} | Get a specific grid:cloudapi:tenant object
-[**GridcloudapitenantReferencePut**](GridCloudapiTenantAPI.md#GridcloudapitenantReferencePut) | **Put** /grid:cloudapi:tenant/{reference} | Update a grid:cloudapi:tenant object
+[**List**](GridCloudapiTenantAPI.md#List) | **Get** /grid:cloudapi:tenant | Retrieve grid:cloudapi:tenant objects
+[**Read**](GridCloudapiTenantAPI.md#Read) | **Get** /grid:cloudapi:tenant/{reference} | Get a specific grid:cloudapi:tenant object
+[**Update**](GridCloudapiTenantAPI.md#Update) | **Put** /grid:cloudapi:tenant/{reference} | Update a grid:cloudapi:tenant object
 
 
 
-## GridcloudapitenantGet
+## List
 
-> ListGridCloudapiTenantResponse GridcloudapitenantGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridCloudapiTenantResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:cloudapi:tenant objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiTenantAPI.GridcloudapitenantGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridCloudapiTenantAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiTenantAPI.GridcloudapitenantGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiTenantAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapitenantGet`: ListGridCloudapiTenantResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiTenantAPI.GridcloudapitenantGet`: %v\n", resp)
+	// response from `List`: ListGridCloudapiTenantResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiTenantAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiTenantAPIGridcloudapitenantGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiTenantAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridcloudapitenantReferenceGet
+## Read
 
-> GetGridCloudapiTenantResponse GridcloudapitenantReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridCloudapiTenantResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:cloudapi:tenant object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:cloudapi:tenant object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiTenantAPI.GridcloudapitenantReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridCloudapiTenantAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiTenantAPI.GridcloudapitenantReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiTenantAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapitenantReferenceGet`: GetGridCloudapiTenantResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiTenantAPI.GridcloudapitenantReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridCloudapiTenantResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiTenantAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiTenantAPIGridcloudapitenantReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiTenantAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridcloudapitenantReferencePut
+## Update
 
-> UpdateGridCloudapiTenantResponse GridcloudapitenantReferencePut(ctx, reference).GridCloudapiTenant(gridCloudapiTenant).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridCloudapiTenantResponse Update(ctx, reference).GridCloudapiTenant(gridCloudapiTenant).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:cloudapi:tenant object
 
@@ -180,13 +180,13 @@ func main() {
 	gridCloudapiTenant := *grid.NewGridCloudapiTenant() // GridCloudapiTenant | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiTenantAPI.GridcloudapitenantReferencePut(context.Background(), reference).GridCloudapiTenant(gridCloudapiTenant).Execute()
+	resp, r, err := apiClient.GridCloudapiTenantAPI.Update(context.Background(), reference).GridCloudapiTenant(gridCloudapiTenant).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiTenantAPI.GridcloudapitenantReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiTenantAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapitenantReferencePut`: UpdateGridCloudapiTenantResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiTenantAPI.GridcloudapitenantReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGridCloudapiTenantResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiTenantAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiTenantAPIGridcloudapitenantReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiTenantAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

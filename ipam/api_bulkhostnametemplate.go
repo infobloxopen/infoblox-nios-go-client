@@ -23,78 +23,302 @@ import (
 
 type BulkhostnametemplateAPI interface {
 	/*
-		Get Retrieve bulkhostnametemplate objects
-
-		Returns a list of bulkhostnametemplate objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return BulkhostnametemplateAPIGetRequest
-	*/
-	Get(ctx context.Context) BulkhostnametemplateAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListBulkhostnametemplateResponse
-	GetExecute(r BulkhostnametemplateAPIGetRequest) (*ListBulkhostnametemplateResponse, *http.Response, error)
-	/*
-		Post Create a bulkhostnametemplate object
+		Create Create a bulkhostnametemplate object
 
 		Creates a new bulkhostnametemplate object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return BulkhostnametemplateAPIPostRequest
+		@return BulkhostnametemplateAPICreateRequest
 	*/
-	Post(ctx context.Context) BulkhostnametemplateAPIPostRequest
+	Create(ctx context.Context) BulkhostnametemplateAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateBulkhostnametemplateResponse
-	PostExecute(r BulkhostnametemplateAPIPostRequest) (*CreateBulkhostnametemplateResponse, *http.Response, error)
+	CreateExecute(r BulkhostnametemplateAPICreateRequest) (*CreateBulkhostnametemplateResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a bulkhostnametemplate object
+		Delete Delete a bulkhostnametemplate object
 
 		Deletes a specific bulkhostnametemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the bulkhostnametemplate object
-		@return BulkhostnametemplateAPIReferenceDeleteRequest
+		@return BulkhostnametemplateAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) BulkhostnametemplateAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) BulkhostnametemplateAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r BulkhostnametemplateAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r BulkhostnametemplateAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific bulkhostnametemplate object
+		List Retrieve bulkhostnametemplate objects
+
+		Returns a list of bulkhostnametemplate objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return BulkhostnametemplateAPIListRequest
+	*/
+	List(ctx context.Context) BulkhostnametemplateAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListBulkhostnametemplateResponse
+	ListExecute(r BulkhostnametemplateAPIListRequest) (*ListBulkhostnametemplateResponse, *http.Response, error)
+	/*
+		Read Get a specific bulkhostnametemplate object
 
 		Returns a specific bulkhostnametemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the bulkhostnametemplate object
-		@return BulkhostnametemplateAPIReferenceGetRequest
+		@return BulkhostnametemplateAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) BulkhostnametemplateAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) BulkhostnametemplateAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetBulkhostnametemplateResponse
-	ReferenceGetExecute(r BulkhostnametemplateAPIReferenceGetRequest) (*GetBulkhostnametemplateResponse, *http.Response, error)
+	ReadExecute(r BulkhostnametemplateAPIReadRequest) (*GetBulkhostnametemplateResponse, *http.Response, error)
 	/*
-		ReferencePut Update a bulkhostnametemplate object
+		Update Update a bulkhostnametemplate object
 
 		Updates a specific bulkhostnametemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the bulkhostnametemplate object
-		@return BulkhostnametemplateAPIReferencePutRequest
+		@return BulkhostnametemplateAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) BulkhostnametemplateAPIReferencePutRequest
+	Update(ctx context.Context, reference string) BulkhostnametemplateAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateBulkhostnametemplateResponse
-	ReferencePutExecute(r BulkhostnametemplateAPIReferencePutRequest) (*UpdateBulkhostnametemplateResponse, *http.Response, error)
+	UpdateExecute(r BulkhostnametemplateAPIUpdateRequest) (*UpdateBulkhostnametemplateResponse, *http.Response, error)
 }
 
 // BulkhostnametemplateAPIService BulkhostnametemplateAPI service
 type BulkhostnametemplateAPIService internal.Service
 
-type BulkhostnametemplateAPIGetRequest struct {
+type BulkhostnametemplateAPICreateRequest struct {
+	ctx                  context.Context
+	ApiService           BulkhostnametemplateAPI
+	bulkhostnametemplate *Bulkhostnametemplate
+	returnFields         *string
+	returnFields2        *string
+	returnAsObject       *int32
+}
+
+// Object data to create
+func (r BulkhostnametemplateAPICreateRequest) Bulkhostnametemplate(bulkhostnametemplate Bulkhostnametemplate) BulkhostnametemplateAPICreateRequest {
+	r.bulkhostnametemplate = &bulkhostnametemplate
+	return r
+}
+
+// Enter the field names followed by comma
+func (r BulkhostnametemplateAPICreateRequest) ReturnFields(returnFields string) BulkhostnametemplateAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r BulkhostnametemplateAPICreateRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r BulkhostnametemplateAPICreateRequest) ReturnAsObject(returnAsObject int32) BulkhostnametemplateAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r BulkhostnametemplateAPICreateRequest) Execute() (*CreateBulkhostnametemplateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a bulkhostnametemplate object
+
+Creates a new bulkhostnametemplate object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return BulkhostnametemplateAPICreateRequest
+*/
+func (a *BulkhostnametemplateAPIService) Create(ctx context.Context) BulkhostnametemplateAPICreateRequest {
+	return BulkhostnametemplateAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateBulkhostnametemplateResponse
+func (a *BulkhostnametemplateAPIService) CreateExecute(r BulkhostnametemplateAPICreateRequest) (*CreateBulkhostnametemplateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateBulkhostnametemplateResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostnametemplateAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/bulkhostnametemplate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.bulkhostnametemplate == nil {
+		return localVarReturnValue, nil, internal.ReportError("bulkhostnametemplate is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.bulkhostnametemplate
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type BulkhostnametemplateAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService BulkhostnametemplateAPI
+	reference  string
+}
+
+func (r BulkhostnametemplateAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a bulkhostnametemplate object
+
+Deletes a specific bulkhostnametemplate object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the bulkhostnametemplate object
+	@return BulkhostnametemplateAPIDeleteRequest
+*/
+func (a *BulkhostnametemplateAPIService) Delete(ctx context.Context, reference string) BulkhostnametemplateAPIDeleteRequest {
+	return BulkhostnametemplateAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *BulkhostnametemplateAPIService) DeleteExecute(r BulkhostnametemplateAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostnametemplateAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/bulkhostnametemplate/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type BulkhostnametemplateAPIListRequest struct {
 	ctx            context.Context
 	ApiService     BulkhostnametemplateAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type BulkhostnametemplateAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r BulkhostnametemplateAPIGetRequest) ReturnFields(returnFields string) BulkhostnametemplateAPIGetRequest {
+func (r BulkhostnametemplateAPIListRequest) ReturnFields(returnFields string) BulkhostnametemplateAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostnametemplateAPIGetRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPIGetRequest {
+func (r BulkhostnametemplateAPIListRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r BulkhostnametemplateAPIGetRequest) MaxResults(maxResults int32) BulkhostnametemplateAPIGetRequest {
+func (r BulkhostnametemplateAPIListRequest) MaxResults(maxResults int32) BulkhostnametemplateAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r BulkhostnametemplateAPIGetRequest) ReturnAsObject(returnAsObject int32) BulkhostnametemplateAPIGetRequest {
+func (r BulkhostnametemplateAPIListRequest) ReturnAsObject(returnAsObject int32) BulkhostnametemplateAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r BulkhostnametemplateAPIGetRequest) Paging(paging int32) BulkhostnametemplateAPIGetRequest {
+func (r BulkhostnametemplateAPIListRequest) Paging(paging int32) BulkhostnametemplateAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r BulkhostnametemplateAPIGetRequest) PageId(pageId string) BulkhostnametemplateAPIGetRequest {
+func (r BulkhostnametemplateAPIListRequest) PageId(pageId string) BulkhostnametemplateAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r BulkhostnametemplateAPIGetRequest) Filters(filters map[string]interface{}) BulkhostnametemplateAPIGetRequest {
+func (r BulkhostnametemplateAPIListRequest) Filters(filters map[string]interface{}) BulkhostnametemplateAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r BulkhostnametemplateAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) BulkhostnametemplateAPIGetRequest {
+func (r BulkhostnametemplateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) BulkhostnametemplateAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r BulkhostnametemplateAPIGetRequest) Execute() (*ListBulkhostnametemplateResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r BulkhostnametemplateAPIListRequest) Execute() (*ListBulkhostnametemplateResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve bulkhostnametemplate objects
+List Retrieve bulkhostnametemplate objects
 
 Returns a list of bulkhostnametemplate objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return BulkhostnametemplateAPIGetRequest
+	@return BulkhostnametemplateAPIListRequest
 */
-func (a *BulkhostnametemplateAPIService) Get(ctx context.Context) BulkhostnametemplateAPIGetRequest {
-	return BulkhostnametemplateAPIGetRequest{
+func (a *BulkhostnametemplateAPIService) List(ctx context.Context) BulkhostnametemplateAPIListRequest {
+	return BulkhostnametemplateAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *BulkhostnametemplateAPIService) Get(ctx context.Context) Bulkhostnamete
 // Execute executes the request
 //
 //	@return ListBulkhostnametemplateResponse
-func (a *BulkhostnametemplateAPIService) GetExecute(r BulkhostnametemplateAPIGetRequest) (*ListBulkhostnametemplateResponse, *http.Response, error) {
+func (a *BulkhostnametemplateAPIService) ListExecute(r BulkhostnametemplateAPIListRequest) (*ListBulkhostnametemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *BulkhostnametemplateAPIService) GetExecute(r BulkhostnametemplateAPIGet
 		localVarReturnValue *ListBulkhostnametemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostnametemplateAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostnametemplateAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *BulkhostnametemplateAPIService) GetExecute(r BulkhostnametemplateAPIGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type BulkhostnametemplateAPIPostRequest struct {
-	ctx                  context.Context
-	ApiService           BulkhostnametemplateAPI
-	bulkhostnametemplate *Bulkhostnametemplate
-	returnFields         *string
-	returnFields2        *string
-	returnAsObject       *int32
-}
-
-// Object data to create
-func (r BulkhostnametemplateAPIPostRequest) Bulkhostnametemplate(bulkhostnametemplate Bulkhostnametemplate) BulkhostnametemplateAPIPostRequest {
-	r.bulkhostnametemplate = &bulkhostnametemplate
-	return r
-}
-
-// Enter the field names followed by comma
-func (r BulkhostnametemplateAPIPostRequest) ReturnFields(returnFields string) BulkhostnametemplateAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostnametemplateAPIPostRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r BulkhostnametemplateAPIPostRequest) ReturnAsObject(returnAsObject int32) BulkhostnametemplateAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r BulkhostnametemplateAPIPostRequest) Execute() (*CreateBulkhostnametemplateResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a bulkhostnametemplate object
-
-Creates a new bulkhostnametemplate object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return BulkhostnametemplateAPIPostRequest
-*/
-func (a *BulkhostnametemplateAPIService) Post(ctx context.Context) BulkhostnametemplateAPIPostRequest {
-	return BulkhostnametemplateAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateBulkhostnametemplateResponse
-func (a *BulkhostnametemplateAPIService) PostExecute(r BulkhostnametemplateAPIPostRequest) (*CreateBulkhostnametemplateResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateBulkhostnametemplateResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostnametemplateAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/bulkhostnametemplate"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.bulkhostnametemplate == nil {
-		return localVarReturnValue, nil, internal.ReportError("bulkhostnametemplate is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.bulkhostnametemplate
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type BulkhostnametemplateAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService BulkhostnametemplateAPI
-	reference  string
-}
-
-func (r BulkhostnametemplateAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a bulkhostnametemplate object
-
-Deletes a specific bulkhostnametemplate object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the bulkhostnametemplate object
-	@return BulkhostnametemplateAPIReferenceDeleteRequest
-*/
-func (a *BulkhostnametemplateAPIService) ReferenceDelete(ctx context.Context, reference string) BulkhostnametemplateAPIReferenceDeleteRequest {
-	return BulkhostnametemplateAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *BulkhostnametemplateAPIService) ReferenceDeleteExecute(r BulkhostnametemplateAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostnametemplateAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/bulkhostnametemplate/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type BulkhostnametemplateAPIReferenceGetRequest struct {
+type BulkhostnametemplateAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     BulkhostnametemplateAPI
 	reference      string
@@ -499,38 +499,38 @@ type BulkhostnametemplateAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r BulkhostnametemplateAPIReferenceGetRequest) ReturnFields(returnFields string) BulkhostnametemplateAPIReferenceGetRequest {
+func (r BulkhostnametemplateAPIReadRequest) ReturnFields(returnFields string) BulkhostnametemplateAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostnametemplateAPIReferenceGetRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPIReferenceGetRequest {
+func (r BulkhostnametemplateAPIReadRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r BulkhostnametemplateAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) BulkhostnametemplateAPIReferenceGetRequest {
+func (r BulkhostnametemplateAPIReadRequest) ReturnAsObject(returnAsObject int32) BulkhostnametemplateAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r BulkhostnametemplateAPIReferenceGetRequest) Execute() (*GetBulkhostnametemplateResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r BulkhostnametemplateAPIReadRequest) Execute() (*GetBulkhostnametemplateResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific bulkhostnametemplate object
+Read Get a specific bulkhostnametemplate object
 
 Returns a specific bulkhostnametemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the bulkhostnametemplate object
-	@return BulkhostnametemplateAPIReferenceGetRequest
+	@return BulkhostnametemplateAPIReadRequest
 */
-func (a *BulkhostnametemplateAPIService) ReferenceGet(ctx context.Context, reference string) BulkhostnametemplateAPIReferenceGetRequest {
-	return BulkhostnametemplateAPIReferenceGetRequest{
+func (a *BulkhostnametemplateAPIService) Read(ctx context.Context, reference string) BulkhostnametemplateAPIReadRequest {
+	return BulkhostnametemplateAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *BulkhostnametemplateAPIService) ReferenceGet(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return GetBulkhostnametemplateResponse
-func (a *BulkhostnametemplateAPIService) ReferenceGetExecute(r BulkhostnametemplateAPIReferenceGetRequest) (*GetBulkhostnametemplateResponse, *http.Response, error) {
+func (a *BulkhostnametemplateAPIService) ReadExecute(r BulkhostnametemplateAPIReadRequest) (*GetBulkhostnametemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *BulkhostnametemplateAPIService) ReferenceGetExecute(r Bulkhostnametempl
 		localVarReturnValue *GetBulkhostnametemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostnametemplateAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostnametemplateAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *BulkhostnametemplateAPIService) ReferenceGetExecute(r Bulkhostnametempl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type BulkhostnametemplateAPIReferencePutRequest struct {
+type BulkhostnametemplateAPIUpdateRequest struct {
 	ctx                  context.Context
 	ApiService           BulkhostnametemplateAPI
 	reference            string
@@ -627,44 +627,44 @@ type BulkhostnametemplateAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r BulkhostnametemplateAPIReferencePutRequest) Bulkhostnametemplate(bulkhostnametemplate Bulkhostnametemplate) BulkhostnametemplateAPIReferencePutRequest {
+func (r BulkhostnametemplateAPIUpdateRequest) Bulkhostnametemplate(bulkhostnametemplate Bulkhostnametemplate) BulkhostnametemplateAPIUpdateRequest {
 	r.bulkhostnametemplate = &bulkhostnametemplate
 	return r
 }
 
 // Enter the field names followed by comma
-func (r BulkhostnametemplateAPIReferencePutRequest) ReturnFields(returnFields string) BulkhostnametemplateAPIReferencePutRequest {
+func (r BulkhostnametemplateAPIUpdateRequest) ReturnFields(returnFields string) BulkhostnametemplateAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostnametemplateAPIReferencePutRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPIReferencePutRequest {
+func (r BulkhostnametemplateAPIUpdateRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r BulkhostnametemplateAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) BulkhostnametemplateAPIReferencePutRequest {
+func (r BulkhostnametemplateAPIUpdateRequest) ReturnAsObject(returnAsObject int32) BulkhostnametemplateAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r BulkhostnametemplateAPIReferencePutRequest) Execute() (*UpdateBulkhostnametemplateResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r BulkhostnametemplateAPIUpdateRequest) Execute() (*UpdateBulkhostnametemplateResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a bulkhostnametemplate object
+Update Update a bulkhostnametemplate object
 
 Updates a specific bulkhostnametemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the bulkhostnametemplate object
-	@return BulkhostnametemplateAPIReferencePutRequest
+	@return BulkhostnametemplateAPIUpdateRequest
 */
-func (a *BulkhostnametemplateAPIService) ReferencePut(ctx context.Context, reference string) BulkhostnametemplateAPIReferencePutRequest {
-	return BulkhostnametemplateAPIReferencePutRequest{
+func (a *BulkhostnametemplateAPIService) Update(ctx context.Context, reference string) BulkhostnametemplateAPIUpdateRequest {
+	return BulkhostnametemplateAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *BulkhostnametemplateAPIService) ReferencePut(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return UpdateBulkhostnametemplateResponse
-func (a *BulkhostnametemplateAPIService) ReferencePutExecute(r BulkhostnametemplateAPIReferencePutRequest) (*UpdateBulkhostnametemplateResponse, *http.Response, error) {
+func (a *BulkhostnametemplateAPIService) UpdateExecute(r BulkhostnametemplateAPIUpdateRequest) (*UpdateBulkhostnametemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *BulkhostnametemplateAPIService) ReferencePutExecute(r Bulkhostnametempl
 		localVarReturnValue *UpdateBulkhostnametemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostnametemplateAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostnametemplateAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

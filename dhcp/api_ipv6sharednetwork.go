@@ -23,249 +23,78 @@ import (
 
 type Ipv6sharednetworkAPI interface {
 	/*
-		Get Retrieve ipv6sharednetwork objects
-
-		Returns a list of ipv6sharednetwork objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Ipv6sharednetworkAPIGetRequest
-	*/
-	Get(ctx context.Context) Ipv6sharednetworkAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListIpv6sharednetworkResponse
-	GetExecute(r Ipv6sharednetworkAPIGetRequest) (*ListIpv6sharednetworkResponse, *http.Response, error)
-	/*
-		Post Create a ipv6sharednetwork object
+		Create Create a ipv6sharednetwork object
 
 		Creates a new ipv6sharednetwork object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Ipv6sharednetworkAPIPostRequest
+		@return Ipv6sharednetworkAPICreateRequest
 	*/
-	Post(ctx context.Context) Ipv6sharednetworkAPIPostRequest
+	Create(ctx context.Context) Ipv6sharednetworkAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateIpv6sharednetworkResponse
-	PostExecute(r Ipv6sharednetworkAPIPostRequest) (*CreateIpv6sharednetworkResponse, *http.Response, error)
+	CreateExecute(r Ipv6sharednetworkAPICreateRequest) (*CreateIpv6sharednetworkResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a ipv6sharednetwork object
+		Delete Delete a ipv6sharednetwork object
 
 		Deletes a specific ipv6sharednetwork object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6sharednetwork object
-		@return Ipv6sharednetworkAPIReferenceDeleteRequest
+		@return Ipv6sharednetworkAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) Ipv6sharednetworkAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) Ipv6sharednetworkAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r Ipv6sharednetworkAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r Ipv6sharednetworkAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific ipv6sharednetwork object
+		List Retrieve ipv6sharednetwork objects
+
+		Returns a list of ipv6sharednetwork objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return Ipv6sharednetworkAPIListRequest
+	*/
+	List(ctx context.Context) Ipv6sharednetworkAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListIpv6sharednetworkResponse
+	ListExecute(r Ipv6sharednetworkAPIListRequest) (*ListIpv6sharednetworkResponse, *http.Response, error)
+	/*
+		Read Get a specific ipv6sharednetwork object
 
 		Returns a specific ipv6sharednetwork object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6sharednetwork object
-		@return Ipv6sharednetworkAPIReferenceGetRequest
+		@return Ipv6sharednetworkAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) Ipv6sharednetworkAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) Ipv6sharednetworkAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetIpv6sharednetworkResponse
-	ReferenceGetExecute(r Ipv6sharednetworkAPIReferenceGetRequest) (*GetIpv6sharednetworkResponse, *http.Response, error)
+	ReadExecute(r Ipv6sharednetworkAPIReadRequest) (*GetIpv6sharednetworkResponse, *http.Response, error)
 	/*
-		ReferencePut Update a ipv6sharednetwork object
+		Update Update a ipv6sharednetwork object
 
 		Updates a specific ipv6sharednetwork object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6sharednetwork object
-		@return Ipv6sharednetworkAPIReferencePutRequest
+		@return Ipv6sharednetworkAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) Ipv6sharednetworkAPIReferencePutRequest
+	Update(ctx context.Context, reference string) Ipv6sharednetworkAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateIpv6sharednetworkResponse
-	ReferencePutExecute(r Ipv6sharednetworkAPIReferencePutRequest) (*UpdateIpv6sharednetworkResponse, *http.Response, error)
+	UpdateExecute(r Ipv6sharednetworkAPIUpdateRequest) (*UpdateIpv6sharednetworkResponse, *http.Response, error)
 }
 
 // Ipv6sharednetworkAPIService Ipv6sharednetworkAPI service
 type Ipv6sharednetworkAPIService internal.Service
 
-type Ipv6sharednetworkAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6sharednetworkAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r Ipv6sharednetworkAPIGetRequest) ReturnFields(returnFields string) Ipv6sharednetworkAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6sharednetworkAPIGetRequest) ReturnFields2(returnFields2 string) Ipv6sharednetworkAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r Ipv6sharednetworkAPIGetRequest) MaxResults(maxResults int32) Ipv6sharednetworkAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r Ipv6sharednetworkAPIGetRequest) ReturnAsObject(returnAsObject int32) Ipv6sharednetworkAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r Ipv6sharednetworkAPIGetRequest) Paging(paging int32) Ipv6sharednetworkAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r Ipv6sharednetworkAPIGetRequest) PageId(pageId string) Ipv6sharednetworkAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r Ipv6sharednetworkAPIGetRequest) Filters(filters map[string]interface{}) Ipv6sharednetworkAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r Ipv6sharednetworkAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6sharednetworkAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r Ipv6sharednetworkAPIGetRequest) Execute() (*ListIpv6sharednetworkResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve ipv6sharednetwork objects
-
-Returns a list of ipv6sharednetwork objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Ipv6sharednetworkAPIGetRequest
-*/
-func (a *Ipv6sharednetworkAPIService) Get(ctx context.Context) Ipv6sharednetworkAPIGetRequest {
-	return Ipv6sharednetworkAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListIpv6sharednetworkResponse
-func (a *Ipv6sharednetworkAPIService) GetExecute(r Ipv6sharednetworkAPIGetRequest) (*ListIpv6sharednetworkResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListIpv6sharednetworkResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6sharednetworkAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ipv6sharednetwork"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type Ipv6sharednetworkAPIPostRequest struct {
+type Ipv6sharednetworkAPICreateRequest struct {
 	ctx               context.Context
 	ApiService        Ipv6sharednetworkAPI
 	ipv6sharednetwork *Ipv6sharednetwork
@@ -275,43 +104,43 @@ type Ipv6sharednetworkAPIPostRequest struct {
 }
 
 // Object data to create
-func (r Ipv6sharednetworkAPIPostRequest) Ipv6sharednetwork(ipv6sharednetwork Ipv6sharednetwork) Ipv6sharednetworkAPIPostRequest {
+func (r Ipv6sharednetworkAPICreateRequest) Ipv6sharednetwork(ipv6sharednetwork Ipv6sharednetwork) Ipv6sharednetworkAPICreateRequest {
 	r.ipv6sharednetwork = &ipv6sharednetwork
 	return r
 }
 
 // Enter the field names followed by comma
-func (r Ipv6sharednetworkAPIPostRequest) ReturnFields(returnFields string) Ipv6sharednetworkAPIPostRequest {
+func (r Ipv6sharednetworkAPICreateRequest) ReturnFields(returnFields string) Ipv6sharednetworkAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6sharednetworkAPIPostRequest) ReturnFields2(returnFields2 string) Ipv6sharednetworkAPIPostRequest {
+func (r Ipv6sharednetworkAPICreateRequest) ReturnFields2(returnFields2 string) Ipv6sharednetworkAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6sharednetworkAPIPostRequest) ReturnAsObject(returnAsObject int32) Ipv6sharednetworkAPIPostRequest {
+func (r Ipv6sharednetworkAPICreateRequest) ReturnAsObject(returnAsObject int32) Ipv6sharednetworkAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6sharednetworkAPIPostRequest) Execute() (*CreateIpv6sharednetworkResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r Ipv6sharednetworkAPICreateRequest) Execute() (*CreateIpv6sharednetworkResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a ipv6sharednetwork object
+Create Create a ipv6sharednetwork object
 
 Creates a new ipv6sharednetwork object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Ipv6sharednetworkAPIPostRequest
+	@return Ipv6sharednetworkAPICreateRequest
 */
-func (a *Ipv6sharednetworkAPIService) Post(ctx context.Context) Ipv6sharednetworkAPIPostRequest {
-	return Ipv6sharednetworkAPIPostRequest{
+func (a *Ipv6sharednetworkAPIService) Create(ctx context.Context) Ipv6sharednetworkAPICreateRequest {
+	return Ipv6sharednetworkAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *Ipv6sharednetworkAPIService) Post(ctx context.Context) Ipv6sharednetwor
 // Execute executes the request
 //
 //	@return CreateIpv6sharednetworkResponse
-func (a *Ipv6sharednetworkAPIService) PostExecute(r Ipv6sharednetworkAPIPostRequest) (*CreateIpv6sharednetworkResponse, *http.Response, error) {
+func (a *Ipv6sharednetworkAPIService) CreateExecute(r Ipv6sharednetworkAPICreateRequest) (*CreateIpv6sharednetworkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *Ipv6sharednetworkAPIService) PostExecute(r Ipv6sharednetworkAPIPostRequ
 		localVarReturnValue *CreateIpv6sharednetworkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6sharednetworkAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6sharednetworkAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *Ipv6sharednetworkAPIService) PostExecute(r Ipv6sharednetworkAPIPostRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv6sharednetworkAPIReferenceDeleteRequest struct {
+type Ipv6sharednetworkAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService Ipv6sharednetworkAPI
 	reference  string
 }
 
-func (r Ipv6sharednetworkAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r Ipv6sharednetworkAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a ipv6sharednetwork object
+Delete Delete a ipv6sharednetwork object
 
 Deletes a specific ipv6sharednetwork object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6sharednetwork object
-	@return Ipv6sharednetworkAPIReferenceDeleteRequest
+	@return Ipv6sharednetworkAPIDeleteRequest
 */
-func (a *Ipv6sharednetworkAPIService) ReferenceDelete(ctx context.Context, reference string) Ipv6sharednetworkAPIReferenceDeleteRequest {
-	return Ipv6sharednetworkAPIReferenceDeleteRequest{
+func (a *Ipv6sharednetworkAPIService) Delete(ctx context.Context, reference string) Ipv6sharednetworkAPIDeleteRequest {
+	return Ipv6sharednetworkAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *Ipv6sharednetworkAPIService) ReferenceDelete(ctx context.Context, refer
 }
 
 // Execute executes the request
-func (a *Ipv6sharednetworkAPIService) ReferenceDeleteExecute(r Ipv6sharednetworkAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *Ipv6sharednetworkAPIService) DeleteExecute(r Ipv6sharednetworkAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6sharednetworkAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6sharednetworkAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *Ipv6sharednetworkAPIService) ReferenceDeleteExecute(r Ipv6sharednetwork
 	return localVarHTTPResponse, nil
 }
 
-type Ipv6sharednetworkAPIReferenceGetRequest struct {
+type Ipv6sharednetworkAPIListRequest struct {
+	ctx            context.Context
+	ApiService     Ipv6sharednetworkAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r Ipv6sharednetworkAPIListRequest) ReturnFields(returnFields string) Ipv6sharednetworkAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r Ipv6sharednetworkAPIListRequest) ReturnFields2(returnFields2 string) Ipv6sharednetworkAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r Ipv6sharednetworkAPIListRequest) MaxResults(maxResults int32) Ipv6sharednetworkAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r Ipv6sharednetworkAPIListRequest) ReturnAsObject(returnAsObject int32) Ipv6sharednetworkAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r Ipv6sharednetworkAPIListRequest) Paging(paging int32) Ipv6sharednetworkAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r Ipv6sharednetworkAPIListRequest) PageId(pageId string) Ipv6sharednetworkAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r Ipv6sharednetworkAPIListRequest) Filters(filters map[string]interface{}) Ipv6sharednetworkAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r Ipv6sharednetworkAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6sharednetworkAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r Ipv6sharednetworkAPIListRequest) Execute() (*ListIpv6sharednetworkResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve ipv6sharednetwork objects
+
+Returns a list of ipv6sharednetwork objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return Ipv6sharednetworkAPIListRequest
+*/
+func (a *Ipv6sharednetworkAPIService) List(ctx context.Context) Ipv6sharednetworkAPIListRequest {
+	return Ipv6sharednetworkAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListIpv6sharednetworkResponse
+func (a *Ipv6sharednetworkAPIService) ListExecute(r Ipv6sharednetworkAPIListRequest) (*ListIpv6sharednetworkResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListIpv6sharednetworkResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6sharednetworkAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ipv6sharednetwork"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type Ipv6sharednetworkAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     Ipv6sharednetworkAPI
 	reference      string
@@ -511,38 +511,38 @@ type Ipv6sharednetworkAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r Ipv6sharednetworkAPIReferenceGetRequest) ReturnFields(returnFields string) Ipv6sharednetworkAPIReferenceGetRequest {
+func (r Ipv6sharednetworkAPIReadRequest) ReturnFields(returnFields string) Ipv6sharednetworkAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6sharednetworkAPIReferenceGetRequest) ReturnFields2(returnFields2 string) Ipv6sharednetworkAPIReferenceGetRequest {
+func (r Ipv6sharednetworkAPIReadRequest) ReturnFields2(returnFields2 string) Ipv6sharednetworkAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6sharednetworkAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) Ipv6sharednetworkAPIReferenceGetRequest {
+func (r Ipv6sharednetworkAPIReadRequest) ReturnAsObject(returnAsObject int32) Ipv6sharednetworkAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6sharednetworkAPIReferenceGetRequest) Execute() (*GetIpv6sharednetworkResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r Ipv6sharednetworkAPIReadRequest) Execute() (*GetIpv6sharednetworkResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific ipv6sharednetwork object
+Read Get a specific ipv6sharednetwork object
 
 Returns a specific ipv6sharednetwork object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6sharednetwork object
-	@return Ipv6sharednetworkAPIReferenceGetRequest
+	@return Ipv6sharednetworkAPIReadRequest
 */
-func (a *Ipv6sharednetworkAPIService) ReferenceGet(ctx context.Context, reference string) Ipv6sharednetworkAPIReferenceGetRequest {
-	return Ipv6sharednetworkAPIReferenceGetRequest{
+func (a *Ipv6sharednetworkAPIService) Read(ctx context.Context, reference string) Ipv6sharednetworkAPIReadRequest {
+	return Ipv6sharednetworkAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *Ipv6sharednetworkAPIService) ReferenceGet(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return GetIpv6sharednetworkResponse
-func (a *Ipv6sharednetworkAPIService) ReferenceGetExecute(r Ipv6sharednetworkAPIReferenceGetRequest) (*GetIpv6sharednetworkResponse, *http.Response, error) {
+func (a *Ipv6sharednetworkAPIService) ReadExecute(r Ipv6sharednetworkAPIReadRequest) (*GetIpv6sharednetworkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *Ipv6sharednetworkAPIService) ReferenceGetExecute(r Ipv6sharednetworkAPI
 		localVarReturnValue *GetIpv6sharednetworkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6sharednetworkAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6sharednetworkAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *Ipv6sharednetworkAPIService) ReferenceGetExecute(r Ipv6sharednetworkAPI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv6sharednetworkAPIReferencePutRequest struct {
+type Ipv6sharednetworkAPIUpdateRequest struct {
 	ctx               context.Context
 	ApiService        Ipv6sharednetworkAPI
 	reference         string
@@ -639,44 +639,44 @@ type Ipv6sharednetworkAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r Ipv6sharednetworkAPIReferencePutRequest) Ipv6sharednetwork(ipv6sharednetwork Ipv6sharednetwork) Ipv6sharednetworkAPIReferencePutRequest {
+func (r Ipv6sharednetworkAPIUpdateRequest) Ipv6sharednetwork(ipv6sharednetwork Ipv6sharednetwork) Ipv6sharednetworkAPIUpdateRequest {
 	r.ipv6sharednetwork = &ipv6sharednetwork
 	return r
 }
 
 // Enter the field names followed by comma
-func (r Ipv6sharednetworkAPIReferencePutRequest) ReturnFields(returnFields string) Ipv6sharednetworkAPIReferencePutRequest {
+func (r Ipv6sharednetworkAPIUpdateRequest) ReturnFields(returnFields string) Ipv6sharednetworkAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6sharednetworkAPIReferencePutRequest) ReturnFields2(returnFields2 string) Ipv6sharednetworkAPIReferencePutRequest {
+func (r Ipv6sharednetworkAPIUpdateRequest) ReturnFields2(returnFields2 string) Ipv6sharednetworkAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6sharednetworkAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) Ipv6sharednetworkAPIReferencePutRequest {
+func (r Ipv6sharednetworkAPIUpdateRequest) ReturnAsObject(returnAsObject int32) Ipv6sharednetworkAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6sharednetworkAPIReferencePutRequest) Execute() (*UpdateIpv6sharednetworkResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r Ipv6sharednetworkAPIUpdateRequest) Execute() (*UpdateIpv6sharednetworkResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a ipv6sharednetwork object
+Update Update a ipv6sharednetwork object
 
 Updates a specific ipv6sharednetwork object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6sharednetwork object
-	@return Ipv6sharednetworkAPIReferencePutRequest
+	@return Ipv6sharednetworkAPIUpdateRequest
 */
-func (a *Ipv6sharednetworkAPIService) ReferencePut(ctx context.Context, reference string) Ipv6sharednetworkAPIReferencePutRequest {
-	return Ipv6sharednetworkAPIReferencePutRequest{
+func (a *Ipv6sharednetworkAPIService) Update(ctx context.Context, reference string) Ipv6sharednetworkAPIUpdateRequest {
+	return Ipv6sharednetworkAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *Ipv6sharednetworkAPIService) ReferencePut(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return UpdateIpv6sharednetworkResponse
-func (a *Ipv6sharednetworkAPIService) ReferencePutExecute(r Ipv6sharednetworkAPIReferencePutRequest) (*UpdateIpv6sharednetworkResponse, *http.Response, error) {
+func (a *Ipv6sharednetworkAPIService) UpdateExecute(r Ipv6sharednetworkAPIUpdateRequest) (*UpdateIpv6sharednetworkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *Ipv6sharednetworkAPIService) ReferencePutExecute(r Ipv6sharednetworkAPI
 		localVarReturnValue *UpdateIpv6sharednetworkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6sharednetworkAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6sharednetworkAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

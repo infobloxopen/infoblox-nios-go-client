@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SyslogendpointGet**](SyslogEndpointAPI.md#SyslogendpointGet) | **Get** /syslog:endpoint | Retrieve syslog:endpoint objects
-[**SyslogendpointPost**](SyslogEndpointAPI.md#SyslogendpointPost) | **Post** /syslog:endpoint | Create a syslog:endpoint object
-[**SyslogendpointReferenceDelete**](SyslogEndpointAPI.md#SyslogendpointReferenceDelete) | **Delete** /syslog:endpoint/{reference} | Delete a syslog:endpoint object
-[**SyslogendpointReferenceGet**](SyslogEndpointAPI.md#SyslogendpointReferenceGet) | **Get** /syslog:endpoint/{reference} | Get a specific syslog:endpoint object
-[**SyslogendpointReferencePut**](SyslogEndpointAPI.md#SyslogendpointReferencePut) | **Put** /syslog:endpoint/{reference} | Update a syslog:endpoint object
+[**Create**](SyslogEndpointAPI.md#Create) | **Post** /syslog:endpoint | Create a syslog:endpoint object
+[**Delete**](SyslogEndpointAPI.md#Delete) | **Delete** /syslog:endpoint/{reference} | Delete a syslog:endpoint object
+[**List**](SyslogEndpointAPI.md#List) | **Get** /syslog:endpoint | Retrieve syslog:endpoint objects
+[**Read**](SyslogEndpointAPI.md#Read) | **Get** /syslog:endpoint/{reference} | Get a specific syslog:endpoint object
+[**Update**](SyslogEndpointAPI.md#Update) | **Put** /syslog:endpoint/{reference} | Update a syslog:endpoint object
 
 
 
-## SyslogendpointGet
+## Create
 
-> ListSyslogEndpointResponse SyslogendpointGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateSyslogEndpointResponse Create(ctx).SyslogEndpoint(syslogEndpoint).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a syslog:endpoint object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/misc"
+)
+
+func main() {
+	syslogEndpoint := *misc.NewSyslogEndpoint() // SyslogEndpoint | Object data to create
+
+	apiClient := misc.NewAPIClient()
+	resp, r, err := apiClient.SyslogEndpointAPI.Create(context.Background()).SyslogEndpoint(syslogEndpoint).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SyslogEndpointAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateSyslogEndpointResponse
+	fmt.Fprintf(os.Stdout, "Response from `SyslogEndpointAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SyslogEndpointAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**syslogEndpoint** | [**SyslogEndpoint**](SyslogEndpoint.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateSyslogEndpointResponse**](CreateSyslogEndpointResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a syslog:endpoint object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/misc"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the syslog:endpoint object
+
+	apiClient := misc.NewAPIClient()
+	r, err := apiClient.SyslogEndpointAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SyslogEndpointAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the syslog:endpoint object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SyslogEndpointAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListSyslogEndpointResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve syslog:endpoint objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.SyslogEndpointAPI.SyslogendpointGet(context.Background()).Execute()
+	resp, r, err := apiClient.SyslogEndpointAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyslogEndpointAPI.SyslogendpointGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SyslogEndpointAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SyslogendpointGet`: ListSyslogEndpointResponse
-	fmt.Fprintf(os.Stdout, "Response from `SyslogEndpointAPI.SyslogendpointGet`: %v\n", resp)
+	// response from `List`: ListSyslogEndpointResponse
+	fmt.Fprintf(os.Stdout, "Response from `SyslogEndpointAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SyslogEndpointAPISyslogendpointGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SyslogEndpointAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SyslogendpointPost
+## Read
 
-> CreateSyslogEndpointResponse SyslogendpointPost(ctx).SyslogEndpoint(syslogEndpoint).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a syslog:endpoint object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/misc"
-)
-
-func main() {
-	syslogEndpoint := *misc.NewSyslogEndpoint() // SyslogEndpoint | Object data to create
-
-	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.SyslogEndpointAPI.SyslogendpointPost(context.Background()).SyslogEndpoint(syslogEndpoint).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyslogEndpointAPI.SyslogendpointPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SyslogendpointPost`: CreateSyslogEndpointResponse
-	fmt.Fprintf(os.Stdout, "Response from `SyslogEndpointAPI.SyslogendpointPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SyslogEndpointAPISyslogendpointPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**syslogEndpoint** | [**SyslogEndpoint**](SyslogEndpoint.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateSyslogEndpointResponse**](CreateSyslogEndpointResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SyslogendpointReferenceDelete
-
-> SyslogendpointReferenceDelete(ctx, reference).Execute()
-
-Delete a syslog:endpoint object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/misc"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the syslog:endpoint object
-
-	apiClient := misc.NewAPIClient()
-	r, err := apiClient.SyslogEndpointAPI.SyslogendpointReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyslogEndpointAPI.SyslogendpointReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the syslog:endpoint object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SyslogEndpointAPISyslogendpointReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SyslogendpointReferenceGet
-
-> GetSyslogEndpointResponse SyslogendpointReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetSyslogEndpointResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific syslog:endpoint object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the syslog:endpoint object
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.SyslogEndpointAPI.SyslogendpointReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.SyslogEndpointAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyslogEndpointAPI.SyslogendpointReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SyslogEndpointAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SyslogendpointReferenceGet`: GetSyslogEndpointResponse
-	fmt.Fprintf(os.Stdout, "Response from `SyslogEndpointAPI.SyslogendpointReferenceGet`: %v\n", resp)
+	// response from `Read`: GetSyslogEndpointResponse
+	fmt.Fprintf(os.Stdout, "Response from `SyslogEndpointAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SyslogEndpointAPISyslogendpointReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SyslogEndpointAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SyslogendpointReferencePut
+## Update
 
-> UpdateSyslogEndpointResponse SyslogendpointReferencePut(ctx, reference).SyslogEndpoint(syslogEndpoint).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateSyslogEndpointResponse Update(ctx, reference).SyslogEndpoint(syslogEndpoint).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a syslog:endpoint object
 
@@ -318,13 +318,13 @@ func main() {
 	syslogEndpoint := *misc.NewSyslogEndpoint() // SyslogEndpoint | Object data to update
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.SyslogEndpointAPI.SyslogendpointReferencePut(context.Background(), reference).SyslogEndpoint(syslogEndpoint).Execute()
+	resp, r, err := apiClient.SyslogEndpointAPI.Update(context.Background(), reference).SyslogEndpoint(syslogEndpoint).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyslogEndpointAPI.SyslogendpointReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SyslogEndpointAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SyslogendpointReferencePut`: UpdateSyslogEndpointResponse
-	fmt.Fprintf(os.Stdout, "Response from `SyslogEndpointAPI.SyslogendpointReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateSyslogEndpointResponse
+	fmt.Fprintf(os.Stdout, "Response from `SyslogEndpointAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SyslogEndpointAPISyslogendpointReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SyslogEndpointAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

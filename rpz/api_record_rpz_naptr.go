@@ -23,249 +23,78 @@ import (
 
 type RecordRpzNaptrAPI interface {
 	/*
-		RecordrpznaptrGet Retrieve record:rpz:naptr objects
-
-		Returns a list of record:rpz:naptr objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordRpzNaptrAPIRecordrpznaptrGetRequest
-	*/
-	RecordrpznaptrGet(ctx context.Context) RecordRpzNaptrAPIRecordrpznaptrGetRequest
-
-	// RecordrpznaptrGetExecute executes the request
-	//  @return ListRecordRpzNaptrResponse
-	RecordrpznaptrGetExecute(r RecordRpzNaptrAPIRecordrpznaptrGetRequest) (*ListRecordRpzNaptrResponse, *http.Response, error)
-	/*
-		RecordrpznaptrPost Create a record:rpz:naptr object
+		Create Create a record:rpz:naptr object
 
 		Creates a new record:rpz:naptr object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordRpzNaptrAPIRecordrpznaptrPostRequest
+		@return RecordRpzNaptrAPICreateRequest
 	*/
-	RecordrpznaptrPost(ctx context.Context) RecordRpzNaptrAPIRecordrpznaptrPostRequest
+	Create(ctx context.Context) RecordRpzNaptrAPICreateRequest
 
-	// RecordrpznaptrPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordRpzNaptrResponse
-	RecordrpznaptrPostExecute(r RecordRpzNaptrAPIRecordrpznaptrPostRequest) (*CreateRecordRpzNaptrResponse, *http.Response, error)
+	CreateExecute(r RecordRpzNaptrAPICreateRequest) (*CreateRecordRpzNaptrResponse, *http.Response, error)
 	/*
-		RecordrpznaptrReferenceDelete Delete a record:rpz:naptr object
+		Delete Delete a record:rpz:naptr object
 
 		Deletes a specific record:rpz:naptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:naptr object
-		@return RecordRpzNaptrAPIRecordrpznaptrReferenceDeleteRequest
+		@return RecordRpzNaptrAPIDeleteRequest
 	*/
-	RecordrpznaptrReferenceDelete(ctx context.Context, reference string) RecordRpzNaptrAPIRecordrpznaptrReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordRpzNaptrAPIDeleteRequest
 
-	// RecordrpznaptrReferenceDeleteExecute executes the request
-	RecordrpznaptrReferenceDeleteExecute(r RecordRpzNaptrAPIRecordrpznaptrReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordRpzNaptrAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecordrpznaptrReferenceGet Get a specific record:rpz:naptr object
+		List Retrieve record:rpz:naptr objects
+
+		Returns a list of record:rpz:naptr objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordRpzNaptrAPIListRequest
+	*/
+	List(ctx context.Context) RecordRpzNaptrAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordRpzNaptrResponse
+	ListExecute(r RecordRpzNaptrAPIListRequest) (*ListRecordRpzNaptrResponse, *http.Response, error)
+	/*
+		Read Get a specific record:rpz:naptr object
 
 		Returns a specific record:rpz:naptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:naptr object
-		@return RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest
+		@return RecordRpzNaptrAPIReadRequest
 	*/
-	RecordrpznaptrReferenceGet(ctx context.Context, reference string) RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordRpzNaptrAPIReadRequest
 
-	// RecordrpznaptrReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordRpzNaptrResponse
-	RecordrpznaptrReferenceGetExecute(r RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest) (*GetRecordRpzNaptrResponse, *http.Response, error)
+	ReadExecute(r RecordRpzNaptrAPIReadRequest) (*GetRecordRpzNaptrResponse, *http.Response, error)
 	/*
-		RecordrpznaptrReferencePut Update a record:rpz:naptr object
+		Update Update a record:rpz:naptr object
 
 		Updates a specific record:rpz:naptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:naptr object
-		@return RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest
+		@return RecordRpzNaptrAPIUpdateRequest
 	*/
-	RecordrpznaptrReferencePut(ctx context.Context, reference string) RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest
+	Update(ctx context.Context, reference string) RecordRpzNaptrAPIUpdateRequest
 
-	// RecordrpznaptrReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordRpzNaptrResponse
-	RecordrpznaptrReferencePutExecute(r RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest) (*UpdateRecordRpzNaptrResponse, *http.Response, error)
+	UpdateExecute(r RecordRpzNaptrAPIUpdateRequest) (*UpdateRecordRpzNaptrResponse, *http.Response, error)
 }
 
 // RecordRpzNaptrAPIService RecordRpzNaptrAPI service
 type RecordRpzNaptrAPIService internal.Service
 
-type RecordRpzNaptrAPIRecordrpznaptrGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordRpzNaptrAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r RecordRpzNaptrAPIRecordrpznaptrGetRequest) ReturnFields(returnFields string) RecordRpzNaptrAPIRecordrpznaptrGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzNaptrAPIRecordrpznaptrGetRequest) ReturnFields2(returnFields2 string) RecordRpzNaptrAPIRecordrpznaptrGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r RecordRpzNaptrAPIRecordrpznaptrGetRequest) MaxResults(maxResults int32) RecordRpzNaptrAPIRecordrpznaptrGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordRpzNaptrAPIRecordrpznaptrGetRequest) ReturnAsObject(returnAsObject int32) RecordRpzNaptrAPIRecordrpznaptrGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r RecordRpzNaptrAPIRecordrpznaptrGetRequest) Paging(paging int32) RecordRpzNaptrAPIRecordrpznaptrGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r RecordRpzNaptrAPIRecordrpznaptrGetRequest) PageId(pageId string) RecordRpzNaptrAPIRecordrpznaptrGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r RecordRpzNaptrAPIRecordrpznaptrGetRequest) Filters(filters map[string]interface{}) RecordRpzNaptrAPIRecordrpznaptrGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r RecordRpzNaptrAPIRecordrpznaptrGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRpzNaptrAPIRecordrpznaptrGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r RecordRpzNaptrAPIRecordrpznaptrGetRequest) Execute() (*ListRecordRpzNaptrResponse, *http.Response, error) {
-	return r.ApiService.RecordrpznaptrGetExecute(r)
-}
-
-/*
-RecordrpznaptrGet Retrieve record:rpz:naptr objects
-
-Returns a list of record:rpz:naptr objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordRpzNaptrAPIRecordrpznaptrGetRequest
-*/
-func (a *RecordRpzNaptrAPIService) RecordrpznaptrGet(ctx context.Context) RecordRpzNaptrAPIRecordrpznaptrGetRequest {
-	return RecordRpzNaptrAPIRecordrpznaptrGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListRecordRpzNaptrResponse
-func (a *RecordRpzNaptrAPIService) RecordrpznaptrGetExecute(r RecordRpzNaptrAPIRecordrpznaptrGetRequest) (*ListRecordRpzNaptrResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListRecordRpzNaptrResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzNaptrAPIService.RecordrpznaptrGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:rpz:naptr"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordRpzNaptrAPIRecordrpznaptrPostRequest struct {
+type RecordRpzNaptrAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     RecordRpzNaptrAPI
 	recordRpzNaptr *RecordRpzNaptr
@@ -275,43 +104,43 @@ type RecordRpzNaptrAPIRecordrpznaptrPostRequest struct {
 }
 
 // Object data to create
-func (r RecordRpzNaptrAPIRecordrpznaptrPostRequest) RecordRpzNaptr(recordRpzNaptr RecordRpzNaptr) RecordRpzNaptrAPIRecordrpznaptrPostRequest {
+func (r RecordRpzNaptrAPICreateRequest) RecordRpzNaptr(recordRpzNaptr RecordRpzNaptr) RecordRpzNaptrAPICreateRequest {
 	r.recordRpzNaptr = &recordRpzNaptr
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzNaptrAPIRecordrpznaptrPostRequest) ReturnFields(returnFields string) RecordRpzNaptrAPIRecordrpznaptrPostRequest {
+func (r RecordRpzNaptrAPICreateRequest) ReturnFields(returnFields string) RecordRpzNaptrAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzNaptrAPIRecordrpznaptrPostRequest) ReturnFields2(returnFields2 string) RecordRpzNaptrAPIRecordrpznaptrPostRequest {
+func (r RecordRpzNaptrAPICreateRequest) ReturnFields2(returnFields2 string) RecordRpzNaptrAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzNaptrAPIRecordrpznaptrPostRequest) ReturnAsObject(returnAsObject int32) RecordRpzNaptrAPIRecordrpznaptrPostRequest {
+func (r RecordRpzNaptrAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordRpzNaptrAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzNaptrAPIRecordrpznaptrPostRequest) Execute() (*CreateRecordRpzNaptrResponse, *http.Response, error) {
-	return r.ApiService.RecordrpznaptrPostExecute(r)
+func (r RecordRpzNaptrAPICreateRequest) Execute() (*CreateRecordRpzNaptrResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-RecordrpznaptrPost Create a record:rpz:naptr object
+Create Create a record:rpz:naptr object
 
 Creates a new record:rpz:naptr object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordRpzNaptrAPIRecordrpznaptrPostRequest
+	@return RecordRpzNaptrAPICreateRequest
 */
-func (a *RecordRpzNaptrAPIService) RecordrpznaptrPost(ctx context.Context) RecordRpzNaptrAPIRecordrpznaptrPostRequest {
-	return RecordRpzNaptrAPIRecordrpznaptrPostRequest{
+func (a *RecordRpzNaptrAPIService) Create(ctx context.Context) RecordRpzNaptrAPICreateRequest {
+	return RecordRpzNaptrAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *RecordRpzNaptrAPIService) RecordrpznaptrPost(ctx context.Context) Recor
 // Execute executes the request
 //
 //	@return CreateRecordRpzNaptrResponse
-func (a *RecordRpzNaptrAPIService) RecordrpznaptrPostExecute(r RecordRpzNaptrAPIRecordrpznaptrPostRequest) (*CreateRecordRpzNaptrResponse, *http.Response, error) {
+func (a *RecordRpzNaptrAPIService) CreateExecute(r RecordRpzNaptrAPICreateRequest) (*CreateRecordRpzNaptrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *RecordRpzNaptrAPIService) RecordrpznaptrPostExecute(r RecordRpzNaptrAPI
 		localVarReturnValue *CreateRecordRpzNaptrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzNaptrAPIService.RecordrpznaptrPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzNaptrAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *RecordRpzNaptrAPIService) RecordrpznaptrPostExecute(r RecordRpzNaptrAPI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordRpzNaptrAPIRecordrpznaptrReferenceDeleteRequest struct {
+type RecordRpzNaptrAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService RecordRpzNaptrAPI
 	reference  string
 }
 
-func (r RecordRpzNaptrAPIRecordrpznaptrReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecordrpznaptrReferenceDeleteExecute(r)
+func (r RecordRpzNaptrAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-RecordrpznaptrReferenceDelete Delete a record:rpz:naptr object
+Delete Delete a record:rpz:naptr object
 
 Deletes a specific record:rpz:naptr object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:naptr object
-	@return RecordRpzNaptrAPIRecordrpznaptrReferenceDeleteRequest
+	@return RecordRpzNaptrAPIDeleteRequest
 */
-func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferenceDelete(ctx context.Context, reference string) RecordRpzNaptrAPIRecordrpznaptrReferenceDeleteRequest {
-	return RecordRpzNaptrAPIRecordrpznaptrReferenceDeleteRequest{
+func (a *RecordRpzNaptrAPIService) Delete(ctx context.Context, reference string) RecordRpzNaptrAPIDeleteRequest {
+	return RecordRpzNaptrAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferenceDelete(ctx context.Con
 }
 
 // Execute executes the request
-func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferenceDeleteExecute(r RecordRpzNaptrAPIRecordrpznaptrReferenceDeleteRequest) (*http.Response, error) {
+func (a *RecordRpzNaptrAPIService) DeleteExecute(r RecordRpzNaptrAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzNaptrAPIService.RecordrpznaptrReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzNaptrAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferenceDeleteExecute(r Record
 	return localVarHTTPResponse, nil
 }
 
-type RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest struct {
+type RecordRpzNaptrAPIListRequest struct {
+	ctx            context.Context
+	ApiService     RecordRpzNaptrAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RecordRpzNaptrAPIListRequest) ReturnFields(returnFields string) RecordRpzNaptrAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordRpzNaptrAPIListRequest) ReturnFields2(returnFields2 string) RecordRpzNaptrAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r RecordRpzNaptrAPIListRequest) MaxResults(maxResults int32) RecordRpzNaptrAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordRpzNaptrAPIListRequest) ReturnAsObject(returnAsObject int32) RecordRpzNaptrAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r RecordRpzNaptrAPIListRequest) Paging(paging int32) RecordRpzNaptrAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r RecordRpzNaptrAPIListRequest) PageId(pageId string) RecordRpzNaptrAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r RecordRpzNaptrAPIListRequest) Filters(filters map[string]interface{}) RecordRpzNaptrAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r RecordRpzNaptrAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRpzNaptrAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r RecordRpzNaptrAPIListRequest) Execute() (*ListRecordRpzNaptrResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve record:rpz:naptr objects
+
+Returns a list of record:rpz:naptr objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordRpzNaptrAPIListRequest
+*/
+func (a *RecordRpzNaptrAPIService) List(ctx context.Context) RecordRpzNaptrAPIListRequest {
+	return RecordRpzNaptrAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListRecordRpzNaptrResponse
+func (a *RecordRpzNaptrAPIService) ListExecute(r RecordRpzNaptrAPIListRequest) (*ListRecordRpzNaptrResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListRecordRpzNaptrResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzNaptrAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:rpz:naptr"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordRpzNaptrAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordRpzNaptrAPI
 	reference      string
@@ -511,38 +511,38 @@ type RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest) ReturnFields(returnFields string) RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest {
+func (r RecordRpzNaptrAPIReadRequest) ReturnFields(returnFields string) RecordRpzNaptrAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest) ReturnFields2(returnFields2 string) RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest {
+func (r RecordRpzNaptrAPIReadRequest) ReturnFields2(returnFields2 string) RecordRpzNaptrAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest {
+func (r RecordRpzNaptrAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordRpzNaptrAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest) Execute() (*GetRecordRpzNaptrResponse, *http.Response, error) {
-	return r.ApiService.RecordrpznaptrReferenceGetExecute(r)
+func (r RecordRpzNaptrAPIReadRequest) Execute() (*GetRecordRpzNaptrResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordrpznaptrReferenceGet Get a specific record:rpz:naptr object
+Read Get a specific record:rpz:naptr object
 
 Returns a specific record:rpz:naptr object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:naptr object
-	@return RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest
+	@return RecordRpzNaptrAPIReadRequest
 */
-func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferenceGet(ctx context.Context, reference string) RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest {
-	return RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest{
+func (a *RecordRpzNaptrAPIService) Read(ctx context.Context, reference string) RecordRpzNaptrAPIReadRequest {
+	return RecordRpzNaptrAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferenceGet(ctx context.Contex
 // Execute executes the request
 //
 //	@return GetRecordRpzNaptrResponse
-func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferenceGetExecute(r RecordRpzNaptrAPIRecordrpznaptrReferenceGetRequest) (*GetRecordRpzNaptrResponse, *http.Response, error) {
+func (a *RecordRpzNaptrAPIService) ReadExecute(r RecordRpzNaptrAPIReadRequest) (*GetRecordRpzNaptrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferenceGetExecute(r RecordRpz
 		localVarReturnValue *GetRecordRpzNaptrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzNaptrAPIService.RecordrpznaptrReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzNaptrAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferenceGetExecute(r RecordRpz
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest struct {
+type RecordRpzNaptrAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     RecordRpzNaptrAPI
 	reference      string
@@ -639,44 +639,44 @@ type RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest) RecordRpzNaptr(recordRpzNaptr RecordRpzNaptr) RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest {
+func (r RecordRpzNaptrAPIUpdateRequest) RecordRpzNaptr(recordRpzNaptr RecordRpzNaptr) RecordRpzNaptrAPIUpdateRequest {
 	r.recordRpzNaptr = &recordRpzNaptr
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest) ReturnFields(returnFields string) RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest {
+func (r RecordRpzNaptrAPIUpdateRequest) ReturnFields(returnFields string) RecordRpzNaptrAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest) ReturnFields2(returnFields2 string) RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest {
+func (r RecordRpzNaptrAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordRpzNaptrAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest {
+func (r RecordRpzNaptrAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordRpzNaptrAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest) Execute() (*UpdateRecordRpzNaptrResponse, *http.Response, error) {
-	return r.ApiService.RecordrpznaptrReferencePutExecute(r)
+func (r RecordRpzNaptrAPIUpdateRequest) Execute() (*UpdateRecordRpzNaptrResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordrpznaptrReferencePut Update a record:rpz:naptr object
+Update Update a record:rpz:naptr object
 
 Updates a specific record:rpz:naptr object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:naptr object
-	@return RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest
+	@return RecordRpzNaptrAPIUpdateRequest
 */
-func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferencePut(ctx context.Context, reference string) RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest {
-	return RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest{
+func (a *RecordRpzNaptrAPIService) Update(ctx context.Context, reference string) RecordRpzNaptrAPIUpdateRequest {
+	return RecordRpzNaptrAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferencePut(ctx context.Contex
 // Execute executes the request
 //
 //	@return UpdateRecordRpzNaptrResponse
-func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferencePutExecute(r RecordRpzNaptrAPIRecordrpznaptrReferencePutRequest) (*UpdateRecordRpzNaptrResponse, *http.Response, error) {
+func (a *RecordRpzNaptrAPIService) UpdateExecute(r RecordRpzNaptrAPIUpdateRequest) (*UpdateRecordRpzNaptrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RecordRpzNaptrAPIService) RecordrpznaptrReferencePutExecute(r RecordRpz
 		localVarReturnValue *UpdateRecordRpzNaptrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzNaptrAPIService.RecordrpznaptrReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzNaptrAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

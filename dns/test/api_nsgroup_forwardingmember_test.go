@@ -23,11 +23,11 @@ func TestNsgroupForwardingmemberAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test NsgroupForwardingmemberAPIService NsgroupforwardingmemberGet", func(t *testing.T) {
+	t.Run("Test NsgroupForwardingmemberAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NsgroupForwardingmemberAPI.NsgroupforwardingmemberGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NsgroupForwardingmemberAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNsgroupForwardingmemberAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupForwardingmemberAPIService NsgroupforwardingmemberPost", func(t *testing.T) {
+	t.Run("Test NsgroupForwardingmemberAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NsgroupForwardingmemberAPI.NsgroupforwardingmemberPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NsgroupForwardingmemberAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NsgroupForwardingmemberAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NsgroupForwardingmemberAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNsgroupForwardingmemberAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupForwardingmemberAPIService NsgroupforwardingmemberReferenceDelete", func(t *testing.T) {
+	t.Run("Test NsgroupForwardingmemberAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NsgroupForwardingmemberAPIService NsgroupforwardingmemberReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NsgroupForwardingmemberAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNsgroupForwardingmemberAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupForwardingmemberAPIService NsgroupforwardingmemberReferencePut", func(t *testing.T) {
+	t.Run("Test NsgroupForwardingmemberAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NsgroupForwardingmemberAPI.NsgroupforwardingmemberReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NsgroupForwardingmemberAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

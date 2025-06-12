@@ -23,11 +23,11 @@ func TestNatgroupAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test NatgroupAPIService Get", func(t *testing.T) {
+	t.Run("Test NatgroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NatgroupAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NatgroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNatgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NatgroupAPIService Post", func(t *testing.T) {
+	t.Run("Test NatgroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NatgroupAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NatgroupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NatgroupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NatgroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNatgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NatgroupAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test NatgroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NatgroupAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NatgroupAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NatgroupAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NatgroupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNatgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NatgroupAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test NatgroupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NatgroupAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NatgroupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

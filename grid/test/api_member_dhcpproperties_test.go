@@ -23,11 +23,11 @@ func TestMemberDhcppropertiesAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test MemberDhcppropertiesAPIService MemberdhcppropertiesGet", func(t *testing.T) {
+	t.Run("Test MemberDhcppropertiesAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MemberDhcppropertiesAPI.MemberdhcppropertiesGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MemberDhcppropertiesAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestMemberDhcppropertiesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MemberDhcppropertiesAPIService MemberdhcppropertiesReferenceGet", func(t *testing.T) {
+	t.Run("Test MemberDhcppropertiesAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MemberDhcppropertiesAPI.MemberdhcppropertiesReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MemberDhcppropertiesAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestMemberDhcppropertiesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MemberDhcppropertiesAPIService MemberdhcppropertiesReferencePut", func(t *testing.T) {
+	t.Run("Test MemberDhcppropertiesAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MemberDhcppropertiesAPI.MemberdhcppropertiesReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MemberDhcppropertiesAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

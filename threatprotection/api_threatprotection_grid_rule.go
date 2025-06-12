@@ -23,78 +23,302 @@ import (
 
 type ThreatprotectionGridRuleAPI interface {
 	/*
-		ThreatprotectiongridruleGet Retrieve threatprotection:grid:rule objects
-
-		Returns a list of threatprotection:grid:rule objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest
-	*/
-	ThreatprotectiongridruleGet(ctx context.Context) ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest
-
-	// ThreatprotectiongridruleGetExecute executes the request
-	//  @return ListThreatprotectionGridRuleResponse
-	ThreatprotectiongridruleGetExecute(r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) (*ListThreatprotectionGridRuleResponse, *http.Response, error)
-	/*
-		ThreatprotectiongridrulePost Create a threatprotection:grid:rule object
+		Create Create a threatprotection:grid:rule object
 
 		Creates a new threatprotection:grid:rule object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest
+		@return ThreatprotectionGridRuleAPICreateRequest
 	*/
-	ThreatprotectiongridrulePost(ctx context.Context) ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest
+	Create(ctx context.Context) ThreatprotectionGridRuleAPICreateRequest
 
-	// ThreatprotectiongridrulePostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateThreatprotectionGridRuleResponse
-	ThreatprotectiongridrulePostExecute(r ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest) (*CreateThreatprotectionGridRuleResponse, *http.Response, error)
+	CreateExecute(r ThreatprotectionGridRuleAPICreateRequest) (*CreateThreatprotectionGridRuleResponse, *http.Response, error)
 	/*
-		ThreatprotectiongridruleReferenceDelete Delete a threatprotection:grid:rule object
+		Delete Delete a threatprotection:grid:rule object
 
 		Deletes a specific threatprotection:grid:rule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatprotection:grid:rule object
-		@return ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceDeleteRequest
+		@return ThreatprotectionGridRuleAPIDeleteRequest
 	*/
-	ThreatprotectiongridruleReferenceDelete(ctx context.Context, reference string) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ThreatprotectionGridRuleAPIDeleteRequest
 
-	// ThreatprotectiongridruleReferenceDeleteExecute executes the request
-	ThreatprotectiongridruleReferenceDeleteExecute(r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ThreatprotectionGridRuleAPIDeleteRequest) (*http.Response, error)
 	/*
-		ThreatprotectiongridruleReferenceGet Get a specific threatprotection:grid:rule object
+		List Retrieve threatprotection:grid:rule objects
+
+		Returns a list of threatprotection:grid:rule objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ThreatprotectionGridRuleAPIListRequest
+	*/
+	List(ctx context.Context) ThreatprotectionGridRuleAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListThreatprotectionGridRuleResponse
+	ListExecute(r ThreatprotectionGridRuleAPIListRequest) (*ListThreatprotectionGridRuleResponse, *http.Response, error)
+	/*
+		Read Get a specific threatprotection:grid:rule object
 
 		Returns a specific threatprotection:grid:rule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatprotection:grid:rule object
-		@return ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest
+		@return ThreatprotectionGridRuleAPIReadRequest
 	*/
-	ThreatprotectiongridruleReferenceGet(ctx context.Context, reference string) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest
+	Read(ctx context.Context, reference string) ThreatprotectionGridRuleAPIReadRequest
 
-	// ThreatprotectiongridruleReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetThreatprotectionGridRuleResponse
-	ThreatprotectiongridruleReferenceGetExecute(r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest) (*GetThreatprotectionGridRuleResponse, *http.Response, error)
+	ReadExecute(r ThreatprotectionGridRuleAPIReadRequest) (*GetThreatprotectionGridRuleResponse, *http.Response, error)
 	/*
-		ThreatprotectiongridruleReferencePut Update a threatprotection:grid:rule object
+		Update Update a threatprotection:grid:rule object
 
 		Updates a specific threatprotection:grid:rule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatprotection:grid:rule object
-		@return ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest
+		@return ThreatprotectionGridRuleAPIUpdateRequest
 	*/
-	ThreatprotectiongridruleReferencePut(ctx context.Context, reference string) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest
+	Update(ctx context.Context, reference string) ThreatprotectionGridRuleAPIUpdateRequest
 
-	// ThreatprotectiongridruleReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateThreatprotectionGridRuleResponse
-	ThreatprotectiongridruleReferencePutExecute(r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest) (*UpdateThreatprotectionGridRuleResponse, *http.Response, error)
+	UpdateExecute(r ThreatprotectionGridRuleAPIUpdateRequest) (*UpdateThreatprotectionGridRuleResponse, *http.Response, error)
 }
 
 // ThreatprotectionGridRuleAPIService ThreatprotectionGridRuleAPI service
 type ThreatprotectionGridRuleAPIService internal.Service
 
-type ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest struct {
+type ThreatprotectionGridRuleAPICreateRequest struct {
+	ctx                      context.Context
+	ApiService               ThreatprotectionGridRuleAPI
+	threatprotectionGridRule *ThreatprotectionGridRule
+	returnFields             *string
+	returnFields2            *string
+	returnAsObject           *int32
+}
+
+// Object data to create
+func (r ThreatprotectionGridRuleAPICreateRequest) ThreatprotectionGridRule(threatprotectionGridRule ThreatprotectionGridRule) ThreatprotectionGridRuleAPICreateRequest {
+	r.threatprotectionGridRule = &threatprotectionGridRule
+	return r
+}
+
+// Enter the field names followed by comma
+func (r ThreatprotectionGridRuleAPICreateRequest) ReturnFields(returnFields string) ThreatprotectionGridRuleAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ThreatprotectionGridRuleAPICreateRequest) ReturnFields2(returnFields2 string) ThreatprotectionGridRuleAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ThreatprotectionGridRuleAPICreateRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionGridRuleAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r ThreatprotectionGridRuleAPICreateRequest) Execute() (*CreateThreatprotectionGridRuleResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a threatprotection:grid:rule object
+
+Creates a new threatprotection:grid:rule object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ThreatprotectionGridRuleAPICreateRequest
+*/
+func (a *ThreatprotectionGridRuleAPIService) Create(ctx context.Context) ThreatprotectionGridRuleAPICreateRequest {
+	return ThreatprotectionGridRuleAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateThreatprotectionGridRuleResponse
+func (a *ThreatprotectionGridRuleAPIService) CreateExecute(r ThreatprotectionGridRuleAPICreateRequest) (*CreateThreatprotectionGridRuleResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateThreatprotectionGridRuleResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionGridRuleAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/threatprotection:grid:rule"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.threatprotectionGridRule == nil {
+		return localVarReturnValue, nil, internal.ReportError("threatprotectionGridRule is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.threatprotectionGridRule
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ThreatprotectionGridRuleAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService ThreatprotectionGridRuleAPI
+	reference  string
+}
+
+func (r ThreatprotectionGridRuleAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a threatprotection:grid:rule object
+
+Deletes a specific threatprotection:grid:rule object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the threatprotection:grid:rule object
+	@return ThreatprotectionGridRuleAPIDeleteRequest
+*/
+func (a *ThreatprotectionGridRuleAPIService) Delete(ctx context.Context, reference string) ThreatprotectionGridRuleAPIDeleteRequest {
+	return ThreatprotectionGridRuleAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *ThreatprotectionGridRuleAPIService) DeleteExecute(r ThreatprotectionGridRuleAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionGridRuleAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/threatprotection:grid:rule/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ThreatprotectionGridRuleAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ThreatprotectionGridRuleAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) ReturnFields(returnFields string) ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest {
+func (r ThreatprotectionGridRuleAPIListRequest) ReturnFields(returnFields string) ThreatprotectionGridRuleAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) ReturnFields2(returnFields2 string) ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest {
+func (r ThreatprotectionGridRuleAPIListRequest) ReturnFields2(returnFields2 string) ThreatprotectionGridRuleAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) MaxResults(maxResults int32) ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest {
+func (r ThreatprotectionGridRuleAPIListRequest) MaxResults(maxResults int32) ThreatprotectionGridRuleAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest {
+func (r ThreatprotectionGridRuleAPIListRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionGridRuleAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) Paging(paging int32) ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest {
+func (r ThreatprotectionGridRuleAPIListRequest) Paging(paging int32) ThreatprotectionGridRuleAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) PageId(pageId string) ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest {
+func (r ThreatprotectionGridRuleAPIListRequest) PageId(pageId string) ThreatprotectionGridRuleAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) Filters(filters map[string]interface{}) ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest {
+func (r ThreatprotectionGridRuleAPIListRequest) Filters(filters map[string]interface{}) ThreatprotectionGridRuleAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest {
+func (r ThreatprotectionGridRuleAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatprotectionGridRuleAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) Execute() (*ListThreatprotectionGridRuleResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectiongridruleGetExecute(r)
+func (r ThreatprotectionGridRuleAPIListRequest) Execute() (*ListThreatprotectionGridRuleResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ThreatprotectiongridruleGet Retrieve threatprotection:grid:rule objects
+List Retrieve threatprotection:grid:rule objects
 
 Returns a list of threatprotection:grid:rule objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest
+	@return ThreatprotectionGridRuleAPIListRequest
 */
-func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleGet(ctx context.Context) ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest {
-	return ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest{
+func (a *ThreatprotectionGridRuleAPIService) List(ctx context.Context) ThreatprotectionGridRuleAPIListRequest {
+	return ThreatprotectionGridRuleAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleGet(ctx con
 // Execute executes the request
 //
 //	@return ListThreatprotectionGridRuleResponse
-func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleGetExecute(r ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest) (*ListThreatprotectionGridRuleResponse, *http.Response, error) {
+func (a *ThreatprotectionGridRuleAPIService) ListExecute(r ThreatprotectionGridRuleAPIListRequest) (*ListThreatprotectionGridRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleGetExecute(
 		localVarReturnValue *ListThreatprotectionGridRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionGridRuleAPIService.ThreatprotectiongridruleGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionGridRuleAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleGetExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest struct {
-	ctx                      context.Context
-	ApiService               ThreatprotectionGridRuleAPI
-	threatprotectionGridRule *ThreatprotectionGridRule
-	returnFields             *string
-	returnFields2            *string
-	returnAsObject           *int32
-}
-
-// Object data to create
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest) ThreatprotectionGridRule(threatprotectionGridRule ThreatprotectionGridRule) ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest {
-	r.threatprotectionGridRule = &threatprotectionGridRule
-	return r
-}
-
-// Enter the field names followed by comma
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest) ReturnFields(returnFields string) ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest) ReturnFields2(returnFields2 string) ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest) Execute() (*CreateThreatprotectionGridRuleResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectiongridrulePostExecute(r)
-}
-
-/*
-ThreatprotectiongridrulePost Create a threatprotection:grid:rule object
-
-Creates a new threatprotection:grid:rule object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest
-*/
-func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridrulePost(ctx context.Context) ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest {
-	return ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateThreatprotectionGridRuleResponse
-func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridrulePostExecute(r ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest) (*CreateThreatprotectionGridRuleResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateThreatprotectionGridRuleResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionGridRuleAPIService.ThreatprotectiongridrulePost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/threatprotection:grid:rule"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.threatprotectionGridRule == nil {
-		return localVarReturnValue, nil, internal.ReportError("threatprotectionGridRule is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.threatprotectionGridRule
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService ThreatprotectionGridRuleAPI
-	reference  string
-}
-
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ThreatprotectiongridruleReferenceDeleteExecute(r)
-}
-
-/*
-ThreatprotectiongridruleReferenceDelete Delete a threatprotection:grid:rule object
-
-Deletes a specific threatprotection:grid:rule object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the threatprotection:grid:rule object
-	@return ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceDeleteRequest
-*/
-func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferenceDelete(ctx context.Context, reference string) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceDeleteRequest {
-	return ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferenceDeleteExecute(r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionGridRuleAPIService.ThreatprotectiongridruleReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/threatprotection:grid:rule/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest struct {
+type ThreatprotectionGridRuleAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ThreatprotectionGridRuleAPI
 	reference      string
@@ -499,38 +499,38 @@ type ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest stru
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest) ReturnFields(returnFields string) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest {
+func (r ThreatprotectionGridRuleAPIReadRequest) ReturnFields(returnFields string) ThreatprotectionGridRuleAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest) ReturnFields2(returnFields2 string) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest {
+func (r ThreatprotectionGridRuleAPIReadRequest) ReturnFields2(returnFields2 string) ThreatprotectionGridRuleAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest {
+func (r ThreatprotectionGridRuleAPIReadRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionGridRuleAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest) Execute() (*GetThreatprotectionGridRuleResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectiongridruleReferenceGetExecute(r)
+func (r ThreatprotectionGridRuleAPIReadRequest) Execute() (*GetThreatprotectionGridRuleResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ThreatprotectiongridruleReferenceGet Get a specific threatprotection:grid:rule object
+Read Get a specific threatprotection:grid:rule object
 
 Returns a specific threatprotection:grid:rule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatprotection:grid:rule object
-	@return ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest
+	@return ThreatprotectionGridRuleAPIReadRequest
 */
-func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferenceGet(ctx context.Context, reference string) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest {
-	return ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest{
+func (a *ThreatprotectionGridRuleAPIService) Read(ctx context.Context, reference string) ThreatprotectionGridRuleAPIReadRequest {
+	return ThreatprotectionGridRuleAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferenceGe
 // Execute executes the request
 //
 //	@return GetThreatprotectionGridRuleResponse
-func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferenceGetExecute(r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest) (*GetThreatprotectionGridRuleResponse, *http.Response, error) {
+func (a *ThreatprotectionGridRuleAPIService) ReadExecute(r ThreatprotectionGridRuleAPIReadRequest) (*GetThreatprotectionGridRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferenceGe
 		localVarReturnValue *GetThreatprotectionGridRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionGridRuleAPIService.ThreatprotectiongridruleReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionGridRuleAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferenceGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest struct {
+type ThreatprotectionGridRuleAPIUpdateRequest struct {
 	ctx                      context.Context
 	ApiService               ThreatprotectionGridRuleAPI
 	reference                string
@@ -627,44 +627,44 @@ type ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest stru
 }
 
 // Object data to update
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest) ThreatprotectionGridRule(threatprotectionGridRule ThreatprotectionGridRule) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest {
+func (r ThreatprotectionGridRuleAPIUpdateRequest) ThreatprotectionGridRule(threatprotectionGridRule ThreatprotectionGridRule) ThreatprotectionGridRuleAPIUpdateRequest {
 	r.threatprotectionGridRule = &threatprotectionGridRule
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest) ReturnFields(returnFields string) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest {
+func (r ThreatprotectionGridRuleAPIUpdateRequest) ReturnFields(returnFields string) ThreatprotectionGridRuleAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest) ReturnFields2(returnFields2 string) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest {
+func (r ThreatprotectionGridRuleAPIUpdateRequest) ReturnFields2(returnFields2 string) ThreatprotectionGridRuleAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest {
+func (r ThreatprotectionGridRuleAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionGridRuleAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest) Execute() (*UpdateThreatprotectionGridRuleResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectiongridruleReferencePutExecute(r)
+func (r ThreatprotectionGridRuleAPIUpdateRequest) Execute() (*UpdateThreatprotectionGridRuleResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ThreatprotectiongridruleReferencePut Update a threatprotection:grid:rule object
+Update Update a threatprotection:grid:rule object
 
 Updates a specific threatprotection:grid:rule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatprotection:grid:rule object
-	@return ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest
+	@return ThreatprotectionGridRuleAPIUpdateRequest
 */
-func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferencePut(ctx context.Context, reference string) ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest {
-	return ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest{
+func (a *ThreatprotectionGridRuleAPIService) Update(ctx context.Context, reference string) ThreatprotectionGridRuleAPIUpdateRequest {
+	return ThreatprotectionGridRuleAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferencePu
 // Execute executes the request
 //
 //	@return UpdateThreatprotectionGridRuleResponse
-func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferencePutExecute(r ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest) (*UpdateThreatprotectionGridRuleResponse, *http.Response, error) {
+func (a *ThreatprotectionGridRuleAPIService) UpdateExecute(r ThreatprotectionGridRuleAPIUpdateRequest) (*UpdateThreatprotectionGridRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *ThreatprotectionGridRuleAPIService) ThreatprotectiongridruleReferencePu
 		localVarReturnValue *UpdateThreatprotectionGridRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionGridRuleAPIService.ThreatprotectiongridruleReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionGridRuleAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

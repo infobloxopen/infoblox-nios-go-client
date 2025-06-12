@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](TaxiiAPI.md#Get) | **Get** /taxii | Retrieve taxii objects
-[**ReferenceGet**](TaxiiAPI.md#ReferenceGet) | **Get** /taxii/{reference} | Get a specific taxii object
-[**ReferencePut**](TaxiiAPI.md#ReferencePut) | **Put** /taxii/{reference} | Update a taxii object
+[**List**](TaxiiAPI.md#List) | **Get** /taxii | Retrieve taxii objects
+[**Read**](TaxiiAPI.md#Read) | **Get** /taxii/{reference} | Get a specific taxii object
+[**Update**](TaxiiAPI.md#Update) | **Put** /taxii/{reference} | Update a taxii object
 
 
 
-## Get
+## List
 
-> ListTaxiiResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListTaxiiResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve taxii objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.TaxiiAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.TaxiiAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TaxiiAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TaxiiAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListTaxiiResponse
-	fmt.Fprintf(os.Stdout, "Response from `TaxiiAPI.Get`: %v\n", resp)
+	// response from `List`: ListTaxiiResponse
+	fmt.Fprintf(os.Stdout, "Response from `TaxiiAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `TaxiiAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `TaxiiAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetTaxiiResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetTaxiiResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific taxii object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the taxii object
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.TaxiiAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.TaxiiAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TaxiiAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TaxiiAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetTaxiiResponse
-	fmt.Fprintf(os.Stdout, "Response from `TaxiiAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetTaxiiResponse
+	fmt.Fprintf(os.Stdout, "Response from `TaxiiAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `TaxiiAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `TaxiiAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateTaxiiResponse ReferencePut(ctx, reference).Taxii(taxii).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateTaxiiResponse Update(ctx, reference).Taxii(taxii).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a taxii object
 
@@ -180,13 +180,13 @@ func main() {
 	taxii := *misc.NewTaxii() // Taxii | Object data to update
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.TaxiiAPI.ReferencePut(context.Background(), reference).Taxii(taxii).Execute()
+	resp, r, err := apiClient.TaxiiAPI.Update(context.Background(), reference).Taxii(taxii).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TaxiiAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TaxiiAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateTaxiiResponse
-	fmt.Fprintf(os.Stdout, "Response from `TaxiiAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateTaxiiResponse
+	fmt.Fprintf(os.Stdout, "Response from `TaxiiAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `TaxiiAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `TaxiiAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

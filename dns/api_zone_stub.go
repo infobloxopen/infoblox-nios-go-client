@@ -23,249 +23,78 @@ import (
 
 type ZoneStubAPI interface {
 	/*
-		Get Retrieve zone_stub objects
-
-		Returns a list of zone_stub objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneStubAPIGetRequest
-	*/
-	Get(ctx context.Context) ZoneStubAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListZoneStubResponse
-	GetExecute(r ZoneStubAPIGetRequest) (*ListZoneStubResponse, *http.Response, error)
-	/*
-		Post Create a zone_stub object
+		Create Create a zone_stub object
 
 		Creates a new zone_stub object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneStubAPIPostRequest
+		@return ZoneStubAPICreateRequest
 	*/
-	Post(ctx context.Context) ZoneStubAPIPostRequest
+	Create(ctx context.Context) ZoneStubAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateZoneStubResponse
-	PostExecute(r ZoneStubAPIPostRequest) (*CreateZoneStubResponse, *http.Response, error)
+	CreateExecute(r ZoneStubAPICreateRequest) (*CreateZoneStubResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a zone_stub object
+		Delete Delete a zone_stub object
 
 		Deletes a specific zone_stub object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_stub object
-		@return ZoneStubAPIReferenceDeleteRequest
+		@return ZoneStubAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) ZoneStubAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ZoneStubAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r ZoneStubAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ZoneStubAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific zone_stub object
+		List Retrieve zone_stub objects
+
+		Returns a list of zone_stub objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ZoneStubAPIListRequest
+	*/
+	List(ctx context.Context) ZoneStubAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListZoneStubResponse
+	ListExecute(r ZoneStubAPIListRequest) (*ListZoneStubResponse, *http.Response, error)
+	/*
+		Read Get a specific zone_stub object
 
 		Returns a specific zone_stub object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_stub object
-		@return ZoneStubAPIReferenceGetRequest
+		@return ZoneStubAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ZoneStubAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ZoneStubAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetZoneStubResponse
-	ReferenceGetExecute(r ZoneStubAPIReferenceGetRequest) (*GetZoneStubResponse, *http.Response, error)
+	ReadExecute(r ZoneStubAPIReadRequest) (*GetZoneStubResponse, *http.Response, error)
 	/*
-		ReferencePut Update a zone_stub object
+		Update Update a zone_stub object
 
 		Updates a specific zone_stub object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_stub object
-		@return ZoneStubAPIReferencePutRequest
+		@return ZoneStubAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) ZoneStubAPIReferencePutRequest
+	Update(ctx context.Context, reference string) ZoneStubAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateZoneStubResponse
-	ReferencePutExecute(r ZoneStubAPIReferencePutRequest) (*UpdateZoneStubResponse, *http.Response, error)
+	UpdateExecute(r ZoneStubAPIUpdateRequest) (*UpdateZoneStubResponse, *http.Response, error)
 }
 
 // ZoneStubAPIService ZoneStubAPI service
 type ZoneStubAPIService internal.Service
 
-type ZoneStubAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     ZoneStubAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r ZoneStubAPIGetRequest) ReturnFields(returnFields string) ZoneStubAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneStubAPIGetRequest) ReturnFields2(returnFields2 string) ZoneStubAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r ZoneStubAPIGetRequest) MaxResults(maxResults int32) ZoneStubAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ZoneStubAPIGetRequest) ReturnAsObject(returnAsObject int32) ZoneStubAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r ZoneStubAPIGetRequest) Paging(paging int32) ZoneStubAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r ZoneStubAPIGetRequest) PageId(pageId string) ZoneStubAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r ZoneStubAPIGetRequest) Filters(filters map[string]interface{}) ZoneStubAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r ZoneStubAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneStubAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r ZoneStubAPIGetRequest) Execute() (*ListZoneStubResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve zone_stub objects
-
-Returns a list of zone_stub objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneStubAPIGetRequest
-*/
-func (a *ZoneStubAPIService) Get(ctx context.Context) ZoneStubAPIGetRequest {
-	return ZoneStubAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListZoneStubResponse
-func (a *ZoneStubAPIService) GetExecute(r ZoneStubAPIGetRequest) (*ListZoneStubResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListZoneStubResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneStubAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/zone_stub"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ZoneStubAPIPostRequest struct {
+type ZoneStubAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     ZoneStubAPI
 	zoneStub       *ZoneStub
@@ -275,43 +104,43 @@ type ZoneStubAPIPostRequest struct {
 }
 
 // Object data to create
-func (r ZoneStubAPIPostRequest) ZoneStub(zoneStub ZoneStub) ZoneStubAPIPostRequest {
+func (r ZoneStubAPICreateRequest) ZoneStub(zoneStub ZoneStub) ZoneStubAPICreateRequest {
 	r.zoneStub = &zoneStub
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ZoneStubAPIPostRequest) ReturnFields(returnFields string) ZoneStubAPIPostRequest {
+func (r ZoneStubAPICreateRequest) ReturnFields(returnFields string) ZoneStubAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneStubAPIPostRequest) ReturnFields2(returnFields2 string) ZoneStubAPIPostRequest {
+func (r ZoneStubAPICreateRequest) ReturnFields2(returnFields2 string) ZoneStubAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneStubAPIPostRequest) ReturnAsObject(returnAsObject int32) ZoneStubAPIPostRequest {
+func (r ZoneStubAPICreateRequest) ReturnAsObject(returnAsObject int32) ZoneStubAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneStubAPIPostRequest) Execute() (*CreateZoneStubResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r ZoneStubAPICreateRequest) Execute() (*CreateZoneStubResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a zone_stub object
+Create Create a zone_stub object
 
 Creates a new zone_stub object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneStubAPIPostRequest
+	@return ZoneStubAPICreateRequest
 */
-func (a *ZoneStubAPIService) Post(ctx context.Context) ZoneStubAPIPostRequest {
-	return ZoneStubAPIPostRequest{
+func (a *ZoneStubAPIService) Create(ctx context.Context) ZoneStubAPICreateRequest {
+	return ZoneStubAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *ZoneStubAPIService) Post(ctx context.Context) ZoneStubAPIPostRequest {
 // Execute executes the request
 //
 //	@return CreateZoneStubResponse
-func (a *ZoneStubAPIService) PostExecute(r ZoneStubAPIPostRequest) (*CreateZoneStubResponse, *http.Response, error) {
+func (a *ZoneStubAPIService) CreateExecute(r ZoneStubAPICreateRequest) (*CreateZoneStubResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *ZoneStubAPIService) PostExecute(r ZoneStubAPIPostRequest) (*CreateZoneS
 		localVarReturnValue *CreateZoneStubResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneStubAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneStubAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *ZoneStubAPIService) PostExecute(r ZoneStubAPIPostRequest) (*CreateZoneS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneStubAPIReferenceDeleteRequest struct {
+type ZoneStubAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService ZoneStubAPI
 	reference  string
 }
 
-func (r ZoneStubAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r ZoneStubAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a zone_stub object
+Delete Delete a zone_stub object
 
 Deletes a specific zone_stub object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_stub object
-	@return ZoneStubAPIReferenceDeleteRequest
+	@return ZoneStubAPIDeleteRequest
 */
-func (a *ZoneStubAPIService) ReferenceDelete(ctx context.Context, reference string) ZoneStubAPIReferenceDeleteRequest {
-	return ZoneStubAPIReferenceDeleteRequest{
+func (a *ZoneStubAPIService) Delete(ctx context.Context, reference string) ZoneStubAPIDeleteRequest {
+	return ZoneStubAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *ZoneStubAPIService) ReferenceDelete(ctx context.Context, reference stri
 }
 
 // Execute executes the request
-func (a *ZoneStubAPIService) ReferenceDeleteExecute(r ZoneStubAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *ZoneStubAPIService) DeleteExecute(r ZoneStubAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneStubAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneStubAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *ZoneStubAPIService) ReferenceDeleteExecute(r ZoneStubAPIReferenceDelete
 	return localVarHTTPResponse, nil
 }
 
-type ZoneStubAPIReferenceGetRequest struct {
+type ZoneStubAPIListRequest struct {
+	ctx            context.Context
+	ApiService     ZoneStubAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r ZoneStubAPIListRequest) ReturnFields(returnFields string) ZoneStubAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ZoneStubAPIListRequest) ReturnFields2(returnFields2 string) ZoneStubAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r ZoneStubAPIListRequest) MaxResults(maxResults int32) ZoneStubAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ZoneStubAPIListRequest) ReturnAsObject(returnAsObject int32) ZoneStubAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r ZoneStubAPIListRequest) Paging(paging int32) ZoneStubAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r ZoneStubAPIListRequest) PageId(pageId string) ZoneStubAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r ZoneStubAPIListRequest) Filters(filters map[string]interface{}) ZoneStubAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r ZoneStubAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneStubAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r ZoneStubAPIListRequest) Execute() (*ListZoneStubResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve zone_stub objects
+
+Returns a list of zone_stub objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ZoneStubAPIListRequest
+*/
+func (a *ZoneStubAPIService) List(ctx context.Context) ZoneStubAPIListRequest {
+	return ZoneStubAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListZoneStubResponse
+func (a *ZoneStubAPIService) ListExecute(r ZoneStubAPIListRequest) (*ListZoneStubResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListZoneStubResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneStubAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/zone_stub"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ZoneStubAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ZoneStubAPI
 	reference      string
@@ -511,38 +511,38 @@ type ZoneStubAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ZoneStubAPIReferenceGetRequest) ReturnFields(returnFields string) ZoneStubAPIReferenceGetRequest {
+func (r ZoneStubAPIReadRequest) ReturnFields(returnFields string) ZoneStubAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneStubAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ZoneStubAPIReferenceGetRequest {
+func (r ZoneStubAPIReadRequest) ReturnFields2(returnFields2 string) ZoneStubAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneStubAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ZoneStubAPIReferenceGetRequest {
+func (r ZoneStubAPIReadRequest) ReturnAsObject(returnAsObject int32) ZoneStubAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneStubAPIReferenceGetRequest) Execute() (*GetZoneStubResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r ZoneStubAPIReadRequest) Execute() (*GetZoneStubResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific zone_stub object
+Read Get a specific zone_stub object
 
 Returns a specific zone_stub object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_stub object
-	@return ZoneStubAPIReferenceGetRequest
+	@return ZoneStubAPIReadRequest
 */
-func (a *ZoneStubAPIService) ReferenceGet(ctx context.Context, reference string) ZoneStubAPIReferenceGetRequest {
-	return ZoneStubAPIReferenceGetRequest{
+func (a *ZoneStubAPIService) Read(ctx context.Context, reference string) ZoneStubAPIReadRequest {
+	return ZoneStubAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *ZoneStubAPIService) ReferenceGet(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return GetZoneStubResponse
-func (a *ZoneStubAPIService) ReferenceGetExecute(r ZoneStubAPIReferenceGetRequest) (*GetZoneStubResponse, *http.Response, error) {
+func (a *ZoneStubAPIService) ReadExecute(r ZoneStubAPIReadRequest) (*GetZoneStubResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *ZoneStubAPIService) ReferenceGetExecute(r ZoneStubAPIReferenceGetReques
 		localVarReturnValue *GetZoneStubResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneStubAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneStubAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *ZoneStubAPIService) ReferenceGetExecute(r ZoneStubAPIReferenceGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneStubAPIReferencePutRequest struct {
+type ZoneStubAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     ZoneStubAPI
 	reference      string
@@ -639,44 +639,44 @@ type ZoneStubAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r ZoneStubAPIReferencePutRequest) ZoneStub(zoneStub ZoneStub) ZoneStubAPIReferencePutRequest {
+func (r ZoneStubAPIUpdateRequest) ZoneStub(zoneStub ZoneStub) ZoneStubAPIUpdateRequest {
 	r.zoneStub = &zoneStub
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ZoneStubAPIReferencePutRequest) ReturnFields(returnFields string) ZoneStubAPIReferencePutRequest {
+func (r ZoneStubAPIUpdateRequest) ReturnFields(returnFields string) ZoneStubAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneStubAPIReferencePutRequest) ReturnFields2(returnFields2 string) ZoneStubAPIReferencePutRequest {
+func (r ZoneStubAPIUpdateRequest) ReturnFields2(returnFields2 string) ZoneStubAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneStubAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) ZoneStubAPIReferencePutRequest {
+func (r ZoneStubAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ZoneStubAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneStubAPIReferencePutRequest) Execute() (*UpdateZoneStubResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r ZoneStubAPIUpdateRequest) Execute() (*UpdateZoneStubResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a zone_stub object
+Update Update a zone_stub object
 
 Updates a specific zone_stub object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_stub object
-	@return ZoneStubAPIReferencePutRequest
+	@return ZoneStubAPIUpdateRequest
 */
-func (a *ZoneStubAPIService) ReferencePut(ctx context.Context, reference string) ZoneStubAPIReferencePutRequest {
-	return ZoneStubAPIReferencePutRequest{
+func (a *ZoneStubAPIService) Update(ctx context.Context, reference string) ZoneStubAPIUpdateRequest {
+	return ZoneStubAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *ZoneStubAPIService) ReferencePut(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return UpdateZoneStubResponse
-func (a *ZoneStubAPIService) ReferencePutExecute(r ZoneStubAPIReferencePutRequest) (*UpdateZoneStubResponse, *http.Response, error) {
+func (a *ZoneStubAPIService) UpdateExecute(r ZoneStubAPIUpdateRequest) (*UpdateZoneStubResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *ZoneStubAPIService) ReferencePutExecute(r ZoneStubAPIReferencePutReques
 		localVarReturnValue *UpdateZoneStubResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneStubAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneStubAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

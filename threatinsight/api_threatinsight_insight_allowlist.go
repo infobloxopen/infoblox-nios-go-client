@@ -23,38 +23,38 @@ import (
 
 type ThreatinsightInsightAllowlistAPI interface {
 	/*
-		ThreatinsightinsightAllowlistGet Retrieve threatinsight:insight_allowlist objects
+		List Retrieve threatinsight:insight_allowlist objects
 
 		Returns a list of threatinsight:insight_allowlist objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest
+		@return ThreatinsightInsightAllowlistAPIListRequest
 	*/
-	ThreatinsightinsightAllowlistGet(ctx context.Context) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest
+	List(ctx context.Context) ThreatinsightInsightAllowlistAPIListRequest
 
-	// ThreatinsightinsightAllowlistGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListThreatinsightInsightAllowlistResponse
-	ThreatinsightinsightAllowlistGetExecute(r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) (*ListThreatinsightInsightAllowlistResponse, *http.Response, error)
+	ListExecute(r ThreatinsightInsightAllowlistAPIListRequest) (*ListThreatinsightInsightAllowlistResponse, *http.Response, error)
 	/*
-		ThreatinsightinsightAllowlistReferenceGet Get a specific threatinsight:insight_allowlist object
+		Read Get a specific threatinsight:insight_allowlist object
 
 		Returns a specific threatinsight:insight_allowlist object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatinsight:insight_allowlist object
-		@return ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest
+		@return ThreatinsightInsightAllowlistAPIReadRequest
 	*/
-	ThreatinsightinsightAllowlistReferenceGet(ctx context.Context, reference string) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest
+	Read(ctx context.Context, reference string) ThreatinsightInsightAllowlistAPIReadRequest
 
-	// ThreatinsightinsightAllowlistReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetThreatinsightInsightAllowlistResponse
-	ThreatinsightinsightAllowlistReferenceGetExecute(r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest) (*GetThreatinsightInsightAllowlistResponse, *http.Response, error)
+	ReadExecute(r ThreatinsightInsightAllowlistAPIReadRequest) (*GetThreatinsightInsightAllowlistResponse, *http.Response, error)
 }
 
 // ThreatinsightInsightAllowlistAPIService ThreatinsightInsightAllowlistAPI service
 type ThreatinsightInsightAllowlistAPIService internal.Service
 
-type ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest struct {
+type ThreatinsightInsightAllowlistAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ThreatinsightInsightAllowlistAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest str
 }
 
 // Enter the field names followed by comma
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) ReturnFields(returnFields string) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest {
+func (r ThreatinsightInsightAllowlistAPIListRequest) ReturnFields(returnFields string) ThreatinsightInsightAllowlistAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) ReturnFields2(returnFields2 string) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest {
+func (r ThreatinsightInsightAllowlistAPIListRequest) ReturnFields2(returnFields2 string) ThreatinsightInsightAllowlistAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) MaxResults(maxResults int32) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest {
+func (r ThreatinsightInsightAllowlistAPIListRequest) MaxResults(maxResults int32) ThreatinsightInsightAllowlistAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) ReturnAsObject(returnAsObject int32) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest {
+func (r ThreatinsightInsightAllowlistAPIListRequest) ReturnAsObject(returnAsObject int32) ThreatinsightInsightAllowlistAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) Paging(paging int32) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest {
+func (r ThreatinsightInsightAllowlistAPIListRequest) Paging(paging int32) ThreatinsightInsightAllowlistAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) PageId(pageId string) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest {
+func (r ThreatinsightInsightAllowlistAPIListRequest) PageId(pageId string) ThreatinsightInsightAllowlistAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) Filters(filters map[string]interface{}) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest {
+func (r ThreatinsightInsightAllowlistAPIListRequest) Filters(filters map[string]interface{}) ThreatinsightInsightAllowlistAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest {
+func (r ThreatinsightInsightAllowlistAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatinsightInsightAllowlistAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) Execute() (*ListThreatinsightInsightAllowlistResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightinsightAllowlistGetExecute(r)
+func (r ThreatinsightInsightAllowlistAPIListRequest) Execute() (*ListThreatinsightInsightAllowlistResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ThreatinsightinsightAllowlistGet Retrieve threatinsight:insight_allowlist objects
+List Retrieve threatinsight:insight_allowlist objects
 
 Returns a list of threatinsight:insight_allowlist objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest
+	@return ThreatinsightInsightAllowlistAPIListRequest
 */
-func (a *ThreatinsightInsightAllowlistAPIService) ThreatinsightinsightAllowlistGet(ctx context.Context) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest {
-	return ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest{
+func (a *ThreatinsightInsightAllowlistAPIService) List(ctx context.Context) ThreatinsightInsightAllowlistAPIListRequest {
+	return ThreatinsightInsightAllowlistAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *ThreatinsightInsightAllowlistAPIService) ThreatinsightinsightAllowlistG
 // Execute executes the request
 //
 //	@return ListThreatinsightInsightAllowlistResponse
-func (a *ThreatinsightInsightAllowlistAPIService) ThreatinsightinsightAllowlistGetExecute(r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest) (*ListThreatinsightInsightAllowlistResponse, *http.Response, error) {
+func (a *ThreatinsightInsightAllowlistAPIService) ListExecute(r ThreatinsightInsightAllowlistAPIListRequest) (*ListThreatinsightInsightAllowlistResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *ThreatinsightInsightAllowlistAPIService) ThreatinsightinsightAllowlistG
 		localVarReturnValue *ListThreatinsightInsightAllowlistResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightInsightAllowlistAPIService.ThreatinsightinsightAllowlistGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightInsightAllowlistAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *ThreatinsightInsightAllowlistAPIService) ThreatinsightinsightAllowlistG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest struct {
+type ThreatinsightInsightAllowlistAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ThreatinsightInsightAllowlistAPI
 	reference      string
@@ -235,38 +235,38 @@ type ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRe
 }
 
 // Enter the field names followed by comma
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest) ReturnFields(returnFields string) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest {
+func (r ThreatinsightInsightAllowlistAPIReadRequest) ReturnFields(returnFields string) ThreatinsightInsightAllowlistAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest) ReturnFields2(returnFields2 string) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest {
+func (r ThreatinsightInsightAllowlistAPIReadRequest) ReturnFields2(returnFields2 string) ThreatinsightInsightAllowlistAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest) ReturnAsObject(returnAsObject int32) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest {
+func (r ThreatinsightInsightAllowlistAPIReadRequest) ReturnAsObject(returnAsObject int32) ThreatinsightInsightAllowlistAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest) Execute() (*GetThreatinsightInsightAllowlistResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightinsightAllowlistReferenceGetExecute(r)
+func (r ThreatinsightInsightAllowlistAPIReadRequest) Execute() (*GetThreatinsightInsightAllowlistResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ThreatinsightinsightAllowlistReferenceGet Get a specific threatinsight:insight_allowlist object
+Read Get a specific threatinsight:insight_allowlist object
 
 Returns a specific threatinsight:insight_allowlist object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatinsight:insight_allowlist object
-	@return ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest
+	@return ThreatinsightInsightAllowlistAPIReadRequest
 */
-func (a *ThreatinsightInsightAllowlistAPIService) ThreatinsightinsightAllowlistReferenceGet(ctx context.Context, reference string) ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest {
-	return ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest{
+func (a *ThreatinsightInsightAllowlistAPIService) Read(ctx context.Context, reference string) ThreatinsightInsightAllowlistAPIReadRequest {
+	return ThreatinsightInsightAllowlistAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *ThreatinsightInsightAllowlistAPIService) ThreatinsightinsightAllowlistR
 // Execute executes the request
 //
 //	@return GetThreatinsightInsightAllowlistResponse
-func (a *ThreatinsightInsightAllowlistAPIService) ThreatinsightinsightAllowlistReferenceGetExecute(r ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest) (*GetThreatinsightInsightAllowlistResponse, *http.Response, error) {
+func (a *ThreatinsightInsightAllowlistAPIService) ReadExecute(r ThreatinsightInsightAllowlistAPIReadRequest) (*GetThreatinsightInsightAllowlistResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *ThreatinsightInsightAllowlistAPIService) ThreatinsightinsightAllowlistR
 		localVarReturnValue *GetThreatinsightInsightAllowlistResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightInsightAllowlistAPIService.ThreatinsightinsightAllowlistReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightInsightAllowlistAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

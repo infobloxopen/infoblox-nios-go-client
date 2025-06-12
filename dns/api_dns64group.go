@@ -23,249 +23,78 @@ import (
 
 type Dns64groupAPI interface {
 	/*
-		Get Retrieve dns64group objects
-
-		Returns a list of dns64group objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Dns64groupAPIGetRequest
-	*/
-	Get(ctx context.Context) Dns64groupAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListDns64groupResponse
-	GetExecute(r Dns64groupAPIGetRequest) (*ListDns64groupResponse, *http.Response, error)
-	/*
-		Post Create a dns64group object
+		Create Create a dns64group object
 
 		Creates a new dns64group object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Dns64groupAPIPostRequest
+		@return Dns64groupAPICreateRequest
 	*/
-	Post(ctx context.Context) Dns64groupAPIPostRequest
+	Create(ctx context.Context) Dns64groupAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDns64groupResponse
-	PostExecute(r Dns64groupAPIPostRequest) (*CreateDns64groupResponse, *http.Response, error)
+	CreateExecute(r Dns64groupAPICreateRequest) (*CreateDns64groupResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a dns64group object
+		Delete Delete a dns64group object
 
 		Deletes a specific dns64group object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dns64group object
-		@return Dns64groupAPIReferenceDeleteRequest
+		@return Dns64groupAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) Dns64groupAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) Dns64groupAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r Dns64groupAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r Dns64groupAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific dns64group object
+		List Retrieve dns64group objects
+
+		Returns a list of dns64group objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return Dns64groupAPIListRequest
+	*/
+	List(ctx context.Context) Dns64groupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDns64groupResponse
+	ListExecute(r Dns64groupAPIListRequest) (*ListDns64groupResponse, *http.Response, error)
+	/*
+		Read Get a specific dns64group object
 
 		Returns a specific dns64group object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dns64group object
-		@return Dns64groupAPIReferenceGetRequest
+		@return Dns64groupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) Dns64groupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) Dns64groupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDns64groupResponse
-	ReferenceGetExecute(r Dns64groupAPIReferenceGetRequest) (*GetDns64groupResponse, *http.Response, error)
+	ReadExecute(r Dns64groupAPIReadRequest) (*GetDns64groupResponse, *http.Response, error)
 	/*
-		ReferencePut Update a dns64group object
+		Update Update a dns64group object
 
 		Updates a specific dns64group object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dns64group object
-		@return Dns64groupAPIReferencePutRequest
+		@return Dns64groupAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) Dns64groupAPIReferencePutRequest
+	Update(ctx context.Context, reference string) Dns64groupAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDns64groupResponse
-	ReferencePutExecute(r Dns64groupAPIReferencePutRequest) (*UpdateDns64groupResponse, *http.Response, error)
+	UpdateExecute(r Dns64groupAPIUpdateRequest) (*UpdateDns64groupResponse, *http.Response, error)
 }
 
 // Dns64groupAPIService Dns64groupAPI service
 type Dns64groupAPIService internal.Service
 
-type Dns64groupAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     Dns64groupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r Dns64groupAPIGetRequest) ReturnFields(returnFields string) Dns64groupAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Dns64groupAPIGetRequest) ReturnFields2(returnFields2 string) Dns64groupAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r Dns64groupAPIGetRequest) MaxResults(maxResults int32) Dns64groupAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r Dns64groupAPIGetRequest) ReturnAsObject(returnAsObject int32) Dns64groupAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r Dns64groupAPIGetRequest) Paging(paging int32) Dns64groupAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r Dns64groupAPIGetRequest) PageId(pageId string) Dns64groupAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r Dns64groupAPIGetRequest) Filters(filters map[string]interface{}) Dns64groupAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r Dns64groupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) Dns64groupAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r Dns64groupAPIGetRequest) Execute() (*ListDns64groupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve dns64group objects
-
-Returns a list of dns64group objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Dns64groupAPIGetRequest
-*/
-func (a *Dns64groupAPIService) Get(ctx context.Context) Dns64groupAPIGetRequest {
-	return Dns64groupAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListDns64groupResponse
-func (a *Dns64groupAPIService) GetExecute(r Dns64groupAPIGetRequest) (*ListDns64groupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListDns64groupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Dns64groupAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dns64group"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type Dns64groupAPIPostRequest struct {
+type Dns64groupAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     Dns64groupAPI
 	dns64group     *Dns64group
@@ -275,43 +104,43 @@ type Dns64groupAPIPostRequest struct {
 }
 
 // Object data to create
-func (r Dns64groupAPIPostRequest) Dns64group(dns64group Dns64group) Dns64groupAPIPostRequest {
+func (r Dns64groupAPICreateRequest) Dns64group(dns64group Dns64group) Dns64groupAPICreateRequest {
 	r.dns64group = &dns64group
 	return r
 }
 
 // Enter the field names followed by comma
-func (r Dns64groupAPIPostRequest) ReturnFields(returnFields string) Dns64groupAPIPostRequest {
+func (r Dns64groupAPICreateRequest) ReturnFields(returnFields string) Dns64groupAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Dns64groupAPIPostRequest) ReturnFields2(returnFields2 string) Dns64groupAPIPostRequest {
+func (r Dns64groupAPICreateRequest) ReturnFields2(returnFields2 string) Dns64groupAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Dns64groupAPIPostRequest) ReturnAsObject(returnAsObject int32) Dns64groupAPIPostRequest {
+func (r Dns64groupAPICreateRequest) ReturnAsObject(returnAsObject int32) Dns64groupAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Dns64groupAPIPostRequest) Execute() (*CreateDns64groupResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r Dns64groupAPICreateRequest) Execute() (*CreateDns64groupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a dns64group object
+Create Create a dns64group object
 
 Creates a new dns64group object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Dns64groupAPIPostRequest
+	@return Dns64groupAPICreateRequest
 */
-func (a *Dns64groupAPIService) Post(ctx context.Context) Dns64groupAPIPostRequest {
-	return Dns64groupAPIPostRequest{
+func (a *Dns64groupAPIService) Create(ctx context.Context) Dns64groupAPICreateRequest {
+	return Dns64groupAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *Dns64groupAPIService) Post(ctx context.Context) Dns64groupAPIPostReques
 // Execute executes the request
 //
 //	@return CreateDns64groupResponse
-func (a *Dns64groupAPIService) PostExecute(r Dns64groupAPIPostRequest) (*CreateDns64groupResponse, *http.Response, error) {
+func (a *Dns64groupAPIService) CreateExecute(r Dns64groupAPICreateRequest) (*CreateDns64groupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *Dns64groupAPIService) PostExecute(r Dns64groupAPIPostRequest) (*CreateD
 		localVarReturnValue *CreateDns64groupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Dns64groupAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Dns64groupAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *Dns64groupAPIService) PostExecute(r Dns64groupAPIPostRequest) (*CreateD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Dns64groupAPIReferenceDeleteRequest struct {
+type Dns64groupAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService Dns64groupAPI
 	reference  string
 }
 
-func (r Dns64groupAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r Dns64groupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a dns64group object
+Delete Delete a dns64group object
 
 Deletes a specific dns64group object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dns64group object
-	@return Dns64groupAPIReferenceDeleteRequest
+	@return Dns64groupAPIDeleteRequest
 */
-func (a *Dns64groupAPIService) ReferenceDelete(ctx context.Context, reference string) Dns64groupAPIReferenceDeleteRequest {
-	return Dns64groupAPIReferenceDeleteRequest{
+func (a *Dns64groupAPIService) Delete(ctx context.Context, reference string) Dns64groupAPIDeleteRequest {
+	return Dns64groupAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *Dns64groupAPIService) ReferenceDelete(ctx context.Context, reference st
 }
 
 // Execute executes the request
-func (a *Dns64groupAPIService) ReferenceDeleteExecute(r Dns64groupAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *Dns64groupAPIService) DeleteExecute(r Dns64groupAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Dns64groupAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Dns64groupAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *Dns64groupAPIService) ReferenceDeleteExecute(r Dns64groupAPIReferenceDe
 	return localVarHTTPResponse, nil
 }
 
-type Dns64groupAPIReferenceGetRequest struct {
+type Dns64groupAPIListRequest struct {
+	ctx            context.Context
+	ApiService     Dns64groupAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r Dns64groupAPIListRequest) ReturnFields(returnFields string) Dns64groupAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r Dns64groupAPIListRequest) ReturnFields2(returnFields2 string) Dns64groupAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r Dns64groupAPIListRequest) MaxResults(maxResults int32) Dns64groupAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r Dns64groupAPIListRequest) ReturnAsObject(returnAsObject int32) Dns64groupAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r Dns64groupAPIListRequest) Paging(paging int32) Dns64groupAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r Dns64groupAPIListRequest) PageId(pageId string) Dns64groupAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r Dns64groupAPIListRequest) Filters(filters map[string]interface{}) Dns64groupAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r Dns64groupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) Dns64groupAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r Dns64groupAPIListRequest) Execute() (*ListDns64groupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve dns64group objects
+
+Returns a list of dns64group objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return Dns64groupAPIListRequest
+*/
+func (a *Dns64groupAPIService) List(ctx context.Context) Dns64groupAPIListRequest {
+	return Dns64groupAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListDns64groupResponse
+func (a *Dns64groupAPIService) ListExecute(r Dns64groupAPIListRequest) (*ListDns64groupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListDns64groupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Dns64groupAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dns64group"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type Dns64groupAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     Dns64groupAPI
 	reference      string
@@ -511,38 +511,38 @@ type Dns64groupAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r Dns64groupAPIReferenceGetRequest) ReturnFields(returnFields string) Dns64groupAPIReferenceGetRequest {
+func (r Dns64groupAPIReadRequest) ReturnFields(returnFields string) Dns64groupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Dns64groupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) Dns64groupAPIReferenceGetRequest {
+func (r Dns64groupAPIReadRequest) ReturnFields2(returnFields2 string) Dns64groupAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Dns64groupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) Dns64groupAPIReferenceGetRequest {
+func (r Dns64groupAPIReadRequest) ReturnAsObject(returnAsObject int32) Dns64groupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Dns64groupAPIReferenceGetRequest) Execute() (*GetDns64groupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r Dns64groupAPIReadRequest) Execute() (*GetDns64groupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific dns64group object
+Read Get a specific dns64group object
 
 Returns a specific dns64group object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dns64group object
-	@return Dns64groupAPIReferenceGetRequest
+	@return Dns64groupAPIReadRequest
 */
-func (a *Dns64groupAPIService) ReferenceGet(ctx context.Context, reference string) Dns64groupAPIReferenceGetRequest {
-	return Dns64groupAPIReferenceGetRequest{
+func (a *Dns64groupAPIService) Read(ctx context.Context, reference string) Dns64groupAPIReadRequest {
+	return Dns64groupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *Dns64groupAPIService) ReferenceGet(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return GetDns64groupResponse
-func (a *Dns64groupAPIService) ReferenceGetExecute(r Dns64groupAPIReferenceGetRequest) (*GetDns64groupResponse, *http.Response, error) {
+func (a *Dns64groupAPIService) ReadExecute(r Dns64groupAPIReadRequest) (*GetDns64groupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *Dns64groupAPIService) ReferenceGetExecute(r Dns64groupAPIReferenceGetRe
 		localVarReturnValue *GetDns64groupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Dns64groupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Dns64groupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *Dns64groupAPIService) ReferenceGetExecute(r Dns64groupAPIReferenceGetRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Dns64groupAPIReferencePutRequest struct {
+type Dns64groupAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     Dns64groupAPI
 	reference      string
@@ -639,44 +639,44 @@ type Dns64groupAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r Dns64groupAPIReferencePutRequest) Dns64group(dns64group Dns64group) Dns64groupAPIReferencePutRequest {
+func (r Dns64groupAPIUpdateRequest) Dns64group(dns64group Dns64group) Dns64groupAPIUpdateRequest {
 	r.dns64group = &dns64group
 	return r
 }
 
 // Enter the field names followed by comma
-func (r Dns64groupAPIReferencePutRequest) ReturnFields(returnFields string) Dns64groupAPIReferencePutRequest {
+func (r Dns64groupAPIUpdateRequest) ReturnFields(returnFields string) Dns64groupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Dns64groupAPIReferencePutRequest) ReturnFields2(returnFields2 string) Dns64groupAPIReferencePutRequest {
+func (r Dns64groupAPIUpdateRequest) ReturnFields2(returnFields2 string) Dns64groupAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Dns64groupAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) Dns64groupAPIReferencePutRequest {
+func (r Dns64groupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) Dns64groupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Dns64groupAPIReferencePutRequest) Execute() (*UpdateDns64groupResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r Dns64groupAPIUpdateRequest) Execute() (*UpdateDns64groupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a dns64group object
+Update Update a dns64group object
 
 Updates a specific dns64group object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dns64group object
-	@return Dns64groupAPIReferencePutRequest
+	@return Dns64groupAPIUpdateRequest
 */
-func (a *Dns64groupAPIService) ReferencePut(ctx context.Context, reference string) Dns64groupAPIReferencePutRequest {
-	return Dns64groupAPIReferencePutRequest{
+func (a *Dns64groupAPIService) Update(ctx context.Context, reference string) Dns64groupAPIUpdateRequest {
+	return Dns64groupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *Dns64groupAPIService) ReferencePut(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return UpdateDns64groupResponse
-func (a *Dns64groupAPIService) ReferencePutExecute(r Dns64groupAPIReferencePutRequest) (*UpdateDns64groupResponse, *http.Response, error) {
+func (a *Dns64groupAPIService) UpdateExecute(r Dns64groupAPIUpdateRequest) (*UpdateDns64groupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *Dns64groupAPIService) ReferencePutExecute(r Dns64groupAPIReferencePutRe
 		localVarReturnValue *UpdateDns64groupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Dns64groupAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Dns64groupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

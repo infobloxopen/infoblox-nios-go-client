@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DiscoverytaskAPI.md#Get) | **Get** /discoverytask | Retrieve discoverytask objects
-[**ReferenceGet**](DiscoverytaskAPI.md#ReferenceGet) | **Get** /discoverytask/{reference} | Get a specific discoverytask object
-[**ReferencePut**](DiscoverytaskAPI.md#ReferencePut) | **Put** /discoverytask/{reference} | Update a discoverytask object
+[**List**](DiscoverytaskAPI.md#List) | **Get** /discoverytask | Retrieve discoverytask objects
+[**Read**](DiscoverytaskAPI.md#Read) | **Get** /discoverytask/{reference} | Get a specific discoverytask object
+[**Update**](DiscoverytaskAPI.md#Update) | **Put** /discoverytask/{reference} | Update a discoverytask object
 
 
 
-## Get
+## List
 
-> ListDiscoverytaskResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoverytaskResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discoverytask objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.DiscoverytaskAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoverytaskAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverytaskAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverytaskAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDiscoverytaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverytaskAPI.Get`: %v\n", resp)
+	// response from `List`: ListDiscoverytaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoverytaskAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverytaskAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoverytaskAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetDiscoverytaskResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoverytaskResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discoverytask object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discoverytask object
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.DiscoverytaskAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoverytaskAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverytaskAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverytaskAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDiscoverytaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverytaskAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDiscoverytaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoverytaskAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverytaskAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoverytaskAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateDiscoverytaskResponse ReferencePut(ctx, reference).Discoverytask(discoverytask).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDiscoverytaskResponse Update(ctx, reference).Discoverytask(discoverytask).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a discoverytask object
 
@@ -180,13 +180,13 @@ func main() {
 	discoverytask := *ipam.NewDiscoverytask() // Discoverytask | Object data to update
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.DiscoverytaskAPI.ReferencePut(context.Background(), reference).Discoverytask(discoverytask).Execute()
+	resp, r, err := apiClient.DiscoverytaskAPI.Update(context.Background(), reference).Discoverytask(discoverytask).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverytaskAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverytaskAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDiscoverytaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverytaskAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDiscoverytaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoverytaskAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverytaskAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoverytaskAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

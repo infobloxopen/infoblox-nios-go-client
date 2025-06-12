@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ParentalcontrolsubscribersiteGet**](ParentalcontrolSubscribersiteAPI.md#ParentalcontrolsubscribersiteGet) | **Get** /parentalcontrol:subscribersite | Retrieve parentalcontrol:subscribersite objects
-[**ParentalcontrolsubscribersitePost**](ParentalcontrolSubscribersiteAPI.md#ParentalcontrolsubscribersitePost) | **Post** /parentalcontrol:subscribersite | Create a parentalcontrol:subscribersite object
-[**ParentalcontrolsubscribersiteReferenceDelete**](ParentalcontrolSubscribersiteAPI.md#ParentalcontrolsubscribersiteReferenceDelete) | **Delete** /parentalcontrol:subscribersite/{reference} | Delete a parentalcontrol:subscribersite object
-[**ParentalcontrolsubscribersiteReferenceGet**](ParentalcontrolSubscribersiteAPI.md#ParentalcontrolsubscribersiteReferenceGet) | **Get** /parentalcontrol:subscribersite/{reference} | Get a specific parentalcontrol:subscribersite object
-[**ParentalcontrolsubscribersiteReferencePut**](ParentalcontrolSubscribersiteAPI.md#ParentalcontrolsubscribersiteReferencePut) | **Put** /parentalcontrol:subscribersite/{reference} | Update a parentalcontrol:subscribersite object
+[**Create**](ParentalcontrolSubscribersiteAPI.md#Create) | **Post** /parentalcontrol:subscribersite | Create a parentalcontrol:subscribersite object
+[**Delete**](ParentalcontrolSubscribersiteAPI.md#Delete) | **Delete** /parentalcontrol:subscribersite/{reference} | Delete a parentalcontrol:subscribersite object
+[**List**](ParentalcontrolSubscribersiteAPI.md#List) | **Get** /parentalcontrol:subscribersite | Retrieve parentalcontrol:subscribersite objects
+[**Read**](ParentalcontrolSubscribersiteAPI.md#Read) | **Get** /parentalcontrol:subscribersite/{reference} | Get a specific parentalcontrol:subscribersite object
+[**Update**](ParentalcontrolSubscribersiteAPI.md#Update) | **Put** /parentalcontrol:subscribersite/{reference} | Update a parentalcontrol:subscribersite object
 
 
 
-## ParentalcontrolsubscribersiteGet
+## Create
 
-> ListParentalcontrolSubscribersiteResponse ParentalcontrolsubscribersiteGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateParentalcontrolSubscribersiteResponse Create(ctx).ParentalcontrolSubscribersite(parentalcontrolSubscribersite).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a parentalcontrol:subscribersite object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/parentalcontrol"
+)
+
+func main() {
+	parentalcontrolSubscribersite := *parentalcontrol.NewParentalcontrolSubscribersite() // ParentalcontrolSubscribersite | Object data to create
+
+	apiClient := parentalcontrol.NewAPIClient()
+	resp, r, err := apiClient.ParentalcontrolSubscribersiteAPI.Create(context.Background()).ParentalcontrolSubscribersite(parentalcontrolSubscribersite).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscribersiteAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateParentalcontrolSubscribersiteResponse
+	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscribersiteAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ParentalcontrolSubscribersiteAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**parentalcontrolSubscribersite** | [**ParentalcontrolSubscribersite**](ParentalcontrolSubscribersite.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateParentalcontrolSubscribersiteResponse**](CreateParentalcontrolSubscribersiteResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a parentalcontrol:subscribersite object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/parentalcontrol"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the parentalcontrol:subscribersite object
+
+	apiClient := parentalcontrol.NewAPIClient()
+	r, err := apiClient.ParentalcontrolSubscribersiteAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscribersiteAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the parentalcontrol:subscribersite object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ParentalcontrolSubscribersiteAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListParentalcontrolSubscribersiteResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve parentalcontrol:subscribersite objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := parentalcontrol.NewAPIClient()
-	resp, r, err := apiClient.ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteGet(context.Background()).Execute()
+	resp, r, err := apiClient.ParentalcontrolSubscribersiteAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscribersiteAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ParentalcontrolsubscribersiteGet`: ListParentalcontrolSubscribersiteResponse
-	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteGet`: %v\n", resp)
+	// response from `List`: ListParentalcontrolSubscribersiteResponse
+	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscribersiteAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ParentalcontrolSubscribersiteAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ParentalcontrolsubscribersitePost
+## Read
 
-> CreateParentalcontrolSubscribersiteResponse ParentalcontrolsubscribersitePost(ctx).ParentalcontrolSubscribersite(parentalcontrolSubscribersite).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a parentalcontrol:subscribersite object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/parentalcontrol"
-)
-
-func main() {
-	parentalcontrolSubscribersite := *parentalcontrol.NewParentalcontrolSubscribersite() // ParentalcontrolSubscribersite | Object data to create
-
-	apiClient := parentalcontrol.NewAPIClient()
-	resp, r, err := apiClient.ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersitePost(context.Background()).ParentalcontrolSubscribersite(parentalcontrolSubscribersite).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersitePost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ParentalcontrolsubscribersitePost`: CreateParentalcontrolSubscribersiteResponse
-	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersitePost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersitePostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**parentalcontrolSubscribersite** | [**ParentalcontrolSubscribersite**](ParentalcontrolSubscribersite.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateParentalcontrolSubscribersiteResponse**](CreateParentalcontrolSubscribersiteResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ParentalcontrolsubscribersiteReferenceDelete
-
-> ParentalcontrolsubscribersiteReferenceDelete(ctx, reference).Execute()
-
-Delete a parentalcontrol:subscribersite object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/parentalcontrol"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the parentalcontrol:subscribersite object
-
-	apiClient := parentalcontrol.NewAPIClient()
-	r, err := apiClient.ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the parentalcontrol:subscribersite object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ParentalcontrolsubscribersiteReferenceGet
-
-> GetParentalcontrolSubscribersiteResponse ParentalcontrolsubscribersiteReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetParentalcontrolSubscribersiteResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific parentalcontrol:subscribersite object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the parentalcontrol:subscribersite object
 
 	apiClient := parentalcontrol.NewAPIClient()
-	resp, r, err := apiClient.ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ParentalcontrolSubscribersiteAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscribersiteAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ParentalcontrolsubscribersiteReferenceGet`: GetParentalcontrolSubscribersiteResponse
-	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteReferenceGet`: %v\n", resp)
+	// response from `Read`: GetParentalcontrolSubscribersiteResponse
+	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscribersiteAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ParentalcontrolSubscribersiteAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ParentalcontrolsubscribersiteReferencePut
+## Update
 
-> UpdateParentalcontrolSubscribersiteResponse ParentalcontrolsubscribersiteReferencePut(ctx, reference).ParentalcontrolSubscribersite(parentalcontrolSubscribersite).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateParentalcontrolSubscribersiteResponse Update(ctx, reference).ParentalcontrolSubscribersite(parentalcontrolSubscribersite).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a parentalcontrol:subscribersite object
 
@@ -318,13 +318,13 @@ func main() {
 	parentalcontrolSubscribersite := *parentalcontrol.NewParentalcontrolSubscribersite() // ParentalcontrolSubscribersite | Object data to update
 
 	apiClient := parentalcontrol.NewAPIClient()
-	resp, r, err := apiClient.ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteReferencePut(context.Background(), reference).ParentalcontrolSubscribersite(parentalcontrolSubscribersite).Execute()
+	resp, r, err := apiClient.ParentalcontrolSubscribersiteAPI.Update(context.Background(), reference).ParentalcontrolSubscribersite(parentalcontrolSubscribersite).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscribersiteAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ParentalcontrolsubscribersiteReferencePut`: UpdateParentalcontrolSubscribersiteResponse
-	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscribersiteAPI.ParentalcontrolsubscribersiteReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateParentalcontrolSubscribersiteResponse
+	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscribersiteAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ParentalcontrolSubscribersiteAPIParentalcontrolsubscribersiteReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ParentalcontrolSubscribersiteAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

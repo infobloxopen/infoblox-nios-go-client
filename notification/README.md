@@ -79,20 +79,20 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*NotificationRestEndpointAPI* | [**NotificationrestendpointGet**](docs/NotificationRestEndpointAPI.md#notificationrestendpointget) | **Get** /notification:rest:endpoint | Retrieve notification:rest:endpoint objects
-*NotificationRestEndpointAPI* | [**NotificationrestendpointPost**](docs/NotificationRestEndpointAPI.md#notificationrestendpointpost) | **Post** /notification:rest:endpoint | Create a notification:rest:endpoint object
-*NotificationRestEndpointAPI* | [**NotificationrestendpointReferenceDelete**](docs/NotificationRestEndpointAPI.md#notificationrestendpointreferencedelete) | **Delete** /notification:rest:endpoint/{reference} | Delete a notification:rest:endpoint object
-*NotificationRestEndpointAPI* | [**NotificationrestendpointReferenceGet**](docs/NotificationRestEndpointAPI.md#notificationrestendpointreferenceget) | **Get** /notification:rest:endpoint/{reference} | Get a specific notification:rest:endpoint object
-*NotificationRestEndpointAPI* | [**NotificationrestendpointReferencePut**](docs/NotificationRestEndpointAPI.md#notificationrestendpointreferenceput) | **Put** /notification:rest:endpoint/{reference} | Update a notification:rest:endpoint object
-*NotificationRestTemplateAPI* | [**NotificationresttemplateGet**](docs/NotificationRestTemplateAPI.md#notificationresttemplateget) | **Get** /notification:rest:template | Retrieve notification:rest:template objects
-*NotificationRestTemplateAPI* | [**NotificationresttemplateReferenceDelete**](docs/NotificationRestTemplateAPI.md#notificationresttemplatereferencedelete) | **Delete** /notification:rest:template/{reference} | Delete a notification:rest:template object
-*NotificationRestTemplateAPI* | [**NotificationresttemplateReferenceGet**](docs/NotificationRestTemplateAPI.md#notificationresttemplatereferenceget) | **Get** /notification:rest:template/{reference} | Get a specific notification:rest:template object
-*NotificationRestTemplateAPI* | [**NotificationresttemplateReferencePut**](docs/NotificationRestTemplateAPI.md#notificationresttemplatereferenceput) | **Put** /notification:rest:template/{reference} | Update a notification:rest:template object
-*NotificationRuleAPI* | [**NotificationruleGet**](docs/NotificationRuleAPI.md#notificationruleget) | **Get** /notification:rule | Retrieve notification:rule objects
-*NotificationRuleAPI* | [**NotificationrulePost**](docs/NotificationRuleAPI.md#notificationrulepost) | **Post** /notification:rule | Create a notification:rule object
-*NotificationRuleAPI* | [**NotificationruleReferenceDelete**](docs/NotificationRuleAPI.md#notificationrulereferencedelete) | **Delete** /notification:rule/{reference} | Delete a notification:rule object
-*NotificationRuleAPI* | [**NotificationruleReferenceGet**](docs/NotificationRuleAPI.md#notificationrulereferenceget) | **Get** /notification:rule/{reference} | Get a specific notification:rule object
-*NotificationRuleAPI* | [**NotificationruleReferencePut**](docs/NotificationRuleAPI.md#notificationrulereferenceput) | **Put** /notification:rule/{reference} | Update a notification:rule object
+*NotificationRestEndpointAPI* | [**Create**](docs/NotificationRestEndpointAPI.md#create) | **Post** /notification:rest:endpoint | Create a notification:rest:endpoint object
+*NotificationRestEndpointAPI* | [**Delete**](docs/NotificationRestEndpointAPI.md#delete) | **Delete** /notification:rest:endpoint/{reference} | Delete a notification:rest:endpoint object
+*NotificationRestEndpointAPI* | [**List**](docs/NotificationRestEndpointAPI.md#list) | **Get** /notification:rest:endpoint | Retrieve notification:rest:endpoint objects
+*NotificationRestEndpointAPI* | [**Read**](docs/NotificationRestEndpointAPI.md#read) | **Get** /notification:rest:endpoint/{reference} | Get a specific notification:rest:endpoint object
+*NotificationRestEndpointAPI* | [**Update**](docs/NotificationRestEndpointAPI.md#update) | **Put** /notification:rest:endpoint/{reference} | Update a notification:rest:endpoint object
+*NotificationRestTemplateAPI* | [**Delete**](docs/NotificationRestTemplateAPI.md#delete) | **Delete** /notification:rest:template/{reference} | Delete a notification:rest:template object
+*NotificationRestTemplateAPI* | [**List**](docs/NotificationRestTemplateAPI.md#list) | **Get** /notification:rest:template | Retrieve notification:rest:template objects
+*NotificationRestTemplateAPI* | [**Read**](docs/NotificationRestTemplateAPI.md#read) | **Get** /notification:rest:template/{reference} | Get a specific notification:rest:template object
+*NotificationRestTemplateAPI* | [**Update**](docs/NotificationRestTemplateAPI.md#update) | **Put** /notification:rest:template/{reference} | Update a notification:rest:template object
+*NotificationRuleAPI* | [**Create**](docs/NotificationRuleAPI.md#create) | **Post** /notification:rule | Create a notification:rule object
+*NotificationRuleAPI* | [**Delete**](docs/NotificationRuleAPI.md#delete) | **Delete** /notification:rule/{reference} | Delete a notification:rule object
+*NotificationRuleAPI* | [**List**](docs/NotificationRuleAPI.md#list) | **Get** /notification:rule | Retrieve notification:rule objects
+*NotificationRuleAPI* | [**Read**](docs/NotificationRuleAPI.md#read) | **Get** /notification:rule/{reference} | Get a specific notification:rule object
+*NotificationRuleAPI* | [**Update**](docs/NotificationRuleAPI.md#update) | **Put** /notification:rule/{reference} | Update a notification:rule object
 
 
 ## Documentation For Models

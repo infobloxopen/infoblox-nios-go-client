@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](GcpdnstaskgroupAPI.md#Get) | **Get** /gcpdnstaskgroup | Retrieve gcpdnstaskgroup objects
-[**Post**](GcpdnstaskgroupAPI.md#Post) | **Post** /gcpdnstaskgroup | Create a gcpdnstaskgroup object
-[**ReferenceDelete**](GcpdnstaskgroupAPI.md#ReferenceDelete) | **Delete** /gcpdnstaskgroup/{reference} | Delete a gcpdnstaskgroup object
-[**ReferenceGet**](GcpdnstaskgroupAPI.md#ReferenceGet) | **Get** /gcpdnstaskgroup/{reference} | Get a specific gcpdnstaskgroup object
-[**ReferencePut**](GcpdnstaskgroupAPI.md#ReferencePut) | **Put** /gcpdnstaskgroup/{reference} | Update a gcpdnstaskgroup object
+[**Create**](GcpdnstaskgroupAPI.md#Create) | **Post** /gcpdnstaskgroup | Create a gcpdnstaskgroup object
+[**Delete**](GcpdnstaskgroupAPI.md#Delete) | **Delete** /gcpdnstaskgroup/{reference} | Delete a gcpdnstaskgroup object
+[**List**](GcpdnstaskgroupAPI.md#List) | **Get** /gcpdnstaskgroup | Retrieve gcpdnstaskgroup objects
+[**Read**](GcpdnstaskgroupAPI.md#Read) | **Get** /gcpdnstaskgroup/{reference} | Get a specific gcpdnstaskgroup object
+[**Update**](GcpdnstaskgroupAPI.md#Update) | **Put** /gcpdnstaskgroup/{reference} | Update a gcpdnstaskgroup object
 
 
 
-## Get
+## Create
 
-> ListGcpdnstaskgroupResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateGcpdnstaskgroupResponse Create(ctx).Gcpdnstaskgroup(gcpdnstaskgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a gcpdnstaskgroup object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
+)
+
+func main() {
+	gcpdnstaskgroup := *cloud.NewGcpdnstaskgroup() // Gcpdnstaskgroup | Object data to create
+
+	apiClient := cloud.NewAPIClient()
+	resp, r, err := apiClient.GcpdnstaskgroupAPI.Create(context.Background()).Gcpdnstaskgroup(gcpdnstaskgroup).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GcpdnstaskgroupAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateGcpdnstaskgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `GcpdnstaskgroupAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `GcpdnstaskgroupAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**gcpdnstaskgroup** | [**Gcpdnstaskgroup**](Gcpdnstaskgroup.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateGcpdnstaskgroupResponse**](CreateGcpdnstaskgroupResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a gcpdnstaskgroup object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the gcpdnstaskgroup object
+
+	apiClient := cloud.NewAPIClient()
+	r, err := apiClient.GcpdnstaskgroupAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GcpdnstaskgroupAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the gcpdnstaskgroup object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `GcpdnstaskgroupAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListGcpdnstaskgroupResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve gcpdnstaskgroup objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.GcpdnstaskgroupAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.GcpdnstaskgroupAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GcpdnstaskgroupAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GcpdnstaskgroupAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListGcpdnstaskgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `GcpdnstaskgroupAPI.Get`: %v\n", resp)
+	// response from `List`: ListGcpdnstaskgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `GcpdnstaskgroupAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GcpdnstaskgroupAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GcpdnstaskgroupAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateGcpdnstaskgroupResponse Post(ctx).Gcpdnstaskgroup(gcpdnstaskgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a gcpdnstaskgroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
-)
-
-func main() {
-	gcpdnstaskgroup := *cloud.NewGcpdnstaskgroup() // Gcpdnstaskgroup | Object data to create
-
-	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.GcpdnstaskgroupAPI.Post(context.Background()).Gcpdnstaskgroup(gcpdnstaskgroup).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GcpdnstaskgroupAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateGcpdnstaskgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `GcpdnstaskgroupAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `GcpdnstaskgroupAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**gcpdnstaskgroup** | [**Gcpdnstaskgroup**](Gcpdnstaskgroup.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateGcpdnstaskgroupResponse**](CreateGcpdnstaskgroupResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a gcpdnstaskgroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the gcpdnstaskgroup object
-
-	apiClient := cloud.NewAPIClient()
-	r, err := apiClient.GcpdnstaskgroupAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GcpdnstaskgroupAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the gcpdnstaskgroup object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `GcpdnstaskgroupAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetGcpdnstaskgroupResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGcpdnstaskgroupResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific gcpdnstaskgroup object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the gcpdnstaskgroup object
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.GcpdnstaskgroupAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GcpdnstaskgroupAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GcpdnstaskgroupAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GcpdnstaskgroupAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetGcpdnstaskgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `GcpdnstaskgroupAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGcpdnstaskgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `GcpdnstaskgroupAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GcpdnstaskgroupAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GcpdnstaskgroupAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateGcpdnstaskgroupResponse ReferencePut(ctx, reference).Gcpdnstaskgroup(gcpdnstaskgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGcpdnstaskgroupResponse Update(ctx, reference).Gcpdnstaskgroup(gcpdnstaskgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a gcpdnstaskgroup object
 
@@ -318,13 +318,13 @@ func main() {
 	gcpdnstaskgroup := *cloud.NewGcpdnstaskgroup() // Gcpdnstaskgroup | Object data to update
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.GcpdnstaskgroupAPI.ReferencePut(context.Background(), reference).Gcpdnstaskgroup(gcpdnstaskgroup).Execute()
+	resp, r, err := apiClient.GcpdnstaskgroupAPI.Update(context.Background(), reference).Gcpdnstaskgroup(gcpdnstaskgroup).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GcpdnstaskgroupAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GcpdnstaskgroupAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateGcpdnstaskgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `GcpdnstaskgroupAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGcpdnstaskgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `GcpdnstaskgroupAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GcpdnstaskgroupAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GcpdnstaskgroupAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

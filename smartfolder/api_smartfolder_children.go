@@ -23,38 +23,38 @@ import (
 
 type SmartfolderChildrenAPI interface {
 	/*
-		SmartfolderchildrenGet Retrieve smartfolder:children objects
+		List Retrieve smartfolder:children objects
 
 		Returns a list of smartfolder:children objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SmartfolderChildrenAPISmartfolderchildrenGetRequest
+		@return SmartfolderChildrenAPIListRequest
 	*/
-	SmartfolderchildrenGet(ctx context.Context) SmartfolderChildrenAPISmartfolderchildrenGetRequest
+	List(ctx context.Context) SmartfolderChildrenAPIListRequest
 
-	// SmartfolderchildrenGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListSmartfolderChildrenResponse
-	SmartfolderchildrenGetExecute(r SmartfolderChildrenAPISmartfolderchildrenGetRequest) (*ListSmartfolderChildrenResponse, *http.Response, error)
+	ListExecute(r SmartfolderChildrenAPIListRequest) (*ListSmartfolderChildrenResponse, *http.Response, error)
 	/*
-		SmartfolderchildrenReferenceGet Get a specific smartfolder:children object
+		Read Get a specific smartfolder:children object
 
 		Returns a specific smartfolder:children object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the smartfolder:children object
-		@return SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest
+		@return SmartfolderChildrenAPIReadRequest
 	*/
-	SmartfolderchildrenReferenceGet(ctx context.Context, reference string) SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest
+	Read(ctx context.Context, reference string) SmartfolderChildrenAPIReadRequest
 
-	// SmartfolderchildrenReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSmartfolderChildrenResponse
-	SmartfolderchildrenReferenceGetExecute(r SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest) (*GetSmartfolderChildrenResponse, *http.Response, error)
+	ReadExecute(r SmartfolderChildrenAPIReadRequest) (*GetSmartfolderChildrenResponse, *http.Response, error)
 }
 
 // SmartfolderChildrenAPIService SmartfolderChildrenAPI service
 type SmartfolderChildrenAPIService internal.Service
 
-type SmartfolderChildrenAPISmartfolderchildrenGetRequest struct {
+type SmartfolderChildrenAPIListRequest struct {
 	ctx            context.Context
 	ApiService     SmartfolderChildrenAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type SmartfolderChildrenAPISmartfolderchildrenGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r SmartfolderChildrenAPISmartfolderchildrenGetRequest) ReturnFields(returnFields string) SmartfolderChildrenAPISmartfolderchildrenGetRequest {
+func (r SmartfolderChildrenAPIListRequest) ReturnFields(returnFields string) SmartfolderChildrenAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SmartfolderChildrenAPISmartfolderchildrenGetRequest) ReturnFields2(returnFields2 string) SmartfolderChildrenAPISmartfolderchildrenGetRequest {
+func (r SmartfolderChildrenAPIListRequest) ReturnFields2(returnFields2 string) SmartfolderChildrenAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r SmartfolderChildrenAPISmartfolderchildrenGetRequest) MaxResults(maxResults int32) SmartfolderChildrenAPISmartfolderchildrenGetRequest {
+func (r SmartfolderChildrenAPIListRequest) MaxResults(maxResults int32) SmartfolderChildrenAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SmartfolderChildrenAPISmartfolderchildrenGetRequest) ReturnAsObject(returnAsObject int32) SmartfolderChildrenAPISmartfolderchildrenGetRequest {
+func (r SmartfolderChildrenAPIListRequest) ReturnAsObject(returnAsObject int32) SmartfolderChildrenAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r SmartfolderChildrenAPISmartfolderchildrenGetRequest) Paging(paging int32) SmartfolderChildrenAPISmartfolderchildrenGetRequest {
+func (r SmartfolderChildrenAPIListRequest) Paging(paging int32) SmartfolderChildrenAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r SmartfolderChildrenAPISmartfolderchildrenGetRequest) PageId(pageId string) SmartfolderChildrenAPISmartfolderchildrenGetRequest {
+func (r SmartfolderChildrenAPIListRequest) PageId(pageId string) SmartfolderChildrenAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r SmartfolderChildrenAPISmartfolderchildrenGetRequest) Filters(filters map[string]interface{}) SmartfolderChildrenAPISmartfolderchildrenGetRequest {
+func (r SmartfolderChildrenAPIListRequest) Filters(filters map[string]interface{}) SmartfolderChildrenAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r SmartfolderChildrenAPISmartfolderchildrenGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SmartfolderChildrenAPISmartfolderchildrenGetRequest {
+func (r SmartfolderChildrenAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SmartfolderChildrenAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r SmartfolderChildrenAPISmartfolderchildrenGetRequest) Execute() (*ListSmartfolderChildrenResponse, *http.Response, error) {
-	return r.ApiService.SmartfolderchildrenGetExecute(r)
+func (r SmartfolderChildrenAPIListRequest) Execute() (*ListSmartfolderChildrenResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-SmartfolderchildrenGet Retrieve smartfolder:children objects
+List Retrieve smartfolder:children objects
 
 Returns a list of smartfolder:children objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SmartfolderChildrenAPISmartfolderchildrenGetRequest
+	@return SmartfolderChildrenAPIListRequest
 */
-func (a *SmartfolderChildrenAPIService) SmartfolderchildrenGet(ctx context.Context) SmartfolderChildrenAPISmartfolderchildrenGetRequest {
-	return SmartfolderChildrenAPISmartfolderchildrenGetRequest{
+func (a *SmartfolderChildrenAPIService) List(ctx context.Context) SmartfolderChildrenAPIListRequest {
+	return SmartfolderChildrenAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *SmartfolderChildrenAPIService) SmartfolderchildrenGet(ctx context.Conte
 // Execute executes the request
 //
 //	@return ListSmartfolderChildrenResponse
-func (a *SmartfolderChildrenAPIService) SmartfolderchildrenGetExecute(r SmartfolderChildrenAPISmartfolderchildrenGetRequest) (*ListSmartfolderChildrenResponse, *http.Response, error) {
+func (a *SmartfolderChildrenAPIService) ListExecute(r SmartfolderChildrenAPIListRequest) (*ListSmartfolderChildrenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *SmartfolderChildrenAPIService) SmartfolderchildrenGetExecute(r Smartfol
 		localVarReturnValue *ListSmartfolderChildrenResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderChildrenAPIService.SmartfolderchildrenGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderChildrenAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *SmartfolderChildrenAPIService) SmartfolderchildrenGetExecute(r Smartfol
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest struct {
+type SmartfolderChildrenAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     SmartfolderChildrenAPI
 	reference      string
@@ -235,38 +235,38 @@ type SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest) ReturnFields(returnFields string) SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest {
+func (r SmartfolderChildrenAPIReadRequest) ReturnFields(returnFields string) SmartfolderChildrenAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest) ReturnFields2(returnFields2 string) SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest {
+func (r SmartfolderChildrenAPIReadRequest) ReturnFields2(returnFields2 string) SmartfolderChildrenAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest) ReturnAsObject(returnAsObject int32) SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest {
+func (r SmartfolderChildrenAPIReadRequest) ReturnAsObject(returnAsObject int32) SmartfolderChildrenAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest) Execute() (*GetSmartfolderChildrenResponse, *http.Response, error) {
-	return r.ApiService.SmartfolderchildrenReferenceGetExecute(r)
+func (r SmartfolderChildrenAPIReadRequest) Execute() (*GetSmartfolderChildrenResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-SmartfolderchildrenReferenceGet Get a specific smartfolder:children object
+Read Get a specific smartfolder:children object
 
 Returns a specific smartfolder:children object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the smartfolder:children object
-	@return SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest
+	@return SmartfolderChildrenAPIReadRequest
 */
-func (a *SmartfolderChildrenAPIService) SmartfolderchildrenReferenceGet(ctx context.Context, reference string) SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest {
-	return SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest{
+func (a *SmartfolderChildrenAPIService) Read(ctx context.Context, reference string) SmartfolderChildrenAPIReadRequest {
+	return SmartfolderChildrenAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *SmartfolderChildrenAPIService) SmartfolderchildrenReferenceGet(ctx cont
 // Execute executes the request
 //
 //	@return GetSmartfolderChildrenResponse
-func (a *SmartfolderChildrenAPIService) SmartfolderchildrenReferenceGetExecute(r SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest) (*GetSmartfolderChildrenResponse, *http.Response, error) {
+func (a *SmartfolderChildrenAPIService) ReadExecute(r SmartfolderChildrenAPIReadRequest) (*GetSmartfolderChildrenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *SmartfolderChildrenAPIService) SmartfolderchildrenReferenceGetExecute(r
 		localVarReturnValue *GetSmartfolderChildrenResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderChildrenAPIService.SmartfolderchildrenReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderChildrenAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

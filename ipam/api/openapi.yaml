@@ -58,6 +58,7 @@ paths:
   /ipv4address:
     get:
       description: Returns a list of ipv4address objects matching the search criteria
+      operationId: Ipv4addressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -155,6 +156,7 @@ paths:
   /ipv4address/{reference}:
     delete:
       description: Deletes a specific ipv4address object by reference
+      operationId: Ipv4addressDelete
       parameters:
       - description: Reference of the ipv4address object
         explode: false
@@ -182,6 +184,7 @@ paths:
       - Ipv4address
     get:
       description: Returns a specific ipv4address object by reference
+      operationId: Ipv4addressRead
       parameters:
       - description: Reference of the ipv4address object
         explode: false
@@ -241,6 +244,7 @@ paths:
       - Ipv4address
     put:
       description: Updates a specific ipv4address object by reference
+      operationId: Ipv4addressUpdate
       parameters:
       - description: Reference of the ipv4address object
         explode: false
@@ -309,6 +313,7 @@ paths:
   /ipv6address:
     get:
       description: Returns a list of ipv6address objects matching the search criteria
+      operationId: Ipv6addressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -406,6 +411,7 @@ paths:
   /ipv6address/{reference}:
     delete:
       description: Deletes a specific ipv6address object by reference
+      operationId: Ipv6addressDelete
       parameters:
       - description: Reference of the ipv6address object
         explode: false
@@ -433,6 +439,7 @@ paths:
       - Ipv6address
     get:
       description: Returns a specific ipv6address object by reference
+      operationId: Ipv6addressRead
       parameters:
       - description: Reference of the ipv6address object
         explode: false
@@ -492,6 +499,7 @@ paths:
       - Ipv6address
     put:
       description: Updates a specific ipv6address object by reference
+      operationId: Ipv6addressUpdate
       parameters:
       - description: Reference of the ipv6address object
         explode: false
@@ -560,6 +568,7 @@ paths:
   /network:
     get:
       description: Returns a list of network objects matching the search criteria
+      operationId: NetworkList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -656,6 +665,7 @@ paths:
       - Network
     post:
       description: Creates a new network object
+      operationId: NetworkCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -719,6 +729,7 @@ paths:
   /network/{reference}:
     delete:
       description: Deletes a specific network object by reference
+      operationId: NetworkDelete
       parameters:
       - description: Reference of the network object
         explode: false
@@ -746,6 +757,7 @@ paths:
       - Network
     get:
       description: Returns a specific network object by reference
+      operationId: NetworkRead
       parameters:
       - description: Reference of the network object
         explode: false
@@ -805,6 +817,7 @@ paths:
       - Network
     put:
       description: Updates a specific network object by reference
+      operationId: NetworkUpdate
       parameters:
       - description: Reference of the network object
         explode: false
@@ -877,6 +890,7 @@ paths:
     get:
       description: Returns a list of networkcontainer objects matching the search
         criteria
+      operationId: NetworkcontainerList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -973,6 +987,7 @@ paths:
       - Networkcontainer
     post:
       description: Creates a new networkcontainer object
+      operationId: NetworkcontainerCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1036,6 +1051,7 @@ paths:
   /networkcontainer/{reference}:
     delete:
       description: Deletes a specific networkcontainer object by reference
+      operationId: NetworkcontainerDelete
       parameters:
       - description: Reference of the networkcontainer object
         explode: false
@@ -1074,6 +1090,7 @@ paths:
       - Networkcontainer
     get:
       description: Returns a specific networkcontainer object by reference
+      operationId: NetworkcontainerRead
       parameters:
       - description: Reference of the networkcontainer object
         explode: false
@@ -1133,6 +1150,7 @@ paths:
       - Networkcontainer
     put:
       description: Updates a specific networkcontainer object by reference
+      operationId: NetworkcontainerUpdate
       parameters:
       - description: Reference of the networkcontainer object
         explode: false
@@ -1204,6 +1222,7 @@ paths:
   /networktemplate:
     get:
       description: Returns a list of networktemplate objects matching the search criteria
+      operationId: NetworktemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1300,6 +1319,7 @@ paths:
       - Networktemplate
     post:
       description: Creates a new networktemplate object
+      operationId: NetworktemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1360,6 +1380,7 @@ paths:
   /networktemplate/{reference}:
     delete:
       description: Deletes a specific networktemplate object by reference
+      operationId: NetworktemplateDelete
       parameters:
       - description: Reference of the networktemplate object
         explode: false
@@ -1387,6 +1408,7 @@ paths:
       - Networktemplate
     get:
       description: Returns a specific networktemplate object by reference
+      operationId: NetworktemplateRead
       parameters:
       - description: Reference of the networktemplate object
         explode: false
@@ -1446,6 +1468,7 @@ paths:
       - Networktemplate
     put:
       description: Updates a specific networktemplate object by reference
+      operationId: NetworktemplateUpdate
       parameters:
       - description: Reference of the networktemplate object
         explode: false
@@ -1514,6 +1537,7 @@ paths:
   /networkview:
     get:
       description: Returns a list of networkview objects matching the search criteria
+      operationId: NetworkviewList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1610,6 +1634,7 @@ paths:
       - Networkview
     post:
       description: Creates a new networkview object
+      operationId: NetworkviewCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1670,6 +1695,7 @@ paths:
   /networkview/{reference}:
     delete:
       description: Deletes a specific networkview object by reference
+      operationId: NetworkviewDelete
       parameters:
       - description: Reference of the networkview object
         explode: false
@@ -1697,6 +1723,7 @@ paths:
       - Networkview
     get:
       description: Returns a specific networkview object by reference
+      operationId: NetworkviewRead
       parameters:
       - description: Reference of the networkview object
         explode: false
@@ -1756,6 +1783,7 @@ paths:
       - Networkview
     put:
       description: Updates a specific networkview object by reference
+      operationId: NetworkviewUpdate
       parameters:
       - description: Reference of the networkview object
         explode: false
@@ -1824,6 +1852,7 @@ paths:
   /ipv6network:
     get:
       description: Returns a list of ipv6network objects matching the search criteria
+      operationId: Ipv6networkList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1920,6 +1949,7 @@ paths:
       - Ipv6network
     post:
       description: Creates a new ipv6network object
+      operationId: Ipv6networkCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1980,6 +2010,7 @@ paths:
   /ipv6network/{reference}:
     delete:
       description: Deletes a specific ipv6network object by reference
+      operationId: Ipv6networkDelete
       parameters:
       - description: Reference of the ipv6network object
         explode: false
@@ -2007,6 +2038,7 @@ paths:
       - Ipv6network
     get:
       description: Returns a specific ipv6network object by reference
+      operationId: Ipv6networkRead
       parameters:
       - description: Reference of the ipv6network object
         explode: false
@@ -2066,6 +2098,7 @@ paths:
       - Ipv6network
     put:
       description: Updates a specific ipv6network object by reference
+      operationId: Ipv6networkUpdate
       parameters:
       - description: Reference of the ipv6network object
         explode: false
@@ -2135,6 +2168,7 @@ paths:
     get:
       description: Returns a list of ipv6networkcontainer objects matching the search
         criteria
+      operationId: Ipv6networkcontainerList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2231,6 +2265,7 @@ paths:
       - Ipv6networkcontainer
     post:
       description: Creates a new ipv6networkcontainer object
+      operationId: Ipv6networkcontainerCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2291,6 +2326,7 @@ paths:
   /ipv6networkcontainer/{reference}:
     delete:
       description: Deletes a specific ipv6networkcontainer object by reference
+      operationId: Ipv6networkcontainerDelete
       parameters:
       - description: Reference of the ipv6networkcontainer object
         explode: false
@@ -2329,6 +2365,7 @@ paths:
       - Ipv6networkcontainer
     get:
       description: Returns a specific ipv6networkcontainer object by reference
+      operationId: Ipv6networkcontainerRead
       parameters:
       - description: Reference of the ipv6networkcontainer object
         explode: false
@@ -2388,6 +2425,7 @@ paths:
       - Ipv6networkcontainer
     put:
       description: Updates a specific ipv6networkcontainer object by reference
+      operationId: Ipv6networkcontainerUpdate
       parameters:
       - description: Reference of the ipv6networkcontainer object
         explode: false
@@ -2457,6 +2495,7 @@ paths:
     get:
       description: Returns a list of ipv6networktemplate objects matching the search
         criteria
+      operationId: Ipv6networktemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2553,6 +2592,7 @@ paths:
       - Ipv6networktemplate
     post:
       description: Creates a new ipv6networktemplate object
+      operationId: Ipv6networktemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2613,6 +2653,7 @@ paths:
   /ipv6networktemplate/{reference}:
     delete:
       description: Deletes a specific ipv6networktemplate object by reference
+      operationId: Ipv6networktemplateDelete
       parameters:
       - description: Reference of the ipv6networktemplate object
         explode: false
@@ -2640,6 +2681,7 @@ paths:
       - Ipv6networktemplate
     get:
       description: Returns a specific ipv6networktemplate object by reference
+      operationId: Ipv6networktemplateRead
       parameters:
       - description: Reference of the ipv6networktemplate object
         explode: false
@@ -2699,6 +2741,7 @@ paths:
       - Ipv6networktemplate
     put:
       description: Updates a specific ipv6networktemplate object by reference
+      operationId: Ipv6networktemplateUpdate
       parameters:
       - description: Reference of the ipv6networktemplate object
         explode: false
@@ -2767,6 +2810,7 @@ paths:
   /ipam:statistics:
     get:
       description: Returns a list of ipam:statistics objects matching the search criteria
+      operationId: IpamStatisticsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2864,6 +2908,7 @@ paths:
   /ipam:statistics/{reference}:
     get:
       description: Returns a specific ipam:statistics object by reference
+      operationId: IpamStatisticsRead
       parameters:
       - description: Reference of the ipam:statistics object
         explode: false
@@ -2924,6 +2969,7 @@ paths:
   /vlan:
     get:
       description: Returns a list of vlan objects matching the search criteria
+      operationId: VlanList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3020,6 +3066,7 @@ paths:
       - Vlan
     post:
       description: Creates a new vlan object
+      operationId: VlanCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3080,6 +3127,7 @@ paths:
   /vlan/{reference}:
     delete:
       description: Deletes a specific vlan object by reference
+      operationId: VlanDelete
       parameters:
       - description: Reference of the vlan object
         explode: false
@@ -3107,6 +3155,7 @@ paths:
       - Vlan
     get:
       description: Returns a specific vlan object by reference
+      operationId: VlanRead
       parameters:
       - description: Reference of the vlan object
         explode: false
@@ -3166,6 +3215,7 @@ paths:
       - Vlan
     put:
       description: Updates a specific vlan object by reference
+      operationId: VlanUpdate
       parameters:
       - description: Reference of the vlan object
         explode: false
@@ -3234,6 +3284,7 @@ paths:
   /vlanview:
     get:
       description: Returns a list of vlanview objects matching the search criteria
+      operationId: VlanviewList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3330,6 +3381,7 @@ paths:
       - Vlanview
     post:
       description: Creates a new vlanview object
+      operationId: VlanviewCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3390,6 +3442,7 @@ paths:
   /vlanview/{reference}:
     delete:
       description: Deletes a specific vlanview object by reference
+      operationId: VlanviewDelete
       parameters:
       - description: Reference of the vlanview object
         explode: false
@@ -3417,6 +3470,7 @@ paths:
       - Vlanview
     get:
       description: Returns a specific vlanview object by reference
+      operationId: VlanviewRead
       parameters:
       - description: Reference of the vlanview object
         explode: false
@@ -3476,6 +3530,7 @@ paths:
       - Vlanview
     put:
       description: Updates a specific vlanview object by reference
+      operationId: VlanviewUpdate
       parameters:
       - description: Reference of the vlanview object
         explode: false
@@ -3544,6 +3599,7 @@ paths:
   /vlanrange:
     get:
       description: Returns a list of vlanrange objects matching the search criteria
+      operationId: VlanrangeList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3640,6 +3696,7 @@ paths:
       - Vlanrange
     post:
       description: Creates a new vlanrange object
+      operationId: VlanrangeCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3700,6 +3757,7 @@ paths:
   /vlanrange/{reference}:
     delete:
       description: Deletes a specific vlanrange object by reference
+      operationId: VlanrangeDelete
       parameters:
       - description: Reference of the vlanrange object
         explode: false
@@ -3737,6 +3795,7 @@ paths:
       - Vlanrange
     get:
       description: Returns a specific vlanrange object by reference
+      operationId: VlanrangeRead
       parameters:
       - description: Reference of the vlanrange object
         explode: false
@@ -3796,6 +3855,7 @@ paths:
       - Vlanrange
     put:
       description: Updates a specific vlanrange object by reference
+      operationId: VlanrangeUpdate
       parameters:
       - description: Reference of the vlanrange object
         explode: false
@@ -3864,6 +3924,7 @@ paths:
   /bulkhost:
     get:
       description: Returns a list of bulkhost objects matching the search criteria
+      operationId: BulkhostList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3960,6 +4021,7 @@ paths:
       - Bulkhost
     post:
       description: Creates a new bulkhost object
+      operationId: BulkhostCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4020,6 +4082,7 @@ paths:
   /bulkhost/{reference}:
     delete:
       description: Deletes a specific bulkhost object by reference
+      operationId: BulkhostDelete
       parameters:
       - description: Reference of the bulkhost object
         explode: false
@@ -4047,6 +4110,7 @@ paths:
       - Bulkhost
     get:
       description: Returns a specific bulkhost object by reference
+      operationId: BulkhostRead
       parameters:
       - description: Reference of the bulkhost object
         explode: false
@@ -4106,6 +4170,7 @@ paths:
       - Bulkhost
     put:
       description: Updates a specific bulkhost object by reference
+      operationId: BulkhostUpdate
       parameters:
       - description: Reference of the bulkhost object
         explode: false
@@ -4175,6 +4240,7 @@ paths:
     get:
       description: Returns a list of bulkhostnametemplate objects matching the search
         criteria
+      operationId: BulkhostnametemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4271,6 +4337,7 @@ paths:
       - Bulkhostnametemplate
     post:
       description: Creates a new bulkhostnametemplate object
+      operationId: BulkhostnametemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4330,6 +4397,7 @@ paths:
   /bulkhostnametemplate/{reference}:
     delete:
       description: Deletes a specific bulkhostnametemplate object by reference
+      operationId: BulkhostnametemplateDelete
       parameters:
       - description: Reference of the bulkhostnametemplate object
         explode: false
@@ -4357,6 +4425,7 @@ paths:
       - Bulkhostnametemplate
     get:
       description: Returns a specific bulkhostnametemplate object by reference
+      operationId: BulkhostnametemplateRead
       parameters:
       - description: Reference of the bulkhostnametemplate object
         explode: false
@@ -4416,6 +4485,7 @@ paths:
       - Bulkhostnametemplate
     put:
       description: Updates a specific bulkhostnametemplate object by reference
+      operationId: BulkhostnametemplateUpdate
       parameters:
       - description: Reference of the bulkhostnametemplate object
         explode: false
@@ -4483,6 +4553,7 @@ paths:
   /discoverytask:
     get:
       description: Returns a list of discoverytask objects matching the search criteria
+      operationId: DiscoverytaskList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4580,6 +4651,7 @@ paths:
   /discoverytask/{reference}:
     get:
       description: Returns a specific discoverytask object by reference
+      operationId: DiscoverytaskRead
       parameters:
       - description: Reference of the discoverytask object
         explode: false
@@ -4639,6 +4711,7 @@ paths:
       - Discoverytask
     put:
       description: Updates a specific discoverytask object by reference
+      operationId: DiscoverytaskUpdate
       parameters:
       - description: Reference of the discoverytask object
         explode: false
@@ -4707,6 +4780,7 @@ paths:
     get:
       description: Returns a list of network_discovery objects matching the search
         criteria
+      operationId: NetworkDiscoveryList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4804,6 +4878,7 @@ paths:
   /network_discovery/{reference}:
     get:
       description: Returns a specific network_discovery object by reference
+      operationId: NetworkDiscoveryRead
       parameters:
       - description: Reference of the network_discovery object
         explode: false
@@ -4864,6 +4939,7 @@ paths:
   /superhost:
     get:
       description: Returns a list of superhost objects matching the search criteria
+      operationId: SuperhostList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4960,6 +5036,7 @@ paths:
       - Superhost
     post:
       description: Creates a new superhost object
+      operationId: SuperhostCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5020,6 +5097,7 @@ paths:
   /superhost/{reference}:
     delete:
       description: Deletes a specific superhost object by reference
+      operationId: SuperhostDelete
       parameters:
       - description: Reference of the superhost object
         explode: false
@@ -5047,6 +5125,7 @@ paths:
       - Superhost
     get:
       description: Returns a specific superhost object by reference
+      operationId: SuperhostRead
       parameters:
       - description: Reference of the superhost object
         explode: false
@@ -5106,6 +5185,7 @@ paths:
       - Superhost
     put:
       description: Updates a specific superhost object by reference
+      operationId: SuperhostUpdate
       parameters:
       - description: Reference of the superhost object
         explode: false
@@ -5174,6 +5254,7 @@ paths:
   /superhostchild:
     get:
       description: Returns a list of superhostchild objects matching the search criteria
+      operationId: SuperhostchildList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5271,6 +5352,7 @@ paths:
   /superhostchild/{reference}:
     get:
       description: Returns a specific superhostchild object by reference
+      operationId: SuperhostchildRead
       parameters:
       - description: Reference of the superhostchild object
         explode: false
@@ -5332,6 +5414,7 @@ paths:
     get:
       description: Returns a list of hostnamerewritepolicy objects matching the search
         criteria
+      operationId: HostnamerewritepolicyList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5429,6 +5512,7 @@ paths:
   /hostnamerewritepolicy/{reference}:
     get:
       description: Returns a specific hostnamerewritepolicy object by reference
+      operationId: HostnamerewritepolicyRead
       parameters:
       - description: Reference of the hostnamerewritepolicy object
         explode: false
@@ -5488,6 +5572,7 @@ paths:
       - Hostnamerewritepolicy
     put:
       description: Updates a specific hostnamerewritepolicy object by reference
+      operationId: HostnamerewritepolicyUpdate
       parameters:
       - description: Reference of the hostnamerewritepolicy object
         explode: false
@@ -7849,6 +7934,7 @@ components:
           _result_field: _result_field
           _object_function: _object_function
           _object_parameters: "{}"
+          _object_ref: _object_ref
           attribute_name: attribute_name
           _object: _object
           _parameters: "{}"
@@ -8265,6 +8351,7 @@ components:
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
           example: 1
+          format: int64
           type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
@@ -8608,6 +8695,7 @@ components:
         _result_field: _result_field
         _object_function: _object_function
         _object_parameters: "{}"
+        _object_ref: _object_ref
         attribute_name: attribute_name
         _object: _object
         _parameters: "{}"
@@ -8630,6 +8718,10 @@ components:
         _object_parameters:
           description: The parameters for the object.
           type: object
+        _object_ref:
+          description: A WAPI object reference on which the function calls. Either
+            _object or _object_ref must be set.
+          type: string
       required:
       - attribute_name
       type: object
@@ -9595,6 +9687,7 @@ components:
           _result_field: _result_field
           _object_function: _object_function
           _object_parameters: "{}"
+          _object_ref: _object_ref
           attribute_name: attribute_name
           _object: _object
           _parameters: "{}"
@@ -9896,6 +9989,7 @@ components:
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
           example: 1
+          format: int64
           type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
@@ -11217,6 +11311,7 @@ components:
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
           example: 1
+          format: int64
           type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
@@ -17016,6 +17111,7 @@ components:
             _result_field: _result_field
             _object_function: _object_function
             _object_parameters: "{}"
+            _object_ref: _object_ref
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
@@ -17293,6 +17389,7 @@ components:
             _result_field: _result_field
             _object_function: _object_function
             _object_parameters: "{}"
+            _object_ref: _object_ref
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
@@ -17594,6 +17691,7 @@ components:
             _result_field: _result_field
             _object_function: _object_function
             _object_parameters: "{}"
+            _object_ref: _object_ref
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
@@ -17835,6 +17933,7 @@ components:
             _result_field: _result_field
             _object_function: _object_function
             _object_parameters: "{}"
+            _object_ref: _object_ref
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"

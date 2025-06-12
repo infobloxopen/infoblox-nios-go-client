@@ -23,11 +23,11 @@ func TestDeletedObjectsAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test DeletedObjectsAPIService Get", func(t *testing.T) {
+	t.Run("Test DeletedObjectsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DeletedObjectsAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DeletedObjectsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDeletedObjectsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DeletedObjectsAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test DeletedObjectsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DeletedObjectsAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DeletedObjectsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

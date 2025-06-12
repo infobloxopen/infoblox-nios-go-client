@@ -23,51 +23,140 @@ import (
 
 type KerberoskeyAPI interface {
 	/*
-		Get Retrieve kerberoskey objects
-
-		Returns a list of kerberoskey objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return KerberoskeyAPIGetRequest
-	*/
-	Get(ctx context.Context) KerberoskeyAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListKerberoskeyResponse
-	GetExecute(r KerberoskeyAPIGetRequest) (*ListKerberoskeyResponse, *http.Response, error)
-	/*
-		ReferenceDelete Delete a kerberoskey object
+		Delete Delete a kerberoskey object
 
 		Deletes a specific kerberoskey object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the kerberoskey object
-		@return KerberoskeyAPIReferenceDeleteRequest
+		@return KerberoskeyAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) KerberoskeyAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) KerberoskeyAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r KerberoskeyAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r KerberoskeyAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific kerberoskey object
+		List Retrieve kerberoskey objects
+
+		Returns a list of kerberoskey objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return KerberoskeyAPIListRequest
+	*/
+	List(ctx context.Context) KerberoskeyAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListKerberoskeyResponse
+	ListExecute(r KerberoskeyAPIListRequest) (*ListKerberoskeyResponse, *http.Response, error)
+	/*
+		Read Get a specific kerberoskey object
 
 		Returns a specific kerberoskey object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the kerberoskey object
-		@return KerberoskeyAPIReferenceGetRequest
+		@return KerberoskeyAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) KerberoskeyAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) KerberoskeyAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetKerberoskeyResponse
-	ReferenceGetExecute(r KerberoskeyAPIReferenceGetRequest) (*GetKerberoskeyResponse, *http.Response, error)
+	ReadExecute(r KerberoskeyAPIReadRequest) (*GetKerberoskeyResponse, *http.Response, error)
 }
 
 // KerberoskeyAPIService KerberoskeyAPI service
 type KerberoskeyAPIService internal.Service
 
-type KerberoskeyAPIGetRequest struct {
+type KerberoskeyAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService KerberoskeyAPI
+	reference  string
+}
+
+func (r KerberoskeyAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a kerberoskey object
+
+Deletes a specific kerberoskey object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the kerberoskey object
+	@return KerberoskeyAPIDeleteRequest
+*/
+func (a *KerberoskeyAPIService) Delete(ctx context.Context, reference string) KerberoskeyAPIDeleteRequest {
+	return KerberoskeyAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *KerberoskeyAPIService) DeleteExecute(r KerberoskeyAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "KerberoskeyAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/kerberoskey/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type KerberoskeyAPIListRequest struct {
 	ctx            context.Context
 	ApiService     KerberoskeyAPI
 	returnFields   *string
@@ -81,65 +170,65 @@ type KerberoskeyAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r KerberoskeyAPIGetRequest) ReturnFields(returnFields string) KerberoskeyAPIGetRequest {
+func (r KerberoskeyAPIListRequest) ReturnFields(returnFields string) KerberoskeyAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r KerberoskeyAPIGetRequest) ReturnFields2(returnFields2 string) KerberoskeyAPIGetRequest {
+func (r KerberoskeyAPIListRequest) ReturnFields2(returnFields2 string) KerberoskeyAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r KerberoskeyAPIGetRequest) MaxResults(maxResults int32) KerberoskeyAPIGetRequest {
+func (r KerberoskeyAPIListRequest) MaxResults(maxResults int32) KerberoskeyAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r KerberoskeyAPIGetRequest) ReturnAsObject(returnAsObject int32) KerberoskeyAPIGetRequest {
+func (r KerberoskeyAPIListRequest) ReturnAsObject(returnAsObject int32) KerberoskeyAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r KerberoskeyAPIGetRequest) Paging(paging int32) KerberoskeyAPIGetRequest {
+func (r KerberoskeyAPIListRequest) Paging(paging int32) KerberoskeyAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r KerberoskeyAPIGetRequest) PageId(pageId string) KerberoskeyAPIGetRequest {
+func (r KerberoskeyAPIListRequest) PageId(pageId string) KerberoskeyAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r KerberoskeyAPIGetRequest) Filters(filters map[string]interface{}) KerberoskeyAPIGetRequest {
+func (r KerberoskeyAPIListRequest) Filters(filters map[string]interface{}) KerberoskeyAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r KerberoskeyAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) KerberoskeyAPIGetRequest {
+func (r KerberoskeyAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) KerberoskeyAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r KerberoskeyAPIGetRequest) Execute() (*ListKerberoskeyResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r KerberoskeyAPIListRequest) Execute() (*ListKerberoskeyResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve kerberoskey objects
+List Retrieve kerberoskey objects
 
 Returns a list of kerberoskey objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return KerberoskeyAPIGetRequest
+	@return KerberoskeyAPIListRequest
 */
-func (a *KerberoskeyAPIService) Get(ctx context.Context) KerberoskeyAPIGetRequest {
-	return KerberoskeyAPIGetRequest{
+func (a *KerberoskeyAPIService) List(ctx context.Context) KerberoskeyAPIListRequest {
+	return KerberoskeyAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -148,7 +237,7 @@ func (a *KerberoskeyAPIService) Get(ctx context.Context) KerberoskeyAPIGetReques
 // Execute executes the request
 //
 //	@return ListKerberoskeyResponse
-func (a *KerberoskeyAPIService) GetExecute(r KerberoskeyAPIGetRequest) (*ListKerberoskeyResponse, *http.Response, error) {
+func (a *KerberoskeyAPIService) ListExecute(r KerberoskeyAPIListRequest) (*ListKerberoskeyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -156,7 +245,7 @@ func (a *KerberoskeyAPIService) GetExecute(r KerberoskeyAPIGetRequest) (*ListKer
 		localVarReturnValue *ListKerberoskeyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "KerberoskeyAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "KerberoskeyAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -238,96 +327,7 @@ func (a *KerberoskeyAPIService) GetExecute(r KerberoskeyAPIGetRequest) (*ListKer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type KerberoskeyAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService KerberoskeyAPI
-	reference  string
-}
-
-func (r KerberoskeyAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a kerberoskey object
-
-Deletes a specific kerberoskey object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the kerberoskey object
-	@return KerberoskeyAPIReferenceDeleteRequest
-*/
-func (a *KerberoskeyAPIService) ReferenceDelete(ctx context.Context, reference string) KerberoskeyAPIReferenceDeleteRequest {
-	return KerberoskeyAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *KerberoskeyAPIService) ReferenceDeleteExecute(r KerberoskeyAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "KerberoskeyAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/kerberoskey/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type KerberoskeyAPIReferenceGetRequest struct {
+type KerberoskeyAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     KerberoskeyAPI
 	reference      string
@@ -337,38 +337,38 @@ type KerberoskeyAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r KerberoskeyAPIReferenceGetRequest) ReturnFields(returnFields string) KerberoskeyAPIReferenceGetRequest {
+func (r KerberoskeyAPIReadRequest) ReturnFields(returnFields string) KerberoskeyAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r KerberoskeyAPIReferenceGetRequest) ReturnFields2(returnFields2 string) KerberoskeyAPIReferenceGetRequest {
+func (r KerberoskeyAPIReadRequest) ReturnFields2(returnFields2 string) KerberoskeyAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r KerberoskeyAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) KerberoskeyAPIReferenceGetRequest {
+func (r KerberoskeyAPIReadRequest) ReturnAsObject(returnAsObject int32) KerberoskeyAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r KerberoskeyAPIReferenceGetRequest) Execute() (*GetKerberoskeyResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r KerberoskeyAPIReadRequest) Execute() (*GetKerberoskeyResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific kerberoskey object
+Read Get a specific kerberoskey object
 
 Returns a specific kerberoskey object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the kerberoskey object
-	@return KerberoskeyAPIReferenceGetRequest
+	@return KerberoskeyAPIReadRequest
 */
-func (a *KerberoskeyAPIService) ReferenceGet(ctx context.Context, reference string) KerberoskeyAPIReferenceGetRequest {
-	return KerberoskeyAPIReferenceGetRequest{
+func (a *KerberoskeyAPIService) Read(ctx context.Context, reference string) KerberoskeyAPIReadRequest {
+	return KerberoskeyAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -378,7 +378,7 @@ func (a *KerberoskeyAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetKerberoskeyResponse
-func (a *KerberoskeyAPIService) ReferenceGetExecute(r KerberoskeyAPIReferenceGetRequest) (*GetKerberoskeyResponse, *http.Response, error) {
+func (a *KerberoskeyAPIService) ReadExecute(r KerberoskeyAPIReadRequest) (*GetKerberoskeyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -386,7 +386,7 @@ func (a *KerberoskeyAPIService) ReferenceGetExecute(r KerberoskeyAPIReferenceGet
 		localVarReturnValue *GetKerberoskeyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "KerberoskeyAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "KerberoskeyAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

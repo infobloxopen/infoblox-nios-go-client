@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DtcrecordaaaaGet**](DtcRecordAaaaAPI.md#DtcrecordaaaaGet) | **Get** /dtc:record:aaaa | Retrieve dtc:record:aaaa objects
-[**DtcrecordaaaaPost**](DtcRecordAaaaAPI.md#DtcrecordaaaaPost) | **Post** /dtc:record:aaaa | Create a dtc:record:aaaa object
-[**DtcrecordaaaaReferenceDelete**](DtcRecordAaaaAPI.md#DtcrecordaaaaReferenceDelete) | **Delete** /dtc:record:aaaa/{reference} | Delete a dtc:record:aaaa object
-[**DtcrecordaaaaReferenceGet**](DtcRecordAaaaAPI.md#DtcrecordaaaaReferenceGet) | **Get** /dtc:record:aaaa/{reference} | Get a specific dtc:record:aaaa object
-[**DtcrecordaaaaReferencePut**](DtcRecordAaaaAPI.md#DtcrecordaaaaReferencePut) | **Put** /dtc:record:aaaa/{reference} | Update a dtc:record:aaaa object
+[**Create**](DtcRecordAaaaAPI.md#Create) | **Post** /dtc:record:aaaa | Create a dtc:record:aaaa object
+[**Delete**](DtcRecordAaaaAPI.md#Delete) | **Delete** /dtc:record:aaaa/{reference} | Delete a dtc:record:aaaa object
+[**List**](DtcRecordAaaaAPI.md#List) | **Get** /dtc:record:aaaa | Retrieve dtc:record:aaaa objects
+[**Read**](DtcRecordAaaaAPI.md#Read) | **Get** /dtc:record:aaaa/{reference} | Get a specific dtc:record:aaaa object
+[**Update**](DtcRecordAaaaAPI.md#Update) | **Put** /dtc:record:aaaa/{reference} | Update a dtc:record:aaaa object
 
 
 
-## DtcrecordaaaaGet
+## Create
 
-> ListDtcRecordAaaaResponse DtcrecordaaaaGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateDtcRecordAaaaResponse Create(ctx).DtcRecordAaaa(dtcRecordAaaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a dtc:record:aaaa object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
+)
+
+func main() {
+	dtcRecordAaaa := *dtc.NewDtcRecordAaaa() // DtcRecordAaaa | Object data to create
+
+	apiClient := dtc.NewAPIClient()
+	resp, r, err := apiClient.DtcRecordAaaaAPI.Create(context.Background()).DtcRecordAaaa(dtcRecordAaaa).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordAaaaAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateDtcRecordAaaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordAaaaAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DtcRecordAaaaAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**dtcRecordAaaa** | [**DtcRecordAaaa**](DtcRecordAaaa.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateDtcRecordAaaaResponse**](CreateDtcRecordAaaaResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a dtc:record:aaaa object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the dtc:record:aaaa object
+
+	apiClient := dtc.NewAPIClient()
+	r, err := apiClient.DtcRecordAaaaAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordAaaaAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the dtc:record:aaaa object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DtcRecordAaaaAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListDtcRecordAaaaResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:record:aaaa objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcRecordAaaaAPI.DtcrecordaaaaGet(context.Background()).Execute()
+	resp, r, err := apiClient.DtcRecordAaaaAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordAaaaAPI.DtcrecordaaaaGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordAaaaAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DtcrecordaaaaGet`: ListDtcRecordAaaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcRecordAaaaAPI.DtcrecordaaaaGet`: %v\n", resp)
+	// response from `List`: ListDtcRecordAaaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordAaaaAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcRecordAaaaAPIDtcrecordaaaaGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordAaaaAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DtcrecordaaaaPost
+## Read
 
-> CreateDtcRecordAaaaResponse DtcrecordaaaaPost(ctx).DtcRecordAaaa(dtcRecordAaaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a dtc:record:aaaa object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
-)
-
-func main() {
-	dtcRecordAaaa := *dtc.NewDtcRecordAaaa() // DtcRecordAaaa | Object data to create
-
-	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcRecordAaaaAPI.DtcrecordaaaaPost(context.Background()).DtcRecordAaaa(dtcRecordAaaa).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordAaaaAPI.DtcrecordaaaaPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DtcrecordaaaaPost`: CreateDtcRecordAaaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcRecordAaaaAPI.DtcrecordaaaaPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DtcRecordAaaaAPIDtcrecordaaaaPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**dtcRecordAaaa** | [**DtcRecordAaaa**](DtcRecordAaaa.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateDtcRecordAaaaResponse**](CreateDtcRecordAaaaResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DtcrecordaaaaReferenceDelete
-
-> DtcrecordaaaaReferenceDelete(ctx, reference).Execute()
-
-Delete a dtc:record:aaaa object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the dtc:record:aaaa object
-
-	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtcRecordAaaaAPI.DtcrecordaaaaReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordAaaaAPI.DtcrecordaaaaReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the dtc:record:aaaa object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DtcRecordAaaaAPIDtcrecordaaaaReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DtcrecordaaaaReferenceGet
-
-> GetDtcRecordAaaaResponse DtcrecordaaaaReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcRecordAaaaResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:record:aaaa object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:record:aaaa object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcRecordAaaaAPI.DtcrecordaaaaReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcRecordAaaaAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordAaaaAPI.DtcrecordaaaaReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordAaaaAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DtcrecordaaaaReferenceGet`: GetDtcRecordAaaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcRecordAaaaAPI.DtcrecordaaaaReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDtcRecordAaaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordAaaaAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcRecordAaaaAPIDtcrecordaaaaReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordAaaaAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DtcrecordaaaaReferencePut
+## Update
 
-> UpdateDtcRecordAaaaResponse DtcrecordaaaaReferencePut(ctx, reference).DtcRecordAaaa(dtcRecordAaaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcRecordAaaaResponse Update(ctx, reference).DtcRecordAaaa(dtcRecordAaaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:record:aaaa object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcRecordAaaa := *dtc.NewDtcRecordAaaa() // DtcRecordAaaa | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcRecordAaaaAPI.DtcrecordaaaaReferencePut(context.Background(), reference).DtcRecordAaaa(dtcRecordAaaa).Execute()
+	resp, r, err := apiClient.DtcRecordAaaaAPI.Update(context.Background(), reference).DtcRecordAaaa(dtcRecordAaaa).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordAaaaAPI.DtcrecordaaaaReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcRecordAaaaAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DtcrecordaaaaReferencePut`: UpdateDtcRecordAaaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcRecordAaaaAPI.DtcrecordaaaaReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDtcRecordAaaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcRecordAaaaAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcRecordAaaaAPIDtcrecordaaaaReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcRecordAaaaAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

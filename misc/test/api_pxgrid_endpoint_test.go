@@ -23,11 +23,11 @@ func TestPxgridEndpointAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test PxgridEndpointAPIService PxgridendpointGet", func(t *testing.T) {
+	t.Run("Test PxgridEndpointAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.PxgridEndpointAPI.PxgridendpointGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PxgridEndpointAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestPxgridEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PxgridEndpointAPIService PxgridendpointPost", func(t *testing.T) {
+	t.Run("Test PxgridEndpointAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.PxgridEndpointAPI.PxgridendpointPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.PxgridEndpointAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PxgridEndpointAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.PxgridEndpointAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestPxgridEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PxgridEndpointAPIService PxgridendpointReferenceDelete", func(t *testing.T) {
+	t.Run("Test PxgridEndpointAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.PxgridEndpointAPI.PxgridendpointReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PxgridEndpointAPIService PxgridendpointReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.PxgridEndpointAPI.PxgridendpointReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.PxgridEndpointAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestPxgridEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PxgridEndpointAPIService PxgridendpointReferencePut", func(t *testing.T) {
+	t.Run("Test PxgridEndpointAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.PxgridEndpointAPI.PxgridendpointReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.PxgridEndpointAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

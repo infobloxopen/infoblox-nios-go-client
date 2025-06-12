@@ -20,6 +20,7 @@ paths:
   /namedacl:
     get:
       description: Returns a list of namedacl objects matching the search criteria
+      operationId: NamedaclList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -116,6 +117,7 @@ paths:
       - Namedacl
     post:
       description: Creates a new namedacl object
+      operationId: NamedaclCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -176,6 +178,7 @@ paths:
   /namedacl/{reference}:
     delete:
       description: Deletes a specific namedacl object by reference
+      operationId: NamedaclDelete
       parameters:
       - description: Reference of the namedacl object
         explode: false
@@ -203,6 +206,7 @@ paths:
       - Namedacl
     get:
       description: Returns a specific namedacl object by reference
+      operationId: NamedaclRead
       parameters:
       - description: Reference of the namedacl object
         explode: false
@@ -262,6 +266,7 @@ paths:
       - Namedacl
     put:
       description: Updates a specific namedacl object by reference
+      operationId: NamedaclUpdate
       parameters:
       - description: Reference of the namedacl object
         explode: false

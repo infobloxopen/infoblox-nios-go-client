@@ -79,14 +79,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*RirAPI* | [**Get**](docs/RirAPI.md#get) | **Get** /rir | Retrieve rir objects
-*RirAPI* | [**ReferenceGet**](docs/RirAPI.md#referenceget) | **Get** /rir/{reference} | Get a specific rir object
-*RirAPI* | [**ReferencePut**](docs/RirAPI.md#referenceput) | **Put** /rir/{reference} | Update a rir object
-*RirOrganizationAPI* | [**RirorganizationGet**](docs/RirOrganizationAPI.md#rirorganizationget) | **Get** /rir:organization | Retrieve rir:organization objects
-*RirOrganizationAPI* | [**RirorganizationPost**](docs/RirOrganizationAPI.md#rirorganizationpost) | **Post** /rir:organization | Create a rir:organization object
-*RirOrganizationAPI* | [**RirorganizationReferenceDelete**](docs/RirOrganizationAPI.md#rirorganizationreferencedelete) | **Delete** /rir:organization/{reference} | Delete a rir:organization object
-*RirOrganizationAPI* | [**RirorganizationReferenceGet**](docs/RirOrganizationAPI.md#rirorganizationreferenceget) | **Get** /rir:organization/{reference} | Get a specific rir:organization object
-*RirOrganizationAPI* | [**RirorganizationReferencePut**](docs/RirOrganizationAPI.md#rirorganizationreferenceput) | **Put** /rir:organization/{reference} | Update a rir:organization object
+*RirAPI* | [**List**](docs/RirAPI.md#list) | **Get** /rir | Retrieve rir objects
+*RirAPI* | [**Read**](docs/RirAPI.md#read) | **Get** /rir/{reference} | Get a specific rir object
+*RirAPI* | [**Update**](docs/RirAPI.md#update) | **Put** /rir/{reference} | Update a rir object
+*RirOrganizationAPI* | [**Create**](docs/RirOrganizationAPI.md#create) | **Post** /rir:organization | Create a rir:organization object
+*RirOrganizationAPI* | [**Delete**](docs/RirOrganizationAPI.md#delete) | **Delete** /rir:organization/{reference} | Delete a rir:organization object
+*RirOrganizationAPI* | [**List**](docs/RirOrganizationAPI.md#list) | **Get** /rir:organization | Retrieve rir:organization objects
+*RirOrganizationAPI* | [**Read**](docs/RirOrganizationAPI.md#read) | **Get** /rir:organization/{reference} | Get a specific rir:organization object
+*RirOrganizationAPI* | [**Update**](docs/RirOrganizationAPI.md#update) | **Put** /rir:organization/{reference} | Update a rir:organization object
 
 
 ## Documentation For Models

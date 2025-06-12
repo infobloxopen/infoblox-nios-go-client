@@ -79,29 +79,29 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ParentalcontrolAvpAPI* | [**ParentalcontrolavpGet**](docs/ParentalcontrolAvpAPI.md#parentalcontrolavpget) | **Get** /parentalcontrol:avp | Retrieve parentalcontrol:avp objects
-*ParentalcontrolAvpAPI* | [**ParentalcontrolavpPost**](docs/ParentalcontrolAvpAPI.md#parentalcontrolavppost) | **Post** /parentalcontrol:avp | Create a parentalcontrol:avp object
-*ParentalcontrolAvpAPI* | [**ParentalcontrolavpReferenceDelete**](docs/ParentalcontrolAvpAPI.md#parentalcontrolavpreferencedelete) | **Delete** /parentalcontrol:avp/{reference} | Delete a parentalcontrol:avp object
-*ParentalcontrolAvpAPI* | [**ParentalcontrolavpReferenceGet**](docs/ParentalcontrolAvpAPI.md#parentalcontrolavpreferenceget) | **Get** /parentalcontrol:avp/{reference} | Get a specific parentalcontrol:avp object
-*ParentalcontrolAvpAPI* | [**ParentalcontrolavpReferencePut**](docs/ParentalcontrolAvpAPI.md#parentalcontrolavpreferenceput) | **Put** /parentalcontrol:avp/{reference} | Update a parentalcontrol:avp object
-*ParentalcontrolBlockingpolicyAPI* | [**ParentalcontrolblockingpolicyGet**](docs/ParentalcontrolBlockingpolicyAPI.md#parentalcontrolblockingpolicyget) | **Get** /parentalcontrol:blockingpolicy | Retrieve parentalcontrol:blockingpolicy objects
-*ParentalcontrolBlockingpolicyAPI* | [**ParentalcontrolblockingpolicyPost**](docs/ParentalcontrolBlockingpolicyAPI.md#parentalcontrolblockingpolicypost) | **Post** /parentalcontrol:blockingpolicy | Create a parentalcontrol:blockingpolicy object
-*ParentalcontrolBlockingpolicyAPI* | [**ParentalcontrolblockingpolicyReferenceDelete**](docs/ParentalcontrolBlockingpolicyAPI.md#parentalcontrolblockingpolicyreferencedelete) | **Delete** /parentalcontrol:blockingpolicy/{reference} | Delete a parentalcontrol:blockingpolicy object
-*ParentalcontrolBlockingpolicyAPI* | [**ParentalcontrolblockingpolicyReferenceGet**](docs/ParentalcontrolBlockingpolicyAPI.md#parentalcontrolblockingpolicyreferenceget) | **Get** /parentalcontrol:blockingpolicy/{reference} | Get a specific parentalcontrol:blockingpolicy object
-*ParentalcontrolBlockingpolicyAPI* | [**ParentalcontrolblockingpolicyReferencePut**](docs/ParentalcontrolBlockingpolicyAPI.md#parentalcontrolblockingpolicyreferenceput) | **Put** /parentalcontrol:blockingpolicy/{reference} | Update a parentalcontrol:blockingpolicy object
-*ParentalcontrolSubscriberAPI* | [**ParentalcontrolsubscriberGet**](docs/ParentalcontrolSubscriberAPI.md#parentalcontrolsubscriberget) | **Get** /parentalcontrol:subscriber | Retrieve parentalcontrol:subscriber objects
-*ParentalcontrolSubscriberAPI* | [**ParentalcontrolsubscriberReferenceGet**](docs/ParentalcontrolSubscriberAPI.md#parentalcontrolsubscriberreferenceget) | **Get** /parentalcontrol:subscriber/{reference} | Get a specific parentalcontrol:subscriber object
-*ParentalcontrolSubscriberAPI* | [**ParentalcontrolsubscriberReferencePut**](docs/ParentalcontrolSubscriberAPI.md#parentalcontrolsubscriberreferenceput) | **Put** /parentalcontrol:subscriber/{reference} | Update a parentalcontrol:subscriber object
-*ParentalcontrolSubscriberrecordAPI* | [**ParentalcontrolsubscriberrecordGet**](docs/ParentalcontrolSubscriberrecordAPI.md#parentalcontrolsubscriberrecordget) | **Get** /parentalcontrol:subscriberrecord | Retrieve parentalcontrol:subscriberrecord objects
-*ParentalcontrolSubscriberrecordAPI* | [**ParentalcontrolsubscriberrecordPost**](docs/ParentalcontrolSubscriberrecordAPI.md#parentalcontrolsubscriberrecordpost) | **Post** /parentalcontrol:subscriberrecord | Create a parentalcontrol:subscriberrecord object
-*ParentalcontrolSubscriberrecordAPI* | [**ParentalcontrolsubscriberrecordReferenceDelete**](docs/ParentalcontrolSubscriberrecordAPI.md#parentalcontrolsubscriberrecordreferencedelete) | **Delete** /parentalcontrol:subscriberrecord/{reference} | Delete a parentalcontrol:subscriberrecord object
-*ParentalcontrolSubscriberrecordAPI* | [**ParentalcontrolsubscriberrecordReferenceGet**](docs/ParentalcontrolSubscriberrecordAPI.md#parentalcontrolsubscriberrecordreferenceget) | **Get** /parentalcontrol:subscriberrecord/{reference} | Get a specific parentalcontrol:subscriberrecord object
-*ParentalcontrolSubscriberrecordAPI* | [**ParentalcontrolsubscriberrecordReferencePut**](docs/ParentalcontrolSubscriberrecordAPI.md#parentalcontrolsubscriberrecordreferenceput) | **Put** /parentalcontrol:subscriberrecord/{reference} | Update a parentalcontrol:subscriberrecord object
-*ParentalcontrolSubscribersiteAPI* | [**ParentalcontrolsubscribersiteGet**](docs/ParentalcontrolSubscribersiteAPI.md#parentalcontrolsubscribersiteget) | **Get** /parentalcontrol:subscribersite | Retrieve parentalcontrol:subscribersite objects
-*ParentalcontrolSubscribersiteAPI* | [**ParentalcontrolsubscribersitePost**](docs/ParentalcontrolSubscribersiteAPI.md#parentalcontrolsubscribersitepost) | **Post** /parentalcontrol:subscribersite | Create a parentalcontrol:subscribersite object
-*ParentalcontrolSubscribersiteAPI* | [**ParentalcontrolsubscribersiteReferenceDelete**](docs/ParentalcontrolSubscribersiteAPI.md#parentalcontrolsubscribersitereferencedelete) | **Delete** /parentalcontrol:subscribersite/{reference} | Delete a parentalcontrol:subscribersite object
-*ParentalcontrolSubscribersiteAPI* | [**ParentalcontrolsubscribersiteReferenceGet**](docs/ParentalcontrolSubscribersiteAPI.md#parentalcontrolsubscribersitereferenceget) | **Get** /parentalcontrol:subscribersite/{reference} | Get a specific parentalcontrol:subscribersite object
-*ParentalcontrolSubscribersiteAPI* | [**ParentalcontrolsubscribersiteReferencePut**](docs/ParentalcontrolSubscribersiteAPI.md#parentalcontrolsubscribersitereferenceput) | **Put** /parentalcontrol:subscribersite/{reference} | Update a parentalcontrol:subscribersite object
+*ParentalcontrolAvpAPI* | [**Create**](docs/ParentalcontrolAvpAPI.md#create) | **Post** /parentalcontrol:avp | Create a parentalcontrol:avp object
+*ParentalcontrolAvpAPI* | [**Delete**](docs/ParentalcontrolAvpAPI.md#delete) | **Delete** /parentalcontrol:avp/{reference} | Delete a parentalcontrol:avp object
+*ParentalcontrolAvpAPI* | [**List**](docs/ParentalcontrolAvpAPI.md#list) | **Get** /parentalcontrol:avp | Retrieve parentalcontrol:avp objects
+*ParentalcontrolAvpAPI* | [**Read**](docs/ParentalcontrolAvpAPI.md#read) | **Get** /parentalcontrol:avp/{reference} | Get a specific parentalcontrol:avp object
+*ParentalcontrolAvpAPI* | [**Update**](docs/ParentalcontrolAvpAPI.md#update) | **Put** /parentalcontrol:avp/{reference} | Update a parentalcontrol:avp object
+*ParentalcontrolBlockingpolicyAPI* | [**Create**](docs/ParentalcontrolBlockingpolicyAPI.md#create) | **Post** /parentalcontrol:blockingpolicy | Create a parentalcontrol:blockingpolicy object
+*ParentalcontrolBlockingpolicyAPI* | [**Delete**](docs/ParentalcontrolBlockingpolicyAPI.md#delete) | **Delete** /parentalcontrol:blockingpolicy/{reference} | Delete a parentalcontrol:blockingpolicy object
+*ParentalcontrolBlockingpolicyAPI* | [**List**](docs/ParentalcontrolBlockingpolicyAPI.md#list) | **Get** /parentalcontrol:blockingpolicy | Retrieve parentalcontrol:blockingpolicy objects
+*ParentalcontrolBlockingpolicyAPI* | [**Read**](docs/ParentalcontrolBlockingpolicyAPI.md#read) | **Get** /parentalcontrol:blockingpolicy/{reference} | Get a specific parentalcontrol:blockingpolicy object
+*ParentalcontrolBlockingpolicyAPI* | [**Update**](docs/ParentalcontrolBlockingpolicyAPI.md#update) | **Put** /parentalcontrol:blockingpolicy/{reference} | Update a parentalcontrol:blockingpolicy object
+*ParentalcontrolSubscriberAPI* | [**List**](docs/ParentalcontrolSubscriberAPI.md#list) | **Get** /parentalcontrol:subscriber | Retrieve parentalcontrol:subscriber objects
+*ParentalcontrolSubscriberAPI* | [**Read**](docs/ParentalcontrolSubscriberAPI.md#read) | **Get** /parentalcontrol:subscriber/{reference} | Get a specific parentalcontrol:subscriber object
+*ParentalcontrolSubscriberAPI* | [**Update**](docs/ParentalcontrolSubscriberAPI.md#update) | **Put** /parentalcontrol:subscriber/{reference} | Update a parentalcontrol:subscriber object
+*ParentalcontrolSubscriberrecordAPI* | [**Create**](docs/ParentalcontrolSubscriberrecordAPI.md#create) | **Post** /parentalcontrol:subscriberrecord | Create a parentalcontrol:subscriberrecord object
+*ParentalcontrolSubscriberrecordAPI* | [**Delete**](docs/ParentalcontrolSubscriberrecordAPI.md#delete) | **Delete** /parentalcontrol:subscriberrecord/{reference} | Delete a parentalcontrol:subscriberrecord object
+*ParentalcontrolSubscriberrecordAPI* | [**List**](docs/ParentalcontrolSubscriberrecordAPI.md#list) | **Get** /parentalcontrol:subscriberrecord | Retrieve parentalcontrol:subscriberrecord objects
+*ParentalcontrolSubscriberrecordAPI* | [**Read**](docs/ParentalcontrolSubscriberrecordAPI.md#read) | **Get** /parentalcontrol:subscriberrecord/{reference} | Get a specific parentalcontrol:subscriberrecord object
+*ParentalcontrolSubscriberrecordAPI* | [**Update**](docs/ParentalcontrolSubscriberrecordAPI.md#update) | **Put** /parentalcontrol:subscriberrecord/{reference} | Update a parentalcontrol:subscriberrecord object
+*ParentalcontrolSubscribersiteAPI* | [**Create**](docs/ParentalcontrolSubscribersiteAPI.md#create) | **Post** /parentalcontrol:subscribersite | Create a parentalcontrol:subscribersite object
+*ParentalcontrolSubscribersiteAPI* | [**Delete**](docs/ParentalcontrolSubscribersiteAPI.md#delete) | **Delete** /parentalcontrol:subscribersite/{reference} | Delete a parentalcontrol:subscribersite object
+*ParentalcontrolSubscribersiteAPI* | [**List**](docs/ParentalcontrolSubscribersiteAPI.md#list) | **Get** /parentalcontrol:subscribersite | Retrieve parentalcontrol:subscribersite objects
+*ParentalcontrolSubscribersiteAPI* | [**Read**](docs/ParentalcontrolSubscribersiteAPI.md#read) | **Get** /parentalcontrol:subscribersite/{reference} | Get a specific parentalcontrol:subscribersite object
+*ParentalcontrolSubscribersiteAPI* | [**Update**](docs/ParentalcontrolSubscribersiteAPI.md#update) | **Put** /parentalcontrol:subscribersite/{reference} | Update a parentalcontrol:subscribersite object
 
 
 ## Documentation For Models

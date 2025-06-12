@@ -23,249 +23,78 @@ import (
 
 type AdminroleAPI interface {
 	/*
-		Get Retrieve adminrole objects
-
-		Returns a list of adminrole objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AdminroleAPIGetRequest
-	*/
-	Get(ctx context.Context) AdminroleAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListAdminroleResponse
-	GetExecute(r AdminroleAPIGetRequest) (*ListAdminroleResponse, *http.Response, error)
-	/*
-		Post Create a adminrole object
+		Create Create a adminrole object
 
 		Creates a new adminrole object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AdminroleAPIPostRequest
+		@return AdminroleAPICreateRequest
 	*/
-	Post(ctx context.Context) AdminroleAPIPostRequest
+	Create(ctx context.Context) AdminroleAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateAdminroleResponse
-	PostExecute(r AdminroleAPIPostRequest) (*CreateAdminroleResponse, *http.Response, error)
+	CreateExecute(r AdminroleAPICreateRequest) (*CreateAdminroleResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a adminrole object
+		Delete Delete a adminrole object
 
 		Deletes a specific adminrole object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the adminrole object
-		@return AdminroleAPIReferenceDeleteRequest
+		@return AdminroleAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) AdminroleAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) AdminroleAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r AdminroleAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r AdminroleAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific adminrole object
+		List Retrieve adminrole objects
+
+		Returns a list of adminrole objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return AdminroleAPIListRequest
+	*/
+	List(ctx context.Context) AdminroleAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListAdminroleResponse
+	ListExecute(r AdminroleAPIListRequest) (*ListAdminroleResponse, *http.Response, error)
+	/*
+		Read Get a specific adminrole object
 
 		Returns a specific adminrole object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the adminrole object
-		@return AdminroleAPIReferenceGetRequest
+		@return AdminroleAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AdminroleAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AdminroleAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAdminroleResponse
-	ReferenceGetExecute(r AdminroleAPIReferenceGetRequest) (*GetAdminroleResponse, *http.Response, error)
+	ReadExecute(r AdminroleAPIReadRequest) (*GetAdminroleResponse, *http.Response, error)
 	/*
-		ReferencePut Update a adminrole object
+		Update Update a adminrole object
 
 		Updates a specific adminrole object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the adminrole object
-		@return AdminroleAPIReferencePutRequest
+		@return AdminroleAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) AdminroleAPIReferencePutRequest
+	Update(ctx context.Context, reference string) AdminroleAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateAdminroleResponse
-	ReferencePutExecute(r AdminroleAPIReferencePutRequest) (*UpdateAdminroleResponse, *http.Response, error)
+	UpdateExecute(r AdminroleAPIUpdateRequest) (*UpdateAdminroleResponse, *http.Response, error)
 }
 
 // AdminroleAPIService AdminroleAPI service
 type AdminroleAPIService internal.Service
 
-type AdminroleAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     AdminroleAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r AdminroleAPIGetRequest) ReturnFields(returnFields string) AdminroleAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdminroleAPIGetRequest) ReturnFields2(returnFields2 string) AdminroleAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r AdminroleAPIGetRequest) MaxResults(maxResults int32) AdminroleAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r AdminroleAPIGetRequest) ReturnAsObject(returnAsObject int32) AdminroleAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r AdminroleAPIGetRequest) Paging(paging int32) AdminroleAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r AdminroleAPIGetRequest) PageId(pageId string) AdminroleAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r AdminroleAPIGetRequest) Filters(filters map[string]interface{}) AdminroleAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r AdminroleAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AdminroleAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r AdminroleAPIGetRequest) Execute() (*ListAdminroleResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve adminrole objects
-
-Returns a list of adminrole objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AdminroleAPIGetRequest
-*/
-func (a *AdminroleAPIService) Get(ctx context.Context) AdminroleAPIGetRequest {
-	return AdminroleAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListAdminroleResponse
-func (a *AdminroleAPIService) GetExecute(r AdminroleAPIGetRequest) (*ListAdminroleResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListAdminroleResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminroleAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/adminrole"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type AdminroleAPIPostRequest struct {
+type AdminroleAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     AdminroleAPI
 	adminrole      *Adminrole
@@ -275,43 +104,43 @@ type AdminroleAPIPostRequest struct {
 }
 
 // Object data to create
-func (r AdminroleAPIPostRequest) Adminrole(adminrole Adminrole) AdminroleAPIPostRequest {
+func (r AdminroleAPICreateRequest) Adminrole(adminrole Adminrole) AdminroleAPICreateRequest {
 	r.adminrole = &adminrole
 	return r
 }
 
 // Enter the field names followed by comma
-func (r AdminroleAPIPostRequest) ReturnFields(returnFields string) AdminroleAPIPostRequest {
+func (r AdminroleAPICreateRequest) ReturnFields(returnFields string) AdminroleAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdminroleAPIPostRequest) ReturnFields2(returnFields2 string) AdminroleAPIPostRequest {
+func (r AdminroleAPICreateRequest) ReturnFields2(returnFields2 string) AdminroleAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdminroleAPIPostRequest) ReturnAsObject(returnAsObject int32) AdminroleAPIPostRequest {
+func (r AdminroleAPICreateRequest) ReturnAsObject(returnAsObject int32) AdminroleAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AdminroleAPIPostRequest) Execute() (*CreateAdminroleResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r AdminroleAPICreateRequest) Execute() (*CreateAdminroleResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a adminrole object
+Create Create a adminrole object
 
 Creates a new adminrole object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AdminroleAPIPostRequest
+	@return AdminroleAPICreateRequest
 */
-func (a *AdminroleAPIService) Post(ctx context.Context) AdminroleAPIPostRequest {
-	return AdminroleAPIPostRequest{
+func (a *AdminroleAPIService) Create(ctx context.Context) AdminroleAPICreateRequest {
+	return AdminroleAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *AdminroleAPIService) Post(ctx context.Context) AdminroleAPIPostRequest 
 // Execute executes the request
 //
 //	@return CreateAdminroleResponse
-func (a *AdminroleAPIService) PostExecute(r AdminroleAPIPostRequest) (*CreateAdminroleResponse, *http.Response, error) {
+func (a *AdminroleAPIService) CreateExecute(r AdminroleAPICreateRequest) (*CreateAdminroleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *AdminroleAPIService) PostExecute(r AdminroleAPIPostRequest) (*CreateAdm
 		localVarReturnValue *CreateAdminroleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminroleAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminroleAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *AdminroleAPIService) PostExecute(r AdminroleAPIPostRequest) (*CreateAdm
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AdminroleAPIReferenceDeleteRequest struct {
+type AdminroleAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService AdminroleAPI
 	reference  string
 }
 
-func (r AdminroleAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r AdminroleAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a adminrole object
+Delete Delete a adminrole object
 
 Deletes a specific adminrole object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the adminrole object
-	@return AdminroleAPIReferenceDeleteRequest
+	@return AdminroleAPIDeleteRequest
 */
-func (a *AdminroleAPIService) ReferenceDelete(ctx context.Context, reference string) AdminroleAPIReferenceDeleteRequest {
-	return AdminroleAPIReferenceDeleteRequest{
+func (a *AdminroleAPIService) Delete(ctx context.Context, reference string) AdminroleAPIDeleteRequest {
+	return AdminroleAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *AdminroleAPIService) ReferenceDelete(ctx context.Context, reference str
 }
 
 // Execute executes the request
-func (a *AdminroleAPIService) ReferenceDeleteExecute(r AdminroleAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *AdminroleAPIService) DeleteExecute(r AdminroleAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminroleAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminroleAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *AdminroleAPIService) ReferenceDeleteExecute(r AdminroleAPIReferenceDele
 	return localVarHTTPResponse, nil
 }
 
-type AdminroleAPIReferenceGetRequest struct {
+type AdminroleAPIListRequest struct {
+	ctx            context.Context
+	ApiService     AdminroleAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r AdminroleAPIListRequest) ReturnFields(returnFields string) AdminroleAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r AdminroleAPIListRequest) ReturnFields2(returnFields2 string) AdminroleAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r AdminroleAPIListRequest) MaxResults(maxResults int32) AdminroleAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r AdminroleAPIListRequest) ReturnAsObject(returnAsObject int32) AdminroleAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r AdminroleAPIListRequest) Paging(paging int32) AdminroleAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r AdminroleAPIListRequest) PageId(pageId string) AdminroleAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r AdminroleAPIListRequest) Filters(filters map[string]interface{}) AdminroleAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r AdminroleAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AdminroleAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r AdminroleAPIListRequest) Execute() (*ListAdminroleResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve adminrole objects
+
+Returns a list of adminrole objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return AdminroleAPIListRequest
+*/
+func (a *AdminroleAPIService) List(ctx context.Context) AdminroleAPIListRequest {
+	return AdminroleAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListAdminroleResponse
+func (a *AdminroleAPIService) ListExecute(r AdminroleAPIListRequest) (*ListAdminroleResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListAdminroleResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminroleAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/adminrole"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type AdminroleAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     AdminroleAPI
 	reference      string
@@ -511,38 +511,38 @@ type AdminroleAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r AdminroleAPIReferenceGetRequest) ReturnFields(returnFields string) AdminroleAPIReferenceGetRequest {
+func (r AdminroleAPIReadRequest) ReturnFields(returnFields string) AdminroleAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdminroleAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AdminroleAPIReferenceGetRequest {
+func (r AdminroleAPIReadRequest) ReturnFields2(returnFields2 string) AdminroleAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdminroleAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AdminroleAPIReferenceGetRequest {
+func (r AdminroleAPIReadRequest) ReturnAsObject(returnAsObject int32) AdminroleAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AdminroleAPIReferenceGetRequest) Execute() (*GetAdminroleResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r AdminroleAPIReadRequest) Execute() (*GetAdminroleResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific adminrole object
+Read Get a specific adminrole object
 
 Returns a specific adminrole object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the adminrole object
-	@return AdminroleAPIReferenceGetRequest
+	@return AdminroleAPIReadRequest
 */
-func (a *AdminroleAPIService) ReferenceGet(ctx context.Context, reference string) AdminroleAPIReferenceGetRequest {
-	return AdminroleAPIReferenceGetRequest{
+func (a *AdminroleAPIService) Read(ctx context.Context, reference string) AdminroleAPIReadRequest {
+	return AdminroleAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *AdminroleAPIService) ReferenceGet(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return GetAdminroleResponse
-func (a *AdminroleAPIService) ReferenceGetExecute(r AdminroleAPIReferenceGetRequest) (*GetAdminroleResponse, *http.Response, error) {
+func (a *AdminroleAPIService) ReadExecute(r AdminroleAPIReadRequest) (*GetAdminroleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *AdminroleAPIService) ReferenceGetExecute(r AdminroleAPIReferenceGetRequ
 		localVarReturnValue *GetAdminroleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminroleAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminroleAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *AdminroleAPIService) ReferenceGetExecute(r AdminroleAPIReferenceGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AdminroleAPIReferencePutRequest struct {
+type AdminroleAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     AdminroleAPI
 	reference      string
@@ -639,44 +639,44 @@ type AdminroleAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r AdminroleAPIReferencePutRequest) Adminrole(adminrole Adminrole) AdminroleAPIReferencePutRequest {
+func (r AdminroleAPIUpdateRequest) Adminrole(adminrole Adminrole) AdminroleAPIUpdateRequest {
 	r.adminrole = &adminrole
 	return r
 }
 
 // Enter the field names followed by comma
-func (r AdminroleAPIReferencePutRequest) ReturnFields(returnFields string) AdminroleAPIReferencePutRequest {
+func (r AdminroleAPIUpdateRequest) ReturnFields(returnFields string) AdminroleAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdminroleAPIReferencePutRequest) ReturnFields2(returnFields2 string) AdminroleAPIReferencePutRequest {
+func (r AdminroleAPIUpdateRequest) ReturnFields2(returnFields2 string) AdminroleAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdminroleAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) AdminroleAPIReferencePutRequest {
+func (r AdminroleAPIUpdateRequest) ReturnAsObject(returnAsObject int32) AdminroleAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AdminroleAPIReferencePutRequest) Execute() (*UpdateAdminroleResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r AdminroleAPIUpdateRequest) Execute() (*UpdateAdminroleResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a adminrole object
+Update Update a adminrole object
 
 Updates a specific adminrole object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the adminrole object
-	@return AdminroleAPIReferencePutRequest
+	@return AdminroleAPIUpdateRequest
 */
-func (a *AdminroleAPIService) ReferencePut(ctx context.Context, reference string) AdminroleAPIReferencePutRequest {
-	return AdminroleAPIReferencePutRequest{
+func (a *AdminroleAPIService) Update(ctx context.Context, reference string) AdminroleAPIUpdateRequest {
+	return AdminroleAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *AdminroleAPIService) ReferencePut(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return UpdateAdminroleResponse
-func (a *AdminroleAPIService) ReferencePutExecute(r AdminroleAPIReferencePutRequest) (*UpdateAdminroleResponse, *http.Response, error) {
+func (a *AdminroleAPIService) UpdateExecute(r AdminroleAPIUpdateRequest) (*UpdateAdminroleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *AdminroleAPIService) ReferencePutExecute(r AdminroleAPIReferencePutRequ
 		localVarReturnValue *UpdateAdminroleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminroleAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminroleAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

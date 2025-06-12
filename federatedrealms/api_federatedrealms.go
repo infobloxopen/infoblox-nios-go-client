@@ -23,38 +23,38 @@ import (
 
 type FederatedrealmsAPI interface {
 	/*
-		Get Retrieve federatedrealms objects
+		List Retrieve federatedrealms objects
 
 		Returns a list of federatedrealms objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FederatedrealmsAPIGetRequest
+		@return FederatedrealmsAPIListRequest
 	*/
-	Get(ctx context.Context) FederatedrealmsAPIGetRequest
+	List(ctx context.Context) FederatedrealmsAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListFederatedrealmsResponse
-	GetExecute(r FederatedrealmsAPIGetRequest) (*ListFederatedrealmsResponse, *http.Response, error)
+	ListExecute(r FederatedrealmsAPIListRequest) (*ListFederatedrealmsResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific federatedrealms object
+		Read Get a specific federatedrealms object
 
 		Returns a specific federatedrealms object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the federatedrealms object
-		@return FederatedrealmsAPIReferenceGetRequest
+		@return FederatedrealmsAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) FederatedrealmsAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) FederatedrealmsAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetFederatedrealmsResponse
-	ReferenceGetExecute(r FederatedrealmsAPIReferenceGetRequest) (*GetFederatedrealmsResponse, *http.Response, error)
+	ReadExecute(r FederatedrealmsAPIReadRequest) (*GetFederatedrealmsResponse, *http.Response, error)
 }
 
 // FederatedrealmsAPIService FederatedrealmsAPI service
 type FederatedrealmsAPIService internal.Service
 
-type FederatedrealmsAPIGetRequest struct {
+type FederatedrealmsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     FederatedrealmsAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type FederatedrealmsAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r FederatedrealmsAPIGetRequest) ReturnFields(returnFields string) FederatedrealmsAPIGetRequest {
+func (r FederatedrealmsAPIListRequest) ReturnFields(returnFields string) FederatedrealmsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FederatedrealmsAPIGetRequest) ReturnFields2(returnFields2 string) FederatedrealmsAPIGetRequest {
+func (r FederatedrealmsAPIListRequest) ReturnFields2(returnFields2 string) FederatedrealmsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r FederatedrealmsAPIGetRequest) MaxResults(maxResults int32) FederatedrealmsAPIGetRequest {
+func (r FederatedrealmsAPIListRequest) MaxResults(maxResults int32) FederatedrealmsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FederatedrealmsAPIGetRequest) ReturnAsObject(returnAsObject int32) FederatedrealmsAPIGetRequest {
+func (r FederatedrealmsAPIListRequest) ReturnAsObject(returnAsObject int32) FederatedrealmsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r FederatedrealmsAPIGetRequest) Paging(paging int32) FederatedrealmsAPIGetRequest {
+func (r FederatedrealmsAPIListRequest) Paging(paging int32) FederatedrealmsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r FederatedrealmsAPIGetRequest) PageId(pageId string) FederatedrealmsAPIGetRequest {
+func (r FederatedrealmsAPIListRequest) PageId(pageId string) FederatedrealmsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r FederatedrealmsAPIGetRequest) Filters(filters map[string]interface{}) FederatedrealmsAPIGetRequest {
+func (r FederatedrealmsAPIListRequest) Filters(filters map[string]interface{}) FederatedrealmsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r FederatedrealmsAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) FederatedrealmsAPIGetRequest {
+func (r FederatedrealmsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) FederatedrealmsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r FederatedrealmsAPIGetRequest) Execute() (*ListFederatedrealmsResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r FederatedrealmsAPIListRequest) Execute() (*ListFederatedrealmsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve federatedrealms objects
+List Retrieve federatedrealms objects
 
 Returns a list of federatedrealms objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FederatedrealmsAPIGetRequest
+	@return FederatedrealmsAPIListRequest
 */
-func (a *FederatedrealmsAPIService) Get(ctx context.Context) FederatedrealmsAPIGetRequest {
-	return FederatedrealmsAPIGetRequest{
+func (a *FederatedrealmsAPIService) List(ctx context.Context) FederatedrealmsAPIListRequest {
+	return FederatedrealmsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *FederatedrealmsAPIService) Get(ctx context.Context) FederatedrealmsAPIG
 // Execute executes the request
 //
 //	@return ListFederatedrealmsResponse
-func (a *FederatedrealmsAPIService) GetExecute(r FederatedrealmsAPIGetRequest) (*ListFederatedrealmsResponse, *http.Response, error) {
+func (a *FederatedrealmsAPIService) ListExecute(r FederatedrealmsAPIListRequest) (*ListFederatedrealmsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *FederatedrealmsAPIService) GetExecute(r FederatedrealmsAPIGetRequest) (
 		localVarReturnValue *ListFederatedrealmsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedrealmsAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedrealmsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *FederatedrealmsAPIService) GetExecute(r FederatedrealmsAPIGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FederatedrealmsAPIReferenceGetRequest struct {
+type FederatedrealmsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     FederatedrealmsAPI
 	reference      string
@@ -235,38 +235,38 @@ type FederatedrealmsAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r FederatedrealmsAPIReferenceGetRequest) ReturnFields(returnFields string) FederatedrealmsAPIReferenceGetRequest {
+func (r FederatedrealmsAPIReadRequest) ReturnFields(returnFields string) FederatedrealmsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FederatedrealmsAPIReferenceGetRequest) ReturnFields2(returnFields2 string) FederatedrealmsAPIReferenceGetRequest {
+func (r FederatedrealmsAPIReadRequest) ReturnFields2(returnFields2 string) FederatedrealmsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FederatedrealmsAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) FederatedrealmsAPIReferenceGetRequest {
+func (r FederatedrealmsAPIReadRequest) ReturnAsObject(returnAsObject int32) FederatedrealmsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FederatedrealmsAPIReferenceGetRequest) Execute() (*GetFederatedrealmsResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r FederatedrealmsAPIReadRequest) Execute() (*GetFederatedrealmsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific federatedrealms object
+Read Get a specific federatedrealms object
 
 Returns a specific federatedrealms object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the federatedrealms object
-	@return FederatedrealmsAPIReferenceGetRequest
+	@return FederatedrealmsAPIReadRequest
 */
-func (a *FederatedrealmsAPIService) ReferenceGet(ctx context.Context, reference string) FederatedrealmsAPIReferenceGetRequest {
-	return FederatedrealmsAPIReferenceGetRequest{
+func (a *FederatedrealmsAPIService) Read(ctx context.Context, reference string) FederatedrealmsAPIReadRequest {
+	return FederatedrealmsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *FederatedrealmsAPIService) ReferenceGet(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return GetFederatedrealmsResponse
-func (a *FederatedrealmsAPIService) ReferenceGetExecute(r FederatedrealmsAPIReferenceGetRequest) (*GetFederatedrealmsResponse, *http.Response, error) {
+func (a *FederatedrealmsAPIService) ReadExecute(r FederatedrealmsAPIReadRequest) (*GetFederatedrealmsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *FederatedrealmsAPIService) ReferenceGetExecute(r FederatedrealmsAPIRefe
 		localVarReturnValue *GetFederatedrealmsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedrealmsAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FederatedrealmsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

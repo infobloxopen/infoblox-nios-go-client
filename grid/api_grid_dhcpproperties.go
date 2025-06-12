@@ -23,52 +23,52 @@ import (
 
 type GridDhcppropertiesAPI interface {
 	/*
-		GriddhcppropertiesGet Retrieve grid:dhcpproperties objects
+		List Retrieve grid:dhcpproperties objects
 
 		Returns a list of grid:dhcpproperties objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridDhcppropertiesAPIGriddhcppropertiesGetRequest
+		@return GridDhcppropertiesAPIListRequest
 	*/
-	GriddhcppropertiesGet(ctx context.Context) GridDhcppropertiesAPIGriddhcppropertiesGetRequest
+	List(ctx context.Context) GridDhcppropertiesAPIListRequest
 
-	// GriddhcppropertiesGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridDhcppropertiesResponse
-	GriddhcppropertiesGetExecute(r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) (*ListGridDhcppropertiesResponse, *http.Response, error)
+	ListExecute(r GridDhcppropertiesAPIListRequest) (*ListGridDhcppropertiesResponse, *http.Response, error)
 	/*
-		GriddhcppropertiesReferenceGet Get a specific grid:dhcpproperties object
+		Read Get a specific grid:dhcpproperties object
 
 		Returns a specific grid:dhcpproperties object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:dhcpproperties object
-		@return GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest
+		@return GridDhcppropertiesAPIReadRequest
 	*/
-	GriddhcppropertiesReferenceGet(ctx context.Context, reference string) GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest
+	Read(ctx context.Context, reference string) GridDhcppropertiesAPIReadRequest
 
-	// GriddhcppropertiesReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridDhcppropertiesResponse
-	GriddhcppropertiesReferenceGetExecute(r GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest) (*GetGridDhcppropertiesResponse, *http.Response, error)
+	ReadExecute(r GridDhcppropertiesAPIReadRequest) (*GetGridDhcppropertiesResponse, *http.Response, error)
 	/*
-		GriddhcppropertiesReferencePut Update a grid:dhcpproperties object
+		Update Update a grid:dhcpproperties object
 
 		Updates a specific grid:dhcpproperties object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:dhcpproperties object
-		@return GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest
+		@return GridDhcppropertiesAPIUpdateRequest
 	*/
-	GriddhcppropertiesReferencePut(ctx context.Context, reference string) GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest
+	Update(ctx context.Context, reference string) GridDhcppropertiesAPIUpdateRequest
 
-	// GriddhcppropertiesReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridDhcppropertiesResponse
-	GriddhcppropertiesReferencePutExecute(r GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest) (*UpdateGridDhcppropertiesResponse, *http.Response, error)
+	UpdateExecute(r GridDhcppropertiesAPIUpdateRequest) (*UpdateGridDhcppropertiesResponse, *http.Response, error)
 }
 
 // GridDhcppropertiesAPIService GridDhcppropertiesAPI service
 type GridDhcppropertiesAPIService internal.Service
 
-type GridDhcppropertiesAPIGriddhcppropertiesGetRequest struct {
+type GridDhcppropertiesAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridDhcppropertiesAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type GridDhcppropertiesAPIGriddhcppropertiesGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) ReturnFields(returnFields string) GridDhcppropertiesAPIGriddhcppropertiesGetRequest {
+func (r GridDhcppropertiesAPIListRequest) ReturnFields(returnFields string) GridDhcppropertiesAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) ReturnFields2(returnFields2 string) GridDhcppropertiesAPIGriddhcppropertiesGetRequest {
+func (r GridDhcppropertiesAPIListRequest) ReturnFields2(returnFields2 string) GridDhcppropertiesAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) MaxResults(maxResults int32) GridDhcppropertiesAPIGriddhcppropertiesGetRequest {
+func (r GridDhcppropertiesAPIListRequest) MaxResults(maxResults int32) GridDhcppropertiesAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) ReturnAsObject(returnAsObject int32) GridDhcppropertiesAPIGriddhcppropertiesGetRequest {
+func (r GridDhcppropertiesAPIListRequest) ReturnAsObject(returnAsObject int32) GridDhcppropertiesAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) Paging(paging int32) GridDhcppropertiesAPIGriddhcppropertiesGetRequest {
+func (r GridDhcppropertiesAPIListRequest) Paging(paging int32) GridDhcppropertiesAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) PageId(pageId string) GridDhcppropertiesAPIGriddhcppropertiesGetRequest {
+func (r GridDhcppropertiesAPIListRequest) PageId(pageId string) GridDhcppropertiesAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) Filters(filters map[string]interface{}) GridDhcppropertiesAPIGriddhcppropertiesGetRequest {
+func (r GridDhcppropertiesAPIListRequest) Filters(filters map[string]interface{}) GridDhcppropertiesAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridDhcppropertiesAPIGriddhcppropertiesGetRequest {
+func (r GridDhcppropertiesAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridDhcppropertiesAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) Execute() (*ListGridDhcppropertiesResponse, *http.Response, error) {
-	return r.ApiService.GriddhcppropertiesGetExecute(r)
+func (r GridDhcppropertiesAPIListRequest) Execute() (*ListGridDhcppropertiesResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GriddhcppropertiesGet Retrieve grid:dhcpproperties objects
+List Retrieve grid:dhcpproperties objects
 
 Returns a list of grid:dhcpproperties objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridDhcppropertiesAPIGriddhcppropertiesGetRequest
+	@return GridDhcppropertiesAPIListRequest
 */
-func (a *GridDhcppropertiesAPIService) GriddhcppropertiesGet(ctx context.Context) GridDhcppropertiesAPIGriddhcppropertiesGetRequest {
-	return GridDhcppropertiesAPIGriddhcppropertiesGetRequest{
+func (a *GridDhcppropertiesAPIService) List(ctx context.Context) GridDhcppropertiesAPIListRequest {
+	return GridDhcppropertiesAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GridDhcppropertiesAPIService) GriddhcppropertiesGet(ctx context.Context
 // Execute executes the request
 //
 //	@return ListGridDhcppropertiesResponse
-func (a *GridDhcppropertiesAPIService) GriddhcppropertiesGetExecute(r GridDhcppropertiesAPIGriddhcppropertiesGetRequest) (*ListGridDhcppropertiesResponse, *http.Response, error) {
+func (a *GridDhcppropertiesAPIService) ListExecute(r GridDhcppropertiesAPIListRequest) (*ListGridDhcppropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GridDhcppropertiesAPIService) GriddhcppropertiesGetExecute(r GridDhcppr
 		localVarReturnValue *ListGridDhcppropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDhcppropertiesAPIService.GriddhcppropertiesGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDhcppropertiesAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *GridDhcppropertiesAPIService) GriddhcppropertiesGetExecute(r GridDhcppr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest struct {
+type GridDhcppropertiesAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridDhcppropertiesAPI
 	reference      string
@@ -249,38 +249,38 @@ type GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest) ReturnFields(returnFields string) GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest {
+func (r GridDhcppropertiesAPIReadRequest) ReturnFields(returnFields string) GridDhcppropertiesAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest) ReturnFields2(returnFields2 string) GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest {
+func (r GridDhcppropertiesAPIReadRequest) ReturnFields2(returnFields2 string) GridDhcppropertiesAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest {
+func (r GridDhcppropertiesAPIReadRequest) ReturnAsObject(returnAsObject int32) GridDhcppropertiesAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest) Execute() (*GetGridDhcppropertiesResponse, *http.Response, error) {
-	return r.ApiService.GriddhcppropertiesReferenceGetExecute(r)
+func (r GridDhcppropertiesAPIReadRequest) Execute() (*GetGridDhcppropertiesResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GriddhcppropertiesReferenceGet Get a specific grid:dhcpproperties object
+Read Get a specific grid:dhcpproperties object
 
 Returns a specific grid:dhcpproperties object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:dhcpproperties object
-	@return GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest
+	@return GridDhcppropertiesAPIReadRequest
 */
-func (a *GridDhcppropertiesAPIService) GriddhcppropertiesReferenceGet(ctx context.Context, reference string) GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest {
-	return GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest{
+func (a *GridDhcppropertiesAPIService) Read(ctx context.Context, reference string) GridDhcppropertiesAPIReadRequest {
+	return GridDhcppropertiesAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GridDhcppropertiesAPIService) GriddhcppropertiesReferenceGet(ctx contex
 // Execute executes the request
 //
 //	@return GetGridDhcppropertiesResponse
-func (a *GridDhcppropertiesAPIService) GriddhcppropertiesReferenceGetExecute(r GridDhcppropertiesAPIGriddhcppropertiesReferenceGetRequest) (*GetGridDhcppropertiesResponse, *http.Response, error) {
+func (a *GridDhcppropertiesAPIService) ReadExecute(r GridDhcppropertiesAPIReadRequest) (*GetGridDhcppropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GridDhcppropertiesAPIService) GriddhcppropertiesReferenceGetExecute(r G
 		localVarReturnValue *GetGridDhcppropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDhcppropertiesAPIService.GriddhcppropertiesReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDhcppropertiesAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *GridDhcppropertiesAPIService) GriddhcppropertiesReferenceGetExecute(r G
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest struct {
+type GridDhcppropertiesAPIUpdateRequest struct {
 	ctx                context.Context
 	ApiService         GridDhcppropertiesAPI
 	reference          string
@@ -377,44 +377,44 @@ type GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest struct {
 }
 
 // Object data to update
-func (r GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest) GridDhcpproperties(gridDhcpproperties GridDhcpproperties) GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest {
+func (r GridDhcppropertiesAPIUpdateRequest) GridDhcpproperties(gridDhcpproperties GridDhcpproperties) GridDhcppropertiesAPIUpdateRequest {
 	r.gridDhcpproperties = &gridDhcpproperties
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest) ReturnFields(returnFields string) GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest {
+func (r GridDhcppropertiesAPIUpdateRequest) ReturnFields(returnFields string) GridDhcppropertiesAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest) ReturnFields2(returnFields2 string) GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest {
+func (r GridDhcppropertiesAPIUpdateRequest) ReturnFields2(returnFields2 string) GridDhcppropertiesAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest) ReturnAsObject(returnAsObject int32) GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest {
+func (r GridDhcppropertiesAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridDhcppropertiesAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest) Execute() (*UpdateGridDhcppropertiesResponse, *http.Response, error) {
-	return r.ApiService.GriddhcppropertiesReferencePutExecute(r)
+func (r GridDhcppropertiesAPIUpdateRequest) Execute() (*UpdateGridDhcppropertiesResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GriddhcppropertiesReferencePut Update a grid:dhcpproperties object
+Update Update a grid:dhcpproperties object
 
 Updates a specific grid:dhcpproperties object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:dhcpproperties object
-	@return GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest
+	@return GridDhcppropertiesAPIUpdateRequest
 */
-func (a *GridDhcppropertiesAPIService) GriddhcppropertiesReferencePut(ctx context.Context, reference string) GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest {
-	return GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest{
+func (a *GridDhcppropertiesAPIService) Update(ctx context.Context, reference string) GridDhcppropertiesAPIUpdateRequest {
+	return GridDhcppropertiesAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GridDhcppropertiesAPIService) GriddhcppropertiesReferencePut(ctx contex
 // Execute executes the request
 //
 //	@return UpdateGridDhcppropertiesResponse
-func (a *GridDhcppropertiesAPIService) GriddhcppropertiesReferencePutExecute(r GridDhcppropertiesAPIGriddhcppropertiesReferencePutRequest) (*UpdateGridDhcppropertiesResponse, *http.Response, error) {
+func (a *GridDhcppropertiesAPIService) UpdateExecute(r GridDhcppropertiesAPIUpdateRequest) (*UpdateGridDhcppropertiesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GridDhcppropertiesAPIService) GriddhcppropertiesReferencePutExecute(r G
 		localVarReturnValue *UpdateGridDhcppropertiesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDhcppropertiesAPIService.GriddhcppropertiesReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDhcppropertiesAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

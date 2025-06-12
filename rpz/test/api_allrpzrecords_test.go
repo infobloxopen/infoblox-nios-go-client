@@ -23,11 +23,11 @@ func TestAllrpzrecordsAPIService(t *testing.T) {
 
 	apiClient := rpz.NewAPIClient()
 
-	t.Run("Test AllrpzrecordsAPIService Get", func(t *testing.T) {
+	t.Run("Test AllrpzrecordsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AllrpzrecordsAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AllrpzrecordsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestAllrpzrecordsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AllrpzrecordsAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test AllrpzrecordsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.AllrpzrecordsAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AllrpzrecordsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

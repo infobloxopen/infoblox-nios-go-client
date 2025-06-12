@@ -23,65 +23,154 @@ import (
 
 type NotificationRestTemplateAPI interface {
 	/*
-		NotificationresttemplateGet Retrieve notification:rest:template objects
-
-		Returns a list of notification:rest:template objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NotificationRestTemplateAPINotificationresttemplateGetRequest
-	*/
-	NotificationresttemplateGet(ctx context.Context) NotificationRestTemplateAPINotificationresttemplateGetRequest
-
-	// NotificationresttemplateGetExecute executes the request
-	//  @return ListNotificationRestTemplateResponse
-	NotificationresttemplateGetExecute(r NotificationRestTemplateAPINotificationresttemplateGetRequest) (*ListNotificationRestTemplateResponse, *http.Response, error)
-	/*
-		NotificationresttemplateReferenceDelete Delete a notification:rest:template object
+		Delete Delete a notification:rest:template object
 
 		Deletes a specific notification:rest:template object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the notification:rest:template object
-		@return NotificationRestTemplateAPINotificationresttemplateReferenceDeleteRequest
+		@return NotificationRestTemplateAPIDeleteRequest
 	*/
-	NotificationresttemplateReferenceDelete(ctx context.Context, reference string) NotificationRestTemplateAPINotificationresttemplateReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NotificationRestTemplateAPIDeleteRequest
 
-	// NotificationresttemplateReferenceDeleteExecute executes the request
-	NotificationresttemplateReferenceDeleteExecute(r NotificationRestTemplateAPINotificationresttemplateReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NotificationRestTemplateAPIDeleteRequest) (*http.Response, error)
 	/*
-		NotificationresttemplateReferenceGet Get a specific notification:rest:template object
+		List Retrieve notification:rest:template objects
+
+		Returns a list of notification:rest:template objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NotificationRestTemplateAPIListRequest
+	*/
+	List(ctx context.Context) NotificationRestTemplateAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNotificationRestTemplateResponse
+	ListExecute(r NotificationRestTemplateAPIListRequest) (*ListNotificationRestTemplateResponse, *http.Response, error)
+	/*
+		Read Get a specific notification:rest:template object
 
 		Returns a specific notification:rest:template object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the notification:rest:template object
-		@return NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest
+		@return NotificationRestTemplateAPIReadRequest
 	*/
-	NotificationresttemplateReferenceGet(ctx context.Context, reference string) NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest
+	Read(ctx context.Context, reference string) NotificationRestTemplateAPIReadRequest
 
-	// NotificationresttemplateReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNotificationRestTemplateResponse
-	NotificationresttemplateReferenceGetExecute(r NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest) (*GetNotificationRestTemplateResponse, *http.Response, error)
+	ReadExecute(r NotificationRestTemplateAPIReadRequest) (*GetNotificationRestTemplateResponse, *http.Response, error)
 	/*
-		NotificationresttemplateReferencePut Update a notification:rest:template object
+		Update Update a notification:rest:template object
 
 		Updates a specific notification:rest:template object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the notification:rest:template object
-		@return NotificationRestTemplateAPINotificationresttemplateReferencePutRequest
+		@return NotificationRestTemplateAPIUpdateRequest
 	*/
-	NotificationresttemplateReferencePut(ctx context.Context, reference string) NotificationRestTemplateAPINotificationresttemplateReferencePutRequest
+	Update(ctx context.Context, reference string) NotificationRestTemplateAPIUpdateRequest
 
-	// NotificationresttemplateReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNotificationRestTemplateResponse
-	NotificationresttemplateReferencePutExecute(r NotificationRestTemplateAPINotificationresttemplateReferencePutRequest) (*UpdateNotificationRestTemplateResponse, *http.Response, error)
+	UpdateExecute(r NotificationRestTemplateAPIUpdateRequest) (*UpdateNotificationRestTemplateResponse, *http.Response, error)
 }
 
 // NotificationRestTemplateAPIService NotificationRestTemplateAPI service
 type NotificationRestTemplateAPIService internal.Service
 
-type NotificationRestTemplateAPINotificationresttemplateGetRequest struct {
+type NotificationRestTemplateAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService NotificationRestTemplateAPI
+	reference  string
+}
+
+func (r NotificationRestTemplateAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a notification:rest:template object
+
+Deletes a specific notification:rest:template object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the notification:rest:template object
+	@return NotificationRestTemplateAPIDeleteRequest
+*/
+func (a *NotificationRestTemplateAPIService) Delete(ctx context.Context, reference string) NotificationRestTemplateAPIDeleteRequest {
+	return NotificationRestTemplateAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *NotificationRestTemplateAPIService) DeleteExecute(r NotificationRestTemplateAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestTemplateAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/notification:rest:template/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type NotificationRestTemplateAPIListRequest struct {
 	ctx            context.Context
 	ApiService     NotificationRestTemplateAPI
 	returnFields   *string
@@ -95,65 +184,65 @@ type NotificationRestTemplateAPINotificationresttemplateGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r NotificationRestTemplateAPINotificationresttemplateGetRequest) ReturnFields(returnFields string) NotificationRestTemplateAPINotificationresttemplateGetRequest {
+func (r NotificationRestTemplateAPIListRequest) ReturnFields(returnFields string) NotificationRestTemplateAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRestTemplateAPINotificationresttemplateGetRequest) ReturnFields2(returnFields2 string) NotificationRestTemplateAPINotificationresttemplateGetRequest {
+func (r NotificationRestTemplateAPIListRequest) ReturnFields2(returnFields2 string) NotificationRestTemplateAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r NotificationRestTemplateAPINotificationresttemplateGetRequest) MaxResults(maxResults int32) NotificationRestTemplateAPINotificationresttemplateGetRequest {
+func (r NotificationRestTemplateAPIListRequest) MaxResults(maxResults int32) NotificationRestTemplateAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NotificationRestTemplateAPINotificationresttemplateGetRequest) ReturnAsObject(returnAsObject int32) NotificationRestTemplateAPINotificationresttemplateGetRequest {
+func (r NotificationRestTemplateAPIListRequest) ReturnAsObject(returnAsObject int32) NotificationRestTemplateAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r NotificationRestTemplateAPINotificationresttemplateGetRequest) Paging(paging int32) NotificationRestTemplateAPINotificationresttemplateGetRequest {
+func (r NotificationRestTemplateAPIListRequest) Paging(paging int32) NotificationRestTemplateAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r NotificationRestTemplateAPINotificationresttemplateGetRequest) PageId(pageId string) NotificationRestTemplateAPINotificationresttemplateGetRequest {
+func (r NotificationRestTemplateAPIListRequest) PageId(pageId string) NotificationRestTemplateAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r NotificationRestTemplateAPINotificationresttemplateGetRequest) Filters(filters map[string]interface{}) NotificationRestTemplateAPINotificationresttemplateGetRequest {
+func (r NotificationRestTemplateAPIListRequest) Filters(filters map[string]interface{}) NotificationRestTemplateAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r NotificationRestTemplateAPINotificationresttemplateGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NotificationRestTemplateAPINotificationresttemplateGetRequest {
+func (r NotificationRestTemplateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NotificationRestTemplateAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r NotificationRestTemplateAPINotificationresttemplateGetRequest) Execute() (*ListNotificationRestTemplateResponse, *http.Response, error) {
-	return r.ApiService.NotificationresttemplateGetExecute(r)
+func (r NotificationRestTemplateAPIListRequest) Execute() (*ListNotificationRestTemplateResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-NotificationresttemplateGet Retrieve notification:rest:template objects
+List Retrieve notification:rest:template objects
 
 Returns a list of notification:rest:template objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NotificationRestTemplateAPINotificationresttemplateGetRequest
+	@return NotificationRestTemplateAPIListRequest
 */
-func (a *NotificationRestTemplateAPIService) NotificationresttemplateGet(ctx context.Context) NotificationRestTemplateAPINotificationresttemplateGetRequest {
-	return NotificationRestTemplateAPINotificationresttemplateGetRequest{
+func (a *NotificationRestTemplateAPIService) List(ctx context.Context) NotificationRestTemplateAPIListRequest {
+	return NotificationRestTemplateAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -162,7 +251,7 @@ func (a *NotificationRestTemplateAPIService) NotificationresttemplateGet(ctx con
 // Execute executes the request
 //
 //	@return ListNotificationRestTemplateResponse
-func (a *NotificationRestTemplateAPIService) NotificationresttemplateGetExecute(r NotificationRestTemplateAPINotificationresttemplateGetRequest) (*ListNotificationRestTemplateResponse, *http.Response, error) {
+func (a *NotificationRestTemplateAPIService) ListExecute(r NotificationRestTemplateAPIListRequest) (*ListNotificationRestTemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -170,7 +259,7 @@ func (a *NotificationRestTemplateAPIService) NotificationresttemplateGetExecute(
 		localVarReturnValue *ListNotificationRestTemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestTemplateAPIService.NotificationresttemplateGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestTemplateAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -252,96 +341,7 @@ func (a *NotificationRestTemplateAPIService) NotificationresttemplateGetExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NotificationRestTemplateAPINotificationresttemplateReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService NotificationRestTemplateAPI
-	reference  string
-}
-
-func (r NotificationRestTemplateAPINotificationresttemplateReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.NotificationresttemplateReferenceDeleteExecute(r)
-}
-
-/*
-NotificationresttemplateReferenceDelete Delete a notification:rest:template object
-
-Deletes a specific notification:rest:template object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the notification:rest:template object
-	@return NotificationRestTemplateAPINotificationresttemplateReferenceDeleteRequest
-*/
-func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferenceDelete(ctx context.Context, reference string) NotificationRestTemplateAPINotificationresttemplateReferenceDeleteRequest {
-	return NotificationRestTemplateAPINotificationresttemplateReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferenceDeleteExecute(r NotificationRestTemplateAPINotificationresttemplateReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestTemplateAPIService.NotificationresttemplateReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/notification:rest:template/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest struct {
+type NotificationRestTemplateAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     NotificationRestTemplateAPI
 	reference      string
@@ -351,38 +351,38 @@ type NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest stru
 }
 
 // Enter the field names followed by comma
-func (r NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest) ReturnFields(returnFields string) NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest {
+func (r NotificationRestTemplateAPIReadRequest) ReturnFields(returnFields string) NotificationRestTemplateAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest) ReturnFields2(returnFields2 string) NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest {
+func (r NotificationRestTemplateAPIReadRequest) ReturnFields2(returnFields2 string) NotificationRestTemplateAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest) ReturnAsObject(returnAsObject int32) NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest {
+func (r NotificationRestTemplateAPIReadRequest) ReturnAsObject(returnAsObject int32) NotificationRestTemplateAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest) Execute() (*GetNotificationRestTemplateResponse, *http.Response, error) {
-	return r.ApiService.NotificationresttemplateReferenceGetExecute(r)
+func (r NotificationRestTemplateAPIReadRequest) Execute() (*GetNotificationRestTemplateResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-NotificationresttemplateReferenceGet Get a specific notification:rest:template object
+Read Get a specific notification:rest:template object
 
 Returns a specific notification:rest:template object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the notification:rest:template object
-	@return NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest
+	@return NotificationRestTemplateAPIReadRequest
 */
-func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferenceGet(ctx context.Context, reference string) NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest {
-	return NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest{
+func (a *NotificationRestTemplateAPIService) Read(ctx context.Context, reference string) NotificationRestTemplateAPIReadRequest {
+	return NotificationRestTemplateAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -392,7 +392,7 @@ func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferenceGe
 // Execute executes the request
 //
 //	@return GetNotificationRestTemplateResponse
-func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferenceGetExecute(r NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest) (*GetNotificationRestTemplateResponse, *http.Response, error) {
+func (a *NotificationRestTemplateAPIService) ReadExecute(r NotificationRestTemplateAPIReadRequest) (*GetNotificationRestTemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -400,7 +400,7 @@ func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferenceGe
 		localVarReturnValue *GetNotificationRestTemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestTemplateAPIService.NotificationresttemplateReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestTemplateAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -468,7 +468,7 @@ func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferenceGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NotificationRestTemplateAPINotificationresttemplateReferencePutRequest struct {
+type NotificationRestTemplateAPIUpdateRequest struct {
 	ctx                      context.Context
 	ApiService               NotificationRestTemplateAPI
 	reference                string
@@ -479,44 +479,44 @@ type NotificationRestTemplateAPINotificationresttemplateReferencePutRequest stru
 }
 
 // Object data to update
-func (r NotificationRestTemplateAPINotificationresttemplateReferencePutRequest) NotificationRestTemplate(notificationRestTemplate NotificationRestTemplate) NotificationRestTemplateAPINotificationresttemplateReferencePutRequest {
+func (r NotificationRestTemplateAPIUpdateRequest) NotificationRestTemplate(notificationRestTemplate NotificationRestTemplate) NotificationRestTemplateAPIUpdateRequest {
 	r.notificationRestTemplate = &notificationRestTemplate
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NotificationRestTemplateAPINotificationresttemplateReferencePutRequest) ReturnFields(returnFields string) NotificationRestTemplateAPINotificationresttemplateReferencePutRequest {
+func (r NotificationRestTemplateAPIUpdateRequest) ReturnFields(returnFields string) NotificationRestTemplateAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRestTemplateAPINotificationresttemplateReferencePutRequest) ReturnFields2(returnFields2 string) NotificationRestTemplateAPINotificationresttemplateReferencePutRequest {
+func (r NotificationRestTemplateAPIUpdateRequest) ReturnFields2(returnFields2 string) NotificationRestTemplateAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NotificationRestTemplateAPINotificationresttemplateReferencePutRequest) ReturnAsObject(returnAsObject int32) NotificationRestTemplateAPINotificationresttemplateReferencePutRequest {
+func (r NotificationRestTemplateAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NotificationRestTemplateAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NotificationRestTemplateAPINotificationresttemplateReferencePutRequest) Execute() (*UpdateNotificationRestTemplateResponse, *http.Response, error) {
-	return r.ApiService.NotificationresttemplateReferencePutExecute(r)
+func (r NotificationRestTemplateAPIUpdateRequest) Execute() (*UpdateNotificationRestTemplateResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-NotificationresttemplateReferencePut Update a notification:rest:template object
+Update Update a notification:rest:template object
 
 Updates a specific notification:rest:template object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the notification:rest:template object
-	@return NotificationRestTemplateAPINotificationresttemplateReferencePutRequest
+	@return NotificationRestTemplateAPIUpdateRequest
 */
-func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferencePut(ctx context.Context, reference string) NotificationRestTemplateAPINotificationresttemplateReferencePutRequest {
-	return NotificationRestTemplateAPINotificationresttemplateReferencePutRequest{
+func (a *NotificationRestTemplateAPIService) Update(ctx context.Context, reference string) NotificationRestTemplateAPIUpdateRequest {
+	return NotificationRestTemplateAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -526,7 +526,7 @@ func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferencePu
 // Execute executes the request
 //
 //	@return UpdateNotificationRestTemplateResponse
-func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferencePutExecute(r NotificationRestTemplateAPINotificationresttemplateReferencePutRequest) (*UpdateNotificationRestTemplateResponse, *http.Response, error) {
+func (a *NotificationRestTemplateAPIService) UpdateExecute(r NotificationRestTemplateAPIUpdateRequest) (*UpdateNotificationRestTemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -534,7 +534,7 @@ func (a *NotificationRestTemplateAPIService) NotificationresttemplateReferencePu
 		localVarReturnValue *UpdateNotificationRestTemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestTemplateAPIService.NotificationresttemplateReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRestTemplateAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

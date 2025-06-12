@@ -23,52 +23,52 @@ import (
 
 type GridDashboardAPI interface {
 	/*
-		GriddashboardGet Retrieve grid:dashboard objects
+		List Retrieve grid:dashboard objects
 
 		Returns a list of grid:dashboard objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridDashboardAPIGriddashboardGetRequest
+		@return GridDashboardAPIListRequest
 	*/
-	GriddashboardGet(ctx context.Context) GridDashboardAPIGriddashboardGetRequest
+	List(ctx context.Context) GridDashboardAPIListRequest
 
-	// GriddashboardGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridDashboardResponse
-	GriddashboardGetExecute(r GridDashboardAPIGriddashboardGetRequest) (*ListGridDashboardResponse, *http.Response, error)
+	ListExecute(r GridDashboardAPIListRequest) (*ListGridDashboardResponse, *http.Response, error)
 	/*
-		GriddashboardReferenceGet Get a specific grid:dashboard object
+		Read Get a specific grid:dashboard object
 
 		Returns a specific grid:dashboard object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:dashboard object
-		@return GridDashboardAPIGriddashboardReferenceGetRequest
+		@return GridDashboardAPIReadRequest
 	*/
-	GriddashboardReferenceGet(ctx context.Context, reference string) GridDashboardAPIGriddashboardReferenceGetRequest
+	Read(ctx context.Context, reference string) GridDashboardAPIReadRequest
 
-	// GriddashboardReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridDashboardResponse
-	GriddashboardReferenceGetExecute(r GridDashboardAPIGriddashboardReferenceGetRequest) (*GetGridDashboardResponse, *http.Response, error)
+	ReadExecute(r GridDashboardAPIReadRequest) (*GetGridDashboardResponse, *http.Response, error)
 	/*
-		GriddashboardReferencePut Update a grid:dashboard object
+		Update Update a grid:dashboard object
 
 		Updates a specific grid:dashboard object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:dashboard object
-		@return GridDashboardAPIGriddashboardReferencePutRequest
+		@return GridDashboardAPIUpdateRequest
 	*/
-	GriddashboardReferencePut(ctx context.Context, reference string) GridDashboardAPIGriddashboardReferencePutRequest
+	Update(ctx context.Context, reference string) GridDashboardAPIUpdateRequest
 
-	// GriddashboardReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridDashboardResponse
-	GriddashboardReferencePutExecute(r GridDashboardAPIGriddashboardReferencePutRequest) (*UpdateGridDashboardResponse, *http.Response, error)
+	UpdateExecute(r GridDashboardAPIUpdateRequest) (*UpdateGridDashboardResponse, *http.Response, error)
 }
 
 // GridDashboardAPIService GridDashboardAPI service
 type GridDashboardAPIService internal.Service
 
-type GridDashboardAPIGriddashboardGetRequest struct {
+type GridDashboardAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridDashboardAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type GridDashboardAPIGriddashboardGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridDashboardAPIGriddashboardGetRequest) ReturnFields(returnFields string) GridDashboardAPIGriddashboardGetRequest {
+func (r GridDashboardAPIListRequest) ReturnFields(returnFields string) GridDashboardAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDashboardAPIGriddashboardGetRequest) ReturnFields2(returnFields2 string) GridDashboardAPIGriddashboardGetRequest {
+func (r GridDashboardAPIListRequest) ReturnFields2(returnFields2 string) GridDashboardAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridDashboardAPIGriddashboardGetRequest) MaxResults(maxResults int32) GridDashboardAPIGriddashboardGetRequest {
+func (r GridDashboardAPIListRequest) MaxResults(maxResults int32) GridDashboardAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridDashboardAPIGriddashboardGetRequest) ReturnAsObject(returnAsObject int32) GridDashboardAPIGriddashboardGetRequest {
+func (r GridDashboardAPIListRequest) ReturnAsObject(returnAsObject int32) GridDashboardAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridDashboardAPIGriddashboardGetRequest) Paging(paging int32) GridDashboardAPIGriddashboardGetRequest {
+func (r GridDashboardAPIListRequest) Paging(paging int32) GridDashboardAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridDashboardAPIGriddashboardGetRequest) PageId(pageId string) GridDashboardAPIGriddashboardGetRequest {
+func (r GridDashboardAPIListRequest) PageId(pageId string) GridDashboardAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridDashboardAPIGriddashboardGetRequest) Filters(filters map[string]interface{}) GridDashboardAPIGriddashboardGetRequest {
+func (r GridDashboardAPIListRequest) Filters(filters map[string]interface{}) GridDashboardAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridDashboardAPIGriddashboardGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridDashboardAPIGriddashboardGetRequest {
+func (r GridDashboardAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridDashboardAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridDashboardAPIGriddashboardGetRequest) Execute() (*ListGridDashboardResponse, *http.Response, error) {
-	return r.ApiService.GriddashboardGetExecute(r)
+func (r GridDashboardAPIListRequest) Execute() (*ListGridDashboardResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GriddashboardGet Retrieve grid:dashboard objects
+List Retrieve grid:dashboard objects
 
 Returns a list of grid:dashboard objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridDashboardAPIGriddashboardGetRequest
+	@return GridDashboardAPIListRequest
 */
-func (a *GridDashboardAPIService) GriddashboardGet(ctx context.Context) GridDashboardAPIGriddashboardGetRequest {
-	return GridDashboardAPIGriddashboardGetRequest{
+func (a *GridDashboardAPIService) List(ctx context.Context) GridDashboardAPIListRequest {
+	return GridDashboardAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GridDashboardAPIService) GriddashboardGet(ctx context.Context) GridDash
 // Execute executes the request
 //
 //	@return ListGridDashboardResponse
-func (a *GridDashboardAPIService) GriddashboardGetExecute(r GridDashboardAPIGriddashboardGetRequest) (*ListGridDashboardResponse, *http.Response, error) {
+func (a *GridDashboardAPIService) ListExecute(r GridDashboardAPIListRequest) (*ListGridDashboardResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GridDashboardAPIService) GriddashboardGetExecute(r GridDashboardAPIGrid
 		localVarReturnValue *ListGridDashboardResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDashboardAPIService.GriddashboardGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDashboardAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *GridDashboardAPIService) GriddashboardGetExecute(r GridDashboardAPIGrid
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridDashboardAPIGriddashboardReferenceGetRequest struct {
+type GridDashboardAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridDashboardAPI
 	reference      string
@@ -249,38 +249,38 @@ type GridDashboardAPIGriddashboardReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridDashboardAPIGriddashboardReferenceGetRequest) ReturnFields(returnFields string) GridDashboardAPIGriddashboardReferenceGetRequest {
+func (r GridDashboardAPIReadRequest) ReturnFields(returnFields string) GridDashboardAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDashboardAPIGriddashboardReferenceGetRequest) ReturnFields2(returnFields2 string) GridDashboardAPIGriddashboardReferenceGetRequest {
+func (r GridDashboardAPIReadRequest) ReturnFields2(returnFields2 string) GridDashboardAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridDashboardAPIGriddashboardReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridDashboardAPIGriddashboardReferenceGetRequest {
+func (r GridDashboardAPIReadRequest) ReturnAsObject(returnAsObject int32) GridDashboardAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridDashboardAPIGriddashboardReferenceGetRequest) Execute() (*GetGridDashboardResponse, *http.Response, error) {
-	return r.ApiService.GriddashboardReferenceGetExecute(r)
+func (r GridDashboardAPIReadRequest) Execute() (*GetGridDashboardResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GriddashboardReferenceGet Get a specific grid:dashboard object
+Read Get a specific grid:dashboard object
 
 Returns a specific grid:dashboard object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:dashboard object
-	@return GridDashboardAPIGriddashboardReferenceGetRequest
+	@return GridDashboardAPIReadRequest
 */
-func (a *GridDashboardAPIService) GriddashboardReferenceGet(ctx context.Context, reference string) GridDashboardAPIGriddashboardReferenceGetRequest {
-	return GridDashboardAPIGriddashboardReferenceGetRequest{
+func (a *GridDashboardAPIService) Read(ctx context.Context, reference string) GridDashboardAPIReadRequest {
+	return GridDashboardAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GridDashboardAPIService) GriddashboardReferenceGet(ctx context.Context,
 // Execute executes the request
 //
 //	@return GetGridDashboardResponse
-func (a *GridDashboardAPIService) GriddashboardReferenceGetExecute(r GridDashboardAPIGriddashboardReferenceGetRequest) (*GetGridDashboardResponse, *http.Response, error) {
+func (a *GridDashboardAPIService) ReadExecute(r GridDashboardAPIReadRequest) (*GetGridDashboardResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GridDashboardAPIService) GriddashboardReferenceGetExecute(r GridDashboa
 		localVarReturnValue *GetGridDashboardResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDashboardAPIService.GriddashboardReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDashboardAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *GridDashboardAPIService) GriddashboardReferenceGetExecute(r GridDashboa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridDashboardAPIGriddashboardReferencePutRequest struct {
+type GridDashboardAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     GridDashboardAPI
 	reference      string
@@ -377,44 +377,44 @@ type GridDashboardAPIGriddashboardReferencePutRequest struct {
 }
 
 // Object data to update
-func (r GridDashboardAPIGriddashboardReferencePutRequest) GridDashboard(gridDashboard GridDashboard) GridDashboardAPIGriddashboardReferencePutRequest {
+func (r GridDashboardAPIUpdateRequest) GridDashboard(gridDashboard GridDashboard) GridDashboardAPIUpdateRequest {
 	r.gridDashboard = &gridDashboard
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridDashboardAPIGriddashboardReferencePutRequest) ReturnFields(returnFields string) GridDashboardAPIGriddashboardReferencePutRequest {
+func (r GridDashboardAPIUpdateRequest) ReturnFields(returnFields string) GridDashboardAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDashboardAPIGriddashboardReferencePutRequest) ReturnFields2(returnFields2 string) GridDashboardAPIGriddashboardReferencePutRequest {
+func (r GridDashboardAPIUpdateRequest) ReturnFields2(returnFields2 string) GridDashboardAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridDashboardAPIGriddashboardReferencePutRequest) ReturnAsObject(returnAsObject int32) GridDashboardAPIGriddashboardReferencePutRequest {
+func (r GridDashboardAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridDashboardAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridDashboardAPIGriddashboardReferencePutRequest) Execute() (*UpdateGridDashboardResponse, *http.Response, error) {
-	return r.ApiService.GriddashboardReferencePutExecute(r)
+func (r GridDashboardAPIUpdateRequest) Execute() (*UpdateGridDashboardResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GriddashboardReferencePut Update a grid:dashboard object
+Update Update a grid:dashboard object
 
 Updates a specific grid:dashboard object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:dashboard object
-	@return GridDashboardAPIGriddashboardReferencePutRequest
+	@return GridDashboardAPIUpdateRequest
 */
-func (a *GridDashboardAPIService) GriddashboardReferencePut(ctx context.Context, reference string) GridDashboardAPIGriddashboardReferencePutRequest {
-	return GridDashboardAPIGriddashboardReferencePutRequest{
+func (a *GridDashboardAPIService) Update(ctx context.Context, reference string) GridDashboardAPIUpdateRequest {
+	return GridDashboardAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GridDashboardAPIService) GriddashboardReferencePut(ctx context.Context,
 // Execute executes the request
 //
 //	@return UpdateGridDashboardResponse
-func (a *GridDashboardAPIService) GriddashboardReferencePutExecute(r GridDashboardAPIGriddashboardReferencePutRequest) (*UpdateGridDashboardResponse, *http.Response, error) {
+func (a *GridDashboardAPIService) UpdateExecute(r GridDashboardAPIUpdateRequest) (*UpdateGridDashboardResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GridDashboardAPIService) GriddashboardReferencePutExecute(r GridDashboa
 		localVarReturnValue *UpdateGridDashboardResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDashboardAPIService.GriddashboardReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDashboardAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

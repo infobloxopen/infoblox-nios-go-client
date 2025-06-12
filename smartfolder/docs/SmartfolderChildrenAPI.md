@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SmartfolderchildrenGet**](SmartfolderChildrenAPI.md#SmartfolderchildrenGet) | **Get** /smartfolder:children | Retrieve smartfolder:children objects
-[**SmartfolderchildrenReferenceGet**](SmartfolderChildrenAPI.md#SmartfolderchildrenReferenceGet) | **Get** /smartfolder:children/{reference} | Get a specific smartfolder:children object
+[**List**](SmartfolderChildrenAPI.md#List) | **Get** /smartfolder:children | Retrieve smartfolder:children objects
+[**Read**](SmartfolderChildrenAPI.md#Read) | **Get** /smartfolder:children/{reference} | Get a specific smartfolder:children object
 
 
 
-## SmartfolderchildrenGet
+## List
 
-> ListSmartfolderChildrenResponse SmartfolderchildrenGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListSmartfolderChildrenResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve smartfolder:children objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := smartfolder.NewAPIClient()
-	resp, r, err := apiClient.SmartfolderChildrenAPI.SmartfolderchildrenGet(context.Background()).Execute()
+	resp, r, err := apiClient.SmartfolderChildrenAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderChildrenAPI.SmartfolderchildrenGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderChildrenAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SmartfolderchildrenGet`: ListSmartfolderChildrenResponse
-	fmt.Fprintf(os.Stdout, "Response from `SmartfolderChildrenAPI.SmartfolderchildrenGet`: %v\n", resp)
+	// response from `List`: ListSmartfolderChildrenResponse
+	fmt.Fprintf(os.Stdout, "Response from `SmartfolderChildrenAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SmartfolderChildrenAPISmartfolderchildrenGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SmartfolderChildrenAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SmartfolderchildrenReferenceGet
+## Read
 
-> GetSmartfolderChildrenResponse SmartfolderchildrenReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetSmartfolderChildrenResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific smartfolder:children object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the smartfolder:children object
 
 	apiClient := smartfolder.NewAPIClient()
-	resp, r, err := apiClient.SmartfolderChildrenAPI.SmartfolderchildrenReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.SmartfolderChildrenAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderChildrenAPI.SmartfolderchildrenReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderChildrenAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SmartfolderchildrenReferenceGet`: GetSmartfolderChildrenResponse
-	fmt.Fprintf(os.Stdout, "Response from `SmartfolderChildrenAPI.SmartfolderchildrenReferenceGet`: %v\n", resp)
+	// response from `Read`: GetSmartfolderChildrenResponse
+	fmt.Fprintf(os.Stdout, "Response from `SmartfolderChildrenAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SmartfolderChildrenAPISmartfolderchildrenReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SmartfolderChildrenAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

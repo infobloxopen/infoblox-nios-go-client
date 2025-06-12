@@ -79,18 +79,18 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SmartfolderChildrenAPI* | [**SmartfolderchildrenGet**](docs/SmartfolderChildrenAPI.md#smartfolderchildrenget) | **Get** /smartfolder:children | Retrieve smartfolder:children objects
-*SmartfolderChildrenAPI* | [**SmartfolderchildrenReferenceGet**](docs/SmartfolderChildrenAPI.md#smartfolderchildrenreferenceget) | **Get** /smartfolder:children/{reference} | Get a specific smartfolder:children object
-*SmartfolderGlobalAPI* | [**SmartfolderglobalGet**](docs/SmartfolderGlobalAPI.md#smartfolderglobalget) | **Get** /smartfolder:global | Retrieve smartfolder:global objects
-*SmartfolderGlobalAPI* | [**SmartfolderglobalPost**](docs/SmartfolderGlobalAPI.md#smartfolderglobalpost) | **Post** /smartfolder:global | Create a smartfolder:global object
-*SmartfolderGlobalAPI* | [**SmartfolderglobalReferenceDelete**](docs/SmartfolderGlobalAPI.md#smartfolderglobalreferencedelete) | **Delete** /smartfolder:global/{reference} | Delete a smartfolder:global object
-*SmartfolderGlobalAPI* | [**SmartfolderglobalReferenceGet**](docs/SmartfolderGlobalAPI.md#smartfolderglobalreferenceget) | **Get** /smartfolder:global/{reference} | Get a specific smartfolder:global object
-*SmartfolderGlobalAPI* | [**SmartfolderglobalReferencePut**](docs/SmartfolderGlobalAPI.md#smartfolderglobalreferenceput) | **Put** /smartfolder:global/{reference} | Update a smartfolder:global object
-*SmartfolderPersonalAPI* | [**SmartfolderpersonalGet**](docs/SmartfolderPersonalAPI.md#smartfolderpersonalget) | **Get** /smartfolder:personal | Retrieve smartfolder:personal objects
-*SmartfolderPersonalAPI* | [**SmartfolderpersonalPost**](docs/SmartfolderPersonalAPI.md#smartfolderpersonalpost) | **Post** /smartfolder:personal | Create a smartfolder:personal object
-*SmartfolderPersonalAPI* | [**SmartfolderpersonalReferenceDelete**](docs/SmartfolderPersonalAPI.md#smartfolderpersonalreferencedelete) | **Delete** /smartfolder:personal/{reference} | Delete a smartfolder:personal object
-*SmartfolderPersonalAPI* | [**SmartfolderpersonalReferenceGet**](docs/SmartfolderPersonalAPI.md#smartfolderpersonalreferenceget) | **Get** /smartfolder:personal/{reference} | Get a specific smartfolder:personal object
-*SmartfolderPersonalAPI* | [**SmartfolderpersonalReferencePut**](docs/SmartfolderPersonalAPI.md#smartfolderpersonalreferenceput) | **Put** /smartfolder:personal/{reference} | Update a smartfolder:personal object
+*SmartfolderChildrenAPI* | [**List**](docs/SmartfolderChildrenAPI.md#list) | **Get** /smartfolder:children | Retrieve smartfolder:children objects
+*SmartfolderChildrenAPI* | [**Read**](docs/SmartfolderChildrenAPI.md#read) | **Get** /smartfolder:children/{reference} | Get a specific smartfolder:children object
+*SmartfolderGlobalAPI* | [**Create**](docs/SmartfolderGlobalAPI.md#create) | **Post** /smartfolder:global | Create a smartfolder:global object
+*SmartfolderGlobalAPI* | [**Delete**](docs/SmartfolderGlobalAPI.md#delete) | **Delete** /smartfolder:global/{reference} | Delete a smartfolder:global object
+*SmartfolderGlobalAPI* | [**List**](docs/SmartfolderGlobalAPI.md#list) | **Get** /smartfolder:global | Retrieve smartfolder:global objects
+*SmartfolderGlobalAPI* | [**Read**](docs/SmartfolderGlobalAPI.md#read) | **Get** /smartfolder:global/{reference} | Get a specific smartfolder:global object
+*SmartfolderGlobalAPI* | [**Update**](docs/SmartfolderGlobalAPI.md#update) | **Put** /smartfolder:global/{reference} | Update a smartfolder:global object
+*SmartfolderPersonalAPI* | [**Create**](docs/SmartfolderPersonalAPI.md#create) | **Post** /smartfolder:personal | Create a smartfolder:personal object
+*SmartfolderPersonalAPI* | [**Delete**](docs/SmartfolderPersonalAPI.md#delete) | **Delete** /smartfolder:personal/{reference} | Delete a smartfolder:personal object
+*SmartfolderPersonalAPI* | [**List**](docs/SmartfolderPersonalAPI.md#list) | **Get** /smartfolder:personal | Retrieve smartfolder:personal objects
+*SmartfolderPersonalAPI* | [**Read**](docs/SmartfolderPersonalAPI.md#read) | **Get** /smartfolder:personal/{reference} | Get a specific smartfolder:personal object
+*SmartfolderPersonalAPI* | [**Update**](docs/SmartfolderPersonalAPI.md#update) | **Put** /smartfolder:personal/{reference} | Update a smartfolder:personal object
 
 
 ## Documentation For Models

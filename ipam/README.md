@@ -79,91 +79,91 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BulkhostAPI* | [**Get**](docs/BulkhostAPI.md#get) | **Get** /bulkhost | Retrieve bulkhost objects
-*BulkhostAPI* | [**Post**](docs/BulkhostAPI.md#post) | **Post** /bulkhost | Create a bulkhost object
-*BulkhostAPI* | [**ReferenceDelete**](docs/BulkhostAPI.md#referencedelete) | **Delete** /bulkhost/{reference} | Delete a bulkhost object
-*BulkhostAPI* | [**ReferenceGet**](docs/BulkhostAPI.md#referenceget) | **Get** /bulkhost/{reference} | Get a specific bulkhost object
-*BulkhostAPI* | [**ReferencePut**](docs/BulkhostAPI.md#referenceput) | **Put** /bulkhost/{reference} | Update a bulkhost object
-*BulkhostnametemplateAPI* | [**Get**](docs/BulkhostnametemplateAPI.md#get) | **Get** /bulkhostnametemplate | Retrieve bulkhostnametemplate objects
-*BulkhostnametemplateAPI* | [**Post**](docs/BulkhostnametemplateAPI.md#post) | **Post** /bulkhostnametemplate | Create a bulkhostnametemplate object
-*BulkhostnametemplateAPI* | [**ReferenceDelete**](docs/BulkhostnametemplateAPI.md#referencedelete) | **Delete** /bulkhostnametemplate/{reference} | Delete a bulkhostnametemplate object
-*BulkhostnametemplateAPI* | [**ReferenceGet**](docs/BulkhostnametemplateAPI.md#referenceget) | **Get** /bulkhostnametemplate/{reference} | Get a specific bulkhostnametemplate object
-*BulkhostnametemplateAPI* | [**ReferencePut**](docs/BulkhostnametemplateAPI.md#referenceput) | **Put** /bulkhostnametemplate/{reference} | Update a bulkhostnametemplate object
-*DiscoverytaskAPI* | [**Get**](docs/DiscoverytaskAPI.md#get) | **Get** /discoverytask | Retrieve discoverytask objects
-*DiscoverytaskAPI* | [**ReferenceGet**](docs/DiscoverytaskAPI.md#referenceget) | **Get** /discoverytask/{reference} | Get a specific discoverytask object
-*DiscoverytaskAPI* | [**ReferencePut**](docs/DiscoverytaskAPI.md#referenceput) | **Put** /discoverytask/{reference} | Update a discoverytask object
-*HostnamerewritepolicyAPI* | [**Get**](docs/HostnamerewritepolicyAPI.md#get) | **Get** /hostnamerewritepolicy | Retrieve hostnamerewritepolicy objects
-*HostnamerewritepolicyAPI* | [**ReferenceGet**](docs/HostnamerewritepolicyAPI.md#referenceget) | **Get** /hostnamerewritepolicy/{reference} | Get a specific hostnamerewritepolicy object
-*HostnamerewritepolicyAPI* | [**ReferencePut**](docs/HostnamerewritepolicyAPI.md#referenceput) | **Put** /hostnamerewritepolicy/{reference} | Update a hostnamerewritepolicy object
-*IpamStatisticsAPI* | [**IpamstatisticsGet**](docs/IpamStatisticsAPI.md#ipamstatisticsget) | **Get** /ipam:statistics | Retrieve ipam:statistics objects
-*IpamStatisticsAPI* | [**IpamstatisticsReferenceGet**](docs/IpamStatisticsAPI.md#ipamstatisticsreferenceget) | **Get** /ipam:statistics/{reference} | Get a specific ipam:statistics object
-*Ipv4addressAPI* | [**Get**](docs/Ipv4addressAPI.md#get) | **Get** /ipv4address | Retrieve ipv4address objects
-*Ipv4addressAPI* | [**ReferenceDelete**](docs/Ipv4addressAPI.md#referencedelete) | **Delete** /ipv4address/{reference} | Delete a ipv4address object
-*Ipv4addressAPI* | [**ReferenceGet**](docs/Ipv4addressAPI.md#referenceget) | **Get** /ipv4address/{reference} | Get a specific ipv4address object
-*Ipv4addressAPI* | [**ReferencePut**](docs/Ipv4addressAPI.md#referenceput) | **Put** /ipv4address/{reference} | Update a ipv4address object
-*Ipv6addressAPI* | [**Get**](docs/Ipv6addressAPI.md#get) | **Get** /ipv6address | Retrieve ipv6address objects
-*Ipv6addressAPI* | [**ReferenceDelete**](docs/Ipv6addressAPI.md#referencedelete) | **Delete** /ipv6address/{reference} | Delete a ipv6address object
-*Ipv6addressAPI* | [**ReferenceGet**](docs/Ipv6addressAPI.md#referenceget) | **Get** /ipv6address/{reference} | Get a specific ipv6address object
-*Ipv6addressAPI* | [**ReferencePut**](docs/Ipv6addressAPI.md#referenceput) | **Put** /ipv6address/{reference} | Update a ipv6address object
-*Ipv6networkAPI* | [**Get**](docs/Ipv6networkAPI.md#get) | **Get** /ipv6network | Retrieve ipv6network objects
-*Ipv6networkAPI* | [**Post**](docs/Ipv6networkAPI.md#post) | **Post** /ipv6network | Create a ipv6network object
-*Ipv6networkAPI* | [**ReferenceDelete**](docs/Ipv6networkAPI.md#referencedelete) | **Delete** /ipv6network/{reference} | Delete a ipv6network object
-*Ipv6networkAPI* | [**ReferenceGet**](docs/Ipv6networkAPI.md#referenceget) | **Get** /ipv6network/{reference} | Get a specific ipv6network object
-*Ipv6networkAPI* | [**ReferencePut**](docs/Ipv6networkAPI.md#referenceput) | **Put** /ipv6network/{reference} | Update a ipv6network object
-*Ipv6networkcontainerAPI* | [**Get**](docs/Ipv6networkcontainerAPI.md#get) | **Get** /ipv6networkcontainer | Retrieve ipv6networkcontainer objects
-*Ipv6networkcontainerAPI* | [**Post**](docs/Ipv6networkcontainerAPI.md#post) | **Post** /ipv6networkcontainer | Create a ipv6networkcontainer object
-*Ipv6networkcontainerAPI* | [**ReferenceDelete**](docs/Ipv6networkcontainerAPI.md#referencedelete) | **Delete** /ipv6networkcontainer/{reference} | Delete a ipv6networkcontainer object
-*Ipv6networkcontainerAPI* | [**ReferenceGet**](docs/Ipv6networkcontainerAPI.md#referenceget) | **Get** /ipv6networkcontainer/{reference} | Get a specific ipv6networkcontainer object
-*Ipv6networkcontainerAPI* | [**ReferencePut**](docs/Ipv6networkcontainerAPI.md#referenceput) | **Put** /ipv6networkcontainer/{reference} | Update a ipv6networkcontainer object
-*Ipv6networktemplateAPI* | [**Get**](docs/Ipv6networktemplateAPI.md#get) | **Get** /ipv6networktemplate | Retrieve ipv6networktemplate objects
-*Ipv6networktemplateAPI* | [**Post**](docs/Ipv6networktemplateAPI.md#post) | **Post** /ipv6networktemplate | Create a ipv6networktemplate object
-*Ipv6networktemplateAPI* | [**ReferenceDelete**](docs/Ipv6networktemplateAPI.md#referencedelete) | **Delete** /ipv6networktemplate/{reference} | Delete a ipv6networktemplate object
-*Ipv6networktemplateAPI* | [**ReferenceGet**](docs/Ipv6networktemplateAPI.md#referenceget) | **Get** /ipv6networktemplate/{reference} | Get a specific ipv6networktemplate object
-*Ipv6networktemplateAPI* | [**ReferencePut**](docs/Ipv6networktemplateAPI.md#referenceput) | **Put** /ipv6networktemplate/{reference} | Update a ipv6networktemplate object
-*NetworkAPI* | [**Get**](docs/NetworkAPI.md#get) | **Get** /network | Retrieve network objects
-*NetworkAPI* | [**Post**](docs/NetworkAPI.md#post) | **Post** /network | Create a network object
-*NetworkAPI* | [**ReferenceDelete**](docs/NetworkAPI.md#referencedelete) | **Delete** /network/{reference} | Delete a network object
-*NetworkAPI* | [**ReferenceGet**](docs/NetworkAPI.md#referenceget) | **Get** /network/{reference} | Get a specific network object
-*NetworkAPI* | [**ReferencePut**](docs/NetworkAPI.md#referenceput) | **Put** /network/{reference} | Update a network object
-*NetworkDiscoveryAPI* | [**Get**](docs/NetworkDiscoveryAPI.md#get) | **Get** /network_discovery | Retrieve network_discovery objects
-*NetworkDiscoveryAPI* | [**ReferenceGet**](docs/NetworkDiscoveryAPI.md#referenceget) | **Get** /network_discovery/{reference} | Get a specific network_discovery object
-*NetworkcontainerAPI* | [**Get**](docs/NetworkcontainerAPI.md#get) | **Get** /networkcontainer | Retrieve networkcontainer objects
-*NetworkcontainerAPI* | [**Post**](docs/NetworkcontainerAPI.md#post) | **Post** /networkcontainer | Create a networkcontainer object
-*NetworkcontainerAPI* | [**ReferenceDelete**](docs/NetworkcontainerAPI.md#referencedelete) | **Delete** /networkcontainer/{reference} | Delete a networkcontainer object
-*NetworkcontainerAPI* | [**ReferenceGet**](docs/NetworkcontainerAPI.md#referenceget) | **Get** /networkcontainer/{reference} | Get a specific networkcontainer object
-*NetworkcontainerAPI* | [**ReferencePut**](docs/NetworkcontainerAPI.md#referenceput) | **Put** /networkcontainer/{reference} | Update a networkcontainer object
-*NetworktemplateAPI* | [**Get**](docs/NetworktemplateAPI.md#get) | **Get** /networktemplate | Retrieve networktemplate objects
-*NetworktemplateAPI* | [**Post**](docs/NetworktemplateAPI.md#post) | **Post** /networktemplate | Create a networktemplate object
-*NetworktemplateAPI* | [**ReferenceDelete**](docs/NetworktemplateAPI.md#referencedelete) | **Delete** /networktemplate/{reference} | Delete a networktemplate object
-*NetworktemplateAPI* | [**ReferenceGet**](docs/NetworktemplateAPI.md#referenceget) | **Get** /networktemplate/{reference} | Get a specific networktemplate object
-*NetworktemplateAPI* | [**ReferencePut**](docs/NetworktemplateAPI.md#referenceput) | **Put** /networktemplate/{reference} | Update a networktemplate object
-*NetworkviewAPI* | [**Get**](docs/NetworkviewAPI.md#get) | **Get** /networkview | Retrieve networkview objects
-*NetworkviewAPI* | [**Post**](docs/NetworkviewAPI.md#post) | **Post** /networkview | Create a networkview object
-*NetworkviewAPI* | [**ReferenceDelete**](docs/NetworkviewAPI.md#referencedelete) | **Delete** /networkview/{reference} | Delete a networkview object
-*NetworkviewAPI* | [**ReferenceGet**](docs/NetworkviewAPI.md#referenceget) | **Get** /networkview/{reference} | Get a specific networkview object
-*NetworkviewAPI* | [**ReferencePut**](docs/NetworkviewAPI.md#referenceput) | **Put** /networkview/{reference} | Update a networkview object
-*SuperhostAPI* | [**Get**](docs/SuperhostAPI.md#get) | **Get** /superhost | Retrieve superhost objects
-*SuperhostAPI* | [**Post**](docs/SuperhostAPI.md#post) | **Post** /superhost | Create a superhost object
-*SuperhostAPI* | [**ReferenceDelete**](docs/SuperhostAPI.md#referencedelete) | **Delete** /superhost/{reference} | Delete a superhost object
-*SuperhostAPI* | [**ReferenceGet**](docs/SuperhostAPI.md#referenceget) | **Get** /superhost/{reference} | Get a specific superhost object
-*SuperhostAPI* | [**ReferencePut**](docs/SuperhostAPI.md#referenceput) | **Put** /superhost/{reference} | Update a superhost object
-*SuperhostchildAPI* | [**Get**](docs/SuperhostchildAPI.md#get) | **Get** /superhostchild | Retrieve superhostchild objects
-*SuperhostchildAPI* | [**ReferenceGet**](docs/SuperhostchildAPI.md#referenceget) | **Get** /superhostchild/{reference} | Get a specific superhostchild object
-*VlanAPI* | [**Get**](docs/VlanAPI.md#get) | **Get** /vlan | Retrieve vlan objects
-*VlanAPI* | [**Post**](docs/VlanAPI.md#post) | **Post** /vlan | Create a vlan object
-*VlanAPI* | [**ReferenceDelete**](docs/VlanAPI.md#referencedelete) | **Delete** /vlan/{reference} | Delete a vlan object
-*VlanAPI* | [**ReferenceGet**](docs/VlanAPI.md#referenceget) | **Get** /vlan/{reference} | Get a specific vlan object
-*VlanAPI* | [**ReferencePut**](docs/VlanAPI.md#referenceput) | **Put** /vlan/{reference} | Update a vlan object
-*VlanrangeAPI* | [**Get**](docs/VlanrangeAPI.md#get) | **Get** /vlanrange | Retrieve vlanrange objects
-*VlanrangeAPI* | [**Post**](docs/VlanrangeAPI.md#post) | **Post** /vlanrange | Create a vlanrange object
-*VlanrangeAPI* | [**ReferenceDelete**](docs/VlanrangeAPI.md#referencedelete) | **Delete** /vlanrange/{reference} | Delete a vlanrange object
-*VlanrangeAPI* | [**ReferenceGet**](docs/VlanrangeAPI.md#referenceget) | **Get** /vlanrange/{reference} | Get a specific vlanrange object
-*VlanrangeAPI* | [**ReferencePut**](docs/VlanrangeAPI.md#referenceput) | **Put** /vlanrange/{reference} | Update a vlanrange object
-*VlanviewAPI* | [**Get**](docs/VlanviewAPI.md#get) | **Get** /vlanview | Retrieve vlanview objects
-*VlanviewAPI* | [**Post**](docs/VlanviewAPI.md#post) | **Post** /vlanview | Create a vlanview object
-*VlanviewAPI* | [**ReferenceDelete**](docs/VlanviewAPI.md#referencedelete) | **Delete** /vlanview/{reference} | Delete a vlanview object
-*VlanviewAPI* | [**ReferenceGet**](docs/VlanviewAPI.md#referenceget) | **Get** /vlanview/{reference} | Get a specific vlanview object
-*VlanviewAPI* | [**ReferencePut**](docs/VlanviewAPI.md#referenceput) | **Put** /vlanview/{reference} | Update a vlanview object
+*BulkhostAPI* | [**Create**](docs/BulkhostAPI.md#create) | **Post** /bulkhost | Create a bulkhost object
+*BulkhostAPI* | [**Delete**](docs/BulkhostAPI.md#delete) | **Delete** /bulkhost/{reference} | Delete a bulkhost object
+*BulkhostAPI* | [**List**](docs/BulkhostAPI.md#list) | **Get** /bulkhost | Retrieve bulkhost objects
+*BulkhostAPI* | [**Read**](docs/BulkhostAPI.md#read) | **Get** /bulkhost/{reference} | Get a specific bulkhost object
+*BulkhostAPI* | [**Update**](docs/BulkhostAPI.md#update) | **Put** /bulkhost/{reference} | Update a bulkhost object
+*BulkhostnametemplateAPI* | [**Create**](docs/BulkhostnametemplateAPI.md#create) | **Post** /bulkhostnametemplate | Create a bulkhostnametemplate object
+*BulkhostnametemplateAPI* | [**Delete**](docs/BulkhostnametemplateAPI.md#delete) | **Delete** /bulkhostnametemplate/{reference} | Delete a bulkhostnametemplate object
+*BulkhostnametemplateAPI* | [**List**](docs/BulkhostnametemplateAPI.md#list) | **Get** /bulkhostnametemplate | Retrieve bulkhostnametemplate objects
+*BulkhostnametemplateAPI* | [**Read**](docs/BulkhostnametemplateAPI.md#read) | **Get** /bulkhostnametemplate/{reference} | Get a specific bulkhostnametemplate object
+*BulkhostnametemplateAPI* | [**Update**](docs/BulkhostnametemplateAPI.md#update) | **Put** /bulkhostnametemplate/{reference} | Update a bulkhostnametemplate object
+*DiscoverytaskAPI* | [**List**](docs/DiscoverytaskAPI.md#list) | **Get** /discoverytask | Retrieve discoverytask objects
+*DiscoverytaskAPI* | [**Read**](docs/DiscoverytaskAPI.md#read) | **Get** /discoverytask/{reference} | Get a specific discoverytask object
+*DiscoverytaskAPI* | [**Update**](docs/DiscoverytaskAPI.md#update) | **Put** /discoverytask/{reference} | Update a discoverytask object
+*HostnamerewritepolicyAPI* | [**List**](docs/HostnamerewritepolicyAPI.md#list) | **Get** /hostnamerewritepolicy | Retrieve hostnamerewritepolicy objects
+*HostnamerewritepolicyAPI* | [**Read**](docs/HostnamerewritepolicyAPI.md#read) | **Get** /hostnamerewritepolicy/{reference} | Get a specific hostnamerewritepolicy object
+*HostnamerewritepolicyAPI* | [**Update**](docs/HostnamerewritepolicyAPI.md#update) | **Put** /hostnamerewritepolicy/{reference} | Update a hostnamerewritepolicy object
+*IpamStatisticsAPI* | [**List**](docs/IpamStatisticsAPI.md#list) | **Get** /ipam:statistics | Retrieve ipam:statistics objects
+*IpamStatisticsAPI* | [**Read**](docs/IpamStatisticsAPI.md#read) | **Get** /ipam:statistics/{reference} | Get a specific ipam:statistics object
+*Ipv4addressAPI* | [**Delete**](docs/Ipv4addressAPI.md#delete) | **Delete** /ipv4address/{reference} | Delete a ipv4address object
+*Ipv4addressAPI* | [**List**](docs/Ipv4addressAPI.md#list) | **Get** /ipv4address | Retrieve ipv4address objects
+*Ipv4addressAPI* | [**Read**](docs/Ipv4addressAPI.md#read) | **Get** /ipv4address/{reference} | Get a specific ipv4address object
+*Ipv4addressAPI* | [**Update**](docs/Ipv4addressAPI.md#update) | **Put** /ipv4address/{reference} | Update a ipv4address object
+*Ipv6addressAPI* | [**Delete**](docs/Ipv6addressAPI.md#delete) | **Delete** /ipv6address/{reference} | Delete a ipv6address object
+*Ipv6addressAPI* | [**List**](docs/Ipv6addressAPI.md#list) | **Get** /ipv6address | Retrieve ipv6address objects
+*Ipv6addressAPI* | [**Read**](docs/Ipv6addressAPI.md#read) | **Get** /ipv6address/{reference} | Get a specific ipv6address object
+*Ipv6addressAPI* | [**Update**](docs/Ipv6addressAPI.md#update) | **Put** /ipv6address/{reference} | Update a ipv6address object
+*Ipv6networkAPI* | [**Create**](docs/Ipv6networkAPI.md#create) | **Post** /ipv6network | Create a ipv6network object
+*Ipv6networkAPI* | [**Delete**](docs/Ipv6networkAPI.md#delete) | **Delete** /ipv6network/{reference} | Delete a ipv6network object
+*Ipv6networkAPI* | [**List**](docs/Ipv6networkAPI.md#list) | **Get** /ipv6network | Retrieve ipv6network objects
+*Ipv6networkAPI* | [**Read**](docs/Ipv6networkAPI.md#read) | **Get** /ipv6network/{reference} | Get a specific ipv6network object
+*Ipv6networkAPI* | [**Update**](docs/Ipv6networkAPI.md#update) | **Put** /ipv6network/{reference} | Update a ipv6network object
+*Ipv6networkcontainerAPI* | [**Create**](docs/Ipv6networkcontainerAPI.md#create) | **Post** /ipv6networkcontainer | Create a ipv6networkcontainer object
+*Ipv6networkcontainerAPI* | [**Delete**](docs/Ipv6networkcontainerAPI.md#delete) | **Delete** /ipv6networkcontainer/{reference} | Delete a ipv6networkcontainer object
+*Ipv6networkcontainerAPI* | [**List**](docs/Ipv6networkcontainerAPI.md#list) | **Get** /ipv6networkcontainer | Retrieve ipv6networkcontainer objects
+*Ipv6networkcontainerAPI* | [**Read**](docs/Ipv6networkcontainerAPI.md#read) | **Get** /ipv6networkcontainer/{reference} | Get a specific ipv6networkcontainer object
+*Ipv6networkcontainerAPI* | [**Update**](docs/Ipv6networkcontainerAPI.md#update) | **Put** /ipv6networkcontainer/{reference} | Update a ipv6networkcontainer object
+*Ipv6networktemplateAPI* | [**Create**](docs/Ipv6networktemplateAPI.md#create) | **Post** /ipv6networktemplate | Create a ipv6networktemplate object
+*Ipv6networktemplateAPI* | [**Delete**](docs/Ipv6networktemplateAPI.md#delete) | **Delete** /ipv6networktemplate/{reference} | Delete a ipv6networktemplate object
+*Ipv6networktemplateAPI* | [**List**](docs/Ipv6networktemplateAPI.md#list) | **Get** /ipv6networktemplate | Retrieve ipv6networktemplate objects
+*Ipv6networktemplateAPI* | [**Read**](docs/Ipv6networktemplateAPI.md#read) | **Get** /ipv6networktemplate/{reference} | Get a specific ipv6networktemplate object
+*Ipv6networktemplateAPI* | [**Update**](docs/Ipv6networktemplateAPI.md#update) | **Put** /ipv6networktemplate/{reference} | Update a ipv6networktemplate object
+*NetworkAPI* | [**Create**](docs/NetworkAPI.md#create) | **Post** /network | Create a network object
+*NetworkAPI* | [**Delete**](docs/NetworkAPI.md#delete) | **Delete** /network/{reference} | Delete a network object
+*NetworkAPI* | [**List**](docs/NetworkAPI.md#list) | **Get** /network | Retrieve network objects
+*NetworkAPI* | [**Read**](docs/NetworkAPI.md#read) | **Get** /network/{reference} | Get a specific network object
+*NetworkAPI* | [**Update**](docs/NetworkAPI.md#update) | **Put** /network/{reference} | Update a network object
+*NetworkDiscoveryAPI* | [**List**](docs/NetworkDiscoveryAPI.md#list) | **Get** /network_discovery | Retrieve network_discovery objects
+*NetworkDiscoveryAPI* | [**Read**](docs/NetworkDiscoveryAPI.md#read) | **Get** /network_discovery/{reference} | Get a specific network_discovery object
+*NetworkcontainerAPI* | [**Create**](docs/NetworkcontainerAPI.md#create) | **Post** /networkcontainer | Create a networkcontainer object
+*NetworkcontainerAPI* | [**Delete**](docs/NetworkcontainerAPI.md#delete) | **Delete** /networkcontainer/{reference} | Delete a networkcontainer object
+*NetworkcontainerAPI* | [**List**](docs/NetworkcontainerAPI.md#list) | **Get** /networkcontainer | Retrieve networkcontainer objects
+*NetworkcontainerAPI* | [**Read**](docs/NetworkcontainerAPI.md#read) | **Get** /networkcontainer/{reference} | Get a specific networkcontainer object
+*NetworkcontainerAPI* | [**Update**](docs/NetworkcontainerAPI.md#update) | **Put** /networkcontainer/{reference} | Update a networkcontainer object
+*NetworktemplateAPI* | [**Create**](docs/NetworktemplateAPI.md#create) | **Post** /networktemplate | Create a networktemplate object
+*NetworktemplateAPI* | [**Delete**](docs/NetworktemplateAPI.md#delete) | **Delete** /networktemplate/{reference} | Delete a networktemplate object
+*NetworktemplateAPI* | [**List**](docs/NetworktemplateAPI.md#list) | **Get** /networktemplate | Retrieve networktemplate objects
+*NetworktemplateAPI* | [**Read**](docs/NetworktemplateAPI.md#read) | **Get** /networktemplate/{reference} | Get a specific networktemplate object
+*NetworktemplateAPI* | [**Update**](docs/NetworktemplateAPI.md#update) | **Put** /networktemplate/{reference} | Update a networktemplate object
+*NetworkviewAPI* | [**Create**](docs/NetworkviewAPI.md#create) | **Post** /networkview | Create a networkview object
+*NetworkviewAPI* | [**Delete**](docs/NetworkviewAPI.md#delete) | **Delete** /networkview/{reference} | Delete a networkview object
+*NetworkviewAPI* | [**List**](docs/NetworkviewAPI.md#list) | **Get** /networkview | Retrieve networkview objects
+*NetworkviewAPI* | [**Read**](docs/NetworkviewAPI.md#read) | **Get** /networkview/{reference} | Get a specific networkview object
+*NetworkviewAPI* | [**Update**](docs/NetworkviewAPI.md#update) | **Put** /networkview/{reference} | Update a networkview object
+*SuperhostAPI* | [**Create**](docs/SuperhostAPI.md#create) | **Post** /superhost | Create a superhost object
+*SuperhostAPI* | [**Delete**](docs/SuperhostAPI.md#delete) | **Delete** /superhost/{reference} | Delete a superhost object
+*SuperhostAPI* | [**List**](docs/SuperhostAPI.md#list) | **Get** /superhost | Retrieve superhost objects
+*SuperhostAPI* | [**Read**](docs/SuperhostAPI.md#read) | **Get** /superhost/{reference} | Get a specific superhost object
+*SuperhostAPI* | [**Update**](docs/SuperhostAPI.md#update) | **Put** /superhost/{reference} | Update a superhost object
+*SuperhostchildAPI* | [**List**](docs/SuperhostchildAPI.md#list) | **Get** /superhostchild | Retrieve superhostchild objects
+*SuperhostchildAPI* | [**Read**](docs/SuperhostchildAPI.md#read) | **Get** /superhostchild/{reference} | Get a specific superhostchild object
+*VlanAPI* | [**Create**](docs/VlanAPI.md#create) | **Post** /vlan | Create a vlan object
+*VlanAPI* | [**Delete**](docs/VlanAPI.md#delete) | **Delete** /vlan/{reference} | Delete a vlan object
+*VlanAPI* | [**List**](docs/VlanAPI.md#list) | **Get** /vlan | Retrieve vlan objects
+*VlanAPI* | [**Read**](docs/VlanAPI.md#read) | **Get** /vlan/{reference} | Get a specific vlan object
+*VlanAPI* | [**Update**](docs/VlanAPI.md#update) | **Put** /vlan/{reference} | Update a vlan object
+*VlanrangeAPI* | [**Create**](docs/VlanrangeAPI.md#create) | **Post** /vlanrange | Create a vlanrange object
+*VlanrangeAPI* | [**Delete**](docs/VlanrangeAPI.md#delete) | **Delete** /vlanrange/{reference} | Delete a vlanrange object
+*VlanrangeAPI* | [**List**](docs/VlanrangeAPI.md#list) | **Get** /vlanrange | Retrieve vlanrange objects
+*VlanrangeAPI* | [**Read**](docs/VlanrangeAPI.md#read) | **Get** /vlanrange/{reference} | Get a specific vlanrange object
+*VlanrangeAPI* | [**Update**](docs/VlanrangeAPI.md#update) | **Put** /vlanrange/{reference} | Update a vlanrange object
+*VlanviewAPI* | [**Create**](docs/VlanviewAPI.md#create) | **Post** /vlanview | Create a vlanview object
+*VlanviewAPI* | [**Delete**](docs/VlanviewAPI.md#delete) | **Delete** /vlanview/{reference} | Delete a vlanview object
+*VlanviewAPI* | [**List**](docs/VlanviewAPI.md#list) | **Get** /vlanview | Retrieve vlanview objects
+*VlanviewAPI* | [**Read**](docs/VlanviewAPI.md#read) | **Get** /vlanview/{reference} | Get a specific vlanview object
+*VlanviewAPI* | [**Update**](docs/VlanviewAPI.md#update) | **Put** /vlanview/{reference} | Update a vlanview object
 
 
 ## Documentation For Models

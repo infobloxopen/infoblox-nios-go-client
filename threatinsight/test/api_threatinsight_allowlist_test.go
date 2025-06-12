@@ -23,11 +23,11 @@ func TestThreatinsightAllowlistAPIService(t *testing.T) {
 
 	apiClient := threatinsight.NewAPIClient()
 
-	t.Run("Test ThreatinsightAllowlistAPIService ThreatinsightallowlistGet", func(t *testing.T) {
+	t.Run("Test ThreatinsightAllowlistAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ThreatinsightAllowlistAPI.ThreatinsightallowlistGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ThreatinsightAllowlistAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestThreatinsightAllowlistAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatinsightAllowlistAPIService ThreatinsightallowlistPost", func(t *testing.T) {
+	t.Run("Test ThreatinsightAllowlistAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ThreatinsightAllowlistAPI.ThreatinsightallowlistPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ThreatinsightAllowlistAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ThreatinsightAllowlistAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ThreatinsightAllowlistAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestThreatinsightAllowlistAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatinsightAllowlistAPIService ThreatinsightallowlistReferenceDelete", func(t *testing.T) {
+	t.Run("Test ThreatinsightAllowlistAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ThreatinsightAllowlistAPI.ThreatinsightallowlistReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ThreatinsightAllowlistAPIService ThreatinsightallowlistReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ThreatinsightAllowlistAPI.ThreatinsightallowlistReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ThreatinsightAllowlistAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestThreatinsightAllowlistAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatinsightAllowlistAPIService ThreatinsightallowlistReferencePut", func(t *testing.T) {
+	t.Run("Test ThreatinsightAllowlistAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ThreatinsightAllowlistAPI.ThreatinsightallowlistReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ThreatinsightAllowlistAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

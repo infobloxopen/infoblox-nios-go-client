@@ -27,6 +27,7 @@ paths:
     get:
       description: Returns a list of threatinsight:allowlist objects matching the
         search criteria
+      operationId: ThreatinsightAllowlistList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -123,6 +124,7 @@ paths:
       - ThreatinsightAllowlist
     post:
       description: Creates a new threatinsight:allowlist object
+      operationId: ThreatinsightAllowlistCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -182,6 +184,7 @@ paths:
   /threatinsight:allowlist/{reference}:
     delete:
       description: Deletes a specific threatinsight:allowlist object by reference
+      operationId: ThreatinsightAllowlistDelete
       parameters:
       - description: Reference of the threatinsight:allowlist object
         explode: false
@@ -209,6 +212,7 @@ paths:
       - ThreatinsightAllowlist
     get:
       description: Returns a specific threatinsight:allowlist object by reference
+      operationId: ThreatinsightAllowlistRead
       parameters:
       - description: Reference of the threatinsight:allowlist object
         explode: false
@@ -268,6 +272,7 @@ paths:
       - ThreatinsightAllowlist
     put:
       description: Updates a specific threatinsight:allowlist object by reference
+      operationId: ThreatinsightAllowlistUpdate
       parameters:
       - description: Reference of the threatinsight:allowlist object
         explode: false
@@ -336,6 +341,7 @@ paths:
     get:
       description: Returns a list of threatinsight:cloudclient objects matching the
         search criteria
+      operationId: ThreatinsightCloudclientList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -433,6 +439,7 @@ paths:
   /threatinsight:cloudclient/{reference}:
     get:
       description: Returns a specific threatinsight:cloudclient object by reference
+      operationId: ThreatinsightCloudclientRead
       parameters:
       - description: Reference of the threatinsight:cloudclient object
         explode: false
@@ -492,6 +499,7 @@ paths:
       - ThreatinsightCloudclient
     put:
       description: Updates a specific threatinsight:cloudclient object by reference
+      operationId: ThreatinsightCloudclientUpdate
       parameters:
       - description: Reference of the threatinsight:cloudclient object
         explode: false
@@ -560,6 +568,7 @@ paths:
     get:
       description: Returns a list of threatinsight:insight_allowlist objects matching
         the search criteria
+      operationId: ThreatinsightInsightAllowlistList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -657,6 +666,7 @@ paths:
   /threatinsight:insight_allowlist/{reference}:
     get:
       description: Returns a specific threatinsight:insight_allowlist object by reference
+      operationId: ThreatinsightInsightAllowlistRead
       parameters:
       - description: Reference of the threatinsight:insight_allowlist object
         explode: false
@@ -718,6 +728,7 @@ paths:
     get:
       description: Returns a list of threatinsight:moduleset objects matching the
         search criteria
+      operationId: ThreatinsightModulesetList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -815,6 +826,7 @@ paths:
   /threatinsight:moduleset/{reference}:
     get:
       description: Returns a specific threatinsight:moduleset object by reference
+      operationId: ThreatinsightModulesetRead
       parameters:
       - description: Reference of the threatinsight:moduleset object
         explode: false

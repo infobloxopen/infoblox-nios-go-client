@@ -23,52 +23,52 @@ import (
 
 type GridDnsAPI interface {
 	/*
-		GriddnsGet Retrieve grid:dns objects
+		List Retrieve grid:dns objects
 
 		Returns a list of grid:dns objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridDnsAPIGriddnsGetRequest
+		@return GridDnsAPIListRequest
 	*/
-	GriddnsGet(ctx context.Context) GridDnsAPIGriddnsGetRequest
+	List(ctx context.Context) GridDnsAPIListRequest
 
-	// GriddnsGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridDnsResponse
-	GriddnsGetExecute(r GridDnsAPIGriddnsGetRequest) (*ListGridDnsResponse, *http.Response, error)
+	ListExecute(r GridDnsAPIListRequest) (*ListGridDnsResponse, *http.Response, error)
 	/*
-		GriddnsReferenceGet Get a specific grid:dns object
+		Read Get a specific grid:dns object
 
 		Returns a specific grid:dns object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:dns object
-		@return GridDnsAPIGriddnsReferenceGetRequest
+		@return GridDnsAPIReadRequest
 	*/
-	GriddnsReferenceGet(ctx context.Context, reference string) GridDnsAPIGriddnsReferenceGetRequest
+	Read(ctx context.Context, reference string) GridDnsAPIReadRequest
 
-	// GriddnsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridDnsResponse
-	GriddnsReferenceGetExecute(r GridDnsAPIGriddnsReferenceGetRequest) (*GetGridDnsResponse, *http.Response, error)
+	ReadExecute(r GridDnsAPIReadRequest) (*GetGridDnsResponse, *http.Response, error)
 	/*
-		GriddnsReferencePut Update a grid:dns object
+		Update Update a grid:dns object
 
 		Updates a specific grid:dns object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:dns object
-		@return GridDnsAPIGriddnsReferencePutRequest
+		@return GridDnsAPIUpdateRequest
 	*/
-	GriddnsReferencePut(ctx context.Context, reference string) GridDnsAPIGriddnsReferencePutRequest
+	Update(ctx context.Context, reference string) GridDnsAPIUpdateRequest
 
-	// GriddnsReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridDnsResponse
-	GriddnsReferencePutExecute(r GridDnsAPIGriddnsReferencePutRequest) (*UpdateGridDnsResponse, *http.Response, error)
+	UpdateExecute(r GridDnsAPIUpdateRequest) (*UpdateGridDnsResponse, *http.Response, error)
 }
 
 // GridDnsAPIService GridDnsAPI service
 type GridDnsAPIService internal.Service
 
-type GridDnsAPIGriddnsGetRequest struct {
+type GridDnsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridDnsAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type GridDnsAPIGriddnsGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridDnsAPIGriddnsGetRequest) ReturnFields(returnFields string) GridDnsAPIGriddnsGetRequest {
+func (r GridDnsAPIListRequest) ReturnFields(returnFields string) GridDnsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDnsAPIGriddnsGetRequest) ReturnFields2(returnFields2 string) GridDnsAPIGriddnsGetRequest {
+func (r GridDnsAPIListRequest) ReturnFields2(returnFields2 string) GridDnsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridDnsAPIGriddnsGetRequest) MaxResults(maxResults int32) GridDnsAPIGriddnsGetRequest {
+func (r GridDnsAPIListRequest) MaxResults(maxResults int32) GridDnsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridDnsAPIGriddnsGetRequest) ReturnAsObject(returnAsObject int32) GridDnsAPIGriddnsGetRequest {
+func (r GridDnsAPIListRequest) ReturnAsObject(returnAsObject int32) GridDnsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridDnsAPIGriddnsGetRequest) Paging(paging int32) GridDnsAPIGriddnsGetRequest {
+func (r GridDnsAPIListRequest) Paging(paging int32) GridDnsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridDnsAPIGriddnsGetRequest) PageId(pageId string) GridDnsAPIGriddnsGetRequest {
+func (r GridDnsAPIListRequest) PageId(pageId string) GridDnsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridDnsAPIGriddnsGetRequest) Filters(filters map[string]interface{}) GridDnsAPIGriddnsGetRequest {
+func (r GridDnsAPIListRequest) Filters(filters map[string]interface{}) GridDnsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridDnsAPIGriddnsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridDnsAPIGriddnsGetRequest {
+func (r GridDnsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridDnsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridDnsAPIGriddnsGetRequest) Execute() (*ListGridDnsResponse, *http.Response, error) {
-	return r.ApiService.GriddnsGetExecute(r)
+func (r GridDnsAPIListRequest) Execute() (*ListGridDnsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GriddnsGet Retrieve grid:dns objects
+List Retrieve grid:dns objects
 
 Returns a list of grid:dns objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridDnsAPIGriddnsGetRequest
+	@return GridDnsAPIListRequest
 */
-func (a *GridDnsAPIService) GriddnsGet(ctx context.Context) GridDnsAPIGriddnsGetRequest {
-	return GridDnsAPIGriddnsGetRequest{
+func (a *GridDnsAPIService) List(ctx context.Context) GridDnsAPIListRequest {
+	return GridDnsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GridDnsAPIService) GriddnsGet(ctx context.Context) GridDnsAPIGriddnsGet
 // Execute executes the request
 //
 //	@return ListGridDnsResponse
-func (a *GridDnsAPIService) GriddnsGetExecute(r GridDnsAPIGriddnsGetRequest) (*ListGridDnsResponse, *http.Response, error) {
+func (a *GridDnsAPIService) ListExecute(r GridDnsAPIListRequest) (*ListGridDnsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GridDnsAPIService) GriddnsGetExecute(r GridDnsAPIGriddnsGetRequest) (*L
 		localVarReturnValue *ListGridDnsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDnsAPIService.GriddnsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDnsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *GridDnsAPIService) GriddnsGetExecute(r GridDnsAPIGriddnsGetRequest) (*L
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridDnsAPIGriddnsReferenceGetRequest struct {
+type GridDnsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridDnsAPI
 	reference      string
@@ -249,38 +249,38 @@ type GridDnsAPIGriddnsReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridDnsAPIGriddnsReferenceGetRequest) ReturnFields(returnFields string) GridDnsAPIGriddnsReferenceGetRequest {
+func (r GridDnsAPIReadRequest) ReturnFields(returnFields string) GridDnsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDnsAPIGriddnsReferenceGetRequest) ReturnFields2(returnFields2 string) GridDnsAPIGriddnsReferenceGetRequest {
+func (r GridDnsAPIReadRequest) ReturnFields2(returnFields2 string) GridDnsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridDnsAPIGriddnsReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridDnsAPIGriddnsReferenceGetRequest {
+func (r GridDnsAPIReadRequest) ReturnAsObject(returnAsObject int32) GridDnsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridDnsAPIGriddnsReferenceGetRequest) Execute() (*GetGridDnsResponse, *http.Response, error) {
-	return r.ApiService.GriddnsReferenceGetExecute(r)
+func (r GridDnsAPIReadRequest) Execute() (*GetGridDnsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GriddnsReferenceGet Get a specific grid:dns object
+Read Get a specific grid:dns object
 
 Returns a specific grid:dns object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:dns object
-	@return GridDnsAPIGriddnsReferenceGetRequest
+	@return GridDnsAPIReadRequest
 */
-func (a *GridDnsAPIService) GriddnsReferenceGet(ctx context.Context, reference string) GridDnsAPIGriddnsReferenceGetRequest {
-	return GridDnsAPIGriddnsReferenceGetRequest{
+func (a *GridDnsAPIService) Read(ctx context.Context, reference string) GridDnsAPIReadRequest {
+	return GridDnsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GridDnsAPIService) GriddnsReferenceGet(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return GetGridDnsResponse
-func (a *GridDnsAPIService) GriddnsReferenceGetExecute(r GridDnsAPIGriddnsReferenceGetRequest) (*GetGridDnsResponse, *http.Response, error) {
+func (a *GridDnsAPIService) ReadExecute(r GridDnsAPIReadRequest) (*GetGridDnsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GridDnsAPIService) GriddnsReferenceGetExecute(r GridDnsAPIGriddnsRefere
 		localVarReturnValue *GetGridDnsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDnsAPIService.GriddnsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDnsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *GridDnsAPIService) GriddnsReferenceGetExecute(r GridDnsAPIGriddnsRefere
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridDnsAPIGriddnsReferencePutRequest struct {
+type GridDnsAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     GridDnsAPI
 	reference      string
@@ -377,44 +377,44 @@ type GridDnsAPIGriddnsReferencePutRequest struct {
 }
 
 // Object data to update
-func (r GridDnsAPIGriddnsReferencePutRequest) GridDns(gridDns GridDns) GridDnsAPIGriddnsReferencePutRequest {
+func (r GridDnsAPIUpdateRequest) GridDns(gridDns GridDns) GridDnsAPIUpdateRequest {
 	r.gridDns = &gridDns
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridDnsAPIGriddnsReferencePutRequest) ReturnFields(returnFields string) GridDnsAPIGriddnsReferencePutRequest {
+func (r GridDnsAPIUpdateRequest) ReturnFields(returnFields string) GridDnsAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDnsAPIGriddnsReferencePutRequest) ReturnFields2(returnFields2 string) GridDnsAPIGriddnsReferencePutRequest {
+func (r GridDnsAPIUpdateRequest) ReturnFields2(returnFields2 string) GridDnsAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridDnsAPIGriddnsReferencePutRequest) ReturnAsObject(returnAsObject int32) GridDnsAPIGriddnsReferencePutRequest {
+func (r GridDnsAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridDnsAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridDnsAPIGriddnsReferencePutRequest) Execute() (*UpdateGridDnsResponse, *http.Response, error) {
-	return r.ApiService.GriddnsReferencePutExecute(r)
+func (r GridDnsAPIUpdateRequest) Execute() (*UpdateGridDnsResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GriddnsReferencePut Update a grid:dns object
+Update Update a grid:dns object
 
 Updates a specific grid:dns object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:dns object
-	@return GridDnsAPIGriddnsReferencePutRequest
+	@return GridDnsAPIUpdateRequest
 */
-func (a *GridDnsAPIService) GriddnsReferencePut(ctx context.Context, reference string) GridDnsAPIGriddnsReferencePutRequest {
-	return GridDnsAPIGriddnsReferencePutRequest{
+func (a *GridDnsAPIService) Update(ctx context.Context, reference string) GridDnsAPIUpdateRequest {
+	return GridDnsAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GridDnsAPIService) GriddnsReferencePut(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return UpdateGridDnsResponse
-func (a *GridDnsAPIService) GriddnsReferencePutExecute(r GridDnsAPIGriddnsReferencePutRequest) (*UpdateGridDnsResponse, *http.Response, error) {
+func (a *GridDnsAPIService) UpdateExecute(r GridDnsAPIUpdateRequest) (*UpdateGridDnsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GridDnsAPIService) GriddnsReferencePutExecute(r GridDnsAPIGriddnsRefere
 		localVarReturnValue *UpdateGridDnsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDnsAPIService.GriddnsReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridDnsAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

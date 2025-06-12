@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](AdminroleAPI.md#Get) | **Get** /adminrole | Retrieve adminrole objects
-[**Post**](AdminroleAPI.md#Post) | **Post** /adminrole | Create a adminrole object
-[**ReferenceDelete**](AdminroleAPI.md#ReferenceDelete) | **Delete** /adminrole/{reference} | Delete a adminrole object
-[**ReferenceGet**](AdminroleAPI.md#ReferenceGet) | **Get** /adminrole/{reference} | Get a specific adminrole object
-[**ReferencePut**](AdminroleAPI.md#ReferencePut) | **Put** /adminrole/{reference} | Update a adminrole object
+[**Create**](AdminroleAPI.md#Create) | **Post** /adminrole | Create a adminrole object
+[**Delete**](AdminroleAPI.md#Delete) | **Delete** /adminrole/{reference} | Delete a adminrole object
+[**List**](AdminroleAPI.md#List) | **Get** /adminrole | Retrieve adminrole objects
+[**Read**](AdminroleAPI.md#Read) | **Get** /adminrole/{reference} | Get a specific adminrole object
+[**Update**](AdminroleAPI.md#Update) | **Put** /adminrole/{reference} | Update a adminrole object
 
 
 
-## Get
+## Create
 
-> ListAdminroleResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateAdminroleResponse Create(ctx).Adminrole(adminrole).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a adminrole object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	adminrole := *security.NewAdminrole() // Adminrole | Object data to create
+
+	apiClient := security.NewAPIClient()
+	resp, r, err := apiClient.AdminroleAPI.Create(context.Background()).Adminrole(adminrole).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminroleAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateAdminroleResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminroleAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AdminroleAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**adminrole** | [**Adminrole**](Adminrole.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateAdminroleResponse**](CreateAdminroleResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a adminrole object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the adminrole object
+
+	apiClient := security.NewAPIClient()
+	r, err := apiClient.AdminroleAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminroleAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the adminrole object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AdminroleAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListAdminroleResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve adminrole objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdminroleAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.AdminroleAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminroleAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminroleAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListAdminroleResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdminroleAPI.Get`: %v\n", resp)
+	// response from `List`: ListAdminroleResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminroleAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AdminroleAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AdminroleAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateAdminroleResponse Post(ctx).Adminrole(adminrole).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a adminrole object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	adminrole := *security.NewAdminrole() // Adminrole | Object data to create
-
-	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdminroleAPI.Post(context.Background()).Adminrole(adminrole).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminroleAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateAdminroleResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdminroleAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AdminroleAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**adminrole** | [**Adminrole**](Adminrole.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateAdminroleResponse**](CreateAdminroleResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a adminrole object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the adminrole object
-
-	apiClient := security.NewAPIClient()
-	r, err := apiClient.AdminroleAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminroleAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the adminrole object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AdminroleAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetAdminroleResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetAdminroleResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific adminrole object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the adminrole object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdminroleAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.AdminroleAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminroleAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminroleAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetAdminroleResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdminroleAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetAdminroleResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminroleAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AdminroleAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AdminroleAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateAdminroleResponse ReferencePut(ctx, reference).Adminrole(adminrole).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateAdminroleResponse Update(ctx, reference).Adminrole(adminrole).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a adminrole object
 
@@ -318,13 +318,13 @@ func main() {
 	adminrole := *security.NewAdminrole() // Adminrole | Object data to update
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdminroleAPI.ReferencePut(context.Background(), reference).Adminrole(adminrole).Execute()
+	resp, r, err := apiClient.AdminroleAPI.Update(context.Background(), reference).Adminrole(adminrole).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminroleAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminroleAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateAdminroleResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdminroleAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateAdminroleResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminroleAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AdminroleAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AdminroleAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

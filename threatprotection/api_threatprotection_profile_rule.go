@@ -23,52 +23,52 @@ import (
 
 type ThreatprotectionProfileRuleAPI interface {
 	/*
-		ThreatprotectionprofileruleGet Retrieve threatprotection:profile:rule objects
+		List Retrieve threatprotection:profile:rule objects
 
 		Returns a list of threatprotection:profile:rule objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest
+		@return ThreatprotectionProfileRuleAPIListRequest
 	*/
-	ThreatprotectionprofileruleGet(ctx context.Context) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest
+	List(ctx context.Context) ThreatprotectionProfileRuleAPIListRequest
 
-	// ThreatprotectionprofileruleGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListThreatprotectionProfileRuleResponse
-	ThreatprotectionprofileruleGetExecute(r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) (*ListThreatprotectionProfileRuleResponse, *http.Response, error)
+	ListExecute(r ThreatprotectionProfileRuleAPIListRequest) (*ListThreatprotectionProfileRuleResponse, *http.Response, error)
 	/*
-		ThreatprotectionprofileruleReferenceGet Get a specific threatprotection:profile:rule object
+		Read Get a specific threatprotection:profile:rule object
 
 		Returns a specific threatprotection:profile:rule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatprotection:profile:rule object
-		@return ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest
+		@return ThreatprotectionProfileRuleAPIReadRequest
 	*/
-	ThreatprotectionprofileruleReferenceGet(ctx context.Context, reference string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest
+	Read(ctx context.Context, reference string) ThreatprotectionProfileRuleAPIReadRequest
 
-	// ThreatprotectionprofileruleReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetThreatprotectionProfileRuleResponse
-	ThreatprotectionprofileruleReferenceGetExecute(r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest) (*GetThreatprotectionProfileRuleResponse, *http.Response, error)
+	ReadExecute(r ThreatprotectionProfileRuleAPIReadRequest) (*GetThreatprotectionProfileRuleResponse, *http.Response, error)
 	/*
-		ThreatprotectionprofileruleReferencePut Update a threatprotection:profile:rule object
+		Update Update a threatprotection:profile:rule object
 
 		Updates a specific threatprotection:profile:rule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatprotection:profile:rule object
-		@return ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest
+		@return ThreatprotectionProfileRuleAPIUpdateRequest
 	*/
-	ThreatprotectionprofileruleReferencePut(ctx context.Context, reference string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest
+	Update(ctx context.Context, reference string) ThreatprotectionProfileRuleAPIUpdateRequest
 
-	// ThreatprotectionprofileruleReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateThreatprotectionProfileRuleResponse
-	ThreatprotectionprofileruleReferencePutExecute(r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest) (*UpdateThreatprotectionProfileRuleResponse, *http.Response, error)
+	UpdateExecute(r ThreatprotectionProfileRuleAPIUpdateRequest) (*UpdateThreatprotectionProfileRuleResponse, *http.Response, error)
 }
 
 // ThreatprotectionProfileRuleAPIService ThreatprotectionProfileRuleAPI service
 type ThreatprotectionProfileRuleAPIService internal.Service
 
-type ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest struct {
+type ThreatprotectionProfileRuleAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ThreatprotectionProfileRuleAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest struct 
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) ReturnFields(returnFields string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest {
+func (r ThreatprotectionProfileRuleAPIListRequest) ReturnFields(returnFields string) ThreatprotectionProfileRuleAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) ReturnFields2(returnFields2 string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest {
+func (r ThreatprotectionProfileRuleAPIListRequest) ReturnFields2(returnFields2 string) ThreatprotectionProfileRuleAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) MaxResults(maxResults int32) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest {
+func (r ThreatprotectionProfileRuleAPIListRequest) MaxResults(maxResults int32) ThreatprotectionProfileRuleAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest {
+func (r ThreatprotectionProfileRuleAPIListRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionProfileRuleAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) Paging(paging int32) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest {
+func (r ThreatprotectionProfileRuleAPIListRequest) Paging(paging int32) ThreatprotectionProfileRuleAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) PageId(pageId string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest {
+func (r ThreatprotectionProfileRuleAPIListRequest) PageId(pageId string) ThreatprotectionProfileRuleAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) Filters(filters map[string]interface{}) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest {
+func (r ThreatprotectionProfileRuleAPIListRequest) Filters(filters map[string]interface{}) ThreatprotectionProfileRuleAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest {
+func (r ThreatprotectionProfileRuleAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatprotectionProfileRuleAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) Execute() (*ListThreatprotectionProfileRuleResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectionprofileruleGetExecute(r)
+func (r ThreatprotectionProfileRuleAPIListRequest) Execute() (*ListThreatprotectionProfileRuleResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ThreatprotectionprofileruleGet Retrieve threatprotection:profile:rule objects
+List Retrieve threatprotection:profile:rule objects
 
 Returns a list of threatprotection:profile:rule objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest
+	@return ThreatprotectionProfileRuleAPIListRequest
 */
-func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleGet(ctx context.Context) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest {
-	return ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest{
+func (a *ThreatprotectionProfileRuleAPIService) List(ctx context.Context) ThreatprotectionProfileRuleAPIListRequest {
+	return ThreatprotectionProfileRuleAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleGet(c
 // Execute executes the request
 //
 //	@return ListThreatprotectionProfileRuleResponse
-func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleGetExecute(r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleGetRequest) (*ListThreatprotectionProfileRuleResponse, *http.Response, error) {
+func (a *ThreatprotectionProfileRuleAPIService) ListExecute(r ThreatprotectionProfileRuleAPIListRequest) (*ListThreatprotectionProfileRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleGetEx
 		localVarReturnValue *ListThreatprotectionProfileRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionProfileRuleAPIService.ThreatprotectionprofileruleGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionProfileRuleAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleGetEx
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest struct {
+type ThreatprotectionProfileRuleAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ThreatprotectionProfileRuleAPI
 	reference      string
@@ -249,38 +249,38 @@ type ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetReques
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest) ReturnFields(returnFields string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest {
+func (r ThreatprotectionProfileRuleAPIReadRequest) ReturnFields(returnFields string) ThreatprotectionProfileRuleAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest) ReturnFields2(returnFields2 string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest {
+func (r ThreatprotectionProfileRuleAPIReadRequest) ReturnFields2(returnFields2 string) ThreatprotectionProfileRuleAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest {
+func (r ThreatprotectionProfileRuleAPIReadRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionProfileRuleAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest) Execute() (*GetThreatprotectionProfileRuleResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectionprofileruleReferenceGetExecute(r)
+func (r ThreatprotectionProfileRuleAPIReadRequest) Execute() (*GetThreatprotectionProfileRuleResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ThreatprotectionprofileruleReferenceGet Get a specific threatprotection:profile:rule object
+Read Get a specific threatprotection:profile:rule object
 
 Returns a specific threatprotection:profile:rule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatprotection:profile:rule object
-	@return ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest
+	@return ThreatprotectionProfileRuleAPIReadRequest
 */
-func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleReferenceGet(ctx context.Context, reference string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest {
-	return ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest{
+func (a *ThreatprotectionProfileRuleAPIService) Read(ctx context.Context, reference string) ThreatprotectionProfileRuleAPIReadRequest {
+	return ThreatprotectionProfileRuleAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleRefer
 // Execute executes the request
 //
 //	@return GetThreatprotectionProfileRuleResponse
-func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleReferenceGetExecute(r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferenceGetRequest) (*GetThreatprotectionProfileRuleResponse, *http.Response, error) {
+func (a *ThreatprotectionProfileRuleAPIService) ReadExecute(r ThreatprotectionProfileRuleAPIReadRequest) (*GetThreatprotectionProfileRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleRefer
 		localVarReturnValue *GetThreatprotectionProfileRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionProfileRuleAPIService.ThreatprotectionprofileruleReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionProfileRuleAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleRefer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest struct {
+type ThreatprotectionProfileRuleAPIUpdateRequest struct {
 	ctx                         context.Context
 	ApiService                  ThreatprotectionProfileRuleAPI
 	reference                   string
@@ -377,44 +377,44 @@ type ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutReques
 }
 
 // Object data to update
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest) ThreatprotectionProfileRule(threatprotectionProfileRule ThreatprotectionProfileRule) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest {
+func (r ThreatprotectionProfileRuleAPIUpdateRequest) ThreatprotectionProfileRule(threatprotectionProfileRule ThreatprotectionProfileRule) ThreatprotectionProfileRuleAPIUpdateRequest {
 	r.threatprotectionProfileRule = &threatprotectionProfileRule
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest) ReturnFields(returnFields string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest {
+func (r ThreatprotectionProfileRuleAPIUpdateRequest) ReturnFields(returnFields string) ThreatprotectionProfileRuleAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest) ReturnFields2(returnFields2 string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest {
+func (r ThreatprotectionProfileRuleAPIUpdateRequest) ReturnFields2(returnFields2 string) ThreatprotectionProfileRuleAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest {
+func (r ThreatprotectionProfileRuleAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionProfileRuleAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest) Execute() (*UpdateThreatprotectionProfileRuleResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectionprofileruleReferencePutExecute(r)
+func (r ThreatprotectionProfileRuleAPIUpdateRequest) Execute() (*UpdateThreatprotectionProfileRuleResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ThreatprotectionprofileruleReferencePut Update a threatprotection:profile:rule object
+Update Update a threatprotection:profile:rule object
 
 Updates a specific threatprotection:profile:rule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatprotection:profile:rule object
-	@return ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest
+	@return ThreatprotectionProfileRuleAPIUpdateRequest
 */
-func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleReferencePut(ctx context.Context, reference string) ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest {
-	return ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest{
+func (a *ThreatprotectionProfileRuleAPIService) Update(ctx context.Context, reference string) ThreatprotectionProfileRuleAPIUpdateRequest {
+	return ThreatprotectionProfileRuleAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleRefer
 // Execute executes the request
 //
 //	@return UpdateThreatprotectionProfileRuleResponse
-func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleReferencePutExecute(r ThreatprotectionProfileRuleAPIThreatprotectionprofileruleReferencePutRequest) (*UpdateThreatprotectionProfileRuleResponse, *http.Response, error) {
+func (a *ThreatprotectionProfileRuleAPIService) UpdateExecute(r ThreatprotectionProfileRuleAPIUpdateRequest) (*UpdateThreatprotectionProfileRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *ThreatprotectionProfileRuleAPIService) ThreatprotectionprofileruleRefer
 		localVarReturnValue *UpdateThreatprotectionProfileRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionProfileRuleAPIService.ThreatprotectionprofileruleReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionProfileRuleAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

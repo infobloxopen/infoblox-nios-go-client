@@ -23,11 +23,11 @@ func TestHostnamerewritepolicyAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test HostnamerewritepolicyAPIService Get", func(t *testing.T) {
+	t.Run("Test HostnamerewritepolicyAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.HostnamerewritepolicyAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.HostnamerewritepolicyAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestHostnamerewritepolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HostnamerewritepolicyAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test HostnamerewritepolicyAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.HostnamerewritepolicyAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.HostnamerewritepolicyAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestHostnamerewritepolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HostnamerewritepolicyAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test HostnamerewritepolicyAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.HostnamerewritepolicyAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.HostnamerewritepolicyAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

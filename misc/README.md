@@ -79,73 +79,73 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AllendpointsAPI* | [**Get**](docs/AllendpointsAPI.md#get) | **Get** /allendpoints | Retrieve allendpoints objects
-*AllendpointsAPI* | [**ReferenceGet**](docs/AllendpointsAPI.md#referenceget) | **Get** /allendpoints/{reference} | Get a specific allendpoints object
-*BfdtemplateAPI* | [**Get**](docs/BfdtemplateAPI.md#get) | **Get** /bfdtemplate | Retrieve bfdtemplate objects
-*BfdtemplateAPI* | [**Post**](docs/BfdtemplateAPI.md#post) | **Post** /bfdtemplate | Create a bfdtemplate object
-*BfdtemplateAPI* | [**ReferenceDelete**](docs/BfdtemplateAPI.md#referencedelete) | **Delete** /bfdtemplate/{reference} | Delete a bfdtemplate object
-*BfdtemplateAPI* | [**ReferenceGet**](docs/BfdtemplateAPI.md#referenceget) | **Get** /bfdtemplate/{reference} | Get a specific bfdtemplate object
-*BfdtemplateAPI* | [**ReferencePut**](docs/BfdtemplateAPI.md#referenceput) | **Put** /bfdtemplate/{reference} | Update a bfdtemplate object
-*CapacityreportAPI* | [**Get**](docs/CapacityreportAPI.md#get) | **Get** /capacityreport | Retrieve capacityreport objects
-*CapacityreportAPI* | [**ReferenceGet**](docs/CapacityreportAPI.md#referenceget) | **Get** /capacityreport/{reference} | Get a specific capacityreport object
-*CsvimporttaskAPI* | [**Get**](docs/CsvimporttaskAPI.md#get) | **Get** /csvimporttask | Retrieve csvimporttask objects
-*CsvimporttaskAPI* | [**ReferenceGet**](docs/CsvimporttaskAPI.md#referenceget) | **Get** /csvimporttask/{reference} | Get a specific csvimporttask object
-*CsvimporttaskAPI* | [**ReferencePut**](docs/CsvimporttaskAPI.md#referenceput) | **Put** /csvimporttask/{reference} | Update a csvimporttask object
-*DatacollectionclusterAPI* | [**Get**](docs/DatacollectionclusterAPI.md#get) | **Get** /datacollectioncluster | Retrieve datacollectioncluster objects
-*DatacollectionclusterAPI* | [**Post**](docs/DatacollectionclusterAPI.md#post) | **Post** /datacollectioncluster | Create a datacollectioncluster object
-*DatacollectionclusterAPI* | [**ReferenceDelete**](docs/DatacollectionclusterAPI.md#referencedelete) | **Delete** /datacollectioncluster/{reference} | Delete a datacollectioncluster object
-*DatacollectionclusterAPI* | [**ReferenceGet**](docs/DatacollectionclusterAPI.md#referenceget) | **Get** /datacollectioncluster/{reference} | Get a specific datacollectioncluster object
-*DatacollectionclusterAPI* | [**ReferencePut**](docs/DatacollectionclusterAPI.md#referenceput) | **Put** /datacollectioncluster/{reference} | Update a datacollectioncluster object
-*DbObjectsAPI* | [**Get**](docs/DbObjectsAPI.md#get) | **Get** /db_objects | Retrieve db_objects objects
-*DbObjectsAPI* | [**ReferenceGet**](docs/DbObjectsAPI.md#referenceget) | **Get** /db_objects/{reference} | Get a specific db_objects object
-*DbsnapshotAPI* | [**Get**](docs/DbsnapshotAPI.md#get) | **Get** /dbsnapshot | Retrieve dbsnapshot objects
-*DbsnapshotAPI* | [**ReferenceGet**](docs/DbsnapshotAPI.md#referenceget) | **Get** /dbsnapshot/{reference} | Get a specific dbsnapshot object
-*DeletedObjectsAPI* | [**Get**](docs/DeletedObjectsAPI.md#get) | **Get** /deleted_objects | Retrieve deleted_objects objects
-*DeletedObjectsAPI* | [**ReferenceGet**](docs/DeletedObjectsAPI.md#referenceget) | **Get** /deleted_objects/{reference} | Get a specific deleted_objects object
-*DxlEndpointAPI* | [**DxlendpointGet**](docs/DxlEndpointAPI.md#dxlendpointget) | **Get** /dxl:endpoint | Retrieve dxl:endpoint objects
-*DxlEndpointAPI* | [**DxlendpointPost**](docs/DxlEndpointAPI.md#dxlendpointpost) | **Post** /dxl:endpoint | Create a dxl:endpoint object
-*DxlEndpointAPI* | [**DxlendpointReferenceDelete**](docs/DxlEndpointAPI.md#dxlendpointreferencedelete) | **Delete** /dxl:endpoint/{reference} | Delete a dxl:endpoint object
-*DxlEndpointAPI* | [**DxlendpointReferenceGet**](docs/DxlEndpointAPI.md#dxlendpointreferenceget) | **Get** /dxl:endpoint/{reference} | Get a specific dxl:endpoint object
-*DxlEndpointAPI* | [**DxlendpointReferencePut**](docs/DxlEndpointAPI.md#dxlendpointreferenceput) | **Put** /dxl:endpoint/{reference} | Update a dxl:endpoint object
-*FileopAPI* | [**Get**](docs/FileopAPI.md#get) | **Get** /fileop | Retrieve fileop objects
-*FileopAPI* | [**ReferenceGet**](docs/FileopAPI.md#referenceget) | **Get** /fileop/{reference} | Get a specific fileop object
-*KerberoskeyAPI* | [**Get**](docs/KerberoskeyAPI.md#get) | **Get** /kerberoskey | Retrieve kerberoskey objects
-*KerberoskeyAPI* | [**ReferenceDelete**](docs/KerberoskeyAPI.md#referencedelete) | **Delete** /kerberoskey/{reference} | Delete a kerberoskey object
-*KerberoskeyAPI* | [**ReferenceGet**](docs/KerberoskeyAPI.md#referenceget) | **Get** /kerberoskey/{reference} | Get a specific kerberoskey object
-*OutboundCloudclientAPI* | [**OutboundcloudclientGet**](docs/OutboundCloudclientAPI.md#outboundcloudclientget) | **Get** /outbound:cloudclient | Retrieve outbound:cloudclient objects
-*OutboundCloudclientAPI* | [**OutboundcloudclientReferenceGet**](docs/OutboundCloudclientAPI.md#outboundcloudclientreferenceget) | **Get** /outbound:cloudclient/{reference} | Get a specific outbound:cloudclient object
-*OutboundCloudclientAPI* | [**OutboundcloudclientReferencePut**](docs/OutboundCloudclientAPI.md#outboundcloudclientreferenceput) | **Put** /outbound:cloudclient/{reference} | Update a outbound:cloudclient object
-*PxgridEndpointAPI* | [**PxgridendpointGet**](docs/PxgridEndpointAPI.md#pxgridendpointget) | **Get** /pxgrid:endpoint | Retrieve pxgrid:endpoint objects
-*PxgridEndpointAPI* | [**PxgridendpointPost**](docs/PxgridEndpointAPI.md#pxgridendpointpost) | **Post** /pxgrid:endpoint | Create a pxgrid:endpoint object
-*PxgridEndpointAPI* | [**PxgridendpointReferenceDelete**](docs/PxgridEndpointAPI.md#pxgridendpointreferencedelete) | **Delete** /pxgrid:endpoint/{reference} | Delete a pxgrid:endpoint object
-*PxgridEndpointAPI* | [**PxgridendpointReferenceGet**](docs/PxgridEndpointAPI.md#pxgridendpointreferenceget) | **Get** /pxgrid:endpoint/{reference} | Get a specific pxgrid:endpoint object
-*PxgridEndpointAPI* | [**PxgridendpointReferencePut**](docs/PxgridEndpointAPI.md#pxgridendpointreferenceput) | **Put** /pxgrid:endpoint/{reference} | Update a pxgrid:endpoint object
-*RulesetAPI* | [**Get**](docs/RulesetAPI.md#get) | **Get** /ruleset | Retrieve ruleset objects
-*RulesetAPI* | [**Post**](docs/RulesetAPI.md#post) | **Post** /ruleset | Create a ruleset object
-*RulesetAPI* | [**ReferenceDelete**](docs/RulesetAPI.md#referencedelete) | **Delete** /ruleset/{reference} | Delete a ruleset object
-*RulesetAPI* | [**ReferenceGet**](docs/RulesetAPI.md#referenceget) | **Get** /ruleset/{reference} | Get a specific ruleset object
-*RulesetAPI* | [**ReferencePut**](docs/RulesetAPI.md#referenceput) | **Put** /ruleset/{reference} | Update a ruleset object
-*ScavengingtaskAPI* | [**Get**](docs/ScavengingtaskAPI.md#get) | **Get** /scavengingtask | Retrieve scavengingtask objects
-*ScavengingtaskAPI* | [**ReferenceGet**](docs/ScavengingtaskAPI.md#referenceget) | **Get** /scavengingtask/{reference} | Get a specific scavengingtask object
-*ScheduledtaskAPI* | [**Get**](docs/ScheduledtaskAPI.md#get) | **Get** /scheduledtask | Retrieve scheduledtask objects
-*ScheduledtaskAPI* | [**ReferenceDelete**](docs/ScheduledtaskAPI.md#referencedelete) | **Delete** /scheduledtask/{reference} | Delete a scheduledtask object
-*ScheduledtaskAPI* | [**ReferenceGet**](docs/ScheduledtaskAPI.md#referenceget) | **Get** /scheduledtask/{reference} | Get a specific scheduledtask object
-*ScheduledtaskAPI* | [**ReferencePut**](docs/ScheduledtaskAPI.md#referenceput) | **Put** /scheduledtask/{reference} | Update a scheduledtask object
-*SearchAPI* | [**Get**](docs/SearchAPI.md#get) | **Get** /search | Retrieve search objects
-*SearchAPI* | [**ReferenceGet**](docs/SearchAPI.md#referenceget) | **Get** /search/{reference} | Get a specific search object
-*SyslogEndpointAPI* | [**SyslogendpointGet**](docs/SyslogEndpointAPI.md#syslogendpointget) | **Get** /syslog:endpoint | Retrieve syslog:endpoint objects
-*SyslogEndpointAPI* | [**SyslogendpointPost**](docs/SyslogEndpointAPI.md#syslogendpointpost) | **Post** /syslog:endpoint | Create a syslog:endpoint object
-*SyslogEndpointAPI* | [**SyslogendpointReferenceDelete**](docs/SyslogEndpointAPI.md#syslogendpointreferencedelete) | **Delete** /syslog:endpoint/{reference} | Delete a syslog:endpoint object
-*SyslogEndpointAPI* | [**SyslogendpointReferenceGet**](docs/SyslogEndpointAPI.md#syslogendpointreferenceget) | **Get** /syslog:endpoint/{reference} | Get a specific syslog:endpoint object
-*SyslogEndpointAPI* | [**SyslogendpointReferencePut**](docs/SyslogEndpointAPI.md#syslogendpointreferenceput) | **Put** /syslog:endpoint/{reference} | Update a syslog:endpoint object
-*TaxiiAPI* | [**Get**](docs/TaxiiAPI.md#get) | **Get** /taxii | Retrieve taxii objects
-*TaxiiAPI* | [**ReferenceGet**](docs/TaxiiAPI.md#referenceget) | **Get** /taxii/{reference} | Get a specific taxii object
-*TaxiiAPI* | [**ReferencePut**](docs/TaxiiAPI.md#referenceput) | **Put** /taxii/{reference} | Update a taxii object
-*TftpfiledirAPI* | [**Get**](docs/TftpfiledirAPI.md#get) | **Get** /tftpfiledir | Retrieve tftpfiledir objects
-*TftpfiledirAPI* | [**Post**](docs/TftpfiledirAPI.md#post) | **Post** /tftpfiledir | Create a tftpfiledir object
-*TftpfiledirAPI* | [**ReferenceDelete**](docs/TftpfiledirAPI.md#referencedelete) | **Delete** /tftpfiledir/{reference} | Delete a tftpfiledir object
-*TftpfiledirAPI* | [**ReferenceGet**](docs/TftpfiledirAPI.md#referenceget) | **Get** /tftpfiledir/{reference} | Get a specific tftpfiledir object
-*TftpfiledirAPI* | [**ReferencePut**](docs/TftpfiledirAPI.md#referenceput) | **Put** /tftpfiledir/{reference} | Update a tftpfiledir object
+*AllendpointsAPI* | [**List**](docs/AllendpointsAPI.md#list) | **Get** /allendpoints | Retrieve allendpoints objects
+*AllendpointsAPI* | [**Read**](docs/AllendpointsAPI.md#read) | **Get** /allendpoints/{reference} | Get a specific allendpoints object
+*BfdtemplateAPI* | [**Create**](docs/BfdtemplateAPI.md#create) | **Post** /bfdtemplate | Create a bfdtemplate object
+*BfdtemplateAPI* | [**Delete**](docs/BfdtemplateAPI.md#delete) | **Delete** /bfdtemplate/{reference} | Delete a bfdtemplate object
+*BfdtemplateAPI* | [**List**](docs/BfdtemplateAPI.md#list) | **Get** /bfdtemplate | Retrieve bfdtemplate objects
+*BfdtemplateAPI* | [**Read**](docs/BfdtemplateAPI.md#read) | **Get** /bfdtemplate/{reference} | Get a specific bfdtemplate object
+*BfdtemplateAPI* | [**Update**](docs/BfdtemplateAPI.md#update) | **Put** /bfdtemplate/{reference} | Update a bfdtemplate object
+*CapacityreportAPI* | [**List**](docs/CapacityreportAPI.md#list) | **Get** /capacityreport | Retrieve capacityreport objects
+*CapacityreportAPI* | [**Read**](docs/CapacityreportAPI.md#read) | **Get** /capacityreport/{reference} | Get a specific capacityreport object
+*CsvimporttaskAPI* | [**List**](docs/CsvimporttaskAPI.md#list) | **Get** /csvimporttask | Retrieve csvimporttask objects
+*CsvimporttaskAPI* | [**Read**](docs/CsvimporttaskAPI.md#read) | **Get** /csvimporttask/{reference} | Get a specific csvimporttask object
+*CsvimporttaskAPI* | [**Update**](docs/CsvimporttaskAPI.md#update) | **Put** /csvimporttask/{reference} | Update a csvimporttask object
+*DatacollectionclusterAPI* | [**Create**](docs/DatacollectionclusterAPI.md#create) | **Post** /datacollectioncluster | Create a datacollectioncluster object
+*DatacollectionclusterAPI* | [**Delete**](docs/DatacollectionclusterAPI.md#delete) | **Delete** /datacollectioncluster/{reference} | Delete a datacollectioncluster object
+*DatacollectionclusterAPI* | [**List**](docs/DatacollectionclusterAPI.md#list) | **Get** /datacollectioncluster | Retrieve datacollectioncluster objects
+*DatacollectionclusterAPI* | [**Read**](docs/DatacollectionclusterAPI.md#read) | **Get** /datacollectioncluster/{reference} | Get a specific datacollectioncluster object
+*DatacollectionclusterAPI* | [**Update**](docs/DatacollectionclusterAPI.md#update) | **Put** /datacollectioncluster/{reference} | Update a datacollectioncluster object
+*DbObjectsAPI* | [**List**](docs/DbObjectsAPI.md#list) | **Get** /db_objects | Retrieve db_objects objects
+*DbObjectsAPI* | [**Read**](docs/DbObjectsAPI.md#read) | **Get** /db_objects/{reference} | Get a specific db_objects object
+*DbsnapshotAPI* | [**List**](docs/DbsnapshotAPI.md#list) | **Get** /dbsnapshot | Retrieve dbsnapshot objects
+*DbsnapshotAPI* | [**Read**](docs/DbsnapshotAPI.md#read) | **Get** /dbsnapshot/{reference} | Get a specific dbsnapshot object
+*DeletedObjectsAPI* | [**List**](docs/DeletedObjectsAPI.md#list) | **Get** /deleted_objects | Retrieve deleted_objects objects
+*DeletedObjectsAPI* | [**Read**](docs/DeletedObjectsAPI.md#read) | **Get** /deleted_objects/{reference} | Get a specific deleted_objects object
+*DxlEndpointAPI* | [**Create**](docs/DxlEndpointAPI.md#create) | **Post** /dxl:endpoint | Create a dxl:endpoint object
+*DxlEndpointAPI* | [**Delete**](docs/DxlEndpointAPI.md#delete) | **Delete** /dxl:endpoint/{reference} | Delete a dxl:endpoint object
+*DxlEndpointAPI* | [**List**](docs/DxlEndpointAPI.md#list) | **Get** /dxl:endpoint | Retrieve dxl:endpoint objects
+*DxlEndpointAPI* | [**Read**](docs/DxlEndpointAPI.md#read) | **Get** /dxl:endpoint/{reference} | Get a specific dxl:endpoint object
+*DxlEndpointAPI* | [**Update**](docs/DxlEndpointAPI.md#update) | **Put** /dxl:endpoint/{reference} | Update a dxl:endpoint object
+*FileopAPI* | [**List**](docs/FileopAPI.md#list) | **Get** /fileop | Retrieve fileop objects
+*FileopAPI* | [**Read**](docs/FileopAPI.md#read) | **Get** /fileop/{reference} | Get a specific fileop object
+*KerberoskeyAPI* | [**Delete**](docs/KerberoskeyAPI.md#delete) | **Delete** /kerberoskey/{reference} | Delete a kerberoskey object
+*KerberoskeyAPI* | [**List**](docs/KerberoskeyAPI.md#list) | **Get** /kerberoskey | Retrieve kerberoskey objects
+*KerberoskeyAPI* | [**Read**](docs/KerberoskeyAPI.md#read) | **Get** /kerberoskey/{reference} | Get a specific kerberoskey object
+*OutboundCloudclientAPI* | [**List**](docs/OutboundCloudclientAPI.md#list) | **Get** /outbound:cloudclient | Retrieve outbound:cloudclient objects
+*OutboundCloudclientAPI* | [**Read**](docs/OutboundCloudclientAPI.md#read) | **Get** /outbound:cloudclient/{reference} | Get a specific outbound:cloudclient object
+*OutboundCloudclientAPI* | [**Update**](docs/OutboundCloudclientAPI.md#update) | **Put** /outbound:cloudclient/{reference} | Update a outbound:cloudclient object
+*PxgridEndpointAPI* | [**Create**](docs/PxgridEndpointAPI.md#create) | **Post** /pxgrid:endpoint | Create a pxgrid:endpoint object
+*PxgridEndpointAPI* | [**Delete**](docs/PxgridEndpointAPI.md#delete) | **Delete** /pxgrid:endpoint/{reference} | Delete a pxgrid:endpoint object
+*PxgridEndpointAPI* | [**List**](docs/PxgridEndpointAPI.md#list) | **Get** /pxgrid:endpoint | Retrieve pxgrid:endpoint objects
+*PxgridEndpointAPI* | [**Read**](docs/PxgridEndpointAPI.md#read) | **Get** /pxgrid:endpoint/{reference} | Get a specific pxgrid:endpoint object
+*PxgridEndpointAPI* | [**Update**](docs/PxgridEndpointAPI.md#update) | **Put** /pxgrid:endpoint/{reference} | Update a pxgrid:endpoint object
+*RulesetAPI* | [**Create**](docs/RulesetAPI.md#create) | **Post** /ruleset | Create a ruleset object
+*RulesetAPI* | [**Delete**](docs/RulesetAPI.md#delete) | **Delete** /ruleset/{reference} | Delete a ruleset object
+*RulesetAPI* | [**List**](docs/RulesetAPI.md#list) | **Get** /ruleset | Retrieve ruleset objects
+*RulesetAPI* | [**Read**](docs/RulesetAPI.md#read) | **Get** /ruleset/{reference} | Get a specific ruleset object
+*RulesetAPI* | [**Update**](docs/RulesetAPI.md#update) | **Put** /ruleset/{reference} | Update a ruleset object
+*ScavengingtaskAPI* | [**List**](docs/ScavengingtaskAPI.md#list) | **Get** /scavengingtask | Retrieve scavengingtask objects
+*ScavengingtaskAPI* | [**Read**](docs/ScavengingtaskAPI.md#read) | **Get** /scavengingtask/{reference} | Get a specific scavengingtask object
+*ScheduledtaskAPI* | [**Delete**](docs/ScheduledtaskAPI.md#delete) | **Delete** /scheduledtask/{reference} | Delete a scheduledtask object
+*ScheduledtaskAPI* | [**List**](docs/ScheduledtaskAPI.md#list) | **Get** /scheduledtask | Retrieve scheduledtask objects
+*ScheduledtaskAPI* | [**Read**](docs/ScheduledtaskAPI.md#read) | **Get** /scheduledtask/{reference} | Get a specific scheduledtask object
+*ScheduledtaskAPI* | [**Update**](docs/ScheduledtaskAPI.md#update) | **Put** /scheduledtask/{reference} | Update a scheduledtask object
+*SearchAPI* | [**List**](docs/SearchAPI.md#list) | **Get** /search | Retrieve search objects
+*SearchAPI* | [**Read**](docs/SearchAPI.md#read) | **Get** /search/{reference} | Get a specific search object
+*SyslogEndpointAPI* | [**Create**](docs/SyslogEndpointAPI.md#create) | **Post** /syslog:endpoint | Create a syslog:endpoint object
+*SyslogEndpointAPI* | [**Delete**](docs/SyslogEndpointAPI.md#delete) | **Delete** /syslog:endpoint/{reference} | Delete a syslog:endpoint object
+*SyslogEndpointAPI* | [**List**](docs/SyslogEndpointAPI.md#list) | **Get** /syslog:endpoint | Retrieve syslog:endpoint objects
+*SyslogEndpointAPI* | [**Read**](docs/SyslogEndpointAPI.md#read) | **Get** /syslog:endpoint/{reference} | Get a specific syslog:endpoint object
+*SyslogEndpointAPI* | [**Update**](docs/SyslogEndpointAPI.md#update) | **Put** /syslog:endpoint/{reference} | Update a syslog:endpoint object
+*TaxiiAPI* | [**List**](docs/TaxiiAPI.md#list) | **Get** /taxii | Retrieve taxii objects
+*TaxiiAPI* | [**Read**](docs/TaxiiAPI.md#read) | **Get** /taxii/{reference} | Get a specific taxii object
+*TaxiiAPI* | [**Update**](docs/TaxiiAPI.md#update) | **Put** /taxii/{reference} | Update a taxii object
+*TftpfiledirAPI* | [**Create**](docs/TftpfiledirAPI.md#create) | **Post** /tftpfiledir | Create a tftpfiledir object
+*TftpfiledirAPI* | [**Delete**](docs/TftpfiledirAPI.md#delete) | **Delete** /tftpfiledir/{reference} | Delete a tftpfiledir object
+*TftpfiledirAPI* | [**List**](docs/TftpfiledirAPI.md#list) | **Get** /tftpfiledir | Retrieve tftpfiledir objects
+*TftpfiledirAPI* | [**Read**](docs/TftpfiledirAPI.md#read) | **Get** /tftpfiledir/{reference} | Get a specific tftpfiledir object
+*TftpfiledirAPI* | [**Update**](docs/TftpfiledirAPI.md#update) | **Put** /tftpfiledir/{reference} | Update a tftpfiledir object
 
 
 ## Documentation For Models

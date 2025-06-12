@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](FedipamopAPI.md#Get) | **Get** /fedipamop | Retrieve fedipamop objects
-[**ReferenceGet**](FedipamopAPI.md#ReferenceGet) | **Get** /fedipamop/{reference} | Get a specific fedipamop object
+[**List**](FedipamopAPI.md#List) | **Get** /fedipamop | Retrieve fedipamop objects
+[**Read**](FedipamopAPI.md#Read) | **Get** /fedipamop/{reference} | Get a specific fedipamop object
 
 
 
-## Get
+## List
 
-> ListFedipamopResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListFedipamopResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve fedipamop objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := federatedrealms.NewAPIClient()
-	resp, r, err := apiClient.FedipamopAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.FedipamopAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FedipamopAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FedipamopAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListFedipamopResponse
-	fmt.Fprintf(os.Stdout, "Response from `FedipamopAPI.Get`: %v\n", resp)
+	// response from `List`: ListFedipamopResponse
+	fmt.Fprintf(os.Stdout, "Response from `FedipamopAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FedipamopAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FedipamopAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetFedipamopResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetFedipamopResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific fedipamop object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the fedipamop object
 
 	apiClient := federatedrealms.NewAPIClient()
-	resp, r, err := apiClient.FedipamopAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.FedipamopAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FedipamopAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FedipamopAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetFedipamopResponse
-	fmt.Fprintf(os.Stdout, "Response from `FedipamopAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetFedipamopResponse
+	fmt.Fprintf(os.Stdout, "Response from `FedipamopAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FedipamopAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FedipamopAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

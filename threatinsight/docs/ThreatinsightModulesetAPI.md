@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ThreatinsightmodulesetGet**](ThreatinsightModulesetAPI.md#ThreatinsightmodulesetGet) | **Get** /threatinsight:moduleset | Retrieve threatinsight:moduleset objects
-[**ThreatinsightmodulesetReferenceGet**](ThreatinsightModulesetAPI.md#ThreatinsightmodulesetReferenceGet) | **Get** /threatinsight:moduleset/{reference} | Get a specific threatinsight:moduleset object
+[**List**](ThreatinsightModulesetAPI.md#List) | **Get** /threatinsight:moduleset | Retrieve threatinsight:moduleset objects
+[**Read**](ThreatinsightModulesetAPI.md#Read) | **Get** /threatinsight:moduleset/{reference} | Get a specific threatinsight:moduleset object
 
 
 
-## ThreatinsightmodulesetGet
+## List
 
-> ListThreatinsightModulesetResponse ThreatinsightmodulesetGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListThreatinsightModulesetResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve threatinsight:moduleset objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := threatinsight.NewAPIClient()
-	resp, r, err := apiClient.ThreatinsightModulesetAPI.ThreatinsightmodulesetGet(context.Background()).Execute()
+	resp, r, err := apiClient.ThreatinsightModulesetAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightModulesetAPI.ThreatinsightmodulesetGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightModulesetAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatinsightmodulesetGet`: ListThreatinsightModulesetResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightModulesetAPI.ThreatinsightmodulesetGet`: %v\n", resp)
+	// response from `List`: ListThreatinsightModulesetResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightModulesetAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatinsightModulesetAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ThreatinsightmodulesetReferenceGet
+## Read
 
-> GetThreatinsightModulesetResponse ThreatinsightmodulesetReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetThreatinsightModulesetResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific threatinsight:moduleset object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the threatinsight:moduleset object
 
 	apiClient := threatinsight.NewAPIClient()
-	resp, r, err := apiClient.ThreatinsightModulesetAPI.ThreatinsightmodulesetReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ThreatinsightModulesetAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightModulesetAPI.ThreatinsightmodulesetReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightModulesetAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatinsightmodulesetReferenceGet`: GetThreatinsightModulesetResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightModulesetAPI.ThreatinsightmodulesetReferenceGet`: %v\n", resp)
+	// response from `Read`: GetThreatinsightModulesetResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightModulesetAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatinsightModulesetAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

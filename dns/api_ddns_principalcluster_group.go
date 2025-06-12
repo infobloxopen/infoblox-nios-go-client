@@ -23,78 +23,302 @@ import (
 
 type DdnsPrincipalclusterGroupAPI interface {
 	/*
-		DdnsprincipalclustergroupGet Retrieve ddns:principalcluster:group objects
-
-		Returns a list of ddns:principalcluster:group objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest
-	*/
-	DdnsprincipalclustergroupGet(ctx context.Context) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest
-
-	// DdnsprincipalclustergroupGetExecute executes the request
-	//  @return ListDdnsPrincipalclusterGroupResponse
-	DdnsprincipalclustergroupGetExecute(r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) (*ListDdnsPrincipalclusterGroupResponse, *http.Response, error)
-	/*
-		DdnsprincipalclustergroupPost Create a ddns:principalcluster:group object
+		Create Create a ddns:principalcluster:group object
 
 		Creates a new ddns:principalcluster:group object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest
+		@return DdnsPrincipalclusterGroupAPICreateRequest
 	*/
-	DdnsprincipalclustergroupPost(ctx context.Context) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest
+	Create(ctx context.Context) DdnsPrincipalclusterGroupAPICreateRequest
 
-	// DdnsprincipalclustergroupPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDdnsPrincipalclusterGroupResponse
-	DdnsprincipalclustergroupPostExecute(r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest) (*CreateDdnsPrincipalclusterGroupResponse, *http.Response, error)
+	CreateExecute(r DdnsPrincipalclusterGroupAPICreateRequest) (*CreateDdnsPrincipalclusterGroupResponse, *http.Response, error)
 	/*
-		DdnsprincipalclustergroupReferenceDelete Delete a ddns:principalcluster:group object
+		Delete Delete a ddns:principalcluster:group object
 
 		Deletes a specific ddns:principalcluster:group object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ddns:principalcluster:group object
-		@return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceDeleteRequest
+		@return DdnsPrincipalclusterGroupAPIDeleteRequest
 	*/
-	DdnsprincipalclustergroupReferenceDelete(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIDeleteRequest
 
-	// DdnsprincipalclustergroupReferenceDeleteExecute executes the request
-	DdnsprincipalclustergroupReferenceDeleteExecute(r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DdnsPrincipalclusterGroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		DdnsprincipalclustergroupReferenceGet Get a specific ddns:principalcluster:group object
+		List Retrieve ddns:principalcluster:group objects
+
+		Returns a list of ddns:principalcluster:group objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DdnsPrincipalclusterGroupAPIListRequest
+	*/
+	List(ctx context.Context) DdnsPrincipalclusterGroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDdnsPrincipalclusterGroupResponse
+	ListExecute(r DdnsPrincipalclusterGroupAPIListRequest) (*ListDdnsPrincipalclusterGroupResponse, *http.Response, error)
+	/*
+		Read Get a specific ddns:principalcluster:group object
 
 		Returns a specific ddns:principalcluster:group object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ddns:principalcluster:group object
-		@return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest
+		@return DdnsPrincipalclusterGroupAPIReadRequest
 	*/
-	DdnsprincipalclustergroupReferenceGet(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest
+	Read(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIReadRequest
 
-	// DdnsprincipalclustergroupReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDdnsPrincipalclusterGroupResponse
-	DdnsprincipalclustergroupReferenceGetExecute(r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest) (*GetDdnsPrincipalclusterGroupResponse, *http.Response, error)
+	ReadExecute(r DdnsPrincipalclusterGroupAPIReadRequest) (*GetDdnsPrincipalclusterGroupResponse, *http.Response, error)
 	/*
-		DdnsprincipalclustergroupReferencePut Update a ddns:principalcluster:group object
+		Update Update a ddns:principalcluster:group object
 
 		Updates a specific ddns:principalcluster:group object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ddns:principalcluster:group object
-		@return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest
+		@return DdnsPrincipalclusterGroupAPIUpdateRequest
 	*/
-	DdnsprincipalclustergroupReferencePut(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest
+	Update(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIUpdateRequest
 
-	// DdnsprincipalclustergroupReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDdnsPrincipalclusterGroupResponse
-	DdnsprincipalclustergroupReferencePutExecute(r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest) (*UpdateDdnsPrincipalclusterGroupResponse, *http.Response, error)
+	UpdateExecute(r DdnsPrincipalclusterGroupAPIUpdateRequest) (*UpdateDdnsPrincipalclusterGroupResponse, *http.Response, error)
 }
 
 // DdnsPrincipalclusterGroupAPIService DdnsPrincipalclusterGroupAPI service
 type DdnsPrincipalclusterGroupAPIService internal.Service
 
-type DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest struct {
+type DdnsPrincipalclusterGroupAPICreateRequest struct {
+	ctx                       context.Context
+	ApiService                DdnsPrincipalclusterGroupAPI
+	ddnsPrincipalclusterGroup *DdnsPrincipalclusterGroup
+	returnFields              *string
+	returnFields2             *string
+	returnAsObject            *int32
+}
+
+// Object data to create
+func (r DdnsPrincipalclusterGroupAPICreateRequest) DdnsPrincipalclusterGroup(ddnsPrincipalclusterGroup DdnsPrincipalclusterGroup) DdnsPrincipalclusterGroupAPICreateRequest {
+	r.ddnsPrincipalclusterGroup = &ddnsPrincipalclusterGroup
+	return r
+}
+
+// Enter the field names followed by comma
+func (r DdnsPrincipalclusterGroupAPICreateRequest) ReturnFields(returnFields string) DdnsPrincipalclusterGroupAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DdnsPrincipalclusterGroupAPICreateRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterGroupAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DdnsPrincipalclusterGroupAPICreateRequest) ReturnAsObject(returnAsObject int32) DdnsPrincipalclusterGroupAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r DdnsPrincipalclusterGroupAPICreateRequest) Execute() (*CreateDdnsPrincipalclusterGroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a ddns:principalcluster:group object
+
+Creates a new ddns:principalcluster:group object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DdnsPrincipalclusterGroupAPICreateRequest
+*/
+func (a *DdnsPrincipalclusterGroupAPIService) Create(ctx context.Context) DdnsPrincipalclusterGroupAPICreateRequest {
+	return DdnsPrincipalclusterGroupAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateDdnsPrincipalclusterGroupResponse
+func (a *DdnsPrincipalclusterGroupAPIService) CreateExecute(r DdnsPrincipalclusterGroupAPICreateRequest) (*CreateDdnsPrincipalclusterGroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateDdnsPrincipalclusterGroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DdnsPrincipalclusterGroupAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ddns:principalcluster:group"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.ddnsPrincipalclusterGroup == nil {
+		return localVarReturnValue, nil, internal.ReportError("ddnsPrincipalclusterGroup is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.ddnsPrincipalclusterGroup
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DdnsPrincipalclusterGroupAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DdnsPrincipalclusterGroupAPI
+	reference  string
+}
+
+func (r DdnsPrincipalclusterGroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a ddns:principalcluster:group object
+
+Deletes a specific ddns:principalcluster:group object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the ddns:principalcluster:group object
+	@return DdnsPrincipalclusterGroupAPIDeleteRequest
+*/
+func (a *DdnsPrincipalclusterGroupAPIService) Delete(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIDeleteRequest {
+	return DdnsPrincipalclusterGroupAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DdnsPrincipalclusterGroupAPIService) DeleteExecute(r DdnsPrincipalclusterGroupAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DdnsPrincipalclusterGroupAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ddns:principalcluster:group/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DdnsPrincipalclusterGroupAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DdnsPrincipalclusterGroupAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) ReturnFields(returnFields string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest {
+func (r DdnsPrincipalclusterGroupAPIListRequest) ReturnFields(returnFields string) DdnsPrincipalclusterGroupAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest {
+func (r DdnsPrincipalclusterGroupAPIListRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterGroupAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) MaxResults(maxResults int32) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest {
+func (r DdnsPrincipalclusterGroupAPIListRequest) MaxResults(maxResults int32) DdnsPrincipalclusterGroupAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) ReturnAsObject(returnAsObject int32) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest {
+func (r DdnsPrincipalclusterGroupAPIListRequest) ReturnAsObject(returnAsObject int32) DdnsPrincipalclusterGroupAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) Paging(paging int32) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest {
+func (r DdnsPrincipalclusterGroupAPIListRequest) Paging(paging int32) DdnsPrincipalclusterGroupAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) PageId(pageId string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest {
+func (r DdnsPrincipalclusterGroupAPIListRequest) PageId(pageId string) DdnsPrincipalclusterGroupAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) Filters(filters map[string]interface{}) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest {
+func (r DdnsPrincipalclusterGroupAPIListRequest) Filters(filters map[string]interface{}) DdnsPrincipalclusterGroupAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest {
+func (r DdnsPrincipalclusterGroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DdnsPrincipalclusterGroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) Execute() (*ListDdnsPrincipalclusterGroupResponse, *http.Response, error) {
-	return r.ApiService.DdnsprincipalclustergroupGetExecute(r)
+func (r DdnsPrincipalclusterGroupAPIListRequest) Execute() (*ListDdnsPrincipalclusterGroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DdnsprincipalclustergroupGet Retrieve ddns:principalcluster:group objects
+List Retrieve ddns:principalcluster:group objects
 
 Returns a list of ddns:principalcluster:group objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest
+	@return DdnsPrincipalclusterGroupAPIListRequest
 */
-func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupGet(ctx context.Context) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest {
-	return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest{
+func (a *DdnsPrincipalclusterGroupAPIService) List(ctx context.Context) DdnsPrincipalclusterGroupAPIListRequest {
+	return DdnsPrincipalclusterGroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupGet(ctx c
 // Execute executes the request
 //
 //	@return ListDdnsPrincipalclusterGroupResponse
-func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupGetExecute(r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupGetRequest) (*ListDdnsPrincipalclusterGroupResponse, *http.Response, error) {
+func (a *DdnsPrincipalclusterGroupAPIService) ListExecute(r DdnsPrincipalclusterGroupAPIListRequest) (*ListDdnsPrincipalclusterGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupGetExecut
 		localVarReturnValue *ListDdnsPrincipalclusterGroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DdnsPrincipalclusterGroupAPIService.DdnsprincipalclustergroupGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DdnsPrincipalclusterGroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupGetExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest struct {
-	ctx                       context.Context
-	ApiService                DdnsPrincipalclusterGroupAPI
-	ddnsPrincipalclusterGroup *DdnsPrincipalclusterGroup
-	returnFields              *string
-	returnFields2             *string
-	returnAsObject            *int32
-}
-
-// Object data to create
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest) DdnsPrincipalclusterGroup(ddnsPrincipalclusterGroup DdnsPrincipalclusterGroup) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest {
-	r.ddnsPrincipalclusterGroup = &ddnsPrincipalclusterGroup
-	return r
-}
-
-// Enter the field names followed by comma
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest) ReturnFields(returnFields string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest) ReturnAsObject(returnAsObject int32) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest) Execute() (*CreateDdnsPrincipalclusterGroupResponse, *http.Response, error) {
-	return r.ApiService.DdnsprincipalclustergroupPostExecute(r)
-}
-
-/*
-DdnsprincipalclustergroupPost Create a ddns:principalcluster:group object
-
-Creates a new ddns:principalcluster:group object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest
-*/
-func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupPost(ctx context.Context) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest {
-	return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateDdnsPrincipalclusterGroupResponse
-func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupPostExecute(r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupPostRequest) (*CreateDdnsPrincipalclusterGroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateDdnsPrincipalclusterGroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DdnsPrincipalclusterGroupAPIService.DdnsprincipalclustergroupPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ddns:principalcluster:group"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.ddnsPrincipalclusterGroup == nil {
-		return localVarReturnValue, nil, internal.ReportError("ddnsPrincipalclusterGroup is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.ddnsPrincipalclusterGroup
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DdnsPrincipalclusterGroupAPI
-	reference  string
-}
-
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DdnsprincipalclustergroupReferenceDeleteExecute(r)
-}
-
-/*
-DdnsprincipalclustergroupReferenceDelete Delete a ddns:principalcluster:group object
-
-Deletes a specific ddns:principalcluster:group object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the ddns:principalcluster:group object
-	@return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceDeleteRequest
-*/
-func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReferenceDelete(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceDeleteRequest {
-	return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReferenceDeleteExecute(r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DdnsPrincipalclusterGroupAPIService.DdnsprincipalclustergroupReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ddns:principalcluster:group/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest struct {
+type DdnsPrincipalclusterGroupAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DdnsPrincipalclusterGroupAPI
 	reference      string
@@ -499,38 +499,38 @@ type DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest st
 }
 
 // Enter the field names followed by comma
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest) ReturnFields(returnFields string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest {
+func (r DdnsPrincipalclusterGroupAPIReadRequest) ReturnFields(returnFields string) DdnsPrincipalclusterGroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest {
+func (r DdnsPrincipalclusterGroupAPIReadRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterGroupAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest) ReturnAsObject(returnAsObject int32) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest {
+func (r DdnsPrincipalclusterGroupAPIReadRequest) ReturnAsObject(returnAsObject int32) DdnsPrincipalclusterGroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest) Execute() (*GetDdnsPrincipalclusterGroupResponse, *http.Response, error) {
-	return r.ApiService.DdnsprincipalclustergroupReferenceGetExecute(r)
+func (r DdnsPrincipalclusterGroupAPIReadRequest) Execute() (*GetDdnsPrincipalclusterGroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DdnsprincipalclustergroupReferenceGet Get a specific ddns:principalcluster:group object
+Read Get a specific ddns:principalcluster:group object
 
 Returns a specific ddns:principalcluster:group object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ddns:principalcluster:group object
-	@return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest
+	@return DdnsPrincipalclusterGroupAPIReadRequest
 */
-func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReferenceGet(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest {
-	return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest{
+func (a *DdnsPrincipalclusterGroupAPIService) Read(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIReadRequest {
+	return DdnsPrincipalclusterGroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReference
 // Execute executes the request
 //
 //	@return GetDdnsPrincipalclusterGroupResponse
-func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReferenceGetExecute(r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferenceGetRequest) (*GetDdnsPrincipalclusterGroupResponse, *http.Response, error) {
+func (a *DdnsPrincipalclusterGroupAPIService) ReadExecute(r DdnsPrincipalclusterGroupAPIReadRequest) (*GetDdnsPrincipalclusterGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReference
 		localVarReturnValue *GetDdnsPrincipalclusterGroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DdnsPrincipalclusterGroupAPIService.DdnsprincipalclustergroupReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DdnsPrincipalclusterGroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReference
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest struct {
+type DdnsPrincipalclusterGroupAPIUpdateRequest struct {
 	ctx                       context.Context
 	ApiService                DdnsPrincipalclusterGroupAPI
 	reference                 string
@@ -627,44 +627,44 @@ type DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest st
 }
 
 // Object data to update
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest) DdnsPrincipalclusterGroup(ddnsPrincipalclusterGroup DdnsPrincipalclusterGroup) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest {
+func (r DdnsPrincipalclusterGroupAPIUpdateRequest) DdnsPrincipalclusterGroup(ddnsPrincipalclusterGroup DdnsPrincipalclusterGroup) DdnsPrincipalclusterGroupAPIUpdateRequest {
 	r.ddnsPrincipalclusterGroup = &ddnsPrincipalclusterGroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest) ReturnFields(returnFields string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest {
+func (r DdnsPrincipalclusterGroupAPIUpdateRequest) ReturnFields(returnFields string) DdnsPrincipalclusterGroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest {
+func (r DdnsPrincipalclusterGroupAPIUpdateRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterGroupAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest) ReturnAsObject(returnAsObject int32) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest {
+func (r DdnsPrincipalclusterGroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DdnsPrincipalclusterGroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest) Execute() (*UpdateDdnsPrincipalclusterGroupResponse, *http.Response, error) {
-	return r.ApiService.DdnsprincipalclustergroupReferencePutExecute(r)
+func (r DdnsPrincipalclusterGroupAPIUpdateRequest) Execute() (*UpdateDdnsPrincipalclusterGroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DdnsprincipalclustergroupReferencePut Update a ddns:principalcluster:group object
+Update Update a ddns:principalcluster:group object
 
 Updates a specific ddns:principalcluster:group object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ddns:principalcluster:group object
-	@return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest
+	@return DdnsPrincipalclusterGroupAPIUpdateRequest
 */
-func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReferencePut(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest {
-	return DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest{
+func (a *DdnsPrincipalclusterGroupAPIService) Update(ctx context.Context, reference string) DdnsPrincipalclusterGroupAPIUpdateRequest {
+	return DdnsPrincipalclusterGroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReference
 // Execute executes the request
 //
 //	@return UpdateDdnsPrincipalclusterGroupResponse
-func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReferencePutExecute(r DdnsPrincipalclusterGroupAPIDdnsprincipalclustergroupReferencePutRequest) (*UpdateDdnsPrincipalclusterGroupResponse, *http.Response, error) {
+func (a *DdnsPrincipalclusterGroupAPIService) UpdateExecute(r DdnsPrincipalclusterGroupAPIUpdateRequest) (*UpdateDdnsPrincipalclusterGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *DdnsPrincipalclusterGroupAPIService) DdnsprincipalclustergroupReference
 		localVarReturnValue *UpdateDdnsPrincipalclusterGroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DdnsPrincipalclusterGroupAPIService.DdnsprincipalclustergroupReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DdnsPrincipalclusterGroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

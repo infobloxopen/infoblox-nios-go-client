@@ -23,52 +23,52 @@ import (
 
 type MemberDnsAPI interface {
 	/*
-		MemberdnsGet Retrieve member:dns objects
+		List Retrieve member:dns objects
 
 		Returns a list of member:dns objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberDnsAPIMemberdnsGetRequest
+		@return MemberDnsAPIListRequest
 	*/
-	MemberdnsGet(ctx context.Context) MemberDnsAPIMemberdnsGetRequest
+	List(ctx context.Context) MemberDnsAPIListRequest
 
-	// MemberdnsGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListMemberDnsResponse
-	MemberdnsGetExecute(r MemberDnsAPIMemberdnsGetRequest) (*ListMemberDnsResponse, *http.Response, error)
+	ListExecute(r MemberDnsAPIListRequest) (*ListMemberDnsResponse, *http.Response, error)
 	/*
-		MemberdnsReferenceGet Get a specific member:dns object
+		Read Get a specific member:dns object
 
 		Returns a specific member:dns object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:dns object
-		@return MemberDnsAPIMemberdnsReferenceGetRequest
+		@return MemberDnsAPIReadRequest
 	*/
-	MemberdnsReferenceGet(ctx context.Context, reference string) MemberDnsAPIMemberdnsReferenceGetRequest
+	Read(ctx context.Context, reference string) MemberDnsAPIReadRequest
 
-	// MemberdnsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMemberDnsResponse
-	MemberdnsReferenceGetExecute(r MemberDnsAPIMemberdnsReferenceGetRequest) (*GetMemberDnsResponse, *http.Response, error)
+	ReadExecute(r MemberDnsAPIReadRequest) (*GetMemberDnsResponse, *http.Response, error)
 	/*
-		MemberdnsReferencePut Update a member:dns object
+		Update Update a member:dns object
 
 		Updates a specific member:dns object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:dns object
-		@return MemberDnsAPIMemberdnsReferencePutRequest
+		@return MemberDnsAPIUpdateRequest
 	*/
-	MemberdnsReferencePut(ctx context.Context, reference string) MemberDnsAPIMemberdnsReferencePutRequest
+	Update(ctx context.Context, reference string) MemberDnsAPIUpdateRequest
 
-	// MemberdnsReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMemberDnsResponse
-	MemberdnsReferencePutExecute(r MemberDnsAPIMemberdnsReferencePutRequest) (*UpdateMemberDnsResponse, *http.Response, error)
+	UpdateExecute(r MemberDnsAPIUpdateRequest) (*UpdateMemberDnsResponse, *http.Response, error)
 }
 
 // MemberDnsAPIService MemberDnsAPI service
 type MemberDnsAPIService internal.Service
 
-type MemberDnsAPIMemberdnsGetRequest struct {
+type MemberDnsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     MemberDnsAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type MemberDnsAPIMemberdnsGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MemberDnsAPIMemberdnsGetRequest) ReturnFields(returnFields string) MemberDnsAPIMemberdnsGetRequest {
+func (r MemberDnsAPIListRequest) ReturnFields(returnFields string) MemberDnsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDnsAPIMemberdnsGetRequest) ReturnFields2(returnFields2 string) MemberDnsAPIMemberdnsGetRequest {
+func (r MemberDnsAPIListRequest) ReturnFields2(returnFields2 string) MemberDnsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MemberDnsAPIMemberdnsGetRequest) MaxResults(maxResults int32) MemberDnsAPIMemberdnsGetRequest {
+func (r MemberDnsAPIListRequest) MaxResults(maxResults int32) MemberDnsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberDnsAPIMemberdnsGetRequest) ReturnAsObject(returnAsObject int32) MemberDnsAPIMemberdnsGetRequest {
+func (r MemberDnsAPIListRequest) ReturnAsObject(returnAsObject int32) MemberDnsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MemberDnsAPIMemberdnsGetRequest) Paging(paging int32) MemberDnsAPIMemberdnsGetRequest {
+func (r MemberDnsAPIListRequest) Paging(paging int32) MemberDnsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MemberDnsAPIMemberdnsGetRequest) PageId(pageId string) MemberDnsAPIMemberdnsGetRequest {
+func (r MemberDnsAPIListRequest) PageId(pageId string) MemberDnsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MemberDnsAPIMemberdnsGetRequest) Filters(filters map[string]interface{}) MemberDnsAPIMemberdnsGetRequest {
+func (r MemberDnsAPIListRequest) Filters(filters map[string]interface{}) MemberDnsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MemberDnsAPIMemberdnsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberDnsAPIMemberdnsGetRequest {
+func (r MemberDnsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberDnsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MemberDnsAPIMemberdnsGetRequest) Execute() (*ListMemberDnsResponse, *http.Response, error) {
-	return r.ApiService.MemberdnsGetExecute(r)
+func (r MemberDnsAPIListRequest) Execute() (*ListMemberDnsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MemberdnsGet Retrieve member:dns objects
+List Retrieve member:dns objects
 
 Returns a list of member:dns objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberDnsAPIMemberdnsGetRequest
+	@return MemberDnsAPIListRequest
 */
-func (a *MemberDnsAPIService) MemberdnsGet(ctx context.Context) MemberDnsAPIMemberdnsGetRequest {
-	return MemberDnsAPIMemberdnsGetRequest{
+func (a *MemberDnsAPIService) List(ctx context.Context) MemberDnsAPIListRequest {
+	return MemberDnsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *MemberDnsAPIService) MemberdnsGet(ctx context.Context) MemberDnsAPIMemb
 // Execute executes the request
 //
 //	@return ListMemberDnsResponse
-func (a *MemberDnsAPIService) MemberdnsGetExecute(r MemberDnsAPIMemberdnsGetRequest) (*ListMemberDnsResponse, *http.Response, error) {
+func (a *MemberDnsAPIService) ListExecute(r MemberDnsAPIListRequest) (*ListMemberDnsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *MemberDnsAPIService) MemberdnsGetExecute(r MemberDnsAPIMemberdnsGetRequ
 		localVarReturnValue *ListMemberDnsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDnsAPIService.MemberdnsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDnsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *MemberDnsAPIService) MemberdnsGetExecute(r MemberDnsAPIMemberdnsGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberDnsAPIMemberdnsReferenceGetRequest struct {
+type MemberDnsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     MemberDnsAPI
 	reference      string
@@ -249,38 +249,38 @@ type MemberDnsAPIMemberdnsReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MemberDnsAPIMemberdnsReferenceGetRequest) ReturnFields(returnFields string) MemberDnsAPIMemberdnsReferenceGetRequest {
+func (r MemberDnsAPIReadRequest) ReturnFields(returnFields string) MemberDnsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDnsAPIMemberdnsReferenceGetRequest) ReturnFields2(returnFields2 string) MemberDnsAPIMemberdnsReferenceGetRequest {
+func (r MemberDnsAPIReadRequest) ReturnFields2(returnFields2 string) MemberDnsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberDnsAPIMemberdnsReferenceGetRequest) ReturnAsObject(returnAsObject int32) MemberDnsAPIMemberdnsReferenceGetRequest {
+func (r MemberDnsAPIReadRequest) ReturnAsObject(returnAsObject int32) MemberDnsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberDnsAPIMemberdnsReferenceGetRequest) Execute() (*GetMemberDnsResponse, *http.Response, error) {
-	return r.ApiService.MemberdnsReferenceGetExecute(r)
+func (r MemberDnsAPIReadRequest) Execute() (*GetMemberDnsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MemberdnsReferenceGet Get a specific member:dns object
+Read Get a specific member:dns object
 
 Returns a specific member:dns object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:dns object
-	@return MemberDnsAPIMemberdnsReferenceGetRequest
+	@return MemberDnsAPIReadRequest
 */
-func (a *MemberDnsAPIService) MemberdnsReferenceGet(ctx context.Context, reference string) MemberDnsAPIMemberdnsReferenceGetRequest {
-	return MemberDnsAPIMemberdnsReferenceGetRequest{
+func (a *MemberDnsAPIService) Read(ctx context.Context, reference string) MemberDnsAPIReadRequest {
+	return MemberDnsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *MemberDnsAPIService) MemberdnsReferenceGet(ctx context.Context, referen
 // Execute executes the request
 //
 //	@return GetMemberDnsResponse
-func (a *MemberDnsAPIService) MemberdnsReferenceGetExecute(r MemberDnsAPIMemberdnsReferenceGetRequest) (*GetMemberDnsResponse, *http.Response, error) {
+func (a *MemberDnsAPIService) ReadExecute(r MemberDnsAPIReadRequest) (*GetMemberDnsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *MemberDnsAPIService) MemberdnsReferenceGetExecute(r MemberDnsAPIMemberd
 		localVarReturnValue *GetMemberDnsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDnsAPIService.MemberdnsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDnsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *MemberDnsAPIService) MemberdnsReferenceGetExecute(r MemberDnsAPIMemberd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberDnsAPIMemberdnsReferencePutRequest struct {
+type MemberDnsAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     MemberDnsAPI
 	reference      string
@@ -377,44 +377,44 @@ type MemberDnsAPIMemberdnsReferencePutRequest struct {
 }
 
 // Object data to update
-func (r MemberDnsAPIMemberdnsReferencePutRequest) MemberDns(memberDns MemberDns) MemberDnsAPIMemberdnsReferencePutRequest {
+func (r MemberDnsAPIUpdateRequest) MemberDns(memberDns MemberDns) MemberDnsAPIUpdateRequest {
 	r.memberDns = &memberDns
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MemberDnsAPIMemberdnsReferencePutRequest) ReturnFields(returnFields string) MemberDnsAPIMemberdnsReferencePutRequest {
+func (r MemberDnsAPIUpdateRequest) ReturnFields(returnFields string) MemberDnsAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDnsAPIMemberdnsReferencePutRequest) ReturnFields2(returnFields2 string) MemberDnsAPIMemberdnsReferencePutRequest {
+func (r MemberDnsAPIUpdateRequest) ReturnFields2(returnFields2 string) MemberDnsAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberDnsAPIMemberdnsReferencePutRequest) ReturnAsObject(returnAsObject int32) MemberDnsAPIMemberdnsReferencePutRequest {
+func (r MemberDnsAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MemberDnsAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberDnsAPIMemberdnsReferencePutRequest) Execute() (*UpdateMemberDnsResponse, *http.Response, error) {
-	return r.ApiService.MemberdnsReferencePutExecute(r)
+func (r MemberDnsAPIUpdateRequest) Execute() (*UpdateMemberDnsResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-MemberdnsReferencePut Update a member:dns object
+Update Update a member:dns object
 
 Updates a specific member:dns object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:dns object
-	@return MemberDnsAPIMemberdnsReferencePutRequest
+	@return MemberDnsAPIUpdateRequest
 */
-func (a *MemberDnsAPIService) MemberdnsReferencePut(ctx context.Context, reference string) MemberDnsAPIMemberdnsReferencePutRequest {
-	return MemberDnsAPIMemberdnsReferencePutRequest{
+func (a *MemberDnsAPIService) Update(ctx context.Context, reference string) MemberDnsAPIUpdateRequest {
+	return MemberDnsAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *MemberDnsAPIService) MemberdnsReferencePut(ctx context.Context, referen
 // Execute executes the request
 //
 //	@return UpdateMemberDnsResponse
-func (a *MemberDnsAPIService) MemberdnsReferencePutExecute(r MemberDnsAPIMemberdnsReferencePutRequest) (*UpdateMemberDnsResponse, *http.Response, error) {
+func (a *MemberDnsAPIService) UpdateExecute(r MemberDnsAPIUpdateRequest) (*UpdateMemberDnsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *MemberDnsAPIService) MemberdnsReferencePutExecute(r MemberDnsAPIMemberd
 		localVarReturnValue *UpdateMemberDnsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDnsAPIService.MemberdnsReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberDnsAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

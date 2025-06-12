@@ -23,78 +23,302 @@ import (
 
 type SamlAuthserviceAPI interface {
 	/*
-		SamlauthserviceGet Retrieve saml:authservice objects
-
-		Returns a list of saml:authservice objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SamlAuthserviceAPISamlauthserviceGetRequest
-	*/
-	SamlauthserviceGet(ctx context.Context) SamlAuthserviceAPISamlauthserviceGetRequest
-
-	// SamlauthserviceGetExecute executes the request
-	//  @return ListSamlAuthserviceResponse
-	SamlauthserviceGetExecute(r SamlAuthserviceAPISamlauthserviceGetRequest) (*ListSamlAuthserviceResponse, *http.Response, error)
-	/*
-		SamlauthservicePost Create a saml:authservice object
+		Create Create a saml:authservice object
 
 		Creates a new saml:authservice object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SamlAuthserviceAPISamlauthservicePostRequest
+		@return SamlAuthserviceAPICreateRequest
 	*/
-	SamlauthservicePost(ctx context.Context) SamlAuthserviceAPISamlauthservicePostRequest
+	Create(ctx context.Context) SamlAuthserviceAPICreateRequest
 
-	// SamlauthservicePostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateSamlAuthserviceResponse
-	SamlauthservicePostExecute(r SamlAuthserviceAPISamlauthservicePostRequest) (*CreateSamlAuthserviceResponse, *http.Response, error)
+	CreateExecute(r SamlAuthserviceAPICreateRequest) (*CreateSamlAuthserviceResponse, *http.Response, error)
 	/*
-		SamlauthserviceReferenceDelete Delete a saml:authservice object
+		Delete Delete a saml:authservice object
 
 		Deletes a specific saml:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the saml:authservice object
-		@return SamlAuthserviceAPISamlauthserviceReferenceDeleteRequest
+		@return SamlAuthserviceAPIDeleteRequest
 	*/
-	SamlauthserviceReferenceDelete(ctx context.Context, reference string) SamlAuthserviceAPISamlauthserviceReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) SamlAuthserviceAPIDeleteRequest
 
-	// SamlauthserviceReferenceDeleteExecute executes the request
-	SamlauthserviceReferenceDeleteExecute(r SamlAuthserviceAPISamlauthserviceReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r SamlAuthserviceAPIDeleteRequest) (*http.Response, error)
 	/*
-		SamlauthserviceReferenceGet Get a specific saml:authservice object
+		List Retrieve saml:authservice objects
+
+		Returns a list of saml:authservice objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return SamlAuthserviceAPIListRequest
+	*/
+	List(ctx context.Context) SamlAuthserviceAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListSamlAuthserviceResponse
+	ListExecute(r SamlAuthserviceAPIListRequest) (*ListSamlAuthserviceResponse, *http.Response, error)
+	/*
+		Read Get a specific saml:authservice object
 
 		Returns a specific saml:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the saml:authservice object
-		@return SamlAuthserviceAPISamlauthserviceReferenceGetRequest
+		@return SamlAuthserviceAPIReadRequest
 	*/
-	SamlauthserviceReferenceGet(ctx context.Context, reference string) SamlAuthserviceAPISamlauthserviceReferenceGetRequest
+	Read(ctx context.Context, reference string) SamlAuthserviceAPIReadRequest
 
-	// SamlauthserviceReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSamlAuthserviceResponse
-	SamlauthserviceReferenceGetExecute(r SamlAuthserviceAPISamlauthserviceReferenceGetRequest) (*GetSamlAuthserviceResponse, *http.Response, error)
+	ReadExecute(r SamlAuthserviceAPIReadRequest) (*GetSamlAuthserviceResponse, *http.Response, error)
 	/*
-		SamlauthserviceReferencePut Update a saml:authservice object
+		Update Update a saml:authservice object
 
 		Updates a specific saml:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the saml:authservice object
-		@return SamlAuthserviceAPISamlauthserviceReferencePutRequest
+		@return SamlAuthserviceAPIUpdateRequest
 	*/
-	SamlauthserviceReferencePut(ctx context.Context, reference string) SamlAuthserviceAPISamlauthserviceReferencePutRequest
+	Update(ctx context.Context, reference string) SamlAuthserviceAPIUpdateRequest
 
-	// SamlauthserviceReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateSamlAuthserviceResponse
-	SamlauthserviceReferencePutExecute(r SamlAuthserviceAPISamlauthserviceReferencePutRequest) (*UpdateSamlAuthserviceResponse, *http.Response, error)
+	UpdateExecute(r SamlAuthserviceAPIUpdateRequest) (*UpdateSamlAuthserviceResponse, *http.Response, error)
 }
 
 // SamlAuthserviceAPIService SamlAuthserviceAPI service
 type SamlAuthserviceAPIService internal.Service
 
-type SamlAuthserviceAPISamlauthserviceGetRequest struct {
+type SamlAuthserviceAPICreateRequest struct {
+	ctx             context.Context
+	ApiService      SamlAuthserviceAPI
+	samlAuthservice *SamlAuthservice
+	returnFields    *string
+	returnFields2   *string
+	returnAsObject  *int32
+}
+
+// Object data to create
+func (r SamlAuthserviceAPICreateRequest) SamlAuthservice(samlAuthservice SamlAuthservice) SamlAuthserviceAPICreateRequest {
+	r.samlAuthservice = &samlAuthservice
+	return r
+}
+
+// Enter the field names followed by comma
+func (r SamlAuthserviceAPICreateRequest) ReturnFields(returnFields string) SamlAuthserviceAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r SamlAuthserviceAPICreateRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r SamlAuthserviceAPICreateRequest) ReturnAsObject(returnAsObject int32) SamlAuthserviceAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r SamlAuthserviceAPICreateRequest) Execute() (*CreateSamlAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a saml:authservice object
+
+Creates a new saml:authservice object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SamlAuthserviceAPICreateRequest
+*/
+func (a *SamlAuthserviceAPIService) Create(ctx context.Context) SamlAuthserviceAPICreateRequest {
+	return SamlAuthserviceAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateSamlAuthserviceResponse
+func (a *SamlAuthserviceAPIService) CreateExecute(r SamlAuthserviceAPICreateRequest) (*CreateSamlAuthserviceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateSamlAuthserviceResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SamlAuthserviceAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/saml:authservice"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.samlAuthservice == nil {
+		return localVarReturnValue, nil, internal.ReportError("samlAuthservice is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.samlAuthservice
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SamlAuthserviceAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService SamlAuthserviceAPI
+	reference  string
+}
+
+func (r SamlAuthserviceAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a saml:authservice object
+
+Deletes a specific saml:authservice object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the saml:authservice object
+	@return SamlAuthserviceAPIDeleteRequest
+*/
+func (a *SamlAuthserviceAPIService) Delete(ctx context.Context, reference string) SamlAuthserviceAPIDeleteRequest {
+	return SamlAuthserviceAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *SamlAuthserviceAPIService) DeleteExecute(r SamlAuthserviceAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SamlAuthserviceAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/saml:authservice/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type SamlAuthserviceAPIListRequest struct {
 	ctx            context.Context
 	ApiService     SamlAuthserviceAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type SamlAuthserviceAPISamlauthserviceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r SamlAuthserviceAPISamlauthserviceGetRequest) ReturnFields(returnFields string) SamlAuthserviceAPISamlauthserviceGetRequest {
+func (r SamlAuthserviceAPIListRequest) ReturnFields(returnFields string) SamlAuthserviceAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SamlAuthserviceAPISamlauthserviceGetRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPISamlauthserviceGetRequest {
+func (r SamlAuthserviceAPIListRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r SamlAuthserviceAPISamlauthserviceGetRequest) MaxResults(maxResults int32) SamlAuthserviceAPISamlauthserviceGetRequest {
+func (r SamlAuthserviceAPIListRequest) MaxResults(maxResults int32) SamlAuthserviceAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SamlAuthserviceAPISamlauthserviceGetRequest) ReturnAsObject(returnAsObject int32) SamlAuthserviceAPISamlauthserviceGetRequest {
+func (r SamlAuthserviceAPIListRequest) ReturnAsObject(returnAsObject int32) SamlAuthserviceAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r SamlAuthserviceAPISamlauthserviceGetRequest) Paging(paging int32) SamlAuthserviceAPISamlauthserviceGetRequest {
+func (r SamlAuthserviceAPIListRequest) Paging(paging int32) SamlAuthserviceAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r SamlAuthserviceAPISamlauthserviceGetRequest) PageId(pageId string) SamlAuthserviceAPISamlauthserviceGetRequest {
+func (r SamlAuthserviceAPIListRequest) PageId(pageId string) SamlAuthserviceAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r SamlAuthserviceAPISamlauthserviceGetRequest) Filters(filters map[string]interface{}) SamlAuthserviceAPISamlauthserviceGetRequest {
+func (r SamlAuthserviceAPIListRequest) Filters(filters map[string]interface{}) SamlAuthserviceAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r SamlAuthserviceAPISamlauthserviceGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SamlAuthserviceAPISamlauthserviceGetRequest {
+func (r SamlAuthserviceAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SamlAuthserviceAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r SamlAuthserviceAPISamlauthserviceGetRequest) Execute() (*ListSamlAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.SamlauthserviceGetExecute(r)
+func (r SamlAuthserviceAPIListRequest) Execute() (*ListSamlAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-SamlauthserviceGet Retrieve saml:authservice objects
+List Retrieve saml:authservice objects
 
 Returns a list of saml:authservice objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SamlAuthserviceAPISamlauthserviceGetRequest
+	@return SamlAuthserviceAPIListRequest
 */
-func (a *SamlAuthserviceAPIService) SamlauthserviceGet(ctx context.Context) SamlAuthserviceAPISamlauthserviceGetRequest {
-	return SamlAuthserviceAPISamlauthserviceGetRequest{
+func (a *SamlAuthserviceAPIService) List(ctx context.Context) SamlAuthserviceAPIListRequest {
+	return SamlAuthserviceAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *SamlAuthserviceAPIService) SamlauthserviceGet(ctx context.Context) Saml
 // Execute executes the request
 //
 //	@return ListSamlAuthserviceResponse
-func (a *SamlAuthserviceAPIService) SamlauthserviceGetExecute(r SamlAuthserviceAPISamlauthserviceGetRequest) (*ListSamlAuthserviceResponse, *http.Response, error) {
+func (a *SamlAuthserviceAPIService) ListExecute(r SamlAuthserviceAPIListRequest) (*ListSamlAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *SamlAuthserviceAPIService) SamlauthserviceGetExecute(r SamlAuthserviceA
 		localVarReturnValue *ListSamlAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SamlAuthserviceAPIService.SamlauthserviceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SamlAuthserviceAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *SamlAuthserviceAPIService) SamlauthserviceGetExecute(r SamlAuthserviceA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SamlAuthserviceAPISamlauthservicePostRequest struct {
-	ctx             context.Context
-	ApiService      SamlAuthserviceAPI
-	samlAuthservice *SamlAuthservice
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
-}
-
-// Object data to create
-func (r SamlAuthserviceAPISamlauthservicePostRequest) SamlAuthservice(samlAuthservice SamlAuthservice) SamlAuthserviceAPISamlauthservicePostRequest {
-	r.samlAuthservice = &samlAuthservice
-	return r
-}
-
-// Enter the field names followed by comma
-func (r SamlAuthserviceAPISamlauthservicePostRequest) ReturnFields(returnFields string) SamlAuthserviceAPISamlauthservicePostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SamlAuthserviceAPISamlauthservicePostRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPISamlauthservicePostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r SamlAuthserviceAPISamlauthservicePostRequest) ReturnAsObject(returnAsObject int32) SamlAuthserviceAPISamlauthservicePostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r SamlAuthserviceAPISamlauthservicePostRequest) Execute() (*CreateSamlAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.SamlauthservicePostExecute(r)
-}
-
-/*
-SamlauthservicePost Create a saml:authservice object
-
-Creates a new saml:authservice object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SamlAuthserviceAPISamlauthservicePostRequest
-*/
-func (a *SamlAuthserviceAPIService) SamlauthservicePost(ctx context.Context) SamlAuthserviceAPISamlauthservicePostRequest {
-	return SamlAuthserviceAPISamlauthservicePostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateSamlAuthserviceResponse
-func (a *SamlAuthserviceAPIService) SamlauthservicePostExecute(r SamlAuthserviceAPISamlauthservicePostRequest) (*CreateSamlAuthserviceResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateSamlAuthserviceResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SamlAuthserviceAPIService.SamlauthservicePost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/saml:authservice"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.samlAuthservice == nil {
-		return localVarReturnValue, nil, internal.ReportError("samlAuthservice is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.samlAuthservice
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type SamlAuthserviceAPISamlauthserviceReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService SamlAuthserviceAPI
-	reference  string
-}
-
-func (r SamlAuthserviceAPISamlauthserviceReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.SamlauthserviceReferenceDeleteExecute(r)
-}
-
-/*
-SamlauthserviceReferenceDelete Delete a saml:authservice object
-
-Deletes a specific saml:authservice object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the saml:authservice object
-	@return SamlAuthserviceAPISamlauthserviceReferenceDeleteRequest
-*/
-func (a *SamlAuthserviceAPIService) SamlauthserviceReferenceDelete(ctx context.Context, reference string) SamlAuthserviceAPISamlauthserviceReferenceDeleteRequest {
-	return SamlAuthserviceAPISamlauthserviceReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *SamlAuthserviceAPIService) SamlauthserviceReferenceDeleteExecute(r SamlAuthserviceAPISamlauthserviceReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SamlAuthserviceAPIService.SamlauthserviceReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/saml:authservice/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type SamlAuthserviceAPISamlauthserviceReferenceGetRequest struct {
+type SamlAuthserviceAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     SamlAuthserviceAPI
 	reference      string
@@ -499,38 +499,38 @@ type SamlAuthserviceAPISamlauthserviceReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r SamlAuthserviceAPISamlauthserviceReferenceGetRequest) ReturnFields(returnFields string) SamlAuthserviceAPISamlauthserviceReferenceGetRequest {
+func (r SamlAuthserviceAPIReadRequest) ReturnFields(returnFields string) SamlAuthserviceAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SamlAuthserviceAPISamlauthserviceReferenceGetRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPISamlauthserviceReferenceGetRequest {
+func (r SamlAuthserviceAPIReadRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SamlAuthserviceAPISamlauthserviceReferenceGetRequest) ReturnAsObject(returnAsObject int32) SamlAuthserviceAPISamlauthserviceReferenceGetRequest {
+func (r SamlAuthserviceAPIReadRequest) ReturnAsObject(returnAsObject int32) SamlAuthserviceAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SamlAuthserviceAPISamlauthserviceReferenceGetRequest) Execute() (*GetSamlAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.SamlauthserviceReferenceGetExecute(r)
+func (r SamlAuthserviceAPIReadRequest) Execute() (*GetSamlAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-SamlauthserviceReferenceGet Get a specific saml:authservice object
+Read Get a specific saml:authservice object
 
 Returns a specific saml:authservice object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the saml:authservice object
-	@return SamlAuthserviceAPISamlauthserviceReferenceGetRequest
+	@return SamlAuthserviceAPIReadRequest
 */
-func (a *SamlAuthserviceAPIService) SamlauthserviceReferenceGet(ctx context.Context, reference string) SamlAuthserviceAPISamlauthserviceReferenceGetRequest {
-	return SamlAuthserviceAPISamlauthserviceReferenceGetRequest{
+func (a *SamlAuthserviceAPIService) Read(ctx context.Context, reference string) SamlAuthserviceAPIReadRequest {
+	return SamlAuthserviceAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *SamlAuthserviceAPIService) SamlauthserviceReferenceGet(ctx context.Cont
 // Execute executes the request
 //
 //	@return GetSamlAuthserviceResponse
-func (a *SamlAuthserviceAPIService) SamlauthserviceReferenceGetExecute(r SamlAuthserviceAPISamlauthserviceReferenceGetRequest) (*GetSamlAuthserviceResponse, *http.Response, error) {
+func (a *SamlAuthserviceAPIService) ReadExecute(r SamlAuthserviceAPIReadRequest) (*GetSamlAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *SamlAuthserviceAPIService) SamlauthserviceReferenceGetExecute(r SamlAut
 		localVarReturnValue *GetSamlAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SamlAuthserviceAPIService.SamlauthserviceReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SamlAuthserviceAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *SamlAuthserviceAPIService) SamlauthserviceReferenceGetExecute(r SamlAut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SamlAuthserviceAPISamlauthserviceReferencePutRequest struct {
+type SamlAuthserviceAPIUpdateRequest struct {
 	ctx             context.Context
 	ApiService      SamlAuthserviceAPI
 	reference       string
@@ -627,44 +627,44 @@ type SamlAuthserviceAPISamlauthserviceReferencePutRequest struct {
 }
 
 // Object data to update
-func (r SamlAuthserviceAPISamlauthserviceReferencePutRequest) SamlAuthservice(samlAuthservice SamlAuthservice) SamlAuthserviceAPISamlauthserviceReferencePutRequest {
+func (r SamlAuthserviceAPIUpdateRequest) SamlAuthservice(samlAuthservice SamlAuthservice) SamlAuthserviceAPIUpdateRequest {
 	r.samlAuthservice = &samlAuthservice
 	return r
 }
 
 // Enter the field names followed by comma
-func (r SamlAuthserviceAPISamlauthserviceReferencePutRequest) ReturnFields(returnFields string) SamlAuthserviceAPISamlauthserviceReferencePutRequest {
+func (r SamlAuthserviceAPIUpdateRequest) ReturnFields(returnFields string) SamlAuthserviceAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SamlAuthserviceAPISamlauthserviceReferencePutRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPISamlauthserviceReferencePutRequest {
+func (r SamlAuthserviceAPIUpdateRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SamlAuthserviceAPISamlauthserviceReferencePutRequest) ReturnAsObject(returnAsObject int32) SamlAuthserviceAPISamlauthserviceReferencePutRequest {
+func (r SamlAuthserviceAPIUpdateRequest) ReturnAsObject(returnAsObject int32) SamlAuthserviceAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SamlAuthserviceAPISamlauthserviceReferencePutRequest) Execute() (*UpdateSamlAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.SamlauthserviceReferencePutExecute(r)
+func (r SamlAuthserviceAPIUpdateRequest) Execute() (*UpdateSamlAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-SamlauthserviceReferencePut Update a saml:authservice object
+Update Update a saml:authservice object
 
 Updates a specific saml:authservice object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the saml:authservice object
-	@return SamlAuthserviceAPISamlauthserviceReferencePutRequest
+	@return SamlAuthserviceAPIUpdateRequest
 */
-func (a *SamlAuthserviceAPIService) SamlauthserviceReferencePut(ctx context.Context, reference string) SamlAuthserviceAPISamlauthserviceReferencePutRequest {
-	return SamlAuthserviceAPISamlauthserviceReferencePutRequest{
+func (a *SamlAuthserviceAPIService) Update(ctx context.Context, reference string) SamlAuthserviceAPIUpdateRequest {
+	return SamlAuthserviceAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *SamlAuthserviceAPIService) SamlauthserviceReferencePut(ctx context.Cont
 // Execute executes the request
 //
 //	@return UpdateSamlAuthserviceResponse
-func (a *SamlAuthserviceAPIService) SamlauthserviceReferencePutExecute(r SamlAuthserviceAPISamlauthserviceReferencePutRequest) (*UpdateSamlAuthserviceResponse, *http.Response, error) {
+func (a *SamlAuthserviceAPIService) UpdateExecute(r SamlAuthserviceAPIUpdateRequest) (*UpdateSamlAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *SamlAuthserviceAPIService) SamlauthserviceReferencePutExecute(r SamlAut
 		localVarReturnValue *UpdateSamlAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SamlAuthserviceAPIService.SamlauthserviceReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SamlAuthserviceAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -23,38 +23,38 @@ import (
 
 type GridServicerestartRequestChangedobjectAPI interface {
 	/*
-		GridservicerestartrequestchangedobjectGet Retrieve grid:servicerestart:request:changedobject objects
+		List Retrieve grid:servicerestart:request:changedobject objects
 
 		Returns a list of grid:servicerestart:request:changedobject objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest
+		@return GridServicerestartRequestChangedobjectAPIListRequest
 	*/
-	GridservicerestartrequestchangedobjectGet(ctx context.Context) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest
+	List(ctx context.Context) GridServicerestartRequestChangedobjectAPIListRequest
 
-	// GridservicerestartrequestchangedobjectGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridServicerestartRequestChangedobjectResponse
-	GridservicerestartrequestchangedobjectGetExecute(r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) (*ListGridServicerestartRequestChangedobjectResponse, *http.Response, error)
+	ListExecute(r GridServicerestartRequestChangedobjectAPIListRequest) (*ListGridServicerestartRequestChangedobjectResponse, *http.Response, error)
 	/*
-		GridservicerestartrequestchangedobjectReferenceGet Get a specific grid:servicerestart:request:changedobject object
+		Read Get a specific grid:servicerestart:request:changedobject object
 
 		Returns a specific grid:servicerestart:request:changedobject object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:servicerestart:request:changedobject object
-		@return GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest
+		@return GridServicerestartRequestChangedobjectAPIReadRequest
 	*/
-	GridservicerestartrequestchangedobjectReferenceGet(ctx context.Context, reference string) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest
+	Read(ctx context.Context, reference string) GridServicerestartRequestChangedobjectAPIReadRequest
 
-	// GridservicerestartrequestchangedobjectReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridServicerestartRequestChangedobjectResponse
-	GridservicerestartrequestchangedobjectReferenceGetExecute(r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest) (*GetGridServicerestartRequestChangedobjectResponse, *http.Response, error)
+	ReadExecute(r GridServicerestartRequestChangedobjectAPIReadRequest) (*GetGridServicerestartRequestChangedobjectResponse, *http.Response, error)
 }
 
 // GridServicerestartRequestChangedobjectAPIService GridServicerestartRequestChangedobjectAPI service
 type GridServicerestartRequestChangedobjectAPIService internal.Service
 
-type GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest struct {
+type GridServicerestartRequestChangedobjectAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridServicerestartRequestChangedobjectAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedob
 }
 
 // Enter the field names followed by comma
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) ReturnFields(returnFields string) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIListRequest) ReturnFields(returnFields string) GridServicerestartRequestChangedobjectAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) ReturnFields2(returnFields2 string) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIListRequest) ReturnFields2(returnFields2 string) GridServicerestartRequestChangedobjectAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) MaxResults(maxResults int32) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIListRequest) MaxResults(maxResults int32) GridServicerestartRequestChangedobjectAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) ReturnAsObject(returnAsObject int32) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIListRequest) ReturnAsObject(returnAsObject int32) GridServicerestartRequestChangedobjectAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) Paging(paging int32) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIListRequest) Paging(paging int32) GridServicerestartRequestChangedobjectAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) PageId(pageId string) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIListRequest) PageId(pageId string) GridServicerestartRequestChangedobjectAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) Filters(filters map[string]interface{}) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIListRequest) Filters(filters map[string]interface{}) GridServicerestartRequestChangedobjectAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridServicerestartRequestChangedobjectAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) Execute() (*ListGridServicerestartRequestChangedobjectResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartrequestchangedobjectGetExecute(r)
+func (r GridServicerestartRequestChangedobjectAPIListRequest) Execute() (*ListGridServicerestartRequestChangedobjectResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridservicerestartrequestchangedobjectGet Retrieve grid:servicerestart:request:changedobject objects
+List Retrieve grid:servicerestart:request:changedobject objects
 
 Returns a list of grid:servicerestart:request:changedobject objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest
+	@return GridServicerestartRequestChangedobjectAPIListRequest
 */
-func (a *GridServicerestartRequestChangedobjectAPIService) GridservicerestartrequestchangedobjectGet(ctx context.Context) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest {
-	return GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest{
+func (a *GridServicerestartRequestChangedobjectAPIService) List(ctx context.Context) GridServicerestartRequestChangedobjectAPIListRequest {
+	return GridServicerestartRequestChangedobjectAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *GridServicerestartRequestChangedobjectAPIService) Gridservicerestartreq
 // Execute executes the request
 //
 //	@return ListGridServicerestartRequestChangedobjectResponse
-func (a *GridServicerestartRequestChangedobjectAPIService) GridservicerestartrequestchangedobjectGetExecute(r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectGetRequest) (*ListGridServicerestartRequestChangedobjectResponse, *http.Response, error) {
+func (a *GridServicerestartRequestChangedobjectAPIService) ListExecute(r GridServicerestartRequestChangedobjectAPIListRequest) (*ListGridServicerestartRequestChangedobjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *GridServicerestartRequestChangedobjectAPIService) Gridservicerestartreq
 		localVarReturnValue *ListGridServicerestartRequestChangedobjectResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartRequestChangedobjectAPIService.GridservicerestartrequestchangedobjectGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartRequestChangedobjectAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *GridServicerestartRequestChangedobjectAPIService) Gridservicerestartreq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest struct {
+type GridServicerestartRequestChangedobjectAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridServicerestartRequestChangedobjectAPI
 	reference      string
@@ -235,38 +235,38 @@ type GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedob
 }
 
 // Enter the field names followed by comma
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest) ReturnFields(returnFields string) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIReadRequest) ReturnFields(returnFields string) GridServicerestartRequestChangedobjectAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest) ReturnFields2(returnFields2 string) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIReadRequest) ReturnFields2(returnFields2 string) GridServicerestartRequestChangedobjectAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest {
+func (r GridServicerestartRequestChangedobjectAPIReadRequest) ReturnAsObject(returnAsObject int32) GridServicerestartRequestChangedobjectAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest) Execute() (*GetGridServicerestartRequestChangedobjectResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartrequestchangedobjectReferenceGetExecute(r)
+func (r GridServicerestartRequestChangedobjectAPIReadRequest) Execute() (*GetGridServicerestartRequestChangedobjectResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridservicerestartrequestchangedobjectReferenceGet Get a specific grid:servicerestart:request:changedobject object
+Read Get a specific grid:servicerestart:request:changedobject object
 
 Returns a specific grid:servicerestart:request:changedobject object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:servicerestart:request:changedobject object
-	@return GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest
+	@return GridServicerestartRequestChangedobjectAPIReadRequest
 */
-func (a *GridServicerestartRequestChangedobjectAPIService) GridservicerestartrequestchangedobjectReferenceGet(ctx context.Context, reference string) GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest {
-	return GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest{
+func (a *GridServicerestartRequestChangedobjectAPIService) Read(ctx context.Context, reference string) GridServicerestartRequestChangedobjectAPIReadRequest {
+	return GridServicerestartRequestChangedobjectAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *GridServicerestartRequestChangedobjectAPIService) Gridservicerestartreq
 // Execute executes the request
 //
 //	@return GetGridServicerestartRequestChangedobjectResponse
-func (a *GridServicerestartRequestChangedobjectAPIService) GridservicerestartrequestchangedobjectReferenceGetExecute(r GridServicerestartRequestChangedobjectAPIGridservicerestartrequestchangedobjectReferenceGetRequest) (*GetGridServicerestartRequestChangedobjectResponse, *http.Response, error) {
+func (a *GridServicerestartRequestChangedobjectAPIService) ReadExecute(r GridServicerestartRequestChangedobjectAPIReadRequest) (*GetGridServicerestartRequestChangedobjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *GridServicerestartRequestChangedobjectAPIService) Gridservicerestartreq
 		localVarReturnValue *GetGridServicerestartRequestChangedobjectResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartRequestChangedobjectAPIService.GridservicerestartrequestchangedobjectReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartRequestChangedobjectAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

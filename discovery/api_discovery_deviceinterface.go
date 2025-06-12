@@ -23,52 +23,52 @@ import (
 
 type DiscoveryDeviceinterfaceAPI interface {
 	/*
-		DiscoverydeviceinterfaceGet Retrieve discovery:deviceinterface objects
+		List Retrieve discovery:deviceinterface objects
 
 		Returns a list of discovery:deviceinterface objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest
+		@return DiscoveryDeviceinterfaceAPIListRequest
 	*/
-	DiscoverydeviceinterfaceGet(ctx context.Context) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest
+	List(ctx context.Context) DiscoveryDeviceinterfaceAPIListRequest
 
-	// DiscoverydeviceinterfaceGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDiscoveryDeviceinterfaceResponse
-	DiscoverydeviceinterfaceGetExecute(r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) (*ListDiscoveryDeviceinterfaceResponse, *http.Response, error)
+	ListExecute(r DiscoveryDeviceinterfaceAPIListRequest) (*ListDiscoveryDeviceinterfaceResponse, *http.Response, error)
 	/*
-		DiscoverydeviceinterfaceReferenceGet Get a specific discovery:deviceinterface object
+		Read Get a specific discovery:deviceinterface object
 
 		Returns a specific discovery:deviceinterface object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:deviceinterface object
-		@return DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest
+		@return DiscoveryDeviceinterfaceAPIReadRequest
 	*/
-	DiscoverydeviceinterfaceReferenceGet(ctx context.Context, reference string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoveryDeviceinterfaceAPIReadRequest
 
-	// DiscoverydeviceinterfaceReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoveryDeviceinterfaceResponse
-	DiscoverydeviceinterfaceReferenceGetExecute(r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest) (*GetDiscoveryDeviceinterfaceResponse, *http.Response, error)
+	ReadExecute(r DiscoveryDeviceinterfaceAPIReadRequest) (*GetDiscoveryDeviceinterfaceResponse, *http.Response, error)
 	/*
-		DiscoverydeviceinterfaceReferencePut Update a discovery:deviceinterface object
+		Update Update a discovery:deviceinterface object
 
 		Updates a specific discovery:deviceinterface object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:deviceinterface object
-		@return DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest
+		@return DiscoveryDeviceinterfaceAPIUpdateRequest
 	*/
-	DiscoverydeviceinterfaceReferencePut(ctx context.Context, reference string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest
+	Update(ctx context.Context, reference string) DiscoveryDeviceinterfaceAPIUpdateRequest
 
-	// DiscoverydeviceinterfaceReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDiscoveryDeviceinterfaceResponse
-	DiscoverydeviceinterfaceReferencePutExecute(r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest) (*UpdateDiscoveryDeviceinterfaceResponse, *http.Response, error)
+	UpdateExecute(r DiscoveryDeviceinterfaceAPIUpdateRequest) (*UpdateDiscoveryDeviceinterfaceResponse, *http.Response, error)
 }
 
 // DiscoveryDeviceinterfaceAPIService DiscoveryDeviceinterfaceAPI service
 type DiscoveryDeviceinterfaceAPIService internal.Service
 
-type DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest struct {
+type DiscoveryDeviceinterfaceAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DiscoveryDeviceinterfaceAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) ReturnFields(returnFields string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIListRequest) ReturnFields(returnFields string) DiscoveryDeviceinterfaceAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIListRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceinterfaceAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) MaxResults(maxResults int32) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIListRequest) MaxResults(maxResults int32) DiscoveryDeviceinterfaceAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoveryDeviceinterfaceAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) Paging(paging int32) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIListRequest) Paging(paging int32) DiscoveryDeviceinterfaceAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) PageId(pageId string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIListRequest) PageId(pageId string) DiscoveryDeviceinterfaceAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) Filters(filters map[string]interface{}) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIListRequest) Filters(filters map[string]interface{}) DiscoveryDeviceinterfaceAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryDeviceinterfaceAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) Execute() (*ListDiscoveryDeviceinterfaceResponse, *http.Response, error) {
-	return r.ApiService.DiscoverydeviceinterfaceGetExecute(r)
+func (r DiscoveryDeviceinterfaceAPIListRequest) Execute() (*ListDiscoveryDeviceinterfaceResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DiscoverydeviceinterfaceGet Retrieve discovery:deviceinterface objects
+List Retrieve discovery:deviceinterface objects
 
 Returns a list of discovery:deviceinterface objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest
+	@return DiscoveryDeviceinterfaceAPIListRequest
 */
-func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceGet(ctx context.Context) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest {
-	return DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest{
+func (a *DiscoveryDeviceinterfaceAPIService) List(ctx context.Context) DiscoveryDeviceinterfaceAPIListRequest {
+	return DiscoveryDeviceinterfaceAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceGet(ctx con
 // Execute executes the request
 //
 //	@return ListDiscoveryDeviceinterfaceResponse
-func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceGetExecute(r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceGetRequest) (*ListDiscoveryDeviceinterfaceResponse, *http.Response, error) {
+func (a *DiscoveryDeviceinterfaceAPIService) ListExecute(r DiscoveryDeviceinterfaceAPIListRequest) (*ListDiscoveryDeviceinterfaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceGetExecute(
 		localVarReturnValue *ListDiscoveryDeviceinterfaceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDeviceinterfaceAPIService.DiscoverydeviceinterfaceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDeviceinterfaceAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceGetExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest struct {
+type DiscoveryDeviceinterfaceAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DiscoveryDeviceinterfaceAPI
 	reference      string
@@ -249,38 +249,38 @@ type DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest stru
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest) ReturnFields(returnFields string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIReadRequest) ReturnFields(returnFields string) DiscoveryDeviceinterfaceAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIReadRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceinterfaceAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest {
+func (r DiscoveryDeviceinterfaceAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoveryDeviceinterfaceAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest) Execute() (*GetDiscoveryDeviceinterfaceResponse, *http.Response, error) {
-	return r.ApiService.DiscoverydeviceinterfaceReferenceGetExecute(r)
+func (r DiscoveryDeviceinterfaceAPIReadRequest) Execute() (*GetDiscoveryDeviceinterfaceResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DiscoverydeviceinterfaceReferenceGet Get a specific discovery:deviceinterface object
+Read Get a specific discovery:deviceinterface object
 
 Returns a specific discovery:deviceinterface object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:deviceinterface object
-	@return DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest
+	@return DiscoveryDeviceinterfaceAPIReadRequest
 */
-func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceReferenceGet(ctx context.Context, reference string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest {
-	return DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest{
+func (a *DiscoveryDeviceinterfaceAPIService) Read(ctx context.Context, reference string) DiscoveryDeviceinterfaceAPIReadRequest {
+	return DiscoveryDeviceinterfaceAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceReferenceGe
 // Execute executes the request
 //
 //	@return GetDiscoveryDeviceinterfaceResponse
-func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceReferenceGetExecute(r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferenceGetRequest) (*GetDiscoveryDeviceinterfaceResponse, *http.Response, error) {
+func (a *DiscoveryDeviceinterfaceAPIService) ReadExecute(r DiscoveryDeviceinterfaceAPIReadRequest) (*GetDiscoveryDeviceinterfaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceReferenceGe
 		localVarReturnValue *GetDiscoveryDeviceinterfaceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDeviceinterfaceAPIService.DiscoverydeviceinterfaceReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDeviceinterfaceAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceReferenceGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest struct {
+type DiscoveryDeviceinterfaceAPIUpdateRequest struct {
 	ctx                      context.Context
 	ApiService               DiscoveryDeviceinterfaceAPI
 	reference                string
@@ -377,44 +377,44 @@ type DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest stru
 }
 
 // Object data to update
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest) DiscoveryDeviceinterface(discoveryDeviceinterface DiscoveryDeviceinterface) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest {
+func (r DiscoveryDeviceinterfaceAPIUpdateRequest) DiscoveryDeviceinterface(discoveryDeviceinterface DiscoveryDeviceinterface) DiscoveryDeviceinterfaceAPIUpdateRequest {
 	r.discoveryDeviceinterface = &discoveryDeviceinterface
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest) ReturnFields(returnFields string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest {
+func (r DiscoveryDeviceinterfaceAPIUpdateRequest) ReturnFields(returnFields string) DiscoveryDeviceinterfaceAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest {
+func (r DiscoveryDeviceinterfaceAPIUpdateRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceinterfaceAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest) ReturnAsObject(returnAsObject int32) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest {
+func (r DiscoveryDeviceinterfaceAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DiscoveryDeviceinterfaceAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest) Execute() (*UpdateDiscoveryDeviceinterfaceResponse, *http.Response, error) {
-	return r.ApiService.DiscoverydeviceinterfaceReferencePutExecute(r)
+func (r DiscoveryDeviceinterfaceAPIUpdateRequest) Execute() (*UpdateDiscoveryDeviceinterfaceResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DiscoverydeviceinterfaceReferencePut Update a discovery:deviceinterface object
+Update Update a discovery:deviceinterface object
 
 Updates a specific discovery:deviceinterface object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:deviceinterface object
-	@return DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest
+	@return DiscoveryDeviceinterfaceAPIUpdateRequest
 */
-func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceReferencePut(ctx context.Context, reference string) DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest {
-	return DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest{
+func (a *DiscoveryDeviceinterfaceAPIService) Update(ctx context.Context, reference string) DiscoveryDeviceinterfaceAPIUpdateRequest {
+	return DiscoveryDeviceinterfaceAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceReferencePu
 // Execute executes the request
 //
 //	@return UpdateDiscoveryDeviceinterfaceResponse
-func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceReferencePutExecute(r DiscoveryDeviceinterfaceAPIDiscoverydeviceinterfaceReferencePutRequest) (*UpdateDiscoveryDeviceinterfaceResponse, *http.Response, error) {
+func (a *DiscoveryDeviceinterfaceAPIService) UpdateExecute(r DiscoveryDeviceinterfaceAPIUpdateRequest) (*UpdateDiscoveryDeviceinterfaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *DiscoveryDeviceinterfaceAPIService) DiscoverydeviceinterfaceReferencePu
 		localVarReturnValue *UpdateDiscoveryDeviceinterfaceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDeviceinterfaceAPIService.DiscoverydeviceinterfaceReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDeviceinterfaceAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

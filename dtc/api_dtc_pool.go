@@ -23,249 +23,78 @@ import (
 
 type DtcPoolAPI interface {
 	/*
-		DtcpoolGet Retrieve dtc:pool objects
-
-		Returns a list of dtc:pool objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcPoolAPIDtcpoolGetRequest
-	*/
-	DtcpoolGet(ctx context.Context) DtcPoolAPIDtcpoolGetRequest
-
-	// DtcpoolGetExecute executes the request
-	//  @return ListDtcPoolResponse
-	DtcpoolGetExecute(r DtcPoolAPIDtcpoolGetRequest) (*ListDtcPoolResponse, *http.Response, error)
-	/*
-		DtcpoolPost Create a dtc:pool object
+		Create Create a dtc:pool object
 
 		Creates a new dtc:pool object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcPoolAPIDtcpoolPostRequest
+		@return DtcPoolAPICreateRequest
 	*/
-	DtcpoolPost(ctx context.Context) DtcPoolAPIDtcpoolPostRequest
+	Create(ctx context.Context) DtcPoolAPICreateRequest
 
-	// DtcpoolPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDtcPoolResponse
-	DtcpoolPostExecute(r DtcPoolAPIDtcpoolPostRequest) (*CreateDtcPoolResponse, *http.Response, error)
+	CreateExecute(r DtcPoolAPICreateRequest) (*CreateDtcPoolResponse, *http.Response, error)
 	/*
-		DtcpoolReferenceDelete Delete a dtc:pool object
+		Delete Delete a dtc:pool object
 
 		Deletes a specific dtc:pool object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:pool object
-		@return DtcPoolAPIDtcpoolReferenceDeleteRequest
+		@return DtcPoolAPIDeleteRequest
 	*/
-	DtcpoolReferenceDelete(ctx context.Context, reference string) DtcPoolAPIDtcpoolReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DtcPoolAPIDeleteRequest
 
-	// DtcpoolReferenceDeleteExecute executes the request
-	DtcpoolReferenceDeleteExecute(r DtcPoolAPIDtcpoolReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DtcPoolAPIDeleteRequest) (*http.Response, error)
 	/*
-		DtcpoolReferenceGet Get a specific dtc:pool object
+		List Retrieve dtc:pool objects
+
+		Returns a list of dtc:pool objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DtcPoolAPIListRequest
+	*/
+	List(ctx context.Context) DtcPoolAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDtcPoolResponse
+	ListExecute(r DtcPoolAPIListRequest) (*ListDtcPoolResponse, *http.Response, error)
+	/*
+		Read Get a specific dtc:pool object
 
 		Returns a specific dtc:pool object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:pool object
-		@return DtcPoolAPIDtcpoolReferenceGetRequest
+		@return DtcPoolAPIReadRequest
 	*/
-	DtcpoolReferenceGet(ctx context.Context, reference string) DtcPoolAPIDtcpoolReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcPoolAPIReadRequest
 
-	// DtcpoolReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcPoolResponse
-	DtcpoolReferenceGetExecute(r DtcPoolAPIDtcpoolReferenceGetRequest) (*GetDtcPoolResponse, *http.Response, error)
+	ReadExecute(r DtcPoolAPIReadRequest) (*GetDtcPoolResponse, *http.Response, error)
 	/*
-		DtcpoolReferencePut Update a dtc:pool object
+		Update Update a dtc:pool object
 
 		Updates a specific dtc:pool object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:pool object
-		@return DtcPoolAPIDtcpoolReferencePutRequest
+		@return DtcPoolAPIUpdateRequest
 	*/
-	DtcpoolReferencePut(ctx context.Context, reference string) DtcPoolAPIDtcpoolReferencePutRequest
+	Update(ctx context.Context, reference string) DtcPoolAPIUpdateRequest
 
-	// DtcpoolReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcPoolResponse
-	DtcpoolReferencePutExecute(r DtcPoolAPIDtcpoolReferencePutRequest) (*UpdateDtcPoolResponse, *http.Response, error)
+	UpdateExecute(r DtcPoolAPIUpdateRequest) (*UpdateDtcPoolResponse, *http.Response, error)
 }
 
 // DtcPoolAPIService DtcPoolAPI service
 type DtcPoolAPIService internal.Service
 
-type DtcPoolAPIDtcpoolGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcPoolAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r DtcPoolAPIDtcpoolGetRequest) ReturnFields(returnFields string) DtcPoolAPIDtcpoolGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcPoolAPIDtcpoolGetRequest) ReturnFields2(returnFields2 string) DtcPoolAPIDtcpoolGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r DtcPoolAPIDtcpoolGetRequest) MaxResults(maxResults int32) DtcPoolAPIDtcpoolGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DtcPoolAPIDtcpoolGetRequest) ReturnAsObject(returnAsObject int32) DtcPoolAPIDtcpoolGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r DtcPoolAPIDtcpoolGetRequest) Paging(paging int32) DtcPoolAPIDtcpoolGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r DtcPoolAPIDtcpoolGetRequest) PageId(pageId string) DtcPoolAPIDtcpoolGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r DtcPoolAPIDtcpoolGetRequest) Filters(filters map[string]interface{}) DtcPoolAPIDtcpoolGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r DtcPoolAPIDtcpoolGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcPoolAPIDtcpoolGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r DtcPoolAPIDtcpoolGetRequest) Execute() (*ListDtcPoolResponse, *http.Response, error) {
-	return r.ApiService.DtcpoolGetExecute(r)
-}
-
-/*
-DtcpoolGet Retrieve dtc:pool objects
-
-Returns a list of dtc:pool objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcPoolAPIDtcpoolGetRequest
-*/
-func (a *DtcPoolAPIService) DtcpoolGet(ctx context.Context) DtcPoolAPIDtcpoolGetRequest {
-	return DtcPoolAPIDtcpoolGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListDtcPoolResponse
-func (a *DtcPoolAPIService) DtcpoolGetExecute(r DtcPoolAPIDtcpoolGetRequest) (*ListDtcPoolResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListDtcPoolResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcPoolAPIService.DtcpoolGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:pool"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DtcPoolAPIDtcpoolPostRequest struct {
+type DtcPoolAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     DtcPoolAPI
 	dtcPool        *DtcPool
@@ -275,43 +104,43 @@ type DtcPoolAPIDtcpoolPostRequest struct {
 }
 
 // Object data to create
-func (r DtcPoolAPIDtcpoolPostRequest) DtcPool(dtcPool DtcPool) DtcPoolAPIDtcpoolPostRequest {
+func (r DtcPoolAPICreateRequest) DtcPool(dtcPool DtcPool) DtcPoolAPICreateRequest {
 	r.dtcPool = &dtcPool
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcPoolAPIDtcpoolPostRequest) ReturnFields(returnFields string) DtcPoolAPIDtcpoolPostRequest {
+func (r DtcPoolAPICreateRequest) ReturnFields(returnFields string) DtcPoolAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcPoolAPIDtcpoolPostRequest) ReturnFields2(returnFields2 string) DtcPoolAPIDtcpoolPostRequest {
+func (r DtcPoolAPICreateRequest) ReturnFields2(returnFields2 string) DtcPoolAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcPoolAPIDtcpoolPostRequest) ReturnAsObject(returnAsObject int32) DtcPoolAPIDtcpoolPostRequest {
+func (r DtcPoolAPICreateRequest) ReturnAsObject(returnAsObject int32) DtcPoolAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcPoolAPIDtcpoolPostRequest) Execute() (*CreateDtcPoolResponse, *http.Response, error) {
-	return r.ApiService.DtcpoolPostExecute(r)
+func (r DtcPoolAPICreateRequest) Execute() (*CreateDtcPoolResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-DtcpoolPost Create a dtc:pool object
+Create Create a dtc:pool object
 
 Creates a new dtc:pool object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcPoolAPIDtcpoolPostRequest
+	@return DtcPoolAPICreateRequest
 */
-func (a *DtcPoolAPIService) DtcpoolPost(ctx context.Context) DtcPoolAPIDtcpoolPostRequest {
-	return DtcPoolAPIDtcpoolPostRequest{
+func (a *DtcPoolAPIService) Create(ctx context.Context) DtcPoolAPICreateRequest {
+	return DtcPoolAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *DtcPoolAPIService) DtcpoolPost(ctx context.Context) DtcPoolAPIDtcpoolPo
 // Execute executes the request
 //
 //	@return CreateDtcPoolResponse
-func (a *DtcPoolAPIService) DtcpoolPostExecute(r DtcPoolAPIDtcpoolPostRequest) (*CreateDtcPoolResponse, *http.Response, error) {
+func (a *DtcPoolAPIService) CreateExecute(r DtcPoolAPICreateRequest) (*CreateDtcPoolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *DtcPoolAPIService) DtcpoolPostExecute(r DtcPoolAPIDtcpoolPostRequest) (
 		localVarReturnValue *CreateDtcPoolResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcPoolAPIService.DtcpoolPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcPoolAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *DtcPoolAPIService) DtcpoolPostExecute(r DtcPoolAPIDtcpoolPostRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcPoolAPIDtcpoolReferenceDeleteRequest struct {
+type DtcPoolAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService DtcPoolAPI
 	reference  string
 }
 
-func (r DtcPoolAPIDtcpoolReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DtcpoolReferenceDeleteExecute(r)
+func (r DtcPoolAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-DtcpoolReferenceDelete Delete a dtc:pool object
+Delete Delete a dtc:pool object
 
 Deletes a specific dtc:pool object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:pool object
-	@return DtcPoolAPIDtcpoolReferenceDeleteRequest
+	@return DtcPoolAPIDeleteRequest
 */
-func (a *DtcPoolAPIService) DtcpoolReferenceDelete(ctx context.Context, reference string) DtcPoolAPIDtcpoolReferenceDeleteRequest {
-	return DtcPoolAPIDtcpoolReferenceDeleteRequest{
+func (a *DtcPoolAPIService) Delete(ctx context.Context, reference string) DtcPoolAPIDeleteRequest {
+	return DtcPoolAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *DtcPoolAPIService) DtcpoolReferenceDelete(ctx context.Context, referenc
 }
 
 // Execute executes the request
-func (a *DtcPoolAPIService) DtcpoolReferenceDeleteExecute(r DtcPoolAPIDtcpoolReferenceDeleteRequest) (*http.Response, error) {
+func (a *DtcPoolAPIService) DeleteExecute(r DtcPoolAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcPoolAPIService.DtcpoolReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcPoolAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *DtcPoolAPIService) DtcpoolReferenceDeleteExecute(r DtcPoolAPIDtcpoolRef
 	return localVarHTTPResponse, nil
 }
 
-type DtcPoolAPIDtcpoolReferenceGetRequest struct {
+type DtcPoolAPIListRequest struct {
+	ctx            context.Context
+	ApiService     DtcPoolAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DtcPoolAPIListRequest) ReturnFields(returnFields string) DtcPoolAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DtcPoolAPIListRequest) ReturnFields2(returnFields2 string) DtcPoolAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r DtcPoolAPIListRequest) MaxResults(maxResults int32) DtcPoolAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DtcPoolAPIListRequest) ReturnAsObject(returnAsObject int32) DtcPoolAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r DtcPoolAPIListRequest) Paging(paging int32) DtcPoolAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r DtcPoolAPIListRequest) PageId(pageId string) DtcPoolAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r DtcPoolAPIListRequest) Filters(filters map[string]interface{}) DtcPoolAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r DtcPoolAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcPoolAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r DtcPoolAPIListRequest) Execute() (*ListDtcPoolResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve dtc:pool objects
+
+Returns a list of dtc:pool objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DtcPoolAPIListRequest
+*/
+func (a *DtcPoolAPIService) List(ctx context.Context) DtcPoolAPIListRequest {
+	return DtcPoolAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListDtcPoolResponse
+func (a *DtcPoolAPIService) ListExecute(r DtcPoolAPIListRequest) (*ListDtcPoolResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListDtcPoolResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcPoolAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:pool"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DtcPoolAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DtcPoolAPI
 	reference      string
@@ -511,38 +511,38 @@ type DtcPoolAPIDtcpoolReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcPoolAPIDtcpoolReferenceGetRequest) ReturnFields(returnFields string) DtcPoolAPIDtcpoolReferenceGetRequest {
+func (r DtcPoolAPIReadRequest) ReturnFields(returnFields string) DtcPoolAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcPoolAPIDtcpoolReferenceGetRequest) ReturnFields2(returnFields2 string) DtcPoolAPIDtcpoolReferenceGetRequest {
+func (r DtcPoolAPIReadRequest) ReturnFields2(returnFields2 string) DtcPoolAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcPoolAPIDtcpoolReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcPoolAPIDtcpoolReferenceGetRequest {
+func (r DtcPoolAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcPoolAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcPoolAPIDtcpoolReferenceGetRequest) Execute() (*GetDtcPoolResponse, *http.Response, error) {
-	return r.ApiService.DtcpoolReferenceGetExecute(r)
+func (r DtcPoolAPIReadRequest) Execute() (*GetDtcPoolResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtcpoolReferenceGet Get a specific dtc:pool object
+Read Get a specific dtc:pool object
 
 Returns a specific dtc:pool object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:pool object
-	@return DtcPoolAPIDtcpoolReferenceGetRequest
+	@return DtcPoolAPIReadRequest
 */
-func (a *DtcPoolAPIService) DtcpoolReferenceGet(ctx context.Context, reference string) DtcPoolAPIDtcpoolReferenceGetRequest {
-	return DtcPoolAPIDtcpoolReferenceGetRequest{
+func (a *DtcPoolAPIService) Read(ctx context.Context, reference string) DtcPoolAPIReadRequest {
+	return DtcPoolAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *DtcPoolAPIService) DtcpoolReferenceGet(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return GetDtcPoolResponse
-func (a *DtcPoolAPIService) DtcpoolReferenceGetExecute(r DtcPoolAPIDtcpoolReferenceGetRequest) (*GetDtcPoolResponse, *http.Response, error) {
+func (a *DtcPoolAPIService) ReadExecute(r DtcPoolAPIReadRequest) (*GetDtcPoolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *DtcPoolAPIService) DtcpoolReferenceGetExecute(r DtcPoolAPIDtcpoolRefere
 		localVarReturnValue *GetDtcPoolResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcPoolAPIService.DtcpoolReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcPoolAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *DtcPoolAPIService) DtcpoolReferenceGetExecute(r DtcPoolAPIDtcpoolRefere
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcPoolAPIDtcpoolReferencePutRequest struct {
+type DtcPoolAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     DtcPoolAPI
 	reference      string
@@ -639,44 +639,44 @@ type DtcPoolAPIDtcpoolReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DtcPoolAPIDtcpoolReferencePutRequest) DtcPool(dtcPool DtcPool) DtcPoolAPIDtcpoolReferencePutRequest {
+func (r DtcPoolAPIUpdateRequest) DtcPool(dtcPool DtcPool) DtcPoolAPIUpdateRequest {
 	r.dtcPool = &dtcPool
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcPoolAPIDtcpoolReferencePutRequest) ReturnFields(returnFields string) DtcPoolAPIDtcpoolReferencePutRequest {
+func (r DtcPoolAPIUpdateRequest) ReturnFields(returnFields string) DtcPoolAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcPoolAPIDtcpoolReferencePutRequest) ReturnFields2(returnFields2 string) DtcPoolAPIDtcpoolReferencePutRequest {
+func (r DtcPoolAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcPoolAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcPoolAPIDtcpoolReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcPoolAPIDtcpoolReferencePutRequest {
+func (r DtcPoolAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcPoolAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcPoolAPIDtcpoolReferencePutRequest) Execute() (*UpdateDtcPoolResponse, *http.Response, error) {
-	return r.ApiService.DtcpoolReferencePutExecute(r)
+func (r DtcPoolAPIUpdateRequest) Execute() (*UpdateDtcPoolResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtcpoolReferencePut Update a dtc:pool object
+Update Update a dtc:pool object
 
 Updates a specific dtc:pool object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:pool object
-	@return DtcPoolAPIDtcpoolReferencePutRequest
+	@return DtcPoolAPIUpdateRequest
 */
-func (a *DtcPoolAPIService) DtcpoolReferencePut(ctx context.Context, reference string) DtcPoolAPIDtcpoolReferencePutRequest {
-	return DtcPoolAPIDtcpoolReferencePutRequest{
+func (a *DtcPoolAPIService) Update(ctx context.Context, reference string) DtcPoolAPIUpdateRequest {
+	return DtcPoolAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *DtcPoolAPIService) DtcpoolReferencePut(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return UpdateDtcPoolResponse
-func (a *DtcPoolAPIService) DtcpoolReferencePutExecute(r DtcPoolAPIDtcpoolReferencePutRequest) (*UpdateDtcPoolResponse, *http.Response, error) {
+func (a *DtcPoolAPIService) UpdateExecute(r DtcPoolAPIUpdateRequest) (*UpdateDtcPoolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *DtcPoolAPIService) DtcpoolReferencePutExecute(r DtcPoolAPIDtcpoolRefere
 		localVarReturnValue *UpdateDtcPoolResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcPoolAPIService.DtcpoolReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcPoolAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

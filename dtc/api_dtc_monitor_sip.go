@@ -23,249 +23,78 @@ import (
 
 type DtcMonitorSipAPI interface {
 	/*
-		DtcmonitorsipGet Retrieve dtc:monitor:sip objects
-
-		Returns a list of dtc:monitor:sip objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcMonitorSipAPIDtcmonitorsipGetRequest
-	*/
-	DtcmonitorsipGet(ctx context.Context) DtcMonitorSipAPIDtcmonitorsipGetRequest
-
-	// DtcmonitorsipGetExecute executes the request
-	//  @return ListDtcMonitorSipResponse
-	DtcmonitorsipGetExecute(r DtcMonitorSipAPIDtcmonitorsipGetRequest) (*ListDtcMonitorSipResponse, *http.Response, error)
-	/*
-		DtcmonitorsipPost Create a dtc:monitor:sip object
+		Create Create a dtc:monitor:sip object
 
 		Creates a new dtc:monitor:sip object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcMonitorSipAPIDtcmonitorsipPostRequest
+		@return DtcMonitorSipAPICreateRequest
 	*/
-	DtcmonitorsipPost(ctx context.Context) DtcMonitorSipAPIDtcmonitorsipPostRequest
+	Create(ctx context.Context) DtcMonitorSipAPICreateRequest
 
-	// DtcmonitorsipPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDtcMonitorSipResponse
-	DtcmonitorsipPostExecute(r DtcMonitorSipAPIDtcmonitorsipPostRequest) (*CreateDtcMonitorSipResponse, *http.Response, error)
+	CreateExecute(r DtcMonitorSipAPICreateRequest) (*CreateDtcMonitorSipResponse, *http.Response, error)
 	/*
-		DtcmonitorsipReferenceDelete Delete a dtc:monitor:sip object
+		Delete Delete a dtc:monitor:sip object
 
 		Deletes a specific dtc:monitor:sip object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:sip object
-		@return DtcMonitorSipAPIDtcmonitorsipReferenceDeleteRequest
+		@return DtcMonitorSipAPIDeleteRequest
 	*/
-	DtcmonitorsipReferenceDelete(ctx context.Context, reference string) DtcMonitorSipAPIDtcmonitorsipReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DtcMonitorSipAPIDeleteRequest
 
-	// DtcmonitorsipReferenceDeleteExecute executes the request
-	DtcmonitorsipReferenceDeleteExecute(r DtcMonitorSipAPIDtcmonitorsipReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DtcMonitorSipAPIDeleteRequest) (*http.Response, error)
 	/*
-		DtcmonitorsipReferenceGet Get a specific dtc:monitor:sip object
+		List Retrieve dtc:monitor:sip objects
+
+		Returns a list of dtc:monitor:sip objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DtcMonitorSipAPIListRequest
+	*/
+	List(ctx context.Context) DtcMonitorSipAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDtcMonitorSipResponse
+	ListExecute(r DtcMonitorSipAPIListRequest) (*ListDtcMonitorSipResponse, *http.Response, error)
+	/*
+		Read Get a specific dtc:monitor:sip object
 
 		Returns a specific dtc:monitor:sip object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:sip object
-		@return DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest
+		@return DtcMonitorSipAPIReadRequest
 	*/
-	DtcmonitorsipReferenceGet(ctx context.Context, reference string) DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcMonitorSipAPIReadRequest
 
-	// DtcmonitorsipReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcMonitorSipResponse
-	DtcmonitorsipReferenceGetExecute(r DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest) (*GetDtcMonitorSipResponse, *http.Response, error)
+	ReadExecute(r DtcMonitorSipAPIReadRequest) (*GetDtcMonitorSipResponse, *http.Response, error)
 	/*
-		DtcmonitorsipReferencePut Update a dtc:monitor:sip object
+		Update Update a dtc:monitor:sip object
 
 		Updates a specific dtc:monitor:sip object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:sip object
-		@return DtcMonitorSipAPIDtcmonitorsipReferencePutRequest
+		@return DtcMonitorSipAPIUpdateRequest
 	*/
-	DtcmonitorsipReferencePut(ctx context.Context, reference string) DtcMonitorSipAPIDtcmonitorsipReferencePutRequest
+	Update(ctx context.Context, reference string) DtcMonitorSipAPIUpdateRequest
 
-	// DtcmonitorsipReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcMonitorSipResponse
-	DtcmonitorsipReferencePutExecute(r DtcMonitorSipAPIDtcmonitorsipReferencePutRequest) (*UpdateDtcMonitorSipResponse, *http.Response, error)
+	UpdateExecute(r DtcMonitorSipAPIUpdateRequest) (*UpdateDtcMonitorSipResponse, *http.Response, error)
 }
 
 // DtcMonitorSipAPIService DtcMonitorSipAPI service
 type DtcMonitorSipAPIService internal.Service
 
-type DtcMonitorSipAPIDtcmonitorsipGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorSipAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r DtcMonitorSipAPIDtcmonitorsipGetRequest) ReturnFields(returnFields string) DtcMonitorSipAPIDtcmonitorsipGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorSipAPIDtcmonitorsipGetRequest) ReturnFields2(returnFields2 string) DtcMonitorSipAPIDtcmonitorsipGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r DtcMonitorSipAPIDtcmonitorsipGetRequest) MaxResults(maxResults int32) DtcMonitorSipAPIDtcmonitorsipGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DtcMonitorSipAPIDtcmonitorsipGetRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSipAPIDtcmonitorsipGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r DtcMonitorSipAPIDtcmonitorsipGetRequest) Paging(paging int32) DtcMonitorSipAPIDtcmonitorsipGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r DtcMonitorSipAPIDtcmonitorsipGetRequest) PageId(pageId string) DtcMonitorSipAPIDtcmonitorsipGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r DtcMonitorSipAPIDtcmonitorsipGetRequest) Filters(filters map[string]interface{}) DtcMonitorSipAPIDtcmonitorsipGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r DtcMonitorSipAPIDtcmonitorsipGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcMonitorSipAPIDtcmonitorsipGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r DtcMonitorSipAPIDtcmonitorsipGetRequest) Execute() (*ListDtcMonitorSipResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorsipGetExecute(r)
-}
-
-/*
-DtcmonitorsipGet Retrieve dtc:monitor:sip objects
-
-Returns a list of dtc:monitor:sip objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcMonitorSipAPIDtcmonitorsipGetRequest
-*/
-func (a *DtcMonitorSipAPIService) DtcmonitorsipGet(ctx context.Context) DtcMonitorSipAPIDtcmonitorsipGetRequest {
-	return DtcMonitorSipAPIDtcmonitorsipGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListDtcMonitorSipResponse
-func (a *DtcMonitorSipAPIService) DtcmonitorsipGetExecute(r DtcMonitorSipAPIDtcmonitorsipGetRequest) (*ListDtcMonitorSipResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListDtcMonitorSipResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSipAPIService.DtcmonitorsipGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:monitor:sip"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DtcMonitorSipAPIDtcmonitorsipPostRequest struct {
+type DtcMonitorSipAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     DtcMonitorSipAPI
 	dtcMonitorSip  *DtcMonitorSip
@@ -275,43 +104,43 @@ type DtcMonitorSipAPIDtcmonitorsipPostRequest struct {
 }
 
 // Object data to create
-func (r DtcMonitorSipAPIDtcmonitorsipPostRequest) DtcMonitorSip(dtcMonitorSip DtcMonitorSip) DtcMonitorSipAPIDtcmonitorsipPostRequest {
+func (r DtcMonitorSipAPICreateRequest) DtcMonitorSip(dtcMonitorSip DtcMonitorSip) DtcMonitorSipAPICreateRequest {
 	r.dtcMonitorSip = &dtcMonitorSip
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorSipAPIDtcmonitorsipPostRequest) ReturnFields(returnFields string) DtcMonitorSipAPIDtcmonitorsipPostRequest {
+func (r DtcMonitorSipAPICreateRequest) ReturnFields(returnFields string) DtcMonitorSipAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorSipAPIDtcmonitorsipPostRequest) ReturnFields2(returnFields2 string) DtcMonitorSipAPIDtcmonitorsipPostRequest {
+func (r DtcMonitorSipAPICreateRequest) ReturnFields2(returnFields2 string) DtcMonitorSipAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorSipAPIDtcmonitorsipPostRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSipAPIDtcmonitorsipPostRequest {
+func (r DtcMonitorSipAPICreateRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSipAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorSipAPIDtcmonitorsipPostRequest) Execute() (*CreateDtcMonitorSipResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorsipPostExecute(r)
+func (r DtcMonitorSipAPICreateRequest) Execute() (*CreateDtcMonitorSipResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-DtcmonitorsipPost Create a dtc:monitor:sip object
+Create Create a dtc:monitor:sip object
 
 Creates a new dtc:monitor:sip object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcMonitorSipAPIDtcmonitorsipPostRequest
+	@return DtcMonitorSipAPICreateRequest
 */
-func (a *DtcMonitorSipAPIService) DtcmonitorsipPost(ctx context.Context) DtcMonitorSipAPIDtcmonitorsipPostRequest {
-	return DtcMonitorSipAPIDtcmonitorsipPostRequest{
+func (a *DtcMonitorSipAPIService) Create(ctx context.Context) DtcMonitorSipAPICreateRequest {
+	return DtcMonitorSipAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *DtcMonitorSipAPIService) DtcmonitorsipPost(ctx context.Context) DtcMoni
 // Execute executes the request
 //
 //	@return CreateDtcMonitorSipResponse
-func (a *DtcMonitorSipAPIService) DtcmonitorsipPostExecute(r DtcMonitorSipAPIDtcmonitorsipPostRequest) (*CreateDtcMonitorSipResponse, *http.Response, error) {
+func (a *DtcMonitorSipAPIService) CreateExecute(r DtcMonitorSipAPICreateRequest) (*CreateDtcMonitorSipResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *DtcMonitorSipAPIService) DtcmonitorsipPostExecute(r DtcMonitorSipAPIDtc
 		localVarReturnValue *CreateDtcMonitorSipResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSipAPIService.DtcmonitorsipPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSipAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *DtcMonitorSipAPIService) DtcmonitorsipPostExecute(r DtcMonitorSipAPIDtc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcMonitorSipAPIDtcmonitorsipReferenceDeleteRequest struct {
+type DtcMonitorSipAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService DtcMonitorSipAPI
 	reference  string
 }
 
-func (r DtcMonitorSipAPIDtcmonitorsipReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DtcmonitorsipReferenceDeleteExecute(r)
+func (r DtcMonitorSipAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-DtcmonitorsipReferenceDelete Delete a dtc:monitor:sip object
+Delete Delete a dtc:monitor:sip object
 
 Deletes a specific dtc:monitor:sip object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:sip object
-	@return DtcMonitorSipAPIDtcmonitorsipReferenceDeleteRequest
+	@return DtcMonitorSipAPIDeleteRequest
 */
-func (a *DtcMonitorSipAPIService) DtcmonitorsipReferenceDelete(ctx context.Context, reference string) DtcMonitorSipAPIDtcmonitorsipReferenceDeleteRequest {
-	return DtcMonitorSipAPIDtcmonitorsipReferenceDeleteRequest{
+func (a *DtcMonitorSipAPIService) Delete(ctx context.Context, reference string) DtcMonitorSipAPIDeleteRequest {
+	return DtcMonitorSipAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *DtcMonitorSipAPIService) DtcmonitorsipReferenceDelete(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *DtcMonitorSipAPIService) DtcmonitorsipReferenceDeleteExecute(r DtcMonitorSipAPIDtcmonitorsipReferenceDeleteRequest) (*http.Response, error) {
+func (a *DtcMonitorSipAPIService) DeleteExecute(r DtcMonitorSipAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSipAPIService.DtcmonitorsipReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSipAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *DtcMonitorSipAPIService) DtcmonitorsipReferenceDeleteExecute(r DtcMonit
 	return localVarHTTPResponse, nil
 }
 
-type DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest struct {
+type DtcMonitorSipAPIListRequest struct {
+	ctx            context.Context
+	ApiService     DtcMonitorSipAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DtcMonitorSipAPIListRequest) ReturnFields(returnFields string) DtcMonitorSipAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DtcMonitorSipAPIListRequest) ReturnFields2(returnFields2 string) DtcMonitorSipAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r DtcMonitorSipAPIListRequest) MaxResults(maxResults int32) DtcMonitorSipAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DtcMonitorSipAPIListRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSipAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r DtcMonitorSipAPIListRequest) Paging(paging int32) DtcMonitorSipAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r DtcMonitorSipAPIListRequest) PageId(pageId string) DtcMonitorSipAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r DtcMonitorSipAPIListRequest) Filters(filters map[string]interface{}) DtcMonitorSipAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r DtcMonitorSipAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcMonitorSipAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r DtcMonitorSipAPIListRequest) Execute() (*ListDtcMonitorSipResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve dtc:monitor:sip objects
+
+Returns a list of dtc:monitor:sip objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DtcMonitorSipAPIListRequest
+*/
+func (a *DtcMonitorSipAPIService) List(ctx context.Context) DtcMonitorSipAPIListRequest {
+	return DtcMonitorSipAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListDtcMonitorSipResponse
+func (a *DtcMonitorSipAPIService) ListExecute(r DtcMonitorSipAPIListRequest) (*ListDtcMonitorSipResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListDtcMonitorSipResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSipAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:monitor:sip"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DtcMonitorSipAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DtcMonitorSipAPI
 	reference      string
@@ -511,38 +511,38 @@ type DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest) ReturnFields(returnFields string) DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest {
+func (r DtcMonitorSipAPIReadRequest) ReturnFields(returnFields string) DtcMonitorSipAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest) ReturnFields2(returnFields2 string) DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest {
+func (r DtcMonitorSipAPIReadRequest) ReturnFields2(returnFields2 string) DtcMonitorSipAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest {
+func (r DtcMonitorSipAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSipAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest) Execute() (*GetDtcMonitorSipResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorsipReferenceGetExecute(r)
+func (r DtcMonitorSipAPIReadRequest) Execute() (*GetDtcMonitorSipResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtcmonitorsipReferenceGet Get a specific dtc:monitor:sip object
+Read Get a specific dtc:monitor:sip object
 
 Returns a specific dtc:monitor:sip object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:sip object
-	@return DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest
+	@return DtcMonitorSipAPIReadRequest
 */
-func (a *DtcMonitorSipAPIService) DtcmonitorsipReferenceGet(ctx context.Context, reference string) DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest {
-	return DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest{
+func (a *DtcMonitorSipAPIService) Read(ctx context.Context, reference string) DtcMonitorSipAPIReadRequest {
+	return DtcMonitorSipAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *DtcMonitorSipAPIService) DtcmonitorsipReferenceGet(ctx context.Context,
 // Execute executes the request
 //
 //	@return GetDtcMonitorSipResponse
-func (a *DtcMonitorSipAPIService) DtcmonitorsipReferenceGetExecute(r DtcMonitorSipAPIDtcmonitorsipReferenceGetRequest) (*GetDtcMonitorSipResponse, *http.Response, error) {
+func (a *DtcMonitorSipAPIService) ReadExecute(r DtcMonitorSipAPIReadRequest) (*GetDtcMonitorSipResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *DtcMonitorSipAPIService) DtcmonitorsipReferenceGetExecute(r DtcMonitorS
 		localVarReturnValue *GetDtcMonitorSipResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSipAPIService.DtcmonitorsipReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSipAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *DtcMonitorSipAPIService) DtcmonitorsipReferenceGetExecute(r DtcMonitorS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcMonitorSipAPIDtcmonitorsipReferencePutRequest struct {
+type DtcMonitorSipAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     DtcMonitorSipAPI
 	reference      string
@@ -639,44 +639,44 @@ type DtcMonitorSipAPIDtcmonitorsipReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DtcMonitorSipAPIDtcmonitorsipReferencePutRequest) DtcMonitorSip(dtcMonitorSip DtcMonitorSip) DtcMonitorSipAPIDtcmonitorsipReferencePutRequest {
+func (r DtcMonitorSipAPIUpdateRequest) DtcMonitorSip(dtcMonitorSip DtcMonitorSip) DtcMonitorSipAPIUpdateRequest {
 	r.dtcMonitorSip = &dtcMonitorSip
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorSipAPIDtcmonitorsipReferencePutRequest) ReturnFields(returnFields string) DtcMonitorSipAPIDtcmonitorsipReferencePutRequest {
+func (r DtcMonitorSipAPIUpdateRequest) ReturnFields(returnFields string) DtcMonitorSipAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorSipAPIDtcmonitorsipReferencePutRequest) ReturnFields2(returnFields2 string) DtcMonitorSipAPIDtcmonitorsipReferencePutRequest {
+func (r DtcMonitorSipAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcMonitorSipAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorSipAPIDtcmonitorsipReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSipAPIDtcmonitorsipReferencePutRequest {
+func (r DtcMonitorSipAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSipAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorSipAPIDtcmonitorsipReferencePutRequest) Execute() (*UpdateDtcMonitorSipResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorsipReferencePutExecute(r)
+func (r DtcMonitorSipAPIUpdateRequest) Execute() (*UpdateDtcMonitorSipResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtcmonitorsipReferencePut Update a dtc:monitor:sip object
+Update Update a dtc:monitor:sip object
 
 Updates a specific dtc:monitor:sip object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:sip object
-	@return DtcMonitorSipAPIDtcmonitorsipReferencePutRequest
+	@return DtcMonitorSipAPIUpdateRequest
 */
-func (a *DtcMonitorSipAPIService) DtcmonitorsipReferencePut(ctx context.Context, reference string) DtcMonitorSipAPIDtcmonitorsipReferencePutRequest {
-	return DtcMonitorSipAPIDtcmonitorsipReferencePutRequest{
+func (a *DtcMonitorSipAPIService) Update(ctx context.Context, reference string) DtcMonitorSipAPIUpdateRequest {
+	return DtcMonitorSipAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *DtcMonitorSipAPIService) DtcmonitorsipReferencePut(ctx context.Context,
 // Execute executes the request
 //
 //	@return UpdateDtcMonitorSipResponse
-func (a *DtcMonitorSipAPIService) DtcmonitorsipReferencePutExecute(r DtcMonitorSipAPIDtcmonitorsipReferencePutRequest) (*UpdateDtcMonitorSipResponse, *http.Response, error) {
+func (a *DtcMonitorSipAPIService) UpdateExecute(r DtcMonitorSipAPIUpdateRequest) (*UpdateDtcMonitorSipResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *DtcMonitorSipAPIService) DtcmonitorsipReferencePutExecute(r DtcMonitorS
 		localVarReturnValue *UpdateDtcMonitorSipResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSipAPIService.DtcmonitorsipReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSipAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

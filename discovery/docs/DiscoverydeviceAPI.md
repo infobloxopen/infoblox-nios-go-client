@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DiscoverydeviceGet**](DiscoveryDeviceAPI.md#DiscoverydeviceGet) | **Get** /discovery:device | Retrieve discovery:device objects
-[**DiscoverydeviceReferenceGet**](DiscoveryDeviceAPI.md#DiscoverydeviceReferenceGet) | **Get** /discovery:device/{reference} | Get a specific discovery:device object
-[**DiscoverydeviceReferencePut**](DiscoveryDeviceAPI.md#DiscoverydeviceReferencePut) | **Put** /discovery:device/{reference} | Update a discovery:device object
+[**List**](DiscoveryDeviceAPI.md#List) | **Get** /discovery:device | Retrieve discovery:device objects
+[**Read**](DiscoveryDeviceAPI.md#Read) | **Get** /discovery:device/{reference} | Get a specific discovery:device object
+[**Update**](DiscoveryDeviceAPI.md#Update) | **Put** /discovery:device/{reference} | Update a discovery:device object
 
 
 
-## DiscoverydeviceGet
+## List
 
-> ListDiscoveryDeviceResponse DiscoverydeviceGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoveryDeviceResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:device objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryDeviceAPI.DiscoverydeviceGet(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoveryDeviceAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceAPI.DiscoverydeviceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DiscoverydeviceGet`: ListDiscoveryDeviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceAPI.DiscoverydeviceGet`: %v\n", resp)
+	// response from `List`: ListDiscoveryDeviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoveryDeviceAPIDiscoverydeviceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDeviceAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DiscoverydeviceReferenceGet
+## Read
 
-> GetDiscoveryDeviceResponse DiscoverydeviceReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoveryDeviceResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:device object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:device object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryDeviceAPI.DiscoverydeviceReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoveryDeviceAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceAPI.DiscoverydeviceReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DiscoverydeviceReferenceGet`: GetDiscoveryDeviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceAPI.DiscoverydeviceReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDiscoveryDeviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoveryDeviceAPIDiscoverydeviceReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDeviceAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DiscoverydeviceReferencePut
+## Update
 
-> UpdateDiscoveryDeviceResponse DiscoverydeviceReferencePut(ctx, reference).DiscoveryDevice(discoveryDevice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDiscoveryDeviceResponse Update(ctx, reference).DiscoveryDevice(discoveryDevice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a discovery:device object
 
@@ -180,13 +180,13 @@ func main() {
 	discoveryDevice := *discovery.NewDiscoveryDevice() // DiscoveryDevice | Object data to update
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryDeviceAPI.DiscoverydeviceReferencePut(context.Background(), reference).DiscoveryDevice(discoveryDevice).Execute()
+	resp, r, err := apiClient.DiscoveryDeviceAPI.Update(context.Background(), reference).DiscoveryDevice(discoveryDevice).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceAPI.DiscoverydeviceReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DiscoverydeviceReferencePut`: UpdateDiscoveryDeviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceAPI.DiscoverydeviceReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDiscoveryDeviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoveryDeviceAPIDiscoverydeviceReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDeviceAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

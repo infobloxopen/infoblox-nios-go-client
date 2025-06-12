@@ -23,38 +23,38 @@ import (
 
 type GridLicensePoolAPI interface {
 	/*
-		GridlicensePoolGet Retrieve grid:license_pool objects
+		List Retrieve grid:license_pool objects
 
 		Returns a list of grid:license_pool objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridLicensePoolAPIGridlicensePoolGetRequest
+		@return GridLicensePoolAPIListRequest
 	*/
-	GridlicensePoolGet(ctx context.Context) GridLicensePoolAPIGridlicensePoolGetRequest
+	List(ctx context.Context) GridLicensePoolAPIListRequest
 
-	// GridlicensePoolGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridLicensePoolResponse
-	GridlicensePoolGetExecute(r GridLicensePoolAPIGridlicensePoolGetRequest) (*ListGridLicensePoolResponse, *http.Response, error)
+	ListExecute(r GridLicensePoolAPIListRequest) (*ListGridLicensePoolResponse, *http.Response, error)
 	/*
-		GridlicensePoolReferenceGet Get a specific grid:license_pool object
+		Read Get a specific grid:license_pool object
 
 		Returns a specific grid:license_pool object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:license_pool object
-		@return GridLicensePoolAPIGridlicensePoolReferenceGetRequest
+		@return GridLicensePoolAPIReadRequest
 	*/
-	GridlicensePoolReferenceGet(ctx context.Context, reference string) GridLicensePoolAPIGridlicensePoolReferenceGetRequest
+	Read(ctx context.Context, reference string) GridLicensePoolAPIReadRequest
 
-	// GridlicensePoolReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridLicensePoolResponse
-	GridlicensePoolReferenceGetExecute(r GridLicensePoolAPIGridlicensePoolReferenceGetRequest) (*GetGridLicensePoolResponse, *http.Response, error)
+	ReadExecute(r GridLicensePoolAPIReadRequest) (*GetGridLicensePoolResponse, *http.Response, error)
 }
 
 // GridLicensePoolAPIService GridLicensePoolAPI service
 type GridLicensePoolAPIService internal.Service
 
-type GridLicensePoolAPIGridlicensePoolGetRequest struct {
+type GridLicensePoolAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridLicensePoolAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type GridLicensePoolAPIGridlicensePoolGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridLicensePoolAPIGridlicensePoolGetRequest) ReturnFields(returnFields string) GridLicensePoolAPIGridlicensePoolGetRequest {
+func (r GridLicensePoolAPIListRequest) ReturnFields(returnFields string) GridLicensePoolAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridLicensePoolAPIGridlicensePoolGetRequest) ReturnFields2(returnFields2 string) GridLicensePoolAPIGridlicensePoolGetRequest {
+func (r GridLicensePoolAPIListRequest) ReturnFields2(returnFields2 string) GridLicensePoolAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridLicensePoolAPIGridlicensePoolGetRequest) MaxResults(maxResults int32) GridLicensePoolAPIGridlicensePoolGetRequest {
+func (r GridLicensePoolAPIListRequest) MaxResults(maxResults int32) GridLicensePoolAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridLicensePoolAPIGridlicensePoolGetRequest) ReturnAsObject(returnAsObject int32) GridLicensePoolAPIGridlicensePoolGetRequest {
+func (r GridLicensePoolAPIListRequest) ReturnAsObject(returnAsObject int32) GridLicensePoolAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridLicensePoolAPIGridlicensePoolGetRequest) Paging(paging int32) GridLicensePoolAPIGridlicensePoolGetRequest {
+func (r GridLicensePoolAPIListRequest) Paging(paging int32) GridLicensePoolAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridLicensePoolAPIGridlicensePoolGetRequest) PageId(pageId string) GridLicensePoolAPIGridlicensePoolGetRequest {
+func (r GridLicensePoolAPIListRequest) PageId(pageId string) GridLicensePoolAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridLicensePoolAPIGridlicensePoolGetRequest) Filters(filters map[string]interface{}) GridLicensePoolAPIGridlicensePoolGetRequest {
+func (r GridLicensePoolAPIListRequest) Filters(filters map[string]interface{}) GridLicensePoolAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridLicensePoolAPIGridlicensePoolGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridLicensePoolAPIGridlicensePoolGetRequest {
+func (r GridLicensePoolAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridLicensePoolAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridLicensePoolAPIGridlicensePoolGetRequest) Execute() (*ListGridLicensePoolResponse, *http.Response, error) {
-	return r.ApiService.GridlicensePoolGetExecute(r)
+func (r GridLicensePoolAPIListRequest) Execute() (*ListGridLicensePoolResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridlicensePoolGet Retrieve grid:license_pool objects
+List Retrieve grid:license_pool objects
 
 Returns a list of grid:license_pool objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridLicensePoolAPIGridlicensePoolGetRequest
+	@return GridLicensePoolAPIListRequest
 */
-func (a *GridLicensePoolAPIService) GridlicensePoolGet(ctx context.Context) GridLicensePoolAPIGridlicensePoolGetRequest {
-	return GridLicensePoolAPIGridlicensePoolGetRequest{
+func (a *GridLicensePoolAPIService) List(ctx context.Context) GridLicensePoolAPIListRequest {
+	return GridLicensePoolAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *GridLicensePoolAPIService) GridlicensePoolGet(ctx context.Context) Grid
 // Execute executes the request
 //
 //	@return ListGridLicensePoolResponse
-func (a *GridLicensePoolAPIService) GridlicensePoolGetExecute(r GridLicensePoolAPIGridlicensePoolGetRequest) (*ListGridLicensePoolResponse, *http.Response, error) {
+func (a *GridLicensePoolAPIService) ListExecute(r GridLicensePoolAPIListRequest) (*ListGridLicensePoolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *GridLicensePoolAPIService) GridlicensePoolGetExecute(r GridLicensePoolA
 		localVarReturnValue *ListGridLicensePoolResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridLicensePoolAPIService.GridlicensePoolGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridLicensePoolAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *GridLicensePoolAPIService) GridlicensePoolGetExecute(r GridLicensePoolA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridLicensePoolAPIGridlicensePoolReferenceGetRequest struct {
+type GridLicensePoolAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridLicensePoolAPI
 	reference      string
@@ -235,38 +235,38 @@ type GridLicensePoolAPIGridlicensePoolReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridLicensePoolAPIGridlicensePoolReferenceGetRequest) ReturnFields(returnFields string) GridLicensePoolAPIGridlicensePoolReferenceGetRequest {
+func (r GridLicensePoolAPIReadRequest) ReturnFields(returnFields string) GridLicensePoolAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridLicensePoolAPIGridlicensePoolReferenceGetRequest) ReturnFields2(returnFields2 string) GridLicensePoolAPIGridlicensePoolReferenceGetRequest {
+func (r GridLicensePoolAPIReadRequest) ReturnFields2(returnFields2 string) GridLicensePoolAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridLicensePoolAPIGridlicensePoolReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridLicensePoolAPIGridlicensePoolReferenceGetRequest {
+func (r GridLicensePoolAPIReadRequest) ReturnAsObject(returnAsObject int32) GridLicensePoolAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridLicensePoolAPIGridlicensePoolReferenceGetRequest) Execute() (*GetGridLicensePoolResponse, *http.Response, error) {
-	return r.ApiService.GridlicensePoolReferenceGetExecute(r)
+func (r GridLicensePoolAPIReadRequest) Execute() (*GetGridLicensePoolResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridlicensePoolReferenceGet Get a specific grid:license_pool object
+Read Get a specific grid:license_pool object
 
 Returns a specific grid:license_pool object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:license_pool object
-	@return GridLicensePoolAPIGridlicensePoolReferenceGetRequest
+	@return GridLicensePoolAPIReadRequest
 */
-func (a *GridLicensePoolAPIService) GridlicensePoolReferenceGet(ctx context.Context, reference string) GridLicensePoolAPIGridlicensePoolReferenceGetRequest {
-	return GridLicensePoolAPIGridlicensePoolReferenceGetRequest{
+func (a *GridLicensePoolAPIService) Read(ctx context.Context, reference string) GridLicensePoolAPIReadRequest {
+	return GridLicensePoolAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *GridLicensePoolAPIService) GridlicensePoolReferenceGet(ctx context.Cont
 // Execute executes the request
 //
 //	@return GetGridLicensePoolResponse
-func (a *GridLicensePoolAPIService) GridlicensePoolReferenceGetExecute(r GridLicensePoolAPIGridlicensePoolReferenceGetRequest) (*GetGridLicensePoolResponse, *http.Response, error) {
+func (a *GridLicensePoolAPIService) ReadExecute(r GridLicensePoolAPIReadRequest) (*GetGridLicensePoolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *GridLicensePoolAPIService) GridlicensePoolReferenceGetExecute(r GridLic
 		localVarReturnValue *GetGridLicensePoolResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridLicensePoolAPIService.GridlicensePoolReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridLicensePoolAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

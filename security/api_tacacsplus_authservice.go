@@ -23,78 +23,302 @@ import (
 
 type TacacsplusAuthserviceAPI interface {
 	/*
-		TacacsplusauthserviceGet Retrieve tacacsplus:authservice objects
-
-		Returns a list of tacacsplus:authservice objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest
-	*/
-	TacacsplusauthserviceGet(ctx context.Context) TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest
-
-	// TacacsplusauthserviceGetExecute executes the request
-	//  @return ListTacacsplusAuthserviceResponse
-	TacacsplusauthserviceGetExecute(r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) (*ListTacacsplusAuthserviceResponse, *http.Response, error)
-	/*
-		TacacsplusauthservicePost Create a tacacsplus:authservice object
+		Create Create a tacacsplus:authservice object
 
 		Creates a new tacacsplus:authservice object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return TacacsplusAuthserviceAPITacacsplusauthservicePostRequest
+		@return TacacsplusAuthserviceAPICreateRequest
 	*/
-	TacacsplusauthservicePost(ctx context.Context) TacacsplusAuthserviceAPITacacsplusauthservicePostRequest
+	Create(ctx context.Context) TacacsplusAuthserviceAPICreateRequest
 
-	// TacacsplusauthservicePostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateTacacsplusAuthserviceResponse
-	TacacsplusauthservicePostExecute(r TacacsplusAuthserviceAPITacacsplusauthservicePostRequest) (*CreateTacacsplusAuthserviceResponse, *http.Response, error)
+	CreateExecute(r TacacsplusAuthserviceAPICreateRequest) (*CreateTacacsplusAuthserviceResponse, *http.Response, error)
 	/*
-		TacacsplusauthserviceReferenceDelete Delete a tacacsplus:authservice object
+		Delete Delete a tacacsplus:authservice object
 
 		Deletes a specific tacacsplus:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the tacacsplus:authservice object
-		@return TacacsplusAuthserviceAPITacacsplusauthserviceReferenceDeleteRequest
+		@return TacacsplusAuthserviceAPIDeleteRequest
 	*/
-	TacacsplusauthserviceReferenceDelete(ctx context.Context, reference string) TacacsplusAuthserviceAPITacacsplusauthserviceReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) TacacsplusAuthserviceAPIDeleteRequest
 
-	// TacacsplusauthserviceReferenceDeleteExecute executes the request
-	TacacsplusauthserviceReferenceDeleteExecute(r TacacsplusAuthserviceAPITacacsplusauthserviceReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r TacacsplusAuthserviceAPIDeleteRequest) (*http.Response, error)
 	/*
-		TacacsplusauthserviceReferenceGet Get a specific tacacsplus:authservice object
+		List Retrieve tacacsplus:authservice objects
+
+		Returns a list of tacacsplus:authservice objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return TacacsplusAuthserviceAPIListRequest
+	*/
+	List(ctx context.Context) TacacsplusAuthserviceAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListTacacsplusAuthserviceResponse
+	ListExecute(r TacacsplusAuthserviceAPIListRequest) (*ListTacacsplusAuthserviceResponse, *http.Response, error)
+	/*
+		Read Get a specific tacacsplus:authservice object
 
 		Returns a specific tacacsplus:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the tacacsplus:authservice object
-		@return TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest
+		@return TacacsplusAuthserviceAPIReadRequest
 	*/
-	TacacsplusauthserviceReferenceGet(ctx context.Context, reference string) TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest
+	Read(ctx context.Context, reference string) TacacsplusAuthserviceAPIReadRequest
 
-	// TacacsplusauthserviceReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetTacacsplusAuthserviceResponse
-	TacacsplusauthserviceReferenceGetExecute(r TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest) (*GetTacacsplusAuthserviceResponse, *http.Response, error)
+	ReadExecute(r TacacsplusAuthserviceAPIReadRequest) (*GetTacacsplusAuthserviceResponse, *http.Response, error)
 	/*
-		TacacsplusauthserviceReferencePut Update a tacacsplus:authservice object
+		Update Update a tacacsplus:authservice object
 
 		Updates a specific tacacsplus:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the tacacsplus:authservice object
-		@return TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest
+		@return TacacsplusAuthserviceAPIUpdateRequest
 	*/
-	TacacsplusauthserviceReferencePut(ctx context.Context, reference string) TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest
+	Update(ctx context.Context, reference string) TacacsplusAuthserviceAPIUpdateRequest
 
-	// TacacsplusauthserviceReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateTacacsplusAuthserviceResponse
-	TacacsplusauthserviceReferencePutExecute(r TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest) (*UpdateTacacsplusAuthserviceResponse, *http.Response, error)
+	UpdateExecute(r TacacsplusAuthserviceAPIUpdateRequest) (*UpdateTacacsplusAuthserviceResponse, *http.Response, error)
 }
 
 // TacacsplusAuthserviceAPIService TacacsplusAuthserviceAPI service
 type TacacsplusAuthserviceAPIService internal.Service
 
-type TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest struct {
+type TacacsplusAuthserviceAPICreateRequest struct {
+	ctx                   context.Context
+	ApiService            TacacsplusAuthserviceAPI
+	tacacsplusAuthservice *TacacsplusAuthservice
+	returnFields          *string
+	returnFields2         *string
+	returnAsObject        *int32
+}
+
+// Object data to create
+func (r TacacsplusAuthserviceAPICreateRequest) TacacsplusAuthservice(tacacsplusAuthservice TacacsplusAuthservice) TacacsplusAuthserviceAPICreateRequest {
+	r.tacacsplusAuthservice = &tacacsplusAuthservice
+	return r
+}
+
+// Enter the field names followed by comma
+func (r TacacsplusAuthserviceAPICreateRequest) ReturnFields(returnFields string) TacacsplusAuthserviceAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r TacacsplusAuthserviceAPICreateRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r TacacsplusAuthserviceAPICreateRequest) ReturnAsObject(returnAsObject int32) TacacsplusAuthserviceAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r TacacsplusAuthserviceAPICreateRequest) Execute() (*CreateTacacsplusAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a tacacsplus:authservice object
+
+Creates a new tacacsplus:authservice object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return TacacsplusAuthserviceAPICreateRequest
+*/
+func (a *TacacsplusAuthserviceAPIService) Create(ctx context.Context) TacacsplusAuthserviceAPICreateRequest {
+	return TacacsplusAuthserviceAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateTacacsplusAuthserviceResponse
+func (a *TacacsplusAuthserviceAPIService) CreateExecute(r TacacsplusAuthserviceAPICreateRequest) (*CreateTacacsplusAuthserviceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateTacacsplusAuthserviceResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TacacsplusAuthserviceAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/tacacsplus:authservice"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.tacacsplusAuthservice == nil {
+		return localVarReturnValue, nil, internal.ReportError("tacacsplusAuthservice is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.tacacsplusAuthservice
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type TacacsplusAuthserviceAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService TacacsplusAuthserviceAPI
+	reference  string
+}
+
+func (r TacacsplusAuthserviceAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a tacacsplus:authservice object
+
+Deletes a specific tacacsplus:authservice object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the tacacsplus:authservice object
+	@return TacacsplusAuthserviceAPIDeleteRequest
+*/
+func (a *TacacsplusAuthserviceAPIService) Delete(ctx context.Context, reference string) TacacsplusAuthserviceAPIDeleteRequest {
+	return TacacsplusAuthserviceAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *TacacsplusAuthserviceAPIService) DeleteExecute(r TacacsplusAuthserviceAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TacacsplusAuthserviceAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/tacacsplus:authservice/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type TacacsplusAuthserviceAPIListRequest struct {
 	ctx            context.Context
 	ApiService     TacacsplusAuthserviceAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) ReturnFields(returnFields string) TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest {
+func (r TacacsplusAuthserviceAPIListRequest) ReturnFields(returnFields string) TacacsplusAuthserviceAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest {
+func (r TacacsplusAuthserviceAPIListRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) MaxResults(maxResults int32) TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest {
+func (r TacacsplusAuthserviceAPIListRequest) MaxResults(maxResults int32) TacacsplusAuthserviceAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) ReturnAsObject(returnAsObject int32) TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest {
+func (r TacacsplusAuthserviceAPIListRequest) ReturnAsObject(returnAsObject int32) TacacsplusAuthserviceAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) Paging(paging int32) TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest {
+func (r TacacsplusAuthserviceAPIListRequest) Paging(paging int32) TacacsplusAuthserviceAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) PageId(pageId string) TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest {
+func (r TacacsplusAuthserviceAPIListRequest) PageId(pageId string) TacacsplusAuthserviceAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) Filters(filters map[string]interface{}) TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest {
+func (r TacacsplusAuthserviceAPIListRequest) Filters(filters map[string]interface{}) TacacsplusAuthserviceAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) Extattrfilter(extattrfilter map[string]interface{}) TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest {
+func (r TacacsplusAuthserviceAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) TacacsplusAuthserviceAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) Execute() (*ListTacacsplusAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.TacacsplusauthserviceGetExecute(r)
+func (r TacacsplusAuthserviceAPIListRequest) Execute() (*ListTacacsplusAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-TacacsplusauthserviceGet Retrieve tacacsplus:authservice objects
+List Retrieve tacacsplus:authservice objects
 
 Returns a list of tacacsplus:authservice objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest
+	@return TacacsplusAuthserviceAPIListRequest
 */
-func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceGet(ctx context.Context) TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest {
-	return TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest{
+func (a *TacacsplusAuthserviceAPIService) List(ctx context.Context) TacacsplusAuthserviceAPIListRequest {
+	return TacacsplusAuthserviceAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceGet(ctx context.C
 // Execute executes the request
 //
 //	@return ListTacacsplusAuthserviceResponse
-func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceGetExecute(r TacacsplusAuthserviceAPITacacsplusauthserviceGetRequest) (*ListTacacsplusAuthserviceResponse, *http.Response, error) {
+func (a *TacacsplusAuthserviceAPIService) ListExecute(r TacacsplusAuthserviceAPIListRequest) (*ListTacacsplusAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceGetExecute(r Taca
 		localVarReturnValue *ListTacacsplusAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TacacsplusAuthserviceAPIService.TacacsplusauthserviceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TacacsplusAuthserviceAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceGetExecute(r Taca
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type TacacsplusAuthserviceAPITacacsplusauthservicePostRequest struct {
-	ctx                   context.Context
-	ApiService            TacacsplusAuthserviceAPI
-	tacacsplusAuthservice *TacacsplusAuthservice
-	returnFields          *string
-	returnFields2         *string
-	returnAsObject        *int32
-}
-
-// Object data to create
-func (r TacacsplusAuthserviceAPITacacsplusauthservicePostRequest) TacacsplusAuthservice(tacacsplusAuthservice TacacsplusAuthservice) TacacsplusAuthserviceAPITacacsplusauthservicePostRequest {
-	r.tacacsplusAuthservice = &tacacsplusAuthservice
-	return r
-}
-
-// Enter the field names followed by comma
-func (r TacacsplusAuthserviceAPITacacsplusauthservicePostRequest) ReturnFields(returnFields string) TacacsplusAuthserviceAPITacacsplusauthservicePostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TacacsplusAuthserviceAPITacacsplusauthservicePostRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPITacacsplusauthservicePostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r TacacsplusAuthserviceAPITacacsplusauthservicePostRequest) ReturnAsObject(returnAsObject int32) TacacsplusAuthserviceAPITacacsplusauthservicePostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r TacacsplusAuthserviceAPITacacsplusauthservicePostRequest) Execute() (*CreateTacacsplusAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.TacacsplusauthservicePostExecute(r)
-}
-
-/*
-TacacsplusauthservicePost Create a tacacsplus:authservice object
-
-Creates a new tacacsplus:authservice object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return TacacsplusAuthserviceAPITacacsplusauthservicePostRequest
-*/
-func (a *TacacsplusAuthserviceAPIService) TacacsplusauthservicePost(ctx context.Context) TacacsplusAuthserviceAPITacacsplusauthservicePostRequest {
-	return TacacsplusAuthserviceAPITacacsplusauthservicePostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateTacacsplusAuthserviceResponse
-func (a *TacacsplusAuthserviceAPIService) TacacsplusauthservicePostExecute(r TacacsplusAuthserviceAPITacacsplusauthservicePostRequest) (*CreateTacacsplusAuthserviceResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateTacacsplusAuthserviceResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TacacsplusAuthserviceAPIService.TacacsplusauthservicePost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/tacacsplus:authservice"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.tacacsplusAuthservice == nil {
-		return localVarReturnValue, nil, internal.ReportError("tacacsplusAuthservice is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.tacacsplusAuthservice
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type TacacsplusAuthserviceAPITacacsplusauthserviceReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService TacacsplusAuthserviceAPI
-	reference  string
-}
-
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.TacacsplusauthserviceReferenceDeleteExecute(r)
-}
-
-/*
-TacacsplusauthserviceReferenceDelete Delete a tacacsplus:authservice object
-
-Deletes a specific tacacsplus:authservice object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the tacacsplus:authservice object
-	@return TacacsplusAuthserviceAPITacacsplusauthserviceReferenceDeleteRequest
-*/
-func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferenceDelete(ctx context.Context, reference string) TacacsplusAuthserviceAPITacacsplusauthserviceReferenceDeleteRequest {
-	return TacacsplusAuthserviceAPITacacsplusauthserviceReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferenceDeleteExecute(r TacacsplusAuthserviceAPITacacsplusauthserviceReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TacacsplusAuthserviceAPIService.TacacsplusauthserviceReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/tacacsplus:authservice/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest struct {
+type TacacsplusAuthserviceAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     TacacsplusAuthserviceAPI
 	reference      string
@@ -499,38 +499,38 @@ type TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest) ReturnFields(returnFields string) TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest {
+func (r TacacsplusAuthserviceAPIReadRequest) ReturnFields(returnFields string) TacacsplusAuthserviceAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest {
+func (r TacacsplusAuthserviceAPIReadRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest) ReturnAsObject(returnAsObject int32) TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest {
+func (r TacacsplusAuthserviceAPIReadRequest) ReturnAsObject(returnAsObject int32) TacacsplusAuthserviceAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest) Execute() (*GetTacacsplusAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.TacacsplusauthserviceReferenceGetExecute(r)
+func (r TacacsplusAuthserviceAPIReadRequest) Execute() (*GetTacacsplusAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-TacacsplusauthserviceReferenceGet Get a specific tacacsplus:authservice object
+Read Get a specific tacacsplus:authservice object
 
 Returns a specific tacacsplus:authservice object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the tacacsplus:authservice object
-	@return TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest
+	@return TacacsplusAuthserviceAPIReadRequest
 */
-func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferenceGet(ctx context.Context, reference string) TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest {
-	return TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest{
+func (a *TacacsplusAuthserviceAPIService) Read(ctx context.Context, reference string) TacacsplusAuthserviceAPIReadRequest {
+	return TacacsplusAuthserviceAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferenceGet(ctx 
 // Execute executes the request
 //
 //	@return GetTacacsplusAuthserviceResponse
-func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferenceGetExecute(r TacacsplusAuthserviceAPITacacsplusauthserviceReferenceGetRequest) (*GetTacacsplusAuthserviceResponse, *http.Response, error) {
+func (a *TacacsplusAuthserviceAPIService) ReadExecute(r TacacsplusAuthserviceAPIReadRequest) (*GetTacacsplusAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferenceGetExecu
 		localVarReturnValue *GetTacacsplusAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TacacsplusAuthserviceAPIService.TacacsplusauthserviceReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TacacsplusAuthserviceAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferenceGetExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest struct {
+type TacacsplusAuthserviceAPIUpdateRequest struct {
 	ctx                   context.Context
 	ApiService            TacacsplusAuthserviceAPI
 	reference             string
@@ -627,44 +627,44 @@ type TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest struct {
 }
 
 // Object data to update
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest) TacacsplusAuthservice(tacacsplusAuthservice TacacsplusAuthservice) TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest {
+func (r TacacsplusAuthserviceAPIUpdateRequest) TacacsplusAuthservice(tacacsplusAuthservice TacacsplusAuthservice) TacacsplusAuthserviceAPIUpdateRequest {
 	r.tacacsplusAuthservice = &tacacsplusAuthservice
 	return r
 }
 
 // Enter the field names followed by comma
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest) ReturnFields(returnFields string) TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest {
+func (r TacacsplusAuthserviceAPIUpdateRequest) ReturnFields(returnFields string) TacacsplusAuthserviceAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest {
+func (r TacacsplusAuthserviceAPIUpdateRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest) ReturnAsObject(returnAsObject int32) TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest {
+func (r TacacsplusAuthserviceAPIUpdateRequest) ReturnAsObject(returnAsObject int32) TacacsplusAuthserviceAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest) Execute() (*UpdateTacacsplusAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.TacacsplusauthserviceReferencePutExecute(r)
+func (r TacacsplusAuthserviceAPIUpdateRequest) Execute() (*UpdateTacacsplusAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-TacacsplusauthserviceReferencePut Update a tacacsplus:authservice object
+Update Update a tacacsplus:authservice object
 
 Updates a specific tacacsplus:authservice object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the tacacsplus:authservice object
-	@return TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest
+	@return TacacsplusAuthserviceAPIUpdateRequest
 */
-func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferencePut(ctx context.Context, reference string) TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest {
-	return TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest{
+func (a *TacacsplusAuthserviceAPIService) Update(ctx context.Context, reference string) TacacsplusAuthserviceAPIUpdateRequest {
+	return TacacsplusAuthserviceAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferencePut(ctx 
 // Execute executes the request
 //
 //	@return UpdateTacacsplusAuthserviceResponse
-func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferencePutExecute(r TacacsplusAuthserviceAPITacacsplusauthserviceReferencePutRequest) (*UpdateTacacsplusAuthserviceResponse, *http.Response, error) {
+func (a *TacacsplusAuthserviceAPIService) UpdateExecute(r TacacsplusAuthserviceAPIUpdateRequest) (*UpdateTacacsplusAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *TacacsplusAuthserviceAPIService) TacacsplusauthserviceReferencePutExecu
 		localVarReturnValue *UpdateTacacsplusAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TacacsplusAuthserviceAPIService.TacacsplusauthserviceReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TacacsplusAuthserviceAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

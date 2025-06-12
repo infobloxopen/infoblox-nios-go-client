@@ -23,52 +23,52 @@ import (
 
 type GridCloudapiAPI interface {
 	/*
-		GridcloudapiGet Retrieve grid:cloudapi objects
+		List Retrieve grid:cloudapi objects
 
 		Returns a list of grid:cloudapi objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridCloudapiAPIGridcloudapiGetRequest
+		@return GridCloudapiAPIListRequest
 	*/
-	GridcloudapiGet(ctx context.Context) GridCloudapiAPIGridcloudapiGetRequest
+	List(ctx context.Context) GridCloudapiAPIListRequest
 
-	// GridcloudapiGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridCloudapiResponse
-	GridcloudapiGetExecute(r GridCloudapiAPIGridcloudapiGetRequest) (*ListGridCloudapiResponse, *http.Response, error)
+	ListExecute(r GridCloudapiAPIListRequest) (*ListGridCloudapiResponse, *http.Response, error)
 	/*
-		GridcloudapiReferenceGet Get a specific grid:cloudapi object
+		Read Get a specific grid:cloudapi object
 
 		Returns a specific grid:cloudapi object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:cloudapi object
-		@return GridCloudapiAPIGridcloudapiReferenceGetRequest
+		@return GridCloudapiAPIReadRequest
 	*/
-	GridcloudapiReferenceGet(ctx context.Context, reference string) GridCloudapiAPIGridcloudapiReferenceGetRequest
+	Read(ctx context.Context, reference string) GridCloudapiAPIReadRequest
 
-	// GridcloudapiReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridCloudapiResponse
-	GridcloudapiReferenceGetExecute(r GridCloudapiAPIGridcloudapiReferenceGetRequest) (*GetGridCloudapiResponse, *http.Response, error)
+	ReadExecute(r GridCloudapiAPIReadRequest) (*GetGridCloudapiResponse, *http.Response, error)
 	/*
-		GridcloudapiReferencePut Update a grid:cloudapi object
+		Update Update a grid:cloudapi object
 
 		Updates a specific grid:cloudapi object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:cloudapi object
-		@return GridCloudapiAPIGridcloudapiReferencePutRequest
+		@return GridCloudapiAPIUpdateRequest
 	*/
-	GridcloudapiReferencePut(ctx context.Context, reference string) GridCloudapiAPIGridcloudapiReferencePutRequest
+	Update(ctx context.Context, reference string) GridCloudapiAPIUpdateRequest
 
-	// GridcloudapiReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridCloudapiResponse
-	GridcloudapiReferencePutExecute(r GridCloudapiAPIGridcloudapiReferencePutRequest) (*UpdateGridCloudapiResponse, *http.Response, error)
+	UpdateExecute(r GridCloudapiAPIUpdateRequest) (*UpdateGridCloudapiResponse, *http.Response, error)
 }
 
 // GridCloudapiAPIService GridCloudapiAPI service
 type GridCloudapiAPIService internal.Service
 
-type GridCloudapiAPIGridcloudapiGetRequest struct {
+type GridCloudapiAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridCloudapiAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type GridCloudapiAPIGridcloudapiGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridCloudapiAPIGridcloudapiGetRequest) ReturnFields(returnFields string) GridCloudapiAPIGridcloudapiGetRequest {
+func (r GridCloudapiAPIListRequest) ReturnFields(returnFields string) GridCloudapiAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridCloudapiAPIGridcloudapiGetRequest) ReturnFields2(returnFields2 string) GridCloudapiAPIGridcloudapiGetRequest {
+func (r GridCloudapiAPIListRequest) ReturnFields2(returnFields2 string) GridCloudapiAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridCloudapiAPIGridcloudapiGetRequest) MaxResults(maxResults int32) GridCloudapiAPIGridcloudapiGetRequest {
+func (r GridCloudapiAPIListRequest) MaxResults(maxResults int32) GridCloudapiAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridCloudapiAPIGridcloudapiGetRequest) ReturnAsObject(returnAsObject int32) GridCloudapiAPIGridcloudapiGetRequest {
+func (r GridCloudapiAPIListRequest) ReturnAsObject(returnAsObject int32) GridCloudapiAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridCloudapiAPIGridcloudapiGetRequest) Paging(paging int32) GridCloudapiAPIGridcloudapiGetRequest {
+func (r GridCloudapiAPIListRequest) Paging(paging int32) GridCloudapiAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridCloudapiAPIGridcloudapiGetRequest) PageId(pageId string) GridCloudapiAPIGridcloudapiGetRequest {
+func (r GridCloudapiAPIListRequest) PageId(pageId string) GridCloudapiAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridCloudapiAPIGridcloudapiGetRequest) Filters(filters map[string]interface{}) GridCloudapiAPIGridcloudapiGetRequest {
+func (r GridCloudapiAPIListRequest) Filters(filters map[string]interface{}) GridCloudapiAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridCloudapiAPIGridcloudapiGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridCloudapiAPIGridcloudapiGetRequest {
+func (r GridCloudapiAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridCloudapiAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridCloudapiAPIGridcloudapiGetRequest) Execute() (*ListGridCloudapiResponse, *http.Response, error) {
-	return r.ApiService.GridcloudapiGetExecute(r)
+func (r GridCloudapiAPIListRequest) Execute() (*ListGridCloudapiResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridcloudapiGet Retrieve grid:cloudapi objects
+List Retrieve grid:cloudapi objects
 
 Returns a list of grid:cloudapi objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridCloudapiAPIGridcloudapiGetRequest
+	@return GridCloudapiAPIListRequest
 */
-func (a *GridCloudapiAPIService) GridcloudapiGet(ctx context.Context) GridCloudapiAPIGridcloudapiGetRequest {
-	return GridCloudapiAPIGridcloudapiGetRequest{
+func (a *GridCloudapiAPIService) List(ctx context.Context) GridCloudapiAPIListRequest {
+	return GridCloudapiAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GridCloudapiAPIService) GridcloudapiGet(ctx context.Context) GridClouda
 // Execute executes the request
 //
 //	@return ListGridCloudapiResponse
-func (a *GridCloudapiAPIService) GridcloudapiGetExecute(r GridCloudapiAPIGridcloudapiGetRequest) (*ListGridCloudapiResponse, *http.Response, error) {
+func (a *GridCloudapiAPIService) ListExecute(r GridCloudapiAPIListRequest) (*ListGridCloudapiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GridCloudapiAPIService) GridcloudapiGetExecute(r GridCloudapiAPIGridclo
 		localVarReturnValue *ListGridCloudapiResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiAPIService.GridcloudapiGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *GridCloudapiAPIService) GridcloudapiGetExecute(r GridCloudapiAPIGridclo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridCloudapiAPIGridcloudapiReferenceGetRequest struct {
+type GridCloudapiAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridCloudapiAPI
 	reference      string
@@ -249,38 +249,38 @@ type GridCloudapiAPIGridcloudapiReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GridCloudapiAPIGridcloudapiReferenceGetRequest) ReturnFields(returnFields string) GridCloudapiAPIGridcloudapiReferenceGetRequest {
+func (r GridCloudapiAPIReadRequest) ReturnFields(returnFields string) GridCloudapiAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridCloudapiAPIGridcloudapiReferenceGetRequest) ReturnFields2(returnFields2 string) GridCloudapiAPIGridcloudapiReferenceGetRequest {
+func (r GridCloudapiAPIReadRequest) ReturnFields2(returnFields2 string) GridCloudapiAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridCloudapiAPIGridcloudapiReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridCloudapiAPIGridcloudapiReferenceGetRequest {
+func (r GridCloudapiAPIReadRequest) ReturnAsObject(returnAsObject int32) GridCloudapiAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridCloudapiAPIGridcloudapiReferenceGetRequest) Execute() (*GetGridCloudapiResponse, *http.Response, error) {
-	return r.ApiService.GridcloudapiReferenceGetExecute(r)
+func (r GridCloudapiAPIReadRequest) Execute() (*GetGridCloudapiResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridcloudapiReferenceGet Get a specific grid:cloudapi object
+Read Get a specific grid:cloudapi object
 
 Returns a specific grid:cloudapi object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:cloudapi object
-	@return GridCloudapiAPIGridcloudapiReferenceGetRequest
+	@return GridCloudapiAPIReadRequest
 */
-func (a *GridCloudapiAPIService) GridcloudapiReferenceGet(ctx context.Context, reference string) GridCloudapiAPIGridcloudapiReferenceGetRequest {
-	return GridCloudapiAPIGridcloudapiReferenceGetRequest{
+func (a *GridCloudapiAPIService) Read(ctx context.Context, reference string) GridCloudapiAPIReadRequest {
+	return GridCloudapiAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GridCloudapiAPIService) GridcloudapiReferenceGet(ctx context.Context, r
 // Execute executes the request
 //
 //	@return GetGridCloudapiResponse
-func (a *GridCloudapiAPIService) GridcloudapiReferenceGetExecute(r GridCloudapiAPIGridcloudapiReferenceGetRequest) (*GetGridCloudapiResponse, *http.Response, error) {
+func (a *GridCloudapiAPIService) ReadExecute(r GridCloudapiAPIReadRequest) (*GetGridCloudapiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GridCloudapiAPIService) GridcloudapiReferenceGetExecute(r GridCloudapiA
 		localVarReturnValue *GetGridCloudapiResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiAPIService.GridcloudapiReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *GridCloudapiAPIService) GridcloudapiReferenceGetExecute(r GridCloudapiA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridCloudapiAPIGridcloudapiReferencePutRequest struct {
+type GridCloudapiAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     GridCloudapiAPI
 	reference      string
@@ -377,44 +377,44 @@ type GridCloudapiAPIGridcloudapiReferencePutRequest struct {
 }
 
 // Object data to update
-func (r GridCloudapiAPIGridcloudapiReferencePutRequest) GridCloudapi(gridCloudapi GridCloudapi) GridCloudapiAPIGridcloudapiReferencePutRequest {
+func (r GridCloudapiAPIUpdateRequest) GridCloudapi(gridCloudapi GridCloudapi) GridCloudapiAPIUpdateRequest {
 	r.gridCloudapi = &gridCloudapi
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridCloudapiAPIGridcloudapiReferencePutRequest) ReturnFields(returnFields string) GridCloudapiAPIGridcloudapiReferencePutRequest {
+func (r GridCloudapiAPIUpdateRequest) ReturnFields(returnFields string) GridCloudapiAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridCloudapiAPIGridcloudapiReferencePutRequest) ReturnFields2(returnFields2 string) GridCloudapiAPIGridcloudapiReferencePutRequest {
+func (r GridCloudapiAPIUpdateRequest) ReturnFields2(returnFields2 string) GridCloudapiAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridCloudapiAPIGridcloudapiReferencePutRequest) ReturnAsObject(returnAsObject int32) GridCloudapiAPIGridcloudapiReferencePutRequest {
+func (r GridCloudapiAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridCloudapiAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridCloudapiAPIGridcloudapiReferencePutRequest) Execute() (*UpdateGridCloudapiResponse, *http.Response, error) {
-	return r.ApiService.GridcloudapiReferencePutExecute(r)
+func (r GridCloudapiAPIUpdateRequest) Execute() (*UpdateGridCloudapiResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GridcloudapiReferencePut Update a grid:cloudapi object
+Update Update a grid:cloudapi object
 
 Updates a specific grid:cloudapi object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:cloudapi object
-	@return GridCloudapiAPIGridcloudapiReferencePutRequest
+	@return GridCloudapiAPIUpdateRequest
 */
-func (a *GridCloudapiAPIService) GridcloudapiReferencePut(ctx context.Context, reference string) GridCloudapiAPIGridcloudapiReferencePutRequest {
-	return GridCloudapiAPIGridcloudapiReferencePutRequest{
+func (a *GridCloudapiAPIService) Update(ctx context.Context, reference string) GridCloudapiAPIUpdateRequest {
+	return GridCloudapiAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GridCloudapiAPIService) GridcloudapiReferencePut(ctx context.Context, r
 // Execute executes the request
 //
 //	@return UpdateGridCloudapiResponse
-func (a *GridCloudapiAPIService) GridcloudapiReferencePutExecute(r GridCloudapiAPIGridcloudapiReferencePutRequest) (*UpdateGridCloudapiResponse, *http.Response, error) {
+func (a *GridCloudapiAPIService) UpdateExecute(r GridCloudapiAPIUpdateRequest) (*UpdateGridCloudapiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GridCloudapiAPIService) GridcloudapiReferencePutExecute(r GridCloudapiA
 		localVarReturnValue *UpdateGridCloudapiResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiAPIService.GridcloudapiReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

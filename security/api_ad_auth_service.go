@@ -23,78 +23,302 @@ import (
 
 type AdAuthServiceAPI interface {
 	/*
-		Get Retrieve ad_auth_service objects
-
-		Returns a list of ad_auth_service objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AdAuthServiceAPIGetRequest
-	*/
-	Get(ctx context.Context) AdAuthServiceAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListAdAuthServiceResponse
-	GetExecute(r AdAuthServiceAPIGetRequest) (*ListAdAuthServiceResponse, *http.Response, error)
-	/*
-		Post Create a ad_auth_service object
+		Create Create a ad_auth_service object
 
 		Creates a new ad_auth_service object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AdAuthServiceAPIPostRequest
+		@return AdAuthServiceAPICreateRequest
 	*/
-	Post(ctx context.Context) AdAuthServiceAPIPostRequest
+	Create(ctx context.Context) AdAuthServiceAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateAdAuthServiceResponse
-	PostExecute(r AdAuthServiceAPIPostRequest) (*CreateAdAuthServiceResponse, *http.Response, error)
+	CreateExecute(r AdAuthServiceAPICreateRequest) (*CreateAdAuthServiceResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a ad_auth_service object
+		Delete Delete a ad_auth_service object
 
 		Deletes a specific ad_auth_service object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ad_auth_service object
-		@return AdAuthServiceAPIReferenceDeleteRequest
+		@return AdAuthServiceAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) AdAuthServiceAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) AdAuthServiceAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r AdAuthServiceAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r AdAuthServiceAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific ad_auth_service object
+		List Retrieve ad_auth_service objects
+
+		Returns a list of ad_auth_service objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return AdAuthServiceAPIListRequest
+	*/
+	List(ctx context.Context) AdAuthServiceAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListAdAuthServiceResponse
+	ListExecute(r AdAuthServiceAPIListRequest) (*ListAdAuthServiceResponse, *http.Response, error)
+	/*
+		Read Get a specific ad_auth_service object
 
 		Returns a specific ad_auth_service object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ad_auth_service object
-		@return AdAuthServiceAPIReferenceGetRequest
+		@return AdAuthServiceAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AdAuthServiceAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AdAuthServiceAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAdAuthServiceResponse
-	ReferenceGetExecute(r AdAuthServiceAPIReferenceGetRequest) (*GetAdAuthServiceResponse, *http.Response, error)
+	ReadExecute(r AdAuthServiceAPIReadRequest) (*GetAdAuthServiceResponse, *http.Response, error)
 	/*
-		ReferencePut Update a ad_auth_service object
+		Update Update a ad_auth_service object
 
 		Updates a specific ad_auth_service object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ad_auth_service object
-		@return AdAuthServiceAPIReferencePutRequest
+		@return AdAuthServiceAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) AdAuthServiceAPIReferencePutRequest
+	Update(ctx context.Context, reference string) AdAuthServiceAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateAdAuthServiceResponse
-	ReferencePutExecute(r AdAuthServiceAPIReferencePutRequest) (*UpdateAdAuthServiceResponse, *http.Response, error)
+	UpdateExecute(r AdAuthServiceAPIUpdateRequest) (*UpdateAdAuthServiceResponse, *http.Response, error)
 }
 
 // AdAuthServiceAPIService AdAuthServiceAPI service
 type AdAuthServiceAPIService internal.Service
 
-type AdAuthServiceAPIGetRequest struct {
+type AdAuthServiceAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     AdAuthServiceAPI
+	adAuthService  *AdAuthService
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r AdAuthServiceAPICreateRequest) AdAuthService(adAuthService AdAuthService) AdAuthServiceAPICreateRequest {
+	r.adAuthService = &adAuthService
+	return r
+}
+
+// Enter the field names followed by comma
+func (r AdAuthServiceAPICreateRequest) ReturnFields(returnFields string) AdAuthServiceAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r AdAuthServiceAPICreateRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r AdAuthServiceAPICreateRequest) ReturnAsObject(returnAsObject int32) AdAuthServiceAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r AdAuthServiceAPICreateRequest) Execute() (*CreateAdAuthServiceResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a ad_auth_service object
+
+Creates a new ad_auth_service object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return AdAuthServiceAPICreateRequest
+*/
+func (a *AdAuthServiceAPIService) Create(ctx context.Context) AdAuthServiceAPICreateRequest {
+	return AdAuthServiceAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateAdAuthServiceResponse
+func (a *AdAuthServiceAPIService) CreateExecute(r AdAuthServiceAPICreateRequest) (*CreateAdAuthServiceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateAdAuthServiceResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdAuthServiceAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ad_auth_service"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.adAuthService == nil {
+		return localVarReturnValue, nil, internal.ReportError("adAuthService is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.adAuthService
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type AdAuthServiceAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService AdAuthServiceAPI
+	reference  string
+}
+
+func (r AdAuthServiceAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a ad_auth_service object
+
+Deletes a specific ad_auth_service object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the ad_auth_service object
+	@return AdAuthServiceAPIDeleteRequest
+*/
+func (a *AdAuthServiceAPIService) Delete(ctx context.Context, reference string) AdAuthServiceAPIDeleteRequest {
+	return AdAuthServiceAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *AdAuthServiceAPIService) DeleteExecute(r AdAuthServiceAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdAuthServiceAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ad_auth_service/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type AdAuthServiceAPIListRequest struct {
 	ctx            context.Context
 	ApiService     AdAuthServiceAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type AdAuthServiceAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r AdAuthServiceAPIGetRequest) ReturnFields(returnFields string) AdAuthServiceAPIGetRequest {
+func (r AdAuthServiceAPIListRequest) ReturnFields(returnFields string) AdAuthServiceAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdAuthServiceAPIGetRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPIGetRequest {
+func (r AdAuthServiceAPIListRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r AdAuthServiceAPIGetRequest) MaxResults(maxResults int32) AdAuthServiceAPIGetRequest {
+func (r AdAuthServiceAPIListRequest) MaxResults(maxResults int32) AdAuthServiceAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdAuthServiceAPIGetRequest) ReturnAsObject(returnAsObject int32) AdAuthServiceAPIGetRequest {
+func (r AdAuthServiceAPIListRequest) ReturnAsObject(returnAsObject int32) AdAuthServiceAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r AdAuthServiceAPIGetRequest) Paging(paging int32) AdAuthServiceAPIGetRequest {
+func (r AdAuthServiceAPIListRequest) Paging(paging int32) AdAuthServiceAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r AdAuthServiceAPIGetRequest) PageId(pageId string) AdAuthServiceAPIGetRequest {
+func (r AdAuthServiceAPIListRequest) PageId(pageId string) AdAuthServiceAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r AdAuthServiceAPIGetRequest) Filters(filters map[string]interface{}) AdAuthServiceAPIGetRequest {
+func (r AdAuthServiceAPIListRequest) Filters(filters map[string]interface{}) AdAuthServiceAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r AdAuthServiceAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AdAuthServiceAPIGetRequest {
+func (r AdAuthServiceAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AdAuthServiceAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r AdAuthServiceAPIGetRequest) Execute() (*ListAdAuthServiceResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r AdAuthServiceAPIListRequest) Execute() (*ListAdAuthServiceResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve ad_auth_service objects
+List Retrieve ad_auth_service objects
 
 Returns a list of ad_auth_service objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AdAuthServiceAPIGetRequest
+	@return AdAuthServiceAPIListRequest
 */
-func (a *AdAuthServiceAPIService) Get(ctx context.Context) AdAuthServiceAPIGetRequest {
-	return AdAuthServiceAPIGetRequest{
+func (a *AdAuthServiceAPIService) List(ctx context.Context) AdAuthServiceAPIListRequest {
+	return AdAuthServiceAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *AdAuthServiceAPIService) Get(ctx context.Context) AdAuthServiceAPIGetRe
 // Execute executes the request
 //
 //	@return ListAdAuthServiceResponse
-func (a *AdAuthServiceAPIService) GetExecute(r AdAuthServiceAPIGetRequest) (*ListAdAuthServiceResponse, *http.Response, error) {
+func (a *AdAuthServiceAPIService) ListExecute(r AdAuthServiceAPIListRequest) (*ListAdAuthServiceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *AdAuthServiceAPIService) GetExecute(r AdAuthServiceAPIGetRequest) (*Lis
 		localVarReturnValue *ListAdAuthServiceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdAuthServiceAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdAuthServiceAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *AdAuthServiceAPIService) GetExecute(r AdAuthServiceAPIGetRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AdAuthServiceAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     AdAuthServiceAPI
-	adAuthService  *AdAuthService
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r AdAuthServiceAPIPostRequest) AdAuthService(adAuthService AdAuthService) AdAuthServiceAPIPostRequest {
-	r.adAuthService = &adAuthService
-	return r
-}
-
-// Enter the field names followed by comma
-func (r AdAuthServiceAPIPostRequest) ReturnFields(returnFields string) AdAuthServiceAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdAuthServiceAPIPostRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r AdAuthServiceAPIPostRequest) ReturnAsObject(returnAsObject int32) AdAuthServiceAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r AdAuthServiceAPIPostRequest) Execute() (*CreateAdAuthServiceResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a ad_auth_service object
-
-Creates a new ad_auth_service object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AdAuthServiceAPIPostRequest
-*/
-func (a *AdAuthServiceAPIService) Post(ctx context.Context) AdAuthServiceAPIPostRequest {
-	return AdAuthServiceAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateAdAuthServiceResponse
-func (a *AdAuthServiceAPIService) PostExecute(r AdAuthServiceAPIPostRequest) (*CreateAdAuthServiceResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateAdAuthServiceResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdAuthServiceAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ad_auth_service"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.adAuthService == nil {
-		return localVarReturnValue, nil, internal.ReportError("adAuthService is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.adAuthService
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type AdAuthServiceAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService AdAuthServiceAPI
-	reference  string
-}
-
-func (r AdAuthServiceAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a ad_auth_service object
-
-Deletes a specific ad_auth_service object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the ad_auth_service object
-	@return AdAuthServiceAPIReferenceDeleteRequest
-*/
-func (a *AdAuthServiceAPIService) ReferenceDelete(ctx context.Context, reference string) AdAuthServiceAPIReferenceDeleteRequest {
-	return AdAuthServiceAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *AdAuthServiceAPIService) ReferenceDeleteExecute(r AdAuthServiceAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdAuthServiceAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ad_auth_service/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type AdAuthServiceAPIReferenceGetRequest struct {
+type AdAuthServiceAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     AdAuthServiceAPI
 	reference      string
@@ -499,38 +499,38 @@ type AdAuthServiceAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r AdAuthServiceAPIReferenceGetRequest) ReturnFields(returnFields string) AdAuthServiceAPIReferenceGetRequest {
+func (r AdAuthServiceAPIReadRequest) ReturnFields(returnFields string) AdAuthServiceAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdAuthServiceAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPIReferenceGetRequest {
+func (r AdAuthServiceAPIReadRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdAuthServiceAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AdAuthServiceAPIReferenceGetRequest {
+func (r AdAuthServiceAPIReadRequest) ReturnAsObject(returnAsObject int32) AdAuthServiceAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AdAuthServiceAPIReferenceGetRequest) Execute() (*GetAdAuthServiceResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r AdAuthServiceAPIReadRequest) Execute() (*GetAdAuthServiceResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific ad_auth_service object
+Read Get a specific ad_auth_service object
 
 Returns a specific ad_auth_service object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ad_auth_service object
-	@return AdAuthServiceAPIReferenceGetRequest
+	@return AdAuthServiceAPIReadRequest
 */
-func (a *AdAuthServiceAPIService) ReferenceGet(ctx context.Context, reference string) AdAuthServiceAPIReferenceGetRequest {
-	return AdAuthServiceAPIReferenceGetRequest{
+func (a *AdAuthServiceAPIService) Read(ctx context.Context, reference string) AdAuthServiceAPIReadRequest {
+	return AdAuthServiceAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *AdAuthServiceAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetAdAuthServiceResponse
-func (a *AdAuthServiceAPIService) ReferenceGetExecute(r AdAuthServiceAPIReferenceGetRequest) (*GetAdAuthServiceResponse, *http.Response, error) {
+func (a *AdAuthServiceAPIService) ReadExecute(r AdAuthServiceAPIReadRequest) (*GetAdAuthServiceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *AdAuthServiceAPIService) ReferenceGetExecute(r AdAuthServiceAPIReferenc
 		localVarReturnValue *GetAdAuthServiceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdAuthServiceAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdAuthServiceAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *AdAuthServiceAPIService) ReferenceGetExecute(r AdAuthServiceAPIReferenc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AdAuthServiceAPIReferencePutRequest struct {
+type AdAuthServiceAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     AdAuthServiceAPI
 	reference      string
@@ -627,44 +627,44 @@ type AdAuthServiceAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r AdAuthServiceAPIReferencePutRequest) AdAuthService(adAuthService AdAuthService) AdAuthServiceAPIReferencePutRequest {
+func (r AdAuthServiceAPIUpdateRequest) AdAuthService(adAuthService AdAuthService) AdAuthServiceAPIUpdateRequest {
 	r.adAuthService = &adAuthService
 	return r
 }
 
 // Enter the field names followed by comma
-func (r AdAuthServiceAPIReferencePutRequest) ReturnFields(returnFields string) AdAuthServiceAPIReferencePutRequest {
+func (r AdAuthServiceAPIUpdateRequest) ReturnFields(returnFields string) AdAuthServiceAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdAuthServiceAPIReferencePutRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPIReferencePutRequest {
+func (r AdAuthServiceAPIUpdateRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdAuthServiceAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) AdAuthServiceAPIReferencePutRequest {
+func (r AdAuthServiceAPIUpdateRequest) ReturnAsObject(returnAsObject int32) AdAuthServiceAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AdAuthServiceAPIReferencePutRequest) Execute() (*UpdateAdAuthServiceResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r AdAuthServiceAPIUpdateRequest) Execute() (*UpdateAdAuthServiceResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a ad_auth_service object
+Update Update a ad_auth_service object
 
 Updates a specific ad_auth_service object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ad_auth_service object
-	@return AdAuthServiceAPIReferencePutRequest
+	@return AdAuthServiceAPIUpdateRequest
 */
-func (a *AdAuthServiceAPIService) ReferencePut(ctx context.Context, reference string) AdAuthServiceAPIReferencePutRequest {
-	return AdAuthServiceAPIReferencePutRequest{
+func (a *AdAuthServiceAPIService) Update(ctx context.Context, reference string) AdAuthServiceAPIUpdateRequest {
+	return AdAuthServiceAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *AdAuthServiceAPIService) ReferencePut(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return UpdateAdAuthServiceResponse
-func (a *AdAuthServiceAPIService) ReferencePutExecute(r AdAuthServiceAPIReferencePutRequest) (*UpdateAdAuthServiceResponse, *http.Response, error) {
+func (a *AdAuthServiceAPIService) UpdateExecute(r AdAuthServiceAPIUpdateRequest) (*UpdateAdAuthServiceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *AdAuthServiceAPIService) ReferencePutExecute(r AdAuthServiceAPIReferenc
 		localVarReturnValue *UpdateAdAuthServiceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdAuthServiceAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdAuthServiceAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

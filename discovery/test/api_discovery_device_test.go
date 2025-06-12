@@ -23,11 +23,11 @@ func TestDiscoveryDeviceAPIService(t *testing.T) {
 
 	apiClient := discovery.NewAPIClient()
 
-	t.Run("Test DiscoveryDeviceAPIService DiscoverydeviceGet", func(t *testing.T) {
+	t.Run("Test DiscoveryDeviceAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DiscoveryDeviceAPI.DiscoverydeviceGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DiscoveryDeviceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDiscoveryDeviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryDeviceAPIService DiscoverydeviceReferenceGet", func(t *testing.T) {
+	t.Run("Test DiscoveryDeviceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DiscoveryDeviceAPI.DiscoverydeviceReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryDeviceAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestDiscoveryDeviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryDeviceAPIService DiscoverydeviceReferencePut", func(t *testing.T) {
+	t.Run("Test DiscoveryDeviceAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DiscoveryDeviceAPI.DiscoverydeviceReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryDeviceAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

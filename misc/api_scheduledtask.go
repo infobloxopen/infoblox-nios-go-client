@@ -23,65 +23,154 @@ import (
 
 type ScheduledtaskAPI interface {
 	/*
-		Get Retrieve scheduledtask objects
-
-		Returns a list of scheduledtask objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ScheduledtaskAPIGetRequest
-	*/
-	Get(ctx context.Context) ScheduledtaskAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListScheduledtaskResponse
-	GetExecute(r ScheduledtaskAPIGetRequest) (*ListScheduledtaskResponse, *http.Response, error)
-	/*
-		ReferenceDelete Delete a scheduledtask object
+		Delete Delete a scheduledtask object
 
 		Deletes a specific scheduledtask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the scheduledtask object
-		@return ScheduledtaskAPIReferenceDeleteRequest
+		@return ScheduledtaskAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) ScheduledtaskAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ScheduledtaskAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r ScheduledtaskAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ScheduledtaskAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific scheduledtask object
+		List Retrieve scheduledtask objects
+
+		Returns a list of scheduledtask objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ScheduledtaskAPIListRequest
+	*/
+	List(ctx context.Context) ScheduledtaskAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListScheduledtaskResponse
+	ListExecute(r ScheduledtaskAPIListRequest) (*ListScheduledtaskResponse, *http.Response, error)
+	/*
+		Read Get a specific scheduledtask object
 
 		Returns a specific scheduledtask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the scheduledtask object
-		@return ScheduledtaskAPIReferenceGetRequest
+		@return ScheduledtaskAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ScheduledtaskAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ScheduledtaskAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetScheduledtaskResponse
-	ReferenceGetExecute(r ScheduledtaskAPIReferenceGetRequest) (*GetScheduledtaskResponse, *http.Response, error)
+	ReadExecute(r ScheduledtaskAPIReadRequest) (*GetScheduledtaskResponse, *http.Response, error)
 	/*
-		ReferencePut Update a scheduledtask object
+		Update Update a scheduledtask object
 
 		Updates a specific scheduledtask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the scheduledtask object
-		@return ScheduledtaskAPIReferencePutRequest
+		@return ScheduledtaskAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) ScheduledtaskAPIReferencePutRequest
+	Update(ctx context.Context, reference string) ScheduledtaskAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateScheduledtaskResponse
-	ReferencePutExecute(r ScheduledtaskAPIReferencePutRequest) (*UpdateScheduledtaskResponse, *http.Response, error)
+	UpdateExecute(r ScheduledtaskAPIUpdateRequest) (*UpdateScheduledtaskResponse, *http.Response, error)
 }
 
 // ScheduledtaskAPIService ScheduledtaskAPI service
 type ScheduledtaskAPIService internal.Service
 
-type ScheduledtaskAPIGetRequest struct {
+type ScheduledtaskAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService ScheduledtaskAPI
+	reference  string
+}
+
+func (r ScheduledtaskAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a scheduledtask object
+
+Deletes a specific scheduledtask object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the scheduledtask object
+	@return ScheduledtaskAPIDeleteRequest
+*/
+func (a *ScheduledtaskAPIService) Delete(ctx context.Context, reference string) ScheduledtaskAPIDeleteRequest {
+	return ScheduledtaskAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *ScheduledtaskAPIService) DeleteExecute(r ScheduledtaskAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScheduledtaskAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/scheduledtask/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ScheduledtaskAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ScheduledtaskAPI
 	returnFields   *string
@@ -95,65 +184,65 @@ type ScheduledtaskAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ScheduledtaskAPIGetRequest) ReturnFields(returnFields string) ScheduledtaskAPIGetRequest {
+func (r ScheduledtaskAPIListRequest) ReturnFields(returnFields string) ScheduledtaskAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ScheduledtaskAPIGetRequest) ReturnFields2(returnFields2 string) ScheduledtaskAPIGetRequest {
+func (r ScheduledtaskAPIListRequest) ReturnFields2(returnFields2 string) ScheduledtaskAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ScheduledtaskAPIGetRequest) MaxResults(maxResults int32) ScheduledtaskAPIGetRequest {
+func (r ScheduledtaskAPIListRequest) MaxResults(maxResults int32) ScheduledtaskAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ScheduledtaskAPIGetRequest) ReturnAsObject(returnAsObject int32) ScheduledtaskAPIGetRequest {
+func (r ScheduledtaskAPIListRequest) ReturnAsObject(returnAsObject int32) ScheduledtaskAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ScheduledtaskAPIGetRequest) Paging(paging int32) ScheduledtaskAPIGetRequest {
+func (r ScheduledtaskAPIListRequest) Paging(paging int32) ScheduledtaskAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ScheduledtaskAPIGetRequest) PageId(pageId string) ScheduledtaskAPIGetRequest {
+func (r ScheduledtaskAPIListRequest) PageId(pageId string) ScheduledtaskAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ScheduledtaskAPIGetRequest) Filters(filters map[string]interface{}) ScheduledtaskAPIGetRequest {
+func (r ScheduledtaskAPIListRequest) Filters(filters map[string]interface{}) ScheduledtaskAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ScheduledtaskAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ScheduledtaskAPIGetRequest {
+func (r ScheduledtaskAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ScheduledtaskAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ScheduledtaskAPIGetRequest) Execute() (*ListScheduledtaskResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r ScheduledtaskAPIListRequest) Execute() (*ListScheduledtaskResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve scheduledtask objects
+List Retrieve scheduledtask objects
 
 Returns a list of scheduledtask objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ScheduledtaskAPIGetRequest
+	@return ScheduledtaskAPIListRequest
 */
-func (a *ScheduledtaskAPIService) Get(ctx context.Context) ScheduledtaskAPIGetRequest {
-	return ScheduledtaskAPIGetRequest{
+func (a *ScheduledtaskAPIService) List(ctx context.Context) ScheduledtaskAPIListRequest {
+	return ScheduledtaskAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -162,7 +251,7 @@ func (a *ScheduledtaskAPIService) Get(ctx context.Context) ScheduledtaskAPIGetRe
 // Execute executes the request
 //
 //	@return ListScheduledtaskResponse
-func (a *ScheduledtaskAPIService) GetExecute(r ScheduledtaskAPIGetRequest) (*ListScheduledtaskResponse, *http.Response, error) {
+func (a *ScheduledtaskAPIService) ListExecute(r ScheduledtaskAPIListRequest) (*ListScheduledtaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -170,7 +259,7 @@ func (a *ScheduledtaskAPIService) GetExecute(r ScheduledtaskAPIGetRequest) (*Lis
 		localVarReturnValue *ListScheduledtaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScheduledtaskAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScheduledtaskAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -252,96 +341,7 @@ func (a *ScheduledtaskAPIService) GetExecute(r ScheduledtaskAPIGetRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ScheduledtaskAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService ScheduledtaskAPI
-	reference  string
-}
-
-func (r ScheduledtaskAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a scheduledtask object
-
-Deletes a specific scheduledtask object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the scheduledtask object
-	@return ScheduledtaskAPIReferenceDeleteRequest
-*/
-func (a *ScheduledtaskAPIService) ReferenceDelete(ctx context.Context, reference string) ScheduledtaskAPIReferenceDeleteRequest {
-	return ScheduledtaskAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *ScheduledtaskAPIService) ReferenceDeleteExecute(r ScheduledtaskAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScheduledtaskAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/scheduledtask/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ScheduledtaskAPIReferenceGetRequest struct {
+type ScheduledtaskAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ScheduledtaskAPI
 	reference      string
@@ -351,38 +351,38 @@ type ScheduledtaskAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ScheduledtaskAPIReferenceGetRequest) ReturnFields(returnFields string) ScheduledtaskAPIReferenceGetRequest {
+func (r ScheduledtaskAPIReadRequest) ReturnFields(returnFields string) ScheduledtaskAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ScheduledtaskAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ScheduledtaskAPIReferenceGetRequest {
+func (r ScheduledtaskAPIReadRequest) ReturnFields2(returnFields2 string) ScheduledtaskAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ScheduledtaskAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ScheduledtaskAPIReferenceGetRequest {
+func (r ScheduledtaskAPIReadRequest) ReturnAsObject(returnAsObject int32) ScheduledtaskAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ScheduledtaskAPIReferenceGetRequest) Execute() (*GetScheduledtaskResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r ScheduledtaskAPIReadRequest) Execute() (*GetScheduledtaskResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific scheduledtask object
+Read Get a specific scheduledtask object
 
 Returns a specific scheduledtask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the scheduledtask object
-	@return ScheduledtaskAPIReferenceGetRequest
+	@return ScheduledtaskAPIReadRequest
 */
-func (a *ScheduledtaskAPIService) ReferenceGet(ctx context.Context, reference string) ScheduledtaskAPIReferenceGetRequest {
-	return ScheduledtaskAPIReferenceGetRequest{
+func (a *ScheduledtaskAPIService) Read(ctx context.Context, reference string) ScheduledtaskAPIReadRequest {
+	return ScheduledtaskAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -392,7 +392,7 @@ func (a *ScheduledtaskAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetScheduledtaskResponse
-func (a *ScheduledtaskAPIService) ReferenceGetExecute(r ScheduledtaskAPIReferenceGetRequest) (*GetScheduledtaskResponse, *http.Response, error) {
+func (a *ScheduledtaskAPIService) ReadExecute(r ScheduledtaskAPIReadRequest) (*GetScheduledtaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -400,7 +400,7 @@ func (a *ScheduledtaskAPIService) ReferenceGetExecute(r ScheduledtaskAPIReferenc
 		localVarReturnValue *GetScheduledtaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScheduledtaskAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScheduledtaskAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -468,7 +468,7 @@ func (a *ScheduledtaskAPIService) ReferenceGetExecute(r ScheduledtaskAPIReferenc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ScheduledtaskAPIReferencePutRequest struct {
+type ScheduledtaskAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     ScheduledtaskAPI
 	reference      string
@@ -479,44 +479,44 @@ type ScheduledtaskAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r ScheduledtaskAPIReferencePutRequest) Scheduledtask(scheduledtask Scheduledtask) ScheduledtaskAPIReferencePutRequest {
+func (r ScheduledtaskAPIUpdateRequest) Scheduledtask(scheduledtask Scheduledtask) ScheduledtaskAPIUpdateRequest {
 	r.scheduledtask = &scheduledtask
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ScheduledtaskAPIReferencePutRequest) ReturnFields(returnFields string) ScheduledtaskAPIReferencePutRequest {
+func (r ScheduledtaskAPIUpdateRequest) ReturnFields(returnFields string) ScheduledtaskAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ScheduledtaskAPIReferencePutRequest) ReturnFields2(returnFields2 string) ScheduledtaskAPIReferencePutRequest {
+func (r ScheduledtaskAPIUpdateRequest) ReturnFields2(returnFields2 string) ScheduledtaskAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ScheduledtaskAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) ScheduledtaskAPIReferencePutRequest {
+func (r ScheduledtaskAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ScheduledtaskAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ScheduledtaskAPIReferencePutRequest) Execute() (*UpdateScheduledtaskResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r ScheduledtaskAPIUpdateRequest) Execute() (*UpdateScheduledtaskResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a scheduledtask object
+Update Update a scheduledtask object
 
 Updates a specific scheduledtask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the scheduledtask object
-	@return ScheduledtaskAPIReferencePutRequest
+	@return ScheduledtaskAPIUpdateRequest
 */
-func (a *ScheduledtaskAPIService) ReferencePut(ctx context.Context, reference string) ScheduledtaskAPIReferencePutRequest {
-	return ScheduledtaskAPIReferencePutRequest{
+func (a *ScheduledtaskAPIService) Update(ctx context.Context, reference string) ScheduledtaskAPIUpdateRequest {
+	return ScheduledtaskAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -526,7 +526,7 @@ func (a *ScheduledtaskAPIService) ReferencePut(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return UpdateScheduledtaskResponse
-func (a *ScheduledtaskAPIService) ReferencePutExecute(r ScheduledtaskAPIReferencePutRequest) (*UpdateScheduledtaskResponse, *http.Response, error) {
+func (a *ScheduledtaskAPIService) UpdateExecute(r ScheduledtaskAPIUpdateRequest) (*UpdateScheduledtaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -534,7 +534,7 @@ func (a *ScheduledtaskAPIService) ReferencePutExecute(r ScheduledtaskAPIReferenc
 		localVarReturnValue *UpdateScheduledtaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScheduledtaskAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScheduledtaskAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

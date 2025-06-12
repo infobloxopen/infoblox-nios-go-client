@@ -23,78 +23,302 @@ import (
 
 type VdiscoverytaskAPI interface {
 	/*
-		Get Retrieve vdiscoverytask objects
-
-		Returns a list of vdiscoverytask objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return VdiscoverytaskAPIGetRequest
-	*/
-	Get(ctx context.Context) VdiscoverytaskAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListVdiscoverytaskResponse
-	GetExecute(r VdiscoverytaskAPIGetRequest) (*ListVdiscoverytaskResponse, *http.Response, error)
-	/*
-		Post Create a vdiscoverytask object
+		Create Create a vdiscoverytask object
 
 		Creates a new vdiscoverytask object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return VdiscoverytaskAPIPostRequest
+		@return VdiscoverytaskAPICreateRequest
 	*/
-	Post(ctx context.Context) VdiscoverytaskAPIPostRequest
+	Create(ctx context.Context) VdiscoverytaskAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateVdiscoverytaskResponse
-	PostExecute(r VdiscoverytaskAPIPostRequest) (*CreateVdiscoverytaskResponse, *http.Response, error)
+	CreateExecute(r VdiscoverytaskAPICreateRequest) (*CreateVdiscoverytaskResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a vdiscoverytask object
+		Delete Delete a vdiscoverytask object
 
 		Deletes a specific vdiscoverytask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the vdiscoverytask object
-		@return VdiscoverytaskAPIReferenceDeleteRequest
+		@return VdiscoverytaskAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) VdiscoverytaskAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) VdiscoverytaskAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r VdiscoverytaskAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r VdiscoverytaskAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific vdiscoverytask object
+		List Retrieve vdiscoverytask objects
+
+		Returns a list of vdiscoverytask objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return VdiscoverytaskAPIListRequest
+	*/
+	List(ctx context.Context) VdiscoverytaskAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListVdiscoverytaskResponse
+	ListExecute(r VdiscoverytaskAPIListRequest) (*ListVdiscoverytaskResponse, *http.Response, error)
+	/*
+		Read Get a specific vdiscoverytask object
 
 		Returns a specific vdiscoverytask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the vdiscoverytask object
-		@return VdiscoverytaskAPIReferenceGetRequest
+		@return VdiscoverytaskAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) VdiscoverytaskAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) VdiscoverytaskAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetVdiscoverytaskResponse
-	ReferenceGetExecute(r VdiscoverytaskAPIReferenceGetRequest) (*GetVdiscoverytaskResponse, *http.Response, error)
+	ReadExecute(r VdiscoverytaskAPIReadRequest) (*GetVdiscoverytaskResponse, *http.Response, error)
 	/*
-		ReferencePut Update a vdiscoverytask object
+		Update Update a vdiscoverytask object
 
 		Updates a specific vdiscoverytask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the vdiscoverytask object
-		@return VdiscoverytaskAPIReferencePutRequest
+		@return VdiscoverytaskAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) VdiscoverytaskAPIReferencePutRequest
+	Update(ctx context.Context, reference string) VdiscoverytaskAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateVdiscoverytaskResponse
-	ReferencePutExecute(r VdiscoverytaskAPIReferencePutRequest) (*UpdateVdiscoverytaskResponse, *http.Response, error)
+	UpdateExecute(r VdiscoverytaskAPIUpdateRequest) (*UpdateVdiscoverytaskResponse, *http.Response, error)
 }
 
 // VdiscoverytaskAPIService VdiscoverytaskAPI service
 type VdiscoverytaskAPIService internal.Service
 
-type VdiscoverytaskAPIGetRequest struct {
+type VdiscoverytaskAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     VdiscoverytaskAPI
+	vdiscoverytask *Vdiscoverytask
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r VdiscoverytaskAPICreateRequest) Vdiscoverytask(vdiscoverytask Vdiscoverytask) VdiscoverytaskAPICreateRequest {
+	r.vdiscoverytask = &vdiscoverytask
+	return r
+}
+
+// Enter the field names followed by comma
+func (r VdiscoverytaskAPICreateRequest) ReturnFields(returnFields string) VdiscoverytaskAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r VdiscoverytaskAPICreateRequest) ReturnFields2(returnFields2 string) VdiscoverytaskAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r VdiscoverytaskAPICreateRequest) ReturnAsObject(returnAsObject int32) VdiscoverytaskAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r VdiscoverytaskAPICreateRequest) Execute() (*CreateVdiscoverytaskResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a vdiscoverytask object
+
+Creates a new vdiscoverytask object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return VdiscoverytaskAPICreateRequest
+*/
+func (a *VdiscoverytaskAPIService) Create(ctx context.Context) VdiscoverytaskAPICreateRequest {
+	return VdiscoverytaskAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateVdiscoverytaskResponse
+func (a *VdiscoverytaskAPIService) CreateExecute(r VdiscoverytaskAPICreateRequest) (*CreateVdiscoverytaskResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateVdiscoverytaskResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VdiscoverytaskAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/vdiscoverytask"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.vdiscoverytask == nil {
+		return localVarReturnValue, nil, internal.ReportError("vdiscoverytask is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.vdiscoverytask
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type VdiscoverytaskAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService VdiscoverytaskAPI
+	reference  string
+}
+
+func (r VdiscoverytaskAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a vdiscoverytask object
+
+Deletes a specific vdiscoverytask object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the vdiscoverytask object
+	@return VdiscoverytaskAPIDeleteRequest
+*/
+func (a *VdiscoverytaskAPIService) Delete(ctx context.Context, reference string) VdiscoverytaskAPIDeleteRequest {
+	return VdiscoverytaskAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *VdiscoverytaskAPIService) DeleteExecute(r VdiscoverytaskAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VdiscoverytaskAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/vdiscoverytask/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type VdiscoverytaskAPIListRequest struct {
 	ctx            context.Context
 	ApiService     VdiscoverytaskAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type VdiscoverytaskAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r VdiscoverytaskAPIGetRequest) ReturnFields(returnFields string) VdiscoverytaskAPIGetRequest {
+func (r VdiscoverytaskAPIListRequest) ReturnFields(returnFields string) VdiscoverytaskAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VdiscoverytaskAPIGetRequest) ReturnFields2(returnFields2 string) VdiscoverytaskAPIGetRequest {
+func (r VdiscoverytaskAPIListRequest) ReturnFields2(returnFields2 string) VdiscoverytaskAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r VdiscoverytaskAPIGetRequest) MaxResults(maxResults int32) VdiscoverytaskAPIGetRequest {
+func (r VdiscoverytaskAPIListRequest) MaxResults(maxResults int32) VdiscoverytaskAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r VdiscoverytaskAPIGetRequest) ReturnAsObject(returnAsObject int32) VdiscoverytaskAPIGetRequest {
+func (r VdiscoverytaskAPIListRequest) ReturnAsObject(returnAsObject int32) VdiscoverytaskAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r VdiscoverytaskAPIGetRequest) Paging(paging int32) VdiscoverytaskAPIGetRequest {
+func (r VdiscoverytaskAPIListRequest) Paging(paging int32) VdiscoverytaskAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r VdiscoverytaskAPIGetRequest) PageId(pageId string) VdiscoverytaskAPIGetRequest {
+func (r VdiscoverytaskAPIListRequest) PageId(pageId string) VdiscoverytaskAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r VdiscoverytaskAPIGetRequest) Filters(filters map[string]interface{}) VdiscoverytaskAPIGetRequest {
+func (r VdiscoverytaskAPIListRequest) Filters(filters map[string]interface{}) VdiscoverytaskAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r VdiscoverytaskAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) VdiscoverytaskAPIGetRequest {
+func (r VdiscoverytaskAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) VdiscoverytaskAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r VdiscoverytaskAPIGetRequest) Execute() (*ListVdiscoverytaskResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r VdiscoverytaskAPIListRequest) Execute() (*ListVdiscoverytaskResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve vdiscoverytask objects
+List Retrieve vdiscoverytask objects
 
 Returns a list of vdiscoverytask objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return VdiscoverytaskAPIGetRequest
+	@return VdiscoverytaskAPIListRequest
 */
-func (a *VdiscoverytaskAPIService) Get(ctx context.Context) VdiscoverytaskAPIGetRequest {
-	return VdiscoverytaskAPIGetRequest{
+func (a *VdiscoverytaskAPIService) List(ctx context.Context) VdiscoverytaskAPIListRequest {
+	return VdiscoverytaskAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *VdiscoverytaskAPIService) Get(ctx context.Context) VdiscoverytaskAPIGet
 // Execute executes the request
 //
 //	@return ListVdiscoverytaskResponse
-func (a *VdiscoverytaskAPIService) GetExecute(r VdiscoverytaskAPIGetRequest) (*ListVdiscoverytaskResponse, *http.Response, error) {
+func (a *VdiscoverytaskAPIService) ListExecute(r VdiscoverytaskAPIListRequest) (*ListVdiscoverytaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *VdiscoverytaskAPIService) GetExecute(r VdiscoverytaskAPIGetRequest) (*L
 		localVarReturnValue *ListVdiscoverytaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VdiscoverytaskAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VdiscoverytaskAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *VdiscoverytaskAPIService) GetExecute(r VdiscoverytaskAPIGetRequest) (*L
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type VdiscoverytaskAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     VdiscoverytaskAPI
-	vdiscoverytask *Vdiscoverytask
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r VdiscoverytaskAPIPostRequest) Vdiscoverytask(vdiscoverytask Vdiscoverytask) VdiscoverytaskAPIPostRequest {
-	r.vdiscoverytask = &vdiscoverytask
-	return r
-}
-
-// Enter the field names followed by comma
-func (r VdiscoverytaskAPIPostRequest) ReturnFields(returnFields string) VdiscoverytaskAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VdiscoverytaskAPIPostRequest) ReturnFields2(returnFields2 string) VdiscoverytaskAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r VdiscoverytaskAPIPostRequest) ReturnAsObject(returnAsObject int32) VdiscoverytaskAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r VdiscoverytaskAPIPostRequest) Execute() (*CreateVdiscoverytaskResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a vdiscoverytask object
-
-Creates a new vdiscoverytask object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return VdiscoverytaskAPIPostRequest
-*/
-func (a *VdiscoverytaskAPIService) Post(ctx context.Context) VdiscoverytaskAPIPostRequest {
-	return VdiscoverytaskAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateVdiscoverytaskResponse
-func (a *VdiscoverytaskAPIService) PostExecute(r VdiscoverytaskAPIPostRequest) (*CreateVdiscoverytaskResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateVdiscoverytaskResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VdiscoverytaskAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/vdiscoverytask"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.vdiscoverytask == nil {
-		return localVarReturnValue, nil, internal.ReportError("vdiscoverytask is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.vdiscoverytask
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type VdiscoverytaskAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService VdiscoverytaskAPI
-	reference  string
-}
-
-func (r VdiscoverytaskAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a vdiscoverytask object
-
-Deletes a specific vdiscoverytask object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the vdiscoverytask object
-	@return VdiscoverytaskAPIReferenceDeleteRequest
-*/
-func (a *VdiscoverytaskAPIService) ReferenceDelete(ctx context.Context, reference string) VdiscoverytaskAPIReferenceDeleteRequest {
-	return VdiscoverytaskAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *VdiscoverytaskAPIService) ReferenceDeleteExecute(r VdiscoverytaskAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VdiscoverytaskAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/vdiscoverytask/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type VdiscoverytaskAPIReferenceGetRequest struct {
+type VdiscoverytaskAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     VdiscoverytaskAPI
 	reference      string
@@ -499,38 +499,38 @@ type VdiscoverytaskAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r VdiscoverytaskAPIReferenceGetRequest) ReturnFields(returnFields string) VdiscoverytaskAPIReferenceGetRequest {
+func (r VdiscoverytaskAPIReadRequest) ReturnFields(returnFields string) VdiscoverytaskAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VdiscoverytaskAPIReferenceGetRequest) ReturnFields2(returnFields2 string) VdiscoverytaskAPIReferenceGetRequest {
+func (r VdiscoverytaskAPIReadRequest) ReturnFields2(returnFields2 string) VdiscoverytaskAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r VdiscoverytaskAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) VdiscoverytaskAPIReferenceGetRequest {
+func (r VdiscoverytaskAPIReadRequest) ReturnAsObject(returnAsObject int32) VdiscoverytaskAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r VdiscoverytaskAPIReferenceGetRequest) Execute() (*GetVdiscoverytaskResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r VdiscoverytaskAPIReadRequest) Execute() (*GetVdiscoverytaskResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific vdiscoverytask object
+Read Get a specific vdiscoverytask object
 
 Returns a specific vdiscoverytask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the vdiscoverytask object
-	@return VdiscoverytaskAPIReferenceGetRequest
+	@return VdiscoverytaskAPIReadRequest
 */
-func (a *VdiscoverytaskAPIService) ReferenceGet(ctx context.Context, reference string) VdiscoverytaskAPIReferenceGetRequest {
-	return VdiscoverytaskAPIReferenceGetRequest{
+func (a *VdiscoverytaskAPIService) Read(ctx context.Context, reference string) VdiscoverytaskAPIReadRequest {
+	return VdiscoverytaskAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *VdiscoverytaskAPIService) ReferenceGet(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return GetVdiscoverytaskResponse
-func (a *VdiscoverytaskAPIService) ReferenceGetExecute(r VdiscoverytaskAPIReferenceGetRequest) (*GetVdiscoverytaskResponse, *http.Response, error) {
+func (a *VdiscoverytaskAPIService) ReadExecute(r VdiscoverytaskAPIReadRequest) (*GetVdiscoverytaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *VdiscoverytaskAPIService) ReferenceGetExecute(r VdiscoverytaskAPIRefere
 		localVarReturnValue *GetVdiscoverytaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VdiscoverytaskAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VdiscoverytaskAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *VdiscoverytaskAPIService) ReferenceGetExecute(r VdiscoverytaskAPIRefere
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type VdiscoverytaskAPIReferencePutRequest struct {
+type VdiscoverytaskAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     VdiscoverytaskAPI
 	reference      string
@@ -627,44 +627,44 @@ type VdiscoverytaskAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r VdiscoverytaskAPIReferencePutRequest) Vdiscoverytask(vdiscoverytask Vdiscoverytask) VdiscoverytaskAPIReferencePutRequest {
+func (r VdiscoverytaskAPIUpdateRequest) Vdiscoverytask(vdiscoverytask Vdiscoverytask) VdiscoverytaskAPIUpdateRequest {
 	r.vdiscoverytask = &vdiscoverytask
 	return r
 }
 
 // Enter the field names followed by comma
-func (r VdiscoverytaskAPIReferencePutRequest) ReturnFields(returnFields string) VdiscoverytaskAPIReferencePutRequest {
+func (r VdiscoverytaskAPIUpdateRequest) ReturnFields(returnFields string) VdiscoverytaskAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VdiscoverytaskAPIReferencePutRequest) ReturnFields2(returnFields2 string) VdiscoverytaskAPIReferencePutRequest {
+func (r VdiscoverytaskAPIUpdateRequest) ReturnFields2(returnFields2 string) VdiscoverytaskAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r VdiscoverytaskAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) VdiscoverytaskAPIReferencePutRequest {
+func (r VdiscoverytaskAPIUpdateRequest) ReturnAsObject(returnAsObject int32) VdiscoverytaskAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r VdiscoverytaskAPIReferencePutRequest) Execute() (*UpdateVdiscoverytaskResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r VdiscoverytaskAPIUpdateRequest) Execute() (*UpdateVdiscoverytaskResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a vdiscoverytask object
+Update Update a vdiscoverytask object
 
 Updates a specific vdiscoverytask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the vdiscoverytask object
-	@return VdiscoverytaskAPIReferencePutRequest
+	@return VdiscoverytaskAPIUpdateRequest
 */
-func (a *VdiscoverytaskAPIService) ReferencePut(ctx context.Context, reference string) VdiscoverytaskAPIReferencePutRequest {
-	return VdiscoverytaskAPIReferencePutRequest{
+func (a *VdiscoverytaskAPIService) Update(ctx context.Context, reference string) VdiscoverytaskAPIUpdateRequest {
+	return VdiscoverytaskAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *VdiscoverytaskAPIService) ReferencePut(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return UpdateVdiscoverytaskResponse
-func (a *VdiscoverytaskAPIService) ReferencePutExecute(r VdiscoverytaskAPIReferencePutRequest) (*UpdateVdiscoverytaskResponse, *http.Response, error) {
+func (a *VdiscoverytaskAPIService) UpdateExecute(r VdiscoverytaskAPIUpdateRequest) (*UpdateVdiscoverytaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *VdiscoverytaskAPIService) ReferencePutExecute(r VdiscoverytaskAPIRefere
 		localVarReturnValue *UpdateVdiscoverytaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VdiscoverytaskAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VdiscoverytaskAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

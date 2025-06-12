@@ -23,249 +23,78 @@ import (
 
 type RirOrganizationAPI interface {
 	/*
-		RirorganizationGet Retrieve rir:organization objects
-
-		Returns a list of rir:organization objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RirOrganizationAPIRirorganizationGetRequest
-	*/
-	RirorganizationGet(ctx context.Context) RirOrganizationAPIRirorganizationGetRequest
-
-	// RirorganizationGetExecute executes the request
-	//  @return ListRirOrganizationResponse
-	RirorganizationGetExecute(r RirOrganizationAPIRirorganizationGetRequest) (*ListRirOrganizationResponse, *http.Response, error)
-	/*
-		RirorganizationPost Create a rir:organization object
+		Create Create a rir:organization object
 
 		Creates a new rir:organization object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RirOrganizationAPIRirorganizationPostRequest
+		@return RirOrganizationAPICreateRequest
 	*/
-	RirorganizationPost(ctx context.Context) RirOrganizationAPIRirorganizationPostRequest
+	Create(ctx context.Context) RirOrganizationAPICreateRequest
 
-	// RirorganizationPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRirOrganizationResponse
-	RirorganizationPostExecute(r RirOrganizationAPIRirorganizationPostRequest) (*CreateRirOrganizationResponse, *http.Response, error)
+	CreateExecute(r RirOrganizationAPICreateRequest) (*CreateRirOrganizationResponse, *http.Response, error)
 	/*
-		RirorganizationReferenceDelete Delete a rir:organization object
+		Delete Delete a rir:organization object
 
 		Deletes a specific rir:organization object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the rir:organization object
-		@return RirOrganizationAPIRirorganizationReferenceDeleteRequest
+		@return RirOrganizationAPIDeleteRequest
 	*/
-	RirorganizationReferenceDelete(ctx context.Context, reference string) RirOrganizationAPIRirorganizationReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RirOrganizationAPIDeleteRequest
 
-	// RirorganizationReferenceDeleteExecute executes the request
-	RirorganizationReferenceDeleteExecute(r RirOrganizationAPIRirorganizationReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RirOrganizationAPIDeleteRequest) (*http.Response, error)
 	/*
-		RirorganizationReferenceGet Get a specific rir:organization object
+		List Retrieve rir:organization objects
+
+		Returns a list of rir:organization objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RirOrganizationAPIListRequest
+	*/
+	List(ctx context.Context) RirOrganizationAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRirOrganizationResponse
+	ListExecute(r RirOrganizationAPIListRequest) (*ListRirOrganizationResponse, *http.Response, error)
+	/*
+		Read Get a specific rir:organization object
 
 		Returns a specific rir:organization object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the rir:organization object
-		@return RirOrganizationAPIRirorganizationReferenceGetRequest
+		@return RirOrganizationAPIReadRequest
 	*/
-	RirorganizationReferenceGet(ctx context.Context, reference string) RirOrganizationAPIRirorganizationReferenceGetRequest
+	Read(ctx context.Context, reference string) RirOrganizationAPIReadRequest
 
-	// RirorganizationReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRirOrganizationResponse
-	RirorganizationReferenceGetExecute(r RirOrganizationAPIRirorganizationReferenceGetRequest) (*GetRirOrganizationResponse, *http.Response, error)
+	ReadExecute(r RirOrganizationAPIReadRequest) (*GetRirOrganizationResponse, *http.Response, error)
 	/*
-		RirorganizationReferencePut Update a rir:organization object
+		Update Update a rir:organization object
 
 		Updates a specific rir:organization object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the rir:organization object
-		@return RirOrganizationAPIRirorganizationReferencePutRequest
+		@return RirOrganizationAPIUpdateRequest
 	*/
-	RirorganizationReferencePut(ctx context.Context, reference string) RirOrganizationAPIRirorganizationReferencePutRequest
+	Update(ctx context.Context, reference string) RirOrganizationAPIUpdateRequest
 
-	// RirorganizationReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRirOrganizationResponse
-	RirorganizationReferencePutExecute(r RirOrganizationAPIRirorganizationReferencePutRequest) (*UpdateRirOrganizationResponse, *http.Response, error)
+	UpdateExecute(r RirOrganizationAPIUpdateRequest) (*UpdateRirOrganizationResponse, *http.Response, error)
 }
 
 // RirOrganizationAPIService RirOrganizationAPI service
 type RirOrganizationAPIService internal.Service
 
-type RirOrganizationAPIRirorganizationGetRequest struct {
-	ctx            context.Context
-	ApiService     RirOrganizationAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r RirOrganizationAPIRirorganizationGetRequest) ReturnFields(returnFields string) RirOrganizationAPIRirorganizationGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirOrganizationAPIRirorganizationGetRequest) ReturnFields2(returnFields2 string) RirOrganizationAPIRirorganizationGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r RirOrganizationAPIRirorganizationGetRequest) MaxResults(maxResults int32) RirOrganizationAPIRirorganizationGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RirOrganizationAPIRirorganizationGetRequest) ReturnAsObject(returnAsObject int32) RirOrganizationAPIRirorganizationGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r RirOrganizationAPIRirorganizationGetRequest) Paging(paging int32) RirOrganizationAPIRirorganizationGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r RirOrganizationAPIRirorganizationGetRequest) PageId(pageId string) RirOrganizationAPIRirorganizationGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r RirOrganizationAPIRirorganizationGetRequest) Filters(filters map[string]interface{}) RirOrganizationAPIRirorganizationGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r RirOrganizationAPIRirorganizationGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RirOrganizationAPIRirorganizationGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r RirOrganizationAPIRirorganizationGetRequest) Execute() (*ListRirOrganizationResponse, *http.Response, error) {
-	return r.ApiService.RirorganizationGetExecute(r)
-}
-
-/*
-RirorganizationGet Retrieve rir:organization objects
-
-Returns a list of rir:organization objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RirOrganizationAPIRirorganizationGetRequest
-*/
-func (a *RirOrganizationAPIService) RirorganizationGet(ctx context.Context) RirOrganizationAPIRirorganizationGetRequest {
-	return RirOrganizationAPIRirorganizationGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListRirOrganizationResponse
-func (a *RirOrganizationAPIService) RirorganizationGetExecute(r RirOrganizationAPIRirorganizationGetRequest) (*ListRirOrganizationResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListRirOrganizationResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirOrganizationAPIService.RirorganizationGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/rir:organization"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RirOrganizationAPIRirorganizationPostRequest struct {
+type RirOrganizationAPICreateRequest struct {
 	ctx             context.Context
 	ApiService      RirOrganizationAPI
 	rirOrganization *RirOrganization
@@ -275,43 +104,43 @@ type RirOrganizationAPIRirorganizationPostRequest struct {
 }
 
 // Object data to create
-func (r RirOrganizationAPIRirorganizationPostRequest) RirOrganization(rirOrganization RirOrganization) RirOrganizationAPIRirorganizationPostRequest {
+func (r RirOrganizationAPICreateRequest) RirOrganization(rirOrganization RirOrganization) RirOrganizationAPICreateRequest {
 	r.rirOrganization = &rirOrganization
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RirOrganizationAPIRirorganizationPostRequest) ReturnFields(returnFields string) RirOrganizationAPIRirorganizationPostRequest {
+func (r RirOrganizationAPICreateRequest) ReturnFields(returnFields string) RirOrganizationAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirOrganizationAPIRirorganizationPostRequest) ReturnFields2(returnFields2 string) RirOrganizationAPIRirorganizationPostRequest {
+func (r RirOrganizationAPICreateRequest) ReturnFields2(returnFields2 string) RirOrganizationAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RirOrganizationAPIRirorganizationPostRequest) ReturnAsObject(returnAsObject int32) RirOrganizationAPIRirorganizationPostRequest {
+func (r RirOrganizationAPICreateRequest) ReturnAsObject(returnAsObject int32) RirOrganizationAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RirOrganizationAPIRirorganizationPostRequest) Execute() (*CreateRirOrganizationResponse, *http.Response, error) {
-	return r.ApiService.RirorganizationPostExecute(r)
+func (r RirOrganizationAPICreateRequest) Execute() (*CreateRirOrganizationResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-RirorganizationPost Create a rir:organization object
+Create Create a rir:organization object
 
 Creates a new rir:organization object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RirOrganizationAPIRirorganizationPostRequest
+	@return RirOrganizationAPICreateRequest
 */
-func (a *RirOrganizationAPIService) RirorganizationPost(ctx context.Context) RirOrganizationAPIRirorganizationPostRequest {
-	return RirOrganizationAPIRirorganizationPostRequest{
+func (a *RirOrganizationAPIService) Create(ctx context.Context) RirOrganizationAPICreateRequest {
+	return RirOrganizationAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *RirOrganizationAPIService) RirorganizationPost(ctx context.Context) Rir
 // Execute executes the request
 //
 //	@return CreateRirOrganizationResponse
-func (a *RirOrganizationAPIService) RirorganizationPostExecute(r RirOrganizationAPIRirorganizationPostRequest) (*CreateRirOrganizationResponse, *http.Response, error) {
+func (a *RirOrganizationAPIService) CreateExecute(r RirOrganizationAPICreateRequest) (*CreateRirOrganizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *RirOrganizationAPIService) RirorganizationPostExecute(r RirOrganization
 		localVarReturnValue *CreateRirOrganizationResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirOrganizationAPIService.RirorganizationPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirOrganizationAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *RirOrganizationAPIService) RirorganizationPostExecute(r RirOrganization
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RirOrganizationAPIRirorganizationReferenceDeleteRequest struct {
+type RirOrganizationAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService RirOrganizationAPI
 	reference  string
 }
 
-func (r RirOrganizationAPIRirorganizationReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RirorganizationReferenceDeleteExecute(r)
+func (r RirOrganizationAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-RirorganizationReferenceDelete Delete a rir:organization object
+Delete Delete a rir:organization object
 
 Deletes a specific rir:organization object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the rir:organization object
-	@return RirOrganizationAPIRirorganizationReferenceDeleteRequest
+	@return RirOrganizationAPIDeleteRequest
 */
-func (a *RirOrganizationAPIService) RirorganizationReferenceDelete(ctx context.Context, reference string) RirOrganizationAPIRirorganizationReferenceDeleteRequest {
-	return RirOrganizationAPIRirorganizationReferenceDeleteRequest{
+func (a *RirOrganizationAPIService) Delete(ctx context.Context, reference string) RirOrganizationAPIDeleteRequest {
+	return RirOrganizationAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *RirOrganizationAPIService) RirorganizationReferenceDelete(ctx context.C
 }
 
 // Execute executes the request
-func (a *RirOrganizationAPIService) RirorganizationReferenceDeleteExecute(r RirOrganizationAPIRirorganizationReferenceDeleteRequest) (*http.Response, error) {
+func (a *RirOrganizationAPIService) DeleteExecute(r RirOrganizationAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirOrganizationAPIService.RirorganizationReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirOrganizationAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *RirOrganizationAPIService) RirorganizationReferenceDeleteExecute(r RirO
 	return localVarHTTPResponse, nil
 }
 
-type RirOrganizationAPIRirorganizationReferenceGetRequest struct {
+type RirOrganizationAPIListRequest struct {
+	ctx            context.Context
+	ApiService     RirOrganizationAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RirOrganizationAPIListRequest) ReturnFields(returnFields string) RirOrganizationAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RirOrganizationAPIListRequest) ReturnFields2(returnFields2 string) RirOrganizationAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r RirOrganizationAPIListRequest) MaxResults(maxResults int32) RirOrganizationAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RirOrganizationAPIListRequest) ReturnAsObject(returnAsObject int32) RirOrganizationAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r RirOrganizationAPIListRequest) Paging(paging int32) RirOrganizationAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r RirOrganizationAPIListRequest) PageId(pageId string) RirOrganizationAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r RirOrganizationAPIListRequest) Filters(filters map[string]interface{}) RirOrganizationAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r RirOrganizationAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RirOrganizationAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r RirOrganizationAPIListRequest) Execute() (*ListRirOrganizationResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve rir:organization objects
+
+Returns a list of rir:organization objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RirOrganizationAPIListRequest
+*/
+func (a *RirOrganizationAPIService) List(ctx context.Context) RirOrganizationAPIListRequest {
+	return RirOrganizationAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListRirOrganizationResponse
+func (a *RirOrganizationAPIService) ListExecute(r RirOrganizationAPIListRequest) (*ListRirOrganizationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListRirOrganizationResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirOrganizationAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/rir:organization"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RirOrganizationAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RirOrganizationAPI
 	reference      string
@@ -511,38 +511,38 @@ type RirOrganizationAPIRirorganizationReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RirOrganizationAPIRirorganizationReferenceGetRequest) ReturnFields(returnFields string) RirOrganizationAPIRirorganizationReferenceGetRequest {
+func (r RirOrganizationAPIReadRequest) ReturnFields(returnFields string) RirOrganizationAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirOrganizationAPIRirorganizationReferenceGetRequest) ReturnFields2(returnFields2 string) RirOrganizationAPIRirorganizationReferenceGetRequest {
+func (r RirOrganizationAPIReadRequest) ReturnFields2(returnFields2 string) RirOrganizationAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RirOrganizationAPIRirorganizationReferenceGetRequest) ReturnAsObject(returnAsObject int32) RirOrganizationAPIRirorganizationReferenceGetRequest {
+func (r RirOrganizationAPIReadRequest) ReturnAsObject(returnAsObject int32) RirOrganizationAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RirOrganizationAPIRirorganizationReferenceGetRequest) Execute() (*GetRirOrganizationResponse, *http.Response, error) {
-	return r.ApiService.RirorganizationReferenceGetExecute(r)
+func (r RirOrganizationAPIReadRequest) Execute() (*GetRirOrganizationResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RirorganizationReferenceGet Get a specific rir:organization object
+Read Get a specific rir:organization object
 
 Returns a specific rir:organization object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the rir:organization object
-	@return RirOrganizationAPIRirorganizationReferenceGetRequest
+	@return RirOrganizationAPIReadRequest
 */
-func (a *RirOrganizationAPIService) RirorganizationReferenceGet(ctx context.Context, reference string) RirOrganizationAPIRirorganizationReferenceGetRequest {
-	return RirOrganizationAPIRirorganizationReferenceGetRequest{
+func (a *RirOrganizationAPIService) Read(ctx context.Context, reference string) RirOrganizationAPIReadRequest {
+	return RirOrganizationAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RirOrganizationAPIService) RirorganizationReferenceGet(ctx context.Cont
 // Execute executes the request
 //
 //	@return GetRirOrganizationResponse
-func (a *RirOrganizationAPIService) RirorganizationReferenceGetExecute(r RirOrganizationAPIRirorganizationReferenceGetRequest) (*GetRirOrganizationResponse, *http.Response, error) {
+func (a *RirOrganizationAPIService) ReadExecute(r RirOrganizationAPIReadRequest) (*GetRirOrganizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RirOrganizationAPIService) RirorganizationReferenceGetExecute(r RirOrga
 		localVarReturnValue *GetRirOrganizationResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirOrganizationAPIService.RirorganizationReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirOrganizationAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *RirOrganizationAPIService) RirorganizationReferenceGetExecute(r RirOrga
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RirOrganizationAPIRirorganizationReferencePutRequest struct {
+type RirOrganizationAPIUpdateRequest struct {
 	ctx             context.Context
 	ApiService      RirOrganizationAPI
 	reference       string
@@ -639,44 +639,44 @@ type RirOrganizationAPIRirorganizationReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RirOrganizationAPIRirorganizationReferencePutRequest) RirOrganization(rirOrganization RirOrganization) RirOrganizationAPIRirorganizationReferencePutRequest {
+func (r RirOrganizationAPIUpdateRequest) RirOrganization(rirOrganization RirOrganization) RirOrganizationAPIUpdateRequest {
 	r.rirOrganization = &rirOrganization
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RirOrganizationAPIRirorganizationReferencePutRequest) ReturnFields(returnFields string) RirOrganizationAPIRirorganizationReferencePutRequest {
+func (r RirOrganizationAPIUpdateRequest) ReturnFields(returnFields string) RirOrganizationAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirOrganizationAPIRirorganizationReferencePutRequest) ReturnFields2(returnFields2 string) RirOrganizationAPIRirorganizationReferencePutRequest {
+func (r RirOrganizationAPIUpdateRequest) ReturnFields2(returnFields2 string) RirOrganizationAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RirOrganizationAPIRirorganizationReferencePutRequest) ReturnAsObject(returnAsObject int32) RirOrganizationAPIRirorganizationReferencePutRequest {
+func (r RirOrganizationAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RirOrganizationAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RirOrganizationAPIRirorganizationReferencePutRequest) Execute() (*UpdateRirOrganizationResponse, *http.Response, error) {
-	return r.ApiService.RirorganizationReferencePutExecute(r)
+func (r RirOrganizationAPIUpdateRequest) Execute() (*UpdateRirOrganizationResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RirorganizationReferencePut Update a rir:organization object
+Update Update a rir:organization object
 
 Updates a specific rir:organization object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the rir:organization object
-	@return RirOrganizationAPIRirorganizationReferencePutRequest
+	@return RirOrganizationAPIUpdateRequest
 */
-func (a *RirOrganizationAPIService) RirorganizationReferencePut(ctx context.Context, reference string) RirOrganizationAPIRirorganizationReferencePutRequest {
-	return RirOrganizationAPIRirorganizationReferencePutRequest{
+func (a *RirOrganizationAPIService) Update(ctx context.Context, reference string) RirOrganizationAPIUpdateRequest {
+	return RirOrganizationAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RirOrganizationAPIService) RirorganizationReferencePut(ctx context.Cont
 // Execute executes the request
 //
 //	@return UpdateRirOrganizationResponse
-func (a *RirOrganizationAPIService) RirorganizationReferencePutExecute(r RirOrganizationAPIRirorganizationReferencePutRequest) (*UpdateRirOrganizationResponse, *http.Response, error) {
+func (a *RirOrganizationAPIService) UpdateExecute(r RirOrganizationAPIUpdateRequest) (*UpdateRirOrganizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RirOrganizationAPIService) RirorganizationReferencePutExecute(r RirOrga
 		localVarReturnValue *UpdateRirOrganizationResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirOrganizationAPIService.RirorganizationReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RirOrganizationAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

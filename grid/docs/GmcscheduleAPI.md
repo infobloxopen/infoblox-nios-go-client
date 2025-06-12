@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](GmcscheduleAPI.md#Get) | **Get** /gmcschedule | Retrieve gmcschedule objects
-[**ReferenceGet**](GmcscheduleAPI.md#ReferenceGet) | **Get** /gmcschedule/{reference} | Get a specific gmcschedule object
-[**ReferencePut**](GmcscheduleAPI.md#ReferencePut) | **Put** /gmcschedule/{reference} | Update a gmcschedule object
+[**List**](GmcscheduleAPI.md#List) | **Get** /gmcschedule | Retrieve gmcschedule objects
+[**Read**](GmcscheduleAPI.md#Read) | **Get** /gmcschedule/{reference} | Get a specific gmcschedule object
+[**Update**](GmcscheduleAPI.md#Update) | **Put** /gmcschedule/{reference} | Update a gmcschedule object
 
 
 
-## Get
+## List
 
-> ListGmcscheduleResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGmcscheduleResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve gmcschedule objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GmcscheduleAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.GmcscheduleAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GmcscheduleAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GmcscheduleAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListGmcscheduleResponse
-	fmt.Fprintf(os.Stdout, "Response from `GmcscheduleAPI.Get`: %v\n", resp)
+	// response from `List`: ListGmcscheduleResponse
+	fmt.Fprintf(os.Stdout, "Response from `GmcscheduleAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GmcscheduleAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GmcscheduleAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetGmcscheduleResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGmcscheduleResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific gmcschedule object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the gmcschedule object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GmcscheduleAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GmcscheduleAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GmcscheduleAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GmcscheduleAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetGmcscheduleResponse
-	fmt.Fprintf(os.Stdout, "Response from `GmcscheduleAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGmcscheduleResponse
+	fmt.Fprintf(os.Stdout, "Response from `GmcscheduleAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GmcscheduleAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GmcscheduleAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateGmcscheduleResponse ReferencePut(ctx, reference).Gmcschedule(gmcschedule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGmcscheduleResponse Update(ctx, reference).Gmcschedule(gmcschedule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a gmcschedule object
 
@@ -180,13 +180,13 @@ func main() {
 	gmcschedule := *grid.NewGmcschedule() // Gmcschedule | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GmcscheduleAPI.ReferencePut(context.Background(), reference).Gmcschedule(gmcschedule).Execute()
+	resp, r, err := apiClient.GmcscheduleAPI.Update(context.Background(), reference).Gmcschedule(gmcschedule).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GmcscheduleAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GmcscheduleAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateGmcscheduleResponse
-	fmt.Fprintf(os.Stdout, "Response from `GmcscheduleAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGmcscheduleResponse
+	fmt.Fprintf(os.Stdout, "Response from `GmcscheduleAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GmcscheduleAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GmcscheduleAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

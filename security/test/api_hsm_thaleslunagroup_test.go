@@ -23,11 +23,11 @@ func TestHsmThaleslunagroupAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test HsmThaleslunagroupAPIService HsmthaleslunagroupGet", func(t *testing.T) {
+	t.Run("Test HsmThaleslunagroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.HsmThaleslunagroupAPI.HsmthaleslunagroupGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.HsmThaleslunagroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestHsmThaleslunagroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HsmThaleslunagroupAPIService HsmthaleslunagroupPost", func(t *testing.T) {
+	t.Run("Test HsmThaleslunagroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.HsmThaleslunagroupAPI.HsmthaleslunagroupPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.HsmThaleslunagroupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test HsmThaleslunagroupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.HsmThaleslunagroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestHsmThaleslunagroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HsmThaleslunagroupAPIService HsmthaleslunagroupReferenceDelete", func(t *testing.T) {
+	t.Run("Test HsmThaleslunagroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.HsmThaleslunagroupAPI.HsmthaleslunagroupReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test HsmThaleslunagroupAPIService HsmthaleslunagroupReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.HsmThaleslunagroupAPI.HsmthaleslunagroupReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.HsmThaleslunagroupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestHsmThaleslunagroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HsmThaleslunagroupAPIService HsmthaleslunagroupReferencePut", func(t *testing.T) {
+	t.Run("Test HsmThaleslunagroupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.HsmThaleslunagroupAPI.HsmthaleslunagroupReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.HsmThaleslunagroupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,52 +23,52 @@ import (
 
 type GmcscheduleAPI interface {
 	/*
-		Get Retrieve gmcschedule objects
+		List Retrieve gmcschedule objects
 
 		Returns a list of gmcschedule objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GmcscheduleAPIGetRequest
+		@return GmcscheduleAPIListRequest
 	*/
-	Get(ctx context.Context) GmcscheduleAPIGetRequest
+	List(ctx context.Context) GmcscheduleAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGmcscheduleResponse
-	GetExecute(r GmcscheduleAPIGetRequest) (*ListGmcscheduleResponse, *http.Response, error)
+	ListExecute(r GmcscheduleAPIListRequest) (*ListGmcscheduleResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific gmcschedule object
+		Read Get a specific gmcschedule object
 
 		Returns a specific gmcschedule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gmcschedule object
-		@return GmcscheduleAPIReferenceGetRequest
+		@return GmcscheduleAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) GmcscheduleAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) GmcscheduleAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGmcscheduleResponse
-	ReferenceGetExecute(r GmcscheduleAPIReferenceGetRequest) (*GetGmcscheduleResponse, *http.Response, error)
+	ReadExecute(r GmcscheduleAPIReadRequest) (*GetGmcscheduleResponse, *http.Response, error)
 	/*
-		ReferencePut Update a gmcschedule object
+		Update Update a gmcschedule object
 
 		Updates a specific gmcschedule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gmcschedule object
-		@return GmcscheduleAPIReferencePutRequest
+		@return GmcscheduleAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) GmcscheduleAPIReferencePutRequest
+	Update(ctx context.Context, reference string) GmcscheduleAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGmcscheduleResponse
-	ReferencePutExecute(r GmcscheduleAPIReferencePutRequest) (*UpdateGmcscheduleResponse, *http.Response, error)
+	UpdateExecute(r GmcscheduleAPIUpdateRequest) (*UpdateGmcscheduleResponse, *http.Response, error)
 }
 
 // GmcscheduleAPIService GmcscheduleAPI service
 type GmcscheduleAPIService internal.Service
 
-type GmcscheduleAPIGetRequest struct {
+type GmcscheduleAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GmcscheduleAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type GmcscheduleAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GmcscheduleAPIGetRequest) ReturnFields(returnFields string) GmcscheduleAPIGetRequest {
+func (r GmcscheduleAPIListRequest) ReturnFields(returnFields string) GmcscheduleAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcscheduleAPIGetRequest) ReturnFields2(returnFields2 string) GmcscheduleAPIGetRequest {
+func (r GmcscheduleAPIListRequest) ReturnFields2(returnFields2 string) GmcscheduleAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GmcscheduleAPIGetRequest) MaxResults(maxResults int32) GmcscheduleAPIGetRequest {
+func (r GmcscheduleAPIListRequest) MaxResults(maxResults int32) GmcscheduleAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GmcscheduleAPIGetRequest) ReturnAsObject(returnAsObject int32) GmcscheduleAPIGetRequest {
+func (r GmcscheduleAPIListRequest) ReturnAsObject(returnAsObject int32) GmcscheduleAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GmcscheduleAPIGetRequest) Paging(paging int32) GmcscheduleAPIGetRequest {
+func (r GmcscheduleAPIListRequest) Paging(paging int32) GmcscheduleAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GmcscheduleAPIGetRequest) PageId(pageId string) GmcscheduleAPIGetRequest {
+func (r GmcscheduleAPIListRequest) PageId(pageId string) GmcscheduleAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GmcscheduleAPIGetRequest) Filters(filters map[string]interface{}) GmcscheduleAPIGetRequest {
+func (r GmcscheduleAPIListRequest) Filters(filters map[string]interface{}) GmcscheduleAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GmcscheduleAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GmcscheduleAPIGetRequest {
+func (r GmcscheduleAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GmcscheduleAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GmcscheduleAPIGetRequest) Execute() (*ListGmcscheduleResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r GmcscheduleAPIListRequest) Execute() (*ListGmcscheduleResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve gmcschedule objects
+List Retrieve gmcschedule objects
 
 Returns a list of gmcschedule objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GmcscheduleAPIGetRequest
+	@return GmcscheduleAPIListRequest
 */
-func (a *GmcscheduleAPIService) Get(ctx context.Context) GmcscheduleAPIGetRequest {
-	return GmcscheduleAPIGetRequest{
+func (a *GmcscheduleAPIService) List(ctx context.Context) GmcscheduleAPIListRequest {
+	return GmcscheduleAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GmcscheduleAPIService) Get(ctx context.Context) GmcscheduleAPIGetReques
 // Execute executes the request
 //
 //	@return ListGmcscheduleResponse
-func (a *GmcscheduleAPIService) GetExecute(r GmcscheduleAPIGetRequest) (*ListGmcscheduleResponse, *http.Response, error) {
+func (a *GmcscheduleAPIService) ListExecute(r GmcscheduleAPIListRequest) (*ListGmcscheduleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GmcscheduleAPIService) GetExecute(r GmcscheduleAPIGetRequest) (*ListGmc
 		localVarReturnValue *ListGmcscheduleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcscheduleAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcscheduleAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *GmcscheduleAPIService) GetExecute(r GmcscheduleAPIGetRequest) (*ListGmc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GmcscheduleAPIReferenceGetRequest struct {
+type GmcscheduleAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GmcscheduleAPI
 	reference      string
@@ -249,38 +249,38 @@ type GmcscheduleAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r GmcscheduleAPIReferenceGetRequest) ReturnFields(returnFields string) GmcscheduleAPIReferenceGetRequest {
+func (r GmcscheduleAPIReadRequest) ReturnFields(returnFields string) GmcscheduleAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcscheduleAPIReferenceGetRequest) ReturnFields2(returnFields2 string) GmcscheduleAPIReferenceGetRequest {
+func (r GmcscheduleAPIReadRequest) ReturnFields2(returnFields2 string) GmcscheduleAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GmcscheduleAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) GmcscheduleAPIReferenceGetRequest {
+func (r GmcscheduleAPIReadRequest) ReturnAsObject(returnAsObject int32) GmcscheduleAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GmcscheduleAPIReferenceGetRequest) Execute() (*GetGmcscheduleResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r GmcscheduleAPIReadRequest) Execute() (*GetGmcscheduleResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific gmcschedule object
+Read Get a specific gmcschedule object
 
 Returns a specific gmcschedule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the gmcschedule object
-	@return GmcscheduleAPIReferenceGetRequest
+	@return GmcscheduleAPIReadRequest
 */
-func (a *GmcscheduleAPIService) ReferenceGet(ctx context.Context, reference string) GmcscheduleAPIReferenceGetRequest {
-	return GmcscheduleAPIReferenceGetRequest{
+func (a *GmcscheduleAPIService) Read(ctx context.Context, reference string) GmcscheduleAPIReadRequest {
+	return GmcscheduleAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GmcscheduleAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetGmcscheduleResponse
-func (a *GmcscheduleAPIService) ReferenceGetExecute(r GmcscheduleAPIReferenceGetRequest) (*GetGmcscheduleResponse, *http.Response, error) {
+func (a *GmcscheduleAPIService) ReadExecute(r GmcscheduleAPIReadRequest) (*GetGmcscheduleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GmcscheduleAPIService) ReferenceGetExecute(r GmcscheduleAPIReferenceGet
 		localVarReturnValue *GetGmcscheduleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcscheduleAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcscheduleAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *GmcscheduleAPIService) ReferenceGetExecute(r GmcscheduleAPIReferenceGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GmcscheduleAPIReferencePutRequest struct {
+type GmcscheduleAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     GmcscheduleAPI
 	reference      string
@@ -377,44 +377,44 @@ type GmcscheduleAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r GmcscheduleAPIReferencePutRequest) Gmcschedule(gmcschedule Gmcschedule) GmcscheduleAPIReferencePutRequest {
+func (r GmcscheduleAPIUpdateRequest) Gmcschedule(gmcschedule Gmcschedule) GmcscheduleAPIUpdateRequest {
 	r.gmcschedule = &gmcschedule
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GmcscheduleAPIReferencePutRequest) ReturnFields(returnFields string) GmcscheduleAPIReferencePutRequest {
+func (r GmcscheduleAPIUpdateRequest) ReturnFields(returnFields string) GmcscheduleAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcscheduleAPIReferencePutRequest) ReturnFields2(returnFields2 string) GmcscheduleAPIReferencePutRequest {
+func (r GmcscheduleAPIUpdateRequest) ReturnFields2(returnFields2 string) GmcscheduleAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GmcscheduleAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) GmcscheduleAPIReferencePutRequest {
+func (r GmcscheduleAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GmcscheduleAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GmcscheduleAPIReferencePutRequest) Execute() (*UpdateGmcscheduleResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r GmcscheduleAPIUpdateRequest) Execute() (*UpdateGmcscheduleResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a gmcschedule object
+Update Update a gmcschedule object
 
 Updates a specific gmcschedule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the gmcschedule object
-	@return GmcscheduleAPIReferencePutRequest
+	@return GmcscheduleAPIUpdateRequest
 */
-func (a *GmcscheduleAPIService) ReferencePut(ctx context.Context, reference string) GmcscheduleAPIReferencePutRequest {
-	return GmcscheduleAPIReferencePutRequest{
+func (a *GmcscheduleAPIService) Update(ctx context.Context, reference string) GmcscheduleAPIUpdateRequest {
+	return GmcscheduleAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GmcscheduleAPIService) ReferencePut(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return UpdateGmcscheduleResponse
-func (a *GmcscheduleAPIService) ReferencePutExecute(r GmcscheduleAPIReferencePutRequest) (*UpdateGmcscheduleResponse, *http.Response, error) {
+func (a *GmcscheduleAPIService) UpdateExecute(r GmcscheduleAPIUpdateRequest) (*UpdateGmcscheduleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GmcscheduleAPIService) ReferencePutExecute(r GmcscheduleAPIReferencePut
 		localVarReturnValue *UpdateGmcscheduleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcscheduleAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GmcscheduleAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

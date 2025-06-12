@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridcloudapiGet**](GridCloudapiAPI.md#GridcloudapiGet) | **Get** /grid:cloudapi | Retrieve grid:cloudapi objects
-[**GridcloudapiReferenceGet**](GridCloudapiAPI.md#GridcloudapiReferenceGet) | **Get** /grid:cloudapi/{reference} | Get a specific grid:cloudapi object
-[**GridcloudapiReferencePut**](GridCloudapiAPI.md#GridcloudapiReferencePut) | **Put** /grid:cloudapi/{reference} | Update a grid:cloudapi object
+[**List**](GridCloudapiAPI.md#List) | **Get** /grid:cloudapi | Retrieve grid:cloudapi objects
+[**Read**](GridCloudapiAPI.md#Read) | **Get** /grid:cloudapi/{reference} | Get a specific grid:cloudapi object
+[**Update**](GridCloudapiAPI.md#Update) | **Put** /grid:cloudapi/{reference} | Update a grid:cloudapi object
 
 
 
-## GridcloudapiGet
+## List
 
-> ListGridCloudapiResponse GridcloudapiGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridCloudapiResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:cloudapi objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiAPI.GridcloudapiGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridCloudapiAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiAPI.GridcloudapiGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapiGet`: ListGridCloudapiResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiAPI.GridcloudapiGet`: %v\n", resp)
+	// response from `List`: ListGridCloudapiResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiAPIGridcloudapiGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridcloudapiReferenceGet
+## Read
 
-> GetGridCloudapiResponse GridcloudapiReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridCloudapiResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:cloudapi object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:cloudapi object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiAPI.GridcloudapiReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridCloudapiAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiAPI.GridcloudapiReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapiReferenceGet`: GetGridCloudapiResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiAPI.GridcloudapiReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridCloudapiResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiAPIGridcloudapiReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridcloudapiReferencePut
+## Update
 
-> UpdateGridCloudapiResponse GridcloudapiReferencePut(ctx, reference).GridCloudapi(gridCloudapi).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridCloudapiResponse Update(ctx, reference).GridCloudapi(gridCloudapi).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:cloudapi object
 
@@ -180,13 +180,13 @@ func main() {
 	gridCloudapi := *grid.NewGridCloudapi() // GridCloudapi | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiAPI.GridcloudapiReferencePut(context.Background(), reference).GridCloudapi(gridCloudapi).Execute()
+	resp, r, err := apiClient.GridCloudapiAPI.Update(context.Background(), reference).GridCloudapi(gridCloudapi).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiAPI.GridcloudapiReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapiReferencePut`: UpdateGridCloudapiResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiAPI.GridcloudapiReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGridCloudapiResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiAPIGridcloudapiReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -23,78 +23,368 @@ import (
 
 type RecordPtrAPI interface {
 	/*
-		RecordptrGet Retrieve record:ptr objects
-
-		Returns a list of record:ptr objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordPtrAPIRecordptrGetRequest
-	*/
-	RecordptrGet(ctx context.Context) RecordPtrAPIRecordptrGetRequest
-
-	// RecordptrGetExecute executes the request
-	//  @return ListRecordPtrResponse
-	RecordptrGetExecute(r RecordPtrAPIRecordptrGetRequest) (*ListRecordPtrResponse, *http.Response, error)
-	/*
-		RecordptrPost Create a record:ptr object
+		Create Create a record:ptr object
 
 		Creates a new record:ptr object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordPtrAPIRecordptrPostRequest
+		@return RecordPtrAPICreateRequest
 	*/
-	RecordptrPost(ctx context.Context) RecordPtrAPIRecordptrPostRequest
+	Create(ctx context.Context) RecordPtrAPICreateRequest
 
-	// RecordptrPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordPtrResponse
-	RecordptrPostExecute(r RecordPtrAPIRecordptrPostRequest) (*CreateRecordPtrResponse, *http.Response, error)
+	CreateExecute(r RecordPtrAPICreateRequest) (*CreateRecordPtrResponse, *http.Response, error)
 	/*
-		RecordptrReferenceDelete Delete a record:ptr object
+		Delete Delete a record:ptr object
 
 		Deletes a specific record:ptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:ptr object
-		@return RecordPtrAPIRecordptrReferenceDeleteRequest
+		@return RecordPtrAPIDeleteRequest
 	*/
-	RecordptrReferenceDelete(ctx context.Context, reference string) RecordPtrAPIRecordptrReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordPtrAPIDeleteRequest
 
-	// RecordptrReferenceDeleteExecute executes the request
-	RecordptrReferenceDeleteExecute(r RecordPtrAPIRecordptrReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordPtrAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecordptrReferenceGet Get a specific record:ptr object
+		List Retrieve record:ptr objects
+
+		Returns a list of record:ptr objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordPtrAPIListRequest
+	*/
+	List(ctx context.Context) RecordPtrAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordPtrResponse
+	ListExecute(r RecordPtrAPIListRequest) (*ListRecordPtrResponse, *http.Response, error)
+	/*
+		Read Get a specific record:ptr object
 
 		Returns a specific record:ptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:ptr object
-		@return RecordPtrAPIRecordptrReferenceGetRequest
+		@return RecordPtrAPIReadRequest
 	*/
-	RecordptrReferenceGet(ctx context.Context, reference string) RecordPtrAPIRecordptrReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordPtrAPIReadRequest
 
-	// RecordptrReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordPtrResponse
-	RecordptrReferenceGetExecute(r RecordPtrAPIRecordptrReferenceGetRequest) (*GetRecordPtrResponse, *http.Response, error)
+	ReadExecute(r RecordPtrAPIReadRequest) (*GetRecordPtrResponse, *http.Response, error)
 	/*
-		RecordptrReferencePut Update a record:ptr object
+		Update Update a record:ptr object
 
 		Updates a specific record:ptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:ptr object
-		@return RecordPtrAPIRecordptrReferencePutRequest
+		@return RecordPtrAPIUpdateRequest
 	*/
-	RecordptrReferencePut(ctx context.Context, reference string) RecordPtrAPIRecordptrReferencePutRequest
+	Update(ctx context.Context, reference string) RecordPtrAPIUpdateRequest
 
-	// RecordptrReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordPtrResponse
-	RecordptrReferencePutExecute(r RecordPtrAPIRecordptrReferencePutRequest) (*UpdateRecordPtrResponse, *http.Response, error)
+	UpdateExecute(r RecordPtrAPIUpdateRequest) (*UpdateRecordPtrResponse, *http.Response, error)
 }
 
 // RecordPtrAPIService RecordPtrAPI service
 type RecordPtrAPIService internal.Service
 
-type RecordPtrAPIRecordptrGetRequest struct {
+type RecordPtrAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     RecordPtrAPI
+	recordPtr      *RecordPtr
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r RecordPtrAPICreateRequest) RecordPtr(recordPtr RecordPtr) RecordPtrAPICreateRequest {
+	r.recordPtr = &recordPtr
+	return r
+}
+
+// Enter the field names followed by comma
+func (r RecordPtrAPICreateRequest) ReturnFields(returnFields string) RecordPtrAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordPtrAPICreateRequest) ReturnFields2(returnFields2 string) RecordPtrAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordPtrAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordPtrAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r RecordPtrAPICreateRequest) Execute() (*CreateRecordPtrResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a record:ptr object
+
+Creates a new record:ptr object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordPtrAPICreateRequest
+*/
+func (a *RecordPtrAPIService) Create(ctx context.Context) RecordPtrAPICreateRequest {
+	return RecordPtrAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateRecordPtrResponse
+func (a *RecordPtrAPIService) CreateExecute(r RecordPtrAPICreateRequest) (*CreateRecordPtrResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateRecordPtrResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordPtrAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:ptr"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.recordPtr == nil {
+		return localVarReturnValue, nil, internal.ReportError("recordPtr is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordPtr != nil {
+		if r.recordPtr.Extattrs == nil {
+			r.recordPtr.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.recordPtr.Extattrs)[k]; !ok {
+				(*r.recordPtr.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	if r.recordPtr.FuncCall != nil {
+		bodyForFuncCall := r.recordPtr
+		if bodyForFuncCall.FuncCall.AttributeName == "" {
+			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+		}
+		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
+		if funcStr == "Ipv4addr" {
+			if bodyForFuncCall.Ipv4addr.String != nil {
+				return localVarReturnValue, nil, internal.ReportError("Ipv4addr cannot be provided when function call is used")
+			} else {
+
+				var l RecordPtrIpv4addr
+				var m RecordPtrIpv4addrOneOf
+				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
+				m.Parameters = bodyForFuncCall.FuncCall.Parameters
+				m.ResultField = bodyForFuncCall.FuncCall.ResultField
+				m.Object = bodyForFuncCall.FuncCall.Object
+				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
+
+				l.RecordPtrIpv4addrOneOf = &m
+				l.String = nil
+				bodyForFuncCall.Ipv4addr = &l
+				bodyForFuncCall.FuncCall = nil
+			}
+		}
+		r.recordPtr = bodyForFuncCall
+	}
+	if r.recordPtr.FuncCall != nil {
+		bodyForFuncCall := r.recordPtr
+		if bodyForFuncCall.FuncCall.AttributeName == "" {
+			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+		}
+		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
+		if funcStr == "Ipv6addr" {
+			if bodyForFuncCall.Ipv6addr.String != nil {
+				return localVarReturnValue, nil, internal.ReportError("Ipv6addr cannot be provided when function call is used")
+			} else {
+
+				var l RecordPtrIpv6addr
+				var m RecordPtrIpv6addrOneOf
+				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
+				m.Parameters = bodyForFuncCall.FuncCall.Parameters
+				m.ResultField = bodyForFuncCall.FuncCall.ResultField
+				m.Object = bodyForFuncCall.FuncCall.Object
+				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
+
+				l.RecordPtrIpv6addrOneOf = &m
+				l.String = nil
+				bodyForFuncCall.Ipv6addr = &l
+				bodyForFuncCall.FuncCall = nil
+			}
+		}
+		r.recordPtr = bodyForFuncCall
+	}
+	// body params
+	localVarPostBody = r.recordPtr
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordPtrAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RecordPtrAPI
+	reference  string
+}
+
+func (r RecordPtrAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a record:ptr object
+
+Deletes a specific record:ptr object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the record:ptr object
+	@return RecordPtrAPIDeleteRequest
+*/
+func (a *RecordPtrAPIService) Delete(ctx context.Context, reference string) RecordPtrAPIDeleteRequest {
+	return RecordPtrAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RecordPtrAPIService) DeleteExecute(r RecordPtrAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordPtrAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:ptr/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RecordPtrAPIListRequest struct {
 	ctx            context.Context
 	ApiService     RecordPtrAPI
 	returnFields   *string
@@ -108,65 +398,65 @@ type RecordPtrAPIRecordptrGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordPtrAPIRecordptrGetRequest) ReturnFields(returnFields string) RecordPtrAPIRecordptrGetRequest {
+func (r RecordPtrAPIListRequest) ReturnFields(returnFields string) RecordPtrAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordPtrAPIRecordptrGetRequest) ReturnFields2(returnFields2 string) RecordPtrAPIRecordptrGetRequest {
+func (r RecordPtrAPIListRequest) ReturnFields2(returnFields2 string) RecordPtrAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordPtrAPIRecordptrGetRequest) MaxResults(maxResults int32) RecordPtrAPIRecordptrGetRequest {
+func (r RecordPtrAPIListRequest) MaxResults(maxResults int32) RecordPtrAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordPtrAPIRecordptrGetRequest) ReturnAsObject(returnAsObject int32) RecordPtrAPIRecordptrGetRequest {
+func (r RecordPtrAPIListRequest) ReturnAsObject(returnAsObject int32) RecordPtrAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordPtrAPIRecordptrGetRequest) Paging(paging int32) RecordPtrAPIRecordptrGetRequest {
+func (r RecordPtrAPIListRequest) Paging(paging int32) RecordPtrAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordPtrAPIRecordptrGetRequest) PageId(pageId string) RecordPtrAPIRecordptrGetRequest {
+func (r RecordPtrAPIListRequest) PageId(pageId string) RecordPtrAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordPtrAPIRecordptrGetRequest) Filters(filters map[string]interface{}) RecordPtrAPIRecordptrGetRequest {
+func (r RecordPtrAPIListRequest) Filters(filters map[string]interface{}) RecordPtrAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordPtrAPIRecordptrGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordPtrAPIRecordptrGetRequest {
+func (r RecordPtrAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordPtrAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordPtrAPIRecordptrGetRequest) Execute() (*ListRecordPtrResponse, *http.Response, error) {
-	return r.ApiService.RecordptrGetExecute(r)
+func (r RecordPtrAPIListRequest) Execute() (*ListRecordPtrResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RecordptrGet Retrieve record:ptr objects
+List Retrieve record:ptr objects
 
 Returns a list of record:ptr objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordPtrAPIRecordptrGetRequest
+	@return RecordPtrAPIListRequest
 */
-func (a *RecordPtrAPIService) RecordptrGet(ctx context.Context) RecordPtrAPIRecordptrGetRequest {
-	return RecordPtrAPIRecordptrGetRequest{
+func (a *RecordPtrAPIService) List(ctx context.Context) RecordPtrAPIListRequest {
+	return RecordPtrAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +465,7 @@ func (a *RecordPtrAPIService) RecordptrGet(ctx context.Context) RecordPtrAPIReco
 // Execute executes the request
 //
 //	@return ListRecordPtrResponse
-func (a *RecordPtrAPIService) RecordptrGetExecute(r RecordPtrAPIRecordptrGetRequest) (*ListRecordPtrResponse, *http.Response, error) {
+func (a *RecordPtrAPIService) ListExecute(r RecordPtrAPIListRequest) (*ListRecordPtrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +473,7 @@ func (a *RecordPtrAPIService) RecordptrGetExecute(r RecordPtrAPIRecordptrGetRequ
 		localVarReturnValue *ListRecordPtrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordPtrAPIService.RecordptrGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordPtrAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,75 +555,206 @@ func (a *RecordPtrAPIService) RecordptrGetExecute(r RecordPtrAPIRecordptrGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordPtrAPIRecordptrPostRequest struct {
+type RecordPtrAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordPtrAPI
+	reference      string
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Enter the field names followed by comma
+func (r RecordPtrAPIReadRequest) ReturnFields(returnFields string) RecordPtrAPIReadRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordPtrAPIReadRequest) ReturnFields2(returnFields2 string) RecordPtrAPIReadRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordPtrAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordPtrAPIReadRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r RecordPtrAPIReadRequest) Execute() (*GetRecordPtrResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
+}
+
+/*
+Read Get a specific record:ptr object
+
+Returns a specific record:ptr object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the record:ptr object
+	@return RecordPtrAPIReadRequest
+*/
+func (a *RecordPtrAPIService) Read(ctx context.Context, reference string) RecordPtrAPIReadRequest {
+	return RecordPtrAPIReadRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+//
+//	@return GetRecordPtrResponse
+func (a *RecordPtrAPIService) ReadExecute(r RecordPtrAPIReadRequest) (*GetRecordPtrResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *GetRecordPtrResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordPtrAPIService.Read")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:ptr/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordPtrAPIUpdateRequest struct {
+	ctx            context.Context
+	ApiService     RecordPtrAPI
+	reference      string
 	recordPtr      *RecordPtr
 	returnFields   *string
 	returnFields2  *string
 	returnAsObject *int32
 }
 
-// Object data to create
-func (r RecordPtrAPIRecordptrPostRequest) RecordPtr(recordPtr RecordPtr) RecordPtrAPIRecordptrPostRequest {
+// Object data to update
+func (r RecordPtrAPIUpdateRequest) RecordPtr(recordPtr RecordPtr) RecordPtrAPIUpdateRequest {
 	r.recordPtr = &recordPtr
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordPtrAPIRecordptrPostRequest) ReturnFields(returnFields string) RecordPtrAPIRecordptrPostRequest {
+func (r RecordPtrAPIUpdateRequest) ReturnFields(returnFields string) RecordPtrAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordPtrAPIRecordptrPostRequest) ReturnFields2(returnFields2 string) RecordPtrAPIRecordptrPostRequest {
+func (r RecordPtrAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordPtrAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordPtrAPIRecordptrPostRequest) ReturnAsObject(returnAsObject int32) RecordPtrAPIRecordptrPostRequest {
+func (r RecordPtrAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordPtrAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordPtrAPIRecordptrPostRequest) Execute() (*CreateRecordPtrResponse, *http.Response, error) {
-	return r.ApiService.RecordptrPostExecute(r)
+func (r RecordPtrAPIUpdateRequest) Execute() (*UpdateRecordPtrResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordptrPost Create a record:ptr object
+Update Update a record:ptr object
 
-Creates a new record:ptr object
+Updates a specific record:ptr object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordPtrAPIRecordptrPostRequest
+	@param reference Reference of the record:ptr object
+	@return RecordPtrAPIUpdateRequest
 */
-func (a *RecordPtrAPIService) RecordptrPost(ctx context.Context) RecordPtrAPIRecordptrPostRequest {
-	return RecordPtrAPIRecordptrPostRequest{
+func (a *RecordPtrAPIService) Update(ctx context.Context, reference string) RecordPtrAPIUpdateRequest {
+	return RecordPtrAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
+		reference:  reference,
 	}
 }
 
 // Execute executes the request
 //
-//	@return CreateRecordPtrResponse
-func (a *RecordPtrAPIService) RecordptrPostExecute(r RecordPtrAPIRecordptrPostRequest) (*CreateRecordPtrResponse, *http.Response, error) {
+//	@return UpdateRecordPtrResponse
+func (a *RecordPtrAPIService) UpdateExecute(r RecordPtrAPIUpdateRequest) (*UpdateRecordPtrResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
+		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []internal.FormFile
-		localVarReturnValue *CreateRecordPtrResponse
+		localVarReturnValue *UpdateRecordPtrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordPtrAPIService.RecordptrPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordPtrAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
 
-	localVarPath := localBasePath + "/record:ptr"
+	localVarPath := localBasePath + "/record:ptr/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -382,397 +803,9 @@ func (a *RecordPtrAPIService) RecordptrPostExecute(r RecordPtrAPIRecordptrPostRe
 	}
 	if r.recordPtr.FuncCall != nil {
 		bodyForFuncCall := r.recordPtr
-		if bodyForFuncCall.FuncCall.AttributeName == "" {
-			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
-		}
-		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
-		if funcStr == "Ipv6addr" {
-			if bodyForFuncCall.Ipv6addr.String != nil {
-				return localVarReturnValue, nil, internal.ReportError("Ipv6addr cannot be provided when function call is used")
-			} else {
-
-				var l RecordPtrIpv6addr
-				var m RecordPtrIpv6addrOneOf
-				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
-				m.Parameters = bodyForFuncCall.FuncCall.Parameters
-				m.ResultField = bodyForFuncCall.FuncCall.ResultField
-				m.Object = bodyForFuncCall.FuncCall.Object
-				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
-
-				l.RecordPtrIpv6addrOneOf = &m
-				l.String = nil
-				bodyForFuncCall.Ipv6addr = &l
-				bodyForFuncCall.FuncCall = nil
-			}
-		}
+		bodyForFuncCall.FuncCall = nil
+		bodyForFuncCall.Ipv4addr = nil
 		r.recordPtr = bodyForFuncCall
-	}
-	// body params
-	localVarPostBody = r.recordPtr
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordPtrAPIRecordptrReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RecordPtrAPI
-	reference  string
-}
-
-func (r RecordPtrAPIRecordptrReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecordptrReferenceDeleteExecute(r)
-}
-
-/*
-RecordptrReferenceDelete Delete a record:ptr object
-
-Deletes a specific record:ptr object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the record:ptr object
-	@return RecordPtrAPIRecordptrReferenceDeleteRequest
-*/
-func (a *RecordPtrAPIService) RecordptrReferenceDelete(ctx context.Context, reference string) RecordPtrAPIRecordptrReferenceDeleteRequest {
-	return RecordPtrAPIRecordptrReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RecordPtrAPIService) RecordptrReferenceDeleteExecute(r RecordPtrAPIRecordptrReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordPtrAPIService.RecordptrReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:ptr/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RecordPtrAPIRecordptrReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordPtrAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r RecordPtrAPIRecordptrReferenceGetRequest) ReturnFields(returnFields string) RecordPtrAPIRecordptrReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordPtrAPIRecordptrReferenceGetRequest) ReturnFields2(returnFields2 string) RecordPtrAPIRecordptrReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordPtrAPIRecordptrReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordPtrAPIRecordptrReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r RecordPtrAPIRecordptrReferenceGetRequest) Execute() (*GetRecordPtrResponse, *http.Response, error) {
-	return r.ApiService.RecordptrReferenceGetExecute(r)
-}
-
-/*
-RecordptrReferenceGet Get a specific record:ptr object
-
-Returns a specific record:ptr object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the record:ptr object
-	@return RecordPtrAPIRecordptrReferenceGetRequest
-*/
-func (a *RecordPtrAPIService) RecordptrReferenceGet(ctx context.Context, reference string) RecordPtrAPIRecordptrReferenceGetRequest {
-	return RecordPtrAPIRecordptrReferenceGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-//
-//	@return GetRecordPtrResponse
-func (a *RecordPtrAPIService) RecordptrReferenceGetExecute(r RecordPtrAPIRecordptrReferenceGetRequest) (*GetRecordPtrResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *GetRecordPtrResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordPtrAPIService.RecordptrReferenceGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:ptr/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordPtrAPIRecordptrReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     RecordPtrAPI
-	reference      string
-	recordPtr      *RecordPtr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to update
-func (r RecordPtrAPIRecordptrReferencePutRequest) RecordPtr(recordPtr RecordPtr) RecordPtrAPIRecordptrReferencePutRequest {
-	r.recordPtr = &recordPtr
-	return r
-}
-
-// Enter the field names followed by comma
-func (r RecordPtrAPIRecordptrReferencePutRequest) ReturnFields(returnFields string) RecordPtrAPIRecordptrReferencePutRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordPtrAPIRecordptrReferencePutRequest) ReturnFields2(returnFields2 string) RecordPtrAPIRecordptrReferencePutRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordPtrAPIRecordptrReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordPtrAPIRecordptrReferencePutRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r RecordPtrAPIRecordptrReferencePutRequest) Execute() (*UpdateRecordPtrResponse, *http.Response, error) {
-	return r.ApiService.RecordptrReferencePutExecute(r)
-}
-
-/*
-RecordptrReferencePut Update a record:ptr object
-
-Updates a specific record:ptr object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the record:ptr object
-	@return RecordPtrAPIRecordptrReferencePutRequest
-*/
-func (a *RecordPtrAPIService) RecordptrReferencePut(ctx context.Context, reference string) RecordPtrAPIRecordptrReferencePutRequest {
-	return RecordPtrAPIRecordptrReferencePutRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-//
-//	@return UpdateRecordPtrResponse
-func (a *RecordPtrAPIService) RecordptrReferencePutExecute(r RecordPtrAPIRecordptrReferencePutRequest) (*UpdateRecordPtrResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *UpdateRecordPtrResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordPtrAPIService.RecordptrReferencePut")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:ptr/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.recordPtr == nil {
-		return localVarReturnValue, nil, internal.ReportError("recordPtr is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordPtr != nil {
-		if r.recordPtr.Extattrs == nil {
-			r.recordPtr.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordPtr.Extattrs)[k]; !ok {
-				(*r.recordPtr.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
 	}
 	if r.recordPtr.FuncCall != nil {
 		bodyForFuncCall := r.recordPtr

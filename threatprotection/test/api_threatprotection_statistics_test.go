@@ -23,11 +23,11 @@ func TestThreatprotectionStatisticsAPIService(t *testing.T) {
 
 	apiClient := threatprotection.NewAPIClient()
 
-	t.Run("Test ThreatprotectionStatisticsAPIService ThreatprotectionstatisticsGet", func(t *testing.T) {
+	t.Run("Test ThreatprotectionStatisticsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ThreatprotectionStatisticsAPI.ThreatprotectionstatisticsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ThreatprotectionStatisticsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestThreatprotectionStatisticsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatprotectionStatisticsAPIService ThreatprotectionstatisticsReferenceGet", func(t *testing.T) {
+	t.Run("Test ThreatprotectionStatisticsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ThreatprotectionStatisticsAPI.ThreatprotectionstatisticsReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ThreatprotectionStatisticsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

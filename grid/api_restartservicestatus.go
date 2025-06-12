@@ -23,38 +23,38 @@ import (
 
 type RestartservicestatusAPI interface {
 	/*
-		Get Retrieve restartservicestatus objects
+		List Retrieve restartservicestatus objects
 
 		Returns a list of restartservicestatus objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RestartservicestatusAPIGetRequest
+		@return RestartservicestatusAPIListRequest
 	*/
-	Get(ctx context.Context) RestartservicestatusAPIGetRequest
+	List(ctx context.Context) RestartservicestatusAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListRestartservicestatusResponse
-	GetExecute(r RestartservicestatusAPIGetRequest) (*ListRestartservicestatusResponse, *http.Response, error)
+	ListExecute(r RestartservicestatusAPIListRequest) (*ListRestartservicestatusResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific restartservicestatus object
+		Read Get a specific restartservicestatus object
 
 		Returns a specific restartservicestatus object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the restartservicestatus object
-		@return RestartservicestatusAPIReferenceGetRequest
+		@return RestartservicestatusAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) RestartservicestatusAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) RestartservicestatusAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRestartservicestatusResponse
-	ReferenceGetExecute(r RestartservicestatusAPIReferenceGetRequest) (*GetRestartservicestatusResponse, *http.Response, error)
+	ReadExecute(r RestartservicestatusAPIReadRequest) (*GetRestartservicestatusResponse, *http.Response, error)
 }
 
 // RestartservicestatusAPIService RestartservicestatusAPI service
 type RestartservicestatusAPIService internal.Service
 
-type RestartservicestatusAPIGetRequest struct {
+type RestartservicestatusAPIListRequest struct {
 	ctx            context.Context
 	ApiService     RestartservicestatusAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type RestartservicestatusAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RestartservicestatusAPIGetRequest) ReturnFields(returnFields string) RestartservicestatusAPIGetRequest {
+func (r RestartservicestatusAPIListRequest) ReturnFields(returnFields string) RestartservicestatusAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RestartservicestatusAPIGetRequest) ReturnFields2(returnFields2 string) RestartservicestatusAPIGetRequest {
+func (r RestartservicestatusAPIListRequest) ReturnFields2(returnFields2 string) RestartservicestatusAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RestartservicestatusAPIGetRequest) MaxResults(maxResults int32) RestartservicestatusAPIGetRequest {
+func (r RestartservicestatusAPIListRequest) MaxResults(maxResults int32) RestartservicestatusAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RestartservicestatusAPIGetRequest) ReturnAsObject(returnAsObject int32) RestartservicestatusAPIGetRequest {
+func (r RestartservicestatusAPIListRequest) ReturnAsObject(returnAsObject int32) RestartservicestatusAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RestartservicestatusAPIGetRequest) Paging(paging int32) RestartservicestatusAPIGetRequest {
+func (r RestartservicestatusAPIListRequest) Paging(paging int32) RestartservicestatusAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RestartservicestatusAPIGetRequest) PageId(pageId string) RestartservicestatusAPIGetRequest {
+func (r RestartservicestatusAPIListRequest) PageId(pageId string) RestartservicestatusAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RestartservicestatusAPIGetRequest) Filters(filters map[string]interface{}) RestartservicestatusAPIGetRequest {
+func (r RestartservicestatusAPIListRequest) Filters(filters map[string]interface{}) RestartservicestatusAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RestartservicestatusAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RestartservicestatusAPIGetRequest {
+func (r RestartservicestatusAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RestartservicestatusAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RestartservicestatusAPIGetRequest) Execute() (*ListRestartservicestatusResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r RestartservicestatusAPIListRequest) Execute() (*ListRestartservicestatusResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve restartservicestatus objects
+List Retrieve restartservicestatus objects
 
 Returns a list of restartservicestatus objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RestartservicestatusAPIGetRequest
+	@return RestartservicestatusAPIListRequest
 */
-func (a *RestartservicestatusAPIService) Get(ctx context.Context) RestartservicestatusAPIGetRequest {
-	return RestartservicestatusAPIGetRequest{
+func (a *RestartservicestatusAPIService) List(ctx context.Context) RestartservicestatusAPIListRequest {
+	return RestartservicestatusAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *RestartservicestatusAPIService) Get(ctx context.Context) Restartservice
 // Execute executes the request
 //
 //	@return ListRestartservicestatusResponse
-func (a *RestartservicestatusAPIService) GetExecute(r RestartservicestatusAPIGetRequest) (*ListRestartservicestatusResponse, *http.Response, error) {
+func (a *RestartservicestatusAPIService) ListExecute(r RestartservicestatusAPIListRequest) (*ListRestartservicestatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *RestartservicestatusAPIService) GetExecute(r RestartservicestatusAPIGet
 		localVarReturnValue *ListRestartservicestatusResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RestartservicestatusAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RestartservicestatusAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *RestartservicestatusAPIService) GetExecute(r RestartservicestatusAPIGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RestartservicestatusAPIReferenceGetRequest struct {
+type RestartservicestatusAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RestartservicestatusAPI
 	reference      string
@@ -235,38 +235,38 @@ type RestartservicestatusAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RestartservicestatusAPIReferenceGetRequest) ReturnFields(returnFields string) RestartservicestatusAPIReferenceGetRequest {
+func (r RestartservicestatusAPIReadRequest) ReturnFields(returnFields string) RestartservicestatusAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RestartservicestatusAPIReferenceGetRequest) ReturnFields2(returnFields2 string) RestartservicestatusAPIReferenceGetRequest {
+func (r RestartservicestatusAPIReadRequest) ReturnFields2(returnFields2 string) RestartservicestatusAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RestartservicestatusAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) RestartservicestatusAPIReferenceGetRequest {
+func (r RestartservicestatusAPIReadRequest) ReturnAsObject(returnAsObject int32) RestartservicestatusAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RestartservicestatusAPIReferenceGetRequest) Execute() (*GetRestartservicestatusResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r RestartservicestatusAPIReadRequest) Execute() (*GetRestartservicestatusResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific restartservicestatus object
+Read Get a specific restartservicestatus object
 
 Returns a specific restartservicestatus object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the restartservicestatus object
-	@return RestartservicestatusAPIReferenceGetRequest
+	@return RestartservicestatusAPIReadRequest
 */
-func (a *RestartservicestatusAPIService) ReferenceGet(ctx context.Context, reference string) RestartservicestatusAPIReferenceGetRequest {
-	return RestartservicestatusAPIReferenceGetRequest{
+func (a *RestartservicestatusAPIService) Read(ctx context.Context, reference string) RestartservicestatusAPIReadRequest {
+	return RestartservicestatusAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *RestartservicestatusAPIService) ReferenceGet(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return GetRestartservicestatusResponse
-func (a *RestartservicestatusAPIService) ReferenceGetExecute(r RestartservicestatusAPIReferenceGetRequest) (*GetRestartservicestatusResponse, *http.Response, error) {
+func (a *RestartservicestatusAPIService) ReadExecute(r RestartservicestatusAPIReadRequest) (*GetRestartservicestatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *RestartservicestatusAPIService) ReferenceGetExecute(r Restartservicesta
 		localVarReturnValue *GetRestartservicestatusResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RestartservicestatusAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RestartservicestatusAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

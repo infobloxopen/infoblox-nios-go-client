@@ -23,78 +23,302 @@ import (
 
 type RulesetAPI interface {
 	/*
-		Get Retrieve ruleset objects
-
-		Returns a list of ruleset objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RulesetAPIGetRequest
-	*/
-	Get(ctx context.Context) RulesetAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListRulesetResponse
-	GetExecute(r RulesetAPIGetRequest) (*ListRulesetResponse, *http.Response, error)
-	/*
-		Post Create a ruleset object
+		Create Create a ruleset object
 
 		Creates a new ruleset object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RulesetAPIPostRequest
+		@return RulesetAPICreateRequest
 	*/
-	Post(ctx context.Context) RulesetAPIPostRequest
+	Create(ctx context.Context) RulesetAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRulesetResponse
-	PostExecute(r RulesetAPIPostRequest) (*CreateRulesetResponse, *http.Response, error)
+	CreateExecute(r RulesetAPICreateRequest) (*CreateRulesetResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a ruleset object
+		Delete Delete a ruleset object
 
 		Deletes a specific ruleset object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ruleset object
-		@return RulesetAPIReferenceDeleteRequest
+		@return RulesetAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) RulesetAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RulesetAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r RulesetAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RulesetAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific ruleset object
+		List Retrieve ruleset objects
+
+		Returns a list of ruleset objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RulesetAPIListRequest
+	*/
+	List(ctx context.Context) RulesetAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRulesetResponse
+	ListExecute(r RulesetAPIListRequest) (*ListRulesetResponse, *http.Response, error)
+	/*
+		Read Get a specific ruleset object
 
 		Returns a specific ruleset object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ruleset object
-		@return RulesetAPIReferenceGetRequest
+		@return RulesetAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) RulesetAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) RulesetAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRulesetResponse
-	ReferenceGetExecute(r RulesetAPIReferenceGetRequest) (*GetRulesetResponse, *http.Response, error)
+	ReadExecute(r RulesetAPIReadRequest) (*GetRulesetResponse, *http.Response, error)
 	/*
-		ReferencePut Update a ruleset object
+		Update Update a ruleset object
 
 		Updates a specific ruleset object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ruleset object
-		@return RulesetAPIReferencePutRequest
+		@return RulesetAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) RulesetAPIReferencePutRequest
+	Update(ctx context.Context, reference string) RulesetAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRulesetResponse
-	ReferencePutExecute(r RulesetAPIReferencePutRequest) (*UpdateRulesetResponse, *http.Response, error)
+	UpdateExecute(r RulesetAPIUpdateRequest) (*UpdateRulesetResponse, *http.Response, error)
 }
 
 // RulesetAPIService RulesetAPI service
 type RulesetAPIService internal.Service
 
-type RulesetAPIGetRequest struct {
+type RulesetAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     RulesetAPI
+	ruleset        *Ruleset
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r RulesetAPICreateRequest) Ruleset(ruleset Ruleset) RulesetAPICreateRequest {
+	r.ruleset = &ruleset
+	return r
+}
+
+// Enter the field names followed by comma
+func (r RulesetAPICreateRequest) ReturnFields(returnFields string) RulesetAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RulesetAPICreateRequest) ReturnFields2(returnFields2 string) RulesetAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RulesetAPICreateRequest) ReturnAsObject(returnAsObject int32) RulesetAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r RulesetAPICreateRequest) Execute() (*CreateRulesetResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a ruleset object
+
+Creates a new ruleset object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RulesetAPICreateRequest
+*/
+func (a *RulesetAPIService) Create(ctx context.Context) RulesetAPICreateRequest {
+	return RulesetAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateRulesetResponse
+func (a *RulesetAPIService) CreateExecute(r RulesetAPICreateRequest) (*CreateRulesetResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateRulesetResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RulesetAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ruleset"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.ruleset == nil {
+		return localVarReturnValue, nil, internal.ReportError("ruleset is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.ruleset
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RulesetAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RulesetAPI
+	reference  string
+}
+
+func (r RulesetAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a ruleset object
+
+Deletes a specific ruleset object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the ruleset object
+	@return RulesetAPIDeleteRequest
+*/
+func (a *RulesetAPIService) Delete(ctx context.Context, reference string) RulesetAPIDeleteRequest {
+	return RulesetAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RulesetAPIService) DeleteExecute(r RulesetAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RulesetAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ruleset/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RulesetAPIListRequest struct {
 	ctx            context.Context
 	ApiService     RulesetAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type RulesetAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RulesetAPIGetRequest) ReturnFields(returnFields string) RulesetAPIGetRequest {
+func (r RulesetAPIListRequest) ReturnFields(returnFields string) RulesetAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RulesetAPIGetRequest) ReturnFields2(returnFields2 string) RulesetAPIGetRequest {
+func (r RulesetAPIListRequest) ReturnFields2(returnFields2 string) RulesetAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RulesetAPIGetRequest) MaxResults(maxResults int32) RulesetAPIGetRequest {
+func (r RulesetAPIListRequest) MaxResults(maxResults int32) RulesetAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RulesetAPIGetRequest) ReturnAsObject(returnAsObject int32) RulesetAPIGetRequest {
+func (r RulesetAPIListRequest) ReturnAsObject(returnAsObject int32) RulesetAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RulesetAPIGetRequest) Paging(paging int32) RulesetAPIGetRequest {
+func (r RulesetAPIListRequest) Paging(paging int32) RulesetAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RulesetAPIGetRequest) PageId(pageId string) RulesetAPIGetRequest {
+func (r RulesetAPIListRequest) PageId(pageId string) RulesetAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RulesetAPIGetRequest) Filters(filters map[string]interface{}) RulesetAPIGetRequest {
+func (r RulesetAPIListRequest) Filters(filters map[string]interface{}) RulesetAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RulesetAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RulesetAPIGetRequest {
+func (r RulesetAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RulesetAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RulesetAPIGetRequest) Execute() (*ListRulesetResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r RulesetAPIListRequest) Execute() (*ListRulesetResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve ruleset objects
+List Retrieve ruleset objects
 
 Returns a list of ruleset objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RulesetAPIGetRequest
+	@return RulesetAPIListRequest
 */
-func (a *RulesetAPIService) Get(ctx context.Context) RulesetAPIGetRequest {
-	return RulesetAPIGetRequest{
+func (a *RulesetAPIService) List(ctx context.Context) RulesetAPIListRequest {
+	return RulesetAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *RulesetAPIService) Get(ctx context.Context) RulesetAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListRulesetResponse
-func (a *RulesetAPIService) GetExecute(r RulesetAPIGetRequest) (*ListRulesetResponse, *http.Response, error) {
+func (a *RulesetAPIService) ListExecute(r RulesetAPIListRequest) (*ListRulesetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *RulesetAPIService) GetExecute(r RulesetAPIGetRequest) (*ListRulesetResp
 		localVarReturnValue *ListRulesetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RulesetAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RulesetAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *RulesetAPIService) GetExecute(r RulesetAPIGetRequest) (*ListRulesetResp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RulesetAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     RulesetAPI
-	ruleset        *Ruleset
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r RulesetAPIPostRequest) Ruleset(ruleset Ruleset) RulesetAPIPostRequest {
-	r.ruleset = &ruleset
-	return r
-}
-
-// Enter the field names followed by comma
-func (r RulesetAPIPostRequest) ReturnFields(returnFields string) RulesetAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RulesetAPIPostRequest) ReturnFields2(returnFields2 string) RulesetAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RulesetAPIPostRequest) ReturnAsObject(returnAsObject int32) RulesetAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r RulesetAPIPostRequest) Execute() (*CreateRulesetResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a ruleset object
-
-Creates a new ruleset object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RulesetAPIPostRequest
-*/
-func (a *RulesetAPIService) Post(ctx context.Context) RulesetAPIPostRequest {
-	return RulesetAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateRulesetResponse
-func (a *RulesetAPIService) PostExecute(r RulesetAPIPostRequest) (*CreateRulesetResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateRulesetResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RulesetAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ruleset"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.ruleset == nil {
-		return localVarReturnValue, nil, internal.ReportError("ruleset is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.ruleset
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RulesetAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RulesetAPI
-	reference  string
-}
-
-func (r RulesetAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a ruleset object
-
-Deletes a specific ruleset object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the ruleset object
-	@return RulesetAPIReferenceDeleteRequest
-*/
-func (a *RulesetAPIService) ReferenceDelete(ctx context.Context, reference string) RulesetAPIReferenceDeleteRequest {
-	return RulesetAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RulesetAPIService) ReferenceDeleteExecute(r RulesetAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RulesetAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ruleset/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RulesetAPIReferenceGetRequest struct {
+type RulesetAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RulesetAPI
 	reference      string
@@ -499,38 +499,38 @@ type RulesetAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RulesetAPIReferenceGetRequest) ReturnFields(returnFields string) RulesetAPIReferenceGetRequest {
+func (r RulesetAPIReadRequest) ReturnFields(returnFields string) RulesetAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RulesetAPIReferenceGetRequest) ReturnFields2(returnFields2 string) RulesetAPIReferenceGetRequest {
+func (r RulesetAPIReadRequest) ReturnFields2(returnFields2 string) RulesetAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RulesetAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) RulesetAPIReferenceGetRequest {
+func (r RulesetAPIReadRequest) ReturnAsObject(returnAsObject int32) RulesetAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RulesetAPIReferenceGetRequest) Execute() (*GetRulesetResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r RulesetAPIReadRequest) Execute() (*GetRulesetResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific ruleset object
+Read Get a specific ruleset object
 
 Returns a specific ruleset object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ruleset object
-	@return RulesetAPIReferenceGetRequest
+	@return RulesetAPIReadRequest
 */
-func (a *RulesetAPIService) ReferenceGet(ctx context.Context, reference string) RulesetAPIReferenceGetRequest {
-	return RulesetAPIReferenceGetRequest{
+func (a *RulesetAPIService) Read(ctx context.Context, reference string) RulesetAPIReadRequest {
+	return RulesetAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *RulesetAPIService) ReferenceGet(ctx context.Context, reference string) 
 // Execute executes the request
 //
 //	@return GetRulesetResponse
-func (a *RulesetAPIService) ReferenceGetExecute(r RulesetAPIReferenceGetRequest) (*GetRulesetResponse, *http.Response, error) {
+func (a *RulesetAPIService) ReadExecute(r RulesetAPIReadRequest) (*GetRulesetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *RulesetAPIService) ReferenceGetExecute(r RulesetAPIReferenceGetRequest)
 		localVarReturnValue *GetRulesetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RulesetAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RulesetAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *RulesetAPIService) ReferenceGetExecute(r RulesetAPIReferenceGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RulesetAPIReferencePutRequest struct {
+type RulesetAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     RulesetAPI
 	reference      string
@@ -627,44 +627,44 @@ type RulesetAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r RulesetAPIReferencePutRequest) Ruleset(ruleset Ruleset) RulesetAPIReferencePutRequest {
+func (r RulesetAPIUpdateRequest) Ruleset(ruleset Ruleset) RulesetAPIUpdateRequest {
 	r.ruleset = &ruleset
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RulesetAPIReferencePutRequest) ReturnFields(returnFields string) RulesetAPIReferencePutRequest {
+func (r RulesetAPIUpdateRequest) ReturnFields(returnFields string) RulesetAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RulesetAPIReferencePutRequest) ReturnFields2(returnFields2 string) RulesetAPIReferencePutRequest {
+func (r RulesetAPIUpdateRequest) ReturnFields2(returnFields2 string) RulesetAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RulesetAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) RulesetAPIReferencePutRequest {
+func (r RulesetAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RulesetAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RulesetAPIReferencePutRequest) Execute() (*UpdateRulesetResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r RulesetAPIUpdateRequest) Execute() (*UpdateRulesetResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a ruleset object
+Update Update a ruleset object
 
 Updates a specific ruleset object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ruleset object
-	@return RulesetAPIReferencePutRequest
+	@return RulesetAPIUpdateRequest
 */
-func (a *RulesetAPIService) ReferencePut(ctx context.Context, reference string) RulesetAPIReferencePutRequest {
-	return RulesetAPIReferencePutRequest{
+func (a *RulesetAPIService) Update(ctx context.Context, reference string) RulesetAPIUpdateRequest {
+	return RulesetAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *RulesetAPIService) ReferencePut(ctx context.Context, reference string) 
 // Execute executes the request
 //
 //	@return UpdateRulesetResponse
-func (a *RulesetAPIService) ReferencePutExecute(r RulesetAPIReferencePutRequest) (*UpdateRulesetResponse, *http.Response, error) {
+func (a *RulesetAPIService) UpdateExecute(r RulesetAPIUpdateRequest) (*UpdateRulesetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *RulesetAPIService) ReferencePutExecute(r RulesetAPIReferencePutRequest)
 		localVarReturnValue *UpdateRulesetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RulesetAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RulesetAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

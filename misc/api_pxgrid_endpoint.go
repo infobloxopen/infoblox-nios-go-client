@@ -23,249 +23,78 @@ import (
 
 type PxgridEndpointAPI interface {
 	/*
-		PxgridendpointGet Retrieve pxgrid:endpoint objects
-
-		Returns a list of pxgrid:endpoint objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return PxgridEndpointAPIPxgridendpointGetRequest
-	*/
-	PxgridendpointGet(ctx context.Context) PxgridEndpointAPIPxgridendpointGetRequest
-
-	// PxgridendpointGetExecute executes the request
-	//  @return ListPxgridEndpointResponse
-	PxgridendpointGetExecute(r PxgridEndpointAPIPxgridendpointGetRequest) (*ListPxgridEndpointResponse, *http.Response, error)
-	/*
-		PxgridendpointPost Create a pxgrid:endpoint object
+		Create Create a pxgrid:endpoint object
 
 		Creates a new pxgrid:endpoint object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return PxgridEndpointAPIPxgridendpointPostRequest
+		@return PxgridEndpointAPICreateRequest
 	*/
-	PxgridendpointPost(ctx context.Context) PxgridEndpointAPIPxgridendpointPostRequest
+	Create(ctx context.Context) PxgridEndpointAPICreateRequest
 
-	// PxgridendpointPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreatePxgridEndpointResponse
-	PxgridendpointPostExecute(r PxgridEndpointAPIPxgridendpointPostRequest) (*CreatePxgridEndpointResponse, *http.Response, error)
+	CreateExecute(r PxgridEndpointAPICreateRequest) (*CreatePxgridEndpointResponse, *http.Response, error)
 	/*
-		PxgridendpointReferenceDelete Delete a pxgrid:endpoint object
+		Delete Delete a pxgrid:endpoint object
 
 		Deletes a specific pxgrid:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the pxgrid:endpoint object
-		@return PxgridEndpointAPIPxgridendpointReferenceDeleteRequest
+		@return PxgridEndpointAPIDeleteRequest
 	*/
-	PxgridendpointReferenceDelete(ctx context.Context, reference string) PxgridEndpointAPIPxgridendpointReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) PxgridEndpointAPIDeleteRequest
 
-	// PxgridendpointReferenceDeleteExecute executes the request
-	PxgridendpointReferenceDeleteExecute(r PxgridEndpointAPIPxgridendpointReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r PxgridEndpointAPIDeleteRequest) (*http.Response, error)
 	/*
-		PxgridendpointReferenceGet Get a specific pxgrid:endpoint object
+		List Retrieve pxgrid:endpoint objects
+
+		Returns a list of pxgrid:endpoint objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return PxgridEndpointAPIListRequest
+	*/
+	List(ctx context.Context) PxgridEndpointAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListPxgridEndpointResponse
+	ListExecute(r PxgridEndpointAPIListRequest) (*ListPxgridEndpointResponse, *http.Response, error)
+	/*
+		Read Get a specific pxgrid:endpoint object
 
 		Returns a specific pxgrid:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the pxgrid:endpoint object
-		@return PxgridEndpointAPIPxgridendpointReferenceGetRequest
+		@return PxgridEndpointAPIReadRequest
 	*/
-	PxgridendpointReferenceGet(ctx context.Context, reference string) PxgridEndpointAPIPxgridendpointReferenceGetRequest
+	Read(ctx context.Context, reference string) PxgridEndpointAPIReadRequest
 
-	// PxgridendpointReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetPxgridEndpointResponse
-	PxgridendpointReferenceGetExecute(r PxgridEndpointAPIPxgridendpointReferenceGetRequest) (*GetPxgridEndpointResponse, *http.Response, error)
+	ReadExecute(r PxgridEndpointAPIReadRequest) (*GetPxgridEndpointResponse, *http.Response, error)
 	/*
-		PxgridendpointReferencePut Update a pxgrid:endpoint object
+		Update Update a pxgrid:endpoint object
 
 		Updates a specific pxgrid:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the pxgrid:endpoint object
-		@return PxgridEndpointAPIPxgridendpointReferencePutRequest
+		@return PxgridEndpointAPIUpdateRequest
 	*/
-	PxgridendpointReferencePut(ctx context.Context, reference string) PxgridEndpointAPIPxgridendpointReferencePutRequest
+	Update(ctx context.Context, reference string) PxgridEndpointAPIUpdateRequest
 
-	// PxgridendpointReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdatePxgridEndpointResponse
-	PxgridendpointReferencePutExecute(r PxgridEndpointAPIPxgridendpointReferencePutRequest) (*UpdatePxgridEndpointResponse, *http.Response, error)
+	UpdateExecute(r PxgridEndpointAPIUpdateRequest) (*UpdatePxgridEndpointResponse, *http.Response, error)
 }
 
 // PxgridEndpointAPIService PxgridEndpointAPI service
 type PxgridEndpointAPIService internal.Service
 
-type PxgridEndpointAPIPxgridendpointGetRequest struct {
-	ctx            context.Context
-	ApiService     PxgridEndpointAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r PxgridEndpointAPIPxgridendpointGetRequest) ReturnFields(returnFields string) PxgridEndpointAPIPxgridendpointGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PxgridEndpointAPIPxgridendpointGetRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPIPxgridendpointGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r PxgridEndpointAPIPxgridendpointGetRequest) MaxResults(maxResults int32) PxgridEndpointAPIPxgridendpointGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r PxgridEndpointAPIPxgridendpointGetRequest) ReturnAsObject(returnAsObject int32) PxgridEndpointAPIPxgridendpointGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r PxgridEndpointAPIPxgridendpointGetRequest) Paging(paging int32) PxgridEndpointAPIPxgridendpointGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r PxgridEndpointAPIPxgridendpointGetRequest) PageId(pageId string) PxgridEndpointAPIPxgridendpointGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r PxgridEndpointAPIPxgridendpointGetRequest) Filters(filters map[string]interface{}) PxgridEndpointAPIPxgridendpointGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r PxgridEndpointAPIPxgridendpointGetRequest) Extattrfilter(extattrfilter map[string]interface{}) PxgridEndpointAPIPxgridendpointGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r PxgridEndpointAPIPxgridendpointGetRequest) Execute() (*ListPxgridEndpointResponse, *http.Response, error) {
-	return r.ApiService.PxgridendpointGetExecute(r)
-}
-
-/*
-PxgridendpointGet Retrieve pxgrid:endpoint objects
-
-Returns a list of pxgrid:endpoint objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return PxgridEndpointAPIPxgridendpointGetRequest
-*/
-func (a *PxgridEndpointAPIService) PxgridendpointGet(ctx context.Context) PxgridEndpointAPIPxgridendpointGetRequest {
-	return PxgridEndpointAPIPxgridendpointGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListPxgridEndpointResponse
-func (a *PxgridEndpointAPIService) PxgridendpointGetExecute(r PxgridEndpointAPIPxgridendpointGetRequest) (*ListPxgridEndpointResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListPxgridEndpointResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PxgridEndpointAPIService.PxgridendpointGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/pxgrid:endpoint"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type PxgridEndpointAPIPxgridendpointPostRequest struct {
+type PxgridEndpointAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     PxgridEndpointAPI
 	pxgridEndpoint *PxgridEndpoint
@@ -275,43 +104,43 @@ type PxgridEndpointAPIPxgridendpointPostRequest struct {
 }
 
 // Object data to create
-func (r PxgridEndpointAPIPxgridendpointPostRequest) PxgridEndpoint(pxgridEndpoint PxgridEndpoint) PxgridEndpointAPIPxgridendpointPostRequest {
+func (r PxgridEndpointAPICreateRequest) PxgridEndpoint(pxgridEndpoint PxgridEndpoint) PxgridEndpointAPICreateRequest {
 	r.pxgridEndpoint = &pxgridEndpoint
 	return r
 }
 
 // Enter the field names followed by comma
-func (r PxgridEndpointAPIPxgridendpointPostRequest) ReturnFields(returnFields string) PxgridEndpointAPIPxgridendpointPostRequest {
+func (r PxgridEndpointAPICreateRequest) ReturnFields(returnFields string) PxgridEndpointAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PxgridEndpointAPIPxgridendpointPostRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPIPxgridendpointPostRequest {
+func (r PxgridEndpointAPICreateRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r PxgridEndpointAPIPxgridendpointPostRequest) ReturnAsObject(returnAsObject int32) PxgridEndpointAPIPxgridendpointPostRequest {
+func (r PxgridEndpointAPICreateRequest) ReturnAsObject(returnAsObject int32) PxgridEndpointAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r PxgridEndpointAPIPxgridendpointPostRequest) Execute() (*CreatePxgridEndpointResponse, *http.Response, error) {
-	return r.ApiService.PxgridendpointPostExecute(r)
+func (r PxgridEndpointAPICreateRequest) Execute() (*CreatePxgridEndpointResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-PxgridendpointPost Create a pxgrid:endpoint object
+Create Create a pxgrid:endpoint object
 
 Creates a new pxgrid:endpoint object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return PxgridEndpointAPIPxgridendpointPostRequest
+	@return PxgridEndpointAPICreateRequest
 */
-func (a *PxgridEndpointAPIService) PxgridendpointPost(ctx context.Context) PxgridEndpointAPIPxgridendpointPostRequest {
-	return PxgridEndpointAPIPxgridendpointPostRequest{
+func (a *PxgridEndpointAPIService) Create(ctx context.Context) PxgridEndpointAPICreateRequest {
+	return PxgridEndpointAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *PxgridEndpointAPIService) PxgridendpointPost(ctx context.Context) Pxgri
 // Execute executes the request
 //
 //	@return CreatePxgridEndpointResponse
-func (a *PxgridEndpointAPIService) PxgridendpointPostExecute(r PxgridEndpointAPIPxgridendpointPostRequest) (*CreatePxgridEndpointResponse, *http.Response, error) {
+func (a *PxgridEndpointAPIService) CreateExecute(r PxgridEndpointAPICreateRequest) (*CreatePxgridEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *PxgridEndpointAPIService) PxgridendpointPostExecute(r PxgridEndpointAPI
 		localVarReturnValue *CreatePxgridEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PxgridEndpointAPIService.PxgridendpointPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PxgridEndpointAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *PxgridEndpointAPIService) PxgridendpointPostExecute(r PxgridEndpointAPI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type PxgridEndpointAPIPxgridendpointReferenceDeleteRequest struct {
+type PxgridEndpointAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService PxgridEndpointAPI
 	reference  string
 }
 
-func (r PxgridEndpointAPIPxgridendpointReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PxgridendpointReferenceDeleteExecute(r)
+func (r PxgridEndpointAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-PxgridendpointReferenceDelete Delete a pxgrid:endpoint object
+Delete Delete a pxgrid:endpoint object
 
 Deletes a specific pxgrid:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the pxgrid:endpoint object
-	@return PxgridEndpointAPIPxgridendpointReferenceDeleteRequest
+	@return PxgridEndpointAPIDeleteRequest
 */
-func (a *PxgridEndpointAPIService) PxgridendpointReferenceDelete(ctx context.Context, reference string) PxgridEndpointAPIPxgridendpointReferenceDeleteRequest {
-	return PxgridEndpointAPIPxgridendpointReferenceDeleteRequest{
+func (a *PxgridEndpointAPIService) Delete(ctx context.Context, reference string) PxgridEndpointAPIDeleteRequest {
+	return PxgridEndpointAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *PxgridEndpointAPIService) PxgridendpointReferenceDelete(ctx context.Con
 }
 
 // Execute executes the request
-func (a *PxgridEndpointAPIService) PxgridendpointReferenceDeleteExecute(r PxgridEndpointAPIPxgridendpointReferenceDeleteRequest) (*http.Response, error) {
+func (a *PxgridEndpointAPIService) DeleteExecute(r PxgridEndpointAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PxgridEndpointAPIService.PxgridendpointReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PxgridEndpointAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *PxgridEndpointAPIService) PxgridendpointReferenceDeleteExecute(r Pxgrid
 	return localVarHTTPResponse, nil
 }
 
-type PxgridEndpointAPIPxgridendpointReferenceGetRequest struct {
+type PxgridEndpointAPIListRequest struct {
+	ctx            context.Context
+	ApiService     PxgridEndpointAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r PxgridEndpointAPIListRequest) ReturnFields(returnFields string) PxgridEndpointAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r PxgridEndpointAPIListRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r PxgridEndpointAPIListRequest) MaxResults(maxResults int32) PxgridEndpointAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r PxgridEndpointAPIListRequest) ReturnAsObject(returnAsObject int32) PxgridEndpointAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r PxgridEndpointAPIListRequest) Paging(paging int32) PxgridEndpointAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r PxgridEndpointAPIListRequest) PageId(pageId string) PxgridEndpointAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r PxgridEndpointAPIListRequest) Filters(filters map[string]interface{}) PxgridEndpointAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r PxgridEndpointAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) PxgridEndpointAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r PxgridEndpointAPIListRequest) Execute() (*ListPxgridEndpointResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve pxgrid:endpoint objects
+
+Returns a list of pxgrid:endpoint objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return PxgridEndpointAPIListRequest
+*/
+func (a *PxgridEndpointAPIService) List(ctx context.Context) PxgridEndpointAPIListRequest {
+	return PxgridEndpointAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListPxgridEndpointResponse
+func (a *PxgridEndpointAPIService) ListExecute(r PxgridEndpointAPIListRequest) (*ListPxgridEndpointResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListPxgridEndpointResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PxgridEndpointAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/pxgrid:endpoint"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type PxgridEndpointAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     PxgridEndpointAPI
 	reference      string
@@ -511,38 +511,38 @@ type PxgridEndpointAPIPxgridendpointReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r PxgridEndpointAPIPxgridendpointReferenceGetRequest) ReturnFields(returnFields string) PxgridEndpointAPIPxgridendpointReferenceGetRequest {
+func (r PxgridEndpointAPIReadRequest) ReturnFields(returnFields string) PxgridEndpointAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PxgridEndpointAPIPxgridendpointReferenceGetRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPIPxgridendpointReferenceGetRequest {
+func (r PxgridEndpointAPIReadRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r PxgridEndpointAPIPxgridendpointReferenceGetRequest) ReturnAsObject(returnAsObject int32) PxgridEndpointAPIPxgridendpointReferenceGetRequest {
+func (r PxgridEndpointAPIReadRequest) ReturnAsObject(returnAsObject int32) PxgridEndpointAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r PxgridEndpointAPIPxgridendpointReferenceGetRequest) Execute() (*GetPxgridEndpointResponse, *http.Response, error) {
-	return r.ApiService.PxgridendpointReferenceGetExecute(r)
+func (r PxgridEndpointAPIReadRequest) Execute() (*GetPxgridEndpointResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-PxgridendpointReferenceGet Get a specific pxgrid:endpoint object
+Read Get a specific pxgrid:endpoint object
 
 Returns a specific pxgrid:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the pxgrid:endpoint object
-	@return PxgridEndpointAPIPxgridendpointReferenceGetRequest
+	@return PxgridEndpointAPIReadRequest
 */
-func (a *PxgridEndpointAPIService) PxgridendpointReferenceGet(ctx context.Context, reference string) PxgridEndpointAPIPxgridendpointReferenceGetRequest {
-	return PxgridEndpointAPIPxgridendpointReferenceGetRequest{
+func (a *PxgridEndpointAPIService) Read(ctx context.Context, reference string) PxgridEndpointAPIReadRequest {
+	return PxgridEndpointAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *PxgridEndpointAPIService) PxgridendpointReferenceGet(ctx context.Contex
 // Execute executes the request
 //
 //	@return GetPxgridEndpointResponse
-func (a *PxgridEndpointAPIService) PxgridendpointReferenceGetExecute(r PxgridEndpointAPIPxgridendpointReferenceGetRequest) (*GetPxgridEndpointResponse, *http.Response, error) {
+func (a *PxgridEndpointAPIService) ReadExecute(r PxgridEndpointAPIReadRequest) (*GetPxgridEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *PxgridEndpointAPIService) PxgridendpointReferenceGetExecute(r PxgridEnd
 		localVarReturnValue *GetPxgridEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PxgridEndpointAPIService.PxgridendpointReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PxgridEndpointAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *PxgridEndpointAPIService) PxgridendpointReferenceGetExecute(r PxgridEnd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type PxgridEndpointAPIPxgridendpointReferencePutRequest struct {
+type PxgridEndpointAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     PxgridEndpointAPI
 	reference      string
@@ -639,44 +639,44 @@ type PxgridEndpointAPIPxgridendpointReferencePutRequest struct {
 }
 
 // Object data to update
-func (r PxgridEndpointAPIPxgridendpointReferencePutRequest) PxgridEndpoint(pxgridEndpoint PxgridEndpoint) PxgridEndpointAPIPxgridendpointReferencePutRequest {
+func (r PxgridEndpointAPIUpdateRequest) PxgridEndpoint(pxgridEndpoint PxgridEndpoint) PxgridEndpointAPIUpdateRequest {
 	r.pxgridEndpoint = &pxgridEndpoint
 	return r
 }
 
 // Enter the field names followed by comma
-func (r PxgridEndpointAPIPxgridendpointReferencePutRequest) ReturnFields(returnFields string) PxgridEndpointAPIPxgridendpointReferencePutRequest {
+func (r PxgridEndpointAPIUpdateRequest) ReturnFields(returnFields string) PxgridEndpointAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PxgridEndpointAPIPxgridendpointReferencePutRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPIPxgridendpointReferencePutRequest {
+func (r PxgridEndpointAPIUpdateRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r PxgridEndpointAPIPxgridendpointReferencePutRequest) ReturnAsObject(returnAsObject int32) PxgridEndpointAPIPxgridendpointReferencePutRequest {
+func (r PxgridEndpointAPIUpdateRequest) ReturnAsObject(returnAsObject int32) PxgridEndpointAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r PxgridEndpointAPIPxgridendpointReferencePutRequest) Execute() (*UpdatePxgridEndpointResponse, *http.Response, error) {
-	return r.ApiService.PxgridendpointReferencePutExecute(r)
+func (r PxgridEndpointAPIUpdateRequest) Execute() (*UpdatePxgridEndpointResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-PxgridendpointReferencePut Update a pxgrid:endpoint object
+Update Update a pxgrid:endpoint object
 
 Updates a specific pxgrid:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the pxgrid:endpoint object
-	@return PxgridEndpointAPIPxgridendpointReferencePutRequest
+	@return PxgridEndpointAPIUpdateRequest
 */
-func (a *PxgridEndpointAPIService) PxgridendpointReferencePut(ctx context.Context, reference string) PxgridEndpointAPIPxgridendpointReferencePutRequest {
-	return PxgridEndpointAPIPxgridendpointReferencePutRequest{
+func (a *PxgridEndpointAPIService) Update(ctx context.Context, reference string) PxgridEndpointAPIUpdateRequest {
+	return PxgridEndpointAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *PxgridEndpointAPIService) PxgridendpointReferencePut(ctx context.Contex
 // Execute executes the request
 //
 //	@return UpdatePxgridEndpointResponse
-func (a *PxgridEndpointAPIService) PxgridendpointReferencePutExecute(r PxgridEndpointAPIPxgridendpointReferencePutRequest) (*UpdatePxgridEndpointResponse, *http.Response, error) {
+func (a *PxgridEndpointAPIService) UpdateExecute(r PxgridEndpointAPIUpdateRequest) (*UpdatePxgridEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *PxgridEndpointAPIService) PxgridendpointReferencePutExecute(r PxgridEnd
 		localVarReturnValue *UpdatePxgridEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PxgridEndpointAPIService.PxgridendpointReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PxgridEndpointAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

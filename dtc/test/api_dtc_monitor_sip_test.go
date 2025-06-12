@@ -23,11 +23,11 @@ func TestDtcMonitorSipAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcMonitorSipAPIService DtcmonitorsipGet", func(t *testing.T) {
+	t.Run("Test DtcMonitorSipAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcMonitorSipAPI.DtcmonitorsipGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorSipAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDtcMonitorSipAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorSipAPIService DtcmonitorsipPost", func(t *testing.T) {
+	t.Run("Test DtcMonitorSipAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcMonitorSipAPI.DtcmonitorsipPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DtcMonitorSipAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DtcMonitorSipAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DtcMonitorSipAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDtcMonitorSipAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorSipAPIService DtcmonitorsipReferenceDelete", func(t *testing.T) {
+	t.Run("Test DtcMonitorSipAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DtcMonitorSipAPI.DtcmonitorsipReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DtcMonitorSipAPIService DtcmonitorsipReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DtcMonitorSipAPI.DtcmonitorsipReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorSipAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDtcMonitorSipAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorSipAPIService DtcmonitorsipReferencePut", func(t *testing.T) {
+	t.Run("Test DtcMonitorSipAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcMonitorSipAPI.DtcmonitorsipReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorSipAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

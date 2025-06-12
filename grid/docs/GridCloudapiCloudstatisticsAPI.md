@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridcloudapicloudstatisticsGet**](GridCloudapiCloudstatisticsAPI.md#GridcloudapicloudstatisticsGet) | **Get** /grid:cloudapi:cloudstatistics | Retrieve grid:cloudapi:cloudstatistics objects
-[**GridcloudapicloudstatisticsReferenceGet**](GridCloudapiCloudstatisticsAPI.md#GridcloudapicloudstatisticsReferenceGet) | **Get** /grid:cloudapi:cloudstatistics/{reference} | Get a specific grid:cloudapi:cloudstatistics object
+[**List**](GridCloudapiCloudstatisticsAPI.md#List) | **Get** /grid:cloudapi:cloudstatistics | Retrieve grid:cloudapi:cloudstatistics objects
+[**Read**](GridCloudapiCloudstatisticsAPI.md#Read) | **Get** /grid:cloudapi:cloudstatistics/{reference} | Get a specific grid:cloudapi:cloudstatistics object
 
 
 
-## GridcloudapicloudstatisticsGet
+## List
 
-> ListGridCloudapiCloudstatisticsResponse GridcloudapicloudstatisticsGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridCloudapiCloudstatisticsResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:cloudapi:cloudstatistics objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiCloudstatisticsAPI.GridcloudapicloudstatisticsGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridCloudapiCloudstatisticsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiCloudstatisticsAPI.GridcloudapicloudstatisticsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiCloudstatisticsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapicloudstatisticsGet`: ListGridCloudapiCloudstatisticsResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiCloudstatisticsAPI.GridcloudapicloudstatisticsGet`: %v\n", resp)
+	// response from `List`: ListGridCloudapiCloudstatisticsResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiCloudstatisticsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiCloudstatisticsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridcloudapicloudstatisticsReferenceGet
+## Read
 
-> GetGridCloudapiCloudstatisticsResponse GridcloudapicloudstatisticsReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridCloudapiCloudstatisticsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:cloudapi:cloudstatistics object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:cloudapi:cloudstatistics object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiCloudstatisticsAPI.GridcloudapicloudstatisticsReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridCloudapiCloudstatisticsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiCloudstatisticsAPI.GridcloudapicloudstatisticsReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiCloudstatisticsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapicloudstatisticsReferenceGet`: GetGridCloudapiCloudstatisticsResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiCloudstatisticsAPI.GridcloudapicloudstatisticsReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridCloudapiCloudstatisticsResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiCloudstatisticsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiCloudstatisticsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

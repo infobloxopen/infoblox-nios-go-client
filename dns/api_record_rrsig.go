@@ -23,38 +23,38 @@ import (
 
 type RecordRrsigAPI interface {
 	/*
-		RecordrrsigGet Retrieve record:rrsig objects
+		List Retrieve record:rrsig objects
 
 		Returns a list of record:rrsig objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordRrsigAPIRecordrrsigGetRequest
+		@return RecordRrsigAPIListRequest
 	*/
-	RecordrrsigGet(ctx context.Context) RecordRrsigAPIRecordrrsigGetRequest
+	List(ctx context.Context) RecordRrsigAPIListRequest
 
-	// RecordrrsigGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListRecordRrsigResponse
-	RecordrrsigGetExecute(r RecordRrsigAPIRecordrrsigGetRequest) (*ListRecordRrsigResponse, *http.Response, error)
+	ListExecute(r RecordRrsigAPIListRequest) (*ListRecordRrsigResponse, *http.Response, error)
 	/*
-		RecordrrsigReferenceGet Get a specific record:rrsig object
+		Read Get a specific record:rrsig object
 
 		Returns a specific record:rrsig object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rrsig object
-		@return RecordRrsigAPIRecordrrsigReferenceGetRequest
+		@return RecordRrsigAPIReadRequest
 	*/
-	RecordrrsigReferenceGet(ctx context.Context, reference string) RecordRrsigAPIRecordrrsigReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordRrsigAPIReadRequest
 
-	// RecordrrsigReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordRrsigResponse
-	RecordrrsigReferenceGetExecute(r RecordRrsigAPIRecordrrsigReferenceGetRequest) (*GetRecordRrsigResponse, *http.Response, error)
+	ReadExecute(r RecordRrsigAPIReadRequest) (*GetRecordRrsigResponse, *http.Response, error)
 }
 
 // RecordRrsigAPIService RecordRrsigAPI service
 type RecordRrsigAPIService internal.Service
 
-type RecordRrsigAPIRecordrrsigGetRequest struct {
+type RecordRrsigAPIListRequest struct {
 	ctx            context.Context
 	ApiService     RecordRrsigAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type RecordRrsigAPIRecordrrsigGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordRrsigAPIRecordrrsigGetRequest) ReturnFields(returnFields string) RecordRrsigAPIRecordrrsigGetRequest {
+func (r RecordRrsigAPIListRequest) ReturnFields(returnFields string) RecordRrsigAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRrsigAPIRecordrrsigGetRequest) ReturnFields2(returnFields2 string) RecordRrsigAPIRecordrrsigGetRequest {
+func (r RecordRrsigAPIListRequest) ReturnFields2(returnFields2 string) RecordRrsigAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordRrsigAPIRecordrrsigGetRequest) MaxResults(maxResults int32) RecordRrsigAPIRecordrrsigGetRequest {
+func (r RecordRrsigAPIListRequest) MaxResults(maxResults int32) RecordRrsigAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRrsigAPIRecordrrsigGetRequest) ReturnAsObject(returnAsObject int32) RecordRrsigAPIRecordrrsigGetRequest {
+func (r RecordRrsigAPIListRequest) ReturnAsObject(returnAsObject int32) RecordRrsigAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordRrsigAPIRecordrrsigGetRequest) Paging(paging int32) RecordRrsigAPIRecordrrsigGetRequest {
+func (r RecordRrsigAPIListRequest) Paging(paging int32) RecordRrsigAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordRrsigAPIRecordrrsigGetRequest) PageId(pageId string) RecordRrsigAPIRecordrrsigGetRequest {
+func (r RecordRrsigAPIListRequest) PageId(pageId string) RecordRrsigAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordRrsigAPIRecordrrsigGetRequest) Filters(filters map[string]interface{}) RecordRrsigAPIRecordrrsigGetRequest {
+func (r RecordRrsigAPIListRequest) Filters(filters map[string]interface{}) RecordRrsigAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordRrsigAPIRecordrrsigGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRrsigAPIRecordrrsigGetRequest {
+func (r RecordRrsigAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRrsigAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordRrsigAPIRecordrrsigGetRequest) Execute() (*ListRecordRrsigResponse, *http.Response, error) {
-	return r.ApiService.RecordrrsigGetExecute(r)
+func (r RecordRrsigAPIListRequest) Execute() (*ListRecordRrsigResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RecordrrsigGet Retrieve record:rrsig objects
+List Retrieve record:rrsig objects
 
 Returns a list of record:rrsig objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordRrsigAPIRecordrrsigGetRequest
+	@return RecordRrsigAPIListRequest
 */
-func (a *RecordRrsigAPIService) RecordrrsigGet(ctx context.Context) RecordRrsigAPIRecordrrsigGetRequest {
-	return RecordRrsigAPIRecordrrsigGetRequest{
+func (a *RecordRrsigAPIService) List(ctx context.Context) RecordRrsigAPIListRequest {
+	return RecordRrsigAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *RecordRrsigAPIService) RecordrrsigGet(ctx context.Context) RecordRrsigA
 // Execute executes the request
 //
 //	@return ListRecordRrsigResponse
-func (a *RecordRrsigAPIService) RecordrrsigGetExecute(r RecordRrsigAPIRecordrrsigGetRequest) (*ListRecordRrsigResponse, *http.Response, error) {
+func (a *RecordRrsigAPIService) ListExecute(r RecordRrsigAPIListRequest) (*ListRecordRrsigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *RecordRrsigAPIService) RecordrrsigGetExecute(r RecordRrsigAPIRecordrrsi
 		localVarReturnValue *ListRecordRrsigResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRrsigAPIService.RecordrrsigGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRrsigAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *RecordRrsigAPIService) RecordrrsigGetExecute(r RecordRrsigAPIRecordrrsi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordRrsigAPIRecordrrsigReferenceGetRequest struct {
+type RecordRrsigAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordRrsigAPI
 	reference      string
@@ -235,38 +235,38 @@ type RecordRrsigAPIRecordrrsigReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordRrsigAPIRecordrrsigReferenceGetRequest) ReturnFields(returnFields string) RecordRrsigAPIRecordrrsigReferenceGetRequest {
+func (r RecordRrsigAPIReadRequest) ReturnFields(returnFields string) RecordRrsigAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRrsigAPIRecordrrsigReferenceGetRequest) ReturnFields2(returnFields2 string) RecordRrsigAPIRecordrrsigReferenceGetRequest {
+func (r RecordRrsigAPIReadRequest) ReturnFields2(returnFields2 string) RecordRrsigAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRrsigAPIRecordrrsigReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordRrsigAPIRecordrrsigReferenceGetRequest {
+func (r RecordRrsigAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordRrsigAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRrsigAPIRecordrrsigReferenceGetRequest) Execute() (*GetRecordRrsigResponse, *http.Response, error) {
-	return r.ApiService.RecordrrsigReferenceGetExecute(r)
+func (r RecordRrsigAPIReadRequest) Execute() (*GetRecordRrsigResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordrrsigReferenceGet Get a specific record:rrsig object
+Read Get a specific record:rrsig object
 
 Returns a specific record:rrsig object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rrsig object
-	@return RecordRrsigAPIRecordrrsigReferenceGetRequest
+	@return RecordRrsigAPIReadRequest
 */
-func (a *RecordRrsigAPIService) RecordrrsigReferenceGet(ctx context.Context, reference string) RecordRrsigAPIRecordrrsigReferenceGetRequest {
-	return RecordRrsigAPIRecordrrsigReferenceGetRequest{
+func (a *RecordRrsigAPIService) Read(ctx context.Context, reference string) RecordRrsigAPIReadRequest {
+	return RecordRrsigAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *RecordRrsigAPIService) RecordrrsigReferenceGet(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return GetRecordRrsigResponse
-func (a *RecordRrsigAPIService) RecordrrsigReferenceGetExecute(r RecordRrsigAPIRecordrrsigReferenceGetRequest) (*GetRecordRrsigResponse, *http.Response, error) {
+func (a *RecordRrsigAPIService) ReadExecute(r RecordRrsigAPIReadRequest) (*GetRecordRrsigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *RecordRrsigAPIService) RecordrrsigReferenceGetExecute(r RecordRrsigAPIR
 		localVarReturnValue *GetRecordRrsigResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRrsigAPIService.RecordrrsigReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRrsigAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

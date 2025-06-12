@@ -23,249 +23,78 @@ import (
 
 type SyslogEndpointAPI interface {
 	/*
-		SyslogendpointGet Retrieve syslog:endpoint objects
-
-		Returns a list of syslog:endpoint objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SyslogEndpointAPISyslogendpointGetRequest
-	*/
-	SyslogendpointGet(ctx context.Context) SyslogEndpointAPISyslogendpointGetRequest
-
-	// SyslogendpointGetExecute executes the request
-	//  @return ListSyslogEndpointResponse
-	SyslogendpointGetExecute(r SyslogEndpointAPISyslogendpointGetRequest) (*ListSyslogEndpointResponse, *http.Response, error)
-	/*
-		SyslogendpointPost Create a syslog:endpoint object
+		Create Create a syslog:endpoint object
 
 		Creates a new syslog:endpoint object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SyslogEndpointAPISyslogendpointPostRequest
+		@return SyslogEndpointAPICreateRequest
 	*/
-	SyslogendpointPost(ctx context.Context) SyslogEndpointAPISyslogendpointPostRequest
+	Create(ctx context.Context) SyslogEndpointAPICreateRequest
 
-	// SyslogendpointPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateSyslogEndpointResponse
-	SyslogendpointPostExecute(r SyslogEndpointAPISyslogendpointPostRequest) (*CreateSyslogEndpointResponse, *http.Response, error)
+	CreateExecute(r SyslogEndpointAPICreateRequest) (*CreateSyslogEndpointResponse, *http.Response, error)
 	/*
-		SyslogendpointReferenceDelete Delete a syslog:endpoint object
+		Delete Delete a syslog:endpoint object
 
 		Deletes a specific syslog:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the syslog:endpoint object
-		@return SyslogEndpointAPISyslogendpointReferenceDeleteRequest
+		@return SyslogEndpointAPIDeleteRequest
 	*/
-	SyslogendpointReferenceDelete(ctx context.Context, reference string) SyslogEndpointAPISyslogendpointReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) SyslogEndpointAPIDeleteRequest
 
-	// SyslogendpointReferenceDeleteExecute executes the request
-	SyslogendpointReferenceDeleteExecute(r SyslogEndpointAPISyslogendpointReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r SyslogEndpointAPIDeleteRequest) (*http.Response, error)
 	/*
-		SyslogendpointReferenceGet Get a specific syslog:endpoint object
+		List Retrieve syslog:endpoint objects
+
+		Returns a list of syslog:endpoint objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return SyslogEndpointAPIListRequest
+	*/
+	List(ctx context.Context) SyslogEndpointAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListSyslogEndpointResponse
+	ListExecute(r SyslogEndpointAPIListRequest) (*ListSyslogEndpointResponse, *http.Response, error)
+	/*
+		Read Get a specific syslog:endpoint object
 
 		Returns a specific syslog:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the syslog:endpoint object
-		@return SyslogEndpointAPISyslogendpointReferenceGetRequest
+		@return SyslogEndpointAPIReadRequest
 	*/
-	SyslogendpointReferenceGet(ctx context.Context, reference string) SyslogEndpointAPISyslogendpointReferenceGetRequest
+	Read(ctx context.Context, reference string) SyslogEndpointAPIReadRequest
 
-	// SyslogendpointReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSyslogEndpointResponse
-	SyslogendpointReferenceGetExecute(r SyslogEndpointAPISyslogendpointReferenceGetRequest) (*GetSyslogEndpointResponse, *http.Response, error)
+	ReadExecute(r SyslogEndpointAPIReadRequest) (*GetSyslogEndpointResponse, *http.Response, error)
 	/*
-		SyslogendpointReferencePut Update a syslog:endpoint object
+		Update Update a syslog:endpoint object
 
 		Updates a specific syslog:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the syslog:endpoint object
-		@return SyslogEndpointAPISyslogendpointReferencePutRequest
+		@return SyslogEndpointAPIUpdateRequest
 	*/
-	SyslogendpointReferencePut(ctx context.Context, reference string) SyslogEndpointAPISyslogendpointReferencePutRequest
+	Update(ctx context.Context, reference string) SyslogEndpointAPIUpdateRequest
 
-	// SyslogendpointReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateSyslogEndpointResponse
-	SyslogendpointReferencePutExecute(r SyslogEndpointAPISyslogendpointReferencePutRequest) (*UpdateSyslogEndpointResponse, *http.Response, error)
+	UpdateExecute(r SyslogEndpointAPIUpdateRequest) (*UpdateSyslogEndpointResponse, *http.Response, error)
 }
 
 // SyslogEndpointAPIService SyslogEndpointAPI service
 type SyslogEndpointAPIService internal.Service
 
-type SyslogEndpointAPISyslogendpointGetRequest struct {
-	ctx            context.Context
-	ApiService     SyslogEndpointAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r SyslogEndpointAPISyslogendpointGetRequest) ReturnFields(returnFields string) SyslogEndpointAPISyslogendpointGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SyslogEndpointAPISyslogendpointGetRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPISyslogendpointGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r SyslogEndpointAPISyslogendpointGetRequest) MaxResults(maxResults int32) SyslogEndpointAPISyslogendpointGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r SyslogEndpointAPISyslogendpointGetRequest) ReturnAsObject(returnAsObject int32) SyslogEndpointAPISyslogendpointGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r SyslogEndpointAPISyslogendpointGetRequest) Paging(paging int32) SyslogEndpointAPISyslogendpointGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r SyslogEndpointAPISyslogendpointGetRequest) PageId(pageId string) SyslogEndpointAPISyslogendpointGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r SyslogEndpointAPISyslogendpointGetRequest) Filters(filters map[string]interface{}) SyslogEndpointAPISyslogendpointGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r SyslogEndpointAPISyslogendpointGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SyslogEndpointAPISyslogendpointGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r SyslogEndpointAPISyslogendpointGetRequest) Execute() (*ListSyslogEndpointResponse, *http.Response, error) {
-	return r.ApiService.SyslogendpointGetExecute(r)
-}
-
-/*
-SyslogendpointGet Retrieve syslog:endpoint objects
-
-Returns a list of syslog:endpoint objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SyslogEndpointAPISyslogendpointGetRequest
-*/
-func (a *SyslogEndpointAPIService) SyslogendpointGet(ctx context.Context) SyslogEndpointAPISyslogendpointGetRequest {
-	return SyslogEndpointAPISyslogendpointGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListSyslogEndpointResponse
-func (a *SyslogEndpointAPIService) SyslogendpointGetExecute(r SyslogEndpointAPISyslogendpointGetRequest) (*ListSyslogEndpointResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListSyslogEndpointResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SyslogEndpointAPIService.SyslogendpointGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/syslog:endpoint"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type SyslogEndpointAPISyslogendpointPostRequest struct {
+type SyslogEndpointAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     SyslogEndpointAPI
 	syslogEndpoint *SyslogEndpoint
@@ -275,43 +104,43 @@ type SyslogEndpointAPISyslogendpointPostRequest struct {
 }
 
 // Object data to create
-func (r SyslogEndpointAPISyslogendpointPostRequest) SyslogEndpoint(syslogEndpoint SyslogEndpoint) SyslogEndpointAPISyslogendpointPostRequest {
+func (r SyslogEndpointAPICreateRequest) SyslogEndpoint(syslogEndpoint SyslogEndpoint) SyslogEndpointAPICreateRequest {
 	r.syslogEndpoint = &syslogEndpoint
 	return r
 }
 
 // Enter the field names followed by comma
-func (r SyslogEndpointAPISyslogendpointPostRequest) ReturnFields(returnFields string) SyslogEndpointAPISyslogendpointPostRequest {
+func (r SyslogEndpointAPICreateRequest) ReturnFields(returnFields string) SyslogEndpointAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SyslogEndpointAPISyslogendpointPostRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPISyslogendpointPostRequest {
+func (r SyslogEndpointAPICreateRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SyslogEndpointAPISyslogendpointPostRequest) ReturnAsObject(returnAsObject int32) SyslogEndpointAPISyslogendpointPostRequest {
+func (r SyslogEndpointAPICreateRequest) ReturnAsObject(returnAsObject int32) SyslogEndpointAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SyslogEndpointAPISyslogendpointPostRequest) Execute() (*CreateSyslogEndpointResponse, *http.Response, error) {
-	return r.ApiService.SyslogendpointPostExecute(r)
+func (r SyslogEndpointAPICreateRequest) Execute() (*CreateSyslogEndpointResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-SyslogendpointPost Create a syslog:endpoint object
+Create Create a syslog:endpoint object
 
 Creates a new syslog:endpoint object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SyslogEndpointAPISyslogendpointPostRequest
+	@return SyslogEndpointAPICreateRequest
 */
-func (a *SyslogEndpointAPIService) SyslogendpointPost(ctx context.Context) SyslogEndpointAPISyslogendpointPostRequest {
-	return SyslogEndpointAPISyslogendpointPostRequest{
+func (a *SyslogEndpointAPIService) Create(ctx context.Context) SyslogEndpointAPICreateRequest {
+	return SyslogEndpointAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *SyslogEndpointAPIService) SyslogendpointPost(ctx context.Context) Syslo
 // Execute executes the request
 //
 //	@return CreateSyslogEndpointResponse
-func (a *SyslogEndpointAPIService) SyslogendpointPostExecute(r SyslogEndpointAPISyslogendpointPostRequest) (*CreateSyslogEndpointResponse, *http.Response, error) {
+func (a *SyslogEndpointAPIService) CreateExecute(r SyslogEndpointAPICreateRequest) (*CreateSyslogEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *SyslogEndpointAPIService) SyslogendpointPostExecute(r SyslogEndpointAPI
 		localVarReturnValue *CreateSyslogEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SyslogEndpointAPIService.SyslogendpointPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SyslogEndpointAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *SyslogEndpointAPIService) SyslogendpointPostExecute(r SyslogEndpointAPI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SyslogEndpointAPISyslogendpointReferenceDeleteRequest struct {
+type SyslogEndpointAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService SyslogEndpointAPI
 	reference  string
 }
 
-func (r SyslogEndpointAPISyslogendpointReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.SyslogendpointReferenceDeleteExecute(r)
+func (r SyslogEndpointAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-SyslogendpointReferenceDelete Delete a syslog:endpoint object
+Delete Delete a syslog:endpoint object
 
 Deletes a specific syslog:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the syslog:endpoint object
-	@return SyslogEndpointAPISyslogendpointReferenceDeleteRequest
+	@return SyslogEndpointAPIDeleteRequest
 */
-func (a *SyslogEndpointAPIService) SyslogendpointReferenceDelete(ctx context.Context, reference string) SyslogEndpointAPISyslogendpointReferenceDeleteRequest {
-	return SyslogEndpointAPISyslogendpointReferenceDeleteRequest{
+func (a *SyslogEndpointAPIService) Delete(ctx context.Context, reference string) SyslogEndpointAPIDeleteRequest {
+	return SyslogEndpointAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *SyslogEndpointAPIService) SyslogendpointReferenceDelete(ctx context.Con
 }
 
 // Execute executes the request
-func (a *SyslogEndpointAPIService) SyslogendpointReferenceDeleteExecute(r SyslogEndpointAPISyslogendpointReferenceDeleteRequest) (*http.Response, error) {
+func (a *SyslogEndpointAPIService) DeleteExecute(r SyslogEndpointAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SyslogEndpointAPIService.SyslogendpointReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SyslogEndpointAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *SyslogEndpointAPIService) SyslogendpointReferenceDeleteExecute(r Syslog
 	return localVarHTTPResponse, nil
 }
 
-type SyslogEndpointAPISyslogendpointReferenceGetRequest struct {
+type SyslogEndpointAPIListRequest struct {
+	ctx            context.Context
+	ApiService     SyslogEndpointAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r SyslogEndpointAPIListRequest) ReturnFields(returnFields string) SyslogEndpointAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r SyslogEndpointAPIListRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r SyslogEndpointAPIListRequest) MaxResults(maxResults int32) SyslogEndpointAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r SyslogEndpointAPIListRequest) ReturnAsObject(returnAsObject int32) SyslogEndpointAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r SyslogEndpointAPIListRequest) Paging(paging int32) SyslogEndpointAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r SyslogEndpointAPIListRequest) PageId(pageId string) SyslogEndpointAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r SyslogEndpointAPIListRequest) Filters(filters map[string]interface{}) SyslogEndpointAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r SyslogEndpointAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SyslogEndpointAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r SyslogEndpointAPIListRequest) Execute() (*ListSyslogEndpointResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve syslog:endpoint objects
+
+Returns a list of syslog:endpoint objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SyslogEndpointAPIListRequest
+*/
+func (a *SyslogEndpointAPIService) List(ctx context.Context) SyslogEndpointAPIListRequest {
+	return SyslogEndpointAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListSyslogEndpointResponse
+func (a *SyslogEndpointAPIService) ListExecute(r SyslogEndpointAPIListRequest) (*ListSyslogEndpointResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListSyslogEndpointResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SyslogEndpointAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/syslog:endpoint"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SyslogEndpointAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     SyslogEndpointAPI
 	reference      string
@@ -511,38 +511,38 @@ type SyslogEndpointAPISyslogendpointReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r SyslogEndpointAPISyslogendpointReferenceGetRequest) ReturnFields(returnFields string) SyslogEndpointAPISyslogendpointReferenceGetRequest {
+func (r SyslogEndpointAPIReadRequest) ReturnFields(returnFields string) SyslogEndpointAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SyslogEndpointAPISyslogendpointReferenceGetRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPISyslogendpointReferenceGetRequest {
+func (r SyslogEndpointAPIReadRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SyslogEndpointAPISyslogendpointReferenceGetRequest) ReturnAsObject(returnAsObject int32) SyslogEndpointAPISyslogendpointReferenceGetRequest {
+func (r SyslogEndpointAPIReadRequest) ReturnAsObject(returnAsObject int32) SyslogEndpointAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SyslogEndpointAPISyslogendpointReferenceGetRequest) Execute() (*GetSyslogEndpointResponse, *http.Response, error) {
-	return r.ApiService.SyslogendpointReferenceGetExecute(r)
+func (r SyslogEndpointAPIReadRequest) Execute() (*GetSyslogEndpointResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-SyslogendpointReferenceGet Get a specific syslog:endpoint object
+Read Get a specific syslog:endpoint object
 
 Returns a specific syslog:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the syslog:endpoint object
-	@return SyslogEndpointAPISyslogendpointReferenceGetRequest
+	@return SyslogEndpointAPIReadRequest
 */
-func (a *SyslogEndpointAPIService) SyslogendpointReferenceGet(ctx context.Context, reference string) SyslogEndpointAPISyslogendpointReferenceGetRequest {
-	return SyslogEndpointAPISyslogendpointReferenceGetRequest{
+func (a *SyslogEndpointAPIService) Read(ctx context.Context, reference string) SyslogEndpointAPIReadRequest {
+	return SyslogEndpointAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *SyslogEndpointAPIService) SyslogendpointReferenceGet(ctx context.Contex
 // Execute executes the request
 //
 //	@return GetSyslogEndpointResponse
-func (a *SyslogEndpointAPIService) SyslogendpointReferenceGetExecute(r SyslogEndpointAPISyslogendpointReferenceGetRequest) (*GetSyslogEndpointResponse, *http.Response, error) {
+func (a *SyslogEndpointAPIService) ReadExecute(r SyslogEndpointAPIReadRequest) (*GetSyslogEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *SyslogEndpointAPIService) SyslogendpointReferenceGetExecute(r SyslogEnd
 		localVarReturnValue *GetSyslogEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SyslogEndpointAPIService.SyslogendpointReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SyslogEndpointAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *SyslogEndpointAPIService) SyslogendpointReferenceGetExecute(r SyslogEnd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SyslogEndpointAPISyslogendpointReferencePutRequest struct {
+type SyslogEndpointAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     SyslogEndpointAPI
 	reference      string
@@ -639,44 +639,44 @@ type SyslogEndpointAPISyslogendpointReferencePutRequest struct {
 }
 
 // Object data to update
-func (r SyslogEndpointAPISyslogendpointReferencePutRequest) SyslogEndpoint(syslogEndpoint SyslogEndpoint) SyslogEndpointAPISyslogendpointReferencePutRequest {
+func (r SyslogEndpointAPIUpdateRequest) SyslogEndpoint(syslogEndpoint SyslogEndpoint) SyslogEndpointAPIUpdateRequest {
 	r.syslogEndpoint = &syslogEndpoint
 	return r
 }
 
 // Enter the field names followed by comma
-func (r SyslogEndpointAPISyslogendpointReferencePutRequest) ReturnFields(returnFields string) SyslogEndpointAPISyslogendpointReferencePutRequest {
+func (r SyslogEndpointAPIUpdateRequest) ReturnFields(returnFields string) SyslogEndpointAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SyslogEndpointAPISyslogendpointReferencePutRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPISyslogendpointReferencePutRequest {
+func (r SyslogEndpointAPIUpdateRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SyslogEndpointAPISyslogendpointReferencePutRequest) ReturnAsObject(returnAsObject int32) SyslogEndpointAPISyslogendpointReferencePutRequest {
+func (r SyslogEndpointAPIUpdateRequest) ReturnAsObject(returnAsObject int32) SyslogEndpointAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SyslogEndpointAPISyslogendpointReferencePutRequest) Execute() (*UpdateSyslogEndpointResponse, *http.Response, error) {
-	return r.ApiService.SyslogendpointReferencePutExecute(r)
+func (r SyslogEndpointAPIUpdateRequest) Execute() (*UpdateSyslogEndpointResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-SyslogendpointReferencePut Update a syslog:endpoint object
+Update Update a syslog:endpoint object
 
 Updates a specific syslog:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the syslog:endpoint object
-	@return SyslogEndpointAPISyslogendpointReferencePutRequest
+	@return SyslogEndpointAPIUpdateRequest
 */
-func (a *SyslogEndpointAPIService) SyslogendpointReferencePut(ctx context.Context, reference string) SyslogEndpointAPISyslogendpointReferencePutRequest {
-	return SyslogEndpointAPISyslogendpointReferencePutRequest{
+func (a *SyslogEndpointAPIService) Update(ctx context.Context, reference string) SyslogEndpointAPIUpdateRequest {
+	return SyslogEndpointAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *SyslogEndpointAPIService) SyslogendpointReferencePut(ctx context.Contex
 // Execute executes the request
 //
 //	@return UpdateSyslogEndpointResponse
-func (a *SyslogEndpointAPIService) SyslogendpointReferencePutExecute(r SyslogEndpointAPISyslogendpointReferencePutRequest) (*UpdateSyslogEndpointResponse, *http.Response, error) {
+func (a *SyslogEndpointAPIService) UpdateExecute(r SyslogEndpointAPIUpdateRequest) (*UpdateSyslogEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *SyslogEndpointAPIService) SyslogendpointReferencePutExecute(r SyslogEnd
 		localVarReturnValue *UpdateSyslogEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SyslogEndpointAPIService.SyslogendpointReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SyslogEndpointAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -23,249 +23,78 @@ import (
 
 type NsgroupAPI interface {
 	/*
-		Get Retrieve nsgroup objects
-
-		Returns a list of nsgroup objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NsgroupAPIGetRequest
-	*/
-	Get(ctx context.Context) NsgroupAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListNsgroupResponse
-	GetExecute(r NsgroupAPIGetRequest) (*ListNsgroupResponse, *http.Response, error)
-	/*
-		Post Create a nsgroup object
+		Create Create a nsgroup object
 
 		Creates a new nsgroup object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NsgroupAPIPostRequest
+		@return NsgroupAPICreateRequest
 	*/
-	Post(ctx context.Context) NsgroupAPIPostRequest
+	Create(ctx context.Context) NsgroupAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNsgroupResponse
-	PostExecute(r NsgroupAPIPostRequest) (*CreateNsgroupResponse, *http.Response, error)
+	CreateExecute(r NsgroupAPICreateRequest) (*CreateNsgroupResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a nsgroup object
+		Delete Delete a nsgroup object
 
 		Deletes a specific nsgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup object
-		@return NsgroupAPIReferenceDeleteRequest
+		@return NsgroupAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) NsgroupAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NsgroupAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r NsgroupAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NsgroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific nsgroup object
+		List Retrieve nsgroup objects
+
+		Returns a list of nsgroup objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NsgroupAPIListRequest
+	*/
+	List(ctx context.Context) NsgroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNsgroupResponse
+	ListExecute(r NsgroupAPIListRequest) (*ListNsgroupResponse, *http.Response, error)
+	/*
+		Read Get a specific nsgroup object
 
 		Returns a specific nsgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup object
-		@return NsgroupAPIReferenceGetRequest
+		@return NsgroupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) NsgroupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) NsgroupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNsgroupResponse
-	ReferenceGetExecute(r NsgroupAPIReferenceGetRequest) (*GetNsgroupResponse, *http.Response, error)
+	ReadExecute(r NsgroupAPIReadRequest) (*GetNsgroupResponse, *http.Response, error)
 	/*
-		ReferencePut Update a nsgroup object
+		Update Update a nsgroup object
 
 		Updates a specific nsgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup object
-		@return NsgroupAPIReferencePutRequest
+		@return NsgroupAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) NsgroupAPIReferencePutRequest
+	Update(ctx context.Context, reference string) NsgroupAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNsgroupResponse
-	ReferencePutExecute(r NsgroupAPIReferencePutRequest) (*UpdateNsgroupResponse, *http.Response, error)
+	UpdateExecute(r NsgroupAPIUpdateRequest) (*UpdateNsgroupResponse, *http.Response, error)
 }
 
 // NsgroupAPIService NsgroupAPI service
 type NsgroupAPIService internal.Service
 
-type NsgroupAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     NsgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r NsgroupAPIGetRequest) ReturnFields(returnFields string) NsgroupAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupAPIGetRequest) ReturnFields2(returnFields2 string) NsgroupAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r NsgroupAPIGetRequest) MaxResults(maxResults int32) NsgroupAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NsgroupAPIGetRequest) ReturnAsObject(returnAsObject int32) NsgroupAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r NsgroupAPIGetRequest) Paging(paging int32) NsgroupAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r NsgroupAPIGetRequest) PageId(pageId string) NsgroupAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r NsgroupAPIGetRequest) Filters(filters map[string]interface{}) NsgroupAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r NsgroupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NsgroupAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r NsgroupAPIGetRequest) Execute() (*ListNsgroupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve nsgroup objects
-
-Returns a list of nsgroup objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NsgroupAPIGetRequest
-*/
-func (a *NsgroupAPIService) Get(ctx context.Context) NsgroupAPIGetRequest {
-	return NsgroupAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListNsgroupResponse
-func (a *NsgroupAPIService) GetExecute(r NsgroupAPIGetRequest) (*ListNsgroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListNsgroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/nsgroup"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NsgroupAPIPostRequest struct {
+type NsgroupAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     NsgroupAPI
 	nsgroup        *Nsgroup
@@ -275,43 +104,43 @@ type NsgroupAPIPostRequest struct {
 }
 
 // Object data to create
-func (r NsgroupAPIPostRequest) Nsgroup(nsgroup Nsgroup) NsgroupAPIPostRequest {
+func (r NsgroupAPICreateRequest) Nsgroup(nsgroup Nsgroup) NsgroupAPICreateRequest {
 	r.nsgroup = &nsgroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NsgroupAPIPostRequest) ReturnFields(returnFields string) NsgroupAPIPostRequest {
+func (r NsgroupAPICreateRequest) ReturnFields(returnFields string) NsgroupAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupAPIPostRequest) ReturnFields2(returnFields2 string) NsgroupAPIPostRequest {
+func (r NsgroupAPICreateRequest) ReturnFields2(returnFields2 string) NsgroupAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupAPIPostRequest) ReturnAsObject(returnAsObject int32) NsgroupAPIPostRequest {
+func (r NsgroupAPICreateRequest) ReturnAsObject(returnAsObject int32) NsgroupAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupAPIPostRequest) Execute() (*CreateNsgroupResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r NsgroupAPICreateRequest) Execute() (*CreateNsgroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a nsgroup object
+Create Create a nsgroup object
 
 Creates a new nsgroup object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NsgroupAPIPostRequest
+	@return NsgroupAPICreateRequest
 */
-func (a *NsgroupAPIService) Post(ctx context.Context) NsgroupAPIPostRequest {
-	return NsgroupAPIPostRequest{
+func (a *NsgroupAPIService) Create(ctx context.Context) NsgroupAPICreateRequest {
+	return NsgroupAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *NsgroupAPIService) Post(ctx context.Context) NsgroupAPIPostRequest {
 // Execute executes the request
 //
 //	@return CreateNsgroupResponse
-func (a *NsgroupAPIService) PostExecute(r NsgroupAPIPostRequest) (*CreateNsgroupResponse, *http.Response, error) {
+func (a *NsgroupAPIService) CreateExecute(r NsgroupAPICreateRequest) (*CreateNsgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *NsgroupAPIService) PostExecute(r NsgroupAPIPostRequest) (*CreateNsgroup
 		localVarReturnValue *CreateNsgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *NsgroupAPIService) PostExecute(r NsgroupAPIPostRequest) (*CreateNsgroup
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NsgroupAPIReferenceDeleteRequest struct {
+type NsgroupAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService NsgroupAPI
 	reference  string
 }
 
-func (r NsgroupAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r NsgroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a nsgroup object
+Delete Delete a nsgroup object
 
 Deletes a specific nsgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup object
-	@return NsgroupAPIReferenceDeleteRequest
+	@return NsgroupAPIDeleteRequest
 */
-func (a *NsgroupAPIService) ReferenceDelete(ctx context.Context, reference string) NsgroupAPIReferenceDeleteRequest {
-	return NsgroupAPIReferenceDeleteRequest{
+func (a *NsgroupAPIService) Delete(ctx context.Context, reference string) NsgroupAPIDeleteRequest {
+	return NsgroupAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *NsgroupAPIService) ReferenceDelete(ctx context.Context, reference strin
 }
 
 // Execute executes the request
-func (a *NsgroupAPIService) ReferenceDeleteExecute(r NsgroupAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *NsgroupAPIService) DeleteExecute(r NsgroupAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *NsgroupAPIService) ReferenceDeleteExecute(r NsgroupAPIReferenceDeleteRe
 	return localVarHTTPResponse, nil
 }
 
-type NsgroupAPIReferenceGetRequest struct {
+type NsgroupAPIListRequest struct {
+	ctx            context.Context
+	ApiService     NsgroupAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r NsgroupAPIListRequest) ReturnFields(returnFields string) NsgroupAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NsgroupAPIListRequest) ReturnFields2(returnFields2 string) NsgroupAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r NsgroupAPIListRequest) MaxResults(maxResults int32) NsgroupAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NsgroupAPIListRequest) ReturnAsObject(returnAsObject int32) NsgroupAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r NsgroupAPIListRequest) Paging(paging int32) NsgroupAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r NsgroupAPIListRequest) PageId(pageId string) NsgroupAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r NsgroupAPIListRequest) Filters(filters map[string]interface{}) NsgroupAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r NsgroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NsgroupAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r NsgroupAPIListRequest) Execute() (*ListNsgroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve nsgroup objects
+
+Returns a list of nsgroup objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NsgroupAPIListRequest
+*/
+func (a *NsgroupAPIService) List(ctx context.Context) NsgroupAPIListRequest {
+	return NsgroupAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListNsgroupResponse
+func (a *NsgroupAPIService) ListExecute(r NsgroupAPIListRequest) (*ListNsgroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListNsgroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/nsgroup"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NsgroupAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     NsgroupAPI
 	reference      string
@@ -511,38 +511,38 @@ type NsgroupAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r NsgroupAPIReferenceGetRequest) ReturnFields(returnFields string) NsgroupAPIReferenceGetRequest {
+func (r NsgroupAPIReadRequest) ReturnFields(returnFields string) NsgroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) NsgroupAPIReferenceGetRequest {
+func (r NsgroupAPIReadRequest) ReturnFields2(returnFields2 string) NsgroupAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) NsgroupAPIReferenceGetRequest {
+func (r NsgroupAPIReadRequest) ReturnAsObject(returnAsObject int32) NsgroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupAPIReferenceGetRequest) Execute() (*GetNsgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r NsgroupAPIReadRequest) Execute() (*GetNsgroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific nsgroup object
+Read Get a specific nsgroup object
 
 Returns a specific nsgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup object
-	@return NsgroupAPIReferenceGetRequest
+	@return NsgroupAPIReadRequest
 */
-func (a *NsgroupAPIService) ReferenceGet(ctx context.Context, reference string) NsgroupAPIReferenceGetRequest {
-	return NsgroupAPIReferenceGetRequest{
+func (a *NsgroupAPIService) Read(ctx context.Context, reference string) NsgroupAPIReadRequest {
+	return NsgroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *NsgroupAPIService) ReferenceGet(ctx context.Context, reference string) 
 // Execute executes the request
 //
 //	@return GetNsgroupResponse
-func (a *NsgroupAPIService) ReferenceGetExecute(r NsgroupAPIReferenceGetRequest) (*GetNsgroupResponse, *http.Response, error) {
+func (a *NsgroupAPIService) ReadExecute(r NsgroupAPIReadRequest) (*GetNsgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *NsgroupAPIService) ReferenceGetExecute(r NsgroupAPIReferenceGetRequest)
 		localVarReturnValue *GetNsgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *NsgroupAPIService) ReferenceGetExecute(r NsgroupAPIReferenceGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NsgroupAPIReferencePutRequest struct {
+type NsgroupAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     NsgroupAPI
 	reference      string
@@ -639,44 +639,44 @@ type NsgroupAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r NsgroupAPIReferencePutRequest) Nsgroup(nsgroup Nsgroup) NsgroupAPIReferencePutRequest {
+func (r NsgroupAPIUpdateRequest) Nsgroup(nsgroup Nsgroup) NsgroupAPIUpdateRequest {
 	r.nsgroup = &nsgroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NsgroupAPIReferencePutRequest) ReturnFields(returnFields string) NsgroupAPIReferencePutRequest {
+func (r NsgroupAPIUpdateRequest) ReturnFields(returnFields string) NsgroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupAPIReferencePutRequest) ReturnFields2(returnFields2 string) NsgroupAPIReferencePutRequest {
+func (r NsgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) NsgroupAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) NsgroupAPIReferencePutRequest {
+func (r NsgroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NsgroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupAPIReferencePutRequest) Execute() (*UpdateNsgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r NsgroupAPIUpdateRequest) Execute() (*UpdateNsgroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a nsgroup object
+Update Update a nsgroup object
 
 Updates a specific nsgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup object
-	@return NsgroupAPIReferencePutRequest
+	@return NsgroupAPIUpdateRequest
 */
-func (a *NsgroupAPIService) ReferencePut(ctx context.Context, reference string) NsgroupAPIReferencePutRequest {
-	return NsgroupAPIReferencePutRequest{
+func (a *NsgroupAPIService) Update(ctx context.Context, reference string) NsgroupAPIUpdateRequest {
+	return NsgroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *NsgroupAPIService) ReferencePut(ctx context.Context, reference string) 
 // Execute executes the request
 //
 //	@return UpdateNsgroupResponse
-func (a *NsgroupAPIService) ReferencePutExecute(r NsgroupAPIReferencePutRequest) (*UpdateNsgroupResponse, *http.Response, error) {
+func (a *NsgroupAPIService) UpdateExecute(r NsgroupAPIUpdateRequest) (*UpdateNsgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *NsgroupAPIService) ReferencePutExecute(r NsgroupAPIReferencePutRequest)
 		localVarReturnValue *UpdateNsgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

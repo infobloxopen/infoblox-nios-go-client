@@ -23,11 +23,11 @@ func TestFilternacAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test FilternacAPIService Get", func(t *testing.T) {
+	t.Run("Test FilternacAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FilternacAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.FilternacAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestFilternacAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FilternacAPIService Post", func(t *testing.T) {
+	t.Run("Test FilternacAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FilternacAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.FilternacAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FilternacAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.FilternacAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestFilternacAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FilternacAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test FilternacAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.FilternacAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test FilternacAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.FilternacAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FilternacAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestFilternacAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FilternacAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test FilternacAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.FilternacAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FilternacAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

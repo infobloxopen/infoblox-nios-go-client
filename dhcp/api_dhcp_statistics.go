@@ -23,38 +23,38 @@ import (
 
 type DhcpStatisticsAPI interface {
 	/*
-		DhcpstatisticsGet Retrieve dhcp:statistics objects
+		List Retrieve dhcp:statistics objects
 
 		Returns a list of dhcp:statistics objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DhcpStatisticsAPIDhcpstatisticsGetRequest
+		@return DhcpStatisticsAPIListRequest
 	*/
-	DhcpstatisticsGet(ctx context.Context) DhcpStatisticsAPIDhcpstatisticsGetRequest
+	List(ctx context.Context) DhcpStatisticsAPIListRequest
 
-	// DhcpstatisticsGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDhcpStatisticsResponse
-	DhcpstatisticsGetExecute(r DhcpStatisticsAPIDhcpstatisticsGetRequest) (*ListDhcpStatisticsResponse, *http.Response, error)
+	ListExecute(r DhcpStatisticsAPIListRequest) (*ListDhcpStatisticsResponse, *http.Response, error)
 	/*
-		DhcpstatisticsReferenceGet Get a specific dhcp:statistics object
+		Read Get a specific dhcp:statistics object
 
 		Returns a specific dhcp:statistics object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dhcp:statistics object
-		@return DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest
+		@return DhcpStatisticsAPIReadRequest
 	*/
-	DhcpstatisticsReferenceGet(ctx context.Context, reference string) DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest
+	Read(ctx context.Context, reference string) DhcpStatisticsAPIReadRequest
 
-	// DhcpstatisticsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDhcpStatisticsResponse
-	DhcpstatisticsReferenceGetExecute(r DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest) (*GetDhcpStatisticsResponse, *http.Response, error)
+	ReadExecute(r DhcpStatisticsAPIReadRequest) (*GetDhcpStatisticsResponse, *http.Response, error)
 }
 
 // DhcpStatisticsAPIService DhcpStatisticsAPI service
 type DhcpStatisticsAPIService internal.Service
 
-type DhcpStatisticsAPIDhcpstatisticsGetRequest struct {
+type DhcpStatisticsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DhcpStatisticsAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type DhcpStatisticsAPIDhcpstatisticsGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DhcpStatisticsAPIDhcpstatisticsGetRequest) ReturnFields(returnFields string) DhcpStatisticsAPIDhcpstatisticsGetRequest {
+func (r DhcpStatisticsAPIListRequest) ReturnFields(returnFields string) DhcpStatisticsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpStatisticsAPIDhcpstatisticsGetRequest) ReturnFields2(returnFields2 string) DhcpStatisticsAPIDhcpstatisticsGetRequest {
+func (r DhcpStatisticsAPIListRequest) ReturnFields2(returnFields2 string) DhcpStatisticsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DhcpStatisticsAPIDhcpstatisticsGetRequest) MaxResults(maxResults int32) DhcpStatisticsAPIDhcpstatisticsGetRequest {
+func (r DhcpStatisticsAPIListRequest) MaxResults(maxResults int32) DhcpStatisticsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpStatisticsAPIDhcpstatisticsGetRequest) ReturnAsObject(returnAsObject int32) DhcpStatisticsAPIDhcpstatisticsGetRequest {
+func (r DhcpStatisticsAPIListRequest) ReturnAsObject(returnAsObject int32) DhcpStatisticsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DhcpStatisticsAPIDhcpstatisticsGetRequest) Paging(paging int32) DhcpStatisticsAPIDhcpstatisticsGetRequest {
+func (r DhcpStatisticsAPIListRequest) Paging(paging int32) DhcpStatisticsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DhcpStatisticsAPIDhcpstatisticsGetRequest) PageId(pageId string) DhcpStatisticsAPIDhcpstatisticsGetRequest {
+func (r DhcpStatisticsAPIListRequest) PageId(pageId string) DhcpStatisticsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DhcpStatisticsAPIDhcpstatisticsGetRequest) Filters(filters map[string]interface{}) DhcpStatisticsAPIDhcpstatisticsGetRequest {
+func (r DhcpStatisticsAPIListRequest) Filters(filters map[string]interface{}) DhcpStatisticsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DhcpStatisticsAPIDhcpstatisticsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DhcpStatisticsAPIDhcpstatisticsGetRequest {
+func (r DhcpStatisticsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DhcpStatisticsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DhcpStatisticsAPIDhcpstatisticsGetRequest) Execute() (*ListDhcpStatisticsResponse, *http.Response, error) {
-	return r.ApiService.DhcpstatisticsGetExecute(r)
+func (r DhcpStatisticsAPIListRequest) Execute() (*ListDhcpStatisticsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DhcpstatisticsGet Retrieve dhcp:statistics objects
+List Retrieve dhcp:statistics objects
 
 Returns a list of dhcp:statistics objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DhcpStatisticsAPIDhcpstatisticsGetRequest
+	@return DhcpStatisticsAPIListRequest
 */
-func (a *DhcpStatisticsAPIService) DhcpstatisticsGet(ctx context.Context) DhcpStatisticsAPIDhcpstatisticsGetRequest {
-	return DhcpStatisticsAPIDhcpstatisticsGetRequest{
+func (a *DhcpStatisticsAPIService) List(ctx context.Context) DhcpStatisticsAPIListRequest {
+	return DhcpStatisticsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *DhcpStatisticsAPIService) DhcpstatisticsGet(ctx context.Context) DhcpSt
 // Execute executes the request
 //
 //	@return ListDhcpStatisticsResponse
-func (a *DhcpStatisticsAPIService) DhcpstatisticsGetExecute(r DhcpStatisticsAPIDhcpstatisticsGetRequest) (*ListDhcpStatisticsResponse, *http.Response, error) {
+func (a *DhcpStatisticsAPIService) ListExecute(r DhcpStatisticsAPIListRequest) (*ListDhcpStatisticsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *DhcpStatisticsAPIService) DhcpstatisticsGetExecute(r DhcpStatisticsAPID
 		localVarReturnValue *ListDhcpStatisticsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpStatisticsAPIService.DhcpstatisticsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpStatisticsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *DhcpStatisticsAPIService) DhcpstatisticsGetExecute(r DhcpStatisticsAPID
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest struct {
+type DhcpStatisticsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DhcpStatisticsAPI
 	reference      string
@@ -235,38 +235,38 @@ type DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest) ReturnFields(returnFields string) DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest {
+func (r DhcpStatisticsAPIReadRequest) ReturnFields(returnFields string) DhcpStatisticsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest) ReturnFields2(returnFields2 string) DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest {
+func (r DhcpStatisticsAPIReadRequest) ReturnFields2(returnFields2 string) DhcpStatisticsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest) ReturnAsObject(returnAsObject int32) DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest {
+func (r DhcpStatisticsAPIReadRequest) ReturnAsObject(returnAsObject int32) DhcpStatisticsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest) Execute() (*GetDhcpStatisticsResponse, *http.Response, error) {
-	return r.ApiService.DhcpstatisticsReferenceGetExecute(r)
+func (r DhcpStatisticsAPIReadRequest) Execute() (*GetDhcpStatisticsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DhcpstatisticsReferenceGet Get a specific dhcp:statistics object
+Read Get a specific dhcp:statistics object
 
 Returns a specific dhcp:statistics object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dhcp:statistics object
-	@return DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest
+	@return DhcpStatisticsAPIReadRequest
 */
-func (a *DhcpStatisticsAPIService) DhcpstatisticsReferenceGet(ctx context.Context, reference string) DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest {
-	return DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest{
+func (a *DhcpStatisticsAPIService) Read(ctx context.Context, reference string) DhcpStatisticsAPIReadRequest {
+	return DhcpStatisticsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *DhcpStatisticsAPIService) DhcpstatisticsReferenceGet(ctx context.Contex
 // Execute executes the request
 //
 //	@return GetDhcpStatisticsResponse
-func (a *DhcpStatisticsAPIService) DhcpstatisticsReferenceGetExecute(r DhcpStatisticsAPIDhcpstatisticsReferenceGetRequest) (*GetDhcpStatisticsResponse, *http.Response, error) {
+func (a *DhcpStatisticsAPIService) ReadExecute(r DhcpStatisticsAPIReadRequest) (*GetDhcpStatisticsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *DhcpStatisticsAPIService) DhcpstatisticsReferenceGetExecute(r DhcpStati
 		localVarReturnValue *GetDhcpStatisticsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpStatisticsAPIService.DhcpstatisticsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpStatisticsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

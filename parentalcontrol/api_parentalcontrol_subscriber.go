@@ -23,52 +23,52 @@ import (
 
 type ParentalcontrolSubscriberAPI interface {
 	/*
-		ParentalcontrolsubscriberGet Retrieve parentalcontrol:subscriber objects
+		List Retrieve parentalcontrol:subscriber objects
 
 		Returns a list of parentalcontrol:subscriber objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest
+		@return ParentalcontrolSubscriberAPIListRequest
 	*/
-	ParentalcontrolsubscriberGet(ctx context.Context) ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest
+	List(ctx context.Context) ParentalcontrolSubscriberAPIListRequest
 
-	// ParentalcontrolsubscriberGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListParentalcontrolSubscriberResponse
-	ParentalcontrolsubscriberGetExecute(r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) (*ListParentalcontrolSubscriberResponse, *http.Response, error)
+	ListExecute(r ParentalcontrolSubscriberAPIListRequest) (*ListParentalcontrolSubscriberResponse, *http.Response, error)
 	/*
-		ParentalcontrolsubscriberReferenceGet Get a specific parentalcontrol:subscriber object
+		Read Get a specific parentalcontrol:subscriber object
 
 		Returns a specific parentalcontrol:subscriber object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:subscriber object
-		@return ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest
+		@return ParentalcontrolSubscriberAPIReadRequest
 	*/
-	ParentalcontrolsubscriberReferenceGet(ctx context.Context, reference string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest
+	Read(ctx context.Context, reference string) ParentalcontrolSubscriberAPIReadRequest
 
-	// ParentalcontrolsubscriberReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetParentalcontrolSubscriberResponse
-	ParentalcontrolsubscriberReferenceGetExecute(r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest) (*GetParentalcontrolSubscriberResponse, *http.Response, error)
+	ReadExecute(r ParentalcontrolSubscriberAPIReadRequest) (*GetParentalcontrolSubscriberResponse, *http.Response, error)
 	/*
-		ParentalcontrolsubscriberReferencePut Update a parentalcontrol:subscriber object
+		Update Update a parentalcontrol:subscriber object
 
 		Updates a specific parentalcontrol:subscriber object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the parentalcontrol:subscriber object
-		@return ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest
+		@return ParentalcontrolSubscriberAPIUpdateRequest
 	*/
-	ParentalcontrolsubscriberReferencePut(ctx context.Context, reference string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest
+	Update(ctx context.Context, reference string) ParentalcontrolSubscriberAPIUpdateRequest
 
-	// ParentalcontrolsubscriberReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateParentalcontrolSubscriberResponse
-	ParentalcontrolsubscriberReferencePutExecute(r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest) (*UpdateParentalcontrolSubscriberResponse, *http.Response, error)
+	UpdateExecute(r ParentalcontrolSubscriberAPIUpdateRequest) (*UpdateParentalcontrolSubscriberResponse, *http.Response, error)
 }
 
 // ParentalcontrolSubscriberAPIService ParentalcontrolSubscriberAPI service
 type ParentalcontrolSubscriberAPIService internal.Service
 
-type ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest struct {
+type ParentalcontrolSubscriberAPIListRequest struct {
 	ctx            context.Context
 	ApiService     ParentalcontrolSubscriberAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) ReturnFields(returnFields string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest {
+func (r ParentalcontrolSubscriberAPIListRequest) ReturnFields(returnFields string) ParentalcontrolSubscriberAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest {
+func (r ParentalcontrolSubscriberAPIListRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscriberAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) MaxResults(maxResults int32) ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest {
+func (r ParentalcontrolSubscriberAPIListRequest) MaxResults(maxResults int32) ParentalcontrolSubscriberAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest {
+func (r ParentalcontrolSubscriberAPIListRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscriberAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) Paging(paging int32) ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest {
+func (r ParentalcontrolSubscriberAPIListRequest) Paging(paging int32) ParentalcontrolSubscriberAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) PageId(pageId string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest {
+func (r ParentalcontrolSubscriberAPIListRequest) PageId(pageId string) ParentalcontrolSubscriberAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) Filters(filters map[string]interface{}) ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest {
+func (r ParentalcontrolSubscriberAPIListRequest) Filters(filters map[string]interface{}) ParentalcontrolSubscriberAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest {
+func (r ParentalcontrolSubscriberAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ParentalcontrolSubscriberAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) Execute() (*ListParentalcontrolSubscriberResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolsubscriberGetExecute(r)
+func (r ParentalcontrolSubscriberAPIListRequest) Execute() (*ListParentalcontrolSubscriberResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ParentalcontrolsubscriberGet Retrieve parentalcontrol:subscriber objects
+List Retrieve parentalcontrol:subscriber objects
 
 Returns a list of parentalcontrol:subscriber objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest
+	@return ParentalcontrolSubscriberAPIListRequest
 */
-func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberGet(ctx context.Context) ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest {
-	return ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest{
+func (a *ParentalcontrolSubscriberAPIService) List(ctx context.Context) ParentalcontrolSubscriberAPIListRequest {
+	return ParentalcontrolSubscriberAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberGet(ctx c
 // Execute executes the request
 //
 //	@return ListParentalcontrolSubscriberResponse
-func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberGetExecute(r ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest) (*ListParentalcontrolSubscriberResponse, *http.Response, error) {
+func (a *ParentalcontrolSubscriberAPIService) ListExecute(r ParentalcontrolSubscriberAPIListRequest) (*ListParentalcontrolSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberGetExecut
 		localVarReturnValue *ListParentalcontrolSubscriberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscriberAPIService.ParentalcontrolsubscriberGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscriberAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberGetExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest struct {
+type ParentalcontrolSubscriberAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     ParentalcontrolSubscriberAPI
 	reference      string
@@ -249,38 +249,38 @@ type ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest st
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest) ReturnFields(returnFields string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest {
+func (r ParentalcontrolSubscriberAPIReadRequest) ReturnFields(returnFields string) ParentalcontrolSubscriberAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest {
+func (r ParentalcontrolSubscriberAPIReadRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscriberAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest {
+func (r ParentalcontrolSubscriberAPIReadRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscriberAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest) Execute() (*GetParentalcontrolSubscriberResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolsubscriberReferenceGetExecute(r)
+func (r ParentalcontrolSubscriberAPIReadRequest) Execute() (*GetParentalcontrolSubscriberResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ParentalcontrolsubscriberReferenceGet Get a specific parentalcontrol:subscriber object
+Read Get a specific parentalcontrol:subscriber object
 
 Returns a specific parentalcontrol:subscriber object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the parentalcontrol:subscriber object
-	@return ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest
+	@return ParentalcontrolSubscriberAPIReadRequest
 */
-func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberReferenceGet(ctx context.Context, reference string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest {
-	return ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest{
+func (a *ParentalcontrolSubscriberAPIService) Read(ctx context.Context, reference string) ParentalcontrolSubscriberAPIReadRequest {
+	return ParentalcontrolSubscriberAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberReference
 // Execute executes the request
 //
 //	@return GetParentalcontrolSubscriberResponse
-func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberReferenceGetExecute(r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest) (*GetParentalcontrolSubscriberResponse, *http.Response, error) {
+func (a *ParentalcontrolSubscriberAPIService) ReadExecute(r ParentalcontrolSubscriberAPIReadRequest) (*GetParentalcontrolSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberReference
 		localVarReturnValue *GetParentalcontrolSubscriberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscriberAPIService.ParentalcontrolsubscriberReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscriberAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberReference
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest struct {
+type ParentalcontrolSubscriberAPIUpdateRequest struct {
 	ctx                       context.Context
 	ApiService                ParentalcontrolSubscriberAPI
 	reference                 string
@@ -377,44 +377,44 @@ type ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest st
 }
 
 // Object data to update
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest) ParentalcontrolSubscriber(parentalcontrolSubscriber ParentalcontrolSubscriber) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest {
+func (r ParentalcontrolSubscriberAPIUpdateRequest) ParentalcontrolSubscriber(parentalcontrolSubscriber ParentalcontrolSubscriber) ParentalcontrolSubscriberAPIUpdateRequest {
 	r.parentalcontrolSubscriber = &parentalcontrolSubscriber
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest) ReturnFields(returnFields string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest {
+func (r ParentalcontrolSubscriberAPIUpdateRequest) ReturnFields(returnFields string) ParentalcontrolSubscriberAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest {
+func (r ParentalcontrolSubscriberAPIUpdateRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscriberAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest {
+func (r ParentalcontrolSubscriberAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ParentalcontrolSubscriberAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest) Execute() (*UpdateParentalcontrolSubscriberResponse, *http.Response, error) {
-	return r.ApiService.ParentalcontrolsubscriberReferencePutExecute(r)
+func (r ParentalcontrolSubscriberAPIUpdateRequest) Execute() (*UpdateParentalcontrolSubscriberResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ParentalcontrolsubscriberReferencePut Update a parentalcontrol:subscriber object
+Update Update a parentalcontrol:subscriber object
 
 Updates a specific parentalcontrol:subscriber object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the parentalcontrol:subscriber object
-	@return ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest
+	@return ParentalcontrolSubscriberAPIUpdateRequest
 */
-func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberReferencePut(ctx context.Context, reference string) ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest {
-	return ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest{
+func (a *ParentalcontrolSubscriberAPIService) Update(ctx context.Context, reference string) ParentalcontrolSubscriberAPIUpdateRequest {
+	return ParentalcontrolSubscriberAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberReference
 // Execute executes the request
 //
 //	@return UpdateParentalcontrolSubscriberResponse
-func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberReferencePutExecute(r ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest) (*UpdateParentalcontrolSubscriberResponse, *http.Response, error) {
+func (a *ParentalcontrolSubscriberAPIService) UpdateExecute(r ParentalcontrolSubscriberAPIUpdateRequest) (*UpdateParentalcontrolSubscriberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *ParentalcontrolSubscriberAPIService) ParentalcontrolsubscriberReference
 		localVarReturnValue *UpdateParentalcontrolSubscriberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscriberAPIService.ParentalcontrolsubscriberReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ParentalcontrolSubscriberAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

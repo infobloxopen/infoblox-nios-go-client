@@ -23,11 +23,11 @@ func TestDdnsPrincipalclusterAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test DdnsPrincipalclusterAPIService DdnsprincipalclusterGet", func(t *testing.T) {
+	t.Run("Test DdnsPrincipalclusterAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DdnsPrincipalclusterAPI.DdnsprincipalclusterGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DdnsPrincipalclusterAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDdnsPrincipalclusterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DdnsPrincipalclusterAPIService DdnsprincipalclusterPost", func(t *testing.T) {
+	t.Run("Test DdnsPrincipalclusterAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DdnsPrincipalclusterAPI.DdnsprincipalclusterPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DdnsPrincipalclusterAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DdnsPrincipalclusterAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DdnsPrincipalclusterAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDdnsPrincipalclusterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DdnsPrincipalclusterAPIService DdnsprincipalclusterReferenceDelete", func(t *testing.T) {
+	t.Run("Test DdnsPrincipalclusterAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DdnsPrincipalclusterAPI.DdnsprincipalclusterReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DdnsPrincipalclusterAPIService DdnsprincipalclusterReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DdnsPrincipalclusterAPI.DdnsprincipalclusterReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DdnsPrincipalclusterAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDdnsPrincipalclusterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DdnsPrincipalclusterAPIService DdnsprincipalclusterReferencePut", func(t *testing.T) {
+	t.Run("Test DdnsPrincipalclusterAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DdnsPrincipalclusterAPI.DdnsprincipalclusterReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DdnsPrincipalclusterAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

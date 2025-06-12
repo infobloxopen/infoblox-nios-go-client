@@ -23,38 +23,38 @@ import (
 
 type IpamStatisticsAPI interface {
 	/*
-		IpamstatisticsGet Retrieve ipam:statistics objects
+		List Retrieve ipam:statistics objects
 
 		Returns a list of ipam:statistics objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return IpamStatisticsAPIIpamstatisticsGetRequest
+		@return IpamStatisticsAPIListRequest
 	*/
-	IpamstatisticsGet(ctx context.Context) IpamStatisticsAPIIpamstatisticsGetRequest
+	List(ctx context.Context) IpamStatisticsAPIListRequest
 
-	// IpamstatisticsGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListIpamStatisticsResponse
-	IpamstatisticsGetExecute(r IpamStatisticsAPIIpamstatisticsGetRequest) (*ListIpamStatisticsResponse, *http.Response, error)
+	ListExecute(r IpamStatisticsAPIListRequest) (*ListIpamStatisticsResponse, *http.Response, error)
 	/*
-		IpamstatisticsReferenceGet Get a specific ipam:statistics object
+		Read Get a specific ipam:statistics object
 
 		Returns a specific ipam:statistics object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipam:statistics object
-		@return IpamStatisticsAPIIpamstatisticsReferenceGetRequest
+		@return IpamStatisticsAPIReadRequest
 	*/
-	IpamstatisticsReferenceGet(ctx context.Context, reference string) IpamStatisticsAPIIpamstatisticsReferenceGetRequest
+	Read(ctx context.Context, reference string) IpamStatisticsAPIReadRequest
 
-	// IpamstatisticsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetIpamStatisticsResponse
-	IpamstatisticsReferenceGetExecute(r IpamStatisticsAPIIpamstatisticsReferenceGetRequest) (*GetIpamStatisticsResponse, *http.Response, error)
+	ReadExecute(r IpamStatisticsAPIReadRequest) (*GetIpamStatisticsResponse, *http.Response, error)
 }
 
 // IpamStatisticsAPIService IpamStatisticsAPI service
 type IpamStatisticsAPIService internal.Service
 
-type IpamStatisticsAPIIpamstatisticsGetRequest struct {
+type IpamStatisticsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     IpamStatisticsAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type IpamStatisticsAPIIpamstatisticsGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r IpamStatisticsAPIIpamstatisticsGetRequest) ReturnFields(returnFields string) IpamStatisticsAPIIpamstatisticsGetRequest {
+func (r IpamStatisticsAPIListRequest) ReturnFields(returnFields string) IpamStatisticsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r IpamStatisticsAPIIpamstatisticsGetRequest) ReturnFields2(returnFields2 string) IpamStatisticsAPIIpamstatisticsGetRequest {
+func (r IpamStatisticsAPIListRequest) ReturnFields2(returnFields2 string) IpamStatisticsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r IpamStatisticsAPIIpamstatisticsGetRequest) MaxResults(maxResults int32) IpamStatisticsAPIIpamstatisticsGetRequest {
+func (r IpamStatisticsAPIListRequest) MaxResults(maxResults int32) IpamStatisticsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r IpamStatisticsAPIIpamstatisticsGetRequest) ReturnAsObject(returnAsObject int32) IpamStatisticsAPIIpamstatisticsGetRequest {
+func (r IpamStatisticsAPIListRequest) ReturnAsObject(returnAsObject int32) IpamStatisticsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r IpamStatisticsAPIIpamstatisticsGetRequest) Paging(paging int32) IpamStatisticsAPIIpamstatisticsGetRequest {
+func (r IpamStatisticsAPIListRequest) Paging(paging int32) IpamStatisticsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r IpamStatisticsAPIIpamstatisticsGetRequest) PageId(pageId string) IpamStatisticsAPIIpamstatisticsGetRequest {
+func (r IpamStatisticsAPIListRequest) PageId(pageId string) IpamStatisticsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r IpamStatisticsAPIIpamstatisticsGetRequest) Filters(filters map[string]interface{}) IpamStatisticsAPIIpamstatisticsGetRequest {
+func (r IpamStatisticsAPIListRequest) Filters(filters map[string]interface{}) IpamStatisticsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r IpamStatisticsAPIIpamstatisticsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) IpamStatisticsAPIIpamstatisticsGetRequest {
+func (r IpamStatisticsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) IpamStatisticsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r IpamStatisticsAPIIpamstatisticsGetRequest) Execute() (*ListIpamStatisticsResponse, *http.Response, error) {
-	return r.ApiService.IpamstatisticsGetExecute(r)
+func (r IpamStatisticsAPIListRequest) Execute() (*ListIpamStatisticsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-IpamstatisticsGet Retrieve ipam:statistics objects
+List Retrieve ipam:statistics objects
 
 Returns a list of ipam:statistics objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return IpamStatisticsAPIIpamstatisticsGetRequest
+	@return IpamStatisticsAPIListRequest
 */
-func (a *IpamStatisticsAPIService) IpamstatisticsGet(ctx context.Context) IpamStatisticsAPIIpamstatisticsGetRequest {
-	return IpamStatisticsAPIIpamstatisticsGetRequest{
+func (a *IpamStatisticsAPIService) List(ctx context.Context) IpamStatisticsAPIListRequest {
+	return IpamStatisticsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *IpamStatisticsAPIService) IpamstatisticsGet(ctx context.Context) IpamSt
 // Execute executes the request
 //
 //	@return ListIpamStatisticsResponse
-func (a *IpamStatisticsAPIService) IpamstatisticsGetExecute(r IpamStatisticsAPIIpamstatisticsGetRequest) (*ListIpamStatisticsResponse, *http.Response, error) {
+func (a *IpamStatisticsAPIService) ListExecute(r IpamStatisticsAPIListRequest) (*ListIpamStatisticsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *IpamStatisticsAPIService) IpamstatisticsGetExecute(r IpamStatisticsAPII
 		localVarReturnValue *ListIpamStatisticsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamStatisticsAPIService.IpamstatisticsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamStatisticsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *IpamStatisticsAPIService) IpamstatisticsGetExecute(r IpamStatisticsAPII
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type IpamStatisticsAPIIpamstatisticsReferenceGetRequest struct {
+type IpamStatisticsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     IpamStatisticsAPI
 	reference      string
@@ -235,38 +235,38 @@ type IpamStatisticsAPIIpamstatisticsReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r IpamStatisticsAPIIpamstatisticsReferenceGetRequest) ReturnFields(returnFields string) IpamStatisticsAPIIpamstatisticsReferenceGetRequest {
+func (r IpamStatisticsAPIReadRequest) ReturnFields(returnFields string) IpamStatisticsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r IpamStatisticsAPIIpamstatisticsReferenceGetRequest) ReturnFields2(returnFields2 string) IpamStatisticsAPIIpamstatisticsReferenceGetRequest {
+func (r IpamStatisticsAPIReadRequest) ReturnFields2(returnFields2 string) IpamStatisticsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r IpamStatisticsAPIIpamstatisticsReferenceGetRequest) ReturnAsObject(returnAsObject int32) IpamStatisticsAPIIpamstatisticsReferenceGetRequest {
+func (r IpamStatisticsAPIReadRequest) ReturnAsObject(returnAsObject int32) IpamStatisticsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r IpamStatisticsAPIIpamstatisticsReferenceGetRequest) Execute() (*GetIpamStatisticsResponse, *http.Response, error) {
-	return r.ApiService.IpamstatisticsReferenceGetExecute(r)
+func (r IpamStatisticsAPIReadRequest) Execute() (*GetIpamStatisticsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-IpamstatisticsReferenceGet Get a specific ipam:statistics object
+Read Get a specific ipam:statistics object
 
 Returns a specific ipam:statistics object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipam:statistics object
-	@return IpamStatisticsAPIIpamstatisticsReferenceGetRequest
+	@return IpamStatisticsAPIReadRequest
 */
-func (a *IpamStatisticsAPIService) IpamstatisticsReferenceGet(ctx context.Context, reference string) IpamStatisticsAPIIpamstatisticsReferenceGetRequest {
-	return IpamStatisticsAPIIpamstatisticsReferenceGetRequest{
+func (a *IpamStatisticsAPIService) Read(ctx context.Context, reference string) IpamStatisticsAPIReadRequest {
+	return IpamStatisticsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *IpamStatisticsAPIService) IpamstatisticsReferenceGet(ctx context.Contex
 // Execute executes the request
 //
 //	@return GetIpamStatisticsResponse
-func (a *IpamStatisticsAPIService) IpamstatisticsReferenceGetExecute(r IpamStatisticsAPIIpamstatisticsReferenceGetRequest) (*GetIpamStatisticsResponse, *http.Response, error) {
+func (a *IpamStatisticsAPIService) ReadExecute(r IpamStatisticsAPIReadRequest) (*GetIpamStatisticsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *IpamStatisticsAPIService) IpamstatisticsReferenceGetExecute(r IpamStati
 		localVarReturnValue *GetIpamStatisticsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamStatisticsAPIService.IpamstatisticsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "IpamStatisticsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

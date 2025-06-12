@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **ActiveDashboardType** | Pointer to **string** | Determines the active dashboard type. | [optional] 
 **AdminGroup** | Pointer to **string** | The Admin Group object to which the admin belongs. An admin user can belong to only one admin group at a time. | [optional] [readonly] 
-**DaysToExpire** | Pointer to **int32** | The number of days left before the admin&#39;s password expires. | [optional] [readonly] 
+**DaysToExpire** | Pointer to **int64** | The number of days left before the admin&#39;s password expires. | [optional] [readonly] 
 **Email** | Pointer to **string** | The email address of the admin. | [optional] 
 **GlobalSearchOnEa** | Pointer to **bool** | Determines if extensible attribute values will be returned by global search or not. | [optional] 
 **GlobalSearchOnNiData** | Pointer to **bool** | Determines if global search will search for network insight devices and interfaces or not. | [optional] 
@@ -121,20 +121,20 @@ HasAdminGroup returns a boolean if a field has been set.
 
 ### GetDaysToExpire
 
-`func (o *GetUserprofileResponse) GetDaysToExpire() int32`
+`func (o *GetUserprofileResponse) GetDaysToExpire() int64`
 
 GetDaysToExpire returns the DaysToExpire field if non-nil, zero value otherwise.
 
 ### GetDaysToExpireOk
 
-`func (o *GetUserprofileResponse) GetDaysToExpireOk() (*int32, bool)`
+`func (o *GetUserprofileResponse) GetDaysToExpireOk() (*int64, bool)`
 
 GetDaysToExpireOk returns a tuple with the DaysToExpire field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDaysToExpire
 
-`func (o *GetUserprofileResponse) SetDaysToExpire(v int32)`
+`func (o *GetUserprofileResponse) SetDaysToExpire(v int64)`
 
 SetDaysToExpire sets DaysToExpire field to given value.
 

@@ -23,11 +23,11 @@ func TestDhcpfailoverAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test DhcpfailoverAPIService Get", func(t *testing.T) {
+	t.Run("Test DhcpfailoverAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DhcpfailoverAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DhcpfailoverAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDhcpfailoverAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DhcpfailoverAPIService Post", func(t *testing.T) {
+	t.Run("Test DhcpfailoverAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DhcpfailoverAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DhcpfailoverAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DhcpfailoverAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DhcpfailoverAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDhcpfailoverAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DhcpfailoverAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test DhcpfailoverAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DhcpfailoverAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DhcpfailoverAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DhcpfailoverAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DhcpfailoverAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDhcpfailoverAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DhcpfailoverAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test DhcpfailoverAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DhcpfailoverAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DhcpfailoverAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

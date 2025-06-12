@@ -23,52 +23,52 @@ import (
 
 type OutboundCloudclientAPI interface {
 	/*
-		OutboundcloudclientGet Retrieve outbound:cloudclient objects
+		List Retrieve outbound:cloudclient objects
 
 		Returns a list of outbound:cloudclient objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return OutboundCloudclientAPIOutboundcloudclientGetRequest
+		@return OutboundCloudclientAPIListRequest
 	*/
-	OutboundcloudclientGet(ctx context.Context) OutboundCloudclientAPIOutboundcloudclientGetRequest
+	List(ctx context.Context) OutboundCloudclientAPIListRequest
 
-	// OutboundcloudclientGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListOutboundCloudclientResponse
-	OutboundcloudclientGetExecute(r OutboundCloudclientAPIOutboundcloudclientGetRequest) (*ListOutboundCloudclientResponse, *http.Response, error)
+	ListExecute(r OutboundCloudclientAPIListRequest) (*ListOutboundCloudclientResponse, *http.Response, error)
 	/*
-		OutboundcloudclientReferenceGet Get a specific outbound:cloudclient object
+		Read Get a specific outbound:cloudclient object
 
 		Returns a specific outbound:cloudclient object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the outbound:cloudclient object
-		@return OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest
+		@return OutboundCloudclientAPIReadRequest
 	*/
-	OutboundcloudclientReferenceGet(ctx context.Context, reference string) OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest
+	Read(ctx context.Context, reference string) OutboundCloudclientAPIReadRequest
 
-	// OutboundcloudclientReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetOutboundCloudclientResponse
-	OutboundcloudclientReferenceGetExecute(r OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest) (*GetOutboundCloudclientResponse, *http.Response, error)
+	ReadExecute(r OutboundCloudclientAPIReadRequest) (*GetOutboundCloudclientResponse, *http.Response, error)
 	/*
-		OutboundcloudclientReferencePut Update a outbound:cloudclient object
+		Update Update a outbound:cloudclient object
 
 		Updates a specific outbound:cloudclient object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the outbound:cloudclient object
-		@return OutboundCloudclientAPIOutboundcloudclientReferencePutRequest
+		@return OutboundCloudclientAPIUpdateRequest
 	*/
-	OutboundcloudclientReferencePut(ctx context.Context, reference string) OutboundCloudclientAPIOutboundcloudclientReferencePutRequest
+	Update(ctx context.Context, reference string) OutboundCloudclientAPIUpdateRequest
 
-	// OutboundcloudclientReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateOutboundCloudclientResponse
-	OutboundcloudclientReferencePutExecute(r OutboundCloudclientAPIOutboundcloudclientReferencePutRequest) (*UpdateOutboundCloudclientResponse, *http.Response, error)
+	UpdateExecute(r OutboundCloudclientAPIUpdateRequest) (*UpdateOutboundCloudclientResponse, *http.Response, error)
 }
 
 // OutboundCloudclientAPIService OutboundCloudclientAPI service
 type OutboundCloudclientAPIService internal.Service
 
-type OutboundCloudclientAPIOutboundcloudclientGetRequest struct {
+type OutboundCloudclientAPIListRequest struct {
 	ctx            context.Context
 	ApiService     OutboundCloudclientAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type OutboundCloudclientAPIOutboundcloudclientGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r OutboundCloudclientAPIOutboundcloudclientGetRequest) ReturnFields(returnFields string) OutboundCloudclientAPIOutboundcloudclientGetRequest {
+func (r OutboundCloudclientAPIListRequest) ReturnFields(returnFields string) OutboundCloudclientAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OutboundCloudclientAPIOutboundcloudclientGetRequest) ReturnFields2(returnFields2 string) OutboundCloudclientAPIOutboundcloudclientGetRequest {
+func (r OutboundCloudclientAPIListRequest) ReturnFields2(returnFields2 string) OutboundCloudclientAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r OutboundCloudclientAPIOutboundcloudclientGetRequest) MaxResults(maxResults int32) OutboundCloudclientAPIOutboundcloudclientGetRequest {
+func (r OutboundCloudclientAPIListRequest) MaxResults(maxResults int32) OutboundCloudclientAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r OutboundCloudclientAPIOutboundcloudclientGetRequest) ReturnAsObject(returnAsObject int32) OutboundCloudclientAPIOutboundcloudclientGetRequest {
+func (r OutboundCloudclientAPIListRequest) ReturnAsObject(returnAsObject int32) OutboundCloudclientAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r OutboundCloudclientAPIOutboundcloudclientGetRequest) Paging(paging int32) OutboundCloudclientAPIOutboundcloudclientGetRequest {
+func (r OutboundCloudclientAPIListRequest) Paging(paging int32) OutboundCloudclientAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r OutboundCloudclientAPIOutboundcloudclientGetRequest) PageId(pageId string) OutboundCloudclientAPIOutboundcloudclientGetRequest {
+func (r OutboundCloudclientAPIListRequest) PageId(pageId string) OutboundCloudclientAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r OutboundCloudclientAPIOutboundcloudclientGetRequest) Filters(filters map[string]interface{}) OutboundCloudclientAPIOutboundcloudclientGetRequest {
+func (r OutboundCloudclientAPIListRequest) Filters(filters map[string]interface{}) OutboundCloudclientAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r OutboundCloudclientAPIOutboundcloudclientGetRequest) Extattrfilter(extattrfilter map[string]interface{}) OutboundCloudclientAPIOutboundcloudclientGetRequest {
+func (r OutboundCloudclientAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) OutboundCloudclientAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r OutboundCloudclientAPIOutboundcloudclientGetRequest) Execute() (*ListOutboundCloudclientResponse, *http.Response, error) {
-	return r.ApiService.OutboundcloudclientGetExecute(r)
+func (r OutboundCloudclientAPIListRequest) Execute() (*ListOutboundCloudclientResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-OutboundcloudclientGet Retrieve outbound:cloudclient objects
+List Retrieve outbound:cloudclient objects
 
 Returns a list of outbound:cloudclient objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return OutboundCloudclientAPIOutboundcloudclientGetRequest
+	@return OutboundCloudclientAPIListRequest
 */
-func (a *OutboundCloudclientAPIService) OutboundcloudclientGet(ctx context.Context) OutboundCloudclientAPIOutboundcloudclientGetRequest {
-	return OutboundCloudclientAPIOutboundcloudclientGetRequest{
+func (a *OutboundCloudclientAPIService) List(ctx context.Context) OutboundCloudclientAPIListRequest {
+	return OutboundCloudclientAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *OutboundCloudclientAPIService) OutboundcloudclientGet(ctx context.Conte
 // Execute executes the request
 //
 //	@return ListOutboundCloudclientResponse
-func (a *OutboundCloudclientAPIService) OutboundcloudclientGetExecute(r OutboundCloudclientAPIOutboundcloudclientGetRequest) (*ListOutboundCloudclientResponse, *http.Response, error) {
+func (a *OutboundCloudclientAPIService) ListExecute(r OutboundCloudclientAPIListRequest) (*ListOutboundCloudclientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *OutboundCloudclientAPIService) OutboundcloudclientGetExecute(r Outbound
 		localVarReturnValue *ListOutboundCloudclientResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OutboundCloudclientAPIService.OutboundcloudclientGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OutboundCloudclientAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *OutboundCloudclientAPIService) OutboundcloudclientGetExecute(r Outbound
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest struct {
+type OutboundCloudclientAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     OutboundCloudclientAPI
 	reference      string
@@ -249,38 +249,38 @@ type OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest) ReturnFields(returnFields string) OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest {
+func (r OutboundCloudclientAPIReadRequest) ReturnFields(returnFields string) OutboundCloudclientAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest) ReturnFields2(returnFields2 string) OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest {
+func (r OutboundCloudclientAPIReadRequest) ReturnFields2(returnFields2 string) OutboundCloudclientAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest) ReturnAsObject(returnAsObject int32) OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest {
+func (r OutboundCloudclientAPIReadRequest) ReturnAsObject(returnAsObject int32) OutboundCloudclientAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest) Execute() (*GetOutboundCloudclientResponse, *http.Response, error) {
-	return r.ApiService.OutboundcloudclientReferenceGetExecute(r)
+func (r OutboundCloudclientAPIReadRequest) Execute() (*GetOutboundCloudclientResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-OutboundcloudclientReferenceGet Get a specific outbound:cloudclient object
+Read Get a specific outbound:cloudclient object
 
 Returns a specific outbound:cloudclient object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the outbound:cloudclient object
-	@return OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest
+	@return OutboundCloudclientAPIReadRequest
 */
-func (a *OutboundCloudclientAPIService) OutboundcloudclientReferenceGet(ctx context.Context, reference string) OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest {
-	return OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest{
+func (a *OutboundCloudclientAPIService) Read(ctx context.Context, reference string) OutboundCloudclientAPIReadRequest {
+	return OutboundCloudclientAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *OutboundCloudclientAPIService) OutboundcloudclientReferenceGet(ctx cont
 // Execute executes the request
 //
 //	@return GetOutboundCloudclientResponse
-func (a *OutboundCloudclientAPIService) OutboundcloudclientReferenceGetExecute(r OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest) (*GetOutboundCloudclientResponse, *http.Response, error) {
+func (a *OutboundCloudclientAPIService) ReadExecute(r OutboundCloudclientAPIReadRequest) (*GetOutboundCloudclientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *OutboundCloudclientAPIService) OutboundcloudclientReferenceGetExecute(r
 		localVarReturnValue *GetOutboundCloudclientResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OutboundCloudclientAPIService.OutboundcloudclientReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OutboundCloudclientAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *OutboundCloudclientAPIService) OutboundcloudclientReferenceGetExecute(r
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type OutboundCloudclientAPIOutboundcloudclientReferencePutRequest struct {
+type OutboundCloudclientAPIUpdateRequest struct {
 	ctx                 context.Context
 	ApiService          OutboundCloudclientAPI
 	reference           string
@@ -377,44 +377,44 @@ type OutboundCloudclientAPIOutboundcloudclientReferencePutRequest struct {
 }
 
 // Object data to update
-func (r OutboundCloudclientAPIOutboundcloudclientReferencePutRequest) OutboundCloudclient(outboundCloudclient OutboundCloudclient) OutboundCloudclientAPIOutboundcloudclientReferencePutRequest {
+func (r OutboundCloudclientAPIUpdateRequest) OutboundCloudclient(outboundCloudclient OutboundCloudclient) OutboundCloudclientAPIUpdateRequest {
 	r.outboundCloudclient = &outboundCloudclient
 	return r
 }
 
 // Enter the field names followed by comma
-func (r OutboundCloudclientAPIOutboundcloudclientReferencePutRequest) ReturnFields(returnFields string) OutboundCloudclientAPIOutboundcloudclientReferencePutRequest {
+func (r OutboundCloudclientAPIUpdateRequest) ReturnFields(returnFields string) OutboundCloudclientAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OutboundCloudclientAPIOutboundcloudclientReferencePutRequest) ReturnFields2(returnFields2 string) OutboundCloudclientAPIOutboundcloudclientReferencePutRequest {
+func (r OutboundCloudclientAPIUpdateRequest) ReturnFields2(returnFields2 string) OutboundCloudclientAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r OutboundCloudclientAPIOutboundcloudclientReferencePutRequest) ReturnAsObject(returnAsObject int32) OutboundCloudclientAPIOutboundcloudclientReferencePutRequest {
+func (r OutboundCloudclientAPIUpdateRequest) ReturnAsObject(returnAsObject int32) OutboundCloudclientAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r OutboundCloudclientAPIOutboundcloudclientReferencePutRequest) Execute() (*UpdateOutboundCloudclientResponse, *http.Response, error) {
-	return r.ApiService.OutboundcloudclientReferencePutExecute(r)
+func (r OutboundCloudclientAPIUpdateRequest) Execute() (*UpdateOutboundCloudclientResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-OutboundcloudclientReferencePut Update a outbound:cloudclient object
+Update Update a outbound:cloudclient object
 
 Updates a specific outbound:cloudclient object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the outbound:cloudclient object
-	@return OutboundCloudclientAPIOutboundcloudclientReferencePutRequest
+	@return OutboundCloudclientAPIUpdateRequest
 */
-func (a *OutboundCloudclientAPIService) OutboundcloudclientReferencePut(ctx context.Context, reference string) OutboundCloudclientAPIOutboundcloudclientReferencePutRequest {
-	return OutboundCloudclientAPIOutboundcloudclientReferencePutRequest{
+func (a *OutboundCloudclientAPIService) Update(ctx context.Context, reference string) OutboundCloudclientAPIUpdateRequest {
+	return OutboundCloudclientAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *OutboundCloudclientAPIService) OutboundcloudclientReferencePut(ctx cont
 // Execute executes the request
 //
 //	@return UpdateOutboundCloudclientResponse
-func (a *OutboundCloudclientAPIService) OutboundcloudclientReferencePutExecute(r OutboundCloudclientAPIOutboundcloudclientReferencePutRequest) (*UpdateOutboundCloudclientResponse, *http.Response, error) {
+func (a *OutboundCloudclientAPIService) UpdateExecute(r OutboundCloudclientAPIUpdateRequest) (*UpdateOutboundCloudclientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *OutboundCloudclientAPIService) OutboundcloudclientReferencePutExecute(r
 		localVarReturnValue *UpdateOutboundCloudclientResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OutboundCloudclientAPIService.OutboundcloudclientReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OutboundCloudclientAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -23,249 +23,78 @@ import (
 
 type FilterrelayagentAPI interface {
 	/*
-		Get Retrieve filterrelayagent objects
-
-		Returns a list of filterrelayagent objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FilterrelayagentAPIGetRequest
-	*/
-	Get(ctx context.Context) FilterrelayagentAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListFilterrelayagentResponse
-	GetExecute(r FilterrelayagentAPIGetRequest) (*ListFilterrelayagentResponse, *http.Response, error)
-	/*
-		Post Create a filterrelayagent object
+		Create Create a filterrelayagent object
 
 		Creates a new filterrelayagent object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FilterrelayagentAPIPostRequest
+		@return FilterrelayagentAPICreateRequest
 	*/
-	Post(ctx context.Context) FilterrelayagentAPIPostRequest
+	Create(ctx context.Context) FilterrelayagentAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateFilterrelayagentResponse
-	PostExecute(r FilterrelayagentAPIPostRequest) (*CreateFilterrelayagentResponse, *http.Response, error)
+	CreateExecute(r FilterrelayagentAPICreateRequest) (*CreateFilterrelayagentResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a filterrelayagent object
+		Delete Delete a filterrelayagent object
 
 		Deletes a specific filterrelayagent object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filterrelayagent object
-		@return FilterrelayagentAPIReferenceDeleteRequest
+		@return FilterrelayagentAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) FilterrelayagentAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) FilterrelayagentAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r FilterrelayagentAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r FilterrelayagentAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific filterrelayagent object
+		List Retrieve filterrelayagent objects
+
+		Returns a list of filterrelayagent objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return FilterrelayagentAPIListRequest
+	*/
+	List(ctx context.Context) FilterrelayagentAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListFilterrelayagentResponse
+	ListExecute(r FilterrelayagentAPIListRequest) (*ListFilterrelayagentResponse, *http.Response, error)
+	/*
+		Read Get a specific filterrelayagent object
 
 		Returns a specific filterrelayagent object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filterrelayagent object
-		@return FilterrelayagentAPIReferenceGetRequest
+		@return FilterrelayagentAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) FilterrelayagentAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) FilterrelayagentAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetFilterrelayagentResponse
-	ReferenceGetExecute(r FilterrelayagentAPIReferenceGetRequest) (*GetFilterrelayagentResponse, *http.Response, error)
+	ReadExecute(r FilterrelayagentAPIReadRequest) (*GetFilterrelayagentResponse, *http.Response, error)
 	/*
-		ReferencePut Update a filterrelayagent object
+		Update Update a filterrelayagent object
 
 		Updates a specific filterrelayagent object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filterrelayagent object
-		@return FilterrelayagentAPIReferencePutRequest
+		@return FilterrelayagentAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) FilterrelayagentAPIReferencePutRequest
+	Update(ctx context.Context, reference string) FilterrelayagentAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateFilterrelayagentResponse
-	ReferencePutExecute(r FilterrelayagentAPIReferencePutRequest) (*UpdateFilterrelayagentResponse, *http.Response, error)
+	UpdateExecute(r FilterrelayagentAPIUpdateRequest) (*UpdateFilterrelayagentResponse, *http.Response, error)
 }
 
 // FilterrelayagentAPIService FilterrelayagentAPI service
 type FilterrelayagentAPIService internal.Service
 
-type FilterrelayagentAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     FilterrelayagentAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r FilterrelayagentAPIGetRequest) ReturnFields(returnFields string) FilterrelayagentAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterrelayagentAPIGetRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r FilterrelayagentAPIGetRequest) MaxResults(maxResults int32) FilterrelayagentAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r FilterrelayagentAPIGetRequest) ReturnAsObject(returnAsObject int32) FilterrelayagentAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r FilterrelayagentAPIGetRequest) Paging(paging int32) FilterrelayagentAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r FilterrelayagentAPIGetRequest) PageId(pageId string) FilterrelayagentAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r FilterrelayagentAPIGetRequest) Filters(filters map[string]interface{}) FilterrelayagentAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r FilterrelayagentAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) FilterrelayagentAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r FilterrelayagentAPIGetRequest) Execute() (*ListFilterrelayagentResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve filterrelayagent objects
-
-Returns a list of filterrelayagent objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FilterrelayagentAPIGetRequest
-*/
-func (a *FilterrelayagentAPIService) Get(ctx context.Context) FilterrelayagentAPIGetRequest {
-	return FilterrelayagentAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListFilterrelayagentResponse
-func (a *FilterrelayagentAPIService) GetExecute(r FilterrelayagentAPIGetRequest) (*ListFilterrelayagentResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListFilterrelayagentResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterrelayagentAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/filterrelayagent"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type FilterrelayagentAPIPostRequest struct {
+type FilterrelayagentAPICreateRequest struct {
 	ctx              context.Context
 	ApiService       FilterrelayagentAPI
 	filterrelayagent *Filterrelayagent
@@ -275,43 +104,43 @@ type FilterrelayagentAPIPostRequest struct {
 }
 
 // Object data to create
-func (r FilterrelayagentAPIPostRequest) Filterrelayagent(filterrelayagent Filterrelayagent) FilterrelayagentAPIPostRequest {
+func (r FilterrelayagentAPICreateRequest) Filterrelayagent(filterrelayagent Filterrelayagent) FilterrelayagentAPICreateRequest {
 	r.filterrelayagent = &filterrelayagent
 	return r
 }
 
 // Enter the field names followed by comma
-func (r FilterrelayagentAPIPostRequest) ReturnFields(returnFields string) FilterrelayagentAPIPostRequest {
+func (r FilterrelayagentAPICreateRequest) ReturnFields(returnFields string) FilterrelayagentAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterrelayagentAPIPostRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPIPostRequest {
+func (r FilterrelayagentAPICreateRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilterrelayagentAPIPostRequest) ReturnAsObject(returnAsObject int32) FilterrelayagentAPIPostRequest {
+func (r FilterrelayagentAPICreateRequest) ReturnAsObject(returnAsObject int32) FilterrelayagentAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FilterrelayagentAPIPostRequest) Execute() (*CreateFilterrelayagentResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r FilterrelayagentAPICreateRequest) Execute() (*CreateFilterrelayagentResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a filterrelayagent object
+Create Create a filterrelayagent object
 
 Creates a new filterrelayagent object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FilterrelayagentAPIPostRequest
+	@return FilterrelayagentAPICreateRequest
 */
-func (a *FilterrelayagentAPIService) Post(ctx context.Context) FilterrelayagentAPIPostRequest {
-	return FilterrelayagentAPIPostRequest{
+func (a *FilterrelayagentAPIService) Create(ctx context.Context) FilterrelayagentAPICreateRequest {
+	return FilterrelayagentAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *FilterrelayagentAPIService) Post(ctx context.Context) FilterrelayagentA
 // Execute executes the request
 //
 //	@return CreateFilterrelayagentResponse
-func (a *FilterrelayagentAPIService) PostExecute(r FilterrelayagentAPIPostRequest) (*CreateFilterrelayagentResponse, *http.Response, error) {
+func (a *FilterrelayagentAPIService) CreateExecute(r FilterrelayagentAPICreateRequest) (*CreateFilterrelayagentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *FilterrelayagentAPIService) PostExecute(r FilterrelayagentAPIPostReques
 		localVarReturnValue *CreateFilterrelayagentResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterrelayagentAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterrelayagentAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *FilterrelayagentAPIService) PostExecute(r FilterrelayagentAPIPostReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FilterrelayagentAPIReferenceDeleteRequest struct {
+type FilterrelayagentAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService FilterrelayagentAPI
 	reference  string
 }
 
-func (r FilterrelayagentAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r FilterrelayagentAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a filterrelayagent object
+Delete Delete a filterrelayagent object
 
 Deletes a specific filterrelayagent object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the filterrelayagent object
-	@return FilterrelayagentAPIReferenceDeleteRequest
+	@return FilterrelayagentAPIDeleteRequest
 */
-func (a *FilterrelayagentAPIService) ReferenceDelete(ctx context.Context, reference string) FilterrelayagentAPIReferenceDeleteRequest {
-	return FilterrelayagentAPIReferenceDeleteRequest{
+func (a *FilterrelayagentAPIService) Delete(ctx context.Context, reference string) FilterrelayagentAPIDeleteRequest {
+	return FilterrelayagentAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *FilterrelayagentAPIService) ReferenceDelete(ctx context.Context, refere
 }
 
 // Execute executes the request
-func (a *FilterrelayagentAPIService) ReferenceDeleteExecute(r FilterrelayagentAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *FilterrelayagentAPIService) DeleteExecute(r FilterrelayagentAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterrelayagentAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterrelayagentAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *FilterrelayagentAPIService) ReferenceDeleteExecute(r FilterrelayagentAP
 	return localVarHTTPResponse, nil
 }
 
-type FilterrelayagentAPIReferenceGetRequest struct {
+type FilterrelayagentAPIListRequest struct {
+	ctx            context.Context
+	ApiService     FilterrelayagentAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r FilterrelayagentAPIListRequest) ReturnFields(returnFields string) FilterrelayagentAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r FilterrelayagentAPIListRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r FilterrelayagentAPIListRequest) MaxResults(maxResults int32) FilterrelayagentAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r FilterrelayagentAPIListRequest) ReturnAsObject(returnAsObject int32) FilterrelayagentAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r FilterrelayagentAPIListRequest) Paging(paging int32) FilterrelayagentAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r FilterrelayagentAPIListRequest) PageId(pageId string) FilterrelayagentAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r FilterrelayagentAPIListRequest) Filters(filters map[string]interface{}) FilterrelayagentAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r FilterrelayagentAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) FilterrelayagentAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r FilterrelayagentAPIListRequest) Execute() (*ListFilterrelayagentResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve filterrelayagent objects
+
+Returns a list of filterrelayagent objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return FilterrelayagentAPIListRequest
+*/
+func (a *FilterrelayagentAPIService) List(ctx context.Context) FilterrelayagentAPIListRequest {
+	return FilterrelayagentAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListFilterrelayagentResponse
+func (a *FilterrelayagentAPIService) ListExecute(r FilterrelayagentAPIListRequest) (*ListFilterrelayagentResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListFilterrelayagentResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterrelayagentAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/filterrelayagent"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type FilterrelayagentAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     FilterrelayagentAPI
 	reference      string
@@ -511,38 +511,38 @@ type FilterrelayagentAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r FilterrelayagentAPIReferenceGetRequest) ReturnFields(returnFields string) FilterrelayagentAPIReferenceGetRequest {
+func (r FilterrelayagentAPIReadRequest) ReturnFields(returnFields string) FilterrelayagentAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterrelayagentAPIReferenceGetRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPIReferenceGetRequest {
+func (r FilterrelayagentAPIReadRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilterrelayagentAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) FilterrelayagentAPIReferenceGetRequest {
+func (r FilterrelayagentAPIReadRequest) ReturnAsObject(returnAsObject int32) FilterrelayagentAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FilterrelayagentAPIReferenceGetRequest) Execute() (*GetFilterrelayagentResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r FilterrelayagentAPIReadRequest) Execute() (*GetFilterrelayagentResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific filterrelayagent object
+Read Get a specific filterrelayagent object
 
 Returns a specific filterrelayagent object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the filterrelayagent object
-	@return FilterrelayagentAPIReferenceGetRequest
+	@return FilterrelayagentAPIReadRequest
 */
-func (a *FilterrelayagentAPIService) ReferenceGet(ctx context.Context, reference string) FilterrelayagentAPIReferenceGetRequest {
-	return FilterrelayagentAPIReferenceGetRequest{
+func (a *FilterrelayagentAPIService) Read(ctx context.Context, reference string) FilterrelayagentAPIReadRequest {
+	return FilterrelayagentAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *FilterrelayagentAPIService) ReferenceGet(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return GetFilterrelayagentResponse
-func (a *FilterrelayagentAPIService) ReferenceGetExecute(r FilterrelayagentAPIReferenceGetRequest) (*GetFilterrelayagentResponse, *http.Response, error) {
+func (a *FilterrelayagentAPIService) ReadExecute(r FilterrelayagentAPIReadRequest) (*GetFilterrelayagentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *FilterrelayagentAPIService) ReferenceGetExecute(r FilterrelayagentAPIRe
 		localVarReturnValue *GetFilterrelayagentResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterrelayagentAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterrelayagentAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *FilterrelayagentAPIService) ReferenceGetExecute(r FilterrelayagentAPIRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FilterrelayagentAPIReferencePutRequest struct {
+type FilterrelayagentAPIUpdateRequest struct {
 	ctx              context.Context
 	ApiService       FilterrelayagentAPI
 	reference        string
@@ -639,44 +639,44 @@ type FilterrelayagentAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r FilterrelayagentAPIReferencePutRequest) Filterrelayagent(filterrelayagent Filterrelayagent) FilterrelayagentAPIReferencePutRequest {
+func (r FilterrelayagentAPIUpdateRequest) Filterrelayagent(filterrelayagent Filterrelayagent) FilterrelayagentAPIUpdateRequest {
 	r.filterrelayagent = &filterrelayagent
 	return r
 }
 
 // Enter the field names followed by comma
-func (r FilterrelayagentAPIReferencePutRequest) ReturnFields(returnFields string) FilterrelayagentAPIReferencePutRequest {
+func (r FilterrelayagentAPIUpdateRequest) ReturnFields(returnFields string) FilterrelayagentAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterrelayagentAPIReferencePutRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPIReferencePutRequest {
+func (r FilterrelayagentAPIUpdateRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilterrelayagentAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) FilterrelayagentAPIReferencePutRequest {
+func (r FilterrelayagentAPIUpdateRequest) ReturnAsObject(returnAsObject int32) FilterrelayagentAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FilterrelayagentAPIReferencePutRequest) Execute() (*UpdateFilterrelayagentResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r FilterrelayagentAPIUpdateRequest) Execute() (*UpdateFilterrelayagentResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a filterrelayagent object
+Update Update a filterrelayagent object
 
 Updates a specific filterrelayagent object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the filterrelayagent object
-	@return FilterrelayagentAPIReferencePutRequest
+	@return FilterrelayagentAPIUpdateRequest
 */
-func (a *FilterrelayagentAPIService) ReferencePut(ctx context.Context, reference string) FilterrelayagentAPIReferencePutRequest {
-	return FilterrelayagentAPIReferencePutRequest{
+func (a *FilterrelayagentAPIService) Update(ctx context.Context, reference string) FilterrelayagentAPIUpdateRequest {
+	return FilterrelayagentAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *FilterrelayagentAPIService) ReferencePut(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return UpdateFilterrelayagentResponse
-func (a *FilterrelayagentAPIService) ReferencePutExecute(r FilterrelayagentAPIReferencePutRequest) (*UpdateFilterrelayagentResponse, *http.Response, error) {
+func (a *FilterrelayagentAPIService) UpdateExecute(r FilterrelayagentAPIUpdateRequest) (*UpdateFilterrelayagentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *FilterrelayagentAPIService) ReferencePutExecute(r FilterrelayagentAPIRe
 		localVarReturnValue *UpdateFilterrelayagentResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterrelayagentAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterrelayagentAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

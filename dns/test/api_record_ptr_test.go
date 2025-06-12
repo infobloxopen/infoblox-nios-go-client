@@ -23,11 +23,11 @@ func TestRecordPtrAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordPtrAPIService RecordptrGet", func(t *testing.T) {
+	t.Run("Test RecordPtrAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordPtrAPI.RecordptrGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordPtrAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRecordPtrAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordPtrAPIService RecordptrPost", func(t *testing.T) {
+	t.Run("Test RecordPtrAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordPtrAPI.RecordptrPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RecordPtrAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RecordPtrAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RecordPtrAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRecordPtrAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordPtrAPIService RecordptrReferenceDelete", func(t *testing.T) {
+	t.Run("Test RecordPtrAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RecordPtrAPI.RecordptrReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RecordPtrAPIService RecordptrReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RecordPtrAPI.RecordptrReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordPtrAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRecordPtrAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordPtrAPIService RecordptrReferencePut", func(t *testing.T) {
+	t.Run("Test RecordPtrAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordPtrAPI.RecordptrReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordPtrAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,11 +23,11 @@ func TestGridDashboardAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test GridDashboardAPIService GriddashboardGet", func(t *testing.T) {
+	t.Run("Test GridDashboardAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridDashboardAPI.GriddashboardGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GridDashboardAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestGridDashboardAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridDashboardAPIService GriddashboardReferenceGet", func(t *testing.T) {
+	t.Run("Test GridDashboardAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridDashboardAPI.GriddashboardReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridDashboardAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestGridDashboardAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridDashboardAPIService GriddashboardReferencePut", func(t *testing.T) {
+	t.Run("Test GridDashboardAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridDashboardAPI.GriddashboardReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridDashboardAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

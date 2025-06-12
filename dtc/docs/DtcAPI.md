@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcAPI.md#Get) | **Get** /dtc | Retrieve dtc objects
-[**ReferenceGet**](DtcAPI.md#ReferenceGet) | **Get** /dtc/{reference} | Get a specific dtc object
+[**List**](DtcAPI.md#List) | **Get** /dtc | Retrieve dtc objects
+[**Read**](DtcAPI.md#Read) | **Get** /dtc/{reference} | Get a specific dtc object
 
 
 
-## Get
+## List
 
-> ListDtcResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcAPI.Get`: %v\n", resp)
+	// response from `List`: ListDtcResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetDtcResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDtcResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

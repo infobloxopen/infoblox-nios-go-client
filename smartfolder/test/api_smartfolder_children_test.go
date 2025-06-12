@@ -23,11 +23,11 @@ func TestSmartfolderChildrenAPIService(t *testing.T) {
 
 	apiClient := smartfolder.NewAPIClient()
 
-	t.Run("Test SmartfolderChildrenAPIService SmartfolderchildrenGet", func(t *testing.T) {
+	t.Run("Test SmartfolderChildrenAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SmartfolderChildrenAPI.SmartfolderchildrenGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SmartfolderChildrenAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestSmartfolderChildrenAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SmartfolderChildrenAPIService SmartfolderchildrenReferenceGet", func(t *testing.T) {
+	t.Run("Test SmartfolderChildrenAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.SmartfolderChildrenAPI.SmartfolderchildrenReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SmartfolderChildrenAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

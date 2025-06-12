@@ -4,16 +4,85 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridservicerestartgrouporderGet**](GridServicerestartGroupOrderAPI.md#GridservicerestartgrouporderGet) | **Get** /grid:servicerestart:group:order | Retrieve grid:servicerestart:group:order objects
-[**GridservicerestartgrouporderPost**](GridServicerestartGroupOrderAPI.md#GridservicerestartgrouporderPost) | **Post** /grid:servicerestart:group:order | Create a grid:servicerestart:group:order object
-[**GridservicerestartgrouporderReferenceGet**](GridServicerestartGroupOrderAPI.md#GridservicerestartgrouporderReferenceGet) | **Get** /grid:servicerestart:group:order/{reference} | Get a specific grid:servicerestart:group:order object
-[**GridservicerestartgrouporderReferencePut**](GridServicerestartGroupOrderAPI.md#GridservicerestartgrouporderReferencePut) | **Put** /grid:servicerestart:group:order/{reference} | Update a grid:servicerestart:group:order object
+[**Create**](GridServicerestartGroupOrderAPI.md#Create) | **Post** /grid:servicerestart:group:order | Create a grid:servicerestart:group:order object
+[**List**](GridServicerestartGroupOrderAPI.md#List) | **Get** /grid:servicerestart:group:order | Retrieve grid:servicerestart:group:order objects
+[**Read**](GridServicerestartGroupOrderAPI.md#Read) | **Get** /grid:servicerestart:group:order/{reference} | Get a specific grid:servicerestart:group:order object
+[**Update**](GridServicerestartGroupOrderAPI.md#Update) | **Put** /grid:servicerestart:group:order/{reference} | Update a grid:servicerestart:group:order object
 
 
 
-## GridservicerestartgrouporderGet
+## Create
 
-> ListGridServicerestartGroupOrderResponse GridservicerestartgrouporderGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateGridServicerestartGroupOrderResponse Create(ctx).GridServicerestartGroupOrder(gridServicerestartGroupOrder).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a grid:servicerestart:group:order object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+)
+
+func main() {
+	gridServicerestartGroupOrder := *grid.NewGridServicerestartGroupOrder() // GridServicerestartGroupOrder | Object data to create
+
+	apiClient := grid.NewAPIClient()
+	resp, r, err := apiClient.GridServicerestartGroupOrderAPI.Create(context.Background()).GridServicerestartGroupOrder(gridServicerestartGroupOrder).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartGroupOrderAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateGridServicerestartGroupOrderResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartGroupOrderAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `GridServicerestartGroupOrderAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**gridServicerestartGroupOrder** | [**GridServicerestartGroupOrder**](GridServicerestartGroupOrder.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateGridServicerestartGroupOrderResponse**](CreateGridServicerestartGroupOrderResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListGridServicerestartGroupOrderResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:servicerestart:group:order objects
 
@@ -35,13 +104,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridServicerestartGroupOrderAPI.GridservicerestartgrouporderGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridServicerestartGroupOrderAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartGroupOrderAPI.GridservicerestartgrouporderGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartGroupOrderAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridservicerestartgrouporderGet`: ListGridServicerestartGroupOrderResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartGroupOrderAPI.GridservicerestartgrouporderGet`: %v\n", resp)
+	// response from `List`: ListGridServicerestartGroupOrderResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartGroupOrderAPI.List`: %v\n", resp)
 }
 ```
 
@@ -51,7 +120,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridServicerestartGroupOrderAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -83,78 +152,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridservicerestartgrouporderPost
+## Read
 
-> CreateGridServicerestartGroupOrderResponse GridservicerestartgrouporderPost(ctx).GridServicerestartGroupOrder(gridServicerestartGroupOrder).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a grid:servicerestart:group:order object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
-)
-
-func main() {
-	gridServicerestartGroupOrder := *grid.NewGridServicerestartGroupOrder() // GridServicerestartGroupOrder | Object data to create
-
-	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridServicerestartGroupOrderAPI.GridservicerestartgrouporderPost(context.Background()).GridServicerestartGroupOrder(gridServicerestartGroupOrder).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartGroupOrderAPI.GridservicerestartgrouporderPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GridservicerestartgrouporderPost`: CreateGridServicerestartGroupOrderResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartGroupOrderAPI.GridservicerestartgrouporderPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**gridServicerestartGroupOrder** | [**GridServicerestartGroupOrder**](GridServicerestartGroupOrder.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateGridServicerestartGroupOrderResponse**](CreateGridServicerestartGroupOrderResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GridservicerestartgrouporderReferenceGet
-
-> GetGridServicerestartGroupOrderResponse GridservicerestartgrouporderReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridServicerestartGroupOrderResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:servicerestart:group:order object
 
@@ -177,13 +177,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:servicerestart:group:order object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridServicerestartGroupOrderAPI.GridservicerestartgrouporderReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridServicerestartGroupOrderAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartGroupOrderAPI.GridservicerestartgrouporderReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartGroupOrderAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridservicerestartgrouporderReferenceGet`: GetGridServicerestartGroupOrderResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartGroupOrderAPI.GridservicerestartgrouporderReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridServicerestartGroupOrderResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartGroupOrderAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridServicerestartGroupOrderAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -224,9 +224,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridservicerestartgrouporderReferencePut
+## Update
 
-> UpdateGridServicerestartGroupOrderResponse GridservicerestartgrouporderReferencePut(ctx, reference).GridServicerestartGroupOrder(gridServicerestartGroupOrder).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridServicerestartGroupOrderResponse Update(ctx, reference).GridServicerestartGroupOrder(gridServicerestartGroupOrder).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:servicerestart:group:order object
 
@@ -250,13 +250,13 @@ func main() {
 	gridServicerestartGroupOrder := *grid.NewGridServicerestartGroupOrder() // GridServicerestartGroupOrder | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridServicerestartGroupOrderAPI.GridservicerestartgrouporderReferencePut(context.Background(), reference).GridServicerestartGroupOrder(gridServicerestartGroupOrder).Execute()
+	resp, r, err := apiClient.GridServicerestartGroupOrderAPI.Update(context.Background(), reference).GridServicerestartGroupOrder(gridServicerestartGroupOrder).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartGroupOrderAPI.GridservicerestartgrouporderReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartGroupOrderAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridservicerestartgrouporderReferencePut`: UpdateGridServicerestartGroupOrderResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartGroupOrderAPI.GridservicerestartgrouporderReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGridServicerestartGroupOrderResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartGroupOrderAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridServicerestartGroupOrderAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -23,51 +23,140 @@ import (
 
 type RecordDsAPI interface {
 	/*
-		RecorddsGet Retrieve record:ds objects
-
-		Returns a list of record:ds objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordDsAPIRecorddsGetRequest
-	*/
-	RecorddsGet(ctx context.Context) RecordDsAPIRecorddsGetRequest
-
-	// RecorddsGetExecute executes the request
-	//  @return ListRecordDsResponse
-	RecorddsGetExecute(r RecordDsAPIRecorddsGetRequest) (*ListRecordDsResponse, *http.Response, error)
-	/*
-		RecorddsReferenceDelete Delete a record:ds object
+		Delete Delete a record:ds object
 
 		Deletes a specific record:ds object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:ds object
-		@return RecordDsAPIRecorddsReferenceDeleteRequest
+		@return RecordDsAPIDeleteRequest
 	*/
-	RecorddsReferenceDelete(ctx context.Context, reference string) RecordDsAPIRecorddsReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordDsAPIDeleteRequest
 
-	// RecorddsReferenceDeleteExecute executes the request
-	RecorddsReferenceDeleteExecute(r RecordDsAPIRecorddsReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordDsAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecorddsReferenceGet Get a specific record:ds object
+		List Retrieve record:ds objects
+
+		Returns a list of record:ds objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordDsAPIListRequest
+	*/
+	List(ctx context.Context) RecordDsAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordDsResponse
+	ListExecute(r RecordDsAPIListRequest) (*ListRecordDsResponse, *http.Response, error)
+	/*
+		Read Get a specific record:ds object
 
 		Returns a specific record:ds object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:ds object
-		@return RecordDsAPIRecorddsReferenceGetRequest
+		@return RecordDsAPIReadRequest
 	*/
-	RecorddsReferenceGet(ctx context.Context, reference string) RecordDsAPIRecorddsReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordDsAPIReadRequest
 
-	// RecorddsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordDsResponse
-	RecorddsReferenceGetExecute(r RecordDsAPIRecorddsReferenceGetRequest) (*GetRecordDsResponse, *http.Response, error)
+	ReadExecute(r RecordDsAPIReadRequest) (*GetRecordDsResponse, *http.Response, error)
 }
 
 // RecordDsAPIService RecordDsAPI service
 type RecordDsAPIService internal.Service
 
-type RecordDsAPIRecorddsGetRequest struct {
+type RecordDsAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RecordDsAPI
+	reference  string
+}
+
+func (r RecordDsAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a record:ds object
+
+Deletes a specific record:ds object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the record:ds object
+	@return RecordDsAPIDeleteRequest
+*/
+func (a *RecordDsAPIService) Delete(ctx context.Context, reference string) RecordDsAPIDeleteRequest {
+	return RecordDsAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RecordDsAPIService) DeleteExecute(r RecordDsAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDsAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:ds/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RecordDsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     RecordDsAPI
 	returnFields   *string
@@ -81,65 +170,65 @@ type RecordDsAPIRecorddsGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordDsAPIRecorddsGetRequest) ReturnFields(returnFields string) RecordDsAPIRecorddsGetRequest {
+func (r RecordDsAPIListRequest) ReturnFields(returnFields string) RecordDsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDsAPIRecorddsGetRequest) ReturnFields2(returnFields2 string) RecordDsAPIRecorddsGetRequest {
+func (r RecordDsAPIListRequest) ReturnFields2(returnFields2 string) RecordDsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordDsAPIRecorddsGetRequest) MaxResults(maxResults int32) RecordDsAPIRecorddsGetRequest {
+func (r RecordDsAPIListRequest) MaxResults(maxResults int32) RecordDsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordDsAPIRecorddsGetRequest) ReturnAsObject(returnAsObject int32) RecordDsAPIRecorddsGetRequest {
+func (r RecordDsAPIListRequest) ReturnAsObject(returnAsObject int32) RecordDsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordDsAPIRecorddsGetRequest) Paging(paging int32) RecordDsAPIRecorddsGetRequest {
+func (r RecordDsAPIListRequest) Paging(paging int32) RecordDsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordDsAPIRecorddsGetRequest) PageId(pageId string) RecordDsAPIRecorddsGetRequest {
+func (r RecordDsAPIListRequest) PageId(pageId string) RecordDsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordDsAPIRecorddsGetRequest) Filters(filters map[string]interface{}) RecordDsAPIRecorddsGetRequest {
+func (r RecordDsAPIListRequest) Filters(filters map[string]interface{}) RecordDsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordDsAPIRecorddsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordDsAPIRecorddsGetRequest {
+func (r RecordDsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordDsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordDsAPIRecorddsGetRequest) Execute() (*ListRecordDsResponse, *http.Response, error) {
-	return r.ApiService.RecorddsGetExecute(r)
+func (r RecordDsAPIListRequest) Execute() (*ListRecordDsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RecorddsGet Retrieve record:ds objects
+List Retrieve record:ds objects
 
 Returns a list of record:ds objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordDsAPIRecorddsGetRequest
+	@return RecordDsAPIListRequest
 */
-func (a *RecordDsAPIService) RecorddsGet(ctx context.Context) RecordDsAPIRecorddsGetRequest {
-	return RecordDsAPIRecorddsGetRequest{
+func (a *RecordDsAPIService) List(ctx context.Context) RecordDsAPIListRequest {
+	return RecordDsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -148,7 +237,7 @@ func (a *RecordDsAPIService) RecorddsGet(ctx context.Context) RecordDsAPIRecordd
 // Execute executes the request
 //
 //	@return ListRecordDsResponse
-func (a *RecordDsAPIService) RecorddsGetExecute(r RecordDsAPIRecorddsGetRequest) (*ListRecordDsResponse, *http.Response, error) {
+func (a *RecordDsAPIService) ListExecute(r RecordDsAPIListRequest) (*ListRecordDsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -156,7 +245,7 @@ func (a *RecordDsAPIService) RecorddsGetExecute(r RecordDsAPIRecorddsGetRequest)
 		localVarReturnValue *ListRecordDsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDsAPIService.RecorddsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -238,96 +327,7 @@ func (a *RecordDsAPIService) RecorddsGetExecute(r RecordDsAPIRecorddsGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordDsAPIRecorddsReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RecordDsAPI
-	reference  string
-}
-
-func (r RecordDsAPIRecorddsReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecorddsReferenceDeleteExecute(r)
-}
-
-/*
-RecorddsReferenceDelete Delete a record:ds object
-
-Deletes a specific record:ds object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the record:ds object
-	@return RecordDsAPIRecorddsReferenceDeleteRequest
-*/
-func (a *RecordDsAPIService) RecorddsReferenceDelete(ctx context.Context, reference string) RecordDsAPIRecorddsReferenceDeleteRequest {
-	return RecordDsAPIRecorddsReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RecordDsAPIService) RecorddsReferenceDeleteExecute(r RecordDsAPIRecorddsReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDsAPIService.RecorddsReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:ds/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RecordDsAPIRecorddsReferenceGetRequest struct {
+type RecordDsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordDsAPI
 	reference      string
@@ -337,38 +337,38 @@ type RecordDsAPIRecorddsReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordDsAPIRecorddsReferenceGetRequest) ReturnFields(returnFields string) RecordDsAPIRecorddsReferenceGetRequest {
+func (r RecordDsAPIReadRequest) ReturnFields(returnFields string) RecordDsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDsAPIRecorddsReferenceGetRequest) ReturnFields2(returnFields2 string) RecordDsAPIRecorddsReferenceGetRequest {
+func (r RecordDsAPIReadRequest) ReturnFields2(returnFields2 string) RecordDsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordDsAPIRecorddsReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordDsAPIRecorddsReferenceGetRequest {
+func (r RecordDsAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordDsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordDsAPIRecorddsReferenceGetRequest) Execute() (*GetRecordDsResponse, *http.Response, error) {
-	return r.ApiService.RecorddsReferenceGetExecute(r)
+func (r RecordDsAPIReadRequest) Execute() (*GetRecordDsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecorddsReferenceGet Get a specific record:ds object
+Read Get a specific record:ds object
 
 Returns a specific record:ds object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:ds object
-	@return RecordDsAPIRecorddsReferenceGetRequest
+	@return RecordDsAPIReadRequest
 */
-func (a *RecordDsAPIService) RecorddsReferenceGet(ctx context.Context, reference string) RecordDsAPIRecorddsReferenceGetRequest {
-	return RecordDsAPIRecorddsReferenceGetRequest{
+func (a *RecordDsAPIService) Read(ctx context.Context, reference string) RecordDsAPIReadRequest {
+	return RecordDsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -378,7 +378,7 @@ func (a *RecordDsAPIService) RecorddsReferenceGet(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return GetRecordDsResponse
-func (a *RecordDsAPIService) RecorddsReferenceGetExecute(r RecordDsAPIRecorddsReferenceGetRequest) (*GetRecordDsResponse, *http.Response, error) {
+func (a *RecordDsAPIService) ReadExecute(r RecordDsAPIReadRequest) (*GetRecordDsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -386,7 +386,7 @@ func (a *RecordDsAPIService) RecorddsReferenceGetExecute(r RecordDsAPIRecorddsRe
 		localVarReturnValue *GetRecordDsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDsAPIService.RecorddsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

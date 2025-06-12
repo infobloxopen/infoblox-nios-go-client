@@ -23,11 +23,11 @@ func TestFileopAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test FileopAPIService Get", func(t *testing.T) {
+	t.Run("Test FileopAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FileopAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.FileopAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestFileopAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FileopAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test FileopAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.FileopAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FileopAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

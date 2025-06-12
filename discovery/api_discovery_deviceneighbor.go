@@ -23,38 +23,38 @@ import (
 
 type DiscoveryDeviceneighborAPI interface {
 	/*
-		DiscoverydeviceneighborGet Retrieve discovery:deviceneighbor objects
+		List Retrieve discovery:deviceneighbor objects
 
 		Returns a list of discovery:deviceneighbor objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest
+		@return DiscoveryDeviceneighborAPIListRequest
 	*/
-	DiscoverydeviceneighborGet(ctx context.Context) DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest
+	List(ctx context.Context) DiscoveryDeviceneighborAPIListRequest
 
-	// DiscoverydeviceneighborGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDiscoveryDeviceneighborResponse
-	DiscoverydeviceneighborGetExecute(r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) (*ListDiscoveryDeviceneighborResponse, *http.Response, error)
+	ListExecute(r DiscoveryDeviceneighborAPIListRequest) (*ListDiscoveryDeviceneighborResponse, *http.Response, error)
 	/*
-		DiscoverydeviceneighborReferenceGet Get a specific discovery:deviceneighbor object
+		Read Get a specific discovery:deviceneighbor object
 
 		Returns a specific discovery:deviceneighbor object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:deviceneighbor object
-		@return DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest
+		@return DiscoveryDeviceneighborAPIReadRequest
 	*/
-	DiscoverydeviceneighborReferenceGet(ctx context.Context, reference string) DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoveryDeviceneighborAPIReadRequest
 
-	// DiscoverydeviceneighborReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoveryDeviceneighborResponse
-	DiscoverydeviceneighborReferenceGetExecute(r DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest) (*GetDiscoveryDeviceneighborResponse, *http.Response, error)
+	ReadExecute(r DiscoveryDeviceneighborAPIReadRequest) (*GetDiscoveryDeviceneighborResponse, *http.Response, error)
 }
 
 // DiscoveryDeviceneighborAPIService DiscoveryDeviceneighborAPI service
 type DiscoveryDeviceneighborAPIService internal.Service
 
-type DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest struct {
+type DiscoveryDeviceneighborAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DiscoveryDeviceneighborAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) ReturnFields(returnFields string) DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest {
+func (r DiscoveryDeviceneighborAPIListRequest) ReturnFields(returnFields string) DiscoveryDeviceneighborAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest {
+func (r DiscoveryDeviceneighborAPIListRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceneighborAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) MaxResults(maxResults int32) DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest {
+func (r DiscoveryDeviceneighborAPIListRequest) MaxResults(maxResults int32) DiscoveryDeviceneighborAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest {
+func (r DiscoveryDeviceneighborAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoveryDeviceneighborAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) Paging(paging int32) DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest {
+func (r DiscoveryDeviceneighborAPIListRequest) Paging(paging int32) DiscoveryDeviceneighborAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) PageId(pageId string) DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest {
+func (r DiscoveryDeviceneighborAPIListRequest) PageId(pageId string) DiscoveryDeviceneighborAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) Filters(filters map[string]interface{}) DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest {
+func (r DiscoveryDeviceneighborAPIListRequest) Filters(filters map[string]interface{}) DiscoveryDeviceneighborAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest {
+func (r DiscoveryDeviceneighborAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryDeviceneighborAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) Execute() (*ListDiscoveryDeviceneighborResponse, *http.Response, error) {
-	return r.ApiService.DiscoverydeviceneighborGetExecute(r)
+func (r DiscoveryDeviceneighborAPIListRequest) Execute() (*ListDiscoveryDeviceneighborResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DiscoverydeviceneighborGet Retrieve discovery:deviceneighbor objects
+List Retrieve discovery:deviceneighbor objects
 
 Returns a list of discovery:deviceneighbor objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest
+	@return DiscoveryDeviceneighborAPIListRequest
 */
-func (a *DiscoveryDeviceneighborAPIService) DiscoverydeviceneighborGet(ctx context.Context) DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest {
-	return DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest{
+func (a *DiscoveryDeviceneighborAPIService) List(ctx context.Context) DiscoveryDeviceneighborAPIListRequest {
+	return DiscoveryDeviceneighborAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *DiscoveryDeviceneighborAPIService) DiscoverydeviceneighborGet(ctx conte
 // Execute executes the request
 //
 //	@return ListDiscoveryDeviceneighborResponse
-func (a *DiscoveryDeviceneighborAPIService) DiscoverydeviceneighborGetExecute(r DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest) (*ListDiscoveryDeviceneighborResponse, *http.Response, error) {
+func (a *DiscoveryDeviceneighborAPIService) ListExecute(r DiscoveryDeviceneighborAPIListRequest) (*ListDiscoveryDeviceneighborResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *DiscoveryDeviceneighborAPIService) DiscoverydeviceneighborGetExecute(r 
 		localVarReturnValue *ListDiscoveryDeviceneighborResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDeviceneighborAPIService.DiscoverydeviceneighborGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDeviceneighborAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *DiscoveryDeviceneighborAPIService) DiscoverydeviceneighborGetExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest struct {
+type DiscoveryDeviceneighborAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DiscoveryDeviceneighborAPI
 	reference      string
@@ -235,38 +235,38 @@ type DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest struct
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest) ReturnFields(returnFields string) DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest {
+func (r DiscoveryDeviceneighborAPIReadRequest) ReturnFields(returnFields string) DiscoveryDeviceneighborAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest {
+func (r DiscoveryDeviceneighborAPIReadRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceneighborAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest {
+func (r DiscoveryDeviceneighborAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoveryDeviceneighborAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest) Execute() (*GetDiscoveryDeviceneighborResponse, *http.Response, error) {
-	return r.ApiService.DiscoverydeviceneighborReferenceGetExecute(r)
+func (r DiscoveryDeviceneighborAPIReadRequest) Execute() (*GetDiscoveryDeviceneighborResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DiscoverydeviceneighborReferenceGet Get a specific discovery:deviceneighbor object
+Read Get a specific discovery:deviceneighbor object
 
 Returns a specific discovery:deviceneighbor object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:deviceneighbor object
-	@return DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest
+	@return DiscoveryDeviceneighborAPIReadRequest
 */
-func (a *DiscoveryDeviceneighborAPIService) DiscoverydeviceneighborReferenceGet(ctx context.Context, reference string) DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest {
-	return DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest{
+func (a *DiscoveryDeviceneighborAPIService) Read(ctx context.Context, reference string) DiscoveryDeviceneighborAPIReadRequest {
+	return DiscoveryDeviceneighborAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *DiscoveryDeviceneighborAPIService) DiscoverydeviceneighborReferenceGet(
 // Execute executes the request
 //
 //	@return GetDiscoveryDeviceneighborResponse
-func (a *DiscoveryDeviceneighborAPIService) DiscoverydeviceneighborReferenceGetExecute(r DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest) (*GetDiscoveryDeviceneighborResponse, *http.Response, error) {
+func (a *DiscoveryDeviceneighborAPIService) ReadExecute(r DiscoveryDeviceneighborAPIReadRequest) (*GetDiscoveryDeviceneighborResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *DiscoveryDeviceneighborAPIService) DiscoverydeviceneighborReferenceGetE
 		localVarReturnValue *GetDiscoveryDeviceneighborResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDeviceneighborAPIService.DiscoverydeviceneighborReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDeviceneighborAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

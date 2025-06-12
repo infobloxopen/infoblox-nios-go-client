@@ -70,7 +70,7 @@ type DiscoveryDeviceinterface struct {
 	// List of IFaddr information associated with the interface.
 	IfaddrInfos []DiscoveryDeviceinterfaceIfaddrInfos `json:"ifaddr_infos,omitempty"`
 	// The interface index number, as reported by SNMP.
-	Index *int32 `json:"index,omitempty"`
+	Index *int64 `json:"index,omitempty"`
 	// Timestamp of the last interface property change detected.
 	LastChange *int64 `json:"last_change,omitempty"`
 	// This field indicates if this is a link aggregation interface.
@@ -959,9 +959,9 @@ func (o *DiscoveryDeviceinterface) SetIfaddrInfos(v []DiscoveryDeviceinterfaceIf
 }
 
 // GetIndex returns the Index field value if set, zero value otherwise.
-func (o *DiscoveryDeviceinterface) GetIndex() int32 {
+func (o *DiscoveryDeviceinterface) GetIndex() int64 {
 	if o == nil || IsNil(o.Index) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Index
@@ -969,7 +969,7 @@ func (o *DiscoveryDeviceinterface) GetIndex() int32 {
 
 // GetIndexOk returns a tuple with the Index field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiscoveryDeviceinterface) GetIndexOk() (*int32, bool) {
+func (o *DiscoveryDeviceinterface) GetIndexOk() (*int64, bool) {
 	if o == nil || IsNil(o.Index) {
 		return nil, false
 	}
@@ -985,8 +985,8 @@ func (o *DiscoveryDeviceinterface) HasIndex() bool {
 	return false
 }
 
-// SetIndex gets a reference to the given int32 and assigns it to the Index field.
-func (o *DiscoveryDeviceinterface) SetIndex(v int32) {
+// SetIndex gets a reference to the given int64 and assigns it to the Index field.
+func (o *DiscoveryDeviceinterface) SetIndex(v int64) {
 	o.Index = &v
 }
 

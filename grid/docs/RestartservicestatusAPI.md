@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RestartservicestatusAPI.md#Get) | **Get** /restartservicestatus | Retrieve restartservicestatus objects
-[**ReferenceGet**](RestartservicestatusAPI.md#ReferenceGet) | **Get** /restartservicestatus/{reference} | Get a specific restartservicestatus object
+[**List**](RestartservicestatusAPI.md#List) | **Get** /restartservicestatus | Retrieve restartservicestatus objects
+[**Read**](RestartservicestatusAPI.md#Read) | **Get** /restartservicestatus/{reference} | Get a specific restartservicestatus object
 
 
 
-## Get
+## List
 
-> ListRestartservicestatusResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRestartservicestatusResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve restartservicestatus objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.RestartservicestatusAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RestartservicestatusAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RestartservicestatusAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RestartservicestatusAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRestartservicestatusResponse
-	fmt.Fprintf(os.Stdout, "Response from `RestartservicestatusAPI.Get`: %v\n", resp)
+	// response from `List`: ListRestartservicestatusResponse
+	fmt.Fprintf(os.Stdout, "Response from `RestartservicestatusAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RestartservicestatusAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RestartservicestatusAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetRestartservicestatusResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRestartservicestatusResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific restartservicestatus object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the restartservicestatus object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.RestartservicestatusAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RestartservicestatusAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RestartservicestatusAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RestartservicestatusAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRestartservicestatusResponse
-	fmt.Fprintf(os.Stdout, "Response from `RestartservicestatusAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRestartservicestatusResponse
+	fmt.Fprintf(os.Stdout, "Response from `RestartservicestatusAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RestartservicestatusAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RestartservicestatusAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

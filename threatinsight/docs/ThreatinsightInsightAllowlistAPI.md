@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ThreatinsightinsightAllowlistGet**](ThreatinsightInsightAllowlistAPI.md#ThreatinsightinsightAllowlistGet) | **Get** /threatinsight:insight_allowlist | Retrieve threatinsight:insight_allowlist objects
-[**ThreatinsightinsightAllowlistReferenceGet**](ThreatinsightInsightAllowlistAPI.md#ThreatinsightinsightAllowlistReferenceGet) | **Get** /threatinsight:insight_allowlist/{reference} | Get a specific threatinsight:insight_allowlist object
+[**List**](ThreatinsightInsightAllowlistAPI.md#List) | **Get** /threatinsight:insight_allowlist | Retrieve threatinsight:insight_allowlist objects
+[**Read**](ThreatinsightInsightAllowlistAPI.md#Read) | **Get** /threatinsight:insight_allowlist/{reference} | Get a specific threatinsight:insight_allowlist object
 
 
 
-## ThreatinsightinsightAllowlistGet
+## List
 
-> ListThreatinsightInsightAllowlistResponse ThreatinsightinsightAllowlistGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListThreatinsightInsightAllowlistResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve threatinsight:insight_allowlist objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := threatinsight.NewAPIClient()
-	resp, r, err := apiClient.ThreatinsightInsightAllowlistAPI.ThreatinsightinsightAllowlistGet(context.Background()).Execute()
+	resp, r, err := apiClient.ThreatinsightInsightAllowlistAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightInsightAllowlistAPI.ThreatinsightinsightAllowlistGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightInsightAllowlistAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatinsightinsightAllowlistGet`: ListThreatinsightInsightAllowlistResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightInsightAllowlistAPI.ThreatinsightinsightAllowlistGet`: %v\n", resp)
+	// response from `List`: ListThreatinsightInsightAllowlistResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightInsightAllowlistAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatinsightInsightAllowlistAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ThreatinsightinsightAllowlistReferenceGet
+## Read
 
-> GetThreatinsightInsightAllowlistResponse ThreatinsightinsightAllowlistReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetThreatinsightInsightAllowlistResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific threatinsight:insight_allowlist object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the threatinsight:insight_allowlist object
 
 	apiClient := threatinsight.NewAPIClient()
-	resp, r, err := apiClient.ThreatinsightInsightAllowlistAPI.ThreatinsightinsightAllowlistReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ThreatinsightInsightAllowlistAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightInsightAllowlistAPI.ThreatinsightinsightAllowlistReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightInsightAllowlistAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatinsightinsightAllowlistReferenceGet`: GetThreatinsightInsightAllowlistResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightInsightAllowlistAPI.ThreatinsightinsightAllowlistReferenceGet`: %v\n", resp)
+	// response from `Read`: GetThreatinsightInsightAllowlistResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightInsightAllowlistAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatinsightInsightAllowlistAPIThreatinsightinsightAllowlistReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatinsightInsightAllowlistAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

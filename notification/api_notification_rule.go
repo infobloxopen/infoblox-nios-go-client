@@ -23,78 +23,302 @@ import (
 
 type NotificationRuleAPI interface {
 	/*
-		NotificationruleGet Retrieve notification:rule objects
-
-		Returns a list of notification:rule objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NotificationRuleAPINotificationruleGetRequest
-	*/
-	NotificationruleGet(ctx context.Context) NotificationRuleAPINotificationruleGetRequest
-
-	// NotificationruleGetExecute executes the request
-	//  @return ListNotificationRuleResponse
-	NotificationruleGetExecute(r NotificationRuleAPINotificationruleGetRequest) (*ListNotificationRuleResponse, *http.Response, error)
-	/*
-		NotificationrulePost Create a notification:rule object
+		Create Create a notification:rule object
 
 		Creates a new notification:rule object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NotificationRuleAPINotificationrulePostRequest
+		@return NotificationRuleAPICreateRequest
 	*/
-	NotificationrulePost(ctx context.Context) NotificationRuleAPINotificationrulePostRequest
+	Create(ctx context.Context) NotificationRuleAPICreateRequest
 
-	// NotificationrulePostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNotificationRuleResponse
-	NotificationrulePostExecute(r NotificationRuleAPINotificationrulePostRequest) (*CreateNotificationRuleResponse, *http.Response, error)
+	CreateExecute(r NotificationRuleAPICreateRequest) (*CreateNotificationRuleResponse, *http.Response, error)
 	/*
-		NotificationruleReferenceDelete Delete a notification:rule object
+		Delete Delete a notification:rule object
 
 		Deletes a specific notification:rule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the notification:rule object
-		@return NotificationRuleAPINotificationruleReferenceDeleteRequest
+		@return NotificationRuleAPIDeleteRequest
 	*/
-	NotificationruleReferenceDelete(ctx context.Context, reference string) NotificationRuleAPINotificationruleReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NotificationRuleAPIDeleteRequest
 
-	// NotificationruleReferenceDeleteExecute executes the request
-	NotificationruleReferenceDeleteExecute(r NotificationRuleAPINotificationruleReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NotificationRuleAPIDeleteRequest) (*http.Response, error)
 	/*
-		NotificationruleReferenceGet Get a specific notification:rule object
+		List Retrieve notification:rule objects
+
+		Returns a list of notification:rule objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NotificationRuleAPIListRequest
+	*/
+	List(ctx context.Context) NotificationRuleAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNotificationRuleResponse
+	ListExecute(r NotificationRuleAPIListRequest) (*ListNotificationRuleResponse, *http.Response, error)
+	/*
+		Read Get a specific notification:rule object
 
 		Returns a specific notification:rule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the notification:rule object
-		@return NotificationRuleAPINotificationruleReferenceGetRequest
+		@return NotificationRuleAPIReadRequest
 	*/
-	NotificationruleReferenceGet(ctx context.Context, reference string) NotificationRuleAPINotificationruleReferenceGetRequest
+	Read(ctx context.Context, reference string) NotificationRuleAPIReadRequest
 
-	// NotificationruleReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNotificationRuleResponse
-	NotificationruleReferenceGetExecute(r NotificationRuleAPINotificationruleReferenceGetRequest) (*GetNotificationRuleResponse, *http.Response, error)
+	ReadExecute(r NotificationRuleAPIReadRequest) (*GetNotificationRuleResponse, *http.Response, error)
 	/*
-		NotificationruleReferencePut Update a notification:rule object
+		Update Update a notification:rule object
 
 		Updates a specific notification:rule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the notification:rule object
-		@return NotificationRuleAPINotificationruleReferencePutRequest
+		@return NotificationRuleAPIUpdateRequest
 	*/
-	NotificationruleReferencePut(ctx context.Context, reference string) NotificationRuleAPINotificationruleReferencePutRequest
+	Update(ctx context.Context, reference string) NotificationRuleAPIUpdateRequest
 
-	// NotificationruleReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNotificationRuleResponse
-	NotificationruleReferencePutExecute(r NotificationRuleAPINotificationruleReferencePutRequest) (*UpdateNotificationRuleResponse, *http.Response, error)
+	UpdateExecute(r NotificationRuleAPIUpdateRequest) (*UpdateNotificationRuleResponse, *http.Response, error)
 }
 
 // NotificationRuleAPIService NotificationRuleAPI service
 type NotificationRuleAPIService internal.Service
 
-type NotificationRuleAPINotificationruleGetRequest struct {
+type NotificationRuleAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       NotificationRuleAPI
+	notificationRule *NotificationRule
+	returnFields     *string
+	returnFields2    *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r NotificationRuleAPICreateRequest) NotificationRule(notificationRule NotificationRule) NotificationRuleAPICreateRequest {
+	r.notificationRule = &notificationRule
+	return r
+}
+
+// Enter the field names followed by comma
+func (r NotificationRuleAPICreateRequest) ReturnFields(returnFields string) NotificationRuleAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NotificationRuleAPICreateRequest) ReturnFields2(returnFields2 string) NotificationRuleAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NotificationRuleAPICreateRequest) ReturnAsObject(returnAsObject int32) NotificationRuleAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r NotificationRuleAPICreateRequest) Execute() (*CreateNotificationRuleResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a notification:rule object
+
+Creates a new notification:rule object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NotificationRuleAPICreateRequest
+*/
+func (a *NotificationRuleAPIService) Create(ctx context.Context) NotificationRuleAPICreateRequest {
+	return NotificationRuleAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateNotificationRuleResponse
+func (a *NotificationRuleAPIService) CreateExecute(r NotificationRuleAPICreateRequest) (*CreateNotificationRuleResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateNotificationRuleResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRuleAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/notification:rule"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.notificationRule == nil {
+		return localVarReturnValue, nil, internal.ReportError("notificationRule is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.notificationRule
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NotificationRuleAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService NotificationRuleAPI
+	reference  string
+}
+
+func (r NotificationRuleAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a notification:rule object
+
+Deletes a specific notification:rule object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the notification:rule object
+	@return NotificationRuleAPIDeleteRequest
+*/
+func (a *NotificationRuleAPIService) Delete(ctx context.Context, reference string) NotificationRuleAPIDeleteRequest {
+	return NotificationRuleAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *NotificationRuleAPIService) DeleteExecute(r NotificationRuleAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRuleAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/notification:rule/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type NotificationRuleAPIListRequest struct {
 	ctx            context.Context
 	ApiService     NotificationRuleAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type NotificationRuleAPINotificationruleGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r NotificationRuleAPINotificationruleGetRequest) ReturnFields(returnFields string) NotificationRuleAPINotificationruleGetRequest {
+func (r NotificationRuleAPIListRequest) ReturnFields(returnFields string) NotificationRuleAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRuleAPINotificationruleGetRequest) ReturnFields2(returnFields2 string) NotificationRuleAPINotificationruleGetRequest {
+func (r NotificationRuleAPIListRequest) ReturnFields2(returnFields2 string) NotificationRuleAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r NotificationRuleAPINotificationruleGetRequest) MaxResults(maxResults int32) NotificationRuleAPINotificationruleGetRequest {
+func (r NotificationRuleAPIListRequest) MaxResults(maxResults int32) NotificationRuleAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NotificationRuleAPINotificationruleGetRequest) ReturnAsObject(returnAsObject int32) NotificationRuleAPINotificationruleGetRequest {
+func (r NotificationRuleAPIListRequest) ReturnAsObject(returnAsObject int32) NotificationRuleAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r NotificationRuleAPINotificationruleGetRequest) Paging(paging int32) NotificationRuleAPINotificationruleGetRequest {
+func (r NotificationRuleAPIListRequest) Paging(paging int32) NotificationRuleAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r NotificationRuleAPINotificationruleGetRequest) PageId(pageId string) NotificationRuleAPINotificationruleGetRequest {
+func (r NotificationRuleAPIListRequest) PageId(pageId string) NotificationRuleAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r NotificationRuleAPINotificationruleGetRequest) Filters(filters map[string]interface{}) NotificationRuleAPINotificationruleGetRequest {
+func (r NotificationRuleAPIListRequest) Filters(filters map[string]interface{}) NotificationRuleAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r NotificationRuleAPINotificationruleGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NotificationRuleAPINotificationruleGetRequest {
+func (r NotificationRuleAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NotificationRuleAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r NotificationRuleAPINotificationruleGetRequest) Execute() (*ListNotificationRuleResponse, *http.Response, error) {
-	return r.ApiService.NotificationruleGetExecute(r)
+func (r NotificationRuleAPIListRequest) Execute() (*ListNotificationRuleResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-NotificationruleGet Retrieve notification:rule objects
+List Retrieve notification:rule objects
 
 Returns a list of notification:rule objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NotificationRuleAPINotificationruleGetRequest
+	@return NotificationRuleAPIListRequest
 */
-func (a *NotificationRuleAPIService) NotificationruleGet(ctx context.Context) NotificationRuleAPINotificationruleGetRequest {
-	return NotificationRuleAPINotificationruleGetRequest{
+func (a *NotificationRuleAPIService) List(ctx context.Context) NotificationRuleAPIListRequest {
+	return NotificationRuleAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *NotificationRuleAPIService) NotificationruleGet(ctx context.Context) No
 // Execute executes the request
 //
 //	@return ListNotificationRuleResponse
-func (a *NotificationRuleAPIService) NotificationruleGetExecute(r NotificationRuleAPINotificationruleGetRequest) (*ListNotificationRuleResponse, *http.Response, error) {
+func (a *NotificationRuleAPIService) ListExecute(r NotificationRuleAPIListRequest) (*ListNotificationRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *NotificationRuleAPIService) NotificationruleGetExecute(r NotificationRu
 		localVarReturnValue *ListNotificationRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRuleAPIService.NotificationruleGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRuleAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *NotificationRuleAPIService) NotificationruleGetExecute(r NotificationRu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NotificationRuleAPINotificationrulePostRequest struct {
-	ctx              context.Context
-	ApiService       NotificationRuleAPI
-	notificationRule *NotificationRule
-	returnFields     *string
-	returnFields2    *string
-	returnAsObject   *int32
-}
-
-// Object data to create
-func (r NotificationRuleAPINotificationrulePostRequest) NotificationRule(notificationRule NotificationRule) NotificationRuleAPINotificationrulePostRequest {
-	r.notificationRule = &notificationRule
-	return r
-}
-
-// Enter the field names followed by comma
-func (r NotificationRuleAPINotificationrulePostRequest) ReturnFields(returnFields string) NotificationRuleAPINotificationrulePostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRuleAPINotificationrulePostRequest) ReturnFields2(returnFields2 string) NotificationRuleAPINotificationrulePostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NotificationRuleAPINotificationrulePostRequest) ReturnAsObject(returnAsObject int32) NotificationRuleAPINotificationrulePostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r NotificationRuleAPINotificationrulePostRequest) Execute() (*CreateNotificationRuleResponse, *http.Response, error) {
-	return r.ApiService.NotificationrulePostExecute(r)
-}
-
-/*
-NotificationrulePost Create a notification:rule object
-
-Creates a new notification:rule object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NotificationRuleAPINotificationrulePostRequest
-*/
-func (a *NotificationRuleAPIService) NotificationrulePost(ctx context.Context) NotificationRuleAPINotificationrulePostRequest {
-	return NotificationRuleAPINotificationrulePostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateNotificationRuleResponse
-func (a *NotificationRuleAPIService) NotificationrulePostExecute(r NotificationRuleAPINotificationrulePostRequest) (*CreateNotificationRuleResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateNotificationRuleResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRuleAPIService.NotificationrulePost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/notification:rule"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.notificationRule == nil {
-		return localVarReturnValue, nil, internal.ReportError("notificationRule is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.notificationRule
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NotificationRuleAPINotificationruleReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService NotificationRuleAPI
-	reference  string
-}
-
-func (r NotificationRuleAPINotificationruleReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.NotificationruleReferenceDeleteExecute(r)
-}
-
-/*
-NotificationruleReferenceDelete Delete a notification:rule object
-
-Deletes a specific notification:rule object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the notification:rule object
-	@return NotificationRuleAPINotificationruleReferenceDeleteRequest
-*/
-func (a *NotificationRuleAPIService) NotificationruleReferenceDelete(ctx context.Context, reference string) NotificationRuleAPINotificationruleReferenceDeleteRequest {
-	return NotificationRuleAPINotificationruleReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *NotificationRuleAPIService) NotificationruleReferenceDeleteExecute(r NotificationRuleAPINotificationruleReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRuleAPIService.NotificationruleReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/notification:rule/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type NotificationRuleAPINotificationruleReferenceGetRequest struct {
+type NotificationRuleAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     NotificationRuleAPI
 	reference      string
@@ -499,38 +499,38 @@ type NotificationRuleAPINotificationruleReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r NotificationRuleAPINotificationruleReferenceGetRequest) ReturnFields(returnFields string) NotificationRuleAPINotificationruleReferenceGetRequest {
+func (r NotificationRuleAPIReadRequest) ReturnFields(returnFields string) NotificationRuleAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRuleAPINotificationruleReferenceGetRequest) ReturnFields2(returnFields2 string) NotificationRuleAPINotificationruleReferenceGetRequest {
+func (r NotificationRuleAPIReadRequest) ReturnFields2(returnFields2 string) NotificationRuleAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NotificationRuleAPINotificationruleReferenceGetRequest) ReturnAsObject(returnAsObject int32) NotificationRuleAPINotificationruleReferenceGetRequest {
+func (r NotificationRuleAPIReadRequest) ReturnAsObject(returnAsObject int32) NotificationRuleAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NotificationRuleAPINotificationruleReferenceGetRequest) Execute() (*GetNotificationRuleResponse, *http.Response, error) {
-	return r.ApiService.NotificationruleReferenceGetExecute(r)
+func (r NotificationRuleAPIReadRequest) Execute() (*GetNotificationRuleResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-NotificationruleReferenceGet Get a specific notification:rule object
+Read Get a specific notification:rule object
 
 Returns a specific notification:rule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the notification:rule object
-	@return NotificationRuleAPINotificationruleReferenceGetRequest
+	@return NotificationRuleAPIReadRequest
 */
-func (a *NotificationRuleAPIService) NotificationruleReferenceGet(ctx context.Context, reference string) NotificationRuleAPINotificationruleReferenceGetRequest {
-	return NotificationRuleAPINotificationruleReferenceGetRequest{
+func (a *NotificationRuleAPIService) Read(ctx context.Context, reference string) NotificationRuleAPIReadRequest {
+	return NotificationRuleAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *NotificationRuleAPIService) NotificationruleReferenceGet(ctx context.Co
 // Execute executes the request
 //
 //	@return GetNotificationRuleResponse
-func (a *NotificationRuleAPIService) NotificationruleReferenceGetExecute(r NotificationRuleAPINotificationruleReferenceGetRequest) (*GetNotificationRuleResponse, *http.Response, error) {
+func (a *NotificationRuleAPIService) ReadExecute(r NotificationRuleAPIReadRequest) (*GetNotificationRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *NotificationRuleAPIService) NotificationruleReferenceGetExecute(r Notif
 		localVarReturnValue *GetNotificationRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRuleAPIService.NotificationruleReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRuleAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *NotificationRuleAPIService) NotificationruleReferenceGetExecute(r Notif
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NotificationRuleAPINotificationruleReferencePutRequest struct {
+type NotificationRuleAPIUpdateRequest struct {
 	ctx              context.Context
 	ApiService       NotificationRuleAPI
 	reference        string
@@ -627,44 +627,44 @@ type NotificationRuleAPINotificationruleReferencePutRequest struct {
 }
 
 // Object data to update
-func (r NotificationRuleAPINotificationruleReferencePutRequest) NotificationRule(notificationRule NotificationRule) NotificationRuleAPINotificationruleReferencePutRequest {
+func (r NotificationRuleAPIUpdateRequest) NotificationRule(notificationRule NotificationRule) NotificationRuleAPIUpdateRequest {
 	r.notificationRule = &notificationRule
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NotificationRuleAPINotificationruleReferencePutRequest) ReturnFields(returnFields string) NotificationRuleAPINotificationruleReferencePutRequest {
+func (r NotificationRuleAPIUpdateRequest) ReturnFields(returnFields string) NotificationRuleAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NotificationRuleAPINotificationruleReferencePutRequest) ReturnFields2(returnFields2 string) NotificationRuleAPINotificationruleReferencePutRequest {
+func (r NotificationRuleAPIUpdateRequest) ReturnFields2(returnFields2 string) NotificationRuleAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NotificationRuleAPINotificationruleReferencePutRequest) ReturnAsObject(returnAsObject int32) NotificationRuleAPINotificationruleReferencePutRequest {
+func (r NotificationRuleAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NotificationRuleAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NotificationRuleAPINotificationruleReferencePutRequest) Execute() (*UpdateNotificationRuleResponse, *http.Response, error) {
-	return r.ApiService.NotificationruleReferencePutExecute(r)
+func (r NotificationRuleAPIUpdateRequest) Execute() (*UpdateNotificationRuleResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-NotificationruleReferencePut Update a notification:rule object
+Update Update a notification:rule object
 
 Updates a specific notification:rule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the notification:rule object
-	@return NotificationRuleAPINotificationruleReferencePutRequest
+	@return NotificationRuleAPIUpdateRequest
 */
-func (a *NotificationRuleAPIService) NotificationruleReferencePut(ctx context.Context, reference string) NotificationRuleAPINotificationruleReferencePutRequest {
-	return NotificationRuleAPINotificationruleReferencePutRequest{
+func (a *NotificationRuleAPIService) Update(ctx context.Context, reference string) NotificationRuleAPIUpdateRequest {
+	return NotificationRuleAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *NotificationRuleAPIService) NotificationruleReferencePut(ctx context.Co
 // Execute executes the request
 //
 //	@return UpdateNotificationRuleResponse
-func (a *NotificationRuleAPIService) NotificationruleReferencePutExecute(r NotificationRuleAPINotificationruleReferencePutRequest) (*UpdateNotificationRuleResponse, *http.Response, error) {
+func (a *NotificationRuleAPIService) UpdateExecute(r NotificationRuleAPIUpdateRequest) (*UpdateNotificationRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *NotificationRuleAPIService) NotificationruleReferencePutExecute(r Notif
 		localVarReturnValue *UpdateNotificationRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRuleAPIService.NotificationruleReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NotificationRuleAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

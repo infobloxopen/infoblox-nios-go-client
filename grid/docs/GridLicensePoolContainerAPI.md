@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridlicensePoolContainerGet**](GridLicensePoolContainerAPI.md#GridlicensePoolContainerGet) | **Get** /grid:license_pool_container | Retrieve grid:license_pool_container objects
-[**GridlicensePoolContainerReferenceGet**](GridLicensePoolContainerAPI.md#GridlicensePoolContainerReferenceGet) | **Get** /grid:license_pool_container/{reference} | Get a specific grid:license_pool_container object
+[**List**](GridLicensePoolContainerAPI.md#List) | **Get** /grid:license_pool_container | Retrieve grid:license_pool_container objects
+[**Read**](GridLicensePoolContainerAPI.md#Read) | **Get** /grid:license_pool_container/{reference} | Get a specific grid:license_pool_container object
 
 
 
-## GridlicensePoolContainerGet
+## List
 
-> ListGridLicensePoolContainerResponse GridlicensePoolContainerGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridLicensePoolContainerResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:license_pool_container objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridLicensePoolContainerAPI.GridlicensePoolContainerGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridLicensePoolContainerAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridLicensePoolContainerAPI.GridlicensePoolContainerGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridLicensePoolContainerAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridlicensePoolContainerGet`: ListGridLicensePoolContainerResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridLicensePoolContainerAPI.GridlicensePoolContainerGet`: %v\n", resp)
+	// response from `List`: ListGridLicensePoolContainerResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridLicensePoolContainerAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridLicensePoolContainerAPIGridlicensePoolContainerGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridLicensePoolContainerAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridlicensePoolContainerReferenceGet
+## Read
 
-> GetGridLicensePoolContainerResponse GridlicensePoolContainerReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridLicensePoolContainerResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:license_pool_container object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:license_pool_container object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridLicensePoolContainerAPI.GridlicensePoolContainerReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridLicensePoolContainerAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridLicensePoolContainerAPI.GridlicensePoolContainerReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridLicensePoolContainerAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridlicensePoolContainerReferenceGet`: GetGridLicensePoolContainerResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridLicensePoolContainerAPI.GridlicensePoolContainerReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridLicensePoolContainerResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridLicensePoolContainerAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridLicensePoolContainerAPIGridlicensePoolContainerReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridLicensePoolContainerAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

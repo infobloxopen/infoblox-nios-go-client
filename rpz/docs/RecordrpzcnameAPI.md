@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RecordrpzcnameGet**](RecordRpzCnameAPI.md#RecordrpzcnameGet) | **Get** /record:rpz:cname | Retrieve record:rpz:cname objects
-[**RecordrpzcnamePost**](RecordRpzCnameAPI.md#RecordrpzcnamePost) | **Post** /record:rpz:cname | Create a record:rpz:cname object
-[**RecordrpzcnameReferenceDelete**](RecordRpzCnameAPI.md#RecordrpzcnameReferenceDelete) | **Delete** /record:rpz:cname/{reference} | Delete a record:rpz:cname object
-[**RecordrpzcnameReferenceGet**](RecordRpzCnameAPI.md#RecordrpzcnameReferenceGet) | **Get** /record:rpz:cname/{reference} | Get a specific record:rpz:cname object
-[**RecordrpzcnameReferencePut**](RecordRpzCnameAPI.md#RecordrpzcnameReferencePut) | **Put** /record:rpz:cname/{reference} | Update a record:rpz:cname object
+[**Create**](RecordRpzCnameAPI.md#Create) | **Post** /record:rpz:cname | Create a record:rpz:cname object
+[**Delete**](RecordRpzCnameAPI.md#Delete) | **Delete** /record:rpz:cname/{reference} | Delete a record:rpz:cname object
+[**List**](RecordRpzCnameAPI.md#List) | **Get** /record:rpz:cname | Retrieve record:rpz:cname objects
+[**Read**](RecordRpzCnameAPI.md#Read) | **Get** /record:rpz:cname/{reference} | Get a specific record:rpz:cname object
+[**Update**](RecordRpzCnameAPI.md#Update) | **Put** /record:rpz:cname/{reference} | Update a record:rpz:cname object
 
 
 
-## RecordrpzcnameGet
+## Create
 
-> ListRecordRpzCnameResponse RecordrpzcnameGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateRecordRpzCnameResponse Create(ctx).RecordRpzCname(recordRpzCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a record:rpz:cname object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
+)
+
+func main() {
+	recordRpzCname := *rpz.NewRecordRpzCname() // RecordRpzCname | Object data to create
+
+	apiClient := rpz.NewAPIClient()
+	resp, r, err := apiClient.RecordRpzCnameAPI.Create(context.Background()).RecordRpzCname(recordRpzCname).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateRecordRpzCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordRpzCnameAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**recordRpzCname** | [**RecordRpzCname**](RecordRpzCname.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateRecordRpzCnameResponse**](CreateRecordRpzCnameResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a record:rpz:cname object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the record:rpz:cname object
+
+	apiClient := rpz.NewAPIClient()
+	r, err := apiClient.RecordRpzCnameAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the record:rpz:cname object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordRpzCnameAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListRecordRpzCnameResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:rpz:cname objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordRpzCnameAPI.RecordrpzcnameGet(context.Background()).Execute()
+	resp, r, err := apiClient.RecordRpzCnameAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameAPI.RecordrpzcnameGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordrpzcnameGet`: ListRecordRpzCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameAPI.RecordrpzcnameGet`: %v\n", resp)
+	// response from `List`: ListRecordRpzCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordRpzCnameAPIRecordrpzcnameGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzCnameAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RecordrpzcnamePost
+## Read
 
-> CreateRecordRpzCnameResponse RecordrpzcnamePost(ctx).RecordRpzCname(recordRpzCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a record:rpz:cname object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
-)
-
-func main() {
-	recordRpzCname := *rpz.NewRecordRpzCname() // RecordRpzCname | Object data to create
-
-	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordRpzCnameAPI.RecordrpzcnamePost(context.Background()).RecordRpzCname(recordRpzCname).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameAPI.RecordrpzcnamePost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RecordrpzcnamePost`: CreateRecordRpzCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameAPI.RecordrpzcnamePost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordRpzCnameAPIRecordrpzcnamePostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordRpzCname** | [**RecordRpzCname**](RecordRpzCname.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateRecordRpzCnameResponse**](CreateRecordRpzCnameResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RecordrpzcnameReferenceDelete
-
-> RecordrpzcnameReferenceDelete(ctx, reference).Execute()
-
-Delete a record:rpz:cname object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the record:rpz:cname object
-
-	apiClient := rpz.NewAPIClient()
-	r, err := apiClient.RecordRpzCnameAPI.RecordrpzcnameReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameAPI.RecordrpzcnameReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the record:rpz:cname object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordRpzCnameAPIRecordrpzcnameReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RecordrpzcnameReferenceGet
-
-> GetRecordRpzCnameResponse RecordrpzcnameReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordRpzCnameResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:rpz:cname object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:rpz:cname object
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordRpzCnameAPI.RecordrpzcnameReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordRpzCnameAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameAPI.RecordrpzcnameReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordrpzcnameReferenceGet`: GetRecordRpzCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameAPI.RecordrpzcnameReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordRpzCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordRpzCnameAPIRecordrpzcnameReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzCnameAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RecordrpzcnameReferencePut
+## Update
 
-> UpdateRecordRpzCnameResponse RecordrpzcnameReferencePut(ctx, reference).RecordRpzCname(recordRpzCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordRpzCnameResponse Update(ctx, reference).RecordRpzCname(recordRpzCname).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:rpz:cname object
 
@@ -318,13 +318,13 @@ func main() {
 	recordRpzCname := *rpz.NewRecordRpzCname() // RecordRpzCname | Object data to update
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordRpzCnameAPI.RecordrpzcnameReferencePut(context.Background(), reference).RecordRpzCname(recordRpzCname).Execute()
+	resp, r, err := apiClient.RecordRpzCnameAPI.Update(context.Background(), reference).RecordRpzCname(recordRpzCname).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameAPI.RecordrpzcnameReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzCnameAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordrpzcnameReferencePut`: UpdateRecordRpzCnameResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameAPI.RecordrpzcnameReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateRecordRpzCnameResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzCnameAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordRpzCnameAPIRecordrpzcnameReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzCnameAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

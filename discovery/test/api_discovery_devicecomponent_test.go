@@ -23,11 +23,11 @@ func TestDiscoveryDevicecomponentAPIService(t *testing.T) {
 
 	apiClient := discovery.NewAPIClient()
 
-	t.Run("Test DiscoveryDevicecomponentAPIService DiscoverydevicecomponentGet", func(t *testing.T) {
+	t.Run("Test DiscoveryDevicecomponentAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DiscoveryDevicecomponentAPI.DiscoverydevicecomponentGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DiscoveryDevicecomponentAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDiscoveryDevicecomponentAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryDevicecomponentAPIService DiscoverydevicecomponentReferenceGet", func(t *testing.T) {
+	t.Run("Test DiscoveryDevicecomponentAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DiscoveryDevicecomponentAPI.DiscoverydevicecomponentReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryDevicecomponentAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

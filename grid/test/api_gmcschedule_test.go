@@ -23,11 +23,11 @@ func TestGmcscheduleAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test GmcscheduleAPIService Get", func(t *testing.T) {
+	t.Run("Test GmcscheduleAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GmcscheduleAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GmcscheduleAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestGmcscheduleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GmcscheduleAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test GmcscheduleAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GmcscheduleAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GmcscheduleAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestGmcscheduleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GmcscheduleAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test GmcscheduleAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GmcscheduleAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GmcscheduleAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

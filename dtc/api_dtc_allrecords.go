@@ -23,52 +23,52 @@ import (
 
 type DtcAllrecordsAPI interface {
 	/*
-		DtcallrecordsGet Retrieve dtc:allrecords objects
+		List Retrieve dtc:allrecords objects
 
 		Returns a list of dtc:allrecords objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcAllrecordsAPIDtcallrecordsGetRequest
+		@return DtcAllrecordsAPIListRequest
 	*/
-	DtcallrecordsGet(ctx context.Context) DtcAllrecordsAPIDtcallrecordsGetRequest
+	List(ctx context.Context) DtcAllrecordsAPIListRequest
 
-	// DtcallrecordsGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDtcAllrecordsResponse
-	DtcallrecordsGetExecute(r DtcAllrecordsAPIDtcallrecordsGetRequest) (*ListDtcAllrecordsResponse, *http.Response, error)
+	ListExecute(r DtcAllrecordsAPIListRequest) (*ListDtcAllrecordsResponse, *http.Response, error)
 	/*
-		DtcallrecordsReferenceGet Get a specific dtc:allrecords object
+		Read Get a specific dtc:allrecords object
 
 		Returns a specific dtc:allrecords object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:allrecords object
-		@return DtcAllrecordsAPIDtcallrecordsReferenceGetRequest
+		@return DtcAllrecordsAPIReadRequest
 	*/
-	DtcallrecordsReferenceGet(ctx context.Context, reference string) DtcAllrecordsAPIDtcallrecordsReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcAllrecordsAPIReadRequest
 
-	// DtcallrecordsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcAllrecordsResponse
-	DtcallrecordsReferenceGetExecute(r DtcAllrecordsAPIDtcallrecordsReferenceGetRequest) (*GetDtcAllrecordsResponse, *http.Response, error)
+	ReadExecute(r DtcAllrecordsAPIReadRequest) (*GetDtcAllrecordsResponse, *http.Response, error)
 	/*
-		DtcallrecordsReferencePut Update a dtc:allrecords object
+		Update Update a dtc:allrecords object
 
 		Updates a specific dtc:allrecords object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:allrecords object
-		@return DtcAllrecordsAPIDtcallrecordsReferencePutRequest
+		@return DtcAllrecordsAPIUpdateRequest
 	*/
-	DtcallrecordsReferencePut(ctx context.Context, reference string) DtcAllrecordsAPIDtcallrecordsReferencePutRequest
+	Update(ctx context.Context, reference string) DtcAllrecordsAPIUpdateRequest
 
-	// DtcallrecordsReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcAllrecordsResponse
-	DtcallrecordsReferencePutExecute(r DtcAllrecordsAPIDtcallrecordsReferencePutRequest) (*UpdateDtcAllrecordsResponse, *http.Response, error)
+	UpdateExecute(r DtcAllrecordsAPIUpdateRequest) (*UpdateDtcAllrecordsResponse, *http.Response, error)
 }
 
 // DtcAllrecordsAPIService DtcAllrecordsAPI service
 type DtcAllrecordsAPIService internal.Service
 
-type DtcAllrecordsAPIDtcallrecordsGetRequest struct {
+type DtcAllrecordsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     DtcAllrecordsAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type DtcAllrecordsAPIDtcallrecordsGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcAllrecordsAPIDtcallrecordsGetRequest) ReturnFields(returnFields string) DtcAllrecordsAPIDtcallrecordsGetRequest {
+func (r DtcAllrecordsAPIListRequest) ReturnFields(returnFields string) DtcAllrecordsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcAllrecordsAPIDtcallrecordsGetRequest) ReturnFields2(returnFields2 string) DtcAllrecordsAPIDtcallrecordsGetRequest {
+func (r DtcAllrecordsAPIListRequest) ReturnFields2(returnFields2 string) DtcAllrecordsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DtcAllrecordsAPIDtcallrecordsGetRequest) MaxResults(maxResults int32) DtcAllrecordsAPIDtcallrecordsGetRequest {
+func (r DtcAllrecordsAPIListRequest) MaxResults(maxResults int32) DtcAllrecordsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcAllrecordsAPIDtcallrecordsGetRequest) ReturnAsObject(returnAsObject int32) DtcAllrecordsAPIDtcallrecordsGetRequest {
+func (r DtcAllrecordsAPIListRequest) ReturnAsObject(returnAsObject int32) DtcAllrecordsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DtcAllrecordsAPIDtcallrecordsGetRequest) Paging(paging int32) DtcAllrecordsAPIDtcallrecordsGetRequest {
+func (r DtcAllrecordsAPIListRequest) Paging(paging int32) DtcAllrecordsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DtcAllrecordsAPIDtcallrecordsGetRequest) PageId(pageId string) DtcAllrecordsAPIDtcallrecordsGetRequest {
+func (r DtcAllrecordsAPIListRequest) PageId(pageId string) DtcAllrecordsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DtcAllrecordsAPIDtcallrecordsGetRequest) Filters(filters map[string]interface{}) DtcAllrecordsAPIDtcallrecordsGetRequest {
+func (r DtcAllrecordsAPIListRequest) Filters(filters map[string]interface{}) DtcAllrecordsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DtcAllrecordsAPIDtcallrecordsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcAllrecordsAPIDtcallrecordsGetRequest {
+func (r DtcAllrecordsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcAllrecordsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DtcAllrecordsAPIDtcallrecordsGetRequest) Execute() (*ListDtcAllrecordsResponse, *http.Response, error) {
-	return r.ApiService.DtcallrecordsGetExecute(r)
+func (r DtcAllrecordsAPIListRequest) Execute() (*ListDtcAllrecordsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DtcallrecordsGet Retrieve dtc:allrecords objects
+List Retrieve dtc:allrecords objects
 
 Returns a list of dtc:allrecords objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcAllrecordsAPIDtcallrecordsGetRequest
+	@return DtcAllrecordsAPIListRequest
 */
-func (a *DtcAllrecordsAPIService) DtcallrecordsGet(ctx context.Context) DtcAllrecordsAPIDtcallrecordsGetRequest {
-	return DtcAllrecordsAPIDtcallrecordsGetRequest{
+func (a *DtcAllrecordsAPIService) List(ctx context.Context) DtcAllrecordsAPIListRequest {
+	return DtcAllrecordsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *DtcAllrecordsAPIService) DtcallrecordsGet(ctx context.Context) DtcAllre
 // Execute executes the request
 //
 //	@return ListDtcAllrecordsResponse
-func (a *DtcAllrecordsAPIService) DtcallrecordsGetExecute(r DtcAllrecordsAPIDtcallrecordsGetRequest) (*ListDtcAllrecordsResponse, *http.Response, error) {
+func (a *DtcAllrecordsAPIService) ListExecute(r DtcAllrecordsAPIListRequest) (*ListDtcAllrecordsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *DtcAllrecordsAPIService) DtcallrecordsGetExecute(r DtcAllrecordsAPIDtca
 		localVarReturnValue *ListDtcAllrecordsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAllrecordsAPIService.DtcallrecordsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAllrecordsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *DtcAllrecordsAPIService) DtcallrecordsGetExecute(r DtcAllrecordsAPIDtca
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcAllrecordsAPIDtcallrecordsReferenceGetRequest struct {
+type DtcAllrecordsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     DtcAllrecordsAPI
 	reference      string
@@ -249,38 +249,38 @@ type DtcAllrecordsAPIDtcallrecordsReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r DtcAllrecordsAPIDtcallrecordsReferenceGetRequest) ReturnFields(returnFields string) DtcAllrecordsAPIDtcallrecordsReferenceGetRequest {
+func (r DtcAllrecordsAPIReadRequest) ReturnFields(returnFields string) DtcAllrecordsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcAllrecordsAPIDtcallrecordsReferenceGetRequest) ReturnFields2(returnFields2 string) DtcAllrecordsAPIDtcallrecordsReferenceGetRequest {
+func (r DtcAllrecordsAPIReadRequest) ReturnFields2(returnFields2 string) DtcAllrecordsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcAllrecordsAPIDtcallrecordsReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcAllrecordsAPIDtcallrecordsReferenceGetRequest {
+func (r DtcAllrecordsAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcAllrecordsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcAllrecordsAPIDtcallrecordsReferenceGetRequest) Execute() (*GetDtcAllrecordsResponse, *http.Response, error) {
-	return r.ApiService.DtcallrecordsReferenceGetExecute(r)
+func (r DtcAllrecordsAPIReadRequest) Execute() (*GetDtcAllrecordsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtcallrecordsReferenceGet Get a specific dtc:allrecords object
+Read Get a specific dtc:allrecords object
 
 Returns a specific dtc:allrecords object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:allrecords object
-	@return DtcAllrecordsAPIDtcallrecordsReferenceGetRequest
+	@return DtcAllrecordsAPIReadRequest
 */
-func (a *DtcAllrecordsAPIService) DtcallrecordsReferenceGet(ctx context.Context, reference string) DtcAllrecordsAPIDtcallrecordsReferenceGetRequest {
-	return DtcAllrecordsAPIDtcallrecordsReferenceGetRequest{
+func (a *DtcAllrecordsAPIService) Read(ctx context.Context, reference string) DtcAllrecordsAPIReadRequest {
+	return DtcAllrecordsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *DtcAllrecordsAPIService) DtcallrecordsReferenceGet(ctx context.Context,
 // Execute executes the request
 //
 //	@return GetDtcAllrecordsResponse
-func (a *DtcAllrecordsAPIService) DtcallrecordsReferenceGetExecute(r DtcAllrecordsAPIDtcallrecordsReferenceGetRequest) (*GetDtcAllrecordsResponse, *http.Response, error) {
+func (a *DtcAllrecordsAPIService) ReadExecute(r DtcAllrecordsAPIReadRequest) (*GetDtcAllrecordsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *DtcAllrecordsAPIService) DtcallrecordsReferenceGetExecute(r DtcAllrecor
 		localVarReturnValue *GetDtcAllrecordsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAllrecordsAPIService.DtcallrecordsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAllrecordsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *DtcAllrecordsAPIService) DtcallrecordsReferenceGetExecute(r DtcAllrecor
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcAllrecordsAPIDtcallrecordsReferencePutRequest struct {
+type DtcAllrecordsAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     DtcAllrecordsAPI
 	reference      string
@@ -377,44 +377,44 @@ type DtcAllrecordsAPIDtcallrecordsReferencePutRequest struct {
 }
 
 // Object data to update
-func (r DtcAllrecordsAPIDtcallrecordsReferencePutRequest) DtcAllrecords(dtcAllrecords DtcAllrecords) DtcAllrecordsAPIDtcallrecordsReferencePutRequest {
+func (r DtcAllrecordsAPIUpdateRequest) DtcAllrecords(dtcAllrecords DtcAllrecords) DtcAllrecordsAPIUpdateRequest {
 	r.dtcAllrecords = &dtcAllrecords
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcAllrecordsAPIDtcallrecordsReferencePutRequest) ReturnFields(returnFields string) DtcAllrecordsAPIDtcallrecordsReferencePutRequest {
+func (r DtcAllrecordsAPIUpdateRequest) ReturnFields(returnFields string) DtcAllrecordsAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcAllrecordsAPIDtcallrecordsReferencePutRequest) ReturnFields2(returnFields2 string) DtcAllrecordsAPIDtcallrecordsReferencePutRequest {
+func (r DtcAllrecordsAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcAllrecordsAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcAllrecordsAPIDtcallrecordsReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcAllrecordsAPIDtcallrecordsReferencePutRequest {
+func (r DtcAllrecordsAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcAllrecordsAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcAllrecordsAPIDtcallrecordsReferencePutRequest) Execute() (*UpdateDtcAllrecordsResponse, *http.Response, error) {
-	return r.ApiService.DtcallrecordsReferencePutExecute(r)
+func (r DtcAllrecordsAPIUpdateRequest) Execute() (*UpdateDtcAllrecordsResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtcallrecordsReferencePut Update a dtc:allrecords object
+Update Update a dtc:allrecords object
 
 Updates a specific dtc:allrecords object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:allrecords object
-	@return DtcAllrecordsAPIDtcallrecordsReferencePutRequest
+	@return DtcAllrecordsAPIUpdateRequest
 */
-func (a *DtcAllrecordsAPIService) DtcallrecordsReferencePut(ctx context.Context, reference string) DtcAllrecordsAPIDtcallrecordsReferencePutRequest {
-	return DtcAllrecordsAPIDtcallrecordsReferencePutRequest{
+func (a *DtcAllrecordsAPIService) Update(ctx context.Context, reference string) DtcAllrecordsAPIUpdateRequest {
+	return DtcAllrecordsAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *DtcAllrecordsAPIService) DtcallrecordsReferencePut(ctx context.Context,
 // Execute executes the request
 //
 //	@return UpdateDtcAllrecordsResponse
-func (a *DtcAllrecordsAPIService) DtcallrecordsReferencePutExecute(r DtcAllrecordsAPIDtcallrecordsReferencePutRequest) (*UpdateDtcAllrecordsResponse, *http.Response, error) {
+func (a *DtcAllrecordsAPIService) UpdateExecute(r DtcAllrecordsAPIUpdateRequest) (*UpdateDtcAllrecordsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *DtcAllrecordsAPIService) DtcallrecordsReferencePutExecute(r DtcAllrecor
 		localVarReturnValue *UpdateDtcAllrecordsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAllrecordsAPIService.DtcallrecordsReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAllrecordsAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -23,11 +23,11 @@ func TestNamedaclAPIService(t *testing.T) {
 
 	apiClient := acl.NewAPIClient()
 
-	t.Run("Test NamedaclAPIService Get", func(t *testing.T) {
+	t.Run("Test NamedaclAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NamedaclAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NamedaclAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNamedaclAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedaclAPIService Post", func(t *testing.T) {
+	t.Run("Test NamedaclAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NamedaclAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NamedaclAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NamedaclAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NamedaclAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNamedaclAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedaclAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test NamedaclAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NamedaclAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NamedaclAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NamedaclAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NamedaclAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNamedaclAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NamedaclAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test NamedaclAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NamedaclAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NamedaclAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

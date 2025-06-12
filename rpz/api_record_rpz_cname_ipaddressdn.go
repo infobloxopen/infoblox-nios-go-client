@@ -23,249 +23,78 @@ import (
 
 type RecordRpzCnameIpaddressdnAPI interface {
 	/*
-		RecordrpzcnameipaddressdnGet Retrieve record:rpz:cname:ipaddressdn objects
-
-		Returns a list of record:rpz:cname:ipaddressdn objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest
-	*/
-	RecordrpzcnameipaddressdnGet(ctx context.Context) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest
-
-	// RecordrpzcnameipaddressdnGetExecute executes the request
-	//  @return ListRecordRpzCnameIpaddressdnResponse
-	RecordrpzcnameipaddressdnGetExecute(r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) (*ListRecordRpzCnameIpaddressdnResponse, *http.Response, error)
-	/*
-		RecordrpzcnameipaddressdnPost Create a record:rpz:cname:ipaddressdn object
+		Create Create a record:rpz:cname:ipaddressdn object
 
 		Creates a new record:rpz:cname:ipaddressdn object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest
+		@return RecordRpzCnameIpaddressdnAPICreateRequest
 	*/
-	RecordrpzcnameipaddressdnPost(ctx context.Context) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest
+	Create(ctx context.Context) RecordRpzCnameIpaddressdnAPICreateRequest
 
-	// RecordrpzcnameipaddressdnPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordRpzCnameIpaddressdnResponse
-	RecordrpzcnameipaddressdnPostExecute(r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest) (*CreateRecordRpzCnameIpaddressdnResponse, *http.Response, error)
+	CreateExecute(r RecordRpzCnameIpaddressdnAPICreateRequest) (*CreateRecordRpzCnameIpaddressdnResponse, *http.Response, error)
 	/*
-		RecordrpzcnameipaddressdnReferenceDelete Delete a record:rpz:cname:ipaddressdn object
+		Delete Delete a record:rpz:cname:ipaddressdn object
 
 		Deletes a specific record:rpz:cname:ipaddressdn object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:cname:ipaddressdn object
-		@return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceDeleteRequest
+		@return RecordRpzCnameIpaddressdnAPIDeleteRequest
 	*/
-	RecordrpzcnameipaddressdnReferenceDelete(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIDeleteRequest
 
-	// RecordrpzcnameipaddressdnReferenceDeleteExecute executes the request
-	RecordrpzcnameipaddressdnReferenceDeleteExecute(r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordRpzCnameIpaddressdnAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecordrpzcnameipaddressdnReferenceGet Get a specific record:rpz:cname:ipaddressdn object
+		List Retrieve record:rpz:cname:ipaddressdn objects
+
+		Returns a list of record:rpz:cname:ipaddressdn objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordRpzCnameIpaddressdnAPIListRequest
+	*/
+	List(ctx context.Context) RecordRpzCnameIpaddressdnAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordRpzCnameIpaddressdnResponse
+	ListExecute(r RecordRpzCnameIpaddressdnAPIListRequest) (*ListRecordRpzCnameIpaddressdnResponse, *http.Response, error)
+	/*
+		Read Get a specific record:rpz:cname:ipaddressdn object
 
 		Returns a specific record:rpz:cname:ipaddressdn object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:cname:ipaddressdn object
-		@return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest
+		@return RecordRpzCnameIpaddressdnAPIReadRequest
 	*/
-	RecordrpzcnameipaddressdnReferenceGet(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIReadRequest
 
-	// RecordrpzcnameipaddressdnReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordRpzCnameIpaddressdnResponse
-	RecordrpzcnameipaddressdnReferenceGetExecute(r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest) (*GetRecordRpzCnameIpaddressdnResponse, *http.Response, error)
+	ReadExecute(r RecordRpzCnameIpaddressdnAPIReadRequest) (*GetRecordRpzCnameIpaddressdnResponse, *http.Response, error)
 	/*
-		RecordrpzcnameipaddressdnReferencePut Update a record:rpz:cname:ipaddressdn object
+		Update Update a record:rpz:cname:ipaddressdn object
 
 		Updates a specific record:rpz:cname:ipaddressdn object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:cname:ipaddressdn object
-		@return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest
+		@return RecordRpzCnameIpaddressdnAPIUpdateRequest
 	*/
-	RecordrpzcnameipaddressdnReferencePut(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest
+	Update(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIUpdateRequest
 
-	// RecordrpzcnameipaddressdnReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordRpzCnameIpaddressdnResponse
-	RecordrpzcnameipaddressdnReferencePutExecute(r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest) (*UpdateRecordRpzCnameIpaddressdnResponse, *http.Response, error)
+	UpdateExecute(r RecordRpzCnameIpaddressdnAPIUpdateRequest) (*UpdateRecordRpzCnameIpaddressdnResponse, *http.Response, error)
 }
 
 // RecordRpzCnameIpaddressdnAPIService RecordRpzCnameIpaddressdnAPI service
 type RecordRpzCnameIpaddressdnAPIService internal.Service
 
-type RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordRpzCnameIpaddressdnAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) ReturnFields(returnFields string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) ReturnFields2(returnFields2 string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) MaxResults(maxResults int32) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) Paging(paging int32) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) PageId(pageId string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) Filters(filters map[string]interface{}) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) Execute() (*ListRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzcnameipaddressdnGetExecute(r)
-}
-
-/*
-RecordrpzcnameipaddressdnGet Retrieve record:rpz:cname:ipaddressdn objects
-
-Returns a list of record:rpz:cname:ipaddressdn objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest
-*/
-func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnGet(ctx context.Context) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest {
-	return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListRecordRpzCnameIpaddressdnResponse
-func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnGetExecute(r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnGetRequest) (*ListRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListRecordRpzCnameIpaddressdnResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameIpaddressdnAPIService.RecordrpzcnameipaddressdnGet")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:rpz:cname:ipaddressdn"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest struct {
+type RecordRpzCnameIpaddressdnAPICreateRequest struct {
 	ctx                       context.Context
 	ApiService                RecordRpzCnameIpaddressdnAPI
 	recordRpzCnameIpaddressdn *RecordRpzCnameIpaddressdn
@@ -275,43 +104,43 @@ type RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest struct {
 }
 
 // Object data to create
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest) RecordRpzCnameIpaddressdn(recordRpzCnameIpaddressdn RecordRpzCnameIpaddressdn) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest {
+func (r RecordRpzCnameIpaddressdnAPICreateRequest) RecordRpzCnameIpaddressdn(recordRpzCnameIpaddressdn RecordRpzCnameIpaddressdn) RecordRpzCnameIpaddressdnAPICreateRequest {
 	r.recordRpzCnameIpaddressdn = &recordRpzCnameIpaddressdn
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest) ReturnFields(returnFields string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest {
+func (r RecordRpzCnameIpaddressdnAPICreateRequest) ReturnFields(returnFields string) RecordRpzCnameIpaddressdnAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest) ReturnFields2(returnFields2 string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest {
+func (r RecordRpzCnameIpaddressdnAPICreateRequest) ReturnFields2(returnFields2 string) RecordRpzCnameIpaddressdnAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest {
+func (r RecordRpzCnameIpaddressdnAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameIpaddressdnAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest) Execute() (*CreateRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzcnameipaddressdnPostExecute(r)
+func (r RecordRpzCnameIpaddressdnAPICreateRequest) Execute() (*CreateRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-RecordrpzcnameipaddressdnPost Create a record:rpz:cname:ipaddressdn object
+Create Create a record:rpz:cname:ipaddressdn object
 
 Creates a new record:rpz:cname:ipaddressdn object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest
+	@return RecordRpzCnameIpaddressdnAPICreateRequest
 */
-func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnPost(ctx context.Context) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest {
-	return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest{
+func (a *RecordRpzCnameIpaddressdnAPIService) Create(ctx context.Context) RecordRpzCnameIpaddressdnAPICreateRequest {
+	return RecordRpzCnameIpaddressdnAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnPost(ctx 
 // Execute executes the request
 //
 //	@return CreateRecordRpzCnameIpaddressdnResponse
-func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnPostExecute(r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnPostRequest) (*CreateRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
+func (a *RecordRpzCnameIpaddressdnAPIService) CreateExecute(r RecordRpzCnameIpaddressdnAPICreateRequest) (*CreateRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnPostExecu
 		localVarReturnValue *CreateRecordRpzCnameIpaddressdnResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameIpaddressdnAPIService.RecordrpzcnameipaddressdnPost")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameIpaddressdnAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnPostExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceDeleteRequest struct {
+type RecordRpzCnameIpaddressdnAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService RecordRpzCnameIpaddressdnAPI
 	reference  string
 }
 
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecordrpzcnameipaddressdnReferenceDeleteExecute(r)
+func (r RecordRpzCnameIpaddressdnAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-RecordrpzcnameipaddressdnReferenceDelete Delete a record:rpz:cname:ipaddressdn object
+Delete Delete a record:rpz:cname:ipaddressdn object
 
 Deletes a specific record:rpz:cname:ipaddressdn object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:cname:ipaddressdn object
-	@return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceDeleteRequest
+	@return RecordRpzCnameIpaddressdnAPIDeleteRequest
 */
-func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReferenceDelete(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceDeleteRequest {
-	return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceDeleteRequest{
+func (a *RecordRpzCnameIpaddressdnAPIService) Delete(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIDeleteRequest {
+	return RecordRpzCnameIpaddressdnAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReference
 }
 
 // Execute executes the request
-func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReferenceDeleteExecute(r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceDeleteRequest) (*http.Response, error) {
+func (a *RecordRpzCnameIpaddressdnAPIService) DeleteExecute(r RecordRpzCnameIpaddressdnAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameIpaddressdnAPIService.RecordrpzcnameipaddressdnReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameIpaddressdnAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReference
 	return localVarHTTPResponse, nil
 }
 
-type RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest struct {
+type RecordRpzCnameIpaddressdnAPIListRequest struct {
+	ctx            context.Context
+	ApiService     RecordRpzCnameIpaddressdnAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RecordRpzCnameIpaddressdnAPIListRequest) ReturnFields(returnFields string) RecordRpzCnameIpaddressdnAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordRpzCnameIpaddressdnAPIListRequest) ReturnFields2(returnFields2 string) RecordRpzCnameIpaddressdnAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r RecordRpzCnameIpaddressdnAPIListRequest) MaxResults(maxResults int32) RecordRpzCnameIpaddressdnAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordRpzCnameIpaddressdnAPIListRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameIpaddressdnAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r RecordRpzCnameIpaddressdnAPIListRequest) Paging(paging int32) RecordRpzCnameIpaddressdnAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r RecordRpzCnameIpaddressdnAPIListRequest) PageId(pageId string) RecordRpzCnameIpaddressdnAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r RecordRpzCnameIpaddressdnAPIListRequest) Filters(filters map[string]interface{}) RecordRpzCnameIpaddressdnAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r RecordRpzCnameIpaddressdnAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRpzCnameIpaddressdnAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r RecordRpzCnameIpaddressdnAPIListRequest) Execute() (*ListRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve record:rpz:cname:ipaddressdn objects
+
+Returns a list of record:rpz:cname:ipaddressdn objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordRpzCnameIpaddressdnAPIListRequest
+*/
+func (a *RecordRpzCnameIpaddressdnAPIService) List(ctx context.Context) RecordRpzCnameIpaddressdnAPIListRequest {
+	return RecordRpzCnameIpaddressdnAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListRecordRpzCnameIpaddressdnResponse
+func (a *RecordRpzCnameIpaddressdnAPIService) ListExecute(r RecordRpzCnameIpaddressdnAPIListRequest) (*ListRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListRecordRpzCnameIpaddressdnResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameIpaddressdnAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:rpz:cname:ipaddressdn"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordRpzCnameIpaddressdnAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordRpzCnameIpaddressdnAPI
 	reference      string
@@ -511,38 +511,38 @@ type RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest st
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest) ReturnFields(returnFields string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest {
+func (r RecordRpzCnameIpaddressdnAPIReadRequest) ReturnFields(returnFields string) RecordRpzCnameIpaddressdnAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest) ReturnFields2(returnFields2 string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest {
+func (r RecordRpzCnameIpaddressdnAPIReadRequest) ReturnFields2(returnFields2 string) RecordRpzCnameIpaddressdnAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest {
+func (r RecordRpzCnameIpaddressdnAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameIpaddressdnAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest) Execute() (*GetRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzcnameipaddressdnReferenceGetExecute(r)
+func (r RecordRpzCnameIpaddressdnAPIReadRequest) Execute() (*GetRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordrpzcnameipaddressdnReferenceGet Get a specific record:rpz:cname:ipaddressdn object
+Read Get a specific record:rpz:cname:ipaddressdn object
 
 Returns a specific record:rpz:cname:ipaddressdn object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:cname:ipaddressdn object
-	@return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest
+	@return RecordRpzCnameIpaddressdnAPIReadRequest
 */
-func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReferenceGet(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest {
-	return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest{
+func (a *RecordRpzCnameIpaddressdnAPIService) Read(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIReadRequest {
+	return RecordRpzCnameIpaddressdnAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReference
 // Execute executes the request
 //
 //	@return GetRecordRpzCnameIpaddressdnResponse
-func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReferenceGetExecute(r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferenceGetRequest) (*GetRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
+func (a *RecordRpzCnameIpaddressdnAPIService) ReadExecute(r RecordRpzCnameIpaddressdnAPIReadRequest) (*GetRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReference
 		localVarReturnValue *GetRecordRpzCnameIpaddressdnResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameIpaddressdnAPIService.RecordrpzcnameipaddressdnReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameIpaddressdnAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReference
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest struct {
+type RecordRpzCnameIpaddressdnAPIUpdateRequest struct {
 	ctx                       context.Context
 	ApiService                RecordRpzCnameIpaddressdnAPI
 	reference                 string
@@ -639,44 +639,44 @@ type RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest st
 }
 
 // Object data to update
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest) RecordRpzCnameIpaddressdn(recordRpzCnameIpaddressdn RecordRpzCnameIpaddressdn) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest {
+func (r RecordRpzCnameIpaddressdnAPIUpdateRequest) RecordRpzCnameIpaddressdn(recordRpzCnameIpaddressdn RecordRpzCnameIpaddressdn) RecordRpzCnameIpaddressdnAPIUpdateRequest {
 	r.recordRpzCnameIpaddressdn = &recordRpzCnameIpaddressdn
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest) ReturnFields(returnFields string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest {
+func (r RecordRpzCnameIpaddressdnAPIUpdateRequest) ReturnFields(returnFields string) RecordRpzCnameIpaddressdnAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest) ReturnFields2(returnFields2 string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest {
+func (r RecordRpzCnameIpaddressdnAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordRpzCnameIpaddressdnAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest {
+func (r RecordRpzCnameIpaddressdnAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordRpzCnameIpaddressdnAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest) Execute() (*UpdateRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzcnameipaddressdnReferencePutExecute(r)
+func (r RecordRpzCnameIpaddressdnAPIUpdateRequest) Execute() (*UpdateRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordrpzcnameipaddressdnReferencePut Update a record:rpz:cname:ipaddressdn object
+Update Update a record:rpz:cname:ipaddressdn object
 
 Updates a specific record:rpz:cname:ipaddressdn object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:cname:ipaddressdn object
-	@return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest
+	@return RecordRpzCnameIpaddressdnAPIUpdateRequest
 */
-func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReferencePut(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest {
-	return RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest{
+func (a *RecordRpzCnameIpaddressdnAPIService) Update(ctx context.Context, reference string) RecordRpzCnameIpaddressdnAPIUpdateRequest {
+	return RecordRpzCnameIpaddressdnAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReference
 // Execute executes the request
 //
 //	@return UpdateRecordRpzCnameIpaddressdnResponse
-func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReferencePutExecute(r RecordRpzCnameIpaddressdnAPIRecordrpzcnameipaddressdnReferencePutRequest) (*UpdateRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
+func (a *RecordRpzCnameIpaddressdnAPIService) UpdateExecute(r RecordRpzCnameIpaddressdnAPIUpdateRequest) (*UpdateRecordRpzCnameIpaddressdnResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RecordRpzCnameIpaddressdnAPIService) RecordrpzcnameipaddressdnReference
 		localVarReturnValue *UpdateRecordRpzCnameIpaddressdnResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameIpaddressdnAPIService.RecordrpzcnameipaddressdnReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzCnameIpaddressdnAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

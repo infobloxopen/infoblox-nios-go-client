@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](NetworkviewAPI.md#Get) | **Get** /networkview | Retrieve networkview objects
-[**Post**](NetworkviewAPI.md#Post) | **Post** /networkview | Create a networkview object
-[**ReferenceDelete**](NetworkviewAPI.md#ReferenceDelete) | **Delete** /networkview/{reference} | Delete a networkview object
-[**ReferenceGet**](NetworkviewAPI.md#ReferenceGet) | **Get** /networkview/{reference} | Get a specific networkview object
-[**ReferencePut**](NetworkviewAPI.md#ReferencePut) | **Put** /networkview/{reference} | Update a networkview object
+[**Create**](NetworkviewAPI.md#Create) | **Post** /networkview | Create a networkview object
+[**Delete**](NetworkviewAPI.md#Delete) | **Delete** /networkview/{reference} | Delete a networkview object
+[**List**](NetworkviewAPI.md#List) | **Get** /networkview | Retrieve networkview objects
+[**Read**](NetworkviewAPI.md#Read) | **Get** /networkview/{reference} | Get a specific networkview object
+[**Update**](NetworkviewAPI.md#Update) | **Put** /networkview/{reference} | Update a networkview object
 
 
 
-## Get
+## Create
 
-> ListNetworkviewResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateNetworkviewResponse Create(ctx).Networkview(networkview).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a networkview object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+)
+
+func main() {
+	networkview := *ipam.NewNetworkview() // Networkview | Object data to create
+
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.NetworkviewAPI.Create(context.Background()).Networkview(networkview).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkviewAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateNetworkviewResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkviewAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `NetworkviewAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**networkview** | [**Networkview**](Networkview.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateNetworkviewResponse**](CreateNetworkviewResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a networkview object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the networkview object
+
+	apiClient := ipam.NewAPIClient()
+	r, err := apiClient.NetworkviewAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkviewAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the networkview object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `NetworkviewAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListNetworkviewResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve networkview objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkviewAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.NetworkviewAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkviewAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkviewAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListNetworkviewResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkviewAPI.Get`: %v\n", resp)
+	// response from `List`: ListNetworkviewResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkviewAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NetworkviewAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NetworkviewAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateNetworkviewResponse Post(ctx).Networkview(networkview).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a networkview object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
-)
-
-func main() {
-	networkview := *ipam.NewNetworkview() // Networkview | Object data to create
-
-	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkviewAPI.Post(context.Background()).Networkview(networkview).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkviewAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateNetworkviewResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkviewAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NetworkviewAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**networkview** | [**Networkview**](Networkview.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateNetworkviewResponse**](CreateNetworkviewResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a networkview object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the networkview object
-
-	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.NetworkviewAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkviewAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the networkview object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NetworkviewAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetNetworkviewResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetNetworkviewResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific networkview object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the networkview object
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkviewAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.NetworkviewAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkviewAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkviewAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetNetworkviewResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkviewAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetNetworkviewResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkviewAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NetworkviewAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NetworkviewAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateNetworkviewResponse ReferencePut(ctx, reference).Networkview(networkview).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateNetworkviewResponse Update(ctx, reference).Networkview(networkview).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a networkview object
 
@@ -318,13 +318,13 @@ func main() {
 	networkview := *ipam.NewNetworkview() // Networkview | Object data to update
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkviewAPI.ReferencePut(context.Background(), reference).Networkview(networkview).Execute()
+	resp, r, err := apiClient.NetworkviewAPI.Update(context.Background(), reference).Networkview(networkview).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkviewAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkviewAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateNetworkviewResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkviewAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateNetworkviewResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkviewAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NetworkviewAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NetworkviewAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

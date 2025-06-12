@@ -23,11 +23,11 @@ func TestRestartservicestatusAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test RestartservicestatusAPIService Get", func(t *testing.T) {
+	t.Run("Test RestartservicestatusAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RestartservicestatusAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RestartservicestatusAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestRestartservicestatusAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RestartservicestatusAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test RestartservicestatusAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RestartservicestatusAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RestartservicestatusAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

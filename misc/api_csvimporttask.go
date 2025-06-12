@@ -23,52 +23,52 @@ import (
 
 type CsvimporttaskAPI interface {
 	/*
-		Get Retrieve csvimporttask objects
+		List Retrieve csvimporttask objects
 
 		Returns a list of csvimporttask objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return CsvimporttaskAPIGetRequest
+		@return CsvimporttaskAPIListRequest
 	*/
-	Get(ctx context.Context) CsvimporttaskAPIGetRequest
+	List(ctx context.Context) CsvimporttaskAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListCsvimporttaskResponse
-	GetExecute(r CsvimporttaskAPIGetRequest) (*ListCsvimporttaskResponse, *http.Response, error)
+	ListExecute(r CsvimporttaskAPIListRequest) (*ListCsvimporttaskResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific csvimporttask object
+		Read Get a specific csvimporttask object
 
 		Returns a specific csvimporttask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the csvimporttask object
-		@return CsvimporttaskAPIReferenceGetRequest
+		@return CsvimporttaskAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) CsvimporttaskAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) CsvimporttaskAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetCsvimporttaskResponse
-	ReferenceGetExecute(r CsvimporttaskAPIReferenceGetRequest) (*GetCsvimporttaskResponse, *http.Response, error)
+	ReadExecute(r CsvimporttaskAPIReadRequest) (*GetCsvimporttaskResponse, *http.Response, error)
 	/*
-		ReferencePut Update a csvimporttask object
+		Update Update a csvimporttask object
 
 		Updates a specific csvimporttask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the csvimporttask object
-		@return CsvimporttaskAPIReferencePutRequest
+		@return CsvimporttaskAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) CsvimporttaskAPIReferencePutRequest
+	Update(ctx context.Context, reference string) CsvimporttaskAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateCsvimporttaskResponse
-	ReferencePutExecute(r CsvimporttaskAPIReferencePutRequest) (*UpdateCsvimporttaskResponse, *http.Response, error)
+	UpdateExecute(r CsvimporttaskAPIUpdateRequest) (*UpdateCsvimporttaskResponse, *http.Response, error)
 }
 
 // CsvimporttaskAPIService CsvimporttaskAPI service
 type CsvimporttaskAPIService internal.Service
 
-type CsvimporttaskAPIGetRequest struct {
+type CsvimporttaskAPIListRequest struct {
 	ctx            context.Context
 	ApiService     CsvimporttaskAPI
 	returnFields   *string
@@ -82,65 +82,65 @@ type CsvimporttaskAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r CsvimporttaskAPIGetRequest) ReturnFields(returnFields string) CsvimporttaskAPIGetRequest {
+func (r CsvimporttaskAPIListRequest) ReturnFields(returnFields string) CsvimporttaskAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CsvimporttaskAPIGetRequest) ReturnFields2(returnFields2 string) CsvimporttaskAPIGetRequest {
+func (r CsvimporttaskAPIListRequest) ReturnFields2(returnFields2 string) CsvimporttaskAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r CsvimporttaskAPIGetRequest) MaxResults(maxResults int32) CsvimporttaskAPIGetRequest {
+func (r CsvimporttaskAPIListRequest) MaxResults(maxResults int32) CsvimporttaskAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CsvimporttaskAPIGetRequest) ReturnAsObject(returnAsObject int32) CsvimporttaskAPIGetRequest {
+func (r CsvimporttaskAPIListRequest) ReturnAsObject(returnAsObject int32) CsvimporttaskAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r CsvimporttaskAPIGetRequest) Paging(paging int32) CsvimporttaskAPIGetRequest {
+func (r CsvimporttaskAPIListRequest) Paging(paging int32) CsvimporttaskAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r CsvimporttaskAPIGetRequest) PageId(pageId string) CsvimporttaskAPIGetRequest {
+func (r CsvimporttaskAPIListRequest) PageId(pageId string) CsvimporttaskAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r CsvimporttaskAPIGetRequest) Filters(filters map[string]interface{}) CsvimporttaskAPIGetRequest {
+func (r CsvimporttaskAPIListRequest) Filters(filters map[string]interface{}) CsvimporttaskAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r CsvimporttaskAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) CsvimporttaskAPIGetRequest {
+func (r CsvimporttaskAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) CsvimporttaskAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r CsvimporttaskAPIGetRequest) Execute() (*ListCsvimporttaskResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r CsvimporttaskAPIListRequest) Execute() (*ListCsvimporttaskResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve csvimporttask objects
+List Retrieve csvimporttask objects
 
 Returns a list of csvimporttask objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return CsvimporttaskAPIGetRequest
+	@return CsvimporttaskAPIListRequest
 */
-func (a *CsvimporttaskAPIService) Get(ctx context.Context) CsvimporttaskAPIGetRequest {
-	return CsvimporttaskAPIGetRequest{
+func (a *CsvimporttaskAPIService) List(ctx context.Context) CsvimporttaskAPIListRequest {
+	return CsvimporttaskAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *CsvimporttaskAPIService) Get(ctx context.Context) CsvimporttaskAPIGetRe
 // Execute executes the request
 //
 //	@return ListCsvimporttaskResponse
-func (a *CsvimporttaskAPIService) GetExecute(r CsvimporttaskAPIGetRequest) (*ListCsvimporttaskResponse, *http.Response, error) {
+func (a *CsvimporttaskAPIService) ListExecute(r CsvimporttaskAPIListRequest) (*ListCsvimporttaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *CsvimporttaskAPIService) GetExecute(r CsvimporttaskAPIGetRequest) (*Lis
 		localVarReturnValue *ListCsvimporttaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CsvimporttaskAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CsvimporttaskAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -239,7 +239,7 @@ func (a *CsvimporttaskAPIService) GetExecute(r CsvimporttaskAPIGetRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CsvimporttaskAPIReferenceGetRequest struct {
+type CsvimporttaskAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     CsvimporttaskAPI
 	reference      string
@@ -249,38 +249,38 @@ type CsvimporttaskAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r CsvimporttaskAPIReferenceGetRequest) ReturnFields(returnFields string) CsvimporttaskAPIReferenceGetRequest {
+func (r CsvimporttaskAPIReadRequest) ReturnFields(returnFields string) CsvimporttaskAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CsvimporttaskAPIReferenceGetRequest) ReturnFields2(returnFields2 string) CsvimporttaskAPIReferenceGetRequest {
+func (r CsvimporttaskAPIReadRequest) ReturnFields2(returnFields2 string) CsvimporttaskAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CsvimporttaskAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) CsvimporttaskAPIReferenceGetRequest {
+func (r CsvimporttaskAPIReadRequest) ReturnAsObject(returnAsObject int32) CsvimporttaskAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r CsvimporttaskAPIReferenceGetRequest) Execute() (*GetCsvimporttaskResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r CsvimporttaskAPIReadRequest) Execute() (*GetCsvimporttaskResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific csvimporttask object
+Read Get a specific csvimporttask object
 
 Returns a specific csvimporttask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the csvimporttask object
-	@return CsvimporttaskAPIReferenceGetRequest
+	@return CsvimporttaskAPIReadRequest
 */
-func (a *CsvimporttaskAPIService) ReferenceGet(ctx context.Context, reference string) CsvimporttaskAPIReferenceGetRequest {
-	return CsvimporttaskAPIReferenceGetRequest{
+func (a *CsvimporttaskAPIService) Read(ctx context.Context, reference string) CsvimporttaskAPIReadRequest {
+	return CsvimporttaskAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *CsvimporttaskAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetCsvimporttaskResponse
-func (a *CsvimporttaskAPIService) ReferenceGetExecute(r CsvimporttaskAPIReferenceGetRequest) (*GetCsvimporttaskResponse, *http.Response, error) {
+func (a *CsvimporttaskAPIService) ReadExecute(r CsvimporttaskAPIReadRequest) (*GetCsvimporttaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *CsvimporttaskAPIService) ReferenceGetExecute(r CsvimporttaskAPIReferenc
 		localVarReturnValue *GetCsvimporttaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CsvimporttaskAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CsvimporttaskAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -366,7 +366,7 @@ func (a *CsvimporttaskAPIService) ReferenceGetExecute(r CsvimporttaskAPIReferenc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CsvimporttaskAPIReferencePutRequest struct {
+type CsvimporttaskAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     CsvimporttaskAPI
 	reference      string
@@ -377,44 +377,44 @@ type CsvimporttaskAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r CsvimporttaskAPIReferencePutRequest) Csvimporttask(csvimporttask Csvimporttask) CsvimporttaskAPIReferencePutRequest {
+func (r CsvimporttaskAPIUpdateRequest) Csvimporttask(csvimporttask Csvimporttask) CsvimporttaskAPIUpdateRequest {
 	r.csvimporttask = &csvimporttask
 	return r
 }
 
 // Enter the field names followed by comma
-func (r CsvimporttaskAPIReferencePutRequest) ReturnFields(returnFields string) CsvimporttaskAPIReferencePutRequest {
+func (r CsvimporttaskAPIUpdateRequest) ReturnFields(returnFields string) CsvimporttaskAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CsvimporttaskAPIReferencePutRequest) ReturnFields2(returnFields2 string) CsvimporttaskAPIReferencePutRequest {
+func (r CsvimporttaskAPIUpdateRequest) ReturnFields2(returnFields2 string) CsvimporttaskAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CsvimporttaskAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) CsvimporttaskAPIReferencePutRequest {
+func (r CsvimporttaskAPIUpdateRequest) ReturnAsObject(returnAsObject int32) CsvimporttaskAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r CsvimporttaskAPIReferencePutRequest) Execute() (*UpdateCsvimporttaskResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r CsvimporttaskAPIUpdateRequest) Execute() (*UpdateCsvimporttaskResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a csvimporttask object
+Update Update a csvimporttask object
 
 Updates a specific csvimporttask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the csvimporttask object
-	@return CsvimporttaskAPIReferencePutRequest
+	@return CsvimporttaskAPIUpdateRequest
 */
-func (a *CsvimporttaskAPIService) ReferencePut(ctx context.Context, reference string) CsvimporttaskAPIReferencePutRequest {
-	return CsvimporttaskAPIReferencePutRequest{
+func (a *CsvimporttaskAPIService) Update(ctx context.Context, reference string) CsvimporttaskAPIUpdateRequest {
+	return CsvimporttaskAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *CsvimporttaskAPIService) ReferencePut(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return UpdateCsvimporttaskResponse
-func (a *CsvimporttaskAPIService) ReferencePutExecute(r CsvimporttaskAPIReferencePutRequest) (*UpdateCsvimporttaskResponse, *http.Response, error) {
+func (a *CsvimporttaskAPIService) UpdateExecute(r CsvimporttaskAPIUpdateRequest) (*UpdateCsvimporttaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *CsvimporttaskAPIService) ReferencePutExecute(r CsvimporttaskAPIReferenc
 		localVarReturnValue *UpdateCsvimporttaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CsvimporttaskAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CsvimporttaskAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

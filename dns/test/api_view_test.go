@@ -23,11 +23,11 @@ func TestViewAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test ViewAPIService Get", func(t *testing.T) {
+	t.Run("Test ViewAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ViewAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ViewAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestViewAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ViewAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test ViewAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ViewAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ViewAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestViewAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ViewAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test ViewAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ViewAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ViewAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

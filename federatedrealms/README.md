@@ -79,10 +79,10 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*FederatedrealmsAPI* | [**Get**](docs/FederatedrealmsAPI.md#get) | **Get** /federatedrealms | Retrieve federatedrealms objects
-*FederatedrealmsAPI* | [**ReferenceGet**](docs/FederatedrealmsAPI.md#referenceget) | **Get** /federatedrealms/{reference} | Get a specific federatedrealms object
-*FedipamopAPI* | [**Get**](docs/FedipamopAPI.md#get) | **Get** /fedipamop | Retrieve fedipamop objects
-*FedipamopAPI* | [**ReferenceGet**](docs/FedipamopAPI.md#referenceget) | **Get** /fedipamop/{reference} | Get a specific fedipamop object
+*FederatedrealmsAPI* | [**List**](docs/FederatedrealmsAPI.md#list) | **Get** /federatedrealms | Retrieve federatedrealms objects
+*FederatedrealmsAPI* | [**Read**](docs/FederatedrealmsAPI.md#read) | **Get** /federatedrealms/{reference} | Get a specific federatedrealms object
+*FedipamopAPI* | [**List**](docs/FedipamopAPI.md#list) | **Get** /fedipamop | Retrieve fedipamop objects
+*FedipamopAPI* | [**Read**](docs/FedipamopAPI.md#read) | **Get** /fedipamop/{reference} | Get a specific fedipamop object
 
 
 ## Documentation For Models

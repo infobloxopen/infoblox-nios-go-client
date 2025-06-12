@@ -23,11 +23,11 @@ func TestGridDhcppropertiesAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test GridDhcppropertiesAPIService GriddhcppropertiesGet", func(t *testing.T) {
+	t.Run("Test GridDhcppropertiesAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridDhcppropertiesAPI.GriddhcppropertiesGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GridDhcppropertiesAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestGridDhcppropertiesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridDhcppropertiesAPIService GriddhcppropertiesReferenceGet", func(t *testing.T) {
+	t.Run("Test GridDhcppropertiesAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridDhcppropertiesAPI.GriddhcppropertiesReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridDhcppropertiesAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestGridDhcppropertiesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridDhcppropertiesAPIService GriddhcppropertiesReferencePut", func(t *testing.T) {
+	t.Run("Test GridDhcppropertiesAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridDhcppropertiesAPI.GriddhcppropertiesReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridDhcppropertiesAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

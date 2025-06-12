@@ -38,12 +38,12 @@ Name | Type | Description | Notes
 **StatusValue** | Pointer to **string** | Status of a certain group, virtual node or physical node. | [optional] [readonly] 
 **StatusValueUpdateTime** | Pointer to **int64** | Timestamp of when the status was updated. | [optional] [readonly] 
 **Steps** | Pointer to [**[]UpgradestatusSteps**](UpgradestatusSteps.md) | The list of upgrade process steps. | [optional] [readonly] 
-**StepsCompleted** | Pointer to **int32** | The number of steps done. | [optional] [readonly] 
-**StepsTotal** | Pointer to **int32** | Total number steps in the upgrade process. | [optional] [readonly] 
+**StepsCompleted** | Pointer to **int64** | The number of steps done. | [optional] [readonly] 
+**StepsTotal** | Pointer to **int64** | Total number steps in the upgrade process. | [optional] [readonly] 
 **SubelementType** | Pointer to **string** | The type of subelements to be requested. If &#39;type&#39; is &#39;GROUP&#39;, or &#39;VNODE&#39;, then &#39;upgrade_group&#39; or &#39;member&#39; should have proper values for an operation to return data specific for the values passed. Otherwise, overall data is returned for every group or physical node. | [optional] [readonly] 
-**SubelementsCompleted** | Pointer to **int32** | Number of subelements that have accomplished an upgrade. | [optional] [readonly] 
+**SubelementsCompleted** | Pointer to **int64** | Number of subelements that have accomplished an upgrade. | [optional] [readonly] 
 **SubelementsStatus** | Pointer to **[]string** | The upgrade process information of subelements. | [optional] 
-**SubelementsTotal** | Pointer to **int32** | Number of subelements number in a certain group, virtual node, or the Grid. | [optional] [readonly] 
+**SubelementsTotal** | Pointer to **int64** | Number of subelements number in a certain group, virtual node, or the Grid. | [optional] [readonly] 
 **Type** | Pointer to **string** | The type of upper level elements to be requested. | [optional] [readonly] 
 **UpgradeGroup** | Pointer to **string** | Upgrade group that participates in the upgrade process. | [optional] [readonly] 
 **UpgradeScheduleActive** | Pointer to **bool** | Determines if the upgrade schedule is active. | [optional] [readonly] 
@@ -923,20 +923,20 @@ HasSteps returns a boolean if a field has been set.
 
 ### GetStepsCompleted
 
-`func (o *Upgradestatus) GetStepsCompleted() int32`
+`func (o *Upgradestatus) GetStepsCompleted() int64`
 
 GetStepsCompleted returns the StepsCompleted field if non-nil, zero value otherwise.
 
 ### GetStepsCompletedOk
 
-`func (o *Upgradestatus) GetStepsCompletedOk() (*int32, bool)`
+`func (o *Upgradestatus) GetStepsCompletedOk() (*int64, bool)`
 
 GetStepsCompletedOk returns a tuple with the StepsCompleted field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStepsCompleted
 
-`func (o *Upgradestatus) SetStepsCompleted(v int32)`
+`func (o *Upgradestatus) SetStepsCompleted(v int64)`
 
 SetStepsCompleted sets StepsCompleted field to given value.
 
@@ -948,20 +948,20 @@ HasStepsCompleted returns a boolean if a field has been set.
 
 ### GetStepsTotal
 
-`func (o *Upgradestatus) GetStepsTotal() int32`
+`func (o *Upgradestatus) GetStepsTotal() int64`
 
 GetStepsTotal returns the StepsTotal field if non-nil, zero value otherwise.
 
 ### GetStepsTotalOk
 
-`func (o *Upgradestatus) GetStepsTotalOk() (*int32, bool)`
+`func (o *Upgradestatus) GetStepsTotalOk() (*int64, bool)`
 
 GetStepsTotalOk returns a tuple with the StepsTotal field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStepsTotal
 
-`func (o *Upgradestatus) SetStepsTotal(v int32)`
+`func (o *Upgradestatus) SetStepsTotal(v int64)`
 
 SetStepsTotal sets StepsTotal field to given value.
 
@@ -998,20 +998,20 @@ HasSubelementType returns a boolean if a field has been set.
 
 ### GetSubelementsCompleted
 
-`func (o *Upgradestatus) GetSubelementsCompleted() int32`
+`func (o *Upgradestatus) GetSubelementsCompleted() int64`
 
 GetSubelementsCompleted returns the SubelementsCompleted field if non-nil, zero value otherwise.
 
 ### GetSubelementsCompletedOk
 
-`func (o *Upgradestatus) GetSubelementsCompletedOk() (*int32, bool)`
+`func (o *Upgradestatus) GetSubelementsCompletedOk() (*int64, bool)`
 
 GetSubelementsCompletedOk returns a tuple with the SubelementsCompleted field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubelementsCompleted
 
-`func (o *Upgradestatus) SetSubelementsCompleted(v int32)`
+`func (o *Upgradestatus) SetSubelementsCompleted(v int64)`
 
 SetSubelementsCompleted sets SubelementsCompleted field to given value.
 
@@ -1048,20 +1048,20 @@ HasSubelementsStatus returns a boolean if a field has been set.
 
 ### GetSubelementsTotal
 
-`func (o *Upgradestatus) GetSubelementsTotal() int32`
+`func (o *Upgradestatus) GetSubelementsTotal() int64`
 
 GetSubelementsTotal returns the SubelementsTotal field if non-nil, zero value otherwise.
 
 ### GetSubelementsTotalOk
 
-`func (o *Upgradestatus) GetSubelementsTotalOk() (*int32, bool)`
+`func (o *Upgradestatus) GetSubelementsTotalOk() (*int64, bool)`
 
 GetSubelementsTotalOk returns a tuple with the SubelementsTotal field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubelementsTotal
 
-`func (o *Upgradestatus) SetSubelementsTotal(v int32)`
+`func (o *Upgradestatus) SetSubelementsTotal(v int64)`
 
 SetSubelementsTotal sets SubelementsTotal field to given value.
 

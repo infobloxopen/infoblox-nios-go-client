@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](ViewAPI.md#Get) | **Get** /view | Retrieve view objects
-[**ReferenceGet**](ViewAPI.md#ReferenceGet) | **Get** /view/{reference} | Get a specific view object
-[**ReferencePut**](ViewAPI.md#ReferencePut) | **Put** /view/{reference} | Update a view object
+[**List**](ViewAPI.md#List) | **Get** /view | Retrieve view objects
+[**Read**](ViewAPI.md#Read) | **Get** /view/{reference} | Get a specific view object
+[**Update**](ViewAPI.md#Update) | **Put** /view/{reference} | Update a view object
 
 
 
-## Get
+## List
 
-> ListViewResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListViewResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve view objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ViewAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.ViewAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ViewAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListViewResponse
-	fmt.Fprintf(os.Stdout, "Response from `ViewAPI.Get`: %v\n", resp)
+	// response from `List`: ListViewResponse
+	fmt.Fprintf(os.Stdout, "Response from `ViewAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ViewAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ViewAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetViewResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetViewResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific view object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the view object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ViewAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ViewAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ViewAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetViewResponse
-	fmt.Fprintf(os.Stdout, "Response from `ViewAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetViewResponse
+	fmt.Fprintf(os.Stdout, "Response from `ViewAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ViewAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ViewAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateViewResponse ReferencePut(ctx, reference).View(view).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateViewResponse Update(ctx, reference).View(view).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a view object
 
@@ -180,13 +180,13 @@ func main() {
 	view := *dns.NewView() // View | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ViewAPI.ReferencePut(context.Background(), reference).View(view).Execute()
+	resp, r, err := apiClient.ViewAPI.Update(context.Background(), reference).View(view).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ViewAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ViewAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateViewResponse
-	fmt.Fprintf(os.Stdout, "Response from `ViewAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateViewResponse
+	fmt.Fprintf(os.Stdout, "Response from `ViewAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ViewAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ViewAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

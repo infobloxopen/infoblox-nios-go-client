@@ -23,78 +23,302 @@ import (
 
 type PermissionAPI interface {
 	/*
-		Get Retrieve permission objects
-
-		Returns a list of permission objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return PermissionAPIGetRequest
-	*/
-	Get(ctx context.Context) PermissionAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListPermissionResponse
-	GetExecute(r PermissionAPIGetRequest) (*ListPermissionResponse, *http.Response, error)
-	/*
-		Post Create a permission object
+		Create Create a permission object
 
 		Creates a new permission object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return PermissionAPIPostRequest
+		@return PermissionAPICreateRequest
 	*/
-	Post(ctx context.Context) PermissionAPIPostRequest
+	Create(ctx context.Context) PermissionAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreatePermissionResponse
-	PostExecute(r PermissionAPIPostRequest) (*CreatePermissionResponse, *http.Response, error)
+	CreateExecute(r PermissionAPICreateRequest) (*CreatePermissionResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a permission object
+		Delete Delete a permission object
 
 		Deletes a specific permission object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the permission object
-		@return PermissionAPIReferenceDeleteRequest
+		@return PermissionAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) PermissionAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) PermissionAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r PermissionAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r PermissionAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific permission object
+		List Retrieve permission objects
+
+		Returns a list of permission objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return PermissionAPIListRequest
+	*/
+	List(ctx context.Context) PermissionAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListPermissionResponse
+	ListExecute(r PermissionAPIListRequest) (*ListPermissionResponse, *http.Response, error)
+	/*
+		Read Get a specific permission object
 
 		Returns a specific permission object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the permission object
-		@return PermissionAPIReferenceGetRequest
+		@return PermissionAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) PermissionAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) PermissionAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetPermissionResponse
-	ReferenceGetExecute(r PermissionAPIReferenceGetRequest) (*GetPermissionResponse, *http.Response, error)
+	ReadExecute(r PermissionAPIReadRequest) (*GetPermissionResponse, *http.Response, error)
 	/*
-		ReferencePut Update a permission object
+		Update Update a permission object
 
 		Updates a specific permission object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the permission object
-		@return PermissionAPIReferencePutRequest
+		@return PermissionAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) PermissionAPIReferencePutRequest
+	Update(ctx context.Context, reference string) PermissionAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdatePermissionResponse
-	ReferencePutExecute(r PermissionAPIReferencePutRequest) (*UpdatePermissionResponse, *http.Response, error)
+	UpdateExecute(r PermissionAPIUpdateRequest) (*UpdatePermissionResponse, *http.Response, error)
 }
 
 // PermissionAPIService PermissionAPI service
 type PermissionAPIService internal.Service
 
-type PermissionAPIGetRequest struct {
+type PermissionAPICreateRequest struct {
+	ctx            context.Context
+	ApiService     PermissionAPI
+	permission     *Permission
+	returnFields   *string
+	returnFields2  *string
+	returnAsObject *int32
+}
+
+// Object data to create
+func (r PermissionAPICreateRequest) Permission(permission Permission) PermissionAPICreateRequest {
+	r.permission = &permission
+	return r
+}
+
+// Enter the field names followed by comma
+func (r PermissionAPICreateRequest) ReturnFields(returnFields string) PermissionAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r PermissionAPICreateRequest) ReturnFields2(returnFields2 string) PermissionAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r PermissionAPICreateRequest) ReturnAsObject(returnAsObject int32) PermissionAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r PermissionAPICreateRequest) Execute() (*CreatePermissionResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a permission object
+
+Creates a new permission object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return PermissionAPICreateRequest
+*/
+func (a *PermissionAPIService) Create(ctx context.Context) PermissionAPICreateRequest {
+	return PermissionAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreatePermissionResponse
+func (a *PermissionAPIService) CreateExecute(r PermissionAPICreateRequest) (*CreatePermissionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreatePermissionResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PermissionAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/permission"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.permission == nil {
+		return localVarReturnValue, nil, internal.ReportError("permission is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.permission
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type PermissionAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService PermissionAPI
+	reference  string
+}
+
+func (r PermissionAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a permission object
+
+Deletes a specific permission object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the permission object
+	@return PermissionAPIDeleteRequest
+*/
+func (a *PermissionAPIService) Delete(ctx context.Context, reference string) PermissionAPIDeleteRequest {
+	return PermissionAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *PermissionAPIService) DeleteExecute(r PermissionAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PermissionAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/permission/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type PermissionAPIListRequest struct {
 	ctx            context.Context
 	ApiService     PermissionAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type PermissionAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r PermissionAPIGetRequest) ReturnFields(returnFields string) PermissionAPIGetRequest {
+func (r PermissionAPIListRequest) ReturnFields(returnFields string) PermissionAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PermissionAPIGetRequest) ReturnFields2(returnFields2 string) PermissionAPIGetRequest {
+func (r PermissionAPIListRequest) ReturnFields2(returnFields2 string) PermissionAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r PermissionAPIGetRequest) MaxResults(maxResults int32) PermissionAPIGetRequest {
+func (r PermissionAPIListRequest) MaxResults(maxResults int32) PermissionAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r PermissionAPIGetRequest) ReturnAsObject(returnAsObject int32) PermissionAPIGetRequest {
+func (r PermissionAPIListRequest) ReturnAsObject(returnAsObject int32) PermissionAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r PermissionAPIGetRequest) Paging(paging int32) PermissionAPIGetRequest {
+func (r PermissionAPIListRequest) Paging(paging int32) PermissionAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r PermissionAPIGetRequest) PageId(pageId string) PermissionAPIGetRequest {
+func (r PermissionAPIListRequest) PageId(pageId string) PermissionAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r PermissionAPIGetRequest) Filters(filters map[string]interface{}) PermissionAPIGetRequest {
+func (r PermissionAPIListRequest) Filters(filters map[string]interface{}) PermissionAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r PermissionAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) PermissionAPIGetRequest {
+func (r PermissionAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) PermissionAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r PermissionAPIGetRequest) Execute() (*ListPermissionResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r PermissionAPIListRequest) Execute() (*ListPermissionResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve permission objects
+List Retrieve permission objects
 
 Returns a list of permission objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return PermissionAPIGetRequest
+	@return PermissionAPIListRequest
 */
-func (a *PermissionAPIService) Get(ctx context.Context) PermissionAPIGetRequest {
-	return PermissionAPIGetRequest{
+func (a *PermissionAPIService) List(ctx context.Context) PermissionAPIListRequest {
+	return PermissionAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *PermissionAPIService) Get(ctx context.Context) PermissionAPIGetRequest 
 // Execute executes the request
 //
 //	@return ListPermissionResponse
-func (a *PermissionAPIService) GetExecute(r PermissionAPIGetRequest) (*ListPermissionResponse, *http.Response, error) {
+func (a *PermissionAPIService) ListExecute(r PermissionAPIListRequest) (*ListPermissionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *PermissionAPIService) GetExecute(r PermissionAPIGetRequest) (*ListPermi
 		localVarReturnValue *ListPermissionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PermissionAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PermissionAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *PermissionAPIService) GetExecute(r PermissionAPIGetRequest) (*ListPermi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type PermissionAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     PermissionAPI
-	permission     *Permission
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r PermissionAPIPostRequest) Permission(permission Permission) PermissionAPIPostRequest {
-	r.permission = &permission
-	return r
-}
-
-// Enter the field names followed by comma
-func (r PermissionAPIPostRequest) ReturnFields(returnFields string) PermissionAPIPostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PermissionAPIPostRequest) ReturnFields2(returnFields2 string) PermissionAPIPostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r PermissionAPIPostRequest) ReturnAsObject(returnAsObject int32) PermissionAPIPostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r PermissionAPIPostRequest) Execute() (*CreatePermissionResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
-}
-
-/*
-Post Create a permission object
-
-Creates a new permission object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return PermissionAPIPostRequest
-*/
-func (a *PermissionAPIService) Post(ctx context.Context) PermissionAPIPostRequest {
-	return PermissionAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreatePermissionResponse
-func (a *PermissionAPIService) PostExecute(r PermissionAPIPostRequest) (*CreatePermissionResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreatePermissionResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PermissionAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/permission"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.permission == nil {
-		return localVarReturnValue, nil, internal.ReportError("permission is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.permission
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type PermissionAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService PermissionAPI
-	reference  string
-}
-
-func (r PermissionAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a permission object
-
-Deletes a specific permission object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the permission object
-	@return PermissionAPIReferenceDeleteRequest
-*/
-func (a *PermissionAPIService) ReferenceDelete(ctx context.Context, reference string) PermissionAPIReferenceDeleteRequest {
-	return PermissionAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *PermissionAPIService) ReferenceDeleteExecute(r PermissionAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PermissionAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/permission/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type PermissionAPIReferenceGetRequest struct {
+type PermissionAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     PermissionAPI
 	reference      string
@@ -499,38 +499,38 @@ type PermissionAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r PermissionAPIReferenceGetRequest) ReturnFields(returnFields string) PermissionAPIReferenceGetRequest {
+func (r PermissionAPIReadRequest) ReturnFields(returnFields string) PermissionAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PermissionAPIReferenceGetRequest) ReturnFields2(returnFields2 string) PermissionAPIReferenceGetRequest {
+func (r PermissionAPIReadRequest) ReturnFields2(returnFields2 string) PermissionAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r PermissionAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) PermissionAPIReferenceGetRequest {
+func (r PermissionAPIReadRequest) ReturnAsObject(returnAsObject int32) PermissionAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r PermissionAPIReferenceGetRequest) Execute() (*GetPermissionResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r PermissionAPIReadRequest) Execute() (*GetPermissionResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific permission object
+Read Get a specific permission object
 
 Returns a specific permission object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the permission object
-	@return PermissionAPIReferenceGetRequest
+	@return PermissionAPIReadRequest
 */
-func (a *PermissionAPIService) ReferenceGet(ctx context.Context, reference string) PermissionAPIReferenceGetRequest {
-	return PermissionAPIReferenceGetRequest{
+func (a *PermissionAPIService) Read(ctx context.Context, reference string) PermissionAPIReadRequest {
+	return PermissionAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *PermissionAPIService) ReferenceGet(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return GetPermissionResponse
-func (a *PermissionAPIService) ReferenceGetExecute(r PermissionAPIReferenceGetRequest) (*GetPermissionResponse, *http.Response, error) {
+func (a *PermissionAPIService) ReadExecute(r PermissionAPIReadRequest) (*GetPermissionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *PermissionAPIService) ReferenceGetExecute(r PermissionAPIReferenceGetRe
 		localVarReturnValue *GetPermissionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PermissionAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PermissionAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *PermissionAPIService) ReferenceGetExecute(r PermissionAPIReferenceGetRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type PermissionAPIReferencePutRequest struct {
+type PermissionAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     PermissionAPI
 	reference      string
@@ -627,44 +627,44 @@ type PermissionAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r PermissionAPIReferencePutRequest) Permission(permission Permission) PermissionAPIReferencePutRequest {
+func (r PermissionAPIUpdateRequest) Permission(permission Permission) PermissionAPIUpdateRequest {
 	r.permission = &permission
 	return r
 }
 
 // Enter the field names followed by comma
-func (r PermissionAPIReferencePutRequest) ReturnFields(returnFields string) PermissionAPIReferencePutRequest {
+func (r PermissionAPIUpdateRequest) ReturnFields(returnFields string) PermissionAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PermissionAPIReferencePutRequest) ReturnFields2(returnFields2 string) PermissionAPIReferencePutRequest {
+func (r PermissionAPIUpdateRequest) ReturnFields2(returnFields2 string) PermissionAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r PermissionAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) PermissionAPIReferencePutRequest {
+func (r PermissionAPIUpdateRequest) ReturnAsObject(returnAsObject int32) PermissionAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r PermissionAPIReferencePutRequest) Execute() (*UpdatePermissionResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r PermissionAPIUpdateRequest) Execute() (*UpdatePermissionResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a permission object
+Update Update a permission object
 
 Updates a specific permission object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the permission object
-	@return PermissionAPIReferencePutRequest
+	@return PermissionAPIUpdateRequest
 */
-func (a *PermissionAPIService) ReferencePut(ctx context.Context, reference string) PermissionAPIReferencePutRequest {
-	return PermissionAPIReferencePutRequest{
+func (a *PermissionAPIService) Update(ctx context.Context, reference string) PermissionAPIUpdateRequest {
+	return PermissionAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *PermissionAPIService) ReferencePut(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return UpdatePermissionResponse
-func (a *PermissionAPIService) ReferencePutExecute(r PermissionAPIReferencePutRequest) (*UpdatePermissionResponse, *http.Response, error) {
+func (a *PermissionAPIService) UpdateExecute(r PermissionAPIUpdateRequest) (*UpdatePermissionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *PermissionAPIService) ReferencePutExecute(r PermissionAPIReferencePutRe
 		localVarReturnValue *UpdatePermissionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PermissionAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "PermissionAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

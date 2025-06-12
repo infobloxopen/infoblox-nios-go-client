@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](FixedaddressAPI.md#Get) | **Get** /fixedaddress | Retrieve fixedaddress objects
-[**Post**](FixedaddressAPI.md#Post) | **Post** /fixedaddress | Create a fixedaddress object
-[**ReferenceDelete**](FixedaddressAPI.md#ReferenceDelete) | **Delete** /fixedaddress/{reference} | Delete a fixedaddress object
-[**ReferenceGet**](FixedaddressAPI.md#ReferenceGet) | **Get** /fixedaddress/{reference} | Get a specific fixedaddress object
-[**ReferencePut**](FixedaddressAPI.md#ReferencePut) | **Put** /fixedaddress/{reference} | Update a fixedaddress object
+[**Create**](FixedaddressAPI.md#Create) | **Post** /fixedaddress | Create a fixedaddress object
+[**Delete**](FixedaddressAPI.md#Delete) | **Delete** /fixedaddress/{reference} | Delete a fixedaddress object
+[**List**](FixedaddressAPI.md#List) | **Get** /fixedaddress | Retrieve fixedaddress objects
+[**Read**](FixedaddressAPI.md#Read) | **Get** /fixedaddress/{reference} | Get a specific fixedaddress object
+[**Update**](FixedaddressAPI.md#Update) | **Put** /fixedaddress/{reference} | Update a fixedaddress object
 
 
 
-## Get
+## Create
 
-> ListFixedaddressResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateFixedaddressResponse Create(ctx).Fixedaddress(fixedaddress).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+
+Create a fixedaddress object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+)
+
+func main() {
+	fixedaddress := *dhcp.NewFixedaddress() // Fixedaddress | Object data to create
+
+	apiClient := dhcp.NewAPIClient()
+	resp, r, err := apiClient.FixedaddressAPI.Create(context.Background()).Fixedaddress(fixedaddress).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FixedaddressAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateFixedaddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `FixedaddressAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `FixedaddressAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**fixedaddress** | [**Fixedaddress**](Fixedaddress.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateFixedaddressResponse**](CreateFixedaddressResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a fixedaddress object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the fixedaddress object
+
+	apiClient := dhcp.NewAPIClient()
+	r, err := apiClient.FixedaddressAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FixedaddressAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the fixedaddress object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `FixedaddressAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListFixedaddressResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve fixedaddress objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.FixedaddressAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.FixedaddressAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FixedaddressAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FixedaddressAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListFixedaddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `FixedaddressAPI.Get`: %v\n", resp)
+	// response from `List`: ListFixedaddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `FixedaddressAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,7 +188,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FixedaddressAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FixedaddressAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateFixedaddressResponse Post(ctx).Fixedaddress(fixedaddress).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a fixedaddress object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
-)
-
-func main() {
-	fixedaddress := *dhcp.NewFixedaddress() // Fixedaddress | Object data to create
-
-	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.FixedaddressAPI.Post(context.Background()).Fixedaddress(fixedaddress).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FixedaddressAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateFixedaddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `FixedaddressAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `FixedaddressAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**fixedaddress** | [**Fixedaddress**](Fixedaddress.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateFixedaddressResponse**](CreateFixedaddressResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a fixedaddress object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the fixedaddress object
-
-	apiClient := dhcp.NewAPIClient()
-	r, err := apiClient.FixedaddressAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FixedaddressAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the fixedaddress object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `FixedaddressAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetFixedaddressResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetFixedaddressResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific fixedaddress object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the fixedaddress object
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.FixedaddressAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.FixedaddressAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FixedaddressAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FixedaddressAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetFixedaddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `FixedaddressAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetFixedaddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `FixedaddressAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FixedaddressAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FixedaddressAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateFixedaddressResponse ReferencePut(ctx, reference).Fixedaddress(fixedaddress).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateFixedaddressResponse Update(ctx, reference).Fixedaddress(fixedaddress).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Update a fixedaddress object
 
@@ -318,13 +318,13 @@ func main() {
 	fixedaddress := *dhcp.NewFixedaddress() // Fixedaddress | Object data to update
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.FixedaddressAPI.ReferencePut(context.Background(), reference).Fixedaddress(fixedaddress).Execute()
+	resp, r, err := apiClient.FixedaddressAPI.Update(context.Background(), reference).Fixedaddress(fixedaddress).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FixedaddressAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FixedaddressAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateFixedaddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `FixedaddressAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateFixedaddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `FixedaddressAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FixedaddressAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FixedaddressAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

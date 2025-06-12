@@ -23,38 +23,38 @@ import (
 
 type GridCloudapiCloudstatisticsAPI interface {
 	/*
-		GridcloudapicloudstatisticsGet Retrieve grid:cloudapi:cloudstatistics objects
+		List Retrieve grid:cloudapi:cloudstatistics objects
 
 		Returns a list of grid:cloudapi:cloudstatistics objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest
+		@return GridCloudapiCloudstatisticsAPIListRequest
 	*/
-	GridcloudapicloudstatisticsGet(ctx context.Context) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest
+	List(ctx context.Context) GridCloudapiCloudstatisticsAPIListRequest
 
-	// GridcloudapicloudstatisticsGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridCloudapiCloudstatisticsResponse
-	GridcloudapicloudstatisticsGetExecute(r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) (*ListGridCloudapiCloudstatisticsResponse, *http.Response, error)
+	ListExecute(r GridCloudapiCloudstatisticsAPIListRequest) (*ListGridCloudapiCloudstatisticsResponse, *http.Response, error)
 	/*
-		GridcloudapicloudstatisticsReferenceGet Get a specific grid:cloudapi:cloudstatistics object
+		Read Get a specific grid:cloudapi:cloudstatistics object
 
 		Returns a specific grid:cloudapi:cloudstatistics object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:cloudapi:cloudstatistics object
-		@return GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest
+		@return GridCloudapiCloudstatisticsAPIReadRequest
 	*/
-	GridcloudapicloudstatisticsReferenceGet(ctx context.Context, reference string) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest
+	Read(ctx context.Context, reference string) GridCloudapiCloudstatisticsAPIReadRequest
 
-	// GridcloudapicloudstatisticsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridCloudapiCloudstatisticsResponse
-	GridcloudapicloudstatisticsReferenceGetExecute(r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest) (*GetGridCloudapiCloudstatisticsResponse, *http.Response, error)
+	ReadExecute(r GridCloudapiCloudstatisticsAPIReadRequest) (*GetGridCloudapiCloudstatisticsResponse, *http.Response, error)
 }
 
 // GridCloudapiCloudstatisticsAPIService GridCloudapiCloudstatisticsAPI service
 type GridCloudapiCloudstatisticsAPIService internal.Service
 
-type GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest struct {
+type GridCloudapiCloudstatisticsAPIListRequest struct {
 	ctx            context.Context
 	ApiService     GridCloudapiCloudstatisticsAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest struct 
 }
 
 // Enter the field names followed by comma
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) ReturnFields(returnFields string) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest {
+func (r GridCloudapiCloudstatisticsAPIListRequest) ReturnFields(returnFields string) GridCloudapiCloudstatisticsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) ReturnFields2(returnFields2 string) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest {
+func (r GridCloudapiCloudstatisticsAPIListRequest) ReturnFields2(returnFields2 string) GridCloudapiCloudstatisticsAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) MaxResults(maxResults int32) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest {
+func (r GridCloudapiCloudstatisticsAPIListRequest) MaxResults(maxResults int32) GridCloudapiCloudstatisticsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) ReturnAsObject(returnAsObject int32) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest {
+func (r GridCloudapiCloudstatisticsAPIListRequest) ReturnAsObject(returnAsObject int32) GridCloudapiCloudstatisticsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) Paging(paging int32) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest {
+func (r GridCloudapiCloudstatisticsAPIListRequest) Paging(paging int32) GridCloudapiCloudstatisticsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) PageId(pageId string) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest {
+func (r GridCloudapiCloudstatisticsAPIListRequest) PageId(pageId string) GridCloudapiCloudstatisticsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) Filters(filters map[string]interface{}) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest {
+func (r GridCloudapiCloudstatisticsAPIListRequest) Filters(filters map[string]interface{}) GridCloudapiCloudstatisticsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest {
+func (r GridCloudapiCloudstatisticsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridCloudapiCloudstatisticsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) Execute() (*ListGridCloudapiCloudstatisticsResponse, *http.Response, error) {
-	return r.ApiService.GridcloudapicloudstatisticsGetExecute(r)
+func (r GridCloudapiCloudstatisticsAPIListRequest) Execute() (*ListGridCloudapiCloudstatisticsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridcloudapicloudstatisticsGet Retrieve grid:cloudapi:cloudstatistics objects
+List Retrieve grid:cloudapi:cloudstatistics objects
 
 Returns a list of grid:cloudapi:cloudstatistics objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest
+	@return GridCloudapiCloudstatisticsAPIListRequest
 */
-func (a *GridCloudapiCloudstatisticsAPIService) GridcloudapicloudstatisticsGet(ctx context.Context) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest {
-	return GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest{
+func (a *GridCloudapiCloudstatisticsAPIService) List(ctx context.Context) GridCloudapiCloudstatisticsAPIListRequest {
+	return GridCloudapiCloudstatisticsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *GridCloudapiCloudstatisticsAPIService) GridcloudapicloudstatisticsGet(c
 // Execute executes the request
 //
 //	@return ListGridCloudapiCloudstatisticsResponse
-func (a *GridCloudapiCloudstatisticsAPIService) GridcloudapicloudstatisticsGetExecute(r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsGetRequest) (*ListGridCloudapiCloudstatisticsResponse, *http.Response, error) {
+func (a *GridCloudapiCloudstatisticsAPIService) ListExecute(r GridCloudapiCloudstatisticsAPIListRequest) (*ListGridCloudapiCloudstatisticsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *GridCloudapiCloudstatisticsAPIService) GridcloudapicloudstatisticsGetEx
 		localVarReturnValue *ListGridCloudapiCloudstatisticsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiCloudstatisticsAPIService.GridcloudapicloudstatisticsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiCloudstatisticsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *GridCloudapiCloudstatisticsAPIService) GridcloudapicloudstatisticsGetEx
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest struct {
+type GridCloudapiCloudstatisticsAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     GridCloudapiCloudstatisticsAPI
 	reference      string
@@ -235,38 +235,38 @@ type GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetReques
 }
 
 // Enter the field names followed by comma
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest) ReturnFields(returnFields string) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest {
+func (r GridCloudapiCloudstatisticsAPIReadRequest) ReturnFields(returnFields string) GridCloudapiCloudstatisticsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest) ReturnFields2(returnFields2 string) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest {
+func (r GridCloudapiCloudstatisticsAPIReadRequest) ReturnFields2(returnFields2 string) GridCloudapiCloudstatisticsAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest {
+func (r GridCloudapiCloudstatisticsAPIReadRequest) ReturnAsObject(returnAsObject int32) GridCloudapiCloudstatisticsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest) Execute() (*GetGridCloudapiCloudstatisticsResponse, *http.Response, error) {
-	return r.ApiService.GridcloudapicloudstatisticsReferenceGetExecute(r)
+func (r GridCloudapiCloudstatisticsAPIReadRequest) Execute() (*GetGridCloudapiCloudstatisticsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridcloudapicloudstatisticsReferenceGet Get a specific grid:cloudapi:cloudstatistics object
+Read Get a specific grid:cloudapi:cloudstatistics object
 
 Returns a specific grid:cloudapi:cloudstatistics object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:cloudapi:cloudstatistics object
-	@return GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest
+	@return GridCloudapiCloudstatisticsAPIReadRequest
 */
-func (a *GridCloudapiCloudstatisticsAPIService) GridcloudapicloudstatisticsReferenceGet(ctx context.Context, reference string) GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest {
-	return GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest{
+func (a *GridCloudapiCloudstatisticsAPIService) Read(ctx context.Context, reference string) GridCloudapiCloudstatisticsAPIReadRequest {
+	return GridCloudapiCloudstatisticsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *GridCloudapiCloudstatisticsAPIService) GridcloudapicloudstatisticsRefer
 // Execute executes the request
 //
 //	@return GetGridCloudapiCloudstatisticsResponse
-func (a *GridCloudapiCloudstatisticsAPIService) GridcloudapicloudstatisticsReferenceGetExecute(r GridCloudapiCloudstatisticsAPIGridcloudapicloudstatisticsReferenceGetRequest) (*GetGridCloudapiCloudstatisticsResponse, *http.Response, error) {
+func (a *GridCloudapiCloudstatisticsAPIService) ReadExecute(r GridCloudapiCloudstatisticsAPIReadRequest) (*GetGridCloudapiCloudstatisticsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *GridCloudapiCloudstatisticsAPIService) GridcloudapicloudstatisticsRefer
 		localVarReturnValue *GetGridCloudapiCloudstatisticsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiCloudstatisticsAPIService.GridcloudapicloudstatisticsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiCloudstatisticsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

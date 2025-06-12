@@ -23,11 +23,11 @@ func TestDbsnapshotAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test DbsnapshotAPIService Get", func(t *testing.T) {
+	t.Run("Test DbsnapshotAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DbsnapshotAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DbsnapshotAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDbsnapshotAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DbsnapshotAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test DbsnapshotAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DbsnapshotAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DbsnapshotAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

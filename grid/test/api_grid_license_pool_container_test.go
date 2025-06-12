@@ -23,11 +23,11 @@ func TestGridLicensePoolContainerAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test GridLicensePoolContainerAPIService GridlicensePoolContainerGet", func(t *testing.T) {
+	t.Run("Test GridLicensePoolContainerAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridLicensePoolContainerAPI.GridlicensePoolContainerGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GridLicensePoolContainerAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestGridLicensePoolContainerAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridLicensePoolContainerAPIService GridlicensePoolContainerReferenceGet", func(t *testing.T) {
+	t.Run("Test GridLicensePoolContainerAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridLicensePoolContainerAPI.GridlicensePoolContainerReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridLicensePoolContainerAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

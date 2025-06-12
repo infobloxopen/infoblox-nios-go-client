@@ -23,11 +23,11 @@ func TestAdmingroupAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test AdmingroupAPIService Get", func(t *testing.T) {
+	t.Run("Test AdmingroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AdmingroupAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdmingroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestAdmingroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdmingroupAPIService Post", func(t *testing.T) {
+	t.Run("Test AdmingroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AdmingroupAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.AdmingroupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdmingroupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AdmingroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestAdmingroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdmingroupAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test AdmingroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.AdmingroupAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AdmingroupAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.AdmingroupAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AdmingroupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestAdmingroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdmingroupAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test AdmingroupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.AdmingroupAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AdmingroupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

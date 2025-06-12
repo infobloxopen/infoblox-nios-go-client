@@ -23,38 +23,38 @@ import (
 
 type RecordNsec3API interface {
 	/*
-		Recordnsec3Get Retrieve record:nsec3 objects
+		List Retrieve record:nsec3 objects
 
 		Returns a list of record:nsec3 objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordNsec3APIRecordnsec3GetRequest
+		@return RecordNsec3APIListRequest
 	*/
-	Recordnsec3Get(ctx context.Context) RecordNsec3APIRecordnsec3GetRequest
+	List(ctx context.Context) RecordNsec3APIListRequest
 
-	// Recordnsec3GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListRecordNsec3Response
-	Recordnsec3GetExecute(r RecordNsec3APIRecordnsec3GetRequest) (*ListRecordNsec3Response, *http.Response, error)
+	ListExecute(r RecordNsec3APIListRequest) (*ListRecordNsec3Response, *http.Response, error)
 	/*
-		Recordnsec3ReferenceGet Get a specific record:nsec3 object
+		Read Get a specific record:nsec3 object
 
 		Returns a specific record:nsec3 object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:nsec3 object
-		@return RecordNsec3APIRecordnsec3ReferenceGetRequest
+		@return RecordNsec3APIReadRequest
 	*/
-	Recordnsec3ReferenceGet(ctx context.Context, reference string) RecordNsec3APIRecordnsec3ReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordNsec3APIReadRequest
 
-	// Recordnsec3ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordNsec3Response
-	Recordnsec3ReferenceGetExecute(r RecordNsec3APIRecordnsec3ReferenceGetRequest) (*GetRecordNsec3Response, *http.Response, error)
+	ReadExecute(r RecordNsec3APIReadRequest) (*GetRecordNsec3Response, *http.Response, error)
 }
 
 // RecordNsec3APIService RecordNsec3API service
 type RecordNsec3APIService internal.Service
 
-type RecordNsec3APIRecordnsec3GetRequest struct {
+type RecordNsec3APIListRequest struct {
 	ctx            context.Context
 	ApiService     RecordNsec3API
 	returnFields   *string
@@ -68,65 +68,65 @@ type RecordNsec3APIRecordnsec3GetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordNsec3APIRecordnsec3GetRequest) ReturnFields(returnFields string) RecordNsec3APIRecordnsec3GetRequest {
+func (r RecordNsec3APIListRequest) ReturnFields(returnFields string) RecordNsec3APIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNsec3APIRecordnsec3GetRequest) ReturnFields2(returnFields2 string) RecordNsec3APIRecordnsec3GetRequest {
+func (r RecordNsec3APIListRequest) ReturnFields2(returnFields2 string) RecordNsec3APIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordNsec3APIRecordnsec3GetRequest) MaxResults(maxResults int32) RecordNsec3APIRecordnsec3GetRequest {
+func (r RecordNsec3APIListRequest) MaxResults(maxResults int32) RecordNsec3APIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordNsec3APIRecordnsec3GetRequest) ReturnAsObject(returnAsObject int32) RecordNsec3APIRecordnsec3GetRequest {
+func (r RecordNsec3APIListRequest) ReturnAsObject(returnAsObject int32) RecordNsec3APIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordNsec3APIRecordnsec3GetRequest) Paging(paging int32) RecordNsec3APIRecordnsec3GetRequest {
+func (r RecordNsec3APIListRequest) Paging(paging int32) RecordNsec3APIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordNsec3APIRecordnsec3GetRequest) PageId(pageId string) RecordNsec3APIRecordnsec3GetRequest {
+func (r RecordNsec3APIListRequest) PageId(pageId string) RecordNsec3APIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordNsec3APIRecordnsec3GetRequest) Filters(filters map[string]interface{}) RecordNsec3APIRecordnsec3GetRequest {
+func (r RecordNsec3APIListRequest) Filters(filters map[string]interface{}) RecordNsec3APIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordNsec3APIRecordnsec3GetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordNsec3APIRecordnsec3GetRequest {
+func (r RecordNsec3APIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordNsec3APIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordNsec3APIRecordnsec3GetRequest) Execute() (*ListRecordNsec3Response, *http.Response, error) {
-	return r.ApiService.Recordnsec3GetExecute(r)
+func (r RecordNsec3APIListRequest) Execute() (*ListRecordNsec3Response, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Recordnsec3Get Retrieve record:nsec3 objects
+List Retrieve record:nsec3 objects
 
 Returns a list of record:nsec3 objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordNsec3APIRecordnsec3GetRequest
+	@return RecordNsec3APIListRequest
 */
-func (a *RecordNsec3APIService) Recordnsec3Get(ctx context.Context) RecordNsec3APIRecordnsec3GetRequest {
-	return RecordNsec3APIRecordnsec3GetRequest{
+func (a *RecordNsec3APIService) List(ctx context.Context) RecordNsec3APIListRequest {
+	return RecordNsec3APIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *RecordNsec3APIService) Recordnsec3Get(ctx context.Context) RecordNsec3A
 // Execute executes the request
 //
 //	@return ListRecordNsec3Response
-func (a *RecordNsec3APIService) Recordnsec3GetExecute(r RecordNsec3APIRecordnsec3GetRequest) (*ListRecordNsec3Response, *http.Response, error) {
+func (a *RecordNsec3APIService) ListExecute(r RecordNsec3APIListRequest) (*ListRecordNsec3Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *RecordNsec3APIService) Recordnsec3GetExecute(r RecordNsec3APIRecordnsec
 		localVarReturnValue *ListRecordNsec3Response
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsec3APIService.Recordnsec3Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsec3APIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *RecordNsec3APIService) Recordnsec3GetExecute(r RecordNsec3APIRecordnsec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordNsec3APIRecordnsec3ReferenceGetRequest struct {
+type RecordNsec3APIReadRequest struct {
 	ctx            context.Context
 	ApiService     RecordNsec3API
 	reference      string
@@ -235,38 +235,38 @@ type RecordNsec3APIRecordnsec3ReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r RecordNsec3APIRecordnsec3ReferenceGetRequest) ReturnFields(returnFields string) RecordNsec3APIRecordnsec3ReferenceGetRequest {
+func (r RecordNsec3APIReadRequest) ReturnFields(returnFields string) RecordNsec3APIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNsec3APIRecordnsec3ReferenceGetRequest) ReturnFields2(returnFields2 string) RecordNsec3APIRecordnsec3ReferenceGetRequest {
+func (r RecordNsec3APIReadRequest) ReturnFields2(returnFields2 string) RecordNsec3APIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordNsec3APIRecordnsec3ReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordNsec3APIRecordnsec3ReferenceGetRequest {
+func (r RecordNsec3APIReadRequest) ReturnAsObject(returnAsObject int32) RecordNsec3APIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordNsec3APIRecordnsec3ReferenceGetRequest) Execute() (*GetRecordNsec3Response, *http.Response, error) {
-	return r.ApiService.Recordnsec3ReferenceGetExecute(r)
+func (r RecordNsec3APIReadRequest) Execute() (*GetRecordNsec3Response, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Recordnsec3ReferenceGet Get a specific record:nsec3 object
+Read Get a specific record:nsec3 object
 
 Returns a specific record:nsec3 object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:nsec3 object
-	@return RecordNsec3APIRecordnsec3ReferenceGetRequest
+	@return RecordNsec3APIReadRequest
 */
-func (a *RecordNsec3APIService) Recordnsec3ReferenceGet(ctx context.Context, reference string) RecordNsec3APIRecordnsec3ReferenceGetRequest {
-	return RecordNsec3APIRecordnsec3ReferenceGetRequest{
+func (a *RecordNsec3APIService) Read(ctx context.Context, reference string) RecordNsec3APIReadRequest {
+	return RecordNsec3APIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *RecordNsec3APIService) Recordnsec3ReferenceGet(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return GetRecordNsec3Response
-func (a *RecordNsec3APIService) Recordnsec3ReferenceGetExecute(r RecordNsec3APIRecordnsec3ReferenceGetRequest) (*GetRecordNsec3Response, *http.Response, error) {
+func (a *RecordNsec3APIService) ReadExecute(r RecordNsec3APIReadRequest) (*GetRecordNsec3Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *RecordNsec3APIService) Recordnsec3ReferenceGetExecute(r RecordNsec3APIR
 		localVarReturnValue *GetRecordNsec3Response
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsec3APIService.Recordnsec3ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsec3APIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

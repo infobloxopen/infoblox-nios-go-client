@@ -23,11 +23,11 @@ func TestMemberThreatinsightAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test MemberThreatinsightAPIService MemberthreatinsightGet", func(t *testing.T) {
+	t.Run("Test MemberThreatinsightAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MemberThreatinsightAPI.MemberthreatinsightGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MemberThreatinsightAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestMemberThreatinsightAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MemberThreatinsightAPIService MemberthreatinsightReferenceGet", func(t *testing.T) {
+	t.Run("Test MemberThreatinsightAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MemberThreatinsightAPI.MemberthreatinsightReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MemberThreatinsightAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestMemberThreatinsightAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MemberThreatinsightAPIService MemberthreatinsightReferencePut", func(t *testing.T) {
+	t.Run("Test MemberThreatinsightAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MemberThreatinsightAPI.MemberthreatinsightReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MemberThreatinsightAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

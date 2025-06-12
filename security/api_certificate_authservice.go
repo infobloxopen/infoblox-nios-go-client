@@ -23,78 +23,302 @@ import (
 
 type CertificateAuthserviceAPI interface {
 	/*
-		CertificateauthserviceGet Retrieve certificate:authservice objects
-
-		Returns a list of certificate:authservice objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return CertificateAuthserviceAPICertificateauthserviceGetRequest
-	*/
-	CertificateauthserviceGet(ctx context.Context) CertificateAuthserviceAPICertificateauthserviceGetRequest
-
-	// CertificateauthserviceGetExecute executes the request
-	//  @return ListCertificateAuthserviceResponse
-	CertificateauthserviceGetExecute(r CertificateAuthserviceAPICertificateauthserviceGetRequest) (*ListCertificateAuthserviceResponse, *http.Response, error)
-	/*
-		CertificateauthservicePost Create a certificate:authservice object
+		Create Create a certificate:authservice object
 
 		Creates a new certificate:authservice object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return CertificateAuthserviceAPICertificateauthservicePostRequest
+		@return CertificateAuthserviceAPICreateRequest
 	*/
-	CertificateauthservicePost(ctx context.Context) CertificateAuthserviceAPICertificateauthservicePostRequest
+	Create(ctx context.Context) CertificateAuthserviceAPICreateRequest
 
-	// CertificateauthservicePostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateCertificateAuthserviceResponse
-	CertificateauthservicePostExecute(r CertificateAuthserviceAPICertificateauthservicePostRequest) (*CreateCertificateAuthserviceResponse, *http.Response, error)
+	CreateExecute(r CertificateAuthserviceAPICreateRequest) (*CreateCertificateAuthserviceResponse, *http.Response, error)
 	/*
-		CertificateauthserviceReferenceDelete Delete a certificate:authservice object
+		Delete Delete a certificate:authservice object
 
 		Deletes a specific certificate:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the certificate:authservice object
-		@return CertificateAuthserviceAPICertificateauthserviceReferenceDeleteRequest
+		@return CertificateAuthserviceAPIDeleteRequest
 	*/
-	CertificateauthserviceReferenceDelete(ctx context.Context, reference string) CertificateAuthserviceAPICertificateauthserviceReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) CertificateAuthserviceAPIDeleteRequest
 
-	// CertificateauthserviceReferenceDeleteExecute executes the request
-	CertificateauthserviceReferenceDeleteExecute(r CertificateAuthserviceAPICertificateauthserviceReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r CertificateAuthserviceAPIDeleteRequest) (*http.Response, error)
 	/*
-		CertificateauthserviceReferenceGet Get a specific certificate:authservice object
+		List Retrieve certificate:authservice objects
+
+		Returns a list of certificate:authservice objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return CertificateAuthserviceAPIListRequest
+	*/
+	List(ctx context.Context) CertificateAuthserviceAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListCertificateAuthserviceResponse
+	ListExecute(r CertificateAuthserviceAPIListRequest) (*ListCertificateAuthserviceResponse, *http.Response, error)
+	/*
+		Read Get a specific certificate:authservice object
 
 		Returns a specific certificate:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the certificate:authservice object
-		@return CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest
+		@return CertificateAuthserviceAPIReadRequest
 	*/
-	CertificateauthserviceReferenceGet(ctx context.Context, reference string) CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest
+	Read(ctx context.Context, reference string) CertificateAuthserviceAPIReadRequest
 
-	// CertificateauthserviceReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetCertificateAuthserviceResponse
-	CertificateauthserviceReferenceGetExecute(r CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest) (*GetCertificateAuthserviceResponse, *http.Response, error)
+	ReadExecute(r CertificateAuthserviceAPIReadRequest) (*GetCertificateAuthserviceResponse, *http.Response, error)
 	/*
-		CertificateauthserviceReferencePut Update a certificate:authservice object
+		Update Update a certificate:authservice object
 
 		Updates a specific certificate:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the certificate:authservice object
-		@return CertificateAuthserviceAPICertificateauthserviceReferencePutRequest
+		@return CertificateAuthserviceAPIUpdateRequest
 	*/
-	CertificateauthserviceReferencePut(ctx context.Context, reference string) CertificateAuthserviceAPICertificateauthserviceReferencePutRequest
+	Update(ctx context.Context, reference string) CertificateAuthserviceAPIUpdateRequest
 
-	// CertificateauthserviceReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateCertificateAuthserviceResponse
-	CertificateauthserviceReferencePutExecute(r CertificateAuthserviceAPICertificateauthserviceReferencePutRequest) (*UpdateCertificateAuthserviceResponse, *http.Response, error)
+	UpdateExecute(r CertificateAuthserviceAPIUpdateRequest) (*UpdateCertificateAuthserviceResponse, *http.Response, error)
 }
 
 // CertificateAuthserviceAPIService CertificateAuthserviceAPI service
 type CertificateAuthserviceAPIService internal.Service
 
-type CertificateAuthserviceAPICertificateauthserviceGetRequest struct {
+type CertificateAuthserviceAPICreateRequest struct {
+	ctx                    context.Context
+	ApiService             CertificateAuthserviceAPI
+	certificateAuthservice *CertificateAuthservice
+	returnFields           *string
+	returnFields2          *string
+	returnAsObject         *int32
+}
+
+// Object data to create
+func (r CertificateAuthserviceAPICreateRequest) CertificateAuthservice(certificateAuthservice CertificateAuthservice) CertificateAuthserviceAPICreateRequest {
+	r.certificateAuthservice = &certificateAuthservice
+	return r
+}
+
+// Enter the field names followed by comma
+func (r CertificateAuthserviceAPICreateRequest) ReturnFields(returnFields string) CertificateAuthserviceAPICreateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r CertificateAuthserviceAPICreateRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPICreateRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r CertificateAuthserviceAPICreateRequest) ReturnAsObject(returnAsObject int32) CertificateAuthserviceAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r CertificateAuthserviceAPICreateRequest) Execute() (*CreateCertificateAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a certificate:authservice object
+
+Creates a new certificate:authservice object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CertificateAuthserviceAPICreateRequest
+*/
+func (a *CertificateAuthserviceAPIService) Create(ctx context.Context) CertificateAuthserviceAPICreateRequest {
+	return CertificateAuthserviceAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateCertificateAuthserviceResponse
+func (a *CertificateAuthserviceAPIService) CreateExecute(r CertificateAuthserviceAPICreateRequest) (*CreateCertificateAuthserviceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateCertificateAuthserviceResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CertificateAuthserviceAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/certificate:authservice"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.certificateAuthservice == nil {
+		return localVarReturnValue, nil, internal.ReportError("certificateAuthservice is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.certificateAuthservice
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CertificateAuthserviceAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService CertificateAuthserviceAPI
+	reference  string
+}
+
+func (r CertificateAuthserviceAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a certificate:authservice object
+
+Deletes a specific certificate:authservice object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the certificate:authservice object
+	@return CertificateAuthserviceAPIDeleteRequest
+*/
+func (a *CertificateAuthserviceAPIService) Delete(ctx context.Context, reference string) CertificateAuthserviceAPIDeleteRequest {
+	return CertificateAuthserviceAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *CertificateAuthserviceAPIService) DeleteExecute(r CertificateAuthserviceAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CertificateAuthserviceAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/certificate:authservice/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type CertificateAuthserviceAPIListRequest struct {
 	ctx            context.Context
 	ApiService     CertificateAuthserviceAPI
 	returnFields   *string
@@ -108,65 +332,65 @@ type CertificateAuthserviceAPICertificateauthserviceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r CertificateAuthserviceAPICertificateauthserviceGetRequest) ReturnFields(returnFields string) CertificateAuthserviceAPICertificateauthserviceGetRequest {
+func (r CertificateAuthserviceAPIListRequest) ReturnFields(returnFields string) CertificateAuthserviceAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CertificateAuthserviceAPICertificateauthserviceGetRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPICertificateauthserviceGetRequest {
+func (r CertificateAuthserviceAPIListRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r CertificateAuthserviceAPICertificateauthserviceGetRequest) MaxResults(maxResults int32) CertificateAuthserviceAPICertificateauthserviceGetRequest {
+func (r CertificateAuthserviceAPIListRequest) MaxResults(maxResults int32) CertificateAuthserviceAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CertificateAuthserviceAPICertificateauthserviceGetRequest) ReturnAsObject(returnAsObject int32) CertificateAuthserviceAPICertificateauthserviceGetRequest {
+func (r CertificateAuthserviceAPIListRequest) ReturnAsObject(returnAsObject int32) CertificateAuthserviceAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r CertificateAuthserviceAPICertificateauthserviceGetRequest) Paging(paging int32) CertificateAuthserviceAPICertificateauthserviceGetRequest {
+func (r CertificateAuthserviceAPIListRequest) Paging(paging int32) CertificateAuthserviceAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r CertificateAuthserviceAPICertificateauthserviceGetRequest) PageId(pageId string) CertificateAuthserviceAPICertificateauthserviceGetRequest {
+func (r CertificateAuthserviceAPIListRequest) PageId(pageId string) CertificateAuthserviceAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r CertificateAuthserviceAPICertificateauthserviceGetRequest) Filters(filters map[string]interface{}) CertificateAuthserviceAPICertificateauthserviceGetRequest {
+func (r CertificateAuthserviceAPIListRequest) Filters(filters map[string]interface{}) CertificateAuthserviceAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r CertificateAuthserviceAPICertificateauthserviceGetRequest) Extattrfilter(extattrfilter map[string]interface{}) CertificateAuthserviceAPICertificateauthserviceGetRequest {
+func (r CertificateAuthserviceAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) CertificateAuthserviceAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r CertificateAuthserviceAPICertificateauthserviceGetRequest) Execute() (*ListCertificateAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.CertificateauthserviceGetExecute(r)
+func (r CertificateAuthserviceAPIListRequest) Execute() (*ListCertificateAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-CertificateauthserviceGet Retrieve certificate:authservice objects
+List Retrieve certificate:authservice objects
 
 Returns a list of certificate:authservice objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return CertificateAuthserviceAPICertificateauthserviceGetRequest
+	@return CertificateAuthserviceAPIListRequest
 */
-func (a *CertificateAuthserviceAPIService) CertificateauthserviceGet(ctx context.Context) CertificateAuthserviceAPICertificateauthserviceGetRequest {
-	return CertificateAuthserviceAPICertificateauthserviceGetRequest{
+func (a *CertificateAuthserviceAPIService) List(ctx context.Context) CertificateAuthserviceAPIListRequest {
+	return CertificateAuthserviceAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *CertificateAuthserviceAPIService) CertificateauthserviceGet(ctx context
 // Execute executes the request
 //
 //	@return ListCertificateAuthserviceResponse
-func (a *CertificateAuthserviceAPIService) CertificateauthserviceGetExecute(r CertificateAuthserviceAPICertificateauthserviceGetRequest) (*ListCertificateAuthserviceResponse, *http.Response, error) {
+func (a *CertificateAuthserviceAPIService) ListExecute(r CertificateAuthserviceAPIListRequest) (*ListCertificateAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *CertificateAuthserviceAPIService) CertificateauthserviceGetExecute(r Ce
 		localVarReturnValue *ListCertificateAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CertificateAuthserviceAPIService.CertificateauthserviceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CertificateAuthserviceAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -265,231 +489,7 @@ func (a *CertificateAuthserviceAPIService) CertificateauthserviceGetExecute(r Ce
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CertificateAuthserviceAPICertificateauthservicePostRequest struct {
-	ctx                    context.Context
-	ApiService             CertificateAuthserviceAPI
-	certificateAuthservice *CertificateAuthservice
-	returnFields           *string
-	returnFields2          *string
-	returnAsObject         *int32
-}
-
-// Object data to create
-func (r CertificateAuthserviceAPICertificateauthservicePostRequest) CertificateAuthservice(certificateAuthservice CertificateAuthservice) CertificateAuthserviceAPICertificateauthservicePostRequest {
-	r.certificateAuthservice = &certificateAuthservice
-	return r
-}
-
-// Enter the field names followed by comma
-func (r CertificateAuthserviceAPICertificateauthservicePostRequest) ReturnFields(returnFields string) CertificateAuthserviceAPICertificateauthservicePostRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CertificateAuthserviceAPICertificateauthservicePostRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPICertificateauthservicePostRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r CertificateAuthserviceAPICertificateauthservicePostRequest) ReturnAsObject(returnAsObject int32) CertificateAuthserviceAPICertificateauthservicePostRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r CertificateAuthserviceAPICertificateauthservicePostRequest) Execute() (*CreateCertificateAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.CertificateauthservicePostExecute(r)
-}
-
-/*
-CertificateauthservicePost Create a certificate:authservice object
-
-Creates a new certificate:authservice object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return CertificateAuthserviceAPICertificateauthservicePostRequest
-*/
-func (a *CertificateAuthserviceAPIService) CertificateauthservicePost(ctx context.Context) CertificateAuthserviceAPICertificateauthservicePostRequest {
-	return CertificateAuthserviceAPICertificateauthservicePostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateCertificateAuthserviceResponse
-func (a *CertificateAuthserviceAPIService) CertificateauthservicePostExecute(r CertificateAuthserviceAPICertificateauthservicePostRequest) (*CreateCertificateAuthserviceResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateCertificateAuthserviceResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CertificateAuthserviceAPIService.CertificateauthservicePost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/certificate:authservice"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.certificateAuthservice == nil {
-		return localVarReturnValue, nil, internal.ReportError("certificateAuthservice is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.certificateAuthservice
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type CertificateAuthserviceAPICertificateauthserviceReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService CertificateAuthserviceAPI
-	reference  string
-}
-
-func (r CertificateAuthserviceAPICertificateauthserviceReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CertificateauthserviceReferenceDeleteExecute(r)
-}
-
-/*
-CertificateauthserviceReferenceDelete Delete a certificate:authservice object
-
-Deletes a specific certificate:authservice object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the certificate:authservice object
-	@return CertificateAuthserviceAPICertificateauthserviceReferenceDeleteRequest
-*/
-func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferenceDelete(ctx context.Context, reference string) CertificateAuthserviceAPICertificateauthserviceReferenceDeleteRequest {
-	return CertificateAuthserviceAPICertificateauthserviceReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferenceDeleteExecute(r CertificateAuthserviceAPICertificateauthserviceReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CertificateAuthserviceAPIService.CertificateauthserviceReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/certificate:authservice/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest struct {
+type CertificateAuthserviceAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     CertificateAuthserviceAPI
 	reference      string
@@ -499,38 +499,38 @@ type CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest) ReturnFields(returnFields string) CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest {
+func (r CertificateAuthserviceAPIReadRequest) ReturnFields(returnFields string) CertificateAuthserviceAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest {
+func (r CertificateAuthserviceAPIReadRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest) ReturnAsObject(returnAsObject int32) CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest {
+func (r CertificateAuthserviceAPIReadRequest) ReturnAsObject(returnAsObject int32) CertificateAuthserviceAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest) Execute() (*GetCertificateAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.CertificateauthserviceReferenceGetExecute(r)
+func (r CertificateAuthserviceAPIReadRequest) Execute() (*GetCertificateAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-CertificateauthserviceReferenceGet Get a specific certificate:authservice object
+Read Get a specific certificate:authservice object
 
 Returns a specific certificate:authservice object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the certificate:authservice object
-	@return CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest
+	@return CertificateAuthserviceAPIReadRequest
 */
-func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferenceGet(ctx context.Context, reference string) CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest {
-	return CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest{
+func (a *CertificateAuthserviceAPIService) Read(ctx context.Context, reference string) CertificateAuthserviceAPIReadRequest {
+	return CertificateAuthserviceAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferenceGet(ct
 // Execute executes the request
 //
 //	@return GetCertificateAuthserviceResponse
-func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferenceGetExecute(r CertificateAuthserviceAPICertificateauthserviceReferenceGetRequest) (*GetCertificateAuthserviceResponse, *http.Response, error) {
+func (a *CertificateAuthserviceAPIService) ReadExecute(r CertificateAuthserviceAPIReadRequest) (*GetCertificateAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferenceGetExe
 		localVarReturnValue *GetCertificateAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CertificateAuthserviceAPIService.CertificateauthserviceReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CertificateAuthserviceAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -616,7 +616,7 @@ func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferenceGetExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CertificateAuthserviceAPICertificateauthserviceReferencePutRequest struct {
+type CertificateAuthserviceAPIUpdateRequest struct {
 	ctx                    context.Context
 	ApiService             CertificateAuthserviceAPI
 	reference              string
@@ -627,44 +627,44 @@ type CertificateAuthserviceAPICertificateauthserviceReferencePutRequest struct {
 }
 
 // Object data to update
-func (r CertificateAuthserviceAPICertificateauthserviceReferencePutRequest) CertificateAuthservice(certificateAuthservice CertificateAuthservice) CertificateAuthserviceAPICertificateauthserviceReferencePutRequest {
+func (r CertificateAuthserviceAPIUpdateRequest) CertificateAuthservice(certificateAuthservice CertificateAuthservice) CertificateAuthserviceAPIUpdateRequest {
 	r.certificateAuthservice = &certificateAuthservice
 	return r
 }
 
 // Enter the field names followed by comma
-func (r CertificateAuthserviceAPICertificateauthserviceReferencePutRequest) ReturnFields(returnFields string) CertificateAuthserviceAPICertificateauthserviceReferencePutRequest {
+func (r CertificateAuthserviceAPIUpdateRequest) ReturnFields(returnFields string) CertificateAuthserviceAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CertificateAuthserviceAPICertificateauthserviceReferencePutRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPICertificateauthserviceReferencePutRequest {
+func (r CertificateAuthserviceAPIUpdateRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CertificateAuthserviceAPICertificateauthserviceReferencePutRequest) ReturnAsObject(returnAsObject int32) CertificateAuthserviceAPICertificateauthserviceReferencePutRequest {
+func (r CertificateAuthserviceAPIUpdateRequest) ReturnAsObject(returnAsObject int32) CertificateAuthserviceAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r CertificateAuthserviceAPICertificateauthserviceReferencePutRequest) Execute() (*UpdateCertificateAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.CertificateauthserviceReferencePutExecute(r)
+func (r CertificateAuthserviceAPIUpdateRequest) Execute() (*UpdateCertificateAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-CertificateauthserviceReferencePut Update a certificate:authservice object
+Update Update a certificate:authservice object
 
 Updates a specific certificate:authservice object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the certificate:authservice object
-	@return CertificateAuthserviceAPICertificateauthserviceReferencePutRequest
+	@return CertificateAuthserviceAPIUpdateRequest
 */
-func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferencePut(ctx context.Context, reference string) CertificateAuthserviceAPICertificateauthserviceReferencePutRequest {
-	return CertificateAuthserviceAPICertificateauthserviceReferencePutRequest{
+func (a *CertificateAuthserviceAPIService) Update(ctx context.Context, reference string) CertificateAuthserviceAPIUpdateRequest {
+	return CertificateAuthserviceAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferencePut(ct
 // Execute executes the request
 //
 //	@return UpdateCertificateAuthserviceResponse
-func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferencePutExecute(r CertificateAuthserviceAPICertificateauthserviceReferencePutRequest) (*UpdateCertificateAuthserviceResponse, *http.Response, error) {
+func (a *CertificateAuthserviceAPIService) UpdateExecute(r CertificateAuthserviceAPIUpdateRequest) (*UpdateCertificateAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *CertificateAuthserviceAPIService) CertificateauthserviceReferencePutExe
 		localVarReturnValue *UpdateCertificateAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CertificateAuthserviceAPIService.CertificateauthserviceReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CertificateAuthserviceAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

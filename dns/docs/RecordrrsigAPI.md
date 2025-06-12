@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RecordrrsigGet**](RecordRrsigAPI.md#RecordrrsigGet) | **Get** /record:rrsig | Retrieve record:rrsig objects
-[**RecordrrsigReferenceGet**](RecordRrsigAPI.md#RecordrrsigReferenceGet) | **Get** /record:rrsig/{reference} | Get a specific record:rrsig object
+[**List**](RecordRrsigAPI.md#List) | **Get** /record:rrsig | Retrieve record:rrsig objects
+[**Read**](RecordRrsigAPI.md#Read) | **Get** /record:rrsig/{reference} | Get a specific record:rrsig object
 
 
 
-## RecordrrsigGet
+## List
 
-> ListRecordRrsigResponse RecordrrsigGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordRrsigResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:rrsig objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordRrsigAPI.RecordrrsigGet(context.Background()).Execute()
+	resp, r, err := apiClient.RecordRrsigAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRrsigAPI.RecordrrsigGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRrsigAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordrrsigGet`: ListRecordRrsigResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordRrsigAPI.RecordrrsigGet`: %v\n", resp)
+	// response from `List`: ListRecordRrsigResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRrsigAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordRrsigAPIRecordrrsigGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRrsigAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RecordrrsigReferenceGet
+## Read
 
-> GetRecordRrsigResponse RecordrrsigReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordRrsigResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:rrsig object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:rrsig object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordRrsigAPI.RecordrrsigReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordRrsigAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordRrsigAPI.RecordrrsigReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRrsigAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordrrsigReferenceGet`: GetRecordRrsigResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordRrsigAPI.RecordrrsigReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordRrsigResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRrsigAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordRrsigAPIRecordrrsigReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRrsigAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

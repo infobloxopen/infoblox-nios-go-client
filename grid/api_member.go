@@ -23,249 +23,78 @@ import (
 
 type MemberAPI interface {
 	/*
-		Get Retrieve member objects
-
-		Returns a list of member objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberAPIGetRequest
-	*/
-	Get(ctx context.Context) MemberAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListMemberResponse
-	GetExecute(r MemberAPIGetRequest) (*ListMemberResponse, *http.Response, error)
-	/*
-		Post Create a member object
+		Create Create a member object
 
 		Creates a new member object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberAPIPostRequest
+		@return MemberAPICreateRequest
 	*/
-	Post(ctx context.Context) MemberAPIPostRequest
+	Create(ctx context.Context) MemberAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateMemberResponse
-	PostExecute(r MemberAPIPostRequest) (*CreateMemberResponse, *http.Response, error)
+	CreateExecute(r MemberAPICreateRequest) (*CreateMemberResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a member object
+		Delete Delete a member object
 
 		Deletes a specific member object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member object
-		@return MemberAPIReferenceDeleteRequest
+		@return MemberAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) MemberAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) MemberAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r MemberAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r MemberAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific member object
+		List Retrieve member objects
+
+		Returns a list of member objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return MemberAPIListRequest
+	*/
+	List(ctx context.Context) MemberAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListMemberResponse
+	ListExecute(r MemberAPIListRequest) (*ListMemberResponse, *http.Response, error)
+	/*
+		Read Get a specific member object
 
 		Returns a specific member object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member object
-		@return MemberAPIReferenceGetRequest
+		@return MemberAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) MemberAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) MemberAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMemberResponse
-	ReferenceGetExecute(r MemberAPIReferenceGetRequest) (*GetMemberResponse, *http.Response, error)
+	ReadExecute(r MemberAPIReadRequest) (*GetMemberResponse, *http.Response, error)
 	/*
-		ReferencePut Update a member object
+		Update Update a member object
 
 		Updates a specific member object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member object
-		@return MemberAPIReferencePutRequest
+		@return MemberAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) MemberAPIReferencePutRequest
+	Update(ctx context.Context, reference string) MemberAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMemberResponse
-	ReferencePutExecute(r MemberAPIReferencePutRequest) (*UpdateMemberResponse, *http.Response, error)
+	UpdateExecute(r MemberAPIUpdateRequest) (*UpdateMemberResponse, *http.Response, error)
 }
 
 // MemberAPIService MemberAPI service
 type MemberAPIService internal.Service
 
-type MemberAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
-}
-
-// Enter the field names followed by comma
-func (r MemberAPIGetRequest) ReturnFields(returnFields string) MemberAPIGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberAPIGetRequest) ReturnFields2(returnFields2 string) MemberAPIGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Enter the number of results to be fetched
-func (r MemberAPIGetRequest) MaxResults(maxResults int32) MemberAPIGetRequest {
-	r.maxResults = &maxResults
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r MemberAPIGetRequest) ReturnAsObject(returnAsObject int32) MemberAPIGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-// Control paging of results
-func (r MemberAPIGetRequest) Paging(paging int32) MemberAPIGetRequest {
-	r.paging = &paging
-	return r
-}
-
-// Page id for retrieving next page of results
-func (r MemberAPIGetRequest) PageId(pageId string) MemberAPIGetRequest {
-	r.pageId = &pageId
-	return r
-}
-
-func (r MemberAPIGetRequest) Filters(filters map[string]interface{}) MemberAPIGetRequest {
-	r.filters = &filters
-	return r
-}
-
-func (r MemberAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberAPIGetRequest {
-	r.extattrfilter = &extattrfilter
-	return r
-}
-
-func (r MemberAPIGetRequest) Execute() (*ListMemberResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
-}
-
-/*
-Get Retrieve member objects
-
-Returns a list of member objects matching the search criteria
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberAPIGetRequest
-*/
-func (a *MemberAPIService) Get(ctx context.Context) MemberAPIGetRequest {
-	return MemberAPIGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ListMemberResponse
-func (a *MemberAPIService) GetExecute(r MemberAPIGetRequest) (*ListMemberResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *ListMemberResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberAPIService.Get")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/member"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.maxResults != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	if r.paging != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
-	}
-	if r.pageId != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
-	}
-	if r.filters != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
-	}
-	if r.extattrfilter != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MemberAPIPostRequest struct {
+type MemberAPICreateRequest struct {
 	ctx            context.Context
 	ApiService     MemberAPI
 	member         *Member
@@ -275,43 +104,43 @@ type MemberAPIPostRequest struct {
 }
 
 // Object data to create
-func (r MemberAPIPostRequest) Member(member Member) MemberAPIPostRequest {
+func (r MemberAPICreateRequest) Member(member Member) MemberAPICreateRequest {
 	r.member = &member
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MemberAPIPostRequest) ReturnFields(returnFields string) MemberAPIPostRequest {
+func (r MemberAPICreateRequest) ReturnFields(returnFields string) MemberAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberAPIPostRequest) ReturnFields2(returnFields2 string) MemberAPIPostRequest {
+func (r MemberAPICreateRequest) ReturnFields2(returnFields2 string) MemberAPICreateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberAPIPostRequest) ReturnAsObject(returnAsObject int32) MemberAPIPostRequest {
+func (r MemberAPICreateRequest) ReturnAsObject(returnAsObject int32) MemberAPICreateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberAPIPostRequest) Execute() (*CreateMemberResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r MemberAPICreateRequest) Execute() (*CreateMemberResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-Post Create a member object
+Create Create a member object
 
 Creates a new member object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberAPIPostRequest
+	@return MemberAPICreateRequest
 */
-func (a *MemberAPIService) Post(ctx context.Context) MemberAPIPostRequest {
-	return MemberAPIPostRequest{
+func (a *MemberAPIService) Create(ctx context.Context) MemberAPICreateRequest {
+	return MemberAPICreateRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -320,7 +149,7 @@ func (a *MemberAPIService) Post(ctx context.Context) MemberAPIPostRequest {
 // Execute executes the request
 //
 //	@return CreateMemberResponse
-func (a *MemberAPIService) PostExecute(r MemberAPIPostRequest) (*CreateMemberResponse, *http.Response, error) {
+func (a *MemberAPIService) CreateExecute(r MemberAPICreateRequest) (*CreateMemberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +157,7 @@ func (a *MemberAPIService) PostExecute(r MemberAPIPostRequest) (*CreateMemberRes
 		localVarReturnValue *CreateMemberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberAPIService.Post")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -412,27 +241,27 @@ func (a *MemberAPIService) PostExecute(r MemberAPIPostRequest) (*CreateMemberRes
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberAPIReferenceDeleteRequest struct {
+type MemberAPIDeleteRequest struct {
 	ctx        context.Context
 	ApiService MemberAPI
 	reference  string
 }
 
-func (r MemberAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
+func (r MemberAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ReferenceDelete Delete a member object
+Delete Delete a member object
 
 Deletes a specific member object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member object
-	@return MemberAPIReferenceDeleteRequest
+	@return MemberAPIDeleteRequest
 */
-func (a *MemberAPIService) ReferenceDelete(ctx context.Context, reference string) MemberAPIReferenceDeleteRequest {
-	return MemberAPIReferenceDeleteRequest{
+func (a *MemberAPIService) Delete(ctx context.Context, reference string) MemberAPIDeleteRequest {
+	return MemberAPIDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -440,14 +269,14 @@ func (a *MemberAPIService) ReferenceDelete(ctx context.Context, reference string
 }
 
 // Execute executes the request
-func (a *MemberAPIService) ReferenceDeleteExecute(r MemberAPIReferenceDeleteRequest) (*http.Response, error) {
+func (a *MemberAPIService) DeleteExecute(r MemberAPIDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []internal.FormFile
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberAPIService.ReferenceDelete")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberAPIService.Delete")
 	if err != nil {
 		return nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -501,7 +330,178 @@ func (a *MemberAPIService) ReferenceDeleteExecute(r MemberAPIReferenceDeleteRequ
 	return localVarHTTPResponse, nil
 }
 
-type MemberAPIReferenceGetRequest struct {
+type MemberAPIListRequest struct {
+	ctx            context.Context
+	ApiService     MemberAPI
+	returnFields   *string
+	returnFields2  *string
+	maxResults     *int32
+	returnAsObject *int32
+	paging         *int32
+	pageId         *string
+	filters        *map[string]interface{}
+	extattrfilter  *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r MemberAPIListRequest) ReturnFields(returnFields string) MemberAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r MemberAPIListRequest) ReturnFields2(returnFields2 string) MemberAPIListRequest {
+	r.returnFields2 = &returnFields2
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r MemberAPIListRequest) MaxResults(maxResults int32) MemberAPIListRequest {
+	r.maxResults = &maxResults
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r MemberAPIListRequest) ReturnAsObject(returnAsObject int32) MemberAPIListRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Control paging of results
+func (r MemberAPIListRequest) Paging(paging int32) MemberAPIListRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r MemberAPIListRequest) PageId(pageId string) MemberAPIListRequest {
+	r.pageId = &pageId
+	return r
+}
+
+func (r MemberAPIListRequest) Filters(filters map[string]interface{}) MemberAPIListRequest {
+	r.filters = &filters
+	return r
+}
+
+func (r MemberAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberAPIListRequest {
+	r.extattrfilter = &extattrfilter
+	return r
+}
+
+func (r MemberAPIListRequest) Execute() (*ListMemberResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
+}
+
+/*
+List Retrieve member objects
+
+Returns a list of member objects matching the search criteria
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MemberAPIListRequest
+*/
+func (a *MemberAPIService) List(ctx context.Context) MemberAPIListRequest {
+	return MemberAPIListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListMemberResponse
+func (a *MemberAPIService) ListExecute(r MemberAPIListRequest) (*ListMemberResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListMemberResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberAPIService.List")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/member"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFields2 != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.filters != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "filters", r.filters, "form", "")
+	}
+	if r.extattrfilter != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MemberAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     MemberAPI
 	reference      string
@@ -511,38 +511,38 @@ type MemberAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r MemberAPIReferenceGetRequest) ReturnFields(returnFields string) MemberAPIReferenceGetRequest {
+func (r MemberAPIReadRequest) ReturnFields(returnFields string) MemberAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberAPIReferenceGetRequest) ReturnFields2(returnFields2 string) MemberAPIReferenceGetRequest {
+func (r MemberAPIReadRequest) ReturnFields2(returnFields2 string) MemberAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) MemberAPIReferenceGetRequest {
+func (r MemberAPIReadRequest) ReturnAsObject(returnAsObject int32) MemberAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberAPIReferenceGetRequest) Execute() (*GetMemberResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r MemberAPIReadRequest) Execute() (*GetMemberResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific member object
+Read Get a specific member object
 
 Returns a specific member object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member object
-	@return MemberAPIReferenceGetRequest
+	@return MemberAPIReadRequest
 */
-func (a *MemberAPIService) ReferenceGet(ctx context.Context, reference string) MemberAPIReferenceGetRequest {
-	return MemberAPIReferenceGetRequest{
+func (a *MemberAPIService) Read(ctx context.Context, reference string) MemberAPIReadRequest {
+	return MemberAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *MemberAPIService) ReferenceGet(ctx context.Context, reference string) M
 // Execute executes the request
 //
 //	@return GetMemberResponse
-func (a *MemberAPIService) ReferenceGetExecute(r MemberAPIReferenceGetRequest) (*GetMemberResponse, *http.Response, error) {
+func (a *MemberAPIService) ReadExecute(r MemberAPIReadRequest) (*GetMemberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *MemberAPIService) ReferenceGetExecute(r MemberAPIReferenceGetRequest) (
 		localVarReturnValue *GetMemberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -628,7 +628,7 @@ func (a *MemberAPIService) ReferenceGetExecute(r MemberAPIReferenceGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberAPIReferencePutRequest struct {
+type MemberAPIUpdateRequest struct {
 	ctx            context.Context
 	ApiService     MemberAPI
 	reference      string
@@ -639,44 +639,44 @@ type MemberAPIReferencePutRequest struct {
 }
 
 // Object data to update
-func (r MemberAPIReferencePutRequest) Member(member Member) MemberAPIReferencePutRequest {
+func (r MemberAPIUpdateRequest) Member(member Member) MemberAPIUpdateRequest {
 	r.member = &member
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MemberAPIReferencePutRequest) ReturnFields(returnFields string) MemberAPIReferencePutRequest {
+func (r MemberAPIUpdateRequest) ReturnFields(returnFields string) MemberAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberAPIReferencePutRequest) ReturnFields2(returnFields2 string) MemberAPIReferencePutRequest {
+func (r MemberAPIUpdateRequest) ReturnFields2(returnFields2 string) MemberAPIUpdateRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) MemberAPIReferencePutRequest {
+func (r MemberAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MemberAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberAPIReferencePutRequest) Execute() (*UpdateMemberResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r MemberAPIUpdateRequest) Execute() (*UpdateMemberResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a member object
+Update Update a member object
 
 Updates a specific member object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member object
-	@return MemberAPIReferencePutRequest
+	@return MemberAPIUpdateRequest
 */
-func (a *MemberAPIService) ReferencePut(ctx context.Context, reference string) MemberAPIReferencePutRequest {
-	return MemberAPIReferencePutRequest{
+func (a *MemberAPIService) Update(ctx context.Context, reference string) MemberAPIUpdateRequest {
+	return MemberAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *MemberAPIService) ReferencePut(ctx context.Context, reference string) M
 // Execute executes the request
 //
 //	@return UpdateMemberResponse
-func (a *MemberAPIService) ReferencePutExecute(r MemberAPIReferencePutRequest) (*UpdateMemberResponse, *http.Response, error) {
+func (a *MemberAPIService) UpdateExecute(r MemberAPIUpdateRequest) (*UpdateMemberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *MemberAPIService) ReferencePutExecute(r MemberAPIReferencePutRequest) (
 		localVarReturnValue *UpdateMemberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}

@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](SearchAPI.md#Get) | **Get** /search | Retrieve search objects
-[**ReferenceGet**](SearchAPI.md#ReferenceGet) | **Get** /search/{reference} | Get a specific search object
+[**List**](SearchAPI.md#List) | **Get** /search | Retrieve search objects
+[**Read**](SearchAPI.md#Read) | **Get** /search/{reference} | Get a specific search object
 
 
 
-## Get
+## List
 
-> ListSearchResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListSearchResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve search objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.SearchAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.SearchAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListSearchResponse
-	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.Get`: %v\n", resp)
+	// response from `List`: ListSearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SearchAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SearchAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetSearchResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetSearchResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific search object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the search object
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.SearchAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.SearchAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetSearchResponse
-	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetSearchResponse
+	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SearchAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SearchAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes

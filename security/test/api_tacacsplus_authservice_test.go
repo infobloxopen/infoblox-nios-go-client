@@ -23,11 +23,11 @@ func TestTacacsplusAuthserviceAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test TacacsplusAuthserviceAPIService TacacsplusauthserviceGet", func(t *testing.T) {
+	t.Run("Test TacacsplusAuthserviceAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.TacacsplusAuthserviceAPI.TacacsplusauthserviceGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TacacsplusAuthserviceAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestTacacsplusAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TacacsplusAuthserviceAPIService TacacsplusauthservicePost", func(t *testing.T) {
+	t.Run("Test TacacsplusAuthserviceAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.TacacsplusAuthserviceAPI.TacacsplusauthservicePost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.TacacsplusAuthserviceAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TacacsplusAuthserviceAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.TacacsplusAuthserviceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestTacacsplusAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TacacsplusAuthserviceAPIService TacacsplusauthserviceReferenceDelete", func(t *testing.T) {
+	t.Run("Test TacacsplusAuthserviceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.TacacsplusAuthserviceAPI.TacacsplusauthserviceReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TacacsplusAuthserviceAPIService TacacsplusauthserviceReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.TacacsplusAuthserviceAPI.TacacsplusauthserviceReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.TacacsplusAuthserviceAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestTacacsplusAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TacacsplusAuthserviceAPIService TacacsplusauthserviceReferencePut", func(t *testing.T) {
+	t.Run("Test TacacsplusAuthserviceAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.TacacsplusAuthserviceAPI.TacacsplusauthserviceReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.TacacsplusAuthserviceAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

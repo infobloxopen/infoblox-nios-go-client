@@ -23,11 +23,11 @@ func TestScavengingtaskAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test ScavengingtaskAPIService Get", func(t *testing.T) {
+	t.Run("Test ScavengingtaskAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ScavengingtaskAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ScavengingtaskAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestScavengingtaskAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScavengingtaskAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test ScavengingtaskAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ScavengingtaskAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ScavengingtaskAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

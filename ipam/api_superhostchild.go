@@ -23,38 +23,38 @@ import (
 
 type SuperhostchildAPI interface {
 	/*
-		Get Retrieve superhostchild objects
+		List Retrieve superhostchild objects
 
 		Returns a list of superhostchild objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SuperhostchildAPIGetRequest
+		@return SuperhostchildAPIListRequest
 	*/
-	Get(ctx context.Context) SuperhostchildAPIGetRequest
+	List(ctx context.Context) SuperhostchildAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListSuperhostchildResponse
-	GetExecute(r SuperhostchildAPIGetRequest) (*ListSuperhostchildResponse, *http.Response, error)
+	ListExecute(r SuperhostchildAPIListRequest) (*ListSuperhostchildResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific superhostchild object
+		Read Get a specific superhostchild object
 
 		Returns a specific superhostchild object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the superhostchild object
-		@return SuperhostchildAPIReferenceGetRequest
+		@return SuperhostchildAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) SuperhostchildAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) SuperhostchildAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSuperhostchildResponse
-	ReferenceGetExecute(r SuperhostchildAPIReferenceGetRequest) (*GetSuperhostchildResponse, *http.Response, error)
+	ReadExecute(r SuperhostchildAPIReadRequest) (*GetSuperhostchildResponse, *http.Response, error)
 }
 
 // SuperhostchildAPIService SuperhostchildAPI service
 type SuperhostchildAPIService internal.Service
 
-type SuperhostchildAPIGetRequest struct {
+type SuperhostchildAPIListRequest struct {
 	ctx            context.Context
 	ApiService     SuperhostchildAPI
 	returnFields   *string
@@ -68,65 +68,65 @@ type SuperhostchildAPIGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r SuperhostchildAPIGetRequest) ReturnFields(returnFields string) SuperhostchildAPIGetRequest {
+func (r SuperhostchildAPIListRequest) ReturnFields(returnFields string) SuperhostchildAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SuperhostchildAPIGetRequest) ReturnFields2(returnFields2 string) SuperhostchildAPIGetRequest {
+func (r SuperhostchildAPIListRequest) ReturnFields2(returnFields2 string) SuperhostchildAPIListRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r SuperhostchildAPIGetRequest) MaxResults(maxResults int32) SuperhostchildAPIGetRequest {
+func (r SuperhostchildAPIListRequest) MaxResults(maxResults int32) SuperhostchildAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SuperhostchildAPIGetRequest) ReturnAsObject(returnAsObject int32) SuperhostchildAPIGetRequest {
+func (r SuperhostchildAPIListRequest) ReturnAsObject(returnAsObject int32) SuperhostchildAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r SuperhostchildAPIGetRequest) Paging(paging int32) SuperhostchildAPIGetRequest {
+func (r SuperhostchildAPIListRequest) Paging(paging int32) SuperhostchildAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r SuperhostchildAPIGetRequest) PageId(pageId string) SuperhostchildAPIGetRequest {
+func (r SuperhostchildAPIListRequest) PageId(pageId string) SuperhostchildAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r SuperhostchildAPIGetRequest) Filters(filters map[string]interface{}) SuperhostchildAPIGetRequest {
+func (r SuperhostchildAPIListRequest) Filters(filters map[string]interface{}) SuperhostchildAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r SuperhostchildAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SuperhostchildAPIGetRequest {
+func (r SuperhostchildAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SuperhostchildAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r SuperhostchildAPIGetRequest) Execute() (*ListSuperhostchildResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r SuperhostchildAPIListRequest) Execute() (*ListSuperhostchildResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve superhostchild objects
+List Retrieve superhostchild objects
 
 Returns a list of superhostchild objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SuperhostchildAPIGetRequest
+	@return SuperhostchildAPIListRequest
 */
-func (a *SuperhostchildAPIService) Get(ctx context.Context) SuperhostchildAPIGetRequest {
-	return SuperhostchildAPIGetRequest{
+func (a *SuperhostchildAPIService) List(ctx context.Context) SuperhostchildAPIListRequest {
+	return SuperhostchildAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *SuperhostchildAPIService) Get(ctx context.Context) SuperhostchildAPIGet
 // Execute executes the request
 //
 //	@return ListSuperhostchildResponse
-func (a *SuperhostchildAPIService) GetExecute(r SuperhostchildAPIGetRequest) (*ListSuperhostchildResponse, *http.Response, error) {
+func (a *SuperhostchildAPIService) ListExecute(r SuperhostchildAPIListRequest) (*ListSuperhostchildResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *SuperhostchildAPIService) GetExecute(r SuperhostchildAPIGetRequest) (*L
 		localVarReturnValue *ListSuperhostchildResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostchildAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostchildAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -225,7 +225,7 @@ func (a *SuperhostchildAPIService) GetExecute(r SuperhostchildAPIGetRequest) (*L
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SuperhostchildAPIReferenceGetRequest struct {
+type SuperhostchildAPIReadRequest struct {
 	ctx            context.Context
 	ApiService     SuperhostchildAPI
 	reference      string
@@ -235,38 +235,38 @@ type SuperhostchildAPIReferenceGetRequest struct {
 }
 
 // Enter the field names followed by comma
-func (r SuperhostchildAPIReferenceGetRequest) ReturnFields(returnFields string) SuperhostchildAPIReferenceGetRequest {
+func (r SuperhostchildAPIReadRequest) ReturnFields(returnFields string) SuperhostchildAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SuperhostchildAPIReferenceGetRequest) ReturnFields2(returnFields2 string) SuperhostchildAPIReferenceGetRequest {
+func (r SuperhostchildAPIReadRequest) ReturnFields2(returnFields2 string) SuperhostchildAPIReadRequest {
 	r.returnFields2 = &returnFields2
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SuperhostchildAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) SuperhostchildAPIReferenceGetRequest {
+func (r SuperhostchildAPIReadRequest) ReturnAsObject(returnAsObject int32) SuperhostchildAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SuperhostchildAPIReferenceGetRequest) Execute() (*GetSuperhostchildResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r SuperhostchildAPIReadRequest) Execute() (*GetSuperhostchildResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific superhostchild object
+Read Get a specific superhostchild object
 
 Returns a specific superhostchild object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the superhostchild object
-	@return SuperhostchildAPIReferenceGetRequest
+	@return SuperhostchildAPIReadRequest
 */
-func (a *SuperhostchildAPIService) ReferenceGet(ctx context.Context, reference string) SuperhostchildAPIReferenceGetRequest {
-	return SuperhostchildAPIReferenceGetRequest{
+func (a *SuperhostchildAPIService) Read(ctx context.Context, reference string) SuperhostchildAPIReadRequest {
+	return SuperhostchildAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *SuperhostchildAPIService) ReferenceGet(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return GetSuperhostchildResponse
-func (a *SuperhostchildAPIService) ReferenceGetExecute(r SuperhostchildAPIReferenceGetRequest) (*GetSuperhostchildResponse, *http.Response, error) {
+func (a *SuperhostchildAPIService) ReadExecute(r SuperhostchildAPIReadRequest) (*GetSuperhostchildResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *SuperhostchildAPIService) ReferenceGetExecute(r SuperhostchildAPIRefere
 		localVarReturnValue *GetSuperhostchildResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostchildAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostchildAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
