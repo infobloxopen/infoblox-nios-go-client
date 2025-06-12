@@ -95,12 +95,12 @@ type SamlAuthserviceAPI interface {
 type SamlAuthserviceAPIService internal.Service
 
 type SamlAuthserviceAPICreateRequest struct {
-	ctx             context.Context
-	ApiService      SamlAuthserviceAPI
-	samlAuthservice *SamlAuthservice
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       SamlAuthserviceAPI
+	samlAuthservice  *SamlAuthservice
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r SamlAuthserviceAPICreateRequest) ReturnFields(returnFields string) SamlA
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SamlAuthserviceAPICreateRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r SamlAuthserviceAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SamlAuthserviceAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *SamlAuthserviceAPIService) CreateExecute(r SamlAuthserviceAPICreateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *SamlAuthserviceAPIService) DeleteExecute(r SamlAuthserviceAPIDeleteRequ
 }
 
 type SamlAuthserviceAPIListRequest struct {
-	ctx            context.Context
-	ApiService     SamlAuthserviceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       SamlAuthserviceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r SamlAuthserviceAPIListRequest) ReturnFields(returnFields string) SamlAut
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SamlAuthserviceAPIListRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r SamlAuthserviceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SamlAuthserviceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *SamlAuthserviceAPIService) ListExecute(r SamlAuthserviceAPIListRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *SamlAuthserviceAPIService) ListExecute(r SamlAuthserviceAPIListRequest)
 }
 
 type SamlAuthserviceAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     SamlAuthserviceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SamlAuthserviceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r SamlAuthserviceAPIReadRequest) ReturnFields(returnFields string) SamlAut
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SamlAuthserviceAPIReadRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r SamlAuthserviceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SamlAuthserviceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *SamlAuthserviceAPIService) ReadExecute(r SamlAuthserviceAPIReadRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *SamlAuthserviceAPIService) ReadExecute(r SamlAuthserviceAPIReadRequest)
 }
 
 type SamlAuthserviceAPIUpdateRequest struct {
-	ctx             context.Context
-	ApiService      SamlAuthserviceAPI
-	reference       string
-	samlAuthservice *SamlAuthservice
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       SamlAuthserviceAPI
+	reference        string
+	samlAuthservice  *SamlAuthservice
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r SamlAuthserviceAPIUpdateRequest) ReturnFields(returnFields string) SamlA
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SamlAuthserviceAPIUpdateRequest) ReturnFields2(returnFields2 string) SamlAuthserviceAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r SamlAuthserviceAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SamlAuthserviceAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *SamlAuthserviceAPIService) UpdateExecute(r SamlAuthserviceAPIUpdateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

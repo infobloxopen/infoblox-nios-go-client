@@ -95,12 +95,12 @@ type RirOrganizationAPI interface {
 type RirOrganizationAPIService internal.Service
 
 type RirOrganizationAPICreateRequest struct {
-	ctx             context.Context
-	ApiService      RirOrganizationAPI
-	rirOrganization *RirOrganization
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       RirOrganizationAPI
+	rirOrganization  *RirOrganization
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r RirOrganizationAPICreateRequest) ReturnFields(returnFields string) RirOr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirOrganizationAPICreateRequest) ReturnFields2(returnFields2 string) RirOrganizationAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r RirOrganizationAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RirOrganizationAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *RirOrganizationAPIService) CreateExecute(r RirOrganizationAPICreateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *RirOrganizationAPIService) DeleteExecute(r RirOrganizationAPIDeleteRequ
 }
 
 type RirOrganizationAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RirOrganizationAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RirOrganizationAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r RirOrganizationAPIListRequest) ReturnFields(returnFields string) RirOrga
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirOrganizationAPIListRequest) ReturnFields2(returnFields2 string) RirOrganizationAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RirOrganizationAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RirOrganizationAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *RirOrganizationAPIService) ListExecute(r RirOrganizationAPIListRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *RirOrganizationAPIService) ListExecute(r RirOrganizationAPIListRequest)
 }
 
 type RirOrganizationAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RirOrganizationAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RirOrganizationAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r RirOrganizationAPIReadRequest) ReturnFields(returnFields string) RirOrga
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirOrganizationAPIReadRequest) ReturnFields2(returnFields2 string) RirOrganizationAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RirOrganizationAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RirOrganizationAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *RirOrganizationAPIService) ReadExecute(r RirOrganizationAPIReadRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *RirOrganizationAPIService) ReadExecute(r RirOrganizationAPIReadRequest)
 }
 
 type RirOrganizationAPIUpdateRequest struct {
-	ctx             context.Context
-	ApiService      RirOrganizationAPI
-	reference       string
-	rirOrganization *RirOrganization
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       RirOrganizationAPI
+	reference        string
+	rirOrganization  *RirOrganization
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r RirOrganizationAPIUpdateRequest) ReturnFields(returnFields string) RirOr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RirOrganizationAPIUpdateRequest) ReturnFields2(returnFields2 string) RirOrganizationAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r RirOrganizationAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RirOrganizationAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *RirOrganizationAPIService) UpdateExecute(r RirOrganizationAPIUpdateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

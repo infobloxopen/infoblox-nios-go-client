@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> CreateIpv6networkResponse Create(ctx).Ipv6network(ipv6network).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateIpv6networkResponse Create(ctx).Ipv6network(ipv6network).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Create a ipv6network object
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ipv6network** | [**Ipv6network**](Ipv6network.md) | Object data to create | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> ListIpv6networkResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListIpv6networkResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve ipv6network objects
 
@@ -194,7 +194,7 @@ Other parameters are passed through a pointer to a `Ipv6networkAPIListRequest` s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> GetIpv6networkResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetIpv6networkResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific ipv6network object
 
@@ -271,7 +271,7 @@ Other parameters are passed through a pointer to a `Ipv6networkAPIReadRequest` s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> UpdateIpv6networkResponse Update(ctx, reference).Ipv6network(ipv6network).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateIpv6networkResponse Update(ctx, reference).Ipv6network(ipv6network).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a ipv6network object
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ipv6network** | [**Ipv6network**](Ipv6network.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

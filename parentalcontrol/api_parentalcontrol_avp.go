@@ -99,7 +99,7 @@ type ParentalcontrolAvpAPICreateRequest struct {
 	ApiService         ParentalcontrolAvpAPI
 	parentalcontrolAvp *ParentalcontrolAvp
 	returnFields       *string
-	returnFields2      *string
+	returnFieldsPlus   *string
 	returnAsObject     *int32
 }
 
@@ -116,8 +116,8 @@ func (r ParentalcontrolAvpAPICreateRequest) ReturnFields(returnFields string) Pa
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolAvpAPICreateRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolAvpAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolAvpAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *ParentalcontrolAvpAPIService) CreateExecute(r ParentalcontrolAvpAPICrea
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *ParentalcontrolAvpAPIService) DeleteExecute(r ParentalcontrolAvpAPIDele
 }
 
 type ParentalcontrolAvpAPIListRequest struct {
-	ctx            context.Context
-	ApiService     ParentalcontrolAvpAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       ParentalcontrolAvpAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r ParentalcontrolAvpAPIListRequest) ReturnFields(returnFields string) Pare
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolAvpAPIListRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolAvpAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolAvpAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *ParentalcontrolAvpAPIService) ListExecute(r ParentalcontrolAvpAPIListRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *ParentalcontrolAvpAPIService) ListExecute(r ParentalcontrolAvpAPIListRe
 }
 
 type ParentalcontrolAvpAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     ParentalcontrolAvpAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ParentalcontrolAvpAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r ParentalcontrolAvpAPIReadRequest) ReturnFields(returnFields string) Pare
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolAvpAPIReadRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolAvpAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolAvpAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *ParentalcontrolAvpAPIService) ReadExecute(r ParentalcontrolAvpAPIReadRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type ParentalcontrolAvpAPIUpdateRequest struct {
 	reference          string
 	parentalcontrolAvp *ParentalcontrolAvp
 	returnFields       *string
-	returnFields2      *string
+	returnFieldsPlus   *string
 	returnAsObject     *int32
 }
 
@@ -639,8 +639,8 @@ func (r ParentalcontrolAvpAPIUpdateRequest) ReturnFields(returnFields string) Pa
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolAvpAPIUpdateRequest) ReturnFields2(returnFields2 string) ParentalcontrolAvpAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolAvpAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolAvpAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *ParentalcontrolAvpAPIService) UpdateExecute(r ParentalcontrolAvpAPIUpda
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

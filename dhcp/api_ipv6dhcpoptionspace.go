@@ -99,7 +99,7 @@ type Ipv6dhcpoptionspaceAPICreateRequest struct {
 	ApiService          Ipv6dhcpoptionspaceAPI
 	ipv6dhcpoptionspace *Ipv6dhcpoptionspace
 	returnFields        *string
-	returnFields2       *string
+	returnFieldsPlus    *string
 	returnAsObject      *int32
 }
 
@@ -116,8 +116,8 @@ func (r Ipv6dhcpoptionspaceAPICreateRequest) ReturnFields(returnFields string) I
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6dhcpoptionspaceAPICreateRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptionspaceAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6dhcpoptionspaceAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6dhcpoptionspaceAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *Ipv6dhcpoptionspaceAPIService) CreateExecute(r Ipv6dhcpoptionspaceAPICr
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *Ipv6dhcpoptionspaceAPIService) DeleteExecute(r Ipv6dhcpoptionspaceAPIDe
 }
 
 type Ipv6dhcpoptionspaceAPIListRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6dhcpoptionspaceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       Ipv6dhcpoptionspaceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r Ipv6dhcpoptionspaceAPIListRequest) ReturnFields(returnFields string) Ipv
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6dhcpoptionspaceAPIListRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptionspaceAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6dhcpoptionspaceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6dhcpoptionspaceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *Ipv6dhcpoptionspaceAPIService) ListExecute(r Ipv6dhcpoptionspaceAPIList
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *Ipv6dhcpoptionspaceAPIService) ListExecute(r Ipv6dhcpoptionspaceAPIList
 }
 
 type Ipv6dhcpoptionspaceAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6dhcpoptionspaceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Ipv6dhcpoptionspaceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r Ipv6dhcpoptionspaceAPIReadRequest) ReturnFields(returnFields string) Ipv
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6dhcpoptionspaceAPIReadRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptionspaceAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6dhcpoptionspaceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6dhcpoptionspaceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *Ipv6dhcpoptionspaceAPIService) ReadExecute(r Ipv6dhcpoptionspaceAPIRead
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type Ipv6dhcpoptionspaceAPIUpdateRequest struct {
 	reference           string
 	ipv6dhcpoptionspace *Ipv6dhcpoptionspace
 	returnFields        *string
-	returnFields2       *string
+	returnFieldsPlus    *string
 	returnAsObject      *int32
 }
 
@@ -639,8 +639,8 @@ func (r Ipv6dhcpoptionspaceAPIUpdateRequest) ReturnFields(returnFields string) I
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6dhcpoptionspaceAPIUpdateRequest) ReturnFields2(returnFields2 string) Ipv6dhcpoptionspaceAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6dhcpoptionspaceAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6dhcpoptionspaceAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *Ipv6dhcpoptionspaceAPIService) UpdateExecute(r Ipv6dhcpoptionspaceAPIUp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

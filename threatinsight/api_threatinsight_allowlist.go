@@ -99,7 +99,7 @@ type ThreatinsightAllowlistAPICreateRequest struct {
 	ApiService             ThreatinsightAllowlistAPI
 	threatinsightAllowlist *ThreatinsightAllowlist
 	returnFields           *string
-	returnFields2          *string
+	returnFieldsPlus       *string
 	returnAsObject         *int32
 }
 
@@ -116,8 +116,8 @@ func (r ThreatinsightAllowlistAPICreateRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightAllowlistAPICreateRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r ThreatinsightAllowlistAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) ThreatinsightAllowlistAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *ThreatinsightAllowlistAPIService) CreateExecute(r ThreatinsightAllowlis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *ThreatinsightAllowlistAPIService) DeleteExecute(r ThreatinsightAllowlis
 }
 
 type ThreatinsightAllowlistAPIListRequest struct {
-	ctx            context.Context
-	ApiService     ThreatinsightAllowlistAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       ThreatinsightAllowlistAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r ThreatinsightAllowlistAPIListRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightAllowlistAPIListRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r ThreatinsightAllowlistAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ThreatinsightAllowlistAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *ThreatinsightAllowlistAPIService) ListExecute(r ThreatinsightAllowlistA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *ThreatinsightAllowlistAPIService) ListExecute(r ThreatinsightAllowlistA
 }
 
 type ThreatinsightAllowlistAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     ThreatinsightAllowlistAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ThreatinsightAllowlistAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r ThreatinsightAllowlistAPIReadRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightAllowlistAPIReadRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r ThreatinsightAllowlistAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ThreatinsightAllowlistAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *ThreatinsightAllowlistAPIService) ReadExecute(r ThreatinsightAllowlistA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type ThreatinsightAllowlistAPIUpdateRequest struct {
 	reference              string
 	threatinsightAllowlist *ThreatinsightAllowlist
 	returnFields           *string
-	returnFields2          *string
+	returnFieldsPlus       *string
 	returnAsObject         *int32
 }
 
@@ -639,8 +639,8 @@ func (r ThreatinsightAllowlistAPIUpdateRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightAllowlistAPIUpdateRequest) ReturnFields2(returnFields2 string) ThreatinsightAllowlistAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r ThreatinsightAllowlistAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ThreatinsightAllowlistAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *ThreatinsightAllowlistAPIService) UpdateExecute(r ThreatinsightAllowlis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

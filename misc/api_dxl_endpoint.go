@@ -95,12 +95,12 @@ type DxlEndpointAPI interface {
 type DxlEndpointAPIService internal.Service
 
 type DxlEndpointAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     DxlEndpointAPI
-	dxlEndpoint    *DxlEndpoint
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DxlEndpointAPI
+	dxlEndpoint      *DxlEndpoint
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r DxlEndpointAPICreateRequest) ReturnFields(returnFields string) DxlEndpoi
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DxlEndpointAPICreateRequest) ReturnFields2(returnFields2 string) DxlEndpointAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r DxlEndpointAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DxlEndpointAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *DxlEndpointAPIService) CreateExecute(r DxlEndpointAPICreateRequest) (*C
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *DxlEndpointAPIService) DeleteExecute(r DxlEndpointAPIDeleteRequest) (*h
 }
 
 type DxlEndpointAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DxlEndpointAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DxlEndpointAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r DxlEndpointAPIListRequest) ReturnFields(returnFields string) DxlEndpoint
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DxlEndpointAPIListRequest) ReturnFields2(returnFields2 string) DxlEndpointAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DxlEndpointAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DxlEndpointAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *DxlEndpointAPIService) ListExecute(r DxlEndpointAPIListRequest) (*ListD
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *DxlEndpointAPIService) ListExecute(r DxlEndpointAPIListRequest) (*ListD
 }
 
 type DxlEndpointAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DxlEndpointAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DxlEndpointAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r DxlEndpointAPIReadRequest) ReturnFields(returnFields string) DxlEndpoint
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DxlEndpointAPIReadRequest) ReturnFields2(returnFields2 string) DxlEndpointAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DxlEndpointAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DxlEndpointAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *DxlEndpointAPIService) ReadExecute(r DxlEndpointAPIReadRequest) (*GetDx
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *DxlEndpointAPIService) ReadExecute(r DxlEndpointAPIReadRequest) (*GetDx
 }
 
 type DxlEndpointAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     DxlEndpointAPI
-	reference      string
-	dxlEndpoint    *DxlEndpoint
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DxlEndpointAPI
+	reference        string
+	dxlEndpoint      *DxlEndpoint
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r DxlEndpointAPIUpdateRequest) ReturnFields(returnFields string) DxlEndpoi
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DxlEndpointAPIUpdateRequest) ReturnFields2(returnFields2 string) DxlEndpointAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DxlEndpointAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DxlEndpointAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *DxlEndpointAPIService) UpdateExecute(r DxlEndpointAPIUpdateRequest) (*U
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

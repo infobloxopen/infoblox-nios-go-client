@@ -55,16 +55,16 @@ type LocaluserAuthserviceAPI interface {
 type LocaluserAuthserviceAPIService internal.Service
 
 type LocaluserAuthserviceAPIListRequest struct {
-	ctx            context.Context
-	ApiService     LocaluserAuthserviceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       LocaluserAuthserviceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r LocaluserAuthserviceAPIListRequest) ReturnFields(returnFields string) Lo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LocaluserAuthserviceAPIListRequest) ReturnFields2(returnFields2 string) LocaluserAuthserviceAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r LocaluserAuthserviceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) LocaluserAuthserviceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *LocaluserAuthserviceAPIService) ListExecute(r LocaluserAuthserviceAPILi
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *LocaluserAuthserviceAPIService) ListExecute(r LocaluserAuthserviceAPILi
 }
 
 type LocaluserAuthserviceAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     LocaluserAuthserviceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       LocaluserAuthserviceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r LocaluserAuthserviceAPIReadRequest) ReturnFields(returnFields string) Lo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LocaluserAuthserviceAPIReadRequest) ReturnFields2(returnFields2 string) LocaluserAuthserviceAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r LocaluserAuthserviceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) LocaluserAuthserviceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *LocaluserAuthserviceAPIService) ReadExecute(r LocaluserAuthserviceAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

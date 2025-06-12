@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> CreateUpgradegroupResponse Create(ctx).Upgradegroup(upgradegroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateUpgradegroupResponse Create(ctx).Upgradegroup(upgradegroup).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Create a upgradegroup object
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **upgradegroup** | [**Upgradegroup**](Upgradegroup.md) | Object data to create | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> ListUpgradegroupResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListUpgradegroupResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve upgradegroup objects
 
@@ -194,7 +194,7 @@ Other parameters are passed through a pointer to a `UpgradegroupAPIListRequest` 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> GetUpgradegroupResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetUpgradegroupResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific upgradegroup object
 
@@ -271,7 +271,7 @@ Other parameters are passed through a pointer to a `UpgradegroupAPIReadRequest` 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> UpdateUpgradegroupResponse Update(ctx, reference).Upgradegroup(upgradegroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateUpgradegroupResponse Update(ctx, reference).Upgradegroup(upgradegroup).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a upgradegroup object
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **upgradegroup** | [**Upgradegroup**](Upgradegroup.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

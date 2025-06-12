@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> CreateFilterfingerprintResponse Create(ctx).Filterfingerprint(filterfingerprint).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateFilterfingerprintResponse Create(ctx).Filterfingerprint(filterfingerprint).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Create a filterfingerprint object
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **filterfingerprint** | [**Filterfingerprint**](Filterfingerprint.md) | Object data to create | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> ListFilterfingerprintResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListFilterfingerprintResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve filterfingerprint objects
 
@@ -194,7 +194,7 @@ Other parameters are passed through a pointer to a `FilterfingerprintAPIListRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> GetFilterfingerprintResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetFilterfingerprintResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific filterfingerprint object
 
@@ -271,7 +271,7 @@ Other parameters are passed through a pointer to a `FilterfingerprintAPIReadRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> UpdateFilterfingerprintResponse Update(ctx, reference).Filterfingerprint(filterfingerprint).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateFilterfingerprintResponse Update(ctx, reference).Filterfingerprint(filterfingerprint).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a filterfingerprint object
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **filterfingerprint** | [**Filterfingerprint**](Filterfingerprint.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

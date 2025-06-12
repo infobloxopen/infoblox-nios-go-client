@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## Create
 
-> CreateZoneAuthResponse Create(ctx).ZoneAuth(zoneAuth).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> CreateZoneAuthResponse Create(ctx).ZoneAuth(zoneAuth).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Create a zone_auth object
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **zoneAuth** | [**ZoneAuth**](ZoneAuth.md) | Object data to create | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> ListZoneAuthResponse List(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListZoneAuthResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve zone_auth objects
 
@@ -195,7 +195,7 @@ Other parameters are passed through a pointer to a `ZoneAuthAPIListRequest` stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> GetZoneAuthResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetZoneAuthResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific zone_auth object
 
@@ -272,7 +272,7 @@ Other parameters are passed through a pointer to a `ZoneAuthAPIReadRequest` stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## Update
 
-> UpdateZoneAuthResponse Update(ctx, reference).ZoneAuth(zoneAuth).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateZoneAuthResponse Update(ctx, reference).ZoneAuth(zoneAuth).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a zone_auth object
 
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **zoneAuth** | [**ZoneAuth**](ZoneAuth.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -55,16 +55,16 @@ type DtcCertificateAPI interface {
 type DtcCertificateAPIService internal.Service
 
 type DtcCertificateAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DtcCertificateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DtcCertificateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r DtcCertificateAPIListRequest) ReturnFields(returnFields string) DtcCerti
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcCertificateAPIListRequest) ReturnFields2(returnFields2 string) DtcCertificateAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcCertificateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcCertificateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *DtcCertificateAPIService) ListExecute(r DtcCertificateAPIListRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *DtcCertificateAPIService) ListExecute(r DtcCertificateAPIListRequest) (
 }
 
 type DtcCertificateAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DtcCertificateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcCertificateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r DtcCertificateAPIReadRequest) ReturnFields(returnFields string) DtcCerti
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcCertificateAPIReadRequest) ReturnFields2(returnFields2 string) DtcCertificateAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcCertificateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcCertificateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *DtcCertificateAPIService) ReadExecute(r DtcCertificateAPIReadRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

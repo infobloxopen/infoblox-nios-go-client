@@ -99,7 +99,7 @@ type TacacsplusAuthserviceAPICreateRequest struct {
 	ApiService            TacacsplusAuthserviceAPI
 	tacacsplusAuthservice *TacacsplusAuthservice
 	returnFields          *string
-	returnFields2         *string
+	returnFieldsPlus      *string
 	returnAsObject        *int32
 }
 
@@ -116,8 +116,8 @@ func (r TacacsplusAuthserviceAPICreateRequest) ReturnFields(returnFields string)
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TacacsplusAuthserviceAPICreateRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r TacacsplusAuthserviceAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) TacacsplusAuthserviceAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *TacacsplusAuthserviceAPIService) CreateExecute(r TacacsplusAuthserviceA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *TacacsplusAuthserviceAPIService) DeleteExecute(r TacacsplusAuthserviceA
 }
 
 type TacacsplusAuthserviceAPIListRequest struct {
-	ctx            context.Context
-	ApiService     TacacsplusAuthserviceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       TacacsplusAuthserviceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r TacacsplusAuthserviceAPIListRequest) ReturnFields(returnFields string) T
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TacacsplusAuthserviceAPIListRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r TacacsplusAuthserviceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) TacacsplusAuthserviceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *TacacsplusAuthserviceAPIService) ListExecute(r TacacsplusAuthserviceAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *TacacsplusAuthserviceAPIService) ListExecute(r TacacsplusAuthserviceAPI
 }
 
 type TacacsplusAuthserviceAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     TacacsplusAuthserviceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       TacacsplusAuthserviceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r TacacsplusAuthserviceAPIReadRequest) ReturnFields(returnFields string) T
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TacacsplusAuthserviceAPIReadRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r TacacsplusAuthserviceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) TacacsplusAuthserviceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *TacacsplusAuthserviceAPIService) ReadExecute(r TacacsplusAuthserviceAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type TacacsplusAuthserviceAPIUpdateRequest struct {
 	reference             string
 	tacacsplusAuthservice *TacacsplusAuthservice
 	returnFields          *string
-	returnFields2         *string
+	returnFieldsPlus      *string
 	returnAsObject        *int32
 }
 
@@ -639,8 +639,8 @@ func (r TacacsplusAuthserviceAPIUpdateRequest) ReturnFields(returnFields string)
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TacacsplusAuthserviceAPIUpdateRequest) ReturnFields2(returnFields2 string) TacacsplusAuthserviceAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r TacacsplusAuthserviceAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) TacacsplusAuthserviceAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *TacacsplusAuthserviceAPIService) UpdateExecute(r TacacsplusAuthserviceA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

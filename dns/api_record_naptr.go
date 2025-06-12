@@ -95,12 +95,12 @@ type RecordNaptrAPI interface {
 type RecordNaptrAPIService internal.Service
 
 type RecordNaptrAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     RecordNaptrAPI
-	recordNaptr    *RecordNaptr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordNaptrAPI
+	recordNaptr      *RecordNaptr
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r RecordNaptrAPICreateRequest) ReturnFields(returnFields string) RecordNap
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNaptrAPICreateRequest) ReturnFields2(returnFields2 string) RecordNaptrAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordNaptrAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordNaptrAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *RecordNaptrAPIService) CreateExecute(r RecordNaptrAPICreateRequest) (*C
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *RecordNaptrAPIService) DeleteExecute(r RecordNaptrAPIDeleteRequest) (*h
 }
 
 type RecordNaptrAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RecordNaptrAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RecordNaptrAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r RecordNaptrAPIListRequest) ReturnFields(returnFields string) RecordNaptr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNaptrAPIListRequest) ReturnFields2(returnFields2 string) RecordNaptrAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordNaptrAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordNaptrAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *RecordNaptrAPIService) ListExecute(r RecordNaptrAPIListRequest) (*ListR
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *RecordNaptrAPIService) ListExecute(r RecordNaptrAPIListRequest) (*ListR
 }
 
 type RecordNaptrAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RecordNaptrAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordNaptrAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r RecordNaptrAPIReadRequest) ReturnFields(returnFields string) RecordNaptr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNaptrAPIReadRequest) ReturnFields2(returnFields2 string) RecordNaptrAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordNaptrAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordNaptrAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *RecordNaptrAPIService) ReadExecute(r RecordNaptrAPIReadRequest) (*GetRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *RecordNaptrAPIService) ReadExecute(r RecordNaptrAPIReadRequest) (*GetRe
 }
 
 type RecordNaptrAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     RecordNaptrAPI
-	reference      string
-	recordNaptr    *RecordNaptr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordNaptrAPI
+	reference        string
+	recordNaptr      *RecordNaptr
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r RecordNaptrAPIUpdateRequest) ReturnFields(returnFields string) RecordNap
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNaptrAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordNaptrAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordNaptrAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordNaptrAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *RecordNaptrAPIService) UpdateExecute(r RecordNaptrAPIUpdateRequest) (*U
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

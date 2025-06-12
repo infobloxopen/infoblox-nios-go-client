@@ -55,16 +55,16 @@ type SearchAPI interface {
 type SearchAPIService internal.Service
 
 type SearchAPIListRequest struct {
-	ctx            context.Context
-	ApiService     SearchAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       SearchAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r SearchAPIListRequest) ReturnFields(returnFields string) SearchAPIListReq
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SearchAPIListRequest) ReturnFields2(returnFields2 string) SearchAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r SearchAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SearchAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *SearchAPIService) ListExecute(r SearchAPIListRequest) (*ListSearchRespo
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *SearchAPIService) ListExecute(r SearchAPIListRequest) (*ListSearchRespo
 }
 
 type SearchAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     SearchAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SearchAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r SearchAPIReadRequest) ReturnFields(returnFields string) SearchAPIReadReq
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SearchAPIReadRequest) ReturnFields2(returnFields2 string) SearchAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r SearchAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SearchAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *SearchAPIService) ReadExecute(r SearchAPIReadRequest) (*GetSearchRespon
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

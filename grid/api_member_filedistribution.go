@@ -69,16 +69,16 @@ type MemberFiledistributionAPI interface {
 type MemberFiledistributionAPIService internal.Service
 
 type MemberFiledistributionAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MemberFiledistributionAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MemberFiledistributionAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r MemberFiledistributionAPIListRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberFiledistributionAPIListRequest) ReturnFields2(returnFields2 string) MemberFiledistributionAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberFiledistributionAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberFiledistributionAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *MemberFiledistributionAPIService) ListExecute(r MemberFiledistributionA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *MemberFiledistributionAPIService) ListExecute(r MemberFiledistributionA
 }
 
 type MemberFiledistributionAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MemberFiledistributionAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MemberFiledistributionAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r MemberFiledistributionAPIReadRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberFiledistributionAPIReadRequest) ReturnFields2(returnFields2 string) MemberFiledistributionAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberFiledistributionAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberFiledistributionAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *MemberFiledistributionAPIService) ReadExecute(r MemberFiledistributionA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -372,7 +372,7 @@ type MemberFiledistributionAPIUpdateRequest struct {
 	reference              string
 	memberFiledistribution *MemberFiledistribution
 	returnFields           *string
-	returnFields2          *string
+	returnFieldsPlus       *string
 	returnAsObject         *int32
 }
 
@@ -389,8 +389,8 @@ func (r MemberFiledistributionAPIUpdateRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberFiledistributionAPIUpdateRequest) ReturnFields2(returnFields2 string) MemberFiledistributionAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberFiledistributionAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberFiledistributionAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *MemberFiledistributionAPIService) UpdateExecute(r MemberFiledistributio
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -95,12 +95,12 @@ type RulesetAPI interface {
 type RulesetAPIService internal.Service
 
 type RulesetAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     RulesetAPI
-	ruleset        *Ruleset
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RulesetAPI
+	ruleset          *Ruleset
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r RulesetAPICreateRequest) ReturnFields(returnFields string) RulesetAPICre
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RulesetAPICreateRequest) ReturnFields2(returnFields2 string) RulesetAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r RulesetAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RulesetAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *RulesetAPIService) CreateExecute(r RulesetAPICreateRequest) (*CreateRul
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *RulesetAPIService) DeleteExecute(r RulesetAPIDeleteRequest) (*http.Resp
 }
 
 type RulesetAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RulesetAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RulesetAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r RulesetAPIListRequest) ReturnFields(returnFields string) RulesetAPIListR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RulesetAPIListRequest) ReturnFields2(returnFields2 string) RulesetAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RulesetAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RulesetAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *RulesetAPIService) ListExecute(r RulesetAPIListRequest) (*ListRulesetRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *RulesetAPIService) ListExecute(r RulesetAPIListRequest) (*ListRulesetRe
 }
 
 type RulesetAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RulesetAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RulesetAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r RulesetAPIReadRequest) ReturnFields(returnFields string) RulesetAPIReadR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RulesetAPIReadRequest) ReturnFields2(returnFields2 string) RulesetAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RulesetAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RulesetAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *RulesetAPIService) ReadExecute(r RulesetAPIReadRequest) (*GetRulesetRes
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *RulesetAPIService) ReadExecute(r RulesetAPIReadRequest) (*GetRulesetRes
 }
 
 type RulesetAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     RulesetAPI
-	reference      string
-	ruleset        *Ruleset
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RulesetAPI
+	reference        string
+	ruleset          *Ruleset
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r RulesetAPIUpdateRequest) ReturnFields(returnFields string) RulesetAPIUpd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RulesetAPIUpdateRequest) ReturnFields2(returnFields2 string) RulesetAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r RulesetAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RulesetAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *RulesetAPIService) UpdateExecute(r RulesetAPIUpdateRequest) (*UpdateRul
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

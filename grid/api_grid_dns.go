@@ -69,16 +69,16 @@ type GridDnsAPI interface {
 type GridDnsAPIService internal.Service
 
 type GridDnsAPIListRequest struct {
-	ctx            context.Context
-	ApiService     GridDnsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       GridDnsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r GridDnsAPIListRequest) ReturnFields(returnFields string) GridDnsAPIListR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDnsAPIListRequest) ReturnFields2(returnFields2 string) GridDnsAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r GridDnsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridDnsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *GridDnsAPIService) ListExecute(r GridDnsAPIListRequest) (*ListGridDnsRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *GridDnsAPIService) ListExecute(r GridDnsAPIListRequest) (*ListGridDnsRe
 }
 
 type GridDnsAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     GridDnsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GridDnsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r GridDnsAPIReadRequest) ReturnFields(returnFields string) GridDnsAPIReadR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDnsAPIReadRequest) ReturnFields2(returnFields2 string) GridDnsAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r GridDnsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridDnsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *GridDnsAPIService) ReadExecute(r GridDnsAPIReadRequest) (*GetGridDnsRes
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -367,13 +367,13 @@ func (a *GridDnsAPIService) ReadExecute(r GridDnsAPIReadRequest) (*GetGridDnsRes
 }
 
 type GridDnsAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     GridDnsAPI
-	reference      string
-	gridDns        *GridDns
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GridDnsAPI
+	reference        string
+	gridDns          *GridDns
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -389,8 +389,8 @@ func (r GridDnsAPIUpdateRequest) ReturnFields(returnFields string) GridDnsAPIUpd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDnsAPIUpdateRequest) ReturnFields2(returnFields2 string) GridDnsAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r GridDnsAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridDnsAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *GridDnsAPIService) UpdateExecute(r GridDnsAPIUpdateRequest) (*UpdateGri
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

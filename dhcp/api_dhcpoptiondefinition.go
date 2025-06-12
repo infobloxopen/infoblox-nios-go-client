@@ -99,7 +99,7 @@ type DhcpoptiondefinitionAPICreateRequest struct {
 	ApiService           DhcpoptiondefinitionAPI
 	dhcpoptiondefinition *Dhcpoptiondefinition
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
@@ -116,8 +116,8 @@ func (r DhcpoptiondefinitionAPICreateRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptiondefinitionAPICreateRequest) ReturnFields2(returnFields2 string) DhcpoptiondefinitionAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptiondefinitionAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptiondefinitionAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *DhcpoptiondefinitionAPIService) CreateExecute(r DhcpoptiondefinitionAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *DhcpoptiondefinitionAPIService) DeleteExecute(r DhcpoptiondefinitionAPI
 }
 
 type DhcpoptiondefinitionAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DhcpoptiondefinitionAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DhcpoptiondefinitionAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r DhcpoptiondefinitionAPIListRequest) ReturnFields(returnFields string) Dh
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptiondefinitionAPIListRequest) ReturnFields2(returnFields2 string) DhcpoptiondefinitionAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptiondefinitionAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptiondefinitionAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *DhcpoptiondefinitionAPIService) ListExecute(r DhcpoptiondefinitionAPILi
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *DhcpoptiondefinitionAPIService) ListExecute(r DhcpoptiondefinitionAPILi
 }
 
 type DhcpoptiondefinitionAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DhcpoptiondefinitionAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DhcpoptiondefinitionAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r DhcpoptiondefinitionAPIReadRequest) ReturnFields(returnFields string) Dh
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptiondefinitionAPIReadRequest) ReturnFields2(returnFields2 string) DhcpoptiondefinitionAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptiondefinitionAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptiondefinitionAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *DhcpoptiondefinitionAPIService) ReadExecute(r DhcpoptiondefinitionAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type DhcpoptiondefinitionAPIUpdateRequest struct {
 	reference            string
 	dhcpoptiondefinition *Dhcpoptiondefinition
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
@@ -639,8 +639,8 @@ func (r DhcpoptiondefinitionAPIUpdateRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptiondefinitionAPIUpdateRequest) ReturnFields2(returnFields2 string) DhcpoptiondefinitionAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptiondefinitionAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptiondefinitionAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *DhcpoptiondefinitionAPIService) UpdateExecute(r DhcpoptiondefinitionAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

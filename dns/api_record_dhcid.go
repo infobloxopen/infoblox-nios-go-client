@@ -157,16 +157,16 @@ func (a *RecordDhcidAPIService) DeleteExecute(r RecordDhcidAPIDeleteRequest) (*h
 }
 
 type RecordDhcidAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RecordDhcidAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RecordDhcidAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -176,8 +176,8 @@ func (r RecordDhcidAPIListRequest) ReturnFields(returnFields string) RecordDhcid
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDhcidAPIListRequest) ReturnFields2(returnFields2 string) RecordDhcidAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordDhcidAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordDhcidAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -259,8 +259,8 @@ func (a *RecordDhcidAPIService) ListExecute(r RecordDhcidAPIListRequest) (*ListR
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -328,12 +328,12 @@ func (a *RecordDhcidAPIService) ListExecute(r RecordDhcidAPIListRequest) (*ListR
 }
 
 type RecordDhcidAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RecordDhcidAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordDhcidAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -343,8 +343,8 @@ func (r RecordDhcidAPIReadRequest) ReturnFields(returnFields string) RecordDhcid
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDhcidAPIReadRequest) ReturnFields2(returnFields2 string) RecordDhcidAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordDhcidAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordDhcidAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -401,8 +401,8 @@ func (a *RecordDhcidAPIService) ReadExecute(r RecordDhcidAPIReadRequest) (*GetRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

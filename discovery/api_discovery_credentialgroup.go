@@ -99,7 +99,7 @@ type DiscoveryCredentialgroupAPICreateRequest struct {
 	ApiService               DiscoveryCredentialgroupAPI
 	discoveryCredentialgroup *DiscoveryCredentialgroup
 	returnFields             *string
-	returnFields2            *string
+	returnFieldsPlus         *string
 	returnAsObject           *int32
 }
 
@@ -116,8 +116,8 @@ func (r DiscoveryCredentialgroupAPICreateRequest) ReturnFields(returnFields stri
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryCredentialgroupAPICreateRequest) ReturnFields2(returnFields2 string) DiscoveryCredentialgroupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryCredentialgroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryCredentialgroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *DiscoveryCredentialgroupAPIService) CreateExecute(r DiscoveryCredential
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *DiscoveryCredentialgroupAPIService) DeleteExecute(r DiscoveryCredential
 }
 
 type DiscoveryCredentialgroupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryCredentialgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DiscoveryCredentialgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r DiscoveryCredentialgroupAPIListRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryCredentialgroupAPIListRequest) ReturnFields2(returnFields2 string) DiscoveryCredentialgroupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryCredentialgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryCredentialgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *DiscoveryCredentialgroupAPIService) ListExecute(r DiscoveryCredentialgr
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *DiscoveryCredentialgroupAPIService) ListExecute(r DiscoveryCredentialgr
 }
 
 type DiscoveryCredentialgroupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryCredentialgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DiscoveryCredentialgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r DiscoveryCredentialgroupAPIReadRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryCredentialgroupAPIReadRequest) ReturnFields2(returnFields2 string) DiscoveryCredentialgroupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryCredentialgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryCredentialgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *DiscoveryCredentialgroupAPIService) ReadExecute(r DiscoveryCredentialgr
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type DiscoveryCredentialgroupAPIUpdateRequest struct {
 	reference                string
 	discoveryCredentialgroup *DiscoveryCredentialgroup
 	returnFields             *string
-	returnFields2            *string
+	returnFieldsPlus         *string
 	returnAsObject           *int32
 }
 
@@ -639,8 +639,8 @@ func (r DiscoveryCredentialgroupAPIUpdateRequest) ReturnFields(returnFields stri
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryCredentialgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) DiscoveryCredentialgroupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryCredentialgroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryCredentialgroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *DiscoveryCredentialgroupAPIService) UpdateExecute(r DiscoveryCredential
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

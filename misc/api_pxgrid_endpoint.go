@@ -95,12 +95,12 @@ type PxgridEndpointAPI interface {
 type PxgridEndpointAPIService internal.Service
 
 type PxgridEndpointAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     PxgridEndpointAPI
-	pxgridEndpoint *PxgridEndpoint
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       PxgridEndpointAPI
+	pxgridEndpoint   *PxgridEndpoint
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r PxgridEndpointAPICreateRequest) ReturnFields(returnFields string) Pxgrid
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PxgridEndpointAPICreateRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r PxgridEndpointAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) PxgridEndpointAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *PxgridEndpointAPIService) CreateExecute(r PxgridEndpointAPICreateReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *PxgridEndpointAPIService) DeleteExecute(r PxgridEndpointAPIDeleteReques
 }
 
 type PxgridEndpointAPIListRequest struct {
-	ctx            context.Context
-	ApiService     PxgridEndpointAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       PxgridEndpointAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r PxgridEndpointAPIListRequest) ReturnFields(returnFields string) PxgridEn
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PxgridEndpointAPIListRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r PxgridEndpointAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) PxgridEndpointAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *PxgridEndpointAPIService) ListExecute(r PxgridEndpointAPIListRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *PxgridEndpointAPIService) ListExecute(r PxgridEndpointAPIListRequest) (
 }
 
 type PxgridEndpointAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     PxgridEndpointAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       PxgridEndpointAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r PxgridEndpointAPIReadRequest) ReturnFields(returnFields string) PxgridEn
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PxgridEndpointAPIReadRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r PxgridEndpointAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) PxgridEndpointAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *PxgridEndpointAPIService) ReadExecute(r PxgridEndpointAPIReadRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *PxgridEndpointAPIService) ReadExecute(r PxgridEndpointAPIReadRequest) (
 }
 
 type PxgridEndpointAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     PxgridEndpointAPI
-	reference      string
-	pxgridEndpoint *PxgridEndpoint
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       PxgridEndpointAPI
+	reference        string
+	pxgridEndpoint   *PxgridEndpoint
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r PxgridEndpointAPIUpdateRequest) ReturnFields(returnFields string) Pxgrid
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PxgridEndpointAPIUpdateRequest) ReturnFields2(returnFields2 string) PxgridEndpointAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r PxgridEndpointAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) PxgridEndpointAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *PxgridEndpointAPIService) UpdateExecute(r PxgridEndpointAPIUpdateReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

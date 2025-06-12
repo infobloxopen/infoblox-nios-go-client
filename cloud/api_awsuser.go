@@ -95,12 +95,12 @@ type AwsuserAPI interface {
 type AwsuserAPIService internal.Service
 
 type AwsuserAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     AwsuserAPI
-	awsuser        *Awsuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AwsuserAPI
+	awsuser          *Awsuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r AwsuserAPICreateRequest) ReturnFields(returnFields string) AwsuserAPICre
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AwsuserAPICreateRequest) ReturnFields2(returnFields2 string) AwsuserAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r AwsuserAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) AwsuserAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *AwsuserAPIService) CreateExecute(r AwsuserAPICreateRequest) (*CreateAws
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *AwsuserAPIService) DeleteExecute(r AwsuserAPIDeleteRequest) (*http.Resp
 }
 
 type AwsuserAPIListRequest struct {
-	ctx            context.Context
-	ApiService     AwsuserAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       AwsuserAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r AwsuserAPIListRequest) ReturnFields(returnFields string) AwsuserAPIListR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AwsuserAPIListRequest) ReturnFields2(returnFields2 string) AwsuserAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r AwsuserAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AwsuserAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *AwsuserAPIService) ListExecute(r AwsuserAPIListRequest) (*ListAwsuserRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *AwsuserAPIService) ListExecute(r AwsuserAPIListRequest) (*ListAwsuserRe
 }
 
 type AwsuserAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     AwsuserAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AwsuserAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r AwsuserAPIReadRequest) ReturnFields(returnFields string) AwsuserAPIReadR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AwsuserAPIReadRequest) ReturnFields2(returnFields2 string) AwsuserAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r AwsuserAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AwsuserAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *AwsuserAPIService) ReadExecute(r AwsuserAPIReadRequest) (*GetAwsuserRes
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *AwsuserAPIService) ReadExecute(r AwsuserAPIReadRequest) (*GetAwsuserRes
 }
 
 type AwsuserAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     AwsuserAPI
-	reference      string
-	awsuser        *Awsuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AwsuserAPI
+	reference        string
+	awsuser          *Awsuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r AwsuserAPIUpdateRequest) ReturnFields(returnFields string) AwsuserAPIUpd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AwsuserAPIUpdateRequest) ReturnFields2(returnFields2 string) AwsuserAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r AwsuserAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) AwsuserAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *AwsuserAPIService) UpdateExecute(r AwsuserAPIUpdateRequest) (*UpdateAws
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -95,12 +95,12 @@ type DtcTopologyAPI interface {
 type DtcTopologyAPIService internal.Service
 
 type DtcTopologyAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     DtcTopologyAPI
-	dtcTopology    *DtcTopology
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcTopologyAPI
+	dtcTopology      *DtcTopology
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r DtcTopologyAPICreateRequest) ReturnFields(returnFields string) DtcTopolo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyAPICreateRequest) ReturnFields2(returnFields2 string) DtcTopologyAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcTopologyAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcTopologyAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *DtcTopologyAPIService) CreateExecute(r DtcTopologyAPICreateRequest) (*C
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *DtcTopologyAPIService) DeleteExecute(r DtcTopologyAPIDeleteRequest) (*h
 }
 
 type DtcTopologyAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DtcTopologyAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DtcTopologyAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r DtcTopologyAPIListRequest) ReturnFields(returnFields string) DtcTopology
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyAPIListRequest) ReturnFields2(returnFields2 string) DtcTopologyAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcTopologyAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcTopologyAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *DtcTopologyAPIService) ListExecute(r DtcTopologyAPIListRequest) (*ListD
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *DtcTopologyAPIService) ListExecute(r DtcTopologyAPIListRequest) (*ListD
 }
 
 type DtcTopologyAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DtcTopologyAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcTopologyAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r DtcTopologyAPIReadRequest) ReturnFields(returnFields string) DtcTopology
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyAPIReadRequest) ReturnFields2(returnFields2 string) DtcTopologyAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcTopologyAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcTopologyAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *DtcTopologyAPIService) ReadExecute(r DtcTopologyAPIReadRequest) (*GetDt
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *DtcTopologyAPIService) ReadExecute(r DtcTopologyAPIReadRequest) (*GetDt
 }
 
 type DtcTopologyAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     DtcTopologyAPI
-	reference      string
-	dtcTopology    *DtcTopology
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcTopologyAPI
+	reference        string
+	dtcTopology      *DtcTopology
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r DtcTopologyAPIUpdateRequest) ReturnFields(returnFields string) DtcTopolo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcTopologyAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcTopologyAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcTopologyAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *DtcTopologyAPIService) UpdateExecute(r DtcTopologyAPIUpdateRequest) (*U
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

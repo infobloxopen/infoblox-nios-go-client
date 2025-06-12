@@ -99,7 +99,7 @@ type ApprovalworkflowAPICreateRequest struct {
 	ApiService       ApprovalworkflowAPI
 	approvalworkflow *Approvalworkflow
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
@@ -116,8 +116,8 @@ func (r ApprovalworkflowAPICreateRequest) ReturnFields(returnFields string) Appr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ApprovalworkflowAPICreateRequest) ReturnFields2(returnFields2 string) ApprovalworkflowAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r ApprovalworkflowAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) ApprovalworkflowAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *ApprovalworkflowAPIService) CreateExecute(r ApprovalworkflowAPICreateRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *ApprovalworkflowAPIService) DeleteExecute(r ApprovalworkflowAPIDeleteRe
 }
 
 type ApprovalworkflowAPIListRequest struct {
-	ctx            context.Context
-	ApiService     ApprovalworkflowAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       ApprovalworkflowAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r ApprovalworkflowAPIListRequest) ReturnFields(returnFields string) Approv
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ApprovalworkflowAPIListRequest) ReturnFields2(returnFields2 string) ApprovalworkflowAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r ApprovalworkflowAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ApprovalworkflowAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *ApprovalworkflowAPIService) ListExecute(r ApprovalworkflowAPIListReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *ApprovalworkflowAPIService) ListExecute(r ApprovalworkflowAPIListReques
 }
 
 type ApprovalworkflowAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     ApprovalworkflowAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ApprovalworkflowAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r ApprovalworkflowAPIReadRequest) ReturnFields(returnFields string) Approv
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ApprovalworkflowAPIReadRequest) ReturnFields2(returnFields2 string) ApprovalworkflowAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r ApprovalworkflowAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ApprovalworkflowAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *ApprovalworkflowAPIService) ReadExecute(r ApprovalworkflowAPIReadReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -634,7 +634,7 @@ type ApprovalworkflowAPIUpdateRequest struct {
 	reference        string
 	approvalworkflow *Approvalworkflow
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
@@ -651,8 +651,8 @@ func (r ApprovalworkflowAPIUpdateRequest) ReturnFields(returnFields string) Appr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ApprovalworkflowAPIUpdateRequest) ReturnFields2(returnFields2 string) ApprovalworkflowAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r ApprovalworkflowAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ApprovalworkflowAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *ApprovalworkflowAPIService) UpdateExecute(r ApprovalworkflowAPIUpdateRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -55,16 +55,16 @@ type RecordNsec3paramAPI interface {
 type RecordNsec3paramAPIService internal.Service
 
 type RecordNsec3paramAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RecordNsec3paramAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RecordNsec3paramAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r RecordNsec3paramAPIListRequest) ReturnFields(returnFields string) Record
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNsec3paramAPIListRequest) ReturnFields2(returnFields2 string) RecordNsec3paramAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordNsec3paramAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordNsec3paramAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *RecordNsec3paramAPIService) ListExecute(r RecordNsec3paramAPIListReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *RecordNsec3paramAPIService) ListExecute(r RecordNsec3paramAPIListReques
 }
 
 type RecordNsec3paramAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RecordNsec3paramAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordNsec3paramAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r RecordNsec3paramAPIReadRequest) ReturnFields(returnFields string) Record
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNsec3paramAPIReadRequest) ReturnFields2(returnFields2 string) RecordNsec3paramAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordNsec3paramAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordNsec3paramAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *RecordNsec3paramAPIService) ReadExecute(r RecordNsec3paramAPIReadReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

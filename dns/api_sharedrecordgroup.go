@@ -99,7 +99,7 @@ type SharedrecordgroupAPICreateRequest struct {
 	ApiService        SharedrecordgroupAPI
 	sharedrecordgroup *Sharedrecordgroup
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -116,8 +116,8 @@ func (r SharedrecordgroupAPICreateRequest) ReturnFields(returnFields string) Sha
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordgroupAPICreateRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r SharedrecordgroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SharedrecordgroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *SharedrecordgroupAPIService) CreateExecute(r SharedrecordgroupAPICreate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *SharedrecordgroupAPIService) DeleteExecute(r SharedrecordgroupAPIDelete
 }
 
 type SharedrecordgroupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     SharedrecordgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       SharedrecordgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r SharedrecordgroupAPIListRequest) ReturnFields(returnFields string) Share
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordgroupAPIListRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r SharedrecordgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SharedrecordgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *SharedrecordgroupAPIService) ListExecute(r SharedrecordgroupAPIListRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *SharedrecordgroupAPIService) ListExecute(r SharedrecordgroupAPIListRequ
 }
 
 type SharedrecordgroupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     SharedrecordgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SharedrecordgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r SharedrecordgroupAPIReadRequest) ReturnFields(returnFields string) Share
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordgroupAPIReadRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r SharedrecordgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SharedrecordgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *SharedrecordgroupAPIService) ReadExecute(r SharedrecordgroupAPIReadRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -634,7 +634,7 @@ type SharedrecordgroupAPIUpdateRequest struct {
 	reference         string
 	sharedrecordgroup *Sharedrecordgroup
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -651,8 +651,8 @@ func (r SharedrecordgroupAPIUpdateRequest) ReturnFields(returnFields string) Sha
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) SharedrecordgroupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r SharedrecordgroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SharedrecordgroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *SharedrecordgroupAPIService) UpdateExecute(r SharedrecordgroupAPIUpdate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

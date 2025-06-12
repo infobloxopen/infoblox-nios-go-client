@@ -69,16 +69,16 @@ type MemberDnsAPI interface {
 type MemberDnsAPIService internal.Service
 
 type MemberDnsAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MemberDnsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MemberDnsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r MemberDnsAPIListRequest) ReturnFields(returnFields string) MemberDnsAPIL
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDnsAPIListRequest) ReturnFields2(returnFields2 string) MemberDnsAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberDnsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberDnsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *MemberDnsAPIService) ListExecute(r MemberDnsAPIListRequest) (*ListMembe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *MemberDnsAPIService) ListExecute(r MemberDnsAPIListRequest) (*ListMembe
 }
 
 type MemberDnsAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MemberDnsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MemberDnsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r MemberDnsAPIReadRequest) ReturnFields(returnFields string) MemberDnsAPIR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDnsAPIReadRequest) ReturnFields2(returnFields2 string) MemberDnsAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberDnsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberDnsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *MemberDnsAPIService) ReadExecute(r MemberDnsAPIReadRequest) (*GetMember
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -367,13 +367,13 @@ func (a *MemberDnsAPIService) ReadExecute(r MemberDnsAPIReadRequest) (*GetMember
 }
 
 type MemberDnsAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     MemberDnsAPI
-	reference      string
-	memberDns      *MemberDns
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MemberDnsAPI
+	reference        string
+	memberDns        *MemberDns
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -389,8 +389,8 @@ func (r MemberDnsAPIUpdateRequest) ReturnFields(returnFields string) MemberDnsAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDnsAPIUpdateRequest) ReturnFields2(returnFields2 string) MemberDnsAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberDnsAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberDnsAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *MemberDnsAPIService) UpdateExecute(r MemberDnsAPIUpdateRequest) (*Updat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

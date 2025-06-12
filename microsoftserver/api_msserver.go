@@ -95,12 +95,12 @@ type MsserverAPI interface {
 type MsserverAPIService internal.Service
 
 type MsserverAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     MsserverAPI
-	msserver       *Msserver
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MsserverAPI
+	msserver         *Msserver
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r MsserverAPICreateRequest) ReturnFields(returnFields string) MsserverAPIC
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAPICreateRequest) ReturnFields2(returnFields2 string) MsserverAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *MsserverAPIService) CreateExecute(r MsserverAPICreateRequest) (*CreateM
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *MsserverAPIService) DeleteExecute(r MsserverAPIDeleteRequest) (*http.Re
 }
 
 type MsserverAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MsserverAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MsserverAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r MsserverAPIListRequest) ReturnFields(returnFields string) MsserverAPILis
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAPIListRequest) ReturnFields2(returnFields2 string) MsserverAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *MsserverAPIService) ListExecute(r MsserverAPIListRequest) (*ListMsserve
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *MsserverAPIService) ListExecute(r MsserverAPIListRequest) (*ListMsserve
 }
 
 type MsserverAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MsserverAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MsserverAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r MsserverAPIReadRequest) ReturnFields(returnFields string) MsserverAPIRea
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAPIReadRequest) ReturnFields2(returnFields2 string) MsserverAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *MsserverAPIService) ReadExecute(r MsserverAPIReadRequest) (*GetMsserver
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *MsserverAPIService) ReadExecute(r MsserverAPIReadRequest) (*GetMsserver
 }
 
 type MsserverAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     MsserverAPI
-	reference      string
-	msserver       *Msserver
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MsserverAPI
+	reference        string
+	msserver         *Msserver
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r MsserverAPIUpdateRequest) ReturnFields(returnFields string) MsserverAPIU
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAPIUpdateRequest) ReturnFields2(returnFields2 string) MsserverAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *MsserverAPIService) UpdateExecute(r MsserverAPIUpdateRequest) (*UpdateM
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

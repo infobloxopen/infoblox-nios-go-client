@@ -95,12 +95,12 @@ type AdAuthServiceAPI interface {
 type AdAuthServiceAPIService internal.Service
 
 type AdAuthServiceAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     AdAuthServiceAPI
-	adAuthService  *AdAuthService
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AdAuthServiceAPI
+	adAuthService    *AdAuthService
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r AdAuthServiceAPICreateRequest) ReturnFields(returnFields string) AdAuthS
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdAuthServiceAPICreateRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r AdAuthServiceAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) AdAuthServiceAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *AdAuthServiceAPIService) CreateExecute(r AdAuthServiceAPICreateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *AdAuthServiceAPIService) DeleteExecute(r AdAuthServiceAPIDeleteRequest)
 }
 
 type AdAuthServiceAPIListRequest struct {
-	ctx            context.Context
-	ApiService     AdAuthServiceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       AdAuthServiceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r AdAuthServiceAPIListRequest) ReturnFields(returnFields string) AdAuthSer
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdAuthServiceAPIListRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r AdAuthServiceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AdAuthServiceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *AdAuthServiceAPIService) ListExecute(r AdAuthServiceAPIListRequest) (*L
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *AdAuthServiceAPIService) ListExecute(r AdAuthServiceAPIListRequest) (*L
 }
 
 type AdAuthServiceAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     AdAuthServiceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AdAuthServiceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r AdAuthServiceAPIReadRequest) ReturnFields(returnFields string) AdAuthSer
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdAuthServiceAPIReadRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r AdAuthServiceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AdAuthServiceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *AdAuthServiceAPIService) ReadExecute(r AdAuthServiceAPIReadRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *AdAuthServiceAPIService) ReadExecute(r AdAuthServiceAPIReadRequest) (*G
 }
 
 type AdAuthServiceAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     AdAuthServiceAPI
-	reference      string
-	adAuthService  *AdAuthService
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AdAuthServiceAPI
+	reference        string
+	adAuthService    *AdAuthService
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r AdAuthServiceAPIUpdateRequest) ReturnFields(returnFields string) AdAuthS
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdAuthServiceAPIUpdateRequest) ReturnFields2(returnFields2 string) AdAuthServiceAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r AdAuthServiceAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) AdAuthServiceAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *AdAuthServiceAPIService) UpdateExecute(r AdAuthServiceAPIUpdateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -95,12 +95,12 @@ type NamedaclAPI interface {
 type NamedaclAPIService internal.Service
 
 type NamedaclAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     NamedaclAPI
-	namedacl       *Namedacl
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NamedaclAPI
+	namedacl         *Namedacl
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r NamedaclAPICreateRequest) ReturnFields(returnFields string) NamedaclAPIC
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NamedaclAPICreateRequest) ReturnFields2(returnFields2 string) NamedaclAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r NamedaclAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) NamedaclAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *NamedaclAPIService) CreateExecute(r NamedaclAPICreateRequest) (*CreateN
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *NamedaclAPIService) DeleteExecute(r NamedaclAPIDeleteRequest) (*http.Re
 }
 
 type NamedaclAPIListRequest struct {
-	ctx            context.Context
-	ApiService     NamedaclAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       NamedaclAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r NamedaclAPIListRequest) ReturnFields(returnFields string) NamedaclAPILis
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NamedaclAPIListRequest) ReturnFields2(returnFields2 string) NamedaclAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r NamedaclAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) NamedaclAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *NamedaclAPIService) ListExecute(r NamedaclAPIListRequest) (*ListNamedac
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *NamedaclAPIService) ListExecute(r NamedaclAPIListRequest) (*ListNamedac
 }
 
 type NamedaclAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     NamedaclAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NamedaclAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r NamedaclAPIReadRequest) ReturnFields(returnFields string) NamedaclAPIRea
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NamedaclAPIReadRequest) ReturnFields2(returnFields2 string) NamedaclAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r NamedaclAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) NamedaclAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *NamedaclAPIService) ReadExecute(r NamedaclAPIReadRequest) (*GetNamedacl
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *NamedaclAPIService) ReadExecute(r NamedaclAPIReadRequest) (*GetNamedacl
 }
 
 type NamedaclAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     NamedaclAPI
-	reference      string
-	namedacl       *Namedacl
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NamedaclAPI
+	reference        string
+	namedacl         *Namedacl
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r NamedaclAPIUpdateRequest) ReturnFields(returnFields string) NamedaclAPIU
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NamedaclAPIUpdateRequest) ReturnFields2(returnFields2 string) NamedaclAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r NamedaclAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) NamedaclAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *NamedaclAPIService) UpdateExecute(r NamedaclAPIUpdateRequest) (*UpdateN
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

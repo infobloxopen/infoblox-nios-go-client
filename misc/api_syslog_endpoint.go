@@ -95,12 +95,12 @@ type SyslogEndpointAPI interface {
 type SyslogEndpointAPIService internal.Service
 
 type SyslogEndpointAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     SyslogEndpointAPI
-	syslogEndpoint *SyslogEndpoint
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SyslogEndpointAPI
+	syslogEndpoint   *SyslogEndpoint
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r SyslogEndpointAPICreateRequest) ReturnFields(returnFields string) Syslog
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SyslogEndpointAPICreateRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r SyslogEndpointAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SyslogEndpointAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *SyslogEndpointAPIService) CreateExecute(r SyslogEndpointAPICreateReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *SyslogEndpointAPIService) DeleteExecute(r SyslogEndpointAPIDeleteReques
 }
 
 type SyslogEndpointAPIListRequest struct {
-	ctx            context.Context
-	ApiService     SyslogEndpointAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       SyslogEndpointAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r SyslogEndpointAPIListRequest) ReturnFields(returnFields string) SyslogEn
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SyslogEndpointAPIListRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r SyslogEndpointAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SyslogEndpointAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *SyslogEndpointAPIService) ListExecute(r SyslogEndpointAPIListRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *SyslogEndpointAPIService) ListExecute(r SyslogEndpointAPIListRequest) (
 }
 
 type SyslogEndpointAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     SyslogEndpointAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SyslogEndpointAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r SyslogEndpointAPIReadRequest) ReturnFields(returnFields string) SyslogEn
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SyslogEndpointAPIReadRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r SyslogEndpointAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SyslogEndpointAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *SyslogEndpointAPIService) ReadExecute(r SyslogEndpointAPIReadRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *SyslogEndpointAPIService) ReadExecute(r SyslogEndpointAPIReadRequest) (
 }
 
 type SyslogEndpointAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     SyslogEndpointAPI
-	reference      string
-	syslogEndpoint *SyslogEndpoint
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SyslogEndpointAPI
+	reference        string
+	syslogEndpoint   *SyslogEndpoint
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r SyslogEndpointAPIUpdateRequest) ReturnFields(returnFields string) Syslog
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SyslogEndpointAPIUpdateRequest) ReturnFields2(returnFields2 string) SyslogEndpointAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r SyslogEndpointAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SyslogEndpointAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *SyslogEndpointAPIService) UpdateExecute(r SyslogEndpointAPIUpdateReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

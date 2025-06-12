@@ -95,12 +95,12 @@ type DhcpfailoverAPI interface {
 type DhcpfailoverAPIService internal.Service
 
 type DhcpfailoverAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     DhcpfailoverAPI
-	dhcpfailover   *Dhcpfailover
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DhcpfailoverAPI
+	dhcpfailover     *Dhcpfailover
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r DhcpfailoverAPICreateRequest) ReturnFields(returnFields string) Dhcpfail
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpfailoverAPICreateRequest) ReturnFields2(returnFields2 string) DhcpfailoverAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpfailoverAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpfailoverAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *DhcpfailoverAPIService) CreateExecute(r DhcpfailoverAPICreateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *DhcpfailoverAPIService) DeleteExecute(r DhcpfailoverAPIDeleteRequest) (
 }
 
 type DhcpfailoverAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DhcpfailoverAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DhcpfailoverAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r DhcpfailoverAPIListRequest) ReturnFields(returnFields string) Dhcpfailov
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpfailoverAPIListRequest) ReturnFields2(returnFields2 string) DhcpfailoverAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpfailoverAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpfailoverAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *DhcpfailoverAPIService) ListExecute(r DhcpfailoverAPIListRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *DhcpfailoverAPIService) ListExecute(r DhcpfailoverAPIListRequest) (*Lis
 }
 
 type DhcpfailoverAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DhcpfailoverAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DhcpfailoverAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r DhcpfailoverAPIReadRequest) ReturnFields(returnFields string) Dhcpfailov
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpfailoverAPIReadRequest) ReturnFields2(returnFields2 string) DhcpfailoverAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpfailoverAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpfailoverAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *DhcpfailoverAPIService) ReadExecute(r DhcpfailoverAPIReadRequest) (*Get
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *DhcpfailoverAPIService) ReadExecute(r DhcpfailoverAPIReadRequest) (*Get
 }
 
 type DhcpfailoverAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     DhcpfailoverAPI
-	reference      string
-	dhcpfailover   *Dhcpfailover
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DhcpfailoverAPI
+	reference        string
+	dhcpfailover     *Dhcpfailover
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r DhcpfailoverAPIUpdateRequest) ReturnFields(returnFields string) Dhcpfail
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpfailoverAPIUpdateRequest) ReturnFields2(returnFields2 string) DhcpfailoverAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpfailoverAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpfailoverAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *DhcpfailoverAPIService) UpdateExecute(r DhcpfailoverAPIUpdateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

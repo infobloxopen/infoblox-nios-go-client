@@ -69,16 +69,16 @@ type CaptiveportalAPI interface {
 type CaptiveportalAPIService internal.Service
 
 type CaptiveportalAPIListRequest struct {
-	ctx            context.Context
-	ApiService     CaptiveportalAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       CaptiveportalAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r CaptiveportalAPIListRequest) ReturnFields(returnFields string) Captivepo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CaptiveportalAPIListRequest) ReturnFields2(returnFields2 string) CaptiveportalAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r CaptiveportalAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) CaptiveportalAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *CaptiveportalAPIService) ListExecute(r CaptiveportalAPIListRequest) (*L
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *CaptiveportalAPIService) ListExecute(r CaptiveportalAPIListRequest) (*L
 }
 
 type CaptiveportalAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     CaptiveportalAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       CaptiveportalAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r CaptiveportalAPIReadRequest) ReturnFields(returnFields string) Captivepo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CaptiveportalAPIReadRequest) ReturnFields2(returnFields2 string) CaptiveportalAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r CaptiveportalAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) CaptiveportalAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *CaptiveportalAPIService) ReadExecute(r CaptiveportalAPIReadRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -367,13 +367,13 @@ func (a *CaptiveportalAPIService) ReadExecute(r CaptiveportalAPIReadRequest) (*G
 }
 
 type CaptiveportalAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     CaptiveportalAPI
-	reference      string
-	captiveportal  *Captiveportal
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       CaptiveportalAPI
+	reference        string
+	captiveportal    *Captiveportal
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -389,8 +389,8 @@ func (r CaptiveportalAPIUpdateRequest) ReturnFields(returnFields string) Captive
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CaptiveportalAPIUpdateRequest) ReturnFields2(returnFields2 string) CaptiveportalAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r CaptiveportalAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) CaptiveportalAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *CaptiveportalAPIService) UpdateExecute(r CaptiveportalAPIUpdateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

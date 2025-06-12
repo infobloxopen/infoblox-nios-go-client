@@ -99,7 +99,7 @@ type RadiusAuthserviceAPICreateRequest struct {
 	ApiService        RadiusAuthserviceAPI
 	radiusAuthservice *RadiusAuthservice
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -116,8 +116,8 @@ func (r RadiusAuthserviceAPICreateRequest) ReturnFields(returnFields string) Rad
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RadiusAuthserviceAPICreateRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r RadiusAuthserviceAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RadiusAuthserviceAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *RadiusAuthserviceAPIService) CreateExecute(r RadiusAuthserviceAPICreate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *RadiusAuthserviceAPIService) DeleteExecute(r RadiusAuthserviceAPIDelete
 }
 
 type RadiusAuthserviceAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RadiusAuthserviceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RadiusAuthserviceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r RadiusAuthserviceAPIListRequest) ReturnFields(returnFields string) Radiu
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RadiusAuthserviceAPIListRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RadiusAuthserviceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RadiusAuthserviceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *RadiusAuthserviceAPIService) ListExecute(r RadiusAuthserviceAPIListRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *RadiusAuthserviceAPIService) ListExecute(r RadiusAuthserviceAPIListRequ
 }
 
 type RadiusAuthserviceAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RadiusAuthserviceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RadiusAuthserviceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r RadiusAuthserviceAPIReadRequest) ReturnFields(returnFields string) Radiu
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RadiusAuthserviceAPIReadRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RadiusAuthserviceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RadiusAuthserviceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *RadiusAuthserviceAPIService) ReadExecute(r RadiusAuthserviceAPIReadRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type RadiusAuthserviceAPIUpdateRequest struct {
 	reference         string
 	radiusAuthservice *RadiusAuthservice
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -639,8 +639,8 @@ func (r RadiusAuthserviceAPIUpdateRequest) ReturnFields(returnFields string) Rad
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RadiusAuthserviceAPIUpdateRequest) ReturnFields2(returnFields2 string) RadiusAuthserviceAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r RadiusAuthserviceAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RadiusAuthserviceAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *RadiusAuthserviceAPIService) UpdateExecute(r RadiusAuthserviceAPIUpdate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

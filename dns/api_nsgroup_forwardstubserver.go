@@ -99,7 +99,7 @@ type NsgroupForwardstubserverAPICreateRequest struct {
 	ApiService               NsgroupForwardstubserverAPI
 	nsgroupForwardstubserver *NsgroupForwardstubserver
 	returnFields             *string
-	returnFields2            *string
+	returnFieldsPlus         *string
 	returnAsObject           *int32
 }
 
@@ -116,8 +116,8 @@ func (r NsgroupForwardstubserverAPICreateRequest) ReturnFields(returnFields stri
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardstubserverAPICreateRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupForwardstubserverAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupForwardstubserverAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *NsgroupForwardstubserverAPIService) CreateExecute(r NsgroupForwardstubs
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *NsgroupForwardstubserverAPIService) DeleteExecute(r NsgroupForwardstubs
 }
 
 type NsgroupForwardstubserverAPIListRequest struct {
-	ctx            context.Context
-	ApiService     NsgroupForwardstubserverAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       NsgroupForwardstubserverAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r NsgroupForwardstubserverAPIListRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardstubserverAPIListRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupForwardstubserverAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupForwardstubserverAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *NsgroupForwardstubserverAPIService) ListExecute(r NsgroupForwardstubser
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *NsgroupForwardstubserverAPIService) ListExecute(r NsgroupForwardstubser
 }
 
 type NsgroupForwardstubserverAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     NsgroupForwardstubserverAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NsgroupForwardstubserverAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r NsgroupForwardstubserverAPIReadRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardstubserverAPIReadRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupForwardstubserverAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupForwardstubserverAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *NsgroupForwardstubserverAPIService) ReadExecute(r NsgroupForwardstubser
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -634,7 +634,7 @@ type NsgroupForwardstubserverAPIUpdateRequest struct {
 	reference                string
 	nsgroupForwardstubserver *NsgroupForwardstubserver
 	returnFields             *string
-	returnFields2            *string
+	returnFieldsPlus         *string
 	returnAsObject           *int32
 }
 
@@ -651,8 +651,8 @@ func (r NsgroupForwardstubserverAPIUpdateRequest) ReturnFields(returnFields stri
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupForwardstubserverAPIUpdateRequest) ReturnFields2(returnFields2 string) NsgroupForwardstubserverAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupForwardstubserverAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupForwardstubserverAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *NsgroupForwardstubserverAPIService) UpdateExecute(r NsgroupForwardstubs
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

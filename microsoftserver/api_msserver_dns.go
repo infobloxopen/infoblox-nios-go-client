@@ -95,12 +95,12 @@ type MsserverDnsAPI interface {
 type MsserverDnsAPIService internal.Service
 
 type MsserverDnsAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDnsAPI
-	msserverDns    *MsserverDns
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MsserverDnsAPI
+	msserverDns      *MsserverDns
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r MsserverDnsAPICreateRequest) ReturnFields(returnFields string) MsserverD
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDnsAPICreateRequest) ReturnFields2(returnFields2 string) MsserverDnsAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDnsAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDnsAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *MsserverDnsAPIService) CreateExecute(r MsserverDnsAPICreateRequest) (*C
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *MsserverDnsAPIService) DeleteExecute(r MsserverDnsAPIDeleteRequest) (*h
 }
 
 type MsserverDnsAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDnsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MsserverDnsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r MsserverDnsAPIListRequest) ReturnFields(returnFields string) MsserverDns
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDnsAPIListRequest) ReturnFields2(returnFields2 string) MsserverDnsAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDnsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDnsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *MsserverDnsAPIService) ListExecute(r MsserverDnsAPIListRequest) (*ListM
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *MsserverDnsAPIService) ListExecute(r MsserverDnsAPIListRequest) (*ListM
 }
 
 type MsserverDnsAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDnsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MsserverDnsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r MsserverDnsAPIReadRequest) ReturnFields(returnFields string) MsserverDns
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDnsAPIReadRequest) ReturnFields2(returnFields2 string) MsserverDnsAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDnsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDnsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *MsserverDnsAPIService) ReadExecute(r MsserverDnsAPIReadRequest) (*GetMs
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *MsserverDnsAPIService) ReadExecute(r MsserverDnsAPIReadRequest) (*GetMs
 }
 
 type MsserverDnsAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDnsAPI
-	reference      string
-	msserverDns    *MsserverDns
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MsserverDnsAPI
+	reference        string
+	msserverDns      *MsserverDns
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r MsserverDnsAPIUpdateRequest) ReturnFields(returnFields string) MsserverD
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDnsAPIUpdateRequest) ReturnFields2(returnFields2 string) MsserverDnsAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDnsAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDnsAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *MsserverDnsAPIService) UpdateExecute(r MsserverDnsAPIUpdateRequest) (*U
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

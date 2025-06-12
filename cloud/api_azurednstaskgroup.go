@@ -99,7 +99,7 @@ type AzurednstaskgroupAPICreateRequest struct {
 	ApiService        AzurednstaskgroupAPI
 	azurednstaskgroup *Azurednstaskgroup
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -116,8 +116,8 @@ func (r AzurednstaskgroupAPICreateRequest) ReturnFields(returnFields string) Azu
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzurednstaskgroupAPICreateRequest) ReturnFields2(returnFields2 string) AzurednstaskgroupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r AzurednstaskgroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) AzurednstaskgroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *AzurednstaskgroupAPIService) CreateExecute(r AzurednstaskgroupAPICreate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *AzurednstaskgroupAPIService) DeleteExecute(r AzurednstaskgroupAPIDelete
 }
 
 type AzurednstaskgroupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     AzurednstaskgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       AzurednstaskgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r AzurednstaskgroupAPIListRequest) ReturnFields(returnFields string) Azure
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzurednstaskgroupAPIListRequest) ReturnFields2(returnFields2 string) AzurednstaskgroupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r AzurednstaskgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AzurednstaskgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *AzurednstaskgroupAPIService) ListExecute(r AzurednstaskgroupAPIListRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *AzurednstaskgroupAPIService) ListExecute(r AzurednstaskgroupAPIListRequ
 }
 
 type AzurednstaskgroupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     AzurednstaskgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AzurednstaskgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r AzurednstaskgroupAPIReadRequest) ReturnFields(returnFields string) Azure
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzurednstaskgroupAPIReadRequest) ReturnFields2(returnFields2 string) AzurednstaskgroupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r AzurednstaskgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AzurednstaskgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *AzurednstaskgroupAPIService) ReadExecute(r AzurednstaskgroupAPIReadRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type AzurednstaskgroupAPIUpdateRequest struct {
 	reference         string
 	azurednstaskgroup *Azurednstaskgroup
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -639,8 +639,8 @@ func (r AzurednstaskgroupAPIUpdateRequest) ReturnFields(returnFields string) Azu
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzurednstaskgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) AzurednstaskgroupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r AzurednstaskgroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) AzurednstaskgroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *AzurednstaskgroupAPIService) UpdateExecute(r AzurednstaskgroupAPIUpdate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

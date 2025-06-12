@@ -69,16 +69,16 @@ type OrderedresponsepolicyzonesAPI interface {
 type OrderedresponsepolicyzonesAPIService internal.Service
 
 type OrderedresponsepolicyzonesAPIListRequest struct {
-	ctx            context.Context
-	ApiService     OrderedresponsepolicyzonesAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       OrderedresponsepolicyzonesAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r OrderedresponsepolicyzonesAPIListRequest) ReturnFields(returnFields stri
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedresponsepolicyzonesAPIListRequest) ReturnFields2(returnFields2 string) OrderedresponsepolicyzonesAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r OrderedresponsepolicyzonesAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) OrderedresponsepolicyzonesAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *OrderedresponsepolicyzonesAPIService) ListExecute(r Orderedresponsepoli
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *OrderedresponsepolicyzonesAPIService) ListExecute(r Orderedresponsepoli
 }
 
 type OrderedresponsepolicyzonesAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     OrderedresponsepolicyzonesAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       OrderedresponsepolicyzonesAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r OrderedresponsepolicyzonesAPIReadRequest) ReturnFields(returnFields stri
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedresponsepolicyzonesAPIReadRequest) ReturnFields2(returnFields2 string) OrderedresponsepolicyzonesAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r OrderedresponsepolicyzonesAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) OrderedresponsepolicyzonesAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *OrderedresponsepolicyzonesAPIService) ReadExecute(r Orderedresponsepoli
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -372,7 +372,7 @@ type OrderedresponsepolicyzonesAPIUpdateRequest struct {
 	reference                  string
 	orderedresponsepolicyzones *Orderedresponsepolicyzones
 	returnFields               *string
-	returnFields2              *string
+	returnFieldsPlus           *string
 	returnAsObject             *int32
 }
 
@@ -389,8 +389,8 @@ func (r OrderedresponsepolicyzonesAPIUpdateRequest) ReturnFields(returnFields st
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedresponsepolicyzonesAPIUpdateRequest) ReturnFields2(returnFields2 string) OrderedresponsepolicyzonesAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r OrderedresponsepolicyzonesAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) OrderedresponsepolicyzonesAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *OrderedresponsepolicyzonesAPIService) UpdateExecute(r Orderedresponsepo
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

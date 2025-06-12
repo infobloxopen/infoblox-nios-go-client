@@ -171,16 +171,16 @@ func (a *ScheduledtaskAPIService) DeleteExecute(r ScheduledtaskAPIDeleteRequest)
 }
 
 type ScheduledtaskAPIListRequest struct {
-	ctx            context.Context
-	ApiService     ScheduledtaskAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       ScheduledtaskAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -190,8 +190,8 @@ func (r ScheduledtaskAPIListRequest) ReturnFields(returnFields string) Scheduled
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ScheduledtaskAPIListRequest) ReturnFields2(returnFields2 string) ScheduledtaskAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r ScheduledtaskAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ScheduledtaskAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -273,8 +273,8 @@ func (a *ScheduledtaskAPIService) ListExecute(r ScheduledtaskAPIListRequest) (*L
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -342,12 +342,12 @@ func (a *ScheduledtaskAPIService) ListExecute(r ScheduledtaskAPIListRequest) (*L
 }
 
 type ScheduledtaskAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     ScheduledtaskAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ScheduledtaskAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -357,8 +357,8 @@ func (r ScheduledtaskAPIReadRequest) ReturnFields(returnFields string) Scheduled
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ScheduledtaskAPIReadRequest) ReturnFields2(returnFields2 string) ScheduledtaskAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r ScheduledtaskAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ScheduledtaskAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -415,8 +415,8 @@ func (a *ScheduledtaskAPIService) ReadExecute(r ScheduledtaskAPIReadRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -469,13 +469,13 @@ func (a *ScheduledtaskAPIService) ReadExecute(r ScheduledtaskAPIReadRequest) (*G
 }
 
 type ScheduledtaskAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     ScheduledtaskAPI
-	reference      string
-	scheduledtask  *Scheduledtask
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ScheduledtaskAPI
+	reference        string
+	scheduledtask    *Scheduledtask
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -491,8 +491,8 @@ func (r ScheduledtaskAPIUpdateRequest) ReturnFields(returnFields string) Schedul
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ScheduledtaskAPIUpdateRequest) ReturnFields2(returnFields2 string) ScheduledtaskAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r ScheduledtaskAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ScheduledtaskAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -552,8 +552,8 @@ func (a *ScheduledtaskAPIService) UpdateExecute(r ScheduledtaskAPIUpdateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

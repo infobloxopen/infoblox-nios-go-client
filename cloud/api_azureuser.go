@@ -95,12 +95,12 @@ type AzureuserAPI interface {
 type AzureuserAPIService internal.Service
 
 type AzureuserAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     AzureuserAPI
-	azureuser      *Azureuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AzureuserAPI
+	azureuser        *Azureuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r AzureuserAPICreateRequest) ReturnFields(returnFields string) AzureuserAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzureuserAPICreateRequest) ReturnFields2(returnFields2 string) AzureuserAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r AzureuserAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) AzureuserAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *AzureuserAPIService) CreateExecute(r AzureuserAPICreateRequest) (*Creat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *AzureuserAPIService) DeleteExecute(r AzureuserAPIDeleteRequest) (*http.
 }
 
 type AzureuserAPIListRequest struct {
-	ctx            context.Context
-	ApiService     AzureuserAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       AzureuserAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r AzureuserAPIListRequest) ReturnFields(returnFields string) AzureuserAPIL
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzureuserAPIListRequest) ReturnFields2(returnFields2 string) AzureuserAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r AzureuserAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AzureuserAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *AzureuserAPIService) ListExecute(r AzureuserAPIListRequest) (*ListAzure
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *AzureuserAPIService) ListExecute(r AzureuserAPIListRequest) (*ListAzure
 }
 
 type AzureuserAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     AzureuserAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AzureuserAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r AzureuserAPIReadRequest) ReturnFields(returnFields string) AzureuserAPIR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzureuserAPIReadRequest) ReturnFields2(returnFields2 string) AzureuserAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r AzureuserAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AzureuserAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *AzureuserAPIService) ReadExecute(r AzureuserAPIReadRequest) (*GetAzureu
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *AzureuserAPIService) ReadExecute(r AzureuserAPIReadRequest) (*GetAzureu
 }
 
 type AzureuserAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     AzureuserAPI
-	reference      string
-	azureuser      *Azureuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AzureuserAPI
+	reference        string
+	azureuser        *Azureuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r AzureuserAPIUpdateRequest) ReturnFields(returnFields string) AzureuserAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzureuserAPIUpdateRequest) ReturnFields2(returnFields2 string) AzureuserAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r AzureuserAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) AzureuserAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *AzureuserAPIService) UpdateExecute(r AzureuserAPIUpdateRequest) (*Updat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

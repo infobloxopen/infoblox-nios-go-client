@@ -69,16 +69,16 @@ type ParentalcontrolSubscriberAPI interface {
 type ParentalcontrolSubscriberAPIService internal.Service
 
 type ParentalcontrolSubscriberAPIListRequest struct {
-	ctx            context.Context
-	ApiService     ParentalcontrolSubscriberAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       ParentalcontrolSubscriberAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r ParentalcontrolSubscriberAPIListRequest) ReturnFields(returnFields strin
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolSubscriberAPIListRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscriberAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolSubscriberAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolSubscriberAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *ParentalcontrolSubscriberAPIService) ListExecute(r ParentalcontrolSubsc
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *ParentalcontrolSubscriberAPIService) ListExecute(r ParentalcontrolSubsc
 }
 
 type ParentalcontrolSubscriberAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     ParentalcontrolSubscriberAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ParentalcontrolSubscriberAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r ParentalcontrolSubscriberAPIReadRequest) ReturnFields(returnFields strin
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolSubscriberAPIReadRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscriberAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolSubscriberAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolSubscriberAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *ParentalcontrolSubscriberAPIService) ReadExecute(r ParentalcontrolSubsc
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -372,7 +372,7 @@ type ParentalcontrolSubscriberAPIUpdateRequest struct {
 	reference                 string
 	parentalcontrolSubscriber *ParentalcontrolSubscriber
 	returnFields              *string
-	returnFields2             *string
+	returnFieldsPlus          *string
 	returnAsObject            *int32
 }
 
@@ -389,8 +389,8 @@ func (r ParentalcontrolSubscriberAPIUpdateRequest) ReturnFields(returnFields str
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolSubscriberAPIUpdateRequest) ReturnFields2(returnFields2 string) ParentalcontrolSubscriberAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolSubscriberAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolSubscriberAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *ParentalcontrolSubscriberAPIService) UpdateExecute(r ParentalcontrolSub
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

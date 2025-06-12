@@ -95,12 +95,12 @@ type ZoneRpAPI interface {
 type ZoneRpAPIService internal.Service
 
 type ZoneRpAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     ZoneRpAPI
-	zoneRp         *ZoneRp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ZoneRpAPI
+	zoneRp           *ZoneRp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r ZoneRpAPICreateRequest) ReturnFields(returnFields string) ZoneRpAPICreat
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneRpAPICreateRequest) ReturnFields2(returnFields2 string) ZoneRpAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneRpAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneRpAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *ZoneRpAPIService) CreateExecute(r ZoneRpAPICreateRequest) (*CreateZoneR
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *ZoneRpAPIService) DeleteExecute(r ZoneRpAPIDeleteRequest) (*http.Respon
 }
 
 type ZoneRpAPIListRequest struct {
-	ctx            context.Context
-	ApiService     ZoneRpAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       ZoneRpAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r ZoneRpAPIListRequest) ReturnFields(returnFields string) ZoneRpAPIListReq
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneRpAPIListRequest) ReturnFields2(returnFields2 string) ZoneRpAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneRpAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneRpAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *ZoneRpAPIService) ListExecute(r ZoneRpAPIListRequest) (*ListZoneRpRespo
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *ZoneRpAPIService) ListExecute(r ZoneRpAPIListRequest) (*ListZoneRpRespo
 }
 
 type ZoneRpAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     ZoneRpAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ZoneRpAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r ZoneRpAPIReadRequest) ReturnFields(returnFields string) ZoneRpAPIReadReq
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneRpAPIReadRequest) ReturnFields2(returnFields2 string) ZoneRpAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneRpAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneRpAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *ZoneRpAPIService) ReadExecute(r ZoneRpAPIReadRequest) (*GetZoneRpRespon
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *ZoneRpAPIService) ReadExecute(r ZoneRpAPIReadRequest) (*GetZoneRpRespon
 }
 
 type ZoneRpAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     ZoneRpAPI
-	reference      string
-	zoneRp         *ZoneRp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ZoneRpAPI
+	reference        string
+	zoneRp           *ZoneRp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r ZoneRpAPIUpdateRequest) ReturnFields(returnFields string) ZoneRpAPIUpdat
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneRpAPIUpdateRequest) ReturnFields2(returnFields2 string) ZoneRpAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneRpAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneRpAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *ZoneRpAPIService) UpdateExecute(r ZoneRpAPIUpdateRequest) (*UpdateZoneR
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

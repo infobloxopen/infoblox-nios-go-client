@@ -69,16 +69,16 @@ type MultiregionsAPI interface {
 type MultiregionsAPIService internal.Service
 
 type MultiregionsAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MultiregionsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MultiregionsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r MultiregionsAPIListRequest) ReturnFields(returnFields string) Multiregio
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MultiregionsAPIListRequest) ReturnFields2(returnFields2 string) MultiregionsAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MultiregionsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MultiregionsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *MultiregionsAPIService) ListExecute(r MultiregionsAPIListRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *MultiregionsAPIService) ListExecute(r MultiregionsAPIListRequest) (*Lis
 }
 
 type MultiregionsAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MultiregionsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MultiregionsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r MultiregionsAPIReadRequest) ReturnFields(returnFields string) Multiregio
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MultiregionsAPIReadRequest) ReturnFields2(returnFields2 string) MultiregionsAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MultiregionsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MultiregionsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *MultiregionsAPIService) ReadExecute(r MultiregionsAPIReadRequest) (*Get
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -367,13 +367,13 @@ func (a *MultiregionsAPIService) ReadExecute(r MultiregionsAPIReadRequest) (*Get
 }
 
 type MultiregionsAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     MultiregionsAPI
-	reference      string
-	multiregions   *Multiregions
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MultiregionsAPI
+	reference        string
+	multiregions     *Multiregions
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -389,8 +389,8 @@ func (r MultiregionsAPIUpdateRequest) ReturnFields(returnFields string) Multireg
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MultiregionsAPIUpdateRequest) ReturnFields2(returnFields2 string) MultiregionsAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MultiregionsAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MultiregionsAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *MultiregionsAPIService) UpdateExecute(r MultiregionsAPIUpdateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

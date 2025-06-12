@@ -95,12 +95,12 @@ type FilternacAPI interface {
 type FilternacAPIService internal.Service
 
 type FilternacAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     FilternacAPI
-	filternac      *Filternac
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FilternacAPI
+	filternac        *Filternac
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r FilternacAPICreateRequest) ReturnFields(returnFields string) FilternacAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilternacAPICreateRequest) ReturnFields2(returnFields2 string) FilternacAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r FilternacAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilternacAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *FilternacAPIService) CreateExecute(r FilternacAPICreateRequest) (*Creat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *FilternacAPIService) DeleteExecute(r FilternacAPIDeleteRequest) (*http.
 }
 
 type FilternacAPIListRequest struct {
-	ctx            context.Context
-	ApiService     FilternacAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       FilternacAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r FilternacAPIListRequest) ReturnFields(returnFields string) FilternacAPIL
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilternacAPIListRequest) ReturnFields2(returnFields2 string) FilternacAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r FilternacAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FilternacAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *FilternacAPIService) ListExecute(r FilternacAPIListRequest) (*ListFilte
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *FilternacAPIService) ListExecute(r FilternacAPIListRequest) (*ListFilte
 }
 
 type FilternacAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     FilternacAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FilternacAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r FilternacAPIReadRequest) ReturnFields(returnFields string) FilternacAPIR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilternacAPIReadRequest) ReturnFields2(returnFields2 string) FilternacAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r FilternacAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FilternacAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *FilternacAPIService) ReadExecute(r FilternacAPIReadRequest) (*GetFilter
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *FilternacAPIService) ReadExecute(r FilternacAPIReadRequest) (*GetFilter
 }
 
 type FilternacAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     FilternacAPI
-	reference      string
-	filternac      *Filternac
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FilternacAPI
+	reference        string
+	filternac        *Filternac
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r FilternacAPIUpdateRequest) ReturnFields(returnFields string) FilternacAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilternacAPIUpdateRequest) ReturnFields2(returnFields2 string) FilternacAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r FilternacAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilternacAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *FilternacAPIService) UpdateExecute(r FilternacAPIUpdateRequest) (*Updat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

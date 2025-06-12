@@ -95,12 +95,12 @@ type NetworkAPI interface {
 type NetworkAPIService internal.Service
 
 type NetworkAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     NetworkAPI
-	network        *Network
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NetworkAPI
+	network          *Network
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r NetworkAPICreateRequest) ReturnFields(returnFields string) NetworkAPICre
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkAPICreateRequest) ReturnFields2(returnFields2 string) NetworkAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworkAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworkAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *NetworkAPIService) CreateExecute(r NetworkAPICreateRequest) (*CreateNet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -358,16 +358,16 @@ func (a *NetworkAPIService) DeleteExecute(r NetworkAPIDeleteRequest) (*http.Resp
 }
 
 type NetworkAPIListRequest struct {
-	ctx            context.Context
-	ApiService     NetworkAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       NetworkAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -377,8 +377,8 @@ func (r NetworkAPIListRequest) ReturnFields(returnFields string) NetworkAPIListR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkAPIListRequest) ReturnFields2(returnFields2 string) NetworkAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworkAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworkAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -460,8 +460,8 @@ func (a *NetworkAPIService) ListExecute(r NetworkAPIListRequest) (*ListNetworkRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -529,12 +529,12 @@ func (a *NetworkAPIService) ListExecute(r NetworkAPIListRequest) (*ListNetworkRe
 }
 
 type NetworkAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     NetworkAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NetworkAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -544,8 +544,8 @@ func (r NetworkAPIReadRequest) ReturnFields(returnFields string) NetworkAPIReadR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkAPIReadRequest) ReturnFields2(returnFields2 string) NetworkAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworkAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworkAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -602,8 +602,8 @@ func (a *NetworkAPIService) ReadExecute(r NetworkAPIReadRequest) (*GetNetworkRes
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -656,13 +656,13 @@ func (a *NetworkAPIService) ReadExecute(r NetworkAPIReadRequest) (*GetNetworkRes
 }
 
 type NetworkAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     NetworkAPI
-	reference      string
-	network        *Network
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NetworkAPI
+	reference        string
+	network          *Network
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -678,8 +678,8 @@ func (r NetworkAPIUpdateRequest) ReturnFields(returnFields string) NetworkAPIUpd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkAPIUpdateRequest) ReturnFields2(returnFields2 string) NetworkAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworkAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworkAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -739,8 +739,8 @@ func (a *NetworkAPIService) UpdateExecute(r NetworkAPIUpdateRequest) (*UpdateNet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -99,7 +99,7 @@ type NsgroupDelegationAPICreateRequest struct {
 	ApiService        NsgroupDelegationAPI
 	nsgroupDelegation *NsgroupDelegation
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -116,8 +116,8 @@ func (r NsgroupDelegationAPICreateRequest) ReturnFields(returnFields string) Nsg
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupDelegationAPICreateRequest) ReturnFields2(returnFields2 string) NsgroupDelegationAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupDelegationAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupDelegationAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *NsgroupDelegationAPIService) CreateExecute(r NsgroupDelegationAPICreate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *NsgroupDelegationAPIService) DeleteExecute(r NsgroupDelegationAPIDelete
 }
 
 type NsgroupDelegationAPIListRequest struct {
-	ctx            context.Context
-	ApiService     NsgroupDelegationAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       NsgroupDelegationAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r NsgroupDelegationAPIListRequest) ReturnFields(returnFields string) Nsgro
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupDelegationAPIListRequest) ReturnFields2(returnFields2 string) NsgroupDelegationAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupDelegationAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupDelegationAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *NsgroupDelegationAPIService) ListExecute(r NsgroupDelegationAPIListRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *NsgroupDelegationAPIService) ListExecute(r NsgroupDelegationAPIListRequ
 }
 
 type NsgroupDelegationAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     NsgroupDelegationAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NsgroupDelegationAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r NsgroupDelegationAPIReadRequest) ReturnFields(returnFields string) Nsgro
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupDelegationAPIReadRequest) ReturnFields2(returnFields2 string) NsgroupDelegationAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupDelegationAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupDelegationAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *NsgroupDelegationAPIService) ReadExecute(r NsgroupDelegationAPIReadRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -634,7 +634,7 @@ type NsgroupDelegationAPIUpdateRequest struct {
 	reference         string
 	nsgroupDelegation *NsgroupDelegation
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -651,8 +651,8 @@ func (r NsgroupDelegationAPIUpdateRequest) ReturnFields(returnFields string) Nsg
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupDelegationAPIUpdateRequest) ReturnFields2(returnFields2 string) NsgroupDelegationAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupDelegationAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupDelegationAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *NsgroupDelegationAPIService) UpdateExecute(r NsgroupDelegationAPIUpdate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

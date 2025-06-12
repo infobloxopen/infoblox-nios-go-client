@@ -95,12 +95,12 @@ type MssuperscopeAPI interface {
 type MssuperscopeAPIService internal.Service
 
 type MssuperscopeAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     MssuperscopeAPI
-	mssuperscope   *Mssuperscope
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MssuperscopeAPI
+	mssuperscope     *Mssuperscope
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r MssuperscopeAPICreateRequest) ReturnFields(returnFields string) Mssupers
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MssuperscopeAPICreateRequest) ReturnFields2(returnFields2 string) MssuperscopeAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r MssuperscopeAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) MssuperscopeAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *MssuperscopeAPIService) CreateExecute(r MssuperscopeAPICreateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *MssuperscopeAPIService) DeleteExecute(r MssuperscopeAPIDeleteRequest) (
 }
 
 type MssuperscopeAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MssuperscopeAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MssuperscopeAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r MssuperscopeAPIListRequest) ReturnFields(returnFields string) Mssupersco
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MssuperscopeAPIListRequest) ReturnFields2(returnFields2 string) MssuperscopeAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MssuperscopeAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MssuperscopeAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *MssuperscopeAPIService) ListExecute(r MssuperscopeAPIListRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *MssuperscopeAPIService) ListExecute(r MssuperscopeAPIListRequest) (*Lis
 }
 
 type MssuperscopeAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MssuperscopeAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MssuperscopeAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r MssuperscopeAPIReadRequest) ReturnFields(returnFields string) Mssupersco
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MssuperscopeAPIReadRequest) ReturnFields2(returnFields2 string) MssuperscopeAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MssuperscopeAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MssuperscopeAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *MssuperscopeAPIService) ReadExecute(r MssuperscopeAPIReadRequest) (*Get
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *MssuperscopeAPIService) ReadExecute(r MssuperscopeAPIReadRequest) (*Get
 }
 
 type MssuperscopeAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     MssuperscopeAPI
-	reference      string
-	mssuperscope   *Mssuperscope
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MssuperscopeAPI
+	reference        string
+	mssuperscope     *Mssuperscope
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r MssuperscopeAPIUpdateRequest) ReturnFields(returnFields string) Mssupers
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MssuperscopeAPIUpdateRequest) ReturnFields2(returnFields2 string) MssuperscopeAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MssuperscopeAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MssuperscopeAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *MssuperscopeAPIService) UpdateExecute(r MssuperscopeAPIUpdateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -55,16 +55,16 @@ type AllendpointsAPI interface {
 type AllendpointsAPIService internal.Service
 
 type AllendpointsAPIListRequest struct {
-	ctx            context.Context
-	ApiService     AllendpointsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       AllendpointsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r AllendpointsAPIListRequest) ReturnFields(returnFields string) Allendpoin
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AllendpointsAPIListRequest) ReturnFields2(returnFields2 string) AllendpointsAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r AllendpointsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AllendpointsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *AllendpointsAPIService) ListExecute(r AllendpointsAPIListRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *AllendpointsAPIService) ListExecute(r AllendpointsAPIListRequest) (*Lis
 }
 
 type AllendpointsAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     AllendpointsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AllendpointsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r AllendpointsAPIReadRequest) ReturnFields(returnFields string) Allendpoin
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AllendpointsAPIReadRequest) ReturnFields2(returnFields2 string) AllendpointsAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r AllendpointsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AllendpointsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *AllendpointsAPIService) ReadExecute(r AllendpointsAPIReadRequest) (*Get
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

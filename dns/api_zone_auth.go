@@ -95,12 +95,12 @@ type ZoneAuthAPI interface {
 type ZoneAuthAPIService internal.Service
 
 type ZoneAuthAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     ZoneAuthAPI
-	zoneAuth       *ZoneAuth
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ZoneAuthAPI
+	zoneAuth         *ZoneAuth
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r ZoneAuthAPICreateRequest) ReturnFields(returnFields string) ZoneAuthAPIC
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneAuthAPICreateRequest) ReturnFields2(returnFields2 string) ZoneAuthAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneAuthAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneAuthAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *ZoneAuthAPIService) CreateExecute(r ZoneAuthAPICreateRequest) (*CreateZ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -341,16 +341,16 @@ func (a *ZoneAuthAPIService) DeleteExecute(r ZoneAuthAPIDeleteRequest) (*http.Re
 }
 
 type ZoneAuthAPIListRequest struct {
-	ctx            context.Context
-	ApiService     ZoneAuthAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       ZoneAuthAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -360,8 +360,8 @@ func (r ZoneAuthAPIListRequest) ReturnFields(returnFields string) ZoneAuthAPILis
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneAuthAPIListRequest) ReturnFields2(returnFields2 string) ZoneAuthAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneAuthAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneAuthAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -443,8 +443,8 @@ func (a *ZoneAuthAPIService) ListExecute(r ZoneAuthAPIListRequest) (*ListZoneAut
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -512,12 +512,12 @@ func (a *ZoneAuthAPIService) ListExecute(r ZoneAuthAPIListRequest) (*ListZoneAut
 }
 
 type ZoneAuthAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     ZoneAuthAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ZoneAuthAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -527,8 +527,8 @@ func (r ZoneAuthAPIReadRequest) ReturnFields(returnFields string) ZoneAuthAPIRea
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneAuthAPIReadRequest) ReturnFields2(returnFields2 string) ZoneAuthAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneAuthAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneAuthAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -585,8 +585,8 @@ func (a *ZoneAuthAPIService) ReadExecute(r ZoneAuthAPIReadRequest) (*GetZoneAuth
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -639,13 +639,13 @@ func (a *ZoneAuthAPIService) ReadExecute(r ZoneAuthAPIReadRequest) (*GetZoneAuth
 }
 
 type ZoneAuthAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     ZoneAuthAPI
-	reference      string
-	zoneAuth       *ZoneAuth
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ZoneAuthAPI
+	reference        string
+	zoneAuth         *ZoneAuth
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -661,8 +661,8 @@ func (r ZoneAuthAPIUpdateRequest) ReturnFields(returnFields string) ZoneAuthAPIU
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneAuthAPIUpdateRequest) ReturnFields2(returnFields2 string) ZoneAuthAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneAuthAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneAuthAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -722,8 +722,8 @@ func (a *ZoneAuthAPIService) UpdateExecute(r ZoneAuthAPIUpdateRequest) (*UpdateZ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

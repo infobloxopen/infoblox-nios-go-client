@@ -99,7 +99,7 @@ type MacfilteraddressAPICreateRequest struct {
 	ApiService       MacfilteraddressAPI
 	macfilteraddress *Macfilteraddress
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
@@ -116,8 +116,8 @@ func (r MacfilteraddressAPICreateRequest) ReturnFields(returnFields string) Macf
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MacfilteraddressAPICreateRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r MacfilteraddressAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) MacfilteraddressAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *MacfilteraddressAPIService) CreateExecute(r MacfilteraddressAPICreateRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *MacfilteraddressAPIService) DeleteExecute(r MacfilteraddressAPIDeleteRe
 }
 
 type MacfilteraddressAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MacfilteraddressAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MacfilteraddressAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r MacfilteraddressAPIListRequest) ReturnFields(returnFields string) Macfil
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MacfilteraddressAPIListRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MacfilteraddressAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MacfilteraddressAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *MacfilteraddressAPIService) ListExecute(r MacfilteraddressAPIListReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *MacfilteraddressAPIService) ListExecute(r MacfilteraddressAPIListReques
 }
 
 type MacfilteraddressAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MacfilteraddressAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MacfilteraddressAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r MacfilteraddressAPIReadRequest) ReturnFields(returnFields string) Macfil
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MacfilteraddressAPIReadRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MacfilteraddressAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MacfilteraddressAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *MacfilteraddressAPIService) ReadExecute(r MacfilteraddressAPIReadReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -634,7 +634,7 @@ type MacfilteraddressAPIUpdateRequest struct {
 	reference        string
 	macfilteraddress *Macfilteraddress
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
@@ -651,8 +651,8 @@ func (r MacfilteraddressAPIUpdateRequest) ReturnFields(returnFields string) Macf
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MacfilteraddressAPIUpdateRequest) ReturnFields2(returnFields2 string) MacfilteraddressAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MacfilteraddressAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MacfilteraddressAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *MacfilteraddressAPIService) UpdateExecute(r MacfilteraddressAPIUpdateRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

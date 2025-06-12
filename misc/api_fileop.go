@@ -55,16 +55,16 @@ type FileopAPI interface {
 type FileopAPIService internal.Service
 
 type FileopAPIListRequest struct {
-	ctx            context.Context
-	ApiService     FileopAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       FileopAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r FileopAPIListRequest) ReturnFields(returnFields string) FileopAPIListReq
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FileopAPIListRequest) ReturnFields2(returnFields2 string) FileopAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r FileopAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FileopAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *FileopAPIService) ListExecute(r FileopAPIListRequest) (*ListFileopRespo
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *FileopAPIService) ListExecute(r FileopAPIListRequest) (*ListFileopRespo
 }
 
 type FileopAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     FileopAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FileopAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r FileopAPIReadRequest) ReturnFields(returnFields string) FileopAPIReadReq
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FileopAPIReadRequest) ReturnFields2(returnFields2 string) FileopAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r FileopAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FileopAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *FileopAPIService) ReadExecute(r FileopAPIReadRequest) (*GetFileopRespon
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

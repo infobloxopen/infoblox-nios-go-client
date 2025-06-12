@@ -69,16 +69,16 @@ type MembercloudsyncAPI interface {
 type MembercloudsyncAPIService internal.Service
 
 type MembercloudsyncAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MembercloudsyncAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MembercloudsyncAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r MembercloudsyncAPIListRequest) ReturnFields(returnFields string) Memberc
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MembercloudsyncAPIListRequest) ReturnFields2(returnFields2 string) MembercloudsyncAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MembercloudsyncAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MembercloudsyncAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *MembercloudsyncAPIService) ListExecute(r MembercloudsyncAPIListRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *MembercloudsyncAPIService) ListExecute(r MembercloudsyncAPIListRequest)
 }
 
 type MembercloudsyncAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MembercloudsyncAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MembercloudsyncAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r MembercloudsyncAPIReadRequest) ReturnFields(returnFields string) Memberc
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MembercloudsyncAPIReadRequest) ReturnFields2(returnFields2 string) MembercloudsyncAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MembercloudsyncAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MembercloudsyncAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *MembercloudsyncAPIService) ReadExecute(r MembercloudsyncAPIReadRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -367,13 +367,13 @@ func (a *MembercloudsyncAPIService) ReadExecute(r MembercloudsyncAPIReadRequest)
 }
 
 type MembercloudsyncAPIUpdateRequest struct {
-	ctx             context.Context
-	ApiService      MembercloudsyncAPI
-	reference       string
-	membercloudsync *Membercloudsync
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       MembercloudsyncAPI
+	reference        string
+	membercloudsync  *Membercloudsync
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -389,8 +389,8 @@ func (r MembercloudsyncAPIUpdateRequest) ReturnFields(returnFields string) Membe
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MembercloudsyncAPIUpdateRequest) ReturnFields2(returnFields2 string) MembercloudsyncAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MembercloudsyncAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MembercloudsyncAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *MembercloudsyncAPIService) UpdateExecute(r MembercloudsyncAPIUpdateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

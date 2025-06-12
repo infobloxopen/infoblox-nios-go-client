@@ -69,16 +69,16 @@ type GridDashboardAPI interface {
 type GridDashboardAPIService internal.Service
 
 type GridDashboardAPIListRequest struct {
-	ctx            context.Context
-	ApiService     GridDashboardAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       GridDashboardAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r GridDashboardAPIListRequest) ReturnFields(returnFields string) GridDashb
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDashboardAPIListRequest) ReturnFields2(returnFields2 string) GridDashboardAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r GridDashboardAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridDashboardAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *GridDashboardAPIService) ListExecute(r GridDashboardAPIListRequest) (*L
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *GridDashboardAPIService) ListExecute(r GridDashboardAPIListRequest) (*L
 }
 
 type GridDashboardAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     GridDashboardAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GridDashboardAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r GridDashboardAPIReadRequest) ReturnFields(returnFields string) GridDashb
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDashboardAPIReadRequest) ReturnFields2(returnFields2 string) GridDashboardAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r GridDashboardAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridDashboardAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *GridDashboardAPIService) ReadExecute(r GridDashboardAPIReadRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -367,13 +367,13 @@ func (a *GridDashboardAPIService) ReadExecute(r GridDashboardAPIReadRequest) (*G
 }
 
 type GridDashboardAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     GridDashboardAPI
-	reference      string
-	gridDashboard  *GridDashboard
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GridDashboardAPI
+	reference        string
+	gridDashboard    *GridDashboard
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -389,8 +389,8 @@ func (r GridDashboardAPIUpdateRequest) ReturnFields(returnFields string) GridDas
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridDashboardAPIUpdateRequest) ReturnFields2(returnFields2 string) GridDashboardAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r GridDashboardAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridDashboardAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *GridDashboardAPIService) UpdateExecute(r GridDashboardAPIUpdateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

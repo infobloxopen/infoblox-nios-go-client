@@ -69,16 +69,16 @@ type ViewAPI interface {
 type ViewAPIService internal.Service
 
 type ViewAPIListRequest struct {
-	ctx            context.Context
-	ApiService     ViewAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       ViewAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r ViewAPIListRequest) ReturnFields(returnFields string) ViewAPIListRequest
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ViewAPIListRequest) ReturnFields2(returnFields2 string) ViewAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r ViewAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ViewAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *ViewAPIService) ListExecute(r ViewAPIListRequest) (*ListViewResponse, *
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *ViewAPIService) ListExecute(r ViewAPIListRequest) (*ListViewResponse, *
 }
 
 type ViewAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     ViewAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ViewAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r ViewAPIReadRequest) ReturnFields(returnFields string) ViewAPIReadRequest
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ViewAPIReadRequest) ReturnFields2(returnFields2 string) ViewAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r ViewAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ViewAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *ViewAPIService) ReadExecute(r ViewAPIReadRequest) (*GetViewResponse, *h
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -367,13 +367,13 @@ func (a *ViewAPIService) ReadExecute(r ViewAPIReadRequest) (*GetViewResponse, *h
 }
 
 type ViewAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     ViewAPI
-	reference      string
-	view           *View
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ViewAPI
+	reference        string
+	view             *View
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -389,8 +389,8 @@ func (r ViewAPIUpdateRequest) ReturnFields(returnFields string) ViewAPIUpdateReq
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ViewAPIUpdateRequest) ReturnFields2(returnFields2 string) ViewAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r ViewAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ViewAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *ViewAPIService) UpdateExecute(r ViewAPIUpdateRequest) (*UpdateViewRespo
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

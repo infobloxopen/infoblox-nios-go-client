@@ -95,12 +95,12 @@ type MemberdfpAPI interface {
 type MemberdfpAPIService internal.Service
 
 type MemberdfpAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     MemberdfpAPI
-	memberdfp      *Memberdfp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MemberdfpAPI
+	memberdfp        *Memberdfp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r MemberdfpAPICreateRequest) ReturnFields(returnFields string) MemberdfpAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberdfpAPICreateRequest) ReturnFields2(returnFields2 string) MemberdfpAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberdfpAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberdfpAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *MemberdfpAPIService) CreateExecute(r MemberdfpAPICreateRequest) (*Creat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *MemberdfpAPIService) DeleteExecute(r MemberdfpAPIDeleteRequest) (*http.
 }
 
 type MemberdfpAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MemberdfpAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MemberdfpAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r MemberdfpAPIListRequest) ReturnFields(returnFields string) MemberdfpAPIL
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberdfpAPIListRequest) ReturnFields2(returnFields2 string) MemberdfpAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberdfpAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberdfpAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *MemberdfpAPIService) ListExecute(r MemberdfpAPIListRequest) (*ListMembe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *MemberdfpAPIService) ListExecute(r MemberdfpAPIListRequest) (*ListMembe
 }
 
 type MemberdfpAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MemberdfpAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MemberdfpAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r MemberdfpAPIReadRequest) ReturnFields(returnFields string) MemberdfpAPIR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberdfpAPIReadRequest) ReturnFields2(returnFields2 string) MemberdfpAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberdfpAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberdfpAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *MemberdfpAPIService) ReadExecute(r MemberdfpAPIReadRequest) (*GetMember
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *MemberdfpAPIService) ReadExecute(r MemberdfpAPIReadRequest) (*GetMember
 }
 
 type MemberdfpAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     MemberdfpAPI
-	reference      string
-	memberdfp      *Memberdfp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MemberdfpAPI
+	reference        string
+	memberdfp        *Memberdfp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r MemberdfpAPIUpdateRequest) ReturnFields(returnFields string) MemberdfpAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberdfpAPIUpdateRequest) ReturnFields2(returnFields2 string) MemberdfpAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberdfpAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberdfpAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *MemberdfpAPIService) UpdateExecute(r MemberdfpAPIUpdateRequest) (*Updat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

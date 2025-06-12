@@ -69,16 +69,16 @@ type GridMemberCloudapiAPI interface {
 type GridMemberCloudapiAPIService internal.Service
 
 type GridMemberCloudapiAPIListRequest struct {
-	ctx            context.Context
-	ApiService     GridMemberCloudapiAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       GridMemberCloudapiAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r GridMemberCloudapiAPIListRequest) ReturnFields(returnFields string) Grid
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridMemberCloudapiAPIListRequest) ReturnFields2(returnFields2 string) GridMemberCloudapiAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r GridMemberCloudapiAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridMemberCloudapiAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *GridMemberCloudapiAPIService) ListExecute(r GridMemberCloudapiAPIListRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *GridMemberCloudapiAPIService) ListExecute(r GridMemberCloudapiAPIListRe
 }
 
 type GridMemberCloudapiAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     GridMemberCloudapiAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GridMemberCloudapiAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r GridMemberCloudapiAPIReadRequest) ReturnFields(returnFields string) Grid
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridMemberCloudapiAPIReadRequest) ReturnFields2(returnFields2 string) GridMemberCloudapiAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r GridMemberCloudapiAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridMemberCloudapiAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *GridMemberCloudapiAPIService) ReadExecute(r GridMemberCloudapiAPIReadRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -372,7 +372,7 @@ type GridMemberCloudapiAPIUpdateRequest struct {
 	reference          string
 	gridMemberCloudapi *GridMemberCloudapi
 	returnFields       *string
-	returnFields2      *string
+	returnFieldsPlus   *string
 	returnAsObject     *int32
 }
 
@@ -389,8 +389,8 @@ func (r GridMemberCloudapiAPIUpdateRequest) ReturnFields(returnFields string) Gr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridMemberCloudapiAPIUpdateRequest) ReturnFields2(returnFields2 string) GridMemberCloudapiAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r GridMemberCloudapiAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridMemberCloudapiAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *GridMemberCloudapiAPIService) UpdateExecute(r GridMemberCloudapiAPIUpda
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -55,16 +55,16 @@ type CapacityreportAPI interface {
 type CapacityreportAPIService internal.Service
 
 type CapacityreportAPIListRequest struct {
-	ctx            context.Context
-	ApiService     CapacityreportAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       CapacityreportAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r CapacityreportAPIListRequest) ReturnFields(returnFields string) Capacity
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CapacityreportAPIListRequest) ReturnFields2(returnFields2 string) CapacityreportAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r CapacityreportAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) CapacityreportAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *CapacityreportAPIService) ListExecute(r CapacityreportAPIListRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *CapacityreportAPIService) ListExecute(r CapacityreportAPIListRequest) (
 }
 
 type CapacityreportAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     CapacityreportAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       CapacityreportAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r CapacityreportAPIReadRequest) ReturnFields(returnFields string) Capacity
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CapacityreportAPIReadRequest) ReturnFields2(returnFields2 string) CapacityreportAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r CapacityreportAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) CapacityreportAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *CapacityreportAPIService) ReadExecute(r CapacityreportAPIReadRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

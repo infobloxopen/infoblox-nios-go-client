@@ -69,16 +69,16 @@ type MemberDhcppropertiesAPI interface {
 type MemberDhcppropertiesAPIService internal.Service
 
 type MemberDhcppropertiesAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MemberDhcppropertiesAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MemberDhcppropertiesAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r MemberDhcppropertiesAPIListRequest) ReturnFields(returnFields string) Me
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDhcppropertiesAPIListRequest) ReturnFields2(returnFields2 string) MemberDhcppropertiesAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberDhcppropertiesAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberDhcppropertiesAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *MemberDhcppropertiesAPIService) ListExecute(r MemberDhcppropertiesAPILi
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *MemberDhcppropertiesAPIService) ListExecute(r MemberDhcppropertiesAPILi
 }
 
 type MemberDhcppropertiesAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MemberDhcppropertiesAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MemberDhcppropertiesAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r MemberDhcppropertiesAPIReadRequest) ReturnFields(returnFields string) Me
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDhcppropertiesAPIReadRequest) ReturnFields2(returnFields2 string) MemberDhcppropertiesAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberDhcppropertiesAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberDhcppropertiesAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *MemberDhcppropertiesAPIService) ReadExecute(r MemberDhcppropertiesAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -372,7 +372,7 @@ type MemberDhcppropertiesAPIUpdateRequest struct {
 	reference            string
 	memberDhcpproperties *MemberDhcpproperties
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
@@ -389,8 +389,8 @@ func (r MemberDhcppropertiesAPIUpdateRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberDhcppropertiesAPIUpdateRequest) ReturnFields2(returnFields2 string) MemberDhcppropertiesAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberDhcppropertiesAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberDhcppropertiesAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *MemberDhcppropertiesAPIService) UpdateExecute(r MemberDhcppropertiesAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

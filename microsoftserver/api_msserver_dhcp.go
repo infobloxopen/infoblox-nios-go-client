@@ -95,12 +95,12 @@ type MsserverDhcpAPI interface {
 type MsserverDhcpAPIService internal.Service
 
 type MsserverDhcpAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDhcpAPI
-	msserverDhcp   *MsserverDhcp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MsserverDhcpAPI
+	msserverDhcp     *MsserverDhcp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r MsserverDhcpAPICreateRequest) ReturnFields(returnFields string) Msserver
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDhcpAPICreateRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDhcpAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDhcpAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *MsserverDhcpAPIService) CreateExecute(r MsserverDhcpAPICreateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *MsserverDhcpAPIService) DeleteExecute(r MsserverDhcpAPIDeleteRequest) (
 }
 
 type MsserverDhcpAPIListRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDhcpAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       MsserverDhcpAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r MsserverDhcpAPIListRequest) ReturnFields(returnFields string) MsserverDh
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDhcpAPIListRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDhcpAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDhcpAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *MsserverDhcpAPIService) ListExecute(r MsserverDhcpAPIListRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *MsserverDhcpAPIService) ListExecute(r MsserverDhcpAPIListRequest) (*Lis
 }
 
 type MsserverDhcpAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDhcpAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MsserverDhcpAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r MsserverDhcpAPIReadRequest) ReturnFields(returnFields string) MsserverDh
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDhcpAPIReadRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDhcpAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDhcpAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *MsserverDhcpAPIService) ReadExecute(r MsserverDhcpAPIReadRequest) (*Get
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *MsserverDhcpAPIService) ReadExecute(r MsserverDhcpAPIReadRequest) (*Get
 }
 
 type MsserverDhcpAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDhcpAPI
-	reference      string
-	msserverDhcp   *MsserverDhcp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       MsserverDhcpAPI
+	reference        string
+	msserverDhcp     *MsserverDhcp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r MsserverDhcpAPIUpdateRequest) ReturnFields(returnFields string) Msserver
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDhcpAPIUpdateRequest) ReturnFields2(returnFields2 string) MsserverDhcpAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDhcpAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDhcpAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *MsserverDhcpAPIService) UpdateExecute(r MsserverDhcpAPIUpdateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

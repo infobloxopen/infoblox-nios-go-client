@@ -99,7 +99,7 @@ type DdnsPrincipalclusterAPICreateRequest struct {
 	ApiService           DdnsPrincipalclusterAPI
 	ddnsPrincipalcluster *DdnsPrincipalcluster
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
@@ -116,8 +116,8 @@ func (r DdnsPrincipalclusterAPICreateRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DdnsPrincipalclusterAPICreateRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r DdnsPrincipalclusterAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DdnsPrincipalclusterAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *DdnsPrincipalclusterAPIService) CreateExecute(r DdnsPrincipalclusterAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *DdnsPrincipalclusterAPIService) DeleteExecute(r DdnsPrincipalclusterAPI
 }
 
 type DdnsPrincipalclusterAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DdnsPrincipalclusterAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DdnsPrincipalclusterAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r DdnsPrincipalclusterAPIListRequest) ReturnFields(returnFields string) Dd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DdnsPrincipalclusterAPIListRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DdnsPrincipalclusterAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DdnsPrincipalclusterAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *DdnsPrincipalclusterAPIService) ListExecute(r DdnsPrincipalclusterAPILi
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *DdnsPrincipalclusterAPIService) ListExecute(r DdnsPrincipalclusterAPILi
 }
 
 type DdnsPrincipalclusterAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DdnsPrincipalclusterAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DdnsPrincipalclusterAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r DdnsPrincipalclusterAPIReadRequest) ReturnFields(returnFields string) Dd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DdnsPrincipalclusterAPIReadRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DdnsPrincipalclusterAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DdnsPrincipalclusterAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *DdnsPrincipalclusterAPIService) ReadExecute(r DdnsPrincipalclusterAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type DdnsPrincipalclusterAPIUpdateRequest struct {
 	reference            string
 	ddnsPrincipalcluster *DdnsPrincipalcluster
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
@@ -639,8 +639,8 @@ func (r DdnsPrincipalclusterAPIUpdateRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DdnsPrincipalclusterAPIUpdateRequest) ReturnFields2(returnFields2 string) DdnsPrincipalclusterAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DdnsPrincipalclusterAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DdnsPrincipalclusterAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *DdnsPrincipalclusterAPIService) UpdateExecute(r DdnsPrincipalclusterAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

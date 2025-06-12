@@ -95,12 +95,12 @@ type RecordPtrAPI interface {
 type RecordPtrAPIService internal.Service
 
 type RecordPtrAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     RecordPtrAPI
-	recordPtr      *RecordPtr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordPtrAPI
+	recordPtr        *RecordPtr
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r RecordPtrAPICreateRequest) ReturnFields(returnFields string) RecordPtrAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordPtrAPICreateRequest) ReturnFields2(returnFields2 string) RecordPtrAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordPtrAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordPtrAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *RecordPtrAPIService) CreateExecute(r RecordPtrAPICreateRequest) (*Creat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -385,16 +385,16 @@ func (a *RecordPtrAPIService) DeleteExecute(r RecordPtrAPIDeleteRequest) (*http.
 }
 
 type RecordPtrAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RecordPtrAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RecordPtrAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -404,8 +404,8 @@ func (r RecordPtrAPIListRequest) ReturnFields(returnFields string) RecordPtrAPIL
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordPtrAPIListRequest) ReturnFields2(returnFields2 string) RecordPtrAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordPtrAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordPtrAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -487,8 +487,8 @@ func (a *RecordPtrAPIService) ListExecute(r RecordPtrAPIListRequest) (*ListRecor
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -556,12 +556,12 @@ func (a *RecordPtrAPIService) ListExecute(r RecordPtrAPIListRequest) (*ListRecor
 }
 
 type RecordPtrAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RecordPtrAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordPtrAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -571,8 +571,8 @@ func (r RecordPtrAPIReadRequest) ReturnFields(returnFields string) RecordPtrAPIR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordPtrAPIReadRequest) ReturnFields2(returnFields2 string) RecordPtrAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordPtrAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordPtrAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -629,8 +629,8 @@ func (a *RecordPtrAPIService) ReadExecute(r RecordPtrAPIReadRequest) (*GetRecord
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -683,13 +683,13 @@ func (a *RecordPtrAPIService) ReadExecute(r RecordPtrAPIReadRequest) (*GetRecord
 }
 
 type RecordPtrAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     RecordPtrAPI
-	reference      string
-	recordPtr      *RecordPtr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordPtrAPI
+	reference        string
+	recordPtr        *RecordPtr
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -705,8 +705,8 @@ func (r RecordPtrAPIUpdateRequest) ReturnFields(returnFields string) RecordPtrAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordPtrAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordPtrAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordPtrAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordPtrAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -766,8 +766,8 @@ func (a *RecordPtrAPIService) UpdateExecute(r RecordPtrAPIUpdateRequest) (*Updat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

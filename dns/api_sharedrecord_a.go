@@ -95,12 +95,12 @@ type SharedrecordAAPI interface {
 type SharedrecordAAPIService internal.Service
 
 type SharedrecordAAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     SharedrecordAAPI
-	sharedrecordA  *SharedrecordA
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SharedrecordAAPI
+	sharedrecordA    *SharedrecordA
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r SharedrecordAAPICreateRequest) ReturnFields(returnFields string) Sharedr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordAAPICreateRequest) ReturnFields2(returnFields2 string) SharedrecordAAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r SharedrecordAAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SharedrecordAAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *SharedrecordAAPIService) CreateExecute(r SharedrecordAAPICreateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *SharedrecordAAPIService) DeleteExecute(r SharedrecordAAPIDeleteRequest)
 }
 
 type SharedrecordAAPIListRequest struct {
-	ctx            context.Context
-	ApiService     SharedrecordAAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       SharedrecordAAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r SharedrecordAAPIListRequest) ReturnFields(returnFields string) Sharedrec
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordAAPIListRequest) ReturnFields2(returnFields2 string) SharedrecordAAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r SharedrecordAAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SharedrecordAAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *SharedrecordAAPIService) ListExecute(r SharedrecordAAPIListRequest) (*L
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *SharedrecordAAPIService) ListExecute(r SharedrecordAAPIListRequest) (*L
 }
 
 type SharedrecordAAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     SharedrecordAAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SharedrecordAAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r SharedrecordAAPIReadRequest) ReturnFields(returnFields string) Sharedrec
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordAAPIReadRequest) ReturnFields2(returnFields2 string) SharedrecordAAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r SharedrecordAAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SharedrecordAAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *SharedrecordAAPIService) ReadExecute(r SharedrecordAAPIReadRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *SharedrecordAAPIService) ReadExecute(r SharedrecordAAPIReadRequest) (*G
 }
 
 type SharedrecordAAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     SharedrecordAAPI
-	reference      string
-	sharedrecordA  *SharedrecordA
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SharedrecordAAPI
+	reference        string
+	sharedrecordA    *SharedrecordA
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r SharedrecordAAPIUpdateRequest) ReturnFields(returnFields string) Sharedr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharedrecordAAPIUpdateRequest) ReturnFields2(returnFields2 string) SharedrecordAAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r SharedrecordAAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SharedrecordAAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *SharedrecordAAPIService) UpdateExecute(r SharedrecordAAPIUpdateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

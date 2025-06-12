@@ -99,7 +99,7 @@ type Ipv6networktemplateAPICreateRequest struct {
 	ApiService          Ipv6networktemplateAPI
 	ipv6networktemplate *Ipv6networktemplate
 	returnFields        *string
-	returnFields2       *string
+	returnFieldsPlus    *string
 	returnAsObject      *int32
 }
 
@@ -116,8 +116,8 @@ func (r Ipv6networktemplateAPICreateRequest) ReturnFields(returnFields string) I
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6networktemplateAPICreateRequest) ReturnFields2(returnFields2 string) Ipv6networktemplateAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6networktemplateAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6networktemplateAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *Ipv6networktemplateAPIService) CreateExecute(r Ipv6networktemplateAPICr
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *Ipv6networktemplateAPIService) DeleteExecute(r Ipv6networktemplateAPIDe
 }
 
 type Ipv6networktemplateAPIListRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6networktemplateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       Ipv6networktemplateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r Ipv6networktemplateAPIListRequest) ReturnFields(returnFields string) Ipv
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6networktemplateAPIListRequest) ReturnFields2(returnFields2 string) Ipv6networktemplateAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6networktemplateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6networktemplateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *Ipv6networktemplateAPIService) ListExecute(r Ipv6networktemplateAPIList
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *Ipv6networktemplateAPIService) ListExecute(r Ipv6networktemplateAPIList
 }
 
 type Ipv6networktemplateAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6networktemplateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Ipv6networktemplateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r Ipv6networktemplateAPIReadRequest) ReturnFields(returnFields string) Ipv
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6networktemplateAPIReadRequest) ReturnFields2(returnFields2 string) Ipv6networktemplateAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6networktemplateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6networktemplateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *Ipv6networktemplateAPIService) ReadExecute(r Ipv6networktemplateAPIRead
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -634,7 +634,7 @@ type Ipv6networktemplateAPIUpdateRequest struct {
 	reference           string
 	ipv6networktemplate *Ipv6networktemplate
 	returnFields        *string
-	returnFields2       *string
+	returnFieldsPlus    *string
 	returnAsObject      *int32
 }
 
@@ -651,8 +651,8 @@ func (r Ipv6networktemplateAPIUpdateRequest) ReturnFields(returnFields string) I
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6networktemplateAPIUpdateRequest) ReturnFields2(returnFields2 string) Ipv6networktemplateAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6networktemplateAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6networktemplateAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *Ipv6networktemplateAPIService) UpdateExecute(r Ipv6networktemplateAPIUp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

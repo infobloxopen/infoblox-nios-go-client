@@ -69,16 +69,16 @@ type OrderedrangesAPI interface {
 type OrderedrangesAPIService internal.Service
 
 type OrderedrangesAPIListRequest struct {
-	ctx            context.Context
-	ApiService     OrderedrangesAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       OrderedrangesAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r OrderedrangesAPIListRequest) ReturnFields(returnFields string) Orderedra
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedrangesAPIListRequest) ReturnFields2(returnFields2 string) OrderedrangesAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r OrderedrangesAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) OrderedrangesAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *OrderedrangesAPIService) ListExecute(r OrderedrangesAPIListRequest) (*L
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *OrderedrangesAPIService) ListExecute(r OrderedrangesAPIListRequest) (*L
 }
 
 type OrderedrangesAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     OrderedrangesAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       OrderedrangesAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r OrderedrangesAPIReadRequest) ReturnFields(returnFields string) Orderedra
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedrangesAPIReadRequest) ReturnFields2(returnFields2 string) OrderedrangesAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r OrderedrangesAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) OrderedrangesAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *OrderedrangesAPIService) ReadExecute(r OrderedrangesAPIReadRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -367,13 +367,13 @@ func (a *OrderedrangesAPIService) ReadExecute(r OrderedrangesAPIReadRequest) (*G
 }
 
 type OrderedrangesAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     OrderedrangesAPI
-	reference      string
-	orderedranges  *Orderedranges
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       OrderedrangesAPI
+	reference        string
+	orderedranges    *Orderedranges
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -389,8 +389,8 @@ func (r OrderedrangesAPIUpdateRequest) ReturnFields(returnFields string) Ordered
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedrangesAPIUpdateRequest) ReturnFields2(returnFields2 string) OrderedrangesAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r OrderedrangesAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) OrderedrangesAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *OrderedrangesAPIService) UpdateExecute(r OrderedrangesAPIUpdateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

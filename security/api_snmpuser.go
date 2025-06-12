@@ -95,12 +95,12 @@ type SnmpuserAPI interface {
 type SnmpuserAPIService internal.Service
 
 type SnmpuserAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     SnmpuserAPI
-	snmpuser       *Snmpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SnmpuserAPI
+	snmpuser         *Snmpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r SnmpuserAPICreateRequest) ReturnFields(returnFields string) SnmpuserAPIC
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SnmpuserAPICreateRequest) ReturnFields2(returnFields2 string) SnmpuserAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r SnmpuserAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SnmpuserAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *SnmpuserAPIService) CreateExecute(r SnmpuserAPICreateRequest) (*CreateS
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *SnmpuserAPIService) DeleteExecute(r SnmpuserAPIDeleteRequest) (*http.Re
 }
 
 type SnmpuserAPIListRequest struct {
-	ctx            context.Context
-	ApiService     SnmpuserAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       SnmpuserAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r SnmpuserAPIListRequest) ReturnFields(returnFields string) SnmpuserAPILis
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SnmpuserAPIListRequest) ReturnFields2(returnFields2 string) SnmpuserAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r SnmpuserAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SnmpuserAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *SnmpuserAPIService) ListExecute(r SnmpuserAPIListRequest) (*ListSnmpuse
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *SnmpuserAPIService) ListExecute(r SnmpuserAPIListRequest) (*ListSnmpuse
 }
 
 type SnmpuserAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     SnmpuserAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SnmpuserAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r SnmpuserAPIReadRequest) ReturnFields(returnFields string) SnmpuserAPIRea
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SnmpuserAPIReadRequest) ReturnFields2(returnFields2 string) SnmpuserAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r SnmpuserAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SnmpuserAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *SnmpuserAPIService) ReadExecute(r SnmpuserAPIReadRequest) (*GetSnmpuser
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *SnmpuserAPIService) ReadExecute(r SnmpuserAPIReadRequest) (*GetSnmpuser
 }
 
 type SnmpuserAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     SnmpuserAPI
-	reference      string
-	snmpuser       *Snmpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SnmpuserAPI
+	reference        string
+	snmpuser         *Snmpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r SnmpuserAPIUpdateRequest) ReturnFields(returnFields string) SnmpuserAPIU
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SnmpuserAPIUpdateRequest) ReturnFields2(returnFields2 string) SnmpuserAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r SnmpuserAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SnmpuserAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *SnmpuserAPIService) UpdateExecute(r SnmpuserAPIUpdateRequest) (*UpdateS
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

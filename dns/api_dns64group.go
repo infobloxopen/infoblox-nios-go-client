@@ -95,12 +95,12 @@ type Dns64groupAPI interface {
 type Dns64groupAPIService internal.Service
 
 type Dns64groupAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     Dns64groupAPI
-	dns64group     *Dns64group
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Dns64groupAPI
+	dns64group       *Dns64group
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r Dns64groupAPICreateRequest) ReturnFields(returnFields string) Dns64group
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Dns64groupAPICreateRequest) ReturnFields2(returnFields2 string) Dns64groupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r Dns64groupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) Dns64groupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *Dns64groupAPIService) CreateExecute(r Dns64groupAPICreateRequest) (*Cre
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *Dns64groupAPIService) DeleteExecute(r Dns64groupAPIDeleteRequest) (*htt
 }
 
 type Dns64groupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     Dns64groupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       Dns64groupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r Dns64groupAPIListRequest) ReturnFields(returnFields string) Dns64groupAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Dns64groupAPIListRequest) ReturnFields2(returnFields2 string) Dns64groupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r Dns64groupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Dns64groupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *Dns64groupAPIService) ListExecute(r Dns64groupAPIListRequest) (*ListDns
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *Dns64groupAPIService) ListExecute(r Dns64groupAPIListRequest) (*ListDns
 }
 
 type Dns64groupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     Dns64groupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Dns64groupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r Dns64groupAPIReadRequest) ReturnFields(returnFields string) Dns64groupAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Dns64groupAPIReadRequest) ReturnFields2(returnFields2 string) Dns64groupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r Dns64groupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Dns64groupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *Dns64groupAPIService) ReadExecute(r Dns64groupAPIReadRequest) (*GetDns6
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *Dns64groupAPIService) ReadExecute(r Dns64groupAPIReadRequest) (*GetDns6
 }
 
 type Dns64groupAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     Dns64groupAPI
-	reference      string
-	dns64group     *Dns64group
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Dns64groupAPI
+	reference        string
+	dns64group       *Dns64group
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r Dns64groupAPIUpdateRequest) ReturnFields(returnFields string) Dns64group
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Dns64groupAPIUpdateRequest) ReturnFields2(returnFields2 string) Dns64groupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r Dns64groupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Dns64groupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *Dns64groupAPIService) UpdateExecute(r Dns64groupAPIUpdateRequest) (*Upd
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

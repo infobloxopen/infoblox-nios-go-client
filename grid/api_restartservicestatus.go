@@ -55,16 +55,16 @@ type RestartservicestatusAPI interface {
 type RestartservicestatusAPIService internal.Service
 
 type RestartservicestatusAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RestartservicestatusAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RestartservicestatusAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r RestartservicestatusAPIListRequest) ReturnFields(returnFields string) Re
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RestartservicestatusAPIListRequest) ReturnFields2(returnFields2 string) RestartservicestatusAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RestartservicestatusAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RestartservicestatusAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *RestartservicestatusAPIService) ListExecute(r RestartservicestatusAPILi
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *RestartservicestatusAPIService) ListExecute(r RestartservicestatusAPILi
 }
 
 type RestartservicestatusAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RestartservicestatusAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RestartservicestatusAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r RestartservicestatusAPIReadRequest) ReturnFields(returnFields string) Re
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RestartservicestatusAPIReadRequest) ReturnFields2(returnFields2 string) RestartservicestatusAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RestartservicestatusAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RestartservicestatusAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *RestartservicestatusAPIService) ReadExecute(r RestartservicestatusAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

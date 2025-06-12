@@ -171,16 +171,16 @@ func (a *Ipv4addressAPIService) DeleteExecute(r Ipv4addressAPIDeleteRequest) (*h
 }
 
 type Ipv4addressAPIListRequest struct {
-	ctx            context.Context
-	ApiService     Ipv4addressAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       Ipv4addressAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -190,8 +190,8 @@ func (r Ipv4addressAPIListRequest) ReturnFields(returnFields string) Ipv4address
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv4addressAPIListRequest) ReturnFields2(returnFields2 string) Ipv4addressAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv4addressAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv4addressAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -273,8 +273,8 @@ func (a *Ipv4addressAPIService) ListExecute(r Ipv4addressAPIListRequest) (*ListI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -342,12 +342,12 @@ func (a *Ipv4addressAPIService) ListExecute(r Ipv4addressAPIListRequest) (*ListI
 }
 
 type Ipv4addressAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     Ipv4addressAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Ipv4addressAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -357,8 +357,8 @@ func (r Ipv4addressAPIReadRequest) ReturnFields(returnFields string) Ipv4address
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv4addressAPIReadRequest) ReturnFields2(returnFields2 string) Ipv4addressAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv4addressAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv4addressAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -415,8 +415,8 @@ func (a *Ipv4addressAPIService) ReadExecute(r Ipv4addressAPIReadRequest) (*GetIp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -469,13 +469,13 @@ func (a *Ipv4addressAPIService) ReadExecute(r Ipv4addressAPIReadRequest) (*GetIp
 }
 
 type Ipv4addressAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     Ipv4addressAPI
-	reference      string
-	ipv4address    *Ipv4address
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Ipv4addressAPI
+	reference        string
+	ipv4address      *Ipv4address
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -491,8 +491,8 @@ func (r Ipv4addressAPIUpdateRequest) ReturnFields(returnFields string) Ipv4addre
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv4addressAPIUpdateRequest) ReturnFields2(returnFields2 string) Ipv4addressAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv4addressAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv4addressAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -552,8 +552,8 @@ func (a *Ipv4addressAPIService) UpdateExecute(r Ipv4addressAPIUpdateRequest) (*U
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

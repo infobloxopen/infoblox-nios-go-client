@@ -69,16 +69,16 @@ type CsvimporttaskAPI interface {
 type CsvimporttaskAPIService internal.Service
 
 type CsvimporttaskAPIListRequest struct {
-	ctx            context.Context
-	ApiService     CsvimporttaskAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       CsvimporttaskAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r CsvimporttaskAPIListRequest) ReturnFields(returnFields string) Csvimport
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CsvimporttaskAPIListRequest) ReturnFields2(returnFields2 string) CsvimporttaskAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r CsvimporttaskAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) CsvimporttaskAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *CsvimporttaskAPIService) ListExecute(r CsvimporttaskAPIListRequest) (*L
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *CsvimporttaskAPIService) ListExecute(r CsvimporttaskAPIListRequest) (*L
 }
 
 type CsvimporttaskAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     CsvimporttaskAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       CsvimporttaskAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r CsvimporttaskAPIReadRequest) ReturnFields(returnFields string) Csvimport
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CsvimporttaskAPIReadRequest) ReturnFields2(returnFields2 string) CsvimporttaskAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r CsvimporttaskAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) CsvimporttaskAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *CsvimporttaskAPIService) ReadExecute(r CsvimporttaskAPIReadRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -367,13 +367,13 @@ func (a *CsvimporttaskAPIService) ReadExecute(r CsvimporttaskAPIReadRequest) (*G
 }
 
 type CsvimporttaskAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     CsvimporttaskAPI
-	reference      string
-	csvimporttask  *Csvimporttask
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       CsvimporttaskAPI
+	reference        string
+	csvimporttask    *Csvimporttask
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -389,8 +389,8 @@ func (r CsvimporttaskAPIUpdateRequest) ReturnFields(returnFields string) Csvimpo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CsvimporttaskAPIUpdateRequest) ReturnFields2(returnFields2 string) CsvimporttaskAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r CsvimporttaskAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) CsvimporttaskAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *CsvimporttaskAPIService) UpdateExecute(r CsvimporttaskAPIUpdateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

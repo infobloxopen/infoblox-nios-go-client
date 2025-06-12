@@ -157,16 +157,16 @@ func (a *KerberoskeyAPIService) DeleteExecute(r KerberoskeyAPIDeleteRequest) (*h
 }
 
 type KerberoskeyAPIListRequest struct {
-	ctx            context.Context
-	ApiService     KerberoskeyAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       KerberoskeyAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -176,8 +176,8 @@ func (r KerberoskeyAPIListRequest) ReturnFields(returnFields string) Kerberoskey
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r KerberoskeyAPIListRequest) ReturnFields2(returnFields2 string) KerberoskeyAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r KerberoskeyAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) KerberoskeyAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -259,8 +259,8 @@ func (a *KerberoskeyAPIService) ListExecute(r KerberoskeyAPIListRequest) (*ListK
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -328,12 +328,12 @@ func (a *KerberoskeyAPIService) ListExecute(r KerberoskeyAPIListRequest) (*ListK
 }
 
 type KerberoskeyAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     KerberoskeyAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       KerberoskeyAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -343,8 +343,8 @@ func (r KerberoskeyAPIReadRequest) ReturnFields(returnFields string) Kerberoskey
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r KerberoskeyAPIReadRequest) ReturnFields2(returnFields2 string) KerberoskeyAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r KerberoskeyAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) KerberoskeyAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -401,8 +401,8 @@ func (a *KerberoskeyAPIService) ReadExecute(r KerberoskeyAPIReadRequest) (*GetKe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

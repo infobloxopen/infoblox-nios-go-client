@@ -99,7 +99,7 @@ type ParentalcontrolBlockingpolicyAPICreateRequest struct {
 	ApiService                    ParentalcontrolBlockingpolicyAPI
 	parentalcontrolBlockingpolicy *ParentalcontrolBlockingpolicy
 	returnFields                  *string
-	returnFields2                 *string
+	returnFieldsPlus              *string
 	returnAsObject                *int32
 }
 
@@ -116,8 +116,8 @@ func (r ParentalcontrolBlockingpolicyAPICreateRequest) ReturnFields(returnFields
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolBlockingpolicyAPICreateRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolBlockingpolicyAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolBlockingpolicyAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *ParentalcontrolBlockingpolicyAPIService) CreateExecute(r Parentalcontro
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *ParentalcontrolBlockingpolicyAPIService) DeleteExecute(r Parentalcontro
 }
 
 type ParentalcontrolBlockingpolicyAPIListRequest struct {
-	ctx            context.Context
-	ApiService     ParentalcontrolBlockingpolicyAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       ParentalcontrolBlockingpolicyAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r ParentalcontrolBlockingpolicyAPIListRequest) ReturnFields(returnFields s
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolBlockingpolicyAPIListRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolBlockingpolicyAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolBlockingpolicyAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ListExecute(r ParentalcontrolB
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ListExecute(r ParentalcontrolB
 }
 
 type ParentalcontrolBlockingpolicyAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     ParentalcontrolBlockingpolicyAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ParentalcontrolBlockingpolicyAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r ParentalcontrolBlockingpolicyAPIReadRequest) ReturnFields(returnFields s
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolBlockingpolicyAPIReadRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolBlockingpolicyAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolBlockingpolicyAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *ParentalcontrolBlockingpolicyAPIService) ReadExecute(r ParentalcontrolB
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type ParentalcontrolBlockingpolicyAPIUpdateRequest struct {
 	reference                     string
 	parentalcontrolBlockingpolicy *ParentalcontrolBlockingpolicy
 	returnFields                  *string
-	returnFields2                 *string
+	returnFieldsPlus              *string
 	returnAsObject                *int32
 }
 
@@ -639,8 +639,8 @@ func (r ParentalcontrolBlockingpolicyAPIUpdateRequest) ReturnFields(returnFields
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ParentalcontrolBlockingpolicyAPIUpdateRequest) ReturnFields2(returnFields2 string) ParentalcontrolBlockingpolicyAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r ParentalcontrolBlockingpolicyAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ParentalcontrolBlockingpolicyAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *ParentalcontrolBlockingpolicyAPIService) UpdateExecute(r Parentalcontro
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

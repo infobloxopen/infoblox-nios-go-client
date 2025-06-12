@@ -95,12 +95,12 @@ type UpgradegroupAPI interface {
 type UpgradegroupAPIService internal.Service
 
 type UpgradegroupAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     UpgradegroupAPI
-	upgradegroup   *Upgradegroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       UpgradegroupAPI
+	upgradegroup     *Upgradegroup
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r UpgradegroupAPICreateRequest) ReturnFields(returnFields string) Upgradeg
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradegroupAPICreateRequest) ReturnFields2(returnFields2 string) UpgradegroupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r UpgradegroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) UpgradegroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *UpgradegroupAPIService) CreateExecute(r UpgradegroupAPICreateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *UpgradegroupAPIService) DeleteExecute(r UpgradegroupAPIDeleteRequest) (
 }
 
 type UpgradegroupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     UpgradegroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       UpgradegroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r UpgradegroupAPIListRequest) ReturnFields(returnFields string) Upgradegro
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradegroupAPIListRequest) ReturnFields2(returnFields2 string) UpgradegroupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r UpgradegroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) UpgradegroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *UpgradegroupAPIService) ListExecute(r UpgradegroupAPIListRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *UpgradegroupAPIService) ListExecute(r UpgradegroupAPIListRequest) (*Lis
 }
 
 type UpgradegroupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     UpgradegroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       UpgradegroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r UpgradegroupAPIReadRequest) ReturnFields(returnFields string) Upgradegro
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradegroupAPIReadRequest) ReturnFields2(returnFields2 string) UpgradegroupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r UpgradegroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) UpgradegroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *UpgradegroupAPIService) ReadExecute(r UpgradegroupAPIReadRequest) (*Get
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *UpgradegroupAPIService) ReadExecute(r UpgradegroupAPIReadRequest) (*Get
 }
 
 type UpgradegroupAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     UpgradegroupAPI
-	reference      string
-	upgradegroup   *Upgradegroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       UpgradegroupAPI
+	reference        string
+	upgradegroup     *Upgradegroup
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r UpgradegroupAPIUpdateRequest) ReturnFields(returnFields string) Upgradeg
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradegroupAPIUpdateRequest) ReturnFields2(returnFields2 string) UpgradegroupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r UpgradegroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) UpgradegroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *UpgradegroupAPIService) UpdateExecute(r UpgradegroupAPIUpdateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

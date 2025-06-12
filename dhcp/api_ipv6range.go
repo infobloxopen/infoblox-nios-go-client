@@ -95,12 +95,12 @@ type Ipv6rangeAPI interface {
 type Ipv6rangeAPIService internal.Service
 
 type Ipv6rangeAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6rangeAPI
-	ipv6range      *Ipv6range
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Ipv6rangeAPI
+	ipv6range        *Ipv6range
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r Ipv6rangeAPICreateRequest) ReturnFields(returnFields string) Ipv6rangeAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6rangeAPICreateRequest) ReturnFields2(returnFields2 string) Ipv6rangeAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6rangeAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6rangeAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *Ipv6rangeAPIService) CreateExecute(r Ipv6rangeAPICreateRequest) (*Creat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *Ipv6rangeAPIService) DeleteExecute(r Ipv6rangeAPIDeleteRequest) (*http.
 }
 
 type Ipv6rangeAPIListRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6rangeAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       Ipv6rangeAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r Ipv6rangeAPIListRequest) ReturnFields(returnFields string) Ipv6rangeAPIL
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6rangeAPIListRequest) ReturnFields2(returnFields2 string) Ipv6rangeAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6rangeAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6rangeAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *Ipv6rangeAPIService) ListExecute(r Ipv6rangeAPIListRequest) (*ListIpv6r
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *Ipv6rangeAPIService) ListExecute(r Ipv6rangeAPIListRequest) (*ListIpv6r
 }
 
 type Ipv6rangeAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6rangeAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Ipv6rangeAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r Ipv6rangeAPIReadRequest) ReturnFields(returnFields string) Ipv6rangeAPIR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6rangeAPIReadRequest) ReturnFields2(returnFields2 string) Ipv6rangeAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6rangeAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6rangeAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *Ipv6rangeAPIService) ReadExecute(r Ipv6rangeAPIReadRequest) (*GetIpv6ra
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *Ipv6rangeAPIService) ReadExecute(r Ipv6rangeAPIReadRequest) (*GetIpv6ra
 }
 
 type Ipv6rangeAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6rangeAPI
-	reference      string
-	ipv6range      *Ipv6range
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Ipv6rangeAPI
+	reference        string
+	ipv6range        *Ipv6range
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r Ipv6rangeAPIUpdateRequest) ReturnFields(returnFields string) Ipv6rangeAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6rangeAPIUpdateRequest) ReturnFields2(returnFields2 string) Ipv6rangeAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6rangeAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6rangeAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *Ipv6rangeAPIService) UpdateExecute(r Ipv6rangeAPIUpdateRequest) (*Updat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

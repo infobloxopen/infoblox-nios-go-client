@@ -69,16 +69,16 @@ type GridThreatprotectionAPI interface {
 type GridThreatprotectionAPIService internal.Service
 
 type GridThreatprotectionAPIListRequest struct {
-	ctx            context.Context
-	ApiService     GridThreatprotectionAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       GridThreatprotectionAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r GridThreatprotectionAPIListRequest) ReturnFields(returnFields string) Gr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridThreatprotectionAPIListRequest) ReturnFields2(returnFields2 string) GridThreatprotectionAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r GridThreatprotectionAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridThreatprotectionAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *GridThreatprotectionAPIService) ListExecute(r GridThreatprotectionAPILi
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *GridThreatprotectionAPIService) ListExecute(r GridThreatprotectionAPILi
 }
 
 type GridThreatprotectionAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     GridThreatprotectionAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GridThreatprotectionAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r GridThreatprotectionAPIReadRequest) ReturnFields(returnFields string) Gr
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridThreatprotectionAPIReadRequest) ReturnFields2(returnFields2 string) GridThreatprotectionAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r GridThreatprotectionAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridThreatprotectionAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *GridThreatprotectionAPIService) ReadExecute(r GridThreatprotectionAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -372,7 +372,7 @@ type GridThreatprotectionAPIUpdateRequest struct {
 	reference            string
 	gridThreatprotection *GridThreatprotection
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
@@ -389,8 +389,8 @@ func (r GridThreatprotectionAPIUpdateRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridThreatprotectionAPIUpdateRequest) ReturnFields2(returnFields2 string) GridThreatprotectionAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r GridThreatprotectionAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridThreatprotectionAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *GridThreatprotectionAPIService) UpdateExecute(r GridThreatprotectionAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -55,16 +55,16 @@ type GridLicensePoolAPI interface {
 type GridLicensePoolAPIService internal.Service
 
 type GridLicensePoolAPIListRequest struct {
-	ctx            context.Context
-	ApiService     GridLicensePoolAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       GridLicensePoolAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r GridLicensePoolAPIListRequest) ReturnFields(returnFields string) GridLic
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridLicensePoolAPIListRequest) ReturnFields2(returnFields2 string) GridLicensePoolAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r GridLicensePoolAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridLicensePoolAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *GridLicensePoolAPIService) ListExecute(r GridLicensePoolAPIListRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *GridLicensePoolAPIService) ListExecute(r GridLicensePoolAPIListRequest)
 }
 
 type GridLicensePoolAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     GridLicensePoolAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GridLicensePoolAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r GridLicensePoolAPIReadRequest) ReturnFields(returnFields string) GridLic
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridLicensePoolAPIReadRequest) ReturnFields2(returnFields2 string) GridLicensePoolAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r GridLicensePoolAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridLicensePoolAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *GridLicensePoolAPIService) ReadExecute(r GridLicensePoolAPIReadRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

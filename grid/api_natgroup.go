@@ -95,12 +95,12 @@ type NatgroupAPI interface {
 type NatgroupAPIService internal.Service
 
 type NatgroupAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     NatgroupAPI
-	natgroup       *Natgroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NatgroupAPI
+	natgroup         *Natgroup
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r NatgroupAPICreateRequest) ReturnFields(returnFields string) NatgroupAPIC
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NatgroupAPICreateRequest) ReturnFields2(returnFields2 string) NatgroupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r NatgroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) NatgroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *NatgroupAPIService) CreateExecute(r NatgroupAPICreateRequest) (*CreateN
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *NatgroupAPIService) DeleteExecute(r NatgroupAPIDeleteRequest) (*http.Re
 }
 
 type NatgroupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     NatgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       NatgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r NatgroupAPIListRequest) ReturnFields(returnFields string) NatgroupAPILis
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NatgroupAPIListRequest) ReturnFields2(returnFields2 string) NatgroupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r NatgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) NatgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *NatgroupAPIService) ListExecute(r NatgroupAPIListRequest) (*ListNatgrou
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *NatgroupAPIService) ListExecute(r NatgroupAPIListRequest) (*ListNatgrou
 }
 
 type NatgroupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     NatgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NatgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r NatgroupAPIReadRequest) ReturnFields(returnFields string) NatgroupAPIRea
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NatgroupAPIReadRequest) ReturnFields2(returnFields2 string) NatgroupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r NatgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) NatgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *NatgroupAPIService) ReadExecute(r NatgroupAPIReadRequest) (*GetNatgroup
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *NatgroupAPIService) ReadExecute(r NatgroupAPIReadRequest) (*GetNatgroup
 }
 
 type NatgroupAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     NatgroupAPI
-	reference      string
-	natgroup       *Natgroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NatgroupAPI
+	reference        string
+	natgroup         *Natgroup
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r NatgroupAPIUpdateRequest) ReturnFields(returnFields string) NatgroupAPIU
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NatgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) NatgroupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r NatgroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) NatgroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *NatgroupAPIService) UpdateExecute(r NatgroupAPIUpdateRequest) (*UpdateN
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

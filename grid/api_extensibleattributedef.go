@@ -99,7 +99,7 @@ type ExtensibleattributedefAPICreateRequest struct {
 	ApiService             ExtensibleattributedefAPI
 	extensibleattributedef *Extensibleattributedef
 	returnFields           *string
-	returnFields2          *string
+	returnFieldsPlus       *string
 	returnAsObject         *int32
 }
 
@@ -116,8 +116,8 @@ func (r ExtensibleattributedefAPICreateRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ExtensibleattributedefAPICreateRequest) ReturnFields2(returnFields2 string) ExtensibleattributedefAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r ExtensibleattributedefAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) ExtensibleattributedefAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *ExtensibleattributedefAPIService) CreateExecute(r Extensibleattributede
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *ExtensibleattributedefAPIService) DeleteExecute(r Extensibleattributede
 }
 
 type ExtensibleattributedefAPIListRequest struct {
-	ctx            context.Context
-	ApiService     ExtensibleattributedefAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       ExtensibleattributedefAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r ExtensibleattributedefAPIListRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ExtensibleattributedefAPIListRequest) ReturnFields2(returnFields2 string) ExtensibleattributedefAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r ExtensibleattributedefAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ExtensibleattributedefAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *ExtensibleattributedefAPIService) ListExecute(r ExtensibleattributedefA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *ExtensibleattributedefAPIService) ListExecute(r ExtensibleattributedefA
 }
 
 type ExtensibleattributedefAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     ExtensibleattributedefAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       ExtensibleattributedefAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r ExtensibleattributedefAPIReadRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ExtensibleattributedefAPIReadRequest) ReturnFields2(returnFields2 string) ExtensibleattributedefAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r ExtensibleattributedefAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ExtensibleattributedefAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *ExtensibleattributedefAPIService) ReadExecute(r ExtensibleattributedefA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type ExtensibleattributedefAPIUpdateRequest struct {
 	reference              string
 	extensibleattributedef *Extensibleattributedef
 	returnFields           *string
-	returnFields2          *string
+	returnFieldsPlus       *string
 	returnAsObject         *int32
 }
 
@@ -639,8 +639,8 @@ func (r ExtensibleattributedefAPIUpdateRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ExtensibleattributedefAPIUpdateRequest) ReturnFields2(returnFields2 string) ExtensibleattributedefAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r ExtensibleattributedefAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ExtensibleattributedefAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *ExtensibleattributedefAPIService) UpdateExecute(r Extensibleattributede
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

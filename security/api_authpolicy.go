@@ -69,16 +69,16 @@ type AuthpolicyAPI interface {
 type AuthpolicyAPIService internal.Service
 
 type AuthpolicyAPIListRequest struct {
-	ctx            context.Context
-	ApiService     AuthpolicyAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       AuthpolicyAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r AuthpolicyAPIListRequest) ReturnFields(returnFields string) AuthpolicyAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AuthpolicyAPIListRequest) ReturnFields2(returnFields2 string) AuthpolicyAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r AuthpolicyAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AuthpolicyAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *AuthpolicyAPIService) ListExecute(r AuthpolicyAPIListRequest) (*ListAut
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *AuthpolicyAPIService) ListExecute(r AuthpolicyAPIListRequest) (*ListAut
 }
 
 type AuthpolicyAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     AuthpolicyAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AuthpolicyAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r AuthpolicyAPIReadRequest) ReturnFields(returnFields string) AuthpolicyAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AuthpolicyAPIReadRequest) ReturnFields2(returnFields2 string) AuthpolicyAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r AuthpolicyAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AuthpolicyAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *AuthpolicyAPIService) ReadExecute(r AuthpolicyAPIReadRequest) (*GetAuth
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -367,13 +367,13 @@ func (a *AuthpolicyAPIService) ReadExecute(r AuthpolicyAPIReadRequest) (*GetAuth
 }
 
 type AuthpolicyAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     AuthpolicyAPI
-	reference      string
-	authpolicy     *Authpolicy
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AuthpolicyAPI
+	reference        string
+	authpolicy       *Authpolicy
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -389,8 +389,8 @@ func (r AuthpolicyAPIUpdateRequest) ReturnFields(returnFields string) Authpolicy
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AuthpolicyAPIUpdateRequest) ReturnFields2(returnFields2 string) AuthpolicyAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r AuthpolicyAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) AuthpolicyAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *AuthpolicyAPIService) UpdateExecute(r AuthpolicyAPIUpdateRequest) (*Upd
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

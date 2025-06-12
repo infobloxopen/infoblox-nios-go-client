@@ -95,12 +95,12 @@ type FilteroptionAPI interface {
 type FilteroptionAPIService internal.Service
 
 type FilteroptionAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     FilteroptionAPI
-	filteroption   *Filteroption
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FilteroptionAPI
+	filteroption     *Filteroption
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r FilteroptionAPICreateRequest) ReturnFields(returnFields string) Filterop
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilteroptionAPICreateRequest) ReturnFields2(returnFields2 string) FilteroptionAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r FilteroptionAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilteroptionAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *FilteroptionAPIService) CreateExecute(r FilteroptionAPICreateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *FilteroptionAPIService) DeleteExecute(r FilteroptionAPIDeleteRequest) (
 }
 
 type FilteroptionAPIListRequest struct {
-	ctx            context.Context
-	ApiService     FilteroptionAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       FilteroptionAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r FilteroptionAPIListRequest) ReturnFields(returnFields string) Filteropti
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilteroptionAPIListRequest) ReturnFields2(returnFields2 string) FilteroptionAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r FilteroptionAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FilteroptionAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *FilteroptionAPIService) ListExecute(r FilteroptionAPIListRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *FilteroptionAPIService) ListExecute(r FilteroptionAPIListRequest) (*Lis
 }
 
 type FilteroptionAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     FilteroptionAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FilteroptionAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r FilteroptionAPIReadRequest) ReturnFields(returnFields string) Filteropti
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilteroptionAPIReadRequest) ReturnFields2(returnFields2 string) FilteroptionAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r FilteroptionAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FilteroptionAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *FilteroptionAPIService) ReadExecute(r FilteroptionAPIReadRequest) (*Get
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *FilteroptionAPIService) ReadExecute(r FilteroptionAPIReadRequest) (*Get
 }
 
 type FilteroptionAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     FilteroptionAPI
-	reference      string
-	filteroption   *Filteroption
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FilteroptionAPI
+	reference        string
+	filteroption     *Filteroption
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r FilteroptionAPIUpdateRequest) ReturnFields(returnFields string) Filterop
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilteroptionAPIUpdateRequest) ReturnFields2(returnFields2 string) FilteroptionAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r FilteroptionAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilteroptionAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *FilteroptionAPIService) UpdateExecute(r FilteroptionAPIUpdateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -95,12 +95,12 @@ type LdapAuthServiceAPI interface {
 type LdapAuthServiceAPIService internal.Service
 
 type LdapAuthServiceAPICreateRequest struct {
-	ctx             context.Context
-	ApiService      LdapAuthServiceAPI
-	ldapAuthService *LdapAuthService
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       LdapAuthServiceAPI
+	ldapAuthService  *LdapAuthService
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r LdapAuthServiceAPICreateRequest) ReturnFields(returnFields string) LdapA
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LdapAuthServiceAPICreateRequest) ReturnFields2(returnFields2 string) LdapAuthServiceAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r LdapAuthServiceAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) LdapAuthServiceAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *LdapAuthServiceAPIService) CreateExecute(r LdapAuthServiceAPICreateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *LdapAuthServiceAPIService) DeleteExecute(r LdapAuthServiceAPIDeleteRequ
 }
 
 type LdapAuthServiceAPIListRequest struct {
-	ctx            context.Context
-	ApiService     LdapAuthServiceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       LdapAuthServiceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r LdapAuthServiceAPIListRequest) ReturnFields(returnFields string) LdapAut
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LdapAuthServiceAPIListRequest) ReturnFields2(returnFields2 string) LdapAuthServiceAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r LdapAuthServiceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) LdapAuthServiceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *LdapAuthServiceAPIService) ListExecute(r LdapAuthServiceAPIListRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *LdapAuthServiceAPIService) ListExecute(r LdapAuthServiceAPIListRequest)
 }
 
 type LdapAuthServiceAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     LdapAuthServiceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       LdapAuthServiceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r LdapAuthServiceAPIReadRequest) ReturnFields(returnFields string) LdapAut
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LdapAuthServiceAPIReadRequest) ReturnFields2(returnFields2 string) LdapAuthServiceAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r LdapAuthServiceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) LdapAuthServiceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *LdapAuthServiceAPIService) ReadExecute(r LdapAuthServiceAPIReadRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *LdapAuthServiceAPIService) ReadExecute(r LdapAuthServiceAPIReadRequest)
 }
 
 type LdapAuthServiceAPIUpdateRequest struct {
-	ctx             context.Context
-	ApiService      LdapAuthServiceAPI
-	reference       string
-	ldapAuthService *LdapAuthService
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       LdapAuthServiceAPI
+	reference        string
+	ldapAuthService  *LdapAuthService
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r LdapAuthServiceAPIUpdateRequest) ReturnFields(returnFields string) LdapA
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LdapAuthServiceAPIUpdateRequest) ReturnFields2(returnFields2 string) LdapAuthServiceAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r LdapAuthServiceAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) LdapAuthServiceAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *LdapAuthServiceAPIService) UpdateExecute(r LdapAuthServiceAPIUpdateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

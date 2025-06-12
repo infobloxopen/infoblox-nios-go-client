@@ -95,12 +95,12 @@ type TftpfiledirAPI interface {
 type TftpfiledirAPIService internal.Service
 
 type TftpfiledirAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     TftpfiledirAPI
-	tftpfiledir    *Tftpfiledir
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       TftpfiledirAPI
+	tftpfiledir      *Tftpfiledir
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r TftpfiledirAPICreateRequest) ReturnFields(returnFields string) Tftpfiled
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TftpfiledirAPICreateRequest) ReturnFields2(returnFields2 string) TftpfiledirAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r TftpfiledirAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) TftpfiledirAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *TftpfiledirAPIService) CreateExecute(r TftpfiledirAPICreateRequest) (*C
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *TftpfiledirAPIService) DeleteExecute(r TftpfiledirAPIDeleteRequest) (*h
 }
 
 type TftpfiledirAPIListRequest struct {
-	ctx            context.Context
-	ApiService     TftpfiledirAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       TftpfiledirAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r TftpfiledirAPIListRequest) ReturnFields(returnFields string) Tftpfiledir
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TftpfiledirAPIListRequest) ReturnFields2(returnFields2 string) TftpfiledirAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r TftpfiledirAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) TftpfiledirAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *TftpfiledirAPIService) ListExecute(r TftpfiledirAPIListRequest) (*ListT
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *TftpfiledirAPIService) ListExecute(r TftpfiledirAPIListRequest) (*ListT
 }
 
 type TftpfiledirAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     TftpfiledirAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       TftpfiledirAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r TftpfiledirAPIReadRequest) ReturnFields(returnFields string) Tftpfiledir
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TftpfiledirAPIReadRequest) ReturnFields2(returnFields2 string) TftpfiledirAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r TftpfiledirAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) TftpfiledirAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *TftpfiledirAPIService) ReadExecute(r TftpfiledirAPIReadRequest) (*GetTf
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *TftpfiledirAPIService) ReadExecute(r TftpfiledirAPIReadRequest) (*GetTf
 }
 
 type TftpfiledirAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     TftpfiledirAPI
-	reference      string
-	tftpfiledir    *Tftpfiledir
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       TftpfiledirAPI
+	reference        string
+	tftpfiledir      *Tftpfiledir
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r TftpfiledirAPIUpdateRequest) ReturnFields(returnFields string) Tftpfiled
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TftpfiledirAPIUpdateRequest) ReturnFields2(returnFields2 string) TftpfiledirAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r TftpfiledirAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) TftpfiledirAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *TftpfiledirAPIService) UpdateExecute(r TftpfiledirAPIUpdateRequest) (*U
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

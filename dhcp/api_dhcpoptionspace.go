@@ -95,12 +95,12 @@ type DhcpoptionspaceAPI interface {
 type DhcpoptionspaceAPIService internal.Service
 
 type DhcpoptionspaceAPICreateRequest struct {
-	ctx             context.Context
-	ApiService      DhcpoptionspaceAPI
-	dhcpoptionspace *Dhcpoptionspace
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       DhcpoptionspaceAPI
+	dhcpoptionspace  *Dhcpoptionspace
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r DhcpoptionspaceAPICreateRequest) ReturnFields(returnFields string) Dhcpo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptionspaceAPICreateRequest) ReturnFields2(returnFields2 string) DhcpoptionspaceAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptionspaceAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptionspaceAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *DhcpoptionspaceAPIService) CreateExecute(r DhcpoptionspaceAPICreateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *DhcpoptionspaceAPIService) DeleteExecute(r DhcpoptionspaceAPIDeleteRequ
 }
 
 type DhcpoptionspaceAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DhcpoptionspaceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DhcpoptionspaceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r DhcpoptionspaceAPIListRequest) ReturnFields(returnFields string) Dhcpopt
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptionspaceAPIListRequest) ReturnFields2(returnFields2 string) DhcpoptionspaceAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptionspaceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptionspaceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *DhcpoptionspaceAPIService) ListExecute(r DhcpoptionspaceAPIListRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *DhcpoptionspaceAPIService) ListExecute(r DhcpoptionspaceAPIListRequest)
 }
 
 type DhcpoptionspaceAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DhcpoptionspaceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DhcpoptionspaceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r DhcpoptionspaceAPIReadRequest) ReturnFields(returnFields string) Dhcpopt
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptionspaceAPIReadRequest) ReturnFields2(returnFields2 string) DhcpoptionspaceAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptionspaceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptionspaceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *DhcpoptionspaceAPIService) ReadExecute(r DhcpoptionspaceAPIReadRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *DhcpoptionspaceAPIService) ReadExecute(r DhcpoptionspaceAPIReadRequest)
 }
 
 type DhcpoptionspaceAPIUpdateRequest struct {
-	ctx             context.Context
-	ApiService      DhcpoptionspaceAPI
-	reference       string
-	dhcpoptionspace *Dhcpoptionspace
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       DhcpoptionspaceAPI
+	reference        string
+	dhcpoptionspace  *Dhcpoptionspace
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r DhcpoptionspaceAPIUpdateRequest) ReturnFields(returnFields string) Dhcpo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptionspaceAPIUpdateRequest) ReturnFields2(returnFields2 string) DhcpoptionspaceAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptionspaceAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptionspaceAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *DhcpoptionspaceAPIService) UpdateExecute(r DhcpoptionspaceAPIUpdateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

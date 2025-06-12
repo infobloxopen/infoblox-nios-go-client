@@ -95,12 +95,12 @@ type GcpdnstaskgroupAPI interface {
 type GcpdnstaskgroupAPIService internal.Service
 
 type GcpdnstaskgroupAPICreateRequest struct {
-	ctx             context.Context
-	ApiService      GcpdnstaskgroupAPI
-	gcpdnstaskgroup *Gcpdnstaskgroup
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       GcpdnstaskgroupAPI
+	gcpdnstaskgroup  *Gcpdnstaskgroup
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r GcpdnstaskgroupAPICreateRequest) ReturnFields(returnFields string) Gcpdn
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpdnstaskgroupAPICreateRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpdnstaskgroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpdnstaskgroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *GcpdnstaskgroupAPIService) CreateExecute(r GcpdnstaskgroupAPICreateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *GcpdnstaskgroupAPIService) DeleteExecute(r GcpdnstaskgroupAPIDeleteRequ
 }
 
 type GcpdnstaskgroupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     GcpdnstaskgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       GcpdnstaskgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r GcpdnstaskgroupAPIListRequest) ReturnFields(returnFields string) Gcpdnst
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpdnstaskgroupAPIListRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpdnstaskgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpdnstaskgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *GcpdnstaskgroupAPIService) ListExecute(r GcpdnstaskgroupAPIListRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *GcpdnstaskgroupAPIService) ListExecute(r GcpdnstaskgroupAPIListRequest)
 }
 
 type GcpdnstaskgroupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     GcpdnstaskgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GcpdnstaskgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r GcpdnstaskgroupAPIReadRequest) ReturnFields(returnFields string) Gcpdnst
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpdnstaskgroupAPIReadRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpdnstaskgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpdnstaskgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *GcpdnstaskgroupAPIService) ReadExecute(r GcpdnstaskgroupAPIReadRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *GcpdnstaskgroupAPIService) ReadExecute(r GcpdnstaskgroupAPIReadRequest)
 }
 
 type GcpdnstaskgroupAPIUpdateRequest struct {
-	ctx             context.Context
-	ApiService      GcpdnstaskgroupAPI
-	reference       string
-	gcpdnstaskgroup *Gcpdnstaskgroup
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       GcpdnstaskgroupAPI
+	reference        string
+	gcpdnstaskgroup  *Gcpdnstaskgroup
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r GcpdnstaskgroupAPIUpdateRequest) ReturnFields(returnFields string) Gcpdn
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpdnstaskgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) GcpdnstaskgroupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpdnstaskgroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpdnstaskgroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *GcpdnstaskgroupAPIService) UpdateExecute(r GcpdnstaskgroupAPIUpdateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

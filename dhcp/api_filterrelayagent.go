@@ -99,7 +99,7 @@ type FilterrelayagentAPICreateRequest struct {
 	ApiService       FilterrelayagentAPI
 	filterrelayagent *Filterrelayagent
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
@@ -116,8 +116,8 @@ func (r FilterrelayagentAPICreateRequest) ReturnFields(returnFields string) Filt
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterrelayagentAPICreateRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterrelayagentAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterrelayagentAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *FilterrelayagentAPIService) CreateExecute(r FilterrelayagentAPICreateRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *FilterrelayagentAPIService) DeleteExecute(r FilterrelayagentAPIDeleteRe
 }
 
 type FilterrelayagentAPIListRequest struct {
-	ctx            context.Context
-	ApiService     FilterrelayagentAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       FilterrelayagentAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r FilterrelayagentAPIListRequest) ReturnFields(returnFields string) Filter
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterrelayagentAPIListRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterrelayagentAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterrelayagentAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *FilterrelayagentAPIService) ListExecute(r FilterrelayagentAPIListReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *FilterrelayagentAPIService) ListExecute(r FilterrelayagentAPIListReques
 }
 
 type FilterrelayagentAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     FilterrelayagentAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FilterrelayagentAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r FilterrelayagentAPIReadRequest) ReturnFields(returnFields string) Filter
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterrelayagentAPIReadRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterrelayagentAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterrelayagentAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *FilterrelayagentAPIService) ReadExecute(r FilterrelayagentAPIReadReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -634,7 +634,7 @@ type FilterrelayagentAPIUpdateRequest struct {
 	reference        string
 	filterrelayagent *Filterrelayagent
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
@@ -651,8 +651,8 @@ func (r FilterrelayagentAPIUpdateRequest) ReturnFields(returnFields string) Filt
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterrelayagentAPIUpdateRequest) ReturnFields2(returnFields2 string) FilterrelayagentAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterrelayagentAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterrelayagentAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *FilterrelayagentAPIService) UpdateExecute(r FilterrelayagentAPIUpdateRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

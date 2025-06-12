@@ -95,12 +95,12 @@ type AdmingroupAPI interface {
 type AdmingroupAPIService internal.Service
 
 type AdmingroupAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     AdmingroupAPI
-	admingroup     *Admingroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AdmingroupAPI
+	admingroup       *Admingroup
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r AdmingroupAPICreateRequest) ReturnFields(returnFields string) Admingroup
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdmingroupAPICreateRequest) ReturnFields2(returnFields2 string) AdmingroupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r AdmingroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) AdmingroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *AdmingroupAPIService) CreateExecute(r AdmingroupAPICreateRequest) (*Cre
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *AdmingroupAPIService) DeleteExecute(r AdmingroupAPIDeleteRequest) (*htt
 }
 
 type AdmingroupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     AdmingroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       AdmingroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r AdmingroupAPIListRequest) ReturnFields(returnFields string) AdmingroupAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdmingroupAPIListRequest) ReturnFields2(returnFields2 string) AdmingroupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r AdmingroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AdmingroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *AdmingroupAPIService) ListExecute(r AdmingroupAPIListRequest) (*ListAdm
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *AdmingroupAPIService) ListExecute(r AdmingroupAPIListRequest) (*ListAdm
 }
 
 type AdmingroupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     AdmingroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AdmingroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r AdmingroupAPIReadRequest) ReturnFields(returnFields string) AdmingroupAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdmingroupAPIReadRequest) ReturnFields2(returnFields2 string) AdmingroupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r AdmingroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AdmingroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *AdmingroupAPIService) ReadExecute(r AdmingroupAPIReadRequest) (*GetAdmi
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *AdmingroupAPIService) ReadExecute(r AdmingroupAPIReadRequest) (*GetAdmi
 }
 
 type AdmingroupAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     AdmingroupAPI
-	reference      string
-	admingroup     *Admingroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       AdmingroupAPI
+	reference        string
+	admingroup       *Admingroup
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r AdmingroupAPIUpdateRequest) ReturnFields(returnFields string) Admingroup
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdmingroupAPIUpdateRequest) ReturnFields2(returnFields2 string) AdmingroupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r AdmingroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) AdmingroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *AdmingroupAPIService) UpdateExecute(r AdmingroupAPIUpdateRequest) (*Upd
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

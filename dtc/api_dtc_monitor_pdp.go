@@ -95,12 +95,12 @@ type DtcMonitorPdpAPI interface {
 type DtcMonitorPdpAPIService internal.Service
 
 type DtcMonitorPdpAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorPdpAPI
-	dtcMonitorPdp  *DtcMonitorPdp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcMonitorPdpAPI
+	dtcMonitorPdp    *DtcMonitorPdp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r DtcMonitorPdpAPICreateRequest) ReturnFields(returnFields string) DtcMoni
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorPdpAPICreateRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcMonitorPdpAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcMonitorPdpAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *DtcMonitorPdpAPIService) CreateExecute(r DtcMonitorPdpAPICreateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *DtcMonitorPdpAPIService) DeleteExecute(r DtcMonitorPdpAPIDeleteRequest)
 }
 
 type DtcMonitorPdpAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorPdpAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DtcMonitorPdpAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r DtcMonitorPdpAPIListRequest) ReturnFields(returnFields string) DtcMonito
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorPdpAPIListRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcMonitorPdpAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcMonitorPdpAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *DtcMonitorPdpAPIService) ListExecute(r DtcMonitorPdpAPIListRequest) (*L
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *DtcMonitorPdpAPIService) ListExecute(r DtcMonitorPdpAPIListRequest) (*L
 }
 
 type DtcMonitorPdpAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorPdpAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcMonitorPdpAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r DtcMonitorPdpAPIReadRequest) ReturnFields(returnFields string) DtcMonito
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorPdpAPIReadRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcMonitorPdpAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcMonitorPdpAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *DtcMonitorPdpAPIService) ReadExecute(r DtcMonitorPdpAPIReadRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *DtcMonitorPdpAPIService) ReadExecute(r DtcMonitorPdpAPIReadRequest) (*G
 }
 
 type DtcMonitorPdpAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorPdpAPI
-	reference      string
-	dtcMonitorPdp  *DtcMonitorPdp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcMonitorPdpAPI
+	reference        string
+	dtcMonitorPdp    *DtcMonitorPdp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r DtcMonitorPdpAPIUpdateRequest) ReturnFields(returnFields string) DtcMoni
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorPdpAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcMonitorPdpAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcMonitorPdpAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcMonitorPdpAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *DtcMonitorPdpAPIService) UpdateExecute(r DtcMonitorPdpAPIUpdateRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -95,12 +95,12 @@ type RecordTlsaAPI interface {
 type RecordTlsaAPIService internal.Service
 
 type RecordTlsaAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     RecordTlsaAPI
-	recordTlsa     *RecordTlsa
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordTlsaAPI
+	recordTlsa       *RecordTlsa
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r RecordTlsaAPICreateRequest) ReturnFields(returnFields string) RecordTlsa
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTlsaAPICreateRequest) ReturnFields2(returnFields2 string) RecordTlsaAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordTlsaAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordTlsaAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *RecordTlsaAPIService) CreateExecute(r RecordTlsaAPICreateRequest) (*Cre
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *RecordTlsaAPIService) DeleteExecute(r RecordTlsaAPIDeleteRequest) (*htt
 }
 
 type RecordTlsaAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RecordTlsaAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RecordTlsaAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r RecordTlsaAPIListRequest) ReturnFields(returnFields string) RecordTlsaAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTlsaAPIListRequest) ReturnFields2(returnFields2 string) RecordTlsaAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordTlsaAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordTlsaAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *RecordTlsaAPIService) ListExecute(r RecordTlsaAPIListRequest) (*ListRec
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *RecordTlsaAPIService) ListExecute(r RecordTlsaAPIListRequest) (*ListRec
 }
 
 type RecordTlsaAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RecordTlsaAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordTlsaAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r RecordTlsaAPIReadRequest) ReturnFields(returnFields string) RecordTlsaAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTlsaAPIReadRequest) ReturnFields2(returnFields2 string) RecordTlsaAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordTlsaAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordTlsaAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *RecordTlsaAPIService) ReadExecute(r RecordTlsaAPIReadRequest) (*GetReco
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *RecordTlsaAPIService) ReadExecute(r RecordTlsaAPIReadRequest) (*GetReco
 }
 
 type RecordTlsaAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     RecordTlsaAPI
-	reference      string
-	recordTlsa     *RecordTlsa
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordTlsaAPI
+	reference        string
+	recordTlsa       *RecordTlsa
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r RecordTlsaAPIUpdateRequest) ReturnFields(returnFields string) RecordTlsa
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordTlsaAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordTlsaAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordTlsaAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordTlsaAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *RecordTlsaAPIService) UpdateExecute(r RecordTlsaAPIUpdateRequest) (*Upd
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

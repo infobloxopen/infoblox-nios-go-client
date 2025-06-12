@@ -55,16 +55,16 @@ type GridX509certificateAPI interface {
 type GridX509certificateAPIService internal.Service
 
 type GridX509certificateAPIListRequest struct {
-	ctx            context.Context
-	ApiService     GridX509certificateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       GridX509certificateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r GridX509certificateAPIListRequest) ReturnFields(returnFields string) Gri
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridX509certificateAPIListRequest) ReturnFields2(returnFields2 string) GridX509certificateAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r GridX509certificateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridX509certificateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *GridX509certificateAPIService) ListExecute(r GridX509certificateAPIList
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *GridX509certificateAPIService) ListExecute(r GridX509certificateAPIList
 }
 
 type GridX509certificateAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     GridX509certificateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GridX509certificateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r GridX509certificateAPIReadRequest) ReturnFields(returnFields string) Gri
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridX509certificateAPIReadRequest) ReturnFields2(returnFields2 string) GridX509certificateAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r GridX509certificateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridX509certificateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *GridX509certificateAPIService) ReadExecute(r GridX509certificateAPIRead
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

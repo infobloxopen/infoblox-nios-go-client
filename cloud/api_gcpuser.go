@@ -95,12 +95,12 @@ type GcpuserAPI interface {
 type GcpuserAPIService internal.Service
 
 type GcpuserAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     GcpuserAPI
-	gcpuser        *Gcpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GcpuserAPI
+	gcpuser          *Gcpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r GcpuserAPICreateRequest) ReturnFields(returnFields string) GcpuserAPICre
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpuserAPICreateRequest) ReturnFields2(returnFields2 string) GcpuserAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpuserAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpuserAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *GcpuserAPIService) CreateExecute(r GcpuserAPICreateRequest) (*CreateGcp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *GcpuserAPIService) DeleteExecute(r GcpuserAPIDeleteRequest) (*http.Resp
 }
 
 type GcpuserAPIListRequest struct {
-	ctx            context.Context
-	ApiService     GcpuserAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       GcpuserAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r GcpuserAPIListRequest) ReturnFields(returnFields string) GcpuserAPIListR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpuserAPIListRequest) ReturnFields2(returnFields2 string) GcpuserAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpuserAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpuserAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *GcpuserAPIService) ListExecute(r GcpuserAPIListRequest) (*ListGcpuserRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *GcpuserAPIService) ListExecute(r GcpuserAPIListRequest) (*ListGcpuserRe
 }
 
 type GcpuserAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     GcpuserAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GcpuserAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r GcpuserAPIReadRequest) ReturnFields(returnFields string) GcpuserAPIReadR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpuserAPIReadRequest) ReturnFields2(returnFields2 string) GcpuserAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpuserAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpuserAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *GcpuserAPIService) ReadExecute(r GcpuserAPIReadRequest) (*GetGcpuserRes
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *GcpuserAPIService) ReadExecute(r GcpuserAPIReadRequest) (*GetGcpuserRes
 }
 
 type GcpuserAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     GcpuserAPI
-	reference      string
-	gcpuser        *Gcpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GcpuserAPI
+	reference        string
+	gcpuser          *Gcpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r GcpuserAPIUpdateRequest) ReturnFields(returnFields string) GcpuserAPIUpd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpuserAPIUpdateRequest) ReturnFields2(returnFields2 string) GcpuserAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpuserAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpuserAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *GcpuserAPIService) UpdateExecute(r GcpuserAPIUpdateRequest) (*UpdateGcp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

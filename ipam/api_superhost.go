@@ -95,12 +95,12 @@ type SuperhostAPI interface {
 type SuperhostAPIService internal.Service
 
 type SuperhostAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     SuperhostAPI
-	superhost      *Superhost
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SuperhostAPI
+	superhost        *Superhost
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r SuperhostAPICreateRequest) ReturnFields(returnFields string) SuperhostAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SuperhostAPICreateRequest) ReturnFields2(returnFields2 string) SuperhostAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r SuperhostAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SuperhostAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *SuperhostAPIService) CreateExecute(r SuperhostAPICreateRequest) (*Creat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *SuperhostAPIService) DeleteExecute(r SuperhostAPIDeleteRequest) (*http.
 }
 
 type SuperhostAPIListRequest struct {
-	ctx            context.Context
-	ApiService     SuperhostAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       SuperhostAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r SuperhostAPIListRequest) ReturnFields(returnFields string) SuperhostAPIL
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SuperhostAPIListRequest) ReturnFields2(returnFields2 string) SuperhostAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r SuperhostAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SuperhostAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *SuperhostAPIService) ListExecute(r SuperhostAPIListRequest) (*ListSuper
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *SuperhostAPIService) ListExecute(r SuperhostAPIListRequest) (*ListSuper
 }
 
 type SuperhostAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     SuperhostAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SuperhostAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r SuperhostAPIReadRequest) ReturnFields(returnFields string) SuperhostAPIR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SuperhostAPIReadRequest) ReturnFields2(returnFields2 string) SuperhostAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r SuperhostAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SuperhostAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *SuperhostAPIService) ReadExecute(r SuperhostAPIReadRequest) (*GetSuperh
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *SuperhostAPIService) ReadExecute(r SuperhostAPIReadRequest) (*GetSuperh
 }
 
 type SuperhostAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     SuperhostAPI
-	reference      string
-	superhost      *Superhost
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       SuperhostAPI
+	reference        string
+	superhost        *Superhost
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r SuperhostAPIUpdateRequest) ReturnFields(returnFields string) SuperhostAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SuperhostAPIUpdateRequest) ReturnFields2(returnFields2 string) SuperhostAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r SuperhostAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SuperhostAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *SuperhostAPIService) UpdateExecute(r SuperhostAPIUpdateRequest) (*Updat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

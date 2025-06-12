@@ -69,16 +69,16 @@ type DiscoveryGridpropertiesAPI interface {
 type DiscoveryGridpropertiesAPIService internal.Service
 
 type DiscoveryGridpropertiesAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryGridpropertiesAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DiscoveryGridpropertiesAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r DiscoveryGridpropertiesAPIListRequest) ReturnFields(returnFields string)
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryGridpropertiesAPIListRequest) ReturnFields2(returnFields2 string) DiscoveryGridpropertiesAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryGridpropertiesAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryGridpropertiesAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *DiscoveryGridpropertiesAPIService) ListExecute(r DiscoveryGridpropertie
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *DiscoveryGridpropertiesAPIService) ListExecute(r DiscoveryGridpropertie
 }
 
 type DiscoveryGridpropertiesAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryGridpropertiesAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DiscoveryGridpropertiesAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r DiscoveryGridpropertiesAPIReadRequest) ReturnFields(returnFields string)
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryGridpropertiesAPIReadRequest) ReturnFields2(returnFields2 string) DiscoveryGridpropertiesAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryGridpropertiesAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryGridpropertiesAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *DiscoveryGridpropertiesAPIService) ReadExecute(r DiscoveryGridpropertie
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -372,7 +372,7 @@ type DiscoveryGridpropertiesAPIUpdateRequest struct {
 	reference               string
 	discoveryGridproperties *DiscoveryGridproperties
 	returnFields            *string
-	returnFields2           *string
+	returnFieldsPlus        *string
 	returnAsObject          *int32
 }
 
@@ -389,8 +389,8 @@ func (r DiscoveryGridpropertiesAPIUpdateRequest) ReturnFields(returnFields strin
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryGridpropertiesAPIUpdateRequest) ReturnFields2(returnFields2 string) DiscoveryGridpropertiesAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryGridpropertiesAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryGridpropertiesAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *DiscoveryGridpropertiesAPIService) UpdateExecute(r DiscoveryGridpropert
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

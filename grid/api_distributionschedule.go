@@ -69,16 +69,16 @@ type DistributionscheduleAPI interface {
 type DistributionscheduleAPIService internal.Service
 
 type DistributionscheduleAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DistributionscheduleAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DistributionscheduleAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -88,8 +88,8 @@ func (r DistributionscheduleAPIListRequest) ReturnFields(returnFields string) Di
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DistributionscheduleAPIListRequest) ReturnFields2(returnFields2 string) DistributionscheduleAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DistributionscheduleAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DistributionscheduleAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *DistributionscheduleAPIService) ListExecute(r DistributionscheduleAPILi
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -240,12 +240,12 @@ func (a *DistributionscheduleAPIService) ListExecute(r DistributionscheduleAPILi
 }
 
 type DistributionscheduleAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DistributionscheduleAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DistributionscheduleAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -255,8 +255,8 @@ func (r DistributionscheduleAPIReadRequest) ReturnFields(returnFields string) Di
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DistributionscheduleAPIReadRequest) ReturnFields2(returnFields2 string) DistributionscheduleAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DistributionscheduleAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DistributionscheduleAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -313,8 +313,8 @@ func (a *DistributionscheduleAPIService) ReadExecute(r DistributionscheduleAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -372,7 +372,7 @@ type DistributionscheduleAPIUpdateRequest struct {
 	reference            string
 	distributionschedule *Distributionschedule
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
@@ -389,8 +389,8 @@ func (r DistributionscheduleAPIUpdateRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DistributionscheduleAPIUpdateRequest) ReturnFields2(returnFields2 string) DistributionscheduleAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DistributionscheduleAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DistributionscheduleAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -450,8 +450,8 @@ func (a *DistributionscheduleAPIService) UpdateExecute(r DistributionscheduleAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

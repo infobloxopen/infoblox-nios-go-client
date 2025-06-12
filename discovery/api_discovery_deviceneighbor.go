@@ -55,16 +55,16 @@ type DiscoveryDeviceneighborAPI interface {
 type DiscoveryDeviceneighborAPIService internal.Service
 
 type DiscoveryDeviceneighborAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryDeviceneighborAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DiscoveryDeviceneighborAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -74,8 +74,8 @@ func (r DiscoveryDeviceneighborAPIListRequest) ReturnFields(returnFields string)
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDeviceneighborAPIListRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceneighborAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryDeviceneighborAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryDeviceneighborAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -157,8 +157,8 @@ func (a *DiscoveryDeviceneighborAPIService) ListExecute(r DiscoveryDeviceneighbo
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -226,12 +226,12 @@ func (a *DiscoveryDeviceneighborAPIService) ListExecute(r DiscoveryDeviceneighbo
 }
 
 type DiscoveryDeviceneighborAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryDeviceneighborAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DiscoveryDeviceneighborAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -241,8 +241,8 @@ func (r DiscoveryDeviceneighborAPIReadRequest) ReturnFields(returnFields string)
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDeviceneighborAPIReadRequest) ReturnFields2(returnFields2 string) DiscoveryDeviceneighborAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryDeviceneighborAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryDeviceneighborAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -299,8 +299,8 @@ func (a *DiscoveryDeviceneighborAPIService) ReadExecute(r DiscoveryDeviceneighbo
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

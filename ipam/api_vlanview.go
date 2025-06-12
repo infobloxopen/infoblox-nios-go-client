@@ -95,12 +95,12 @@ type VlanviewAPI interface {
 type VlanviewAPIService internal.Service
 
 type VlanviewAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     VlanviewAPI
-	vlanview       *Vlanview
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       VlanviewAPI
+	vlanview         *Vlanview
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r VlanviewAPICreateRequest) ReturnFields(returnFields string) VlanviewAPIC
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanviewAPICreateRequest) ReturnFields2(returnFields2 string) VlanviewAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanviewAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanviewAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *VlanviewAPIService) CreateExecute(r VlanviewAPICreateRequest) (*CreateV
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *VlanviewAPIService) DeleteExecute(r VlanviewAPIDeleteRequest) (*http.Re
 }
 
 type VlanviewAPIListRequest struct {
-	ctx            context.Context
-	ApiService     VlanviewAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       VlanviewAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r VlanviewAPIListRequest) ReturnFields(returnFields string) VlanviewAPILis
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanviewAPIListRequest) ReturnFields2(returnFields2 string) VlanviewAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanviewAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanviewAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *VlanviewAPIService) ListExecute(r VlanviewAPIListRequest) (*ListVlanvie
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *VlanviewAPIService) ListExecute(r VlanviewAPIListRequest) (*ListVlanvie
 }
 
 type VlanviewAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     VlanviewAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       VlanviewAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r VlanviewAPIReadRequest) ReturnFields(returnFields string) VlanviewAPIRea
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanviewAPIReadRequest) ReturnFields2(returnFields2 string) VlanviewAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanviewAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanviewAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *VlanviewAPIService) ReadExecute(r VlanviewAPIReadRequest) (*GetVlanview
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *VlanviewAPIService) ReadExecute(r VlanviewAPIReadRequest) (*GetVlanview
 }
 
 type VlanviewAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     VlanviewAPI
-	reference      string
-	vlanview       *Vlanview
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       VlanviewAPI
+	reference        string
+	vlanview         *Vlanview
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r VlanviewAPIUpdateRequest) ReturnFields(returnFields string) VlanviewAPIU
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanviewAPIUpdateRequest) ReturnFields2(returnFields2 string) VlanviewAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanviewAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanviewAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *VlanviewAPIService) UpdateExecute(r VlanviewAPIUpdateRequest) (*UpdateV
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

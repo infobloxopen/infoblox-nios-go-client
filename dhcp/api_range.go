@@ -95,12 +95,12 @@ type RangeAPI interface {
 type RangeAPIService internal.Service
 
 type RangeAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     RangeAPI
-	range_         *Range
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RangeAPI
+	range_           *Range
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r RangeAPICreateRequest) ReturnFields(returnFields string) RangeAPICreateR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RangeAPICreateRequest) ReturnFields2(returnFields2 string) RangeAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r RangeAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RangeAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *RangeAPIService) CreateExecute(r RangeAPICreateRequest) (*CreateRangeRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *RangeAPIService) DeleteExecute(r RangeAPIDeleteRequest) (*http.Response
 }
 
 type RangeAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RangeAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RangeAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r RangeAPIListRequest) ReturnFields(returnFields string) RangeAPIListReque
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RangeAPIListRequest) ReturnFields2(returnFields2 string) RangeAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RangeAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RangeAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *RangeAPIService) ListExecute(r RangeAPIListRequest) (*ListRangeResponse
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *RangeAPIService) ListExecute(r RangeAPIListRequest) (*ListRangeResponse
 }
 
 type RangeAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RangeAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RangeAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r RangeAPIReadRequest) ReturnFields(returnFields string) RangeAPIReadReque
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RangeAPIReadRequest) ReturnFields2(returnFields2 string) RangeAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RangeAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RangeAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *RangeAPIService) ReadExecute(r RangeAPIReadRequest) (*GetRangeResponse,
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *RangeAPIService) ReadExecute(r RangeAPIReadRequest) (*GetRangeResponse,
 }
 
 type RangeAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     RangeAPI
-	reference      string
-	range_         *Range
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RangeAPI
+	reference        string
+	range_           *Range
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r RangeAPIUpdateRequest) ReturnFields(returnFields string) RangeAPIUpdateR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RangeAPIUpdateRequest) ReturnFields2(returnFields2 string) RangeAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r RangeAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RangeAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *RangeAPIService) UpdateExecute(r RangeAPIUpdateRequest) (*UpdateRangeRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -95,12 +95,12 @@ type NetworktemplateAPI interface {
 type NetworktemplateAPIService internal.Service
 
 type NetworktemplateAPICreateRequest struct {
-	ctx             context.Context
-	ApiService      NetworktemplateAPI
-	networktemplate *Networktemplate
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       NetworktemplateAPI
+	networktemplate  *Networktemplate
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r NetworktemplateAPICreateRequest) ReturnFields(returnFields string) Netwo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworktemplateAPICreateRequest) ReturnFields2(returnFields2 string) NetworktemplateAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworktemplateAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworktemplateAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *NetworktemplateAPIService) CreateExecute(r NetworktemplateAPICreateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *NetworktemplateAPIService) DeleteExecute(r NetworktemplateAPIDeleteRequ
 }
 
 type NetworktemplateAPIListRequest struct {
-	ctx            context.Context
-	ApiService     NetworktemplateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       NetworktemplateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r NetworktemplateAPIListRequest) ReturnFields(returnFields string) Network
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworktemplateAPIListRequest) ReturnFields2(returnFields2 string) NetworktemplateAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworktemplateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworktemplateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *NetworktemplateAPIService) ListExecute(r NetworktemplateAPIListRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *NetworktemplateAPIService) ListExecute(r NetworktemplateAPIListRequest)
 }
 
 type NetworktemplateAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     NetworktemplateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       NetworktemplateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r NetworktemplateAPIReadRequest) ReturnFields(returnFields string) Network
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworktemplateAPIReadRequest) ReturnFields2(returnFields2 string) NetworktemplateAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworktemplateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworktemplateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *NetworktemplateAPIService) ReadExecute(r NetworktemplateAPIReadRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *NetworktemplateAPIService) ReadExecute(r NetworktemplateAPIReadRequest)
 }
 
 type NetworktemplateAPIUpdateRequest struct {
-	ctx             context.Context
-	ApiService      NetworktemplateAPI
-	reference       string
-	networktemplate *Networktemplate
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+	ctx              context.Context
+	ApiService       NetworktemplateAPI
+	reference        string
+	networktemplate  *Networktemplate
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r NetworktemplateAPIUpdateRequest) ReturnFields(returnFields string) Netwo
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworktemplateAPIUpdateRequest) ReturnFields2(returnFields2 string) NetworktemplateAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworktemplateAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworktemplateAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *NetworktemplateAPIService) UpdateExecute(r NetworktemplateAPIUpdateRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

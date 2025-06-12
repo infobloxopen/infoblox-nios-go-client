@@ -99,7 +99,7 @@ type Ipv6fixedaddressAPICreateRequest struct {
 	ApiService       Ipv6fixedaddressAPI
 	ipv6fixedaddress *Ipv6fixedaddress
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
@@ -116,8 +116,8 @@ func (r Ipv6fixedaddressAPICreateRequest) ReturnFields(returnFields string) Ipv6
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6fixedaddressAPICreateRequest) ReturnFields2(returnFields2 string) Ipv6fixedaddressAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6fixedaddressAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6fixedaddressAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *Ipv6fixedaddressAPIService) CreateExecute(r Ipv6fixedaddressAPICreateRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *Ipv6fixedaddressAPIService) DeleteExecute(r Ipv6fixedaddressAPIDeleteRe
 }
 
 type Ipv6fixedaddressAPIListRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6fixedaddressAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       Ipv6fixedaddressAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r Ipv6fixedaddressAPIListRequest) ReturnFields(returnFields string) Ipv6fi
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6fixedaddressAPIListRequest) ReturnFields2(returnFields2 string) Ipv6fixedaddressAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6fixedaddressAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6fixedaddressAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *Ipv6fixedaddressAPIService) ListExecute(r Ipv6fixedaddressAPIListReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *Ipv6fixedaddressAPIService) ListExecute(r Ipv6fixedaddressAPIListReques
 }
 
 type Ipv6fixedaddressAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6fixedaddressAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Ipv6fixedaddressAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r Ipv6fixedaddressAPIReadRequest) ReturnFields(returnFields string) Ipv6fi
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6fixedaddressAPIReadRequest) ReturnFields2(returnFields2 string) Ipv6fixedaddressAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6fixedaddressAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6fixedaddressAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *Ipv6fixedaddressAPIService) ReadExecute(r Ipv6fixedaddressAPIReadReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -634,7 +634,7 @@ type Ipv6fixedaddressAPIUpdateRequest struct {
 	reference        string
 	ipv6fixedaddress *Ipv6fixedaddress
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
@@ -651,8 +651,8 @@ func (r Ipv6fixedaddressAPIUpdateRequest) ReturnFields(returnFields string) Ipv6
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6fixedaddressAPIUpdateRequest) ReturnFields2(returnFields2 string) Ipv6fixedaddressAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6fixedaddressAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6fixedaddressAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *Ipv6fixedaddressAPIService) UpdateExecute(r Ipv6fixedaddressAPIUpdateRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

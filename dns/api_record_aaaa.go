@@ -95,12 +95,12 @@ type RecordAaaaAPI interface {
 type RecordAaaaAPIService internal.Service
 
 type RecordAaaaAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     RecordAaaaAPI
-	recordAaaa     *RecordAaaa
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordAaaaAPI
+	recordAaaa       *RecordAaaa
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r RecordAaaaAPICreateRequest) ReturnFields(returnFields string) RecordAaaa
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordAaaaAPICreateRequest) ReturnFields2(returnFields2 string) RecordAaaaAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordAaaaAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordAaaaAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *RecordAaaaAPIService) CreateExecute(r RecordAaaaAPICreateRequest) (*Cre
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -368,16 +368,16 @@ func (a *RecordAaaaAPIService) DeleteExecute(r RecordAaaaAPIDeleteRequest) (*htt
 }
 
 type RecordAaaaAPIListRequest struct {
-	ctx            context.Context
-	ApiService     RecordAaaaAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       RecordAaaaAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -387,8 +387,8 @@ func (r RecordAaaaAPIListRequest) ReturnFields(returnFields string) RecordAaaaAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordAaaaAPIListRequest) ReturnFields2(returnFields2 string) RecordAaaaAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordAaaaAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordAaaaAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -470,8 +470,8 @@ func (a *RecordAaaaAPIService) ListExecute(r RecordAaaaAPIListRequest) (*ListRec
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -539,12 +539,12 @@ func (a *RecordAaaaAPIService) ListExecute(r RecordAaaaAPIListRequest) (*ListRec
 }
 
 type RecordAaaaAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     RecordAaaaAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordAaaaAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -554,8 +554,8 @@ func (r RecordAaaaAPIReadRequest) ReturnFields(returnFields string) RecordAaaaAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordAaaaAPIReadRequest) ReturnFields2(returnFields2 string) RecordAaaaAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordAaaaAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordAaaaAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -612,8 +612,8 @@ func (a *RecordAaaaAPIService) ReadExecute(r RecordAaaaAPIReadRequest) (*GetReco
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -666,13 +666,13 @@ func (a *RecordAaaaAPIService) ReadExecute(r RecordAaaaAPIReadRequest) (*GetReco
 }
 
 type RecordAaaaAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     RecordAaaaAPI
-	reference      string
-	recordAaaa     *RecordAaaa
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       RecordAaaaAPI
+	reference        string
+	recordAaaa       *RecordAaaa
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -688,8 +688,8 @@ func (r RecordAaaaAPIUpdateRequest) ReturnFields(returnFields string) RecordAaaa
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordAaaaAPIUpdateRequest) ReturnFields2(returnFields2 string) RecordAaaaAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordAaaaAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordAaaaAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -749,8 +749,8 @@ func (a *RecordAaaaAPIService) UpdateExecute(r RecordAaaaAPIUpdateRequest) (*Upd
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

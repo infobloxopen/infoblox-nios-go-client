@@ -99,7 +99,7 @@ type FilterfingerprintAPICreateRequest struct {
 	ApiService        FilterfingerprintAPI
 	filterfingerprint *Filterfingerprint
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -116,8 +116,8 @@ func (r FilterfingerprintAPICreateRequest) ReturnFields(returnFields string) Fil
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterfingerprintAPICreateRequest) ReturnFields2(returnFields2 string) FilterfingerprintAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterfingerprintAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterfingerprintAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *FilterfingerprintAPIService) CreateExecute(r FilterfingerprintAPICreate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *FilterfingerprintAPIService) DeleteExecute(r FilterfingerprintAPIDelete
 }
 
 type FilterfingerprintAPIListRequest struct {
-	ctx            context.Context
-	ApiService     FilterfingerprintAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       FilterfingerprintAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r FilterfingerprintAPIListRequest) ReturnFields(returnFields string) Filte
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterfingerprintAPIListRequest) ReturnFields2(returnFields2 string) FilterfingerprintAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterfingerprintAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterfingerprintAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *FilterfingerprintAPIService) ListExecute(r FilterfingerprintAPIListRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *FilterfingerprintAPIService) ListExecute(r FilterfingerprintAPIListRequ
 }
 
 type FilterfingerprintAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     FilterfingerprintAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FilterfingerprintAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r FilterfingerprintAPIReadRequest) ReturnFields(returnFields string) Filte
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterfingerprintAPIReadRequest) ReturnFields2(returnFields2 string) FilterfingerprintAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterfingerprintAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterfingerprintAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *FilterfingerprintAPIService) ReadExecute(r FilterfingerprintAPIReadRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -634,7 +634,7 @@ type FilterfingerprintAPIUpdateRequest struct {
 	reference         string
 	filterfingerprint *Filterfingerprint
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -651,8 +651,8 @@ func (r FilterfingerprintAPIUpdateRequest) ReturnFields(returnFields string) Fil
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterfingerprintAPIUpdateRequest) ReturnFields2(returnFields2 string) FilterfingerprintAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterfingerprintAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterfingerprintAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *FilterfingerprintAPIService) UpdateExecute(r FilterfingerprintAPIUpdate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

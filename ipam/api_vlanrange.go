@@ -95,12 +95,12 @@ type VlanrangeAPI interface {
 type VlanrangeAPIService internal.Service
 
 type VlanrangeAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     VlanrangeAPI
-	vlanrange      *Vlanrange
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       VlanrangeAPI
+	vlanrange        *Vlanrange
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r VlanrangeAPICreateRequest) ReturnFields(returnFields string) VlanrangeAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanrangeAPICreateRequest) ReturnFields2(returnFields2 string) VlanrangeAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanrangeAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanrangeAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *VlanrangeAPIService) CreateExecute(r VlanrangeAPICreateRequest) (*Creat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -341,16 +341,16 @@ func (a *VlanrangeAPIService) DeleteExecute(r VlanrangeAPIDeleteRequest) (*http.
 }
 
 type VlanrangeAPIListRequest struct {
-	ctx            context.Context
-	ApiService     VlanrangeAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       VlanrangeAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -360,8 +360,8 @@ func (r VlanrangeAPIListRequest) ReturnFields(returnFields string) VlanrangeAPIL
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanrangeAPIListRequest) ReturnFields2(returnFields2 string) VlanrangeAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanrangeAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanrangeAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -443,8 +443,8 @@ func (a *VlanrangeAPIService) ListExecute(r VlanrangeAPIListRequest) (*ListVlanr
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -512,12 +512,12 @@ func (a *VlanrangeAPIService) ListExecute(r VlanrangeAPIListRequest) (*ListVlanr
 }
 
 type VlanrangeAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     VlanrangeAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       VlanrangeAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -527,8 +527,8 @@ func (r VlanrangeAPIReadRequest) ReturnFields(returnFields string) VlanrangeAPIR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanrangeAPIReadRequest) ReturnFields2(returnFields2 string) VlanrangeAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanrangeAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanrangeAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -585,8 +585,8 @@ func (a *VlanrangeAPIService) ReadExecute(r VlanrangeAPIReadRequest) (*GetVlanra
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -639,13 +639,13 @@ func (a *VlanrangeAPIService) ReadExecute(r VlanrangeAPIReadRequest) (*GetVlanra
 }
 
 type VlanrangeAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     VlanrangeAPI
-	reference      string
-	vlanrange      *Vlanrange
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       VlanrangeAPI
+	reference        string
+	vlanrange        *Vlanrange
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -661,8 +661,8 @@ func (r VlanrangeAPIUpdateRequest) ReturnFields(returnFields string) VlanrangeAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanrangeAPIUpdateRequest) ReturnFields2(returnFields2 string) VlanrangeAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanrangeAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanrangeAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -722,8 +722,8 @@ func (a *VlanrangeAPIService) UpdateExecute(r VlanrangeAPIUpdateRequest) (*Updat
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -171,16 +171,16 @@ func (a *Ipv6addressAPIService) DeleteExecute(r Ipv6addressAPIDeleteRequest) (*h
 }
 
 type Ipv6addressAPIListRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6addressAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       Ipv6addressAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -190,8 +190,8 @@ func (r Ipv6addressAPIListRequest) ReturnFields(returnFields string) Ipv6address
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6addressAPIListRequest) ReturnFields2(returnFields2 string) Ipv6addressAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6addressAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6addressAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -273,8 +273,8 @@ func (a *Ipv6addressAPIService) ListExecute(r Ipv6addressAPIListRequest) (*ListI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -342,12 +342,12 @@ func (a *Ipv6addressAPIService) ListExecute(r Ipv6addressAPIListRequest) (*ListI
 }
 
 type Ipv6addressAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6addressAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Ipv6addressAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -357,8 +357,8 @@ func (r Ipv6addressAPIReadRequest) ReturnFields(returnFields string) Ipv6address
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6addressAPIReadRequest) ReturnFields2(returnFields2 string) Ipv6addressAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6addressAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6addressAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -415,8 +415,8 @@ func (a *Ipv6addressAPIService) ReadExecute(r Ipv6addressAPIReadRequest) (*GetIp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -469,13 +469,13 @@ func (a *Ipv6addressAPIService) ReadExecute(r Ipv6addressAPIReadRequest) (*GetIp
 }
 
 type Ipv6addressAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6addressAPI
-	reference      string
-	ipv6address    *Ipv6address
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Ipv6addressAPI
+	reference        string
+	ipv6address      *Ipv6address
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -491,8 +491,8 @@ func (r Ipv6addressAPIUpdateRequest) ReturnFields(returnFields string) Ipv6addre
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6addressAPIUpdateRequest) ReturnFields2(returnFields2 string) Ipv6addressAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6addressAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6addressAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -552,8 +552,8 @@ func (a *Ipv6addressAPIService) UpdateExecute(r Ipv6addressAPIUpdateRequest) (*U
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

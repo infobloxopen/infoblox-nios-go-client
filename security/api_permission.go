@@ -95,12 +95,12 @@ type PermissionAPI interface {
 type PermissionAPIService internal.Service
 
 type PermissionAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     PermissionAPI
-	permission     *Permission
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       PermissionAPI
+	permission       *Permission
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r PermissionAPICreateRequest) ReturnFields(returnFields string) Permission
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PermissionAPICreateRequest) ReturnFields2(returnFields2 string) PermissionAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r PermissionAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) PermissionAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *PermissionAPIService) CreateExecute(r PermissionAPICreateRequest) (*Cre
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *PermissionAPIService) DeleteExecute(r PermissionAPIDeleteRequest) (*htt
 }
 
 type PermissionAPIListRequest struct {
-	ctx            context.Context
-	ApiService     PermissionAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       PermissionAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r PermissionAPIListRequest) ReturnFields(returnFields string) PermissionAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PermissionAPIListRequest) ReturnFields2(returnFields2 string) PermissionAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r PermissionAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) PermissionAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *PermissionAPIService) ListExecute(r PermissionAPIListRequest) (*ListPer
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *PermissionAPIService) ListExecute(r PermissionAPIListRequest) (*ListPer
 }
 
 type PermissionAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     PermissionAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       PermissionAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r PermissionAPIReadRequest) ReturnFields(returnFields string) PermissionAP
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PermissionAPIReadRequest) ReturnFields2(returnFields2 string) PermissionAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r PermissionAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) PermissionAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *PermissionAPIService) ReadExecute(r PermissionAPIReadRequest) (*GetPerm
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *PermissionAPIService) ReadExecute(r PermissionAPIReadRequest) (*GetPerm
 }
 
 type PermissionAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     PermissionAPI
-	reference      string
-	permission     *Permission
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       PermissionAPI
+	reference        string
+	permission       *Permission
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r PermissionAPIUpdateRequest) ReturnFields(returnFields string) Permission
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r PermissionAPIUpdateRequest) ReturnFields2(returnFields2 string) PermissionAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r PermissionAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) PermissionAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *PermissionAPIService) UpdateExecute(r PermissionAPIUpdateRequest) (*Upd
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

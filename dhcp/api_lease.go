@@ -157,16 +157,16 @@ func (a *LeaseAPIService) DeleteExecute(r LeaseAPIDeleteRequest) (*http.Response
 }
 
 type LeaseAPIListRequest struct {
-	ctx            context.Context
-	ApiService     LeaseAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       LeaseAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -176,8 +176,8 @@ func (r LeaseAPIListRequest) ReturnFields(returnFields string) LeaseAPIListReque
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LeaseAPIListRequest) ReturnFields2(returnFields2 string) LeaseAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r LeaseAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) LeaseAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -259,8 +259,8 @@ func (a *LeaseAPIService) ListExecute(r LeaseAPIListRequest) (*ListLeaseResponse
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -328,12 +328,12 @@ func (a *LeaseAPIService) ListExecute(r LeaseAPIListRequest) (*ListLeaseResponse
 }
 
 type LeaseAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     LeaseAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       LeaseAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -343,8 +343,8 @@ func (r LeaseAPIReadRequest) ReturnFields(returnFields string) LeaseAPIReadReque
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LeaseAPIReadRequest) ReturnFields2(returnFields2 string) LeaseAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r LeaseAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) LeaseAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -401,8 +401,8 @@ func (a *LeaseAPIService) ReadExecute(r LeaseAPIReadRequest) (*GetLeaseResponse,
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

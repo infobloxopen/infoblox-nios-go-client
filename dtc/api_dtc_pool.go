@@ -95,12 +95,12 @@ type DtcPoolAPI interface {
 type DtcPoolAPIService internal.Service
 
 type DtcPoolAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     DtcPoolAPI
-	dtcPool        *DtcPool
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcPoolAPI
+	dtcPool          *DtcPool
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r DtcPoolAPICreateRequest) ReturnFields(returnFields string) DtcPoolAPICre
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcPoolAPICreateRequest) ReturnFields2(returnFields2 string) DtcPoolAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcPoolAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcPoolAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *DtcPoolAPIService) CreateExecute(r DtcPoolAPICreateRequest) (*CreateDtc
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *DtcPoolAPIService) DeleteExecute(r DtcPoolAPIDeleteRequest) (*http.Resp
 }
 
 type DtcPoolAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DtcPoolAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DtcPoolAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r DtcPoolAPIListRequest) ReturnFields(returnFields string) DtcPoolAPIListR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcPoolAPIListRequest) ReturnFields2(returnFields2 string) DtcPoolAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcPoolAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcPoolAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *DtcPoolAPIService) ListExecute(r DtcPoolAPIListRequest) (*ListDtcPoolRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *DtcPoolAPIService) ListExecute(r DtcPoolAPIListRequest) (*ListDtcPoolRe
 }
 
 type DtcPoolAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DtcPoolAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcPoolAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r DtcPoolAPIReadRequest) ReturnFields(returnFields string) DtcPoolAPIReadR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcPoolAPIReadRequest) ReturnFields2(returnFields2 string) DtcPoolAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcPoolAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcPoolAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *DtcPoolAPIService) ReadExecute(r DtcPoolAPIReadRequest) (*GetDtcPoolRes
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *DtcPoolAPIService) ReadExecute(r DtcPoolAPIReadRequest) (*GetDtcPoolRes
 }
 
 type DtcPoolAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     DtcPoolAPI
-	reference      string
-	dtcPool        *DtcPool
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcPoolAPI
+	reference        string
+	dtcPool          *DtcPool
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r DtcPoolAPIUpdateRequest) ReturnFields(returnFields string) DtcPoolAPIUpd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcPoolAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcPoolAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcPoolAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcPoolAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *DtcPoolAPIService) UpdateExecute(r DtcPoolAPIUpdateRequest) (*UpdateDtc
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

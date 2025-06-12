@@ -99,7 +99,7 @@ type BulkhostnametemplateAPICreateRequest struct {
 	ApiService           BulkhostnametemplateAPI
 	bulkhostnametemplate *Bulkhostnametemplate
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
@@ -116,8 +116,8 @@ func (r BulkhostnametemplateAPICreateRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostnametemplateAPICreateRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r BulkhostnametemplateAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) BulkhostnametemplateAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *BulkhostnametemplateAPIService) CreateExecute(r BulkhostnametemplateAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *BulkhostnametemplateAPIService) DeleteExecute(r BulkhostnametemplateAPI
 }
 
 type BulkhostnametemplateAPIListRequest struct {
-	ctx            context.Context
-	ApiService     BulkhostnametemplateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       BulkhostnametemplateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r BulkhostnametemplateAPIListRequest) ReturnFields(returnFields string) Bu
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostnametemplateAPIListRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r BulkhostnametemplateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) BulkhostnametemplateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *BulkhostnametemplateAPIService) ListExecute(r BulkhostnametemplateAPILi
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *BulkhostnametemplateAPIService) ListExecute(r BulkhostnametemplateAPILi
 }
 
 type BulkhostnametemplateAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     BulkhostnametemplateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       BulkhostnametemplateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r BulkhostnametemplateAPIReadRequest) ReturnFields(returnFields string) Bu
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostnametemplateAPIReadRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r BulkhostnametemplateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) BulkhostnametemplateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *BulkhostnametemplateAPIService) ReadExecute(r BulkhostnametemplateAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type BulkhostnametemplateAPIUpdateRequest struct {
 	reference            string
 	bulkhostnametemplate *Bulkhostnametemplate
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
@@ -639,8 +639,8 @@ func (r BulkhostnametemplateAPIUpdateRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostnametemplateAPIUpdateRequest) ReturnFields2(returnFields2 string) BulkhostnametemplateAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r BulkhostnametemplateAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) BulkhostnametemplateAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *BulkhostnametemplateAPIService) UpdateExecute(r BulkhostnametemplateAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -99,7 +99,7 @@ type Awsrte53taskgroupAPICreateRequest struct {
 	ApiService        Awsrte53taskgroupAPI
 	awsrte53taskgroup *Awsrte53taskgroup
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -116,8 +116,8 @@ func (r Awsrte53taskgroupAPICreateRequest) ReturnFields(returnFields string) Aws
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Awsrte53taskgroupAPICreateRequest) ReturnFields2(returnFields2 string) Awsrte53taskgroupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r Awsrte53taskgroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) Awsrte53taskgroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *Awsrte53taskgroupAPIService) CreateExecute(r Awsrte53taskgroupAPICreate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *Awsrte53taskgroupAPIService) DeleteExecute(r Awsrte53taskgroupAPIDelete
 }
 
 type Awsrte53taskgroupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     Awsrte53taskgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       Awsrte53taskgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r Awsrte53taskgroupAPIListRequest) ReturnFields(returnFields string) Awsrt
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Awsrte53taskgroupAPIListRequest) ReturnFields2(returnFields2 string) Awsrte53taskgroupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r Awsrte53taskgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Awsrte53taskgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *Awsrte53taskgroupAPIService) ListExecute(r Awsrte53taskgroupAPIListRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *Awsrte53taskgroupAPIService) ListExecute(r Awsrte53taskgroupAPIListRequ
 }
 
 type Awsrte53taskgroupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     Awsrte53taskgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       Awsrte53taskgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r Awsrte53taskgroupAPIReadRequest) ReturnFields(returnFields string) Awsrt
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Awsrte53taskgroupAPIReadRequest) ReturnFields2(returnFields2 string) Awsrte53taskgroupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r Awsrte53taskgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Awsrte53taskgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *Awsrte53taskgroupAPIService) ReadExecute(r Awsrte53taskgroupAPIReadRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type Awsrte53taskgroupAPIUpdateRequest struct {
 	reference         string
 	awsrte53taskgroup *Awsrte53taskgroup
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
@@ -639,8 +639,8 @@ func (r Awsrte53taskgroupAPIUpdateRequest) ReturnFields(returnFields string) Aws
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Awsrte53taskgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) Awsrte53taskgroupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r Awsrte53taskgroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Awsrte53taskgroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *Awsrte53taskgroupAPIService) UpdateExecute(r Awsrte53taskgroupAPIUpdate
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

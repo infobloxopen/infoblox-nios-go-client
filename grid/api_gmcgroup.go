@@ -95,12 +95,12 @@ type GmcgroupAPI interface {
 type GmcgroupAPIService internal.Service
 
 type GmcgroupAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     GmcgroupAPI
-	gmcgroup       *Gmcgroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GmcgroupAPI
+	gmcgroup         *Gmcgroup
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r GmcgroupAPICreateRequest) ReturnFields(returnFields string) GmcgroupAPIC
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcgroupAPICreateRequest) ReturnFields2(returnFields2 string) GmcgroupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r GmcgroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) GmcgroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *GmcgroupAPIService) CreateExecute(r GmcgroupAPICreateRequest) (*CreateG
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *GmcgroupAPIService) DeleteExecute(r GmcgroupAPIDeleteRequest) (*http.Re
 }
 
 type GmcgroupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     GmcgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       GmcgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r GmcgroupAPIListRequest) ReturnFields(returnFields string) GmcgroupAPILis
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcgroupAPIListRequest) ReturnFields2(returnFields2 string) GmcgroupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r GmcgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GmcgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *GmcgroupAPIService) ListExecute(r GmcgroupAPIListRequest) (*ListGmcgrou
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *GmcgroupAPIService) ListExecute(r GmcgroupAPIListRequest) (*ListGmcgrou
 }
 
 type GmcgroupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     GmcgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GmcgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r GmcgroupAPIReadRequest) ReturnFields(returnFields string) GmcgroupAPIRea
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcgroupAPIReadRequest) ReturnFields2(returnFields2 string) GmcgroupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r GmcgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GmcgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *GmcgroupAPIService) ReadExecute(r GmcgroupAPIReadRequest) (*GetGmcgroup
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *GmcgroupAPIService) ReadExecute(r GmcgroupAPIReadRequest) (*GetGmcgroup
 }
 
 type GmcgroupAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     GmcgroupAPI
-	reference      string
-	gmcgroup       *Gmcgroup
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       GmcgroupAPI
+	reference        string
+	gmcgroup         *Gmcgroup
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r GmcgroupAPIUpdateRequest) ReturnFields(returnFields string) GmcgroupAPIU
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GmcgroupAPIUpdateRequest) ReturnFields2(returnFields2 string) GmcgroupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r GmcgroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GmcgroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *GmcgroupAPIService) UpdateExecute(r GmcgroupAPIUpdateRequest) (*UpdateG
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -95,12 +95,12 @@ type FixedaddressAPI interface {
 type FixedaddressAPIService internal.Service
 
 type FixedaddressAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     FixedaddressAPI
-	fixedaddress   *Fixedaddress
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FixedaddressAPI
+	fixedaddress     *Fixedaddress
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r FixedaddressAPICreateRequest) ReturnFields(returnFields string) Fixedadd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FixedaddressAPICreateRequest) ReturnFields2(returnFields2 string) FixedaddressAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r FixedaddressAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) FixedaddressAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *FixedaddressAPIService) CreateExecute(r FixedaddressAPICreateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *FixedaddressAPIService) DeleteExecute(r FixedaddressAPIDeleteRequest) (
 }
 
 type FixedaddressAPIListRequest struct {
-	ctx            context.Context
-	ApiService     FixedaddressAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       FixedaddressAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r FixedaddressAPIListRequest) ReturnFields(returnFields string) Fixedaddre
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FixedaddressAPIListRequest) ReturnFields2(returnFields2 string) FixedaddressAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r FixedaddressAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FixedaddressAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *FixedaddressAPIService) ListExecute(r FixedaddressAPIListRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *FixedaddressAPIService) ListExecute(r FixedaddressAPIListRequest) (*Lis
 }
 
 type FixedaddressAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     FixedaddressAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FixedaddressAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r FixedaddressAPIReadRequest) ReturnFields(returnFields string) Fixedaddre
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FixedaddressAPIReadRequest) ReturnFields2(returnFields2 string) FixedaddressAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r FixedaddressAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FixedaddressAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *FixedaddressAPIService) ReadExecute(r FixedaddressAPIReadRequest) (*Get
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *FixedaddressAPIService) ReadExecute(r FixedaddressAPIReadRequest) (*Get
 }
 
 type FixedaddressAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     FixedaddressAPI
-	reference      string
-	fixedaddress   *Fixedaddress
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FixedaddressAPI
+	reference        string
+	fixedaddress     *Fixedaddress
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r FixedaddressAPIUpdateRequest) ReturnFields(returnFields string) Fixedadd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FixedaddressAPIUpdateRequest) ReturnFields2(returnFields2 string) FixedaddressAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r FixedaddressAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FixedaddressAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *FixedaddressAPIService) UpdateExecute(r FixedaddressAPIUpdateRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

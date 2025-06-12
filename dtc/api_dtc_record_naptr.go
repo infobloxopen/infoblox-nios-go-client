@@ -95,12 +95,12 @@ type DtcRecordNaptrAPI interface {
 type DtcRecordNaptrAPIService internal.Service
 
 type DtcRecordNaptrAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     DtcRecordNaptrAPI
-	dtcRecordNaptr *DtcRecordNaptr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcRecordNaptrAPI
+	dtcRecordNaptr   *DtcRecordNaptr
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r DtcRecordNaptrAPICreateRequest) ReturnFields(returnFields string) DtcRec
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordNaptrAPICreateRequest) ReturnFields2(returnFields2 string) DtcRecordNaptrAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcRecordNaptrAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcRecordNaptrAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *DtcRecordNaptrAPIService) CreateExecute(r DtcRecordNaptrAPICreateReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *DtcRecordNaptrAPIService) DeleteExecute(r DtcRecordNaptrAPIDeleteReques
 }
 
 type DtcRecordNaptrAPIListRequest struct {
-	ctx            context.Context
-	ApiService     DtcRecordNaptrAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       DtcRecordNaptrAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r DtcRecordNaptrAPIListRequest) ReturnFields(returnFields string) DtcRecor
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordNaptrAPIListRequest) ReturnFields2(returnFields2 string) DtcRecordNaptrAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcRecordNaptrAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcRecordNaptrAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *DtcRecordNaptrAPIService) ListExecute(r DtcRecordNaptrAPIListRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *DtcRecordNaptrAPIService) ListExecute(r DtcRecordNaptrAPIListRequest) (
 }
 
 type DtcRecordNaptrAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     DtcRecordNaptrAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcRecordNaptrAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r DtcRecordNaptrAPIReadRequest) ReturnFields(returnFields string) DtcRecor
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordNaptrAPIReadRequest) ReturnFields2(returnFields2 string) DtcRecordNaptrAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcRecordNaptrAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcRecordNaptrAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *DtcRecordNaptrAPIService) ReadExecute(r DtcRecordNaptrAPIReadRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -617,13 +617,13 @@ func (a *DtcRecordNaptrAPIService) ReadExecute(r DtcRecordNaptrAPIReadRequest) (
 }
 
 type DtcRecordNaptrAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     DtcRecordNaptrAPI
-	reference      string
-	dtcRecordNaptr *DtcRecordNaptr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       DtcRecordNaptrAPI
+	reference        string
+	dtcRecordNaptr   *DtcRecordNaptr
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -639,8 +639,8 @@ func (r DtcRecordNaptrAPIUpdateRequest) ReturnFields(returnFields string) DtcRec
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordNaptrAPIUpdateRequest) ReturnFields2(returnFields2 string) DtcRecordNaptrAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcRecordNaptrAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcRecordNaptrAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *DtcRecordNaptrAPIService) UpdateExecute(r DtcRecordNaptrAPIUpdateReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

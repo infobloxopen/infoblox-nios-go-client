@@ -95,12 +95,12 @@ type FtpuserAPI interface {
 type FtpuserAPIService internal.Service
 
 type FtpuserAPICreateRequest struct {
-	ctx            context.Context
-	ApiService     FtpuserAPI
-	ftpuser        *Ftpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FtpuserAPI
+	ftpuser          *Ftpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to create
@@ -116,8 +116,8 @@ func (r FtpuserAPICreateRequest) ReturnFields(returnFields string) FtpuserAPICre
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FtpuserAPICreateRequest) ReturnFields2(returnFields2 string) FtpuserAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r FtpuserAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) FtpuserAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *FtpuserAPIService) CreateExecute(r FtpuserAPICreateRequest) (*CreateFtp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -331,16 +331,16 @@ func (a *FtpuserAPIService) DeleteExecute(r FtpuserAPIDeleteRequest) (*http.Resp
 }
 
 type FtpuserAPIListRequest struct {
-	ctx            context.Context
-	ApiService     FtpuserAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       FtpuserAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -350,8 +350,8 @@ func (r FtpuserAPIListRequest) ReturnFields(returnFields string) FtpuserAPIListR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FtpuserAPIListRequest) ReturnFields2(returnFields2 string) FtpuserAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r FtpuserAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FtpuserAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -433,8 +433,8 @@ func (a *FtpuserAPIService) ListExecute(r FtpuserAPIListRequest) (*ListFtpuserRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -502,12 +502,12 @@ func (a *FtpuserAPIService) ListExecute(r FtpuserAPIListRequest) (*ListFtpuserRe
 }
 
 type FtpuserAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     FtpuserAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FtpuserAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -517,8 +517,8 @@ func (r FtpuserAPIReadRequest) ReturnFields(returnFields string) FtpuserAPIReadR
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FtpuserAPIReadRequest) ReturnFields2(returnFields2 string) FtpuserAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r FtpuserAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FtpuserAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -575,8 +575,8 @@ func (a *FtpuserAPIService) ReadExecute(r FtpuserAPIReadRequest) (*GetFtpuserRes
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -629,13 +629,13 @@ func (a *FtpuserAPIService) ReadExecute(r FtpuserAPIReadRequest) (*GetFtpuserRes
 }
 
 type FtpuserAPIUpdateRequest struct {
-	ctx            context.Context
-	ApiService     FtpuserAPI
-	reference      string
-	ftpuser        *Ftpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       FtpuserAPI
+	reference        string
+	ftpuser          *Ftpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
@@ -651,8 +651,8 @@ func (r FtpuserAPIUpdateRequest) ReturnFields(returnFields string) FtpuserAPIUpd
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FtpuserAPIUpdateRequest) ReturnFields2(returnFields2 string) FtpuserAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r FtpuserAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FtpuserAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -712,8 +712,8 @@ func (a *FtpuserAPIService) UpdateExecute(r FtpuserAPIUpdateRequest) (*UpdateFtp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

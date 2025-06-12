@@ -99,7 +99,7 @@ type CertificateAuthserviceAPICreateRequest struct {
 	ApiService             CertificateAuthserviceAPI
 	certificateAuthservice *CertificateAuthservice
 	returnFields           *string
-	returnFields2          *string
+	returnFieldsPlus       *string
 	returnAsObject         *int32
 }
 
@@ -116,8 +116,8 @@ func (r CertificateAuthserviceAPICreateRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CertificateAuthserviceAPICreateRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r CertificateAuthserviceAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) CertificateAuthserviceAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *CertificateAuthserviceAPIService) CreateExecute(r CertificateAuthservic
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *CertificateAuthserviceAPIService) DeleteExecute(r CertificateAuthservic
 }
 
 type CertificateAuthserviceAPIListRequest struct {
-	ctx            context.Context
-	ApiService     CertificateAuthserviceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       CertificateAuthserviceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r CertificateAuthserviceAPIListRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CertificateAuthserviceAPIListRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r CertificateAuthserviceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) CertificateAuthserviceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *CertificateAuthserviceAPIService) ListExecute(r CertificateAuthserviceA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *CertificateAuthserviceAPIService) ListExecute(r CertificateAuthserviceA
 }
 
 type CertificateAuthserviceAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     CertificateAuthserviceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       CertificateAuthserviceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r CertificateAuthserviceAPIReadRequest) ReturnFields(returnFields string) 
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CertificateAuthserviceAPIReadRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r CertificateAuthserviceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) CertificateAuthserviceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *CertificateAuthserviceAPIService) ReadExecute(r CertificateAuthserviceA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type CertificateAuthserviceAPIUpdateRequest struct {
 	reference              string
 	certificateAuthservice *CertificateAuthservice
 	returnFields           *string
-	returnFields2          *string
+	returnFieldsPlus       *string
 	returnAsObject         *int32
 }
 
@@ -639,8 +639,8 @@ func (r CertificateAuthserviceAPIUpdateRequest) ReturnFields(returnFields string
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CertificateAuthserviceAPIUpdateRequest) ReturnFields2(returnFields2 string) CertificateAuthserviceAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r CertificateAuthserviceAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) CertificateAuthserviceAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *CertificateAuthserviceAPIService) UpdateExecute(r CertificateAuthservic
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

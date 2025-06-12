@@ -99,7 +99,7 @@ type HsmThaleslunagroupAPICreateRequest struct {
 	ApiService         HsmThaleslunagroupAPI
 	hsmThaleslunagroup *HsmThaleslunagroup
 	returnFields       *string
-	returnFields2      *string
+	returnFieldsPlus   *string
 	returnAsObject     *int32
 }
 
@@ -116,8 +116,8 @@ func (r HsmThaleslunagroupAPICreateRequest) ReturnFields(returnFields string) Hs
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r HsmThaleslunagroupAPICreateRequest) ReturnFields2(returnFields2 string) HsmThaleslunagroupAPICreateRequest {
-	r.returnFields2 = &returnFields2
+func (r HsmThaleslunagroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) HsmThaleslunagroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -174,8 +174,8 @@ func (a *HsmThaleslunagroupAPIService) CreateExecute(r HsmThaleslunagroupAPICrea
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -319,16 +319,16 @@ func (a *HsmThaleslunagroupAPIService) DeleteExecute(r HsmThaleslunagroupAPIDele
 }
 
 type HsmThaleslunagroupAPIListRequest struct {
-	ctx            context.Context
-	ApiService     HsmThaleslunagroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+	ctx              context.Context
+	ApiService       HsmThaleslunagroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
@@ -338,8 +338,8 @@ func (r HsmThaleslunagroupAPIListRequest) ReturnFields(returnFields string) HsmT
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r HsmThaleslunagroupAPIListRequest) ReturnFields2(returnFields2 string) HsmThaleslunagroupAPIListRequest {
-	r.returnFields2 = &returnFields2
+func (r HsmThaleslunagroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) HsmThaleslunagroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *HsmThaleslunagroupAPIService) ListExecute(r HsmThaleslunagroupAPIListRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -490,12 +490,12 @@ func (a *HsmThaleslunagroupAPIService) ListExecute(r HsmThaleslunagroupAPIListRe
 }
 
 type HsmThaleslunagroupAPIReadRequest struct {
-	ctx            context.Context
-	ApiService     HsmThaleslunagroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+	ctx              context.Context
+	ApiService       HsmThaleslunagroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
@@ -505,8 +505,8 @@ func (r HsmThaleslunagroupAPIReadRequest) ReturnFields(returnFields string) HsmT
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r HsmThaleslunagroupAPIReadRequest) ReturnFields2(returnFields2 string) HsmThaleslunagroupAPIReadRequest {
-	r.returnFields2 = &returnFields2
+func (r HsmThaleslunagroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) HsmThaleslunagroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -563,8 +563,8 @@ func (a *HsmThaleslunagroupAPIService) ReadExecute(r HsmThaleslunagroupAPIReadRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -622,7 +622,7 @@ type HsmThaleslunagroupAPIUpdateRequest struct {
 	reference          string
 	hsmThaleslunagroup *HsmThaleslunagroup
 	returnFields       *string
-	returnFields2      *string
+	returnFieldsPlus   *string
 	returnAsObject     *int32
 }
 
@@ -639,8 +639,8 @@ func (r HsmThaleslunagroupAPIUpdateRequest) ReturnFields(returnFields string) Hs
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r HsmThaleslunagroupAPIUpdateRequest) ReturnFields2(returnFields2 string) HsmThaleslunagroupAPIUpdateRequest {
-	r.returnFields2 = &returnFields2
+func (r HsmThaleslunagroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) HsmThaleslunagroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
@@ -700,8 +700,8 @@ func (a *HsmThaleslunagroupAPIService) UpdateExecute(r HsmThaleslunagroupAPIUpda
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
