@@ -23,11 +23,11 @@ func TestNotificationRuleAPIService(t *testing.T) {
 
 	apiClient := notification.NewAPIClient()
 
-	t.Run("Test NotificationRuleAPIService NotificationruleGet", func(t *testing.T) {
+	t.Run("Test NotificationRuleAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NotificationRuleAPI.NotificationruleGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NotificationRuleAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNotificationRuleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NotificationRuleAPIService NotificationrulePost", func(t *testing.T) {
+	t.Run("Test NotificationRuleAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NotificationRuleAPI.NotificationrulePost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NotificationRuleAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NotificationRuleAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NotificationRuleAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNotificationRuleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NotificationRuleAPIService NotificationruleReferenceDelete", func(t *testing.T) {
+	t.Run("Test NotificationRuleAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NotificationRuleAPI.NotificationruleReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NotificationRuleAPIService NotificationruleReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NotificationRuleAPI.NotificationruleReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NotificationRuleAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNotificationRuleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NotificationRuleAPIService NotificationruleReferencePut", func(t *testing.T) {
+	t.Run("Test NotificationRuleAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NotificationRuleAPI.NotificationruleReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NotificationRuleAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

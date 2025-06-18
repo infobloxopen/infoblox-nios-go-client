@@ -106,6 +106,7 @@ paths:
   /grid:
     get:
       description: Returns a list of grid objects matching the search criteria
+      operationId: GridList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -203,6 +204,7 @@ paths:
   /grid/{reference}:
     get:
       description: Returns a specific grid object by reference
+      operationId: GridRead
       parameters:
       - description: Reference of the grid object
         explode: false
@@ -262,6 +264,7 @@ paths:
       - Grid
     put:
       description: Updates a specific grid object by reference
+      operationId: GridUpdate
       parameters:
       - description: Reference of the grid object
         explode: false
@@ -329,6 +332,7 @@ paths:
   /grid:cloudapi:
     get:
       description: Returns a list of grid:cloudapi objects matching the search criteria
+      operationId: GridCloudapiList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -426,6 +430,7 @@ paths:
   /grid:cloudapi/{reference}:
     get:
       description: Returns a specific grid:cloudapi object by reference
+      operationId: GridCloudapiRead
       parameters:
       - description: Reference of the grid:cloudapi object
         explode: false
@@ -485,6 +490,7 @@ paths:
       - GridCloudapi
     put:
       description: Updates a specific grid:cloudapi object by reference
+      operationId: GridCloudapiUpdate
       parameters:
       - description: Reference of the grid:cloudapi object
         explode: false
@@ -553,6 +559,7 @@ paths:
     get:
       description: Returns a list of grid:cloudapi:cloudstatistics objects matching
         the search criteria
+      operationId: GridCloudapiCloudstatisticsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -650,6 +657,7 @@ paths:
   /grid:cloudapi:cloudstatistics/{reference}:
     get:
       description: Returns a specific grid:cloudapi:cloudstatistics object by reference
+      operationId: GridCloudapiCloudstatisticsRead
       parameters:
       - description: Reference of the grid:cloudapi:cloudstatistics object
         explode: false
@@ -711,6 +719,7 @@ paths:
     get:
       description: Returns a list of grid:cloudapi:tenant objects matching the search
         criteria
+      operationId: GridCloudapiTenantList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -808,6 +817,7 @@ paths:
   /grid:cloudapi:tenant/{reference}:
     get:
       description: Returns a specific grid:cloudapi:tenant object by reference
+      operationId: GridCloudapiTenantRead
       parameters:
       - description: Reference of the grid:cloudapi:tenant object
         explode: false
@@ -867,6 +877,7 @@ paths:
       - GridCloudapiTenant
     put:
       description: Updates a specific grid:cloudapi:tenant object by reference
+      operationId: GridCloudapiTenantUpdate
       parameters:
       - description: Reference of the grid:cloudapi:tenant object
         explode: false
@@ -935,6 +946,7 @@ paths:
     get:
       description: Returns a list of grid:cloudapi:vm objects matching the search
         criteria
+      operationId: GridCloudapiVmList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1032,6 +1044,7 @@ paths:
   /grid:cloudapi:vm/{reference}:
     get:
       description: Returns a specific grid:cloudapi:vm object by reference
+      operationId: GridCloudapiVmRead
       parameters:
       - description: Reference of the grid:cloudapi:vm object
         explode: false
@@ -1091,6 +1104,7 @@ paths:
       - GridCloudapiVm
     put:
       description: Updates a specific grid:cloudapi:vm object by reference
+      operationId: GridCloudapiVmUpdate
       parameters:
       - description: Reference of the grid:cloudapi:vm object
         explode: false
@@ -1160,6 +1174,7 @@ paths:
     get:
       description: Returns a list of grid:cloudapi:vmaddress objects matching the
         search criteria
+      operationId: GridCloudapiVmaddressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1257,6 +1272,7 @@ paths:
   /grid:cloudapi:vmaddress/{reference}:
     get:
       description: Returns a specific grid:cloudapi:vmaddress object by reference
+      operationId: GridCloudapiVmaddressRead
       parameters:
       - description: Reference of the grid:cloudapi:vmaddress object
         explode: false
@@ -1318,6 +1334,7 @@ paths:
     get:
       description: Returns a list of grid:member:cloudapi objects matching the search
         criteria
+      operationId: GridMemberCloudapiList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1415,6 +1432,7 @@ paths:
   /grid:member:cloudapi/{reference}:
     get:
       description: Returns a specific grid:member:cloudapi object by reference
+      operationId: GridMemberCloudapiRead
       parameters:
       - description: Reference of the grid:member:cloudapi object
         explode: false
@@ -1474,6 +1492,7 @@ paths:
       - GridMemberCloudapi
     put:
       description: Updates a specific grid:member:cloudapi object by reference
+      operationId: GridMemberCloudapiUpdate
       parameters:
       - description: Reference of the grid:member:cloudapi object
         explode: false
@@ -1543,6 +1562,7 @@ paths:
     get:
       description: Returns a list of grid:dhcpproperties objects matching the search
         criteria
+      operationId: GridDhcppropertiesList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1640,6 +1660,7 @@ paths:
   /grid:dhcpproperties/{reference}:
     get:
       description: Returns a specific grid:dhcpproperties object by reference
+      operationId: GridDhcppropertiesRead
       parameters:
       - description: Reference of the grid:dhcpproperties object
         explode: false
@@ -1699,6 +1720,7 @@ paths:
       - GridDhcpproperties
     put:
       description: Updates a specific grid:dhcpproperties object by reference
+      operationId: GridDhcppropertiesUpdate
       parameters:
       - description: Reference of the grid:dhcpproperties object
         explode: false
@@ -1767,6 +1789,7 @@ paths:
     get:
       description: Returns a list of grid:servicerestart:group objects matching the
         search criteria
+      operationId: GridServicerestartGroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1863,6 +1886,7 @@ paths:
       - GridServicerestartGroup
     post:
       description: Creates a new grid:servicerestart:group object
+      operationId: GridServicerestartGroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1923,6 +1947,7 @@ paths:
   /grid:servicerestart:group/{reference}:
     delete:
       description: Deletes a specific grid:servicerestart:group object by reference
+      operationId: GridServicerestartGroupDelete
       parameters:
       - description: Reference of the grid:servicerestart:group object
         explode: false
@@ -1950,6 +1975,7 @@ paths:
       - GridServicerestartGroup
     get:
       description: Returns a specific grid:servicerestart:group object by reference
+      operationId: GridServicerestartGroupRead
       parameters:
       - description: Reference of the grid:servicerestart:group object
         explode: false
@@ -2009,6 +2035,7 @@ paths:
       - GridServicerestartGroup
     put:
       description: Updates a specific grid:servicerestart:group object by reference
+      operationId: GridServicerestartGroupUpdate
       parameters:
       - description: Reference of the grid:servicerestart:group object
         explode: false
@@ -2078,6 +2105,7 @@ paths:
     get:
       description: Returns a list of grid:servicerestart:status objects matching the
         search criteria
+      operationId: GridServicerestartStatusList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2175,6 +2203,7 @@ paths:
   /grid:servicerestart:status/{reference}:
     get:
       description: Returns a specific grid:servicerestart:status object by reference
+      operationId: GridServicerestartStatusRead
       parameters:
       - description: Reference of the grid:servicerestart:status object
         explode: false
@@ -2236,6 +2265,7 @@ paths:
     get:
       description: Returns a list of grid:servicerestart:request objects matching
         the search criteria
+      operationId: GridServicerestartRequestList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2333,6 +2363,7 @@ paths:
   /grid:servicerestart:request/{reference}:
     get:
       description: Returns a specific grid:servicerestart:request object by reference
+      operationId: GridServicerestartRequestRead
       parameters:
       - description: Reference of the grid:servicerestart:request object
         explode: false
@@ -2393,6 +2424,7 @@ paths:
   /mastergrid:
     get:
       description: Returns a list of mastergrid objects matching the search criteria
+      operationId: MastergridList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2490,6 +2522,7 @@ paths:
   /mastergrid/{reference}:
     get:
       description: Returns a specific mastergrid object by reference
+      operationId: MastergridRead
       parameters:
       - description: Reference of the mastergrid object
         explode: false
@@ -2549,6 +2582,7 @@ paths:
       - Mastergrid
     put:
       description: Updates a specific mastergrid object by reference
+      operationId: MastergridUpdate
       parameters:
       - description: Reference of the mastergrid object
         explode: false
@@ -2616,6 +2650,7 @@ paths:
   /grid:dashboard:
     get:
       description: Returns a list of grid:dashboard objects matching the search criteria
+      operationId: GridDashboardList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2713,6 +2748,7 @@ paths:
   /grid:dashboard/{reference}:
     get:
       description: Returns a specific grid:dashboard object by reference
+      operationId: GridDashboardRead
       parameters:
       - description: Reference of the grid:dashboard object
         explode: false
@@ -2772,6 +2808,7 @@ paths:
       - GridDashboard
     put:
       description: Updates a specific grid:dashboard object by reference
+      operationId: GridDashboardUpdate
       parameters:
       - description: Reference of the grid:dashboard object
         explode: false
@@ -2839,6 +2876,7 @@ paths:
   /grid:dns:
     get:
       description: Returns a list of grid:dns objects matching the search criteria
+      operationId: GridDnsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2936,6 +2974,7 @@ paths:
   /grid:dns/{reference}:
     get:
       description: Returns a specific grid:dns object by reference
+      operationId: GridDnsRead
       parameters:
       - description: Reference of the grid:dns object
         explode: false
@@ -2995,6 +3034,7 @@ paths:
       - GridDns
     put:
       description: Updates a specific grid:dns object by reference
+      operationId: GridDnsUpdate
       parameters:
       - description: Reference of the grid:dns object
         explode: false
@@ -3063,6 +3103,7 @@ paths:
     get:
       description: Returns a list of grid:filedistribution objects matching the search
         criteria
+      operationId: GridFiledistributionList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3160,6 +3201,7 @@ paths:
   /grid:filedistribution/{reference}:
     get:
       description: Returns a specific grid:filedistribution object by reference
+      operationId: GridFiledistributionRead
       parameters:
       - description: Reference of the grid:filedistribution object
         explode: false
@@ -3219,6 +3261,7 @@ paths:
       - GridFiledistribution
     put:
       description: Updates a specific grid:filedistribution object by reference
+      operationId: GridFiledistributionUpdate
       parameters:
       - description: Reference of the grid:filedistribution object
         explode: false
@@ -3287,6 +3330,7 @@ paths:
     get:
       description: Returns a list of grid:threatprotection objects matching the search
         criteria
+      operationId: GridThreatprotectionList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3384,6 +3428,7 @@ paths:
   /grid:threatprotection/{reference}:
     get:
       description: Returns a specific grid:threatprotection object by reference
+      operationId: GridThreatprotectionRead
       parameters:
       - description: Reference of the grid:threatprotection object
         explode: false
@@ -3443,6 +3488,7 @@ paths:
       - GridThreatprotection
     put:
       description: Updates a specific grid:threatprotection object by reference
+      operationId: GridThreatprotectionUpdate
       parameters:
       - description: Reference of the grid:threatprotection object
         explode: false
@@ -3511,6 +3557,7 @@ paths:
     get:
       description: Returns a list of grid:threatinsight objects matching the search
         criteria
+      operationId: GridThreatinsightList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3608,6 +3655,7 @@ paths:
   /grid:threatinsight/{reference}:
     get:
       description: Returns a specific grid:threatinsight object by reference
+      operationId: GridThreatinsightRead
       parameters:
       - description: Reference of the grid:threatinsight object
         explode: false
@@ -3667,6 +3715,7 @@ paths:
       - GridThreatinsight
     put:
       description: Updates a specific grid:threatinsight object by reference
+      operationId: GridThreatinsightUpdate
       parameters:
       - description: Reference of the grid:threatinsight object
         explode: false
@@ -3735,6 +3784,7 @@ paths:
     get:
       description: Returns a list of grid:license_pool objects matching the search
         criteria
+      operationId: GridLicensePoolList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3832,6 +3882,7 @@ paths:
   /grid:license_pool/{reference}:
     get:
       description: Returns a specific grid:license_pool object by reference
+      operationId: GridLicensePoolRead
       parameters:
       - description: Reference of the grid:license_pool object
         explode: false
@@ -3893,6 +3944,7 @@ paths:
     get:
       description: Returns a list of grid:x509certificate objects matching the search
         criteria
+      operationId: GridX509certificateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3990,6 +4042,7 @@ paths:
   /grid:x509certificate/{reference}:
     get:
       description: Returns a specific grid:x509certificate object by reference
+      operationId: GridX509certificateRead
       parameters:
       - description: Reference of the grid:x509certificate object
         explode: false
@@ -4050,6 +4103,7 @@ paths:
   /captiveportal:
     get:
       description: Returns a list of captiveportal objects matching the search criteria
+      operationId: CaptiveportalList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4147,6 +4201,7 @@ paths:
   /captiveportal/{reference}:
     get:
       description: Returns a specific captiveportal object by reference
+      operationId: CaptiveportalRead
       parameters:
       - description: Reference of the captiveportal object
         explode: false
@@ -4206,6 +4261,7 @@ paths:
       - Captiveportal
     put:
       description: Updates a specific captiveportal object by reference
+      operationId: CaptiveportalUpdate
       parameters:
       - description: Reference of the captiveportal object
         explode: false
@@ -4274,6 +4330,7 @@ paths:
     get:
       description: Returns a list of grid:license_pool_container objects matching
         the search criteria
+      operationId: GridLicensePoolContainerList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4371,6 +4428,7 @@ paths:
   /grid:license_pool_container/{reference}:
     get:
       description: Returns a specific grid:license_pool_container object by reference
+      operationId: GridLicensePoolContainerRead
       parameters:
       - description: Reference of the grid:license_pool_container object
         explode: false
@@ -4432,6 +4490,7 @@ paths:
     get:
       description: Returns a list of grid:maxminddbinfo objects matching the search
         criteria
+      operationId: GridMaxminddbinfoList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4529,6 +4588,7 @@ paths:
   /grid:maxminddbinfo/{reference}:
     get:
       description: Returns a specific grid:maxminddbinfo object by reference
+      operationId: GridMaxminddbinfoRead
       parameters:
       - description: Reference of the grid:maxminddbinfo object
         explode: false
@@ -4590,6 +4650,7 @@ paths:
     get:
       description: Returns a list of grid:servicerestart:group:order objects matching
         the search criteria
+      operationId: GridServicerestartGroupOrderList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4686,6 +4747,7 @@ paths:
       - GridServicerestartGroupOrder
     post:
       description: Creates a new grid:servicerestart:group:order object
+      operationId: GridServicerestartGroupOrderCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4745,6 +4807,7 @@ paths:
   /grid:servicerestart:group:order/{reference}:
     get:
       description: Returns a specific grid:servicerestart:group:order object by reference
+      operationId: GridServicerestartGroupOrderRead
       parameters:
       - description: Reference of the grid:servicerestart:group:order object
         explode: false
@@ -4804,6 +4867,7 @@ paths:
       - GridServicerestartGroupOrder
     put:
       description: Updates a specific grid:servicerestart:group:order object by reference
+      operationId: GridServicerestartGroupOrderUpdate
       parameters:
       - description: Reference of the grid:servicerestart:group:order object
         explode: false
@@ -4872,6 +4936,7 @@ paths:
     get:
       description: Returns a list of grid:servicerestart:request:changedobject objects
         matching the search criteria
+      operationId: GridServicerestartRequestChangedobjectList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4970,6 +5035,7 @@ paths:
     get:
       description: Returns a specific grid:servicerestart:request:changedobject object
         by reference
+      operationId: GridServicerestartRequestChangedobjectRead
       parameters:
       - description: Reference of the grid:servicerestart:request:changedobject object
         explode: false
@@ -5031,6 +5097,7 @@ paths:
     get:
       description: Returns a list of restartservicestatus objects matching the search
         criteria
+      operationId: RestartservicestatusList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5128,6 +5195,7 @@ paths:
   /restartservicestatus/{reference}:
     get:
       description: Returns a specific restartservicestatus object by reference
+      operationId: RestartservicestatusRead
       parameters:
       - description: Reference of the restartservicestatus object
         explode: false
@@ -5188,6 +5256,7 @@ paths:
   /natgroup:
     get:
       description: Returns a list of natgroup objects matching the search criteria
+      operationId: NatgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5284,6 +5353,7 @@ paths:
       - Natgroup
     post:
       description: Creates a new natgroup object
+      operationId: NatgroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5343,6 +5413,7 @@ paths:
   /natgroup/{reference}:
     delete:
       description: Deletes a specific natgroup object by reference
+      operationId: NatgroupDelete
       parameters:
       - description: Reference of the natgroup object
         explode: false
@@ -5370,6 +5441,7 @@ paths:
       - Natgroup
     get:
       description: Returns a specific natgroup object by reference
+      operationId: NatgroupRead
       parameters:
       - description: Reference of the natgroup object
         explode: false
@@ -5429,6 +5501,7 @@ paths:
       - Natgroup
     put:
       description: Updates a specific natgroup object by reference
+      operationId: NatgroupUpdate
       parameters:
       - description: Reference of the natgroup object
         explode: false
@@ -5496,6 +5569,7 @@ paths:
   /member:
     get:
       description: Returns a list of member objects matching the search criteria
+      operationId: MemberList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5592,6 +5666,7 @@ paths:
       - Member
     post:
       description: Creates a new member object
+      operationId: MemberCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5652,6 +5727,7 @@ paths:
   /member/{reference}:
     delete:
       description: Deletes a specific member object by reference
+      operationId: MemberDelete
       parameters:
       - description: Reference of the member object
         explode: false
@@ -5679,6 +5755,7 @@ paths:
       - Member
     get:
       description: Returns a specific member object by reference
+      operationId: MemberRead
       parameters:
       - description: Reference of the member object
         explode: false
@@ -5738,6 +5815,7 @@ paths:
       - Member
     put:
       description: Updates a specific member object by reference
+      operationId: MemberUpdate
       parameters:
       - description: Reference of the member object
         explode: false
@@ -5807,6 +5885,7 @@ paths:
     get:
       description: Returns a list of member:dhcpproperties objects matching the search
         criteria
+      operationId: MemberDhcppropertiesList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5904,6 +5983,7 @@ paths:
   /member:dhcpproperties/{reference}:
     get:
       description: Returns a specific member:dhcpproperties object by reference
+      operationId: MemberDhcppropertiesRead
       parameters:
       - description: Reference of the member:dhcpproperties object
         explode: false
@@ -5963,6 +6043,7 @@ paths:
       - MemberDhcpproperties
     put:
       description: Updates a specific member:dhcpproperties object by reference
+      operationId: MemberDhcppropertiesUpdate
       parameters:
       - description: Reference of the member:dhcpproperties object
         explode: false
@@ -6031,6 +6112,7 @@ paths:
   /member:dns:
     get:
       description: Returns a list of member:dns objects matching the search criteria
+      operationId: MemberDnsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6128,6 +6210,7 @@ paths:
   /member:dns/{reference}:
     get:
       description: Returns a specific member:dns object by reference
+      operationId: MemberDnsRead
       parameters:
       - description: Reference of the member:dns object
         explode: false
@@ -6187,6 +6270,7 @@ paths:
       - MemberDns
     put:
       description: Updates a specific member:dns object by reference
+      operationId: MemberDnsUpdate
       parameters:
       - description: Reference of the member:dns object
         explode: false
@@ -6256,6 +6340,7 @@ paths:
     get:
       description: Returns a list of member:filedistribution objects matching the
         search criteria
+      operationId: MemberFiledistributionList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6353,6 +6438,7 @@ paths:
   /member:filedistribution/{reference}:
     get:
       description: Returns a specific member:filedistribution object by reference
+      operationId: MemberFiledistributionRead
       parameters:
       - description: Reference of the member:filedistribution object
         explode: false
@@ -6412,6 +6498,7 @@ paths:
       - MemberFiledistribution
     put:
       description: Updates a specific member:filedistribution object by reference
+      operationId: MemberFiledistributionUpdate
       parameters:
       - description: Reference of the member:filedistribution object
         explode: false
@@ -6479,6 +6566,7 @@ paths:
   /member:license:
     get:
       description: Returns a list of member:license objects matching the search criteria
+      operationId: MemberLicenseList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6576,6 +6664,7 @@ paths:
   /member:license/{reference}:
     delete:
       description: Deletes a specific member:license object by reference
+      operationId: MemberLicenseDelete
       parameters:
       - description: Reference of the member:license object
         explode: false
@@ -6603,6 +6692,7 @@ paths:
       - MemberLicense
     get:
       description: Returns a specific member:license object by reference
+      operationId: MemberLicenseRead
       parameters:
       - description: Reference of the member:license object
         explode: false
@@ -6664,6 +6754,7 @@ paths:
     get:
       description: Returns a list of member:threatprotection objects matching the
         search criteria
+      operationId: MemberThreatprotectionList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6761,6 +6852,7 @@ paths:
   /member:threatprotection/{reference}:
     get:
       description: Returns a specific member:threatprotection object by reference
+      operationId: MemberThreatprotectionRead
       parameters:
       - description: Reference of the member:threatprotection object
         explode: false
@@ -6820,6 +6912,7 @@ paths:
       - MemberThreatprotection
     put:
       description: Updates a specific member:threatprotection object by reference
+      operationId: MemberThreatprotectionUpdate
       parameters:
       - description: Reference of the member:threatprotection object
         explode: false
@@ -6888,6 +6981,7 @@ paths:
     get:
       description: Returns a list of member:parentalcontrol objects matching the search
         criteria
+      operationId: MemberParentalcontrolList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6985,6 +7079,7 @@ paths:
   /member:parentalcontrol/{reference}:
     get:
       description: Returns a specific member:parentalcontrol object by reference
+      operationId: MemberParentalcontrolRead
       parameters:
       - description: Reference of the member:parentalcontrol object
         explode: false
@@ -7044,6 +7139,7 @@ paths:
       - MemberParentalcontrol
     put:
       description: Updates a specific member:parentalcontrol object by reference
+      operationId: MemberParentalcontrolUpdate
       parameters:
       - description: Reference of the member:parentalcontrol object
         explode: false
@@ -7112,6 +7208,7 @@ paths:
     get:
       description: Returns a list of member:threatinsight objects matching the search
         criteria
+      operationId: MemberThreatinsightList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7209,6 +7306,7 @@ paths:
   /member:threatinsight/{reference}:
     get:
       description: Returns a specific member:threatinsight object by reference
+      operationId: MemberThreatinsightRead
       parameters:
       - description: Reference of the member:threatinsight object
         explode: false
@@ -7268,6 +7366,7 @@ paths:
       - MemberThreatinsight
     put:
       description: Updates a specific member:threatinsight object by reference
+      operationId: MemberThreatinsightUpdate
       parameters:
       - description: Reference of the member:threatinsight object
         explode: false
@@ -7335,6 +7434,7 @@ paths:
   /membercloudsync:
     get:
       description: Returns a list of membercloudsync objects matching the search criteria
+      operationId: MembercloudsyncList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7432,6 +7532,7 @@ paths:
   /membercloudsync/{reference}:
     get:
       description: Returns a specific membercloudsync object by reference
+      operationId: MembercloudsyncRead
       parameters:
       - description: Reference of the membercloudsync object
         explode: false
@@ -7491,6 +7592,7 @@ paths:
       - Membercloudsync
     put:
       description: Updates a specific membercloudsync object by reference
+      operationId: MembercloudsyncUpdate
       parameters:
       - description: Reference of the membercloudsync object
         explode: false
@@ -7558,6 +7660,7 @@ paths:
   /memberdfp:
     get:
       description: Returns a list of memberdfp objects matching the search criteria
+      operationId: MemberdfpList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7654,6 +7757,7 @@ paths:
       - Memberdfp
     post:
       description: Creates a new memberdfp object
+      operationId: MemberdfpCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7714,6 +7818,7 @@ paths:
   /memberdfp/{reference}:
     delete:
       description: Deletes a specific memberdfp object by reference
+      operationId: MemberdfpDelete
       parameters:
       - description: Reference of the memberdfp object
         explode: false
@@ -7741,6 +7846,7 @@ paths:
       - Memberdfp
     get:
       description: Returns a specific memberdfp object by reference
+      operationId: MemberdfpRead
       parameters:
       - description: Reference of the memberdfp object
         explode: false
@@ -7800,6 +7906,7 @@ paths:
       - Memberdfp
     put:
       description: Updates a specific memberdfp object by reference
+      operationId: MemberdfpUpdate
       parameters:
       - description: Reference of the memberdfp object
         explode: false
@@ -7868,6 +7975,7 @@ paths:
   /gmcgroup:
     get:
       description: Returns a list of gmcgroup objects matching the search criteria
+      operationId: GmcgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7964,6 +8072,7 @@ paths:
       - Gmcgroup
     post:
       description: Creates a new gmcgroup object
+      operationId: GmcgroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8023,6 +8132,7 @@ paths:
   /gmcgroup/{reference}:
     delete:
       description: Deletes a specific gmcgroup object by reference
+      operationId: GmcgroupDelete
       parameters:
       - description: Reference of the gmcgroup object
         explode: false
@@ -8050,6 +8160,7 @@ paths:
       - Gmcgroup
     get:
       description: Returns a specific gmcgroup object by reference
+      operationId: GmcgroupRead
       parameters:
       - description: Reference of the gmcgroup object
         explode: false
@@ -8109,6 +8220,7 @@ paths:
       - Gmcgroup
     put:
       description: Updates a specific gmcgroup object by reference
+      operationId: GmcgroupUpdate
       parameters:
       - description: Reference of the gmcgroup object
         explode: false
@@ -8176,6 +8288,7 @@ paths:
   /gmcschedule:
     get:
       description: Returns a list of gmcschedule objects matching the search criteria
+      operationId: GmcscheduleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8273,6 +8386,7 @@ paths:
   /gmcschedule/{reference}:
     get:
       description: Returns a specific gmcschedule object by reference
+      operationId: GmcscheduleRead
       parameters:
       - description: Reference of the gmcschedule object
         explode: false
@@ -8332,6 +8446,7 @@ paths:
       - Gmcschedule
     put:
       description: Updates a specific gmcschedule object by reference
+      operationId: GmcscheduleUpdate
       parameters:
       - description: Reference of the gmcschedule object
         explode: false
@@ -8400,6 +8515,7 @@ paths:
     get:
       description: Returns a list of distributionschedule objects matching the search
         criteria
+      operationId: DistributionscheduleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8497,6 +8613,7 @@ paths:
   /distributionschedule/{reference}:
     get:
       description: Returns a specific distributionschedule object by reference
+      operationId: DistributionscheduleRead
       parameters:
       - description: Reference of the distributionschedule object
         explode: false
@@ -8556,6 +8673,7 @@ paths:
       - Distributionschedule
     put:
       description: Updates a specific distributionschedule object by reference
+      operationId: DistributionscheduleUpdate
       parameters:
       - description: Reference of the distributionschedule object
         explode: false
@@ -8623,6 +8741,7 @@ paths:
   /upgradegroup:
     get:
       description: Returns a list of upgradegroup objects matching the search criteria
+      operationId: UpgradegroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8719,6 +8838,7 @@ paths:
       - Upgradegroup
     post:
       description: Creates a new upgradegroup object
+      operationId: UpgradegroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -8778,6 +8898,7 @@ paths:
   /upgradegroup/{reference}:
     delete:
       description: Deletes a specific upgradegroup object by reference
+      operationId: UpgradegroupDelete
       parameters:
       - description: Reference of the upgradegroup object
         explode: false
@@ -8805,6 +8926,7 @@ paths:
       - Upgradegroup
     get:
       description: Returns a specific upgradegroup object by reference
+      operationId: UpgradegroupRead
       parameters:
       - description: Reference of the upgradegroup object
         explode: false
@@ -8864,6 +8986,7 @@ paths:
       - Upgradegroup
     put:
       description: Updates a specific upgradegroup object by reference
+      operationId: UpgradegroupUpdate
       parameters:
       - description: Reference of the upgradegroup object
         explode: false
@@ -8931,6 +9054,7 @@ paths:
   /upgradeschedule:
     get:
       description: Returns a list of upgradeschedule objects matching the search criteria
+      operationId: UpgradescheduleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9028,6 +9152,7 @@ paths:
   /upgradeschedule/{reference}:
     get:
       description: Returns a specific upgradeschedule object by reference
+      operationId: UpgradescheduleRead
       parameters:
       - description: Reference of the upgradeschedule object
         explode: false
@@ -9087,6 +9212,7 @@ paths:
       - Upgradeschedule
     put:
       description: Updates a specific upgradeschedule object by reference
+      operationId: UpgradescheduleUpdate
       parameters:
       - description: Reference of the upgradeschedule object
         explode: false
@@ -9154,6 +9280,7 @@ paths:
   /upgradestatus:
     get:
       description: Returns a list of upgradestatus objects matching the search criteria
+      operationId: UpgradestatusList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9251,6 +9378,7 @@ paths:
   /upgradestatus/{reference}:
     get:
       description: Returns a specific upgradestatus object by reference
+      operationId: UpgradestatusRead
       parameters:
       - description: Reference of the upgradestatus object
         explode: false
@@ -9310,6 +9438,7 @@ paths:
       - Upgradestatus
     put:
       description: Updates a specific upgradestatus object by reference
+      operationId: UpgradestatusUpdate
       parameters:
       - description: Reference of the upgradestatus object
         explode: false
@@ -9378,6 +9507,7 @@ paths:
     get:
       description: Returns a list of license:gridwide objects matching the search
         criteria
+      operationId: LicenseGridwideList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9475,6 +9605,7 @@ paths:
   /license:gridwide/{reference}:
     delete:
       description: Deletes a specific license:gridwide object by reference
+      operationId: LicenseGridwideDelete
       parameters:
       - description: Reference of the license:gridwide object
         explode: false
@@ -9502,6 +9633,7 @@ paths:
       - LicenseGridwide
     get:
       description: Returns a specific license:gridwide object by reference
+      operationId: LicenseGridwideRead
       parameters:
       - description: Reference of the license:gridwide object
         explode: false
@@ -9563,6 +9695,7 @@ paths:
     get:
       description: Returns a list of extensibleattributedef objects matching the search
         criteria
+      operationId: ExtensibleattributedefList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9659,6 +9792,7 @@ paths:
       - Extensibleattributedef
     post:
       description: Creates a new extensibleattributedef object
+      operationId: ExtensibleattributedefCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -9718,6 +9852,7 @@ paths:
   /extensibleattributedef/{reference}:
     delete:
       description: Deletes a specific extensibleattributedef object by reference
+      operationId: ExtensibleattributedefDelete
       parameters:
       - description: Reference of the extensibleattributedef object
         explode: false
@@ -9745,6 +9880,7 @@ paths:
       - Extensibleattributedef
     get:
       description: Returns a specific extensibleattributedef object by reference
+      operationId: ExtensibleattributedefRead
       parameters:
       - description: Reference of the extensibleattributedef object
         explode: false
@@ -9804,6 +9940,7 @@ paths:
       - Extensibleattributedef
     put:
       description: Updates a specific extensibleattributedef object by reference
+      operationId: ExtensibleattributedefUpdate
       parameters:
       - description: Reference of the extensibleattributedef object
         explode: false
@@ -14327,6 +14464,7 @@ components:
             \ lease scavenging, set the parameter to -1. The minimum positive value\
             \ must be greater than 86400 seconds (1 day)."
           example: 1
+          format: int64
           type: integer
         log_lease_events:
           description: This value specifies whether the Grid DHCP members log lease
@@ -14643,6 +14781,7 @@ components:
           description: The duration of timeout for a restart group. The value "-1"
             means infinite.
           example: 1
+          format: int64
           type: integer
         restart_offline:
           description: Determines whether the Grid should try to restart offline member.
@@ -15129,6 +15268,7 @@ components:
         order:
           description: The order to restart.
           example: 1
+          format: int64
           readOnly: true
           type: integer
         result:
@@ -17915,6 +18055,7 @@ components:
           description: The duration of timeout for a restart group. The value "-1"
             means infinite.
           example: 1
+          format: int64
           type: integer
         restart_offline:
           description: Determines whether the Grid should try to restart offline member.
@@ -24225,6 +24366,7 @@ components:
             \ lease scavenging, set the parameter to -1. The minimum positive value\
             \ must be greater than 86400 seconds (1 day)."
           example: 1
+          format: int64
           type: integer
         log_lease_events:
           description: This value specifies whether the grid member logs lease events.
@@ -28917,11 +29059,13 @@ components:
         steps_completed:
           description: The number of steps done.
           example: 1
+          format: int64
           readOnly: true
           type: integer
         steps_total:
           description: Total number steps in the upgrade process.
           example: 1
+          format: int64
           readOnly: true
           type: integer
         subelement_type:
@@ -28939,6 +29083,7 @@ components:
         subelements_completed:
           description: Number of subelements that have accomplished an upgrade.
           example: 1
+          format: int64
           readOnly: true
           type: integer
         subelements_status:
@@ -28954,6 +29099,7 @@ components:
           description: "Number of subelements number in a certain group, virtual node,\
             \ or the Grid."
           example: 1
+          format: int64
           readOnly: true
           type: integer
         type:

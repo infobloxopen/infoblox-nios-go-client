@@ -23,110 +23,110 @@ import (
 
 type DbsnapshotAPI interface {
 	/*
-		Get Retrieve dbsnapshot objects
+		List Retrieve dbsnapshot objects
 
 		Returns a list of dbsnapshot objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DbsnapshotAPIGetRequest
+		@return DbsnapshotAPIListRequest
 	*/
-	Get(ctx context.Context) DbsnapshotAPIGetRequest
+	List(ctx context.Context) DbsnapshotAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDbsnapshotResponse
-	GetExecute(r DbsnapshotAPIGetRequest) (*ListDbsnapshotResponse, *http.Response, error)
+	ListExecute(r DbsnapshotAPIListRequest) (*ListDbsnapshotResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific dbsnapshot object
+		Read Get a specific dbsnapshot object
 
 		Returns a specific dbsnapshot object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dbsnapshot object
-		@return DbsnapshotAPIReferenceGetRequest
+		@return DbsnapshotAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) DbsnapshotAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) DbsnapshotAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDbsnapshotResponse
-	ReferenceGetExecute(r DbsnapshotAPIReferenceGetRequest) (*GetDbsnapshotResponse, *http.Response, error)
+	ReadExecute(r DbsnapshotAPIReadRequest) (*GetDbsnapshotResponse, *http.Response, error)
 }
 
 // DbsnapshotAPIService DbsnapshotAPI service
 type DbsnapshotAPIService internal.Service
 
-type DbsnapshotAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     DbsnapshotAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DbsnapshotAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DbsnapshotAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r DbsnapshotAPIGetRequest) ReturnFields(returnFields string) DbsnapshotAPIGetRequest {
+func (r DbsnapshotAPIListRequest) ReturnFields(returnFields string) DbsnapshotAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DbsnapshotAPIGetRequest) ReturnFields2(returnFields2 string) DbsnapshotAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DbsnapshotAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DbsnapshotAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DbsnapshotAPIGetRequest) MaxResults(maxResults int32) DbsnapshotAPIGetRequest {
+func (r DbsnapshotAPIListRequest) MaxResults(maxResults int32) DbsnapshotAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DbsnapshotAPIGetRequest) ReturnAsObject(returnAsObject int32) DbsnapshotAPIGetRequest {
+func (r DbsnapshotAPIListRequest) ReturnAsObject(returnAsObject int32) DbsnapshotAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DbsnapshotAPIGetRequest) Paging(paging int32) DbsnapshotAPIGetRequest {
+func (r DbsnapshotAPIListRequest) Paging(paging int32) DbsnapshotAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DbsnapshotAPIGetRequest) PageId(pageId string) DbsnapshotAPIGetRequest {
+func (r DbsnapshotAPIListRequest) PageId(pageId string) DbsnapshotAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DbsnapshotAPIGetRequest) Filters(filters map[string]interface{}) DbsnapshotAPIGetRequest {
+func (r DbsnapshotAPIListRequest) Filters(filters map[string]interface{}) DbsnapshotAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DbsnapshotAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DbsnapshotAPIGetRequest {
+func (r DbsnapshotAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DbsnapshotAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DbsnapshotAPIGetRequest) Execute() (*ListDbsnapshotResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r DbsnapshotAPIListRequest) Execute() (*ListDbsnapshotResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve dbsnapshot objects
+List Retrieve dbsnapshot objects
 
 Returns a list of dbsnapshot objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DbsnapshotAPIGetRequest
+	@return DbsnapshotAPIListRequest
 */
-func (a *DbsnapshotAPIService) Get(ctx context.Context) DbsnapshotAPIGetRequest {
-	return DbsnapshotAPIGetRequest{
+func (a *DbsnapshotAPIService) List(ctx context.Context) DbsnapshotAPIListRequest {
+	return DbsnapshotAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *DbsnapshotAPIService) Get(ctx context.Context) DbsnapshotAPIGetRequest 
 // Execute executes the request
 //
 //	@return ListDbsnapshotResponse
-func (a *DbsnapshotAPIService) GetExecute(r DbsnapshotAPIGetRequest) (*ListDbsnapshotResponse, *http.Response, error) {
+func (a *DbsnapshotAPIService) ListExecute(r DbsnapshotAPIListRequest) (*ListDbsnapshotResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *DbsnapshotAPIService) GetExecute(r DbsnapshotAPIGetRequest) (*ListDbsna
 		localVarReturnValue *ListDbsnapshotResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DbsnapshotAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DbsnapshotAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *DbsnapshotAPIService) GetExecute(r DbsnapshotAPIGetRequest) (*ListDbsna
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *DbsnapshotAPIService) GetExecute(r DbsnapshotAPIGetRequest) (*ListDbsna
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DbsnapshotAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DbsnapshotAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DbsnapshotAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DbsnapshotAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DbsnapshotAPIReferenceGetRequest) ReturnFields(returnFields string) DbsnapshotAPIReferenceGetRequest {
+func (r DbsnapshotAPIReadRequest) ReturnFields(returnFields string) DbsnapshotAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DbsnapshotAPIReferenceGetRequest) ReturnFields2(returnFields2 string) DbsnapshotAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DbsnapshotAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DbsnapshotAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DbsnapshotAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) DbsnapshotAPIReferenceGetRequest {
+func (r DbsnapshotAPIReadRequest) ReturnAsObject(returnAsObject int32) DbsnapshotAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DbsnapshotAPIReferenceGetRequest) Execute() (*GetDbsnapshotResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r DbsnapshotAPIReadRequest) Execute() (*GetDbsnapshotResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific dbsnapshot object
+Read Get a specific dbsnapshot object
 
 Returns a specific dbsnapshot object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dbsnapshot object
-	@return DbsnapshotAPIReferenceGetRequest
+	@return DbsnapshotAPIReadRequest
 */
-func (a *DbsnapshotAPIService) ReferenceGet(ctx context.Context, reference string) DbsnapshotAPIReferenceGetRequest {
-	return DbsnapshotAPIReferenceGetRequest{
+func (a *DbsnapshotAPIService) Read(ctx context.Context, reference string) DbsnapshotAPIReadRequest {
+	return DbsnapshotAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *DbsnapshotAPIService) ReferenceGet(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return GetDbsnapshotResponse
-func (a *DbsnapshotAPIService) ReferenceGetExecute(r DbsnapshotAPIReferenceGetRequest) (*GetDbsnapshotResponse, *http.Response, error) {
+func (a *DbsnapshotAPIService) ReadExecute(r DbsnapshotAPIReadRequest) (*GetDbsnapshotResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *DbsnapshotAPIService) ReferenceGetExecute(r DbsnapshotAPIReferenceGetRe
 		localVarReturnValue *GetDbsnapshotResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DbsnapshotAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DbsnapshotAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *DbsnapshotAPIService) ReferenceGetExecute(r DbsnapshotAPIReferenceGetRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

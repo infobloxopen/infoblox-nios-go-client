@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](MsserverAPI.md#Get) | **Get** /msserver | Retrieve msserver objects
-[**Post**](MsserverAPI.md#Post) | **Post** /msserver | Create a msserver object
-[**ReferenceDelete**](MsserverAPI.md#ReferenceDelete) | **Delete** /msserver/{reference} | Delete a msserver object
-[**ReferenceGet**](MsserverAPI.md#ReferenceGet) | **Get** /msserver/{reference} | Get a specific msserver object
-[**ReferencePut**](MsserverAPI.md#ReferencePut) | **Put** /msserver/{reference} | Update a msserver object
+[**Create**](MsserverAPI.md#Create) | **Post** /msserver | Create a msserver object
+[**Delete**](MsserverAPI.md#Delete) | **Delete** /msserver/{reference} | Delete a msserver object
+[**List**](MsserverAPI.md#List) | **Get** /msserver | Retrieve msserver objects
+[**Read**](MsserverAPI.md#Read) | **Get** /msserver/{reference} | Get a specific msserver object
+[**Update**](MsserverAPI.md#Update) | **Put** /msserver/{reference} | Update a msserver object
 
 
 
-## Get
+## Create
 
-> ListMsserverResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateMsserverResponse Create(ctx).Msserver(msserver).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a msserver object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/microsoftserver"
+)
+
+func main() {
+	msserver := *microsoftserver.NewMsserver() // Msserver | Object data to create
+
+	apiClient := microsoftserver.NewAPIClient()
+	resp, r, err := apiClient.MsserverAPI.Create(context.Background()).Msserver(msserver).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateMsserverResponse
+	fmt.Fprintf(os.Stdout, "Response from `MsserverAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `MsserverAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**msserver** | [**Msserver**](Msserver.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateMsserverResponse**](CreateMsserverResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a msserver object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/microsoftserver"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the msserver object
+
+	apiClient := microsoftserver.NewAPIClient()
+	r, err := apiClient.MsserverAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the msserver object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `MsserverAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListMsserverResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve msserver objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := microsoftserver.NewAPIClient()
-	resp, r, err := apiClient.MsserverAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.MsserverAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListMsserverResponse
-	fmt.Fprintf(os.Stdout, "Response from `MsserverAPI.Get`: %v\n", resp)
+	// response from `List`: ListMsserverResponse
+	fmt.Fprintf(os.Stdout, "Response from `MsserverAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MsserverAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MsserverAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateMsserverResponse Post(ctx).Msserver(msserver).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a msserver object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/microsoftserver"
-)
-
-func main() {
-	msserver := *microsoftserver.NewMsserver() // Msserver | Object data to create
-
-	apiClient := microsoftserver.NewAPIClient()
-	resp, r, err := apiClient.MsserverAPI.Post(context.Background()).Msserver(msserver).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateMsserverResponse
-	fmt.Fprintf(os.Stdout, "Response from `MsserverAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `MsserverAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**msserver** | [**Msserver**](Msserver.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateMsserverResponse**](CreateMsserverResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a msserver object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/microsoftserver"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the msserver object
-
-	apiClient := microsoftserver.NewAPIClient()
-	r, err := apiClient.MsserverAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the msserver object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `MsserverAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetMsserverResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMsserverResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific msserver object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the msserver object
 
 	apiClient := microsoftserver.NewAPIClient()
-	resp, r, err := apiClient.MsserverAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MsserverAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetMsserverResponse
-	fmt.Fprintf(os.Stdout, "Response from `MsserverAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetMsserverResponse
+	fmt.Fprintf(os.Stdout, "Response from `MsserverAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MsserverAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MsserverAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateMsserverResponse ReferencePut(ctx, reference).Msserver(msserver).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateMsserverResponse Update(ctx, reference).Msserver(msserver).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a msserver object
 
@@ -318,13 +318,13 @@ func main() {
 	msserver := *microsoftserver.NewMsserver() // Msserver | Object data to update
 
 	apiClient := microsoftserver.NewAPIClient()
-	resp, r, err := apiClient.MsserverAPI.ReferencePut(context.Background(), reference).Msserver(msserver).Execute()
+	resp, r, err := apiClient.MsserverAPI.Update(context.Background(), reference).Msserver(msserver).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateMsserverResponse
-	fmt.Fprintf(os.Stdout, "Response from `MsserverAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateMsserverResponse
+	fmt.Fprintf(os.Stdout, "Response from `MsserverAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MsserverAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MsserverAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **msserver** | [**Msserver**](Msserver.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

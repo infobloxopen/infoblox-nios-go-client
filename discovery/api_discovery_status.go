@@ -23,110 +23,110 @@ import (
 
 type DiscoveryStatusAPI interface {
 	/*
-		DiscoverystatusGet Retrieve discovery:status objects
+		List Retrieve discovery:status objects
 
 		Returns a list of discovery:status objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoveryStatusAPIDiscoverystatusGetRequest
+		@return DiscoveryStatusAPIListRequest
 	*/
-	DiscoverystatusGet(ctx context.Context) DiscoveryStatusAPIDiscoverystatusGetRequest
+	List(ctx context.Context) DiscoveryStatusAPIListRequest
 
-	// DiscoverystatusGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDiscoveryStatusResponse
-	DiscoverystatusGetExecute(r DiscoveryStatusAPIDiscoverystatusGetRequest) (*ListDiscoveryStatusResponse, *http.Response, error)
+	ListExecute(r DiscoveryStatusAPIListRequest) (*ListDiscoveryStatusResponse, *http.Response, error)
 	/*
-		DiscoverystatusReferenceGet Get a specific discovery:status object
+		Read Get a specific discovery:status object
 
 		Returns a specific discovery:status object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:status object
-		@return DiscoveryStatusAPIDiscoverystatusReferenceGetRequest
+		@return DiscoveryStatusAPIReadRequest
 	*/
-	DiscoverystatusReferenceGet(ctx context.Context, reference string) DiscoveryStatusAPIDiscoverystatusReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoveryStatusAPIReadRequest
 
-	// DiscoverystatusReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoveryStatusResponse
-	DiscoverystatusReferenceGetExecute(r DiscoveryStatusAPIDiscoverystatusReferenceGetRequest) (*GetDiscoveryStatusResponse, *http.Response, error)
+	ReadExecute(r DiscoveryStatusAPIReadRequest) (*GetDiscoveryStatusResponse, *http.Response, error)
 }
 
 // DiscoveryStatusAPIService DiscoveryStatusAPI service
 type DiscoveryStatusAPIService internal.Service
 
-type DiscoveryStatusAPIDiscoverystatusGetRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryStatusAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DiscoveryStatusAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DiscoveryStatusAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryStatusAPIDiscoverystatusGetRequest) ReturnFields(returnFields string) DiscoveryStatusAPIDiscoverystatusGetRequest {
+func (r DiscoveryStatusAPIListRequest) ReturnFields(returnFields string) DiscoveryStatusAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryStatusAPIDiscoverystatusGetRequest) ReturnFields2(returnFields2 string) DiscoveryStatusAPIDiscoverystatusGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryStatusAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryStatusAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoveryStatusAPIDiscoverystatusGetRequest) MaxResults(maxResults int32) DiscoveryStatusAPIDiscoverystatusGetRequest {
+func (r DiscoveryStatusAPIListRequest) MaxResults(maxResults int32) DiscoveryStatusAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryStatusAPIDiscoverystatusGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryStatusAPIDiscoverystatusGetRequest {
+func (r DiscoveryStatusAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoveryStatusAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoveryStatusAPIDiscoverystatusGetRequest) Paging(paging int32) DiscoveryStatusAPIDiscoverystatusGetRequest {
+func (r DiscoveryStatusAPIListRequest) Paging(paging int32) DiscoveryStatusAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoveryStatusAPIDiscoverystatusGetRequest) PageId(pageId string) DiscoveryStatusAPIDiscoverystatusGetRequest {
+func (r DiscoveryStatusAPIListRequest) PageId(pageId string) DiscoveryStatusAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoveryStatusAPIDiscoverystatusGetRequest) Filters(filters map[string]interface{}) DiscoveryStatusAPIDiscoverystatusGetRequest {
+func (r DiscoveryStatusAPIListRequest) Filters(filters map[string]interface{}) DiscoveryStatusAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoveryStatusAPIDiscoverystatusGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryStatusAPIDiscoverystatusGetRequest {
+func (r DiscoveryStatusAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryStatusAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoveryStatusAPIDiscoverystatusGetRequest) Execute() (*ListDiscoveryStatusResponse, *http.Response, error) {
-	return r.ApiService.DiscoverystatusGetExecute(r)
+func (r DiscoveryStatusAPIListRequest) Execute() (*ListDiscoveryStatusResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DiscoverystatusGet Retrieve discovery:status objects
+List Retrieve discovery:status objects
 
 Returns a list of discovery:status objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoveryStatusAPIDiscoverystatusGetRequest
+	@return DiscoveryStatusAPIListRequest
 */
-func (a *DiscoveryStatusAPIService) DiscoverystatusGet(ctx context.Context) DiscoveryStatusAPIDiscoverystatusGetRequest {
-	return DiscoveryStatusAPIDiscoverystatusGetRequest{
+func (a *DiscoveryStatusAPIService) List(ctx context.Context) DiscoveryStatusAPIListRequest {
+	return DiscoveryStatusAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *DiscoveryStatusAPIService) DiscoverystatusGet(ctx context.Context) Disc
 // Execute executes the request
 //
 //	@return ListDiscoveryStatusResponse
-func (a *DiscoveryStatusAPIService) DiscoverystatusGetExecute(r DiscoveryStatusAPIDiscoverystatusGetRequest) (*ListDiscoveryStatusResponse, *http.Response, error) {
+func (a *DiscoveryStatusAPIService) ListExecute(r DiscoveryStatusAPIListRequest) (*ListDiscoveryStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *DiscoveryStatusAPIService) DiscoverystatusGetExecute(r DiscoveryStatusA
 		localVarReturnValue *ListDiscoveryStatusResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryStatusAPIService.DiscoverystatusGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryStatusAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *DiscoveryStatusAPIService) DiscoverystatusGetExecute(r DiscoveryStatusA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *DiscoveryStatusAPIService) DiscoverystatusGetExecute(r DiscoveryStatusA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryStatusAPIDiscoverystatusReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryStatusAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DiscoveryStatusAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DiscoveryStatusAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryStatusAPIDiscoverystatusReferenceGetRequest) ReturnFields(returnFields string) DiscoveryStatusAPIDiscoverystatusReferenceGetRequest {
+func (r DiscoveryStatusAPIReadRequest) ReturnFields(returnFields string) DiscoveryStatusAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryStatusAPIDiscoverystatusReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoveryStatusAPIDiscoverystatusReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryStatusAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryStatusAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryStatusAPIDiscoverystatusReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryStatusAPIDiscoverystatusReferenceGetRequest {
+func (r DiscoveryStatusAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoveryStatusAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryStatusAPIDiscoverystatusReferenceGetRequest) Execute() (*GetDiscoveryStatusResponse, *http.Response, error) {
-	return r.ApiService.DiscoverystatusReferenceGetExecute(r)
+func (r DiscoveryStatusAPIReadRequest) Execute() (*GetDiscoveryStatusResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DiscoverystatusReferenceGet Get a specific discovery:status object
+Read Get a specific discovery:status object
 
 Returns a specific discovery:status object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:status object
-	@return DiscoveryStatusAPIDiscoverystatusReferenceGetRequest
+	@return DiscoveryStatusAPIReadRequest
 */
-func (a *DiscoveryStatusAPIService) DiscoverystatusReferenceGet(ctx context.Context, reference string) DiscoveryStatusAPIDiscoverystatusReferenceGetRequest {
-	return DiscoveryStatusAPIDiscoverystatusReferenceGetRequest{
+func (a *DiscoveryStatusAPIService) Read(ctx context.Context, reference string) DiscoveryStatusAPIReadRequest {
+	return DiscoveryStatusAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *DiscoveryStatusAPIService) DiscoverystatusReferenceGet(ctx context.Cont
 // Execute executes the request
 //
 //	@return GetDiscoveryStatusResponse
-func (a *DiscoveryStatusAPIService) DiscoverystatusReferenceGetExecute(r DiscoveryStatusAPIDiscoverystatusReferenceGetRequest) (*GetDiscoveryStatusResponse, *http.Response, error) {
+func (a *DiscoveryStatusAPIService) ReadExecute(r DiscoveryStatusAPIReadRequest) (*GetDiscoveryStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *DiscoveryStatusAPIService) DiscoverystatusReferenceGetExecute(r Discove
 		localVarReturnValue *GetDiscoveryStatusResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryStatusAPIService.DiscoverystatusReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryStatusAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *DiscoveryStatusAPIService) DiscoverystatusReferenceGetExecute(r Discove
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

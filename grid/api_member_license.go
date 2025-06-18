@@ -23,123 +23,212 @@ import (
 
 type MemberLicenseAPI interface {
 	/*
-		MemberlicenseGet Retrieve member:license objects
-
-		Returns a list of member:license objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberLicenseAPIMemberlicenseGetRequest
-	*/
-	MemberlicenseGet(ctx context.Context) MemberLicenseAPIMemberlicenseGetRequest
-
-	// MemberlicenseGetExecute executes the request
-	//  @return ListMemberLicenseResponse
-	MemberlicenseGetExecute(r MemberLicenseAPIMemberlicenseGetRequest) (*ListMemberLicenseResponse, *http.Response, error)
-	/*
-		MemberlicenseReferenceDelete Delete a member:license object
+		Delete Delete a member:license object
 
 		Deletes a specific member:license object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:license object
-		@return MemberLicenseAPIMemberlicenseReferenceDeleteRequest
+		@return MemberLicenseAPIDeleteRequest
 	*/
-	MemberlicenseReferenceDelete(ctx context.Context, reference string) MemberLicenseAPIMemberlicenseReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) MemberLicenseAPIDeleteRequest
 
-	// MemberlicenseReferenceDeleteExecute executes the request
-	MemberlicenseReferenceDeleteExecute(r MemberLicenseAPIMemberlicenseReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r MemberLicenseAPIDeleteRequest) (*http.Response, error)
 	/*
-		MemberlicenseReferenceGet Get a specific member:license object
+		List Retrieve member:license objects
+
+		Returns a list of member:license objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return MemberLicenseAPIListRequest
+	*/
+	List(ctx context.Context) MemberLicenseAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListMemberLicenseResponse
+	ListExecute(r MemberLicenseAPIListRequest) (*ListMemberLicenseResponse, *http.Response, error)
+	/*
+		Read Get a specific member:license object
 
 		Returns a specific member:license object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:license object
-		@return MemberLicenseAPIMemberlicenseReferenceGetRequest
+		@return MemberLicenseAPIReadRequest
 	*/
-	MemberlicenseReferenceGet(ctx context.Context, reference string) MemberLicenseAPIMemberlicenseReferenceGetRequest
+	Read(ctx context.Context, reference string) MemberLicenseAPIReadRequest
 
-	// MemberlicenseReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMemberLicenseResponse
-	MemberlicenseReferenceGetExecute(r MemberLicenseAPIMemberlicenseReferenceGetRequest) (*GetMemberLicenseResponse, *http.Response, error)
+	ReadExecute(r MemberLicenseAPIReadRequest) (*GetMemberLicenseResponse, *http.Response, error)
 }
 
 // MemberLicenseAPIService MemberLicenseAPI service
 type MemberLicenseAPIService internal.Service
 
-type MemberLicenseAPIMemberlicenseGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberLicenseAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type MemberLicenseAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService MemberLicenseAPI
+	reference  string
+}
+
+func (r MemberLicenseAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a member:license object
+
+Deletes a specific member:license object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the member:license object
+	@return MemberLicenseAPIDeleteRequest
+*/
+func (a *MemberLicenseAPIService) Delete(ctx context.Context, reference string) MemberLicenseAPIDeleteRequest {
+	return MemberLicenseAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *MemberLicenseAPIService) DeleteExecute(r MemberLicenseAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberLicenseAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/member:license/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type MemberLicenseAPIListRequest struct {
+	ctx              context.Context
+	ApiService       MemberLicenseAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r MemberLicenseAPIMemberlicenseGetRequest) ReturnFields(returnFields string) MemberLicenseAPIMemberlicenseGetRequest {
+func (r MemberLicenseAPIListRequest) ReturnFields(returnFields string) MemberLicenseAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberLicenseAPIMemberlicenseGetRequest) ReturnFields2(returnFields2 string) MemberLicenseAPIMemberlicenseGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberLicenseAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberLicenseAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MemberLicenseAPIMemberlicenseGetRequest) MaxResults(maxResults int32) MemberLicenseAPIMemberlicenseGetRequest {
+func (r MemberLicenseAPIListRequest) MaxResults(maxResults int32) MemberLicenseAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberLicenseAPIMemberlicenseGetRequest) ReturnAsObject(returnAsObject int32) MemberLicenseAPIMemberlicenseGetRequest {
+func (r MemberLicenseAPIListRequest) ReturnAsObject(returnAsObject int32) MemberLicenseAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MemberLicenseAPIMemberlicenseGetRequest) Paging(paging int32) MemberLicenseAPIMemberlicenseGetRequest {
+func (r MemberLicenseAPIListRequest) Paging(paging int32) MemberLicenseAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MemberLicenseAPIMemberlicenseGetRequest) PageId(pageId string) MemberLicenseAPIMemberlicenseGetRequest {
+func (r MemberLicenseAPIListRequest) PageId(pageId string) MemberLicenseAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MemberLicenseAPIMemberlicenseGetRequest) Filters(filters map[string]interface{}) MemberLicenseAPIMemberlicenseGetRequest {
+func (r MemberLicenseAPIListRequest) Filters(filters map[string]interface{}) MemberLicenseAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MemberLicenseAPIMemberlicenseGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberLicenseAPIMemberlicenseGetRequest {
+func (r MemberLicenseAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberLicenseAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MemberLicenseAPIMemberlicenseGetRequest) Execute() (*ListMemberLicenseResponse, *http.Response, error) {
-	return r.ApiService.MemberlicenseGetExecute(r)
+func (r MemberLicenseAPIListRequest) Execute() (*ListMemberLicenseResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MemberlicenseGet Retrieve member:license objects
+List Retrieve member:license objects
 
 Returns a list of member:license objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberLicenseAPIMemberlicenseGetRequest
+	@return MemberLicenseAPIListRequest
 */
-func (a *MemberLicenseAPIService) MemberlicenseGet(ctx context.Context) MemberLicenseAPIMemberlicenseGetRequest {
-	return MemberLicenseAPIMemberlicenseGetRequest{
+func (a *MemberLicenseAPIService) List(ctx context.Context) MemberLicenseAPIListRequest {
+	return MemberLicenseAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -148,7 +237,7 @@ func (a *MemberLicenseAPIService) MemberlicenseGet(ctx context.Context) MemberLi
 // Execute executes the request
 //
 //	@return ListMemberLicenseResponse
-func (a *MemberLicenseAPIService) MemberlicenseGetExecute(r MemberLicenseAPIMemberlicenseGetRequest) (*ListMemberLicenseResponse, *http.Response, error) {
+func (a *MemberLicenseAPIService) ListExecute(r MemberLicenseAPIListRequest) (*ListMemberLicenseResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -156,7 +245,7 @@ func (a *MemberLicenseAPIService) MemberlicenseGetExecute(r MemberLicenseAPIMemb
 		localVarReturnValue *ListMemberLicenseResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberLicenseAPIService.MemberlicenseGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberLicenseAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -170,8 +259,8 @@ func (a *MemberLicenseAPIService) MemberlicenseGetExecute(r MemberLicenseAPIMemb
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -238,137 +327,48 @@ func (a *MemberLicenseAPIService) MemberlicenseGetExecute(r MemberLicenseAPIMemb
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberLicenseAPIMemberlicenseReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService MemberLicenseAPI
-	reference  string
-}
-
-func (r MemberLicenseAPIMemberlicenseReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.MemberlicenseReferenceDeleteExecute(r)
-}
-
-/*
-MemberlicenseReferenceDelete Delete a member:license object
-
-Deletes a specific member:license object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the member:license object
-	@return MemberLicenseAPIMemberlicenseReferenceDeleteRequest
-*/
-func (a *MemberLicenseAPIService) MemberlicenseReferenceDelete(ctx context.Context, reference string) MemberLicenseAPIMemberlicenseReferenceDeleteRequest {
-	return MemberLicenseAPIMemberlicenseReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *MemberLicenseAPIService) MemberlicenseReferenceDeleteExecute(r MemberLicenseAPIMemberlicenseReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberLicenseAPIService.MemberlicenseReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/member:license/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type MemberLicenseAPIMemberlicenseReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberLicenseAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MemberLicenseAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       MemberLicenseAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r MemberLicenseAPIMemberlicenseReferenceGetRequest) ReturnFields(returnFields string) MemberLicenseAPIMemberlicenseReferenceGetRequest {
+func (r MemberLicenseAPIReadRequest) ReturnFields(returnFields string) MemberLicenseAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberLicenseAPIMemberlicenseReferenceGetRequest) ReturnFields2(returnFields2 string) MemberLicenseAPIMemberlicenseReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberLicenseAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberLicenseAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberLicenseAPIMemberlicenseReferenceGetRequest) ReturnAsObject(returnAsObject int32) MemberLicenseAPIMemberlicenseReferenceGetRequest {
+func (r MemberLicenseAPIReadRequest) ReturnAsObject(returnAsObject int32) MemberLicenseAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberLicenseAPIMemberlicenseReferenceGetRequest) Execute() (*GetMemberLicenseResponse, *http.Response, error) {
-	return r.ApiService.MemberlicenseReferenceGetExecute(r)
+func (r MemberLicenseAPIReadRequest) Execute() (*GetMemberLicenseResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MemberlicenseReferenceGet Get a specific member:license object
+Read Get a specific member:license object
 
 Returns a specific member:license object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:license object
-	@return MemberLicenseAPIMemberlicenseReferenceGetRequest
+	@return MemberLicenseAPIReadRequest
 */
-func (a *MemberLicenseAPIService) MemberlicenseReferenceGet(ctx context.Context, reference string) MemberLicenseAPIMemberlicenseReferenceGetRequest {
-	return MemberLicenseAPIMemberlicenseReferenceGetRequest{
+func (a *MemberLicenseAPIService) Read(ctx context.Context, reference string) MemberLicenseAPIReadRequest {
+	return MemberLicenseAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -378,7 +378,7 @@ func (a *MemberLicenseAPIService) MemberlicenseReferenceGet(ctx context.Context,
 // Execute executes the request
 //
 //	@return GetMemberLicenseResponse
-func (a *MemberLicenseAPIService) MemberlicenseReferenceGetExecute(r MemberLicenseAPIMemberlicenseReferenceGetRequest) (*GetMemberLicenseResponse, *http.Response, error) {
+func (a *MemberLicenseAPIService) ReadExecute(r MemberLicenseAPIReadRequest) (*GetMemberLicenseResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -386,7 +386,7 @@ func (a *MemberLicenseAPIService) MemberlicenseReferenceGetExecute(r MemberLicen
 		localVarReturnValue *GetMemberLicenseResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberLicenseAPIService.MemberlicenseReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberLicenseAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -401,8 +401,8 @@ func (a *MemberLicenseAPIService) MemberlicenseReferenceGetExecute(r MemberLicen
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

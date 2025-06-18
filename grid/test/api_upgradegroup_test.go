@@ -23,11 +23,11 @@ func TestUpgradegroupAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test UpgradegroupAPIService Get", func(t *testing.T) {
+	t.Run("Test UpgradegroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UpgradegroupAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UpgradegroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestUpgradegroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradegroupAPIService Post", func(t *testing.T) {
+	t.Run("Test UpgradegroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UpgradegroupAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.UpgradegroupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test UpgradegroupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.UpgradegroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestUpgradegroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradegroupAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test UpgradegroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.UpgradegroupAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test UpgradegroupAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.UpgradegroupAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.UpgradegroupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestUpgradegroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradegroupAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test UpgradegroupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.UpgradegroupAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.UpgradegroupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

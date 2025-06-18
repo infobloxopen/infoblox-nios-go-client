@@ -23,11 +23,11 @@ func TestDhcpStatisticsAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test DhcpStatisticsAPIService DhcpstatisticsGet", func(t *testing.T) {
+	t.Run("Test DhcpStatisticsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DhcpStatisticsAPI.DhcpstatisticsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DhcpStatisticsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDhcpStatisticsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DhcpStatisticsAPIService DhcpstatisticsReferenceGet", func(t *testing.T) {
+	t.Run("Test DhcpStatisticsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DhcpStatisticsAPI.DhcpstatisticsReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DhcpStatisticsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

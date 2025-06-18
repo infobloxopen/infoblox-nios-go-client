@@ -23,11 +23,11 @@ func TestNotificationRestEndpointAPIService(t *testing.T) {
 
 	apiClient := notification.NewAPIClient()
 
-	t.Run("Test NotificationRestEndpointAPIService NotificationrestendpointGet", func(t *testing.T) {
+	t.Run("Test NotificationRestEndpointAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NotificationRestEndpointAPI.NotificationrestendpointGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NotificationRestEndpointAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNotificationRestEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NotificationRestEndpointAPIService NotificationrestendpointPost", func(t *testing.T) {
+	t.Run("Test NotificationRestEndpointAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NotificationRestEndpointAPI.NotificationrestendpointPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NotificationRestEndpointAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NotificationRestEndpointAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NotificationRestEndpointAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNotificationRestEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NotificationRestEndpointAPIService NotificationrestendpointReferenceDelete", func(t *testing.T) {
+	t.Run("Test NotificationRestEndpointAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NotificationRestEndpointAPI.NotificationrestendpointReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NotificationRestEndpointAPIService NotificationrestendpointReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NotificationRestEndpointAPI.NotificationrestendpointReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NotificationRestEndpointAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNotificationRestEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NotificationRestEndpointAPIService NotificationrestendpointReferencePut", func(t *testing.T) {
+	t.Run("Test NotificationRestEndpointAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NotificationRestEndpointAPI.NotificationrestendpointReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NotificationRestEndpointAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](GridAPI.md#Get) | **Get** /grid | Retrieve grid objects
-[**ReferenceGet**](GridAPI.md#ReferenceGet) | **Get** /grid/{reference} | Get a specific grid object
-[**ReferencePut**](GridAPI.md#ReferencePut) | **Put** /grid/{reference} | Update a grid object
+[**List**](GridAPI.md#List) | **Get** /grid | Retrieve grid objects
+[**Read**](GridAPI.md#Read) | **Get** /grid/{reference} | Get a specific grid object
+[**Update**](GridAPI.md#Update) | **Put** /grid/{reference} | Update a grid object
 
 
 
-## Get
+## List
 
-> ListGridResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.GridAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListGridResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridAPI.Get`: %v\n", resp)
+	// response from `List`: ListGridResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetGridResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetGridResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateGridResponse ReferencePut(ctx, reference).Grid(grid).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridResponse Update(ctx, reference).Grid(grid).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid object
 
@@ -180,13 +180,13 @@ func main() {
 	grid := *grid.NewGrid() // Grid | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridAPI.ReferencePut(context.Background(), reference).Grid(grid).Execute()
+	resp, r, err := apiClient.GridAPI.Update(context.Background(), reference).Grid(grid).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateGridResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGridResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **grid** | [**Grid**](Grid.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

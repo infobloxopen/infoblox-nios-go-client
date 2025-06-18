@@ -23,150 +23,374 @@ import (
 
 type LdapAuthServiceAPI interface {
 	/*
-		Get Retrieve ldap_auth_service objects
-
-		Returns a list of ldap_auth_service objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return LdapAuthServiceAPIGetRequest
-	*/
-	Get(ctx context.Context) LdapAuthServiceAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListLdapAuthServiceResponse
-	GetExecute(r LdapAuthServiceAPIGetRequest) (*ListLdapAuthServiceResponse, *http.Response, error)
-	/*
-		Post Create a ldap_auth_service object
+		Create Create a ldap_auth_service object
 
 		Creates a new ldap_auth_service object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return LdapAuthServiceAPIPostRequest
+		@return LdapAuthServiceAPICreateRequest
 	*/
-	Post(ctx context.Context) LdapAuthServiceAPIPostRequest
+	Create(ctx context.Context) LdapAuthServiceAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateLdapAuthServiceResponse
-	PostExecute(r LdapAuthServiceAPIPostRequest) (*CreateLdapAuthServiceResponse, *http.Response, error)
+	CreateExecute(r LdapAuthServiceAPICreateRequest) (*CreateLdapAuthServiceResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a ldap_auth_service object
+		Delete Delete a ldap_auth_service object
 
 		Deletes a specific ldap_auth_service object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ldap_auth_service object
-		@return LdapAuthServiceAPIReferenceDeleteRequest
+		@return LdapAuthServiceAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) LdapAuthServiceAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) LdapAuthServiceAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r LdapAuthServiceAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r LdapAuthServiceAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific ldap_auth_service object
+		List Retrieve ldap_auth_service objects
+
+		Returns a list of ldap_auth_service objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return LdapAuthServiceAPIListRequest
+	*/
+	List(ctx context.Context) LdapAuthServiceAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListLdapAuthServiceResponse
+	ListExecute(r LdapAuthServiceAPIListRequest) (*ListLdapAuthServiceResponse, *http.Response, error)
+	/*
+		Read Get a specific ldap_auth_service object
 
 		Returns a specific ldap_auth_service object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ldap_auth_service object
-		@return LdapAuthServiceAPIReferenceGetRequest
+		@return LdapAuthServiceAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) LdapAuthServiceAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) LdapAuthServiceAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetLdapAuthServiceResponse
-	ReferenceGetExecute(r LdapAuthServiceAPIReferenceGetRequest) (*GetLdapAuthServiceResponse, *http.Response, error)
+	ReadExecute(r LdapAuthServiceAPIReadRequest) (*GetLdapAuthServiceResponse, *http.Response, error)
 	/*
-		ReferencePut Update a ldap_auth_service object
+		Update Update a ldap_auth_service object
 
 		Updates a specific ldap_auth_service object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ldap_auth_service object
-		@return LdapAuthServiceAPIReferencePutRequest
+		@return LdapAuthServiceAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) LdapAuthServiceAPIReferencePutRequest
+	Update(ctx context.Context, reference string) LdapAuthServiceAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateLdapAuthServiceResponse
-	ReferencePutExecute(r LdapAuthServiceAPIReferencePutRequest) (*UpdateLdapAuthServiceResponse, *http.Response, error)
+	UpdateExecute(r LdapAuthServiceAPIUpdateRequest) (*UpdateLdapAuthServiceResponse, *http.Response, error)
 }
 
 // LdapAuthServiceAPIService LdapAuthServiceAPI service
 type LdapAuthServiceAPIService internal.Service
 
-type LdapAuthServiceAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     LdapAuthServiceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type LdapAuthServiceAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       LdapAuthServiceAPI
+	ldapAuthService  *LdapAuthService
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r LdapAuthServiceAPICreateRequest) LdapAuthService(ldapAuthService LdapAuthService) LdapAuthServiceAPICreateRequest {
+	r.ldapAuthService = &ldapAuthService
+	return r
 }
 
 // Enter the field names followed by comma
-func (r LdapAuthServiceAPIGetRequest) ReturnFields(returnFields string) LdapAuthServiceAPIGetRequest {
+func (r LdapAuthServiceAPICreateRequest) ReturnFields(returnFields string) LdapAuthServiceAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LdapAuthServiceAPIGetRequest) ReturnFields2(returnFields2 string) LdapAuthServiceAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r LdapAuthServiceAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) LdapAuthServiceAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r LdapAuthServiceAPICreateRequest) ReturnAsObject(returnAsObject int32) LdapAuthServiceAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r LdapAuthServiceAPICreateRequest) Execute() (*CreateLdapAuthServiceResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a ldap_auth_service object
+
+Creates a new ldap_auth_service object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return LdapAuthServiceAPICreateRequest
+*/
+func (a *LdapAuthServiceAPIService) Create(ctx context.Context) LdapAuthServiceAPICreateRequest {
+	return LdapAuthServiceAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateLdapAuthServiceResponse
+func (a *LdapAuthServiceAPIService) CreateExecute(r LdapAuthServiceAPICreateRequest) (*CreateLdapAuthServiceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateLdapAuthServiceResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LdapAuthServiceAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ldap_auth_service"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.ldapAuthService == nil {
+		return localVarReturnValue, nil, internal.ReportError("ldapAuthService is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.ldapAuthService
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type LdapAuthServiceAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService LdapAuthServiceAPI
+	reference  string
+}
+
+func (r LdapAuthServiceAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a ldap_auth_service object
+
+Deletes a specific ldap_auth_service object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the ldap_auth_service object
+	@return LdapAuthServiceAPIDeleteRequest
+*/
+func (a *LdapAuthServiceAPIService) Delete(ctx context.Context, reference string) LdapAuthServiceAPIDeleteRequest {
+	return LdapAuthServiceAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *LdapAuthServiceAPIService) DeleteExecute(r LdapAuthServiceAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LdapAuthServiceAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ldap_auth_service/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type LdapAuthServiceAPIListRequest struct {
+	ctx              context.Context
+	ApiService       LdapAuthServiceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r LdapAuthServiceAPIListRequest) ReturnFields(returnFields string) LdapAuthServiceAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r LdapAuthServiceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) LdapAuthServiceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r LdapAuthServiceAPIGetRequest) MaxResults(maxResults int32) LdapAuthServiceAPIGetRequest {
+func (r LdapAuthServiceAPIListRequest) MaxResults(maxResults int32) LdapAuthServiceAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r LdapAuthServiceAPIGetRequest) ReturnAsObject(returnAsObject int32) LdapAuthServiceAPIGetRequest {
+func (r LdapAuthServiceAPIListRequest) ReturnAsObject(returnAsObject int32) LdapAuthServiceAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r LdapAuthServiceAPIGetRequest) Paging(paging int32) LdapAuthServiceAPIGetRequest {
+func (r LdapAuthServiceAPIListRequest) Paging(paging int32) LdapAuthServiceAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r LdapAuthServiceAPIGetRequest) PageId(pageId string) LdapAuthServiceAPIGetRequest {
+func (r LdapAuthServiceAPIListRequest) PageId(pageId string) LdapAuthServiceAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r LdapAuthServiceAPIGetRequest) Filters(filters map[string]interface{}) LdapAuthServiceAPIGetRequest {
+func (r LdapAuthServiceAPIListRequest) Filters(filters map[string]interface{}) LdapAuthServiceAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r LdapAuthServiceAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) LdapAuthServiceAPIGetRequest {
+func (r LdapAuthServiceAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) LdapAuthServiceAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r LdapAuthServiceAPIGetRequest) Execute() (*ListLdapAuthServiceResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r LdapAuthServiceAPIListRequest) Execute() (*ListLdapAuthServiceResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve ldap_auth_service objects
+List Retrieve ldap_auth_service objects
 
 Returns a list of ldap_auth_service objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return LdapAuthServiceAPIGetRequest
+	@return LdapAuthServiceAPIListRequest
 */
-func (a *LdapAuthServiceAPIService) Get(ctx context.Context) LdapAuthServiceAPIGetRequest {
-	return LdapAuthServiceAPIGetRequest{
+func (a *LdapAuthServiceAPIService) List(ctx context.Context) LdapAuthServiceAPIListRequest {
+	return LdapAuthServiceAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *LdapAuthServiceAPIService) Get(ctx context.Context) LdapAuthServiceAPIG
 // Execute executes the request
 //
 //	@return ListLdapAuthServiceResponse
-func (a *LdapAuthServiceAPIService) GetExecute(r LdapAuthServiceAPIGetRequest) (*ListLdapAuthServiceResponse, *http.Response, error) {
+func (a *LdapAuthServiceAPIService) ListExecute(r LdapAuthServiceAPIListRequest) (*ListLdapAuthServiceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *LdapAuthServiceAPIService) GetExecute(r LdapAuthServiceAPIGetRequest) (
 		localVarReturnValue *ListLdapAuthServiceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LdapAuthServiceAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LdapAuthServiceAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *LdapAuthServiceAPIService) GetExecute(r LdapAuthServiceAPIGetRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *LdapAuthServiceAPIService) GetExecute(r LdapAuthServiceAPIGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type LdapAuthServiceAPIPostRequest struct {
-	ctx             context.Context
-	ApiService      LdapAuthServiceAPI
-	ldapAuthService *LdapAuthService
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
-}
-
-// Object data to create
-func (r LdapAuthServiceAPIPostRequest) LdapAuthService(ldapAuthService LdapAuthService) LdapAuthServiceAPIPostRequest {
-	r.ldapAuthService = &ldapAuthService
-	return r
+type LdapAuthServiceAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       LdapAuthServiceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r LdapAuthServiceAPIPostRequest) ReturnFields(returnFields string) LdapAuthServiceAPIPostRequest {
+func (r LdapAuthServiceAPIReadRequest) ReturnFields(returnFields string) LdapAuthServiceAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LdapAuthServiceAPIPostRequest) ReturnFields2(returnFields2 string) LdapAuthServiceAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r LdapAuthServiceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) LdapAuthServiceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r LdapAuthServiceAPIPostRequest) ReturnAsObject(returnAsObject int32) LdapAuthServiceAPIPostRequest {
+func (r LdapAuthServiceAPIReadRequest) ReturnAsObject(returnAsObject int32) LdapAuthServiceAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r LdapAuthServiceAPIPostRequest) Execute() (*CreateLdapAuthServiceResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r LdapAuthServiceAPIReadRequest) Execute() (*GetLdapAuthServiceResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a ldap_auth_service object
-
-Creates a new ldap_auth_service object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return LdapAuthServiceAPIPostRequest
-*/
-func (a *LdapAuthServiceAPIService) Post(ctx context.Context) LdapAuthServiceAPIPostRequest {
-	return LdapAuthServiceAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateLdapAuthServiceResponse
-func (a *LdapAuthServiceAPIService) PostExecute(r LdapAuthServiceAPIPostRequest) (*CreateLdapAuthServiceResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateLdapAuthServiceResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LdapAuthServiceAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ldap_auth_service"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.ldapAuthService == nil {
-		return localVarReturnValue, nil, internal.ReportError("ldapAuthService is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.ldapAuthService
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type LdapAuthServiceAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService LdapAuthServiceAPI
-	reference  string
-}
-
-func (r LdapAuthServiceAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a ldap_auth_service object
-
-Deletes a specific ldap_auth_service object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the ldap_auth_service object
-	@return LdapAuthServiceAPIReferenceDeleteRequest
-*/
-func (a *LdapAuthServiceAPIService) ReferenceDelete(ctx context.Context, reference string) LdapAuthServiceAPIReferenceDeleteRequest {
-	return LdapAuthServiceAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *LdapAuthServiceAPIService) ReferenceDeleteExecute(r LdapAuthServiceAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LdapAuthServiceAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ldap_auth_service/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type LdapAuthServiceAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     LdapAuthServiceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r LdapAuthServiceAPIReferenceGetRequest) ReturnFields(returnFields string) LdapAuthServiceAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LdapAuthServiceAPIReferenceGetRequest) ReturnFields2(returnFields2 string) LdapAuthServiceAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r LdapAuthServiceAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) LdapAuthServiceAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r LdapAuthServiceAPIReferenceGetRequest) Execute() (*GetLdapAuthServiceResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific ldap_auth_service object
+Read Get a specific ldap_auth_service object
 
 Returns a specific ldap_auth_service object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ldap_auth_service object
-	@return LdapAuthServiceAPIReferenceGetRequest
+	@return LdapAuthServiceAPIReadRequest
 */
-func (a *LdapAuthServiceAPIService) ReferenceGet(ctx context.Context, reference string) LdapAuthServiceAPIReferenceGetRequest {
-	return LdapAuthServiceAPIReferenceGetRequest{
+func (a *LdapAuthServiceAPIService) Read(ctx context.Context, reference string) LdapAuthServiceAPIReadRequest {
+	return LdapAuthServiceAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *LdapAuthServiceAPIService) ReferenceGet(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return GetLdapAuthServiceResponse
-func (a *LdapAuthServiceAPIService) ReferenceGetExecute(r LdapAuthServiceAPIReferenceGetRequest) (*GetLdapAuthServiceResponse, *http.Response, error) {
+func (a *LdapAuthServiceAPIService) ReadExecute(r LdapAuthServiceAPIReadRequest) (*GetLdapAuthServiceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *LdapAuthServiceAPIService) ReferenceGetExecute(r LdapAuthServiceAPIRefe
 		localVarReturnValue *GetLdapAuthServiceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LdapAuthServiceAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LdapAuthServiceAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *LdapAuthServiceAPIService) ReferenceGetExecute(r LdapAuthServiceAPIRefe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *LdapAuthServiceAPIService) ReferenceGetExecute(r LdapAuthServiceAPIRefe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type LdapAuthServiceAPIReferencePutRequest struct {
-	ctx             context.Context
-	ApiService      LdapAuthServiceAPI
-	reference       string
-	ldapAuthService *LdapAuthService
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+type LdapAuthServiceAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       LdapAuthServiceAPI
+	reference        string
+	ldapAuthService  *LdapAuthService
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r LdapAuthServiceAPIReferencePutRequest) LdapAuthService(ldapAuthService LdapAuthService) LdapAuthServiceAPIReferencePutRequest {
+func (r LdapAuthServiceAPIUpdateRequest) LdapAuthService(ldapAuthService LdapAuthService) LdapAuthServiceAPIUpdateRequest {
 	r.ldapAuthService = &ldapAuthService
 	return r
 }
 
 // Enter the field names followed by comma
-func (r LdapAuthServiceAPIReferencePutRequest) ReturnFields(returnFields string) LdapAuthServiceAPIReferencePutRequest {
+func (r LdapAuthServiceAPIUpdateRequest) ReturnFields(returnFields string) LdapAuthServiceAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LdapAuthServiceAPIReferencePutRequest) ReturnFields2(returnFields2 string) LdapAuthServiceAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r LdapAuthServiceAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) LdapAuthServiceAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r LdapAuthServiceAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) LdapAuthServiceAPIReferencePutRequest {
+func (r LdapAuthServiceAPIUpdateRequest) ReturnAsObject(returnAsObject int32) LdapAuthServiceAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r LdapAuthServiceAPIReferencePutRequest) Execute() (*UpdateLdapAuthServiceResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r LdapAuthServiceAPIUpdateRequest) Execute() (*UpdateLdapAuthServiceResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a ldap_auth_service object
+Update Update a ldap_auth_service object
 
 Updates a specific ldap_auth_service object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ldap_auth_service object
-	@return LdapAuthServiceAPIReferencePutRequest
+	@return LdapAuthServiceAPIUpdateRequest
 */
-func (a *LdapAuthServiceAPIService) ReferencePut(ctx context.Context, reference string) LdapAuthServiceAPIReferencePutRequest {
-	return LdapAuthServiceAPIReferencePutRequest{
+func (a *LdapAuthServiceAPIService) Update(ctx context.Context, reference string) LdapAuthServiceAPIUpdateRequest {
+	return LdapAuthServiceAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *LdapAuthServiceAPIService) ReferencePut(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return UpdateLdapAuthServiceResponse
-func (a *LdapAuthServiceAPIService) ReferencePutExecute(r LdapAuthServiceAPIReferencePutRequest) (*UpdateLdapAuthServiceResponse, *http.Response, error) {
+func (a *LdapAuthServiceAPIService) UpdateExecute(r LdapAuthServiceAPIUpdateRequest) (*UpdateLdapAuthServiceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *LdapAuthServiceAPIService) ReferencePutExecute(r LdapAuthServiceAPIRefe
 		localVarReturnValue *UpdateLdapAuthServiceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LdapAuthServiceAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LdapAuthServiceAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *LdapAuthServiceAPIService) ReferencePutExecute(r LdapAuthServiceAPIRefe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

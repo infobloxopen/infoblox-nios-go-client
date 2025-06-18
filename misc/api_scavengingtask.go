@@ -23,110 +23,110 @@ import (
 
 type ScavengingtaskAPI interface {
 	/*
-		Get Retrieve scavengingtask objects
+		List Retrieve scavengingtask objects
 
 		Returns a list of scavengingtask objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ScavengingtaskAPIGetRequest
+		@return ScavengingtaskAPIListRequest
 	*/
-	Get(ctx context.Context) ScavengingtaskAPIGetRequest
+	List(ctx context.Context) ScavengingtaskAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListScavengingtaskResponse
-	GetExecute(r ScavengingtaskAPIGetRequest) (*ListScavengingtaskResponse, *http.Response, error)
+	ListExecute(r ScavengingtaskAPIListRequest) (*ListScavengingtaskResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific scavengingtask object
+		Read Get a specific scavengingtask object
 
 		Returns a specific scavengingtask object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the scavengingtask object
-		@return ScavengingtaskAPIReferenceGetRequest
+		@return ScavengingtaskAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ScavengingtaskAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ScavengingtaskAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetScavengingtaskResponse
-	ReferenceGetExecute(r ScavengingtaskAPIReferenceGetRequest) (*GetScavengingtaskResponse, *http.Response, error)
+	ReadExecute(r ScavengingtaskAPIReadRequest) (*GetScavengingtaskResponse, *http.Response, error)
 }
 
 // ScavengingtaskAPIService ScavengingtaskAPI service
 type ScavengingtaskAPIService internal.Service
 
-type ScavengingtaskAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     ScavengingtaskAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type ScavengingtaskAPIListRequest struct {
+	ctx              context.Context
+	ApiService       ScavengingtaskAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r ScavengingtaskAPIGetRequest) ReturnFields(returnFields string) ScavengingtaskAPIGetRequest {
+func (r ScavengingtaskAPIListRequest) ReturnFields(returnFields string) ScavengingtaskAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ScavengingtaskAPIGetRequest) ReturnFields2(returnFields2 string) ScavengingtaskAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ScavengingtaskAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ScavengingtaskAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ScavengingtaskAPIGetRequest) MaxResults(maxResults int32) ScavengingtaskAPIGetRequest {
+func (r ScavengingtaskAPIListRequest) MaxResults(maxResults int32) ScavengingtaskAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ScavengingtaskAPIGetRequest) ReturnAsObject(returnAsObject int32) ScavengingtaskAPIGetRequest {
+func (r ScavengingtaskAPIListRequest) ReturnAsObject(returnAsObject int32) ScavengingtaskAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ScavengingtaskAPIGetRequest) Paging(paging int32) ScavengingtaskAPIGetRequest {
+func (r ScavengingtaskAPIListRequest) Paging(paging int32) ScavengingtaskAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ScavengingtaskAPIGetRequest) PageId(pageId string) ScavengingtaskAPIGetRequest {
+func (r ScavengingtaskAPIListRequest) PageId(pageId string) ScavengingtaskAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ScavengingtaskAPIGetRequest) Filters(filters map[string]interface{}) ScavengingtaskAPIGetRequest {
+func (r ScavengingtaskAPIListRequest) Filters(filters map[string]interface{}) ScavengingtaskAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ScavengingtaskAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ScavengingtaskAPIGetRequest {
+func (r ScavengingtaskAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ScavengingtaskAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ScavengingtaskAPIGetRequest) Execute() (*ListScavengingtaskResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r ScavengingtaskAPIListRequest) Execute() (*ListScavengingtaskResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve scavengingtask objects
+List Retrieve scavengingtask objects
 
 Returns a list of scavengingtask objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ScavengingtaskAPIGetRequest
+	@return ScavengingtaskAPIListRequest
 */
-func (a *ScavengingtaskAPIService) Get(ctx context.Context) ScavengingtaskAPIGetRequest {
-	return ScavengingtaskAPIGetRequest{
+func (a *ScavengingtaskAPIService) List(ctx context.Context) ScavengingtaskAPIListRequest {
+	return ScavengingtaskAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *ScavengingtaskAPIService) Get(ctx context.Context) ScavengingtaskAPIGet
 // Execute executes the request
 //
 //	@return ListScavengingtaskResponse
-func (a *ScavengingtaskAPIService) GetExecute(r ScavengingtaskAPIGetRequest) (*ListScavengingtaskResponse, *http.Response, error) {
+func (a *ScavengingtaskAPIService) ListExecute(r ScavengingtaskAPIListRequest) (*ListScavengingtaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *ScavengingtaskAPIService) GetExecute(r ScavengingtaskAPIGetRequest) (*L
 		localVarReturnValue *ListScavengingtaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScavengingtaskAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScavengingtaskAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *ScavengingtaskAPIService) GetExecute(r ScavengingtaskAPIGetRequest) (*L
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *ScavengingtaskAPIService) GetExecute(r ScavengingtaskAPIGetRequest) (*L
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ScavengingtaskAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     ScavengingtaskAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type ScavengingtaskAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       ScavengingtaskAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r ScavengingtaskAPIReferenceGetRequest) ReturnFields(returnFields string) ScavengingtaskAPIReferenceGetRequest {
+func (r ScavengingtaskAPIReadRequest) ReturnFields(returnFields string) ScavengingtaskAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ScavengingtaskAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ScavengingtaskAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ScavengingtaskAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ScavengingtaskAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ScavengingtaskAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ScavengingtaskAPIReferenceGetRequest {
+func (r ScavengingtaskAPIReadRequest) ReturnAsObject(returnAsObject int32) ScavengingtaskAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ScavengingtaskAPIReferenceGetRequest) Execute() (*GetScavengingtaskResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r ScavengingtaskAPIReadRequest) Execute() (*GetScavengingtaskResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific scavengingtask object
+Read Get a specific scavengingtask object
 
 Returns a specific scavengingtask object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the scavengingtask object
-	@return ScavengingtaskAPIReferenceGetRequest
+	@return ScavengingtaskAPIReadRequest
 */
-func (a *ScavengingtaskAPIService) ReferenceGet(ctx context.Context, reference string) ScavengingtaskAPIReferenceGetRequest {
-	return ScavengingtaskAPIReferenceGetRequest{
+func (a *ScavengingtaskAPIService) Read(ctx context.Context, reference string) ScavengingtaskAPIReadRequest {
+	return ScavengingtaskAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *ScavengingtaskAPIService) ReferenceGet(ctx context.Context, reference s
 // Execute executes the request
 //
 //	@return GetScavengingtaskResponse
-func (a *ScavengingtaskAPIService) ReferenceGetExecute(r ScavengingtaskAPIReferenceGetRequest) (*GetScavengingtaskResponse, *http.Response, error) {
+func (a *ScavengingtaskAPIService) ReadExecute(r ScavengingtaskAPIReadRequest) (*GetScavengingtaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *ScavengingtaskAPIService) ReferenceGetExecute(r ScavengingtaskAPIRefere
 		localVarReturnValue *GetScavengingtaskResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScavengingtaskAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ScavengingtaskAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *ScavengingtaskAPIService) ReferenceGetExecute(r ScavengingtaskAPIRefere
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

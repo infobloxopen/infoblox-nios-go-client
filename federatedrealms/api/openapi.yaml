@@ -22,6 +22,7 @@ paths:
   /federatedrealms:
     get:
       description: Returns a list of federatedrealms objects matching the search criteria
+      operationId: FederatedrealmsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -119,6 +120,7 @@ paths:
   /federatedrealms/{reference}:
     get:
       description: Returns a specific federatedrealms object by reference
+      operationId: FederatedrealmsRead
       parameters:
       - description: Reference of the federatedrealms object
         explode: false
@@ -179,6 +181,7 @@ paths:
   /fedipamop:
     get:
       description: Returns a list of fedipamop objects matching the search criteria
+      operationId: FedipamopList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -276,6 +279,7 @@ paths:
   /fedipamop/{reference}:
     get:
       description: Returns a specific fedipamop object by reference
+      operationId: FedipamopRead
       parameters:
       - description: Reference of the fedipamop object
         explode: false

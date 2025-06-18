@@ -67,7 +67,7 @@ type Rangetemplate struct {
 	// Permission for known clients. If set to 'Deny' known clients will be denied IP addresses. Known clients include roaming hosts and clients with fixed addresses or DHCP host entries. Unknown clients include clients that are not roaming hosts and clients that do not have fixed addresses or DHCP host entries.
 	KnownClients *string `json:"known_clients,omitempty"`
 	// An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day).
-	LeaseScavengeTime *int32 `json:"lease_scavenge_time,omitempty"`
+	LeaseScavengeTime *int64 `json:"lease_scavenge_time,omitempty"`
 	// This field contains the logic filters to be applied on this range. This list corresponds to the match rules that are written to the dhcpd configuration file.
 	LogicFilterRules []RangetemplateLogicFilterRules `json:"logic_filter_rules,omitempty"`
 	// The percentage of DHCP range usage below which the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100.
@@ -932,9 +932,9 @@ func (o *Rangetemplate) SetKnownClients(v string) {
 }
 
 // GetLeaseScavengeTime returns the LeaseScavengeTime field value if set, zero value otherwise.
-func (o *Rangetemplate) GetLeaseScavengeTime() int32 {
+func (o *Rangetemplate) GetLeaseScavengeTime() int64 {
 	if o == nil || IsNil(o.LeaseScavengeTime) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LeaseScavengeTime
@@ -942,7 +942,7 @@ func (o *Rangetemplate) GetLeaseScavengeTime() int32 {
 
 // GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Rangetemplate) GetLeaseScavengeTimeOk() (*int32, bool) {
+func (o *Rangetemplate) GetLeaseScavengeTimeOk() (*int64, bool) {
 	if o == nil || IsNil(o.LeaseScavengeTime) {
 		return nil, false
 	}
@@ -958,8 +958,8 @@ func (o *Rangetemplate) HasLeaseScavengeTime() bool {
 	return false
 }
 
-// SetLeaseScavengeTime gets a reference to the given int32 and assigns it to the LeaseScavengeTime field.
-func (o *Rangetemplate) SetLeaseScavengeTime(v int32) {
+// SetLeaseScavengeTime gets a reference to the given int64 and assigns it to the LeaseScavengeTime field.
+func (o *Rangetemplate) SetLeaseScavengeTime(v int64) {
 	o.LeaseScavengeTime = &v
 }
 

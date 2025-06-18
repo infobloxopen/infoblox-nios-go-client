@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DiscoverydeviceneighborGet**](DiscoveryDeviceneighborAPI.md#DiscoverydeviceneighborGet) | **Get** /discovery:deviceneighbor | Retrieve discovery:deviceneighbor objects
-[**DiscoverydeviceneighborReferenceGet**](DiscoveryDeviceneighborAPI.md#DiscoverydeviceneighborReferenceGet) | **Get** /discovery:deviceneighbor/{reference} | Get a specific discovery:deviceneighbor object
+[**List**](DiscoveryDeviceneighborAPI.md#List) | **Get** /discovery:deviceneighbor | Retrieve discovery:deviceneighbor objects
+[**Read**](DiscoveryDeviceneighborAPI.md#Read) | **Get** /discovery:deviceneighbor/{reference} | Get a specific discovery:deviceneighbor object
 
 
 
-## DiscoverydeviceneighborGet
+## List
 
-> ListDiscoveryDeviceneighborResponse DiscoverydeviceneighborGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoveryDeviceneighborResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:deviceneighbor objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryDeviceneighborAPI.DiscoverydeviceneighborGet(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoveryDeviceneighborAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceneighborAPI.DiscoverydeviceneighborGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceneighborAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DiscoverydeviceneighborGet`: ListDiscoveryDeviceneighborResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceneighborAPI.DiscoverydeviceneighborGet`: %v\n", resp)
+	// response from `List`: ListDiscoveryDeviceneighborResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceneighborAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoveryDeviceneighborAPIDiscoverydeviceneighborGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDeviceneighborAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DiscoverydeviceneighborReferenceGet
+## Read
 
-> GetDiscoveryDeviceneighborResponse DiscoverydeviceneighborReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoveryDeviceneighborResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:deviceneighbor object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:deviceneighbor object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoveryDeviceneighborAPI.DiscoverydeviceneighborReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoveryDeviceneighborAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceneighborAPI.DiscoverydeviceneighborReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceneighborAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DiscoverydeviceneighborReferenceGet`: GetDiscoveryDeviceneighborResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceneighborAPI.DiscoverydeviceneighborReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDiscoveryDeviceneighborResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceneighborAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoveryDeviceneighborAPIDiscoverydeviceneighborReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDeviceneighborAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

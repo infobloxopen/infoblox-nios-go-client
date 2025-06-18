@@ -23,150 +23,374 @@ import (
 
 type BfdtemplateAPI interface {
 	/*
-		Get Retrieve bfdtemplate objects
-
-		Returns a list of bfdtemplate objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return BfdtemplateAPIGetRequest
-	*/
-	Get(ctx context.Context) BfdtemplateAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListBfdtemplateResponse
-	GetExecute(r BfdtemplateAPIGetRequest) (*ListBfdtemplateResponse, *http.Response, error)
-	/*
-		Post Create a bfdtemplate object
+		Create Create a bfdtemplate object
 
 		Creates a new bfdtemplate object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return BfdtemplateAPIPostRequest
+		@return BfdtemplateAPICreateRequest
 	*/
-	Post(ctx context.Context) BfdtemplateAPIPostRequest
+	Create(ctx context.Context) BfdtemplateAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateBfdtemplateResponse
-	PostExecute(r BfdtemplateAPIPostRequest) (*CreateBfdtemplateResponse, *http.Response, error)
+	CreateExecute(r BfdtemplateAPICreateRequest) (*CreateBfdtemplateResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a bfdtemplate object
+		Delete Delete a bfdtemplate object
 
 		Deletes a specific bfdtemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the bfdtemplate object
-		@return BfdtemplateAPIReferenceDeleteRequest
+		@return BfdtemplateAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) BfdtemplateAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) BfdtemplateAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r BfdtemplateAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r BfdtemplateAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific bfdtemplate object
+		List Retrieve bfdtemplate objects
+
+		Returns a list of bfdtemplate objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return BfdtemplateAPIListRequest
+	*/
+	List(ctx context.Context) BfdtemplateAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListBfdtemplateResponse
+	ListExecute(r BfdtemplateAPIListRequest) (*ListBfdtemplateResponse, *http.Response, error)
+	/*
+		Read Get a specific bfdtemplate object
 
 		Returns a specific bfdtemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the bfdtemplate object
-		@return BfdtemplateAPIReferenceGetRequest
+		@return BfdtemplateAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) BfdtemplateAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) BfdtemplateAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetBfdtemplateResponse
-	ReferenceGetExecute(r BfdtemplateAPIReferenceGetRequest) (*GetBfdtemplateResponse, *http.Response, error)
+	ReadExecute(r BfdtemplateAPIReadRequest) (*GetBfdtemplateResponse, *http.Response, error)
 	/*
-		ReferencePut Update a bfdtemplate object
+		Update Update a bfdtemplate object
 
 		Updates a specific bfdtemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the bfdtemplate object
-		@return BfdtemplateAPIReferencePutRequest
+		@return BfdtemplateAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) BfdtemplateAPIReferencePutRequest
+	Update(ctx context.Context, reference string) BfdtemplateAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateBfdtemplateResponse
-	ReferencePutExecute(r BfdtemplateAPIReferencePutRequest) (*UpdateBfdtemplateResponse, *http.Response, error)
+	UpdateExecute(r BfdtemplateAPIUpdateRequest) (*UpdateBfdtemplateResponse, *http.Response, error)
 }
 
 // BfdtemplateAPIService BfdtemplateAPI service
 type BfdtemplateAPIService internal.Service
 
-type BfdtemplateAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     BfdtemplateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type BfdtemplateAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       BfdtemplateAPI
+	bfdtemplate      *Bfdtemplate
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r BfdtemplateAPICreateRequest) Bfdtemplate(bfdtemplate Bfdtemplate) BfdtemplateAPICreateRequest {
+	r.bfdtemplate = &bfdtemplate
+	return r
 }
 
 // Enter the field names followed by comma
-func (r BfdtemplateAPIGetRequest) ReturnFields(returnFields string) BfdtemplateAPIGetRequest {
+func (r BfdtemplateAPICreateRequest) ReturnFields(returnFields string) BfdtemplateAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BfdtemplateAPIGetRequest) ReturnFields2(returnFields2 string) BfdtemplateAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r BfdtemplateAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) BfdtemplateAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r BfdtemplateAPICreateRequest) ReturnAsObject(returnAsObject int32) BfdtemplateAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r BfdtemplateAPICreateRequest) Execute() (*CreateBfdtemplateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a bfdtemplate object
+
+Creates a new bfdtemplate object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return BfdtemplateAPICreateRequest
+*/
+func (a *BfdtemplateAPIService) Create(ctx context.Context) BfdtemplateAPICreateRequest {
+	return BfdtemplateAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateBfdtemplateResponse
+func (a *BfdtemplateAPIService) CreateExecute(r BfdtemplateAPICreateRequest) (*CreateBfdtemplateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateBfdtemplateResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BfdtemplateAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/bfdtemplate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.bfdtemplate == nil {
+		return localVarReturnValue, nil, internal.ReportError("bfdtemplate is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.bfdtemplate
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type BfdtemplateAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService BfdtemplateAPI
+	reference  string
+}
+
+func (r BfdtemplateAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a bfdtemplate object
+
+Deletes a specific bfdtemplate object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the bfdtemplate object
+	@return BfdtemplateAPIDeleteRequest
+*/
+func (a *BfdtemplateAPIService) Delete(ctx context.Context, reference string) BfdtemplateAPIDeleteRequest {
+	return BfdtemplateAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *BfdtemplateAPIService) DeleteExecute(r BfdtemplateAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BfdtemplateAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/bfdtemplate/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type BfdtemplateAPIListRequest struct {
+	ctx              context.Context
+	ApiService       BfdtemplateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r BfdtemplateAPIListRequest) ReturnFields(returnFields string) BfdtemplateAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r BfdtemplateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) BfdtemplateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r BfdtemplateAPIGetRequest) MaxResults(maxResults int32) BfdtemplateAPIGetRequest {
+func (r BfdtemplateAPIListRequest) MaxResults(maxResults int32) BfdtemplateAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r BfdtemplateAPIGetRequest) ReturnAsObject(returnAsObject int32) BfdtemplateAPIGetRequest {
+func (r BfdtemplateAPIListRequest) ReturnAsObject(returnAsObject int32) BfdtemplateAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r BfdtemplateAPIGetRequest) Paging(paging int32) BfdtemplateAPIGetRequest {
+func (r BfdtemplateAPIListRequest) Paging(paging int32) BfdtemplateAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r BfdtemplateAPIGetRequest) PageId(pageId string) BfdtemplateAPIGetRequest {
+func (r BfdtemplateAPIListRequest) PageId(pageId string) BfdtemplateAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r BfdtemplateAPIGetRequest) Filters(filters map[string]interface{}) BfdtemplateAPIGetRequest {
+func (r BfdtemplateAPIListRequest) Filters(filters map[string]interface{}) BfdtemplateAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r BfdtemplateAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) BfdtemplateAPIGetRequest {
+func (r BfdtemplateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) BfdtemplateAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r BfdtemplateAPIGetRequest) Execute() (*ListBfdtemplateResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r BfdtemplateAPIListRequest) Execute() (*ListBfdtemplateResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve bfdtemplate objects
+List Retrieve bfdtemplate objects
 
 Returns a list of bfdtemplate objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return BfdtemplateAPIGetRequest
+	@return BfdtemplateAPIListRequest
 */
-func (a *BfdtemplateAPIService) Get(ctx context.Context) BfdtemplateAPIGetRequest {
-	return BfdtemplateAPIGetRequest{
+func (a *BfdtemplateAPIService) List(ctx context.Context) BfdtemplateAPIListRequest {
+	return BfdtemplateAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *BfdtemplateAPIService) Get(ctx context.Context) BfdtemplateAPIGetReques
 // Execute executes the request
 //
 //	@return ListBfdtemplateResponse
-func (a *BfdtemplateAPIService) GetExecute(r BfdtemplateAPIGetRequest) (*ListBfdtemplateResponse, *http.Response, error) {
+func (a *BfdtemplateAPIService) ListExecute(r BfdtemplateAPIListRequest) (*ListBfdtemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *BfdtemplateAPIService) GetExecute(r BfdtemplateAPIGetRequest) (*ListBfd
 		localVarReturnValue *ListBfdtemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BfdtemplateAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BfdtemplateAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *BfdtemplateAPIService) GetExecute(r BfdtemplateAPIGetRequest) (*ListBfd
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *BfdtemplateAPIService) GetExecute(r BfdtemplateAPIGetRequest) (*ListBfd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type BfdtemplateAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     BfdtemplateAPI
-	bfdtemplate    *Bfdtemplate
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r BfdtemplateAPIPostRequest) Bfdtemplate(bfdtemplate Bfdtemplate) BfdtemplateAPIPostRequest {
-	r.bfdtemplate = &bfdtemplate
-	return r
+type BfdtemplateAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       BfdtemplateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r BfdtemplateAPIPostRequest) ReturnFields(returnFields string) BfdtemplateAPIPostRequest {
+func (r BfdtemplateAPIReadRequest) ReturnFields(returnFields string) BfdtemplateAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BfdtemplateAPIPostRequest) ReturnFields2(returnFields2 string) BfdtemplateAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r BfdtemplateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) BfdtemplateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r BfdtemplateAPIPostRequest) ReturnAsObject(returnAsObject int32) BfdtemplateAPIPostRequest {
+func (r BfdtemplateAPIReadRequest) ReturnAsObject(returnAsObject int32) BfdtemplateAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r BfdtemplateAPIPostRequest) Execute() (*CreateBfdtemplateResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r BfdtemplateAPIReadRequest) Execute() (*GetBfdtemplateResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a bfdtemplate object
-
-Creates a new bfdtemplate object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return BfdtemplateAPIPostRequest
-*/
-func (a *BfdtemplateAPIService) Post(ctx context.Context) BfdtemplateAPIPostRequest {
-	return BfdtemplateAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateBfdtemplateResponse
-func (a *BfdtemplateAPIService) PostExecute(r BfdtemplateAPIPostRequest) (*CreateBfdtemplateResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateBfdtemplateResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BfdtemplateAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/bfdtemplate"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.bfdtemplate == nil {
-		return localVarReturnValue, nil, internal.ReportError("bfdtemplate is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.bfdtemplate
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type BfdtemplateAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService BfdtemplateAPI
-	reference  string
-}
-
-func (r BfdtemplateAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a bfdtemplate object
-
-Deletes a specific bfdtemplate object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the bfdtemplate object
-	@return BfdtemplateAPIReferenceDeleteRequest
-*/
-func (a *BfdtemplateAPIService) ReferenceDelete(ctx context.Context, reference string) BfdtemplateAPIReferenceDeleteRequest {
-	return BfdtemplateAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *BfdtemplateAPIService) ReferenceDeleteExecute(r BfdtemplateAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BfdtemplateAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/bfdtemplate/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type BfdtemplateAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     BfdtemplateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r BfdtemplateAPIReferenceGetRequest) ReturnFields(returnFields string) BfdtemplateAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BfdtemplateAPIReferenceGetRequest) ReturnFields2(returnFields2 string) BfdtemplateAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r BfdtemplateAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) BfdtemplateAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r BfdtemplateAPIReferenceGetRequest) Execute() (*GetBfdtemplateResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific bfdtemplate object
+Read Get a specific bfdtemplate object
 
 Returns a specific bfdtemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the bfdtemplate object
-	@return BfdtemplateAPIReferenceGetRequest
+	@return BfdtemplateAPIReadRequest
 */
-func (a *BfdtemplateAPIService) ReferenceGet(ctx context.Context, reference string) BfdtemplateAPIReferenceGetRequest {
-	return BfdtemplateAPIReferenceGetRequest{
+func (a *BfdtemplateAPIService) Read(ctx context.Context, reference string) BfdtemplateAPIReadRequest {
+	return BfdtemplateAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *BfdtemplateAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetBfdtemplateResponse
-func (a *BfdtemplateAPIService) ReferenceGetExecute(r BfdtemplateAPIReferenceGetRequest) (*GetBfdtemplateResponse, *http.Response, error) {
+func (a *BfdtemplateAPIService) ReadExecute(r BfdtemplateAPIReadRequest) (*GetBfdtemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *BfdtemplateAPIService) ReferenceGetExecute(r BfdtemplateAPIReferenceGet
 		localVarReturnValue *GetBfdtemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BfdtemplateAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BfdtemplateAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *BfdtemplateAPIService) ReferenceGetExecute(r BfdtemplateAPIReferenceGet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *BfdtemplateAPIService) ReferenceGetExecute(r BfdtemplateAPIReferenceGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type BfdtemplateAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     BfdtemplateAPI
-	reference      string
-	bfdtemplate    *Bfdtemplate
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type BfdtemplateAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       BfdtemplateAPI
+	reference        string
+	bfdtemplate      *Bfdtemplate
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r BfdtemplateAPIReferencePutRequest) Bfdtemplate(bfdtemplate Bfdtemplate) BfdtemplateAPIReferencePutRequest {
+func (r BfdtemplateAPIUpdateRequest) Bfdtemplate(bfdtemplate Bfdtemplate) BfdtemplateAPIUpdateRequest {
 	r.bfdtemplate = &bfdtemplate
 	return r
 }
 
 // Enter the field names followed by comma
-func (r BfdtemplateAPIReferencePutRequest) ReturnFields(returnFields string) BfdtemplateAPIReferencePutRequest {
+func (r BfdtemplateAPIUpdateRequest) ReturnFields(returnFields string) BfdtemplateAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BfdtemplateAPIReferencePutRequest) ReturnFields2(returnFields2 string) BfdtemplateAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r BfdtemplateAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) BfdtemplateAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r BfdtemplateAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) BfdtemplateAPIReferencePutRequest {
+func (r BfdtemplateAPIUpdateRequest) ReturnAsObject(returnAsObject int32) BfdtemplateAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r BfdtemplateAPIReferencePutRequest) Execute() (*UpdateBfdtemplateResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r BfdtemplateAPIUpdateRequest) Execute() (*UpdateBfdtemplateResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a bfdtemplate object
+Update Update a bfdtemplate object
 
 Updates a specific bfdtemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the bfdtemplate object
-	@return BfdtemplateAPIReferencePutRequest
+	@return BfdtemplateAPIUpdateRequest
 */
-func (a *BfdtemplateAPIService) ReferencePut(ctx context.Context, reference string) BfdtemplateAPIReferencePutRequest {
-	return BfdtemplateAPIReferencePutRequest{
+func (a *BfdtemplateAPIService) Update(ctx context.Context, reference string) BfdtemplateAPIUpdateRequest {
+	return BfdtemplateAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *BfdtemplateAPIService) ReferencePut(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return UpdateBfdtemplateResponse
-func (a *BfdtemplateAPIService) ReferencePutExecute(r BfdtemplateAPIReferencePutRequest) (*UpdateBfdtemplateResponse, *http.Response, error) {
+func (a *BfdtemplateAPIService) UpdateExecute(r BfdtemplateAPIUpdateRequest) (*UpdateBfdtemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *BfdtemplateAPIService) ReferencePutExecute(r BfdtemplateAPIReferencePut
 		localVarReturnValue *UpdateBfdtemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BfdtemplateAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BfdtemplateAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *BfdtemplateAPIService) ReferencePutExecute(r BfdtemplateAPIReferencePut
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

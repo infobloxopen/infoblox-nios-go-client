@@ -23,150 +23,374 @@ import (
 
 type Ipv6rangetemplateAPI interface {
 	/*
-		Get Retrieve ipv6rangetemplate objects
-
-		Returns a list of ipv6rangetemplate objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Ipv6rangetemplateAPIGetRequest
-	*/
-	Get(ctx context.Context) Ipv6rangetemplateAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListIpv6rangetemplateResponse
-	GetExecute(r Ipv6rangetemplateAPIGetRequest) (*ListIpv6rangetemplateResponse, *http.Response, error)
-	/*
-		Post Create a ipv6rangetemplate object
+		Create Create a ipv6rangetemplate object
 
 		Creates a new ipv6rangetemplate object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Ipv6rangetemplateAPIPostRequest
+		@return Ipv6rangetemplateAPICreateRequest
 	*/
-	Post(ctx context.Context) Ipv6rangetemplateAPIPostRequest
+	Create(ctx context.Context) Ipv6rangetemplateAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateIpv6rangetemplateResponse
-	PostExecute(r Ipv6rangetemplateAPIPostRequest) (*CreateIpv6rangetemplateResponse, *http.Response, error)
+	CreateExecute(r Ipv6rangetemplateAPICreateRequest) (*CreateIpv6rangetemplateResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a ipv6rangetemplate object
+		Delete Delete a ipv6rangetemplate object
 
 		Deletes a specific ipv6rangetemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6rangetemplate object
-		@return Ipv6rangetemplateAPIReferenceDeleteRequest
+		@return Ipv6rangetemplateAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) Ipv6rangetemplateAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) Ipv6rangetemplateAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r Ipv6rangetemplateAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r Ipv6rangetemplateAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific ipv6rangetemplate object
+		List Retrieve ipv6rangetemplate objects
+
+		Returns a list of ipv6rangetemplate objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return Ipv6rangetemplateAPIListRequest
+	*/
+	List(ctx context.Context) Ipv6rangetemplateAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListIpv6rangetemplateResponse
+	ListExecute(r Ipv6rangetemplateAPIListRequest) (*ListIpv6rangetemplateResponse, *http.Response, error)
+	/*
+		Read Get a specific ipv6rangetemplate object
 
 		Returns a specific ipv6rangetemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6rangetemplate object
-		@return Ipv6rangetemplateAPIReferenceGetRequest
+		@return Ipv6rangetemplateAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) Ipv6rangetemplateAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) Ipv6rangetemplateAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetIpv6rangetemplateResponse
-	ReferenceGetExecute(r Ipv6rangetemplateAPIReferenceGetRequest) (*GetIpv6rangetemplateResponse, *http.Response, error)
+	ReadExecute(r Ipv6rangetemplateAPIReadRequest) (*GetIpv6rangetemplateResponse, *http.Response, error)
 	/*
-		ReferencePut Update a ipv6rangetemplate object
+		Update Update a ipv6rangetemplate object
 
 		Updates a specific ipv6rangetemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6rangetemplate object
-		@return Ipv6rangetemplateAPIReferencePutRequest
+		@return Ipv6rangetemplateAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) Ipv6rangetemplateAPIReferencePutRequest
+	Update(ctx context.Context, reference string) Ipv6rangetemplateAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateIpv6rangetemplateResponse
-	ReferencePutExecute(r Ipv6rangetemplateAPIReferencePutRequest) (*UpdateIpv6rangetemplateResponse, *http.Response, error)
+	UpdateExecute(r Ipv6rangetemplateAPIUpdateRequest) (*UpdateIpv6rangetemplateResponse, *http.Response, error)
 }
 
 // Ipv6rangetemplateAPIService Ipv6rangetemplateAPI service
 type Ipv6rangetemplateAPIService internal.Service
 
-type Ipv6rangetemplateAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6rangetemplateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type Ipv6rangetemplateAPICreateRequest struct {
+	ctx               context.Context
+	ApiService        Ipv6rangetemplateAPI
+	ipv6rangetemplate *Ipv6rangetemplate
+	returnFields      *string
+	returnFieldsPlus  *string
+	returnAsObject    *int32
+}
+
+// Object data to create
+func (r Ipv6rangetemplateAPICreateRequest) Ipv6rangetemplate(ipv6rangetemplate Ipv6rangetemplate) Ipv6rangetemplateAPICreateRequest {
+	r.ipv6rangetemplate = &ipv6rangetemplate
+	return r
 }
 
 // Enter the field names followed by comma
-func (r Ipv6rangetemplateAPIGetRequest) ReturnFields(returnFields string) Ipv6rangetemplateAPIGetRequest {
+func (r Ipv6rangetemplateAPICreateRequest) ReturnFields(returnFields string) Ipv6rangetemplateAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6rangetemplateAPIGetRequest) ReturnFields2(returnFields2 string) Ipv6rangetemplateAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6rangetemplateAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6rangetemplateAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r Ipv6rangetemplateAPICreateRequest) ReturnAsObject(returnAsObject int32) Ipv6rangetemplateAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r Ipv6rangetemplateAPICreateRequest) Execute() (*CreateIpv6rangetemplateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a ipv6rangetemplate object
+
+Creates a new ipv6rangetemplate object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return Ipv6rangetemplateAPICreateRequest
+*/
+func (a *Ipv6rangetemplateAPIService) Create(ctx context.Context) Ipv6rangetemplateAPICreateRequest {
+	return Ipv6rangetemplateAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateIpv6rangetemplateResponse
+func (a *Ipv6rangetemplateAPIService) CreateExecute(r Ipv6rangetemplateAPICreateRequest) (*CreateIpv6rangetemplateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateIpv6rangetemplateResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6rangetemplateAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ipv6rangetemplate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.ipv6rangetemplate == nil {
+		return localVarReturnValue, nil, internal.ReportError("ipv6rangetemplate is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.ipv6rangetemplate
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type Ipv6rangetemplateAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService Ipv6rangetemplateAPI
+	reference  string
+}
+
+func (r Ipv6rangetemplateAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a ipv6rangetemplate object
+
+Deletes a specific ipv6rangetemplate object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the ipv6rangetemplate object
+	@return Ipv6rangetemplateAPIDeleteRequest
+*/
+func (a *Ipv6rangetemplateAPIService) Delete(ctx context.Context, reference string) Ipv6rangetemplateAPIDeleteRequest {
+	return Ipv6rangetemplateAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *Ipv6rangetemplateAPIService) DeleteExecute(r Ipv6rangetemplateAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6rangetemplateAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ipv6rangetemplate/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type Ipv6rangetemplateAPIListRequest struct {
+	ctx              context.Context
+	ApiService       Ipv6rangetemplateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r Ipv6rangetemplateAPIListRequest) ReturnFields(returnFields string) Ipv6rangetemplateAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r Ipv6rangetemplateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6rangetemplateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r Ipv6rangetemplateAPIGetRequest) MaxResults(maxResults int32) Ipv6rangetemplateAPIGetRequest {
+func (r Ipv6rangetemplateAPIListRequest) MaxResults(maxResults int32) Ipv6rangetemplateAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6rangetemplateAPIGetRequest) ReturnAsObject(returnAsObject int32) Ipv6rangetemplateAPIGetRequest {
+func (r Ipv6rangetemplateAPIListRequest) ReturnAsObject(returnAsObject int32) Ipv6rangetemplateAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r Ipv6rangetemplateAPIGetRequest) Paging(paging int32) Ipv6rangetemplateAPIGetRequest {
+func (r Ipv6rangetemplateAPIListRequest) Paging(paging int32) Ipv6rangetemplateAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r Ipv6rangetemplateAPIGetRequest) PageId(pageId string) Ipv6rangetemplateAPIGetRequest {
+func (r Ipv6rangetemplateAPIListRequest) PageId(pageId string) Ipv6rangetemplateAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r Ipv6rangetemplateAPIGetRequest) Filters(filters map[string]interface{}) Ipv6rangetemplateAPIGetRequest {
+func (r Ipv6rangetemplateAPIListRequest) Filters(filters map[string]interface{}) Ipv6rangetemplateAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r Ipv6rangetemplateAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6rangetemplateAPIGetRequest {
+func (r Ipv6rangetemplateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6rangetemplateAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r Ipv6rangetemplateAPIGetRequest) Execute() (*ListIpv6rangetemplateResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r Ipv6rangetemplateAPIListRequest) Execute() (*ListIpv6rangetemplateResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve ipv6rangetemplate objects
+List Retrieve ipv6rangetemplate objects
 
 Returns a list of ipv6rangetemplate objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Ipv6rangetemplateAPIGetRequest
+	@return Ipv6rangetemplateAPIListRequest
 */
-func (a *Ipv6rangetemplateAPIService) Get(ctx context.Context) Ipv6rangetemplateAPIGetRequest {
-	return Ipv6rangetemplateAPIGetRequest{
+func (a *Ipv6rangetemplateAPIService) List(ctx context.Context) Ipv6rangetemplateAPIListRequest {
+	return Ipv6rangetemplateAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *Ipv6rangetemplateAPIService) Get(ctx context.Context) Ipv6rangetemplate
 // Execute executes the request
 //
 //	@return ListIpv6rangetemplateResponse
-func (a *Ipv6rangetemplateAPIService) GetExecute(r Ipv6rangetemplateAPIGetRequest) (*ListIpv6rangetemplateResponse, *http.Response, error) {
+func (a *Ipv6rangetemplateAPIService) ListExecute(r Ipv6rangetemplateAPIListRequest) (*ListIpv6rangetemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *Ipv6rangetemplateAPIService) GetExecute(r Ipv6rangetemplateAPIGetReques
 		localVarReturnValue *ListIpv6rangetemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6rangetemplateAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6rangetemplateAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *Ipv6rangetemplateAPIService) GetExecute(r Ipv6rangetemplateAPIGetReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *Ipv6rangetemplateAPIService) GetExecute(r Ipv6rangetemplateAPIGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv6rangetemplateAPIPostRequest struct {
-	ctx               context.Context
-	ApiService        Ipv6rangetemplateAPI
-	ipv6rangetemplate *Ipv6rangetemplate
-	returnFields      *string
-	returnFields2     *string
-	returnAsObject    *int32
-}
-
-// Object data to create
-func (r Ipv6rangetemplateAPIPostRequest) Ipv6rangetemplate(ipv6rangetemplate Ipv6rangetemplate) Ipv6rangetemplateAPIPostRequest {
-	r.ipv6rangetemplate = &ipv6rangetemplate
-	return r
+type Ipv6rangetemplateAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       Ipv6rangetemplateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r Ipv6rangetemplateAPIPostRequest) ReturnFields(returnFields string) Ipv6rangetemplateAPIPostRequest {
+func (r Ipv6rangetemplateAPIReadRequest) ReturnFields(returnFields string) Ipv6rangetemplateAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6rangetemplateAPIPostRequest) ReturnFields2(returnFields2 string) Ipv6rangetemplateAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6rangetemplateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6rangetemplateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6rangetemplateAPIPostRequest) ReturnAsObject(returnAsObject int32) Ipv6rangetemplateAPIPostRequest {
+func (r Ipv6rangetemplateAPIReadRequest) ReturnAsObject(returnAsObject int32) Ipv6rangetemplateAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6rangetemplateAPIPostRequest) Execute() (*CreateIpv6rangetemplateResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r Ipv6rangetemplateAPIReadRequest) Execute() (*GetIpv6rangetemplateResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a ipv6rangetemplate object
-
-Creates a new ipv6rangetemplate object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Ipv6rangetemplateAPIPostRequest
-*/
-func (a *Ipv6rangetemplateAPIService) Post(ctx context.Context) Ipv6rangetemplateAPIPostRequest {
-	return Ipv6rangetemplateAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateIpv6rangetemplateResponse
-func (a *Ipv6rangetemplateAPIService) PostExecute(r Ipv6rangetemplateAPIPostRequest) (*CreateIpv6rangetemplateResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateIpv6rangetemplateResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6rangetemplateAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ipv6rangetemplate"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.ipv6rangetemplate == nil {
-		return localVarReturnValue, nil, internal.ReportError("ipv6rangetemplate is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.ipv6rangetemplate
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type Ipv6rangetemplateAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService Ipv6rangetemplateAPI
-	reference  string
-}
-
-func (r Ipv6rangetemplateAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a ipv6rangetemplate object
-
-Deletes a specific ipv6rangetemplate object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the ipv6rangetemplate object
-	@return Ipv6rangetemplateAPIReferenceDeleteRequest
-*/
-func (a *Ipv6rangetemplateAPIService) ReferenceDelete(ctx context.Context, reference string) Ipv6rangetemplateAPIReferenceDeleteRequest {
-	return Ipv6rangetemplateAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *Ipv6rangetemplateAPIService) ReferenceDeleteExecute(r Ipv6rangetemplateAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6rangetemplateAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ipv6rangetemplate/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type Ipv6rangetemplateAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6rangetemplateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r Ipv6rangetemplateAPIReferenceGetRequest) ReturnFields(returnFields string) Ipv6rangetemplateAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6rangetemplateAPIReferenceGetRequest) ReturnFields2(returnFields2 string) Ipv6rangetemplateAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r Ipv6rangetemplateAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) Ipv6rangetemplateAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r Ipv6rangetemplateAPIReferenceGetRequest) Execute() (*GetIpv6rangetemplateResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific ipv6rangetemplate object
+Read Get a specific ipv6rangetemplate object
 
 Returns a specific ipv6rangetemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6rangetemplate object
-	@return Ipv6rangetemplateAPIReferenceGetRequest
+	@return Ipv6rangetemplateAPIReadRequest
 */
-func (a *Ipv6rangetemplateAPIService) ReferenceGet(ctx context.Context, reference string) Ipv6rangetemplateAPIReferenceGetRequest {
-	return Ipv6rangetemplateAPIReferenceGetRequest{
+func (a *Ipv6rangetemplateAPIService) Read(ctx context.Context, reference string) Ipv6rangetemplateAPIReadRequest {
+	return Ipv6rangetemplateAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *Ipv6rangetemplateAPIService) ReferenceGet(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return GetIpv6rangetemplateResponse
-func (a *Ipv6rangetemplateAPIService) ReferenceGetExecute(r Ipv6rangetemplateAPIReferenceGetRequest) (*GetIpv6rangetemplateResponse, *http.Response, error) {
+func (a *Ipv6rangetemplateAPIService) ReadExecute(r Ipv6rangetemplateAPIReadRequest) (*GetIpv6rangetemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *Ipv6rangetemplateAPIService) ReferenceGetExecute(r Ipv6rangetemplateAPI
 		localVarReturnValue *GetIpv6rangetemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6rangetemplateAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6rangetemplateAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *Ipv6rangetemplateAPIService) ReferenceGetExecute(r Ipv6rangetemplateAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *Ipv6rangetemplateAPIService) ReferenceGetExecute(r Ipv6rangetemplateAPI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv6rangetemplateAPIReferencePutRequest struct {
+type Ipv6rangetemplateAPIUpdateRequest struct {
 	ctx               context.Context
 	ApiService        Ipv6rangetemplateAPI
 	reference         string
 	ipv6rangetemplate *Ipv6rangetemplate
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
 // Object data to update
-func (r Ipv6rangetemplateAPIReferencePutRequest) Ipv6rangetemplate(ipv6rangetemplate Ipv6rangetemplate) Ipv6rangetemplateAPIReferencePutRequest {
+func (r Ipv6rangetemplateAPIUpdateRequest) Ipv6rangetemplate(ipv6rangetemplate Ipv6rangetemplate) Ipv6rangetemplateAPIUpdateRequest {
 	r.ipv6rangetemplate = &ipv6rangetemplate
 	return r
 }
 
 // Enter the field names followed by comma
-func (r Ipv6rangetemplateAPIReferencePutRequest) ReturnFields(returnFields string) Ipv6rangetemplateAPIReferencePutRequest {
+func (r Ipv6rangetemplateAPIUpdateRequest) ReturnFields(returnFields string) Ipv6rangetemplateAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6rangetemplateAPIReferencePutRequest) ReturnFields2(returnFields2 string) Ipv6rangetemplateAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6rangetemplateAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6rangetemplateAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6rangetemplateAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) Ipv6rangetemplateAPIReferencePutRequest {
+func (r Ipv6rangetemplateAPIUpdateRequest) ReturnAsObject(returnAsObject int32) Ipv6rangetemplateAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6rangetemplateAPIReferencePutRequest) Execute() (*UpdateIpv6rangetemplateResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r Ipv6rangetemplateAPIUpdateRequest) Execute() (*UpdateIpv6rangetemplateResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a ipv6rangetemplate object
+Update Update a ipv6rangetemplate object
 
 Updates a specific ipv6rangetemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6rangetemplate object
-	@return Ipv6rangetemplateAPIReferencePutRequest
+	@return Ipv6rangetemplateAPIUpdateRequest
 */
-func (a *Ipv6rangetemplateAPIService) ReferencePut(ctx context.Context, reference string) Ipv6rangetemplateAPIReferencePutRequest {
-	return Ipv6rangetemplateAPIReferencePutRequest{
+func (a *Ipv6rangetemplateAPIService) Update(ctx context.Context, reference string) Ipv6rangetemplateAPIUpdateRequest {
+	return Ipv6rangetemplateAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *Ipv6rangetemplateAPIService) ReferencePut(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return UpdateIpv6rangetemplateResponse
-func (a *Ipv6rangetemplateAPIService) ReferencePutExecute(r Ipv6rangetemplateAPIReferencePutRequest) (*UpdateIpv6rangetemplateResponse, *http.Response, error) {
+func (a *Ipv6rangetemplateAPIService) UpdateExecute(r Ipv6rangetemplateAPIUpdateRequest) (*UpdateIpv6rangetemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *Ipv6rangetemplateAPIService) ReferencePutExecute(r Ipv6rangetemplateAPI
 		localVarReturnValue *UpdateIpv6rangetemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6rangetemplateAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6rangetemplateAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *Ipv6rangetemplateAPIService) ReferencePutExecute(r Ipv6rangetemplateAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

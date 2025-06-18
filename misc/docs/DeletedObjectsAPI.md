@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DeletedObjectsAPI.md#Get) | **Get** /deleted_objects | Retrieve deleted_objects objects
-[**ReferenceGet**](DeletedObjectsAPI.md#ReferenceGet) | **Get** /deleted_objects/{reference} | Get a specific deleted_objects object
+[**List**](DeletedObjectsAPI.md#List) | **Get** /deleted_objects | Retrieve deleted_objects objects
+[**Read**](DeletedObjectsAPI.md#Read) | **Get** /deleted_objects/{reference} | Get a specific deleted_objects object
 
 
 
-## Get
+## List
 
-> ListDeletedObjectsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDeletedObjectsResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve deleted_objects objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.DeletedObjectsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DeletedObjectsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeletedObjectsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DeletedObjectsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDeletedObjectsResponse
-	fmt.Fprintf(os.Stdout, "Response from `DeletedObjectsAPI.Get`: %v\n", resp)
+	// response from `List`: ListDeletedObjectsResponse
+	fmt.Fprintf(os.Stdout, "Response from `DeletedObjectsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DeletedObjectsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DeletedObjectsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetDeletedObjectsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDeletedObjectsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific deleted_objects object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the deleted_objects object
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.DeletedObjectsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DeletedObjectsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeletedObjectsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DeletedObjectsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDeletedObjectsResponse
-	fmt.Fprintf(os.Stdout, "Response from `DeletedObjectsAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDeletedObjectsResponse
+	fmt.Fprintf(os.Stdout, "Response from `DeletedObjectsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DeletedObjectsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DeletedObjectsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

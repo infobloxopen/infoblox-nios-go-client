@@ -23,110 +23,110 @@ import (
 
 type GridMaxminddbinfoAPI interface {
 	/*
-		GridmaxminddbinfoGet Retrieve grid:maxminddbinfo objects
+		List Retrieve grid:maxminddbinfo objects
 
 		Returns a list of grid:maxminddbinfo objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest
+		@return GridMaxminddbinfoAPIListRequest
 	*/
-	GridmaxminddbinfoGet(ctx context.Context) GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest
+	List(ctx context.Context) GridMaxminddbinfoAPIListRequest
 
-	// GridmaxminddbinfoGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridMaxminddbinfoResponse
-	GridmaxminddbinfoGetExecute(r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) (*ListGridMaxminddbinfoResponse, *http.Response, error)
+	ListExecute(r GridMaxminddbinfoAPIListRequest) (*ListGridMaxminddbinfoResponse, *http.Response, error)
 	/*
-		GridmaxminddbinfoReferenceGet Get a specific grid:maxminddbinfo object
+		Read Get a specific grid:maxminddbinfo object
 
 		Returns a specific grid:maxminddbinfo object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:maxminddbinfo object
-		@return GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest
+		@return GridMaxminddbinfoAPIReadRequest
 	*/
-	GridmaxminddbinfoReferenceGet(ctx context.Context, reference string) GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest
+	Read(ctx context.Context, reference string) GridMaxminddbinfoAPIReadRequest
 
-	// GridmaxminddbinfoReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridMaxminddbinfoResponse
-	GridmaxminddbinfoReferenceGetExecute(r GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest) (*GetGridMaxminddbinfoResponse, *http.Response, error)
+	ReadExecute(r GridMaxminddbinfoAPIReadRequest) (*GetGridMaxminddbinfoResponse, *http.Response, error)
 }
 
 // GridMaxminddbinfoAPIService GridMaxminddbinfoAPI service
 type GridMaxminddbinfoAPIService internal.Service
 
-type GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest struct {
-	ctx            context.Context
-	ApiService     GridMaxminddbinfoAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type GridMaxminddbinfoAPIListRequest struct {
+	ctx              context.Context
+	ApiService       GridMaxminddbinfoAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) ReturnFields(returnFields string) GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest {
+func (r GridMaxminddbinfoAPIListRequest) ReturnFields(returnFields string) GridMaxminddbinfoAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) ReturnFields2(returnFields2 string) GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridMaxminddbinfoAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridMaxminddbinfoAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) MaxResults(maxResults int32) GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest {
+func (r GridMaxminddbinfoAPIListRequest) MaxResults(maxResults int32) GridMaxminddbinfoAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) ReturnAsObject(returnAsObject int32) GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest {
+func (r GridMaxminddbinfoAPIListRequest) ReturnAsObject(returnAsObject int32) GridMaxminddbinfoAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) Paging(paging int32) GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest {
+func (r GridMaxminddbinfoAPIListRequest) Paging(paging int32) GridMaxminddbinfoAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) PageId(pageId string) GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest {
+func (r GridMaxminddbinfoAPIListRequest) PageId(pageId string) GridMaxminddbinfoAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) Filters(filters map[string]interface{}) GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest {
+func (r GridMaxminddbinfoAPIListRequest) Filters(filters map[string]interface{}) GridMaxminddbinfoAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest {
+func (r GridMaxminddbinfoAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridMaxminddbinfoAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) Execute() (*ListGridMaxminddbinfoResponse, *http.Response, error) {
-	return r.ApiService.GridmaxminddbinfoGetExecute(r)
+func (r GridMaxminddbinfoAPIListRequest) Execute() (*ListGridMaxminddbinfoResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridmaxminddbinfoGet Retrieve grid:maxminddbinfo objects
+List Retrieve grid:maxminddbinfo objects
 
 Returns a list of grid:maxminddbinfo objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest
+	@return GridMaxminddbinfoAPIListRequest
 */
-func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoGet(ctx context.Context) GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest {
-	return GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest{
+func (a *GridMaxminddbinfoAPIService) List(ctx context.Context) GridMaxminddbinfoAPIListRequest {
+	return GridMaxminddbinfoAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoGet(ctx context.Context) 
 // Execute executes the request
 //
 //	@return ListGridMaxminddbinfoResponse
-func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoGetExecute(r GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest) (*ListGridMaxminddbinfoResponse, *http.Response, error) {
+func (a *GridMaxminddbinfoAPIService) ListExecute(r GridMaxminddbinfoAPIListRequest) (*ListGridMaxminddbinfoResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoGetExecute(r GridMaxmindd
 		localVarReturnValue *ListGridMaxminddbinfoResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridMaxminddbinfoAPIService.GridmaxminddbinfoGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridMaxminddbinfoAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoGetExecute(r GridMaxmindd
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoGetExecute(r GridMaxmindd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     GridMaxminddbinfoAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type GridMaxminddbinfoAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       GridMaxminddbinfoAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest) ReturnFields(returnFields string) GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest {
+func (r GridMaxminddbinfoAPIReadRequest) ReturnFields(returnFields string) GridMaxminddbinfoAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest) ReturnFields2(returnFields2 string) GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridMaxminddbinfoAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridMaxminddbinfoAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest {
+func (r GridMaxminddbinfoAPIReadRequest) ReturnAsObject(returnAsObject int32) GridMaxminddbinfoAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest) Execute() (*GetGridMaxminddbinfoResponse, *http.Response, error) {
-	return r.ApiService.GridmaxminddbinfoReferenceGetExecute(r)
+func (r GridMaxminddbinfoAPIReadRequest) Execute() (*GetGridMaxminddbinfoResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridmaxminddbinfoReferenceGet Get a specific grid:maxminddbinfo object
+Read Get a specific grid:maxminddbinfo object
 
 Returns a specific grid:maxminddbinfo object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:maxminddbinfo object
-	@return GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest
+	@return GridMaxminddbinfoAPIReadRequest
 */
-func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoReferenceGet(ctx context.Context, reference string) GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest {
-	return GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest{
+func (a *GridMaxminddbinfoAPIService) Read(ctx context.Context, reference string) GridMaxminddbinfoAPIReadRequest {
+	return GridMaxminddbinfoAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoReferenceGet(ctx context.
 // Execute executes the request
 //
 //	@return GetGridMaxminddbinfoResponse
-func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoReferenceGetExecute(r GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest) (*GetGridMaxminddbinfoResponse, *http.Response, error) {
+func (a *GridMaxminddbinfoAPIService) ReadExecute(r GridMaxminddbinfoAPIReadRequest) (*GetGridMaxminddbinfoResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoReferenceGetExecute(r Gri
 		localVarReturnValue *GetGridMaxminddbinfoResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridMaxminddbinfoAPIService.GridmaxminddbinfoReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridMaxminddbinfoAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *GridMaxminddbinfoAPIService) GridmaxminddbinfoReferenceGetExecute(r Gri
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

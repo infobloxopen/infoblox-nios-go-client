@@ -23,110 +23,110 @@ import (
 
 type DbObjectsAPI interface {
 	/*
-		Get Retrieve db_objects objects
+		List Retrieve db_objects objects
 
 		Returns a list of db_objects objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DbObjectsAPIGetRequest
+		@return DbObjectsAPIListRequest
 	*/
-	Get(ctx context.Context) DbObjectsAPIGetRequest
+	List(ctx context.Context) DbObjectsAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDbObjectsResponse
-	GetExecute(r DbObjectsAPIGetRequest) (*ListDbObjectsResponse, *http.Response, error)
+	ListExecute(r DbObjectsAPIListRequest) (*ListDbObjectsResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific db_objects object
+		Read Get a specific db_objects object
 
 		Returns a specific db_objects object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the db_objects object
-		@return DbObjectsAPIReferenceGetRequest
+		@return DbObjectsAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) DbObjectsAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) DbObjectsAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDbObjectsResponse
-	ReferenceGetExecute(r DbObjectsAPIReferenceGetRequest) (*GetDbObjectsResponse, *http.Response, error)
+	ReadExecute(r DbObjectsAPIReadRequest) (*GetDbObjectsResponse, *http.Response, error)
 }
 
 // DbObjectsAPIService DbObjectsAPI service
 type DbObjectsAPIService internal.Service
 
-type DbObjectsAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     DbObjectsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DbObjectsAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DbObjectsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r DbObjectsAPIGetRequest) ReturnFields(returnFields string) DbObjectsAPIGetRequest {
+func (r DbObjectsAPIListRequest) ReturnFields(returnFields string) DbObjectsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DbObjectsAPIGetRequest) ReturnFields2(returnFields2 string) DbObjectsAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DbObjectsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DbObjectsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DbObjectsAPIGetRequest) MaxResults(maxResults int32) DbObjectsAPIGetRequest {
+func (r DbObjectsAPIListRequest) MaxResults(maxResults int32) DbObjectsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DbObjectsAPIGetRequest) ReturnAsObject(returnAsObject int32) DbObjectsAPIGetRequest {
+func (r DbObjectsAPIListRequest) ReturnAsObject(returnAsObject int32) DbObjectsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DbObjectsAPIGetRequest) Paging(paging int32) DbObjectsAPIGetRequest {
+func (r DbObjectsAPIListRequest) Paging(paging int32) DbObjectsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DbObjectsAPIGetRequest) PageId(pageId string) DbObjectsAPIGetRequest {
+func (r DbObjectsAPIListRequest) PageId(pageId string) DbObjectsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DbObjectsAPIGetRequest) Filters(filters map[string]interface{}) DbObjectsAPIGetRequest {
+func (r DbObjectsAPIListRequest) Filters(filters map[string]interface{}) DbObjectsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DbObjectsAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DbObjectsAPIGetRequest {
+func (r DbObjectsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DbObjectsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DbObjectsAPIGetRequest) Execute() (*ListDbObjectsResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r DbObjectsAPIListRequest) Execute() (*ListDbObjectsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve db_objects objects
+List Retrieve db_objects objects
 
 Returns a list of db_objects objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DbObjectsAPIGetRequest
+	@return DbObjectsAPIListRequest
 */
-func (a *DbObjectsAPIService) Get(ctx context.Context) DbObjectsAPIGetRequest {
-	return DbObjectsAPIGetRequest{
+func (a *DbObjectsAPIService) List(ctx context.Context) DbObjectsAPIListRequest {
+	return DbObjectsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *DbObjectsAPIService) Get(ctx context.Context) DbObjectsAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListDbObjectsResponse
-func (a *DbObjectsAPIService) GetExecute(r DbObjectsAPIGetRequest) (*ListDbObjectsResponse, *http.Response, error) {
+func (a *DbObjectsAPIService) ListExecute(r DbObjectsAPIListRequest) (*ListDbObjectsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *DbObjectsAPIService) GetExecute(r DbObjectsAPIGetRequest) (*ListDbObjec
 		localVarReturnValue *ListDbObjectsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DbObjectsAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DbObjectsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *DbObjectsAPIService) GetExecute(r DbObjectsAPIGetRequest) (*ListDbObjec
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *DbObjectsAPIService) GetExecute(r DbObjectsAPIGetRequest) (*ListDbObjec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DbObjectsAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DbObjectsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DbObjectsAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DbObjectsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DbObjectsAPIReferenceGetRequest) ReturnFields(returnFields string) DbObjectsAPIReferenceGetRequest {
+func (r DbObjectsAPIReadRequest) ReturnFields(returnFields string) DbObjectsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DbObjectsAPIReferenceGetRequest) ReturnFields2(returnFields2 string) DbObjectsAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DbObjectsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DbObjectsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DbObjectsAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) DbObjectsAPIReferenceGetRequest {
+func (r DbObjectsAPIReadRequest) ReturnAsObject(returnAsObject int32) DbObjectsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DbObjectsAPIReferenceGetRequest) Execute() (*GetDbObjectsResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r DbObjectsAPIReadRequest) Execute() (*GetDbObjectsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific db_objects object
+Read Get a specific db_objects object
 
 Returns a specific db_objects object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the db_objects object
-	@return DbObjectsAPIReferenceGetRequest
+	@return DbObjectsAPIReadRequest
 */
-func (a *DbObjectsAPIService) ReferenceGet(ctx context.Context, reference string) DbObjectsAPIReferenceGetRequest {
-	return DbObjectsAPIReferenceGetRequest{
+func (a *DbObjectsAPIService) Read(ctx context.Context, reference string) DbObjectsAPIReadRequest {
+	return DbObjectsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *DbObjectsAPIService) ReferenceGet(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return GetDbObjectsResponse
-func (a *DbObjectsAPIService) ReferenceGetExecute(r DbObjectsAPIReferenceGetRequest) (*GetDbObjectsResponse, *http.Response, error) {
+func (a *DbObjectsAPIService) ReadExecute(r DbObjectsAPIReadRequest) (*GetDbObjectsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *DbObjectsAPIService) ReferenceGetExecute(r DbObjectsAPIReferenceGetRequ
 		localVarReturnValue *GetDbObjectsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DbObjectsAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DbObjectsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *DbObjectsAPIService) ReferenceGetExecute(r DbObjectsAPIReferenceGetRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -23,11 +23,11 @@ func TestParentalcontrolBlockingpolicyAPIService(t *testing.T) {
 
 	apiClient := parentalcontrol.NewAPIClient()
 
-	t.Run("Test ParentalcontrolBlockingpolicyAPIService ParentalcontrolblockingpolicyGet", func(t *testing.T) {
+	t.Run("Test ParentalcontrolBlockingpolicyAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ParentalcontrolBlockingpolicyAPI.ParentalcontrolblockingpolicyGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolBlockingpolicyAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestParentalcontrolBlockingpolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolBlockingpolicyAPIService ParentalcontrolblockingpolicyPost", func(t *testing.T) {
+	t.Run("Test ParentalcontrolBlockingpolicyAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ParentalcontrolBlockingpolicyAPI.ParentalcontrolblockingpolicyPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ParentalcontrolBlockingpolicyAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ParentalcontrolBlockingpolicyAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ParentalcontrolBlockingpolicyAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestParentalcontrolBlockingpolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolBlockingpolicyAPIService ParentalcontrolblockingpolicyReferenceDelete", func(t *testing.T) {
+	t.Run("Test ParentalcontrolBlockingpolicyAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ParentalcontrolBlockingpolicyAPI.ParentalcontrolblockingpolicyReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ParentalcontrolBlockingpolicyAPIService ParentalcontrolblockingpolicyReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ParentalcontrolBlockingpolicyAPI.ParentalcontrolblockingpolicyReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolBlockingpolicyAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestParentalcontrolBlockingpolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ParentalcontrolBlockingpolicyAPIService ParentalcontrolblockingpolicyReferencePut", func(t *testing.T) {
+	t.Run("Test ParentalcontrolBlockingpolicyAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ParentalcontrolBlockingpolicyAPI.ParentalcontrolblockingpolicyReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ParentalcontrolBlockingpolicyAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

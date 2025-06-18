@@ -23,11 +23,11 @@ func TestDtcLbdnAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcLbdnAPIService DtclbdnGet", func(t *testing.T) {
+	t.Run("Test DtcLbdnAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcLbdnAPI.DtclbdnGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcLbdnAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDtcLbdnAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcLbdnAPIService DtclbdnPost", func(t *testing.T) {
+	t.Run("Test DtcLbdnAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcLbdnAPI.DtclbdnPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DtcLbdnAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DtcLbdnAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DtcLbdnAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDtcLbdnAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcLbdnAPIService DtclbdnReferenceDelete", func(t *testing.T) {
+	t.Run("Test DtcLbdnAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DtcLbdnAPI.DtclbdnReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DtcLbdnAPIService DtclbdnReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DtcLbdnAPI.DtclbdnReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcLbdnAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDtcLbdnAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcLbdnAPIService DtclbdnReferencePut", func(t *testing.T) {
+	t.Run("Test DtcLbdnAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcLbdnAPI.DtclbdnReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcLbdnAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

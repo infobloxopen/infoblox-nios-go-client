@@ -23,11 +23,11 @@ func TestDistributionscheduleAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test DistributionscheduleAPIService Get", func(t *testing.T) {
+	t.Run("Test DistributionscheduleAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DistributionscheduleAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DistributionscheduleAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDistributionscheduleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DistributionscheduleAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test DistributionscheduleAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DistributionscheduleAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DistributionscheduleAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestDistributionscheduleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DistributionscheduleAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test DistributionscheduleAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DistributionscheduleAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DistributionscheduleAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

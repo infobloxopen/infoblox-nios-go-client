@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](MemberdfpAPI.md#Get) | **Get** /memberdfp | Retrieve memberdfp objects
-[**Post**](MemberdfpAPI.md#Post) | **Post** /memberdfp | Create a memberdfp object
-[**ReferenceDelete**](MemberdfpAPI.md#ReferenceDelete) | **Delete** /memberdfp/{reference} | Delete a memberdfp object
-[**ReferenceGet**](MemberdfpAPI.md#ReferenceGet) | **Get** /memberdfp/{reference} | Get a specific memberdfp object
-[**ReferencePut**](MemberdfpAPI.md#ReferencePut) | **Put** /memberdfp/{reference} | Update a memberdfp object
+[**Create**](MemberdfpAPI.md#Create) | **Post** /memberdfp | Create a memberdfp object
+[**Delete**](MemberdfpAPI.md#Delete) | **Delete** /memberdfp/{reference} | Delete a memberdfp object
+[**List**](MemberdfpAPI.md#List) | **Get** /memberdfp | Retrieve memberdfp objects
+[**Read**](MemberdfpAPI.md#Read) | **Get** /memberdfp/{reference} | Get a specific memberdfp object
+[**Update**](MemberdfpAPI.md#Update) | **Put** /memberdfp/{reference} | Update a memberdfp object
 
 
 
-## Get
+## Create
 
-> ListMemberdfpResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateMemberdfpResponse Create(ctx).Memberdfp(memberdfp).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a memberdfp object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+)
+
+func main() {
+	memberdfp := *grid.NewMemberdfp() // Memberdfp | Object data to create
+
+	apiClient := grid.NewAPIClient()
+	resp, r, err := apiClient.MemberdfpAPI.Create(context.Background()).Memberdfp(memberdfp).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberdfpAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateMemberdfpResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberdfpAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `MemberdfpAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**memberdfp** | [**Memberdfp**](Memberdfp.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateMemberdfpResponse**](CreateMemberdfpResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a memberdfp object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the memberdfp object
+
+	apiClient := grid.NewAPIClient()
+	r, err := apiClient.MemberdfpAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberdfpAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the memberdfp object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `MemberdfpAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListMemberdfpResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve memberdfp objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberdfpAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.MemberdfpAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberdfpAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberdfpAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListMemberdfpResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberdfpAPI.Get`: %v\n", resp)
+	// response from `List`: ListMemberdfpResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberdfpAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberdfpAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberdfpAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateMemberdfpResponse Post(ctx).Memberdfp(memberdfp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a memberdfp object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
-)
-
-func main() {
-	memberdfp := *grid.NewMemberdfp() // Memberdfp | Object data to create
-
-	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberdfpAPI.Post(context.Background()).Memberdfp(memberdfp).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberdfpAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateMemberdfpResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberdfpAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `MemberdfpAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**memberdfp** | [**Memberdfp**](Memberdfp.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateMemberdfpResponse**](CreateMemberdfpResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a memberdfp object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the memberdfp object
-
-	apiClient := grid.NewAPIClient()
-	r, err := apiClient.MemberdfpAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberdfpAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the memberdfp object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `MemberdfpAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetMemberdfpResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMemberdfpResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific memberdfp object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the memberdfp object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberdfpAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MemberdfpAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberdfpAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberdfpAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetMemberdfpResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberdfpAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetMemberdfpResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberdfpAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberdfpAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberdfpAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateMemberdfpResponse ReferencePut(ctx, reference).Memberdfp(memberdfp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateMemberdfpResponse Update(ctx, reference).Memberdfp(memberdfp).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a memberdfp object
 
@@ -318,13 +318,13 @@ func main() {
 	memberdfp := *grid.NewMemberdfp() // Memberdfp | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberdfpAPI.ReferencePut(context.Background(), reference).Memberdfp(memberdfp).Execute()
+	resp, r, err := apiClient.MemberdfpAPI.Update(context.Background(), reference).Memberdfp(memberdfp).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberdfpAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberdfpAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateMemberdfpResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberdfpAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateMemberdfpResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberdfpAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberdfpAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberdfpAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **memberdfp** | [**Memberdfp**](Memberdfp.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

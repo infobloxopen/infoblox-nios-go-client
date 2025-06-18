@@ -23,150 +23,386 @@ import (
 
 type MssuperscopeAPI interface {
 	/*
-		Get Retrieve mssuperscope objects
-
-		Returns a list of mssuperscope objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MssuperscopeAPIGetRequest
-	*/
-	Get(ctx context.Context) MssuperscopeAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListMssuperscopeResponse
-	GetExecute(r MssuperscopeAPIGetRequest) (*ListMssuperscopeResponse, *http.Response, error)
-	/*
-		Post Create a mssuperscope object
+		Create Create a mssuperscope object
 
 		Creates a new mssuperscope object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MssuperscopeAPIPostRequest
+		@return MssuperscopeAPICreateRequest
 	*/
-	Post(ctx context.Context) MssuperscopeAPIPostRequest
+	Create(ctx context.Context) MssuperscopeAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateMssuperscopeResponse
-	PostExecute(r MssuperscopeAPIPostRequest) (*CreateMssuperscopeResponse, *http.Response, error)
+	CreateExecute(r MssuperscopeAPICreateRequest) (*CreateMssuperscopeResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a mssuperscope object
+		Delete Delete a mssuperscope object
 
 		Deletes a specific mssuperscope object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the mssuperscope object
-		@return MssuperscopeAPIReferenceDeleteRequest
+		@return MssuperscopeAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) MssuperscopeAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) MssuperscopeAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r MssuperscopeAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r MssuperscopeAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific mssuperscope object
+		List Retrieve mssuperscope objects
+
+		Returns a list of mssuperscope objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return MssuperscopeAPIListRequest
+	*/
+	List(ctx context.Context) MssuperscopeAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListMssuperscopeResponse
+	ListExecute(r MssuperscopeAPIListRequest) (*ListMssuperscopeResponse, *http.Response, error)
+	/*
+		Read Get a specific mssuperscope object
 
 		Returns a specific mssuperscope object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the mssuperscope object
-		@return MssuperscopeAPIReferenceGetRequest
+		@return MssuperscopeAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) MssuperscopeAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) MssuperscopeAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMssuperscopeResponse
-	ReferenceGetExecute(r MssuperscopeAPIReferenceGetRequest) (*GetMssuperscopeResponse, *http.Response, error)
+	ReadExecute(r MssuperscopeAPIReadRequest) (*GetMssuperscopeResponse, *http.Response, error)
 	/*
-		ReferencePut Update a mssuperscope object
+		Update Update a mssuperscope object
 
 		Updates a specific mssuperscope object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the mssuperscope object
-		@return MssuperscopeAPIReferencePutRequest
+		@return MssuperscopeAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) MssuperscopeAPIReferencePutRequest
+	Update(ctx context.Context, reference string) MssuperscopeAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMssuperscopeResponse
-	ReferencePutExecute(r MssuperscopeAPIReferencePutRequest) (*UpdateMssuperscopeResponse, *http.Response, error)
+	UpdateExecute(r MssuperscopeAPIUpdateRequest) (*UpdateMssuperscopeResponse, *http.Response, error)
 }
 
 // MssuperscopeAPIService MssuperscopeAPI service
 type MssuperscopeAPIService internal.Service
 
-type MssuperscopeAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     MssuperscopeAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type MssuperscopeAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       MssuperscopeAPI
+	mssuperscope     *Mssuperscope
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r MssuperscopeAPICreateRequest) Mssuperscope(mssuperscope Mssuperscope) MssuperscopeAPICreateRequest {
+	r.mssuperscope = &mssuperscope
+	return r
 }
 
 // Enter the field names followed by comma
-func (r MssuperscopeAPIGetRequest) ReturnFields(returnFields string) MssuperscopeAPIGetRequest {
+func (r MssuperscopeAPICreateRequest) ReturnFields(returnFields string) MssuperscopeAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MssuperscopeAPIGetRequest) ReturnFields2(returnFields2 string) MssuperscopeAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MssuperscopeAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) MssuperscopeAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r MssuperscopeAPICreateRequest) ReturnAsObject(returnAsObject int32) MssuperscopeAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r MssuperscopeAPICreateRequest) Execute() (*CreateMssuperscopeResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a mssuperscope object
+
+Creates a new mssuperscope object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MssuperscopeAPICreateRequest
+*/
+func (a *MssuperscopeAPIService) Create(ctx context.Context) MssuperscopeAPICreateRequest {
+	return MssuperscopeAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateMssuperscopeResponse
+func (a *MssuperscopeAPIService) CreateExecute(r MssuperscopeAPICreateRequest) (*CreateMssuperscopeResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateMssuperscopeResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MssuperscopeAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/mssuperscope"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.mssuperscope == nil {
+		return localVarReturnValue, nil, internal.ReportError("mssuperscope is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.mssuperscope != nil {
+		if r.mssuperscope.Extattrs == nil {
+			r.mssuperscope.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.mssuperscope.Extattrs)[k]; !ok {
+				(*r.mssuperscope.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.mssuperscope
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MssuperscopeAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService MssuperscopeAPI
+	reference  string
+}
+
+func (r MssuperscopeAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a mssuperscope object
+
+Deletes a specific mssuperscope object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the mssuperscope object
+	@return MssuperscopeAPIDeleteRequest
+*/
+func (a *MssuperscopeAPIService) Delete(ctx context.Context, reference string) MssuperscopeAPIDeleteRequest {
+	return MssuperscopeAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *MssuperscopeAPIService) DeleteExecute(r MssuperscopeAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MssuperscopeAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/mssuperscope/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type MssuperscopeAPIListRequest struct {
+	ctx              context.Context
+	ApiService       MssuperscopeAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r MssuperscopeAPIListRequest) ReturnFields(returnFields string) MssuperscopeAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r MssuperscopeAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MssuperscopeAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MssuperscopeAPIGetRequest) MaxResults(maxResults int32) MssuperscopeAPIGetRequest {
+func (r MssuperscopeAPIListRequest) MaxResults(maxResults int32) MssuperscopeAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MssuperscopeAPIGetRequest) ReturnAsObject(returnAsObject int32) MssuperscopeAPIGetRequest {
+func (r MssuperscopeAPIListRequest) ReturnAsObject(returnAsObject int32) MssuperscopeAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MssuperscopeAPIGetRequest) Paging(paging int32) MssuperscopeAPIGetRequest {
+func (r MssuperscopeAPIListRequest) Paging(paging int32) MssuperscopeAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MssuperscopeAPIGetRequest) PageId(pageId string) MssuperscopeAPIGetRequest {
+func (r MssuperscopeAPIListRequest) PageId(pageId string) MssuperscopeAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MssuperscopeAPIGetRequest) Filters(filters map[string]interface{}) MssuperscopeAPIGetRequest {
+func (r MssuperscopeAPIListRequest) Filters(filters map[string]interface{}) MssuperscopeAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MssuperscopeAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MssuperscopeAPIGetRequest {
+func (r MssuperscopeAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MssuperscopeAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MssuperscopeAPIGetRequest) Execute() (*ListMssuperscopeResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r MssuperscopeAPIListRequest) Execute() (*ListMssuperscopeResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve mssuperscope objects
+List Retrieve mssuperscope objects
 
 Returns a list of mssuperscope objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MssuperscopeAPIGetRequest
+	@return MssuperscopeAPIListRequest
 */
-func (a *MssuperscopeAPIService) Get(ctx context.Context) MssuperscopeAPIGetRequest {
-	return MssuperscopeAPIGetRequest{
+func (a *MssuperscopeAPIService) List(ctx context.Context) MssuperscopeAPIListRequest {
+	return MssuperscopeAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *MssuperscopeAPIService) Get(ctx context.Context) MssuperscopeAPIGetRequ
 // Execute executes the request
 //
 //	@return ListMssuperscopeResponse
-func (a *MssuperscopeAPIService) GetExecute(r MssuperscopeAPIGetRequest) (*ListMssuperscopeResponse, *http.Response, error) {
+func (a *MssuperscopeAPIService) ListExecute(r MssuperscopeAPIListRequest) (*ListMssuperscopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *MssuperscopeAPIService) GetExecute(r MssuperscopeAPIGetRequest) (*ListM
 		localVarReturnValue *ListMssuperscopeResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MssuperscopeAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MssuperscopeAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *MssuperscopeAPIService) GetExecute(r MssuperscopeAPIGetRequest) (*ListM
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *MssuperscopeAPIService) GetExecute(r MssuperscopeAPIGetRequest) (*ListM
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MssuperscopeAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     MssuperscopeAPI
-	mssuperscope   *Mssuperscope
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r MssuperscopeAPIPostRequest) Mssuperscope(mssuperscope Mssuperscope) MssuperscopeAPIPostRequest {
-	r.mssuperscope = &mssuperscope
-	return r
+type MssuperscopeAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       MssuperscopeAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r MssuperscopeAPIPostRequest) ReturnFields(returnFields string) MssuperscopeAPIPostRequest {
+func (r MssuperscopeAPIReadRequest) ReturnFields(returnFields string) MssuperscopeAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MssuperscopeAPIPostRequest) ReturnFields2(returnFields2 string) MssuperscopeAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r MssuperscopeAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MssuperscopeAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MssuperscopeAPIPostRequest) ReturnAsObject(returnAsObject int32) MssuperscopeAPIPostRequest {
+func (r MssuperscopeAPIReadRequest) ReturnAsObject(returnAsObject int32) MssuperscopeAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MssuperscopeAPIPostRequest) Execute() (*CreateMssuperscopeResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r MssuperscopeAPIReadRequest) Execute() (*GetMssuperscopeResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a mssuperscope object
-
-Creates a new mssuperscope object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MssuperscopeAPIPostRequest
-*/
-func (a *MssuperscopeAPIService) Post(ctx context.Context) MssuperscopeAPIPostRequest {
-	return MssuperscopeAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateMssuperscopeResponse
-func (a *MssuperscopeAPIService) PostExecute(r MssuperscopeAPIPostRequest) (*CreateMssuperscopeResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateMssuperscopeResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MssuperscopeAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/mssuperscope"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.mssuperscope == nil {
-		return localVarReturnValue, nil, internal.ReportError("mssuperscope is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.mssuperscope != nil {
-		if r.mssuperscope.Extattrs == nil {
-			r.mssuperscope.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.mssuperscope.Extattrs)[k]; !ok {
-				(*r.mssuperscope.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.mssuperscope
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MssuperscopeAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService MssuperscopeAPI
-	reference  string
-}
-
-func (r MssuperscopeAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a mssuperscope object
-
-Deletes a specific mssuperscope object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the mssuperscope object
-	@return MssuperscopeAPIReferenceDeleteRequest
-*/
-func (a *MssuperscopeAPIService) ReferenceDelete(ctx context.Context, reference string) MssuperscopeAPIReferenceDeleteRequest {
-	return MssuperscopeAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *MssuperscopeAPIService) ReferenceDeleteExecute(r MssuperscopeAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MssuperscopeAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/mssuperscope/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type MssuperscopeAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     MssuperscopeAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r MssuperscopeAPIReferenceGetRequest) ReturnFields(returnFields string) MssuperscopeAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MssuperscopeAPIReferenceGetRequest) ReturnFields2(returnFields2 string) MssuperscopeAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r MssuperscopeAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) MssuperscopeAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r MssuperscopeAPIReferenceGetRequest) Execute() (*GetMssuperscopeResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific mssuperscope object
+Read Get a specific mssuperscope object
 
 Returns a specific mssuperscope object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the mssuperscope object
-	@return MssuperscopeAPIReferenceGetRequest
+	@return MssuperscopeAPIReadRequest
 */
-func (a *MssuperscopeAPIService) ReferenceGet(ctx context.Context, reference string) MssuperscopeAPIReferenceGetRequest {
-	return MssuperscopeAPIReferenceGetRequest{
+func (a *MssuperscopeAPIService) Read(ctx context.Context, reference string) MssuperscopeAPIReadRequest {
+	return MssuperscopeAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *MssuperscopeAPIService) ReferenceGet(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return GetMssuperscopeResponse
-func (a *MssuperscopeAPIService) ReferenceGetExecute(r MssuperscopeAPIReferenceGetRequest) (*GetMssuperscopeResponse, *http.Response, error) {
+func (a *MssuperscopeAPIService) ReadExecute(r MssuperscopeAPIReadRequest) (*GetMssuperscopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *MssuperscopeAPIService) ReferenceGetExecute(r MssuperscopeAPIReferenceG
 		localVarReturnValue *GetMssuperscopeResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MssuperscopeAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MssuperscopeAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *MssuperscopeAPIService) ReferenceGetExecute(r MssuperscopeAPIReferenceG
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *MssuperscopeAPIService) ReferenceGetExecute(r MssuperscopeAPIReferenceG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MssuperscopeAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     MssuperscopeAPI
-	reference      string
-	mssuperscope   *Mssuperscope
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MssuperscopeAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       MssuperscopeAPI
+	reference        string
+	mssuperscope     *Mssuperscope
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r MssuperscopeAPIReferencePutRequest) Mssuperscope(mssuperscope Mssuperscope) MssuperscopeAPIReferencePutRequest {
+func (r MssuperscopeAPIUpdateRequest) Mssuperscope(mssuperscope Mssuperscope) MssuperscopeAPIUpdateRequest {
 	r.mssuperscope = &mssuperscope
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MssuperscopeAPIReferencePutRequest) ReturnFields(returnFields string) MssuperscopeAPIReferencePutRequest {
+func (r MssuperscopeAPIUpdateRequest) ReturnFields(returnFields string) MssuperscopeAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MssuperscopeAPIReferencePutRequest) ReturnFields2(returnFields2 string) MssuperscopeAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r MssuperscopeAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MssuperscopeAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MssuperscopeAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) MssuperscopeAPIReferencePutRequest {
+func (r MssuperscopeAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MssuperscopeAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MssuperscopeAPIReferencePutRequest) Execute() (*UpdateMssuperscopeResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r MssuperscopeAPIUpdateRequest) Execute() (*UpdateMssuperscopeResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a mssuperscope object
+Update Update a mssuperscope object
 
 Updates a specific mssuperscope object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the mssuperscope object
-	@return MssuperscopeAPIReferencePutRequest
+	@return MssuperscopeAPIUpdateRequest
 */
-func (a *MssuperscopeAPIService) ReferencePut(ctx context.Context, reference string) MssuperscopeAPIReferencePutRequest {
-	return MssuperscopeAPIReferencePutRequest{
+func (a *MssuperscopeAPIService) Update(ctx context.Context, reference string) MssuperscopeAPIUpdateRequest {
+	return MssuperscopeAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *MssuperscopeAPIService) ReferencePut(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return UpdateMssuperscopeResponse
-func (a *MssuperscopeAPIService) ReferencePutExecute(r MssuperscopeAPIReferencePutRequest) (*UpdateMssuperscopeResponse, *http.Response, error) {
+func (a *MssuperscopeAPIService) UpdateExecute(r MssuperscopeAPIUpdateRequest) (*UpdateMssuperscopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *MssuperscopeAPIService) ReferencePutExecute(r MssuperscopeAPIReferenceP
 		localVarReturnValue *UpdateMssuperscopeResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MssuperscopeAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MssuperscopeAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *MssuperscopeAPIService) ReferencePutExecute(r MssuperscopeAPIReferenceP
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

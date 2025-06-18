@@ -23,11 +23,11 @@ func TestRulesetAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test RulesetAPIService Get", func(t *testing.T) {
+	t.Run("Test RulesetAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RulesetAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RulesetAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRulesetAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RulesetAPIService Post", func(t *testing.T) {
+	t.Run("Test RulesetAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RulesetAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RulesetAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RulesetAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RulesetAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRulesetAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RulesetAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test RulesetAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RulesetAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RulesetAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RulesetAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RulesetAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRulesetAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RulesetAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test RulesetAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RulesetAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RulesetAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

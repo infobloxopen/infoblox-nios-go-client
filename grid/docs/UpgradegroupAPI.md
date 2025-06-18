@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](UpgradegroupAPI.md#Get) | **Get** /upgradegroup | Retrieve upgradegroup objects
-[**Post**](UpgradegroupAPI.md#Post) | **Post** /upgradegroup | Create a upgradegroup object
-[**ReferenceDelete**](UpgradegroupAPI.md#ReferenceDelete) | **Delete** /upgradegroup/{reference} | Delete a upgradegroup object
-[**ReferenceGet**](UpgradegroupAPI.md#ReferenceGet) | **Get** /upgradegroup/{reference} | Get a specific upgradegroup object
-[**ReferencePut**](UpgradegroupAPI.md#ReferencePut) | **Put** /upgradegroup/{reference} | Update a upgradegroup object
+[**Create**](UpgradegroupAPI.md#Create) | **Post** /upgradegroup | Create a upgradegroup object
+[**Delete**](UpgradegroupAPI.md#Delete) | **Delete** /upgradegroup/{reference} | Delete a upgradegroup object
+[**List**](UpgradegroupAPI.md#List) | **Get** /upgradegroup | Retrieve upgradegroup objects
+[**Read**](UpgradegroupAPI.md#Read) | **Get** /upgradegroup/{reference} | Get a specific upgradegroup object
+[**Update**](UpgradegroupAPI.md#Update) | **Put** /upgradegroup/{reference} | Update a upgradegroup object
 
 
 
-## Get
+## Create
 
-> ListUpgradegroupResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateUpgradegroupResponse Create(ctx).Upgradegroup(upgradegroup).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a upgradegroup object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+)
+
+func main() {
+	upgradegroup := *grid.NewUpgradegroup() // Upgradegroup | Object data to create
+
+	apiClient := grid.NewAPIClient()
+	resp, r, err := apiClient.UpgradegroupAPI.Create(context.Background()).Upgradegroup(upgradegroup).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradegroupAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateUpgradegroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradegroupAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `UpgradegroupAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**upgradegroup** | [**Upgradegroup**](Upgradegroup.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateUpgradegroupResponse**](CreateUpgradegroupResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a upgradegroup object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the upgradegroup object
+
+	apiClient := grid.NewAPIClient()
+	r, err := apiClient.UpgradegroupAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradegroupAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the upgradegroup object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `UpgradegroupAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListUpgradegroupResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve upgradegroup objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.UpgradegroupAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.UpgradegroupAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradegroupAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradegroupAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListUpgradegroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradegroupAPI.Get`: %v\n", resp)
+	// response from `List`: ListUpgradegroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradegroupAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradegroupAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradegroupAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateUpgradegroupResponse Post(ctx).Upgradegroup(upgradegroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a upgradegroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
-)
-
-func main() {
-	upgradegroup := *grid.NewUpgradegroup() // Upgradegroup | Object data to create
-
-	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.UpgradegroupAPI.Post(context.Background()).Upgradegroup(upgradegroup).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradegroupAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateUpgradegroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradegroupAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `UpgradegroupAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**upgradegroup** | [**Upgradegroup**](Upgradegroup.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateUpgradegroupResponse**](CreateUpgradegroupResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a upgradegroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the upgradegroup object
-
-	apiClient := grid.NewAPIClient()
-	r, err := apiClient.UpgradegroupAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradegroupAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the upgradegroup object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `UpgradegroupAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetUpgradegroupResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetUpgradegroupResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific upgradegroup object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the upgradegroup object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.UpgradegroupAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.UpgradegroupAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradegroupAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradegroupAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetUpgradegroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradegroupAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetUpgradegroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradegroupAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradegroupAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradegroupAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateUpgradegroupResponse ReferencePut(ctx, reference).Upgradegroup(upgradegroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateUpgradegroupResponse Update(ctx, reference).Upgradegroup(upgradegroup).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a upgradegroup object
 
@@ -318,13 +318,13 @@ func main() {
 	upgradegroup := *grid.NewUpgradegroup() // Upgradegroup | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.UpgradegroupAPI.ReferencePut(context.Background(), reference).Upgradegroup(upgradegroup).Execute()
+	resp, r, err := apiClient.UpgradegroupAPI.Update(context.Background(), reference).Upgradegroup(upgradegroup).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradegroupAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradegroupAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateUpgradegroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradegroupAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateUpgradegroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradegroupAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradegroupAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradegroupAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **upgradegroup** | [**Upgradegroup**](Upgradegroup.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

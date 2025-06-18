@@ -23,11 +23,11 @@ func TestRecordRpzCnameIpaddressAPIService(t *testing.T) {
 
 	apiClient := rpz.NewAPIClient()
 
-	t.Run("Test RecordRpzCnameIpaddressAPIService RecordrpzcnameipaddressGet", func(t *testing.T) {
+	t.Run("Test RecordRpzCnameIpaddressAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordRpzCnameIpaddressAPI.RecordrpzcnameipaddressGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordRpzCnameIpaddressAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRecordRpzCnameIpaddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordRpzCnameIpaddressAPIService RecordrpzcnameipaddressPost", func(t *testing.T) {
+	t.Run("Test RecordRpzCnameIpaddressAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordRpzCnameIpaddressAPI.RecordrpzcnameipaddressPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RecordRpzCnameIpaddressAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RecordRpzCnameIpaddressAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RecordRpzCnameIpaddressAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRecordRpzCnameIpaddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordRpzCnameIpaddressAPIService RecordrpzcnameipaddressReferenceDelete", func(t *testing.T) {
+	t.Run("Test RecordRpzCnameIpaddressAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RecordRpzCnameIpaddressAPI.RecordrpzcnameipaddressReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RecordRpzCnameIpaddressAPIService RecordrpzcnameipaddressReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RecordRpzCnameIpaddressAPI.RecordrpzcnameipaddressReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordRpzCnameIpaddressAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRecordRpzCnameIpaddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordRpzCnameIpaddressAPIService RecordrpzcnameipaddressReferencePut", func(t *testing.T) {
+	t.Run("Test RecordRpzCnameIpaddressAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordRpzCnameIpaddressAPI.RecordrpzcnameipaddressReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordRpzCnameIpaddressAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

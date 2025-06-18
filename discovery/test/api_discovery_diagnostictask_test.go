@@ -23,11 +23,11 @@ func TestDiscoveryDiagnostictaskAPIService(t *testing.T) {
 
 	apiClient := discovery.NewAPIClient()
 
-	t.Run("Test DiscoveryDiagnostictaskAPIService DiscoverydiagnostictaskGet", func(t *testing.T) {
+	t.Run("Test DiscoveryDiagnostictaskAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DiscoveryDiagnostictaskAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDiscoveryDiagnostictaskAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryDiagnostictaskAPIService DiscoverydiagnostictaskReferenceGet", func(t *testing.T) {
+	t.Run("Test DiscoveryDiagnostictaskAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryDiagnostictaskAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestDiscoveryDiagnostictaskAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryDiagnostictaskAPIService DiscoverydiagnostictaskReferencePut", func(t *testing.T) {
+	t.Run("Test DiscoveryDiagnostictaskAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DiscoveryDiagnostictaskAPI.DiscoverydiagnostictaskReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryDiagnostictaskAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -58,6 +58,7 @@ paths:
   /allendpoints:
     get:
       description: Returns a list of allendpoints objects matching the search criteria
+      operationId: AllendpointsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -155,6 +156,7 @@ paths:
   /allendpoints/{reference}:
     get:
       description: Returns a specific allendpoints object by reference
+      operationId: AllendpointsRead
       parameters:
       - description: Reference of the allendpoints object
         explode: false
@@ -215,6 +217,7 @@ paths:
   /bfdtemplate:
     get:
       description: Returns a list of bfdtemplate objects matching the search criteria
+      operationId: BfdtemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -311,6 +314,7 @@ paths:
       - Bfdtemplate
     post:
       description: Creates a new bfdtemplate object
+      operationId: BfdtemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -370,6 +374,7 @@ paths:
   /bfdtemplate/{reference}:
     delete:
       description: Deletes a specific bfdtemplate object by reference
+      operationId: BfdtemplateDelete
       parameters:
       - description: Reference of the bfdtemplate object
         explode: false
@@ -397,6 +402,7 @@ paths:
       - Bfdtemplate
     get:
       description: Returns a specific bfdtemplate object by reference
+      operationId: BfdtemplateRead
       parameters:
       - description: Reference of the bfdtemplate object
         explode: false
@@ -456,6 +462,7 @@ paths:
       - Bfdtemplate
     put:
       description: Updates a specific bfdtemplate object by reference
+      operationId: BfdtemplateUpdate
       parameters:
       - description: Reference of the bfdtemplate object
         explode: false
@@ -523,6 +530,7 @@ paths:
   /csvimporttask:
     get:
       description: Returns a list of csvimporttask objects matching the search criteria
+      operationId: CsvimporttaskList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -620,6 +628,7 @@ paths:
   /csvimporttask/{reference}:
     get:
       description: Returns a specific csvimporttask object by reference
+      operationId: CsvimporttaskRead
       parameters:
       - description: Reference of the csvimporttask object
         explode: false
@@ -679,6 +688,7 @@ paths:
       - Csvimporttask
     put:
       description: Updates a specific csvimporttask object by reference
+      operationId: CsvimporttaskUpdate
       parameters:
       - description: Reference of the csvimporttask object
         explode: false
@@ -747,6 +757,7 @@ paths:
     get:
       description: Returns a list of datacollectioncluster objects matching the search
         criteria
+      operationId: DatacollectionclusterList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -843,6 +854,7 @@ paths:
       - Datacollectioncluster
     post:
       description: Creates a new datacollectioncluster object
+      operationId: DatacollectionclusterCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -902,6 +914,7 @@ paths:
   /datacollectioncluster/{reference}:
     delete:
       description: Deletes a specific datacollectioncluster object by reference
+      operationId: DatacollectionclusterDelete
       parameters:
       - description: Reference of the datacollectioncluster object
         explode: false
@@ -929,6 +942,7 @@ paths:
       - Datacollectioncluster
     get:
       description: Returns a specific datacollectioncluster object by reference
+      operationId: DatacollectionclusterRead
       parameters:
       - description: Reference of the datacollectioncluster object
         explode: false
@@ -988,6 +1002,7 @@ paths:
       - Datacollectioncluster
     put:
       description: Updates a specific datacollectioncluster object by reference
+      operationId: DatacollectionclusterUpdate
       parameters:
       - description: Reference of the datacollectioncluster object
         explode: false
@@ -1055,6 +1070,7 @@ paths:
   /db_objects:
     get:
       description: Returns a list of db_objects objects matching the search criteria
+      operationId: DbObjectsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1152,6 +1168,7 @@ paths:
   /db_objects/{reference}:
     get:
       description: Returns a specific db_objects object by reference
+      operationId: DbObjectsRead
       parameters:
       - description: Reference of the db_objects object
         explode: false
@@ -1212,6 +1229,7 @@ paths:
   /dbsnapshot:
     get:
       description: Returns a list of dbsnapshot objects matching the search criteria
+      operationId: DbsnapshotList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1309,6 +1327,7 @@ paths:
   /dbsnapshot/{reference}:
     get:
       description: Returns a specific dbsnapshot object by reference
+      operationId: DbsnapshotRead
       parameters:
       - description: Reference of the dbsnapshot object
         explode: false
@@ -1369,6 +1388,7 @@ paths:
   /deleted_objects:
     get:
       description: Returns a list of deleted_objects objects matching the search criteria
+      operationId: DeletedObjectsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1466,6 +1486,7 @@ paths:
   /deleted_objects/{reference}:
     get:
       description: Returns a specific deleted_objects object by reference
+      operationId: DeletedObjectsRead
       parameters:
       - description: Reference of the deleted_objects object
         explode: false
@@ -1526,6 +1547,7 @@ paths:
   /dxl:endpoint:
     get:
       description: Returns a list of dxl:endpoint objects matching the search criteria
+      operationId: DxlEndpointList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1622,6 +1644,7 @@ paths:
       - DxlEndpoint
     post:
       description: Creates a new dxl:endpoint object
+      operationId: DxlEndpointCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1682,6 +1705,7 @@ paths:
   /dxl:endpoint/{reference}:
     delete:
       description: Deletes a specific dxl:endpoint object by reference
+      operationId: DxlEndpointDelete
       parameters:
       - description: Reference of the dxl:endpoint object
         explode: false
@@ -1709,6 +1733,7 @@ paths:
       - DxlEndpoint
     get:
       description: Returns a specific dxl:endpoint object by reference
+      operationId: DxlEndpointRead
       parameters:
       - description: Reference of the dxl:endpoint object
         explode: false
@@ -1768,6 +1793,7 @@ paths:
       - DxlEndpoint
     put:
       description: Updates a specific dxl:endpoint object by reference
+      operationId: DxlEndpointUpdate
       parameters:
       - description: Reference of the dxl:endpoint object
         explode: false
@@ -1836,6 +1862,7 @@ paths:
   /fileop:
     get:
       description: Returns a list of fileop objects matching the search criteria
+      operationId: FileopList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1933,6 +1960,7 @@ paths:
   /fileop/{reference}:
     get:
       description: Returns a specific fileop object by reference
+      operationId: FileopRead
       parameters:
       - description: Reference of the fileop object
         explode: false
@@ -1993,6 +2021,7 @@ paths:
   /kerberoskey:
     get:
       description: Returns a list of kerberoskey objects matching the search criteria
+      operationId: KerberoskeyList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2090,6 +2119,7 @@ paths:
   /kerberoskey/{reference}:
     delete:
       description: Deletes a specific kerberoskey object by reference
+      operationId: KerberoskeyDelete
       parameters:
       - description: Reference of the kerberoskey object
         explode: false
@@ -2117,6 +2147,7 @@ paths:
       - Kerberoskey
     get:
       description: Returns a specific kerberoskey object by reference
+      operationId: KerberoskeyRead
       parameters:
       - description: Reference of the kerberoskey object
         explode: false
@@ -2177,6 +2208,7 @@ paths:
   /capacityreport:
     get:
       description: Returns a list of capacityreport objects matching the search criteria
+      operationId: CapacityreportList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2274,6 +2306,7 @@ paths:
   /capacityreport/{reference}:
     get:
       description: Returns a specific capacityreport object by reference
+      operationId: CapacityreportRead
       parameters:
       - description: Reference of the capacityreport object
         explode: false
@@ -2335,6 +2368,7 @@ paths:
     get:
       description: Returns a list of outbound:cloudclient objects matching the search
         criteria
+      operationId: OutboundCloudclientList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2432,6 +2466,7 @@ paths:
   /outbound:cloudclient/{reference}:
     get:
       description: Returns a specific outbound:cloudclient object by reference
+      operationId: OutboundCloudclientRead
       parameters:
       - description: Reference of the outbound:cloudclient object
         explode: false
@@ -2491,6 +2526,7 @@ paths:
       - OutboundCloudclient
     put:
       description: Updates a specific outbound:cloudclient object by reference
+      operationId: OutboundCloudclientUpdate
       parameters:
       - description: Reference of the outbound:cloudclient object
         explode: false
@@ -2558,6 +2594,7 @@ paths:
   /pxgrid:endpoint:
     get:
       description: Returns a list of pxgrid:endpoint objects matching the search criteria
+      operationId: PxgridEndpointList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2654,6 +2691,7 @@ paths:
       - PxgridEndpoint
     post:
       description: Creates a new pxgrid:endpoint object
+      operationId: PxgridEndpointCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2714,6 +2752,7 @@ paths:
   /pxgrid:endpoint/{reference}:
     delete:
       description: Deletes a specific pxgrid:endpoint object by reference
+      operationId: PxgridEndpointDelete
       parameters:
       - description: Reference of the pxgrid:endpoint object
         explode: false
@@ -2741,6 +2780,7 @@ paths:
       - PxgridEndpoint
     get:
       description: Returns a specific pxgrid:endpoint object by reference
+      operationId: PxgridEndpointRead
       parameters:
       - description: Reference of the pxgrid:endpoint object
         explode: false
@@ -2800,6 +2840,7 @@ paths:
       - PxgridEndpoint
     put:
       description: Updates a specific pxgrid:endpoint object by reference
+      operationId: PxgridEndpointUpdate
       parameters:
       - description: Reference of the pxgrid:endpoint object
         explode: false
@@ -2868,6 +2909,7 @@ paths:
   /ruleset:
     get:
       description: Returns a list of ruleset objects matching the search criteria
+      operationId: RulesetList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2964,6 +3006,7 @@ paths:
       - Ruleset
     post:
       description: Creates a new ruleset object
+      operationId: RulesetCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3023,6 +3066,7 @@ paths:
   /ruleset/{reference}:
     delete:
       description: Deletes a specific ruleset object by reference
+      operationId: RulesetDelete
       parameters:
       - description: Reference of the ruleset object
         explode: false
@@ -3050,6 +3094,7 @@ paths:
       - Ruleset
     get:
       description: Returns a specific ruleset object by reference
+      operationId: RulesetRead
       parameters:
       - description: Reference of the ruleset object
         explode: false
@@ -3109,6 +3154,7 @@ paths:
       - Ruleset
     put:
       description: Updates a specific ruleset object by reference
+      operationId: RulesetUpdate
       parameters:
       - description: Reference of the ruleset object
         explode: false
@@ -3176,6 +3222,7 @@ paths:
   /scavengingtask:
     get:
       description: Returns a list of scavengingtask objects matching the search criteria
+      operationId: ScavengingtaskList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3273,6 +3320,7 @@ paths:
   /scavengingtask/{reference}:
     get:
       description: Returns a specific scavengingtask object by reference
+      operationId: ScavengingtaskRead
       parameters:
       - description: Reference of the scavengingtask object
         explode: false
@@ -3333,6 +3381,7 @@ paths:
   /scheduledtask:
     get:
       description: Returns a list of scheduledtask objects matching the search criteria
+      operationId: ScheduledtaskList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3430,6 +3479,7 @@ paths:
   /scheduledtask/{reference}:
     delete:
       description: Deletes a specific scheduledtask object by reference
+      operationId: ScheduledtaskDelete
       parameters:
       - description: Reference of the scheduledtask object
         explode: false
@@ -3457,6 +3507,7 @@ paths:
       - Scheduledtask
     get:
       description: Returns a specific scheduledtask object by reference
+      operationId: ScheduledtaskRead
       parameters:
       - description: Reference of the scheduledtask object
         explode: false
@@ -3516,6 +3567,7 @@ paths:
       - Scheduledtask
     put:
       description: Updates a specific scheduledtask object by reference
+      operationId: ScheduledtaskUpdate
       parameters:
       - description: Reference of the scheduledtask object
         explode: false
@@ -3583,6 +3635,7 @@ paths:
   /search:
     get:
       description: Returns a list of search objects matching the search criteria
+      operationId: SearchList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3680,6 +3733,7 @@ paths:
   /search/{reference}:
     get:
       description: Returns a specific search object by reference
+      operationId: SearchRead
       parameters:
       - description: Reference of the search object
         explode: false
@@ -3740,6 +3794,7 @@ paths:
   /syslog:endpoint:
     get:
       description: Returns a list of syslog:endpoint objects matching the search criteria
+      operationId: SyslogEndpointList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3836,6 +3891,7 @@ paths:
       - SyslogEndpoint
     post:
       description: Creates a new syslog:endpoint object
+      operationId: SyslogEndpointCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3896,6 +3952,7 @@ paths:
   /syslog:endpoint/{reference}:
     delete:
       description: Deletes a specific syslog:endpoint object by reference
+      operationId: SyslogEndpointDelete
       parameters:
       - description: Reference of the syslog:endpoint object
         explode: false
@@ -3923,6 +3980,7 @@ paths:
       - SyslogEndpoint
     get:
       description: Returns a specific syslog:endpoint object by reference
+      operationId: SyslogEndpointRead
       parameters:
       - description: Reference of the syslog:endpoint object
         explode: false
@@ -3982,6 +4040,7 @@ paths:
       - SyslogEndpoint
     put:
       description: Updates a specific syslog:endpoint object by reference
+      operationId: SyslogEndpointUpdate
       parameters:
       - description: Reference of the syslog:endpoint object
         explode: false
@@ -4050,6 +4109,7 @@ paths:
   /taxii:
     get:
       description: Returns a list of taxii objects matching the search criteria
+      operationId: TaxiiList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4147,6 +4207,7 @@ paths:
   /taxii/{reference}:
     get:
       description: Returns a specific taxii object by reference
+      operationId: TaxiiRead
       parameters:
       - description: Reference of the taxii object
         explode: false
@@ -4206,6 +4267,7 @@ paths:
       - Taxii
     put:
       description: Updates a specific taxii object by reference
+      operationId: TaxiiUpdate
       parameters:
       - description: Reference of the taxii object
         explode: false
@@ -4273,6 +4335,7 @@ paths:
   /tftpfiledir:
     get:
       description: Returns a list of tftpfiledir objects matching the search criteria
+      operationId: TftpfiledirList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4369,6 +4432,7 @@ paths:
       - Tftpfiledir
     post:
       description: Creates a new tftpfiledir object
+      operationId: TftpfiledirCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4428,6 +4492,7 @@ paths:
   /tftpfiledir/{reference}:
     delete:
       description: Deletes a specific tftpfiledir object by reference
+      operationId: TftpfiledirDelete
       parameters:
       - description: Reference of the tftpfiledir object
         explode: false
@@ -4455,6 +4520,7 @@ paths:
       - Tftpfiledir
     get:
       description: Returns a specific tftpfiledir object by reference
+      operationId: TftpfiledirRead
       parameters:
       - description: Reference of the tftpfiledir object
         explode: false
@@ -4514,6 +4580,7 @@ paths:
       - Tftpfiledir
     put:
       description: Updates a specific tftpfiledir object by reference
+      operationId: TftpfiledirUpdate
       parameters:
       - description: Reference of the tftpfiledir object
         explode: false

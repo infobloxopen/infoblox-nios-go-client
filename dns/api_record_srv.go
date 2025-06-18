@@ -23,150 +23,386 @@ import (
 
 type RecordSrvAPI interface {
 	/*
-		RecordsrvGet Retrieve record:srv objects
-
-		Returns a list of record:srv objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordSrvAPIRecordsrvGetRequest
-	*/
-	RecordsrvGet(ctx context.Context) RecordSrvAPIRecordsrvGetRequest
-
-	// RecordsrvGetExecute executes the request
-	//  @return ListRecordSrvResponse
-	RecordsrvGetExecute(r RecordSrvAPIRecordsrvGetRequest) (*ListRecordSrvResponse, *http.Response, error)
-	/*
-		RecordsrvPost Create a record:srv object
+		Create Create a record:srv object
 
 		Creates a new record:srv object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordSrvAPIRecordsrvPostRequest
+		@return RecordSrvAPICreateRequest
 	*/
-	RecordsrvPost(ctx context.Context) RecordSrvAPIRecordsrvPostRequest
+	Create(ctx context.Context) RecordSrvAPICreateRequest
 
-	// RecordsrvPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordSrvResponse
-	RecordsrvPostExecute(r RecordSrvAPIRecordsrvPostRequest) (*CreateRecordSrvResponse, *http.Response, error)
+	CreateExecute(r RecordSrvAPICreateRequest) (*CreateRecordSrvResponse, *http.Response, error)
 	/*
-		RecordsrvReferenceDelete Delete a record:srv object
+		Delete Delete a record:srv object
 
 		Deletes a specific record:srv object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:srv object
-		@return RecordSrvAPIRecordsrvReferenceDeleteRequest
+		@return RecordSrvAPIDeleteRequest
 	*/
-	RecordsrvReferenceDelete(ctx context.Context, reference string) RecordSrvAPIRecordsrvReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordSrvAPIDeleteRequest
 
-	// RecordsrvReferenceDeleteExecute executes the request
-	RecordsrvReferenceDeleteExecute(r RecordSrvAPIRecordsrvReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordSrvAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecordsrvReferenceGet Get a specific record:srv object
+		List Retrieve record:srv objects
+
+		Returns a list of record:srv objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordSrvAPIListRequest
+	*/
+	List(ctx context.Context) RecordSrvAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordSrvResponse
+	ListExecute(r RecordSrvAPIListRequest) (*ListRecordSrvResponse, *http.Response, error)
+	/*
+		Read Get a specific record:srv object
 
 		Returns a specific record:srv object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:srv object
-		@return RecordSrvAPIRecordsrvReferenceGetRequest
+		@return RecordSrvAPIReadRequest
 	*/
-	RecordsrvReferenceGet(ctx context.Context, reference string) RecordSrvAPIRecordsrvReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordSrvAPIReadRequest
 
-	// RecordsrvReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordSrvResponse
-	RecordsrvReferenceGetExecute(r RecordSrvAPIRecordsrvReferenceGetRequest) (*GetRecordSrvResponse, *http.Response, error)
+	ReadExecute(r RecordSrvAPIReadRequest) (*GetRecordSrvResponse, *http.Response, error)
 	/*
-		RecordsrvReferencePut Update a record:srv object
+		Update Update a record:srv object
 
 		Updates a specific record:srv object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:srv object
-		@return RecordSrvAPIRecordsrvReferencePutRequest
+		@return RecordSrvAPIUpdateRequest
 	*/
-	RecordsrvReferencePut(ctx context.Context, reference string) RecordSrvAPIRecordsrvReferencePutRequest
+	Update(ctx context.Context, reference string) RecordSrvAPIUpdateRequest
 
-	// RecordsrvReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordSrvResponse
-	RecordsrvReferencePutExecute(r RecordSrvAPIRecordsrvReferencePutRequest) (*UpdateRecordSrvResponse, *http.Response, error)
+	UpdateExecute(r RecordSrvAPIUpdateRequest) (*UpdateRecordSrvResponse, *http.Response, error)
 }
 
 // RecordSrvAPIService RecordSrvAPI service
 type RecordSrvAPIService internal.Service
 
-type RecordSrvAPIRecordsrvGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordSrvAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type RecordSrvAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       RecordSrvAPI
+	recordSrv        *RecordSrv
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r RecordSrvAPICreateRequest) RecordSrv(recordSrv RecordSrv) RecordSrvAPICreateRequest {
+	r.recordSrv = &recordSrv
+	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordSrvAPIRecordsrvGetRequest) ReturnFields(returnFields string) RecordSrvAPIRecordsrvGetRequest {
+func (r RecordSrvAPICreateRequest) ReturnFields(returnFields string) RecordSrvAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordSrvAPIRecordsrvGetRequest) ReturnFields2(returnFields2 string) RecordSrvAPIRecordsrvGetRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordSrvAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordSrvAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordSrvAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordSrvAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r RecordSrvAPICreateRequest) Execute() (*CreateRecordSrvResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a record:srv object
+
+Creates a new record:srv object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordSrvAPICreateRequest
+*/
+func (a *RecordSrvAPIService) Create(ctx context.Context) RecordSrvAPICreateRequest {
+	return RecordSrvAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateRecordSrvResponse
+func (a *RecordSrvAPIService) CreateExecute(r RecordSrvAPICreateRequest) (*CreateRecordSrvResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateRecordSrvResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordSrvAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:srv"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.recordSrv == nil {
+		return localVarReturnValue, nil, internal.ReportError("recordSrv is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordSrv != nil {
+		if r.recordSrv.Extattrs == nil {
+			r.recordSrv.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.recordSrv.Extattrs)[k]; !ok {
+				(*r.recordSrv.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.recordSrv
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordSrvAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RecordSrvAPI
+	reference  string
+}
+
+func (r RecordSrvAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a record:srv object
+
+Deletes a specific record:srv object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the record:srv object
+	@return RecordSrvAPIDeleteRequest
+*/
+func (a *RecordSrvAPIService) Delete(ctx context.Context, reference string) RecordSrvAPIDeleteRequest {
+	return RecordSrvAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RecordSrvAPIService) DeleteExecute(r RecordSrvAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordSrvAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:srv/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RecordSrvAPIListRequest struct {
+	ctx              context.Context
+	ApiService       RecordSrvAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RecordSrvAPIListRequest) ReturnFields(returnFields string) RecordSrvAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordSrvAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordSrvAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordSrvAPIRecordsrvGetRequest) MaxResults(maxResults int32) RecordSrvAPIRecordsrvGetRequest {
+func (r RecordSrvAPIListRequest) MaxResults(maxResults int32) RecordSrvAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordSrvAPIRecordsrvGetRequest) ReturnAsObject(returnAsObject int32) RecordSrvAPIRecordsrvGetRequest {
+func (r RecordSrvAPIListRequest) ReturnAsObject(returnAsObject int32) RecordSrvAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordSrvAPIRecordsrvGetRequest) Paging(paging int32) RecordSrvAPIRecordsrvGetRequest {
+func (r RecordSrvAPIListRequest) Paging(paging int32) RecordSrvAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordSrvAPIRecordsrvGetRequest) PageId(pageId string) RecordSrvAPIRecordsrvGetRequest {
+func (r RecordSrvAPIListRequest) PageId(pageId string) RecordSrvAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordSrvAPIRecordsrvGetRequest) Filters(filters map[string]interface{}) RecordSrvAPIRecordsrvGetRequest {
+func (r RecordSrvAPIListRequest) Filters(filters map[string]interface{}) RecordSrvAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordSrvAPIRecordsrvGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordSrvAPIRecordsrvGetRequest {
+func (r RecordSrvAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordSrvAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordSrvAPIRecordsrvGetRequest) Execute() (*ListRecordSrvResponse, *http.Response, error) {
-	return r.ApiService.RecordsrvGetExecute(r)
+func (r RecordSrvAPIListRequest) Execute() (*ListRecordSrvResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RecordsrvGet Retrieve record:srv objects
+List Retrieve record:srv objects
 
 Returns a list of record:srv objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordSrvAPIRecordsrvGetRequest
+	@return RecordSrvAPIListRequest
 */
-func (a *RecordSrvAPIService) RecordsrvGet(ctx context.Context) RecordSrvAPIRecordsrvGetRequest {
-	return RecordSrvAPIRecordsrvGetRequest{
+func (a *RecordSrvAPIService) List(ctx context.Context) RecordSrvAPIListRequest {
+	return RecordSrvAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *RecordSrvAPIService) RecordsrvGet(ctx context.Context) RecordSrvAPIReco
 // Execute executes the request
 //
 //	@return ListRecordSrvResponse
-func (a *RecordSrvAPIService) RecordsrvGetExecute(r RecordSrvAPIRecordsrvGetRequest) (*ListRecordSrvResponse, *http.Response, error) {
+func (a *RecordSrvAPIService) ListExecute(r RecordSrvAPIListRequest) (*ListRecordSrvResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *RecordSrvAPIService) RecordsrvGetExecute(r RecordSrvAPIRecordsrvGetRequ
 		localVarReturnValue *ListRecordSrvResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordSrvAPIService.RecordsrvGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordSrvAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *RecordSrvAPIService) RecordsrvGetExecute(r RecordSrvAPIRecordsrvGetRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *RecordSrvAPIService) RecordsrvGetExecute(r RecordSrvAPIRecordsrvGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordSrvAPIRecordsrvPostRequest struct {
-	ctx            context.Context
-	ApiService     RecordSrvAPI
-	recordSrv      *RecordSrv
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r RecordSrvAPIRecordsrvPostRequest) RecordSrv(recordSrv RecordSrv) RecordSrvAPIRecordsrvPostRequest {
-	r.recordSrv = &recordSrv
-	return r
+type RecordSrvAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       RecordSrvAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r RecordSrvAPIRecordsrvPostRequest) ReturnFields(returnFields string) RecordSrvAPIRecordsrvPostRequest {
+func (r RecordSrvAPIReadRequest) ReturnFields(returnFields string) RecordSrvAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordSrvAPIRecordsrvPostRequest) ReturnFields2(returnFields2 string) RecordSrvAPIRecordsrvPostRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordSrvAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordSrvAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordSrvAPIRecordsrvPostRequest) ReturnAsObject(returnAsObject int32) RecordSrvAPIRecordsrvPostRequest {
+func (r RecordSrvAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordSrvAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordSrvAPIRecordsrvPostRequest) Execute() (*CreateRecordSrvResponse, *http.Response, error) {
-	return r.ApiService.RecordsrvPostExecute(r)
+func (r RecordSrvAPIReadRequest) Execute() (*GetRecordSrvResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordsrvPost Create a record:srv object
-
-Creates a new record:srv object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordSrvAPIRecordsrvPostRequest
-*/
-func (a *RecordSrvAPIService) RecordsrvPost(ctx context.Context) RecordSrvAPIRecordsrvPostRequest {
-	return RecordSrvAPIRecordsrvPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateRecordSrvResponse
-func (a *RecordSrvAPIService) RecordsrvPostExecute(r RecordSrvAPIRecordsrvPostRequest) (*CreateRecordSrvResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateRecordSrvResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordSrvAPIService.RecordsrvPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:srv"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.recordSrv == nil {
-		return localVarReturnValue, nil, internal.ReportError("recordSrv is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordSrv != nil {
-		if r.recordSrv.Extattrs == nil {
-			r.recordSrv.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordSrv.Extattrs)[k]; !ok {
-				(*r.recordSrv.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.recordSrv
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordSrvAPIRecordsrvReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RecordSrvAPI
-	reference  string
-}
-
-func (r RecordSrvAPIRecordsrvReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecordsrvReferenceDeleteExecute(r)
-}
-
-/*
-RecordsrvReferenceDelete Delete a record:srv object
-
-Deletes a specific record:srv object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the record:srv object
-	@return RecordSrvAPIRecordsrvReferenceDeleteRequest
-*/
-func (a *RecordSrvAPIService) RecordsrvReferenceDelete(ctx context.Context, reference string) RecordSrvAPIRecordsrvReferenceDeleteRequest {
-	return RecordSrvAPIRecordsrvReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RecordSrvAPIService) RecordsrvReferenceDeleteExecute(r RecordSrvAPIRecordsrvReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordSrvAPIService.RecordsrvReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:srv/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RecordSrvAPIRecordsrvReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordSrvAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r RecordSrvAPIRecordsrvReferenceGetRequest) ReturnFields(returnFields string) RecordSrvAPIRecordsrvReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordSrvAPIRecordsrvReferenceGetRequest) ReturnFields2(returnFields2 string) RecordSrvAPIRecordsrvReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordSrvAPIRecordsrvReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordSrvAPIRecordsrvReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r RecordSrvAPIRecordsrvReferenceGetRequest) Execute() (*GetRecordSrvResponse, *http.Response, error) {
-	return r.ApiService.RecordsrvReferenceGetExecute(r)
-}
-
-/*
-RecordsrvReferenceGet Get a specific record:srv object
+Read Get a specific record:srv object
 
 Returns a specific record:srv object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:srv object
-	@return RecordSrvAPIRecordsrvReferenceGetRequest
+	@return RecordSrvAPIReadRequest
 */
-func (a *RecordSrvAPIService) RecordsrvReferenceGet(ctx context.Context, reference string) RecordSrvAPIRecordsrvReferenceGetRequest {
-	return RecordSrvAPIRecordsrvReferenceGetRequest{
+func (a *RecordSrvAPIService) Read(ctx context.Context, reference string) RecordSrvAPIReadRequest {
+	return RecordSrvAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RecordSrvAPIService) RecordsrvReferenceGet(ctx context.Context, referen
 // Execute executes the request
 //
 //	@return GetRecordSrvResponse
-func (a *RecordSrvAPIService) RecordsrvReferenceGetExecute(r RecordSrvAPIRecordsrvReferenceGetRequest) (*GetRecordSrvResponse, *http.Response, error) {
+func (a *RecordSrvAPIService) ReadExecute(r RecordSrvAPIReadRequest) (*GetRecordSrvResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RecordSrvAPIService) RecordsrvReferenceGetExecute(r RecordSrvAPIRecords
 		localVarReturnValue *GetRecordSrvResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordSrvAPIService.RecordsrvReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordSrvAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *RecordSrvAPIService) RecordsrvReferenceGetExecute(r RecordSrvAPIRecords
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *RecordSrvAPIService) RecordsrvReferenceGetExecute(r RecordSrvAPIRecords
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordSrvAPIRecordsrvReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     RecordSrvAPI
-	reference      string
-	recordSrv      *RecordSrv
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type RecordSrvAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       RecordSrvAPI
+	reference        string
+	recordSrv        *RecordSrv
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r RecordSrvAPIRecordsrvReferencePutRequest) RecordSrv(recordSrv RecordSrv) RecordSrvAPIRecordsrvReferencePutRequest {
+func (r RecordSrvAPIUpdateRequest) RecordSrv(recordSrv RecordSrv) RecordSrvAPIUpdateRequest {
 	r.recordSrv = &recordSrv
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordSrvAPIRecordsrvReferencePutRequest) ReturnFields(returnFields string) RecordSrvAPIRecordsrvReferencePutRequest {
+func (r RecordSrvAPIUpdateRequest) ReturnFields(returnFields string) RecordSrvAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordSrvAPIRecordsrvReferencePutRequest) ReturnFields2(returnFields2 string) RecordSrvAPIRecordsrvReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordSrvAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordSrvAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordSrvAPIRecordsrvReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordSrvAPIRecordsrvReferencePutRequest {
+func (r RecordSrvAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordSrvAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordSrvAPIRecordsrvReferencePutRequest) Execute() (*UpdateRecordSrvResponse, *http.Response, error) {
-	return r.ApiService.RecordsrvReferencePutExecute(r)
+func (r RecordSrvAPIUpdateRequest) Execute() (*UpdateRecordSrvResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordsrvReferencePut Update a record:srv object
+Update Update a record:srv object
 
 Updates a specific record:srv object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:srv object
-	@return RecordSrvAPIRecordsrvReferencePutRequest
+	@return RecordSrvAPIUpdateRequest
 */
-func (a *RecordSrvAPIService) RecordsrvReferencePut(ctx context.Context, reference string) RecordSrvAPIRecordsrvReferencePutRequest {
-	return RecordSrvAPIRecordsrvReferencePutRequest{
+func (a *RecordSrvAPIService) Update(ctx context.Context, reference string) RecordSrvAPIUpdateRequest {
+	return RecordSrvAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RecordSrvAPIService) RecordsrvReferencePut(ctx context.Context, referen
 // Execute executes the request
 //
 //	@return UpdateRecordSrvResponse
-func (a *RecordSrvAPIService) RecordsrvReferencePutExecute(r RecordSrvAPIRecordsrvReferencePutRequest) (*UpdateRecordSrvResponse, *http.Response, error) {
+func (a *RecordSrvAPIService) UpdateExecute(r RecordSrvAPIUpdateRequest) (*UpdateRecordSrvResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RecordSrvAPIService) RecordsrvReferencePutExecute(r RecordSrvAPIRecords
 		localVarReturnValue *UpdateRecordSrvResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordSrvAPIService.RecordsrvReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordSrvAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *RecordSrvAPIService) RecordsrvReferencePutExecute(r RecordSrvAPIRecords
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

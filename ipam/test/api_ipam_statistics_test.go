@@ -23,11 +23,11 @@ func TestIpamStatisticsAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test IpamStatisticsAPIService IpamstatisticsGet", func(t *testing.T) {
+	t.Run("Test IpamStatisticsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.IpamStatisticsAPI.IpamstatisticsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IpamStatisticsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestIpamStatisticsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IpamStatisticsAPIService IpamstatisticsReferenceGet", func(t *testing.T) {
+	t.Run("Test IpamStatisticsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.IpamStatisticsAPI.IpamstatisticsReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.IpamStatisticsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,110 +23,110 @@ import (
 
 type LocaluserAuthserviceAPI interface {
 	/*
-		LocaluserauthserviceGet Retrieve localuser:authservice objects
+		List Retrieve localuser:authservice objects
 
 		Returns a list of localuser:authservice objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return LocaluserAuthserviceAPILocaluserauthserviceGetRequest
+		@return LocaluserAuthserviceAPIListRequest
 	*/
-	LocaluserauthserviceGet(ctx context.Context) LocaluserAuthserviceAPILocaluserauthserviceGetRequest
+	List(ctx context.Context) LocaluserAuthserviceAPIListRequest
 
-	// LocaluserauthserviceGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListLocaluserAuthserviceResponse
-	LocaluserauthserviceGetExecute(r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) (*ListLocaluserAuthserviceResponse, *http.Response, error)
+	ListExecute(r LocaluserAuthserviceAPIListRequest) (*ListLocaluserAuthserviceResponse, *http.Response, error)
 	/*
-		LocaluserauthserviceReferenceGet Get a specific localuser:authservice object
+		Read Get a specific localuser:authservice object
 
 		Returns a specific localuser:authservice object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the localuser:authservice object
-		@return LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest
+		@return LocaluserAuthserviceAPIReadRequest
 	*/
-	LocaluserauthserviceReferenceGet(ctx context.Context, reference string) LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest
+	Read(ctx context.Context, reference string) LocaluserAuthserviceAPIReadRequest
 
-	// LocaluserauthserviceReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetLocaluserAuthserviceResponse
-	LocaluserauthserviceReferenceGetExecute(r LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest) (*GetLocaluserAuthserviceResponse, *http.Response, error)
+	ReadExecute(r LocaluserAuthserviceAPIReadRequest) (*GetLocaluserAuthserviceResponse, *http.Response, error)
 }
 
 // LocaluserAuthserviceAPIService LocaluserAuthserviceAPI service
 type LocaluserAuthserviceAPIService internal.Service
 
-type LocaluserAuthserviceAPILocaluserauthserviceGetRequest struct {
-	ctx            context.Context
-	ApiService     LocaluserAuthserviceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type LocaluserAuthserviceAPIListRequest struct {
+	ctx              context.Context
+	ApiService       LocaluserAuthserviceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) ReturnFields(returnFields string) LocaluserAuthserviceAPILocaluserauthserviceGetRequest {
+func (r LocaluserAuthserviceAPIListRequest) ReturnFields(returnFields string) LocaluserAuthserviceAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) ReturnFields2(returnFields2 string) LocaluserAuthserviceAPILocaluserauthserviceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r LocaluserAuthserviceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) LocaluserAuthserviceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) MaxResults(maxResults int32) LocaluserAuthserviceAPILocaluserauthserviceGetRequest {
+func (r LocaluserAuthserviceAPIListRequest) MaxResults(maxResults int32) LocaluserAuthserviceAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) ReturnAsObject(returnAsObject int32) LocaluserAuthserviceAPILocaluserauthserviceGetRequest {
+func (r LocaluserAuthserviceAPIListRequest) ReturnAsObject(returnAsObject int32) LocaluserAuthserviceAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) Paging(paging int32) LocaluserAuthserviceAPILocaluserauthserviceGetRequest {
+func (r LocaluserAuthserviceAPIListRequest) Paging(paging int32) LocaluserAuthserviceAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) PageId(pageId string) LocaluserAuthserviceAPILocaluserauthserviceGetRequest {
+func (r LocaluserAuthserviceAPIListRequest) PageId(pageId string) LocaluserAuthserviceAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) Filters(filters map[string]interface{}) LocaluserAuthserviceAPILocaluserauthserviceGetRequest {
+func (r LocaluserAuthserviceAPIListRequest) Filters(filters map[string]interface{}) LocaluserAuthserviceAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) Extattrfilter(extattrfilter map[string]interface{}) LocaluserAuthserviceAPILocaluserauthserviceGetRequest {
+func (r LocaluserAuthserviceAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) LocaluserAuthserviceAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) Execute() (*ListLocaluserAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.LocaluserauthserviceGetExecute(r)
+func (r LocaluserAuthserviceAPIListRequest) Execute() (*ListLocaluserAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-LocaluserauthserviceGet Retrieve localuser:authservice objects
+List Retrieve localuser:authservice objects
 
 Returns a list of localuser:authservice objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return LocaluserAuthserviceAPILocaluserauthserviceGetRequest
+	@return LocaluserAuthserviceAPIListRequest
 */
-func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceGet(ctx context.Context) LocaluserAuthserviceAPILocaluserauthserviceGetRequest {
-	return LocaluserAuthserviceAPILocaluserauthserviceGetRequest{
+func (a *LocaluserAuthserviceAPIService) List(ctx context.Context) LocaluserAuthserviceAPIListRequest {
+	return LocaluserAuthserviceAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceGet(ctx context.Con
 // Execute executes the request
 //
 //	@return ListLocaluserAuthserviceResponse
-func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceGetExecute(r LocaluserAuthserviceAPILocaluserauthserviceGetRequest) (*ListLocaluserAuthserviceResponse, *http.Response, error) {
+func (a *LocaluserAuthserviceAPIService) ListExecute(r LocaluserAuthserviceAPIListRequest) (*ListLocaluserAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceGetExecute(r Localu
 		localVarReturnValue *ListLocaluserAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LocaluserAuthserviceAPIService.LocaluserauthserviceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LocaluserAuthserviceAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceGetExecute(r Localu
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceGetExecute(r Localu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     LocaluserAuthserviceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type LocaluserAuthserviceAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       LocaluserAuthserviceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest) ReturnFields(returnFields string) LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest {
+func (r LocaluserAuthserviceAPIReadRequest) ReturnFields(returnFields string) LocaluserAuthserviceAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest) ReturnFields2(returnFields2 string) LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r LocaluserAuthserviceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) LocaluserAuthserviceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest) ReturnAsObject(returnAsObject int32) LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest {
+func (r LocaluserAuthserviceAPIReadRequest) ReturnAsObject(returnAsObject int32) LocaluserAuthserviceAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest) Execute() (*GetLocaluserAuthserviceResponse, *http.Response, error) {
-	return r.ApiService.LocaluserauthserviceReferenceGetExecute(r)
+func (r LocaluserAuthserviceAPIReadRequest) Execute() (*GetLocaluserAuthserviceResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-LocaluserauthserviceReferenceGet Get a specific localuser:authservice object
+Read Get a specific localuser:authservice object
 
 Returns a specific localuser:authservice object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the localuser:authservice object
-	@return LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest
+	@return LocaluserAuthserviceAPIReadRequest
 */
-func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceReferenceGet(ctx context.Context, reference string) LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest {
-	return LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest{
+func (a *LocaluserAuthserviceAPIService) Read(ctx context.Context, reference string) LocaluserAuthserviceAPIReadRequest {
+	return LocaluserAuthserviceAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceReferenceGet(ctx co
 // Execute executes the request
 //
 //	@return GetLocaluserAuthserviceResponse
-func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceReferenceGetExecute(r LocaluserAuthserviceAPILocaluserauthserviceReferenceGetRequest) (*GetLocaluserAuthserviceResponse, *http.Response, error) {
+func (a *LocaluserAuthserviceAPIService) ReadExecute(r LocaluserAuthserviceAPIReadRequest) (*GetLocaluserAuthserviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceReferenceGetExecute
 		localVarReturnValue *GetLocaluserAuthserviceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LocaluserAuthserviceAPIService.LocaluserauthserviceReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LocaluserAuthserviceAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *LocaluserAuthserviceAPIService) LocaluserauthserviceReferenceGetExecute
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

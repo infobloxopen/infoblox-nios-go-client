@@ -23,11 +23,11 @@ func TestMembercloudsyncAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test MembercloudsyncAPIService Get", func(t *testing.T) {
+	t.Run("Test MembercloudsyncAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MembercloudsyncAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MembercloudsyncAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestMembercloudsyncAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MembercloudsyncAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test MembercloudsyncAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MembercloudsyncAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MembercloudsyncAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestMembercloudsyncAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MembercloudsyncAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test MembercloudsyncAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MembercloudsyncAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MembercloudsyncAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

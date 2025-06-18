@@ -23,150 +23,386 @@ import (
 
 type RangeAPI interface {
 	/*
-		Get Retrieve range objects
-
-		Returns a list of range objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RangeAPIGetRequest
-	*/
-	Get(ctx context.Context) RangeAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListRangeResponse
-	GetExecute(r RangeAPIGetRequest) (*ListRangeResponse, *http.Response, error)
-	/*
-		Post Create a range object
+		Create Create a range object
 
 		Creates a new range object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RangeAPIPostRequest
+		@return RangeAPICreateRequest
 	*/
-	Post(ctx context.Context) RangeAPIPostRequest
+	Create(ctx context.Context) RangeAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRangeResponse
-	PostExecute(r RangeAPIPostRequest) (*CreateRangeResponse, *http.Response, error)
+	CreateExecute(r RangeAPICreateRequest) (*CreateRangeResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a range object
+		Delete Delete a range object
 
 		Deletes a specific range object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the range object
-		@return RangeAPIReferenceDeleteRequest
+		@return RangeAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) RangeAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RangeAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r RangeAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RangeAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific range object
+		List Retrieve range objects
+
+		Returns a list of range objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RangeAPIListRequest
+	*/
+	List(ctx context.Context) RangeAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRangeResponse
+	ListExecute(r RangeAPIListRequest) (*ListRangeResponse, *http.Response, error)
+	/*
+		Read Get a specific range object
 
 		Returns a specific range object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the range object
-		@return RangeAPIReferenceGetRequest
+		@return RangeAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) RangeAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) RangeAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRangeResponse
-	ReferenceGetExecute(r RangeAPIReferenceGetRequest) (*GetRangeResponse, *http.Response, error)
+	ReadExecute(r RangeAPIReadRequest) (*GetRangeResponse, *http.Response, error)
 	/*
-		ReferencePut Update a range object
+		Update Update a range object
 
 		Updates a specific range object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the range object
-		@return RangeAPIReferencePutRequest
+		@return RangeAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) RangeAPIReferencePutRequest
+	Update(ctx context.Context, reference string) RangeAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRangeResponse
-	ReferencePutExecute(r RangeAPIReferencePutRequest) (*UpdateRangeResponse, *http.Response, error)
+	UpdateExecute(r RangeAPIUpdateRequest) (*UpdateRangeResponse, *http.Response, error)
 }
 
 // RangeAPIService RangeAPI service
 type RangeAPIService internal.Service
 
-type RangeAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     RangeAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type RangeAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       RangeAPI
+	range_           *Range
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r RangeAPICreateRequest) Range_(range_ Range) RangeAPICreateRequest {
+	r.range_ = &range_
+	return r
 }
 
 // Enter the field names followed by comma
-func (r RangeAPIGetRequest) ReturnFields(returnFields string) RangeAPIGetRequest {
+func (r RangeAPICreateRequest) ReturnFields(returnFields string) RangeAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RangeAPIGetRequest) ReturnFields2(returnFields2 string) RangeAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r RangeAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RangeAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RangeAPICreateRequest) ReturnAsObject(returnAsObject int32) RangeAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r RangeAPICreateRequest) Execute() (*CreateRangeResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a range object
+
+Creates a new range object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RangeAPICreateRequest
+*/
+func (a *RangeAPIService) Create(ctx context.Context) RangeAPICreateRequest {
+	return RangeAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateRangeResponse
+func (a *RangeAPIService) CreateExecute(r RangeAPICreateRequest) (*CreateRangeResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateRangeResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/range"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.range_ == nil {
+		return localVarReturnValue, nil, internal.ReportError("range_ is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.range_ != nil {
+		if r.range_.Extattrs == nil {
+			r.range_.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.range_.Extattrs)[k]; !ok {
+				(*r.range_.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.range_
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RangeAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RangeAPI
+	reference  string
+}
+
+func (r RangeAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a range object
+
+Deletes a specific range object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the range object
+	@return RangeAPIDeleteRequest
+*/
+func (a *RangeAPIService) Delete(ctx context.Context, reference string) RangeAPIDeleteRequest {
+	return RangeAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RangeAPIService) DeleteExecute(r RangeAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/range/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RangeAPIListRequest struct {
+	ctx              context.Context
+	ApiService       RangeAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RangeAPIListRequest) ReturnFields(returnFields string) RangeAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RangeAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RangeAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RangeAPIGetRequest) MaxResults(maxResults int32) RangeAPIGetRequest {
+func (r RangeAPIListRequest) MaxResults(maxResults int32) RangeAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RangeAPIGetRequest) ReturnAsObject(returnAsObject int32) RangeAPIGetRequest {
+func (r RangeAPIListRequest) ReturnAsObject(returnAsObject int32) RangeAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RangeAPIGetRequest) Paging(paging int32) RangeAPIGetRequest {
+func (r RangeAPIListRequest) Paging(paging int32) RangeAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RangeAPIGetRequest) PageId(pageId string) RangeAPIGetRequest {
+func (r RangeAPIListRequest) PageId(pageId string) RangeAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RangeAPIGetRequest) Filters(filters map[string]interface{}) RangeAPIGetRequest {
+func (r RangeAPIListRequest) Filters(filters map[string]interface{}) RangeAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RangeAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RangeAPIGetRequest {
+func (r RangeAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RangeAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RangeAPIGetRequest) Execute() (*ListRangeResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r RangeAPIListRequest) Execute() (*ListRangeResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve range objects
+List Retrieve range objects
 
 Returns a list of range objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RangeAPIGetRequest
+	@return RangeAPIListRequest
 */
-func (a *RangeAPIService) Get(ctx context.Context) RangeAPIGetRequest {
-	return RangeAPIGetRequest{
+func (a *RangeAPIService) List(ctx context.Context) RangeAPIListRequest {
+	return RangeAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *RangeAPIService) Get(ctx context.Context) RangeAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListRangeResponse
-func (a *RangeAPIService) GetExecute(r RangeAPIGetRequest) (*ListRangeResponse, *http.Response, error) {
+func (a *RangeAPIService) ListExecute(r RangeAPIListRequest) (*ListRangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *RangeAPIService) GetExecute(r RangeAPIGetRequest) (*ListRangeResponse, 
 		localVarReturnValue *ListRangeResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *RangeAPIService) GetExecute(r RangeAPIGetRequest) (*ListRangeResponse, 
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *RangeAPIService) GetExecute(r RangeAPIGetRequest) (*ListRangeResponse, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RangeAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     RangeAPI
-	range_         *Range
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r RangeAPIPostRequest) Range_(range_ Range) RangeAPIPostRequest {
-	r.range_ = &range_
-	return r
+type RangeAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       RangeAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r RangeAPIPostRequest) ReturnFields(returnFields string) RangeAPIPostRequest {
+func (r RangeAPIReadRequest) ReturnFields(returnFields string) RangeAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RangeAPIPostRequest) ReturnFields2(returnFields2 string) RangeAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r RangeAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RangeAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RangeAPIPostRequest) ReturnAsObject(returnAsObject int32) RangeAPIPostRequest {
+func (r RangeAPIReadRequest) ReturnAsObject(returnAsObject int32) RangeAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RangeAPIPostRequest) Execute() (*CreateRangeResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r RangeAPIReadRequest) Execute() (*GetRangeResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a range object
-
-Creates a new range object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RangeAPIPostRequest
-*/
-func (a *RangeAPIService) Post(ctx context.Context) RangeAPIPostRequest {
-	return RangeAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateRangeResponse
-func (a *RangeAPIService) PostExecute(r RangeAPIPostRequest) (*CreateRangeResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateRangeResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/range"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.range_ == nil {
-		return localVarReturnValue, nil, internal.ReportError("range_ is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.range_ != nil {
-		if r.range_.Extattrs == nil {
-			r.range_.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.range_.Extattrs)[k]; !ok {
-				(*r.range_.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.range_
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RangeAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RangeAPI
-	reference  string
-}
-
-func (r RangeAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a range object
-
-Deletes a specific range object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the range object
-	@return RangeAPIReferenceDeleteRequest
-*/
-func (a *RangeAPIService) ReferenceDelete(ctx context.Context, reference string) RangeAPIReferenceDeleteRequest {
-	return RangeAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RangeAPIService) ReferenceDeleteExecute(r RangeAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/range/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RangeAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     RangeAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r RangeAPIReferenceGetRequest) ReturnFields(returnFields string) RangeAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RangeAPIReferenceGetRequest) ReturnFields2(returnFields2 string) RangeAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RangeAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) RangeAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r RangeAPIReferenceGetRequest) Execute() (*GetRangeResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific range object
+Read Get a specific range object
 
 Returns a specific range object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the range object
-	@return RangeAPIReferenceGetRequest
+	@return RangeAPIReadRequest
 */
-func (a *RangeAPIService) ReferenceGet(ctx context.Context, reference string) RangeAPIReferenceGetRequest {
-	return RangeAPIReferenceGetRequest{
+func (a *RangeAPIService) Read(ctx context.Context, reference string) RangeAPIReadRequest {
+	return RangeAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RangeAPIService) ReferenceGet(ctx context.Context, reference string) Ra
 // Execute executes the request
 //
 //	@return GetRangeResponse
-func (a *RangeAPIService) ReferenceGetExecute(r RangeAPIReferenceGetRequest) (*GetRangeResponse, *http.Response, error) {
+func (a *RangeAPIService) ReadExecute(r RangeAPIReadRequest) (*GetRangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RangeAPIService) ReferenceGetExecute(r RangeAPIReferenceGetRequest) (*G
 		localVarReturnValue *GetRangeResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *RangeAPIService) ReferenceGetExecute(r RangeAPIReferenceGetRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *RangeAPIService) ReferenceGetExecute(r RangeAPIReferenceGetRequest) (*G
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RangeAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     RangeAPI
-	reference      string
-	range_         *Range
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type RangeAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       RangeAPI
+	reference        string
+	range_           *Range
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r RangeAPIReferencePutRequest) Range_(range_ Range) RangeAPIReferencePutRequest {
+func (r RangeAPIUpdateRequest) Range_(range_ Range) RangeAPIUpdateRequest {
 	r.range_ = &range_
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RangeAPIReferencePutRequest) ReturnFields(returnFields string) RangeAPIReferencePutRequest {
+func (r RangeAPIUpdateRequest) ReturnFields(returnFields string) RangeAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RangeAPIReferencePutRequest) ReturnFields2(returnFields2 string) RangeAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r RangeAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RangeAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RangeAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) RangeAPIReferencePutRequest {
+func (r RangeAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RangeAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RangeAPIReferencePutRequest) Execute() (*UpdateRangeResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r RangeAPIUpdateRequest) Execute() (*UpdateRangeResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a range object
+Update Update a range object
 
 Updates a specific range object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the range object
-	@return RangeAPIReferencePutRequest
+	@return RangeAPIUpdateRequest
 */
-func (a *RangeAPIService) ReferencePut(ctx context.Context, reference string) RangeAPIReferencePutRequest {
-	return RangeAPIReferencePutRequest{
+func (a *RangeAPIService) Update(ctx context.Context, reference string) RangeAPIUpdateRequest {
+	return RangeAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RangeAPIService) ReferencePut(ctx context.Context, reference string) Ra
 // Execute executes the request
 //
 //	@return UpdateRangeResponse
-func (a *RangeAPIService) ReferencePutExecute(r RangeAPIReferencePutRequest) (*UpdateRangeResponse, *http.Response, error) {
+func (a *RangeAPIService) UpdateExecute(r RangeAPIUpdateRequest) (*UpdateRangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RangeAPIService) ReferencePutExecute(r RangeAPIReferencePutRequest) (*U
 		localVarReturnValue *UpdateRangeResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RangeAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *RangeAPIService) ReferencePutExecute(r RangeAPIReferencePutRequest) (*U
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

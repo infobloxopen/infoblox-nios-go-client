@@ -23,11 +23,11 @@ func TestDbObjectsAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test DbObjectsAPIService Get", func(t *testing.T) {
+	t.Run("Test DbObjectsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DbObjectsAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DbObjectsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDbObjectsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DbObjectsAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test DbObjectsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DbObjectsAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DbObjectsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

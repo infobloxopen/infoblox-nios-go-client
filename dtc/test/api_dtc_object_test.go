@@ -23,11 +23,11 @@ func TestDtcObjectAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcObjectAPIService DtcobjectGet", func(t *testing.T) {
+	t.Run("Test DtcObjectAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcObjectAPI.DtcobjectGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcObjectAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDtcObjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcObjectAPIService DtcobjectReferenceGet", func(t *testing.T) {
+	t.Run("Test DtcObjectAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcObjectAPI.DtcobjectReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcObjectAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestDtcObjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcObjectAPIService DtcobjectReferencePut", func(t *testing.T) {
+	t.Run("Test DtcObjectAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcObjectAPI.DtcobjectReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcObjectAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,11 +23,11 @@ func TestRecordUnknownAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordUnknownAPIService RecordunknownGet", func(t *testing.T) {
+	t.Run("Test RecordUnknownAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordUnknownAPI.RecordunknownGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordUnknownAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRecordUnknownAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordUnknownAPIService RecordunknownPost", func(t *testing.T) {
+	t.Run("Test RecordUnknownAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordUnknownAPI.RecordunknownPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RecordUnknownAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RecordUnknownAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RecordUnknownAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRecordUnknownAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordUnknownAPIService RecordunknownReferenceDelete", func(t *testing.T) {
+	t.Run("Test RecordUnknownAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RecordUnknownAPI.RecordunknownReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RecordUnknownAPIService RecordunknownReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RecordUnknownAPI.RecordunknownReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordUnknownAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRecordUnknownAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordUnknownAPIService RecordunknownReferencePut", func(t *testing.T) {
+	t.Run("Test RecordUnknownAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordUnknownAPI.RecordunknownReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordUnknownAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,11 +23,11 @@ func TestThreatprotectionRuletemplateAPIService(t *testing.T) {
 
 	apiClient := threatprotection.NewAPIClient()
 
-	t.Run("Test ThreatprotectionRuletemplateAPIService ThreatprotectionruletemplateGet", func(t *testing.T) {
+	t.Run("Test ThreatprotectionRuletemplateAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ThreatprotectionRuletemplateAPI.ThreatprotectionruletemplateGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ThreatprotectionRuletemplateAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestThreatprotectionRuletemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatprotectionRuletemplateAPIService ThreatprotectionruletemplateReferenceGet", func(t *testing.T) {
+	t.Run("Test ThreatprotectionRuletemplateAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ThreatprotectionRuletemplateAPI.ThreatprotectionruletemplateReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ThreatprotectionRuletemplateAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

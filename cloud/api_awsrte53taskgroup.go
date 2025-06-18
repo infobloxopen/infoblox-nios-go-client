@@ -23,150 +23,374 @@ import (
 
 type Awsrte53taskgroupAPI interface {
 	/*
-		Get Retrieve awsrte53taskgroup objects
-
-		Returns a list of awsrte53taskgroup objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Awsrte53taskgroupAPIGetRequest
-	*/
-	Get(ctx context.Context) Awsrte53taskgroupAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListAwsrte53taskgroupResponse
-	GetExecute(r Awsrte53taskgroupAPIGetRequest) (*ListAwsrte53taskgroupResponse, *http.Response, error)
-	/*
-		Post Create a awsrte53taskgroup object
+		Create Create a awsrte53taskgroup object
 
 		Creates a new awsrte53taskgroup object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Awsrte53taskgroupAPIPostRequest
+		@return Awsrte53taskgroupAPICreateRequest
 	*/
-	Post(ctx context.Context) Awsrte53taskgroupAPIPostRequest
+	Create(ctx context.Context) Awsrte53taskgroupAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateAwsrte53taskgroupResponse
-	PostExecute(r Awsrte53taskgroupAPIPostRequest) (*CreateAwsrte53taskgroupResponse, *http.Response, error)
+	CreateExecute(r Awsrte53taskgroupAPICreateRequest) (*CreateAwsrte53taskgroupResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a awsrte53taskgroup object
+		Delete Delete a awsrte53taskgroup object
 
 		Deletes a specific awsrte53taskgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the awsrte53taskgroup object
-		@return Awsrte53taskgroupAPIReferenceDeleteRequest
+		@return Awsrte53taskgroupAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) Awsrte53taskgroupAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) Awsrte53taskgroupAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r Awsrte53taskgroupAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r Awsrte53taskgroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific awsrte53taskgroup object
+		List Retrieve awsrte53taskgroup objects
+
+		Returns a list of awsrte53taskgroup objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return Awsrte53taskgroupAPIListRequest
+	*/
+	List(ctx context.Context) Awsrte53taskgroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListAwsrte53taskgroupResponse
+	ListExecute(r Awsrte53taskgroupAPIListRequest) (*ListAwsrte53taskgroupResponse, *http.Response, error)
+	/*
+		Read Get a specific awsrte53taskgroup object
 
 		Returns a specific awsrte53taskgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the awsrte53taskgroup object
-		@return Awsrte53taskgroupAPIReferenceGetRequest
+		@return Awsrte53taskgroupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) Awsrte53taskgroupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) Awsrte53taskgroupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAwsrte53taskgroupResponse
-	ReferenceGetExecute(r Awsrte53taskgroupAPIReferenceGetRequest) (*GetAwsrte53taskgroupResponse, *http.Response, error)
+	ReadExecute(r Awsrte53taskgroupAPIReadRequest) (*GetAwsrte53taskgroupResponse, *http.Response, error)
 	/*
-		ReferencePut Update a awsrte53taskgroup object
+		Update Update a awsrte53taskgroup object
 
 		Updates a specific awsrte53taskgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the awsrte53taskgroup object
-		@return Awsrte53taskgroupAPIReferencePutRequest
+		@return Awsrte53taskgroupAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) Awsrte53taskgroupAPIReferencePutRequest
+	Update(ctx context.Context, reference string) Awsrte53taskgroupAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateAwsrte53taskgroupResponse
-	ReferencePutExecute(r Awsrte53taskgroupAPIReferencePutRequest) (*UpdateAwsrte53taskgroupResponse, *http.Response, error)
+	UpdateExecute(r Awsrte53taskgroupAPIUpdateRequest) (*UpdateAwsrte53taskgroupResponse, *http.Response, error)
 }
 
 // Awsrte53taskgroupAPIService Awsrte53taskgroupAPI service
 type Awsrte53taskgroupAPIService internal.Service
 
-type Awsrte53taskgroupAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     Awsrte53taskgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type Awsrte53taskgroupAPICreateRequest struct {
+	ctx               context.Context
+	ApiService        Awsrte53taskgroupAPI
+	awsrte53taskgroup *Awsrte53taskgroup
+	returnFields      *string
+	returnFieldsPlus  *string
+	returnAsObject    *int32
+}
+
+// Object data to create
+func (r Awsrte53taskgroupAPICreateRequest) Awsrte53taskgroup(awsrte53taskgroup Awsrte53taskgroup) Awsrte53taskgroupAPICreateRequest {
+	r.awsrte53taskgroup = &awsrte53taskgroup
+	return r
 }
 
 // Enter the field names followed by comma
-func (r Awsrte53taskgroupAPIGetRequest) ReturnFields(returnFields string) Awsrte53taskgroupAPIGetRequest {
+func (r Awsrte53taskgroupAPICreateRequest) ReturnFields(returnFields string) Awsrte53taskgroupAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Awsrte53taskgroupAPIGetRequest) ReturnFields2(returnFields2 string) Awsrte53taskgroupAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r Awsrte53taskgroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) Awsrte53taskgroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r Awsrte53taskgroupAPICreateRequest) ReturnAsObject(returnAsObject int32) Awsrte53taskgroupAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r Awsrte53taskgroupAPICreateRequest) Execute() (*CreateAwsrte53taskgroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a awsrte53taskgroup object
+
+Creates a new awsrte53taskgroup object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return Awsrte53taskgroupAPICreateRequest
+*/
+func (a *Awsrte53taskgroupAPIService) Create(ctx context.Context) Awsrte53taskgroupAPICreateRequest {
+	return Awsrte53taskgroupAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateAwsrte53taskgroupResponse
+func (a *Awsrte53taskgroupAPIService) CreateExecute(r Awsrte53taskgroupAPICreateRequest) (*CreateAwsrte53taskgroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateAwsrte53taskgroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Awsrte53taskgroupAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/awsrte53taskgroup"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.awsrte53taskgroup == nil {
+		return localVarReturnValue, nil, internal.ReportError("awsrte53taskgroup is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.awsrte53taskgroup
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type Awsrte53taskgroupAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService Awsrte53taskgroupAPI
+	reference  string
+}
+
+func (r Awsrte53taskgroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a awsrte53taskgroup object
+
+Deletes a specific awsrte53taskgroup object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the awsrte53taskgroup object
+	@return Awsrte53taskgroupAPIDeleteRequest
+*/
+func (a *Awsrte53taskgroupAPIService) Delete(ctx context.Context, reference string) Awsrte53taskgroupAPIDeleteRequest {
+	return Awsrte53taskgroupAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *Awsrte53taskgroupAPIService) DeleteExecute(r Awsrte53taskgroupAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Awsrte53taskgroupAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/awsrte53taskgroup/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type Awsrte53taskgroupAPIListRequest struct {
+	ctx              context.Context
+	ApiService       Awsrte53taskgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r Awsrte53taskgroupAPIListRequest) ReturnFields(returnFields string) Awsrte53taskgroupAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r Awsrte53taskgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Awsrte53taskgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r Awsrte53taskgroupAPIGetRequest) MaxResults(maxResults int32) Awsrte53taskgroupAPIGetRequest {
+func (r Awsrte53taskgroupAPIListRequest) MaxResults(maxResults int32) Awsrte53taskgroupAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Awsrte53taskgroupAPIGetRequest) ReturnAsObject(returnAsObject int32) Awsrte53taskgroupAPIGetRequest {
+func (r Awsrte53taskgroupAPIListRequest) ReturnAsObject(returnAsObject int32) Awsrte53taskgroupAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r Awsrte53taskgroupAPIGetRequest) Paging(paging int32) Awsrte53taskgroupAPIGetRequest {
+func (r Awsrte53taskgroupAPIListRequest) Paging(paging int32) Awsrte53taskgroupAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r Awsrte53taskgroupAPIGetRequest) PageId(pageId string) Awsrte53taskgroupAPIGetRequest {
+func (r Awsrte53taskgroupAPIListRequest) PageId(pageId string) Awsrte53taskgroupAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r Awsrte53taskgroupAPIGetRequest) Filters(filters map[string]interface{}) Awsrte53taskgroupAPIGetRequest {
+func (r Awsrte53taskgroupAPIListRequest) Filters(filters map[string]interface{}) Awsrte53taskgroupAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r Awsrte53taskgroupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) Awsrte53taskgroupAPIGetRequest {
+func (r Awsrte53taskgroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) Awsrte53taskgroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r Awsrte53taskgroupAPIGetRequest) Execute() (*ListAwsrte53taskgroupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r Awsrte53taskgroupAPIListRequest) Execute() (*ListAwsrte53taskgroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve awsrte53taskgroup objects
+List Retrieve awsrte53taskgroup objects
 
 Returns a list of awsrte53taskgroup objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Awsrte53taskgroupAPIGetRequest
+	@return Awsrte53taskgroupAPIListRequest
 */
-func (a *Awsrte53taskgroupAPIService) Get(ctx context.Context) Awsrte53taskgroupAPIGetRequest {
-	return Awsrte53taskgroupAPIGetRequest{
+func (a *Awsrte53taskgroupAPIService) List(ctx context.Context) Awsrte53taskgroupAPIListRequest {
+	return Awsrte53taskgroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *Awsrte53taskgroupAPIService) Get(ctx context.Context) Awsrte53taskgroup
 // Execute executes the request
 //
 //	@return ListAwsrte53taskgroupResponse
-func (a *Awsrte53taskgroupAPIService) GetExecute(r Awsrte53taskgroupAPIGetRequest) (*ListAwsrte53taskgroupResponse, *http.Response, error) {
+func (a *Awsrte53taskgroupAPIService) ListExecute(r Awsrte53taskgroupAPIListRequest) (*ListAwsrte53taskgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *Awsrte53taskgroupAPIService) GetExecute(r Awsrte53taskgroupAPIGetReques
 		localVarReturnValue *ListAwsrte53taskgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Awsrte53taskgroupAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Awsrte53taskgroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *Awsrte53taskgroupAPIService) GetExecute(r Awsrte53taskgroupAPIGetReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *Awsrte53taskgroupAPIService) GetExecute(r Awsrte53taskgroupAPIGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Awsrte53taskgroupAPIPostRequest struct {
-	ctx               context.Context
-	ApiService        Awsrte53taskgroupAPI
-	awsrte53taskgroup *Awsrte53taskgroup
-	returnFields      *string
-	returnFields2     *string
-	returnAsObject    *int32
-}
-
-// Object data to create
-func (r Awsrte53taskgroupAPIPostRequest) Awsrte53taskgroup(awsrte53taskgroup Awsrte53taskgroup) Awsrte53taskgroupAPIPostRequest {
-	r.awsrte53taskgroup = &awsrte53taskgroup
-	return r
+type Awsrte53taskgroupAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       Awsrte53taskgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r Awsrte53taskgroupAPIPostRequest) ReturnFields(returnFields string) Awsrte53taskgroupAPIPostRequest {
+func (r Awsrte53taskgroupAPIReadRequest) ReturnFields(returnFields string) Awsrte53taskgroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Awsrte53taskgroupAPIPostRequest) ReturnFields2(returnFields2 string) Awsrte53taskgroupAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r Awsrte53taskgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Awsrte53taskgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Awsrte53taskgroupAPIPostRequest) ReturnAsObject(returnAsObject int32) Awsrte53taskgroupAPIPostRequest {
+func (r Awsrte53taskgroupAPIReadRequest) ReturnAsObject(returnAsObject int32) Awsrte53taskgroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Awsrte53taskgroupAPIPostRequest) Execute() (*CreateAwsrte53taskgroupResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r Awsrte53taskgroupAPIReadRequest) Execute() (*GetAwsrte53taskgroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a awsrte53taskgroup object
-
-Creates a new awsrte53taskgroup object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Awsrte53taskgroupAPIPostRequest
-*/
-func (a *Awsrte53taskgroupAPIService) Post(ctx context.Context) Awsrte53taskgroupAPIPostRequest {
-	return Awsrte53taskgroupAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateAwsrte53taskgroupResponse
-func (a *Awsrte53taskgroupAPIService) PostExecute(r Awsrte53taskgroupAPIPostRequest) (*CreateAwsrte53taskgroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateAwsrte53taskgroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Awsrte53taskgroupAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/awsrte53taskgroup"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.awsrte53taskgroup == nil {
-		return localVarReturnValue, nil, internal.ReportError("awsrte53taskgroup is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.awsrte53taskgroup
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type Awsrte53taskgroupAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService Awsrte53taskgroupAPI
-	reference  string
-}
-
-func (r Awsrte53taskgroupAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a awsrte53taskgroup object
-
-Deletes a specific awsrte53taskgroup object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the awsrte53taskgroup object
-	@return Awsrte53taskgroupAPIReferenceDeleteRequest
-*/
-func (a *Awsrte53taskgroupAPIService) ReferenceDelete(ctx context.Context, reference string) Awsrte53taskgroupAPIReferenceDeleteRequest {
-	return Awsrte53taskgroupAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *Awsrte53taskgroupAPIService) ReferenceDeleteExecute(r Awsrte53taskgroupAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Awsrte53taskgroupAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/awsrte53taskgroup/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type Awsrte53taskgroupAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     Awsrte53taskgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r Awsrte53taskgroupAPIReferenceGetRequest) ReturnFields(returnFields string) Awsrte53taskgroupAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Awsrte53taskgroupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) Awsrte53taskgroupAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r Awsrte53taskgroupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) Awsrte53taskgroupAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r Awsrte53taskgroupAPIReferenceGetRequest) Execute() (*GetAwsrte53taskgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific awsrte53taskgroup object
+Read Get a specific awsrte53taskgroup object
 
 Returns a specific awsrte53taskgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the awsrte53taskgroup object
-	@return Awsrte53taskgroupAPIReferenceGetRequest
+	@return Awsrte53taskgroupAPIReadRequest
 */
-func (a *Awsrte53taskgroupAPIService) ReferenceGet(ctx context.Context, reference string) Awsrte53taskgroupAPIReferenceGetRequest {
-	return Awsrte53taskgroupAPIReferenceGetRequest{
+func (a *Awsrte53taskgroupAPIService) Read(ctx context.Context, reference string) Awsrte53taskgroupAPIReadRequest {
+	return Awsrte53taskgroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *Awsrte53taskgroupAPIService) ReferenceGet(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return GetAwsrte53taskgroupResponse
-func (a *Awsrte53taskgroupAPIService) ReferenceGetExecute(r Awsrte53taskgroupAPIReferenceGetRequest) (*GetAwsrte53taskgroupResponse, *http.Response, error) {
+func (a *Awsrte53taskgroupAPIService) ReadExecute(r Awsrte53taskgroupAPIReadRequest) (*GetAwsrte53taskgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *Awsrte53taskgroupAPIService) ReferenceGetExecute(r Awsrte53taskgroupAPI
 		localVarReturnValue *GetAwsrte53taskgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Awsrte53taskgroupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Awsrte53taskgroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *Awsrte53taskgroupAPIService) ReferenceGetExecute(r Awsrte53taskgroupAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *Awsrte53taskgroupAPIService) ReferenceGetExecute(r Awsrte53taskgroupAPI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Awsrte53taskgroupAPIReferencePutRequest struct {
+type Awsrte53taskgroupAPIUpdateRequest struct {
 	ctx               context.Context
 	ApiService        Awsrte53taskgroupAPI
 	reference         string
 	awsrte53taskgroup *Awsrte53taskgroup
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
 // Object data to update
-func (r Awsrte53taskgroupAPIReferencePutRequest) Awsrte53taskgroup(awsrte53taskgroup Awsrte53taskgroup) Awsrte53taskgroupAPIReferencePutRequest {
+func (r Awsrte53taskgroupAPIUpdateRequest) Awsrte53taskgroup(awsrte53taskgroup Awsrte53taskgroup) Awsrte53taskgroupAPIUpdateRequest {
 	r.awsrte53taskgroup = &awsrte53taskgroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r Awsrte53taskgroupAPIReferencePutRequest) ReturnFields(returnFields string) Awsrte53taskgroupAPIReferencePutRequest {
+func (r Awsrte53taskgroupAPIUpdateRequest) ReturnFields(returnFields string) Awsrte53taskgroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Awsrte53taskgroupAPIReferencePutRequest) ReturnFields2(returnFields2 string) Awsrte53taskgroupAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r Awsrte53taskgroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Awsrte53taskgroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Awsrte53taskgroupAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) Awsrte53taskgroupAPIReferencePutRequest {
+func (r Awsrte53taskgroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) Awsrte53taskgroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Awsrte53taskgroupAPIReferencePutRequest) Execute() (*UpdateAwsrte53taskgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r Awsrte53taskgroupAPIUpdateRequest) Execute() (*UpdateAwsrte53taskgroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a awsrte53taskgroup object
+Update Update a awsrte53taskgroup object
 
 Updates a specific awsrte53taskgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the awsrte53taskgroup object
-	@return Awsrte53taskgroupAPIReferencePutRequest
+	@return Awsrte53taskgroupAPIUpdateRequest
 */
-func (a *Awsrte53taskgroupAPIService) ReferencePut(ctx context.Context, reference string) Awsrte53taskgroupAPIReferencePutRequest {
-	return Awsrte53taskgroupAPIReferencePutRequest{
+func (a *Awsrte53taskgroupAPIService) Update(ctx context.Context, reference string) Awsrte53taskgroupAPIUpdateRequest {
+	return Awsrte53taskgroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *Awsrte53taskgroupAPIService) ReferencePut(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return UpdateAwsrte53taskgroupResponse
-func (a *Awsrte53taskgroupAPIService) ReferencePutExecute(r Awsrte53taskgroupAPIReferencePutRequest) (*UpdateAwsrte53taskgroupResponse, *http.Response, error) {
+func (a *Awsrte53taskgroupAPIService) UpdateExecute(r Awsrte53taskgroupAPIUpdateRequest) (*UpdateAwsrte53taskgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *Awsrte53taskgroupAPIService) ReferencePutExecute(r Awsrte53taskgroupAPI
 		localVarReturnValue *UpdateAwsrte53taskgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Awsrte53taskgroupAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Awsrte53taskgroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *Awsrte53taskgroupAPIService) ReferencePutExecute(r Awsrte53taskgroupAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -23,110 +23,110 @@ import (
 
 type FileopAPI interface {
 	/*
-		Get Retrieve fileop objects
+		List Retrieve fileop objects
 
 		Returns a list of fileop objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FileopAPIGetRequest
+		@return FileopAPIListRequest
 	*/
-	Get(ctx context.Context) FileopAPIGetRequest
+	List(ctx context.Context) FileopAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListFileopResponse
-	GetExecute(r FileopAPIGetRequest) (*ListFileopResponse, *http.Response, error)
+	ListExecute(r FileopAPIListRequest) (*ListFileopResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific fileop object
+		Read Get a specific fileop object
 
 		Returns a specific fileop object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the fileop object
-		@return FileopAPIReferenceGetRequest
+		@return FileopAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) FileopAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) FileopAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetFileopResponse
-	ReferenceGetExecute(r FileopAPIReferenceGetRequest) (*GetFileopResponse, *http.Response, error)
+	ReadExecute(r FileopAPIReadRequest) (*GetFileopResponse, *http.Response, error)
 }
 
 // FileopAPIService FileopAPI service
 type FileopAPIService internal.Service
 
-type FileopAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     FileopAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type FileopAPIListRequest struct {
+	ctx              context.Context
+	ApiService       FileopAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r FileopAPIGetRequest) ReturnFields(returnFields string) FileopAPIGetRequest {
+func (r FileopAPIListRequest) ReturnFields(returnFields string) FileopAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FileopAPIGetRequest) ReturnFields2(returnFields2 string) FileopAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r FileopAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FileopAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r FileopAPIGetRequest) MaxResults(maxResults int32) FileopAPIGetRequest {
+func (r FileopAPIListRequest) MaxResults(maxResults int32) FileopAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FileopAPIGetRequest) ReturnAsObject(returnAsObject int32) FileopAPIGetRequest {
+func (r FileopAPIListRequest) ReturnAsObject(returnAsObject int32) FileopAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r FileopAPIGetRequest) Paging(paging int32) FileopAPIGetRequest {
+func (r FileopAPIListRequest) Paging(paging int32) FileopAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r FileopAPIGetRequest) PageId(pageId string) FileopAPIGetRequest {
+func (r FileopAPIListRequest) PageId(pageId string) FileopAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r FileopAPIGetRequest) Filters(filters map[string]interface{}) FileopAPIGetRequest {
+func (r FileopAPIListRequest) Filters(filters map[string]interface{}) FileopAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r FileopAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) FileopAPIGetRequest {
+func (r FileopAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) FileopAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r FileopAPIGetRequest) Execute() (*ListFileopResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r FileopAPIListRequest) Execute() (*ListFileopResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve fileop objects
+List Retrieve fileop objects
 
 Returns a list of fileop objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FileopAPIGetRequest
+	@return FileopAPIListRequest
 */
-func (a *FileopAPIService) Get(ctx context.Context) FileopAPIGetRequest {
-	return FileopAPIGetRequest{
+func (a *FileopAPIService) List(ctx context.Context) FileopAPIListRequest {
+	return FileopAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *FileopAPIService) Get(ctx context.Context) FileopAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListFileopResponse
-func (a *FileopAPIService) GetExecute(r FileopAPIGetRequest) (*ListFileopResponse, *http.Response, error) {
+func (a *FileopAPIService) ListExecute(r FileopAPIListRequest) (*ListFileopResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *FileopAPIService) GetExecute(r FileopAPIGetRequest) (*ListFileopRespons
 		localVarReturnValue *ListFileopResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FileopAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FileopAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *FileopAPIService) GetExecute(r FileopAPIGetRequest) (*ListFileopRespons
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *FileopAPIService) GetExecute(r FileopAPIGetRequest) (*ListFileopRespons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FileopAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     FileopAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type FileopAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       FileopAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r FileopAPIReferenceGetRequest) ReturnFields(returnFields string) FileopAPIReferenceGetRequest {
+func (r FileopAPIReadRequest) ReturnFields(returnFields string) FileopAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FileopAPIReferenceGetRequest) ReturnFields2(returnFields2 string) FileopAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r FileopAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FileopAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FileopAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) FileopAPIReferenceGetRequest {
+func (r FileopAPIReadRequest) ReturnAsObject(returnAsObject int32) FileopAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FileopAPIReferenceGetRequest) Execute() (*GetFileopResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r FileopAPIReadRequest) Execute() (*GetFileopResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific fileop object
+Read Get a specific fileop object
 
 Returns a specific fileop object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the fileop object
-	@return FileopAPIReferenceGetRequest
+	@return FileopAPIReadRequest
 */
-func (a *FileopAPIService) ReferenceGet(ctx context.Context, reference string) FileopAPIReferenceGetRequest {
-	return FileopAPIReferenceGetRequest{
+func (a *FileopAPIService) Read(ctx context.Context, reference string) FileopAPIReadRequest {
+	return FileopAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *FileopAPIService) ReferenceGet(ctx context.Context, reference string) F
 // Execute executes the request
 //
 //	@return GetFileopResponse
-func (a *FileopAPIService) ReferenceGetExecute(r FileopAPIReferenceGetRequest) (*GetFileopResponse, *http.Response, error) {
+func (a *FileopAPIService) ReadExecute(r FileopAPIReadRequest) (*GetFileopResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *FileopAPIService) ReferenceGetExecute(r FileopAPIReferenceGetRequest) (
 		localVarReturnValue *GetFileopResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FileopAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FileopAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *FileopAPIService) ReferenceGetExecute(r FileopAPIReferenceGetRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

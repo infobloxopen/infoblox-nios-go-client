@@ -23,11 +23,11 @@ func TestOrderedresponsepolicyzonesAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test OrderedresponsepolicyzonesAPIService Get", func(t *testing.T) {
+	t.Run("Test OrderedresponsepolicyzonesAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OrderedresponsepolicyzonesAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrderedresponsepolicyzonesAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestOrderedresponsepolicyzonesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrderedresponsepolicyzonesAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test OrderedresponsepolicyzonesAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.OrderedresponsepolicyzonesAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.OrderedresponsepolicyzonesAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestOrderedresponsepolicyzonesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrderedresponsepolicyzonesAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test OrderedresponsepolicyzonesAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.OrderedresponsepolicyzonesAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.OrderedresponsepolicyzonesAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

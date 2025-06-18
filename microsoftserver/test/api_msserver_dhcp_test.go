@@ -23,11 +23,11 @@ func TestMsserverDhcpAPIService(t *testing.T) {
 
 	apiClient := microsoftserver.NewAPIClient()
 
-	t.Run("Test MsserverDhcpAPIService MsserverdhcpGet", func(t *testing.T) {
+	t.Run("Test MsserverDhcpAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MsserverDhcpAPI.MsserverdhcpGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MsserverDhcpAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestMsserverDhcpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MsserverDhcpAPIService MsserverdhcpPost", func(t *testing.T) {
+	t.Run("Test MsserverDhcpAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MsserverDhcpAPI.MsserverdhcpPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.MsserverDhcpAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MsserverDhcpAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.MsserverDhcpAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestMsserverDhcpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MsserverDhcpAPIService MsserverdhcpReferenceDelete", func(t *testing.T) {
+	t.Run("Test MsserverDhcpAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.MsserverDhcpAPI.MsserverdhcpReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MsserverDhcpAPIService MsserverdhcpReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.MsserverDhcpAPI.MsserverdhcpReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MsserverDhcpAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestMsserverDhcpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MsserverDhcpAPIService MsserverdhcpReferencePut", func(t *testing.T) {
+	t.Run("Test MsserverDhcpAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MsserverDhcpAPI.MsserverdhcpReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MsserverDhcpAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

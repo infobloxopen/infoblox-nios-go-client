@@ -23,11 +23,11 @@ func TestAzureuserAPIService(t *testing.T) {
 
 	apiClient := cloud.NewAPIClient()
 
-	t.Run("Test AzureuserAPIService Get", func(t *testing.T) {
+	t.Run("Test AzureuserAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AzureuserAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AzureuserAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestAzureuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AzureuserAPIService Post", func(t *testing.T) {
+	t.Run("Test AzureuserAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AzureuserAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.AzureuserAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AzureuserAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AzureuserAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestAzureuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AzureuserAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test AzureuserAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.AzureuserAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AzureuserAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.AzureuserAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AzureuserAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestAzureuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AzureuserAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test AzureuserAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.AzureuserAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AzureuserAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

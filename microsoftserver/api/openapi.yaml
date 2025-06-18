@@ -30,6 +30,7 @@ paths:
   /msserver:
     get:
       description: Returns a list of msserver objects matching the search criteria
+      operationId: MsserverList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -126,6 +127,7 @@ paths:
       - Msserver
     post:
       description: Creates a new msserver object
+      operationId: MsserverCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -186,6 +188,7 @@ paths:
   /msserver/{reference}:
     delete:
       description: Deletes a specific msserver object by reference
+      operationId: MsserverDelete
       parameters:
       - description: Reference of the msserver object
         explode: false
@@ -213,6 +216,7 @@ paths:
       - Msserver
     get:
       description: Returns a specific msserver object by reference
+      operationId: MsserverRead
       parameters:
       - description: Reference of the msserver object
         explode: false
@@ -272,6 +276,7 @@ paths:
       - Msserver
     put:
       description: Updates a specific msserver object by reference
+      operationId: MsserverUpdate
       parameters:
       - description: Reference of the msserver object
         explode: false
@@ -341,6 +346,7 @@ paths:
     get:
       description: Returns a list of msserver:adsites:domain objects matching the
         search criteria
+      operationId: MsserverAdsitesDomainList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -438,6 +444,7 @@ paths:
   /msserver:adsites:domain/{reference}:
     get:
       description: Returns a specific msserver:adsites:domain object by reference
+      operationId: MsserverAdsitesDomainRead
       parameters:
       - description: Reference of the msserver:adsites:domain object
         explode: false
@@ -499,6 +506,7 @@ paths:
     get:
       description: Returns a list of msserver:adsites:site objects matching the search
         criteria
+      operationId: MsserverAdsitesSiteList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -595,6 +603,7 @@ paths:
       - MsserverAdsitesSite
     post:
       description: Creates a new msserver:adsites:site object
+      operationId: MsserverAdsitesSiteCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -654,6 +663,7 @@ paths:
   /msserver:adsites:site/{reference}:
     delete:
       description: Deletes a specific msserver:adsites:site object by reference
+      operationId: MsserverAdsitesSiteDelete
       parameters:
       - description: Reference of the msserver:adsites:site object
         explode: false
@@ -681,6 +691,7 @@ paths:
       - MsserverAdsitesSite
     get:
       description: Returns a specific msserver:adsites:site object by reference
+      operationId: MsserverAdsitesSiteRead
       parameters:
       - description: Reference of the msserver:adsites:site object
         explode: false
@@ -740,6 +751,7 @@ paths:
       - MsserverAdsitesSite
     put:
       description: Updates a specific msserver:adsites:site object by reference
+      operationId: MsserverAdsitesSiteUpdate
       parameters:
       - description: Reference of the msserver:adsites:site object
         explode: false
@@ -807,6 +819,7 @@ paths:
   /msserver:dhcp:
     get:
       description: Returns a list of msserver:dhcp objects matching the search criteria
+      operationId: MsserverDhcpList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -903,6 +916,7 @@ paths:
       - MsserverDhcp
     post:
       description: Creates a new msserver:dhcp object
+      operationId: MsserverDhcpCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -962,6 +976,7 @@ paths:
   /msserver:dhcp/{reference}:
     delete:
       description: Deletes a specific msserver:dhcp object by reference
+      operationId: MsserverDhcpDelete
       parameters:
       - description: Reference of the msserver:dhcp object
         explode: false
@@ -989,6 +1004,7 @@ paths:
       - MsserverDhcp
     get:
       description: Returns a specific msserver:dhcp object by reference
+      operationId: MsserverDhcpRead
       parameters:
       - description: Reference of the msserver:dhcp object
         explode: false
@@ -1048,6 +1064,7 @@ paths:
       - MsserverDhcp
     put:
       description: Updates a specific msserver:dhcp object by reference
+      operationId: MsserverDhcpUpdate
       parameters:
       - description: Reference of the msserver:dhcp object
         explode: false
@@ -1115,6 +1132,7 @@ paths:
   /msserver:dns:
     get:
       description: Returns a list of msserver:dns objects matching the search criteria
+      operationId: MsserverDnsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1211,6 +1229,7 @@ paths:
       - MsserverDns
     post:
       description: Creates a new msserver:dns object
+      operationId: MsserverDnsCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1270,6 +1289,7 @@ paths:
   /msserver:dns/{reference}:
     delete:
       description: Deletes a specific msserver:dns object by reference
+      operationId: MsserverDnsDelete
       parameters:
       - description: Reference of the msserver:dns object
         explode: false
@@ -1297,6 +1317,7 @@ paths:
       - MsserverDns
     get:
       description: Returns a specific msserver:dns object by reference
+      operationId: MsserverDnsRead
       parameters:
       - description: Reference of the msserver:dns object
         explode: false
@@ -1356,6 +1377,7 @@ paths:
       - MsserverDns
     put:
       description: Updates a specific msserver:dns object by reference
+      operationId: MsserverDnsUpdate
       parameters:
       - description: Reference of the msserver:dns object
         explode: false
@@ -1423,6 +1445,7 @@ paths:
   /mssuperscope:
     get:
       description: Returns a list of mssuperscope objects matching the search criteria
+      operationId: MssuperscopeList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1519,6 +1542,7 @@ paths:
       - Mssuperscope
     post:
       description: Creates a new mssuperscope object
+      operationId: MssuperscopeCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1579,6 +1603,7 @@ paths:
   /mssuperscope/{reference}:
     delete:
       description: Deletes a specific mssuperscope object by reference
+      operationId: MssuperscopeDelete
       parameters:
       - description: Reference of the mssuperscope object
         explode: false
@@ -1606,6 +1631,7 @@ paths:
       - Mssuperscope
     get:
       description: Returns a specific mssuperscope object by reference
+      operationId: MssuperscopeRead
       parameters:
       - description: Reference of the mssuperscope object
         explode: false
@@ -1665,6 +1691,7 @@ paths:
       - Mssuperscope
     put:
       description: Updates a specific mssuperscope object by reference
+      operationId: MssuperscopeUpdate
       parameters:
       - description: Reference of the mssuperscope object
         explode: false

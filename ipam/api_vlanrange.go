@@ -23,150 +23,396 @@ import (
 
 type VlanrangeAPI interface {
 	/*
-		Get Retrieve vlanrange objects
-
-		Returns a list of vlanrange objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return VlanrangeAPIGetRequest
-	*/
-	Get(ctx context.Context) VlanrangeAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListVlanrangeResponse
-	GetExecute(r VlanrangeAPIGetRequest) (*ListVlanrangeResponse, *http.Response, error)
-	/*
-		Post Create a vlanrange object
+		Create Create a vlanrange object
 
 		Creates a new vlanrange object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return VlanrangeAPIPostRequest
+		@return VlanrangeAPICreateRequest
 	*/
-	Post(ctx context.Context) VlanrangeAPIPostRequest
+	Create(ctx context.Context) VlanrangeAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateVlanrangeResponse
-	PostExecute(r VlanrangeAPIPostRequest) (*CreateVlanrangeResponse, *http.Response, error)
+	CreateExecute(r VlanrangeAPICreateRequest) (*CreateVlanrangeResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a vlanrange object
+		Delete Delete a vlanrange object
 
 		Deletes a specific vlanrange object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the vlanrange object
-		@return VlanrangeAPIReferenceDeleteRequest
+		@return VlanrangeAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) VlanrangeAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) VlanrangeAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r VlanrangeAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r VlanrangeAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific vlanrange object
+		List Retrieve vlanrange objects
+
+		Returns a list of vlanrange objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return VlanrangeAPIListRequest
+	*/
+	List(ctx context.Context) VlanrangeAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListVlanrangeResponse
+	ListExecute(r VlanrangeAPIListRequest) (*ListVlanrangeResponse, *http.Response, error)
+	/*
+		Read Get a specific vlanrange object
 
 		Returns a specific vlanrange object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the vlanrange object
-		@return VlanrangeAPIReferenceGetRequest
+		@return VlanrangeAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) VlanrangeAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) VlanrangeAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetVlanrangeResponse
-	ReferenceGetExecute(r VlanrangeAPIReferenceGetRequest) (*GetVlanrangeResponse, *http.Response, error)
+	ReadExecute(r VlanrangeAPIReadRequest) (*GetVlanrangeResponse, *http.Response, error)
 	/*
-		ReferencePut Update a vlanrange object
+		Update Update a vlanrange object
 
 		Updates a specific vlanrange object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the vlanrange object
-		@return VlanrangeAPIReferencePutRequest
+		@return VlanrangeAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) VlanrangeAPIReferencePutRequest
+	Update(ctx context.Context, reference string) VlanrangeAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateVlanrangeResponse
-	ReferencePutExecute(r VlanrangeAPIReferencePutRequest) (*UpdateVlanrangeResponse, *http.Response, error)
+	UpdateExecute(r VlanrangeAPIUpdateRequest) (*UpdateVlanrangeResponse, *http.Response, error)
 }
 
 // VlanrangeAPIService VlanrangeAPI service
 type VlanrangeAPIService internal.Service
 
-type VlanrangeAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     VlanrangeAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type VlanrangeAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       VlanrangeAPI
+	vlanrange        *Vlanrange
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r VlanrangeAPICreateRequest) Vlanrange(vlanrange Vlanrange) VlanrangeAPICreateRequest {
+	r.vlanrange = &vlanrange
+	return r
 }
 
 // Enter the field names followed by comma
-func (r VlanrangeAPIGetRequest) ReturnFields(returnFields string) VlanrangeAPIGetRequest {
+func (r VlanrangeAPICreateRequest) ReturnFields(returnFields string) VlanrangeAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanrangeAPIGetRequest) ReturnFields2(returnFields2 string) VlanrangeAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanrangeAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanrangeAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r VlanrangeAPICreateRequest) ReturnAsObject(returnAsObject int32) VlanrangeAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r VlanrangeAPICreateRequest) Execute() (*CreateVlanrangeResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a vlanrange object
+
+Creates a new vlanrange object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return VlanrangeAPICreateRequest
+*/
+func (a *VlanrangeAPIService) Create(ctx context.Context) VlanrangeAPICreateRequest {
+	return VlanrangeAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateVlanrangeResponse
+func (a *VlanrangeAPIService) CreateExecute(r VlanrangeAPICreateRequest) (*CreateVlanrangeResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateVlanrangeResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanrangeAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/vlanrange"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.vlanrange == nil {
+		return localVarReturnValue, nil, internal.ReportError("vlanrange is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.vlanrange != nil {
+		if r.vlanrange.Extattrs == nil {
+			r.vlanrange.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.vlanrange.Extattrs)[k]; !ok {
+				(*r.vlanrange.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.vlanrange
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type VlanrangeAPIDeleteRequest struct {
+	ctx         context.Context
+	ApiService  VlanrangeAPI
+	reference   string
+	deleteVlans *bool
+}
+
+// Vlans delete option. Determines whether all child objects should be removed alongside with the VLAN Range or child objects should be assigned to another parental VLAN Range/View. By default child objects are re-parented.
+func (r VlanrangeAPIDeleteRequest) DeleteVlans(deleteVlans bool) VlanrangeAPIDeleteRequest {
+	r.deleteVlans = &deleteVlans
+	return r
+}
+
+func (r VlanrangeAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a vlanrange object
+
+Deletes a specific vlanrange object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the vlanrange object
+	@return VlanrangeAPIDeleteRequest
+*/
+func (a *VlanrangeAPIService) Delete(ctx context.Context, reference string) VlanrangeAPIDeleteRequest {
+	return VlanrangeAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *VlanrangeAPIService) DeleteExecute(r VlanrangeAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanrangeAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/vlanrange/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.deleteVlans != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "delete_vlans", r.deleteVlans, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type VlanrangeAPIListRequest struct {
+	ctx              context.Context
+	ApiService       VlanrangeAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r VlanrangeAPIListRequest) ReturnFields(returnFields string) VlanrangeAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r VlanrangeAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanrangeAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r VlanrangeAPIGetRequest) MaxResults(maxResults int32) VlanrangeAPIGetRequest {
+func (r VlanrangeAPIListRequest) MaxResults(maxResults int32) VlanrangeAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r VlanrangeAPIGetRequest) ReturnAsObject(returnAsObject int32) VlanrangeAPIGetRequest {
+func (r VlanrangeAPIListRequest) ReturnAsObject(returnAsObject int32) VlanrangeAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r VlanrangeAPIGetRequest) Paging(paging int32) VlanrangeAPIGetRequest {
+func (r VlanrangeAPIListRequest) Paging(paging int32) VlanrangeAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r VlanrangeAPIGetRequest) PageId(pageId string) VlanrangeAPIGetRequest {
+func (r VlanrangeAPIListRequest) PageId(pageId string) VlanrangeAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r VlanrangeAPIGetRequest) Filters(filters map[string]interface{}) VlanrangeAPIGetRequest {
+func (r VlanrangeAPIListRequest) Filters(filters map[string]interface{}) VlanrangeAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r VlanrangeAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) VlanrangeAPIGetRequest {
+func (r VlanrangeAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) VlanrangeAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r VlanrangeAPIGetRequest) Execute() (*ListVlanrangeResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r VlanrangeAPIListRequest) Execute() (*ListVlanrangeResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve vlanrange objects
+List Retrieve vlanrange objects
 
 Returns a list of vlanrange objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return VlanrangeAPIGetRequest
+	@return VlanrangeAPIListRequest
 */
-func (a *VlanrangeAPIService) Get(ctx context.Context) VlanrangeAPIGetRequest {
-	return VlanrangeAPIGetRequest{
+func (a *VlanrangeAPIService) List(ctx context.Context) VlanrangeAPIListRequest {
+	return VlanrangeAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +421,7 @@ func (a *VlanrangeAPIService) Get(ctx context.Context) VlanrangeAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListVlanrangeResponse
-func (a *VlanrangeAPIService) GetExecute(r VlanrangeAPIGetRequest) (*ListVlanrangeResponse, *http.Response, error) {
+func (a *VlanrangeAPIService) ListExecute(r VlanrangeAPIListRequest) (*ListVlanrangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +429,7 @@ func (a *VlanrangeAPIService) GetExecute(r VlanrangeAPIGetRequest) (*ListVlanran
 		localVarReturnValue *ListVlanrangeResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanrangeAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanrangeAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +443,8 @@ func (a *VlanrangeAPIService) GetExecute(r VlanrangeAPIGetRequest) (*ListVlanran
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,294 +511,48 @@ func (a *VlanrangeAPIService) GetExecute(r VlanrangeAPIGetRequest) (*ListVlanran
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type VlanrangeAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     VlanrangeAPI
-	vlanrange      *Vlanrange
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r VlanrangeAPIPostRequest) Vlanrange(vlanrange Vlanrange) VlanrangeAPIPostRequest {
-	r.vlanrange = &vlanrange
-	return r
+type VlanrangeAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       VlanrangeAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r VlanrangeAPIPostRequest) ReturnFields(returnFields string) VlanrangeAPIPostRequest {
+func (r VlanrangeAPIReadRequest) ReturnFields(returnFields string) VlanrangeAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanrangeAPIPostRequest) ReturnFields2(returnFields2 string) VlanrangeAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanrangeAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanrangeAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r VlanrangeAPIPostRequest) ReturnAsObject(returnAsObject int32) VlanrangeAPIPostRequest {
+func (r VlanrangeAPIReadRequest) ReturnAsObject(returnAsObject int32) VlanrangeAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r VlanrangeAPIPostRequest) Execute() (*CreateVlanrangeResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r VlanrangeAPIReadRequest) Execute() (*GetVlanrangeResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a vlanrange object
-
-Creates a new vlanrange object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return VlanrangeAPIPostRequest
-*/
-func (a *VlanrangeAPIService) Post(ctx context.Context) VlanrangeAPIPostRequest {
-	return VlanrangeAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateVlanrangeResponse
-func (a *VlanrangeAPIService) PostExecute(r VlanrangeAPIPostRequest) (*CreateVlanrangeResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateVlanrangeResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanrangeAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/vlanrange"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.vlanrange == nil {
-		return localVarReturnValue, nil, internal.ReportError("vlanrange is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.vlanrange != nil {
-		if r.vlanrange.Extattrs == nil {
-			r.vlanrange.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.vlanrange.Extattrs)[k]; !ok {
-				(*r.vlanrange.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.vlanrange
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type VlanrangeAPIReferenceDeleteRequest struct {
-	ctx         context.Context
-	ApiService  VlanrangeAPI
-	reference   string
-	deleteVlans *bool
-}
-
-// Vlans delete option. Determines whether all child objects should be removed alongside with the VLAN Range or child objects should be assigned to another parental VLAN Range/View. By default child objects are re-parented.
-func (r VlanrangeAPIReferenceDeleteRequest) DeleteVlans(deleteVlans bool) VlanrangeAPIReferenceDeleteRequest {
-	r.deleteVlans = &deleteVlans
-	return r
-}
-
-func (r VlanrangeAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a vlanrange object
-
-Deletes a specific vlanrange object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the vlanrange object
-	@return VlanrangeAPIReferenceDeleteRequest
-*/
-func (a *VlanrangeAPIService) ReferenceDelete(ctx context.Context, reference string) VlanrangeAPIReferenceDeleteRequest {
-	return VlanrangeAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *VlanrangeAPIService) ReferenceDeleteExecute(r VlanrangeAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanrangeAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/vlanrange/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.deleteVlans != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "delete_vlans", r.deleteVlans, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type VlanrangeAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     VlanrangeAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r VlanrangeAPIReferenceGetRequest) ReturnFields(returnFields string) VlanrangeAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanrangeAPIReferenceGetRequest) ReturnFields2(returnFields2 string) VlanrangeAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r VlanrangeAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) VlanrangeAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r VlanrangeAPIReferenceGetRequest) Execute() (*GetVlanrangeResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific vlanrange object
+Read Get a specific vlanrange object
 
 Returns a specific vlanrange object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the vlanrange object
-	@return VlanrangeAPIReferenceGetRequest
+	@return VlanrangeAPIReadRequest
 */
-func (a *VlanrangeAPIService) ReferenceGet(ctx context.Context, reference string) VlanrangeAPIReferenceGetRequest {
-	return VlanrangeAPIReferenceGetRequest{
+func (a *VlanrangeAPIService) Read(ctx context.Context, reference string) VlanrangeAPIReadRequest {
+	return VlanrangeAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -562,7 +562,7 @@ func (a *VlanrangeAPIService) ReferenceGet(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return GetVlanrangeResponse
-func (a *VlanrangeAPIService) ReferenceGetExecute(r VlanrangeAPIReferenceGetRequest) (*GetVlanrangeResponse, *http.Response, error) {
+func (a *VlanrangeAPIService) ReadExecute(r VlanrangeAPIReadRequest) (*GetVlanrangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -570,7 +570,7 @@ func (a *VlanrangeAPIService) ReferenceGetExecute(r VlanrangeAPIReferenceGetRequ
 		localVarReturnValue *GetVlanrangeResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanrangeAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanrangeAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -585,8 +585,8 @@ func (a *VlanrangeAPIService) ReferenceGetExecute(r VlanrangeAPIReferenceGetRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -638,55 +638,55 @@ func (a *VlanrangeAPIService) ReferenceGetExecute(r VlanrangeAPIReferenceGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type VlanrangeAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     VlanrangeAPI
-	reference      string
-	vlanrange      *Vlanrange
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type VlanrangeAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       VlanrangeAPI
+	reference        string
+	vlanrange        *Vlanrange
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r VlanrangeAPIReferencePutRequest) Vlanrange(vlanrange Vlanrange) VlanrangeAPIReferencePutRequest {
+func (r VlanrangeAPIUpdateRequest) Vlanrange(vlanrange Vlanrange) VlanrangeAPIUpdateRequest {
 	r.vlanrange = &vlanrange
 	return r
 }
 
 // Enter the field names followed by comma
-func (r VlanrangeAPIReferencePutRequest) ReturnFields(returnFields string) VlanrangeAPIReferencePutRequest {
+func (r VlanrangeAPIUpdateRequest) ReturnFields(returnFields string) VlanrangeAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanrangeAPIReferencePutRequest) ReturnFields2(returnFields2 string) VlanrangeAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanrangeAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanrangeAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r VlanrangeAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) VlanrangeAPIReferencePutRequest {
+func (r VlanrangeAPIUpdateRequest) ReturnAsObject(returnAsObject int32) VlanrangeAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r VlanrangeAPIReferencePutRequest) Execute() (*UpdateVlanrangeResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r VlanrangeAPIUpdateRequest) Execute() (*UpdateVlanrangeResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a vlanrange object
+Update Update a vlanrange object
 
 Updates a specific vlanrange object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the vlanrange object
-	@return VlanrangeAPIReferencePutRequest
+	@return VlanrangeAPIUpdateRequest
 */
-func (a *VlanrangeAPIService) ReferencePut(ctx context.Context, reference string) VlanrangeAPIReferencePutRequest {
-	return VlanrangeAPIReferencePutRequest{
+func (a *VlanrangeAPIService) Update(ctx context.Context, reference string) VlanrangeAPIUpdateRequest {
+	return VlanrangeAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -696,7 +696,7 @@ func (a *VlanrangeAPIService) ReferencePut(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return UpdateVlanrangeResponse
-func (a *VlanrangeAPIService) ReferencePutExecute(r VlanrangeAPIReferencePutRequest) (*UpdateVlanrangeResponse, *http.Response, error) {
+func (a *VlanrangeAPIService) UpdateExecute(r VlanrangeAPIUpdateRequest) (*UpdateVlanrangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -704,7 +704,7 @@ func (a *VlanrangeAPIService) ReferencePutExecute(r VlanrangeAPIReferencePutRequ
 		localVarReturnValue *UpdateVlanrangeResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanrangeAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanrangeAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -722,8 +722,8 @@ func (a *VlanrangeAPIService) ReferencePutExecute(r VlanrangeAPIReferencePutRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

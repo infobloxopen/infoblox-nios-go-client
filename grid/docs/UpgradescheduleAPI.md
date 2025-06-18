@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](UpgradescheduleAPI.md#Get) | **Get** /upgradeschedule | Retrieve upgradeschedule objects
-[**ReferenceGet**](UpgradescheduleAPI.md#ReferenceGet) | **Get** /upgradeschedule/{reference} | Get a specific upgradeschedule object
-[**ReferencePut**](UpgradescheduleAPI.md#ReferencePut) | **Put** /upgradeschedule/{reference} | Update a upgradeschedule object
+[**List**](UpgradescheduleAPI.md#List) | **Get** /upgradeschedule | Retrieve upgradeschedule objects
+[**Read**](UpgradescheduleAPI.md#Read) | **Get** /upgradeschedule/{reference} | Get a specific upgradeschedule object
+[**Update**](UpgradescheduleAPI.md#Update) | **Put** /upgradeschedule/{reference} | Update a upgradeschedule object
 
 
 
-## Get
+## List
 
-> ListUpgradescheduleResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListUpgradescheduleResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve upgradeschedule objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.UpgradescheduleAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.UpgradescheduleAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradescheduleAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradescheduleAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListUpgradescheduleResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradescheduleAPI.Get`: %v\n", resp)
+	// response from `List`: ListUpgradescheduleResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradescheduleAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradescheduleAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradescheduleAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetUpgradescheduleResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetUpgradescheduleResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific upgradeschedule object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the upgradeschedule object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.UpgradescheduleAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.UpgradescheduleAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradescheduleAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradescheduleAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetUpgradescheduleResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradescheduleAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetUpgradescheduleResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradescheduleAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradescheduleAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradescheduleAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateUpgradescheduleResponse ReferencePut(ctx, reference).Upgradeschedule(upgradeschedule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateUpgradescheduleResponse Update(ctx, reference).Upgradeschedule(upgradeschedule).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a upgradeschedule object
 
@@ -180,13 +180,13 @@ func main() {
 	upgradeschedule := *grid.NewUpgradeschedule() // Upgradeschedule | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.UpgradescheduleAPI.ReferencePut(context.Background(), reference).Upgradeschedule(upgradeschedule).Execute()
+	resp, r, err := apiClient.UpgradescheduleAPI.Update(context.Background(), reference).Upgradeschedule(upgradeschedule).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradescheduleAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradescheduleAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateUpgradescheduleResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradescheduleAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateUpgradescheduleResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradescheduleAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradescheduleAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradescheduleAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **upgradeschedule** | [**Upgradeschedule**](Upgradeschedule.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

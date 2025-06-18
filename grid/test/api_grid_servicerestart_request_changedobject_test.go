@@ -23,11 +23,11 @@ func TestGridServicerestartRequestChangedobjectAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test GridServicerestartRequestChangedobjectAPIService GridservicerestartrequestchangedobjectGet", func(t *testing.T) {
+	t.Run("Test GridServicerestartRequestChangedobjectAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridServicerestartRequestChangedobjectAPI.GridservicerestartrequestchangedobjectGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GridServicerestartRequestChangedobjectAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestGridServicerestartRequestChangedobjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridServicerestartRequestChangedobjectAPIService GridservicerestartrequestchangedobjectReferenceGet", func(t *testing.T) {
+	t.Run("Test GridServicerestartRequestChangedobjectAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridServicerestartRequestChangedobjectAPI.GridservicerestartrequestchangedobjectReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridServicerestartRequestChangedobjectAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

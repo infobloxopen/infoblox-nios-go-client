@@ -23,123 +23,212 @@ import (
 
 type DiscoveryDevicesupportbundleAPI interface {
 	/*
-		DiscoverydevicesupportbundleGet Retrieve discovery:devicesupportbundle objects
-
-		Returns a list of discovery:devicesupportbundle objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest
-	*/
-	DiscoverydevicesupportbundleGet(ctx context.Context) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest
-
-	// DiscoverydevicesupportbundleGetExecute executes the request
-	//  @return ListDiscoveryDevicesupportbundleResponse
-	DiscoverydevicesupportbundleGetExecute(r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) (*ListDiscoveryDevicesupportbundleResponse, *http.Response, error)
-	/*
-		DiscoverydevicesupportbundleReferenceDelete Delete a discovery:devicesupportbundle object
+		Delete Delete a discovery:devicesupportbundle object
 
 		Deletes a specific discovery:devicesupportbundle object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:devicesupportbundle object
-		@return DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceDeleteRequest
+		@return DiscoveryDevicesupportbundleAPIDeleteRequest
 	*/
-	DiscoverydevicesupportbundleReferenceDelete(ctx context.Context, reference string) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DiscoveryDevicesupportbundleAPIDeleteRequest
 
-	// DiscoverydevicesupportbundleReferenceDeleteExecute executes the request
-	DiscoverydevicesupportbundleReferenceDeleteExecute(r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DiscoveryDevicesupportbundleAPIDeleteRequest) (*http.Response, error)
 	/*
-		DiscoverydevicesupportbundleReferenceGet Get a specific discovery:devicesupportbundle object
+		List Retrieve discovery:devicesupportbundle objects
+
+		Returns a list of discovery:devicesupportbundle objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DiscoveryDevicesupportbundleAPIListRequest
+	*/
+	List(ctx context.Context) DiscoveryDevicesupportbundleAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDiscoveryDevicesupportbundleResponse
+	ListExecute(r DiscoveryDevicesupportbundleAPIListRequest) (*ListDiscoveryDevicesupportbundleResponse, *http.Response, error)
+	/*
+		Read Get a specific discovery:devicesupportbundle object
 
 		Returns a specific discovery:devicesupportbundle object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:devicesupportbundle object
-		@return DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest
+		@return DiscoveryDevicesupportbundleAPIReadRequest
 	*/
-	DiscoverydevicesupportbundleReferenceGet(ctx context.Context, reference string) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoveryDevicesupportbundleAPIReadRequest
 
-	// DiscoverydevicesupportbundleReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoveryDevicesupportbundleResponse
-	DiscoverydevicesupportbundleReferenceGetExecute(r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest) (*GetDiscoveryDevicesupportbundleResponse, *http.Response, error)
+	ReadExecute(r DiscoveryDevicesupportbundleAPIReadRequest) (*GetDiscoveryDevicesupportbundleResponse, *http.Response, error)
 }
 
 // DiscoveryDevicesupportbundleAPIService DiscoveryDevicesupportbundleAPI service
 type DiscoveryDevicesupportbundleAPIService internal.Service
 
-type DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryDevicesupportbundleAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DiscoveryDevicesupportbundleAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DiscoveryDevicesupportbundleAPI
+	reference  string
+}
+
+func (r DiscoveryDevicesupportbundleAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a discovery:devicesupportbundle object
+
+Deletes a specific discovery:devicesupportbundle object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the discovery:devicesupportbundle object
+	@return DiscoveryDevicesupportbundleAPIDeleteRequest
+*/
+func (a *DiscoveryDevicesupportbundleAPIService) Delete(ctx context.Context, reference string) DiscoveryDevicesupportbundleAPIDeleteRequest {
+	return DiscoveryDevicesupportbundleAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DiscoveryDevicesupportbundleAPIService) DeleteExecute(r DiscoveryDevicesupportbundleAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDevicesupportbundleAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/discovery:devicesupportbundle/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DiscoveryDevicesupportbundleAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DiscoveryDevicesupportbundleAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) ReturnFields(returnFields string) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest {
+func (r DiscoveryDevicesupportbundleAPIListRequest) ReturnFields(returnFields string) DiscoveryDevicesupportbundleAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) ReturnFields2(returnFields2 string) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryDevicesupportbundleAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryDevicesupportbundleAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) MaxResults(maxResults int32) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest {
+func (r DiscoveryDevicesupportbundleAPIListRequest) MaxResults(maxResults int32) DiscoveryDevicesupportbundleAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest {
+func (r DiscoveryDevicesupportbundleAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoveryDevicesupportbundleAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) Paging(paging int32) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest {
+func (r DiscoveryDevicesupportbundleAPIListRequest) Paging(paging int32) DiscoveryDevicesupportbundleAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) PageId(pageId string) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest {
+func (r DiscoveryDevicesupportbundleAPIListRequest) PageId(pageId string) DiscoveryDevicesupportbundleAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) Filters(filters map[string]interface{}) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest {
+func (r DiscoveryDevicesupportbundleAPIListRequest) Filters(filters map[string]interface{}) DiscoveryDevicesupportbundleAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest {
+func (r DiscoveryDevicesupportbundleAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryDevicesupportbundleAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) Execute() (*ListDiscoveryDevicesupportbundleResponse, *http.Response, error) {
-	return r.ApiService.DiscoverydevicesupportbundleGetExecute(r)
+func (r DiscoveryDevicesupportbundleAPIListRequest) Execute() (*ListDiscoveryDevicesupportbundleResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DiscoverydevicesupportbundleGet Retrieve discovery:devicesupportbundle objects
+List Retrieve discovery:devicesupportbundle objects
 
 Returns a list of discovery:devicesupportbundle objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest
+	@return DiscoveryDevicesupportbundleAPIListRequest
 */
-func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleGet(ctx context.Context) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest {
-	return DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest{
+func (a *DiscoveryDevicesupportbundleAPIService) List(ctx context.Context) DiscoveryDevicesupportbundleAPIListRequest {
+	return DiscoveryDevicesupportbundleAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -148,7 +237,7 @@ func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleGet
 // Execute executes the request
 //
 //	@return ListDiscoveryDevicesupportbundleResponse
-func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleGetExecute(r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleGetRequest) (*ListDiscoveryDevicesupportbundleResponse, *http.Response, error) {
+func (a *DiscoveryDevicesupportbundleAPIService) ListExecute(r DiscoveryDevicesupportbundleAPIListRequest) (*ListDiscoveryDevicesupportbundleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -156,7 +245,7 @@ func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleGet
 		localVarReturnValue *ListDiscoveryDevicesupportbundleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDevicesupportbundleAPIService.DiscoverydevicesupportbundleGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDevicesupportbundleAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -170,8 +259,8 @@ func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleGet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -238,137 +327,48 @@ func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DiscoveryDevicesupportbundleAPI
-	reference  string
-}
-
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DiscoverydevicesupportbundleReferenceDeleteExecute(r)
-}
-
-/*
-DiscoverydevicesupportbundleReferenceDelete Delete a discovery:devicesupportbundle object
-
-Deletes a specific discovery:devicesupportbundle object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the discovery:devicesupportbundle object
-	@return DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceDeleteRequest
-*/
-func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleReferenceDelete(ctx context.Context, reference string) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceDeleteRequest {
-	return DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleReferenceDeleteExecute(r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDevicesupportbundleAPIService.DiscoverydevicesupportbundleReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/discovery:devicesupportbundle/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryDevicesupportbundleAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DiscoveryDevicesupportbundleAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DiscoveryDevicesupportbundleAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest) ReturnFields(returnFields string) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest {
+func (r DiscoveryDevicesupportbundleAPIReadRequest) ReturnFields(returnFields string) DiscoveryDevicesupportbundleAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryDevicesupportbundleAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryDevicesupportbundleAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest {
+func (r DiscoveryDevicesupportbundleAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoveryDevicesupportbundleAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest) Execute() (*GetDiscoveryDevicesupportbundleResponse, *http.Response, error) {
-	return r.ApiService.DiscoverydevicesupportbundleReferenceGetExecute(r)
+func (r DiscoveryDevicesupportbundleAPIReadRequest) Execute() (*GetDiscoveryDevicesupportbundleResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DiscoverydevicesupportbundleReferenceGet Get a specific discovery:devicesupportbundle object
+Read Get a specific discovery:devicesupportbundle object
 
 Returns a specific discovery:devicesupportbundle object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:devicesupportbundle object
-	@return DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest
+	@return DiscoveryDevicesupportbundleAPIReadRequest
 */
-func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleReferenceGet(ctx context.Context, reference string) DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest {
-	return DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest{
+func (a *DiscoveryDevicesupportbundleAPIService) Read(ctx context.Context, reference string) DiscoveryDevicesupportbundleAPIReadRequest {
+	return DiscoveryDevicesupportbundleAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -378,7 +378,7 @@ func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleRef
 // Execute executes the request
 //
 //	@return GetDiscoveryDevicesupportbundleResponse
-func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleReferenceGetExecute(r DiscoveryDevicesupportbundleAPIDiscoverydevicesupportbundleReferenceGetRequest) (*GetDiscoveryDevicesupportbundleResponse, *http.Response, error) {
+func (a *DiscoveryDevicesupportbundleAPIService) ReadExecute(r DiscoveryDevicesupportbundleAPIReadRequest) (*GetDiscoveryDevicesupportbundleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -386,7 +386,7 @@ func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleRef
 		localVarReturnValue *GetDiscoveryDevicesupportbundleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDevicesupportbundleAPIService.DiscoverydevicesupportbundleReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryDevicesupportbundleAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -401,8 +401,8 @@ func (a *DiscoveryDevicesupportbundleAPIService) DiscoverydevicesupportbundleRef
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -29,6 +29,7 @@ paths:
     get:
       description: Returns a list of parentalcontrol:avp objects matching the search
         criteria
+      operationId: ParentalcontrolAvpList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -125,6 +126,7 @@ paths:
       - ParentalcontrolAvp
     post:
       description: Creates a new parentalcontrol:avp object
+      operationId: ParentalcontrolAvpCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -184,6 +186,7 @@ paths:
   /parentalcontrol:avp/{reference}:
     delete:
       description: Deletes a specific parentalcontrol:avp object by reference
+      operationId: ParentalcontrolAvpDelete
       parameters:
       - description: Reference of the parentalcontrol:avp object
         explode: false
@@ -211,6 +214,7 @@ paths:
       - ParentalcontrolAvp
     get:
       description: Returns a specific parentalcontrol:avp object by reference
+      operationId: ParentalcontrolAvpRead
       parameters:
       - description: Reference of the parentalcontrol:avp object
         explode: false
@@ -270,6 +274,7 @@ paths:
       - ParentalcontrolAvp
     put:
       description: Updates a specific parentalcontrol:avp object by reference
+      operationId: ParentalcontrolAvpUpdate
       parameters:
       - description: Reference of the parentalcontrol:avp object
         explode: false
@@ -338,6 +343,7 @@ paths:
     get:
       description: Returns a list of parentalcontrol:blockingpolicy objects matching
         the search criteria
+      operationId: ParentalcontrolBlockingpolicyList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -434,6 +440,7 @@ paths:
       - ParentalcontrolBlockingpolicy
     post:
       description: Creates a new parentalcontrol:blockingpolicy object
+      operationId: ParentalcontrolBlockingpolicyCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -493,6 +500,7 @@ paths:
   /parentalcontrol:blockingpolicy/{reference}:
     delete:
       description: Deletes a specific parentalcontrol:blockingpolicy object by reference
+      operationId: ParentalcontrolBlockingpolicyDelete
       parameters:
       - description: Reference of the parentalcontrol:blockingpolicy object
         explode: false
@@ -520,6 +528,7 @@ paths:
       - ParentalcontrolBlockingpolicy
     get:
       description: Returns a specific parentalcontrol:blockingpolicy object by reference
+      operationId: ParentalcontrolBlockingpolicyRead
       parameters:
       - description: Reference of the parentalcontrol:blockingpolicy object
         explode: false
@@ -579,6 +588,7 @@ paths:
       - ParentalcontrolBlockingpolicy
     put:
       description: Updates a specific parentalcontrol:blockingpolicy object by reference
+      operationId: ParentalcontrolBlockingpolicyUpdate
       parameters:
       - description: Reference of the parentalcontrol:blockingpolicy object
         explode: false
@@ -647,6 +657,7 @@ paths:
     get:
       description: Returns a list of parentalcontrol:subscriber objects matching the
         search criteria
+      operationId: ParentalcontrolSubscriberList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -744,6 +755,7 @@ paths:
   /parentalcontrol:subscriber/{reference}:
     get:
       description: Returns a specific parentalcontrol:subscriber object by reference
+      operationId: ParentalcontrolSubscriberRead
       parameters:
       - description: Reference of the parentalcontrol:subscriber object
         explode: false
@@ -803,6 +815,7 @@ paths:
       - ParentalcontrolSubscriber
     put:
       description: Updates a specific parentalcontrol:subscriber object by reference
+      operationId: ParentalcontrolSubscriberUpdate
       parameters:
       - description: Reference of the parentalcontrol:subscriber object
         explode: false
@@ -871,6 +884,7 @@ paths:
     get:
       description: Returns a list of parentalcontrol:subscriberrecord objects matching
         the search criteria
+      operationId: ParentalcontrolSubscriberrecordList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -967,6 +981,7 @@ paths:
       - ParentalcontrolSubscriberrecord
     post:
       description: Creates a new parentalcontrol:subscriberrecord object
+      operationId: ParentalcontrolSubscriberrecordCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1026,6 +1041,7 @@ paths:
   /parentalcontrol:subscriberrecord/{reference}:
     delete:
       description: Deletes a specific parentalcontrol:subscriberrecord object by reference
+      operationId: ParentalcontrolSubscriberrecordDelete
       parameters:
       - description: Reference of the parentalcontrol:subscriberrecord object
         explode: false
@@ -1053,6 +1069,7 @@ paths:
       - ParentalcontrolSubscriberrecord
     get:
       description: Returns a specific parentalcontrol:subscriberrecord object by reference
+      operationId: ParentalcontrolSubscriberrecordRead
       parameters:
       - description: Reference of the parentalcontrol:subscriberrecord object
         explode: false
@@ -1112,6 +1129,7 @@ paths:
       - ParentalcontrolSubscriberrecord
     put:
       description: Updates a specific parentalcontrol:subscriberrecord object by reference
+      operationId: ParentalcontrolSubscriberrecordUpdate
       parameters:
       - description: Reference of the parentalcontrol:subscriberrecord object
         explode: false
@@ -1180,6 +1198,7 @@ paths:
     get:
       description: Returns a list of parentalcontrol:subscribersite objects matching
         the search criteria
+      operationId: ParentalcontrolSubscribersiteList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1276,6 +1295,7 @@ paths:
       - ParentalcontrolSubscribersite
     post:
       description: Creates a new parentalcontrol:subscribersite object
+      operationId: ParentalcontrolSubscribersiteCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1336,6 +1356,7 @@ paths:
   /parentalcontrol:subscribersite/{reference}:
     delete:
       description: Deletes a specific parentalcontrol:subscribersite object by reference
+      operationId: ParentalcontrolSubscribersiteDelete
       parameters:
       - description: Reference of the parentalcontrol:subscribersite object
         explode: false
@@ -1363,6 +1384,7 @@ paths:
       - ParentalcontrolSubscribersite
     get:
       description: Returns a specific parentalcontrol:subscribersite object by reference
+      operationId: ParentalcontrolSubscribersiteRead
       parameters:
       - description: Reference of the parentalcontrol:subscribersite object
         explode: false
@@ -1422,6 +1444,7 @@ paths:
       - ParentalcontrolSubscribersite
     put:
       description: Updates a specific parentalcontrol:subscribersite object by reference
+      operationId: ParentalcontrolSubscribersiteUpdate
       parameters:
       - description: Reference of the parentalcontrol:subscribersite object
         explode: false

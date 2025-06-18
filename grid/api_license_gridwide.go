@@ -23,123 +23,212 @@ import (
 
 type LicenseGridwideAPI interface {
 	/*
-		LicensegridwideGet Retrieve license:gridwide objects
-
-		Returns a list of license:gridwide objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return LicenseGridwideAPILicensegridwideGetRequest
-	*/
-	LicensegridwideGet(ctx context.Context) LicenseGridwideAPILicensegridwideGetRequest
-
-	// LicensegridwideGetExecute executes the request
-	//  @return ListLicenseGridwideResponse
-	LicensegridwideGetExecute(r LicenseGridwideAPILicensegridwideGetRequest) (*ListLicenseGridwideResponse, *http.Response, error)
-	/*
-		LicensegridwideReferenceDelete Delete a license:gridwide object
+		Delete Delete a license:gridwide object
 
 		Deletes a specific license:gridwide object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the license:gridwide object
-		@return LicenseGridwideAPILicensegridwideReferenceDeleteRequest
+		@return LicenseGridwideAPIDeleteRequest
 	*/
-	LicensegridwideReferenceDelete(ctx context.Context, reference string) LicenseGridwideAPILicensegridwideReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) LicenseGridwideAPIDeleteRequest
 
-	// LicensegridwideReferenceDeleteExecute executes the request
-	LicensegridwideReferenceDeleteExecute(r LicenseGridwideAPILicensegridwideReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r LicenseGridwideAPIDeleteRequest) (*http.Response, error)
 	/*
-		LicensegridwideReferenceGet Get a specific license:gridwide object
+		List Retrieve license:gridwide objects
+
+		Returns a list of license:gridwide objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return LicenseGridwideAPIListRequest
+	*/
+	List(ctx context.Context) LicenseGridwideAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListLicenseGridwideResponse
+	ListExecute(r LicenseGridwideAPIListRequest) (*ListLicenseGridwideResponse, *http.Response, error)
+	/*
+		Read Get a specific license:gridwide object
 
 		Returns a specific license:gridwide object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the license:gridwide object
-		@return LicenseGridwideAPILicensegridwideReferenceGetRequest
+		@return LicenseGridwideAPIReadRequest
 	*/
-	LicensegridwideReferenceGet(ctx context.Context, reference string) LicenseGridwideAPILicensegridwideReferenceGetRequest
+	Read(ctx context.Context, reference string) LicenseGridwideAPIReadRequest
 
-	// LicensegridwideReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetLicenseGridwideResponse
-	LicensegridwideReferenceGetExecute(r LicenseGridwideAPILicensegridwideReferenceGetRequest) (*GetLicenseGridwideResponse, *http.Response, error)
+	ReadExecute(r LicenseGridwideAPIReadRequest) (*GetLicenseGridwideResponse, *http.Response, error)
 }
 
 // LicenseGridwideAPIService LicenseGridwideAPI service
 type LicenseGridwideAPIService internal.Service
 
-type LicenseGridwideAPILicensegridwideGetRequest struct {
-	ctx            context.Context
-	ApiService     LicenseGridwideAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type LicenseGridwideAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService LicenseGridwideAPI
+	reference  string
+}
+
+func (r LicenseGridwideAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a license:gridwide object
+
+Deletes a specific license:gridwide object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the license:gridwide object
+	@return LicenseGridwideAPIDeleteRequest
+*/
+func (a *LicenseGridwideAPIService) Delete(ctx context.Context, reference string) LicenseGridwideAPIDeleteRequest {
+	return LicenseGridwideAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *LicenseGridwideAPIService) DeleteExecute(r LicenseGridwideAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LicenseGridwideAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/license:gridwide/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type LicenseGridwideAPIListRequest struct {
+	ctx              context.Context
+	ApiService       LicenseGridwideAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r LicenseGridwideAPILicensegridwideGetRequest) ReturnFields(returnFields string) LicenseGridwideAPILicensegridwideGetRequest {
+func (r LicenseGridwideAPIListRequest) ReturnFields(returnFields string) LicenseGridwideAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LicenseGridwideAPILicensegridwideGetRequest) ReturnFields2(returnFields2 string) LicenseGridwideAPILicensegridwideGetRequest {
-	r.returnFields2 = &returnFields2
+func (r LicenseGridwideAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) LicenseGridwideAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r LicenseGridwideAPILicensegridwideGetRequest) MaxResults(maxResults int32) LicenseGridwideAPILicensegridwideGetRequest {
+func (r LicenseGridwideAPIListRequest) MaxResults(maxResults int32) LicenseGridwideAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r LicenseGridwideAPILicensegridwideGetRequest) ReturnAsObject(returnAsObject int32) LicenseGridwideAPILicensegridwideGetRequest {
+func (r LicenseGridwideAPIListRequest) ReturnAsObject(returnAsObject int32) LicenseGridwideAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r LicenseGridwideAPILicensegridwideGetRequest) Paging(paging int32) LicenseGridwideAPILicensegridwideGetRequest {
+func (r LicenseGridwideAPIListRequest) Paging(paging int32) LicenseGridwideAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r LicenseGridwideAPILicensegridwideGetRequest) PageId(pageId string) LicenseGridwideAPILicensegridwideGetRequest {
+func (r LicenseGridwideAPIListRequest) PageId(pageId string) LicenseGridwideAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r LicenseGridwideAPILicensegridwideGetRequest) Filters(filters map[string]interface{}) LicenseGridwideAPILicensegridwideGetRequest {
+func (r LicenseGridwideAPIListRequest) Filters(filters map[string]interface{}) LicenseGridwideAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r LicenseGridwideAPILicensegridwideGetRequest) Extattrfilter(extattrfilter map[string]interface{}) LicenseGridwideAPILicensegridwideGetRequest {
+func (r LicenseGridwideAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) LicenseGridwideAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r LicenseGridwideAPILicensegridwideGetRequest) Execute() (*ListLicenseGridwideResponse, *http.Response, error) {
-	return r.ApiService.LicensegridwideGetExecute(r)
+func (r LicenseGridwideAPIListRequest) Execute() (*ListLicenseGridwideResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-LicensegridwideGet Retrieve license:gridwide objects
+List Retrieve license:gridwide objects
 
 Returns a list of license:gridwide objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return LicenseGridwideAPILicensegridwideGetRequest
+	@return LicenseGridwideAPIListRequest
 */
-func (a *LicenseGridwideAPIService) LicensegridwideGet(ctx context.Context) LicenseGridwideAPILicensegridwideGetRequest {
-	return LicenseGridwideAPILicensegridwideGetRequest{
+func (a *LicenseGridwideAPIService) List(ctx context.Context) LicenseGridwideAPIListRequest {
+	return LicenseGridwideAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -148,7 +237,7 @@ func (a *LicenseGridwideAPIService) LicensegridwideGet(ctx context.Context) Lice
 // Execute executes the request
 //
 //	@return ListLicenseGridwideResponse
-func (a *LicenseGridwideAPIService) LicensegridwideGetExecute(r LicenseGridwideAPILicensegridwideGetRequest) (*ListLicenseGridwideResponse, *http.Response, error) {
+func (a *LicenseGridwideAPIService) ListExecute(r LicenseGridwideAPIListRequest) (*ListLicenseGridwideResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -156,7 +245,7 @@ func (a *LicenseGridwideAPIService) LicensegridwideGetExecute(r LicenseGridwideA
 		localVarReturnValue *ListLicenseGridwideResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LicenseGridwideAPIService.LicensegridwideGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LicenseGridwideAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -170,8 +259,8 @@ func (a *LicenseGridwideAPIService) LicensegridwideGetExecute(r LicenseGridwideA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -238,137 +327,48 @@ func (a *LicenseGridwideAPIService) LicensegridwideGetExecute(r LicenseGridwideA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type LicenseGridwideAPILicensegridwideReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService LicenseGridwideAPI
-	reference  string
-}
-
-func (r LicenseGridwideAPILicensegridwideReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.LicensegridwideReferenceDeleteExecute(r)
-}
-
-/*
-LicensegridwideReferenceDelete Delete a license:gridwide object
-
-Deletes a specific license:gridwide object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the license:gridwide object
-	@return LicenseGridwideAPILicensegridwideReferenceDeleteRequest
-*/
-func (a *LicenseGridwideAPIService) LicensegridwideReferenceDelete(ctx context.Context, reference string) LicenseGridwideAPILicensegridwideReferenceDeleteRequest {
-	return LicenseGridwideAPILicensegridwideReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *LicenseGridwideAPIService) LicensegridwideReferenceDeleteExecute(r LicenseGridwideAPILicensegridwideReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LicenseGridwideAPIService.LicensegridwideReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/license:gridwide/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type LicenseGridwideAPILicensegridwideReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     LicenseGridwideAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type LicenseGridwideAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       LicenseGridwideAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r LicenseGridwideAPILicensegridwideReferenceGetRequest) ReturnFields(returnFields string) LicenseGridwideAPILicensegridwideReferenceGetRequest {
+func (r LicenseGridwideAPIReadRequest) ReturnFields(returnFields string) LicenseGridwideAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LicenseGridwideAPILicensegridwideReferenceGetRequest) ReturnFields2(returnFields2 string) LicenseGridwideAPILicensegridwideReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r LicenseGridwideAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) LicenseGridwideAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r LicenseGridwideAPILicensegridwideReferenceGetRequest) ReturnAsObject(returnAsObject int32) LicenseGridwideAPILicensegridwideReferenceGetRequest {
+func (r LicenseGridwideAPIReadRequest) ReturnAsObject(returnAsObject int32) LicenseGridwideAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r LicenseGridwideAPILicensegridwideReferenceGetRequest) Execute() (*GetLicenseGridwideResponse, *http.Response, error) {
-	return r.ApiService.LicensegridwideReferenceGetExecute(r)
+func (r LicenseGridwideAPIReadRequest) Execute() (*GetLicenseGridwideResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-LicensegridwideReferenceGet Get a specific license:gridwide object
+Read Get a specific license:gridwide object
 
 Returns a specific license:gridwide object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the license:gridwide object
-	@return LicenseGridwideAPILicensegridwideReferenceGetRequest
+	@return LicenseGridwideAPIReadRequest
 */
-func (a *LicenseGridwideAPIService) LicensegridwideReferenceGet(ctx context.Context, reference string) LicenseGridwideAPILicensegridwideReferenceGetRequest {
-	return LicenseGridwideAPILicensegridwideReferenceGetRequest{
+func (a *LicenseGridwideAPIService) Read(ctx context.Context, reference string) LicenseGridwideAPIReadRequest {
+	return LicenseGridwideAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -378,7 +378,7 @@ func (a *LicenseGridwideAPIService) LicensegridwideReferenceGet(ctx context.Cont
 // Execute executes the request
 //
 //	@return GetLicenseGridwideResponse
-func (a *LicenseGridwideAPIService) LicensegridwideReferenceGetExecute(r LicenseGridwideAPILicensegridwideReferenceGetRequest) (*GetLicenseGridwideResponse, *http.Response, error) {
+func (a *LicenseGridwideAPIService) ReadExecute(r LicenseGridwideAPIReadRequest) (*GetLicenseGridwideResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -386,7 +386,7 @@ func (a *LicenseGridwideAPIService) LicensegridwideReferenceGetExecute(r License
 		localVarReturnValue *GetLicenseGridwideResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LicenseGridwideAPIService.LicensegridwideReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LicenseGridwideAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -401,8 +401,8 @@ func (a *LicenseGridwideAPIService) LicensegridwideReferenceGetExecute(r License
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

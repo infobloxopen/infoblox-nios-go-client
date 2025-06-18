@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ThreatinsightcloudclientGet**](ThreatinsightCloudclientAPI.md#ThreatinsightcloudclientGet) | **Get** /threatinsight:cloudclient | Retrieve threatinsight:cloudclient objects
-[**ThreatinsightcloudclientReferenceGet**](ThreatinsightCloudclientAPI.md#ThreatinsightcloudclientReferenceGet) | **Get** /threatinsight:cloudclient/{reference} | Get a specific threatinsight:cloudclient object
-[**ThreatinsightcloudclientReferencePut**](ThreatinsightCloudclientAPI.md#ThreatinsightcloudclientReferencePut) | **Put** /threatinsight:cloudclient/{reference} | Update a threatinsight:cloudclient object
+[**List**](ThreatinsightCloudclientAPI.md#List) | **Get** /threatinsight:cloudclient | Retrieve threatinsight:cloudclient objects
+[**Read**](ThreatinsightCloudclientAPI.md#Read) | **Get** /threatinsight:cloudclient/{reference} | Get a specific threatinsight:cloudclient object
+[**Update**](ThreatinsightCloudclientAPI.md#Update) | **Put** /threatinsight:cloudclient/{reference} | Update a threatinsight:cloudclient object
 
 
 
-## ThreatinsightcloudclientGet
+## List
 
-> ListThreatinsightCloudclientResponse ThreatinsightcloudclientGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListThreatinsightCloudclientResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve threatinsight:cloudclient objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := threatinsight.NewAPIClient()
-	resp, r, err := apiClient.ThreatinsightCloudclientAPI.ThreatinsightcloudclientGet(context.Background()).Execute()
+	resp, r, err := apiClient.ThreatinsightCloudclientAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightCloudclientAPI.ThreatinsightcloudclientGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightCloudclientAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatinsightcloudclientGet`: ListThreatinsightCloudclientResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightCloudclientAPI.ThreatinsightcloudclientGet`: %v\n", resp)
+	// response from `List`: ListThreatinsightCloudclientResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightCloudclientAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatinsightCloudclientAPIThreatinsightcloudclientGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatinsightCloudclientAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ThreatinsightcloudclientReferenceGet
+## Read
 
-> GetThreatinsightCloudclientResponse ThreatinsightcloudclientReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetThreatinsightCloudclientResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific threatinsight:cloudclient object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the threatinsight:cloudclient object
 
 	apiClient := threatinsight.NewAPIClient()
-	resp, r, err := apiClient.ThreatinsightCloudclientAPI.ThreatinsightcloudclientReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ThreatinsightCloudclientAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightCloudclientAPI.ThreatinsightcloudclientReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightCloudclientAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatinsightcloudclientReferenceGet`: GetThreatinsightCloudclientResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightCloudclientAPI.ThreatinsightcloudclientReferenceGet`: %v\n", resp)
+	// response from `Read`: GetThreatinsightCloudclientResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightCloudclientAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatinsightCloudclientAPIThreatinsightcloudclientReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatinsightCloudclientAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ThreatinsightcloudclientReferencePut
+## Update
 
-> UpdateThreatinsightCloudclientResponse ThreatinsightcloudclientReferencePut(ctx, reference).ThreatinsightCloudclient(threatinsightCloudclient).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateThreatinsightCloudclientResponse Update(ctx, reference).ThreatinsightCloudclient(threatinsightCloudclient).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a threatinsight:cloudclient object
 
@@ -180,13 +180,13 @@ func main() {
 	threatinsightCloudclient := *threatinsight.NewThreatinsightCloudclient() // ThreatinsightCloudclient | Object data to update
 
 	apiClient := threatinsight.NewAPIClient()
-	resp, r, err := apiClient.ThreatinsightCloudclientAPI.ThreatinsightcloudclientReferencePut(context.Background(), reference).ThreatinsightCloudclient(threatinsightCloudclient).Execute()
+	resp, r, err := apiClient.ThreatinsightCloudclientAPI.Update(context.Background(), reference).ThreatinsightCloudclient(threatinsightCloudclient).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightCloudclientAPI.ThreatinsightcloudclientReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatinsightCloudclientAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatinsightcloudclientReferencePut`: UpdateThreatinsightCloudclientResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightCloudclientAPI.ThreatinsightcloudclientReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateThreatinsightCloudclientResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatinsightCloudclientAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatinsightCloudclientAPIThreatinsightcloudclientReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatinsightCloudclientAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **threatinsightCloudclient** | [**ThreatinsightCloudclient**](ThreatinsightCloudclient.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

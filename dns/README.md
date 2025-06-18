@@ -79,220 +79,220 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AllnsgroupAPI* | [**Get**](docs/AllnsgroupAPI.md#get) | **Get** /allnsgroup | Retrieve allnsgroup objects
-*AllnsgroupAPI* | [**ReferenceGet**](docs/AllnsgroupAPI.md#referenceget) | **Get** /allnsgroup/{reference} | Get a specific allnsgroup object
-*AllrecordsAPI* | [**Get**](docs/AllrecordsAPI.md#get) | **Get** /allrecords | Retrieve allrecords objects
-*AllrecordsAPI* | [**ReferenceGet**](docs/AllrecordsAPI.md#referenceget) | **Get** /allrecords/{reference} | Get a specific allrecords object
-*DdnsPrincipalclusterAPI* | [**DdnsprincipalclusterGet**](docs/DdnsPrincipalclusterAPI.md#ddnsprincipalclusterget) | **Get** /ddns:principalcluster | Retrieve ddns:principalcluster objects
-*DdnsPrincipalclusterAPI* | [**DdnsprincipalclusterPost**](docs/DdnsPrincipalclusterAPI.md#ddnsprincipalclusterpost) | **Post** /ddns:principalcluster | Create a ddns:principalcluster object
-*DdnsPrincipalclusterAPI* | [**DdnsprincipalclusterReferenceDelete**](docs/DdnsPrincipalclusterAPI.md#ddnsprincipalclusterreferencedelete) | **Delete** /ddns:principalcluster/{reference} | Delete a ddns:principalcluster object
-*DdnsPrincipalclusterAPI* | [**DdnsprincipalclusterReferenceGet**](docs/DdnsPrincipalclusterAPI.md#ddnsprincipalclusterreferenceget) | **Get** /ddns:principalcluster/{reference} | Get a specific ddns:principalcluster object
-*DdnsPrincipalclusterAPI* | [**DdnsprincipalclusterReferencePut**](docs/DdnsPrincipalclusterAPI.md#ddnsprincipalclusterreferenceput) | **Put** /ddns:principalcluster/{reference} | Update a ddns:principalcluster object
-*DdnsPrincipalclusterGroupAPI* | [**DdnsprincipalclustergroupGet**](docs/DdnsPrincipalclusterGroupAPI.md#ddnsprincipalclustergroupget) | **Get** /ddns:principalcluster:group | Retrieve ddns:principalcluster:group objects
-*DdnsPrincipalclusterGroupAPI* | [**DdnsprincipalclustergroupPost**](docs/DdnsPrincipalclusterGroupAPI.md#ddnsprincipalclustergrouppost) | **Post** /ddns:principalcluster:group | Create a ddns:principalcluster:group object
-*DdnsPrincipalclusterGroupAPI* | [**DdnsprincipalclustergroupReferenceDelete**](docs/DdnsPrincipalclusterGroupAPI.md#ddnsprincipalclustergroupreferencedelete) | **Delete** /ddns:principalcluster:group/{reference} | Delete a ddns:principalcluster:group object
-*DdnsPrincipalclusterGroupAPI* | [**DdnsprincipalclustergroupReferenceGet**](docs/DdnsPrincipalclusterGroupAPI.md#ddnsprincipalclustergroupreferenceget) | **Get** /ddns:principalcluster:group/{reference} | Get a specific ddns:principalcluster:group object
-*DdnsPrincipalclusterGroupAPI* | [**DdnsprincipalclustergroupReferencePut**](docs/DdnsPrincipalclusterGroupAPI.md#ddnsprincipalclustergroupreferenceput) | **Put** /ddns:principalcluster:group/{reference} | Update a ddns:principalcluster:group object
-*Dns64groupAPI* | [**Get**](docs/Dns64groupAPI.md#get) | **Get** /dns64group | Retrieve dns64group objects
-*Dns64groupAPI* | [**Post**](docs/Dns64groupAPI.md#post) | **Post** /dns64group | Create a dns64group object
-*Dns64groupAPI* | [**ReferenceDelete**](docs/Dns64groupAPI.md#referencedelete) | **Delete** /dns64group/{reference} | Delete a dns64group object
-*Dns64groupAPI* | [**ReferenceGet**](docs/Dns64groupAPI.md#referenceget) | **Get** /dns64group/{reference} | Get a specific dns64group object
-*Dns64groupAPI* | [**ReferencePut**](docs/Dns64groupAPI.md#referenceput) | **Put** /dns64group/{reference} | Update a dns64group object
-*NsgroupAPI* | [**Get**](docs/NsgroupAPI.md#get) | **Get** /nsgroup | Retrieve nsgroup objects
-*NsgroupAPI* | [**Post**](docs/NsgroupAPI.md#post) | **Post** /nsgroup | Create a nsgroup object
-*NsgroupAPI* | [**ReferenceDelete**](docs/NsgroupAPI.md#referencedelete) | **Delete** /nsgroup/{reference} | Delete a nsgroup object
-*NsgroupAPI* | [**ReferenceGet**](docs/NsgroupAPI.md#referenceget) | **Get** /nsgroup/{reference} | Get a specific nsgroup object
-*NsgroupAPI* | [**ReferencePut**](docs/NsgroupAPI.md#referenceput) | **Put** /nsgroup/{reference} | Update a nsgroup object
-*NsgroupDelegationAPI* | [**NsgroupdelegationGet**](docs/NsgroupDelegationAPI.md#nsgroupdelegationget) | **Get** /nsgroup:delegation | Retrieve nsgroup:delegation objects
-*NsgroupDelegationAPI* | [**NsgroupdelegationPost**](docs/NsgroupDelegationAPI.md#nsgroupdelegationpost) | **Post** /nsgroup:delegation | Create a nsgroup:delegation object
-*NsgroupDelegationAPI* | [**NsgroupdelegationReferenceDelete**](docs/NsgroupDelegationAPI.md#nsgroupdelegationreferencedelete) | **Delete** /nsgroup:delegation/{reference} | Delete a nsgroup:delegation object
-*NsgroupDelegationAPI* | [**NsgroupdelegationReferenceGet**](docs/NsgroupDelegationAPI.md#nsgroupdelegationreferenceget) | **Get** /nsgroup:delegation/{reference} | Get a specific nsgroup:delegation object
-*NsgroupDelegationAPI* | [**NsgroupdelegationReferencePut**](docs/NsgroupDelegationAPI.md#nsgroupdelegationreferenceput) | **Put** /nsgroup:delegation/{reference} | Update a nsgroup:delegation object
-*NsgroupForwardingmemberAPI* | [**NsgroupforwardingmemberGet**](docs/NsgroupForwardingmemberAPI.md#nsgroupforwardingmemberget) | **Get** /nsgroup:forwardingmember | Retrieve nsgroup:forwardingmember objects
-*NsgroupForwardingmemberAPI* | [**NsgroupforwardingmemberPost**](docs/NsgroupForwardingmemberAPI.md#nsgroupforwardingmemberpost) | **Post** /nsgroup:forwardingmember | Create a nsgroup:forwardingmember object
-*NsgroupForwardingmemberAPI* | [**NsgroupforwardingmemberReferenceDelete**](docs/NsgroupForwardingmemberAPI.md#nsgroupforwardingmemberreferencedelete) | **Delete** /nsgroup:forwardingmember/{reference} | Delete a nsgroup:forwardingmember object
-*NsgroupForwardingmemberAPI* | [**NsgroupforwardingmemberReferenceGet**](docs/NsgroupForwardingmemberAPI.md#nsgroupforwardingmemberreferenceget) | **Get** /nsgroup:forwardingmember/{reference} | Get a specific nsgroup:forwardingmember object
-*NsgroupForwardingmemberAPI* | [**NsgroupforwardingmemberReferencePut**](docs/NsgroupForwardingmemberAPI.md#nsgroupforwardingmemberreferenceput) | **Put** /nsgroup:forwardingmember/{reference} | Update a nsgroup:forwardingmember object
-*NsgroupForwardstubserverAPI* | [**NsgroupforwardstubserverGet**](docs/NsgroupForwardstubserverAPI.md#nsgroupforwardstubserverget) | **Get** /nsgroup:forwardstubserver | Retrieve nsgroup:forwardstubserver objects
-*NsgroupForwardstubserverAPI* | [**NsgroupforwardstubserverPost**](docs/NsgroupForwardstubserverAPI.md#nsgroupforwardstubserverpost) | **Post** /nsgroup:forwardstubserver | Create a nsgroup:forwardstubserver object
-*NsgroupForwardstubserverAPI* | [**NsgroupforwardstubserverReferenceDelete**](docs/NsgroupForwardstubserverAPI.md#nsgroupforwardstubserverreferencedelete) | **Delete** /nsgroup:forwardstubserver/{reference} | Delete a nsgroup:forwardstubserver object
-*NsgroupForwardstubserverAPI* | [**NsgroupforwardstubserverReferenceGet**](docs/NsgroupForwardstubserverAPI.md#nsgroupforwardstubserverreferenceget) | **Get** /nsgroup:forwardstubserver/{reference} | Get a specific nsgroup:forwardstubserver object
-*NsgroupForwardstubserverAPI* | [**NsgroupforwardstubserverReferencePut**](docs/NsgroupForwardstubserverAPI.md#nsgroupforwardstubserverreferenceput) | **Put** /nsgroup:forwardstubserver/{reference} | Update a nsgroup:forwardstubserver object
-*NsgroupStubmemberAPI* | [**NsgroupstubmemberGet**](docs/NsgroupStubmemberAPI.md#nsgroupstubmemberget) | **Get** /nsgroup:stubmember | Retrieve nsgroup:stubmember objects
-*NsgroupStubmemberAPI* | [**NsgroupstubmemberPost**](docs/NsgroupStubmemberAPI.md#nsgroupstubmemberpost) | **Post** /nsgroup:stubmember | Create a nsgroup:stubmember object
-*NsgroupStubmemberAPI* | [**NsgroupstubmemberReferenceDelete**](docs/NsgroupStubmemberAPI.md#nsgroupstubmemberreferencedelete) | **Delete** /nsgroup:stubmember/{reference} | Delete a nsgroup:stubmember object
-*NsgroupStubmemberAPI* | [**NsgroupstubmemberReferenceGet**](docs/NsgroupStubmemberAPI.md#nsgroupstubmemberreferenceget) | **Get** /nsgroup:stubmember/{reference} | Get a specific nsgroup:stubmember object
-*NsgroupStubmemberAPI* | [**NsgroupstubmemberReferencePut**](docs/NsgroupStubmemberAPI.md#nsgroupstubmemberreferenceput) | **Put** /nsgroup:stubmember/{reference} | Update a nsgroup:stubmember object
-*OrderedresponsepolicyzonesAPI* | [**Get**](docs/OrderedresponsepolicyzonesAPI.md#get) | **Get** /orderedresponsepolicyzones | Retrieve orderedresponsepolicyzones objects
-*OrderedresponsepolicyzonesAPI* | [**ReferenceGet**](docs/OrderedresponsepolicyzonesAPI.md#referenceget) | **Get** /orderedresponsepolicyzones/{reference} | Get a specific orderedresponsepolicyzones object
-*OrderedresponsepolicyzonesAPI* | [**ReferencePut**](docs/OrderedresponsepolicyzonesAPI.md#referenceput) | **Put** /orderedresponsepolicyzones/{reference} | Update a orderedresponsepolicyzones object
-*RecordAAPI* | [**RecordaGet**](docs/RecordAAPI.md#recordaget) | **Get** /record:a | Retrieve record:a objects
-*RecordAAPI* | [**RecordaPost**](docs/RecordAAPI.md#recordapost) | **Post** /record:a | Create a record:a object
-*RecordAAPI* | [**RecordaReferenceDelete**](docs/RecordAAPI.md#recordareferencedelete) | **Delete** /record:a/{reference} | Delete a record:a object
-*RecordAAPI* | [**RecordaReferenceGet**](docs/RecordAAPI.md#recordareferenceget) | **Get** /record:a/{reference} | Get a specific record:a object
-*RecordAAPI* | [**RecordaReferencePut**](docs/RecordAAPI.md#recordareferenceput) | **Put** /record:a/{reference} | Update a record:a object
-*RecordAaaaAPI* | [**RecordaaaaGet**](docs/RecordAaaaAPI.md#recordaaaaget) | **Get** /record:aaaa | Retrieve record:aaaa objects
-*RecordAaaaAPI* | [**RecordaaaaPost**](docs/RecordAaaaAPI.md#recordaaaapost) | **Post** /record:aaaa | Create a record:aaaa object
-*RecordAaaaAPI* | [**RecordaaaaReferenceDelete**](docs/RecordAaaaAPI.md#recordaaaareferencedelete) | **Delete** /record:aaaa/{reference} | Delete a record:aaaa object
-*RecordAaaaAPI* | [**RecordaaaaReferenceGet**](docs/RecordAaaaAPI.md#recordaaaareferenceget) | **Get** /record:aaaa/{reference} | Get a specific record:aaaa object
-*RecordAaaaAPI* | [**RecordaaaaReferencePut**](docs/RecordAaaaAPI.md#recordaaaareferenceput) | **Put** /record:aaaa/{reference} | Update a record:aaaa object
-*RecordAliasAPI* | [**RecordaliasGet**](docs/RecordAliasAPI.md#recordaliasget) | **Get** /record:alias | Retrieve record:alias objects
-*RecordAliasAPI* | [**RecordaliasPost**](docs/RecordAliasAPI.md#recordaliaspost) | **Post** /record:alias | Create a record:alias object
-*RecordAliasAPI* | [**RecordaliasReferenceDelete**](docs/RecordAliasAPI.md#recordaliasreferencedelete) | **Delete** /record:alias/{reference} | Delete a record:alias object
-*RecordAliasAPI* | [**RecordaliasReferenceGet**](docs/RecordAliasAPI.md#recordaliasreferenceget) | **Get** /record:alias/{reference} | Get a specific record:alias object
-*RecordAliasAPI* | [**RecordaliasReferencePut**](docs/RecordAliasAPI.md#recordaliasreferenceput) | **Put** /record:alias/{reference} | Update a record:alias object
-*RecordCaaAPI* | [**RecordcaaGet**](docs/RecordCaaAPI.md#recordcaaget) | **Get** /record:caa | Retrieve record:caa objects
-*RecordCaaAPI* | [**RecordcaaPost**](docs/RecordCaaAPI.md#recordcaapost) | **Post** /record:caa | Create a record:caa object
-*RecordCaaAPI* | [**RecordcaaReferenceDelete**](docs/RecordCaaAPI.md#recordcaareferencedelete) | **Delete** /record:caa/{reference} | Delete a record:caa object
-*RecordCaaAPI* | [**RecordcaaReferenceGet**](docs/RecordCaaAPI.md#recordcaareferenceget) | **Get** /record:caa/{reference} | Get a specific record:caa object
-*RecordCaaAPI* | [**RecordcaaReferencePut**](docs/RecordCaaAPI.md#recordcaareferenceput) | **Put** /record:caa/{reference} | Update a record:caa object
-*RecordCnameAPI* | [**RecordcnameGet**](docs/RecordCnameAPI.md#recordcnameget) | **Get** /record:cname | Retrieve record:cname objects
-*RecordCnameAPI* | [**RecordcnamePost**](docs/RecordCnameAPI.md#recordcnamepost) | **Post** /record:cname | Create a record:cname object
-*RecordCnameAPI* | [**RecordcnameReferenceDelete**](docs/RecordCnameAPI.md#recordcnamereferencedelete) | **Delete** /record:cname/{reference} | Delete a record:cname object
-*RecordCnameAPI* | [**RecordcnameReferenceGet**](docs/RecordCnameAPI.md#recordcnamereferenceget) | **Get** /record:cname/{reference} | Get a specific record:cname object
-*RecordCnameAPI* | [**RecordcnameReferencePut**](docs/RecordCnameAPI.md#recordcnamereferenceput) | **Put** /record:cname/{reference} | Update a record:cname object
-*RecordDhcidAPI* | [**RecorddhcidGet**](docs/RecordDhcidAPI.md#recorddhcidget) | **Get** /record:dhcid | Retrieve record:dhcid objects
-*RecordDhcidAPI* | [**RecorddhcidReferenceDelete**](docs/RecordDhcidAPI.md#recorddhcidreferencedelete) | **Delete** /record:dhcid/{reference} | Delete a record:dhcid object
-*RecordDhcidAPI* | [**RecorddhcidReferenceGet**](docs/RecordDhcidAPI.md#recorddhcidreferenceget) | **Get** /record:dhcid/{reference} | Get a specific record:dhcid object
-*RecordDnameAPI* | [**RecorddnameGet**](docs/RecordDnameAPI.md#recorddnameget) | **Get** /record:dname | Retrieve record:dname objects
-*RecordDnameAPI* | [**RecorddnamePost**](docs/RecordDnameAPI.md#recorddnamepost) | **Post** /record:dname | Create a record:dname object
-*RecordDnameAPI* | [**RecorddnameReferenceDelete**](docs/RecordDnameAPI.md#recorddnamereferencedelete) | **Delete** /record:dname/{reference} | Delete a record:dname object
-*RecordDnameAPI* | [**RecorddnameReferenceGet**](docs/RecordDnameAPI.md#recorddnamereferenceget) | **Get** /record:dname/{reference} | Get a specific record:dname object
-*RecordDnameAPI* | [**RecorddnameReferencePut**](docs/RecordDnameAPI.md#recorddnamereferenceput) | **Put** /record:dname/{reference} | Update a record:dname object
-*RecordDnskeyAPI* | [**RecorddnskeyGet**](docs/RecordDnskeyAPI.md#recorddnskeyget) | **Get** /record:dnskey | Retrieve record:dnskey objects
-*RecordDnskeyAPI* | [**RecorddnskeyReferenceGet**](docs/RecordDnskeyAPI.md#recorddnskeyreferenceget) | **Get** /record:dnskey/{reference} | Get a specific record:dnskey object
-*RecordDsAPI* | [**RecorddsGet**](docs/RecordDsAPI.md#recorddsget) | **Get** /record:ds | Retrieve record:ds objects
-*RecordDsAPI* | [**RecorddsReferenceDelete**](docs/RecordDsAPI.md#recorddsreferencedelete) | **Delete** /record:ds/{reference} | Delete a record:ds object
-*RecordDsAPI* | [**RecorddsReferenceGet**](docs/RecordDsAPI.md#recorddsreferenceget) | **Get** /record:ds/{reference} | Get a specific record:ds object
-*RecordHostAPI* | [**RecordhostGet**](docs/RecordHostAPI.md#recordhostget) | **Get** /record:host | Retrieve record:host objects
-*RecordHostAPI* | [**RecordhostPost**](docs/RecordHostAPI.md#recordhostpost) | **Post** /record:host | Create a record:host object
-*RecordHostAPI* | [**RecordhostReferenceDelete**](docs/RecordHostAPI.md#recordhostreferencedelete) | **Delete** /record:host/{reference} | Delete a record:host object
-*RecordHostAPI* | [**RecordhostReferenceGet**](docs/RecordHostAPI.md#recordhostreferenceget) | **Get** /record:host/{reference} | Get a specific record:host object
-*RecordHostAPI* | [**RecordhostReferencePut**](docs/RecordHostAPI.md#recordhostreferenceput) | **Put** /record:host/{reference} | Update a record:host object
-*RecordHostIpv4addrAPI* | [**RecordhostIpv4addrGet**](docs/RecordHostIpv4addrAPI.md#recordhostipv4addrget) | **Get** /record:host_ipv4addr | Retrieve record:host_ipv4addr objects
-*RecordHostIpv4addrAPI* | [**RecordhostIpv4addrReferenceGet**](docs/RecordHostIpv4addrAPI.md#recordhostipv4addrreferenceget) | **Get** /record:host_ipv4addr/{reference} | Get a specific record:host_ipv4addr object
-*RecordHostIpv4addrAPI* | [**RecordhostIpv4addrReferencePut**](docs/RecordHostIpv4addrAPI.md#recordhostipv4addrreferenceput) | **Put** /record:host_ipv4addr/{reference} | Update a record:host_ipv4addr object
-*RecordHostIpv6addrAPI* | [**RecordhostIpv6addrGet**](docs/RecordHostIpv6addrAPI.md#recordhostipv6addrget) | **Get** /record:host_ipv6addr | Retrieve record:host_ipv6addr objects
-*RecordHostIpv6addrAPI* | [**RecordhostIpv6addrReferenceGet**](docs/RecordHostIpv6addrAPI.md#recordhostipv6addrreferenceget) | **Get** /record:host_ipv6addr/{reference} | Get a specific record:host_ipv6addr object
-*RecordHostIpv6addrAPI* | [**RecordhostIpv6addrReferencePut**](docs/RecordHostIpv6addrAPI.md#recordhostipv6addrreferenceput) | **Put** /record:host_ipv6addr/{reference} | Update a record:host_ipv6addr object
-*RecordMxAPI* | [**RecordmxGet**](docs/RecordMxAPI.md#recordmxget) | **Get** /record:mx | Retrieve record:mx objects
-*RecordMxAPI* | [**RecordmxPost**](docs/RecordMxAPI.md#recordmxpost) | **Post** /record:mx | Create a record:mx object
-*RecordMxAPI* | [**RecordmxReferenceDelete**](docs/RecordMxAPI.md#recordmxreferencedelete) | **Delete** /record:mx/{reference} | Delete a record:mx object
-*RecordMxAPI* | [**RecordmxReferenceGet**](docs/RecordMxAPI.md#recordmxreferenceget) | **Get** /record:mx/{reference} | Get a specific record:mx object
-*RecordMxAPI* | [**RecordmxReferencePut**](docs/RecordMxAPI.md#recordmxreferenceput) | **Put** /record:mx/{reference} | Update a record:mx object
-*RecordNaptrAPI* | [**RecordnaptrGet**](docs/RecordNaptrAPI.md#recordnaptrget) | **Get** /record:naptr | Retrieve record:naptr objects
-*RecordNaptrAPI* | [**RecordnaptrPost**](docs/RecordNaptrAPI.md#recordnaptrpost) | **Post** /record:naptr | Create a record:naptr object
-*RecordNaptrAPI* | [**RecordnaptrReferenceDelete**](docs/RecordNaptrAPI.md#recordnaptrreferencedelete) | **Delete** /record:naptr/{reference} | Delete a record:naptr object
-*RecordNaptrAPI* | [**RecordnaptrReferenceGet**](docs/RecordNaptrAPI.md#recordnaptrreferenceget) | **Get** /record:naptr/{reference} | Get a specific record:naptr object
-*RecordNaptrAPI* | [**RecordnaptrReferencePut**](docs/RecordNaptrAPI.md#recordnaptrreferenceput) | **Put** /record:naptr/{reference} | Update a record:naptr object
-*RecordNsAPI* | [**RecordnsGet**](docs/RecordNsAPI.md#recordnsget) | **Get** /record:ns | Retrieve record:ns objects
-*RecordNsAPI* | [**RecordnsPost**](docs/RecordNsAPI.md#recordnspost) | **Post** /record:ns | Create a record:ns object
-*RecordNsAPI* | [**RecordnsReferenceDelete**](docs/RecordNsAPI.md#recordnsreferencedelete) | **Delete** /record:ns/{reference} | Delete a record:ns object
-*RecordNsAPI* | [**RecordnsReferenceGet**](docs/RecordNsAPI.md#recordnsreferenceget) | **Get** /record:ns/{reference} | Get a specific record:ns object
-*RecordNsAPI* | [**RecordnsReferencePut**](docs/RecordNsAPI.md#recordnsreferenceput) | **Put** /record:ns/{reference} | Update a record:ns object
-*RecordNsecAPI* | [**RecordnsecGet**](docs/RecordNsecAPI.md#recordnsecget) | **Get** /record:nsec | Retrieve record:nsec objects
-*RecordNsecAPI* | [**RecordnsecReferenceGet**](docs/RecordNsecAPI.md#recordnsecreferenceget) | **Get** /record:nsec/{reference} | Get a specific record:nsec object
-*RecordNsec3API* | [**Recordnsec3Get**](docs/RecordNsec3API.md#recordnsec3get) | **Get** /record:nsec3 | Retrieve record:nsec3 objects
-*RecordNsec3API* | [**Recordnsec3ReferenceGet**](docs/RecordNsec3API.md#recordnsec3referenceget) | **Get** /record:nsec3/{reference} | Get a specific record:nsec3 object
-*RecordNsec3paramAPI* | [**Recordnsec3paramGet**](docs/RecordNsec3paramAPI.md#recordnsec3paramget) | **Get** /record:nsec3param | Retrieve record:nsec3param objects
-*RecordNsec3paramAPI* | [**Recordnsec3paramReferenceGet**](docs/RecordNsec3paramAPI.md#recordnsec3paramreferenceget) | **Get** /record:nsec3param/{reference} | Get a specific record:nsec3param object
-*RecordPtrAPI* | [**RecordptrGet**](docs/RecordPtrAPI.md#recordptrget) | **Get** /record:ptr | Retrieve record:ptr objects
-*RecordPtrAPI* | [**RecordptrPost**](docs/RecordPtrAPI.md#recordptrpost) | **Post** /record:ptr | Create a record:ptr object
-*RecordPtrAPI* | [**RecordptrReferenceDelete**](docs/RecordPtrAPI.md#recordptrreferencedelete) | **Delete** /record:ptr/{reference} | Delete a record:ptr object
-*RecordPtrAPI* | [**RecordptrReferenceGet**](docs/RecordPtrAPI.md#recordptrreferenceget) | **Get** /record:ptr/{reference} | Get a specific record:ptr object
-*RecordPtrAPI* | [**RecordptrReferencePut**](docs/RecordPtrAPI.md#recordptrreferenceput) | **Put** /record:ptr/{reference} | Update a record:ptr object
-*RecordRrsigAPI* | [**RecordrrsigGet**](docs/RecordRrsigAPI.md#recordrrsigget) | **Get** /record:rrsig | Retrieve record:rrsig objects
-*RecordRrsigAPI* | [**RecordrrsigReferenceGet**](docs/RecordRrsigAPI.md#recordrrsigreferenceget) | **Get** /record:rrsig/{reference} | Get a specific record:rrsig object
-*RecordSrvAPI* | [**RecordsrvGet**](docs/RecordSrvAPI.md#recordsrvget) | **Get** /record:srv | Retrieve record:srv objects
-*RecordSrvAPI* | [**RecordsrvPost**](docs/RecordSrvAPI.md#recordsrvpost) | **Post** /record:srv | Create a record:srv object
-*RecordSrvAPI* | [**RecordsrvReferenceDelete**](docs/RecordSrvAPI.md#recordsrvreferencedelete) | **Delete** /record:srv/{reference} | Delete a record:srv object
-*RecordSrvAPI* | [**RecordsrvReferenceGet**](docs/RecordSrvAPI.md#recordsrvreferenceget) | **Get** /record:srv/{reference} | Get a specific record:srv object
-*RecordSrvAPI* | [**RecordsrvReferencePut**](docs/RecordSrvAPI.md#recordsrvreferenceput) | **Put** /record:srv/{reference} | Update a record:srv object
-*RecordTlsaAPI* | [**RecordtlsaGet**](docs/RecordTlsaAPI.md#recordtlsaget) | **Get** /record:tlsa | Retrieve record:tlsa objects
-*RecordTlsaAPI* | [**RecordtlsaPost**](docs/RecordTlsaAPI.md#recordtlsapost) | **Post** /record:tlsa | Create a record:tlsa object
-*RecordTlsaAPI* | [**RecordtlsaReferenceDelete**](docs/RecordTlsaAPI.md#recordtlsareferencedelete) | **Delete** /record:tlsa/{reference} | Delete a record:tlsa object
-*RecordTlsaAPI* | [**RecordtlsaReferenceGet**](docs/RecordTlsaAPI.md#recordtlsareferenceget) | **Get** /record:tlsa/{reference} | Get a specific record:tlsa object
-*RecordTlsaAPI* | [**RecordtlsaReferencePut**](docs/RecordTlsaAPI.md#recordtlsareferenceput) | **Put** /record:tlsa/{reference} | Update a record:tlsa object
-*RecordTxtAPI* | [**RecordtxtGet**](docs/RecordTxtAPI.md#recordtxtget) | **Get** /record:txt | Retrieve record:txt objects
-*RecordTxtAPI* | [**RecordtxtPost**](docs/RecordTxtAPI.md#recordtxtpost) | **Post** /record:txt | Create a record:txt object
-*RecordTxtAPI* | [**RecordtxtReferenceDelete**](docs/RecordTxtAPI.md#recordtxtreferencedelete) | **Delete** /record:txt/{reference} | Delete a record:txt object
-*RecordTxtAPI* | [**RecordtxtReferenceGet**](docs/RecordTxtAPI.md#recordtxtreferenceget) | **Get** /record:txt/{reference} | Get a specific record:txt object
-*RecordTxtAPI* | [**RecordtxtReferencePut**](docs/RecordTxtAPI.md#recordtxtreferenceput) | **Put** /record:txt/{reference} | Update a record:txt object
-*RecordUnknownAPI* | [**RecordunknownGet**](docs/RecordUnknownAPI.md#recordunknownget) | **Get** /record:unknown | Retrieve record:unknown objects
-*RecordUnknownAPI* | [**RecordunknownPost**](docs/RecordUnknownAPI.md#recordunknownpost) | **Post** /record:unknown | Create a record:unknown object
-*RecordUnknownAPI* | [**RecordunknownReferenceDelete**](docs/RecordUnknownAPI.md#recordunknownreferencedelete) | **Delete** /record:unknown/{reference} | Delete a record:unknown object
-*RecordUnknownAPI* | [**RecordunknownReferenceGet**](docs/RecordUnknownAPI.md#recordunknownreferenceget) | **Get** /record:unknown/{reference} | Get a specific record:unknown object
-*RecordUnknownAPI* | [**RecordunknownReferencePut**](docs/RecordUnknownAPI.md#recordunknownreferenceput) | **Put** /record:unknown/{reference} | Update a record:unknown object
-*RecordnamepolicyAPI* | [**Get**](docs/RecordnamepolicyAPI.md#get) | **Get** /recordnamepolicy | Retrieve recordnamepolicy objects
-*RecordnamepolicyAPI* | [**Post**](docs/RecordnamepolicyAPI.md#post) | **Post** /recordnamepolicy | Create a recordnamepolicy object
-*RecordnamepolicyAPI* | [**ReferenceDelete**](docs/RecordnamepolicyAPI.md#referencedelete) | **Delete** /recordnamepolicy/{reference} | Delete a recordnamepolicy object
-*RecordnamepolicyAPI* | [**ReferenceGet**](docs/RecordnamepolicyAPI.md#referenceget) | **Get** /recordnamepolicy/{reference} | Get a specific recordnamepolicy object
-*RecordnamepolicyAPI* | [**ReferencePut**](docs/RecordnamepolicyAPI.md#referenceput) | **Put** /recordnamepolicy/{reference} | Update a recordnamepolicy object
-*SharedrecordAAPI* | [**SharedrecordaGet**](docs/SharedrecordAAPI.md#sharedrecordaget) | **Get** /sharedrecord:a | Retrieve sharedrecord:a objects
-*SharedrecordAAPI* | [**SharedrecordaPost**](docs/SharedrecordAAPI.md#sharedrecordapost) | **Post** /sharedrecord:a | Create a sharedrecord:a object
-*SharedrecordAAPI* | [**SharedrecordaReferenceDelete**](docs/SharedrecordAAPI.md#sharedrecordareferencedelete) | **Delete** /sharedrecord:a/{reference} | Delete a sharedrecord:a object
-*SharedrecordAAPI* | [**SharedrecordaReferenceGet**](docs/SharedrecordAAPI.md#sharedrecordareferenceget) | **Get** /sharedrecord:a/{reference} | Get a specific sharedrecord:a object
-*SharedrecordAAPI* | [**SharedrecordaReferencePut**](docs/SharedrecordAAPI.md#sharedrecordareferenceput) | **Put** /sharedrecord:a/{reference} | Update a sharedrecord:a object
-*SharedrecordAaaaAPI* | [**SharedrecordaaaaGet**](docs/SharedrecordAaaaAPI.md#sharedrecordaaaaget) | **Get** /sharedrecord:aaaa | Retrieve sharedrecord:aaaa objects
-*SharedrecordAaaaAPI* | [**SharedrecordaaaaPost**](docs/SharedrecordAaaaAPI.md#sharedrecordaaaapost) | **Post** /sharedrecord:aaaa | Create a sharedrecord:aaaa object
-*SharedrecordAaaaAPI* | [**SharedrecordaaaaReferenceDelete**](docs/SharedrecordAaaaAPI.md#sharedrecordaaaareferencedelete) | **Delete** /sharedrecord:aaaa/{reference} | Delete a sharedrecord:aaaa object
-*SharedrecordAaaaAPI* | [**SharedrecordaaaaReferenceGet**](docs/SharedrecordAaaaAPI.md#sharedrecordaaaareferenceget) | **Get** /sharedrecord:aaaa/{reference} | Get a specific sharedrecord:aaaa object
-*SharedrecordAaaaAPI* | [**SharedrecordaaaaReferencePut**](docs/SharedrecordAaaaAPI.md#sharedrecordaaaareferenceput) | **Put** /sharedrecord:aaaa/{reference} | Update a sharedrecord:aaaa object
-*SharedrecordCnameAPI* | [**SharedrecordcnameGet**](docs/SharedrecordCnameAPI.md#sharedrecordcnameget) | **Get** /sharedrecord:cname | Retrieve sharedrecord:cname objects
-*SharedrecordCnameAPI* | [**SharedrecordcnamePost**](docs/SharedrecordCnameAPI.md#sharedrecordcnamepost) | **Post** /sharedrecord:cname | Create a sharedrecord:cname object
-*SharedrecordCnameAPI* | [**SharedrecordcnameReferenceDelete**](docs/SharedrecordCnameAPI.md#sharedrecordcnamereferencedelete) | **Delete** /sharedrecord:cname/{reference} | Delete a sharedrecord:cname object
-*SharedrecordCnameAPI* | [**SharedrecordcnameReferenceGet**](docs/SharedrecordCnameAPI.md#sharedrecordcnamereferenceget) | **Get** /sharedrecord:cname/{reference} | Get a specific sharedrecord:cname object
-*SharedrecordCnameAPI* | [**SharedrecordcnameReferencePut**](docs/SharedrecordCnameAPI.md#sharedrecordcnamereferenceput) | **Put** /sharedrecord:cname/{reference} | Update a sharedrecord:cname object
-*SharedrecordMxAPI* | [**SharedrecordmxGet**](docs/SharedrecordMxAPI.md#sharedrecordmxget) | **Get** /sharedrecord:mx | Retrieve sharedrecord:mx objects
-*SharedrecordMxAPI* | [**SharedrecordmxPost**](docs/SharedrecordMxAPI.md#sharedrecordmxpost) | **Post** /sharedrecord:mx | Create a sharedrecord:mx object
-*SharedrecordMxAPI* | [**SharedrecordmxReferenceDelete**](docs/SharedrecordMxAPI.md#sharedrecordmxreferencedelete) | **Delete** /sharedrecord:mx/{reference} | Delete a sharedrecord:mx object
-*SharedrecordMxAPI* | [**SharedrecordmxReferenceGet**](docs/SharedrecordMxAPI.md#sharedrecordmxreferenceget) | **Get** /sharedrecord:mx/{reference} | Get a specific sharedrecord:mx object
-*SharedrecordMxAPI* | [**SharedrecordmxReferencePut**](docs/SharedrecordMxAPI.md#sharedrecordmxreferenceput) | **Put** /sharedrecord:mx/{reference} | Update a sharedrecord:mx object
-*SharedrecordSrvAPI* | [**SharedrecordsrvGet**](docs/SharedrecordSrvAPI.md#sharedrecordsrvget) | **Get** /sharedrecord:srv | Retrieve sharedrecord:srv objects
-*SharedrecordSrvAPI* | [**SharedrecordsrvPost**](docs/SharedrecordSrvAPI.md#sharedrecordsrvpost) | **Post** /sharedrecord:srv | Create a sharedrecord:srv object
-*SharedrecordSrvAPI* | [**SharedrecordsrvReferenceDelete**](docs/SharedrecordSrvAPI.md#sharedrecordsrvreferencedelete) | **Delete** /sharedrecord:srv/{reference} | Delete a sharedrecord:srv object
-*SharedrecordSrvAPI* | [**SharedrecordsrvReferenceGet**](docs/SharedrecordSrvAPI.md#sharedrecordsrvreferenceget) | **Get** /sharedrecord:srv/{reference} | Get a specific sharedrecord:srv object
-*SharedrecordSrvAPI* | [**SharedrecordsrvReferencePut**](docs/SharedrecordSrvAPI.md#sharedrecordsrvreferenceput) | **Put** /sharedrecord:srv/{reference} | Update a sharedrecord:srv object
-*SharedrecordTxtAPI* | [**SharedrecordtxtGet**](docs/SharedrecordTxtAPI.md#sharedrecordtxtget) | **Get** /sharedrecord:txt | Retrieve sharedrecord:txt objects
-*SharedrecordTxtAPI* | [**SharedrecordtxtPost**](docs/SharedrecordTxtAPI.md#sharedrecordtxtpost) | **Post** /sharedrecord:txt | Create a sharedrecord:txt object
-*SharedrecordTxtAPI* | [**SharedrecordtxtReferenceDelete**](docs/SharedrecordTxtAPI.md#sharedrecordtxtreferencedelete) | **Delete** /sharedrecord:txt/{reference} | Delete a sharedrecord:txt object
-*SharedrecordTxtAPI* | [**SharedrecordtxtReferenceGet**](docs/SharedrecordTxtAPI.md#sharedrecordtxtreferenceget) | **Get** /sharedrecord:txt/{reference} | Get a specific sharedrecord:txt object
-*SharedrecordTxtAPI* | [**SharedrecordtxtReferencePut**](docs/SharedrecordTxtAPI.md#sharedrecordtxtreferenceput) | **Put** /sharedrecord:txt/{reference} | Update a sharedrecord:txt object
-*SharedrecordgroupAPI* | [**Get**](docs/SharedrecordgroupAPI.md#get) | **Get** /sharedrecordgroup | Retrieve sharedrecordgroup objects
-*SharedrecordgroupAPI* | [**Post**](docs/SharedrecordgroupAPI.md#post) | **Post** /sharedrecordgroup | Create a sharedrecordgroup object
-*SharedrecordgroupAPI* | [**ReferenceDelete**](docs/SharedrecordgroupAPI.md#referencedelete) | **Delete** /sharedrecordgroup/{reference} | Delete a sharedrecordgroup object
-*SharedrecordgroupAPI* | [**ReferenceGet**](docs/SharedrecordgroupAPI.md#referenceget) | **Get** /sharedrecordgroup/{reference} | Get a specific sharedrecordgroup object
-*SharedrecordgroupAPI* | [**ReferencePut**](docs/SharedrecordgroupAPI.md#referenceput) | **Put** /sharedrecordgroup/{reference} | Update a sharedrecordgroup object
-*ViewAPI* | [**Get**](docs/ViewAPI.md#get) | **Get** /view | Retrieve view objects
-*ViewAPI* | [**ReferenceGet**](docs/ViewAPI.md#referenceget) | **Get** /view/{reference} | Get a specific view object
-*ViewAPI* | [**ReferencePut**](docs/ViewAPI.md#referenceput) | **Put** /view/{reference} | Update a view object
-*ZoneAuthAPI* | [**Get**](docs/ZoneAuthAPI.md#get) | **Get** /zone_auth | Retrieve zone_auth objects
-*ZoneAuthAPI* | [**Post**](docs/ZoneAuthAPI.md#post) | **Post** /zone_auth | Create a zone_auth object
-*ZoneAuthAPI* | [**ReferenceDelete**](docs/ZoneAuthAPI.md#referencedelete) | **Delete** /zone_auth/{reference} | Delete a zone_auth object
-*ZoneAuthAPI* | [**ReferenceGet**](docs/ZoneAuthAPI.md#referenceget) | **Get** /zone_auth/{reference} | Get a specific zone_auth object
-*ZoneAuthAPI* | [**ReferencePut**](docs/ZoneAuthAPI.md#referenceput) | **Put** /zone_auth/{reference} | Update a zone_auth object
-*ZoneAuthDiscrepancyAPI* | [**Get**](docs/ZoneAuthDiscrepancyAPI.md#get) | **Get** /zone_auth_discrepancy | Retrieve zone_auth_discrepancy objects
-*ZoneAuthDiscrepancyAPI* | [**ReferenceGet**](docs/ZoneAuthDiscrepancyAPI.md#referenceget) | **Get** /zone_auth_discrepancy/{reference} | Get a specific zone_auth_discrepancy object
-*ZoneDelegatedAPI* | [**Get**](docs/ZoneDelegatedAPI.md#get) | **Get** /zone_delegated | Retrieve zone_delegated objects
-*ZoneDelegatedAPI* | [**Post**](docs/ZoneDelegatedAPI.md#post) | **Post** /zone_delegated | Create a zone_delegated object
-*ZoneDelegatedAPI* | [**ReferenceDelete**](docs/ZoneDelegatedAPI.md#referencedelete) | **Delete** /zone_delegated/{reference} | Delete a zone_delegated object
-*ZoneDelegatedAPI* | [**ReferenceGet**](docs/ZoneDelegatedAPI.md#referenceget) | **Get** /zone_delegated/{reference} | Get a specific zone_delegated object
-*ZoneDelegatedAPI* | [**ReferencePut**](docs/ZoneDelegatedAPI.md#referenceput) | **Put** /zone_delegated/{reference} | Update a zone_delegated object
-*ZoneForwardAPI* | [**Get**](docs/ZoneForwardAPI.md#get) | **Get** /zone_forward | Retrieve zone_forward objects
-*ZoneForwardAPI* | [**Post**](docs/ZoneForwardAPI.md#post) | **Post** /zone_forward | Create a zone_forward object
-*ZoneForwardAPI* | [**ReferenceDelete**](docs/ZoneForwardAPI.md#referencedelete) | **Delete** /zone_forward/{reference} | Delete a zone_forward object
-*ZoneForwardAPI* | [**ReferenceGet**](docs/ZoneForwardAPI.md#referenceget) | **Get** /zone_forward/{reference} | Get a specific zone_forward object
-*ZoneForwardAPI* | [**ReferencePut**](docs/ZoneForwardAPI.md#referenceput) | **Put** /zone_forward/{reference} | Update a zone_forward object
-*ZoneRpAPI* | [**Get**](docs/ZoneRpAPI.md#get) | **Get** /zone_rp | Retrieve zone_rp objects
-*ZoneRpAPI* | [**Post**](docs/ZoneRpAPI.md#post) | **Post** /zone_rp | Create a zone_rp object
-*ZoneRpAPI* | [**ReferenceDelete**](docs/ZoneRpAPI.md#referencedelete) | **Delete** /zone_rp/{reference} | Delete a zone_rp object
-*ZoneRpAPI* | [**ReferenceGet**](docs/ZoneRpAPI.md#referenceget) | **Get** /zone_rp/{reference} | Get a specific zone_rp object
-*ZoneRpAPI* | [**ReferencePut**](docs/ZoneRpAPI.md#referenceput) | **Put** /zone_rp/{reference} | Update a zone_rp object
-*ZoneStubAPI* | [**Get**](docs/ZoneStubAPI.md#get) | **Get** /zone_stub | Retrieve zone_stub objects
-*ZoneStubAPI* | [**Post**](docs/ZoneStubAPI.md#post) | **Post** /zone_stub | Create a zone_stub object
-*ZoneStubAPI* | [**ReferenceDelete**](docs/ZoneStubAPI.md#referencedelete) | **Delete** /zone_stub/{reference} | Delete a zone_stub object
-*ZoneStubAPI* | [**ReferenceGet**](docs/ZoneStubAPI.md#referenceget) | **Get** /zone_stub/{reference} | Get a specific zone_stub object
-*ZoneStubAPI* | [**ReferencePut**](docs/ZoneStubAPI.md#referenceput) | **Put** /zone_stub/{reference} | Update a zone_stub object
+*AllnsgroupAPI* | [**List**](docs/AllnsgroupAPI.md#list) | **Get** /allnsgroup | Retrieve allnsgroup objects
+*AllnsgroupAPI* | [**Read**](docs/AllnsgroupAPI.md#read) | **Get** /allnsgroup/{reference} | Get a specific allnsgroup object
+*AllrecordsAPI* | [**List**](docs/AllrecordsAPI.md#list) | **Get** /allrecords | Retrieve allrecords objects
+*AllrecordsAPI* | [**Read**](docs/AllrecordsAPI.md#read) | **Get** /allrecords/{reference} | Get a specific allrecords object
+*DdnsPrincipalclusterAPI* | [**Create**](docs/DdnsPrincipalclusterAPI.md#create) | **Post** /ddns:principalcluster | Create a ddns:principalcluster object
+*DdnsPrincipalclusterAPI* | [**Delete**](docs/DdnsPrincipalclusterAPI.md#delete) | **Delete** /ddns:principalcluster/{reference} | Delete a ddns:principalcluster object
+*DdnsPrincipalclusterAPI* | [**List**](docs/DdnsPrincipalclusterAPI.md#list) | **Get** /ddns:principalcluster | Retrieve ddns:principalcluster objects
+*DdnsPrincipalclusterAPI* | [**Read**](docs/DdnsPrincipalclusterAPI.md#read) | **Get** /ddns:principalcluster/{reference} | Get a specific ddns:principalcluster object
+*DdnsPrincipalclusterAPI* | [**Update**](docs/DdnsPrincipalclusterAPI.md#update) | **Put** /ddns:principalcluster/{reference} | Update a ddns:principalcluster object
+*DdnsPrincipalclusterGroupAPI* | [**Create**](docs/DdnsPrincipalclusterGroupAPI.md#create) | **Post** /ddns:principalcluster:group | Create a ddns:principalcluster:group object
+*DdnsPrincipalclusterGroupAPI* | [**Delete**](docs/DdnsPrincipalclusterGroupAPI.md#delete) | **Delete** /ddns:principalcluster:group/{reference} | Delete a ddns:principalcluster:group object
+*DdnsPrincipalclusterGroupAPI* | [**List**](docs/DdnsPrincipalclusterGroupAPI.md#list) | **Get** /ddns:principalcluster:group | Retrieve ddns:principalcluster:group objects
+*DdnsPrincipalclusterGroupAPI* | [**Read**](docs/DdnsPrincipalclusterGroupAPI.md#read) | **Get** /ddns:principalcluster:group/{reference} | Get a specific ddns:principalcluster:group object
+*DdnsPrincipalclusterGroupAPI* | [**Update**](docs/DdnsPrincipalclusterGroupAPI.md#update) | **Put** /ddns:principalcluster:group/{reference} | Update a ddns:principalcluster:group object
+*Dns64groupAPI* | [**Create**](docs/Dns64groupAPI.md#create) | **Post** /dns64group | Create a dns64group object
+*Dns64groupAPI* | [**Delete**](docs/Dns64groupAPI.md#delete) | **Delete** /dns64group/{reference} | Delete a dns64group object
+*Dns64groupAPI* | [**List**](docs/Dns64groupAPI.md#list) | **Get** /dns64group | Retrieve dns64group objects
+*Dns64groupAPI* | [**Read**](docs/Dns64groupAPI.md#read) | **Get** /dns64group/{reference} | Get a specific dns64group object
+*Dns64groupAPI* | [**Update**](docs/Dns64groupAPI.md#update) | **Put** /dns64group/{reference} | Update a dns64group object
+*NsgroupAPI* | [**Create**](docs/NsgroupAPI.md#create) | **Post** /nsgroup | Create a nsgroup object
+*NsgroupAPI* | [**Delete**](docs/NsgroupAPI.md#delete) | **Delete** /nsgroup/{reference} | Delete a nsgroup object
+*NsgroupAPI* | [**List**](docs/NsgroupAPI.md#list) | **Get** /nsgroup | Retrieve nsgroup objects
+*NsgroupAPI* | [**Read**](docs/NsgroupAPI.md#read) | **Get** /nsgroup/{reference} | Get a specific nsgroup object
+*NsgroupAPI* | [**Update**](docs/NsgroupAPI.md#update) | **Put** /nsgroup/{reference} | Update a nsgroup object
+*NsgroupDelegationAPI* | [**Create**](docs/NsgroupDelegationAPI.md#create) | **Post** /nsgroup:delegation | Create a nsgroup:delegation object
+*NsgroupDelegationAPI* | [**Delete**](docs/NsgroupDelegationAPI.md#delete) | **Delete** /nsgroup:delegation/{reference} | Delete a nsgroup:delegation object
+*NsgroupDelegationAPI* | [**List**](docs/NsgroupDelegationAPI.md#list) | **Get** /nsgroup:delegation | Retrieve nsgroup:delegation objects
+*NsgroupDelegationAPI* | [**Read**](docs/NsgroupDelegationAPI.md#read) | **Get** /nsgroup:delegation/{reference} | Get a specific nsgroup:delegation object
+*NsgroupDelegationAPI* | [**Update**](docs/NsgroupDelegationAPI.md#update) | **Put** /nsgroup:delegation/{reference} | Update a nsgroup:delegation object
+*NsgroupForwardingmemberAPI* | [**Create**](docs/NsgroupForwardingmemberAPI.md#create) | **Post** /nsgroup:forwardingmember | Create a nsgroup:forwardingmember object
+*NsgroupForwardingmemberAPI* | [**Delete**](docs/NsgroupForwardingmemberAPI.md#delete) | **Delete** /nsgroup:forwardingmember/{reference} | Delete a nsgroup:forwardingmember object
+*NsgroupForwardingmemberAPI* | [**List**](docs/NsgroupForwardingmemberAPI.md#list) | **Get** /nsgroup:forwardingmember | Retrieve nsgroup:forwardingmember objects
+*NsgroupForwardingmemberAPI* | [**Read**](docs/NsgroupForwardingmemberAPI.md#read) | **Get** /nsgroup:forwardingmember/{reference} | Get a specific nsgroup:forwardingmember object
+*NsgroupForwardingmemberAPI* | [**Update**](docs/NsgroupForwardingmemberAPI.md#update) | **Put** /nsgroup:forwardingmember/{reference} | Update a nsgroup:forwardingmember object
+*NsgroupForwardstubserverAPI* | [**Create**](docs/NsgroupForwardstubserverAPI.md#create) | **Post** /nsgroup:forwardstubserver | Create a nsgroup:forwardstubserver object
+*NsgroupForwardstubserverAPI* | [**Delete**](docs/NsgroupForwardstubserverAPI.md#delete) | **Delete** /nsgroup:forwardstubserver/{reference} | Delete a nsgroup:forwardstubserver object
+*NsgroupForwardstubserverAPI* | [**List**](docs/NsgroupForwardstubserverAPI.md#list) | **Get** /nsgroup:forwardstubserver | Retrieve nsgroup:forwardstubserver objects
+*NsgroupForwardstubserverAPI* | [**Read**](docs/NsgroupForwardstubserverAPI.md#read) | **Get** /nsgroup:forwardstubserver/{reference} | Get a specific nsgroup:forwardstubserver object
+*NsgroupForwardstubserverAPI* | [**Update**](docs/NsgroupForwardstubserverAPI.md#update) | **Put** /nsgroup:forwardstubserver/{reference} | Update a nsgroup:forwardstubserver object
+*NsgroupStubmemberAPI* | [**Create**](docs/NsgroupStubmemberAPI.md#create) | **Post** /nsgroup:stubmember | Create a nsgroup:stubmember object
+*NsgroupStubmemberAPI* | [**Delete**](docs/NsgroupStubmemberAPI.md#delete) | **Delete** /nsgroup:stubmember/{reference} | Delete a nsgroup:stubmember object
+*NsgroupStubmemberAPI* | [**List**](docs/NsgroupStubmemberAPI.md#list) | **Get** /nsgroup:stubmember | Retrieve nsgroup:stubmember objects
+*NsgroupStubmemberAPI* | [**Read**](docs/NsgroupStubmemberAPI.md#read) | **Get** /nsgroup:stubmember/{reference} | Get a specific nsgroup:stubmember object
+*NsgroupStubmemberAPI* | [**Update**](docs/NsgroupStubmemberAPI.md#update) | **Put** /nsgroup:stubmember/{reference} | Update a nsgroup:stubmember object
+*OrderedresponsepolicyzonesAPI* | [**List**](docs/OrderedresponsepolicyzonesAPI.md#list) | **Get** /orderedresponsepolicyzones | Retrieve orderedresponsepolicyzones objects
+*OrderedresponsepolicyzonesAPI* | [**Read**](docs/OrderedresponsepolicyzonesAPI.md#read) | **Get** /orderedresponsepolicyzones/{reference} | Get a specific orderedresponsepolicyzones object
+*OrderedresponsepolicyzonesAPI* | [**Update**](docs/OrderedresponsepolicyzonesAPI.md#update) | **Put** /orderedresponsepolicyzones/{reference} | Update a orderedresponsepolicyzones object
+*RecordAAPI* | [**Create**](docs/RecordAAPI.md#create) | **Post** /record:a | Create a record:a object
+*RecordAAPI* | [**Delete**](docs/RecordAAPI.md#delete) | **Delete** /record:a/{reference} | Delete a record:a object
+*RecordAAPI* | [**List**](docs/RecordAAPI.md#list) | **Get** /record:a | Retrieve record:a objects
+*RecordAAPI* | [**Read**](docs/RecordAAPI.md#read) | **Get** /record:a/{reference} | Get a specific record:a object
+*RecordAAPI* | [**Update**](docs/RecordAAPI.md#update) | **Put** /record:a/{reference} | Update a record:a object
+*RecordAaaaAPI* | [**Create**](docs/RecordAaaaAPI.md#create) | **Post** /record:aaaa | Create a record:aaaa object
+*RecordAaaaAPI* | [**Delete**](docs/RecordAaaaAPI.md#delete) | **Delete** /record:aaaa/{reference} | Delete a record:aaaa object
+*RecordAaaaAPI* | [**List**](docs/RecordAaaaAPI.md#list) | **Get** /record:aaaa | Retrieve record:aaaa objects
+*RecordAaaaAPI* | [**Read**](docs/RecordAaaaAPI.md#read) | **Get** /record:aaaa/{reference} | Get a specific record:aaaa object
+*RecordAaaaAPI* | [**Update**](docs/RecordAaaaAPI.md#update) | **Put** /record:aaaa/{reference} | Update a record:aaaa object
+*RecordAliasAPI* | [**Create**](docs/RecordAliasAPI.md#create) | **Post** /record:alias | Create a record:alias object
+*RecordAliasAPI* | [**Delete**](docs/RecordAliasAPI.md#delete) | **Delete** /record:alias/{reference} | Delete a record:alias object
+*RecordAliasAPI* | [**List**](docs/RecordAliasAPI.md#list) | **Get** /record:alias | Retrieve record:alias objects
+*RecordAliasAPI* | [**Read**](docs/RecordAliasAPI.md#read) | **Get** /record:alias/{reference} | Get a specific record:alias object
+*RecordAliasAPI* | [**Update**](docs/RecordAliasAPI.md#update) | **Put** /record:alias/{reference} | Update a record:alias object
+*RecordCaaAPI* | [**Create**](docs/RecordCaaAPI.md#create) | **Post** /record:caa | Create a record:caa object
+*RecordCaaAPI* | [**Delete**](docs/RecordCaaAPI.md#delete) | **Delete** /record:caa/{reference} | Delete a record:caa object
+*RecordCaaAPI* | [**List**](docs/RecordCaaAPI.md#list) | **Get** /record:caa | Retrieve record:caa objects
+*RecordCaaAPI* | [**Read**](docs/RecordCaaAPI.md#read) | **Get** /record:caa/{reference} | Get a specific record:caa object
+*RecordCaaAPI* | [**Update**](docs/RecordCaaAPI.md#update) | **Put** /record:caa/{reference} | Update a record:caa object
+*RecordCnameAPI* | [**Create**](docs/RecordCnameAPI.md#create) | **Post** /record:cname | Create a record:cname object
+*RecordCnameAPI* | [**Delete**](docs/RecordCnameAPI.md#delete) | **Delete** /record:cname/{reference} | Delete a record:cname object
+*RecordCnameAPI* | [**List**](docs/RecordCnameAPI.md#list) | **Get** /record:cname | Retrieve record:cname objects
+*RecordCnameAPI* | [**Read**](docs/RecordCnameAPI.md#read) | **Get** /record:cname/{reference} | Get a specific record:cname object
+*RecordCnameAPI* | [**Update**](docs/RecordCnameAPI.md#update) | **Put** /record:cname/{reference} | Update a record:cname object
+*RecordDhcidAPI* | [**Delete**](docs/RecordDhcidAPI.md#delete) | **Delete** /record:dhcid/{reference} | Delete a record:dhcid object
+*RecordDhcidAPI* | [**List**](docs/RecordDhcidAPI.md#list) | **Get** /record:dhcid | Retrieve record:dhcid objects
+*RecordDhcidAPI* | [**Read**](docs/RecordDhcidAPI.md#read) | **Get** /record:dhcid/{reference} | Get a specific record:dhcid object
+*RecordDnameAPI* | [**Create**](docs/RecordDnameAPI.md#create) | **Post** /record:dname | Create a record:dname object
+*RecordDnameAPI* | [**Delete**](docs/RecordDnameAPI.md#delete) | **Delete** /record:dname/{reference} | Delete a record:dname object
+*RecordDnameAPI* | [**List**](docs/RecordDnameAPI.md#list) | **Get** /record:dname | Retrieve record:dname objects
+*RecordDnameAPI* | [**Read**](docs/RecordDnameAPI.md#read) | **Get** /record:dname/{reference} | Get a specific record:dname object
+*RecordDnameAPI* | [**Update**](docs/RecordDnameAPI.md#update) | **Put** /record:dname/{reference} | Update a record:dname object
+*RecordDnskeyAPI* | [**List**](docs/RecordDnskeyAPI.md#list) | **Get** /record:dnskey | Retrieve record:dnskey objects
+*RecordDnskeyAPI* | [**Read**](docs/RecordDnskeyAPI.md#read) | **Get** /record:dnskey/{reference} | Get a specific record:dnskey object
+*RecordDsAPI* | [**Delete**](docs/RecordDsAPI.md#delete) | **Delete** /record:ds/{reference} | Delete a record:ds object
+*RecordDsAPI* | [**List**](docs/RecordDsAPI.md#list) | **Get** /record:ds | Retrieve record:ds objects
+*RecordDsAPI* | [**Read**](docs/RecordDsAPI.md#read) | **Get** /record:ds/{reference} | Get a specific record:ds object
+*RecordHostAPI* | [**Create**](docs/RecordHostAPI.md#create) | **Post** /record:host | Create a record:host object
+*RecordHostAPI* | [**Delete**](docs/RecordHostAPI.md#delete) | **Delete** /record:host/{reference} | Delete a record:host object
+*RecordHostAPI* | [**List**](docs/RecordHostAPI.md#list) | **Get** /record:host | Retrieve record:host objects
+*RecordHostAPI* | [**Read**](docs/RecordHostAPI.md#read) | **Get** /record:host/{reference} | Get a specific record:host object
+*RecordHostAPI* | [**Update**](docs/RecordHostAPI.md#update) | **Put** /record:host/{reference} | Update a record:host object
+*RecordHostIpv4addrAPI* | [**List**](docs/RecordHostIpv4addrAPI.md#list) | **Get** /record:host_ipv4addr | Retrieve record:host_ipv4addr objects
+*RecordHostIpv4addrAPI* | [**Read**](docs/RecordHostIpv4addrAPI.md#read) | **Get** /record:host_ipv4addr/{reference} | Get a specific record:host_ipv4addr object
+*RecordHostIpv4addrAPI* | [**Update**](docs/RecordHostIpv4addrAPI.md#update) | **Put** /record:host_ipv4addr/{reference} | Update a record:host_ipv4addr object
+*RecordHostIpv6addrAPI* | [**List**](docs/RecordHostIpv6addrAPI.md#list) | **Get** /record:host_ipv6addr | Retrieve record:host_ipv6addr objects
+*RecordHostIpv6addrAPI* | [**Read**](docs/RecordHostIpv6addrAPI.md#read) | **Get** /record:host_ipv6addr/{reference} | Get a specific record:host_ipv6addr object
+*RecordHostIpv6addrAPI* | [**Update**](docs/RecordHostIpv6addrAPI.md#update) | **Put** /record:host_ipv6addr/{reference} | Update a record:host_ipv6addr object
+*RecordMxAPI* | [**Create**](docs/RecordMxAPI.md#create) | **Post** /record:mx | Create a record:mx object
+*RecordMxAPI* | [**Delete**](docs/RecordMxAPI.md#delete) | **Delete** /record:mx/{reference} | Delete a record:mx object
+*RecordMxAPI* | [**List**](docs/RecordMxAPI.md#list) | **Get** /record:mx | Retrieve record:mx objects
+*RecordMxAPI* | [**Read**](docs/RecordMxAPI.md#read) | **Get** /record:mx/{reference} | Get a specific record:mx object
+*RecordMxAPI* | [**Update**](docs/RecordMxAPI.md#update) | **Put** /record:mx/{reference} | Update a record:mx object
+*RecordNaptrAPI* | [**Create**](docs/RecordNaptrAPI.md#create) | **Post** /record:naptr | Create a record:naptr object
+*RecordNaptrAPI* | [**Delete**](docs/RecordNaptrAPI.md#delete) | **Delete** /record:naptr/{reference} | Delete a record:naptr object
+*RecordNaptrAPI* | [**List**](docs/RecordNaptrAPI.md#list) | **Get** /record:naptr | Retrieve record:naptr objects
+*RecordNaptrAPI* | [**Read**](docs/RecordNaptrAPI.md#read) | **Get** /record:naptr/{reference} | Get a specific record:naptr object
+*RecordNaptrAPI* | [**Update**](docs/RecordNaptrAPI.md#update) | **Put** /record:naptr/{reference} | Update a record:naptr object
+*RecordNsAPI* | [**Create**](docs/RecordNsAPI.md#create) | **Post** /record:ns | Create a record:ns object
+*RecordNsAPI* | [**Delete**](docs/RecordNsAPI.md#delete) | **Delete** /record:ns/{reference} | Delete a record:ns object
+*RecordNsAPI* | [**List**](docs/RecordNsAPI.md#list) | **Get** /record:ns | Retrieve record:ns objects
+*RecordNsAPI* | [**Read**](docs/RecordNsAPI.md#read) | **Get** /record:ns/{reference} | Get a specific record:ns object
+*RecordNsAPI* | [**Update**](docs/RecordNsAPI.md#update) | **Put** /record:ns/{reference} | Update a record:ns object
+*RecordNsecAPI* | [**List**](docs/RecordNsecAPI.md#list) | **Get** /record:nsec | Retrieve record:nsec objects
+*RecordNsecAPI* | [**Read**](docs/RecordNsecAPI.md#read) | **Get** /record:nsec/{reference} | Get a specific record:nsec object
+*RecordNsec3API* | [**List**](docs/RecordNsec3API.md#list) | **Get** /record:nsec3 | Retrieve record:nsec3 objects
+*RecordNsec3API* | [**Read**](docs/RecordNsec3API.md#read) | **Get** /record:nsec3/{reference} | Get a specific record:nsec3 object
+*RecordNsec3paramAPI* | [**List**](docs/RecordNsec3paramAPI.md#list) | **Get** /record:nsec3param | Retrieve record:nsec3param objects
+*RecordNsec3paramAPI* | [**Read**](docs/RecordNsec3paramAPI.md#read) | **Get** /record:nsec3param/{reference} | Get a specific record:nsec3param object
+*RecordPtrAPI* | [**Create**](docs/RecordPtrAPI.md#create) | **Post** /record:ptr | Create a record:ptr object
+*RecordPtrAPI* | [**Delete**](docs/RecordPtrAPI.md#delete) | **Delete** /record:ptr/{reference} | Delete a record:ptr object
+*RecordPtrAPI* | [**List**](docs/RecordPtrAPI.md#list) | **Get** /record:ptr | Retrieve record:ptr objects
+*RecordPtrAPI* | [**Read**](docs/RecordPtrAPI.md#read) | **Get** /record:ptr/{reference} | Get a specific record:ptr object
+*RecordPtrAPI* | [**Update**](docs/RecordPtrAPI.md#update) | **Put** /record:ptr/{reference} | Update a record:ptr object
+*RecordRrsigAPI* | [**List**](docs/RecordRrsigAPI.md#list) | **Get** /record:rrsig | Retrieve record:rrsig objects
+*RecordRrsigAPI* | [**Read**](docs/RecordRrsigAPI.md#read) | **Get** /record:rrsig/{reference} | Get a specific record:rrsig object
+*RecordSrvAPI* | [**Create**](docs/RecordSrvAPI.md#create) | **Post** /record:srv | Create a record:srv object
+*RecordSrvAPI* | [**Delete**](docs/RecordSrvAPI.md#delete) | **Delete** /record:srv/{reference} | Delete a record:srv object
+*RecordSrvAPI* | [**List**](docs/RecordSrvAPI.md#list) | **Get** /record:srv | Retrieve record:srv objects
+*RecordSrvAPI* | [**Read**](docs/RecordSrvAPI.md#read) | **Get** /record:srv/{reference} | Get a specific record:srv object
+*RecordSrvAPI* | [**Update**](docs/RecordSrvAPI.md#update) | **Put** /record:srv/{reference} | Update a record:srv object
+*RecordTlsaAPI* | [**Create**](docs/RecordTlsaAPI.md#create) | **Post** /record:tlsa | Create a record:tlsa object
+*RecordTlsaAPI* | [**Delete**](docs/RecordTlsaAPI.md#delete) | **Delete** /record:tlsa/{reference} | Delete a record:tlsa object
+*RecordTlsaAPI* | [**List**](docs/RecordTlsaAPI.md#list) | **Get** /record:tlsa | Retrieve record:tlsa objects
+*RecordTlsaAPI* | [**Read**](docs/RecordTlsaAPI.md#read) | **Get** /record:tlsa/{reference} | Get a specific record:tlsa object
+*RecordTlsaAPI* | [**Update**](docs/RecordTlsaAPI.md#update) | **Put** /record:tlsa/{reference} | Update a record:tlsa object
+*RecordTxtAPI* | [**Create**](docs/RecordTxtAPI.md#create) | **Post** /record:txt | Create a record:txt object
+*RecordTxtAPI* | [**Delete**](docs/RecordTxtAPI.md#delete) | **Delete** /record:txt/{reference} | Delete a record:txt object
+*RecordTxtAPI* | [**List**](docs/RecordTxtAPI.md#list) | **Get** /record:txt | Retrieve record:txt objects
+*RecordTxtAPI* | [**Read**](docs/RecordTxtAPI.md#read) | **Get** /record:txt/{reference} | Get a specific record:txt object
+*RecordTxtAPI* | [**Update**](docs/RecordTxtAPI.md#update) | **Put** /record:txt/{reference} | Update a record:txt object
+*RecordUnknownAPI* | [**Create**](docs/RecordUnknownAPI.md#create) | **Post** /record:unknown | Create a record:unknown object
+*RecordUnknownAPI* | [**Delete**](docs/RecordUnknownAPI.md#delete) | **Delete** /record:unknown/{reference} | Delete a record:unknown object
+*RecordUnknownAPI* | [**List**](docs/RecordUnknownAPI.md#list) | **Get** /record:unknown | Retrieve record:unknown objects
+*RecordUnknownAPI* | [**Read**](docs/RecordUnknownAPI.md#read) | **Get** /record:unknown/{reference} | Get a specific record:unknown object
+*RecordUnknownAPI* | [**Update**](docs/RecordUnknownAPI.md#update) | **Put** /record:unknown/{reference} | Update a record:unknown object
+*RecordnamepolicyAPI* | [**Create**](docs/RecordnamepolicyAPI.md#create) | **Post** /recordnamepolicy | Create a recordnamepolicy object
+*RecordnamepolicyAPI* | [**Delete**](docs/RecordnamepolicyAPI.md#delete) | **Delete** /recordnamepolicy/{reference} | Delete a recordnamepolicy object
+*RecordnamepolicyAPI* | [**List**](docs/RecordnamepolicyAPI.md#list) | **Get** /recordnamepolicy | Retrieve recordnamepolicy objects
+*RecordnamepolicyAPI* | [**Read**](docs/RecordnamepolicyAPI.md#read) | **Get** /recordnamepolicy/{reference} | Get a specific recordnamepolicy object
+*RecordnamepolicyAPI* | [**Update**](docs/RecordnamepolicyAPI.md#update) | **Put** /recordnamepolicy/{reference} | Update a recordnamepolicy object
+*SharedrecordAAPI* | [**Create**](docs/SharedrecordAAPI.md#create) | **Post** /sharedrecord:a | Create a sharedrecord:a object
+*SharedrecordAAPI* | [**Delete**](docs/SharedrecordAAPI.md#delete) | **Delete** /sharedrecord:a/{reference} | Delete a sharedrecord:a object
+*SharedrecordAAPI* | [**List**](docs/SharedrecordAAPI.md#list) | **Get** /sharedrecord:a | Retrieve sharedrecord:a objects
+*SharedrecordAAPI* | [**Read**](docs/SharedrecordAAPI.md#read) | **Get** /sharedrecord:a/{reference} | Get a specific sharedrecord:a object
+*SharedrecordAAPI* | [**Update**](docs/SharedrecordAAPI.md#update) | **Put** /sharedrecord:a/{reference} | Update a sharedrecord:a object
+*SharedrecordAaaaAPI* | [**Create**](docs/SharedrecordAaaaAPI.md#create) | **Post** /sharedrecord:aaaa | Create a sharedrecord:aaaa object
+*SharedrecordAaaaAPI* | [**Delete**](docs/SharedrecordAaaaAPI.md#delete) | **Delete** /sharedrecord:aaaa/{reference} | Delete a sharedrecord:aaaa object
+*SharedrecordAaaaAPI* | [**List**](docs/SharedrecordAaaaAPI.md#list) | **Get** /sharedrecord:aaaa | Retrieve sharedrecord:aaaa objects
+*SharedrecordAaaaAPI* | [**Read**](docs/SharedrecordAaaaAPI.md#read) | **Get** /sharedrecord:aaaa/{reference} | Get a specific sharedrecord:aaaa object
+*SharedrecordAaaaAPI* | [**Update**](docs/SharedrecordAaaaAPI.md#update) | **Put** /sharedrecord:aaaa/{reference} | Update a sharedrecord:aaaa object
+*SharedrecordCnameAPI* | [**Create**](docs/SharedrecordCnameAPI.md#create) | **Post** /sharedrecord:cname | Create a sharedrecord:cname object
+*SharedrecordCnameAPI* | [**Delete**](docs/SharedrecordCnameAPI.md#delete) | **Delete** /sharedrecord:cname/{reference} | Delete a sharedrecord:cname object
+*SharedrecordCnameAPI* | [**List**](docs/SharedrecordCnameAPI.md#list) | **Get** /sharedrecord:cname | Retrieve sharedrecord:cname objects
+*SharedrecordCnameAPI* | [**Read**](docs/SharedrecordCnameAPI.md#read) | **Get** /sharedrecord:cname/{reference} | Get a specific sharedrecord:cname object
+*SharedrecordCnameAPI* | [**Update**](docs/SharedrecordCnameAPI.md#update) | **Put** /sharedrecord:cname/{reference} | Update a sharedrecord:cname object
+*SharedrecordMxAPI* | [**Create**](docs/SharedrecordMxAPI.md#create) | **Post** /sharedrecord:mx | Create a sharedrecord:mx object
+*SharedrecordMxAPI* | [**Delete**](docs/SharedrecordMxAPI.md#delete) | **Delete** /sharedrecord:mx/{reference} | Delete a sharedrecord:mx object
+*SharedrecordMxAPI* | [**List**](docs/SharedrecordMxAPI.md#list) | **Get** /sharedrecord:mx | Retrieve sharedrecord:mx objects
+*SharedrecordMxAPI* | [**Read**](docs/SharedrecordMxAPI.md#read) | **Get** /sharedrecord:mx/{reference} | Get a specific sharedrecord:mx object
+*SharedrecordMxAPI* | [**Update**](docs/SharedrecordMxAPI.md#update) | **Put** /sharedrecord:mx/{reference} | Update a sharedrecord:mx object
+*SharedrecordSrvAPI* | [**Create**](docs/SharedrecordSrvAPI.md#create) | **Post** /sharedrecord:srv | Create a sharedrecord:srv object
+*SharedrecordSrvAPI* | [**Delete**](docs/SharedrecordSrvAPI.md#delete) | **Delete** /sharedrecord:srv/{reference} | Delete a sharedrecord:srv object
+*SharedrecordSrvAPI* | [**List**](docs/SharedrecordSrvAPI.md#list) | **Get** /sharedrecord:srv | Retrieve sharedrecord:srv objects
+*SharedrecordSrvAPI* | [**Read**](docs/SharedrecordSrvAPI.md#read) | **Get** /sharedrecord:srv/{reference} | Get a specific sharedrecord:srv object
+*SharedrecordSrvAPI* | [**Update**](docs/SharedrecordSrvAPI.md#update) | **Put** /sharedrecord:srv/{reference} | Update a sharedrecord:srv object
+*SharedrecordTxtAPI* | [**Create**](docs/SharedrecordTxtAPI.md#create) | **Post** /sharedrecord:txt | Create a sharedrecord:txt object
+*SharedrecordTxtAPI* | [**Delete**](docs/SharedrecordTxtAPI.md#delete) | **Delete** /sharedrecord:txt/{reference} | Delete a sharedrecord:txt object
+*SharedrecordTxtAPI* | [**List**](docs/SharedrecordTxtAPI.md#list) | **Get** /sharedrecord:txt | Retrieve sharedrecord:txt objects
+*SharedrecordTxtAPI* | [**Read**](docs/SharedrecordTxtAPI.md#read) | **Get** /sharedrecord:txt/{reference} | Get a specific sharedrecord:txt object
+*SharedrecordTxtAPI* | [**Update**](docs/SharedrecordTxtAPI.md#update) | **Put** /sharedrecord:txt/{reference} | Update a sharedrecord:txt object
+*SharedrecordgroupAPI* | [**Create**](docs/SharedrecordgroupAPI.md#create) | **Post** /sharedrecordgroup | Create a sharedrecordgroup object
+*SharedrecordgroupAPI* | [**Delete**](docs/SharedrecordgroupAPI.md#delete) | **Delete** /sharedrecordgroup/{reference} | Delete a sharedrecordgroup object
+*SharedrecordgroupAPI* | [**List**](docs/SharedrecordgroupAPI.md#list) | **Get** /sharedrecordgroup | Retrieve sharedrecordgroup objects
+*SharedrecordgroupAPI* | [**Read**](docs/SharedrecordgroupAPI.md#read) | **Get** /sharedrecordgroup/{reference} | Get a specific sharedrecordgroup object
+*SharedrecordgroupAPI* | [**Update**](docs/SharedrecordgroupAPI.md#update) | **Put** /sharedrecordgroup/{reference} | Update a sharedrecordgroup object
+*ViewAPI* | [**List**](docs/ViewAPI.md#list) | **Get** /view | Retrieve view objects
+*ViewAPI* | [**Read**](docs/ViewAPI.md#read) | **Get** /view/{reference} | Get a specific view object
+*ViewAPI* | [**Update**](docs/ViewAPI.md#update) | **Put** /view/{reference} | Update a view object
+*ZoneAuthAPI* | [**Create**](docs/ZoneAuthAPI.md#create) | **Post** /zone_auth | Create a zone_auth object
+*ZoneAuthAPI* | [**Delete**](docs/ZoneAuthAPI.md#delete) | **Delete** /zone_auth/{reference} | Delete a zone_auth object
+*ZoneAuthAPI* | [**List**](docs/ZoneAuthAPI.md#list) | **Get** /zone_auth | Retrieve zone_auth objects
+*ZoneAuthAPI* | [**Read**](docs/ZoneAuthAPI.md#read) | **Get** /zone_auth/{reference} | Get a specific zone_auth object
+*ZoneAuthAPI* | [**Update**](docs/ZoneAuthAPI.md#update) | **Put** /zone_auth/{reference} | Update a zone_auth object
+*ZoneAuthDiscrepancyAPI* | [**List**](docs/ZoneAuthDiscrepancyAPI.md#list) | **Get** /zone_auth_discrepancy | Retrieve zone_auth_discrepancy objects
+*ZoneAuthDiscrepancyAPI* | [**Read**](docs/ZoneAuthDiscrepancyAPI.md#read) | **Get** /zone_auth_discrepancy/{reference} | Get a specific zone_auth_discrepancy object
+*ZoneDelegatedAPI* | [**Create**](docs/ZoneDelegatedAPI.md#create) | **Post** /zone_delegated | Create a zone_delegated object
+*ZoneDelegatedAPI* | [**Delete**](docs/ZoneDelegatedAPI.md#delete) | **Delete** /zone_delegated/{reference} | Delete a zone_delegated object
+*ZoneDelegatedAPI* | [**List**](docs/ZoneDelegatedAPI.md#list) | **Get** /zone_delegated | Retrieve zone_delegated objects
+*ZoneDelegatedAPI* | [**Read**](docs/ZoneDelegatedAPI.md#read) | **Get** /zone_delegated/{reference} | Get a specific zone_delegated object
+*ZoneDelegatedAPI* | [**Update**](docs/ZoneDelegatedAPI.md#update) | **Put** /zone_delegated/{reference} | Update a zone_delegated object
+*ZoneForwardAPI* | [**Create**](docs/ZoneForwardAPI.md#create) | **Post** /zone_forward | Create a zone_forward object
+*ZoneForwardAPI* | [**Delete**](docs/ZoneForwardAPI.md#delete) | **Delete** /zone_forward/{reference} | Delete a zone_forward object
+*ZoneForwardAPI* | [**List**](docs/ZoneForwardAPI.md#list) | **Get** /zone_forward | Retrieve zone_forward objects
+*ZoneForwardAPI* | [**Read**](docs/ZoneForwardAPI.md#read) | **Get** /zone_forward/{reference} | Get a specific zone_forward object
+*ZoneForwardAPI* | [**Update**](docs/ZoneForwardAPI.md#update) | **Put** /zone_forward/{reference} | Update a zone_forward object
+*ZoneRpAPI* | [**Create**](docs/ZoneRpAPI.md#create) | **Post** /zone_rp | Create a zone_rp object
+*ZoneRpAPI* | [**Delete**](docs/ZoneRpAPI.md#delete) | **Delete** /zone_rp/{reference} | Delete a zone_rp object
+*ZoneRpAPI* | [**List**](docs/ZoneRpAPI.md#list) | **Get** /zone_rp | Retrieve zone_rp objects
+*ZoneRpAPI* | [**Read**](docs/ZoneRpAPI.md#read) | **Get** /zone_rp/{reference} | Get a specific zone_rp object
+*ZoneRpAPI* | [**Update**](docs/ZoneRpAPI.md#update) | **Put** /zone_rp/{reference} | Update a zone_rp object
+*ZoneStubAPI* | [**Create**](docs/ZoneStubAPI.md#create) | **Post** /zone_stub | Create a zone_stub object
+*ZoneStubAPI* | [**Delete**](docs/ZoneStubAPI.md#delete) | **Delete** /zone_stub/{reference} | Delete a zone_stub object
+*ZoneStubAPI* | [**List**](docs/ZoneStubAPI.md#list) | **Get** /zone_stub | Retrieve zone_stub objects
+*ZoneStubAPI* | [**Read**](docs/ZoneStubAPI.md#read) | **Get** /zone_stub/{reference} | Get a specific zone_stub object
+*ZoneStubAPI* | [**Update**](docs/ZoneStubAPI.md#update) | **Put** /zone_stub/{reference} | Update a zone_stub object
 
 
 ## Documentation For Models
@@ -659,6 +659,8 @@ Class | Method | HTTP request | Description
  - [RecordPtrAwsRte53RecordInfo](docs/RecordPtrAwsRte53RecordInfo.md)
  - [RecordPtrCloudInfo](docs/RecordPtrCloudInfo.md)
  - [RecordPtrDiscoveredData](docs/RecordPtrDiscoveredData.md)
+ - [RecordPtrIpv4addr](docs/RecordPtrIpv4addr.md)
+ - [RecordPtrIpv4addrOneOf](docs/RecordPtrIpv4addrOneOf.md)
  - [RecordPtrIpv6addr](docs/RecordPtrIpv6addr.md)
  - [RecordPtrIpv6addrOneOf](docs/RecordPtrIpv6addrOneOf.md)
  - [RecordPtrMsAdUserData](docs/RecordPtrMsAdUserData.md)

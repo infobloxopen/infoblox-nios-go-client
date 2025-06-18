@@ -23,150 +23,386 @@ import (
 
 type FtpuserAPI interface {
 	/*
-		Get Retrieve ftpuser objects
-
-		Returns a list of ftpuser objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FtpuserAPIGetRequest
-	*/
-	Get(ctx context.Context) FtpuserAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListFtpuserResponse
-	GetExecute(r FtpuserAPIGetRequest) (*ListFtpuserResponse, *http.Response, error)
-	/*
-		Post Create a ftpuser object
+		Create Create a ftpuser object
 
 		Creates a new ftpuser object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FtpuserAPIPostRequest
+		@return FtpuserAPICreateRequest
 	*/
-	Post(ctx context.Context) FtpuserAPIPostRequest
+	Create(ctx context.Context) FtpuserAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateFtpuserResponse
-	PostExecute(r FtpuserAPIPostRequest) (*CreateFtpuserResponse, *http.Response, error)
+	CreateExecute(r FtpuserAPICreateRequest) (*CreateFtpuserResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a ftpuser object
+		Delete Delete a ftpuser object
 
 		Deletes a specific ftpuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ftpuser object
-		@return FtpuserAPIReferenceDeleteRequest
+		@return FtpuserAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) FtpuserAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) FtpuserAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r FtpuserAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r FtpuserAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific ftpuser object
+		List Retrieve ftpuser objects
+
+		Returns a list of ftpuser objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return FtpuserAPIListRequest
+	*/
+	List(ctx context.Context) FtpuserAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListFtpuserResponse
+	ListExecute(r FtpuserAPIListRequest) (*ListFtpuserResponse, *http.Response, error)
+	/*
+		Read Get a specific ftpuser object
 
 		Returns a specific ftpuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ftpuser object
-		@return FtpuserAPIReferenceGetRequest
+		@return FtpuserAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) FtpuserAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) FtpuserAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetFtpuserResponse
-	ReferenceGetExecute(r FtpuserAPIReferenceGetRequest) (*GetFtpuserResponse, *http.Response, error)
+	ReadExecute(r FtpuserAPIReadRequest) (*GetFtpuserResponse, *http.Response, error)
 	/*
-		ReferencePut Update a ftpuser object
+		Update Update a ftpuser object
 
 		Updates a specific ftpuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ftpuser object
-		@return FtpuserAPIReferencePutRequest
+		@return FtpuserAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) FtpuserAPIReferencePutRequest
+	Update(ctx context.Context, reference string) FtpuserAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateFtpuserResponse
-	ReferencePutExecute(r FtpuserAPIReferencePutRequest) (*UpdateFtpuserResponse, *http.Response, error)
+	UpdateExecute(r FtpuserAPIUpdateRequest) (*UpdateFtpuserResponse, *http.Response, error)
 }
 
 // FtpuserAPIService FtpuserAPI service
 type FtpuserAPIService internal.Service
 
-type FtpuserAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     FtpuserAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type FtpuserAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       FtpuserAPI
+	ftpuser          *Ftpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r FtpuserAPICreateRequest) Ftpuser(ftpuser Ftpuser) FtpuserAPICreateRequest {
+	r.ftpuser = &ftpuser
+	return r
 }
 
 // Enter the field names followed by comma
-func (r FtpuserAPIGetRequest) ReturnFields(returnFields string) FtpuserAPIGetRequest {
+func (r FtpuserAPICreateRequest) ReturnFields(returnFields string) FtpuserAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FtpuserAPIGetRequest) ReturnFields2(returnFields2 string) FtpuserAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r FtpuserAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) FtpuserAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r FtpuserAPICreateRequest) ReturnAsObject(returnAsObject int32) FtpuserAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r FtpuserAPICreateRequest) Execute() (*CreateFtpuserResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a ftpuser object
+
+Creates a new ftpuser object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return FtpuserAPICreateRequest
+*/
+func (a *FtpuserAPIService) Create(ctx context.Context) FtpuserAPICreateRequest {
+	return FtpuserAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateFtpuserResponse
+func (a *FtpuserAPIService) CreateExecute(r FtpuserAPICreateRequest) (*CreateFtpuserResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateFtpuserResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FtpuserAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ftpuser"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.ftpuser == nil {
+		return localVarReturnValue, nil, internal.ReportError("ftpuser is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ftpuser != nil {
+		if r.ftpuser.Extattrs == nil {
+			r.ftpuser.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.ftpuser.Extattrs)[k]; !ok {
+				(*r.ftpuser.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.ftpuser
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type FtpuserAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService FtpuserAPI
+	reference  string
+}
+
+func (r FtpuserAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a ftpuser object
+
+Deletes a specific ftpuser object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the ftpuser object
+	@return FtpuserAPIDeleteRequest
+*/
+func (a *FtpuserAPIService) Delete(ctx context.Context, reference string) FtpuserAPIDeleteRequest {
+	return FtpuserAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *FtpuserAPIService) DeleteExecute(r FtpuserAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FtpuserAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ftpuser/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type FtpuserAPIListRequest struct {
+	ctx              context.Context
+	ApiService       FtpuserAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r FtpuserAPIListRequest) ReturnFields(returnFields string) FtpuserAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r FtpuserAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FtpuserAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r FtpuserAPIGetRequest) MaxResults(maxResults int32) FtpuserAPIGetRequest {
+func (r FtpuserAPIListRequest) MaxResults(maxResults int32) FtpuserAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FtpuserAPIGetRequest) ReturnAsObject(returnAsObject int32) FtpuserAPIGetRequest {
+func (r FtpuserAPIListRequest) ReturnAsObject(returnAsObject int32) FtpuserAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r FtpuserAPIGetRequest) Paging(paging int32) FtpuserAPIGetRequest {
+func (r FtpuserAPIListRequest) Paging(paging int32) FtpuserAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r FtpuserAPIGetRequest) PageId(pageId string) FtpuserAPIGetRequest {
+func (r FtpuserAPIListRequest) PageId(pageId string) FtpuserAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r FtpuserAPIGetRequest) Filters(filters map[string]interface{}) FtpuserAPIGetRequest {
+func (r FtpuserAPIListRequest) Filters(filters map[string]interface{}) FtpuserAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r FtpuserAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) FtpuserAPIGetRequest {
+func (r FtpuserAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) FtpuserAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r FtpuserAPIGetRequest) Execute() (*ListFtpuserResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r FtpuserAPIListRequest) Execute() (*ListFtpuserResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve ftpuser objects
+List Retrieve ftpuser objects
 
 Returns a list of ftpuser objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FtpuserAPIGetRequest
+	@return FtpuserAPIListRequest
 */
-func (a *FtpuserAPIService) Get(ctx context.Context) FtpuserAPIGetRequest {
-	return FtpuserAPIGetRequest{
+func (a *FtpuserAPIService) List(ctx context.Context) FtpuserAPIListRequest {
+	return FtpuserAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *FtpuserAPIService) Get(ctx context.Context) FtpuserAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListFtpuserResponse
-func (a *FtpuserAPIService) GetExecute(r FtpuserAPIGetRequest) (*ListFtpuserResponse, *http.Response, error) {
+func (a *FtpuserAPIService) ListExecute(r FtpuserAPIListRequest) (*ListFtpuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *FtpuserAPIService) GetExecute(r FtpuserAPIGetRequest) (*ListFtpuserResp
 		localVarReturnValue *ListFtpuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FtpuserAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FtpuserAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *FtpuserAPIService) GetExecute(r FtpuserAPIGetRequest) (*ListFtpuserResp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *FtpuserAPIService) GetExecute(r FtpuserAPIGetRequest) (*ListFtpuserResp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FtpuserAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     FtpuserAPI
-	ftpuser        *Ftpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r FtpuserAPIPostRequest) Ftpuser(ftpuser Ftpuser) FtpuserAPIPostRequest {
-	r.ftpuser = &ftpuser
-	return r
+type FtpuserAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       FtpuserAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r FtpuserAPIPostRequest) ReturnFields(returnFields string) FtpuserAPIPostRequest {
+func (r FtpuserAPIReadRequest) ReturnFields(returnFields string) FtpuserAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FtpuserAPIPostRequest) ReturnFields2(returnFields2 string) FtpuserAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r FtpuserAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FtpuserAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FtpuserAPIPostRequest) ReturnAsObject(returnAsObject int32) FtpuserAPIPostRequest {
+func (r FtpuserAPIReadRequest) ReturnAsObject(returnAsObject int32) FtpuserAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FtpuserAPIPostRequest) Execute() (*CreateFtpuserResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r FtpuserAPIReadRequest) Execute() (*GetFtpuserResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a ftpuser object
-
-Creates a new ftpuser object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FtpuserAPIPostRequest
-*/
-func (a *FtpuserAPIService) Post(ctx context.Context) FtpuserAPIPostRequest {
-	return FtpuserAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateFtpuserResponse
-func (a *FtpuserAPIService) PostExecute(r FtpuserAPIPostRequest) (*CreateFtpuserResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateFtpuserResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FtpuserAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ftpuser"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.ftpuser == nil {
-		return localVarReturnValue, nil, internal.ReportError("ftpuser is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ftpuser != nil {
-		if r.ftpuser.Extattrs == nil {
-			r.ftpuser.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ftpuser.Extattrs)[k]; !ok {
-				(*r.ftpuser.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.ftpuser
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type FtpuserAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService FtpuserAPI
-	reference  string
-}
-
-func (r FtpuserAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a ftpuser object
-
-Deletes a specific ftpuser object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the ftpuser object
-	@return FtpuserAPIReferenceDeleteRequest
-*/
-func (a *FtpuserAPIService) ReferenceDelete(ctx context.Context, reference string) FtpuserAPIReferenceDeleteRequest {
-	return FtpuserAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *FtpuserAPIService) ReferenceDeleteExecute(r FtpuserAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FtpuserAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ftpuser/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type FtpuserAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     FtpuserAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r FtpuserAPIReferenceGetRequest) ReturnFields(returnFields string) FtpuserAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FtpuserAPIReferenceGetRequest) ReturnFields2(returnFields2 string) FtpuserAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r FtpuserAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) FtpuserAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r FtpuserAPIReferenceGetRequest) Execute() (*GetFtpuserResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific ftpuser object
+Read Get a specific ftpuser object
 
 Returns a specific ftpuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ftpuser object
-	@return FtpuserAPIReferenceGetRequest
+	@return FtpuserAPIReadRequest
 */
-func (a *FtpuserAPIService) ReferenceGet(ctx context.Context, reference string) FtpuserAPIReferenceGetRequest {
-	return FtpuserAPIReferenceGetRequest{
+func (a *FtpuserAPIService) Read(ctx context.Context, reference string) FtpuserAPIReadRequest {
+	return FtpuserAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *FtpuserAPIService) ReferenceGet(ctx context.Context, reference string) 
 // Execute executes the request
 //
 //	@return GetFtpuserResponse
-func (a *FtpuserAPIService) ReferenceGetExecute(r FtpuserAPIReferenceGetRequest) (*GetFtpuserResponse, *http.Response, error) {
+func (a *FtpuserAPIService) ReadExecute(r FtpuserAPIReadRequest) (*GetFtpuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *FtpuserAPIService) ReferenceGetExecute(r FtpuserAPIReferenceGetRequest)
 		localVarReturnValue *GetFtpuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FtpuserAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FtpuserAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *FtpuserAPIService) ReferenceGetExecute(r FtpuserAPIReferenceGetRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *FtpuserAPIService) ReferenceGetExecute(r FtpuserAPIReferenceGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FtpuserAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     FtpuserAPI
-	reference      string
-	ftpuser        *Ftpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type FtpuserAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       FtpuserAPI
+	reference        string
+	ftpuser          *Ftpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r FtpuserAPIReferencePutRequest) Ftpuser(ftpuser Ftpuser) FtpuserAPIReferencePutRequest {
+func (r FtpuserAPIUpdateRequest) Ftpuser(ftpuser Ftpuser) FtpuserAPIUpdateRequest {
 	r.ftpuser = &ftpuser
 	return r
 }
 
 // Enter the field names followed by comma
-func (r FtpuserAPIReferencePutRequest) ReturnFields(returnFields string) FtpuserAPIReferencePutRequest {
+func (r FtpuserAPIUpdateRequest) ReturnFields(returnFields string) FtpuserAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FtpuserAPIReferencePutRequest) ReturnFields2(returnFields2 string) FtpuserAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r FtpuserAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FtpuserAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FtpuserAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) FtpuserAPIReferencePutRequest {
+func (r FtpuserAPIUpdateRequest) ReturnAsObject(returnAsObject int32) FtpuserAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FtpuserAPIReferencePutRequest) Execute() (*UpdateFtpuserResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r FtpuserAPIUpdateRequest) Execute() (*UpdateFtpuserResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a ftpuser object
+Update Update a ftpuser object
 
 Updates a specific ftpuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ftpuser object
-	@return FtpuserAPIReferencePutRequest
+	@return FtpuserAPIUpdateRequest
 */
-func (a *FtpuserAPIService) ReferencePut(ctx context.Context, reference string) FtpuserAPIReferencePutRequest {
-	return FtpuserAPIReferencePutRequest{
+func (a *FtpuserAPIService) Update(ctx context.Context, reference string) FtpuserAPIUpdateRequest {
+	return FtpuserAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *FtpuserAPIService) ReferencePut(ctx context.Context, reference string) 
 // Execute executes the request
 //
 //	@return UpdateFtpuserResponse
-func (a *FtpuserAPIService) ReferencePutExecute(r FtpuserAPIReferencePutRequest) (*UpdateFtpuserResponse, *http.Response, error) {
+func (a *FtpuserAPIService) UpdateExecute(r FtpuserAPIUpdateRequest) (*UpdateFtpuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *FtpuserAPIService) ReferencePutExecute(r FtpuserAPIReferencePutRequest)
 		localVarReturnValue *UpdateFtpuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FtpuserAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FtpuserAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *FtpuserAPIService) ReferencePutExecute(r FtpuserAPIReferencePutRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

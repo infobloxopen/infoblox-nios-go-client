@@ -23,110 +23,110 @@ import (
 
 type ThreatinsightModulesetAPI interface {
 	/*
-		ThreatinsightmodulesetGet Retrieve threatinsight:moduleset objects
+		List Retrieve threatinsight:moduleset objects
 
 		Returns a list of threatinsight:moduleset objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest
+		@return ThreatinsightModulesetAPIListRequest
 	*/
-	ThreatinsightmodulesetGet(ctx context.Context) ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest
+	List(ctx context.Context) ThreatinsightModulesetAPIListRequest
 
-	// ThreatinsightmodulesetGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListThreatinsightModulesetResponse
-	ThreatinsightmodulesetGetExecute(r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) (*ListThreatinsightModulesetResponse, *http.Response, error)
+	ListExecute(r ThreatinsightModulesetAPIListRequest) (*ListThreatinsightModulesetResponse, *http.Response, error)
 	/*
-		ThreatinsightmodulesetReferenceGet Get a specific threatinsight:moduleset object
+		Read Get a specific threatinsight:moduleset object
 
 		Returns a specific threatinsight:moduleset object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatinsight:moduleset object
-		@return ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest
+		@return ThreatinsightModulesetAPIReadRequest
 	*/
-	ThreatinsightmodulesetReferenceGet(ctx context.Context, reference string) ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest
+	Read(ctx context.Context, reference string) ThreatinsightModulesetAPIReadRequest
 
-	// ThreatinsightmodulesetReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetThreatinsightModulesetResponse
-	ThreatinsightmodulesetReferenceGetExecute(r ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest) (*GetThreatinsightModulesetResponse, *http.Response, error)
+	ReadExecute(r ThreatinsightModulesetAPIReadRequest) (*GetThreatinsightModulesetResponse, *http.Response, error)
 }
 
 // ThreatinsightModulesetAPIService ThreatinsightModulesetAPI service
 type ThreatinsightModulesetAPIService internal.Service
 
-type ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest struct {
-	ctx            context.Context
-	ApiService     ThreatinsightModulesetAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type ThreatinsightModulesetAPIListRequest struct {
+	ctx              context.Context
+	ApiService       ThreatinsightModulesetAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) ReturnFields(returnFields string) ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest {
+func (r ThreatinsightModulesetAPIListRequest) ReturnFields(returnFields string) ThreatinsightModulesetAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) ReturnFields2(returnFields2 string) ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ThreatinsightModulesetAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ThreatinsightModulesetAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) MaxResults(maxResults int32) ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest {
+func (r ThreatinsightModulesetAPIListRequest) MaxResults(maxResults int32) ThreatinsightModulesetAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) ReturnAsObject(returnAsObject int32) ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest {
+func (r ThreatinsightModulesetAPIListRequest) ReturnAsObject(returnAsObject int32) ThreatinsightModulesetAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) Paging(paging int32) ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest {
+func (r ThreatinsightModulesetAPIListRequest) Paging(paging int32) ThreatinsightModulesetAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) PageId(pageId string) ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest {
+func (r ThreatinsightModulesetAPIListRequest) PageId(pageId string) ThreatinsightModulesetAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) Filters(filters map[string]interface{}) ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest {
+func (r ThreatinsightModulesetAPIListRequest) Filters(filters map[string]interface{}) ThreatinsightModulesetAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest {
+func (r ThreatinsightModulesetAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatinsightModulesetAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) Execute() (*ListThreatinsightModulesetResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightmodulesetGetExecute(r)
+func (r ThreatinsightModulesetAPIListRequest) Execute() (*ListThreatinsightModulesetResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ThreatinsightmodulesetGet Retrieve threatinsight:moduleset objects
+List Retrieve threatinsight:moduleset objects
 
 Returns a list of threatinsight:moduleset objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest
+	@return ThreatinsightModulesetAPIListRequest
 */
-func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetGet(ctx context.Context) ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest {
-	return ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest{
+func (a *ThreatinsightModulesetAPIService) List(ctx context.Context) ThreatinsightModulesetAPIListRequest {
+	return ThreatinsightModulesetAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetGet(ctx context
 // Execute executes the request
 //
 //	@return ListThreatinsightModulesetResponse
-func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetGetExecute(r ThreatinsightModulesetAPIThreatinsightmodulesetGetRequest) (*ListThreatinsightModulesetResponse, *http.Response, error) {
+func (a *ThreatinsightModulesetAPIService) ListExecute(r ThreatinsightModulesetAPIListRequest) (*ListThreatinsightModulesetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetGetExecute(r Th
 		localVarReturnValue *ListThreatinsightModulesetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightModulesetAPIService.ThreatinsightmodulesetGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightModulesetAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetGetExecute(r Th
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetGetExecute(r Th
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     ThreatinsightModulesetAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type ThreatinsightModulesetAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       ThreatinsightModulesetAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest) ReturnFields(returnFields string) ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest {
+func (r ThreatinsightModulesetAPIReadRequest) ReturnFields(returnFields string) ThreatinsightModulesetAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest) ReturnFields2(returnFields2 string) ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ThreatinsightModulesetAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ThreatinsightModulesetAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest) ReturnAsObject(returnAsObject int32) ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest {
+func (r ThreatinsightModulesetAPIReadRequest) ReturnAsObject(returnAsObject int32) ThreatinsightModulesetAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest) Execute() (*GetThreatinsightModulesetResponse, *http.Response, error) {
-	return r.ApiService.ThreatinsightmodulesetReferenceGetExecute(r)
+func (r ThreatinsightModulesetAPIReadRequest) Execute() (*GetThreatinsightModulesetResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ThreatinsightmodulesetReferenceGet Get a specific threatinsight:moduleset object
+Read Get a specific threatinsight:moduleset object
 
 Returns a specific threatinsight:moduleset object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatinsight:moduleset object
-	@return ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest
+	@return ThreatinsightModulesetAPIReadRequest
 */
-func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetReferenceGet(ctx context.Context, reference string) ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest {
-	return ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest{
+func (a *ThreatinsightModulesetAPIService) Read(ctx context.Context, reference string) ThreatinsightModulesetAPIReadRequest {
+	return ThreatinsightModulesetAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetReferenceGet(ct
 // Execute executes the request
 //
 //	@return GetThreatinsightModulesetResponse
-func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetReferenceGetExecute(r ThreatinsightModulesetAPIThreatinsightmodulesetReferenceGetRequest) (*GetThreatinsightModulesetResponse, *http.Response, error) {
+func (a *ThreatinsightModulesetAPIService) ReadExecute(r ThreatinsightModulesetAPIReadRequest) (*GetThreatinsightModulesetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetReferenceGetExe
 		localVarReturnValue *GetThreatinsightModulesetResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightModulesetAPIService.ThreatinsightmodulesetReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatinsightModulesetAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *ThreatinsightModulesetAPIService) ThreatinsightmodulesetReferenceGetExe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 api/openapi.yaml
 api_namedacl.go
@@ -28,5 +27,4 @@ model_namedacl_access_list.go
 model_namedacl_exploded_access_list.go
 model_update_namedacl_response.go
 model_update_namedacl_response_as_object.go
-test/api_namedacl_test.go
 utils.go

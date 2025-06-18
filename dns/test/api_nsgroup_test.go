@@ -23,11 +23,11 @@ func TestNsgroupAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test NsgroupAPIService Get", func(t *testing.T) {
+	t.Run("Test NsgroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NsgroupAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NsgroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNsgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupAPIService Post", func(t *testing.T) {
+	t.Run("Test NsgroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NsgroupAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NsgroupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NsgroupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NsgroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNsgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test NsgroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NsgroupAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NsgroupAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NsgroupAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NsgroupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNsgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test NsgroupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NsgroupAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NsgroupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

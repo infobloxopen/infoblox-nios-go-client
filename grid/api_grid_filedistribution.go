@@ -23,124 +23,124 @@ import (
 
 type GridFiledistributionAPI interface {
 	/*
-		GridfiledistributionGet Retrieve grid:filedistribution objects
+		List Retrieve grid:filedistribution objects
 
 		Returns a list of grid:filedistribution objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridFiledistributionAPIGridfiledistributionGetRequest
+		@return GridFiledistributionAPIListRequest
 	*/
-	GridfiledistributionGet(ctx context.Context) GridFiledistributionAPIGridfiledistributionGetRequest
+	List(ctx context.Context) GridFiledistributionAPIListRequest
 
-	// GridfiledistributionGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridFiledistributionResponse
-	GridfiledistributionGetExecute(r GridFiledistributionAPIGridfiledistributionGetRequest) (*ListGridFiledistributionResponse, *http.Response, error)
+	ListExecute(r GridFiledistributionAPIListRequest) (*ListGridFiledistributionResponse, *http.Response, error)
 	/*
-		GridfiledistributionReferenceGet Get a specific grid:filedistribution object
+		Read Get a specific grid:filedistribution object
 
 		Returns a specific grid:filedistribution object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:filedistribution object
-		@return GridFiledistributionAPIGridfiledistributionReferenceGetRequest
+		@return GridFiledistributionAPIReadRequest
 	*/
-	GridfiledistributionReferenceGet(ctx context.Context, reference string) GridFiledistributionAPIGridfiledistributionReferenceGetRequest
+	Read(ctx context.Context, reference string) GridFiledistributionAPIReadRequest
 
-	// GridfiledistributionReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridFiledistributionResponse
-	GridfiledistributionReferenceGetExecute(r GridFiledistributionAPIGridfiledistributionReferenceGetRequest) (*GetGridFiledistributionResponse, *http.Response, error)
+	ReadExecute(r GridFiledistributionAPIReadRequest) (*GetGridFiledistributionResponse, *http.Response, error)
 	/*
-		GridfiledistributionReferencePut Update a grid:filedistribution object
+		Update Update a grid:filedistribution object
 
 		Updates a specific grid:filedistribution object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:filedistribution object
-		@return GridFiledistributionAPIGridfiledistributionReferencePutRequest
+		@return GridFiledistributionAPIUpdateRequest
 	*/
-	GridfiledistributionReferencePut(ctx context.Context, reference string) GridFiledistributionAPIGridfiledistributionReferencePutRequest
+	Update(ctx context.Context, reference string) GridFiledistributionAPIUpdateRequest
 
-	// GridfiledistributionReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridFiledistributionResponse
-	GridfiledistributionReferencePutExecute(r GridFiledistributionAPIGridfiledistributionReferencePutRequest) (*UpdateGridFiledistributionResponse, *http.Response, error)
+	UpdateExecute(r GridFiledistributionAPIUpdateRequest) (*UpdateGridFiledistributionResponse, *http.Response, error)
 }
 
 // GridFiledistributionAPIService GridFiledistributionAPI service
 type GridFiledistributionAPIService internal.Service
 
-type GridFiledistributionAPIGridfiledistributionGetRequest struct {
-	ctx            context.Context
-	ApiService     GridFiledistributionAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type GridFiledistributionAPIListRequest struct {
+	ctx              context.Context
+	ApiService       GridFiledistributionAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r GridFiledistributionAPIGridfiledistributionGetRequest) ReturnFields(returnFields string) GridFiledistributionAPIGridfiledistributionGetRequest {
+func (r GridFiledistributionAPIListRequest) ReturnFields(returnFields string) GridFiledistributionAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridFiledistributionAPIGridfiledistributionGetRequest) ReturnFields2(returnFields2 string) GridFiledistributionAPIGridfiledistributionGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridFiledistributionAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridFiledistributionAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridFiledistributionAPIGridfiledistributionGetRequest) MaxResults(maxResults int32) GridFiledistributionAPIGridfiledistributionGetRequest {
+func (r GridFiledistributionAPIListRequest) MaxResults(maxResults int32) GridFiledistributionAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridFiledistributionAPIGridfiledistributionGetRequest) ReturnAsObject(returnAsObject int32) GridFiledistributionAPIGridfiledistributionGetRequest {
+func (r GridFiledistributionAPIListRequest) ReturnAsObject(returnAsObject int32) GridFiledistributionAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridFiledistributionAPIGridfiledistributionGetRequest) Paging(paging int32) GridFiledistributionAPIGridfiledistributionGetRequest {
+func (r GridFiledistributionAPIListRequest) Paging(paging int32) GridFiledistributionAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridFiledistributionAPIGridfiledistributionGetRequest) PageId(pageId string) GridFiledistributionAPIGridfiledistributionGetRequest {
+func (r GridFiledistributionAPIListRequest) PageId(pageId string) GridFiledistributionAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridFiledistributionAPIGridfiledistributionGetRequest) Filters(filters map[string]interface{}) GridFiledistributionAPIGridfiledistributionGetRequest {
+func (r GridFiledistributionAPIListRequest) Filters(filters map[string]interface{}) GridFiledistributionAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridFiledistributionAPIGridfiledistributionGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridFiledistributionAPIGridfiledistributionGetRequest {
+func (r GridFiledistributionAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridFiledistributionAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridFiledistributionAPIGridfiledistributionGetRequest) Execute() (*ListGridFiledistributionResponse, *http.Response, error) {
-	return r.ApiService.GridfiledistributionGetExecute(r)
+func (r GridFiledistributionAPIListRequest) Execute() (*ListGridFiledistributionResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridfiledistributionGet Retrieve grid:filedistribution objects
+List Retrieve grid:filedistribution objects
 
 Returns a list of grid:filedistribution objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridFiledistributionAPIGridfiledistributionGetRequest
+	@return GridFiledistributionAPIListRequest
 */
-func (a *GridFiledistributionAPIService) GridfiledistributionGet(ctx context.Context) GridFiledistributionAPIGridfiledistributionGetRequest {
-	return GridFiledistributionAPIGridfiledistributionGetRequest{
+func (a *GridFiledistributionAPIService) List(ctx context.Context) GridFiledistributionAPIListRequest {
+	return GridFiledistributionAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GridFiledistributionAPIService) GridfiledistributionGet(ctx context.Con
 // Execute executes the request
 //
 //	@return ListGridFiledistributionResponse
-func (a *GridFiledistributionAPIService) GridfiledistributionGetExecute(r GridFiledistributionAPIGridfiledistributionGetRequest) (*ListGridFiledistributionResponse, *http.Response, error) {
+func (a *GridFiledistributionAPIService) ListExecute(r GridFiledistributionAPIListRequest) (*ListGridFiledistributionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GridFiledistributionAPIService) GridfiledistributionGetExecute(r GridFi
 		localVarReturnValue *ListGridFiledistributionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridFiledistributionAPIService.GridfiledistributionGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridFiledistributionAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *GridFiledistributionAPIService) GridfiledistributionGetExecute(r GridFi
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *GridFiledistributionAPIService) GridfiledistributionGetExecute(r GridFi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridFiledistributionAPIGridfiledistributionReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     GridFiledistributionAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type GridFiledistributionAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       GridFiledistributionAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r GridFiledistributionAPIGridfiledistributionReferenceGetRequest) ReturnFields(returnFields string) GridFiledistributionAPIGridfiledistributionReferenceGetRequest {
+func (r GridFiledistributionAPIReadRequest) ReturnFields(returnFields string) GridFiledistributionAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridFiledistributionAPIGridfiledistributionReferenceGetRequest) ReturnFields2(returnFields2 string) GridFiledistributionAPIGridfiledistributionReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridFiledistributionAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridFiledistributionAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridFiledistributionAPIGridfiledistributionReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridFiledistributionAPIGridfiledistributionReferenceGetRequest {
+func (r GridFiledistributionAPIReadRequest) ReturnAsObject(returnAsObject int32) GridFiledistributionAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridFiledistributionAPIGridfiledistributionReferenceGetRequest) Execute() (*GetGridFiledistributionResponse, *http.Response, error) {
-	return r.ApiService.GridfiledistributionReferenceGetExecute(r)
+func (r GridFiledistributionAPIReadRequest) Execute() (*GetGridFiledistributionResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridfiledistributionReferenceGet Get a specific grid:filedistribution object
+Read Get a specific grid:filedistribution object
 
 Returns a specific grid:filedistribution object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:filedistribution object
-	@return GridFiledistributionAPIGridfiledistributionReferenceGetRequest
+	@return GridFiledistributionAPIReadRequest
 */
-func (a *GridFiledistributionAPIService) GridfiledistributionReferenceGet(ctx context.Context, reference string) GridFiledistributionAPIGridfiledistributionReferenceGetRequest {
-	return GridFiledistributionAPIGridfiledistributionReferenceGetRequest{
+func (a *GridFiledistributionAPIService) Read(ctx context.Context, reference string) GridFiledistributionAPIReadRequest {
+	return GridFiledistributionAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GridFiledistributionAPIService) GridfiledistributionReferenceGet(ctx co
 // Execute executes the request
 //
 //	@return GetGridFiledistributionResponse
-func (a *GridFiledistributionAPIService) GridfiledistributionReferenceGetExecute(r GridFiledistributionAPIGridfiledistributionReferenceGetRequest) (*GetGridFiledistributionResponse, *http.Response, error) {
+func (a *GridFiledistributionAPIService) ReadExecute(r GridFiledistributionAPIReadRequest) (*GetGridFiledistributionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GridFiledistributionAPIService) GridfiledistributionReferenceGetExecute
 		localVarReturnValue *GetGridFiledistributionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridFiledistributionAPIService.GridfiledistributionReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridFiledistributionAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *GridFiledistributionAPIService) GridfiledistributionReferenceGetExecute
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *GridFiledistributionAPIService) GridfiledistributionReferenceGetExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridFiledistributionAPIGridfiledistributionReferencePutRequest struct {
+type GridFiledistributionAPIUpdateRequest struct {
 	ctx                  context.Context
 	ApiService           GridFiledistributionAPI
 	reference            string
 	gridFiledistribution *GridFiledistribution
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
 // Object data to update
-func (r GridFiledistributionAPIGridfiledistributionReferencePutRequest) GridFiledistribution(gridFiledistribution GridFiledistribution) GridFiledistributionAPIGridfiledistributionReferencePutRequest {
+func (r GridFiledistributionAPIUpdateRequest) GridFiledistribution(gridFiledistribution GridFiledistribution) GridFiledistributionAPIUpdateRequest {
 	r.gridFiledistribution = &gridFiledistribution
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridFiledistributionAPIGridfiledistributionReferencePutRequest) ReturnFields(returnFields string) GridFiledistributionAPIGridfiledistributionReferencePutRequest {
+func (r GridFiledistributionAPIUpdateRequest) ReturnFields(returnFields string) GridFiledistributionAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridFiledistributionAPIGridfiledistributionReferencePutRequest) ReturnFields2(returnFields2 string) GridFiledistributionAPIGridfiledistributionReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r GridFiledistributionAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridFiledistributionAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridFiledistributionAPIGridfiledistributionReferencePutRequest) ReturnAsObject(returnAsObject int32) GridFiledistributionAPIGridfiledistributionReferencePutRequest {
+func (r GridFiledistributionAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridFiledistributionAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridFiledistributionAPIGridfiledistributionReferencePutRequest) Execute() (*UpdateGridFiledistributionResponse, *http.Response, error) {
-	return r.ApiService.GridfiledistributionReferencePutExecute(r)
+func (r GridFiledistributionAPIUpdateRequest) Execute() (*UpdateGridFiledistributionResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GridfiledistributionReferencePut Update a grid:filedistribution object
+Update Update a grid:filedistribution object
 
 Updates a specific grid:filedistribution object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:filedistribution object
-	@return GridFiledistributionAPIGridfiledistributionReferencePutRequest
+	@return GridFiledistributionAPIUpdateRequest
 */
-func (a *GridFiledistributionAPIService) GridfiledistributionReferencePut(ctx context.Context, reference string) GridFiledistributionAPIGridfiledistributionReferencePutRequest {
-	return GridFiledistributionAPIGridfiledistributionReferencePutRequest{
+func (a *GridFiledistributionAPIService) Update(ctx context.Context, reference string) GridFiledistributionAPIUpdateRequest {
+	return GridFiledistributionAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GridFiledistributionAPIService) GridfiledistributionReferencePut(ctx co
 // Execute executes the request
 //
 //	@return UpdateGridFiledistributionResponse
-func (a *GridFiledistributionAPIService) GridfiledistributionReferencePutExecute(r GridFiledistributionAPIGridfiledistributionReferencePutRequest) (*UpdateGridFiledistributionResponse, *http.Response, error) {
+func (a *GridFiledistributionAPIService) UpdateExecute(r GridFiledistributionAPIUpdateRequest) (*UpdateGridFiledistributionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GridFiledistributionAPIService) GridfiledistributionReferencePutExecute
 		localVarReturnValue *UpdateGridFiledistributionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridFiledistributionAPIService.GridfiledistributionReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridFiledistributionAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *GridFiledistributionAPIService) GridfiledistributionReferencePutExecute
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

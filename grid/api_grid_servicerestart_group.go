@@ -23,150 +23,386 @@ import (
 
 type GridServicerestartGroupAPI interface {
 	/*
-		GridservicerestartgroupGet Retrieve grid:servicerestart:group objects
-
-		Returns a list of grid:servicerestart:group objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridServicerestartGroupAPIGridservicerestartgroupGetRequest
-	*/
-	GridservicerestartgroupGet(ctx context.Context) GridServicerestartGroupAPIGridservicerestartgroupGetRequest
-
-	// GridservicerestartgroupGetExecute executes the request
-	//  @return ListGridServicerestartGroupResponse
-	GridservicerestartgroupGetExecute(r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) (*ListGridServicerestartGroupResponse, *http.Response, error)
-	/*
-		GridservicerestartgroupPost Create a grid:servicerestart:group object
+		Create Create a grid:servicerestart:group object
 
 		Creates a new grid:servicerestart:group object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridServicerestartGroupAPIGridservicerestartgroupPostRequest
+		@return GridServicerestartGroupAPICreateRequest
 	*/
-	GridservicerestartgroupPost(ctx context.Context) GridServicerestartGroupAPIGridservicerestartgroupPostRequest
+	Create(ctx context.Context) GridServicerestartGroupAPICreateRequest
 
-	// GridservicerestartgroupPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateGridServicerestartGroupResponse
-	GridservicerestartgroupPostExecute(r GridServicerestartGroupAPIGridservicerestartgroupPostRequest) (*CreateGridServicerestartGroupResponse, *http.Response, error)
+	CreateExecute(r GridServicerestartGroupAPICreateRequest) (*CreateGridServicerestartGroupResponse, *http.Response, error)
 	/*
-		GridservicerestartgroupReferenceDelete Delete a grid:servicerestart:group object
+		Delete Delete a grid:servicerestart:group object
 
 		Deletes a specific grid:servicerestart:group object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:servicerestart:group object
-		@return GridServicerestartGroupAPIGridservicerestartgroupReferenceDeleteRequest
+		@return GridServicerestartGroupAPIDeleteRequest
 	*/
-	GridservicerestartgroupReferenceDelete(ctx context.Context, reference string) GridServicerestartGroupAPIGridservicerestartgroupReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) GridServicerestartGroupAPIDeleteRequest
 
-	// GridservicerestartgroupReferenceDeleteExecute executes the request
-	GridservicerestartgroupReferenceDeleteExecute(r GridServicerestartGroupAPIGridservicerestartgroupReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r GridServicerestartGroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		GridservicerestartgroupReferenceGet Get a specific grid:servicerestart:group object
+		List Retrieve grid:servicerestart:group objects
+
+		Returns a list of grid:servicerestart:group objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return GridServicerestartGroupAPIListRequest
+	*/
+	List(ctx context.Context) GridServicerestartGroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListGridServicerestartGroupResponse
+	ListExecute(r GridServicerestartGroupAPIListRequest) (*ListGridServicerestartGroupResponse, *http.Response, error)
+	/*
+		Read Get a specific grid:servicerestart:group object
 
 		Returns a specific grid:servicerestart:group object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:servicerestart:group object
-		@return GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest
+		@return GridServicerestartGroupAPIReadRequest
 	*/
-	GridservicerestartgroupReferenceGet(ctx context.Context, reference string) GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest
+	Read(ctx context.Context, reference string) GridServicerestartGroupAPIReadRequest
 
-	// GridservicerestartgroupReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridServicerestartGroupResponse
-	GridservicerestartgroupReferenceGetExecute(r GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest) (*GetGridServicerestartGroupResponse, *http.Response, error)
+	ReadExecute(r GridServicerestartGroupAPIReadRequest) (*GetGridServicerestartGroupResponse, *http.Response, error)
 	/*
-		GridservicerestartgroupReferencePut Update a grid:servicerestart:group object
+		Update Update a grid:servicerestart:group object
 
 		Updates a specific grid:servicerestart:group object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:servicerestart:group object
-		@return GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest
+		@return GridServicerestartGroupAPIUpdateRequest
 	*/
-	GridservicerestartgroupReferencePut(ctx context.Context, reference string) GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest
+	Update(ctx context.Context, reference string) GridServicerestartGroupAPIUpdateRequest
 
-	// GridservicerestartgroupReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridServicerestartGroupResponse
-	GridservicerestartgroupReferencePutExecute(r GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest) (*UpdateGridServicerestartGroupResponse, *http.Response, error)
+	UpdateExecute(r GridServicerestartGroupAPIUpdateRequest) (*UpdateGridServicerestartGroupResponse, *http.Response, error)
 }
 
 // GridServicerestartGroupAPIService GridServicerestartGroupAPI service
 type GridServicerestartGroupAPIService internal.Service
 
-type GridServicerestartGroupAPIGridservicerestartgroupGetRequest struct {
-	ctx            context.Context
-	ApiService     GridServicerestartGroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type GridServicerestartGroupAPICreateRequest struct {
+	ctx                     context.Context
+	ApiService              GridServicerestartGroupAPI
+	gridServicerestartGroup *GridServicerestartGroup
+	returnFields            *string
+	returnFieldsPlus        *string
+	returnAsObject          *int32
+}
+
+// Object data to create
+func (r GridServicerestartGroupAPICreateRequest) GridServicerestartGroup(gridServicerestartGroup GridServicerestartGroup) GridServicerestartGroupAPICreateRequest {
+	r.gridServicerestartGroup = &gridServicerestartGroup
+	return r
 }
 
 // Enter the field names followed by comma
-func (r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) ReturnFields(returnFields string) GridServicerestartGroupAPIGridservicerestartgroupGetRequest {
+func (r GridServicerestartGroupAPICreateRequest) ReturnFields(returnFields string) GridServicerestartGroupAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) ReturnFields2(returnFields2 string) GridServicerestartGroupAPIGridservicerestartgroupGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridServicerestartGroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridServicerestartGroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r GridServicerestartGroupAPICreateRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r GridServicerestartGroupAPICreateRequest) Execute() (*CreateGridServicerestartGroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a grid:servicerestart:group object
+
+Creates a new grid:servicerestart:group object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return GridServicerestartGroupAPICreateRequest
+*/
+func (a *GridServicerestartGroupAPIService) Create(ctx context.Context) GridServicerestartGroupAPICreateRequest {
+	return GridServicerestartGroupAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateGridServicerestartGroupResponse
+func (a *GridServicerestartGroupAPIService) CreateExecute(r GridServicerestartGroupAPICreateRequest) (*CreateGridServicerestartGroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateGridServicerestartGroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/grid:servicerestart:group"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.gridServicerestartGroup == nil {
+		return localVarReturnValue, nil, internal.ReportError("gridServicerestartGroup is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.gridServicerestartGroup != nil {
+		if r.gridServicerestartGroup.Extattrs == nil {
+			r.gridServicerestartGroup.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.gridServicerestartGroup.Extattrs)[k]; !ok {
+				(*r.gridServicerestartGroup.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.gridServicerestartGroup
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GridServicerestartGroupAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService GridServicerestartGroupAPI
+	reference  string
+}
+
+func (r GridServicerestartGroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a grid:servicerestart:group object
+
+Deletes a specific grid:servicerestart:group object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the grid:servicerestart:group object
+	@return GridServicerestartGroupAPIDeleteRequest
+*/
+func (a *GridServicerestartGroupAPIService) Delete(ctx context.Context, reference string) GridServicerestartGroupAPIDeleteRequest {
+	return GridServicerestartGroupAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *GridServicerestartGroupAPIService) DeleteExecute(r GridServicerestartGroupAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/grid:servicerestart:group/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type GridServicerestartGroupAPIListRequest struct {
+	ctx              context.Context
+	ApiService       GridServicerestartGroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r GridServicerestartGroupAPIListRequest) ReturnFields(returnFields string) GridServicerestartGroupAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r GridServicerestartGroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridServicerestartGroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) MaxResults(maxResults int32) GridServicerestartGroupAPIGridservicerestartgroupGetRequest {
+func (r GridServicerestartGroupAPIListRequest) MaxResults(maxResults int32) GridServicerestartGroupAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupAPIGridservicerestartgroupGetRequest {
+func (r GridServicerestartGroupAPIListRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) Paging(paging int32) GridServicerestartGroupAPIGridservicerestartgroupGetRequest {
+func (r GridServicerestartGroupAPIListRequest) Paging(paging int32) GridServicerestartGroupAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) PageId(pageId string) GridServicerestartGroupAPIGridservicerestartgroupGetRequest {
+func (r GridServicerestartGroupAPIListRequest) PageId(pageId string) GridServicerestartGroupAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) Filters(filters map[string]interface{}) GridServicerestartGroupAPIGridservicerestartgroupGetRequest {
+func (r GridServicerestartGroupAPIListRequest) Filters(filters map[string]interface{}) GridServicerestartGroupAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridServicerestartGroupAPIGridservicerestartgroupGetRequest {
+func (r GridServicerestartGroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridServicerestartGroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) Execute() (*ListGridServicerestartGroupResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartgroupGetExecute(r)
+func (r GridServicerestartGroupAPIListRequest) Execute() (*ListGridServicerestartGroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridservicerestartgroupGet Retrieve grid:servicerestart:group objects
+List Retrieve grid:servicerestart:group objects
 
 Returns a list of grid:servicerestart:group objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridServicerestartGroupAPIGridservicerestartgroupGetRequest
+	@return GridServicerestartGroupAPIListRequest
 */
-func (a *GridServicerestartGroupAPIService) GridservicerestartgroupGet(ctx context.Context) GridServicerestartGroupAPIGridservicerestartgroupGetRequest {
-	return GridServicerestartGroupAPIGridservicerestartgroupGetRequest{
+func (a *GridServicerestartGroupAPIService) List(ctx context.Context) GridServicerestartGroupAPIListRequest {
+	return GridServicerestartGroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupGet(ctx conte
 // Execute executes the request
 //
 //	@return ListGridServicerestartGroupResponse
-func (a *GridServicerestartGroupAPIService) GridservicerestartgroupGetExecute(r GridServicerestartGroupAPIGridservicerestartgroupGetRequest) (*ListGridServicerestartGroupResponse, *http.Response, error) {
+func (a *GridServicerestartGroupAPIService) ListExecute(r GridServicerestartGroupAPIListRequest) (*ListGridServicerestartGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupGetExecute(r 
 		localVarReturnValue *ListGridServicerestartGroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupAPIService.GridservicerestartgroupGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupGetExecute(r 
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupGetExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridServicerestartGroupAPIGridservicerestartgroupPostRequest struct {
-	ctx                     context.Context
-	ApiService              GridServicerestartGroupAPI
-	gridServicerestartGroup *GridServicerestartGroup
-	returnFields            *string
-	returnFields2           *string
-	returnAsObject          *int32
-}
-
-// Object data to create
-func (r GridServicerestartGroupAPIGridservicerestartgroupPostRequest) GridServicerestartGroup(gridServicerestartGroup GridServicerestartGroup) GridServicerestartGroupAPIGridservicerestartgroupPostRequest {
-	r.gridServicerestartGroup = &gridServicerestartGroup
-	return r
+type GridServicerestartGroupAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       GridServicerestartGroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r GridServicerestartGroupAPIGridservicerestartgroupPostRequest) ReturnFields(returnFields string) GridServicerestartGroupAPIGridservicerestartgroupPostRequest {
+func (r GridServicerestartGroupAPIReadRequest) ReturnFields(returnFields string) GridServicerestartGroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartGroupAPIGridservicerestartgroupPostRequest) ReturnFields2(returnFields2 string) GridServicerestartGroupAPIGridservicerestartgroupPostRequest {
-	r.returnFields2 = &returnFields2
+func (r GridServicerestartGroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridServicerestartGroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridServicerestartGroupAPIGridservicerestartgroupPostRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupAPIGridservicerestartgroupPostRequest {
+func (r GridServicerestartGroupAPIReadRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridServicerestartGroupAPIGridservicerestartgroupPostRequest) Execute() (*CreateGridServicerestartGroupResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartgroupPostExecute(r)
+func (r GridServicerestartGroupAPIReadRequest) Execute() (*GetGridServicerestartGroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridservicerestartgroupPost Create a grid:servicerestart:group object
-
-Creates a new grid:servicerestart:group object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridServicerestartGroupAPIGridservicerestartgroupPostRequest
-*/
-func (a *GridServicerestartGroupAPIService) GridservicerestartgroupPost(ctx context.Context) GridServicerestartGroupAPIGridservicerestartgroupPostRequest {
-	return GridServicerestartGroupAPIGridservicerestartgroupPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateGridServicerestartGroupResponse
-func (a *GridServicerestartGroupAPIService) GridservicerestartgroupPostExecute(r GridServicerestartGroupAPIGridservicerestartgroupPostRequest) (*CreateGridServicerestartGroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateGridServicerestartGroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupAPIService.GridservicerestartgroupPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/grid:servicerestart:group"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.gridServicerestartGroup == nil {
-		return localVarReturnValue, nil, internal.ReportError("gridServicerestartGroup is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.gridServicerestartGroup != nil {
-		if r.gridServicerestartGroup.Extattrs == nil {
-			r.gridServicerestartGroup.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.gridServicerestartGroup.Extattrs)[k]; !ok {
-				(*r.gridServicerestartGroup.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.gridServicerestartGroup
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GridServicerestartGroupAPIGridservicerestartgroupReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService GridServicerestartGroupAPI
-	reference  string
-}
-
-func (r GridServicerestartGroupAPIGridservicerestartgroupReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.GridservicerestartgroupReferenceDeleteExecute(r)
-}
-
-/*
-GridservicerestartgroupReferenceDelete Delete a grid:servicerestart:group object
-
-Deletes a specific grid:servicerestart:group object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the grid:servicerestart:group object
-	@return GridServicerestartGroupAPIGridservicerestartgroupReferenceDeleteRequest
-*/
-func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferenceDelete(ctx context.Context, reference string) GridServicerestartGroupAPIGridservicerestartgroupReferenceDeleteRequest {
-	return GridServicerestartGroupAPIGridservicerestartgroupReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferenceDeleteExecute(r GridServicerestartGroupAPIGridservicerestartgroupReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupAPIService.GridservicerestartgroupReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/grid:servicerestart:group/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     GridServicerestartGroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest) ReturnFields(returnFields string) GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest) ReturnFields2(returnFields2 string) GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest) Execute() (*GetGridServicerestartGroupResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartgroupReferenceGetExecute(r)
-}
-
-/*
-GridservicerestartgroupReferenceGet Get a specific grid:servicerestart:group object
+Read Get a specific grid:servicerestart:group object
 
 Returns a specific grid:servicerestart:group object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:servicerestart:group object
-	@return GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest
+	@return GridServicerestartGroupAPIReadRequest
 */
-func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferenceGet(ctx context.Context, reference string) GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest {
-	return GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest{
+func (a *GridServicerestartGroupAPIService) Read(ctx context.Context, reference string) GridServicerestartGroupAPIReadRequest {
+	return GridServicerestartGroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferenceGet(
 // Execute executes the request
 //
 //	@return GetGridServicerestartGroupResponse
-func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferenceGetExecute(r GridServicerestartGroupAPIGridservicerestartgroupReferenceGetRequest) (*GetGridServicerestartGroupResponse, *http.Response, error) {
+func (a *GridServicerestartGroupAPIService) ReadExecute(r GridServicerestartGroupAPIReadRequest) (*GetGridServicerestartGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferenceGetE
 		localVarReturnValue *GetGridServicerestartGroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupAPIService.GridservicerestartgroupReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferenceGetE
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferenceGetE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest struct {
+type GridServicerestartGroupAPIUpdateRequest struct {
 	ctx                     context.Context
 	ApiService              GridServicerestartGroupAPI
 	reference               string
 	gridServicerestartGroup *GridServicerestartGroup
 	returnFields            *string
-	returnFields2           *string
+	returnFieldsPlus        *string
 	returnAsObject          *int32
 }
 
 // Object data to update
-func (r GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest) GridServicerestartGroup(gridServicerestartGroup GridServicerestartGroup) GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest {
+func (r GridServicerestartGroupAPIUpdateRequest) GridServicerestartGroup(gridServicerestartGroup GridServicerestartGroup) GridServicerestartGroupAPIUpdateRequest {
 	r.gridServicerestartGroup = &gridServicerestartGroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest) ReturnFields(returnFields string) GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest {
+func (r GridServicerestartGroupAPIUpdateRequest) ReturnFields(returnFields string) GridServicerestartGroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest) ReturnFields2(returnFields2 string) GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r GridServicerestartGroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridServicerestartGroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest {
+func (r GridServicerestartGroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest) Execute() (*UpdateGridServicerestartGroupResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartgroupReferencePutExecute(r)
+func (r GridServicerestartGroupAPIUpdateRequest) Execute() (*UpdateGridServicerestartGroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GridservicerestartgroupReferencePut Update a grid:servicerestart:group object
+Update Update a grid:servicerestart:group object
 
 Updates a specific grid:servicerestart:group object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:servicerestart:group object
-	@return GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest
+	@return GridServicerestartGroupAPIUpdateRequest
 */
-func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferencePut(ctx context.Context, reference string) GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest {
-	return GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest{
+func (a *GridServicerestartGroupAPIService) Update(ctx context.Context, reference string) GridServicerestartGroupAPIUpdateRequest {
+	return GridServicerestartGroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferencePut(
 // Execute executes the request
 //
 //	@return UpdateGridServicerestartGroupResponse
-func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferencePutExecute(r GridServicerestartGroupAPIGridservicerestartgroupReferencePutRequest) (*UpdateGridServicerestartGroupResponse, *http.Response, error) {
+func (a *GridServicerestartGroupAPIService) UpdateExecute(r GridServicerestartGroupAPIUpdateRequest) (*UpdateGridServicerestartGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferencePutE
 		localVarReturnValue *UpdateGridServicerestartGroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupAPIService.GridservicerestartgroupReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *GridServicerestartGroupAPIService) GridservicerestartgroupReferencePutE
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

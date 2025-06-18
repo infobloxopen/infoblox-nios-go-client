@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](SuperhostchildAPI.md#Get) | **Get** /superhostchild | Retrieve superhostchild objects
-[**ReferenceGet**](SuperhostchildAPI.md#ReferenceGet) | **Get** /superhostchild/{reference} | Get a specific superhostchild object
+[**List**](SuperhostchildAPI.md#List) | **Get** /superhostchild | Retrieve superhostchild objects
+[**Read**](SuperhostchildAPI.md#Read) | **Get** /superhostchild/{reference} | Get a specific superhostchild object
 
 
 
-## Get
+## List
 
-> ListSuperhostchildResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListSuperhostchildResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve superhostchild objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.SuperhostchildAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.SuperhostchildAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SuperhostchildAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SuperhostchildAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListSuperhostchildResponse
-	fmt.Fprintf(os.Stdout, "Response from `SuperhostchildAPI.Get`: %v\n", resp)
+	// response from `List`: ListSuperhostchildResponse
+	fmt.Fprintf(os.Stdout, "Response from `SuperhostchildAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SuperhostchildAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SuperhostchildAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetSuperhostchildResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetSuperhostchildResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific superhostchild object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the superhostchild object
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.SuperhostchildAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.SuperhostchildAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SuperhostchildAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SuperhostchildAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetSuperhostchildResponse
-	fmt.Fprintf(os.Stdout, "Response from `SuperhostchildAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetSuperhostchildResponse
+	fmt.Fprintf(os.Stdout, "Response from `SuperhostchildAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SuperhostchildAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SuperhostchildAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

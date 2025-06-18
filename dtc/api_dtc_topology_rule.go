@@ -23,124 +23,124 @@ import (
 
 type DtcTopologyRuleAPI interface {
 	/*
-		DtctopologyruleGet Retrieve dtc:topology:rule objects
+		List Retrieve dtc:topology:rule objects
 
 		Returns a list of dtc:topology:rule objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcTopologyRuleAPIDtctopologyruleGetRequest
+		@return DtcTopologyRuleAPIListRequest
 	*/
-	DtctopologyruleGet(ctx context.Context) DtcTopologyRuleAPIDtctopologyruleGetRequest
+	List(ctx context.Context) DtcTopologyRuleAPIListRequest
 
-	// DtctopologyruleGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDtcTopologyRuleResponse
-	DtctopologyruleGetExecute(r DtcTopologyRuleAPIDtctopologyruleGetRequest) (*ListDtcTopologyRuleResponse, *http.Response, error)
+	ListExecute(r DtcTopologyRuleAPIListRequest) (*ListDtcTopologyRuleResponse, *http.Response, error)
 	/*
-		DtctopologyruleReferenceGet Get a specific dtc:topology:rule object
+		Read Get a specific dtc:topology:rule object
 
 		Returns a specific dtc:topology:rule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:topology:rule object
-		@return DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest
+		@return DtcTopologyRuleAPIReadRequest
 	*/
-	DtctopologyruleReferenceGet(ctx context.Context, reference string) DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcTopologyRuleAPIReadRequest
 
-	// DtctopologyruleReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcTopologyRuleResponse
-	DtctopologyruleReferenceGetExecute(r DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest) (*GetDtcTopologyRuleResponse, *http.Response, error)
+	ReadExecute(r DtcTopologyRuleAPIReadRequest) (*GetDtcTopologyRuleResponse, *http.Response, error)
 	/*
-		DtctopologyruleReferencePut Update a dtc:topology:rule object
+		Update Update a dtc:topology:rule object
 
 		Updates a specific dtc:topology:rule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:topology:rule object
-		@return DtcTopologyRuleAPIDtctopologyruleReferencePutRequest
+		@return DtcTopologyRuleAPIUpdateRequest
 	*/
-	DtctopologyruleReferencePut(ctx context.Context, reference string) DtcTopologyRuleAPIDtctopologyruleReferencePutRequest
+	Update(ctx context.Context, reference string) DtcTopologyRuleAPIUpdateRequest
 
-	// DtctopologyruleReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcTopologyRuleResponse
-	DtctopologyruleReferencePutExecute(r DtcTopologyRuleAPIDtctopologyruleReferencePutRequest) (*UpdateDtcTopologyRuleResponse, *http.Response, error)
+	UpdateExecute(r DtcTopologyRuleAPIUpdateRequest) (*UpdateDtcTopologyRuleResponse, *http.Response, error)
 }
 
 // DtcTopologyRuleAPIService DtcTopologyRuleAPI service
 type DtcTopologyRuleAPIService internal.Service
 
-type DtcTopologyRuleAPIDtctopologyruleGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcTopologyRuleAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DtcTopologyRuleAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DtcTopologyRuleAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r DtcTopologyRuleAPIDtctopologyruleGetRequest) ReturnFields(returnFields string) DtcTopologyRuleAPIDtctopologyruleGetRequest {
+func (r DtcTopologyRuleAPIListRequest) ReturnFields(returnFields string) DtcTopologyRuleAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyRuleAPIDtctopologyruleGetRequest) ReturnFields2(returnFields2 string) DtcTopologyRuleAPIDtctopologyruleGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcTopologyRuleAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcTopologyRuleAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DtcTopologyRuleAPIDtctopologyruleGetRequest) MaxResults(maxResults int32) DtcTopologyRuleAPIDtctopologyruleGetRequest {
+func (r DtcTopologyRuleAPIListRequest) MaxResults(maxResults int32) DtcTopologyRuleAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcTopologyRuleAPIDtctopologyruleGetRequest) ReturnAsObject(returnAsObject int32) DtcTopologyRuleAPIDtctopologyruleGetRequest {
+func (r DtcTopologyRuleAPIListRequest) ReturnAsObject(returnAsObject int32) DtcTopologyRuleAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DtcTopologyRuleAPIDtctopologyruleGetRequest) Paging(paging int32) DtcTopologyRuleAPIDtctopologyruleGetRequest {
+func (r DtcTopologyRuleAPIListRequest) Paging(paging int32) DtcTopologyRuleAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DtcTopologyRuleAPIDtctopologyruleGetRequest) PageId(pageId string) DtcTopologyRuleAPIDtctopologyruleGetRequest {
+func (r DtcTopologyRuleAPIListRequest) PageId(pageId string) DtcTopologyRuleAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DtcTopologyRuleAPIDtctopologyruleGetRequest) Filters(filters map[string]interface{}) DtcTopologyRuleAPIDtctopologyruleGetRequest {
+func (r DtcTopologyRuleAPIListRequest) Filters(filters map[string]interface{}) DtcTopologyRuleAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DtcTopologyRuleAPIDtctopologyruleGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcTopologyRuleAPIDtctopologyruleGetRequest {
+func (r DtcTopologyRuleAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcTopologyRuleAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DtcTopologyRuleAPIDtctopologyruleGetRequest) Execute() (*ListDtcTopologyRuleResponse, *http.Response, error) {
-	return r.ApiService.DtctopologyruleGetExecute(r)
+func (r DtcTopologyRuleAPIListRequest) Execute() (*ListDtcTopologyRuleResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DtctopologyruleGet Retrieve dtc:topology:rule objects
+List Retrieve dtc:topology:rule objects
 
 Returns a list of dtc:topology:rule objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcTopologyRuleAPIDtctopologyruleGetRequest
+	@return DtcTopologyRuleAPIListRequest
 */
-func (a *DtcTopologyRuleAPIService) DtctopologyruleGet(ctx context.Context) DtcTopologyRuleAPIDtctopologyruleGetRequest {
-	return DtcTopologyRuleAPIDtctopologyruleGetRequest{
+func (a *DtcTopologyRuleAPIService) List(ctx context.Context) DtcTopologyRuleAPIListRequest {
+	return DtcTopologyRuleAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleGet(ctx context.Context) DtcT
 // Execute executes the request
 //
 //	@return ListDtcTopologyRuleResponse
-func (a *DtcTopologyRuleAPIService) DtctopologyruleGetExecute(r DtcTopologyRuleAPIDtctopologyruleGetRequest) (*ListDtcTopologyRuleResponse, *http.Response, error) {
+func (a *DtcTopologyRuleAPIService) ListExecute(r DtcTopologyRuleAPIListRequest) (*ListDtcTopologyRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleGetExecute(r DtcTopologyRuleA
 		localVarReturnValue *ListDtcTopologyRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyRuleAPIService.DtctopologyruleGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyRuleAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleGetExecute(r DtcTopologyRuleA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleGetExecute(r DtcTopologyRuleA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcTopologyRuleAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DtcTopologyRuleAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DtcTopologyRuleAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest) ReturnFields(returnFields string) DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest {
+func (r DtcTopologyRuleAPIReadRequest) ReturnFields(returnFields string) DtcTopologyRuleAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest) ReturnFields2(returnFields2 string) DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcTopologyRuleAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcTopologyRuleAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest {
+func (r DtcTopologyRuleAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcTopologyRuleAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest) Execute() (*GetDtcTopologyRuleResponse, *http.Response, error) {
-	return r.ApiService.DtctopologyruleReferenceGetExecute(r)
+func (r DtcTopologyRuleAPIReadRequest) Execute() (*GetDtcTopologyRuleResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtctopologyruleReferenceGet Get a specific dtc:topology:rule object
+Read Get a specific dtc:topology:rule object
 
 Returns a specific dtc:topology:rule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:topology:rule object
-	@return DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest
+	@return DtcTopologyRuleAPIReadRequest
 */
-func (a *DtcTopologyRuleAPIService) DtctopologyruleReferenceGet(ctx context.Context, reference string) DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest {
-	return DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest{
+func (a *DtcTopologyRuleAPIService) Read(ctx context.Context, reference string) DtcTopologyRuleAPIReadRequest {
+	return DtcTopologyRuleAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleReferenceGet(ctx context.Cont
 // Execute executes the request
 //
 //	@return GetDtcTopologyRuleResponse
-func (a *DtcTopologyRuleAPIService) DtctopologyruleReferenceGetExecute(r DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest) (*GetDtcTopologyRuleResponse, *http.Response, error) {
+func (a *DtcTopologyRuleAPIService) ReadExecute(r DtcTopologyRuleAPIReadRequest) (*GetDtcTopologyRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleReferenceGetExecute(r DtcTopo
 		localVarReturnValue *GetDtcTopologyRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyRuleAPIService.DtctopologyruleReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyRuleAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleReferenceGetExecute(r DtcTopo
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleReferenceGetExecute(r DtcTopo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcTopologyRuleAPIDtctopologyruleReferencePutRequest struct {
-	ctx             context.Context
-	ApiService      DtcTopologyRuleAPI
-	reference       string
-	dtcTopologyRule *DtcTopologyRule
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+type DtcTopologyRuleAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       DtcTopologyRuleAPI
+	reference        string
+	dtcTopologyRule  *DtcTopologyRule
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r DtcTopologyRuleAPIDtctopologyruleReferencePutRequest) DtcTopologyRule(dtcTopologyRule DtcTopologyRule) DtcTopologyRuleAPIDtctopologyruleReferencePutRequest {
+func (r DtcTopologyRuleAPIUpdateRequest) DtcTopologyRule(dtcTopologyRule DtcTopologyRule) DtcTopologyRuleAPIUpdateRequest {
 	r.dtcTopologyRule = &dtcTopologyRule
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcTopologyRuleAPIDtctopologyruleReferencePutRequest) ReturnFields(returnFields string) DtcTopologyRuleAPIDtctopologyruleReferencePutRequest {
+func (r DtcTopologyRuleAPIUpdateRequest) ReturnFields(returnFields string) DtcTopologyRuleAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyRuleAPIDtctopologyruleReferencePutRequest) ReturnFields2(returnFields2 string) DtcTopologyRuleAPIDtctopologyruleReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcTopologyRuleAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcTopologyRuleAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcTopologyRuleAPIDtctopologyruleReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcTopologyRuleAPIDtctopologyruleReferencePutRequest {
+func (r DtcTopologyRuleAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcTopologyRuleAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcTopologyRuleAPIDtctopologyruleReferencePutRequest) Execute() (*UpdateDtcTopologyRuleResponse, *http.Response, error) {
-	return r.ApiService.DtctopologyruleReferencePutExecute(r)
+func (r DtcTopologyRuleAPIUpdateRequest) Execute() (*UpdateDtcTopologyRuleResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtctopologyruleReferencePut Update a dtc:topology:rule object
+Update Update a dtc:topology:rule object
 
 Updates a specific dtc:topology:rule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:topology:rule object
-	@return DtcTopologyRuleAPIDtctopologyruleReferencePutRequest
+	@return DtcTopologyRuleAPIUpdateRequest
 */
-func (a *DtcTopologyRuleAPIService) DtctopologyruleReferencePut(ctx context.Context, reference string) DtcTopologyRuleAPIDtctopologyruleReferencePutRequest {
-	return DtcTopologyRuleAPIDtctopologyruleReferencePutRequest{
+func (a *DtcTopologyRuleAPIService) Update(ctx context.Context, reference string) DtcTopologyRuleAPIUpdateRequest {
+	return DtcTopologyRuleAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleReferencePut(ctx context.Cont
 // Execute executes the request
 //
 //	@return UpdateDtcTopologyRuleResponse
-func (a *DtcTopologyRuleAPIService) DtctopologyruleReferencePutExecute(r DtcTopologyRuleAPIDtctopologyruleReferencePutRequest) (*UpdateDtcTopologyRuleResponse, *http.Response, error) {
+func (a *DtcTopologyRuleAPIService) UpdateExecute(r DtcTopologyRuleAPIUpdateRequest) (*UpdateDtcTopologyRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleReferencePutExecute(r DtcTopo
 		localVarReturnValue *UpdateDtcTopologyRuleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyRuleAPIService.DtctopologyruleReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyRuleAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *DtcTopologyRuleAPIService) DtctopologyruleReferencePutExecute(r DtcTopo
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

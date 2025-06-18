@@ -23,11 +23,11 @@ func TestRecordRpzMxAPIService(t *testing.T) {
 
 	apiClient := rpz.NewAPIClient()
 
-	t.Run("Test RecordRpzMxAPIService RecordrpzmxGet", func(t *testing.T) {
+	t.Run("Test RecordRpzMxAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordRpzMxAPI.RecordrpzmxGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordRpzMxAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRecordRpzMxAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordRpzMxAPIService RecordrpzmxPost", func(t *testing.T) {
+	t.Run("Test RecordRpzMxAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordRpzMxAPI.RecordrpzmxPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RecordRpzMxAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RecordRpzMxAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RecordRpzMxAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRecordRpzMxAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordRpzMxAPIService RecordrpzmxReferenceDelete", func(t *testing.T) {
+	t.Run("Test RecordRpzMxAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RecordRpzMxAPI.RecordrpzmxReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RecordRpzMxAPIService RecordrpzmxReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RecordRpzMxAPI.RecordrpzmxReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordRpzMxAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRecordRpzMxAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordRpzMxAPIService RecordrpzmxReferencePut", func(t *testing.T) {
+	t.Run("Test RecordRpzMxAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordRpzMxAPI.RecordrpzmxReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordRpzMxAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

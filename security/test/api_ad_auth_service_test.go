@@ -23,11 +23,11 @@ func TestAdAuthServiceAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test AdAuthServiceAPIService Get", func(t *testing.T) {
+	t.Run("Test AdAuthServiceAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AdAuthServiceAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdAuthServiceAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestAdAuthServiceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdAuthServiceAPIService Post", func(t *testing.T) {
+	t.Run("Test AdAuthServiceAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AdAuthServiceAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.AdAuthServiceAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdAuthServiceAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AdAuthServiceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestAdAuthServiceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdAuthServiceAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test AdAuthServiceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.AdAuthServiceAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AdAuthServiceAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.AdAuthServiceAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AdAuthServiceAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestAdAuthServiceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdAuthServiceAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test AdAuthServiceAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.AdAuthServiceAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AdAuthServiceAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

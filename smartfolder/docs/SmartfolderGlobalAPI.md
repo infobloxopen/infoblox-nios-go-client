@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SmartfolderglobalGet**](SmartfolderGlobalAPI.md#SmartfolderglobalGet) | **Get** /smartfolder:global | Retrieve smartfolder:global objects
-[**SmartfolderglobalPost**](SmartfolderGlobalAPI.md#SmartfolderglobalPost) | **Post** /smartfolder:global | Create a smartfolder:global object
-[**SmartfolderglobalReferenceDelete**](SmartfolderGlobalAPI.md#SmartfolderglobalReferenceDelete) | **Delete** /smartfolder:global/{reference} | Delete a smartfolder:global object
-[**SmartfolderglobalReferenceGet**](SmartfolderGlobalAPI.md#SmartfolderglobalReferenceGet) | **Get** /smartfolder:global/{reference} | Get a specific smartfolder:global object
-[**SmartfolderglobalReferencePut**](SmartfolderGlobalAPI.md#SmartfolderglobalReferencePut) | **Put** /smartfolder:global/{reference} | Update a smartfolder:global object
+[**Create**](SmartfolderGlobalAPI.md#Create) | **Post** /smartfolder:global | Create a smartfolder:global object
+[**Delete**](SmartfolderGlobalAPI.md#Delete) | **Delete** /smartfolder:global/{reference} | Delete a smartfolder:global object
+[**List**](SmartfolderGlobalAPI.md#List) | **Get** /smartfolder:global | Retrieve smartfolder:global objects
+[**Read**](SmartfolderGlobalAPI.md#Read) | **Get** /smartfolder:global/{reference} | Get a specific smartfolder:global object
+[**Update**](SmartfolderGlobalAPI.md#Update) | **Put** /smartfolder:global/{reference} | Update a smartfolder:global object
 
 
 
-## SmartfolderglobalGet
+## Create
 
-> ListSmartfolderGlobalResponse SmartfolderglobalGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateSmartfolderGlobalResponse Create(ctx).SmartfolderGlobal(smartfolderGlobal).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a smartfolder:global object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/smartfolder"
+)
+
+func main() {
+	smartfolderGlobal := *smartfolder.NewSmartfolderGlobal() // SmartfolderGlobal | Object data to create
+
+	apiClient := smartfolder.NewAPIClient()
+	resp, r, err := apiClient.SmartfolderGlobalAPI.Create(context.Background()).SmartfolderGlobal(smartfolderGlobal).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderGlobalAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateSmartfolderGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `SmartfolderGlobalAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SmartfolderGlobalAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**smartfolderGlobal** | [**SmartfolderGlobal**](SmartfolderGlobal.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateSmartfolderGlobalResponse**](CreateSmartfolderGlobalResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a smartfolder:global object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/smartfolder"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the smartfolder:global object
+
+	apiClient := smartfolder.NewAPIClient()
+	r, err := apiClient.SmartfolderGlobalAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderGlobalAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the smartfolder:global object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SmartfolderGlobalAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListSmartfolderGlobalResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve smartfolder:global objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := smartfolder.NewAPIClient()
-	resp, r, err := apiClient.SmartfolderGlobalAPI.SmartfolderglobalGet(context.Background()).Execute()
+	resp, r, err := apiClient.SmartfolderGlobalAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderGlobalAPI.SmartfolderglobalGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderGlobalAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SmartfolderglobalGet`: ListSmartfolderGlobalResponse
-	fmt.Fprintf(os.Stdout, "Response from `SmartfolderGlobalAPI.SmartfolderglobalGet`: %v\n", resp)
+	// response from `List`: ListSmartfolderGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `SmartfolderGlobalAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SmartfolderGlobalAPISmartfolderglobalGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SmartfolderGlobalAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SmartfolderglobalPost
+## Read
 
-> CreateSmartfolderGlobalResponse SmartfolderglobalPost(ctx).SmartfolderGlobal(smartfolderGlobal).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a smartfolder:global object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/smartfolder"
-)
-
-func main() {
-	smartfolderGlobal := *smartfolder.NewSmartfolderGlobal() // SmartfolderGlobal | Object data to create
-
-	apiClient := smartfolder.NewAPIClient()
-	resp, r, err := apiClient.SmartfolderGlobalAPI.SmartfolderglobalPost(context.Background()).SmartfolderGlobal(smartfolderGlobal).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderGlobalAPI.SmartfolderglobalPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SmartfolderglobalPost`: CreateSmartfolderGlobalResponse
-	fmt.Fprintf(os.Stdout, "Response from `SmartfolderGlobalAPI.SmartfolderglobalPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SmartfolderGlobalAPISmartfolderglobalPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**smartfolderGlobal** | [**SmartfolderGlobal**](SmartfolderGlobal.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateSmartfolderGlobalResponse**](CreateSmartfolderGlobalResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SmartfolderglobalReferenceDelete
-
-> SmartfolderglobalReferenceDelete(ctx, reference).Execute()
-
-Delete a smartfolder:global object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/smartfolder"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the smartfolder:global object
-
-	apiClient := smartfolder.NewAPIClient()
-	r, err := apiClient.SmartfolderGlobalAPI.SmartfolderglobalReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderGlobalAPI.SmartfolderglobalReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the smartfolder:global object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SmartfolderGlobalAPISmartfolderglobalReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SmartfolderglobalReferenceGet
-
-> GetSmartfolderGlobalResponse SmartfolderglobalReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetSmartfolderGlobalResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific smartfolder:global object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the smartfolder:global object
 
 	apiClient := smartfolder.NewAPIClient()
-	resp, r, err := apiClient.SmartfolderGlobalAPI.SmartfolderglobalReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.SmartfolderGlobalAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderGlobalAPI.SmartfolderglobalReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderGlobalAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SmartfolderglobalReferenceGet`: GetSmartfolderGlobalResponse
-	fmt.Fprintf(os.Stdout, "Response from `SmartfolderGlobalAPI.SmartfolderglobalReferenceGet`: %v\n", resp)
+	// response from `Read`: GetSmartfolderGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `SmartfolderGlobalAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SmartfolderGlobalAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SmartfolderglobalReferencePut
+## Update
 
-> UpdateSmartfolderGlobalResponse SmartfolderglobalReferencePut(ctx, reference).SmartfolderGlobal(smartfolderGlobal).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateSmartfolderGlobalResponse Update(ctx, reference).SmartfolderGlobal(smartfolderGlobal).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a smartfolder:global object
 
@@ -318,13 +318,13 @@ func main() {
 	smartfolderGlobal := *smartfolder.NewSmartfolderGlobal() // SmartfolderGlobal | Object data to update
 
 	apiClient := smartfolder.NewAPIClient()
-	resp, r, err := apiClient.SmartfolderGlobalAPI.SmartfolderglobalReferencePut(context.Background(), reference).SmartfolderGlobal(smartfolderGlobal).Execute()
+	resp, r, err := apiClient.SmartfolderGlobalAPI.Update(context.Background(), reference).SmartfolderGlobal(smartfolderGlobal).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderGlobalAPI.SmartfolderglobalReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartfolderGlobalAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SmartfolderglobalReferencePut`: UpdateSmartfolderGlobalResponse
-	fmt.Fprintf(os.Stdout, "Response from `SmartfolderGlobalAPI.SmartfolderglobalReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateSmartfolderGlobalResponse
+	fmt.Fprintf(os.Stdout, "Response from `SmartfolderGlobalAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SmartfolderGlobalAPISmartfolderglobalReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SmartfolderGlobalAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **smartfolderGlobal** | [**SmartfolderGlobal**](SmartfolderGlobal.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

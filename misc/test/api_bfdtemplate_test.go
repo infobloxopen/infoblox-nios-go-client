@@ -23,11 +23,11 @@ func TestBfdtemplateAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test BfdtemplateAPIService Get", func(t *testing.T) {
+	t.Run("Test BfdtemplateAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.BfdtemplateAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BfdtemplateAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestBfdtemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BfdtemplateAPIService Post", func(t *testing.T) {
+	t.Run("Test BfdtemplateAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.BfdtemplateAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.BfdtemplateAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BfdtemplateAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.BfdtemplateAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestBfdtemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BfdtemplateAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test BfdtemplateAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.BfdtemplateAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test BfdtemplateAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.BfdtemplateAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.BfdtemplateAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestBfdtemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BfdtemplateAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test BfdtemplateAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.BfdtemplateAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.BfdtemplateAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

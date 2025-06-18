@@ -23,11 +23,11 @@ func TestSuperhostchildAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test SuperhostchildAPIService Get", func(t *testing.T) {
+	t.Run("Test SuperhostchildAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SuperhostchildAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SuperhostchildAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestSuperhostchildAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SuperhostchildAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test SuperhostchildAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.SuperhostchildAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SuperhostchildAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

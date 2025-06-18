@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](ScavengingtaskAPI.md#Get) | **Get** /scavengingtask | Retrieve scavengingtask objects
-[**ReferenceGet**](ScavengingtaskAPI.md#ReferenceGet) | **Get** /scavengingtask/{reference} | Get a specific scavengingtask object
+[**List**](ScavengingtaskAPI.md#List) | **Get** /scavengingtask | Retrieve scavengingtask objects
+[**Read**](ScavengingtaskAPI.md#Read) | **Get** /scavengingtask/{reference} | Get a specific scavengingtask object
 
 
 
-## Get
+## List
 
-> ListScavengingtaskResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListScavengingtaskResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve scavengingtask objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.ScavengingtaskAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.ScavengingtaskAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ScavengingtaskAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ScavengingtaskAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListScavengingtaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `ScavengingtaskAPI.Get`: %v\n", resp)
+	// response from `List`: ListScavengingtaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `ScavengingtaskAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ScavengingtaskAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ScavengingtaskAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetScavengingtaskResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetScavengingtaskResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific scavengingtask object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the scavengingtask object
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.ScavengingtaskAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ScavengingtaskAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ScavengingtaskAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ScavengingtaskAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetScavengingtaskResponse
-	fmt.Fprintf(os.Stdout, "Response from `ScavengingtaskAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetScavengingtaskResponse
+	fmt.Fprintf(os.Stdout, "Response from `ScavengingtaskAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ScavengingtaskAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ScavengingtaskAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

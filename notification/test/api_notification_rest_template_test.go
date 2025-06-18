@@ -23,11 +23,24 @@ func TestNotificationRestTemplateAPIService(t *testing.T) {
 
 	apiClient := notification.NewAPIClient()
 
-	t.Run("Test NotificationRestTemplateAPIService NotificationresttemplateGet", func(t *testing.T) {
+	t.Run("Test NotificationRestTemplateAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NotificationRestTemplateAPI.NotificationresttemplateGet(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NotificationRestTemplateAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NotificationRestTemplateAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NotificationRestTemplateAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,26 +48,13 @@ func TestNotificationRestTemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NotificationRestTemplateAPIService NotificationresttemplateReferenceDelete", func(t *testing.T) {
+	t.Run("Test NotificationRestTemplateAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NotificationRestTemplateAPI.NotificationresttemplateReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NotificationRestTemplateAPIService NotificationresttemplateReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NotificationRestTemplateAPI.NotificationresttemplateReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NotificationRestTemplateAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,13 +62,13 @@ func TestNotificationRestTemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NotificationRestTemplateAPIService NotificationresttemplateReferencePut", func(t *testing.T) {
+	t.Run("Test NotificationRestTemplateAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NotificationRestTemplateAPI.NotificationresttemplateReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NotificationRestTemplateAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,124 +23,124 @@ import (
 
 type UpgradescheduleAPI interface {
 	/*
-		Get Retrieve upgradeschedule objects
+		List Retrieve upgradeschedule objects
 
 		Returns a list of upgradeschedule objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return UpgradescheduleAPIGetRequest
+		@return UpgradescheduleAPIListRequest
 	*/
-	Get(ctx context.Context) UpgradescheduleAPIGetRequest
+	List(ctx context.Context) UpgradescheduleAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListUpgradescheduleResponse
-	GetExecute(r UpgradescheduleAPIGetRequest) (*ListUpgradescheduleResponse, *http.Response, error)
+	ListExecute(r UpgradescheduleAPIListRequest) (*ListUpgradescheduleResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific upgradeschedule object
+		Read Get a specific upgradeschedule object
 
 		Returns a specific upgradeschedule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the upgradeschedule object
-		@return UpgradescheduleAPIReferenceGetRequest
+		@return UpgradescheduleAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) UpgradescheduleAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) UpgradescheduleAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetUpgradescheduleResponse
-	ReferenceGetExecute(r UpgradescheduleAPIReferenceGetRequest) (*GetUpgradescheduleResponse, *http.Response, error)
+	ReadExecute(r UpgradescheduleAPIReadRequest) (*GetUpgradescheduleResponse, *http.Response, error)
 	/*
-		ReferencePut Update a upgradeschedule object
+		Update Update a upgradeschedule object
 
 		Updates a specific upgradeschedule object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the upgradeschedule object
-		@return UpgradescheduleAPIReferencePutRequest
+		@return UpgradescheduleAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) UpgradescheduleAPIReferencePutRequest
+	Update(ctx context.Context, reference string) UpgradescheduleAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateUpgradescheduleResponse
-	ReferencePutExecute(r UpgradescheduleAPIReferencePutRequest) (*UpdateUpgradescheduleResponse, *http.Response, error)
+	UpdateExecute(r UpgradescheduleAPIUpdateRequest) (*UpdateUpgradescheduleResponse, *http.Response, error)
 }
 
 // UpgradescheduleAPIService UpgradescheduleAPI service
 type UpgradescheduleAPIService internal.Service
 
-type UpgradescheduleAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     UpgradescheduleAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type UpgradescheduleAPIListRequest struct {
+	ctx              context.Context
+	ApiService       UpgradescheduleAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r UpgradescheduleAPIGetRequest) ReturnFields(returnFields string) UpgradescheduleAPIGetRequest {
+func (r UpgradescheduleAPIListRequest) ReturnFields(returnFields string) UpgradescheduleAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradescheduleAPIGetRequest) ReturnFields2(returnFields2 string) UpgradescheduleAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r UpgradescheduleAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) UpgradescheduleAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r UpgradescheduleAPIGetRequest) MaxResults(maxResults int32) UpgradescheduleAPIGetRequest {
+func (r UpgradescheduleAPIListRequest) MaxResults(maxResults int32) UpgradescheduleAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UpgradescheduleAPIGetRequest) ReturnAsObject(returnAsObject int32) UpgradescheduleAPIGetRequest {
+func (r UpgradescheduleAPIListRequest) ReturnAsObject(returnAsObject int32) UpgradescheduleAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r UpgradescheduleAPIGetRequest) Paging(paging int32) UpgradescheduleAPIGetRequest {
+func (r UpgradescheduleAPIListRequest) Paging(paging int32) UpgradescheduleAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r UpgradescheduleAPIGetRequest) PageId(pageId string) UpgradescheduleAPIGetRequest {
+func (r UpgradescheduleAPIListRequest) PageId(pageId string) UpgradescheduleAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r UpgradescheduleAPIGetRequest) Filters(filters map[string]interface{}) UpgradescheduleAPIGetRequest {
+func (r UpgradescheduleAPIListRequest) Filters(filters map[string]interface{}) UpgradescheduleAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r UpgradescheduleAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) UpgradescheduleAPIGetRequest {
+func (r UpgradescheduleAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) UpgradescheduleAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r UpgradescheduleAPIGetRequest) Execute() (*ListUpgradescheduleResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r UpgradescheduleAPIListRequest) Execute() (*ListUpgradescheduleResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve upgradeschedule objects
+List Retrieve upgradeschedule objects
 
 Returns a list of upgradeschedule objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return UpgradescheduleAPIGetRequest
+	@return UpgradescheduleAPIListRequest
 */
-func (a *UpgradescheduleAPIService) Get(ctx context.Context) UpgradescheduleAPIGetRequest {
-	return UpgradescheduleAPIGetRequest{
+func (a *UpgradescheduleAPIService) List(ctx context.Context) UpgradescheduleAPIListRequest {
+	return UpgradescheduleAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *UpgradescheduleAPIService) Get(ctx context.Context) UpgradescheduleAPIG
 // Execute executes the request
 //
 //	@return ListUpgradescheduleResponse
-func (a *UpgradescheduleAPIService) GetExecute(r UpgradescheduleAPIGetRequest) (*ListUpgradescheduleResponse, *http.Response, error) {
+func (a *UpgradescheduleAPIService) ListExecute(r UpgradescheduleAPIListRequest) (*ListUpgradescheduleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *UpgradescheduleAPIService) GetExecute(r UpgradescheduleAPIGetRequest) (
 		localVarReturnValue *ListUpgradescheduleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradescheduleAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradescheduleAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *UpgradescheduleAPIService) GetExecute(r UpgradescheduleAPIGetRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *UpgradescheduleAPIService) GetExecute(r UpgradescheduleAPIGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradescheduleAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     UpgradescheduleAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type UpgradescheduleAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       UpgradescheduleAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r UpgradescheduleAPIReferenceGetRequest) ReturnFields(returnFields string) UpgradescheduleAPIReferenceGetRequest {
+func (r UpgradescheduleAPIReadRequest) ReturnFields(returnFields string) UpgradescheduleAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradescheduleAPIReferenceGetRequest) ReturnFields2(returnFields2 string) UpgradescheduleAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r UpgradescheduleAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) UpgradescheduleAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UpgradescheduleAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) UpgradescheduleAPIReferenceGetRequest {
+func (r UpgradescheduleAPIReadRequest) ReturnAsObject(returnAsObject int32) UpgradescheduleAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r UpgradescheduleAPIReferenceGetRequest) Execute() (*GetUpgradescheduleResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r UpgradescheduleAPIReadRequest) Execute() (*GetUpgradescheduleResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific upgradeschedule object
+Read Get a specific upgradeschedule object
 
 Returns a specific upgradeschedule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the upgradeschedule object
-	@return UpgradescheduleAPIReferenceGetRequest
+	@return UpgradescheduleAPIReadRequest
 */
-func (a *UpgradescheduleAPIService) ReferenceGet(ctx context.Context, reference string) UpgradescheduleAPIReferenceGetRequest {
-	return UpgradescheduleAPIReferenceGetRequest{
+func (a *UpgradescheduleAPIService) Read(ctx context.Context, reference string) UpgradescheduleAPIReadRequest {
+	return UpgradescheduleAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *UpgradescheduleAPIService) ReferenceGet(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return GetUpgradescheduleResponse
-func (a *UpgradescheduleAPIService) ReferenceGetExecute(r UpgradescheduleAPIReferenceGetRequest) (*GetUpgradescheduleResponse, *http.Response, error) {
+func (a *UpgradescheduleAPIService) ReadExecute(r UpgradescheduleAPIReadRequest) (*GetUpgradescheduleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *UpgradescheduleAPIService) ReferenceGetExecute(r UpgradescheduleAPIRefe
 		localVarReturnValue *GetUpgradescheduleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradescheduleAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradescheduleAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *UpgradescheduleAPIService) ReferenceGetExecute(r UpgradescheduleAPIRefe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *UpgradescheduleAPIService) ReferenceGetExecute(r UpgradescheduleAPIRefe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UpgradescheduleAPIReferencePutRequest struct {
-	ctx             context.Context
-	ApiService      UpgradescheduleAPI
-	reference       string
-	upgradeschedule *Upgradeschedule
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+type UpgradescheduleAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       UpgradescheduleAPI
+	reference        string
+	upgradeschedule  *Upgradeschedule
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r UpgradescheduleAPIReferencePutRequest) Upgradeschedule(upgradeschedule Upgradeschedule) UpgradescheduleAPIReferencePutRequest {
+func (r UpgradescheduleAPIUpdateRequest) Upgradeschedule(upgradeschedule Upgradeschedule) UpgradescheduleAPIUpdateRequest {
 	r.upgradeschedule = &upgradeschedule
 	return r
 }
 
 // Enter the field names followed by comma
-func (r UpgradescheduleAPIReferencePutRequest) ReturnFields(returnFields string) UpgradescheduleAPIReferencePutRequest {
+func (r UpgradescheduleAPIUpdateRequest) ReturnFields(returnFields string) UpgradescheduleAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r UpgradescheduleAPIReferencePutRequest) ReturnFields2(returnFields2 string) UpgradescheduleAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r UpgradescheduleAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) UpgradescheduleAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r UpgradescheduleAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) UpgradescheduleAPIReferencePutRequest {
+func (r UpgradescheduleAPIUpdateRequest) ReturnAsObject(returnAsObject int32) UpgradescheduleAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r UpgradescheduleAPIReferencePutRequest) Execute() (*UpdateUpgradescheduleResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r UpgradescheduleAPIUpdateRequest) Execute() (*UpdateUpgradescheduleResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a upgradeschedule object
+Update Update a upgradeschedule object
 
 Updates a specific upgradeschedule object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the upgradeschedule object
-	@return UpgradescheduleAPIReferencePutRequest
+	@return UpgradescheduleAPIUpdateRequest
 */
-func (a *UpgradescheduleAPIService) ReferencePut(ctx context.Context, reference string) UpgradescheduleAPIReferencePutRequest {
-	return UpgradescheduleAPIReferencePutRequest{
+func (a *UpgradescheduleAPIService) Update(ctx context.Context, reference string) UpgradescheduleAPIUpdateRequest {
+	return UpgradescheduleAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *UpgradescheduleAPIService) ReferencePut(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return UpdateUpgradescheduleResponse
-func (a *UpgradescheduleAPIService) ReferencePutExecute(r UpgradescheduleAPIReferencePutRequest) (*UpdateUpgradescheduleResponse, *http.Response, error) {
+func (a *UpgradescheduleAPIService) UpdateExecute(r UpgradescheduleAPIUpdateRequest) (*UpdateUpgradescheduleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *UpgradescheduleAPIService) ReferencePutExecute(r UpgradescheduleAPIRefe
 		localVarReturnValue *UpdateUpgradescheduleResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradescheduleAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "UpgradescheduleAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *UpgradescheduleAPIService) ReferencePutExecute(r UpgradescheduleAPIRefe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

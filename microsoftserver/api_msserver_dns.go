@@ -23,150 +23,374 @@ import (
 
 type MsserverDnsAPI interface {
 	/*
-		MsserverdnsGet Retrieve msserver:dns objects
-
-		Returns a list of msserver:dns objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MsserverDnsAPIMsserverdnsGetRequest
-	*/
-	MsserverdnsGet(ctx context.Context) MsserverDnsAPIMsserverdnsGetRequest
-
-	// MsserverdnsGetExecute executes the request
-	//  @return ListMsserverDnsResponse
-	MsserverdnsGetExecute(r MsserverDnsAPIMsserverdnsGetRequest) (*ListMsserverDnsResponse, *http.Response, error)
-	/*
-		MsserverdnsPost Create a msserver:dns object
+		Create Create a msserver:dns object
 
 		Creates a new msserver:dns object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MsserverDnsAPIMsserverdnsPostRequest
+		@return MsserverDnsAPICreateRequest
 	*/
-	MsserverdnsPost(ctx context.Context) MsserverDnsAPIMsserverdnsPostRequest
+	Create(ctx context.Context) MsserverDnsAPICreateRequest
 
-	// MsserverdnsPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateMsserverDnsResponse
-	MsserverdnsPostExecute(r MsserverDnsAPIMsserverdnsPostRequest) (*CreateMsserverDnsResponse, *http.Response, error)
+	CreateExecute(r MsserverDnsAPICreateRequest) (*CreateMsserverDnsResponse, *http.Response, error)
 	/*
-		MsserverdnsReferenceDelete Delete a msserver:dns object
+		Delete Delete a msserver:dns object
 
 		Deletes a specific msserver:dns object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver:dns object
-		@return MsserverDnsAPIMsserverdnsReferenceDeleteRequest
+		@return MsserverDnsAPIDeleteRequest
 	*/
-	MsserverdnsReferenceDelete(ctx context.Context, reference string) MsserverDnsAPIMsserverdnsReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) MsserverDnsAPIDeleteRequest
 
-	// MsserverdnsReferenceDeleteExecute executes the request
-	MsserverdnsReferenceDeleteExecute(r MsserverDnsAPIMsserverdnsReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r MsserverDnsAPIDeleteRequest) (*http.Response, error)
 	/*
-		MsserverdnsReferenceGet Get a specific msserver:dns object
+		List Retrieve msserver:dns objects
+
+		Returns a list of msserver:dns objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return MsserverDnsAPIListRequest
+	*/
+	List(ctx context.Context) MsserverDnsAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListMsserverDnsResponse
+	ListExecute(r MsserverDnsAPIListRequest) (*ListMsserverDnsResponse, *http.Response, error)
+	/*
+		Read Get a specific msserver:dns object
 
 		Returns a specific msserver:dns object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver:dns object
-		@return MsserverDnsAPIMsserverdnsReferenceGetRequest
+		@return MsserverDnsAPIReadRequest
 	*/
-	MsserverdnsReferenceGet(ctx context.Context, reference string) MsserverDnsAPIMsserverdnsReferenceGetRequest
+	Read(ctx context.Context, reference string) MsserverDnsAPIReadRequest
 
-	// MsserverdnsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMsserverDnsResponse
-	MsserverdnsReferenceGetExecute(r MsserverDnsAPIMsserverdnsReferenceGetRequest) (*GetMsserverDnsResponse, *http.Response, error)
+	ReadExecute(r MsserverDnsAPIReadRequest) (*GetMsserverDnsResponse, *http.Response, error)
 	/*
-		MsserverdnsReferencePut Update a msserver:dns object
+		Update Update a msserver:dns object
 
 		Updates a specific msserver:dns object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver:dns object
-		@return MsserverDnsAPIMsserverdnsReferencePutRequest
+		@return MsserverDnsAPIUpdateRequest
 	*/
-	MsserverdnsReferencePut(ctx context.Context, reference string) MsserverDnsAPIMsserverdnsReferencePutRequest
+	Update(ctx context.Context, reference string) MsserverDnsAPIUpdateRequest
 
-	// MsserverdnsReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMsserverDnsResponse
-	MsserverdnsReferencePutExecute(r MsserverDnsAPIMsserverdnsReferencePutRequest) (*UpdateMsserverDnsResponse, *http.Response, error)
+	UpdateExecute(r MsserverDnsAPIUpdateRequest) (*UpdateMsserverDnsResponse, *http.Response, error)
 }
 
 // MsserverDnsAPIService MsserverDnsAPI service
 type MsserverDnsAPIService internal.Service
 
-type MsserverDnsAPIMsserverdnsGetRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDnsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type MsserverDnsAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       MsserverDnsAPI
+	msserverDns      *MsserverDns
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r MsserverDnsAPICreateRequest) MsserverDns(msserverDns MsserverDns) MsserverDnsAPICreateRequest {
+	r.msserverDns = &msserverDns
+	return r
 }
 
 // Enter the field names followed by comma
-func (r MsserverDnsAPIMsserverdnsGetRequest) ReturnFields(returnFields string) MsserverDnsAPIMsserverdnsGetRequest {
+func (r MsserverDnsAPICreateRequest) ReturnFields(returnFields string) MsserverDnsAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDnsAPIMsserverdnsGetRequest) ReturnFields2(returnFields2 string) MsserverDnsAPIMsserverdnsGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDnsAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDnsAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r MsserverDnsAPICreateRequest) ReturnAsObject(returnAsObject int32) MsserverDnsAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r MsserverDnsAPICreateRequest) Execute() (*CreateMsserverDnsResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a msserver:dns object
+
+Creates a new msserver:dns object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MsserverDnsAPICreateRequest
+*/
+func (a *MsserverDnsAPIService) Create(ctx context.Context) MsserverDnsAPICreateRequest {
+	return MsserverDnsAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateMsserverDnsResponse
+func (a *MsserverDnsAPIService) CreateExecute(r MsserverDnsAPICreateRequest) (*CreateMsserverDnsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateMsserverDnsResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDnsAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/msserver:dns"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.msserverDns == nil {
+		return localVarReturnValue, nil, internal.ReportError("msserverDns is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.msserverDns
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MsserverDnsAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService MsserverDnsAPI
+	reference  string
+}
+
+func (r MsserverDnsAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a msserver:dns object
+
+Deletes a specific msserver:dns object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the msserver:dns object
+	@return MsserverDnsAPIDeleteRequest
+*/
+func (a *MsserverDnsAPIService) Delete(ctx context.Context, reference string) MsserverDnsAPIDeleteRequest {
+	return MsserverDnsAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *MsserverDnsAPIService) DeleteExecute(r MsserverDnsAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDnsAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/msserver:dns/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type MsserverDnsAPIListRequest struct {
+	ctx              context.Context
+	ApiService       MsserverDnsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r MsserverDnsAPIListRequest) ReturnFields(returnFields string) MsserverDnsAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r MsserverDnsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDnsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MsserverDnsAPIMsserverdnsGetRequest) MaxResults(maxResults int32) MsserverDnsAPIMsserverdnsGetRequest {
+func (r MsserverDnsAPIListRequest) MaxResults(maxResults int32) MsserverDnsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverDnsAPIMsserverdnsGetRequest) ReturnAsObject(returnAsObject int32) MsserverDnsAPIMsserverdnsGetRequest {
+func (r MsserverDnsAPIListRequest) ReturnAsObject(returnAsObject int32) MsserverDnsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MsserverDnsAPIMsserverdnsGetRequest) Paging(paging int32) MsserverDnsAPIMsserverdnsGetRequest {
+func (r MsserverDnsAPIListRequest) Paging(paging int32) MsserverDnsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MsserverDnsAPIMsserverdnsGetRequest) PageId(pageId string) MsserverDnsAPIMsserverdnsGetRequest {
+func (r MsserverDnsAPIListRequest) PageId(pageId string) MsserverDnsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MsserverDnsAPIMsserverdnsGetRequest) Filters(filters map[string]interface{}) MsserverDnsAPIMsserverdnsGetRequest {
+func (r MsserverDnsAPIListRequest) Filters(filters map[string]interface{}) MsserverDnsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MsserverDnsAPIMsserverdnsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MsserverDnsAPIMsserverdnsGetRequest {
+func (r MsserverDnsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MsserverDnsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MsserverDnsAPIMsserverdnsGetRequest) Execute() (*ListMsserverDnsResponse, *http.Response, error) {
-	return r.ApiService.MsserverdnsGetExecute(r)
+func (r MsserverDnsAPIListRequest) Execute() (*ListMsserverDnsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MsserverdnsGet Retrieve msserver:dns objects
+List Retrieve msserver:dns objects
 
 Returns a list of msserver:dns objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MsserverDnsAPIMsserverdnsGetRequest
+	@return MsserverDnsAPIListRequest
 */
-func (a *MsserverDnsAPIService) MsserverdnsGet(ctx context.Context) MsserverDnsAPIMsserverdnsGetRequest {
-	return MsserverDnsAPIMsserverdnsGetRequest{
+func (a *MsserverDnsAPIService) List(ctx context.Context) MsserverDnsAPIListRequest {
+	return MsserverDnsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *MsserverDnsAPIService) MsserverdnsGet(ctx context.Context) MsserverDnsA
 // Execute executes the request
 //
 //	@return ListMsserverDnsResponse
-func (a *MsserverDnsAPIService) MsserverdnsGetExecute(r MsserverDnsAPIMsserverdnsGetRequest) (*ListMsserverDnsResponse, *http.Response, error) {
+func (a *MsserverDnsAPIService) ListExecute(r MsserverDnsAPIListRequest) (*ListMsserverDnsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *MsserverDnsAPIService) MsserverdnsGetExecute(r MsserverDnsAPIMsserverdn
 		localVarReturnValue *ListMsserverDnsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDnsAPIService.MsserverdnsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDnsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *MsserverDnsAPIService) MsserverdnsGetExecute(r MsserverDnsAPIMsserverdn
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *MsserverDnsAPIService) MsserverdnsGetExecute(r MsserverDnsAPIMsserverdn
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MsserverDnsAPIMsserverdnsPostRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDnsAPI
-	msserverDns    *MsserverDns
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r MsserverDnsAPIMsserverdnsPostRequest) MsserverDns(msserverDns MsserverDns) MsserverDnsAPIMsserverdnsPostRequest {
-	r.msserverDns = &msserverDns
-	return r
+type MsserverDnsAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       MsserverDnsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r MsserverDnsAPIMsserverdnsPostRequest) ReturnFields(returnFields string) MsserverDnsAPIMsserverdnsPostRequest {
+func (r MsserverDnsAPIReadRequest) ReturnFields(returnFields string) MsserverDnsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDnsAPIMsserverdnsPostRequest) ReturnFields2(returnFields2 string) MsserverDnsAPIMsserverdnsPostRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDnsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDnsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverDnsAPIMsserverdnsPostRequest) ReturnAsObject(returnAsObject int32) MsserverDnsAPIMsserverdnsPostRequest {
+func (r MsserverDnsAPIReadRequest) ReturnAsObject(returnAsObject int32) MsserverDnsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MsserverDnsAPIMsserverdnsPostRequest) Execute() (*CreateMsserverDnsResponse, *http.Response, error) {
-	return r.ApiService.MsserverdnsPostExecute(r)
+func (r MsserverDnsAPIReadRequest) Execute() (*GetMsserverDnsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MsserverdnsPost Create a msserver:dns object
-
-Creates a new msserver:dns object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MsserverDnsAPIMsserverdnsPostRequest
-*/
-func (a *MsserverDnsAPIService) MsserverdnsPost(ctx context.Context) MsserverDnsAPIMsserverdnsPostRequest {
-	return MsserverDnsAPIMsserverdnsPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateMsserverDnsResponse
-func (a *MsserverDnsAPIService) MsserverdnsPostExecute(r MsserverDnsAPIMsserverdnsPostRequest) (*CreateMsserverDnsResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateMsserverDnsResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDnsAPIService.MsserverdnsPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/msserver:dns"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.msserverDns == nil {
-		return localVarReturnValue, nil, internal.ReportError("msserverDns is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.msserverDns
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MsserverDnsAPIMsserverdnsReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService MsserverDnsAPI
-	reference  string
-}
-
-func (r MsserverDnsAPIMsserverdnsReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.MsserverdnsReferenceDeleteExecute(r)
-}
-
-/*
-MsserverdnsReferenceDelete Delete a msserver:dns object
-
-Deletes a specific msserver:dns object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the msserver:dns object
-	@return MsserverDnsAPIMsserverdnsReferenceDeleteRequest
-*/
-func (a *MsserverDnsAPIService) MsserverdnsReferenceDelete(ctx context.Context, reference string) MsserverDnsAPIMsserverdnsReferenceDeleteRequest {
-	return MsserverDnsAPIMsserverdnsReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *MsserverDnsAPIService) MsserverdnsReferenceDeleteExecute(r MsserverDnsAPIMsserverdnsReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDnsAPIService.MsserverdnsReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/msserver:dns/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type MsserverDnsAPIMsserverdnsReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDnsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r MsserverDnsAPIMsserverdnsReferenceGetRequest) ReturnFields(returnFields string) MsserverDnsAPIMsserverdnsReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDnsAPIMsserverdnsReferenceGetRequest) ReturnFields2(returnFields2 string) MsserverDnsAPIMsserverdnsReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r MsserverDnsAPIMsserverdnsReferenceGetRequest) ReturnAsObject(returnAsObject int32) MsserverDnsAPIMsserverdnsReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r MsserverDnsAPIMsserverdnsReferenceGetRequest) Execute() (*GetMsserverDnsResponse, *http.Response, error) {
-	return r.ApiService.MsserverdnsReferenceGetExecute(r)
-}
-
-/*
-MsserverdnsReferenceGet Get a specific msserver:dns object
+Read Get a specific msserver:dns object
 
 Returns a specific msserver:dns object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the msserver:dns object
-	@return MsserverDnsAPIMsserverdnsReferenceGetRequest
+	@return MsserverDnsAPIReadRequest
 */
-func (a *MsserverDnsAPIService) MsserverdnsReferenceGet(ctx context.Context, reference string) MsserverDnsAPIMsserverdnsReferenceGetRequest {
-	return MsserverDnsAPIMsserverdnsReferenceGetRequest{
+func (a *MsserverDnsAPIService) Read(ctx context.Context, reference string) MsserverDnsAPIReadRequest {
+	return MsserverDnsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *MsserverDnsAPIService) MsserverdnsReferenceGet(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return GetMsserverDnsResponse
-func (a *MsserverDnsAPIService) MsserverdnsReferenceGetExecute(r MsserverDnsAPIMsserverdnsReferenceGetRequest) (*GetMsserverDnsResponse, *http.Response, error) {
+func (a *MsserverDnsAPIService) ReadExecute(r MsserverDnsAPIReadRequest) (*GetMsserverDnsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *MsserverDnsAPIService) MsserverdnsReferenceGetExecute(r MsserverDnsAPIM
 		localVarReturnValue *GetMsserverDnsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDnsAPIService.MsserverdnsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDnsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *MsserverDnsAPIService) MsserverdnsReferenceGetExecute(r MsserverDnsAPIM
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *MsserverDnsAPIService) MsserverdnsReferenceGetExecute(r MsserverDnsAPIM
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MsserverDnsAPIMsserverdnsReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     MsserverDnsAPI
-	reference      string
-	msserverDns    *MsserverDns
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MsserverDnsAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       MsserverDnsAPI
+	reference        string
+	msserverDns      *MsserverDns
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r MsserverDnsAPIMsserverdnsReferencePutRequest) MsserverDns(msserverDns MsserverDns) MsserverDnsAPIMsserverdnsReferencePutRequest {
+func (r MsserverDnsAPIUpdateRequest) MsserverDns(msserverDns MsserverDns) MsserverDnsAPIUpdateRequest {
 	r.msserverDns = &msserverDns
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MsserverDnsAPIMsserverdnsReferencePutRequest) ReturnFields(returnFields string) MsserverDnsAPIMsserverdnsReferencePutRequest {
+func (r MsserverDnsAPIUpdateRequest) ReturnFields(returnFields string) MsserverDnsAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverDnsAPIMsserverdnsReferencePutRequest) ReturnFields2(returnFields2 string) MsserverDnsAPIMsserverdnsReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverDnsAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverDnsAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverDnsAPIMsserverdnsReferencePutRequest) ReturnAsObject(returnAsObject int32) MsserverDnsAPIMsserverdnsReferencePutRequest {
+func (r MsserverDnsAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MsserverDnsAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MsserverDnsAPIMsserverdnsReferencePutRequest) Execute() (*UpdateMsserverDnsResponse, *http.Response, error) {
-	return r.ApiService.MsserverdnsReferencePutExecute(r)
+func (r MsserverDnsAPIUpdateRequest) Execute() (*UpdateMsserverDnsResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-MsserverdnsReferencePut Update a msserver:dns object
+Update Update a msserver:dns object
 
 Updates a specific msserver:dns object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the msserver:dns object
-	@return MsserverDnsAPIMsserverdnsReferencePutRequest
+	@return MsserverDnsAPIUpdateRequest
 */
-func (a *MsserverDnsAPIService) MsserverdnsReferencePut(ctx context.Context, reference string) MsserverDnsAPIMsserverdnsReferencePutRequest {
-	return MsserverDnsAPIMsserverdnsReferencePutRequest{
+func (a *MsserverDnsAPIService) Update(ctx context.Context, reference string) MsserverDnsAPIUpdateRequest {
+	return MsserverDnsAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *MsserverDnsAPIService) MsserverdnsReferencePut(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return UpdateMsserverDnsResponse
-func (a *MsserverDnsAPIService) MsserverdnsReferencePutExecute(r MsserverDnsAPIMsserverdnsReferencePutRequest) (*UpdateMsserverDnsResponse, *http.Response, error) {
+func (a *MsserverDnsAPIService) UpdateExecute(r MsserverDnsAPIUpdateRequest) (*UpdateMsserverDnsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *MsserverDnsAPIService) MsserverdnsReferencePutExecute(r MsserverDnsAPIM
 		localVarReturnValue *UpdateMsserverDnsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDnsAPIService.MsserverdnsReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverDnsAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *MsserverDnsAPIService) MsserverdnsReferencePutExecute(r MsserverDnsAPIM
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

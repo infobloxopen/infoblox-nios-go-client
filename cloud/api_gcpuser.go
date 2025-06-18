@@ -23,150 +23,374 @@ import (
 
 type GcpuserAPI interface {
 	/*
-		Get Retrieve gcpuser objects
-
-		Returns a list of gcpuser objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GcpuserAPIGetRequest
-	*/
-	Get(ctx context.Context) GcpuserAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListGcpuserResponse
-	GetExecute(r GcpuserAPIGetRequest) (*ListGcpuserResponse, *http.Response, error)
-	/*
-		Post Create a gcpuser object
+		Create Create a gcpuser object
 
 		Creates a new gcpuser object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GcpuserAPIPostRequest
+		@return GcpuserAPICreateRequest
 	*/
-	Post(ctx context.Context) GcpuserAPIPostRequest
+	Create(ctx context.Context) GcpuserAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateGcpuserResponse
-	PostExecute(r GcpuserAPIPostRequest) (*CreateGcpuserResponse, *http.Response, error)
+	CreateExecute(r GcpuserAPICreateRequest) (*CreateGcpuserResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a gcpuser object
+		Delete Delete a gcpuser object
 
 		Deletes a specific gcpuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gcpuser object
-		@return GcpuserAPIReferenceDeleteRequest
+		@return GcpuserAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) GcpuserAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) GcpuserAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r GcpuserAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r GcpuserAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific gcpuser object
+		List Retrieve gcpuser objects
+
+		Returns a list of gcpuser objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return GcpuserAPIListRequest
+	*/
+	List(ctx context.Context) GcpuserAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListGcpuserResponse
+	ListExecute(r GcpuserAPIListRequest) (*ListGcpuserResponse, *http.Response, error)
+	/*
+		Read Get a specific gcpuser object
 
 		Returns a specific gcpuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gcpuser object
-		@return GcpuserAPIReferenceGetRequest
+		@return GcpuserAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) GcpuserAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) GcpuserAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGcpuserResponse
-	ReferenceGetExecute(r GcpuserAPIReferenceGetRequest) (*GetGcpuserResponse, *http.Response, error)
+	ReadExecute(r GcpuserAPIReadRequest) (*GetGcpuserResponse, *http.Response, error)
 	/*
-		ReferencePut Update a gcpuser object
+		Update Update a gcpuser object
 
 		Updates a specific gcpuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the gcpuser object
-		@return GcpuserAPIReferencePutRequest
+		@return GcpuserAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) GcpuserAPIReferencePutRequest
+	Update(ctx context.Context, reference string) GcpuserAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGcpuserResponse
-	ReferencePutExecute(r GcpuserAPIReferencePutRequest) (*UpdateGcpuserResponse, *http.Response, error)
+	UpdateExecute(r GcpuserAPIUpdateRequest) (*UpdateGcpuserResponse, *http.Response, error)
 }
 
 // GcpuserAPIService GcpuserAPI service
 type GcpuserAPIService internal.Service
 
-type GcpuserAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     GcpuserAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type GcpuserAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       GcpuserAPI
+	gcpuser          *Gcpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r GcpuserAPICreateRequest) Gcpuser(gcpuser Gcpuser) GcpuserAPICreateRequest {
+	r.gcpuser = &gcpuser
+	return r
 }
 
 // Enter the field names followed by comma
-func (r GcpuserAPIGetRequest) ReturnFields(returnFields string) GcpuserAPIGetRequest {
+func (r GcpuserAPICreateRequest) ReturnFields(returnFields string) GcpuserAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpuserAPIGetRequest) ReturnFields2(returnFields2 string) GcpuserAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpuserAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpuserAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r GcpuserAPICreateRequest) ReturnAsObject(returnAsObject int32) GcpuserAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r GcpuserAPICreateRequest) Execute() (*CreateGcpuserResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a gcpuser object
+
+Creates a new gcpuser object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return GcpuserAPICreateRequest
+*/
+func (a *GcpuserAPIService) Create(ctx context.Context) GcpuserAPICreateRequest {
+	return GcpuserAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateGcpuserResponse
+func (a *GcpuserAPIService) CreateExecute(r GcpuserAPICreateRequest) (*CreateGcpuserResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateGcpuserResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpuserAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/gcpuser"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.gcpuser == nil {
+		return localVarReturnValue, nil, internal.ReportError("gcpuser is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.gcpuser
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GcpuserAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService GcpuserAPI
+	reference  string
+}
+
+func (r GcpuserAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a gcpuser object
+
+Deletes a specific gcpuser object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the gcpuser object
+	@return GcpuserAPIDeleteRequest
+*/
+func (a *GcpuserAPIService) Delete(ctx context.Context, reference string) GcpuserAPIDeleteRequest {
+	return GcpuserAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *GcpuserAPIService) DeleteExecute(r GcpuserAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpuserAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/gcpuser/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type GcpuserAPIListRequest struct {
+	ctx              context.Context
+	ApiService       GcpuserAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r GcpuserAPIListRequest) ReturnFields(returnFields string) GcpuserAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r GcpuserAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpuserAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GcpuserAPIGetRequest) MaxResults(maxResults int32) GcpuserAPIGetRequest {
+func (r GcpuserAPIListRequest) MaxResults(maxResults int32) GcpuserAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GcpuserAPIGetRequest) ReturnAsObject(returnAsObject int32) GcpuserAPIGetRequest {
+func (r GcpuserAPIListRequest) ReturnAsObject(returnAsObject int32) GcpuserAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GcpuserAPIGetRequest) Paging(paging int32) GcpuserAPIGetRequest {
+func (r GcpuserAPIListRequest) Paging(paging int32) GcpuserAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GcpuserAPIGetRequest) PageId(pageId string) GcpuserAPIGetRequest {
+func (r GcpuserAPIListRequest) PageId(pageId string) GcpuserAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GcpuserAPIGetRequest) Filters(filters map[string]interface{}) GcpuserAPIGetRequest {
+func (r GcpuserAPIListRequest) Filters(filters map[string]interface{}) GcpuserAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GcpuserAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GcpuserAPIGetRequest {
+func (r GcpuserAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GcpuserAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GcpuserAPIGetRequest) Execute() (*ListGcpuserResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r GcpuserAPIListRequest) Execute() (*ListGcpuserResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve gcpuser objects
+List Retrieve gcpuser objects
 
 Returns a list of gcpuser objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GcpuserAPIGetRequest
+	@return GcpuserAPIListRequest
 */
-func (a *GcpuserAPIService) Get(ctx context.Context) GcpuserAPIGetRequest {
-	return GcpuserAPIGetRequest{
+func (a *GcpuserAPIService) List(ctx context.Context) GcpuserAPIListRequest {
+	return GcpuserAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *GcpuserAPIService) Get(ctx context.Context) GcpuserAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListGcpuserResponse
-func (a *GcpuserAPIService) GetExecute(r GcpuserAPIGetRequest) (*ListGcpuserResponse, *http.Response, error) {
+func (a *GcpuserAPIService) ListExecute(r GcpuserAPIListRequest) (*ListGcpuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *GcpuserAPIService) GetExecute(r GcpuserAPIGetRequest) (*ListGcpuserResp
 		localVarReturnValue *ListGcpuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpuserAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpuserAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *GcpuserAPIService) GetExecute(r GcpuserAPIGetRequest) (*ListGcpuserResp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *GcpuserAPIService) GetExecute(r GcpuserAPIGetRequest) (*ListGcpuserResp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GcpuserAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     GcpuserAPI
-	gcpuser        *Gcpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r GcpuserAPIPostRequest) Gcpuser(gcpuser Gcpuser) GcpuserAPIPostRequest {
-	r.gcpuser = &gcpuser
-	return r
+type GcpuserAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       GcpuserAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r GcpuserAPIPostRequest) ReturnFields(returnFields string) GcpuserAPIPostRequest {
+func (r GcpuserAPIReadRequest) ReturnFields(returnFields string) GcpuserAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpuserAPIPostRequest) ReturnFields2(returnFields2 string) GcpuserAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpuserAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpuserAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GcpuserAPIPostRequest) ReturnAsObject(returnAsObject int32) GcpuserAPIPostRequest {
+func (r GcpuserAPIReadRequest) ReturnAsObject(returnAsObject int32) GcpuserAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GcpuserAPIPostRequest) Execute() (*CreateGcpuserResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r GcpuserAPIReadRequest) Execute() (*GetGcpuserResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a gcpuser object
-
-Creates a new gcpuser object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GcpuserAPIPostRequest
-*/
-func (a *GcpuserAPIService) Post(ctx context.Context) GcpuserAPIPostRequest {
-	return GcpuserAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateGcpuserResponse
-func (a *GcpuserAPIService) PostExecute(r GcpuserAPIPostRequest) (*CreateGcpuserResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateGcpuserResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpuserAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/gcpuser"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.gcpuser == nil {
-		return localVarReturnValue, nil, internal.ReportError("gcpuser is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.gcpuser
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GcpuserAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService GcpuserAPI
-	reference  string
-}
-
-func (r GcpuserAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a gcpuser object
-
-Deletes a specific gcpuser object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the gcpuser object
-	@return GcpuserAPIReferenceDeleteRequest
-*/
-func (a *GcpuserAPIService) ReferenceDelete(ctx context.Context, reference string) GcpuserAPIReferenceDeleteRequest {
-	return GcpuserAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *GcpuserAPIService) ReferenceDeleteExecute(r GcpuserAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpuserAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/gcpuser/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type GcpuserAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     GcpuserAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r GcpuserAPIReferenceGetRequest) ReturnFields(returnFields string) GcpuserAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpuserAPIReferenceGetRequest) ReturnFields2(returnFields2 string) GcpuserAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r GcpuserAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) GcpuserAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r GcpuserAPIReferenceGetRequest) Execute() (*GetGcpuserResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific gcpuser object
+Read Get a specific gcpuser object
 
 Returns a specific gcpuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the gcpuser object
-	@return GcpuserAPIReferenceGetRequest
+	@return GcpuserAPIReadRequest
 */
-func (a *GcpuserAPIService) ReferenceGet(ctx context.Context, reference string) GcpuserAPIReferenceGetRequest {
-	return GcpuserAPIReferenceGetRequest{
+func (a *GcpuserAPIService) Read(ctx context.Context, reference string) GcpuserAPIReadRequest {
+	return GcpuserAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *GcpuserAPIService) ReferenceGet(ctx context.Context, reference string) 
 // Execute executes the request
 //
 //	@return GetGcpuserResponse
-func (a *GcpuserAPIService) ReferenceGetExecute(r GcpuserAPIReferenceGetRequest) (*GetGcpuserResponse, *http.Response, error) {
+func (a *GcpuserAPIService) ReadExecute(r GcpuserAPIReadRequest) (*GetGcpuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *GcpuserAPIService) ReferenceGetExecute(r GcpuserAPIReferenceGetRequest)
 		localVarReturnValue *GetGcpuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpuserAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpuserAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *GcpuserAPIService) ReferenceGetExecute(r GcpuserAPIReferenceGetRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *GcpuserAPIService) ReferenceGetExecute(r GcpuserAPIReferenceGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GcpuserAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     GcpuserAPI
-	reference      string
-	gcpuser        *Gcpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type GcpuserAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       GcpuserAPI
+	reference        string
+	gcpuser          *Gcpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r GcpuserAPIReferencePutRequest) Gcpuser(gcpuser Gcpuser) GcpuserAPIReferencePutRequest {
+func (r GcpuserAPIUpdateRequest) Gcpuser(gcpuser Gcpuser) GcpuserAPIUpdateRequest {
 	r.gcpuser = &gcpuser
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GcpuserAPIReferencePutRequest) ReturnFields(returnFields string) GcpuserAPIReferencePutRequest {
+func (r GcpuserAPIUpdateRequest) ReturnFields(returnFields string) GcpuserAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GcpuserAPIReferencePutRequest) ReturnFields2(returnFields2 string) GcpuserAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r GcpuserAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GcpuserAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GcpuserAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) GcpuserAPIReferencePutRequest {
+func (r GcpuserAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GcpuserAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GcpuserAPIReferencePutRequest) Execute() (*UpdateGcpuserResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r GcpuserAPIUpdateRequest) Execute() (*UpdateGcpuserResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a gcpuser object
+Update Update a gcpuser object
 
 Updates a specific gcpuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the gcpuser object
-	@return GcpuserAPIReferencePutRequest
+	@return GcpuserAPIUpdateRequest
 */
-func (a *GcpuserAPIService) ReferencePut(ctx context.Context, reference string) GcpuserAPIReferencePutRequest {
-	return GcpuserAPIReferencePutRequest{
+func (a *GcpuserAPIService) Update(ctx context.Context, reference string) GcpuserAPIUpdateRequest {
+	return GcpuserAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *GcpuserAPIService) ReferencePut(ctx context.Context, reference string) 
 // Execute executes the request
 //
 //	@return UpdateGcpuserResponse
-func (a *GcpuserAPIService) ReferencePutExecute(r GcpuserAPIReferencePutRequest) (*UpdateGcpuserResponse, *http.Response, error) {
+func (a *GcpuserAPIService) UpdateExecute(r GcpuserAPIUpdateRequest) (*UpdateGcpuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *GcpuserAPIService) ReferencePutExecute(r GcpuserAPIReferencePutRequest)
 		localVarReturnValue *UpdateGcpuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpuserAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GcpuserAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *GcpuserAPIService) ReferencePutExecute(r GcpuserAPIReferencePutRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

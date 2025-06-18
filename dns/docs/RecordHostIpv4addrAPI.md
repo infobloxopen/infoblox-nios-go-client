@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RecordhostIpv4addrGet**](RecordHostIpv4addrAPI.md#RecordhostIpv4addrGet) | **Get** /record:host_ipv4addr | Retrieve record:host_ipv4addr objects
-[**RecordhostIpv4addrReferenceGet**](RecordHostIpv4addrAPI.md#RecordhostIpv4addrReferenceGet) | **Get** /record:host_ipv4addr/{reference} | Get a specific record:host_ipv4addr object
-[**RecordhostIpv4addrReferencePut**](RecordHostIpv4addrAPI.md#RecordhostIpv4addrReferencePut) | **Put** /record:host_ipv4addr/{reference} | Update a record:host_ipv4addr object
+[**List**](RecordHostIpv4addrAPI.md#List) | **Get** /record:host_ipv4addr | Retrieve record:host_ipv4addr objects
+[**Read**](RecordHostIpv4addrAPI.md#Read) | **Get** /record:host_ipv4addr/{reference} | Get a specific record:host_ipv4addr object
+[**Update**](RecordHostIpv4addrAPI.md#Update) | **Put** /record:host_ipv4addr/{reference} | Update a record:host_ipv4addr object
 
 
 
-## RecordhostIpv4addrGet
+## List
 
-> ListRecordHostIpv4addrResponse RecordhostIpv4addrGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordHostIpv4addrResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:host_ipv4addr objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordHostIpv4addrAPI.RecordhostIpv4addrGet(context.Background()).Execute()
+	resp, r, err := apiClient.RecordHostIpv4addrAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostIpv4addrAPI.RecordhostIpv4addrGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostIpv4addrAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordhostIpv4addrGet`: ListRecordHostIpv4addrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordHostIpv4addrAPI.RecordhostIpv4addrGet`: %v\n", resp)
+	// response from `List`: ListRecordHostIpv4addrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordHostIpv4addrAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordHostIpv4addrAPIRecordhostIpv4addrGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordHostIpv4addrAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RecordhostIpv4addrReferenceGet
+## Read
 
-> GetRecordHostIpv4addrResponse RecordhostIpv4addrReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordHostIpv4addrResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:host_ipv4addr object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:host_ipv4addr object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordHostIpv4addrAPI.RecordhostIpv4addrReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordHostIpv4addrAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostIpv4addrAPI.RecordhostIpv4addrReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostIpv4addrAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordhostIpv4addrReferenceGet`: GetRecordHostIpv4addrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordHostIpv4addrAPI.RecordhostIpv4addrReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordHostIpv4addrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordHostIpv4addrAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordHostIpv4addrAPIRecordhostIpv4addrReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordHostIpv4addrAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RecordhostIpv4addrReferencePut
+## Update
 
-> UpdateRecordHostIpv4addrResponse RecordhostIpv4addrReferencePut(ctx, reference).RecordHostIpv4addr(recordHostIpv4addr).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordHostIpv4addrResponse Update(ctx, reference).RecordHostIpv4addr(recordHostIpv4addr).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:host_ipv4addr object
 
@@ -180,13 +180,13 @@ func main() {
 	recordHostIpv4addr := *dns.NewRecordHostIpv4addr() // RecordHostIpv4addr | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordHostIpv4addrAPI.RecordhostIpv4addrReferencePut(context.Background(), reference).RecordHostIpv4addr(recordHostIpv4addr).Execute()
+	resp, r, err := apiClient.RecordHostIpv4addrAPI.Update(context.Background(), reference).RecordHostIpv4addr(recordHostIpv4addr).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostIpv4addrAPI.RecordhostIpv4addrReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordHostIpv4addrAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordhostIpv4addrReferencePut`: UpdateRecordHostIpv4addrResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordHostIpv4addrAPI.RecordhostIpv4addrReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateRecordHostIpv4addrResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordHostIpv4addrAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordHostIpv4addrAPIRecordhostIpv4addrReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordHostIpv4addrAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **recordHostIpv4addr** | [**RecordHostIpv4addr**](RecordHostIpv4addr.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

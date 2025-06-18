@@ -23,150 +23,374 @@ import (
 
 type RecordNsAPI interface {
 	/*
-		RecordnsGet Retrieve record:ns objects
-
-		Returns a list of record:ns objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordNsAPIRecordnsGetRequest
-	*/
-	RecordnsGet(ctx context.Context) RecordNsAPIRecordnsGetRequest
-
-	// RecordnsGetExecute executes the request
-	//  @return ListRecordNsResponse
-	RecordnsGetExecute(r RecordNsAPIRecordnsGetRequest) (*ListRecordNsResponse, *http.Response, error)
-	/*
-		RecordnsPost Create a record:ns object
+		Create Create a record:ns object
 
 		Creates a new record:ns object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordNsAPIRecordnsPostRequest
+		@return RecordNsAPICreateRequest
 	*/
-	RecordnsPost(ctx context.Context) RecordNsAPIRecordnsPostRequest
+	Create(ctx context.Context) RecordNsAPICreateRequest
 
-	// RecordnsPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordNsResponse
-	RecordnsPostExecute(r RecordNsAPIRecordnsPostRequest) (*CreateRecordNsResponse, *http.Response, error)
+	CreateExecute(r RecordNsAPICreateRequest) (*CreateRecordNsResponse, *http.Response, error)
 	/*
-		RecordnsReferenceDelete Delete a record:ns object
+		Delete Delete a record:ns object
 
 		Deletes a specific record:ns object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:ns object
-		@return RecordNsAPIRecordnsReferenceDeleteRequest
+		@return RecordNsAPIDeleteRequest
 	*/
-	RecordnsReferenceDelete(ctx context.Context, reference string) RecordNsAPIRecordnsReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordNsAPIDeleteRequest
 
-	// RecordnsReferenceDeleteExecute executes the request
-	RecordnsReferenceDeleteExecute(r RecordNsAPIRecordnsReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordNsAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecordnsReferenceGet Get a specific record:ns object
+		List Retrieve record:ns objects
+
+		Returns a list of record:ns objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordNsAPIListRequest
+	*/
+	List(ctx context.Context) RecordNsAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordNsResponse
+	ListExecute(r RecordNsAPIListRequest) (*ListRecordNsResponse, *http.Response, error)
+	/*
+		Read Get a specific record:ns object
 
 		Returns a specific record:ns object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:ns object
-		@return RecordNsAPIRecordnsReferenceGetRequest
+		@return RecordNsAPIReadRequest
 	*/
-	RecordnsReferenceGet(ctx context.Context, reference string) RecordNsAPIRecordnsReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordNsAPIReadRequest
 
-	// RecordnsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordNsResponse
-	RecordnsReferenceGetExecute(r RecordNsAPIRecordnsReferenceGetRequest) (*GetRecordNsResponse, *http.Response, error)
+	ReadExecute(r RecordNsAPIReadRequest) (*GetRecordNsResponse, *http.Response, error)
 	/*
-		RecordnsReferencePut Update a record:ns object
+		Update Update a record:ns object
 
 		Updates a specific record:ns object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:ns object
-		@return RecordNsAPIRecordnsReferencePutRequest
+		@return RecordNsAPIUpdateRequest
 	*/
-	RecordnsReferencePut(ctx context.Context, reference string) RecordNsAPIRecordnsReferencePutRequest
+	Update(ctx context.Context, reference string) RecordNsAPIUpdateRequest
 
-	// RecordnsReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordNsResponse
-	RecordnsReferencePutExecute(r RecordNsAPIRecordnsReferencePutRequest) (*UpdateRecordNsResponse, *http.Response, error)
+	UpdateExecute(r RecordNsAPIUpdateRequest) (*UpdateRecordNsResponse, *http.Response, error)
 }
 
 // RecordNsAPIService RecordNsAPI service
 type RecordNsAPIService internal.Service
 
-type RecordNsAPIRecordnsGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordNsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type RecordNsAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       RecordNsAPI
+	recordNs         *RecordNs
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r RecordNsAPICreateRequest) RecordNs(recordNs RecordNs) RecordNsAPICreateRequest {
+	r.recordNs = &recordNs
+	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordNsAPIRecordnsGetRequest) ReturnFields(returnFields string) RecordNsAPIRecordnsGetRequest {
+func (r RecordNsAPICreateRequest) ReturnFields(returnFields string) RecordNsAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNsAPIRecordnsGetRequest) ReturnFields2(returnFields2 string) RecordNsAPIRecordnsGetRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordNsAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordNsAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordNsAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordNsAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r RecordNsAPICreateRequest) Execute() (*CreateRecordNsResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a record:ns object
+
+Creates a new record:ns object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordNsAPICreateRequest
+*/
+func (a *RecordNsAPIService) Create(ctx context.Context) RecordNsAPICreateRequest {
+	return RecordNsAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateRecordNsResponse
+func (a *RecordNsAPIService) CreateExecute(r RecordNsAPICreateRequest) (*CreateRecordNsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateRecordNsResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:ns"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.recordNs == nil {
+		return localVarReturnValue, nil, internal.ReportError("recordNs is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.recordNs
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordNsAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RecordNsAPI
+	reference  string
+}
+
+func (r RecordNsAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a record:ns object
+
+Deletes a specific record:ns object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the record:ns object
+	@return RecordNsAPIDeleteRequest
+*/
+func (a *RecordNsAPIService) Delete(ctx context.Context, reference string) RecordNsAPIDeleteRequest {
+	return RecordNsAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RecordNsAPIService) DeleteExecute(r RecordNsAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:ns/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RecordNsAPIListRequest struct {
+	ctx              context.Context
+	ApiService       RecordNsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RecordNsAPIListRequest) ReturnFields(returnFields string) RecordNsAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordNsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordNsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordNsAPIRecordnsGetRequest) MaxResults(maxResults int32) RecordNsAPIRecordnsGetRequest {
+func (r RecordNsAPIListRequest) MaxResults(maxResults int32) RecordNsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordNsAPIRecordnsGetRequest) ReturnAsObject(returnAsObject int32) RecordNsAPIRecordnsGetRequest {
+func (r RecordNsAPIListRequest) ReturnAsObject(returnAsObject int32) RecordNsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordNsAPIRecordnsGetRequest) Paging(paging int32) RecordNsAPIRecordnsGetRequest {
+func (r RecordNsAPIListRequest) Paging(paging int32) RecordNsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordNsAPIRecordnsGetRequest) PageId(pageId string) RecordNsAPIRecordnsGetRequest {
+func (r RecordNsAPIListRequest) PageId(pageId string) RecordNsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordNsAPIRecordnsGetRequest) Filters(filters map[string]interface{}) RecordNsAPIRecordnsGetRequest {
+func (r RecordNsAPIListRequest) Filters(filters map[string]interface{}) RecordNsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordNsAPIRecordnsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordNsAPIRecordnsGetRequest {
+func (r RecordNsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordNsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordNsAPIRecordnsGetRequest) Execute() (*ListRecordNsResponse, *http.Response, error) {
-	return r.ApiService.RecordnsGetExecute(r)
+func (r RecordNsAPIListRequest) Execute() (*ListRecordNsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RecordnsGet Retrieve record:ns objects
+List Retrieve record:ns objects
 
 Returns a list of record:ns objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordNsAPIRecordnsGetRequest
+	@return RecordNsAPIListRequest
 */
-func (a *RecordNsAPIService) RecordnsGet(ctx context.Context) RecordNsAPIRecordnsGetRequest {
-	return RecordNsAPIRecordnsGetRequest{
+func (a *RecordNsAPIService) List(ctx context.Context) RecordNsAPIListRequest {
+	return RecordNsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *RecordNsAPIService) RecordnsGet(ctx context.Context) RecordNsAPIRecordn
 // Execute executes the request
 //
 //	@return ListRecordNsResponse
-func (a *RecordNsAPIService) RecordnsGetExecute(r RecordNsAPIRecordnsGetRequest) (*ListRecordNsResponse, *http.Response, error) {
+func (a *RecordNsAPIService) ListExecute(r RecordNsAPIListRequest) (*ListRecordNsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *RecordNsAPIService) RecordnsGetExecute(r RecordNsAPIRecordnsGetRequest)
 		localVarReturnValue *ListRecordNsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsAPIService.RecordnsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *RecordNsAPIService) RecordnsGetExecute(r RecordNsAPIRecordnsGetRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *RecordNsAPIService) RecordnsGetExecute(r RecordNsAPIRecordnsGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordNsAPIRecordnsPostRequest struct {
-	ctx            context.Context
-	ApiService     RecordNsAPI
-	recordNs       *RecordNs
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r RecordNsAPIRecordnsPostRequest) RecordNs(recordNs RecordNs) RecordNsAPIRecordnsPostRequest {
-	r.recordNs = &recordNs
-	return r
+type RecordNsAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       RecordNsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r RecordNsAPIRecordnsPostRequest) ReturnFields(returnFields string) RecordNsAPIRecordnsPostRequest {
+func (r RecordNsAPIReadRequest) ReturnFields(returnFields string) RecordNsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNsAPIRecordnsPostRequest) ReturnFields2(returnFields2 string) RecordNsAPIRecordnsPostRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordNsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordNsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordNsAPIRecordnsPostRequest) ReturnAsObject(returnAsObject int32) RecordNsAPIRecordnsPostRequest {
+func (r RecordNsAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordNsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordNsAPIRecordnsPostRequest) Execute() (*CreateRecordNsResponse, *http.Response, error) {
-	return r.ApiService.RecordnsPostExecute(r)
+func (r RecordNsAPIReadRequest) Execute() (*GetRecordNsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordnsPost Create a record:ns object
-
-Creates a new record:ns object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordNsAPIRecordnsPostRequest
-*/
-func (a *RecordNsAPIService) RecordnsPost(ctx context.Context) RecordNsAPIRecordnsPostRequest {
-	return RecordNsAPIRecordnsPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateRecordNsResponse
-func (a *RecordNsAPIService) RecordnsPostExecute(r RecordNsAPIRecordnsPostRequest) (*CreateRecordNsResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateRecordNsResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsAPIService.RecordnsPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:ns"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.recordNs == nil {
-		return localVarReturnValue, nil, internal.ReportError("recordNs is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.recordNs
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordNsAPIRecordnsReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RecordNsAPI
-	reference  string
-}
-
-func (r RecordNsAPIRecordnsReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecordnsReferenceDeleteExecute(r)
-}
-
-/*
-RecordnsReferenceDelete Delete a record:ns object
-
-Deletes a specific record:ns object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the record:ns object
-	@return RecordNsAPIRecordnsReferenceDeleteRequest
-*/
-func (a *RecordNsAPIService) RecordnsReferenceDelete(ctx context.Context, reference string) RecordNsAPIRecordnsReferenceDeleteRequest {
-	return RecordNsAPIRecordnsReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RecordNsAPIService) RecordnsReferenceDeleteExecute(r RecordNsAPIRecordnsReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsAPIService.RecordnsReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:ns/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RecordNsAPIRecordnsReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordNsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r RecordNsAPIRecordnsReferenceGetRequest) ReturnFields(returnFields string) RecordNsAPIRecordnsReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNsAPIRecordnsReferenceGetRequest) ReturnFields2(returnFields2 string) RecordNsAPIRecordnsReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordNsAPIRecordnsReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordNsAPIRecordnsReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r RecordNsAPIRecordnsReferenceGetRequest) Execute() (*GetRecordNsResponse, *http.Response, error) {
-	return r.ApiService.RecordnsReferenceGetExecute(r)
-}
-
-/*
-RecordnsReferenceGet Get a specific record:ns object
+Read Get a specific record:ns object
 
 Returns a specific record:ns object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:ns object
-	@return RecordNsAPIRecordnsReferenceGetRequest
+	@return RecordNsAPIReadRequest
 */
-func (a *RecordNsAPIService) RecordnsReferenceGet(ctx context.Context, reference string) RecordNsAPIRecordnsReferenceGetRequest {
-	return RecordNsAPIRecordnsReferenceGetRequest{
+func (a *RecordNsAPIService) Read(ctx context.Context, reference string) RecordNsAPIReadRequest {
+	return RecordNsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *RecordNsAPIService) RecordnsReferenceGet(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return GetRecordNsResponse
-func (a *RecordNsAPIService) RecordnsReferenceGetExecute(r RecordNsAPIRecordnsReferenceGetRequest) (*GetRecordNsResponse, *http.Response, error) {
+func (a *RecordNsAPIService) ReadExecute(r RecordNsAPIReadRequest) (*GetRecordNsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *RecordNsAPIService) RecordnsReferenceGetExecute(r RecordNsAPIRecordnsRe
 		localVarReturnValue *GetRecordNsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsAPIService.RecordnsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *RecordNsAPIService) RecordnsReferenceGetExecute(r RecordNsAPIRecordnsRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *RecordNsAPIService) RecordnsReferenceGetExecute(r RecordNsAPIRecordnsRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordNsAPIRecordnsReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     RecordNsAPI
-	reference      string
-	recordNs       *RecordNs
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type RecordNsAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       RecordNsAPI
+	reference        string
+	recordNs         *RecordNs
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r RecordNsAPIRecordnsReferencePutRequest) RecordNs(recordNs RecordNs) RecordNsAPIRecordnsReferencePutRequest {
+func (r RecordNsAPIUpdateRequest) RecordNs(recordNs RecordNs) RecordNsAPIUpdateRequest {
 	r.recordNs = &recordNs
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordNsAPIRecordnsReferencePutRequest) ReturnFields(returnFields string) RecordNsAPIRecordnsReferencePutRequest {
+func (r RecordNsAPIUpdateRequest) ReturnFields(returnFields string) RecordNsAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordNsAPIRecordnsReferencePutRequest) ReturnFields2(returnFields2 string) RecordNsAPIRecordnsReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordNsAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordNsAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordNsAPIRecordnsReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordNsAPIRecordnsReferencePutRequest {
+func (r RecordNsAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordNsAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordNsAPIRecordnsReferencePutRequest) Execute() (*UpdateRecordNsResponse, *http.Response, error) {
-	return r.ApiService.RecordnsReferencePutExecute(r)
+func (r RecordNsAPIUpdateRequest) Execute() (*UpdateRecordNsResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordnsReferencePut Update a record:ns object
+Update Update a record:ns object
 
 Updates a specific record:ns object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:ns object
-	@return RecordNsAPIRecordnsReferencePutRequest
+	@return RecordNsAPIUpdateRequest
 */
-func (a *RecordNsAPIService) RecordnsReferencePut(ctx context.Context, reference string) RecordNsAPIRecordnsReferencePutRequest {
-	return RecordNsAPIRecordnsReferencePutRequest{
+func (a *RecordNsAPIService) Update(ctx context.Context, reference string) RecordNsAPIUpdateRequest {
+	return RecordNsAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *RecordNsAPIService) RecordnsReferencePut(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return UpdateRecordNsResponse
-func (a *RecordNsAPIService) RecordnsReferencePutExecute(r RecordNsAPIRecordnsReferencePutRequest) (*UpdateRecordNsResponse, *http.Response, error) {
+func (a *RecordNsAPIService) UpdateExecute(r RecordNsAPIUpdateRequest) (*UpdateRecordNsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *RecordNsAPIService) RecordnsReferencePutExecute(r RecordNsAPIRecordnsRe
 		localVarReturnValue *UpdateRecordNsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsAPIService.RecordnsReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordNsAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *RecordNsAPIService) RecordnsReferencePutExecute(r RecordNsAPIRecordnsRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

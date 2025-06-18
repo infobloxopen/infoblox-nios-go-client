@@ -23,11 +23,11 @@ func TestMemberFiledistributionAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test MemberFiledistributionAPIService MemberfiledistributionGet", func(t *testing.T) {
+	t.Run("Test MemberFiledistributionAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MemberFiledistributionAPI.MemberfiledistributionGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MemberFiledistributionAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestMemberFiledistributionAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MemberFiledistributionAPIService MemberfiledistributionReferenceGet", func(t *testing.T) {
+	t.Run("Test MemberFiledistributionAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MemberFiledistributionAPI.MemberfiledistributionReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MemberFiledistributionAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestMemberFiledistributionAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MemberFiledistributionAPIService MemberfiledistributionReferencePut", func(t *testing.T) {
+	t.Run("Test MemberFiledistributionAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MemberFiledistributionAPI.MemberfiledistributionReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MemberFiledistributionAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

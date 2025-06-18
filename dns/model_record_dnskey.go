@@ -32,7 +32,7 @@ type RecordDnskey struct {
 	// Name of a DNSKEY record in punycode format.
 	DnsName *string `json:"dns_name,omitempty"`
 	// The flags field is a 16-bit unsigned integer. Currently, only two bits of this value are used: the least significant bit and bit 7. The other bits are reserved for future use and must be zero. If bit 7 is set to 1, the key is a DNS zone key. Otherwise, the key is not a zone key and cannot be used to verify zone data. The least significant bit indicates \"secure entry point property\". If it is not zero, the key is a key signing key (KSK type). Otherwise, the key type is ZSK.
-	Flags *int32 `json:"flags,omitempty"`
+	Flags *int64 `json:"flags,omitempty"`
 	// The key tag identifying the public key of a DNSKEY Record object.
 	KeyTag *int64 `json:"key_tag,omitempty"`
 	// The time of the last DNS query in Epoch seconds format.
@@ -261,9 +261,9 @@ func (o *RecordDnskey) SetDnsName(v string) {
 }
 
 // GetFlags returns the Flags field value if set, zero value otherwise.
-func (o *RecordDnskey) GetFlags() int32 {
+func (o *RecordDnskey) GetFlags() int64 {
 	if o == nil || IsNil(o.Flags) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Flags
@@ -271,7 +271,7 @@ func (o *RecordDnskey) GetFlags() int32 {
 
 // GetFlagsOk returns a tuple with the Flags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecordDnskey) GetFlagsOk() (*int32, bool) {
+func (o *RecordDnskey) GetFlagsOk() (*int64, bool) {
 	if o == nil || IsNil(o.Flags) {
 		return nil, false
 	}
@@ -287,8 +287,8 @@ func (o *RecordDnskey) HasFlags() bool {
 	return false
 }
 
-// SetFlags gets a reference to the given int32 and assigns it to the Flags field.
-func (o *RecordDnskey) SetFlags(v int32) {
+// SetFlags gets a reference to the given int64 and assigns it to the Flags field.
+func (o *RecordDnskey) SetFlags(v int64) {
 	o.Flags = &v
 }
 

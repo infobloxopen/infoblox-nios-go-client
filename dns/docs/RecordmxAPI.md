@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RecordmxGet**](RecordMxAPI.md#RecordmxGet) | **Get** /record:mx | Retrieve record:mx objects
-[**RecordmxPost**](RecordMxAPI.md#RecordmxPost) | **Post** /record:mx | Create a record:mx object
-[**RecordmxReferenceDelete**](RecordMxAPI.md#RecordmxReferenceDelete) | **Delete** /record:mx/{reference} | Delete a record:mx object
-[**RecordmxReferenceGet**](RecordMxAPI.md#RecordmxReferenceGet) | **Get** /record:mx/{reference} | Get a specific record:mx object
-[**RecordmxReferencePut**](RecordMxAPI.md#RecordmxReferencePut) | **Put** /record:mx/{reference} | Update a record:mx object
+[**Create**](RecordMxAPI.md#Create) | **Post** /record:mx | Create a record:mx object
+[**Delete**](RecordMxAPI.md#Delete) | **Delete** /record:mx/{reference} | Delete a record:mx object
+[**List**](RecordMxAPI.md#List) | **Get** /record:mx | Retrieve record:mx objects
+[**Read**](RecordMxAPI.md#Read) | **Get** /record:mx/{reference} | Get a specific record:mx object
+[**Update**](RecordMxAPI.md#Update) | **Put** /record:mx/{reference} | Update a record:mx object
 
 
 
-## RecordmxGet
+## Create
 
-> ListRecordMxResponse RecordmxGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateRecordMxResponse Create(ctx).RecordMx(recordMx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a record:mx object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	recordMx := *dns.NewRecordMx() // RecordMx | Object data to create
+
+	apiClient := dns.NewAPIClient()
+	resp, r, err := apiClient.RecordMxAPI.Create(context.Background()).RecordMx(recordMx).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateRecordMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordMxAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**recordMx** | [**RecordMx**](RecordMx.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateRecordMxResponse**](CreateRecordMxResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a record:mx object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the record:mx object
+
+	apiClient := dns.NewAPIClient()
+	r, err := apiClient.RecordMxAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the record:mx object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordMxAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListRecordMxResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:mx objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordMxAPI.RecordmxGet(context.Background()).Execute()
+	resp, r, err := apiClient.RecordMxAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.RecordmxGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordmxGet`: ListRecordMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.RecordmxGet`: %v\n", resp)
+	// response from `List`: ListRecordMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordMxAPIRecordmxGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordMxAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RecordmxPost
+## Read
 
-> CreateRecordMxResponse RecordmxPost(ctx).RecordMx(recordMx).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a record:mx object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordMx := *dns.NewRecordMx() // RecordMx | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordMxAPI.RecordmxPost(context.Background()).RecordMx(recordMx).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.RecordmxPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RecordmxPost`: CreateRecordMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.RecordmxPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordMxAPIRecordmxPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordMx** | [**RecordMx**](RecordMx.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateRecordMxResponse**](CreateRecordMxResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RecordmxReferenceDelete
-
-> RecordmxReferenceDelete(ctx, reference).Execute()
-
-Delete a record:mx object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the record:mx object
-
-	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordMxAPI.RecordmxReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.RecordmxReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the record:mx object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordMxAPIRecordmxReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RecordmxReferenceGet
-
-> GetRecordMxResponse RecordmxReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordMxResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:mx object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:mx object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordMxAPI.RecordmxReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordMxAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.RecordmxReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordmxReferenceGet`: GetRecordMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.RecordmxReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordMxAPIRecordmxReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordMxAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RecordmxReferencePut
+## Update
 
-> UpdateRecordMxResponse RecordmxReferencePut(ctx, reference).RecordMx(recordMx).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordMxResponse Update(ctx, reference).RecordMx(recordMx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:mx object
 
@@ -318,13 +318,13 @@ func main() {
 	recordMx := *dns.NewRecordMx() // RecordMx | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordMxAPI.RecordmxReferencePut(context.Background(), reference).RecordMx(recordMx).Execute()
+	resp, r, err := apiClient.RecordMxAPI.Update(context.Background(), reference).RecordMx(recordMx).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.RecordmxReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordMxAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordmxReferencePut`: UpdateRecordMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.RecordmxReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateRecordMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordMxAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordMxAPIRecordmxReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordMxAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **recordMx** | [**RecordMx**](RecordMx.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

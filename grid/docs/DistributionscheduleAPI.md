@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DistributionscheduleAPI.md#Get) | **Get** /distributionschedule | Retrieve distributionschedule objects
-[**ReferenceGet**](DistributionscheduleAPI.md#ReferenceGet) | **Get** /distributionschedule/{reference} | Get a specific distributionschedule object
-[**ReferencePut**](DistributionscheduleAPI.md#ReferencePut) | **Put** /distributionschedule/{reference} | Update a distributionschedule object
+[**List**](DistributionscheduleAPI.md#List) | **Get** /distributionschedule | Retrieve distributionschedule objects
+[**Read**](DistributionscheduleAPI.md#Read) | **Get** /distributionschedule/{reference} | Get a specific distributionschedule object
+[**Update**](DistributionscheduleAPI.md#Update) | **Put** /distributionschedule/{reference} | Update a distributionschedule object
 
 
 
-## Get
+## List
 
-> ListDistributionscheduleResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDistributionscheduleResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve distributionschedule objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.DistributionscheduleAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DistributionscheduleAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DistributionscheduleAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DistributionscheduleAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDistributionscheduleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DistributionscheduleAPI.Get`: %v\n", resp)
+	// response from `List`: ListDistributionscheduleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DistributionscheduleAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DistributionscheduleAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DistributionscheduleAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetDistributionscheduleResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDistributionscheduleResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific distributionschedule object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the distributionschedule object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.DistributionscheduleAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DistributionscheduleAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DistributionscheduleAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DistributionscheduleAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDistributionscheduleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DistributionscheduleAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDistributionscheduleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DistributionscheduleAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DistributionscheduleAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DistributionscheduleAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateDistributionscheduleResponse ReferencePut(ctx, reference).Distributionschedule(distributionschedule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDistributionscheduleResponse Update(ctx, reference).Distributionschedule(distributionschedule).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a distributionschedule object
 
@@ -180,13 +180,13 @@ func main() {
 	distributionschedule := *grid.NewDistributionschedule() // Distributionschedule | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.DistributionscheduleAPI.ReferencePut(context.Background(), reference).Distributionschedule(distributionschedule).Execute()
+	resp, r, err := apiClient.DistributionscheduleAPI.Update(context.Background(), reference).Distributionschedule(distributionschedule).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DistributionscheduleAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DistributionscheduleAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDistributionscheduleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DistributionscheduleAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDistributionscheduleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DistributionscheduleAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DistributionscheduleAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DistributionscheduleAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **distributionschedule** | [**Distributionschedule**](Distributionschedule.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

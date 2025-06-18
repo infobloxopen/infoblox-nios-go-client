@@ -23,110 +23,110 @@ import (
 
 type DtcTopologyLabelAPI interface {
 	/*
-		DtctopologylabelGet Retrieve dtc:topology:label objects
+		List Retrieve dtc:topology:label objects
 
 		Returns a list of dtc:topology:label objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcTopologyLabelAPIDtctopologylabelGetRequest
+		@return DtcTopologyLabelAPIListRequest
 	*/
-	DtctopologylabelGet(ctx context.Context) DtcTopologyLabelAPIDtctopologylabelGetRequest
+	List(ctx context.Context) DtcTopologyLabelAPIListRequest
 
-	// DtctopologylabelGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDtcTopologyLabelResponse
-	DtctopologylabelGetExecute(r DtcTopologyLabelAPIDtctopologylabelGetRequest) (*ListDtcTopologyLabelResponse, *http.Response, error)
+	ListExecute(r DtcTopologyLabelAPIListRequest) (*ListDtcTopologyLabelResponse, *http.Response, error)
 	/*
-		DtctopologylabelReferenceGet Get a specific dtc:topology:label object
+		Read Get a specific dtc:topology:label object
 
 		Returns a specific dtc:topology:label object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:topology:label object
-		@return DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest
+		@return DtcTopologyLabelAPIReadRequest
 	*/
-	DtctopologylabelReferenceGet(ctx context.Context, reference string) DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcTopologyLabelAPIReadRequest
 
-	// DtctopologylabelReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcTopologyLabelResponse
-	DtctopologylabelReferenceGetExecute(r DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest) (*GetDtcTopologyLabelResponse, *http.Response, error)
+	ReadExecute(r DtcTopologyLabelAPIReadRequest) (*GetDtcTopologyLabelResponse, *http.Response, error)
 }
 
 // DtcTopologyLabelAPIService DtcTopologyLabelAPI service
 type DtcTopologyLabelAPIService internal.Service
 
-type DtcTopologyLabelAPIDtctopologylabelGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcTopologyLabelAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DtcTopologyLabelAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DtcTopologyLabelAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r DtcTopologyLabelAPIDtctopologylabelGetRequest) ReturnFields(returnFields string) DtcTopologyLabelAPIDtctopologylabelGetRequest {
+func (r DtcTopologyLabelAPIListRequest) ReturnFields(returnFields string) DtcTopologyLabelAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyLabelAPIDtctopologylabelGetRequest) ReturnFields2(returnFields2 string) DtcTopologyLabelAPIDtctopologylabelGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcTopologyLabelAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcTopologyLabelAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DtcTopologyLabelAPIDtctopologylabelGetRequest) MaxResults(maxResults int32) DtcTopologyLabelAPIDtctopologylabelGetRequest {
+func (r DtcTopologyLabelAPIListRequest) MaxResults(maxResults int32) DtcTopologyLabelAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcTopologyLabelAPIDtctopologylabelGetRequest) ReturnAsObject(returnAsObject int32) DtcTopologyLabelAPIDtctopologylabelGetRequest {
+func (r DtcTopologyLabelAPIListRequest) ReturnAsObject(returnAsObject int32) DtcTopologyLabelAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DtcTopologyLabelAPIDtctopologylabelGetRequest) Paging(paging int32) DtcTopologyLabelAPIDtctopologylabelGetRequest {
+func (r DtcTopologyLabelAPIListRequest) Paging(paging int32) DtcTopologyLabelAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DtcTopologyLabelAPIDtctopologylabelGetRequest) PageId(pageId string) DtcTopologyLabelAPIDtctopologylabelGetRequest {
+func (r DtcTopologyLabelAPIListRequest) PageId(pageId string) DtcTopologyLabelAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DtcTopologyLabelAPIDtctopologylabelGetRequest) Filters(filters map[string]interface{}) DtcTopologyLabelAPIDtctopologylabelGetRequest {
+func (r DtcTopologyLabelAPIListRequest) Filters(filters map[string]interface{}) DtcTopologyLabelAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DtcTopologyLabelAPIDtctopologylabelGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcTopologyLabelAPIDtctopologylabelGetRequest {
+func (r DtcTopologyLabelAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcTopologyLabelAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DtcTopologyLabelAPIDtctopologylabelGetRequest) Execute() (*ListDtcTopologyLabelResponse, *http.Response, error) {
-	return r.ApiService.DtctopologylabelGetExecute(r)
+func (r DtcTopologyLabelAPIListRequest) Execute() (*ListDtcTopologyLabelResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DtctopologylabelGet Retrieve dtc:topology:label objects
+List Retrieve dtc:topology:label objects
 
 Returns a list of dtc:topology:label objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcTopologyLabelAPIDtctopologylabelGetRequest
+	@return DtcTopologyLabelAPIListRequest
 */
-func (a *DtcTopologyLabelAPIService) DtctopologylabelGet(ctx context.Context) DtcTopologyLabelAPIDtctopologylabelGetRequest {
-	return DtcTopologyLabelAPIDtctopologylabelGetRequest{
+func (a *DtcTopologyLabelAPIService) List(ctx context.Context) DtcTopologyLabelAPIListRequest {
+	return DtcTopologyLabelAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *DtcTopologyLabelAPIService) DtctopologylabelGet(ctx context.Context) Dt
 // Execute executes the request
 //
 //	@return ListDtcTopologyLabelResponse
-func (a *DtcTopologyLabelAPIService) DtctopologylabelGetExecute(r DtcTopologyLabelAPIDtctopologylabelGetRequest) (*ListDtcTopologyLabelResponse, *http.Response, error) {
+func (a *DtcTopologyLabelAPIService) ListExecute(r DtcTopologyLabelAPIListRequest) (*ListDtcTopologyLabelResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *DtcTopologyLabelAPIService) DtctopologylabelGetExecute(r DtcTopologyLab
 		localVarReturnValue *ListDtcTopologyLabelResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyLabelAPIService.DtctopologylabelGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyLabelAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *DtcTopologyLabelAPIService) DtctopologylabelGetExecute(r DtcTopologyLab
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *DtcTopologyLabelAPIService) DtctopologylabelGetExecute(r DtcTopologyLab
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcTopologyLabelAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DtcTopologyLabelAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DtcTopologyLabelAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest) ReturnFields(returnFields string) DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest {
+func (r DtcTopologyLabelAPIReadRequest) ReturnFields(returnFields string) DtcTopologyLabelAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest) ReturnFields2(returnFields2 string) DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcTopologyLabelAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcTopologyLabelAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest {
+func (r DtcTopologyLabelAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcTopologyLabelAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest) Execute() (*GetDtcTopologyLabelResponse, *http.Response, error) {
-	return r.ApiService.DtctopologylabelReferenceGetExecute(r)
+func (r DtcTopologyLabelAPIReadRequest) Execute() (*GetDtcTopologyLabelResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtctopologylabelReferenceGet Get a specific dtc:topology:label object
+Read Get a specific dtc:topology:label object
 
 Returns a specific dtc:topology:label object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:topology:label object
-	@return DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest
+	@return DtcTopologyLabelAPIReadRequest
 */
-func (a *DtcTopologyLabelAPIService) DtctopologylabelReferenceGet(ctx context.Context, reference string) DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest {
-	return DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest{
+func (a *DtcTopologyLabelAPIService) Read(ctx context.Context, reference string) DtcTopologyLabelAPIReadRequest {
+	return DtcTopologyLabelAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *DtcTopologyLabelAPIService) DtctopologylabelReferenceGet(ctx context.Co
 // Execute executes the request
 //
 //	@return GetDtcTopologyLabelResponse
-func (a *DtcTopologyLabelAPIService) DtctopologylabelReferenceGetExecute(r DtcTopologyLabelAPIDtctopologylabelReferenceGetRequest) (*GetDtcTopologyLabelResponse, *http.Response, error) {
+func (a *DtcTopologyLabelAPIService) ReadExecute(r DtcTopologyLabelAPIReadRequest) (*GetDtcTopologyLabelResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *DtcTopologyLabelAPIService) DtctopologylabelReferenceGetExecute(r DtcTo
 		localVarReturnValue *GetDtcTopologyLabelResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyLabelAPIService.DtctopologylabelReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcTopologyLabelAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *DtcTopologyLabelAPIService) DtctopologylabelReferenceGetExecute(r DtcTo
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

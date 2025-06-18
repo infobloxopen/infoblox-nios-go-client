@@ -23,11 +23,11 @@ func TestGridDnsAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test GridDnsAPIService GriddnsGet", func(t *testing.T) {
+	t.Run("Test GridDnsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridDnsAPI.GriddnsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GridDnsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestGridDnsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridDnsAPIService GriddnsReferenceGet", func(t *testing.T) {
+	t.Run("Test GridDnsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridDnsAPI.GriddnsReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridDnsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestGridDnsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridDnsAPIService GriddnsReferencePut", func(t *testing.T) {
+	t.Run("Test GridDnsAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridDnsAPI.GriddnsReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridDnsAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

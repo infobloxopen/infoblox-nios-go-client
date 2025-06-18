@@ -23,11 +23,11 @@ func TestCaptiveportalAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test CaptiveportalAPIService Get", func(t *testing.T) {
+	t.Run("Test CaptiveportalAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.CaptiveportalAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CaptiveportalAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestCaptiveportalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CaptiveportalAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test CaptiveportalAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.CaptiveportalAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.CaptiveportalAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestCaptiveportalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CaptiveportalAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test CaptiveportalAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.CaptiveportalAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.CaptiveportalAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

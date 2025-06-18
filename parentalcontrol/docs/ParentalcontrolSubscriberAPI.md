@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ParentalcontrolsubscriberGet**](ParentalcontrolSubscriberAPI.md#ParentalcontrolsubscriberGet) | **Get** /parentalcontrol:subscriber | Retrieve parentalcontrol:subscriber objects
-[**ParentalcontrolsubscriberReferenceGet**](ParentalcontrolSubscriberAPI.md#ParentalcontrolsubscriberReferenceGet) | **Get** /parentalcontrol:subscriber/{reference} | Get a specific parentalcontrol:subscriber object
-[**ParentalcontrolsubscriberReferencePut**](ParentalcontrolSubscriberAPI.md#ParentalcontrolsubscriberReferencePut) | **Put** /parentalcontrol:subscriber/{reference} | Update a parentalcontrol:subscriber object
+[**List**](ParentalcontrolSubscriberAPI.md#List) | **Get** /parentalcontrol:subscriber | Retrieve parentalcontrol:subscriber objects
+[**Read**](ParentalcontrolSubscriberAPI.md#Read) | **Get** /parentalcontrol:subscriber/{reference} | Get a specific parentalcontrol:subscriber object
+[**Update**](ParentalcontrolSubscriberAPI.md#Update) | **Put** /parentalcontrol:subscriber/{reference} | Update a parentalcontrol:subscriber object
 
 
 
-## ParentalcontrolsubscriberGet
+## List
 
-> ListParentalcontrolSubscriberResponse ParentalcontrolsubscriberGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListParentalcontrolSubscriberResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve parentalcontrol:subscriber objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := parentalcontrol.NewAPIClient()
-	resp, r, err := apiClient.ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberGet(context.Background()).Execute()
+	resp, r, err := apiClient.ParentalcontrolSubscriberAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscriberAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ParentalcontrolsubscriberGet`: ListParentalcontrolSubscriberResponse
-	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberGet`: %v\n", resp)
+	// response from `List`: ListParentalcontrolSubscriberResponse
+	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscriberAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ParentalcontrolSubscriberAPIParentalcontrolsubscriberGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ParentalcontrolSubscriberAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ParentalcontrolsubscriberReferenceGet
+## Read
 
-> GetParentalcontrolSubscriberResponse ParentalcontrolsubscriberReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetParentalcontrolSubscriberResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific parentalcontrol:subscriber object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the parentalcontrol:subscriber object
 
 	apiClient := parentalcontrol.NewAPIClient()
-	resp, r, err := apiClient.ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ParentalcontrolSubscriberAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscriberAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ParentalcontrolsubscriberReferenceGet`: GetParentalcontrolSubscriberResponse
-	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberReferenceGet`: %v\n", resp)
+	// response from `Read`: GetParentalcontrolSubscriberResponse
+	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscriberAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ParentalcontrolSubscriberAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ParentalcontrolsubscriberReferencePut
+## Update
 
-> UpdateParentalcontrolSubscriberResponse ParentalcontrolsubscriberReferencePut(ctx, reference).ParentalcontrolSubscriber(parentalcontrolSubscriber).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateParentalcontrolSubscriberResponse Update(ctx, reference).ParentalcontrolSubscriber(parentalcontrolSubscriber).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a parentalcontrol:subscriber object
 
@@ -180,13 +180,13 @@ func main() {
 	parentalcontrolSubscriber := *parentalcontrol.NewParentalcontrolSubscriber() // ParentalcontrolSubscriber | Object data to update
 
 	apiClient := parentalcontrol.NewAPIClient()
-	resp, r, err := apiClient.ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberReferencePut(context.Background(), reference).ParentalcontrolSubscriber(parentalcontrolSubscriber).Execute()
+	resp, r, err := apiClient.ParentalcontrolSubscriberAPI.Update(context.Background(), reference).ParentalcontrolSubscriber(parentalcontrolSubscriber).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ParentalcontrolSubscriberAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ParentalcontrolsubscriberReferencePut`: UpdateParentalcontrolSubscriberResponse
-	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscriberAPI.ParentalcontrolsubscriberReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateParentalcontrolSubscriberResponse
+	fmt.Fprintf(os.Stdout, "Response from `ParentalcontrolSubscriberAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ParentalcontrolSubscriberAPIParentalcontrolsubscriberReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ParentalcontrolSubscriberAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **parentalcontrolSubscriber** | [**ParentalcontrolSubscriber**](ParentalcontrolSubscriber.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

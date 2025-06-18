@@ -79,100 +79,100 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AdAuthServiceAPI* | [**Get**](docs/AdAuthServiceAPI.md#get) | **Get** /ad_auth_service | Retrieve ad_auth_service objects
-*AdAuthServiceAPI* | [**Post**](docs/AdAuthServiceAPI.md#post) | **Post** /ad_auth_service | Create a ad_auth_service object
-*AdAuthServiceAPI* | [**ReferenceDelete**](docs/AdAuthServiceAPI.md#referencedelete) | **Delete** /ad_auth_service/{reference} | Delete a ad_auth_service object
-*AdAuthServiceAPI* | [**ReferenceGet**](docs/AdAuthServiceAPI.md#referenceget) | **Get** /ad_auth_service/{reference} | Get a specific ad_auth_service object
-*AdAuthServiceAPI* | [**ReferencePut**](docs/AdAuthServiceAPI.md#referenceput) | **Put** /ad_auth_service/{reference} | Update a ad_auth_service object
-*AdmingroupAPI* | [**Get**](docs/AdmingroupAPI.md#get) | **Get** /admingroup | Retrieve admingroup objects
-*AdmingroupAPI* | [**Post**](docs/AdmingroupAPI.md#post) | **Post** /admingroup | Create a admingroup object
-*AdmingroupAPI* | [**ReferenceDelete**](docs/AdmingroupAPI.md#referencedelete) | **Delete** /admingroup/{reference} | Delete a admingroup object
-*AdmingroupAPI* | [**ReferenceGet**](docs/AdmingroupAPI.md#referenceget) | **Get** /admingroup/{reference} | Get a specific admingroup object
-*AdmingroupAPI* | [**ReferencePut**](docs/AdmingroupAPI.md#referenceput) | **Put** /admingroup/{reference} | Update a admingroup object
-*AdminroleAPI* | [**Get**](docs/AdminroleAPI.md#get) | **Get** /adminrole | Retrieve adminrole objects
-*AdminroleAPI* | [**Post**](docs/AdminroleAPI.md#post) | **Post** /adminrole | Create a adminrole object
-*AdminroleAPI* | [**ReferenceDelete**](docs/AdminroleAPI.md#referencedelete) | **Delete** /adminrole/{reference} | Delete a adminrole object
-*AdminroleAPI* | [**ReferenceGet**](docs/AdminroleAPI.md#referenceget) | **Get** /adminrole/{reference} | Get a specific adminrole object
-*AdminroleAPI* | [**ReferencePut**](docs/AdminroleAPI.md#referenceput) | **Put** /adminrole/{reference} | Update a adminrole object
-*AdminuserAPI* | [**Get**](docs/AdminuserAPI.md#get) | **Get** /adminuser | Retrieve adminuser objects
-*AdminuserAPI* | [**Post**](docs/AdminuserAPI.md#post) | **Post** /adminuser | Create a adminuser object
-*AdminuserAPI* | [**ReferenceDelete**](docs/AdminuserAPI.md#referencedelete) | **Delete** /adminuser/{reference} | Delete a adminuser object
-*AdminuserAPI* | [**ReferenceGet**](docs/AdminuserAPI.md#referenceget) | **Get** /adminuser/{reference} | Get a specific adminuser object
-*AdminuserAPI* | [**ReferencePut**](docs/AdminuserAPI.md#referenceput) | **Put** /adminuser/{reference} | Update a adminuser object
-*ApprovalworkflowAPI* | [**Get**](docs/ApprovalworkflowAPI.md#get) | **Get** /approvalworkflow | Retrieve approvalworkflow objects
-*ApprovalworkflowAPI* | [**Post**](docs/ApprovalworkflowAPI.md#post) | **Post** /approvalworkflow | Create a approvalworkflow object
-*ApprovalworkflowAPI* | [**ReferenceDelete**](docs/ApprovalworkflowAPI.md#referencedelete) | **Delete** /approvalworkflow/{reference} | Delete a approvalworkflow object
-*ApprovalworkflowAPI* | [**ReferenceGet**](docs/ApprovalworkflowAPI.md#referenceget) | **Get** /approvalworkflow/{reference} | Get a specific approvalworkflow object
-*ApprovalworkflowAPI* | [**ReferencePut**](docs/ApprovalworkflowAPI.md#referenceput) | **Put** /approvalworkflow/{reference} | Update a approvalworkflow object
-*AuthpolicyAPI* | [**Get**](docs/AuthpolicyAPI.md#get) | **Get** /authpolicy | Retrieve authpolicy objects
-*AuthpolicyAPI* | [**ReferenceGet**](docs/AuthpolicyAPI.md#referenceget) | **Get** /authpolicy/{reference} | Get a specific authpolicy object
-*AuthpolicyAPI* | [**ReferencePut**](docs/AuthpolicyAPI.md#referenceput) | **Put** /authpolicy/{reference} | Update a authpolicy object
-*CacertificateAPI* | [**Get**](docs/CacertificateAPI.md#get) | **Get** /cacertificate | Retrieve cacertificate objects
-*CacertificateAPI* | [**ReferenceDelete**](docs/CacertificateAPI.md#referencedelete) | **Delete** /cacertificate/{reference} | Delete a cacertificate object
-*CacertificateAPI* | [**ReferenceGet**](docs/CacertificateAPI.md#referenceget) | **Get** /cacertificate/{reference} | Get a specific cacertificate object
-*CertificateAuthserviceAPI* | [**CertificateauthserviceGet**](docs/CertificateAuthserviceAPI.md#certificateauthserviceget) | **Get** /certificate:authservice | Retrieve certificate:authservice objects
-*CertificateAuthserviceAPI* | [**CertificateauthservicePost**](docs/CertificateAuthserviceAPI.md#certificateauthservicepost) | **Post** /certificate:authservice | Create a certificate:authservice object
-*CertificateAuthserviceAPI* | [**CertificateauthserviceReferenceDelete**](docs/CertificateAuthserviceAPI.md#certificateauthservicereferencedelete) | **Delete** /certificate:authservice/{reference} | Delete a certificate:authservice object
-*CertificateAuthserviceAPI* | [**CertificateauthserviceReferenceGet**](docs/CertificateAuthserviceAPI.md#certificateauthservicereferenceget) | **Get** /certificate:authservice/{reference} | Get a specific certificate:authservice object
-*CertificateAuthserviceAPI* | [**CertificateauthserviceReferencePut**](docs/CertificateAuthserviceAPI.md#certificateauthservicereferenceput) | **Put** /certificate:authservice/{reference} | Update a certificate:authservice object
-*FtpuserAPI* | [**Get**](docs/FtpuserAPI.md#get) | **Get** /ftpuser | Retrieve ftpuser objects
-*FtpuserAPI* | [**Post**](docs/FtpuserAPI.md#post) | **Post** /ftpuser | Create a ftpuser object
-*FtpuserAPI* | [**ReferenceDelete**](docs/FtpuserAPI.md#referencedelete) | **Delete** /ftpuser/{reference} | Delete a ftpuser object
-*FtpuserAPI* | [**ReferenceGet**](docs/FtpuserAPI.md#referenceget) | **Get** /ftpuser/{reference} | Get a specific ftpuser object
-*FtpuserAPI* | [**ReferencePut**](docs/FtpuserAPI.md#referenceput) | **Put** /ftpuser/{reference} | Update a ftpuser object
-*HsmAllgroupsAPI* | [**HsmallgroupsGet**](docs/HsmAllgroupsAPI.md#hsmallgroupsget) | **Get** /hsm:allgroups | Retrieve hsm:allgroups objects
-*HsmAllgroupsAPI* | [**HsmallgroupsReferenceGet**](docs/HsmAllgroupsAPI.md#hsmallgroupsreferenceget) | **Get** /hsm:allgroups/{reference} | Get a specific hsm:allgroups object
-*HsmAllgroupsAPI* | [**HsmallgroupsReferencePut**](docs/HsmAllgroupsAPI.md#hsmallgroupsreferenceput) | **Put** /hsm:allgroups/{reference} | Update a hsm:allgroups object
-*HsmEntrustnshieldgroupAPI* | [**HsmentrustnshieldgroupGet**](docs/HsmEntrustnshieldgroupAPI.md#hsmentrustnshieldgroupget) | **Get** /hsm:entrustnshieldgroup | Retrieve hsm:entrustnshieldgroup objects
-*HsmEntrustnshieldgroupAPI* | [**HsmentrustnshieldgroupPost**](docs/HsmEntrustnshieldgroupAPI.md#hsmentrustnshieldgrouppost) | **Post** /hsm:entrustnshieldgroup | Create a hsm:entrustnshieldgroup object
-*HsmEntrustnshieldgroupAPI* | [**HsmentrustnshieldgroupReferenceDelete**](docs/HsmEntrustnshieldgroupAPI.md#hsmentrustnshieldgroupreferencedelete) | **Delete** /hsm:entrustnshieldgroup/{reference} | Delete a hsm:entrustnshieldgroup object
-*HsmEntrustnshieldgroupAPI* | [**HsmentrustnshieldgroupReferenceGet**](docs/HsmEntrustnshieldgroupAPI.md#hsmentrustnshieldgroupreferenceget) | **Get** /hsm:entrustnshieldgroup/{reference} | Get a specific hsm:entrustnshieldgroup object
-*HsmEntrustnshieldgroupAPI* | [**HsmentrustnshieldgroupReferencePut**](docs/HsmEntrustnshieldgroupAPI.md#hsmentrustnshieldgroupreferenceput) | **Put** /hsm:entrustnshieldgroup/{reference} | Update a hsm:entrustnshieldgroup object
-*HsmThaleslunagroupAPI* | [**HsmthaleslunagroupGet**](docs/HsmThaleslunagroupAPI.md#hsmthaleslunagroupget) | **Get** /hsm:thaleslunagroup | Retrieve hsm:thaleslunagroup objects
-*HsmThaleslunagroupAPI* | [**HsmthaleslunagroupPost**](docs/HsmThaleslunagroupAPI.md#hsmthaleslunagrouppost) | **Post** /hsm:thaleslunagroup | Create a hsm:thaleslunagroup object
-*HsmThaleslunagroupAPI* | [**HsmthaleslunagroupReferenceDelete**](docs/HsmThaleslunagroupAPI.md#hsmthaleslunagroupreferencedelete) | **Delete** /hsm:thaleslunagroup/{reference} | Delete a hsm:thaleslunagroup object
-*HsmThaleslunagroupAPI* | [**HsmthaleslunagroupReferenceGet**](docs/HsmThaleslunagroupAPI.md#hsmthaleslunagroupreferenceget) | **Get** /hsm:thaleslunagroup/{reference} | Get a specific hsm:thaleslunagroup object
-*HsmThaleslunagroupAPI* | [**HsmthaleslunagroupReferencePut**](docs/HsmThaleslunagroupAPI.md#hsmthaleslunagroupreferenceput) | **Put** /hsm:thaleslunagroup/{reference} | Update a hsm:thaleslunagroup object
-*LdapAuthServiceAPI* | [**Get**](docs/LdapAuthServiceAPI.md#get) | **Get** /ldap_auth_service | Retrieve ldap_auth_service objects
-*LdapAuthServiceAPI* | [**Post**](docs/LdapAuthServiceAPI.md#post) | **Post** /ldap_auth_service | Create a ldap_auth_service object
-*LdapAuthServiceAPI* | [**ReferenceDelete**](docs/LdapAuthServiceAPI.md#referencedelete) | **Delete** /ldap_auth_service/{reference} | Delete a ldap_auth_service object
-*LdapAuthServiceAPI* | [**ReferenceGet**](docs/LdapAuthServiceAPI.md#referenceget) | **Get** /ldap_auth_service/{reference} | Get a specific ldap_auth_service object
-*LdapAuthServiceAPI* | [**ReferencePut**](docs/LdapAuthServiceAPI.md#referenceput) | **Put** /ldap_auth_service/{reference} | Update a ldap_auth_service object
-*LocaluserAuthserviceAPI* | [**LocaluserauthserviceGet**](docs/LocaluserAuthserviceAPI.md#localuserauthserviceget) | **Get** /localuser:authservice | Retrieve localuser:authservice objects
-*LocaluserAuthserviceAPI* | [**LocaluserauthserviceReferenceGet**](docs/LocaluserAuthserviceAPI.md#localuserauthservicereferenceget) | **Get** /localuser:authservice/{reference} | Get a specific localuser:authservice object
-*NetworkuserAPI* | [**Get**](docs/NetworkuserAPI.md#get) | **Get** /networkuser | Retrieve networkuser objects
-*NetworkuserAPI* | [**Post**](docs/NetworkuserAPI.md#post) | **Post** /networkuser | Create a networkuser object
-*NetworkuserAPI* | [**ReferenceDelete**](docs/NetworkuserAPI.md#referencedelete) | **Delete** /networkuser/{reference} | Delete a networkuser object
-*NetworkuserAPI* | [**ReferenceGet**](docs/NetworkuserAPI.md#referenceget) | **Get** /networkuser/{reference} | Get a specific networkuser object
-*NetworkuserAPI* | [**ReferencePut**](docs/NetworkuserAPI.md#referenceput) | **Put** /networkuser/{reference} | Update a networkuser object
-*PermissionAPI* | [**Get**](docs/PermissionAPI.md#get) | **Get** /permission | Retrieve permission objects
-*PermissionAPI* | [**Post**](docs/PermissionAPI.md#post) | **Post** /permission | Create a permission object
-*PermissionAPI* | [**ReferenceDelete**](docs/PermissionAPI.md#referencedelete) | **Delete** /permission/{reference} | Delete a permission object
-*PermissionAPI* | [**ReferenceGet**](docs/PermissionAPI.md#referenceget) | **Get** /permission/{reference} | Get a specific permission object
-*PermissionAPI* | [**ReferencePut**](docs/PermissionAPI.md#referenceput) | **Put** /permission/{reference} | Update a permission object
-*RadiusAuthserviceAPI* | [**RadiusauthserviceGet**](docs/RadiusAuthserviceAPI.md#radiusauthserviceget) | **Get** /radius:authservice | Retrieve radius:authservice objects
-*RadiusAuthserviceAPI* | [**RadiusauthservicePost**](docs/RadiusAuthserviceAPI.md#radiusauthservicepost) | **Post** /radius:authservice | Create a radius:authservice object
-*RadiusAuthserviceAPI* | [**RadiusauthserviceReferenceDelete**](docs/RadiusAuthserviceAPI.md#radiusauthservicereferencedelete) | **Delete** /radius:authservice/{reference} | Delete a radius:authservice object
-*RadiusAuthserviceAPI* | [**RadiusauthserviceReferenceGet**](docs/RadiusAuthserviceAPI.md#radiusauthservicereferenceget) | **Get** /radius:authservice/{reference} | Get a specific radius:authservice object
-*RadiusAuthserviceAPI* | [**RadiusauthserviceReferencePut**](docs/RadiusAuthserviceAPI.md#radiusauthservicereferenceput) | **Put** /radius:authservice/{reference} | Update a radius:authservice object
-*SamlAuthserviceAPI* | [**SamlauthserviceGet**](docs/SamlAuthserviceAPI.md#samlauthserviceget) | **Get** /saml:authservice | Retrieve saml:authservice objects
-*SamlAuthserviceAPI* | [**SamlauthservicePost**](docs/SamlAuthserviceAPI.md#samlauthservicepost) | **Post** /saml:authservice | Create a saml:authservice object
-*SamlAuthserviceAPI* | [**SamlauthserviceReferenceDelete**](docs/SamlAuthserviceAPI.md#samlauthservicereferencedelete) | **Delete** /saml:authservice/{reference} | Delete a saml:authservice object
-*SamlAuthserviceAPI* | [**SamlauthserviceReferenceGet**](docs/SamlAuthserviceAPI.md#samlauthservicereferenceget) | **Get** /saml:authservice/{reference} | Get a specific saml:authservice object
-*SamlAuthserviceAPI* | [**SamlauthserviceReferencePut**](docs/SamlAuthserviceAPI.md#samlauthservicereferenceput) | **Put** /saml:authservice/{reference} | Update a saml:authservice object
-*SnmpuserAPI* | [**Get**](docs/SnmpuserAPI.md#get) | **Get** /snmpuser | Retrieve snmpuser objects
-*SnmpuserAPI* | [**Post**](docs/SnmpuserAPI.md#post) | **Post** /snmpuser | Create a snmpuser object
-*SnmpuserAPI* | [**ReferenceDelete**](docs/SnmpuserAPI.md#referencedelete) | **Delete** /snmpuser/{reference} | Delete a snmpuser object
-*SnmpuserAPI* | [**ReferenceGet**](docs/SnmpuserAPI.md#referenceget) | **Get** /snmpuser/{reference} | Get a specific snmpuser object
-*SnmpuserAPI* | [**ReferencePut**](docs/SnmpuserAPI.md#referenceput) | **Put** /snmpuser/{reference} | Update a snmpuser object
-*TacacsplusAuthserviceAPI* | [**TacacsplusauthserviceGet**](docs/TacacsplusAuthserviceAPI.md#tacacsplusauthserviceget) | **Get** /tacacsplus:authservice | Retrieve tacacsplus:authservice objects
-*TacacsplusAuthserviceAPI* | [**TacacsplusauthservicePost**](docs/TacacsplusAuthserviceAPI.md#tacacsplusauthservicepost) | **Post** /tacacsplus:authservice | Create a tacacsplus:authservice object
-*TacacsplusAuthserviceAPI* | [**TacacsplusauthserviceReferenceDelete**](docs/TacacsplusAuthserviceAPI.md#tacacsplusauthservicereferencedelete) | **Delete** /tacacsplus:authservice/{reference} | Delete a tacacsplus:authservice object
-*TacacsplusAuthserviceAPI* | [**TacacsplusauthserviceReferenceGet**](docs/TacacsplusAuthserviceAPI.md#tacacsplusauthservicereferenceget) | **Get** /tacacsplus:authservice/{reference} | Get a specific tacacsplus:authservice object
-*TacacsplusAuthserviceAPI* | [**TacacsplusauthserviceReferencePut**](docs/TacacsplusAuthserviceAPI.md#tacacsplusauthservicereferenceput) | **Put** /tacacsplus:authservice/{reference} | Update a tacacsplus:authservice object
-*UserprofileAPI* | [**Get**](docs/UserprofileAPI.md#get) | **Get** /userprofile | Retrieve userprofile objects
-*UserprofileAPI* | [**ReferenceGet**](docs/UserprofileAPI.md#referenceget) | **Get** /userprofile/{reference} | Get a specific userprofile object
-*UserprofileAPI* | [**ReferencePut**](docs/UserprofileAPI.md#referenceput) | **Put** /userprofile/{reference} | Update a userprofile object
+*AdAuthServiceAPI* | [**Create**](docs/AdAuthServiceAPI.md#create) | **Post** /ad_auth_service | Create a ad_auth_service object
+*AdAuthServiceAPI* | [**Delete**](docs/AdAuthServiceAPI.md#delete) | **Delete** /ad_auth_service/{reference} | Delete a ad_auth_service object
+*AdAuthServiceAPI* | [**List**](docs/AdAuthServiceAPI.md#list) | **Get** /ad_auth_service | Retrieve ad_auth_service objects
+*AdAuthServiceAPI* | [**Read**](docs/AdAuthServiceAPI.md#read) | **Get** /ad_auth_service/{reference} | Get a specific ad_auth_service object
+*AdAuthServiceAPI* | [**Update**](docs/AdAuthServiceAPI.md#update) | **Put** /ad_auth_service/{reference} | Update a ad_auth_service object
+*AdmingroupAPI* | [**Create**](docs/AdmingroupAPI.md#create) | **Post** /admingroup | Create a admingroup object
+*AdmingroupAPI* | [**Delete**](docs/AdmingroupAPI.md#delete) | **Delete** /admingroup/{reference} | Delete a admingroup object
+*AdmingroupAPI* | [**List**](docs/AdmingroupAPI.md#list) | **Get** /admingroup | Retrieve admingroup objects
+*AdmingroupAPI* | [**Read**](docs/AdmingroupAPI.md#read) | **Get** /admingroup/{reference} | Get a specific admingroup object
+*AdmingroupAPI* | [**Update**](docs/AdmingroupAPI.md#update) | **Put** /admingroup/{reference} | Update a admingroup object
+*AdminroleAPI* | [**Create**](docs/AdminroleAPI.md#create) | **Post** /adminrole | Create a adminrole object
+*AdminroleAPI* | [**Delete**](docs/AdminroleAPI.md#delete) | **Delete** /adminrole/{reference} | Delete a adminrole object
+*AdminroleAPI* | [**List**](docs/AdminroleAPI.md#list) | **Get** /adminrole | Retrieve adminrole objects
+*AdminroleAPI* | [**Read**](docs/AdminroleAPI.md#read) | **Get** /adminrole/{reference} | Get a specific adminrole object
+*AdminroleAPI* | [**Update**](docs/AdminroleAPI.md#update) | **Put** /adminrole/{reference} | Update a adminrole object
+*AdminuserAPI* | [**Create**](docs/AdminuserAPI.md#create) | **Post** /adminuser | Create a adminuser object
+*AdminuserAPI* | [**Delete**](docs/AdminuserAPI.md#delete) | **Delete** /adminuser/{reference} | Delete a adminuser object
+*AdminuserAPI* | [**List**](docs/AdminuserAPI.md#list) | **Get** /adminuser | Retrieve adminuser objects
+*AdminuserAPI* | [**Read**](docs/AdminuserAPI.md#read) | **Get** /adminuser/{reference} | Get a specific adminuser object
+*AdminuserAPI* | [**Update**](docs/AdminuserAPI.md#update) | **Put** /adminuser/{reference} | Update a adminuser object
+*ApprovalworkflowAPI* | [**Create**](docs/ApprovalworkflowAPI.md#create) | **Post** /approvalworkflow | Create a approvalworkflow object
+*ApprovalworkflowAPI* | [**Delete**](docs/ApprovalworkflowAPI.md#delete) | **Delete** /approvalworkflow/{reference} | Delete a approvalworkflow object
+*ApprovalworkflowAPI* | [**List**](docs/ApprovalworkflowAPI.md#list) | **Get** /approvalworkflow | Retrieve approvalworkflow objects
+*ApprovalworkflowAPI* | [**Read**](docs/ApprovalworkflowAPI.md#read) | **Get** /approvalworkflow/{reference} | Get a specific approvalworkflow object
+*ApprovalworkflowAPI* | [**Update**](docs/ApprovalworkflowAPI.md#update) | **Put** /approvalworkflow/{reference} | Update a approvalworkflow object
+*AuthpolicyAPI* | [**List**](docs/AuthpolicyAPI.md#list) | **Get** /authpolicy | Retrieve authpolicy objects
+*AuthpolicyAPI* | [**Read**](docs/AuthpolicyAPI.md#read) | **Get** /authpolicy/{reference} | Get a specific authpolicy object
+*AuthpolicyAPI* | [**Update**](docs/AuthpolicyAPI.md#update) | **Put** /authpolicy/{reference} | Update a authpolicy object
+*CacertificateAPI* | [**Delete**](docs/CacertificateAPI.md#delete) | **Delete** /cacertificate/{reference} | Delete a cacertificate object
+*CacertificateAPI* | [**List**](docs/CacertificateAPI.md#list) | **Get** /cacertificate | Retrieve cacertificate objects
+*CacertificateAPI* | [**Read**](docs/CacertificateAPI.md#read) | **Get** /cacertificate/{reference} | Get a specific cacertificate object
+*CertificateAuthserviceAPI* | [**Create**](docs/CertificateAuthserviceAPI.md#create) | **Post** /certificate:authservice | Create a certificate:authservice object
+*CertificateAuthserviceAPI* | [**Delete**](docs/CertificateAuthserviceAPI.md#delete) | **Delete** /certificate:authservice/{reference} | Delete a certificate:authservice object
+*CertificateAuthserviceAPI* | [**List**](docs/CertificateAuthserviceAPI.md#list) | **Get** /certificate:authservice | Retrieve certificate:authservice objects
+*CertificateAuthserviceAPI* | [**Read**](docs/CertificateAuthserviceAPI.md#read) | **Get** /certificate:authservice/{reference} | Get a specific certificate:authservice object
+*CertificateAuthserviceAPI* | [**Update**](docs/CertificateAuthserviceAPI.md#update) | **Put** /certificate:authservice/{reference} | Update a certificate:authservice object
+*FtpuserAPI* | [**Create**](docs/FtpuserAPI.md#create) | **Post** /ftpuser | Create a ftpuser object
+*FtpuserAPI* | [**Delete**](docs/FtpuserAPI.md#delete) | **Delete** /ftpuser/{reference} | Delete a ftpuser object
+*FtpuserAPI* | [**List**](docs/FtpuserAPI.md#list) | **Get** /ftpuser | Retrieve ftpuser objects
+*FtpuserAPI* | [**Read**](docs/FtpuserAPI.md#read) | **Get** /ftpuser/{reference} | Get a specific ftpuser object
+*FtpuserAPI* | [**Update**](docs/FtpuserAPI.md#update) | **Put** /ftpuser/{reference} | Update a ftpuser object
+*HsmAllgroupsAPI* | [**List**](docs/HsmAllgroupsAPI.md#list) | **Get** /hsm:allgroups | Retrieve hsm:allgroups objects
+*HsmAllgroupsAPI* | [**Read**](docs/HsmAllgroupsAPI.md#read) | **Get** /hsm:allgroups/{reference} | Get a specific hsm:allgroups object
+*HsmAllgroupsAPI* | [**Update**](docs/HsmAllgroupsAPI.md#update) | **Put** /hsm:allgroups/{reference} | Update a hsm:allgroups object
+*HsmEntrustnshieldgroupAPI* | [**Create**](docs/HsmEntrustnshieldgroupAPI.md#create) | **Post** /hsm:entrustnshieldgroup | Create a hsm:entrustnshieldgroup object
+*HsmEntrustnshieldgroupAPI* | [**Delete**](docs/HsmEntrustnshieldgroupAPI.md#delete) | **Delete** /hsm:entrustnshieldgroup/{reference} | Delete a hsm:entrustnshieldgroup object
+*HsmEntrustnshieldgroupAPI* | [**List**](docs/HsmEntrustnshieldgroupAPI.md#list) | **Get** /hsm:entrustnshieldgroup | Retrieve hsm:entrustnshieldgroup objects
+*HsmEntrustnshieldgroupAPI* | [**Read**](docs/HsmEntrustnshieldgroupAPI.md#read) | **Get** /hsm:entrustnshieldgroup/{reference} | Get a specific hsm:entrustnshieldgroup object
+*HsmEntrustnshieldgroupAPI* | [**Update**](docs/HsmEntrustnshieldgroupAPI.md#update) | **Put** /hsm:entrustnshieldgroup/{reference} | Update a hsm:entrustnshieldgroup object
+*HsmThaleslunagroupAPI* | [**Create**](docs/HsmThaleslunagroupAPI.md#create) | **Post** /hsm:thaleslunagroup | Create a hsm:thaleslunagroup object
+*HsmThaleslunagroupAPI* | [**Delete**](docs/HsmThaleslunagroupAPI.md#delete) | **Delete** /hsm:thaleslunagroup/{reference} | Delete a hsm:thaleslunagroup object
+*HsmThaleslunagroupAPI* | [**List**](docs/HsmThaleslunagroupAPI.md#list) | **Get** /hsm:thaleslunagroup | Retrieve hsm:thaleslunagroup objects
+*HsmThaleslunagroupAPI* | [**Read**](docs/HsmThaleslunagroupAPI.md#read) | **Get** /hsm:thaleslunagroup/{reference} | Get a specific hsm:thaleslunagroup object
+*HsmThaleslunagroupAPI* | [**Update**](docs/HsmThaleslunagroupAPI.md#update) | **Put** /hsm:thaleslunagroup/{reference} | Update a hsm:thaleslunagroup object
+*LdapAuthServiceAPI* | [**Create**](docs/LdapAuthServiceAPI.md#create) | **Post** /ldap_auth_service | Create a ldap_auth_service object
+*LdapAuthServiceAPI* | [**Delete**](docs/LdapAuthServiceAPI.md#delete) | **Delete** /ldap_auth_service/{reference} | Delete a ldap_auth_service object
+*LdapAuthServiceAPI* | [**List**](docs/LdapAuthServiceAPI.md#list) | **Get** /ldap_auth_service | Retrieve ldap_auth_service objects
+*LdapAuthServiceAPI* | [**Read**](docs/LdapAuthServiceAPI.md#read) | **Get** /ldap_auth_service/{reference} | Get a specific ldap_auth_service object
+*LdapAuthServiceAPI* | [**Update**](docs/LdapAuthServiceAPI.md#update) | **Put** /ldap_auth_service/{reference} | Update a ldap_auth_service object
+*LocaluserAuthserviceAPI* | [**List**](docs/LocaluserAuthserviceAPI.md#list) | **Get** /localuser:authservice | Retrieve localuser:authservice objects
+*LocaluserAuthserviceAPI* | [**Read**](docs/LocaluserAuthserviceAPI.md#read) | **Get** /localuser:authservice/{reference} | Get a specific localuser:authservice object
+*NetworkuserAPI* | [**Create**](docs/NetworkuserAPI.md#create) | **Post** /networkuser | Create a networkuser object
+*NetworkuserAPI* | [**Delete**](docs/NetworkuserAPI.md#delete) | **Delete** /networkuser/{reference} | Delete a networkuser object
+*NetworkuserAPI* | [**List**](docs/NetworkuserAPI.md#list) | **Get** /networkuser | Retrieve networkuser objects
+*NetworkuserAPI* | [**Read**](docs/NetworkuserAPI.md#read) | **Get** /networkuser/{reference} | Get a specific networkuser object
+*NetworkuserAPI* | [**Update**](docs/NetworkuserAPI.md#update) | **Put** /networkuser/{reference} | Update a networkuser object
+*PermissionAPI* | [**Create**](docs/PermissionAPI.md#create) | **Post** /permission | Create a permission object
+*PermissionAPI* | [**Delete**](docs/PermissionAPI.md#delete) | **Delete** /permission/{reference} | Delete a permission object
+*PermissionAPI* | [**List**](docs/PermissionAPI.md#list) | **Get** /permission | Retrieve permission objects
+*PermissionAPI* | [**Read**](docs/PermissionAPI.md#read) | **Get** /permission/{reference} | Get a specific permission object
+*PermissionAPI* | [**Update**](docs/PermissionAPI.md#update) | **Put** /permission/{reference} | Update a permission object
+*RadiusAuthserviceAPI* | [**Create**](docs/RadiusAuthserviceAPI.md#create) | **Post** /radius:authservice | Create a radius:authservice object
+*RadiusAuthserviceAPI* | [**Delete**](docs/RadiusAuthserviceAPI.md#delete) | **Delete** /radius:authservice/{reference} | Delete a radius:authservice object
+*RadiusAuthserviceAPI* | [**List**](docs/RadiusAuthserviceAPI.md#list) | **Get** /radius:authservice | Retrieve radius:authservice objects
+*RadiusAuthserviceAPI* | [**Read**](docs/RadiusAuthserviceAPI.md#read) | **Get** /radius:authservice/{reference} | Get a specific radius:authservice object
+*RadiusAuthserviceAPI* | [**Update**](docs/RadiusAuthserviceAPI.md#update) | **Put** /radius:authservice/{reference} | Update a radius:authservice object
+*SamlAuthserviceAPI* | [**Create**](docs/SamlAuthserviceAPI.md#create) | **Post** /saml:authservice | Create a saml:authservice object
+*SamlAuthserviceAPI* | [**Delete**](docs/SamlAuthserviceAPI.md#delete) | **Delete** /saml:authservice/{reference} | Delete a saml:authservice object
+*SamlAuthserviceAPI* | [**List**](docs/SamlAuthserviceAPI.md#list) | **Get** /saml:authservice | Retrieve saml:authservice objects
+*SamlAuthserviceAPI* | [**Read**](docs/SamlAuthserviceAPI.md#read) | **Get** /saml:authservice/{reference} | Get a specific saml:authservice object
+*SamlAuthserviceAPI* | [**Update**](docs/SamlAuthserviceAPI.md#update) | **Put** /saml:authservice/{reference} | Update a saml:authservice object
+*SnmpuserAPI* | [**Create**](docs/SnmpuserAPI.md#create) | **Post** /snmpuser | Create a snmpuser object
+*SnmpuserAPI* | [**Delete**](docs/SnmpuserAPI.md#delete) | **Delete** /snmpuser/{reference} | Delete a snmpuser object
+*SnmpuserAPI* | [**List**](docs/SnmpuserAPI.md#list) | **Get** /snmpuser | Retrieve snmpuser objects
+*SnmpuserAPI* | [**Read**](docs/SnmpuserAPI.md#read) | **Get** /snmpuser/{reference} | Get a specific snmpuser object
+*SnmpuserAPI* | [**Update**](docs/SnmpuserAPI.md#update) | **Put** /snmpuser/{reference} | Update a snmpuser object
+*TacacsplusAuthserviceAPI* | [**Create**](docs/TacacsplusAuthserviceAPI.md#create) | **Post** /tacacsplus:authservice | Create a tacacsplus:authservice object
+*TacacsplusAuthserviceAPI* | [**Delete**](docs/TacacsplusAuthserviceAPI.md#delete) | **Delete** /tacacsplus:authservice/{reference} | Delete a tacacsplus:authservice object
+*TacacsplusAuthserviceAPI* | [**List**](docs/TacacsplusAuthserviceAPI.md#list) | **Get** /tacacsplus:authservice | Retrieve tacacsplus:authservice objects
+*TacacsplusAuthserviceAPI* | [**Read**](docs/TacacsplusAuthserviceAPI.md#read) | **Get** /tacacsplus:authservice/{reference} | Get a specific tacacsplus:authservice object
+*TacacsplusAuthserviceAPI* | [**Update**](docs/TacacsplusAuthserviceAPI.md#update) | **Put** /tacacsplus:authservice/{reference} | Update a tacacsplus:authservice object
+*UserprofileAPI* | [**List**](docs/UserprofileAPI.md#list) | **Get** /userprofile | Retrieve userprofile objects
+*UserprofileAPI* | [**Read**](docs/UserprofileAPI.md#read) | **Get** /userprofile/{reference} | Get a specific userprofile object
+*UserprofileAPI* | [**Update**](docs/UserprofileAPI.md#update) | **Put** /userprofile/{reference} | Update a userprofile object
 
 
 ## Documentation For Models

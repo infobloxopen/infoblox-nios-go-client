@@ -23,11 +23,11 @@ func TestGridServicerestartGroupOrderAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test GridServicerestartGroupOrderAPIService GridservicerestartgrouporderGet", func(t *testing.T) {
+	t.Run("Test GridServicerestartGroupOrderAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridServicerestartGroupOrderAPI.GridservicerestartgrouporderGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GridServicerestartGroupOrderAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,11 @@ func TestGridServicerestartGroupOrderAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridServicerestartGroupOrderAPIService GridservicerestartgrouporderPost", func(t *testing.T) {
+	t.Run("Test GridServicerestartGroupOrderAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridServicerestartGroupOrderAPI.GridservicerestartgrouporderPost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GridServicerestartGroupOrderAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,13 +47,13 @@ func TestGridServicerestartGroupOrderAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridServicerestartGroupOrderAPIService GridservicerestartgrouporderReferenceGet", func(t *testing.T) {
+	t.Run("Test GridServicerestartGroupOrderAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridServicerestartGroupOrderAPI.GridservicerestartgrouporderReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridServicerestartGroupOrderAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -61,13 +61,13 @@ func TestGridServicerestartGroupOrderAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridServicerestartGroupOrderAPIService GridservicerestartgrouporderReferencePut", func(t *testing.T) {
+	t.Run("Test GridServicerestartGroupOrderAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridServicerestartGroupOrderAPI.GridservicerestartgrouporderReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridServicerestartGroupOrderAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

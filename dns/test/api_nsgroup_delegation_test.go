@@ -23,11 +23,11 @@ func TestNsgroupDelegationAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test NsgroupDelegationAPIService NsgroupdelegationGet", func(t *testing.T) {
+	t.Run("Test NsgroupDelegationAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NsgroupDelegationAPI.NsgroupdelegationGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NsgroupDelegationAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNsgroupDelegationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupDelegationAPIService NsgroupdelegationPost", func(t *testing.T) {
+	t.Run("Test NsgroupDelegationAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NsgroupDelegationAPI.NsgroupdelegationPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NsgroupDelegationAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NsgroupDelegationAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NsgroupDelegationAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNsgroupDelegationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupDelegationAPIService NsgroupdelegationReferenceDelete", func(t *testing.T) {
+	t.Run("Test NsgroupDelegationAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NsgroupDelegationAPI.NsgroupdelegationReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NsgroupDelegationAPIService NsgroupdelegationReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NsgroupDelegationAPI.NsgroupdelegationReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NsgroupDelegationAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNsgroupDelegationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupDelegationAPIService NsgroupdelegationReferencePut", func(t *testing.T) {
+	t.Run("Test NsgroupDelegationAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NsgroupDelegationAPI.NsgroupdelegationReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NsgroupDelegationAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

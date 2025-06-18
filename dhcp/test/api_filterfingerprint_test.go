@@ -23,11 +23,11 @@ func TestFilterfingerprintAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test FilterfingerprintAPIService Get", func(t *testing.T) {
+	t.Run("Test FilterfingerprintAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FilterfingerprintAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.FilterfingerprintAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestFilterfingerprintAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FilterfingerprintAPIService Post", func(t *testing.T) {
+	t.Run("Test FilterfingerprintAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FilterfingerprintAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.FilterfingerprintAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FilterfingerprintAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.FilterfingerprintAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestFilterfingerprintAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FilterfingerprintAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test FilterfingerprintAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.FilterfingerprintAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test FilterfingerprintAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.FilterfingerprintAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FilterfingerprintAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestFilterfingerprintAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FilterfingerprintAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test FilterfingerprintAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.FilterfingerprintAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FilterfingerprintAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

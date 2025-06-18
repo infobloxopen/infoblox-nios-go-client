@@ -23,11 +23,11 @@ func TestDtcTopologyAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcTopologyAPIService DtctopologyGet", func(t *testing.T) {
+	t.Run("Test DtcTopologyAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcTopologyAPI.DtctopologyGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcTopologyAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDtcTopologyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcTopologyAPIService DtctopologyPost", func(t *testing.T) {
+	t.Run("Test DtcTopologyAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcTopologyAPI.DtctopologyPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DtcTopologyAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DtcTopologyAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DtcTopologyAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDtcTopologyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcTopologyAPIService DtctopologyReferenceDelete", func(t *testing.T) {
+	t.Run("Test DtcTopologyAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DtcTopologyAPI.DtctopologyReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DtcTopologyAPIService DtctopologyReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DtcTopologyAPI.DtctopologyReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcTopologyAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDtcTopologyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcTopologyAPIService DtctopologyReferencePut", func(t *testing.T) {
+	t.Run("Test DtcTopologyAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcTopologyAPI.DtctopologyReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcTopologyAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

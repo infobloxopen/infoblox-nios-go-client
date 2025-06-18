@@ -23,124 +23,124 @@ import (
 
 type GridThreatinsightAPI interface {
 	/*
-		GridthreatinsightGet Retrieve grid:threatinsight objects
+		List Retrieve grid:threatinsight objects
 
 		Returns a list of grid:threatinsight objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridThreatinsightAPIGridthreatinsightGetRequest
+		@return GridThreatinsightAPIListRequest
 	*/
-	GridthreatinsightGet(ctx context.Context) GridThreatinsightAPIGridthreatinsightGetRequest
+	List(ctx context.Context) GridThreatinsightAPIListRequest
 
-	// GridthreatinsightGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridThreatinsightResponse
-	GridthreatinsightGetExecute(r GridThreatinsightAPIGridthreatinsightGetRequest) (*ListGridThreatinsightResponse, *http.Response, error)
+	ListExecute(r GridThreatinsightAPIListRequest) (*ListGridThreatinsightResponse, *http.Response, error)
 	/*
-		GridthreatinsightReferenceGet Get a specific grid:threatinsight object
+		Read Get a specific grid:threatinsight object
 
 		Returns a specific grid:threatinsight object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:threatinsight object
-		@return GridThreatinsightAPIGridthreatinsightReferenceGetRequest
+		@return GridThreatinsightAPIReadRequest
 	*/
-	GridthreatinsightReferenceGet(ctx context.Context, reference string) GridThreatinsightAPIGridthreatinsightReferenceGetRequest
+	Read(ctx context.Context, reference string) GridThreatinsightAPIReadRequest
 
-	// GridthreatinsightReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridThreatinsightResponse
-	GridthreatinsightReferenceGetExecute(r GridThreatinsightAPIGridthreatinsightReferenceGetRequest) (*GetGridThreatinsightResponse, *http.Response, error)
+	ReadExecute(r GridThreatinsightAPIReadRequest) (*GetGridThreatinsightResponse, *http.Response, error)
 	/*
-		GridthreatinsightReferencePut Update a grid:threatinsight object
+		Update Update a grid:threatinsight object
 
 		Updates a specific grid:threatinsight object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:threatinsight object
-		@return GridThreatinsightAPIGridthreatinsightReferencePutRequest
+		@return GridThreatinsightAPIUpdateRequest
 	*/
-	GridthreatinsightReferencePut(ctx context.Context, reference string) GridThreatinsightAPIGridthreatinsightReferencePutRequest
+	Update(ctx context.Context, reference string) GridThreatinsightAPIUpdateRequest
 
-	// GridthreatinsightReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridThreatinsightResponse
-	GridthreatinsightReferencePutExecute(r GridThreatinsightAPIGridthreatinsightReferencePutRequest) (*UpdateGridThreatinsightResponse, *http.Response, error)
+	UpdateExecute(r GridThreatinsightAPIUpdateRequest) (*UpdateGridThreatinsightResponse, *http.Response, error)
 }
 
 // GridThreatinsightAPIService GridThreatinsightAPI service
 type GridThreatinsightAPIService internal.Service
 
-type GridThreatinsightAPIGridthreatinsightGetRequest struct {
-	ctx            context.Context
-	ApiService     GridThreatinsightAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type GridThreatinsightAPIListRequest struct {
+	ctx              context.Context
+	ApiService       GridThreatinsightAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r GridThreatinsightAPIGridthreatinsightGetRequest) ReturnFields(returnFields string) GridThreatinsightAPIGridthreatinsightGetRequest {
+func (r GridThreatinsightAPIListRequest) ReturnFields(returnFields string) GridThreatinsightAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridThreatinsightAPIGridthreatinsightGetRequest) ReturnFields2(returnFields2 string) GridThreatinsightAPIGridthreatinsightGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridThreatinsightAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridThreatinsightAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridThreatinsightAPIGridthreatinsightGetRequest) MaxResults(maxResults int32) GridThreatinsightAPIGridthreatinsightGetRequest {
+func (r GridThreatinsightAPIListRequest) MaxResults(maxResults int32) GridThreatinsightAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridThreatinsightAPIGridthreatinsightGetRequest) ReturnAsObject(returnAsObject int32) GridThreatinsightAPIGridthreatinsightGetRequest {
+func (r GridThreatinsightAPIListRequest) ReturnAsObject(returnAsObject int32) GridThreatinsightAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridThreatinsightAPIGridthreatinsightGetRequest) Paging(paging int32) GridThreatinsightAPIGridthreatinsightGetRequest {
+func (r GridThreatinsightAPIListRequest) Paging(paging int32) GridThreatinsightAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridThreatinsightAPIGridthreatinsightGetRequest) PageId(pageId string) GridThreatinsightAPIGridthreatinsightGetRequest {
+func (r GridThreatinsightAPIListRequest) PageId(pageId string) GridThreatinsightAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridThreatinsightAPIGridthreatinsightGetRequest) Filters(filters map[string]interface{}) GridThreatinsightAPIGridthreatinsightGetRequest {
+func (r GridThreatinsightAPIListRequest) Filters(filters map[string]interface{}) GridThreatinsightAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridThreatinsightAPIGridthreatinsightGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridThreatinsightAPIGridthreatinsightGetRequest {
+func (r GridThreatinsightAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridThreatinsightAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridThreatinsightAPIGridthreatinsightGetRequest) Execute() (*ListGridThreatinsightResponse, *http.Response, error) {
-	return r.ApiService.GridthreatinsightGetExecute(r)
+func (r GridThreatinsightAPIListRequest) Execute() (*ListGridThreatinsightResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridthreatinsightGet Retrieve grid:threatinsight objects
+List Retrieve grid:threatinsight objects
 
 Returns a list of grid:threatinsight objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridThreatinsightAPIGridthreatinsightGetRequest
+	@return GridThreatinsightAPIListRequest
 */
-func (a *GridThreatinsightAPIService) GridthreatinsightGet(ctx context.Context) GridThreatinsightAPIGridthreatinsightGetRequest {
-	return GridThreatinsightAPIGridthreatinsightGetRequest{
+func (a *GridThreatinsightAPIService) List(ctx context.Context) GridThreatinsightAPIListRequest {
+	return GridThreatinsightAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GridThreatinsightAPIService) GridthreatinsightGet(ctx context.Context) 
 // Execute executes the request
 //
 //	@return ListGridThreatinsightResponse
-func (a *GridThreatinsightAPIService) GridthreatinsightGetExecute(r GridThreatinsightAPIGridthreatinsightGetRequest) (*ListGridThreatinsightResponse, *http.Response, error) {
+func (a *GridThreatinsightAPIService) ListExecute(r GridThreatinsightAPIListRequest) (*ListGridThreatinsightResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GridThreatinsightAPIService) GridthreatinsightGetExecute(r GridThreatin
 		localVarReturnValue *ListGridThreatinsightResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatinsightAPIService.GridthreatinsightGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatinsightAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *GridThreatinsightAPIService) GridthreatinsightGetExecute(r GridThreatin
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *GridThreatinsightAPIService) GridthreatinsightGetExecute(r GridThreatin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridThreatinsightAPIGridthreatinsightReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     GridThreatinsightAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type GridThreatinsightAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       GridThreatinsightAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r GridThreatinsightAPIGridthreatinsightReferenceGetRequest) ReturnFields(returnFields string) GridThreatinsightAPIGridthreatinsightReferenceGetRequest {
+func (r GridThreatinsightAPIReadRequest) ReturnFields(returnFields string) GridThreatinsightAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridThreatinsightAPIGridthreatinsightReferenceGetRequest) ReturnFields2(returnFields2 string) GridThreatinsightAPIGridthreatinsightReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridThreatinsightAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridThreatinsightAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridThreatinsightAPIGridthreatinsightReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridThreatinsightAPIGridthreatinsightReferenceGetRequest {
+func (r GridThreatinsightAPIReadRequest) ReturnAsObject(returnAsObject int32) GridThreatinsightAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridThreatinsightAPIGridthreatinsightReferenceGetRequest) Execute() (*GetGridThreatinsightResponse, *http.Response, error) {
-	return r.ApiService.GridthreatinsightReferenceGetExecute(r)
+func (r GridThreatinsightAPIReadRequest) Execute() (*GetGridThreatinsightResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridthreatinsightReferenceGet Get a specific grid:threatinsight object
+Read Get a specific grid:threatinsight object
 
 Returns a specific grid:threatinsight object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:threatinsight object
-	@return GridThreatinsightAPIGridthreatinsightReferenceGetRequest
+	@return GridThreatinsightAPIReadRequest
 */
-func (a *GridThreatinsightAPIService) GridthreatinsightReferenceGet(ctx context.Context, reference string) GridThreatinsightAPIGridthreatinsightReferenceGetRequest {
-	return GridThreatinsightAPIGridthreatinsightReferenceGetRequest{
+func (a *GridThreatinsightAPIService) Read(ctx context.Context, reference string) GridThreatinsightAPIReadRequest {
+	return GridThreatinsightAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GridThreatinsightAPIService) GridthreatinsightReferenceGet(ctx context.
 // Execute executes the request
 //
 //	@return GetGridThreatinsightResponse
-func (a *GridThreatinsightAPIService) GridthreatinsightReferenceGetExecute(r GridThreatinsightAPIGridthreatinsightReferenceGetRequest) (*GetGridThreatinsightResponse, *http.Response, error) {
+func (a *GridThreatinsightAPIService) ReadExecute(r GridThreatinsightAPIReadRequest) (*GetGridThreatinsightResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GridThreatinsightAPIService) GridthreatinsightReferenceGetExecute(r Gri
 		localVarReturnValue *GetGridThreatinsightResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatinsightAPIService.GridthreatinsightReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatinsightAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *GridThreatinsightAPIService) GridthreatinsightReferenceGetExecute(r Gri
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *GridThreatinsightAPIService) GridthreatinsightReferenceGetExecute(r Gri
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridThreatinsightAPIGridthreatinsightReferencePutRequest struct {
+type GridThreatinsightAPIUpdateRequest struct {
 	ctx               context.Context
 	ApiService        GridThreatinsightAPI
 	reference         string
 	gridThreatinsight *GridThreatinsight
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
 // Object data to update
-func (r GridThreatinsightAPIGridthreatinsightReferencePutRequest) GridThreatinsight(gridThreatinsight GridThreatinsight) GridThreatinsightAPIGridthreatinsightReferencePutRequest {
+func (r GridThreatinsightAPIUpdateRequest) GridThreatinsight(gridThreatinsight GridThreatinsight) GridThreatinsightAPIUpdateRequest {
 	r.gridThreatinsight = &gridThreatinsight
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridThreatinsightAPIGridthreatinsightReferencePutRequest) ReturnFields(returnFields string) GridThreatinsightAPIGridthreatinsightReferencePutRequest {
+func (r GridThreatinsightAPIUpdateRequest) ReturnFields(returnFields string) GridThreatinsightAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridThreatinsightAPIGridthreatinsightReferencePutRequest) ReturnFields2(returnFields2 string) GridThreatinsightAPIGridthreatinsightReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r GridThreatinsightAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridThreatinsightAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridThreatinsightAPIGridthreatinsightReferencePutRequest) ReturnAsObject(returnAsObject int32) GridThreatinsightAPIGridthreatinsightReferencePutRequest {
+func (r GridThreatinsightAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridThreatinsightAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridThreatinsightAPIGridthreatinsightReferencePutRequest) Execute() (*UpdateGridThreatinsightResponse, *http.Response, error) {
-	return r.ApiService.GridthreatinsightReferencePutExecute(r)
+func (r GridThreatinsightAPIUpdateRequest) Execute() (*UpdateGridThreatinsightResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GridthreatinsightReferencePut Update a grid:threatinsight object
+Update Update a grid:threatinsight object
 
 Updates a specific grid:threatinsight object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:threatinsight object
-	@return GridThreatinsightAPIGridthreatinsightReferencePutRequest
+	@return GridThreatinsightAPIUpdateRequest
 */
-func (a *GridThreatinsightAPIService) GridthreatinsightReferencePut(ctx context.Context, reference string) GridThreatinsightAPIGridthreatinsightReferencePutRequest {
-	return GridThreatinsightAPIGridthreatinsightReferencePutRequest{
+func (a *GridThreatinsightAPIService) Update(ctx context.Context, reference string) GridThreatinsightAPIUpdateRequest {
+	return GridThreatinsightAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GridThreatinsightAPIService) GridthreatinsightReferencePut(ctx context.
 // Execute executes the request
 //
 //	@return UpdateGridThreatinsightResponse
-func (a *GridThreatinsightAPIService) GridthreatinsightReferencePutExecute(r GridThreatinsightAPIGridthreatinsightReferencePutRequest) (*UpdateGridThreatinsightResponse, *http.Response, error) {
+func (a *GridThreatinsightAPIService) UpdateExecute(r GridThreatinsightAPIUpdateRequest) (*UpdateGridThreatinsightResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GridThreatinsightAPIService) GridthreatinsightReferencePutExecute(r Gri
 		localVarReturnValue *UpdateGridThreatinsightResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatinsightAPIService.GridthreatinsightReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridThreatinsightAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *GridThreatinsightAPIService) GridthreatinsightReferencePutExecute(r Gri
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

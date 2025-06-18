@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DtctopologyruleGet**](DtcTopologyRuleAPI.md#DtctopologyruleGet) | **Get** /dtc:topology:rule | Retrieve dtc:topology:rule objects
-[**DtctopologyruleReferenceGet**](DtcTopologyRuleAPI.md#DtctopologyruleReferenceGet) | **Get** /dtc:topology:rule/{reference} | Get a specific dtc:topology:rule object
-[**DtctopologyruleReferencePut**](DtcTopologyRuleAPI.md#DtctopologyruleReferencePut) | **Put** /dtc:topology:rule/{reference} | Update a dtc:topology:rule object
+[**List**](DtcTopologyRuleAPI.md#List) | **Get** /dtc:topology:rule | Retrieve dtc:topology:rule objects
+[**Read**](DtcTopologyRuleAPI.md#Read) | **Get** /dtc:topology:rule/{reference} | Get a specific dtc:topology:rule object
+[**Update**](DtcTopologyRuleAPI.md#Update) | **Put** /dtc:topology:rule/{reference} | Update a dtc:topology:rule object
 
 
 
-## DtctopologyruleGet
+## List
 
-> ListDtcTopologyRuleResponse DtctopologyruleGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcTopologyRuleResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:topology:rule objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcTopologyRuleAPI.DtctopologyruleGet(context.Background()).Execute()
+	resp, r, err := apiClient.DtcTopologyRuleAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyRuleAPI.DtctopologyruleGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyRuleAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DtctopologyruleGet`: ListDtcTopologyRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyRuleAPI.DtctopologyruleGet`: %v\n", resp)
+	// response from `List`: ListDtcTopologyRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyRuleAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcTopologyRuleAPIDtctopologyruleGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyRuleAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DtctopologyruleReferenceGet
+## Read
 
-> GetDtcTopologyRuleResponse DtctopologyruleReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcTopologyRuleResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:topology:rule object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:topology:rule object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcTopologyRuleAPI.DtctopologyruleReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcTopologyRuleAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyRuleAPI.DtctopologyruleReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyRuleAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DtctopologyruleReferenceGet`: GetDtcTopologyRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyRuleAPI.DtctopologyruleReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDtcTopologyRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyRuleAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcTopologyRuleAPIDtctopologyruleReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyRuleAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DtctopologyruleReferencePut
+## Update
 
-> UpdateDtcTopologyRuleResponse DtctopologyruleReferencePut(ctx, reference).DtcTopologyRule(dtcTopologyRule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcTopologyRuleResponse Update(ctx, reference).DtcTopologyRule(dtcTopologyRule).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:topology:rule object
 
@@ -180,13 +180,13 @@ func main() {
 	dtcTopologyRule := *dtc.NewDtcTopologyRule() // DtcTopologyRule | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcTopologyRuleAPI.DtctopologyruleReferencePut(context.Background(), reference).DtcTopologyRule(dtcTopologyRule).Execute()
+	resp, r, err := apiClient.DtcTopologyRuleAPI.Update(context.Background(), reference).DtcTopologyRule(dtcTopologyRule).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyRuleAPI.DtctopologyruleReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyRuleAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DtctopologyruleReferencePut`: UpdateDtcTopologyRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyRuleAPI.DtctopologyruleReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDtcTopologyRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyRuleAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcTopologyRuleAPIDtctopologyruleReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyRuleAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **dtcTopologyRule** | [**DtcTopologyRule**](DtcTopologyRule.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

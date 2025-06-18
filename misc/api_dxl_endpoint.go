@@ -23,150 +23,386 @@ import (
 
 type DxlEndpointAPI interface {
 	/*
-		DxlendpointGet Retrieve dxl:endpoint objects
-
-		Returns a list of dxl:endpoint objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DxlEndpointAPIDxlendpointGetRequest
-	*/
-	DxlendpointGet(ctx context.Context) DxlEndpointAPIDxlendpointGetRequest
-
-	// DxlendpointGetExecute executes the request
-	//  @return ListDxlEndpointResponse
-	DxlendpointGetExecute(r DxlEndpointAPIDxlendpointGetRequest) (*ListDxlEndpointResponse, *http.Response, error)
-	/*
-		DxlendpointPost Create a dxl:endpoint object
+		Create Create a dxl:endpoint object
 
 		Creates a new dxl:endpoint object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DxlEndpointAPIDxlendpointPostRequest
+		@return DxlEndpointAPICreateRequest
 	*/
-	DxlendpointPost(ctx context.Context) DxlEndpointAPIDxlendpointPostRequest
+	Create(ctx context.Context) DxlEndpointAPICreateRequest
 
-	// DxlendpointPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDxlEndpointResponse
-	DxlendpointPostExecute(r DxlEndpointAPIDxlendpointPostRequest) (*CreateDxlEndpointResponse, *http.Response, error)
+	CreateExecute(r DxlEndpointAPICreateRequest) (*CreateDxlEndpointResponse, *http.Response, error)
 	/*
-		DxlendpointReferenceDelete Delete a dxl:endpoint object
+		Delete Delete a dxl:endpoint object
 
 		Deletes a specific dxl:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dxl:endpoint object
-		@return DxlEndpointAPIDxlendpointReferenceDeleteRequest
+		@return DxlEndpointAPIDeleteRequest
 	*/
-	DxlendpointReferenceDelete(ctx context.Context, reference string) DxlEndpointAPIDxlendpointReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DxlEndpointAPIDeleteRequest
 
-	// DxlendpointReferenceDeleteExecute executes the request
-	DxlendpointReferenceDeleteExecute(r DxlEndpointAPIDxlendpointReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DxlEndpointAPIDeleteRequest) (*http.Response, error)
 	/*
-		DxlendpointReferenceGet Get a specific dxl:endpoint object
+		List Retrieve dxl:endpoint objects
+
+		Returns a list of dxl:endpoint objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DxlEndpointAPIListRequest
+	*/
+	List(ctx context.Context) DxlEndpointAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDxlEndpointResponse
+	ListExecute(r DxlEndpointAPIListRequest) (*ListDxlEndpointResponse, *http.Response, error)
+	/*
+		Read Get a specific dxl:endpoint object
 
 		Returns a specific dxl:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dxl:endpoint object
-		@return DxlEndpointAPIDxlendpointReferenceGetRequest
+		@return DxlEndpointAPIReadRequest
 	*/
-	DxlendpointReferenceGet(ctx context.Context, reference string) DxlEndpointAPIDxlendpointReferenceGetRequest
+	Read(ctx context.Context, reference string) DxlEndpointAPIReadRequest
 
-	// DxlendpointReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDxlEndpointResponse
-	DxlendpointReferenceGetExecute(r DxlEndpointAPIDxlendpointReferenceGetRequest) (*GetDxlEndpointResponse, *http.Response, error)
+	ReadExecute(r DxlEndpointAPIReadRequest) (*GetDxlEndpointResponse, *http.Response, error)
 	/*
-		DxlendpointReferencePut Update a dxl:endpoint object
+		Update Update a dxl:endpoint object
 
 		Updates a specific dxl:endpoint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dxl:endpoint object
-		@return DxlEndpointAPIDxlendpointReferencePutRequest
+		@return DxlEndpointAPIUpdateRequest
 	*/
-	DxlendpointReferencePut(ctx context.Context, reference string) DxlEndpointAPIDxlendpointReferencePutRequest
+	Update(ctx context.Context, reference string) DxlEndpointAPIUpdateRequest
 
-	// DxlendpointReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDxlEndpointResponse
-	DxlendpointReferencePutExecute(r DxlEndpointAPIDxlendpointReferencePutRequest) (*UpdateDxlEndpointResponse, *http.Response, error)
+	UpdateExecute(r DxlEndpointAPIUpdateRequest) (*UpdateDxlEndpointResponse, *http.Response, error)
 }
 
 // DxlEndpointAPIService DxlEndpointAPI service
 type DxlEndpointAPIService internal.Service
 
-type DxlEndpointAPIDxlendpointGetRequest struct {
-	ctx            context.Context
-	ApiService     DxlEndpointAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DxlEndpointAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       DxlEndpointAPI
+	dxlEndpoint      *DxlEndpoint
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r DxlEndpointAPICreateRequest) DxlEndpoint(dxlEndpoint DxlEndpoint) DxlEndpointAPICreateRequest {
+	r.dxlEndpoint = &dxlEndpoint
+	return r
 }
 
 // Enter the field names followed by comma
-func (r DxlEndpointAPIDxlendpointGetRequest) ReturnFields(returnFields string) DxlEndpointAPIDxlendpointGetRequest {
+func (r DxlEndpointAPICreateRequest) ReturnFields(returnFields string) DxlEndpointAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DxlEndpointAPIDxlendpointGetRequest) ReturnFields2(returnFields2 string) DxlEndpointAPIDxlendpointGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DxlEndpointAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DxlEndpointAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DxlEndpointAPICreateRequest) ReturnAsObject(returnAsObject int32) DxlEndpointAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r DxlEndpointAPICreateRequest) Execute() (*CreateDxlEndpointResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a dxl:endpoint object
+
+Creates a new dxl:endpoint object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DxlEndpointAPICreateRequest
+*/
+func (a *DxlEndpointAPIService) Create(ctx context.Context) DxlEndpointAPICreateRequest {
+	return DxlEndpointAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateDxlEndpointResponse
+func (a *DxlEndpointAPIService) CreateExecute(r DxlEndpointAPICreateRequest) (*CreateDxlEndpointResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateDxlEndpointResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DxlEndpointAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dxl:endpoint"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.dxlEndpoint == nil {
+		return localVarReturnValue, nil, internal.ReportError("dxlEndpoint is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dxlEndpoint != nil {
+		if r.dxlEndpoint.Extattrs == nil {
+			r.dxlEndpoint.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.dxlEndpoint.Extattrs)[k]; !ok {
+				(*r.dxlEndpoint.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.dxlEndpoint
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DxlEndpointAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DxlEndpointAPI
+	reference  string
+}
+
+func (r DxlEndpointAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a dxl:endpoint object
+
+Deletes a specific dxl:endpoint object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the dxl:endpoint object
+	@return DxlEndpointAPIDeleteRequest
+*/
+func (a *DxlEndpointAPIService) Delete(ctx context.Context, reference string) DxlEndpointAPIDeleteRequest {
+	return DxlEndpointAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DxlEndpointAPIService) DeleteExecute(r DxlEndpointAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DxlEndpointAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dxl:endpoint/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DxlEndpointAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DxlEndpointAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DxlEndpointAPIListRequest) ReturnFields(returnFields string) DxlEndpointAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DxlEndpointAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DxlEndpointAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DxlEndpointAPIDxlendpointGetRequest) MaxResults(maxResults int32) DxlEndpointAPIDxlendpointGetRequest {
+func (r DxlEndpointAPIListRequest) MaxResults(maxResults int32) DxlEndpointAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DxlEndpointAPIDxlendpointGetRequest) ReturnAsObject(returnAsObject int32) DxlEndpointAPIDxlendpointGetRequest {
+func (r DxlEndpointAPIListRequest) ReturnAsObject(returnAsObject int32) DxlEndpointAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DxlEndpointAPIDxlendpointGetRequest) Paging(paging int32) DxlEndpointAPIDxlendpointGetRequest {
+func (r DxlEndpointAPIListRequest) Paging(paging int32) DxlEndpointAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DxlEndpointAPIDxlendpointGetRequest) PageId(pageId string) DxlEndpointAPIDxlendpointGetRequest {
+func (r DxlEndpointAPIListRequest) PageId(pageId string) DxlEndpointAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DxlEndpointAPIDxlendpointGetRequest) Filters(filters map[string]interface{}) DxlEndpointAPIDxlendpointGetRequest {
+func (r DxlEndpointAPIListRequest) Filters(filters map[string]interface{}) DxlEndpointAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DxlEndpointAPIDxlendpointGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DxlEndpointAPIDxlendpointGetRequest {
+func (r DxlEndpointAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DxlEndpointAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DxlEndpointAPIDxlendpointGetRequest) Execute() (*ListDxlEndpointResponse, *http.Response, error) {
-	return r.ApiService.DxlendpointGetExecute(r)
+func (r DxlEndpointAPIListRequest) Execute() (*ListDxlEndpointResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DxlendpointGet Retrieve dxl:endpoint objects
+List Retrieve dxl:endpoint objects
 
 Returns a list of dxl:endpoint objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DxlEndpointAPIDxlendpointGetRequest
+	@return DxlEndpointAPIListRequest
 */
-func (a *DxlEndpointAPIService) DxlendpointGet(ctx context.Context) DxlEndpointAPIDxlendpointGetRequest {
-	return DxlEndpointAPIDxlendpointGetRequest{
+func (a *DxlEndpointAPIService) List(ctx context.Context) DxlEndpointAPIListRequest {
+	return DxlEndpointAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *DxlEndpointAPIService) DxlendpointGet(ctx context.Context) DxlEndpointA
 // Execute executes the request
 //
 //	@return ListDxlEndpointResponse
-func (a *DxlEndpointAPIService) DxlendpointGetExecute(r DxlEndpointAPIDxlendpointGetRequest) (*ListDxlEndpointResponse, *http.Response, error) {
+func (a *DxlEndpointAPIService) ListExecute(r DxlEndpointAPIListRequest) (*ListDxlEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *DxlEndpointAPIService) DxlendpointGetExecute(r DxlEndpointAPIDxlendpoin
 		localVarReturnValue *ListDxlEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DxlEndpointAPIService.DxlendpointGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DxlEndpointAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *DxlEndpointAPIService) DxlendpointGetExecute(r DxlEndpointAPIDxlendpoin
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *DxlEndpointAPIService) DxlendpointGetExecute(r DxlEndpointAPIDxlendpoin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DxlEndpointAPIDxlendpointPostRequest struct {
-	ctx            context.Context
-	ApiService     DxlEndpointAPI
-	dxlEndpoint    *DxlEndpoint
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r DxlEndpointAPIDxlendpointPostRequest) DxlEndpoint(dxlEndpoint DxlEndpoint) DxlEndpointAPIDxlendpointPostRequest {
-	r.dxlEndpoint = &dxlEndpoint
-	return r
+type DxlEndpointAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DxlEndpointAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DxlEndpointAPIDxlendpointPostRequest) ReturnFields(returnFields string) DxlEndpointAPIDxlendpointPostRequest {
+func (r DxlEndpointAPIReadRequest) ReturnFields(returnFields string) DxlEndpointAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DxlEndpointAPIDxlendpointPostRequest) ReturnFields2(returnFields2 string) DxlEndpointAPIDxlendpointPostRequest {
-	r.returnFields2 = &returnFields2
+func (r DxlEndpointAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DxlEndpointAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DxlEndpointAPIDxlendpointPostRequest) ReturnAsObject(returnAsObject int32) DxlEndpointAPIDxlendpointPostRequest {
+func (r DxlEndpointAPIReadRequest) ReturnAsObject(returnAsObject int32) DxlEndpointAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DxlEndpointAPIDxlendpointPostRequest) Execute() (*CreateDxlEndpointResponse, *http.Response, error) {
-	return r.ApiService.DxlendpointPostExecute(r)
+func (r DxlEndpointAPIReadRequest) Execute() (*GetDxlEndpointResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DxlendpointPost Create a dxl:endpoint object
-
-Creates a new dxl:endpoint object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DxlEndpointAPIDxlendpointPostRequest
-*/
-func (a *DxlEndpointAPIService) DxlendpointPost(ctx context.Context) DxlEndpointAPIDxlendpointPostRequest {
-	return DxlEndpointAPIDxlendpointPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateDxlEndpointResponse
-func (a *DxlEndpointAPIService) DxlendpointPostExecute(r DxlEndpointAPIDxlendpointPostRequest) (*CreateDxlEndpointResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateDxlEndpointResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DxlEndpointAPIService.DxlendpointPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dxl:endpoint"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.dxlEndpoint == nil {
-		return localVarReturnValue, nil, internal.ReportError("dxlEndpoint is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dxlEndpoint != nil {
-		if r.dxlEndpoint.Extattrs == nil {
-			r.dxlEndpoint.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dxlEndpoint.Extattrs)[k]; !ok {
-				(*r.dxlEndpoint.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.dxlEndpoint
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DxlEndpointAPIDxlendpointReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DxlEndpointAPI
-	reference  string
-}
-
-func (r DxlEndpointAPIDxlendpointReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DxlendpointReferenceDeleteExecute(r)
-}
-
-/*
-DxlendpointReferenceDelete Delete a dxl:endpoint object
-
-Deletes a specific dxl:endpoint object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the dxl:endpoint object
-	@return DxlEndpointAPIDxlendpointReferenceDeleteRequest
-*/
-func (a *DxlEndpointAPIService) DxlendpointReferenceDelete(ctx context.Context, reference string) DxlEndpointAPIDxlendpointReferenceDeleteRequest {
-	return DxlEndpointAPIDxlendpointReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DxlEndpointAPIService) DxlendpointReferenceDeleteExecute(r DxlEndpointAPIDxlendpointReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DxlEndpointAPIService.DxlendpointReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dxl:endpoint/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DxlEndpointAPIDxlendpointReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DxlEndpointAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r DxlEndpointAPIDxlendpointReferenceGetRequest) ReturnFields(returnFields string) DxlEndpointAPIDxlendpointReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DxlEndpointAPIDxlendpointReferenceGetRequest) ReturnFields2(returnFields2 string) DxlEndpointAPIDxlendpointReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DxlEndpointAPIDxlendpointReferenceGetRequest) ReturnAsObject(returnAsObject int32) DxlEndpointAPIDxlendpointReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DxlEndpointAPIDxlendpointReferenceGetRequest) Execute() (*GetDxlEndpointResponse, *http.Response, error) {
-	return r.ApiService.DxlendpointReferenceGetExecute(r)
-}
-
-/*
-DxlendpointReferenceGet Get a specific dxl:endpoint object
+Read Get a specific dxl:endpoint object
 
 Returns a specific dxl:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dxl:endpoint object
-	@return DxlEndpointAPIDxlendpointReferenceGetRequest
+	@return DxlEndpointAPIReadRequest
 */
-func (a *DxlEndpointAPIService) DxlendpointReferenceGet(ctx context.Context, reference string) DxlEndpointAPIDxlendpointReferenceGetRequest {
-	return DxlEndpointAPIDxlendpointReferenceGetRequest{
+func (a *DxlEndpointAPIService) Read(ctx context.Context, reference string) DxlEndpointAPIReadRequest {
+	return DxlEndpointAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *DxlEndpointAPIService) DxlendpointReferenceGet(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return GetDxlEndpointResponse
-func (a *DxlEndpointAPIService) DxlendpointReferenceGetExecute(r DxlEndpointAPIDxlendpointReferenceGetRequest) (*GetDxlEndpointResponse, *http.Response, error) {
+func (a *DxlEndpointAPIService) ReadExecute(r DxlEndpointAPIReadRequest) (*GetDxlEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *DxlEndpointAPIService) DxlendpointReferenceGetExecute(r DxlEndpointAPID
 		localVarReturnValue *GetDxlEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DxlEndpointAPIService.DxlendpointReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DxlEndpointAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *DxlEndpointAPIService) DxlendpointReferenceGetExecute(r DxlEndpointAPID
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *DxlEndpointAPIService) DxlendpointReferenceGetExecute(r DxlEndpointAPID
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DxlEndpointAPIDxlendpointReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     DxlEndpointAPI
-	reference      string
-	dxlEndpoint    *DxlEndpoint
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DxlEndpointAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       DxlEndpointAPI
+	reference        string
+	dxlEndpoint      *DxlEndpoint
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r DxlEndpointAPIDxlendpointReferencePutRequest) DxlEndpoint(dxlEndpoint DxlEndpoint) DxlEndpointAPIDxlendpointReferencePutRequest {
+func (r DxlEndpointAPIUpdateRequest) DxlEndpoint(dxlEndpoint DxlEndpoint) DxlEndpointAPIUpdateRequest {
 	r.dxlEndpoint = &dxlEndpoint
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DxlEndpointAPIDxlendpointReferencePutRequest) ReturnFields(returnFields string) DxlEndpointAPIDxlendpointReferencePutRequest {
+func (r DxlEndpointAPIUpdateRequest) ReturnFields(returnFields string) DxlEndpointAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DxlEndpointAPIDxlendpointReferencePutRequest) ReturnFields2(returnFields2 string) DxlEndpointAPIDxlendpointReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r DxlEndpointAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DxlEndpointAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DxlEndpointAPIDxlendpointReferencePutRequest) ReturnAsObject(returnAsObject int32) DxlEndpointAPIDxlendpointReferencePutRequest {
+func (r DxlEndpointAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DxlEndpointAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DxlEndpointAPIDxlendpointReferencePutRequest) Execute() (*UpdateDxlEndpointResponse, *http.Response, error) {
-	return r.ApiService.DxlendpointReferencePutExecute(r)
+func (r DxlEndpointAPIUpdateRequest) Execute() (*UpdateDxlEndpointResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DxlendpointReferencePut Update a dxl:endpoint object
+Update Update a dxl:endpoint object
 
 Updates a specific dxl:endpoint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dxl:endpoint object
-	@return DxlEndpointAPIDxlendpointReferencePutRequest
+	@return DxlEndpointAPIUpdateRequest
 */
-func (a *DxlEndpointAPIService) DxlendpointReferencePut(ctx context.Context, reference string) DxlEndpointAPIDxlendpointReferencePutRequest {
-	return DxlEndpointAPIDxlendpointReferencePutRequest{
+func (a *DxlEndpointAPIService) Update(ctx context.Context, reference string) DxlEndpointAPIUpdateRequest {
+	return DxlEndpointAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *DxlEndpointAPIService) DxlendpointReferencePut(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return UpdateDxlEndpointResponse
-func (a *DxlEndpointAPIService) DxlendpointReferencePutExecute(r DxlEndpointAPIDxlendpointReferencePutRequest) (*UpdateDxlEndpointResponse, *http.Response, error) {
+func (a *DxlEndpointAPIService) UpdateExecute(r DxlEndpointAPIUpdateRequest) (*UpdateDxlEndpointResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *DxlEndpointAPIService) DxlendpointReferencePutExecute(r DxlEndpointAPID
 		localVarReturnValue *UpdateDxlEndpointResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DxlEndpointAPIService.DxlendpointReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DxlEndpointAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *DxlEndpointAPIService) DxlendpointReferencePutExecute(r DxlEndpointAPID
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

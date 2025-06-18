@@ -23,150 +23,386 @@ import (
 
 type NsgroupStubmemberAPI interface {
 	/*
-		NsgroupstubmemberGet Retrieve nsgroup:stubmember objects
-
-		Returns a list of nsgroup:stubmember objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NsgroupStubmemberAPINsgroupstubmemberGetRequest
-	*/
-	NsgroupstubmemberGet(ctx context.Context) NsgroupStubmemberAPINsgroupstubmemberGetRequest
-
-	// NsgroupstubmemberGetExecute executes the request
-	//  @return ListNsgroupStubmemberResponse
-	NsgroupstubmemberGetExecute(r NsgroupStubmemberAPINsgroupstubmemberGetRequest) (*ListNsgroupStubmemberResponse, *http.Response, error)
-	/*
-		NsgroupstubmemberPost Create a nsgroup:stubmember object
+		Create Create a nsgroup:stubmember object
 
 		Creates a new nsgroup:stubmember object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NsgroupStubmemberAPINsgroupstubmemberPostRequest
+		@return NsgroupStubmemberAPICreateRequest
 	*/
-	NsgroupstubmemberPost(ctx context.Context) NsgroupStubmemberAPINsgroupstubmemberPostRequest
+	Create(ctx context.Context) NsgroupStubmemberAPICreateRequest
 
-	// NsgroupstubmemberPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNsgroupStubmemberResponse
-	NsgroupstubmemberPostExecute(r NsgroupStubmemberAPINsgroupstubmemberPostRequest) (*CreateNsgroupStubmemberResponse, *http.Response, error)
+	CreateExecute(r NsgroupStubmemberAPICreateRequest) (*CreateNsgroupStubmemberResponse, *http.Response, error)
 	/*
-		NsgroupstubmemberReferenceDelete Delete a nsgroup:stubmember object
+		Delete Delete a nsgroup:stubmember object
 
 		Deletes a specific nsgroup:stubmember object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup:stubmember object
-		@return NsgroupStubmemberAPINsgroupstubmemberReferenceDeleteRequest
+		@return NsgroupStubmemberAPIDeleteRequest
 	*/
-	NsgroupstubmemberReferenceDelete(ctx context.Context, reference string) NsgroupStubmemberAPINsgroupstubmemberReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NsgroupStubmemberAPIDeleteRequest
 
-	// NsgroupstubmemberReferenceDeleteExecute executes the request
-	NsgroupstubmemberReferenceDeleteExecute(r NsgroupStubmemberAPINsgroupstubmemberReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NsgroupStubmemberAPIDeleteRequest) (*http.Response, error)
 	/*
-		NsgroupstubmemberReferenceGet Get a specific nsgroup:stubmember object
+		List Retrieve nsgroup:stubmember objects
+
+		Returns a list of nsgroup:stubmember objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NsgroupStubmemberAPIListRequest
+	*/
+	List(ctx context.Context) NsgroupStubmemberAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNsgroupStubmemberResponse
+	ListExecute(r NsgroupStubmemberAPIListRequest) (*ListNsgroupStubmemberResponse, *http.Response, error)
+	/*
+		Read Get a specific nsgroup:stubmember object
 
 		Returns a specific nsgroup:stubmember object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup:stubmember object
-		@return NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest
+		@return NsgroupStubmemberAPIReadRequest
 	*/
-	NsgroupstubmemberReferenceGet(ctx context.Context, reference string) NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest
+	Read(ctx context.Context, reference string) NsgroupStubmemberAPIReadRequest
 
-	// NsgroupstubmemberReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNsgroupStubmemberResponse
-	NsgroupstubmemberReferenceGetExecute(r NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest) (*GetNsgroupStubmemberResponse, *http.Response, error)
+	ReadExecute(r NsgroupStubmemberAPIReadRequest) (*GetNsgroupStubmemberResponse, *http.Response, error)
 	/*
-		NsgroupstubmemberReferencePut Update a nsgroup:stubmember object
+		Update Update a nsgroup:stubmember object
 
 		Updates a specific nsgroup:stubmember object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the nsgroup:stubmember object
-		@return NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest
+		@return NsgroupStubmemberAPIUpdateRequest
 	*/
-	NsgroupstubmemberReferencePut(ctx context.Context, reference string) NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest
+	Update(ctx context.Context, reference string) NsgroupStubmemberAPIUpdateRequest
 
-	// NsgroupstubmemberReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNsgroupStubmemberResponse
-	NsgroupstubmemberReferencePutExecute(r NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest) (*UpdateNsgroupStubmemberResponse, *http.Response, error)
+	UpdateExecute(r NsgroupStubmemberAPIUpdateRequest) (*UpdateNsgroupStubmemberResponse, *http.Response, error)
 }
 
 // NsgroupStubmemberAPIService NsgroupStubmemberAPI service
 type NsgroupStubmemberAPIService internal.Service
 
-type NsgroupStubmemberAPINsgroupstubmemberGetRequest struct {
-	ctx            context.Context
-	ApiService     NsgroupStubmemberAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type NsgroupStubmemberAPICreateRequest struct {
+	ctx               context.Context
+	ApiService        NsgroupStubmemberAPI
+	nsgroupStubmember *NsgroupStubmember
+	returnFields      *string
+	returnFieldsPlus  *string
+	returnAsObject    *int32
+}
+
+// Object data to create
+func (r NsgroupStubmemberAPICreateRequest) NsgroupStubmember(nsgroupStubmember NsgroupStubmember) NsgroupStubmemberAPICreateRequest {
+	r.nsgroupStubmember = &nsgroupStubmember
+	return r
 }
 
 // Enter the field names followed by comma
-func (r NsgroupStubmemberAPINsgroupstubmemberGetRequest) ReturnFields(returnFields string) NsgroupStubmemberAPINsgroupstubmemberGetRequest {
+func (r NsgroupStubmemberAPICreateRequest) ReturnFields(returnFields string) NsgroupStubmemberAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupStubmemberAPINsgroupstubmemberGetRequest) ReturnFields2(returnFields2 string) NsgroupStubmemberAPINsgroupstubmemberGetRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupStubmemberAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupStubmemberAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NsgroupStubmemberAPICreateRequest) ReturnAsObject(returnAsObject int32) NsgroupStubmemberAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r NsgroupStubmemberAPICreateRequest) Execute() (*CreateNsgroupStubmemberResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a nsgroup:stubmember object
+
+Creates a new nsgroup:stubmember object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NsgroupStubmemberAPICreateRequest
+*/
+func (a *NsgroupStubmemberAPIService) Create(ctx context.Context) NsgroupStubmemberAPICreateRequest {
+	return NsgroupStubmemberAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateNsgroupStubmemberResponse
+func (a *NsgroupStubmemberAPIService) CreateExecute(r NsgroupStubmemberAPICreateRequest) (*CreateNsgroupStubmemberResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateNsgroupStubmemberResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupStubmemberAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/nsgroup:stubmember"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.nsgroupStubmember == nil {
+		return localVarReturnValue, nil, internal.ReportError("nsgroupStubmember is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupStubmember != nil {
+		if r.nsgroupStubmember.Extattrs == nil {
+			r.nsgroupStubmember.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.nsgroupStubmember.Extattrs)[k]; !ok {
+				(*r.nsgroupStubmember.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.nsgroupStubmember
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NsgroupStubmemberAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService NsgroupStubmemberAPI
+	reference  string
+}
+
+func (r NsgroupStubmemberAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a nsgroup:stubmember object
+
+Deletes a specific nsgroup:stubmember object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the nsgroup:stubmember object
+	@return NsgroupStubmemberAPIDeleteRequest
+*/
+func (a *NsgroupStubmemberAPIService) Delete(ctx context.Context, reference string) NsgroupStubmemberAPIDeleteRequest {
+	return NsgroupStubmemberAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *NsgroupStubmemberAPIService) DeleteExecute(r NsgroupStubmemberAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupStubmemberAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/nsgroup:stubmember/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type NsgroupStubmemberAPIListRequest struct {
+	ctx              context.Context
+	ApiService       NsgroupStubmemberAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r NsgroupStubmemberAPIListRequest) ReturnFields(returnFields string) NsgroupStubmemberAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NsgroupStubmemberAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupStubmemberAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r NsgroupStubmemberAPINsgroupstubmemberGetRequest) MaxResults(maxResults int32) NsgroupStubmemberAPINsgroupstubmemberGetRequest {
+func (r NsgroupStubmemberAPIListRequest) MaxResults(maxResults int32) NsgroupStubmemberAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupStubmemberAPINsgroupstubmemberGetRequest) ReturnAsObject(returnAsObject int32) NsgroupStubmemberAPINsgroupstubmemberGetRequest {
+func (r NsgroupStubmemberAPIListRequest) ReturnAsObject(returnAsObject int32) NsgroupStubmemberAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r NsgroupStubmemberAPINsgroupstubmemberGetRequest) Paging(paging int32) NsgroupStubmemberAPINsgroupstubmemberGetRequest {
+func (r NsgroupStubmemberAPIListRequest) Paging(paging int32) NsgroupStubmemberAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r NsgroupStubmemberAPINsgroupstubmemberGetRequest) PageId(pageId string) NsgroupStubmemberAPINsgroupstubmemberGetRequest {
+func (r NsgroupStubmemberAPIListRequest) PageId(pageId string) NsgroupStubmemberAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r NsgroupStubmemberAPINsgroupstubmemberGetRequest) Filters(filters map[string]interface{}) NsgroupStubmemberAPINsgroupstubmemberGetRequest {
+func (r NsgroupStubmemberAPIListRequest) Filters(filters map[string]interface{}) NsgroupStubmemberAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r NsgroupStubmemberAPINsgroupstubmemberGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NsgroupStubmemberAPINsgroupstubmemberGetRequest {
+func (r NsgroupStubmemberAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NsgroupStubmemberAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r NsgroupStubmemberAPINsgroupstubmemberGetRequest) Execute() (*ListNsgroupStubmemberResponse, *http.Response, error) {
-	return r.ApiService.NsgroupstubmemberGetExecute(r)
+func (r NsgroupStubmemberAPIListRequest) Execute() (*ListNsgroupStubmemberResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-NsgroupstubmemberGet Retrieve nsgroup:stubmember objects
+List Retrieve nsgroup:stubmember objects
 
 Returns a list of nsgroup:stubmember objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NsgroupStubmemberAPINsgroupstubmemberGetRequest
+	@return NsgroupStubmemberAPIListRequest
 */
-func (a *NsgroupStubmemberAPIService) NsgroupstubmemberGet(ctx context.Context) NsgroupStubmemberAPINsgroupstubmemberGetRequest {
-	return NsgroupStubmemberAPINsgroupstubmemberGetRequest{
+func (a *NsgroupStubmemberAPIService) List(ctx context.Context) NsgroupStubmemberAPIListRequest {
+	return NsgroupStubmemberAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberGet(ctx context.Context) 
 // Execute executes the request
 //
 //	@return ListNsgroupStubmemberResponse
-func (a *NsgroupStubmemberAPIService) NsgroupstubmemberGetExecute(r NsgroupStubmemberAPINsgroupstubmemberGetRequest) (*ListNsgroupStubmemberResponse, *http.Response, error) {
+func (a *NsgroupStubmemberAPIService) ListExecute(r NsgroupStubmemberAPIListRequest) (*ListNsgroupStubmemberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberGetExecute(r NsgroupStubm
 		localVarReturnValue *ListNsgroupStubmemberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupStubmemberAPIService.NsgroupstubmemberGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupStubmemberAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberGetExecute(r NsgroupStubm
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberGetExecute(r NsgroupStubm
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NsgroupStubmemberAPINsgroupstubmemberPostRequest struct {
-	ctx               context.Context
-	ApiService        NsgroupStubmemberAPI
-	nsgroupStubmember *NsgroupStubmember
-	returnFields      *string
-	returnFields2     *string
-	returnAsObject    *int32
-}
-
-// Object data to create
-func (r NsgroupStubmemberAPINsgroupstubmemberPostRequest) NsgroupStubmember(nsgroupStubmember NsgroupStubmember) NsgroupStubmemberAPINsgroupstubmemberPostRequest {
-	r.nsgroupStubmember = &nsgroupStubmember
-	return r
+type NsgroupStubmemberAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       NsgroupStubmemberAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r NsgroupStubmemberAPINsgroupstubmemberPostRequest) ReturnFields(returnFields string) NsgroupStubmemberAPINsgroupstubmemberPostRequest {
+func (r NsgroupStubmemberAPIReadRequest) ReturnFields(returnFields string) NsgroupStubmemberAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupStubmemberAPINsgroupstubmemberPostRequest) ReturnFields2(returnFields2 string) NsgroupStubmemberAPINsgroupstubmemberPostRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupStubmemberAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupStubmemberAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupStubmemberAPINsgroupstubmemberPostRequest) ReturnAsObject(returnAsObject int32) NsgroupStubmemberAPINsgroupstubmemberPostRequest {
+func (r NsgroupStubmemberAPIReadRequest) ReturnAsObject(returnAsObject int32) NsgroupStubmemberAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupStubmemberAPINsgroupstubmemberPostRequest) Execute() (*CreateNsgroupStubmemberResponse, *http.Response, error) {
-	return r.ApiService.NsgroupstubmemberPostExecute(r)
+func (r NsgroupStubmemberAPIReadRequest) Execute() (*GetNsgroupStubmemberResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-NsgroupstubmemberPost Create a nsgroup:stubmember object
-
-Creates a new nsgroup:stubmember object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NsgroupStubmemberAPINsgroupstubmemberPostRequest
-*/
-func (a *NsgroupStubmemberAPIService) NsgroupstubmemberPost(ctx context.Context) NsgroupStubmemberAPINsgroupstubmemberPostRequest {
-	return NsgroupStubmemberAPINsgroupstubmemberPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateNsgroupStubmemberResponse
-func (a *NsgroupStubmemberAPIService) NsgroupstubmemberPostExecute(r NsgroupStubmemberAPINsgroupstubmemberPostRequest) (*CreateNsgroupStubmemberResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateNsgroupStubmemberResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupStubmemberAPIService.NsgroupstubmemberPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/nsgroup:stubmember"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.nsgroupStubmember == nil {
-		return localVarReturnValue, nil, internal.ReportError("nsgroupStubmember is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupStubmember != nil {
-		if r.nsgroupStubmember.Extattrs == nil {
-			r.nsgroupStubmember.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.nsgroupStubmember.Extattrs)[k]; !ok {
-				(*r.nsgroupStubmember.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.nsgroupStubmember
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NsgroupStubmemberAPINsgroupstubmemberReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService NsgroupStubmemberAPI
-	reference  string
-}
-
-func (r NsgroupStubmemberAPINsgroupstubmemberReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.NsgroupstubmemberReferenceDeleteExecute(r)
-}
-
-/*
-NsgroupstubmemberReferenceDelete Delete a nsgroup:stubmember object
-
-Deletes a specific nsgroup:stubmember object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the nsgroup:stubmember object
-	@return NsgroupStubmemberAPINsgroupstubmemberReferenceDeleteRequest
-*/
-func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferenceDelete(ctx context.Context, reference string) NsgroupStubmemberAPINsgroupstubmemberReferenceDeleteRequest {
-	return NsgroupStubmemberAPINsgroupstubmemberReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferenceDeleteExecute(r NsgroupStubmemberAPINsgroupstubmemberReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupStubmemberAPIService.NsgroupstubmemberReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/nsgroup:stubmember/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     NsgroupStubmemberAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest) ReturnFields(returnFields string) NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest) ReturnFields2(returnFields2 string) NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest) ReturnAsObject(returnAsObject int32) NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest) Execute() (*GetNsgroupStubmemberResponse, *http.Response, error) {
-	return r.ApiService.NsgroupstubmemberReferenceGetExecute(r)
-}
-
-/*
-NsgroupstubmemberReferenceGet Get a specific nsgroup:stubmember object
+Read Get a specific nsgroup:stubmember object
 
 Returns a specific nsgroup:stubmember object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup:stubmember object
-	@return NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest
+	@return NsgroupStubmemberAPIReadRequest
 */
-func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferenceGet(ctx context.Context, reference string) NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest {
-	return NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest{
+func (a *NsgroupStubmemberAPIService) Read(ctx context.Context, reference string) NsgroupStubmemberAPIReadRequest {
+	return NsgroupStubmemberAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferenceGet(ctx context.
 // Execute executes the request
 //
 //	@return GetNsgroupStubmemberResponse
-func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferenceGetExecute(r NsgroupStubmemberAPINsgroupstubmemberReferenceGetRequest) (*GetNsgroupStubmemberResponse, *http.Response, error) {
+func (a *NsgroupStubmemberAPIService) ReadExecute(r NsgroupStubmemberAPIReadRequest) (*GetNsgroupStubmemberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferenceGetExecute(r Nsg
 		localVarReturnValue *GetNsgroupStubmemberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupStubmemberAPIService.NsgroupstubmemberReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupStubmemberAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferenceGetExecute(r Nsg
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferenceGetExecute(r Nsg
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest struct {
+type NsgroupStubmemberAPIUpdateRequest struct {
 	ctx               context.Context
 	ApiService        NsgroupStubmemberAPI
 	reference         string
 	nsgroupStubmember *NsgroupStubmember
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
 // Object data to update
-func (r NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest) NsgroupStubmember(nsgroupStubmember NsgroupStubmember) NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest {
+func (r NsgroupStubmemberAPIUpdateRequest) NsgroupStubmember(nsgroupStubmember NsgroupStubmember) NsgroupStubmemberAPIUpdateRequest {
 	r.nsgroupStubmember = &nsgroupStubmember
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest) ReturnFields(returnFields string) NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest {
+func (r NsgroupStubmemberAPIUpdateRequest) ReturnFields(returnFields string) NsgroupStubmemberAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest) ReturnFields2(returnFields2 string) NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r NsgroupStubmemberAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) NsgroupStubmemberAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest) ReturnAsObject(returnAsObject int32) NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest {
+func (r NsgroupStubmemberAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NsgroupStubmemberAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest) Execute() (*UpdateNsgroupStubmemberResponse, *http.Response, error) {
-	return r.ApiService.NsgroupstubmemberReferencePutExecute(r)
+func (r NsgroupStubmemberAPIUpdateRequest) Execute() (*UpdateNsgroupStubmemberResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-NsgroupstubmemberReferencePut Update a nsgroup:stubmember object
+Update Update a nsgroup:stubmember object
 
 Updates a specific nsgroup:stubmember object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the nsgroup:stubmember object
-	@return NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest
+	@return NsgroupStubmemberAPIUpdateRequest
 */
-func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferencePut(ctx context.Context, reference string) NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest {
-	return NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest{
+func (a *NsgroupStubmemberAPIService) Update(ctx context.Context, reference string) NsgroupStubmemberAPIUpdateRequest {
+	return NsgroupStubmemberAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferencePut(ctx context.
 // Execute executes the request
 //
 //	@return UpdateNsgroupStubmemberResponse
-func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferencePutExecute(r NsgroupStubmemberAPINsgroupstubmemberReferencePutRequest) (*UpdateNsgroupStubmemberResponse, *http.Response, error) {
+func (a *NsgroupStubmemberAPIService) UpdateExecute(r NsgroupStubmemberAPIUpdateRequest) (*UpdateNsgroupStubmemberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferencePutExecute(r Nsg
 		localVarReturnValue *UpdateNsgroupStubmemberResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupStubmemberAPIService.NsgroupstubmemberReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NsgroupStubmemberAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *NsgroupStubmemberAPIService) NsgroupstubmemberReferencePutExecute(r Nsg
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -23,11 +23,11 @@ func TestDtcPoolAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcPoolAPIService DtcpoolGet", func(t *testing.T) {
+	t.Run("Test DtcPoolAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcPoolAPI.DtcpoolGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcPoolAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDtcPoolAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcPoolAPIService DtcpoolPost", func(t *testing.T) {
+	t.Run("Test DtcPoolAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcPoolAPI.DtcpoolPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DtcPoolAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DtcPoolAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DtcPoolAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDtcPoolAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcPoolAPIService DtcpoolReferenceDelete", func(t *testing.T) {
+	t.Run("Test DtcPoolAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DtcPoolAPI.DtcpoolReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DtcPoolAPIService DtcpoolReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DtcPoolAPI.DtcpoolReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcPoolAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDtcPoolAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcPoolAPIService DtcpoolReferencePut", func(t *testing.T) {
+	t.Run("Test DtcPoolAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcPoolAPI.DtcpoolReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcPoolAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

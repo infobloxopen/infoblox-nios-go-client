@@ -23,11 +23,11 @@ func TestRecordNsecAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordNsecAPIService RecordnsecGet", func(t *testing.T) {
+	t.Run("Test RecordNsecAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordNsecAPI.RecordnsecGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordNsecAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestRecordNsecAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordNsecAPIService RecordnsecReferenceGet", func(t *testing.T) {
+	t.Run("Test RecordNsecAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordNsecAPI.RecordnsecReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordNsecAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

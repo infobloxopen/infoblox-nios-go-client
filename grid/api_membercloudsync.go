@@ -23,124 +23,124 @@ import (
 
 type MembercloudsyncAPI interface {
 	/*
-		Get Retrieve membercloudsync objects
+		List Retrieve membercloudsync objects
 
 		Returns a list of membercloudsync objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MembercloudsyncAPIGetRequest
+		@return MembercloudsyncAPIListRequest
 	*/
-	Get(ctx context.Context) MembercloudsyncAPIGetRequest
+	List(ctx context.Context) MembercloudsyncAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListMembercloudsyncResponse
-	GetExecute(r MembercloudsyncAPIGetRequest) (*ListMembercloudsyncResponse, *http.Response, error)
+	ListExecute(r MembercloudsyncAPIListRequest) (*ListMembercloudsyncResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific membercloudsync object
+		Read Get a specific membercloudsync object
 
 		Returns a specific membercloudsync object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the membercloudsync object
-		@return MembercloudsyncAPIReferenceGetRequest
+		@return MembercloudsyncAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) MembercloudsyncAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) MembercloudsyncAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMembercloudsyncResponse
-	ReferenceGetExecute(r MembercloudsyncAPIReferenceGetRequest) (*GetMembercloudsyncResponse, *http.Response, error)
+	ReadExecute(r MembercloudsyncAPIReadRequest) (*GetMembercloudsyncResponse, *http.Response, error)
 	/*
-		ReferencePut Update a membercloudsync object
+		Update Update a membercloudsync object
 
 		Updates a specific membercloudsync object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the membercloudsync object
-		@return MembercloudsyncAPIReferencePutRequest
+		@return MembercloudsyncAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) MembercloudsyncAPIReferencePutRequest
+	Update(ctx context.Context, reference string) MembercloudsyncAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMembercloudsyncResponse
-	ReferencePutExecute(r MembercloudsyncAPIReferencePutRequest) (*UpdateMembercloudsyncResponse, *http.Response, error)
+	UpdateExecute(r MembercloudsyncAPIUpdateRequest) (*UpdateMembercloudsyncResponse, *http.Response, error)
 }
 
 // MembercloudsyncAPIService MembercloudsyncAPI service
 type MembercloudsyncAPIService internal.Service
 
-type MembercloudsyncAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     MembercloudsyncAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type MembercloudsyncAPIListRequest struct {
+	ctx              context.Context
+	ApiService       MembercloudsyncAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r MembercloudsyncAPIGetRequest) ReturnFields(returnFields string) MembercloudsyncAPIGetRequest {
+func (r MembercloudsyncAPIListRequest) ReturnFields(returnFields string) MembercloudsyncAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MembercloudsyncAPIGetRequest) ReturnFields2(returnFields2 string) MembercloudsyncAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MembercloudsyncAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MembercloudsyncAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MembercloudsyncAPIGetRequest) MaxResults(maxResults int32) MembercloudsyncAPIGetRequest {
+func (r MembercloudsyncAPIListRequest) MaxResults(maxResults int32) MembercloudsyncAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MembercloudsyncAPIGetRequest) ReturnAsObject(returnAsObject int32) MembercloudsyncAPIGetRequest {
+func (r MembercloudsyncAPIListRequest) ReturnAsObject(returnAsObject int32) MembercloudsyncAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MembercloudsyncAPIGetRequest) Paging(paging int32) MembercloudsyncAPIGetRequest {
+func (r MembercloudsyncAPIListRequest) Paging(paging int32) MembercloudsyncAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MembercloudsyncAPIGetRequest) PageId(pageId string) MembercloudsyncAPIGetRequest {
+func (r MembercloudsyncAPIListRequest) PageId(pageId string) MembercloudsyncAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MembercloudsyncAPIGetRequest) Filters(filters map[string]interface{}) MembercloudsyncAPIGetRequest {
+func (r MembercloudsyncAPIListRequest) Filters(filters map[string]interface{}) MembercloudsyncAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MembercloudsyncAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MembercloudsyncAPIGetRequest {
+func (r MembercloudsyncAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MembercloudsyncAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MembercloudsyncAPIGetRequest) Execute() (*ListMembercloudsyncResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r MembercloudsyncAPIListRequest) Execute() (*ListMembercloudsyncResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve membercloudsync objects
+List Retrieve membercloudsync objects
 
 Returns a list of membercloudsync objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MembercloudsyncAPIGetRequest
+	@return MembercloudsyncAPIListRequest
 */
-func (a *MembercloudsyncAPIService) Get(ctx context.Context) MembercloudsyncAPIGetRequest {
-	return MembercloudsyncAPIGetRequest{
+func (a *MembercloudsyncAPIService) List(ctx context.Context) MembercloudsyncAPIListRequest {
+	return MembercloudsyncAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *MembercloudsyncAPIService) Get(ctx context.Context) MembercloudsyncAPIG
 // Execute executes the request
 //
 //	@return ListMembercloudsyncResponse
-func (a *MembercloudsyncAPIService) GetExecute(r MembercloudsyncAPIGetRequest) (*ListMembercloudsyncResponse, *http.Response, error) {
+func (a *MembercloudsyncAPIService) ListExecute(r MembercloudsyncAPIListRequest) (*ListMembercloudsyncResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *MembercloudsyncAPIService) GetExecute(r MembercloudsyncAPIGetRequest) (
 		localVarReturnValue *ListMembercloudsyncResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MembercloudsyncAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MembercloudsyncAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *MembercloudsyncAPIService) GetExecute(r MembercloudsyncAPIGetRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *MembercloudsyncAPIService) GetExecute(r MembercloudsyncAPIGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MembercloudsyncAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     MembercloudsyncAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MembercloudsyncAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       MembercloudsyncAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r MembercloudsyncAPIReferenceGetRequest) ReturnFields(returnFields string) MembercloudsyncAPIReferenceGetRequest {
+func (r MembercloudsyncAPIReadRequest) ReturnFields(returnFields string) MembercloudsyncAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MembercloudsyncAPIReferenceGetRequest) ReturnFields2(returnFields2 string) MembercloudsyncAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MembercloudsyncAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MembercloudsyncAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MembercloudsyncAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) MembercloudsyncAPIReferenceGetRequest {
+func (r MembercloudsyncAPIReadRequest) ReturnAsObject(returnAsObject int32) MembercloudsyncAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MembercloudsyncAPIReferenceGetRequest) Execute() (*GetMembercloudsyncResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r MembercloudsyncAPIReadRequest) Execute() (*GetMembercloudsyncResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific membercloudsync object
+Read Get a specific membercloudsync object
 
 Returns a specific membercloudsync object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the membercloudsync object
-	@return MembercloudsyncAPIReferenceGetRequest
+	@return MembercloudsyncAPIReadRequest
 */
-func (a *MembercloudsyncAPIService) ReferenceGet(ctx context.Context, reference string) MembercloudsyncAPIReferenceGetRequest {
-	return MembercloudsyncAPIReferenceGetRequest{
+func (a *MembercloudsyncAPIService) Read(ctx context.Context, reference string) MembercloudsyncAPIReadRequest {
+	return MembercloudsyncAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *MembercloudsyncAPIService) ReferenceGet(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return GetMembercloudsyncResponse
-func (a *MembercloudsyncAPIService) ReferenceGetExecute(r MembercloudsyncAPIReferenceGetRequest) (*GetMembercloudsyncResponse, *http.Response, error) {
+func (a *MembercloudsyncAPIService) ReadExecute(r MembercloudsyncAPIReadRequest) (*GetMembercloudsyncResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *MembercloudsyncAPIService) ReferenceGetExecute(r MembercloudsyncAPIRefe
 		localVarReturnValue *GetMembercloudsyncResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MembercloudsyncAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MembercloudsyncAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *MembercloudsyncAPIService) ReferenceGetExecute(r MembercloudsyncAPIRefe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *MembercloudsyncAPIService) ReferenceGetExecute(r MembercloudsyncAPIRefe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MembercloudsyncAPIReferencePutRequest struct {
-	ctx             context.Context
-	ApiService      MembercloudsyncAPI
-	reference       string
-	membercloudsync *Membercloudsync
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+type MembercloudsyncAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       MembercloudsyncAPI
+	reference        string
+	membercloudsync  *Membercloudsync
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r MembercloudsyncAPIReferencePutRequest) Membercloudsync(membercloudsync Membercloudsync) MembercloudsyncAPIReferencePutRequest {
+func (r MembercloudsyncAPIUpdateRequest) Membercloudsync(membercloudsync Membercloudsync) MembercloudsyncAPIUpdateRequest {
 	r.membercloudsync = &membercloudsync
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MembercloudsyncAPIReferencePutRequest) ReturnFields(returnFields string) MembercloudsyncAPIReferencePutRequest {
+func (r MembercloudsyncAPIUpdateRequest) ReturnFields(returnFields string) MembercloudsyncAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MembercloudsyncAPIReferencePutRequest) ReturnFields2(returnFields2 string) MembercloudsyncAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r MembercloudsyncAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MembercloudsyncAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MembercloudsyncAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) MembercloudsyncAPIReferencePutRequest {
+func (r MembercloudsyncAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MembercloudsyncAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MembercloudsyncAPIReferencePutRequest) Execute() (*UpdateMembercloudsyncResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r MembercloudsyncAPIUpdateRequest) Execute() (*UpdateMembercloudsyncResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a membercloudsync object
+Update Update a membercloudsync object
 
 Updates a specific membercloudsync object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the membercloudsync object
-	@return MembercloudsyncAPIReferencePutRequest
+	@return MembercloudsyncAPIUpdateRequest
 */
-func (a *MembercloudsyncAPIService) ReferencePut(ctx context.Context, reference string) MembercloudsyncAPIReferencePutRequest {
-	return MembercloudsyncAPIReferencePutRequest{
+func (a *MembercloudsyncAPIService) Update(ctx context.Context, reference string) MembercloudsyncAPIUpdateRequest {
+	return MembercloudsyncAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *MembercloudsyncAPIService) ReferencePut(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return UpdateMembercloudsyncResponse
-func (a *MembercloudsyncAPIService) ReferencePutExecute(r MembercloudsyncAPIReferencePutRequest) (*UpdateMembercloudsyncResponse, *http.Response, error) {
+func (a *MembercloudsyncAPIService) UpdateExecute(r MembercloudsyncAPIUpdateRequest) (*UpdateMembercloudsyncResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *MembercloudsyncAPIService) ReferencePutExecute(r MembercloudsyncAPIRefe
 		localVarReturnValue *UpdateMembercloudsyncResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MembercloudsyncAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MembercloudsyncAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *MembercloudsyncAPIService) ReferencePutExecute(r MembercloudsyncAPIRefe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

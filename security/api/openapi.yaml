@@ -60,6 +60,7 @@ paths:
   /admingroup:
     get:
       description: Returns a list of admingroup objects matching the search criteria
+      operationId: AdmingroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -156,6 +157,7 @@ paths:
       - Admingroup
     post:
       description: Creates a new admingroup object
+      operationId: AdmingroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -216,6 +218,7 @@ paths:
   /admingroup/{reference}:
     delete:
       description: Deletes a specific admingroup object by reference
+      operationId: AdmingroupDelete
       parameters:
       - description: Reference of the admingroup object
         explode: false
@@ -243,6 +246,7 @@ paths:
       - Admingroup
     get:
       description: Returns a specific admingroup object by reference
+      operationId: AdmingroupRead
       parameters:
       - description: Reference of the admingroup object
         explode: false
@@ -302,6 +306,7 @@ paths:
       - Admingroup
     put:
       description: Updates a specific admingroup object by reference
+      operationId: AdmingroupUpdate
       parameters:
       - description: Reference of the admingroup object
         explode: false
@@ -370,6 +375,7 @@ paths:
   /adminrole:
     get:
       description: Returns a list of adminrole objects matching the search criteria
+      operationId: AdminroleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -466,6 +472,7 @@ paths:
       - Adminrole
     post:
       description: Creates a new adminrole object
+      operationId: AdminroleCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -526,6 +533,7 @@ paths:
   /adminrole/{reference}:
     delete:
       description: Deletes a specific adminrole object by reference
+      operationId: AdminroleDelete
       parameters:
       - description: Reference of the adminrole object
         explode: false
@@ -553,6 +561,7 @@ paths:
       - Adminrole
     get:
       description: Returns a specific adminrole object by reference
+      operationId: AdminroleRead
       parameters:
       - description: Reference of the adminrole object
         explode: false
@@ -612,6 +621,7 @@ paths:
       - Adminrole
     put:
       description: Updates a specific adminrole object by reference
+      operationId: AdminroleUpdate
       parameters:
       - description: Reference of the adminrole object
         explode: false
@@ -680,6 +690,7 @@ paths:
   /adminuser:
     get:
       description: Returns a list of adminuser objects matching the search criteria
+      operationId: AdminuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -776,6 +787,7 @@ paths:
       - Adminuser
     post:
       description: Creates a new adminuser object
+      operationId: AdminuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -836,6 +848,7 @@ paths:
   /adminuser/{reference}:
     delete:
       description: Deletes a specific adminuser object by reference
+      operationId: AdminuserDelete
       parameters:
       - description: Reference of the adminuser object
         explode: false
@@ -863,6 +876,7 @@ paths:
       - Adminuser
     get:
       description: Returns a specific adminuser object by reference
+      operationId: AdminuserRead
       parameters:
       - description: Reference of the adminuser object
         explode: false
@@ -922,6 +936,7 @@ paths:
       - Adminuser
     put:
       description: Updates a specific adminuser object by reference
+      operationId: AdminuserUpdate
       parameters:
       - description: Reference of the adminuser object
         explode: false
@@ -990,6 +1005,7 @@ paths:
   /permission:
     get:
       description: Returns a list of permission objects matching the search criteria
+      operationId: PermissionList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1086,6 +1102,7 @@ paths:
       - Permission
     post:
       description: Creates a new permission object
+      operationId: PermissionCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1145,6 +1162,7 @@ paths:
   /permission/{reference}:
     delete:
       description: Deletes a specific permission object by reference
+      operationId: PermissionDelete
       parameters:
       - description: Reference of the permission object
         explode: false
@@ -1172,6 +1190,7 @@ paths:
       - Permission
     get:
       description: Returns a specific permission object by reference
+      operationId: PermissionRead
       parameters:
       - description: Reference of the permission object
         explode: false
@@ -1231,6 +1250,7 @@ paths:
       - Permission
     put:
       description: Updates a specific permission object by reference
+      operationId: PermissionUpdate
       parameters:
       - description: Reference of the permission object
         explode: false
@@ -1298,6 +1318,7 @@ paths:
   /userprofile:
     get:
       description: Returns a list of userprofile objects matching the search criteria
+      operationId: UserprofileList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1395,6 +1416,7 @@ paths:
   /userprofile/{reference}:
     get:
       description: Returns a specific userprofile object by reference
+      operationId: UserprofileRead
       parameters:
       - description: Reference of the userprofile object
         explode: false
@@ -1454,6 +1476,7 @@ paths:
       - Userprofile
     put:
       description: Updates a specific userprofile object by reference
+      operationId: UserprofileUpdate
       parameters:
       - description: Reference of the userprofile object
         explode: false
@@ -1521,6 +1544,7 @@ paths:
   /authpolicy:
     get:
       description: Returns a list of authpolicy objects matching the search criteria
+      operationId: AuthpolicyList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1618,6 +1642,7 @@ paths:
   /authpolicy/{reference}:
     get:
       description: Returns a specific authpolicy object by reference
+      operationId: AuthpolicyRead
       parameters:
       - description: Reference of the authpolicy object
         explode: false
@@ -1677,6 +1702,7 @@ paths:
       - Authpolicy
     put:
       description: Updates a specific authpolicy object by reference
+      operationId: AuthpolicyUpdate
       parameters:
       - description: Reference of the authpolicy object
         explode: false
@@ -1745,6 +1771,7 @@ paths:
     get:
       description: Returns a list of approvalworkflow objects matching the search
         criteria
+      operationId: ApprovalworkflowList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1841,6 +1868,7 @@ paths:
       - Approvalworkflow
     post:
       description: Creates a new approvalworkflow object
+      operationId: ApprovalworkflowCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1901,6 +1929,7 @@ paths:
   /approvalworkflow/{reference}:
     delete:
       description: Deletes a specific approvalworkflow object by reference
+      operationId: ApprovalworkflowDelete
       parameters:
       - description: Reference of the approvalworkflow object
         explode: false
@@ -1928,6 +1957,7 @@ paths:
       - Approvalworkflow
     get:
       description: Returns a specific approvalworkflow object by reference
+      operationId: ApprovalworkflowRead
       parameters:
       - description: Reference of the approvalworkflow object
         explode: false
@@ -1987,6 +2017,7 @@ paths:
       - Approvalworkflow
     put:
       description: Updates a specific approvalworkflow object by reference
+      operationId: ApprovalworkflowUpdate
       parameters:
       - description: Reference of the approvalworkflow object
         explode: false
@@ -2055,6 +2086,7 @@ paths:
   /cacertificate:
     get:
       description: Returns a list of cacertificate objects matching the search criteria
+      operationId: CacertificateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2152,6 +2184,7 @@ paths:
   /cacertificate/{reference}:
     delete:
       description: Deletes a specific cacertificate object by reference
+      operationId: CacertificateDelete
       parameters:
       - description: Reference of the cacertificate object
         explode: false
@@ -2179,6 +2212,7 @@ paths:
       - Cacertificate
     get:
       description: Returns a specific cacertificate object by reference
+      operationId: CacertificateRead
       parameters:
       - description: Reference of the cacertificate object
         explode: false
@@ -2240,6 +2274,7 @@ paths:
     get:
       description: Returns a list of certificate:authservice objects matching the
         search criteria
+      operationId: CertificateAuthserviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2336,6 +2371,7 @@ paths:
       - CertificateAuthservice
     post:
       description: Creates a new certificate:authservice object
+      operationId: CertificateAuthserviceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2395,6 +2431,7 @@ paths:
   /certificate:authservice/{reference}:
     delete:
       description: Deletes a specific certificate:authservice object by reference
+      operationId: CertificateAuthserviceDelete
       parameters:
       - description: Reference of the certificate:authservice object
         explode: false
@@ -2422,6 +2459,7 @@ paths:
       - CertificateAuthservice
     get:
       description: Returns a specific certificate:authservice object by reference
+      operationId: CertificateAuthserviceRead
       parameters:
       - description: Reference of the certificate:authservice object
         explode: false
@@ -2481,6 +2519,7 @@ paths:
       - CertificateAuthservice
     put:
       description: Updates a specific certificate:authservice object by reference
+      operationId: CertificateAuthserviceUpdate
       parameters:
       - description: Reference of the certificate:authservice object
         explode: false
@@ -2549,6 +2588,7 @@ paths:
     get:
       description: Returns a list of radius:authservice objects matching the search
         criteria
+      operationId: RadiusAuthserviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2645,6 +2685,7 @@ paths:
       - RadiusAuthservice
     post:
       description: Creates a new radius:authservice object
+      operationId: RadiusAuthserviceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2704,6 +2745,7 @@ paths:
   /radius:authservice/{reference}:
     delete:
       description: Deletes a specific radius:authservice object by reference
+      operationId: RadiusAuthserviceDelete
       parameters:
       - description: Reference of the radius:authservice object
         explode: false
@@ -2731,6 +2773,7 @@ paths:
       - RadiusAuthservice
     get:
       description: Returns a specific radius:authservice object by reference
+      operationId: RadiusAuthserviceRead
       parameters:
       - description: Reference of the radius:authservice object
         explode: false
@@ -2790,6 +2833,7 @@ paths:
       - RadiusAuthservice
     put:
       description: Updates a specific radius:authservice object by reference
+      operationId: RadiusAuthserviceUpdate
       parameters:
       - description: Reference of the radius:authservice object
         explode: false
@@ -2858,6 +2902,7 @@ paths:
     get:
       description: Returns a list of tacacsplus:authservice objects matching the search
         criteria
+      operationId: TacacsplusAuthserviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2954,6 +2999,7 @@ paths:
       - TacacsplusAuthservice
     post:
       description: Creates a new tacacsplus:authservice object
+      operationId: TacacsplusAuthserviceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3013,6 +3059,7 @@ paths:
   /tacacsplus:authservice/{reference}:
     delete:
       description: Deletes a specific tacacsplus:authservice object by reference
+      operationId: TacacsplusAuthserviceDelete
       parameters:
       - description: Reference of the tacacsplus:authservice object
         explode: false
@@ -3040,6 +3087,7 @@ paths:
       - TacacsplusAuthservice
     get:
       description: Returns a specific tacacsplus:authservice object by reference
+      operationId: TacacsplusAuthserviceRead
       parameters:
       - description: Reference of the tacacsplus:authservice object
         explode: false
@@ -3099,6 +3147,7 @@ paths:
       - TacacsplusAuthservice
     put:
       description: Updates a specific tacacsplus:authservice object by reference
+      operationId: TacacsplusAuthserviceUpdate
       parameters:
       - description: Reference of the tacacsplus:authservice object
         explode: false
@@ -3167,6 +3216,7 @@ paths:
     get:
       description: Returns a list of ldap_auth_service objects matching the search
         criteria
+      operationId: LdapAuthServiceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3263,6 +3313,7 @@ paths:
       - LdapAuthService
     post:
       description: Creates a new ldap_auth_service object
+      operationId: LdapAuthServiceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3322,6 +3373,7 @@ paths:
   /ldap_auth_service/{reference}:
     delete:
       description: Deletes a specific ldap_auth_service object by reference
+      operationId: LdapAuthServiceDelete
       parameters:
       - description: Reference of the ldap_auth_service object
         explode: false
@@ -3349,6 +3401,7 @@ paths:
       - LdapAuthService
     get:
       description: Returns a specific ldap_auth_service object by reference
+      operationId: LdapAuthServiceRead
       parameters:
       - description: Reference of the ldap_auth_service object
         explode: false
@@ -3408,6 +3461,7 @@ paths:
       - LdapAuthService
     put:
       description: Updates a specific ldap_auth_service object by reference
+      operationId: LdapAuthServiceUpdate
       parameters:
       - description: Reference of the ldap_auth_service object
         explode: false
@@ -3476,6 +3530,7 @@ paths:
     get:
       description: Returns a list of saml:authservice objects matching the search
         criteria
+      operationId: SamlAuthserviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3572,6 +3627,7 @@ paths:
       - SamlAuthservice
     post:
       description: Creates a new saml:authservice object
+      operationId: SamlAuthserviceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3631,6 +3687,7 @@ paths:
   /saml:authservice/{reference}:
     delete:
       description: Deletes a specific saml:authservice object by reference
+      operationId: SamlAuthserviceDelete
       parameters:
       - description: Reference of the saml:authservice object
         explode: false
@@ -3658,6 +3715,7 @@ paths:
       - SamlAuthservice
     get:
       description: Returns a specific saml:authservice object by reference
+      operationId: SamlAuthserviceRead
       parameters:
       - description: Reference of the saml:authservice object
         explode: false
@@ -3717,6 +3775,7 @@ paths:
       - SamlAuthservice
     put:
       description: Updates a specific saml:authservice object by reference
+      operationId: SamlAuthserviceUpdate
       parameters:
       - description: Reference of the saml:authservice object
         explode: false
@@ -3785,6 +3844,7 @@ paths:
     get:
       description: Returns a list of localuser:authservice objects matching the search
         criteria
+      operationId: LocaluserAuthserviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3882,6 +3942,7 @@ paths:
   /localuser:authservice/{reference}:
     get:
       description: Returns a specific localuser:authservice object by reference
+      operationId: LocaluserAuthserviceRead
       parameters:
       - description: Reference of the localuser:authservice object
         explode: false
@@ -3942,6 +4003,7 @@ paths:
   /snmpuser:
     get:
       description: Returns a list of snmpuser objects matching the search criteria
+      operationId: SnmpuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4038,6 +4100,7 @@ paths:
       - Snmpuser
     post:
       description: Creates a new snmpuser object
+      operationId: SnmpuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4098,6 +4161,7 @@ paths:
   /snmpuser/{reference}:
     delete:
       description: Deletes a specific snmpuser object by reference
+      operationId: SnmpuserDelete
       parameters:
       - description: Reference of the snmpuser object
         explode: false
@@ -4125,6 +4189,7 @@ paths:
       - Snmpuser
     get:
       description: Returns a specific snmpuser object by reference
+      operationId: SnmpuserRead
       parameters:
       - description: Reference of the snmpuser object
         explode: false
@@ -4184,6 +4249,7 @@ paths:
       - Snmpuser
     put:
       description: Updates a specific snmpuser object by reference
+      operationId: SnmpuserUpdate
       parameters:
       - description: Reference of the snmpuser object
         explode: false
@@ -4252,6 +4318,7 @@ paths:
   /ftpuser:
     get:
       description: Returns a list of ftpuser objects matching the search criteria
+      operationId: FtpuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4348,6 +4415,7 @@ paths:
       - Ftpuser
     post:
       description: Creates a new ftpuser object
+      operationId: FtpuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4408,6 +4476,7 @@ paths:
   /ftpuser/{reference}:
     delete:
       description: Deletes a specific ftpuser object by reference
+      operationId: FtpuserDelete
       parameters:
       - description: Reference of the ftpuser object
         explode: false
@@ -4435,6 +4504,7 @@ paths:
       - Ftpuser
     get:
       description: Returns a specific ftpuser object by reference
+      operationId: FtpuserRead
       parameters:
       - description: Reference of the ftpuser object
         explode: false
@@ -4494,6 +4564,7 @@ paths:
       - Ftpuser
     put:
       description: Updates a specific ftpuser object by reference
+      operationId: FtpuserUpdate
       parameters:
       - description: Reference of the ftpuser object
         explode: false
@@ -4562,6 +4633,7 @@ paths:
   /networkuser:
     get:
       description: Returns a list of networkuser objects matching the search criteria
+      operationId: NetworkuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4658,6 +4730,7 @@ paths:
       - Networkuser
     post:
       description: Creates a new networkuser object
+      operationId: NetworkuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4717,6 +4790,7 @@ paths:
   /networkuser/{reference}:
     delete:
       description: Deletes a specific networkuser object by reference
+      operationId: NetworkuserDelete
       parameters:
       - description: Reference of the networkuser object
         explode: false
@@ -4744,6 +4818,7 @@ paths:
       - Networkuser
     get:
       description: Returns a specific networkuser object by reference
+      operationId: NetworkuserRead
       parameters:
       - description: Reference of the networkuser object
         explode: false
@@ -4803,6 +4878,7 @@ paths:
       - Networkuser
     put:
       description: Updates a specific networkuser object by reference
+      operationId: NetworkuserUpdate
       parameters:
       - description: Reference of the networkuser object
         explode: false
@@ -4870,6 +4946,7 @@ paths:
   /ad_auth_service:
     get:
       description: Returns a list of ad_auth_service objects matching the search criteria
+      operationId: AdAuthServiceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4966,6 +5043,7 @@ paths:
       - AdAuthService
     post:
       description: Creates a new ad_auth_service object
+      operationId: AdAuthServiceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5025,6 +5103,7 @@ paths:
   /ad_auth_service/{reference}:
     delete:
       description: Deletes a specific ad_auth_service object by reference
+      operationId: AdAuthServiceDelete
       parameters:
       - description: Reference of the ad_auth_service object
         explode: false
@@ -5052,6 +5131,7 @@ paths:
       - AdAuthService
     get:
       description: Returns a specific ad_auth_service object by reference
+      operationId: AdAuthServiceRead
       parameters:
       - description: Reference of the ad_auth_service object
         explode: false
@@ -5111,6 +5191,7 @@ paths:
       - AdAuthService
     put:
       description: Updates a specific ad_auth_service object by reference
+      operationId: AdAuthServiceUpdate
       parameters:
       - description: Reference of the ad_auth_service object
         explode: false
@@ -5178,6 +5259,7 @@ paths:
   /hsm:allgroups:
     get:
       description: Returns a list of hsm:allgroups objects matching the search criteria
+      operationId: HsmAllgroupsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5275,6 +5357,7 @@ paths:
   /hsm:allgroups/{reference}:
     get:
       description: Returns a specific hsm:allgroups object by reference
+      operationId: HsmAllgroupsRead
       parameters:
       - description: Reference of the hsm:allgroups object
         explode: false
@@ -5334,6 +5417,7 @@ paths:
       - HsmAllgroups
     put:
       description: Updates a specific hsm:allgroups object by reference
+      operationId: HsmAllgroupsUpdate
       parameters:
       - description: Reference of the hsm:allgroups object
         explode: false
@@ -5402,6 +5486,7 @@ paths:
     get:
       description: Returns a list of hsm:entrustnshieldgroup objects matching the
         search criteria
+      operationId: HsmEntrustnshieldgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5498,6 +5583,7 @@ paths:
       - HsmEntrustnshieldgroup
     post:
       description: Creates a new hsm:entrustnshieldgroup object
+      operationId: HsmEntrustnshieldgroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5557,6 +5643,7 @@ paths:
   /hsm:entrustnshieldgroup/{reference}:
     delete:
       description: Deletes a specific hsm:entrustnshieldgroup object by reference
+      operationId: HsmEntrustnshieldgroupDelete
       parameters:
       - description: Reference of the hsm:entrustnshieldgroup object
         explode: false
@@ -5584,6 +5671,7 @@ paths:
       - HsmEntrustnshieldgroup
     get:
       description: Returns a specific hsm:entrustnshieldgroup object by reference
+      operationId: HsmEntrustnshieldgroupRead
       parameters:
       - description: Reference of the hsm:entrustnshieldgroup object
         explode: false
@@ -5643,6 +5731,7 @@ paths:
       - HsmEntrustnshieldgroup
     put:
       description: Updates a specific hsm:entrustnshieldgroup object by reference
+      operationId: HsmEntrustnshieldgroupUpdate
       parameters:
       - description: Reference of the hsm:entrustnshieldgroup object
         explode: false
@@ -5711,6 +5800,7 @@ paths:
     get:
       description: Returns a list of hsm:thaleslunagroup objects matching the search
         criteria
+      operationId: HsmThaleslunagroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5807,6 +5897,7 @@ paths:
       - HsmThaleslunagroup
     post:
       description: Creates a new hsm:thaleslunagroup object
+      operationId: HsmThaleslunagroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5866,6 +5957,7 @@ paths:
   /hsm:thaleslunagroup/{reference}:
     delete:
       description: Deletes a specific hsm:thaleslunagroup object by reference
+      operationId: HsmThaleslunagroupDelete
       parameters:
       - description: Reference of the hsm:thaleslunagroup object
         explode: false
@@ -5893,6 +5985,7 @@ paths:
       - HsmThaleslunagroup
     get:
       description: Returns a specific hsm:thaleslunagroup object by reference
+      operationId: HsmThaleslunagroupRead
       parameters:
       - description: Reference of the hsm:thaleslunagroup object
         explode: false
@@ -5952,6 +6045,7 @@ paths:
       - HsmThaleslunagroup
     put:
       description: Updates a specific hsm:thaleslunagroup object by reference
+      operationId: HsmThaleslunagroupUpdate
       parameters:
       - description: Reference of the hsm:thaleslunagroup object
         explode: false
@@ -9160,6 +9254,7 @@ components:
         days_to_expire:
           description: The number of days left before the admin's password expires.
           example: 1
+          format: int64
           readOnly: true
           type: integer
         email:

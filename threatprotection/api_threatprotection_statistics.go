@@ -23,110 +23,110 @@ import (
 
 type ThreatprotectionStatisticsAPI interface {
 	/*
-		ThreatprotectionstatisticsGet Retrieve threatprotection:statistics objects
+		List Retrieve threatprotection:statistics objects
 
 		Returns a list of threatprotection:statistics objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest
+		@return ThreatprotectionStatisticsAPIListRequest
 	*/
-	ThreatprotectionstatisticsGet(ctx context.Context) ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest
+	List(ctx context.Context) ThreatprotectionStatisticsAPIListRequest
 
-	// ThreatprotectionstatisticsGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListThreatprotectionStatisticsResponse
-	ThreatprotectionstatisticsGetExecute(r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) (*ListThreatprotectionStatisticsResponse, *http.Response, error)
+	ListExecute(r ThreatprotectionStatisticsAPIListRequest) (*ListThreatprotectionStatisticsResponse, *http.Response, error)
 	/*
-		ThreatprotectionstatisticsReferenceGet Get a specific threatprotection:statistics object
+		Read Get a specific threatprotection:statistics object
 
 		Returns a specific threatprotection:statistics object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatprotection:statistics object
-		@return ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest
+		@return ThreatprotectionStatisticsAPIReadRequest
 	*/
-	ThreatprotectionstatisticsReferenceGet(ctx context.Context, reference string) ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest
+	Read(ctx context.Context, reference string) ThreatprotectionStatisticsAPIReadRequest
 
-	// ThreatprotectionstatisticsReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetThreatprotectionStatisticsResponse
-	ThreatprotectionstatisticsReferenceGetExecute(r ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest) (*GetThreatprotectionStatisticsResponse, *http.Response, error)
+	ReadExecute(r ThreatprotectionStatisticsAPIReadRequest) (*GetThreatprotectionStatisticsResponse, *http.Response, error)
 }
 
 // ThreatprotectionStatisticsAPIService ThreatprotectionStatisticsAPI service
 type ThreatprotectionStatisticsAPIService internal.Service
 
-type ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest struct {
-	ctx            context.Context
-	ApiService     ThreatprotectionStatisticsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type ThreatprotectionStatisticsAPIListRequest struct {
+	ctx              context.Context
+	ApiService       ThreatprotectionStatisticsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) ReturnFields(returnFields string) ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest {
+func (r ThreatprotectionStatisticsAPIListRequest) ReturnFields(returnFields string) ThreatprotectionStatisticsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) ReturnFields2(returnFields2 string) ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ThreatprotectionStatisticsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ThreatprotectionStatisticsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) MaxResults(maxResults int32) ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest {
+func (r ThreatprotectionStatisticsAPIListRequest) MaxResults(maxResults int32) ThreatprotectionStatisticsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest {
+func (r ThreatprotectionStatisticsAPIListRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionStatisticsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) Paging(paging int32) ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest {
+func (r ThreatprotectionStatisticsAPIListRequest) Paging(paging int32) ThreatprotectionStatisticsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) PageId(pageId string) ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest {
+func (r ThreatprotectionStatisticsAPIListRequest) PageId(pageId string) ThreatprotectionStatisticsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) Filters(filters map[string]interface{}) ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest {
+func (r ThreatprotectionStatisticsAPIListRequest) Filters(filters map[string]interface{}) ThreatprotectionStatisticsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest {
+func (r ThreatprotectionStatisticsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatprotectionStatisticsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) Execute() (*ListThreatprotectionStatisticsResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectionstatisticsGetExecute(r)
+func (r ThreatprotectionStatisticsAPIListRequest) Execute() (*ListThreatprotectionStatisticsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ThreatprotectionstatisticsGet Retrieve threatprotection:statistics objects
+List Retrieve threatprotection:statistics objects
 
 Returns a list of threatprotection:statistics objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest
+	@return ThreatprotectionStatisticsAPIListRequest
 */
-func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsGet(ctx context.Context) ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest {
-	return ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest{
+func (a *ThreatprotectionStatisticsAPIService) List(ctx context.Context) ThreatprotectionStatisticsAPIListRequest {
+	return ThreatprotectionStatisticsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsGet(ctx
 // Execute executes the request
 //
 //	@return ListThreatprotectionStatisticsResponse
-func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsGetExecute(r ThreatprotectionStatisticsAPIThreatprotectionstatisticsGetRequest) (*ListThreatprotectionStatisticsResponse, *http.Response, error) {
+func (a *ThreatprotectionStatisticsAPIService) ListExecute(r ThreatprotectionStatisticsAPIListRequest) (*ListThreatprotectionStatisticsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsGetExec
 		localVarReturnValue *ListThreatprotectionStatisticsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionStatisticsAPIService.ThreatprotectionstatisticsGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionStatisticsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsGetExec
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsGetExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     ThreatprotectionStatisticsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type ThreatprotectionStatisticsAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       ThreatprotectionStatisticsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest) ReturnFields(returnFields string) ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest {
+func (r ThreatprotectionStatisticsAPIReadRequest) ReturnFields(returnFields string) ThreatprotectionStatisticsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest) ReturnFields2(returnFields2 string) ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ThreatprotectionStatisticsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ThreatprotectionStatisticsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest {
+func (r ThreatprotectionStatisticsAPIReadRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionStatisticsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest) Execute() (*GetThreatprotectionStatisticsResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectionstatisticsReferenceGetExecute(r)
+func (r ThreatprotectionStatisticsAPIReadRequest) Execute() (*GetThreatprotectionStatisticsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ThreatprotectionstatisticsReferenceGet Get a specific threatprotection:statistics object
+Read Get a specific threatprotection:statistics object
 
 Returns a specific threatprotection:statistics object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatprotection:statistics object
-	@return ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest
+	@return ThreatprotectionStatisticsAPIReadRequest
 */
-func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsReferenceGet(ctx context.Context, reference string) ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest {
-	return ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest{
+func (a *ThreatprotectionStatisticsAPIService) Read(ctx context.Context, reference string) ThreatprotectionStatisticsAPIReadRequest {
+	return ThreatprotectionStatisticsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsReferen
 // Execute executes the request
 //
 //	@return GetThreatprotectionStatisticsResponse
-func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsReferenceGetExecute(r ThreatprotectionStatisticsAPIThreatprotectionstatisticsReferenceGetRequest) (*GetThreatprotectionStatisticsResponse, *http.Response, error) {
+func (a *ThreatprotectionStatisticsAPIService) ReadExecute(r ThreatprotectionStatisticsAPIReadRequest) (*GetThreatprotectionStatisticsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsReferen
 		localVarReturnValue *GetThreatprotectionStatisticsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionStatisticsAPIService.ThreatprotectionstatisticsReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionStatisticsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *ThreatprotectionStatisticsAPIService) ThreatprotectionstatisticsReferen
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

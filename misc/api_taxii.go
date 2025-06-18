@@ -23,124 +23,124 @@ import (
 
 type TaxiiAPI interface {
 	/*
-		Get Retrieve taxii objects
+		List Retrieve taxii objects
 
 		Returns a list of taxii objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return TaxiiAPIGetRequest
+		@return TaxiiAPIListRequest
 	*/
-	Get(ctx context.Context) TaxiiAPIGetRequest
+	List(ctx context.Context) TaxiiAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListTaxiiResponse
-	GetExecute(r TaxiiAPIGetRequest) (*ListTaxiiResponse, *http.Response, error)
+	ListExecute(r TaxiiAPIListRequest) (*ListTaxiiResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific taxii object
+		Read Get a specific taxii object
 
 		Returns a specific taxii object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the taxii object
-		@return TaxiiAPIReferenceGetRequest
+		@return TaxiiAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) TaxiiAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) TaxiiAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetTaxiiResponse
-	ReferenceGetExecute(r TaxiiAPIReferenceGetRequest) (*GetTaxiiResponse, *http.Response, error)
+	ReadExecute(r TaxiiAPIReadRequest) (*GetTaxiiResponse, *http.Response, error)
 	/*
-		ReferencePut Update a taxii object
+		Update Update a taxii object
 
 		Updates a specific taxii object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the taxii object
-		@return TaxiiAPIReferencePutRequest
+		@return TaxiiAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) TaxiiAPIReferencePutRequest
+	Update(ctx context.Context, reference string) TaxiiAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateTaxiiResponse
-	ReferencePutExecute(r TaxiiAPIReferencePutRequest) (*UpdateTaxiiResponse, *http.Response, error)
+	UpdateExecute(r TaxiiAPIUpdateRequest) (*UpdateTaxiiResponse, *http.Response, error)
 }
 
 // TaxiiAPIService TaxiiAPI service
 type TaxiiAPIService internal.Service
 
-type TaxiiAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     TaxiiAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type TaxiiAPIListRequest struct {
+	ctx              context.Context
+	ApiService       TaxiiAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r TaxiiAPIGetRequest) ReturnFields(returnFields string) TaxiiAPIGetRequest {
+func (r TaxiiAPIListRequest) ReturnFields(returnFields string) TaxiiAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TaxiiAPIGetRequest) ReturnFields2(returnFields2 string) TaxiiAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r TaxiiAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) TaxiiAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r TaxiiAPIGetRequest) MaxResults(maxResults int32) TaxiiAPIGetRequest {
+func (r TaxiiAPIListRequest) MaxResults(maxResults int32) TaxiiAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r TaxiiAPIGetRequest) ReturnAsObject(returnAsObject int32) TaxiiAPIGetRequest {
+func (r TaxiiAPIListRequest) ReturnAsObject(returnAsObject int32) TaxiiAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r TaxiiAPIGetRequest) Paging(paging int32) TaxiiAPIGetRequest {
+func (r TaxiiAPIListRequest) Paging(paging int32) TaxiiAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r TaxiiAPIGetRequest) PageId(pageId string) TaxiiAPIGetRequest {
+func (r TaxiiAPIListRequest) PageId(pageId string) TaxiiAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r TaxiiAPIGetRequest) Filters(filters map[string]interface{}) TaxiiAPIGetRequest {
+func (r TaxiiAPIListRequest) Filters(filters map[string]interface{}) TaxiiAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r TaxiiAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) TaxiiAPIGetRequest {
+func (r TaxiiAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) TaxiiAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r TaxiiAPIGetRequest) Execute() (*ListTaxiiResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r TaxiiAPIListRequest) Execute() (*ListTaxiiResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve taxii objects
+List Retrieve taxii objects
 
 Returns a list of taxii objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return TaxiiAPIGetRequest
+	@return TaxiiAPIListRequest
 */
-func (a *TaxiiAPIService) Get(ctx context.Context) TaxiiAPIGetRequest {
-	return TaxiiAPIGetRequest{
+func (a *TaxiiAPIService) List(ctx context.Context) TaxiiAPIListRequest {
+	return TaxiiAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *TaxiiAPIService) Get(ctx context.Context) TaxiiAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListTaxiiResponse
-func (a *TaxiiAPIService) GetExecute(r TaxiiAPIGetRequest) (*ListTaxiiResponse, *http.Response, error) {
+func (a *TaxiiAPIService) ListExecute(r TaxiiAPIListRequest) (*ListTaxiiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *TaxiiAPIService) GetExecute(r TaxiiAPIGetRequest) (*ListTaxiiResponse, 
 		localVarReturnValue *ListTaxiiResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TaxiiAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TaxiiAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *TaxiiAPIService) GetExecute(r TaxiiAPIGetRequest) (*ListTaxiiResponse, 
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *TaxiiAPIService) GetExecute(r TaxiiAPIGetRequest) (*ListTaxiiResponse, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type TaxiiAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     TaxiiAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type TaxiiAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       TaxiiAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r TaxiiAPIReferenceGetRequest) ReturnFields(returnFields string) TaxiiAPIReferenceGetRequest {
+func (r TaxiiAPIReadRequest) ReturnFields(returnFields string) TaxiiAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TaxiiAPIReferenceGetRequest) ReturnFields2(returnFields2 string) TaxiiAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r TaxiiAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) TaxiiAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r TaxiiAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) TaxiiAPIReferenceGetRequest {
+func (r TaxiiAPIReadRequest) ReturnAsObject(returnAsObject int32) TaxiiAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r TaxiiAPIReferenceGetRequest) Execute() (*GetTaxiiResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r TaxiiAPIReadRequest) Execute() (*GetTaxiiResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific taxii object
+Read Get a specific taxii object
 
 Returns a specific taxii object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the taxii object
-	@return TaxiiAPIReferenceGetRequest
+	@return TaxiiAPIReadRequest
 */
-func (a *TaxiiAPIService) ReferenceGet(ctx context.Context, reference string) TaxiiAPIReferenceGetRequest {
-	return TaxiiAPIReferenceGetRequest{
+func (a *TaxiiAPIService) Read(ctx context.Context, reference string) TaxiiAPIReadRequest {
+	return TaxiiAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *TaxiiAPIService) ReferenceGet(ctx context.Context, reference string) Ta
 // Execute executes the request
 //
 //	@return GetTaxiiResponse
-func (a *TaxiiAPIService) ReferenceGetExecute(r TaxiiAPIReferenceGetRequest) (*GetTaxiiResponse, *http.Response, error) {
+func (a *TaxiiAPIService) ReadExecute(r TaxiiAPIReadRequest) (*GetTaxiiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *TaxiiAPIService) ReferenceGetExecute(r TaxiiAPIReferenceGetRequest) (*G
 		localVarReturnValue *GetTaxiiResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TaxiiAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TaxiiAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *TaxiiAPIService) ReferenceGetExecute(r TaxiiAPIReferenceGetRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *TaxiiAPIService) ReferenceGetExecute(r TaxiiAPIReferenceGetRequest) (*G
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type TaxiiAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     TaxiiAPI
-	reference      string
-	taxii          *Taxii
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type TaxiiAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       TaxiiAPI
+	reference        string
+	taxii            *Taxii
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r TaxiiAPIReferencePutRequest) Taxii(taxii Taxii) TaxiiAPIReferencePutRequest {
+func (r TaxiiAPIUpdateRequest) Taxii(taxii Taxii) TaxiiAPIUpdateRequest {
 	r.taxii = &taxii
 	return r
 }
 
 // Enter the field names followed by comma
-func (r TaxiiAPIReferencePutRequest) ReturnFields(returnFields string) TaxiiAPIReferencePutRequest {
+func (r TaxiiAPIUpdateRequest) ReturnFields(returnFields string) TaxiiAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TaxiiAPIReferencePutRequest) ReturnFields2(returnFields2 string) TaxiiAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r TaxiiAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) TaxiiAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r TaxiiAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) TaxiiAPIReferencePutRequest {
+func (r TaxiiAPIUpdateRequest) ReturnAsObject(returnAsObject int32) TaxiiAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r TaxiiAPIReferencePutRequest) Execute() (*UpdateTaxiiResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r TaxiiAPIUpdateRequest) Execute() (*UpdateTaxiiResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a taxii object
+Update Update a taxii object
 
 Updates a specific taxii object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the taxii object
-	@return TaxiiAPIReferencePutRequest
+	@return TaxiiAPIUpdateRequest
 */
-func (a *TaxiiAPIService) ReferencePut(ctx context.Context, reference string) TaxiiAPIReferencePutRequest {
-	return TaxiiAPIReferencePutRequest{
+func (a *TaxiiAPIService) Update(ctx context.Context, reference string) TaxiiAPIUpdateRequest {
+	return TaxiiAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *TaxiiAPIService) ReferencePut(ctx context.Context, reference string) Ta
 // Execute executes the request
 //
 //	@return UpdateTaxiiResponse
-func (a *TaxiiAPIService) ReferencePutExecute(r TaxiiAPIReferencePutRequest) (*UpdateTaxiiResponse, *http.Response, error) {
+func (a *TaxiiAPIService) UpdateExecute(r TaxiiAPIUpdateRequest) (*UpdateTaxiiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *TaxiiAPIService) ReferencePutExecute(r TaxiiAPIReferencePutRequest) (*U
 		localVarReturnValue *UpdateTaxiiResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TaxiiAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TaxiiAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *TaxiiAPIService) ReferencePutExecute(r TaxiiAPIReferencePutRequest) (*U
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

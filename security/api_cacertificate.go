@@ -23,123 +23,212 @@ import (
 
 type CacertificateAPI interface {
 	/*
-		Get Retrieve cacertificate objects
-
-		Returns a list of cacertificate objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return CacertificateAPIGetRequest
-	*/
-	Get(ctx context.Context) CacertificateAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListCacertificateResponse
-	GetExecute(r CacertificateAPIGetRequest) (*ListCacertificateResponse, *http.Response, error)
-	/*
-		ReferenceDelete Delete a cacertificate object
+		Delete Delete a cacertificate object
 
 		Deletes a specific cacertificate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the cacertificate object
-		@return CacertificateAPIReferenceDeleteRequest
+		@return CacertificateAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) CacertificateAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) CacertificateAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r CacertificateAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r CacertificateAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific cacertificate object
+		List Retrieve cacertificate objects
+
+		Returns a list of cacertificate objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return CacertificateAPIListRequest
+	*/
+	List(ctx context.Context) CacertificateAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListCacertificateResponse
+	ListExecute(r CacertificateAPIListRequest) (*ListCacertificateResponse, *http.Response, error)
+	/*
+		Read Get a specific cacertificate object
 
 		Returns a specific cacertificate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the cacertificate object
-		@return CacertificateAPIReferenceGetRequest
+		@return CacertificateAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) CacertificateAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) CacertificateAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetCacertificateResponse
-	ReferenceGetExecute(r CacertificateAPIReferenceGetRequest) (*GetCacertificateResponse, *http.Response, error)
+	ReadExecute(r CacertificateAPIReadRequest) (*GetCacertificateResponse, *http.Response, error)
 }
 
 // CacertificateAPIService CacertificateAPI service
 type CacertificateAPIService internal.Service
 
-type CacertificateAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     CacertificateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type CacertificateAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService CacertificateAPI
+	reference  string
+}
+
+func (r CacertificateAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a cacertificate object
+
+Deletes a specific cacertificate object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the cacertificate object
+	@return CacertificateAPIDeleteRequest
+*/
+func (a *CacertificateAPIService) Delete(ctx context.Context, reference string) CacertificateAPIDeleteRequest {
+	return CacertificateAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *CacertificateAPIService) DeleteExecute(r CacertificateAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CacertificateAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/cacertificate/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type CacertificateAPIListRequest struct {
+	ctx              context.Context
+	ApiService       CacertificateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r CacertificateAPIGetRequest) ReturnFields(returnFields string) CacertificateAPIGetRequest {
+func (r CacertificateAPIListRequest) ReturnFields(returnFields string) CacertificateAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CacertificateAPIGetRequest) ReturnFields2(returnFields2 string) CacertificateAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r CacertificateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) CacertificateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r CacertificateAPIGetRequest) MaxResults(maxResults int32) CacertificateAPIGetRequest {
+func (r CacertificateAPIListRequest) MaxResults(maxResults int32) CacertificateAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CacertificateAPIGetRequest) ReturnAsObject(returnAsObject int32) CacertificateAPIGetRequest {
+func (r CacertificateAPIListRequest) ReturnAsObject(returnAsObject int32) CacertificateAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r CacertificateAPIGetRequest) Paging(paging int32) CacertificateAPIGetRequest {
+func (r CacertificateAPIListRequest) Paging(paging int32) CacertificateAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r CacertificateAPIGetRequest) PageId(pageId string) CacertificateAPIGetRequest {
+func (r CacertificateAPIListRequest) PageId(pageId string) CacertificateAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r CacertificateAPIGetRequest) Filters(filters map[string]interface{}) CacertificateAPIGetRequest {
+func (r CacertificateAPIListRequest) Filters(filters map[string]interface{}) CacertificateAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r CacertificateAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) CacertificateAPIGetRequest {
+func (r CacertificateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) CacertificateAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r CacertificateAPIGetRequest) Execute() (*ListCacertificateResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r CacertificateAPIListRequest) Execute() (*ListCacertificateResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve cacertificate objects
+List Retrieve cacertificate objects
 
 Returns a list of cacertificate objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return CacertificateAPIGetRequest
+	@return CacertificateAPIListRequest
 */
-func (a *CacertificateAPIService) Get(ctx context.Context) CacertificateAPIGetRequest {
-	return CacertificateAPIGetRequest{
+func (a *CacertificateAPIService) List(ctx context.Context) CacertificateAPIListRequest {
+	return CacertificateAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -148,7 +237,7 @@ func (a *CacertificateAPIService) Get(ctx context.Context) CacertificateAPIGetRe
 // Execute executes the request
 //
 //	@return ListCacertificateResponse
-func (a *CacertificateAPIService) GetExecute(r CacertificateAPIGetRequest) (*ListCacertificateResponse, *http.Response, error) {
+func (a *CacertificateAPIService) ListExecute(r CacertificateAPIListRequest) (*ListCacertificateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -156,7 +245,7 @@ func (a *CacertificateAPIService) GetExecute(r CacertificateAPIGetRequest) (*Lis
 		localVarReturnValue *ListCacertificateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CacertificateAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CacertificateAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -170,8 +259,8 @@ func (a *CacertificateAPIService) GetExecute(r CacertificateAPIGetRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -238,137 +327,48 @@ func (a *CacertificateAPIService) GetExecute(r CacertificateAPIGetRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CacertificateAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService CacertificateAPI
-	reference  string
-}
-
-func (r CacertificateAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a cacertificate object
-
-Deletes a specific cacertificate object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the cacertificate object
-	@return CacertificateAPIReferenceDeleteRequest
-*/
-func (a *CacertificateAPIService) ReferenceDelete(ctx context.Context, reference string) CacertificateAPIReferenceDeleteRequest {
-	return CacertificateAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *CacertificateAPIService) ReferenceDeleteExecute(r CacertificateAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CacertificateAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/cacertificate/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type CacertificateAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     CacertificateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type CacertificateAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       CacertificateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r CacertificateAPIReferenceGetRequest) ReturnFields(returnFields string) CacertificateAPIReferenceGetRequest {
+func (r CacertificateAPIReadRequest) ReturnFields(returnFields string) CacertificateAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r CacertificateAPIReferenceGetRequest) ReturnFields2(returnFields2 string) CacertificateAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r CacertificateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) CacertificateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r CacertificateAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) CacertificateAPIReferenceGetRequest {
+func (r CacertificateAPIReadRequest) ReturnAsObject(returnAsObject int32) CacertificateAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r CacertificateAPIReferenceGetRequest) Execute() (*GetCacertificateResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r CacertificateAPIReadRequest) Execute() (*GetCacertificateResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific cacertificate object
+Read Get a specific cacertificate object
 
 Returns a specific cacertificate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the cacertificate object
-	@return CacertificateAPIReferenceGetRequest
+	@return CacertificateAPIReadRequest
 */
-func (a *CacertificateAPIService) ReferenceGet(ctx context.Context, reference string) CacertificateAPIReferenceGetRequest {
-	return CacertificateAPIReferenceGetRequest{
+func (a *CacertificateAPIService) Read(ctx context.Context, reference string) CacertificateAPIReadRequest {
+	return CacertificateAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -378,7 +378,7 @@ func (a *CacertificateAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetCacertificateResponse
-func (a *CacertificateAPIService) ReferenceGetExecute(r CacertificateAPIReferenceGetRequest) (*GetCacertificateResponse, *http.Response, error) {
+func (a *CacertificateAPIService) ReadExecute(r CacertificateAPIReadRequest) (*GetCacertificateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -386,7 +386,7 @@ func (a *CacertificateAPIService) ReferenceGetExecute(r CacertificateAPIReferenc
 		localVarReturnValue *GetCacertificateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CacertificateAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "CacertificateAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -401,8 +401,8 @@ func (a *CacertificateAPIService) ReferenceGetExecute(r CacertificateAPIReferenc
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

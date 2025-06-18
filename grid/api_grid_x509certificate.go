@@ -23,110 +23,110 @@ import (
 
 type GridX509certificateAPI interface {
 	/*
-		Gridx509certificateGet Retrieve grid:x509certificate objects
+		List Retrieve grid:x509certificate objects
 
 		Returns a list of grid:x509certificate objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridX509certificateAPIGridx509certificateGetRequest
+		@return GridX509certificateAPIListRequest
 	*/
-	Gridx509certificateGet(ctx context.Context) GridX509certificateAPIGridx509certificateGetRequest
+	List(ctx context.Context) GridX509certificateAPIListRequest
 
-	// Gridx509certificateGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridX509certificateResponse
-	Gridx509certificateGetExecute(r GridX509certificateAPIGridx509certificateGetRequest) (*ListGridX509certificateResponse, *http.Response, error)
+	ListExecute(r GridX509certificateAPIListRequest) (*ListGridX509certificateResponse, *http.Response, error)
 	/*
-		Gridx509certificateReferenceGet Get a specific grid:x509certificate object
+		Read Get a specific grid:x509certificate object
 
 		Returns a specific grid:x509certificate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:x509certificate object
-		@return GridX509certificateAPIGridx509certificateReferenceGetRequest
+		@return GridX509certificateAPIReadRequest
 	*/
-	Gridx509certificateReferenceGet(ctx context.Context, reference string) GridX509certificateAPIGridx509certificateReferenceGetRequest
+	Read(ctx context.Context, reference string) GridX509certificateAPIReadRequest
 
-	// Gridx509certificateReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridX509certificateResponse
-	Gridx509certificateReferenceGetExecute(r GridX509certificateAPIGridx509certificateReferenceGetRequest) (*GetGridX509certificateResponse, *http.Response, error)
+	ReadExecute(r GridX509certificateAPIReadRequest) (*GetGridX509certificateResponse, *http.Response, error)
 }
 
 // GridX509certificateAPIService GridX509certificateAPI service
 type GridX509certificateAPIService internal.Service
 
-type GridX509certificateAPIGridx509certificateGetRequest struct {
-	ctx            context.Context
-	ApiService     GridX509certificateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type GridX509certificateAPIListRequest struct {
+	ctx              context.Context
+	ApiService       GridX509certificateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r GridX509certificateAPIGridx509certificateGetRequest) ReturnFields(returnFields string) GridX509certificateAPIGridx509certificateGetRequest {
+func (r GridX509certificateAPIListRequest) ReturnFields(returnFields string) GridX509certificateAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridX509certificateAPIGridx509certificateGetRequest) ReturnFields2(returnFields2 string) GridX509certificateAPIGridx509certificateGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridX509certificateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridX509certificateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridX509certificateAPIGridx509certificateGetRequest) MaxResults(maxResults int32) GridX509certificateAPIGridx509certificateGetRequest {
+func (r GridX509certificateAPIListRequest) MaxResults(maxResults int32) GridX509certificateAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridX509certificateAPIGridx509certificateGetRequest) ReturnAsObject(returnAsObject int32) GridX509certificateAPIGridx509certificateGetRequest {
+func (r GridX509certificateAPIListRequest) ReturnAsObject(returnAsObject int32) GridX509certificateAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridX509certificateAPIGridx509certificateGetRequest) Paging(paging int32) GridX509certificateAPIGridx509certificateGetRequest {
+func (r GridX509certificateAPIListRequest) Paging(paging int32) GridX509certificateAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridX509certificateAPIGridx509certificateGetRequest) PageId(pageId string) GridX509certificateAPIGridx509certificateGetRequest {
+func (r GridX509certificateAPIListRequest) PageId(pageId string) GridX509certificateAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridX509certificateAPIGridx509certificateGetRequest) Filters(filters map[string]interface{}) GridX509certificateAPIGridx509certificateGetRequest {
+func (r GridX509certificateAPIListRequest) Filters(filters map[string]interface{}) GridX509certificateAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridX509certificateAPIGridx509certificateGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridX509certificateAPIGridx509certificateGetRequest {
+func (r GridX509certificateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridX509certificateAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridX509certificateAPIGridx509certificateGetRequest) Execute() (*ListGridX509certificateResponse, *http.Response, error) {
-	return r.ApiService.Gridx509certificateGetExecute(r)
+func (r GridX509certificateAPIListRequest) Execute() (*ListGridX509certificateResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Gridx509certificateGet Retrieve grid:x509certificate objects
+List Retrieve grid:x509certificate objects
 
 Returns a list of grid:x509certificate objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridX509certificateAPIGridx509certificateGetRequest
+	@return GridX509certificateAPIListRequest
 */
-func (a *GridX509certificateAPIService) Gridx509certificateGet(ctx context.Context) GridX509certificateAPIGridx509certificateGetRequest {
-	return GridX509certificateAPIGridx509certificateGetRequest{
+func (a *GridX509certificateAPIService) List(ctx context.Context) GridX509certificateAPIListRequest {
+	return GridX509certificateAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *GridX509certificateAPIService) Gridx509certificateGet(ctx context.Conte
 // Execute executes the request
 //
 //	@return ListGridX509certificateResponse
-func (a *GridX509certificateAPIService) Gridx509certificateGetExecute(r GridX509certificateAPIGridx509certificateGetRequest) (*ListGridX509certificateResponse, *http.Response, error) {
+func (a *GridX509certificateAPIService) ListExecute(r GridX509certificateAPIListRequest) (*ListGridX509certificateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *GridX509certificateAPIService) Gridx509certificateGetExecute(r GridX509
 		localVarReturnValue *ListGridX509certificateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridX509certificateAPIService.Gridx509certificateGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridX509certificateAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *GridX509certificateAPIService) Gridx509certificateGetExecute(r GridX509
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *GridX509certificateAPIService) Gridx509certificateGetExecute(r GridX509
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridX509certificateAPIGridx509certificateReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     GridX509certificateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type GridX509certificateAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       GridX509certificateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r GridX509certificateAPIGridx509certificateReferenceGetRequest) ReturnFields(returnFields string) GridX509certificateAPIGridx509certificateReferenceGetRequest {
+func (r GridX509certificateAPIReadRequest) ReturnFields(returnFields string) GridX509certificateAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridX509certificateAPIGridx509certificateReferenceGetRequest) ReturnFields2(returnFields2 string) GridX509certificateAPIGridx509certificateReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridX509certificateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridX509certificateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridX509certificateAPIGridx509certificateReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridX509certificateAPIGridx509certificateReferenceGetRequest {
+func (r GridX509certificateAPIReadRequest) ReturnAsObject(returnAsObject int32) GridX509certificateAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridX509certificateAPIGridx509certificateReferenceGetRequest) Execute() (*GetGridX509certificateResponse, *http.Response, error) {
-	return r.ApiService.Gridx509certificateReferenceGetExecute(r)
+func (r GridX509certificateAPIReadRequest) Execute() (*GetGridX509certificateResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Gridx509certificateReferenceGet Get a specific grid:x509certificate object
+Read Get a specific grid:x509certificate object
 
 Returns a specific grid:x509certificate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:x509certificate object
-	@return GridX509certificateAPIGridx509certificateReferenceGetRequest
+	@return GridX509certificateAPIReadRequest
 */
-func (a *GridX509certificateAPIService) Gridx509certificateReferenceGet(ctx context.Context, reference string) GridX509certificateAPIGridx509certificateReferenceGetRequest {
-	return GridX509certificateAPIGridx509certificateReferenceGetRequest{
+func (a *GridX509certificateAPIService) Read(ctx context.Context, reference string) GridX509certificateAPIReadRequest {
+	return GridX509certificateAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *GridX509certificateAPIService) Gridx509certificateReferenceGet(ctx cont
 // Execute executes the request
 //
 //	@return GetGridX509certificateResponse
-func (a *GridX509certificateAPIService) Gridx509certificateReferenceGetExecute(r GridX509certificateAPIGridx509certificateReferenceGetRequest) (*GetGridX509certificateResponse, *http.Response, error) {
+func (a *GridX509certificateAPIService) ReadExecute(r GridX509certificateAPIReadRequest) (*GetGridX509certificateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *GridX509certificateAPIService) Gridx509certificateReferenceGetExecute(r
 		localVarReturnValue *GetGridX509certificateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridX509certificateAPIService.Gridx509certificateReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridX509certificateAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *GridX509certificateAPIService) Gridx509certificateReferenceGetExecute(r
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

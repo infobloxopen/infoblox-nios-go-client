@@ -23,11 +23,11 @@ func TestGcpuserAPIService(t *testing.T) {
 
 	apiClient := cloud.NewAPIClient()
 
-	t.Run("Test GcpuserAPIService Get", func(t *testing.T) {
+	t.Run("Test GcpuserAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GcpuserAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GcpuserAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestGcpuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GcpuserAPIService Post", func(t *testing.T) {
+	t.Run("Test GcpuserAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GcpuserAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.GcpuserAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GcpuserAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.GcpuserAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestGcpuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GcpuserAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test GcpuserAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.GcpuserAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test GcpuserAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.GcpuserAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GcpuserAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestGcpuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GcpuserAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test GcpuserAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GcpuserAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GcpuserAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

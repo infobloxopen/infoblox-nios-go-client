@@ -23,110 +23,110 @@ import (
 
 type AllendpointsAPI interface {
 	/*
-		Get Retrieve allendpoints objects
+		List Retrieve allendpoints objects
 
 		Returns a list of allendpoints objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AllendpointsAPIGetRequest
+		@return AllendpointsAPIListRequest
 	*/
-	Get(ctx context.Context) AllendpointsAPIGetRequest
+	List(ctx context.Context) AllendpointsAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListAllendpointsResponse
-	GetExecute(r AllendpointsAPIGetRequest) (*ListAllendpointsResponse, *http.Response, error)
+	ListExecute(r AllendpointsAPIListRequest) (*ListAllendpointsResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific allendpoints object
+		Read Get a specific allendpoints object
 
 		Returns a specific allendpoints object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the allendpoints object
-		@return AllendpointsAPIReferenceGetRequest
+		@return AllendpointsAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AllendpointsAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AllendpointsAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAllendpointsResponse
-	ReferenceGetExecute(r AllendpointsAPIReferenceGetRequest) (*GetAllendpointsResponse, *http.Response, error)
+	ReadExecute(r AllendpointsAPIReadRequest) (*GetAllendpointsResponse, *http.Response, error)
 }
 
 // AllendpointsAPIService AllendpointsAPI service
 type AllendpointsAPIService internal.Service
 
-type AllendpointsAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     AllendpointsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type AllendpointsAPIListRequest struct {
+	ctx              context.Context
+	ApiService       AllendpointsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r AllendpointsAPIGetRequest) ReturnFields(returnFields string) AllendpointsAPIGetRequest {
+func (r AllendpointsAPIListRequest) ReturnFields(returnFields string) AllendpointsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AllendpointsAPIGetRequest) ReturnFields2(returnFields2 string) AllendpointsAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r AllendpointsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AllendpointsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r AllendpointsAPIGetRequest) MaxResults(maxResults int32) AllendpointsAPIGetRequest {
+func (r AllendpointsAPIListRequest) MaxResults(maxResults int32) AllendpointsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AllendpointsAPIGetRequest) ReturnAsObject(returnAsObject int32) AllendpointsAPIGetRequest {
+func (r AllendpointsAPIListRequest) ReturnAsObject(returnAsObject int32) AllendpointsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r AllendpointsAPIGetRequest) Paging(paging int32) AllendpointsAPIGetRequest {
+func (r AllendpointsAPIListRequest) Paging(paging int32) AllendpointsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r AllendpointsAPIGetRequest) PageId(pageId string) AllendpointsAPIGetRequest {
+func (r AllendpointsAPIListRequest) PageId(pageId string) AllendpointsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r AllendpointsAPIGetRequest) Filters(filters map[string]interface{}) AllendpointsAPIGetRequest {
+func (r AllendpointsAPIListRequest) Filters(filters map[string]interface{}) AllendpointsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r AllendpointsAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AllendpointsAPIGetRequest {
+func (r AllendpointsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AllendpointsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r AllendpointsAPIGetRequest) Execute() (*ListAllendpointsResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r AllendpointsAPIListRequest) Execute() (*ListAllendpointsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve allendpoints objects
+List Retrieve allendpoints objects
 
 Returns a list of allendpoints objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AllendpointsAPIGetRequest
+	@return AllendpointsAPIListRequest
 */
-func (a *AllendpointsAPIService) Get(ctx context.Context) AllendpointsAPIGetRequest {
-	return AllendpointsAPIGetRequest{
+func (a *AllendpointsAPIService) List(ctx context.Context) AllendpointsAPIListRequest {
+	return AllendpointsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *AllendpointsAPIService) Get(ctx context.Context) AllendpointsAPIGetRequ
 // Execute executes the request
 //
 //	@return ListAllendpointsResponse
-func (a *AllendpointsAPIService) GetExecute(r AllendpointsAPIGetRequest) (*ListAllendpointsResponse, *http.Response, error) {
+func (a *AllendpointsAPIService) ListExecute(r AllendpointsAPIListRequest) (*ListAllendpointsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *AllendpointsAPIService) GetExecute(r AllendpointsAPIGetRequest) (*ListA
 		localVarReturnValue *ListAllendpointsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllendpointsAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllendpointsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *AllendpointsAPIService) GetExecute(r AllendpointsAPIGetRequest) (*ListA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *AllendpointsAPIService) GetExecute(r AllendpointsAPIGetRequest) (*ListA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AllendpointsAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     AllendpointsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type AllendpointsAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       AllendpointsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r AllendpointsAPIReferenceGetRequest) ReturnFields(returnFields string) AllendpointsAPIReferenceGetRequest {
+func (r AllendpointsAPIReadRequest) ReturnFields(returnFields string) AllendpointsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AllendpointsAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AllendpointsAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r AllendpointsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AllendpointsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AllendpointsAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AllendpointsAPIReferenceGetRequest {
+func (r AllendpointsAPIReadRequest) ReturnAsObject(returnAsObject int32) AllendpointsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AllendpointsAPIReferenceGetRequest) Execute() (*GetAllendpointsResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r AllendpointsAPIReadRequest) Execute() (*GetAllendpointsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific allendpoints object
+Read Get a specific allendpoints object
 
 Returns a specific allendpoints object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the allendpoints object
-	@return AllendpointsAPIReferenceGetRequest
+	@return AllendpointsAPIReadRequest
 */
-func (a *AllendpointsAPIService) ReferenceGet(ctx context.Context, reference string) AllendpointsAPIReferenceGetRequest {
-	return AllendpointsAPIReferenceGetRequest{
+func (a *AllendpointsAPIService) Read(ctx context.Context, reference string) AllendpointsAPIReadRequest {
+	return AllendpointsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *AllendpointsAPIService) ReferenceGet(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return GetAllendpointsResponse
-func (a *AllendpointsAPIService) ReferenceGetExecute(r AllendpointsAPIReferenceGetRequest) (*GetAllendpointsResponse, *http.Response, error) {
+func (a *AllendpointsAPIService) ReadExecute(r AllendpointsAPIReadRequest) (*GetAllendpointsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *AllendpointsAPIService) ReferenceGetExecute(r AllendpointsAPIReferenceG
 		localVarReturnValue *GetAllendpointsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllendpointsAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllendpointsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *AllendpointsAPIService) ReferenceGetExecute(r AllendpointsAPIReferenceG
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

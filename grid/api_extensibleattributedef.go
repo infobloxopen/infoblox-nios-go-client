@@ -23,150 +23,374 @@ import (
 
 type ExtensibleattributedefAPI interface {
 	/*
-		Get Retrieve extensibleattributedef objects
-
-		Returns a list of extensibleattributedef objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ExtensibleattributedefAPIGetRequest
-	*/
-	Get(ctx context.Context) ExtensibleattributedefAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListExtensibleattributedefResponse
-	GetExecute(r ExtensibleattributedefAPIGetRequest) (*ListExtensibleattributedefResponse, *http.Response, error)
-	/*
-		Post Create a extensibleattributedef object
+		Create Create a extensibleattributedef object
 
 		Creates a new extensibleattributedef object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ExtensibleattributedefAPIPostRequest
+		@return ExtensibleattributedefAPICreateRequest
 	*/
-	Post(ctx context.Context) ExtensibleattributedefAPIPostRequest
+	Create(ctx context.Context) ExtensibleattributedefAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateExtensibleattributedefResponse
-	PostExecute(r ExtensibleattributedefAPIPostRequest) (*CreateExtensibleattributedefResponse, *http.Response, error)
+	CreateExecute(r ExtensibleattributedefAPICreateRequest) (*CreateExtensibleattributedefResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a extensibleattributedef object
+		Delete Delete a extensibleattributedef object
 
 		Deletes a specific extensibleattributedef object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the extensibleattributedef object
-		@return ExtensibleattributedefAPIReferenceDeleteRequest
+		@return ExtensibleattributedefAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) ExtensibleattributedefAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ExtensibleattributedefAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r ExtensibleattributedefAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ExtensibleattributedefAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific extensibleattributedef object
+		List Retrieve extensibleattributedef objects
+
+		Returns a list of extensibleattributedef objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ExtensibleattributedefAPIListRequest
+	*/
+	List(ctx context.Context) ExtensibleattributedefAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListExtensibleattributedefResponse
+	ListExecute(r ExtensibleattributedefAPIListRequest) (*ListExtensibleattributedefResponse, *http.Response, error)
+	/*
+		Read Get a specific extensibleattributedef object
 
 		Returns a specific extensibleattributedef object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the extensibleattributedef object
-		@return ExtensibleattributedefAPIReferenceGetRequest
+		@return ExtensibleattributedefAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ExtensibleattributedefAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ExtensibleattributedefAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetExtensibleattributedefResponse
-	ReferenceGetExecute(r ExtensibleattributedefAPIReferenceGetRequest) (*GetExtensibleattributedefResponse, *http.Response, error)
+	ReadExecute(r ExtensibleattributedefAPIReadRequest) (*GetExtensibleattributedefResponse, *http.Response, error)
 	/*
-		ReferencePut Update a extensibleattributedef object
+		Update Update a extensibleattributedef object
 
 		Updates a specific extensibleattributedef object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the extensibleattributedef object
-		@return ExtensibleattributedefAPIReferencePutRequest
+		@return ExtensibleattributedefAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) ExtensibleattributedefAPIReferencePutRequest
+	Update(ctx context.Context, reference string) ExtensibleattributedefAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateExtensibleattributedefResponse
-	ReferencePutExecute(r ExtensibleattributedefAPIReferencePutRequest) (*UpdateExtensibleattributedefResponse, *http.Response, error)
+	UpdateExecute(r ExtensibleattributedefAPIUpdateRequest) (*UpdateExtensibleattributedefResponse, *http.Response, error)
 }
 
 // ExtensibleattributedefAPIService ExtensibleattributedefAPI service
 type ExtensibleattributedefAPIService internal.Service
 
-type ExtensibleattributedefAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     ExtensibleattributedefAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type ExtensibleattributedefAPICreateRequest struct {
+	ctx                    context.Context
+	ApiService             ExtensibleattributedefAPI
+	extensibleattributedef *Extensibleattributedef
+	returnFields           *string
+	returnFieldsPlus       *string
+	returnAsObject         *int32
+}
+
+// Object data to create
+func (r ExtensibleattributedefAPICreateRequest) Extensibleattributedef(extensibleattributedef Extensibleattributedef) ExtensibleattributedefAPICreateRequest {
+	r.extensibleattributedef = &extensibleattributedef
+	return r
 }
 
 // Enter the field names followed by comma
-func (r ExtensibleattributedefAPIGetRequest) ReturnFields(returnFields string) ExtensibleattributedefAPIGetRequest {
+func (r ExtensibleattributedefAPICreateRequest) ReturnFields(returnFields string) ExtensibleattributedefAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ExtensibleattributedefAPIGetRequest) ReturnFields2(returnFields2 string) ExtensibleattributedefAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ExtensibleattributedefAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) ExtensibleattributedefAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ExtensibleattributedefAPICreateRequest) ReturnAsObject(returnAsObject int32) ExtensibleattributedefAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r ExtensibleattributedefAPICreateRequest) Execute() (*CreateExtensibleattributedefResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a extensibleattributedef object
+
+Creates a new extensibleattributedef object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ExtensibleattributedefAPICreateRequest
+*/
+func (a *ExtensibleattributedefAPIService) Create(ctx context.Context) ExtensibleattributedefAPICreateRequest {
+	return ExtensibleattributedefAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateExtensibleattributedefResponse
+func (a *ExtensibleattributedefAPIService) CreateExecute(r ExtensibleattributedefAPICreateRequest) (*CreateExtensibleattributedefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateExtensibleattributedefResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ExtensibleattributedefAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/extensibleattributedef"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.extensibleattributedef == nil {
+		return localVarReturnValue, nil, internal.ReportError("extensibleattributedef is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.extensibleattributedef
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ExtensibleattributedefAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService ExtensibleattributedefAPI
+	reference  string
+}
+
+func (r ExtensibleattributedefAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a extensibleattributedef object
+
+Deletes a specific extensibleattributedef object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the extensibleattributedef object
+	@return ExtensibleattributedefAPIDeleteRequest
+*/
+func (a *ExtensibleattributedefAPIService) Delete(ctx context.Context, reference string) ExtensibleattributedefAPIDeleteRequest {
+	return ExtensibleattributedefAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *ExtensibleattributedefAPIService) DeleteExecute(r ExtensibleattributedefAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ExtensibleattributedefAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/extensibleattributedef/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ExtensibleattributedefAPIListRequest struct {
+	ctx              context.Context
+	ApiService       ExtensibleattributedefAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r ExtensibleattributedefAPIListRequest) ReturnFields(returnFields string) ExtensibleattributedefAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ExtensibleattributedefAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ExtensibleattributedefAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ExtensibleattributedefAPIGetRequest) MaxResults(maxResults int32) ExtensibleattributedefAPIGetRequest {
+func (r ExtensibleattributedefAPIListRequest) MaxResults(maxResults int32) ExtensibleattributedefAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ExtensibleattributedefAPIGetRequest) ReturnAsObject(returnAsObject int32) ExtensibleattributedefAPIGetRequest {
+func (r ExtensibleattributedefAPIListRequest) ReturnAsObject(returnAsObject int32) ExtensibleattributedefAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ExtensibleattributedefAPIGetRequest) Paging(paging int32) ExtensibleattributedefAPIGetRequest {
+func (r ExtensibleattributedefAPIListRequest) Paging(paging int32) ExtensibleattributedefAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ExtensibleattributedefAPIGetRequest) PageId(pageId string) ExtensibleattributedefAPIGetRequest {
+func (r ExtensibleattributedefAPIListRequest) PageId(pageId string) ExtensibleattributedefAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ExtensibleattributedefAPIGetRequest) Filters(filters map[string]interface{}) ExtensibleattributedefAPIGetRequest {
+func (r ExtensibleattributedefAPIListRequest) Filters(filters map[string]interface{}) ExtensibleattributedefAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ExtensibleattributedefAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ExtensibleattributedefAPIGetRequest {
+func (r ExtensibleattributedefAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ExtensibleattributedefAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ExtensibleattributedefAPIGetRequest) Execute() (*ListExtensibleattributedefResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r ExtensibleattributedefAPIListRequest) Execute() (*ListExtensibleattributedefResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve extensibleattributedef objects
+List Retrieve extensibleattributedef objects
 
 Returns a list of extensibleattributedef objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ExtensibleattributedefAPIGetRequest
+	@return ExtensibleattributedefAPIListRequest
 */
-func (a *ExtensibleattributedefAPIService) Get(ctx context.Context) ExtensibleattributedefAPIGetRequest {
-	return ExtensibleattributedefAPIGetRequest{
+func (a *ExtensibleattributedefAPIService) List(ctx context.Context) ExtensibleattributedefAPIListRequest {
+	return ExtensibleattributedefAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *ExtensibleattributedefAPIService) Get(ctx context.Context) Extensibleat
 // Execute executes the request
 //
 //	@return ListExtensibleattributedefResponse
-func (a *ExtensibleattributedefAPIService) GetExecute(r ExtensibleattributedefAPIGetRequest) (*ListExtensibleattributedefResponse, *http.Response, error) {
+func (a *ExtensibleattributedefAPIService) ListExecute(r ExtensibleattributedefAPIListRequest) (*ListExtensibleattributedefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *ExtensibleattributedefAPIService) GetExecute(r ExtensibleattributedefAP
 		localVarReturnValue *ListExtensibleattributedefResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ExtensibleattributedefAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ExtensibleattributedefAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *ExtensibleattributedefAPIService) GetExecute(r ExtensibleattributedefAP
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *ExtensibleattributedefAPIService) GetExecute(r ExtensibleattributedefAP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ExtensibleattributedefAPIPostRequest struct {
-	ctx                    context.Context
-	ApiService             ExtensibleattributedefAPI
-	extensibleattributedef *Extensibleattributedef
-	returnFields           *string
-	returnFields2          *string
-	returnAsObject         *int32
-}
-
-// Object data to create
-func (r ExtensibleattributedefAPIPostRequest) Extensibleattributedef(extensibleattributedef Extensibleattributedef) ExtensibleattributedefAPIPostRequest {
-	r.extensibleattributedef = &extensibleattributedef
-	return r
+type ExtensibleattributedefAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       ExtensibleattributedefAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r ExtensibleattributedefAPIPostRequest) ReturnFields(returnFields string) ExtensibleattributedefAPIPostRequest {
+func (r ExtensibleattributedefAPIReadRequest) ReturnFields(returnFields string) ExtensibleattributedefAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ExtensibleattributedefAPIPostRequest) ReturnFields2(returnFields2 string) ExtensibleattributedefAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r ExtensibleattributedefAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ExtensibleattributedefAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ExtensibleattributedefAPIPostRequest) ReturnAsObject(returnAsObject int32) ExtensibleattributedefAPIPostRequest {
+func (r ExtensibleattributedefAPIReadRequest) ReturnAsObject(returnAsObject int32) ExtensibleattributedefAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ExtensibleattributedefAPIPostRequest) Execute() (*CreateExtensibleattributedefResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r ExtensibleattributedefAPIReadRequest) Execute() (*GetExtensibleattributedefResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a extensibleattributedef object
-
-Creates a new extensibleattributedef object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ExtensibleattributedefAPIPostRequest
-*/
-func (a *ExtensibleattributedefAPIService) Post(ctx context.Context) ExtensibleattributedefAPIPostRequest {
-	return ExtensibleattributedefAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateExtensibleattributedefResponse
-func (a *ExtensibleattributedefAPIService) PostExecute(r ExtensibleattributedefAPIPostRequest) (*CreateExtensibleattributedefResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateExtensibleattributedefResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ExtensibleattributedefAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/extensibleattributedef"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.extensibleattributedef == nil {
-		return localVarReturnValue, nil, internal.ReportError("extensibleattributedef is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.extensibleattributedef
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ExtensibleattributedefAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService ExtensibleattributedefAPI
-	reference  string
-}
-
-func (r ExtensibleattributedefAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a extensibleattributedef object
-
-Deletes a specific extensibleattributedef object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the extensibleattributedef object
-	@return ExtensibleattributedefAPIReferenceDeleteRequest
-*/
-func (a *ExtensibleattributedefAPIService) ReferenceDelete(ctx context.Context, reference string) ExtensibleattributedefAPIReferenceDeleteRequest {
-	return ExtensibleattributedefAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *ExtensibleattributedefAPIService) ReferenceDeleteExecute(r ExtensibleattributedefAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ExtensibleattributedefAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/extensibleattributedef/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ExtensibleattributedefAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     ExtensibleattributedefAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r ExtensibleattributedefAPIReferenceGetRequest) ReturnFields(returnFields string) ExtensibleattributedefAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ExtensibleattributedefAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ExtensibleattributedefAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ExtensibleattributedefAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ExtensibleattributedefAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r ExtensibleattributedefAPIReferenceGetRequest) Execute() (*GetExtensibleattributedefResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific extensibleattributedef object
+Read Get a specific extensibleattributedef object
 
 Returns a specific extensibleattributedef object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the extensibleattributedef object
-	@return ExtensibleattributedefAPIReferenceGetRequest
+	@return ExtensibleattributedefAPIReadRequest
 */
-func (a *ExtensibleattributedefAPIService) ReferenceGet(ctx context.Context, reference string) ExtensibleattributedefAPIReferenceGetRequest {
-	return ExtensibleattributedefAPIReferenceGetRequest{
+func (a *ExtensibleattributedefAPIService) Read(ctx context.Context, reference string) ExtensibleattributedefAPIReadRequest {
+	return ExtensibleattributedefAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *ExtensibleattributedefAPIService) ReferenceGet(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return GetExtensibleattributedefResponse
-func (a *ExtensibleattributedefAPIService) ReferenceGetExecute(r ExtensibleattributedefAPIReferenceGetRequest) (*GetExtensibleattributedefResponse, *http.Response, error) {
+func (a *ExtensibleattributedefAPIService) ReadExecute(r ExtensibleattributedefAPIReadRequest) (*GetExtensibleattributedefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *ExtensibleattributedefAPIService) ReferenceGetExecute(r Extensibleattri
 		localVarReturnValue *GetExtensibleattributedefResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ExtensibleattributedefAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ExtensibleattributedefAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *ExtensibleattributedefAPIService) ReferenceGetExecute(r Extensibleattri
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *ExtensibleattributedefAPIService) ReferenceGetExecute(r Extensibleattri
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ExtensibleattributedefAPIReferencePutRequest struct {
+type ExtensibleattributedefAPIUpdateRequest struct {
 	ctx                    context.Context
 	ApiService             ExtensibleattributedefAPI
 	reference              string
 	extensibleattributedef *Extensibleattributedef
 	returnFields           *string
-	returnFields2          *string
+	returnFieldsPlus       *string
 	returnAsObject         *int32
 }
 
 // Object data to update
-func (r ExtensibleattributedefAPIReferencePutRequest) Extensibleattributedef(extensibleattributedef Extensibleattributedef) ExtensibleattributedefAPIReferencePutRequest {
+func (r ExtensibleattributedefAPIUpdateRequest) Extensibleattributedef(extensibleattributedef Extensibleattributedef) ExtensibleattributedefAPIUpdateRequest {
 	r.extensibleattributedef = &extensibleattributedef
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ExtensibleattributedefAPIReferencePutRequest) ReturnFields(returnFields string) ExtensibleattributedefAPIReferencePutRequest {
+func (r ExtensibleattributedefAPIUpdateRequest) ReturnFields(returnFields string) ExtensibleattributedefAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ExtensibleattributedefAPIReferencePutRequest) ReturnFields2(returnFields2 string) ExtensibleattributedefAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r ExtensibleattributedefAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ExtensibleattributedefAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ExtensibleattributedefAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) ExtensibleattributedefAPIReferencePutRequest {
+func (r ExtensibleattributedefAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ExtensibleattributedefAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ExtensibleattributedefAPIReferencePutRequest) Execute() (*UpdateExtensibleattributedefResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r ExtensibleattributedefAPIUpdateRequest) Execute() (*UpdateExtensibleattributedefResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a extensibleattributedef object
+Update Update a extensibleattributedef object
 
 Updates a specific extensibleattributedef object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the extensibleattributedef object
-	@return ExtensibleattributedefAPIReferencePutRequest
+	@return ExtensibleattributedefAPIUpdateRequest
 */
-func (a *ExtensibleattributedefAPIService) ReferencePut(ctx context.Context, reference string) ExtensibleattributedefAPIReferencePutRequest {
-	return ExtensibleattributedefAPIReferencePutRequest{
+func (a *ExtensibleattributedefAPIService) Update(ctx context.Context, reference string) ExtensibleattributedefAPIUpdateRequest {
+	return ExtensibleattributedefAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *ExtensibleattributedefAPIService) ReferencePut(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return UpdateExtensibleattributedefResponse
-func (a *ExtensibleattributedefAPIService) ReferencePutExecute(r ExtensibleattributedefAPIReferencePutRequest) (*UpdateExtensibleattributedefResponse, *http.Response, error) {
+func (a *ExtensibleattributedefAPIService) UpdateExecute(r ExtensibleattributedefAPIUpdateRequest) (*UpdateExtensibleattributedefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *ExtensibleattributedefAPIService) ReferencePutExecute(r Extensibleattri
 		localVarReturnValue *UpdateExtensibleattributedefResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ExtensibleattributedefAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ExtensibleattributedefAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *ExtensibleattributedefAPIService) ReferencePutExecute(r Extensibleattri
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GriddnsGet**](GridDnsAPI.md#GriddnsGet) | **Get** /grid:dns | Retrieve grid:dns objects
-[**GriddnsReferenceGet**](GridDnsAPI.md#GriddnsReferenceGet) | **Get** /grid:dns/{reference} | Get a specific grid:dns object
-[**GriddnsReferencePut**](GridDnsAPI.md#GriddnsReferencePut) | **Put** /grid:dns/{reference} | Update a grid:dns object
+[**List**](GridDnsAPI.md#List) | **Get** /grid:dns | Retrieve grid:dns objects
+[**Read**](GridDnsAPI.md#Read) | **Get** /grid:dns/{reference} | Get a specific grid:dns object
+[**Update**](GridDnsAPI.md#Update) | **Put** /grid:dns/{reference} | Update a grid:dns object
 
 
 
-## GriddnsGet
+## List
 
-> ListGridDnsResponse GriddnsGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridDnsResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:dns objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridDnsAPI.GriddnsGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridDnsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridDnsAPI.GriddnsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridDnsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GriddnsGet`: ListGridDnsResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridDnsAPI.GriddnsGet`: %v\n", resp)
+	// response from `List`: ListGridDnsResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridDnsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridDnsAPIGriddnsGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridDnsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GriddnsReferenceGet
+## Read
 
-> GetGridDnsResponse GriddnsReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridDnsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:dns object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:dns object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridDnsAPI.GriddnsReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridDnsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridDnsAPI.GriddnsReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridDnsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GriddnsReferenceGet`: GetGridDnsResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridDnsAPI.GriddnsReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridDnsResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridDnsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridDnsAPIGriddnsReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridDnsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GriddnsReferencePut
+## Update
 
-> UpdateGridDnsResponse GriddnsReferencePut(ctx, reference).GridDns(gridDns).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridDnsResponse Update(ctx, reference).GridDns(gridDns).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:dns object
 
@@ -180,13 +180,13 @@ func main() {
 	gridDns := *grid.NewGridDns() // GridDns | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridDnsAPI.GriddnsReferencePut(context.Background(), reference).GridDns(gridDns).Execute()
+	resp, r, err := apiClient.GridDnsAPI.Update(context.Background(), reference).GridDns(gridDns).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridDnsAPI.GriddnsReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridDnsAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GriddnsReferencePut`: UpdateGridDnsResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridDnsAPI.GriddnsReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGridDnsResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridDnsAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridDnsAPIGriddnsReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridDnsAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **gridDns** | [**GridDns**](GridDns.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

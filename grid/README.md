@@ -79,143 +79,143 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CaptiveportalAPI* | [**Get**](docs/CaptiveportalAPI.md#get) | **Get** /captiveportal | Retrieve captiveportal objects
-*CaptiveportalAPI* | [**ReferenceGet**](docs/CaptiveportalAPI.md#referenceget) | **Get** /captiveportal/{reference} | Get a specific captiveportal object
-*CaptiveportalAPI* | [**ReferencePut**](docs/CaptiveportalAPI.md#referenceput) | **Put** /captiveportal/{reference} | Update a captiveportal object
-*DistributionscheduleAPI* | [**Get**](docs/DistributionscheduleAPI.md#get) | **Get** /distributionschedule | Retrieve distributionschedule objects
-*DistributionscheduleAPI* | [**ReferenceGet**](docs/DistributionscheduleAPI.md#referenceget) | **Get** /distributionschedule/{reference} | Get a specific distributionschedule object
-*DistributionscheduleAPI* | [**ReferencePut**](docs/DistributionscheduleAPI.md#referenceput) | **Put** /distributionschedule/{reference} | Update a distributionschedule object
-*ExtensibleattributedefAPI* | [**Get**](docs/ExtensibleattributedefAPI.md#get) | **Get** /extensibleattributedef | Retrieve extensibleattributedef objects
-*ExtensibleattributedefAPI* | [**Post**](docs/ExtensibleattributedefAPI.md#post) | **Post** /extensibleattributedef | Create a extensibleattributedef object
-*ExtensibleattributedefAPI* | [**ReferenceDelete**](docs/ExtensibleattributedefAPI.md#referencedelete) | **Delete** /extensibleattributedef/{reference} | Delete a extensibleattributedef object
-*ExtensibleattributedefAPI* | [**ReferenceGet**](docs/ExtensibleattributedefAPI.md#referenceget) | **Get** /extensibleattributedef/{reference} | Get a specific extensibleattributedef object
-*ExtensibleattributedefAPI* | [**ReferencePut**](docs/ExtensibleattributedefAPI.md#referenceput) | **Put** /extensibleattributedef/{reference} | Update a extensibleattributedef object
-*GmcgroupAPI* | [**Get**](docs/GmcgroupAPI.md#get) | **Get** /gmcgroup | Retrieve gmcgroup objects
-*GmcgroupAPI* | [**Post**](docs/GmcgroupAPI.md#post) | **Post** /gmcgroup | Create a gmcgroup object
-*GmcgroupAPI* | [**ReferenceDelete**](docs/GmcgroupAPI.md#referencedelete) | **Delete** /gmcgroup/{reference} | Delete a gmcgroup object
-*GmcgroupAPI* | [**ReferenceGet**](docs/GmcgroupAPI.md#referenceget) | **Get** /gmcgroup/{reference} | Get a specific gmcgroup object
-*GmcgroupAPI* | [**ReferencePut**](docs/GmcgroupAPI.md#referenceput) | **Put** /gmcgroup/{reference} | Update a gmcgroup object
-*GmcscheduleAPI* | [**Get**](docs/GmcscheduleAPI.md#get) | **Get** /gmcschedule | Retrieve gmcschedule objects
-*GmcscheduleAPI* | [**ReferenceGet**](docs/GmcscheduleAPI.md#referenceget) | **Get** /gmcschedule/{reference} | Get a specific gmcschedule object
-*GmcscheduleAPI* | [**ReferencePut**](docs/GmcscheduleAPI.md#referenceput) | **Put** /gmcschedule/{reference} | Update a gmcschedule object
-*GridAPI* | [**Get**](docs/GridAPI.md#get) | **Get** /grid | Retrieve grid objects
-*GridAPI* | [**ReferenceGet**](docs/GridAPI.md#referenceget) | **Get** /grid/{reference} | Get a specific grid object
-*GridAPI* | [**ReferencePut**](docs/GridAPI.md#referenceput) | **Put** /grid/{reference} | Update a grid object
-*GridCloudapiAPI* | [**GridcloudapiGet**](docs/GridCloudapiAPI.md#gridcloudapiget) | **Get** /grid:cloudapi | Retrieve grid:cloudapi objects
-*GridCloudapiAPI* | [**GridcloudapiReferenceGet**](docs/GridCloudapiAPI.md#gridcloudapireferenceget) | **Get** /grid:cloudapi/{reference} | Get a specific grid:cloudapi object
-*GridCloudapiAPI* | [**GridcloudapiReferencePut**](docs/GridCloudapiAPI.md#gridcloudapireferenceput) | **Put** /grid:cloudapi/{reference} | Update a grid:cloudapi object
-*GridCloudapiCloudstatisticsAPI* | [**GridcloudapicloudstatisticsGet**](docs/GridCloudapiCloudstatisticsAPI.md#gridcloudapicloudstatisticsget) | **Get** /grid:cloudapi:cloudstatistics | Retrieve grid:cloudapi:cloudstatistics objects
-*GridCloudapiCloudstatisticsAPI* | [**GridcloudapicloudstatisticsReferenceGet**](docs/GridCloudapiCloudstatisticsAPI.md#gridcloudapicloudstatisticsreferenceget) | **Get** /grid:cloudapi:cloudstatistics/{reference} | Get a specific grid:cloudapi:cloudstatistics object
-*GridCloudapiTenantAPI* | [**GridcloudapitenantGet**](docs/GridCloudapiTenantAPI.md#gridcloudapitenantget) | **Get** /grid:cloudapi:tenant | Retrieve grid:cloudapi:tenant objects
-*GridCloudapiTenantAPI* | [**GridcloudapitenantReferenceGet**](docs/GridCloudapiTenantAPI.md#gridcloudapitenantreferenceget) | **Get** /grid:cloudapi:tenant/{reference} | Get a specific grid:cloudapi:tenant object
-*GridCloudapiTenantAPI* | [**GridcloudapitenantReferencePut**](docs/GridCloudapiTenantAPI.md#gridcloudapitenantreferenceput) | **Put** /grid:cloudapi:tenant/{reference} | Update a grid:cloudapi:tenant object
-*GridCloudapiVmAPI* | [**GridcloudapivmGet**](docs/GridCloudapiVmAPI.md#gridcloudapivmget) | **Get** /grid:cloudapi:vm | Retrieve grid:cloudapi:vm objects
-*GridCloudapiVmAPI* | [**GridcloudapivmReferenceGet**](docs/GridCloudapiVmAPI.md#gridcloudapivmreferenceget) | **Get** /grid:cloudapi:vm/{reference} | Get a specific grid:cloudapi:vm object
-*GridCloudapiVmAPI* | [**GridcloudapivmReferencePut**](docs/GridCloudapiVmAPI.md#gridcloudapivmreferenceput) | **Put** /grid:cloudapi:vm/{reference} | Update a grid:cloudapi:vm object
-*GridCloudapiVmaddressAPI* | [**GridcloudapivmaddressGet**](docs/GridCloudapiVmaddressAPI.md#gridcloudapivmaddressget) | **Get** /grid:cloudapi:vmaddress | Retrieve grid:cloudapi:vmaddress objects
-*GridCloudapiVmaddressAPI* | [**GridcloudapivmaddressReferenceGet**](docs/GridCloudapiVmaddressAPI.md#gridcloudapivmaddressreferenceget) | **Get** /grid:cloudapi:vmaddress/{reference} | Get a specific grid:cloudapi:vmaddress object
-*GridDashboardAPI* | [**GriddashboardGet**](docs/GridDashboardAPI.md#griddashboardget) | **Get** /grid:dashboard | Retrieve grid:dashboard objects
-*GridDashboardAPI* | [**GriddashboardReferenceGet**](docs/GridDashboardAPI.md#griddashboardreferenceget) | **Get** /grid:dashboard/{reference} | Get a specific grid:dashboard object
-*GridDashboardAPI* | [**GriddashboardReferencePut**](docs/GridDashboardAPI.md#griddashboardreferenceput) | **Put** /grid:dashboard/{reference} | Update a grid:dashboard object
-*GridDhcppropertiesAPI* | [**GriddhcppropertiesGet**](docs/GridDhcppropertiesAPI.md#griddhcppropertiesget) | **Get** /grid:dhcpproperties | Retrieve grid:dhcpproperties objects
-*GridDhcppropertiesAPI* | [**GriddhcppropertiesReferenceGet**](docs/GridDhcppropertiesAPI.md#griddhcppropertiesreferenceget) | **Get** /grid:dhcpproperties/{reference} | Get a specific grid:dhcpproperties object
-*GridDhcppropertiesAPI* | [**GriddhcppropertiesReferencePut**](docs/GridDhcppropertiesAPI.md#griddhcppropertiesreferenceput) | **Put** /grid:dhcpproperties/{reference} | Update a grid:dhcpproperties object
-*GridDnsAPI* | [**GriddnsGet**](docs/GridDnsAPI.md#griddnsget) | **Get** /grid:dns | Retrieve grid:dns objects
-*GridDnsAPI* | [**GriddnsReferenceGet**](docs/GridDnsAPI.md#griddnsreferenceget) | **Get** /grid:dns/{reference} | Get a specific grid:dns object
-*GridDnsAPI* | [**GriddnsReferencePut**](docs/GridDnsAPI.md#griddnsreferenceput) | **Put** /grid:dns/{reference} | Update a grid:dns object
-*GridFiledistributionAPI* | [**GridfiledistributionGet**](docs/GridFiledistributionAPI.md#gridfiledistributionget) | **Get** /grid:filedistribution | Retrieve grid:filedistribution objects
-*GridFiledistributionAPI* | [**GridfiledistributionReferenceGet**](docs/GridFiledistributionAPI.md#gridfiledistributionreferenceget) | **Get** /grid:filedistribution/{reference} | Get a specific grid:filedistribution object
-*GridFiledistributionAPI* | [**GridfiledistributionReferencePut**](docs/GridFiledistributionAPI.md#gridfiledistributionreferenceput) | **Put** /grid:filedistribution/{reference} | Update a grid:filedistribution object
-*GridLicensePoolAPI* | [**GridlicensePoolGet**](docs/GridLicensePoolAPI.md#gridlicensepoolget) | **Get** /grid:license_pool | Retrieve grid:license_pool objects
-*GridLicensePoolAPI* | [**GridlicensePoolReferenceGet**](docs/GridLicensePoolAPI.md#gridlicensepoolreferenceget) | **Get** /grid:license_pool/{reference} | Get a specific grid:license_pool object
-*GridLicensePoolContainerAPI* | [**GridlicensePoolContainerGet**](docs/GridLicensePoolContainerAPI.md#gridlicensepoolcontainerget) | **Get** /grid:license_pool_container | Retrieve grid:license_pool_container objects
-*GridLicensePoolContainerAPI* | [**GridlicensePoolContainerReferenceGet**](docs/GridLicensePoolContainerAPI.md#gridlicensepoolcontainerreferenceget) | **Get** /grid:license_pool_container/{reference} | Get a specific grid:license_pool_container object
-*GridMaxminddbinfoAPI* | [**GridmaxminddbinfoGet**](docs/GridMaxminddbinfoAPI.md#gridmaxminddbinfoget) | **Get** /grid:maxminddbinfo | Retrieve grid:maxminddbinfo objects
-*GridMaxminddbinfoAPI* | [**GridmaxminddbinfoReferenceGet**](docs/GridMaxminddbinfoAPI.md#gridmaxminddbinforeferenceget) | **Get** /grid:maxminddbinfo/{reference} | Get a specific grid:maxminddbinfo object
-*GridMemberCloudapiAPI* | [**GridmembercloudapiGet**](docs/GridMemberCloudapiAPI.md#gridmembercloudapiget) | **Get** /grid:member:cloudapi | Retrieve grid:member:cloudapi objects
-*GridMemberCloudapiAPI* | [**GridmembercloudapiReferenceGet**](docs/GridMemberCloudapiAPI.md#gridmembercloudapireferenceget) | **Get** /grid:member:cloudapi/{reference} | Get a specific grid:member:cloudapi object
-*GridMemberCloudapiAPI* | [**GridmembercloudapiReferencePut**](docs/GridMemberCloudapiAPI.md#gridmembercloudapireferenceput) | **Put** /grid:member:cloudapi/{reference} | Update a grid:member:cloudapi object
-*GridServicerestartGroupAPI* | [**GridservicerestartgroupGet**](docs/GridServicerestartGroupAPI.md#gridservicerestartgroupget) | **Get** /grid:servicerestart:group | Retrieve grid:servicerestart:group objects
-*GridServicerestartGroupAPI* | [**GridservicerestartgroupPost**](docs/GridServicerestartGroupAPI.md#gridservicerestartgrouppost) | **Post** /grid:servicerestart:group | Create a grid:servicerestart:group object
-*GridServicerestartGroupAPI* | [**GridservicerestartgroupReferenceDelete**](docs/GridServicerestartGroupAPI.md#gridservicerestartgroupreferencedelete) | **Delete** /grid:servicerestart:group/{reference} | Delete a grid:servicerestart:group object
-*GridServicerestartGroupAPI* | [**GridservicerestartgroupReferenceGet**](docs/GridServicerestartGroupAPI.md#gridservicerestartgroupreferenceget) | **Get** /grid:servicerestart:group/{reference} | Get a specific grid:servicerestart:group object
-*GridServicerestartGroupAPI* | [**GridservicerestartgroupReferencePut**](docs/GridServicerestartGroupAPI.md#gridservicerestartgroupreferenceput) | **Put** /grid:servicerestart:group/{reference} | Update a grid:servicerestart:group object
-*GridServicerestartGroupOrderAPI* | [**GridservicerestartgrouporderGet**](docs/GridServicerestartGroupOrderAPI.md#gridservicerestartgrouporderget) | **Get** /grid:servicerestart:group:order | Retrieve grid:servicerestart:group:order objects
-*GridServicerestartGroupOrderAPI* | [**GridservicerestartgrouporderPost**](docs/GridServicerestartGroupOrderAPI.md#gridservicerestartgrouporderpost) | **Post** /grid:servicerestart:group:order | Create a grid:servicerestart:group:order object
-*GridServicerestartGroupOrderAPI* | [**GridservicerestartgrouporderReferenceGet**](docs/GridServicerestartGroupOrderAPI.md#gridservicerestartgrouporderreferenceget) | **Get** /grid:servicerestart:group:order/{reference} | Get a specific grid:servicerestart:group:order object
-*GridServicerestartGroupOrderAPI* | [**GridservicerestartgrouporderReferencePut**](docs/GridServicerestartGroupOrderAPI.md#gridservicerestartgrouporderreferenceput) | **Put** /grid:servicerestart:group:order/{reference} | Update a grid:servicerestart:group:order object
-*GridServicerestartRequestAPI* | [**GridservicerestartrequestGet**](docs/GridServicerestartRequestAPI.md#gridservicerestartrequestget) | **Get** /grid:servicerestart:request | Retrieve grid:servicerestart:request objects
-*GridServicerestartRequestAPI* | [**GridservicerestartrequestReferenceGet**](docs/GridServicerestartRequestAPI.md#gridservicerestartrequestreferenceget) | **Get** /grid:servicerestart:request/{reference} | Get a specific grid:servicerestart:request object
-*GridServicerestartRequestChangedobjectAPI* | [**GridservicerestartrequestchangedobjectGet**](docs/GridServicerestartRequestChangedobjectAPI.md#gridservicerestartrequestchangedobjectget) | **Get** /grid:servicerestart:request:changedobject | Retrieve grid:servicerestart:request:changedobject objects
-*GridServicerestartRequestChangedobjectAPI* | [**GridservicerestartrequestchangedobjectReferenceGet**](docs/GridServicerestartRequestChangedobjectAPI.md#gridservicerestartrequestchangedobjectreferenceget) | **Get** /grid:servicerestart:request:changedobject/{reference} | Get a specific grid:servicerestart:request:changedobject object
-*GridServicerestartStatusAPI* | [**GridservicerestartstatusGet**](docs/GridServicerestartStatusAPI.md#gridservicerestartstatusget) | **Get** /grid:servicerestart:status | Retrieve grid:servicerestart:status objects
-*GridServicerestartStatusAPI* | [**GridservicerestartstatusReferenceGet**](docs/GridServicerestartStatusAPI.md#gridservicerestartstatusreferenceget) | **Get** /grid:servicerestart:status/{reference} | Get a specific grid:servicerestart:status object
-*GridThreatinsightAPI* | [**GridthreatinsightGet**](docs/GridThreatinsightAPI.md#gridthreatinsightget) | **Get** /grid:threatinsight | Retrieve grid:threatinsight objects
-*GridThreatinsightAPI* | [**GridthreatinsightReferenceGet**](docs/GridThreatinsightAPI.md#gridthreatinsightreferenceget) | **Get** /grid:threatinsight/{reference} | Get a specific grid:threatinsight object
-*GridThreatinsightAPI* | [**GridthreatinsightReferencePut**](docs/GridThreatinsightAPI.md#gridthreatinsightreferenceput) | **Put** /grid:threatinsight/{reference} | Update a grid:threatinsight object
-*GridThreatprotectionAPI* | [**GridthreatprotectionGet**](docs/GridThreatprotectionAPI.md#gridthreatprotectionget) | **Get** /grid:threatprotection | Retrieve grid:threatprotection objects
-*GridThreatprotectionAPI* | [**GridthreatprotectionReferenceGet**](docs/GridThreatprotectionAPI.md#gridthreatprotectionreferenceget) | **Get** /grid:threatprotection/{reference} | Get a specific grid:threatprotection object
-*GridThreatprotectionAPI* | [**GridthreatprotectionReferencePut**](docs/GridThreatprotectionAPI.md#gridthreatprotectionreferenceput) | **Put** /grid:threatprotection/{reference} | Update a grid:threatprotection object
-*GridX509certificateAPI* | [**Gridx509certificateGet**](docs/GridX509certificateAPI.md#gridx509certificateget) | **Get** /grid:x509certificate | Retrieve grid:x509certificate objects
-*GridX509certificateAPI* | [**Gridx509certificateReferenceGet**](docs/GridX509certificateAPI.md#gridx509certificatereferenceget) | **Get** /grid:x509certificate/{reference} | Get a specific grid:x509certificate object
-*LicenseGridwideAPI* | [**LicensegridwideGet**](docs/LicenseGridwideAPI.md#licensegridwideget) | **Get** /license:gridwide | Retrieve license:gridwide objects
-*LicenseGridwideAPI* | [**LicensegridwideReferenceDelete**](docs/LicenseGridwideAPI.md#licensegridwidereferencedelete) | **Delete** /license:gridwide/{reference} | Delete a license:gridwide object
-*LicenseGridwideAPI* | [**LicensegridwideReferenceGet**](docs/LicenseGridwideAPI.md#licensegridwidereferenceget) | **Get** /license:gridwide/{reference} | Get a specific license:gridwide object
-*MastergridAPI* | [**Get**](docs/MastergridAPI.md#get) | **Get** /mastergrid | Retrieve mastergrid objects
-*MastergridAPI* | [**ReferenceGet**](docs/MastergridAPI.md#referenceget) | **Get** /mastergrid/{reference} | Get a specific mastergrid object
-*MastergridAPI* | [**ReferencePut**](docs/MastergridAPI.md#referenceput) | **Put** /mastergrid/{reference} | Update a mastergrid object
-*MemberAPI* | [**Get**](docs/MemberAPI.md#get) | **Get** /member | Retrieve member objects
-*MemberAPI* | [**Post**](docs/MemberAPI.md#post) | **Post** /member | Create a member object
-*MemberAPI* | [**ReferenceDelete**](docs/MemberAPI.md#referencedelete) | **Delete** /member/{reference} | Delete a member object
-*MemberAPI* | [**ReferenceGet**](docs/MemberAPI.md#referenceget) | **Get** /member/{reference} | Get a specific member object
-*MemberAPI* | [**ReferencePut**](docs/MemberAPI.md#referenceput) | **Put** /member/{reference} | Update a member object
-*MemberDhcppropertiesAPI* | [**MemberdhcppropertiesGet**](docs/MemberDhcppropertiesAPI.md#memberdhcppropertiesget) | **Get** /member:dhcpproperties | Retrieve member:dhcpproperties objects
-*MemberDhcppropertiesAPI* | [**MemberdhcppropertiesReferenceGet**](docs/MemberDhcppropertiesAPI.md#memberdhcppropertiesreferenceget) | **Get** /member:dhcpproperties/{reference} | Get a specific member:dhcpproperties object
-*MemberDhcppropertiesAPI* | [**MemberdhcppropertiesReferencePut**](docs/MemberDhcppropertiesAPI.md#memberdhcppropertiesreferenceput) | **Put** /member:dhcpproperties/{reference} | Update a member:dhcpproperties object
-*MemberDnsAPI* | [**MemberdnsGet**](docs/MemberDnsAPI.md#memberdnsget) | **Get** /member:dns | Retrieve member:dns objects
-*MemberDnsAPI* | [**MemberdnsReferenceGet**](docs/MemberDnsAPI.md#memberdnsreferenceget) | **Get** /member:dns/{reference} | Get a specific member:dns object
-*MemberDnsAPI* | [**MemberdnsReferencePut**](docs/MemberDnsAPI.md#memberdnsreferenceput) | **Put** /member:dns/{reference} | Update a member:dns object
-*MemberFiledistributionAPI* | [**MemberfiledistributionGet**](docs/MemberFiledistributionAPI.md#memberfiledistributionget) | **Get** /member:filedistribution | Retrieve member:filedistribution objects
-*MemberFiledistributionAPI* | [**MemberfiledistributionReferenceGet**](docs/MemberFiledistributionAPI.md#memberfiledistributionreferenceget) | **Get** /member:filedistribution/{reference} | Get a specific member:filedistribution object
-*MemberFiledistributionAPI* | [**MemberfiledistributionReferencePut**](docs/MemberFiledistributionAPI.md#memberfiledistributionreferenceput) | **Put** /member:filedistribution/{reference} | Update a member:filedistribution object
-*MemberLicenseAPI* | [**MemberlicenseGet**](docs/MemberLicenseAPI.md#memberlicenseget) | **Get** /member:license | Retrieve member:license objects
-*MemberLicenseAPI* | [**MemberlicenseReferenceDelete**](docs/MemberLicenseAPI.md#memberlicensereferencedelete) | **Delete** /member:license/{reference} | Delete a member:license object
-*MemberLicenseAPI* | [**MemberlicenseReferenceGet**](docs/MemberLicenseAPI.md#memberlicensereferenceget) | **Get** /member:license/{reference} | Get a specific member:license object
-*MemberParentalcontrolAPI* | [**MemberparentalcontrolGet**](docs/MemberParentalcontrolAPI.md#memberparentalcontrolget) | **Get** /member:parentalcontrol | Retrieve member:parentalcontrol objects
-*MemberParentalcontrolAPI* | [**MemberparentalcontrolReferenceGet**](docs/MemberParentalcontrolAPI.md#memberparentalcontrolreferenceget) | **Get** /member:parentalcontrol/{reference} | Get a specific member:parentalcontrol object
-*MemberParentalcontrolAPI* | [**MemberparentalcontrolReferencePut**](docs/MemberParentalcontrolAPI.md#memberparentalcontrolreferenceput) | **Put** /member:parentalcontrol/{reference} | Update a member:parentalcontrol object
-*MemberThreatinsightAPI* | [**MemberthreatinsightGet**](docs/MemberThreatinsightAPI.md#memberthreatinsightget) | **Get** /member:threatinsight | Retrieve member:threatinsight objects
-*MemberThreatinsightAPI* | [**MemberthreatinsightReferenceGet**](docs/MemberThreatinsightAPI.md#memberthreatinsightreferenceget) | **Get** /member:threatinsight/{reference} | Get a specific member:threatinsight object
-*MemberThreatinsightAPI* | [**MemberthreatinsightReferencePut**](docs/MemberThreatinsightAPI.md#memberthreatinsightreferenceput) | **Put** /member:threatinsight/{reference} | Update a member:threatinsight object
-*MemberThreatprotectionAPI* | [**MemberthreatprotectionGet**](docs/MemberThreatprotectionAPI.md#memberthreatprotectionget) | **Get** /member:threatprotection | Retrieve member:threatprotection objects
-*MemberThreatprotectionAPI* | [**MemberthreatprotectionReferenceGet**](docs/MemberThreatprotectionAPI.md#memberthreatprotectionreferenceget) | **Get** /member:threatprotection/{reference} | Get a specific member:threatprotection object
-*MemberThreatprotectionAPI* | [**MemberthreatprotectionReferencePut**](docs/MemberThreatprotectionAPI.md#memberthreatprotectionreferenceput) | **Put** /member:threatprotection/{reference} | Update a member:threatprotection object
-*MembercloudsyncAPI* | [**Get**](docs/MembercloudsyncAPI.md#get) | **Get** /membercloudsync | Retrieve membercloudsync objects
-*MembercloudsyncAPI* | [**ReferenceGet**](docs/MembercloudsyncAPI.md#referenceget) | **Get** /membercloudsync/{reference} | Get a specific membercloudsync object
-*MembercloudsyncAPI* | [**ReferencePut**](docs/MembercloudsyncAPI.md#referenceput) | **Put** /membercloudsync/{reference} | Update a membercloudsync object
-*MemberdfpAPI* | [**Get**](docs/MemberdfpAPI.md#get) | **Get** /memberdfp | Retrieve memberdfp objects
-*MemberdfpAPI* | [**Post**](docs/MemberdfpAPI.md#post) | **Post** /memberdfp | Create a memberdfp object
-*MemberdfpAPI* | [**ReferenceDelete**](docs/MemberdfpAPI.md#referencedelete) | **Delete** /memberdfp/{reference} | Delete a memberdfp object
-*MemberdfpAPI* | [**ReferenceGet**](docs/MemberdfpAPI.md#referenceget) | **Get** /memberdfp/{reference} | Get a specific memberdfp object
-*MemberdfpAPI* | [**ReferencePut**](docs/MemberdfpAPI.md#referenceput) | **Put** /memberdfp/{reference} | Update a memberdfp object
-*NatgroupAPI* | [**Get**](docs/NatgroupAPI.md#get) | **Get** /natgroup | Retrieve natgroup objects
-*NatgroupAPI* | [**Post**](docs/NatgroupAPI.md#post) | **Post** /natgroup | Create a natgroup object
-*NatgroupAPI* | [**ReferenceDelete**](docs/NatgroupAPI.md#referencedelete) | **Delete** /natgroup/{reference} | Delete a natgroup object
-*NatgroupAPI* | [**ReferenceGet**](docs/NatgroupAPI.md#referenceget) | **Get** /natgroup/{reference} | Get a specific natgroup object
-*NatgroupAPI* | [**ReferencePut**](docs/NatgroupAPI.md#referenceput) | **Put** /natgroup/{reference} | Update a natgroup object
-*RestartservicestatusAPI* | [**Get**](docs/RestartservicestatusAPI.md#get) | **Get** /restartservicestatus | Retrieve restartservicestatus objects
-*RestartservicestatusAPI* | [**ReferenceGet**](docs/RestartservicestatusAPI.md#referenceget) | **Get** /restartservicestatus/{reference} | Get a specific restartservicestatus object
-*UpgradegroupAPI* | [**Get**](docs/UpgradegroupAPI.md#get) | **Get** /upgradegroup | Retrieve upgradegroup objects
-*UpgradegroupAPI* | [**Post**](docs/UpgradegroupAPI.md#post) | **Post** /upgradegroup | Create a upgradegroup object
-*UpgradegroupAPI* | [**ReferenceDelete**](docs/UpgradegroupAPI.md#referencedelete) | **Delete** /upgradegroup/{reference} | Delete a upgradegroup object
-*UpgradegroupAPI* | [**ReferenceGet**](docs/UpgradegroupAPI.md#referenceget) | **Get** /upgradegroup/{reference} | Get a specific upgradegroup object
-*UpgradegroupAPI* | [**ReferencePut**](docs/UpgradegroupAPI.md#referenceput) | **Put** /upgradegroup/{reference} | Update a upgradegroup object
-*UpgradescheduleAPI* | [**Get**](docs/UpgradescheduleAPI.md#get) | **Get** /upgradeschedule | Retrieve upgradeschedule objects
-*UpgradescheduleAPI* | [**ReferenceGet**](docs/UpgradescheduleAPI.md#referenceget) | **Get** /upgradeschedule/{reference} | Get a specific upgradeschedule object
-*UpgradescheduleAPI* | [**ReferencePut**](docs/UpgradescheduleAPI.md#referenceput) | **Put** /upgradeschedule/{reference} | Update a upgradeschedule object
-*UpgradestatusAPI* | [**Get**](docs/UpgradestatusAPI.md#get) | **Get** /upgradestatus | Retrieve upgradestatus objects
-*UpgradestatusAPI* | [**ReferenceGet**](docs/UpgradestatusAPI.md#referenceget) | **Get** /upgradestatus/{reference} | Get a specific upgradestatus object
-*UpgradestatusAPI* | [**ReferencePut**](docs/UpgradestatusAPI.md#referenceput) | **Put** /upgradestatus/{reference} | Update a upgradestatus object
+*CaptiveportalAPI* | [**List**](docs/CaptiveportalAPI.md#list) | **Get** /captiveportal | Retrieve captiveportal objects
+*CaptiveportalAPI* | [**Read**](docs/CaptiveportalAPI.md#read) | **Get** /captiveportal/{reference} | Get a specific captiveportal object
+*CaptiveportalAPI* | [**Update**](docs/CaptiveportalAPI.md#update) | **Put** /captiveportal/{reference} | Update a captiveportal object
+*DistributionscheduleAPI* | [**List**](docs/DistributionscheduleAPI.md#list) | **Get** /distributionschedule | Retrieve distributionschedule objects
+*DistributionscheduleAPI* | [**Read**](docs/DistributionscheduleAPI.md#read) | **Get** /distributionschedule/{reference} | Get a specific distributionschedule object
+*DistributionscheduleAPI* | [**Update**](docs/DistributionscheduleAPI.md#update) | **Put** /distributionschedule/{reference} | Update a distributionschedule object
+*ExtensibleattributedefAPI* | [**Create**](docs/ExtensibleattributedefAPI.md#create) | **Post** /extensibleattributedef | Create a extensibleattributedef object
+*ExtensibleattributedefAPI* | [**Delete**](docs/ExtensibleattributedefAPI.md#delete) | **Delete** /extensibleattributedef/{reference} | Delete a extensibleattributedef object
+*ExtensibleattributedefAPI* | [**List**](docs/ExtensibleattributedefAPI.md#list) | **Get** /extensibleattributedef | Retrieve extensibleattributedef objects
+*ExtensibleattributedefAPI* | [**Read**](docs/ExtensibleattributedefAPI.md#read) | **Get** /extensibleattributedef/{reference} | Get a specific extensibleattributedef object
+*ExtensibleattributedefAPI* | [**Update**](docs/ExtensibleattributedefAPI.md#update) | **Put** /extensibleattributedef/{reference} | Update a extensibleattributedef object
+*GmcgroupAPI* | [**Create**](docs/GmcgroupAPI.md#create) | **Post** /gmcgroup | Create a gmcgroup object
+*GmcgroupAPI* | [**Delete**](docs/GmcgroupAPI.md#delete) | **Delete** /gmcgroup/{reference} | Delete a gmcgroup object
+*GmcgroupAPI* | [**List**](docs/GmcgroupAPI.md#list) | **Get** /gmcgroup | Retrieve gmcgroup objects
+*GmcgroupAPI* | [**Read**](docs/GmcgroupAPI.md#read) | **Get** /gmcgroup/{reference} | Get a specific gmcgroup object
+*GmcgroupAPI* | [**Update**](docs/GmcgroupAPI.md#update) | **Put** /gmcgroup/{reference} | Update a gmcgroup object
+*GmcscheduleAPI* | [**List**](docs/GmcscheduleAPI.md#list) | **Get** /gmcschedule | Retrieve gmcschedule objects
+*GmcscheduleAPI* | [**Read**](docs/GmcscheduleAPI.md#read) | **Get** /gmcschedule/{reference} | Get a specific gmcschedule object
+*GmcscheduleAPI* | [**Update**](docs/GmcscheduleAPI.md#update) | **Put** /gmcschedule/{reference} | Update a gmcschedule object
+*GridAPI* | [**List**](docs/GridAPI.md#list) | **Get** /grid | Retrieve grid objects
+*GridAPI* | [**Read**](docs/GridAPI.md#read) | **Get** /grid/{reference} | Get a specific grid object
+*GridAPI* | [**Update**](docs/GridAPI.md#update) | **Put** /grid/{reference} | Update a grid object
+*GridCloudapiAPI* | [**List**](docs/GridCloudapiAPI.md#list) | **Get** /grid:cloudapi | Retrieve grid:cloudapi objects
+*GridCloudapiAPI* | [**Read**](docs/GridCloudapiAPI.md#read) | **Get** /grid:cloudapi/{reference} | Get a specific grid:cloudapi object
+*GridCloudapiAPI* | [**Update**](docs/GridCloudapiAPI.md#update) | **Put** /grid:cloudapi/{reference} | Update a grid:cloudapi object
+*GridCloudapiCloudstatisticsAPI* | [**List**](docs/GridCloudapiCloudstatisticsAPI.md#list) | **Get** /grid:cloudapi:cloudstatistics | Retrieve grid:cloudapi:cloudstatistics objects
+*GridCloudapiCloudstatisticsAPI* | [**Read**](docs/GridCloudapiCloudstatisticsAPI.md#read) | **Get** /grid:cloudapi:cloudstatistics/{reference} | Get a specific grid:cloudapi:cloudstatistics object
+*GridCloudapiTenantAPI* | [**List**](docs/GridCloudapiTenantAPI.md#list) | **Get** /grid:cloudapi:tenant | Retrieve grid:cloudapi:tenant objects
+*GridCloudapiTenantAPI* | [**Read**](docs/GridCloudapiTenantAPI.md#read) | **Get** /grid:cloudapi:tenant/{reference} | Get a specific grid:cloudapi:tenant object
+*GridCloudapiTenantAPI* | [**Update**](docs/GridCloudapiTenantAPI.md#update) | **Put** /grid:cloudapi:tenant/{reference} | Update a grid:cloudapi:tenant object
+*GridCloudapiVmAPI* | [**List**](docs/GridCloudapiVmAPI.md#list) | **Get** /grid:cloudapi:vm | Retrieve grid:cloudapi:vm objects
+*GridCloudapiVmAPI* | [**Read**](docs/GridCloudapiVmAPI.md#read) | **Get** /grid:cloudapi:vm/{reference} | Get a specific grid:cloudapi:vm object
+*GridCloudapiVmAPI* | [**Update**](docs/GridCloudapiVmAPI.md#update) | **Put** /grid:cloudapi:vm/{reference} | Update a grid:cloudapi:vm object
+*GridCloudapiVmaddressAPI* | [**List**](docs/GridCloudapiVmaddressAPI.md#list) | **Get** /grid:cloudapi:vmaddress | Retrieve grid:cloudapi:vmaddress objects
+*GridCloudapiVmaddressAPI* | [**Read**](docs/GridCloudapiVmaddressAPI.md#read) | **Get** /grid:cloudapi:vmaddress/{reference} | Get a specific grid:cloudapi:vmaddress object
+*GridDashboardAPI* | [**List**](docs/GridDashboardAPI.md#list) | **Get** /grid:dashboard | Retrieve grid:dashboard objects
+*GridDashboardAPI* | [**Read**](docs/GridDashboardAPI.md#read) | **Get** /grid:dashboard/{reference} | Get a specific grid:dashboard object
+*GridDashboardAPI* | [**Update**](docs/GridDashboardAPI.md#update) | **Put** /grid:dashboard/{reference} | Update a grid:dashboard object
+*GridDhcppropertiesAPI* | [**List**](docs/GridDhcppropertiesAPI.md#list) | **Get** /grid:dhcpproperties | Retrieve grid:dhcpproperties objects
+*GridDhcppropertiesAPI* | [**Read**](docs/GridDhcppropertiesAPI.md#read) | **Get** /grid:dhcpproperties/{reference} | Get a specific grid:dhcpproperties object
+*GridDhcppropertiesAPI* | [**Update**](docs/GridDhcppropertiesAPI.md#update) | **Put** /grid:dhcpproperties/{reference} | Update a grid:dhcpproperties object
+*GridDnsAPI* | [**List**](docs/GridDnsAPI.md#list) | **Get** /grid:dns | Retrieve grid:dns objects
+*GridDnsAPI* | [**Read**](docs/GridDnsAPI.md#read) | **Get** /grid:dns/{reference} | Get a specific grid:dns object
+*GridDnsAPI* | [**Update**](docs/GridDnsAPI.md#update) | **Put** /grid:dns/{reference} | Update a grid:dns object
+*GridFiledistributionAPI* | [**List**](docs/GridFiledistributionAPI.md#list) | **Get** /grid:filedistribution | Retrieve grid:filedistribution objects
+*GridFiledistributionAPI* | [**Read**](docs/GridFiledistributionAPI.md#read) | **Get** /grid:filedistribution/{reference} | Get a specific grid:filedistribution object
+*GridFiledistributionAPI* | [**Update**](docs/GridFiledistributionAPI.md#update) | **Put** /grid:filedistribution/{reference} | Update a grid:filedistribution object
+*GridLicensePoolAPI* | [**List**](docs/GridLicensePoolAPI.md#list) | **Get** /grid:license_pool | Retrieve grid:license_pool objects
+*GridLicensePoolAPI* | [**Read**](docs/GridLicensePoolAPI.md#read) | **Get** /grid:license_pool/{reference} | Get a specific grid:license_pool object
+*GridLicensePoolContainerAPI* | [**List**](docs/GridLicensePoolContainerAPI.md#list) | **Get** /grid:license_pool_container | Retrieve grid:license_pool_container objects
+*GridLicensePoolContainerAPI* | [**Read**](docs/GridLicensePoolContainerAPI.md#read) | **Get** /grid:license_pool_container/{reference} | Get a specific grid:license_pool_container object
+*GridMaxminddbinfoAPI* | [**List**](docs/GridMaxminddbinfoAPI.md#list) | **Get** /grid:maxminddbinfo | Retrieve grid:maxminddbinfo objects
+*GridMaxminddbinfoAPI* | [**Read**](docs/GridMaxminddbinfoAPI.md#read) | **Get** /grid:maxminddbinfo/{reference} | Get a specific grid:maxminddbinfo object
+*GridMemberCloudapiAPI* | [**List**](docs/GridMemberCloudapiAPI.md#list) | **Get** /grid:member:cloudapi | Retrieve grid:member:cloudapi objects
+*GridMemberCloudapiAPI* | [**Read**](docs/GridMemberCloudapiAPI.md#read) | **Get** /grid:member:cloudapi/{reference} | Get a specific grid:member:cloudapi object
+*GridMemberCloudapiAPI* | [**Update**](docs/GridMemberCloudapiAPI.md#update) | **Put** /grid:member:cloudapi/{reference} | Update a grid:member:cloudapi object
+*GridServicerestartGroupAPI* | [**Create**](docs/GridServicerestartGroupAPI.md#create) | **Post** /grid:servicerestart:group | Create a grid:servicerestart:group object
+*GridServicerestartGroupAPI* | [**Delete**](docs/GridServicerestartGroupAPI.md#delete) | **Delete** /grid:servicerestart:group/{reference} | Delete a grid:servicerestart:group object
+*GridServicerestartGroupAPI* | [**List**](docs/GridServicerestartGroupAPI.md#list) | **Get** /grid:servicerestart:group | Retrieve grid:servicerestart:group objects
+*GridServicerestartGroupAPI* | [**Read**](docs/GridServicerestartGroupAPI.md#read) | **Get** /grid:servicerestart:group/{reference} | Get a specific grid:servicerestart:group object
+*GridServicerestartGroupAPI* | [**Update**](docs/GridServicerestartGroupAPI.md#update) | **Put** /grid:servicerestart:group/{reference} | Update a grid:servicerestart:group object
+*GridServicerestartGroupOrderAPI* | [**Create**](docs/GridServicerestartGroupOrderAPI.md#create) | **Post** /grid:servicerestart:group:order | Create a grid:servicerestart:group:order object
+*GridServicerestartGroupOrderAPI* | [**List**](docs/GridServicerestartGroupOrderAPI.md#list) | **Get** /grid:servicerestart:group:order | Retrieve grid:servicerestart:group:order objects
+*GridServicerestartGroupOrderAPI* | [**Read**](docs/GridServicerestartGroupOrderAPI.md#read) | **Get** /grid:servicerestart:group:order/{reference} | Get a specific grid:servicerestart:group:order object
+*GridServicerestartGroupOrderAPI* | [**Update**](docs/GridServicerestartGroupOrderAPI.md#update) | **Put** /grid:servicerestart:group:order/{reference} | Update a grid:servicerestart:group:order object
+*GridServicerestartRequestAPI* | [**List**](docs/GridServicerestartRequestAPI.md#list) | **Get** /grid:servicerestart:request | Retrieve grid:servicerestart:request objects
+*GridServicerestartRequestAPI* | [**Read**](docs/GridServicerestartRequestAPI.md#read) | **Get** /grid:servicerestart:request/{reference} | Get a specific grid:servicerestart:request object
+*GridServicerestartRequestChangedobjectAPI* | [**List**](docs/GridServicerestartRequestChangedobjectAPI.md#list) | **Get** /grid:servicerestart:request:changedobject | Retrieve grid:servicerestart:request:changedobject objects
+*GridServicerestartRequestChangedobjectAPI* | [**Read**](docs/GridServicerestartRequestChangedobjectAPI.md#read) | **Get** /grid:servicerestart:request:changedobject/{reference} | Get a specific grid:servicerestart:request:changedobject object
+*GridServicerestartStatusAPI* | [**List**](docs/GridServicerestartStatusAPI.md#list) | **Get** /grid:servicerestart:status | Retrieve grid:servicerestart:status objects
+*GridServicerestartStatusAPI* | [**Read**](docs/GridServicerestartStatusAPI.md#read) | **Get** /grid:servicerestart:status/{reference} | Get a specific grid:servicerestart:status object
+*GridThreatinsightAPI* | [**List**](docs/GridThreatinsightAPI.md#list) | **Get** /grid:threatinsight | Retrieve grid:threatinsight objects
+*GridThreatinsightAPI* | [**Read**](docs/GridThreatinsightAPI.md#read) | **Get** /grid:threatinsight/{reference} | Get a specific grid:threatinsight object
+*GridThreatinsightAPI* | [**Update**](docs/GridThreatinsightAPI.md#update) | **Put** /grid:threatinsight/{reference} | Update a grid:threatinsight object
+*GridThreatprotectionAPI* | [**List**](docs/GridThreatprotectionAPI.md#list) | **Get** /grid:threatprotection | Retrieve grid:threatprotection objects
+*GridThreatprotectionAPI* | [**Read**](docs/GridThreatprotectionAPI.md#read) | **Get** /grid:threatprotection/{reference} | Get a specific grid:threatprotection object
+*GridThreatprotectionAPI* | [**Update**](docs/GridThreatprotectionAPI.md#update) | **Put** /grid:threatprotection/{reference} | Update a grid:threatprotection object
+*GridX509certificateAPI* | [**List**](docs/GridX509certificateAPI.md#list) | **Get** /grid:x509certificate | Retrieve grid:x509certificate objects
+*GridX509certificateAPI* | [**Read**](docs/GridX509certificateAPI.md#read) | **Get** /grid:x509certificate/{reference} | Get a specific grid:x509certificate object
+*LicenseGridwideAPI* | [**Delete**](docs/LicenseGridwideAPI.md#delete) | **Delete** /license:gridwide/{reference} | Delete a license:gridwide object
+*LicenseGridwideAPI* | [**List**](docs/LicenseGridwideAPI.md#list) | **Get** /license:gridwide | Retrieve license:gridwide objects
+*LicenseGridwideAPI* | [**Read**](docs/LicenseGridwideAPI.md#read) | **Get** /license:gridwide/{reference} | Get a specific license:gridwide object
+*MastergridAPI* | [**List**](docs/MastergridAPI.md#list) | **Get** /mastergrid | Retrieve mastergrid objects
+*MastergridAPI* | [**Read**](docs/MastergridAPI.md#read) | **Get** /mastergrid/{reference} | Get a specific mastergrid object
+*MastergridAPI* | [**Update**](docs/MastergridAPI.md#update) | **Put** /mastergrid/{reference} | Update a mastergrid object
+*MemberAPI* | [**Create**](docs/MemberAPI.md#create) | **Post** /member | Create a member object
+*MemberAPI* | [**Delete**](docs/MemberAPI.md#delete) | **Delete** /member/{reference} | Delete a member object
+*MemberAPI* | [**List**](docs/MemberAPI.md#list) | **Get** /member | Retrieve member objects
+*MemberAPI* | [**Read**](docs/MemberAPI.md#read) | **Get** /member/{reference} | Get a specific member object
+*MemberAPI* | [**Update**](docs/MemberAPI.md#update) | **Put** /member/{reference} | Update a member object
+*MemberDhcppropertiesAPI* | [**List**](docs/MemberDhcppropertiesAPI.md#list) | **Get** /member:dhcpproperties | Retrieve member:dhcpproperties objects
+*MemberDhcppropertiesAPI* | [**Read**](docs/MemberDhcppropertiesAPI.md#read) | **Get** /member:dhcpproperties/{reference} | Get a specific member:dhcpproperties object
+*MemberDhcppropertiesAPI* | [**Update**](docs/MemberDhcppropertiesAPI.md#update) | **Put** /member:dhcpproperties/{reference} | Update a member:dhcpproperties object
+*MemberDnsAPI* | [**List**](docs/MemberDnsAPI.md#list) | **Get** /member:dns | Retrieve member:dns objects
+*MemberDnsAPI* | [**Read**](docs/MemberDnsAPI.md#read) | **Get** /member:dns/{reference} | Get a specific member:dns object
+*MemberDnsAPI* | [**Update**](docs/MemberDnsAPI.md#update) | **Put** /member:dns/{reference} | Update a member:dns object
+*MemberFiledistributionAPI* | [**List**](docs/MemberFiledistributionAPI.md#list) | **Get** /member:filedistribution | Retrieve member:filedistribution objects
+*MemberFiledistributionAPI* | [**Read**](docs/MemberFiledistributionAPI.md#read) | **Get** /member:filedistribution/{reference} | Get a specific member:filedistribution object
+*MemberFiledistributionAPI* | [**Update**](docs/MemberFiledistributionAPI.md#update) | **Put** /member:filedistribution/{reference} | Update a member:filedistribution object
+*MemberLicenseAPI* | [**Delete**](docs/MemberLicenseAPI.md#delete) | **Delete** /member:license/{reference} | Delete a member:license object
+*MemberLicenseAPI* | [**List**](docs/MemberLicenseAPI.md#list) | **Get** /member:license | Retrieve member:license objects
+*MemberLicenseAPI* | [**Read**](docs/MemberLicenseAPI.md#read) | **Get** /member:license/{reference} | Get a specific member:license object
+*MemberParentalcontrolAPI* | [**List**](docs/MemberParentalcontrolAPI.md#list) | **Get** /member:parentalcontrol | Retrieve member:parentalcontrol objects
+*MemberParentalcontrolAPI* | [**Read**](docs/MemberParentalcontrolAPI.md#read) | **Get** /member:parentalcontrol/{reference} | Get a specific member:parentalcontrol object
+*MemberParentalcontrolAPI* | [**Update**](docs/MemberParentalcontrolAPI.md#update) | **Put** /member:parentalcontrol/{reference} | Update a member:parentalcontrol object
+*MemberThreatinsightAPI* | [**List**](docs/MemberThreatinsightAPI.md#list) | **Get** /member:threatinsight | Retrieve member:threatinsight objects
+*MemberThreatinsightAPI* | [**Read**](docs/MemberThreatinsightAPI.md#read) | **Get** /member:threatinsight/{reference} | Get a specific member:threatinsight object
+*MemberThreatinsightAPI* | [**Update**](docs/MemberThreatinsightAPI.md#update) | **Put** /member:threatinsight/{reference} | Update a member:threatinsight object
+*MemberThreatprotectionAPI* | [**List**](docs/MemberThreatprotectionAPI.md#list) | **Get** /member:threatprotection | Retrieve member:threatprotection objects
+*MemberThreatprotectionAPI* | [**Read**](docs/MemberThreatprotectionAPI.md#read) | **Get** /member:threatprotection/{reference} | Get a specific member:threatprotection object
+*MemberThreatprotectionAPI* | [**Update**](docs/MemberThreatprotectionAPI.md#update) | **Put** /member:threatprotection/{reference} | Update a member:threatprotection object
+*MembercloudsyncAPI* | [**List**](docs/MembercloudsyncAPI.md#list) | **Get** /membercloudsync | Retrieve membercloudsync objects
+*MembercloudsyncAPI* | [**Read**](docs/MembercloudsyncAPI.md#read) | **Get** /membercloudsync/{reference} | Get a specific membercloudsync object
+*MembercloudsyncAPI* | [**Update**](docs/MembercloudsyncAPI.md#update) | **Put** /membercloudsync/{reference} | Update a membercloudsync object
+*MemberdfpAPI* | [**Create**](docs/MemberdfpAPI.md#create) | **Post** /memberdfp | Create a memberdfp object
+*MemberdfpAPI* | [**Delete**](docs/MemberdfpAPI.md#delete) | **Delete** /memberdfp/{reference} | Delete a memberdfp object
+*MemberdfpAPI* | [**List**](docs/MemberdfpAPI.md#list) | **Get** /memberdfp | Retrieve memberdfp objects
+*MemberdfpAPI* | [**Read**](docs/MemberdfpAPI.md#read) | **Get** /memberdfp/{reference} | Get a specific memberdfp object
+*MemberdfpAPI* | [**Update**](docs/MemberdfpAPI.md#update) | **Put** /memberdfp/{reference} | Update a memberdfp object
+*NatgroupAPI* | [**Create**](docs/NatgroupAPI.md#create) | **Post** /natgroup | Create a natgroup object
+*NatgroupAPI* | [**Delete**](docs/NatgroupAPI.md#delete) | **Delete** /natgroup/{reference} | Delete a natgroup object
+*NatgroupAPI* | [**List**](docs/NatgroupAPI.md#list) | **Get** /natgroup | Retrieve natgroup objects
+*NatgroupAPI* | [**Read**](docs/NatgroupAPI.md#read) | **Get** /natgroup/{reference} | Get a specific natgroup object
+*NatgroupAPI* | [**Update**](docs/NatgroupAPI.md#update) | **Put** /natgroup/{reference} | Update a natgroup object
+*RestartservicestatusAPI* | [**List**](docs/RestartservicestatusAPI.md#list) | **Get** /restartservicestatus | Retrieve restartservicestatus objects
+*RestartservicestatusAPI* | [**Read**](docs/RestartservicestatusAPI.md#read) | **Get** /restartservicestatus/{reference} | Get a specific restartservicestatus object
+*UpgradegroupAPI* | [**Create**](docs/UpgradegroupAPI.md#create) | **Post** /upgradegroup | Create a upgradegroup object
+*UpgradegroupAPI* | [**Delete**](docs/UpgradegroupAPI.md#delete) | **Delete** /upgradegroup/{reference} | Delete a upgradegroup object
+*UpgradegroupAPI* | [**List**](docs/UpgradegroupAPI.md#list) | **Get** /upgradegroup | Retrieve upgradegroup objects
+*UpgradegroupAPI* | [**Read**](docs/UpgradegroupAPI.md#read) | **Get** /upgradegroup/{reference} | Get a specific upgradegroup object
+*UpgradegroupAPI* | [**Update**](docs/UpgradegroupAPI.md#update) | **Put** /upgradegroup/{reference} | Update a upgradegroup object
+*UpgradescheduleAPI* | [**List**](docs/UpgradescheduleAPI.md#list) | **Get** /upgradeschedule | Retrieve upgradeschedule objects
+*UpgradescheduleAPI* | [**Read**](docs/UpgradescheduleAPI.md#read) | **Get** /upgradeschedule/{reference} | Get a specific upgradeschedule object
+*UpgradescheduleAPI* | [**Update**](docs/UpgradescheduleAPI.md#update) | **Put** /upgradeschedule/{reference} | Update a upgradeschedule object
+*UpgradestatusAPI* | [**List**](docs/UpgradestatusAPI.md#list) | **Get** /upgradestatus | Retrieve upgradestatus objects
+*UpgradestatusAPI* | [**Read**](docs/UpgradestatusAPI.md#read) | **Get** /upgradestatus/{reference} | Get a specific upgradestatus object
+*UpgradestatusAPI* | [**Update**](docs/UpgradestatusAPI.md#update) | **Put** /upgradestatus/{reference} | Update a upgradestatus object
 
 
 ## Documentation For Models

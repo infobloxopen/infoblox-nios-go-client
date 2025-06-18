@@ -23,11 +23,11 @@ func TestDtcRecordAaaaAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcRecordAaaaAPIService DtcrecordaaaaGet", func(t *testing.T) {
+	t.Run("Test DtcRecordAaaaAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcRecordAaaaAPI.DtcrecordaaaaGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcRecordAaaaAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDtcRecordAaaaAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcRecordAaaaAPIService DtcrecordaaaaPost", func(t *testing.T) {
+	t.Run("Test DtcRecordAaaaAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcRecordAaaaAPI.DtcrecordaaaaPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DtcRecordAaaaAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DtcRecordAaaaAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DtcRecordAaaaAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDtcRecordAaaaAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcRecordAaaaAPIService DtcrecordaaaaReferenceDelete", func(t *testing.T) {
+	t.Run("Test DtcRecordAaaaAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DtcRecordAaaaAPI.DtcrecordaaaaReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DtcRecordAaaaAPIService DtcrecordaaaaReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DtcRecordAaaaAPI.DtcrecordaaaaReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcRecordAaaaAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDtcRecordAaaaAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcRecordAaaaAPIService DtcrecordaaaaReferencePut", func(t *testing.T) {
+	t.Run("Test DtcRecordAaaaAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcRecordAaaaAPI.DtcrecordaaaaReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcRecordAaaaAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

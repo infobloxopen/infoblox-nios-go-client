@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](AwsuserAPI.md#Get) | **Get** /awsuser | Retrieve awsuser objects
-[**Post**](AwsuserAPI.md#Post) | **Post** /awsuser | Create a awsuser object
-[**ReferenceDelete**](AwsuserAPI.md#ReferenceDelete) | **Delete** /awsuser/{reference} | Delete a awsuser object
-[**ReferenceGet**](AwsuserAPI.md#ReferenceGet) | **Get** /awsuser/{reference} | Get a specific awsuser object
-[**ReferencePut**](AwsuserAPI.md#ReferencePut) | **Put** /awsuser/{reference} | Update a awsuser object
+[**Create**](AwsuserAPI.md#Create) | **Post** /awsuser | Create a awsuser object
+[**Delete**](AwsuserAPI.md#Delete) | **Delete** /awsuser/{reference} | Delete a awsuser object
+[**List**](AwsuserAPI.md#List) | **Get** /awsuser | Retrieve awsuser objects
+[**Read**](AwsuserAPI.md#Read) | **Get** /awsuser/{reference} | Get a specific awsuser object
+[**Update**](AwsuserAPI.md#Update) | **Put** /awsuser/{reference} | Update a awsuser object
 
 
 
-## Get
+## Create
 
-> ListAwsuserResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateAwsuserResponse Create(ctx).Awsuser(awsuser).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a awsuser object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
+)
+
+func main() {
+	awsuser := *cloud.NewAwsuser() // Awsuser | Object data to create
+
+	apiClient := cloud.NewAPIClient()
+	resp, r, err := apiClient.AwsuserAPI.Create(context.Background()).Awsuser(awsuser).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AwsuserAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateAwsuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `AwsuserAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AwsuserAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**awsuser** | [**Awsuser**](Awsuser.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateAwsuserResponse**](CreateAwsuserResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a awsuser object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the awsuser object
+
+	apiClient := cloud.NewAPIClient()
+	r, err := apiClient.AwsuserAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AwsuserAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the awsuser object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AwsuserAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListAwsuserResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve awsuser objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.AwsuserAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.AwsuserAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AwsuserAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AwsuserAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListAwsuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `AwsuserAPI.Get`: %v\n", resp)
+	// response from `List`: ListAwsuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `AwsuserAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AwsuserAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AwsuserAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateAwsuserResponse Post(ctx).Awsuser(awsuser).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a awsuser object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
-)
-
-func main() {
-	awsuser := *cloud.NewAwsuser() // Awsuser | Object data to create
-
-	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.AwsuserAPI.Post(context.Background()).Awsuser(awsuser).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AwsuserAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateAwsuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `AwsuserAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AwsuserAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**awsuser** | [**Awsuser**](Awsuser.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateAwsuserResponse**](CreateAwsuserResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a awsuser object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the awsuser object
-
-	apiClient := cloud.NewAPIClient()
-	r, err := apiClient.AwsuserAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AwsuserAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the awsuser object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AwsuserAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetAwsuserResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetAwsuserResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific awsuser object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the awsuser object
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.AwsuserAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.AwsuserAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AwsuserAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AwsuserAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetAwsuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `AwsuserAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetAwsuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `AwsuserAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AwsuserAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AwsuserAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateAwsuserResponse ReferencePut(ctx, reference).Awsuser(awsuser).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateAwsuserResponse Update(ctx, reference).Awsuser(awsuser).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a awsuser object
 
@@ -318,13 +318,13 @@ func main() {
 	awsuser := *cloud.NewAwsuser() // Awsuser | Object data to update
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.AwsuserAPI.ReferencePut(context.Background(), reference).Awsuser(awsuser).Execute()
+	resp, r, err := apiClient.AwsuserAPI.Update(context.Background(), reference).Awsuser(awsuser).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AwsuserAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AwsuserAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateAwsuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `AwsuserAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateAwsuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `AwsuserAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AwsuserAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AwsuserAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **awsuser** | [**Awsuser**](Awsuser.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

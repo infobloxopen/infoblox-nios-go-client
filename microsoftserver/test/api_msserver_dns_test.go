@@ -23,11 +23,11 @@ func TestMsserverDnsAPIService(t *testing.T) {
 
 	apiClient := microsoftserver.NewAPIClient()
 
-	t.Run("Test MsserverDnsAPIService MsserverdnsGet", func(t *testing.T) {
+	t.Run("Test MsserverDnsAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MsserverDnsAPI.MsserverdnsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MsserverDnsAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestMsserverDnsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MsserverDnsAPIService MsserverdnsPost", func(t *testing.T) {
+	t.Run("Test MsserverDnsAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MsserverDnsAPI.MsserverdnsPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.MsserverDnsAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MsserverDnsAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.MsserverDnsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestMsserverDnsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MsserverDnsAPIService MsserverdnsReferenceDelete", func(t *testing.T) {
+	t.Run("Test MsserverDnsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.MsserverDnsAPI.MsserverdnsReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MsserverDnsAPIService MsserverdnsReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.MsserverDnsAPI.MsserverdnsReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MsserverDnsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestMsserverDnsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MsserverDnsAPIService MsserverdnsReferencePut", func(t *testing.T) {
+	t.Run("Test MsserverDnsAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MsserverDnsAPI.MsserverdnsReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MsserverDnsAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

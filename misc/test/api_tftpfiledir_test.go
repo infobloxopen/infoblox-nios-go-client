@@ -23,11 +23,11 @@ func TestTftpfiledirAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test TftpfiledirAPIService Get", func(t *testing.T) {
+	t.Run("Test TftpfiledirAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.TftpfiledirAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TftpfiledirAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestTftpfiledirAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TftpfiledirAPIService Post", func(t *testing.T) {
+	t.Run("Test TftpfiledirAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.TftpfiledirAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.TftpfiledirAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TftpfiledirAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.TftpfiledirAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestTftpfiledirAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TftpfiledirAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test TftpfiledirAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.TftpfiledirAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TftpfiledirAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.TftpfiledirAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.TftpfiledirAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestTftpfiledirAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TftpfiledirAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test TftpfiledirAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.TftpfiledirAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.TftpfiledirAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

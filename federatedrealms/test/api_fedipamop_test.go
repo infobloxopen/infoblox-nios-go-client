@@ -23,11 +23,11 @@ func TestFedipamopAPIService(t *testing.T) {
 
 	apiClient := federatedrealms.NewAPIClient()
 
-	t.Run("Test FedipamopAPIService Get", func(t *testing.T) {
+	t.Run("Test FedipamopAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FedipamopAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.FedipamopAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestFedipamopAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FedipamopAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test FedipamopAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.FedipamopAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FedipamopAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

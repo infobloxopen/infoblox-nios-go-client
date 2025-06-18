@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](UpgradestatusAPI.md#Get) | **Get** /upgradestatus | Retrieve upgradestatus objects
-[**ReferenceGet**](UpgradestatusAPI.md#ReferenceGet) | **Get** /upgradestatus/{reference} | Get a specific upgradestatus object
-[**ReferencePut**](UpgradestatusAPI.md#ReferencePut) | **Put** /upgradestatus/{reference} | Update a upgradestatus object
+[**List**](UpgradestatusAPI.md#List) | **Get** /upgradestatus | Retrieve upgradestatus objects
+[**Read**](UpgradestatusAPI.md#Read) | **Get** /upgradestatus/{reference} | Get a specific upgradestatus object
+[**Update**](UpgradestatusAPI.md#Update) | **Put** /upgradestatus/{reference} | Update a upgradestatus object
 
 
 
-## Get
+## List
 
-> ListUpgradestatusResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListUpgradestatusResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve upgradestatus objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.UpgradestatusAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.UpgradestatusAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradestatusAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradestatusAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListUpgradestatusResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradestatusAPI.Get`: %v\n", resp)
+	// response from `List`: ListUpgradestatusResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradestatusAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradestatusAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradestatusAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetUpgradestatusResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetUpgradestatusResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific upgradestatus object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the upgradestatus object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.UpgradestatusAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.UpgradestatusAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradestatusAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradestatusAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetUpgradestatusResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradestatusAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetUpgradestatusResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradestatusAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradestatusAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradestatusAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateUpgradestatusResponse ReferencePut(ctx, reference).Upgradestatus(upgradestatus).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateUpgradestatusResponse Update(ctx, reference).Upgradestatus(upgradestatus).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a upgradestatus object
 
@@ -180,13 +180,13 @@ func main() {
 	upgradestatus := *grid.NewUpgradestatus() // Upgradestatus | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.UpgradestatusAPI.ReferencePut(context.Background(), reference).Upgradestatus(upgradestatus).Execute()
+	resp, r, err := apiClient.UpgradestatusAPI.Update(context.Background(), reference).Upgradestatus(upgradestatus).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UpgradestatusAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UpgradestatusAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateUpgradestatusResponse
-	fmt.Fprintf(os.Stdout, "Response from `UpgradestatusAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateUpgradestatusResponse
+	fmt.Fprintf(os.Stdout, "Response from `UpgradestatusAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `UpgradestatusAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `UpgradestatusAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **upgradestatus** | [**Upgradestatus**](Upgradestatus.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

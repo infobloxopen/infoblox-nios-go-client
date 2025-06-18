@@ -23,11 +23,11 @@ func TestCsvimporttaskAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test CsvimporttaskAPIService Get", func(t *testing.T) {
+	t.Run("Test CsvimporttaskAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.CsvimporttaskAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CsvimporttaskAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestCsvimporttaskAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CsvimporttaskAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test CsvimporttaskAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.CsvimporttaskAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.CsvimporttaskAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestCsvimporttaskAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CsvimporttaskAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test CsvimporttaskAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.CsvimporttaskAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.CsvimporttaskAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

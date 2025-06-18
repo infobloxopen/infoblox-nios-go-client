@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](AdAuthServiceAPI.md#Get) | **Get** /ad_auth_service | Retrieve ad_auth_service objects
-[**Post**](AdAuthServiceAPI.md#Post) | **Post** /ad_auth_service | Create a ad_auth_service object
-[**ReferenceDelete**](AdAuthServiceAPI.md#ReferenceDelete) | **Delete** /ad_auth_service/{reference} | Delete a ad_auth_service object
-[**ReferenceGet**](AdAuthServiceAPI.md#ReferenceGet) | **Get** /ad_auth_service/{reference} | Get a specific ad_auth_service object
-[**ReferencePut**](AdAuthServiceAPI.md#ReferencePut) | **Put** /ad_auth_service/{reference} | Update a ad_auth_service object
+[**Create**](AdAuthServiceAPI.md#Create) | **Post** /ad_auth_service | Create a ad_auth_service object
+[**Delete**](AdAuthServiceAPI.md#Delete) | **Delete** /ad_auth_service/{reference} | Delete a ad_auth_service object
+[**List**](AdAuthServiceAPI.md#List) | **Get** /ad_auth_service | Retrieve ad_auth_service objects
+[**Read**](AdAuthServiceAPI.md#Read) | **Get** /ad_auth_service/{reference} | Get a specific ad_auth_service object
+[**Update**](AdAuthServiceAPI.md#Update) | **Put** /ad_auth_service/{reference} | Update a ad_auth_service object
 
 
 
-## Get
+## Create
 
-> ListAdAuthServiceResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateAdAuthServiceResponse Create(ctx).AdAuthService(adAuthService).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a ad_auth_service object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	adAuthService := *security.NewAdAuthService() // AdAuthService | Object data to create
+
+	apiClient := security.NewAPIClient()
+	resp, r, err := apiClient.AdAuthServiceAPI.Create(context.Background()).AdAuthService(adAuthService).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdAuthServiceAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateAdAuthServiceResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdAuthServiceAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AdAuthServiceAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**adAuthService** | [**AdAuthService**](AdAuthService.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateAdAuthServiceResponse**](CreateAdAuthServiceResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a ad_auth_service object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the ad_auth_service object
+
+	apiClient := security.NewAPIClient()
+	r, err := apiClient.AdAuthServiceAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdAuthServiceAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the ad_auth_service object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AdAuthServiceAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListAdAuthServiceResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve ad_auth_service objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdAuthServiceAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.AdAuthServiceAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdAuthServiceAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdAuthServiceAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListAdAuthServiceResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdAuthServiceAPI.Get`: %v\n", resp)
+	// response from `List`: ListAdAuthServiceResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdAuthServiceAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AdAuthServiceAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AdAuthServiceAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateAdAuthServiceResponse Post(ctx).AdAuthService(adAuthService).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a ad_auth_service object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	adAuthService := *security.NewAdAuthService() // AdAuthService | Object data to create
-
-	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdAuthServiceAPI.Post(context.Background()).AdAuthService(adAuthService).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdAuthServiceAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateAdAuthServiceResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdAuthServiceAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AdAuthServiceAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**adAuthService** | [**AdAuthService**](AdAuthService.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateAdAuthServiceResponse**](CreateAdAuthServiceResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a ad_auth_service object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the ad_auth_service object
-
-	apiClient := security.NewAPIClient()
-	r, err := apiClient.AdAuthServiceAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdAuthServiceAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the ad_auth_service object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AdAuthServiceAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetAdAuthServiceResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetAdAuthServiceResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific ad_auth_service object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the ad_auth_service object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdAuthServiceAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.AdAuthServiceAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdAuthServiceAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdAuthServiceAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetAdAuthServiceResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdAuthServiceAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetAdAuthServiceResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdAuthServiceAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AdAuthServiceAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AdAuthServiceAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateAdAuthServiceResponse ReferencePut(ctx, reference).AdAuthService(adAuthService).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateAdAuthServiceResponse Update(ctx, reference).AdAuthService(adAuthService).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a ad_auth_service object
 
@@ -318,13 +318,13 @@ func main() {
 	adAuthService := *security.NewAdAuthService() // AdAuthService | Object data to update
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdAuthServiceAPI.ReferencePut(context.Background(), reference).AdAuthService(adAuthService).Execute()
+	resp, r, err := apiClient.AdAuthServiceAPI.Update(context.Background(), reference).AdAuthService(adAuthService).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdAuthServiceAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdAuthServiceAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateAdAuthServiceResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdAuthServiceAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateAdAuthServiceResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdAuthServiceAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AdAuthServiceAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AdAuthServiceAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **adAuthService** | [**AdAuthService**](AdAuthService.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

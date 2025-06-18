@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](OrderedrangesAPI.md#Get) | **Get** /orderedranges | Retrieve orderedranges objects
-[**ReferenceGet**](OrderedrangesAPI.md#ReferenceGet) | **Get** /orderedranges/{reference} | Get a specific orderedranges object
-[**ReferencePut**](OrderedrangesAPI.md#ReferencePut) | **Put** /orderedranges/{reference} | Update a orderedranges object
+[**List**](OrderedrangesAPI.md#List) | **Get** /orderedranges | Retrieve orderedranges objects
+[**Read**](OrderedrangesAPI.md#Read) | **Get** /orderedranges/{reference} | Get a specific orderedranges object
+[**Update**](OrderedrangesAPI.md#Update) | **Put** /orderedranges/{reference} | Update a orderedranges object
 
 
 
-## Get
+## List
 
-> ListOrderedrangesResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListOrderedrangesResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve orderedranges objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.OrderedrangesAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.OrderedrangesAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrderedrangesAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OrderedrangesAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListOrderedrangesResponse
-	fmt.Fprintf(os.Stdout, "Response from `OrderedrangesAPI.Get`: %v\n", resp)
+	// response from `List`: ListOrderedrangesResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrderedrangesAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `OrderedrangesAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `OrderedrangesAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetOrderedrangesResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetOrderedrangesResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific orderedranges object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the orderedranges object
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.OrderedrangesAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.OrderedrangesAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrderedrangesAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OrderedrangesAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetOrderedrangesResponse
-	fmt.Fprintf(os.Stdout, "Response from `OrderedrangesAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetOrderedrangesResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrderedrangesAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `OrderedrangesAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `OrderedrangesAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateOrderedrangesResponse ReferencePut(ctx, reference).Orderedranges(orderedranges).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateOrderedrangesResponse Update(ctx, reference).Orderedranges(orderedranges).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a orderedranges object
 
@@ -180,13 +180,13 @@ func main() {
 	orderedranges := *dhcp.NewOrderedranges() // Orderedranges | Object data to update
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.OrderedrangesAPI.ReferencePut(context.Background(), reference).Orderedranges(orderedranges).Execute()
+	resp, r, err := apiClient.OrderedrangesAPI.Update(context.Background(), reference).Orderedranges(orderedranges).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrderedrangesAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OrderedrangesAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateOrderedrangesResponse
-	fmt.Fprintf(os.Stdout, "Response from `OrderedrangesAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateOrderedrangesResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrderedrangesAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `OrderedrangesAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `OrderedrangesAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **orderedranges** | [**Orderedranges**](Orderedranges.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -4,16 +4,83 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**NotificationresttemplateGet**](NotificationRestTemplateAPI.md#NotificationresttemplateGet) | **Get** /notification:rest:template | Retrieve notification:rest:template objects
-[**NotificationresttemplateReferenceDelete**](NotificationRestTemplateAPI.md#NotificationresttemplateReferenceDelete) | **Delete** /notification:rest:template/{reference} | Delete a notification:rest:template object
-[**NotificationresttemplateReferenceGet**](NotificationRestTemplateAPI.md#NotificationresttemplateReferenceGet) | **Get** /notification:rest:template/{reference} | Get a specific notification:rest:template object
-[**NotificationresttemplateReferencePut**](NotificationRestTemplateAPI.md#NotificationresttemplateReferencePut) | **Put** /notification:rest:template/{reference} | Update a notification:rest:template object
+[**Delete**](NotificationRestTemplateAPI.md#Delete) | **Delete** /notification:rest:template/{reference} | Delete a notification:rest:template object
+[**List**](NotificationRestTemplateAPI.md#List) | **Get** /notification:rest:template | Retrieve notification:rest:template objects
+[**Read**](NotificationRestTemplateAPI.md#Read) | **Get** /notification:rest:template/{reference} | Get a specific notification:rest:template object
+[**Update**](NotificationRestTemplateAPI.md#Update) | **Put** /notification:rest:template/{reference} | Update a notification:rest:template object
 
 
 
-## NotificationresttemplateGet
+## Delete
 
-> ListNotificationRestTemplateResponse NotificationresttemplateGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> Delete(ctx, reference).Execute()
+
+Delete a notification:rest:template object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/notification"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the notification:rest:template object
+
+	apiClient := notification.NewAPIClient()
+	r, err := apiClient.NotificationRestTemplateAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NotificationRestTemplateAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the notification:rest:template object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `NotificationRestTemplateAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListNotificationRestTemplateResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve notification:rest:template objects
 
@@ -35,13 +102,13 @@ import (
 func main() {
 
 	apiClient := notification.NewAPIClient()
-	resp, r, err := apiClient.NotificationRestTemplateAPI.NotificationresttemplateGet(context.Background()).Execute()
+	resp, r, err := apiClient.NotificationRestTemplateAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NotificationRestTemplateAPI.NotificationresttemplateGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NotificationRestTemplateAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NotificationresttemplateGet`: ListNotificationRestTemplateResponse
-	fmt.Fprintf(os.Stdout, "Response from `NotificationRestTemplateAPI.NotificationresttemplateGet`: %v\n", resp)
+	// response from `List`: ListNotificationRestTemplateResponse
+	fmt.Fprintf(os.Stdout, "Response from `NotificationRestTemplateAPI.List`: %v\n", resp)
 }
 ```
 
@@ -51,13 +118,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NotificationRestTemplateAPINotificationresttemplateGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NotificationRestTemplateAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -83,76 +150,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## NotificationresttemplateReferenceDelete
+## Read
 
-> NotificationresttemplateReferenceDelete(ctx, reference).Execute()
-
-Delete a notification:rest:template object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/notification"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the notification:rest:template object
-
-	apiClient := notification.NewAPIClient()
-	r, err := apiClient.NotificationRestTemplateAPI.NotificationresttemplateReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NotificationRestTemplateAPI.NotificationresttemplateReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the notification:rest:template object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NotificationRestTemplateAPINotificationresttemplateReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## NotificationresttemplateReferenceGet
-
-> GetNotificationRestTemplateResponse NotificationresttemplateReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetNotificationRestTemplateResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific notification:rest:template object
 
@@ -175,13 +175,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the notification:rest:template object
 
 	apiClient := notification.NewAPIClient()
-	resp, r, err := apiClient.NotificationRestTemplateAPI.NotificationresttemplateReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.NotificationRestTemplateAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NotificationRestTemplateAPI.NotificationresttemplateReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NotificationRestTemplateAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NotificationresttemplateReferenceGet`: GetNotificationRestTemplateResponse
-	fmt.Fprintf(os.Stdout, "Response from `NotificationRestTemplateAPI.NotificationresttemplateReferenceGet`: %v\n", resp)
+	// response from `Read`: GetNotificationRestTemplateResponse
+	fmt.Fprintf(os.Stdout, "Response from `NotificationRestTemplateAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -195,13 +195,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NotificationRestTemplateAPINotificationresttemplateReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NotificationRestTemplateAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -222,9 +222,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## NotificationresttemplateReferencePut
+## Update
 
-> UpdateNotificationRestTemplateResponse NotificationresttemplateReferencePut(ctx, reference).NotificationRestTemplate(notificationRestTemplate).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateNotificationRestTemplateResponse Update(ctx, reference).NotificationRestTemplate(notificationRestTemplate).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a notification:rest:template object
 
@@ -248,13 +248,13 @@ func main() {
 	notificationRestTemplate := *notification.NewNotificationRestTemplate() // NotificationRestTemplate | Object data to update
 
 	apiClient := notification.NewAPIClient()
-	resp, r, err := apiClient.NotificationRestTemplateAPI.NotificationresttemplateReferencePut(context.Background(), reference).NotificationRestTemplate(notificationRestTemplate).Execute()
+	resp, r, err := apiClient.NotificationRestTemplateAPI.Update(context.Background(), reference).NotificationRestTemplate(notificationRestTemplate).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NotificationRestTemplateAPI.NotificationresttemplateReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NotificationRestTemplateAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `NotificationresttemplateReferencePut`: UpdateNotificationRestTemplateResponse
-	fmt.Fprintf(os.Stdout, "Response from `NotificationRestTemplateAPI.NotificationresttemplateReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateNotificationRestTemplateResponse
+	fmt.Fprintf(os.Stdout, "Response from `NotificationRestTemplateAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -268,14 +268,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NotificationRestTemplateAPINotificationresttemplateReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NotificationRestTemplateAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **notificationRestTemplate** | [**NotificationRestTemplate**](NotificationRestTemplate.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

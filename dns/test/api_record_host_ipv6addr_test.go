@@ -23,11 +23,11 @@ func TestRecordHostIpv6addrAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordHostIpv6addrAPIService RecordhostIpv6addrGet", func(t *testing.T) {
+	t.Run("Test RecordHostIpv6addrAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordHostIpv6addrAPI.RecordhostIpv6addrGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordHostIpv6addrAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestRecordHostIpv6addrAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordHostIpv6addrAPIService RecordhostIpv6addrReferenceGet", func(t *testing.T) {
+	t.Run("Test RecordHostIpv6addrAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordHostIpv6addrAPI.RecordhostIpv6addrReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordHostIpv6addrAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestRecordHostIpv6addrAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordHostIpv6addrAPIService RecordhostIpv6addrReferencePut", func(t *testing.T) {
+	t.Run("Test RecordHostIpv6addrAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordHostIpv6addrAPI.RecordhostIpv6addrReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordHostIpv6addrAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

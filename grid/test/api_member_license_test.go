@@ -23,11 +23,24 @@ func TestMemberLicenseAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test MemberLicenseAPIService MemberlicenseGet", func(t *testing.T) {
+	t.Run("Test MemberLicenseAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MemberLicenseAPI.MemberlicenseGet(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.MemberLicenseAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MemberLicenseAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.MemberLicenseAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,26 +48,13 @@ func TestMemberLicenseAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MemberLicenseAPIService MemberlicenseReferenceDelete", func(t *testing.T) {
+	t.Run("Test MemberLicenseAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.MemberLicenseAPI.MemberlicenseReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MemberLicenseAPIService MemberlicenseReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.MemberLicenseAPI.MemberlicenseReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MemberLicenseAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,11 +23,11 @@ func TestGridMemberCloudapiAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test GridMemberCloudapiAPIService GridmembercloudapiGet", func(t *testing.T) {
+	t.Run("Test GridMemberCloudapiAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GridMemberCloudapiAPI.GridmembercloudapiGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GridMemberCloudapiAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestGridMemberCloudapiAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridMemberCloudapiAPIService GridmembercloudapiReferenceGet", func(t *testing.T) {
+	t.Run("Test GridMemberCloudapiAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridMemberCloudapiAPI.GridmembercloudapiReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridMemberCloudapiAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestGridMemberCloudapiAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GridMemberCloudapiAPIService GridmembercloudapiReferencePut", func(t *testing.T) {
+	t.Run("Test GridMemberCloudapiAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GridMemberCloudapiAPI.GridmembercloudapiReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GridMemberCloudapiAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

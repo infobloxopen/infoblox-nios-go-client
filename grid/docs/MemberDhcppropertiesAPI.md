@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**MemberdhcppropertiesGet**](MemberDhcppropertiesAPI.md#MemberdhcppropertiesGet) | **Get** /member:dhcpproperties | Retrieve member:dhcpproperties objects
-[**MemberdhcppropertiesReferenceGet**](MemberDhcppropertiesAPI.md#MemberdhcppropertiesReferenceGet) | **Get** /member:dhcpproperties/{reference} | Get a specific member:dhcpproperties object
-[**MemberdhcppropertiesReferencePut**](MemberDhcppropertiesAPI.md#MemberdhcppropertiesReferencePut) | **Put** /member:dhcpproperties/{reference} | Update a member:dhcpproperties object
+[**List**](MemberDhcppropertiesAPI.md#List) | **Get** /member:dhcpproperties | Retrieve member:dhcpproperties objects
+[**Read**](MemberDhcppropertiesAPI.md#Read) | **Get** /member:dhcpproperties/{reference} | Get a specific member:dhcpproperties object
+[**Update**](MemberDhcppropertiesAPI.md#Update) | **Put** /member:dhcpproperties/{reference} | Update a member:dhcpproperties object
 
 
 
-## MemberdhcppropertiesGet
+## List
 
-> ListMemberDhcppropertiesResponse MemberdhcppropertiesGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListMemberDhcppropertiesResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve member:dhcpproperties objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberDhcppropertiesAPI.MemberdhcppropertiesGet(context.Background()).Execute()
+	resp, r, err := apiClient.MemberDhcppropertiesAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberDhcppropertiesAPI.MemberdhcppropertiesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberDhcppropertiesAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MemberdhcppropertiesGet`: ListMemberDhcppropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberDhcppropertiesAPI.MemberdhcppropertiesGet`: %v\n", resp)
+	// response from `List`: ListMemberDhcppropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberDhcppropertiesAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberDhcppropertiesAPIMemberdhcppropertiesGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberDhcppropertiesAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## MemberdhcppropertiesReferenceGet
+## Read
 
-> GetMemberDhcppropertiesResponse MemberdhcppropertiesReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMemberDhcppropertiesResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific member:dhcpproperties object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the member:dhcpproperties object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberDhcppropertiesAPI.MemberdhcppropertiesReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MemberDhcppropertiesAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberDhcppropertiesAPI.MemberdhcppropertiesReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberDhcppropertiesAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MemberdhcppropertiesReferenceGet`: GetMemberDhcppropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberDhcppropertiesAPI.MemberdhcppropertiesReferenceGet`: %v\n", resp)
+	// response from `Read`: GetMemberDhcppropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberDhcppropertiesAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberDhcppropertiesAPIMemberdhcppropertiesReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberDhcppropertiesAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## MemberdhcppropertiesReferencePut
+## Update
 
-> UpdateMemberDhcppropertiesResponse MemberdhcppropertiesReferencePut(ctx, reference).MemberDhcpproperties(memberDhcpproperties).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateMemberDhcppropertiesResponse Update(ctx, reference).MemberDhcpproperties(memberDhcpproperties).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a member:dhcpproperties object
 
@@ -180,13 +180,13 @@ func main() {
 	memberDhcpproperties := *grid.NewMemberDhcpproperties() // MemberDhcpproperties | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberDhcppropertiesAPI.MemberdhcppropertiesReferencePut(context.Background(), reference).MemberDhcpproperties(memberDhcpproperties).Execute()
+	resp, r, err := apiClient.MemberDhcppropertiesAPI.Update(context.Background(), reference).MemberDhcpproperties(memberDhcpproperties).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberDhcppropertiesAPI.MemberdhcppropertiesReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberDhcppropertiesAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MemberdhcppropertiesReferencePut`: UpdateMemberDhcppropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberDhcppropertiesAPI.MemberdhcppropertiesReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateMemberDhcppropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberDhcppropertiesAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberDhcppropertiesAPIMemberdhcppropertiesReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberDhcppropertiesAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **memberDhcpproperties** | [**MemberDhcpproperties**](MemberDhcpproperties.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

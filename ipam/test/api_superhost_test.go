@@ -23,11 +23,11 @@ func TestSuperhostAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test SuperhostAPIService Get", func(t *testing.T) {
+	t.Run("Test SuperhostAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SuperhostAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SuperhostAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestSuperhostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SuperhostAPIService Post", func(t *testing.T) {
+	t.Run("Test SuperhostAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SuperhostAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.SuperhostAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SuperhostAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.SuperhostAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestSuperhostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SuperhostAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test SuperhostAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.SuperhostAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SuperhostAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.SuperhostAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SuperhostAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestSuperhostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SuperhostAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test SuperhostAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.SuperhostAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SuperhostAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

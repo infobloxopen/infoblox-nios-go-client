@@ -23,11 +23,11 @@ func TestDtcMonitorSnmpAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcMonitorSnmpAPIService DtcmonitorsnmpGet", func(t *testing.T) {
+	t.Run("Test DtcMonitorSnmpAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcMonitorSnmpAPI.DtcmonitorsnmpGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorSnmpAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDtcMonitorSnmpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorSnmpAPIService DtcmonitorsnmpPost", func(t *testing.T) {
+	t.Run("Test DtcMonitorSnmpAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcMonitorSnmpAPI.DtcmonitorsnmpPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DtcMonitorSnmpAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DtcMonitorSnmpAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DtcMonitorSnmpAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDtcMonitorSnmpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorSnmpAPIService DtcmonitorsnmpReferenceDelete", func(t *testing.T) {
+	t.Run("Test DtcMonitorSnmpAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DtcMonitorSnmpAPI.DtcmonitorsnmpReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DtcMonitorSnmpAPIService DtcmonitorsnmpReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DtcMonitorSnmpAPI.DtcmonitorsnmpReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorSnmpAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDtcMonitorSnmpAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorSnmpAPIService DtcmonitorsnmpReferencePut", func(t *testing.T) {
+	t.Run("Test DtcMonitorSnmpAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcMonitorSnmpAPI.DtcmonitorsnmpReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorSnmpAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

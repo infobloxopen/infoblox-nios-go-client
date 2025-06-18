@@ -23,150 +23,386 @@ import (
 
 type SuperhostAPI interface {
 	/*
-		Get Retrieve superhost objects
-
-		Returns a list of superhost objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SuperhostAPIGetRequest
-	*/
-	Get(ctx context.Context) SuperhostAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListSuperhostResponse
-	GetExecute(r SuperhostAPIGetRequest) (*ListSuperhostResponse, *http.Response, error)
-	/*
-		Post Create a superhost object
+		Create Create a superhost object
 
 		Creates a new superhost object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SuperhostAPIPostRequest
+		@return SuperhostAPICreateRequest
 	*/
-	Post(ctx context.Context) SuperhostAPIPostRequest
+	Create(ctx context.Context) SuperhostAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateSuperhostResponse
-	PostExecute(r SuperhostAPIPostRequest) (*CreateSuperhostResponse, *http.Response, error)
+	CreateExecute(r SuperhostAPICreateRequest) (*CreateSuperhostResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a superhost object
+		Delete Delete a superhost object
 
 		Deletes a specific superhost object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the superhost object
-		@return SuperhostAPIReferenceDeleteRequest
+		@return SuperhostAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) SuperhostAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) SuperhostAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r SuperhostAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r SuperhostAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific superhost object
+		List Retrieve superhost objects
+
+		Returns a list of superhost objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return SuperhostAPIListRequest
+	*/
+	List(ctx context.Context) SuperhostAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListSuperhostResponse
+	ListExecute(r SuperhostAPIListRequest) (*ListSuperhostResponse, *http.Response, error)
+	/*
+		Read Get a specific superhost object
 
 		Returns a specific superhost object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the superhost object
-		@return SuperhostAPIReferenceGetRequest
+		@return SuperhostAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) SuperhostAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) SuperhostAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSuperhostResponse
-	ReferenceGetExecute(r SuperhostAPIReferenceGetRequest) (*GetSuperhostResponse, *http.Response, error)
+	ReadExecute(r SuperhostAPIReadRequest) (*GetSuperhostResponse, *http.Response, error)
 	/*
-		ReferencePut Update a superhost object
+		Update Update a superhost object
 
 		Updates a specific superhost object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the superhost object
-		@return SuperhostAPIReferencePutRequest
+		@return SuperhostAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) SuperhostAPIReferencePutRequest
+	Update(ctx context.Context, reference string) SuperhostAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateSuperhostResponse
-	ReferencePutExecute(r SuperhostAPIReferencePutRequest) (*UpdateSuperhostResponse, *http.Response, error)
+	UpdateExecute(r SuperhostAPIUpdateRequest) (*UpdateSuperhostResponse, *http.Response, error)
 }
 
 // SuperhostAPIService SuperhostAPI service
 type SuperhostAPIService internal.Service
 
-type SuperhostAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     SuperhostAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type SuperhostAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       SuperhostAPI
+	superhost        *Superhost
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r SuperhostAPICreateRequest) Superhost(superhost Superhost) SuperhostAPICreateRequest {
+	r.superhost = &superhost
+	return r
 }
 
 // Enter the field names followed by comma
-func (r SuperhostAPIGetRequest) ReturnFields(returnFields string) SuperhostAPIGetRequest {
+func (r SuperhostAPICreateRequest) ReturnFields(returnFields string) SuperhostAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SuperhostAPIGetRequest) ReturnFields2(returnFields2 string) SuperhostAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r SuperhostAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SuperhostAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r SuperhostAPICreateRequest) ReturnAsObject(returnAsObject int32) SuperhostAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r SuperhostAPICreateRequest) Execute() (*CreateSuperhostResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a superhost object
+
+Creates a new superhost object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SuperhostAPICreateRequest
+*/
+func (a *SuperhostAPIService) Create(ctx context.Context) SuperhostAPICreateRequest {
+	return SuperhostAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateSuperhostResponse
+func (a *SuperhostAPIService) CreateExecute(r SuperhostAPICreateRequest) (*CreateSuperhostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateSuperhostResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/superhost"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.superhost == nil {
+		return localVarReturnValue, nil, internal.ReportError("superhost is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.superhost != nil {
+		if r.superhost.Extattrs == nil {
+			r.superhost.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.superhost.Extattrs)[k]; !ok {
+				(*r.superhost.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.superhost
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SuperhostAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService SuperhostAPI
+	reference  string
+}
+
+func (r SuperhostAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a superhost object
+
+Deletes a specific superhost object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the superhost object
+	@return SuperhostAPIDeleteRequest
+*/
+func (a *SuperhostAPIService) Delete(ctx context.Context, reference string) SuperhostAPIDeleteRequest {
+	return SuperhostAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *SuperhostAPIService) DeleteExecute(r SuperhostAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/superhost/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type SuperhostAPIListRequest struct {
+	ctx              context.Context
+	ApiService       SuperhostAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r SuperhostAPIListRequest) ReturnFields(returnFields string) SuperhostAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r SuperhostAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SuperhostAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r SuperhostAPIGetRequest) MaxResults(maxResults int32) SuperhostAPIGetRequest {
+func (r SuperhostAPIListRequest) MaxResults(maxResults int32) SuperhostAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SuperhostAPIGetRequest) ReturnAsObject(returnAsObject int32) SuperhostAPIGetRequest {
+func (r SuperhostAPIListRequest) ReturnAsObject(returnAsObject int32) SuperhostAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r SuperhostAPIGetRequest) Paging(paging int32) SuperhostAPIGetRequest {
+func (r SuperhostAPIListRequest) Paging(paging int32) SuperhostAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r SuperhostAPIGetRequest) PageId(pageId string) SuperhostAPIGetRequest {
+func (r SuperhostAPIListRequest) PageId(pageId string) SuperhostAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r SuperhostAPIGetRequest) Filters(filters map[string]interface{}) SuperhostAPIGetRequest {
+func (r SuperhostAPIListRequest) Filters(filters map[string]interface{}) SuperhostAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r SuperhostAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SuperhostAPIGetRequest {
+func (r SuperhostAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SuperhostAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r SuperhostAPIGetRequest) Execute() (*ListSuperhostResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r SuperhostAPIListRequest) Execute() (*ListSuperhostResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve superhost objects
+List Retrieve superhost objects
 
 Returns a list of superhost objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SuperhostAPIGetRequest
+	@return SuperhostAPIListRequest
 */
-func (a *SuperhostAPIService) Get(ctx context.Context) SuperhostAPIGetRequest {
-	return SuperhostAPIGetRequest{
+func (a *SuperhostAPIService) List(ctx context.Context) SuperhostAPIListRequest {
+	return SuperhostAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *SuperhostAPIService) Get(ctx context.Context) SuperhostAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListSuperhostResponse
-func (a *SuperhostAPIService) GetExecute(r SuperhostAPIGetRequest) (*ListSuperhostResponse, *http.Response, error) {
+func (a *SuperhostAPIService) ListExecute(r SuperhostAPIListRequest) (*ListSuperhostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *SuperhostAPIService) GetExecute(r SuperhostAPIGetRequest) (*ListSuperho
 		localVarReturnValue *ListSuperhostResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *SuperhostAPIService) GetExecute(r SuperhostAPIGetRequest) (*ListSuperho
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *SuperhostAPIService) GetExecute(r SuperhostAPIGetRequest) (*ListSuperho
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SuperhostAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     SuperhostAPI
-	superhost      *Superhost
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r SuperhostAPIPostRequest) Superhost(superhost Superhost) SuperhostAPIPostRequest {
-	r.superhost = &superhost
-	return r
+type SuperhostAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       SuperhostAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r SuperhostAPIPostRequest) ReturnFields(returnFields string) SuperhostAPIPostRequest {
+func (r SuperhostAPIReadRequest) ReturnFields(returnFields string) SuperhostAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SuperhostAPIPostRequest) ReturnFields2(returnFields2 string) SuperhostAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r SuperhostAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SuperhostAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SuperhostAPIPostRequest) ReturnAsObject(returnAsObject int32) SuperhostAPIPostRequest {
+func (r SuperhostAPIReadRequest) ReturnAsObject(returnAsObject int32) SuperhostAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SuperhostAPIPostRequest) Execute() (*CreateSuperhostResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r SuperhostAPIReadRequest) Execute() (*GetSuperhostResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a superhost object
-
-Creates a new superhost object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SuperhostAPIPostRequest
-*/
-func (a *SuperhostAPIService) Post(ctx context.Context) SuperhostAPIPostRequest {
-	return SuperhostAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateSuperhostResponse
-func (a *SuperhostAPIService) PostExecute(r SuperhostAPIPostRequest) (*CreateSuperhostResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateSuperhostResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/superhost"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.superhost == nil {
-		return localVarReturnValue, nil, internal.ReportError("superhost is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.superhost != nil {
-		if r.superhost.Extattrs == nil {
-			r.superhost.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.superhost.Extattrs)[k]; !ok {
-				(*r.superhost.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.superhost
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type SuperhostAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService SuperhostAPI
-	reference  string
-}
-
-func (r SuperhostAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a superhost object
-
-Deletes a specific superhost object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the superhost object
-	@return SuperhostAPIReferenceDeleteRequest
-*/
-func (a *SuperhostAPIService) ReferenceDelete(ctx context.Context, reference string) SuperhostAPIReferenceDeleteRequest {
-	return SuperhostAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *SuperhostAPIService) ReferenceDeleteExecute(r SuperhostAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/superhost/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type SuperhostAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     SuperhostAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r SuperhostAPIReferenceGetRequest) ReturnFields(returnFields string) SuperhostAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SuperhostAPIReferenceGetRequest) ReturnFields2(returnFields2 string) SuperhostAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r SuperhostAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) SuperhostAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r SuperhostAPIReferenceGetRequest) Execute() (*GetSuperhostResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific superhost object
+Read Get a specific superhost object
 
 Returns a specific superhost object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the superhost object
-	@return SuperhostAPIReferenceGetRequest
+	@return SuperhostAPIReadRequest
 */
-func (a *SuperhostAPIService) ReferenceGet(ctx context.Context, reference string) SuperhostAPIReferenceGetRequest {
-	return SuperhostAPIReferenceGetRequest{
+func (a *SuperhostAPIService) Read(ctx context.Context, reference string) SuperhostAPIReadRequest {
+	return SuperhostAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *SuperhostAPIService) ReferenceGet(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return GetSuperhostResponse
-func (a *SuperhostAPIService) ReferenceGetExecute(r SuperhostAPIReferenceGetRequest) (*GetSuperhostResponse, *http.Response, error) {
+func (a *SuperhostAPIService) ReadExecute(r SuperhostAPIReadRequest) (*GetSuperhostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *SuperhostAPIService) ReferenceGetExecute(r SuperhostAPIReferenceGetRequ
 		localVarReturnValue *GetSuperhostResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *SuperhostAPIService) ReferenceGetExecute(r SuperhostAPIReferenceGetRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *SuperhostAPIService) ReferenceGetExecute(r SuperhostAPIReferenceGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SuperhostAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     SuperhostAPI
-	reference      string
-	superhost      *Superhost
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type SuperhostAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       SuperhostAPI
+	reference        string
+	superhost        *Superhost
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r SuperhostAPIReferencePutRequest) Superhost(superhost Superhost) SuperhostAPIReferencePutRequest {
+func (r SuperhostAPIUpdateRequest) Superhost(superhost Superhost) SuperhostAPIUpdateRequest {
 	r.superhost = &superhost
 	return r
 }
 
 // Enter the field names followed by comma
-func (r SuperhostAPIReferencePutRequest) ReturnFields(returnFields string) SuperhostAPIReferencePutRequest {
+func (r SuperhostAPIUpdateRequest) ReturnFields(returnFields string) SuperhostAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SuperhostAPIReferencePutRequest) ReturnFields2(returnFields2 string) SuperhostAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r SuperhostAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SuperhostAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SuperhostAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) SuperhostAPIReferencePutRequest {
+func (r SuperhostAPIUpdateRequest) ReturnAsObject(returnAsObject int32) SuperhostAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SuperhostAPIReferencePutRequest) Execute() (*UpdateSuperhostResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r SuperhostAPIUpdateRequest) Execute() (*UpdateSuperhostResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a superhost object
+Update Update a superhost object
 
 Updates a specific superhost object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the superhost object
-	@return SuperhostAPIReferencePutRequest
+	@return SuperhostAPIUpdateRequest
 */
-func (a *SuperhostAPIService) ReferencePut(ctx context.Context, reference string) SuperhostAPIReferencePutRequest {
-	return SuperhostAPIReferencePutRequest{
+func (a *SuperhostAPIService) Update(ctx context.Context, reference string) SuperhostAPIUpdateRequest {
+	return SuperhostAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *SuperhostAPIService) ReferencePut(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return UpdateSuperhostResponse
-func (a *SuperhostAPIService) ReferencePutExecute(r SuperhostAPIReferencePutRequest) (*UpdateSuperhostResponse, *http.Response, error) {
+func (a *SuperhostAPIService) UpdateExecute(r SuperhostAPIUpdateRequest) (*UpdateSuperhostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *SuperhostAPIService) ReferencePutExecute(r SuperhostAPIReferencePutRequ
 		localVarReturnValue *UpdateSuperhostResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SuperhostAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *SuperhostAPIService) ReferencePutExecute(r SuperhostAPIReferencePutRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

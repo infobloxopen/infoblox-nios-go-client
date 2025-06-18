@@ -23,11 +23,11 @@ func TestDtcAllrecordsAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcAllrecordsAPIService DtcallrecordsGet", func(t *testing.T) {
+	t.Run("Test DtcAllrecordsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcAllrecordsAPI.DtcallrecordsGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcAllrecordsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDtcAllrecordsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcAllrecordsAPIService DtcallrecordsReferenceGet", func(t *testing.T) {
+	t.Run("Test DtcAllrecordsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcAllrecordsAPI.DtcallrecordsReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcAllrecordsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestDtcAllrecordsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcAllrecordsAPIService DtcallrecordsReferencePut", func(t *testing.T) {
+	t.Run("Test DtcAllrecordsAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcAllrecordsAPI.DtcallrecordsReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcAllrecordsAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

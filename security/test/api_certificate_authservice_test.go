@@ -23,11 +23,11 @@ func TestCertificateAuthserviceAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test CertificateAuthserviceAPIService CertificateauthserviceGet", func(t *testing.T) {
+	t.Run("Test CertificateAuthserviceAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.CertificateAuthserviceAPI.CertificateauthserviceGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CertificateAuthserviceAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestCertificateAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificateAuthserviceAPIService CertificateauthservicePost", func(t *testing.T) {
+	t.Run("Test CertificateAuthserviceAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.CertificateAuthserviceAPI.CertificateauthservicePost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.CertificateAuthserviceAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CertificateAuthserviceAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.CertificateAuthserviceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestCertificateAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificateAuthserviceAPIService CertificateauthserviceReferenceDelete", func(t *testing.T) {
+	t.Run("Test CertificateAuthserviceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.CertificateAuthserviceAPI.CertificateauthserviceReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CertificateAuthserviceAPIService CertificateauthserviceReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.CertificateAuthserviceAPI.CertificateauthserviceReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.CertificateAuthserviceAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestCertificateAuthserviceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificateAuthserviceAPIService CertificateauthserviceReferencePut", func(t *testing.T) {
+	t.Run("Test CertificateAuthserviceAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.CertificateAuthserviceAPI.CertificateauthserviceReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.CertificateAuthserviceAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -22,6 +22,7 @@ paths:
   /rir:
     get:
       description: Returns a list of rir objects matching the search criteria
+      operationId: RirList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -119,6 +120,7 @@ paths:
   /rir/{reference}:
     get:
       description: Returns a specific rir object by reference
+      operationId: RirRead
       parameters:
       - description: Reference of the rir object
         explode: false
@@ -178,6 +180,7 @@ paths:
       - Rir
     put:
       description: Updates a specific rir object by reference
+      operationId: RirUpdate
       parameters:
       - description: Reference of the rir object
         explode: false
@@ -246,6 +249,7 @@ paths:
     get:
       description: Returns a list of rir:organization objects matching the search
         criteria
+      operationId: RirOrganizationList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -342,6 +346,7 @@ paths:
       - RirOrganization
     post:
       description: Creates a new rir:organization object
+      operationId: RirOrganizationCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -402,6 +407,7 @@ paths:
   /rir:organization/{reference}:
     delete:
       description: Deletes a specific rir:organization object by reference
+      operationId: RirOrganizationDelete
       parameters:
       - description: Reference of the rir:organization object
         explode: false
@@ -429,6 +435,7 @@ paths:
       - RirOrganization
     get:
       description: Returns a specific rir:organization object by reference
+      operationId: RirOrganizationRead
       parameters:
       - description: Reference of the rir:organization object
         explode: false
@@ -488,6 +495,7 @@ paths:
       - RirOrganization
     put:
       description: Updates a specific rir:organization object by reference
+      operationId: RirOrganizationUpdate
       parameters:
       - description: Reference of the rir:organization object
         explode: false

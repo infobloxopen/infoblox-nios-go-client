@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**MsserveradsitesdomainGet**](MsserverAdsitesDomainAPI.md#MsserveradsitesdomainGet) | **Get** /msserver:adsites:domain | Retrieve msserver:adsites:domain objects
-[**MsserveradsitesdomainReferenceGet**](MsserverAdsitesDomainAPI.md#MsserveradsitesdomainReferenceGet) | **Get** /msserver:adsites:domain/{reference} | Get a specific msserver:adsites:domain object
+[**List**](MsserverAdsitesDomainAPI.md#List) | **Get** /msserver:adsites:domain | Retrieve msserver:adsites:domain objects
+[**Read**](MsserverAdsitesDomainAPI.md#Read) | **Get** /msserver:adsites:domain/{reference} | Get a specific msserver:adsites:domain object
 
 
 
-## MsserveradsitesdomainGet
+## List
 
-> ListMsserverAdsitesDomainResponse MsserveradsitesdomainGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListMsserverAdsitesDomainResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve msserver:adsites:domain objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := microsoftserver.NewAPIClient()
-	resp, r, err := apiClient.MsserverAdsitesDomainAPI.MsserveradsitesdomainGet(context.Background()).Execute()
+	resp, r, err := apiClient.MsserverAdsitesDomainAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAdsitesDomainAPI.MsserveradsitesdomainGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAdsitesDomainAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MsserveradsitesdomainGet`: ListMsserverAdsitesDomainResponse
-	fmt.Fprintf(os.Stdout, "Response from `MsserverAdsitesDomainAPI.MsserveradsitesdomainGet`: %v\n", resp)
+	// response from `List`: ListMsserverAdsitesDomainResponse
+	fmt.Fprintf(os.Stdout, "Response from `MsserverAdsitesDomainAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MsserverAdsitesDomainAPIMsserveradsitesdomainGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MsserverAdsitesDomainAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## MsserveradsitesdomainReferenceGet
+## Read
 
-> GetMsserverAdsitesDomainResponse MsserveradsitesdomainReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMsserverAdsitesDomainResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific msserver:adsites:domain object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the msserver:adsites:domain object
 
 	apiClient := microsoftserver.NewAPIClient()
-	resp, r, err := apiClient.MsserverAdsitesDomainAPI.MsserveradsitesdomainReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MsserverAdsitesDomainAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAdsitesDomainAPI.MsserveradsitesdomainReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MsserverAdsitesDomainAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MsserveradsitesdomainReferenceGet`: GetMsserverAdsitesDomainResponse
-	fmt.Fprintf(os.Stdout, "Response from `MsserverAdsitesDomainAPI.MsserveradsitesdomainReferenceGet`: %v\n", resp)
+	// response from `Read`: GetMsserverAdsitesDomainResponse
+	fmt.Fprintf(os.Stdout, "Response from `MsserverAdsitesDomainAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MsserverAdsitesDomainAPIMsserveradsitesdomainReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MsserverAdsitesDomainAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

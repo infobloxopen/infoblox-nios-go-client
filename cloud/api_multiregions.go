@@ -23,124 +23,124 @@ import (
 
 type MultiregionsAPI interface {
 	/*
-		Get Retrieve multiregions objects
+		List Retrieve multiregions objects
 
 		Returns a list of multiregions objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MultiregionsAPIGetRequest
+		@return MultiregionsAPIListRequest
 	*/
-	Get(ctx context.Context) MultiregionsAPIGetRequest
+	List(ctx context.Context) MultiregionsAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListMultiregionsResponse
-	GetExecute(r MultiregionsAPIGetRequest) (*ListMultiregionsResponse, *http.Response, error)
+	ListExecute(r MultiregionsAPIListRequest) (*ListMultiregionsResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific multiregions object
+		Read Get a specific multiregions object
 
 		Returns a specific multiregions object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the multiregions object
-		@return MultiregionsAPIReferenceGetRequest
+		@return MultiregionsAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) MultiregionsAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) MultiregionsAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMultiregionsResponse
-	ReferenceGetExecute(r MultiregionsAPIReferenceGetRequest) (*GetMultiregionsResponse, *http.Response, error)
+	ReadExecute(r MultiregionsAPIReadRequest) (*GetMultiregionsResponse, *http.Response, error)
 	/*
-		ReferencePut Update a multiregions object
+		Update Update a multiregions object
 
 		Updates a specific multiregions object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the multiregions object
-		@return MultiregionsAPIReferencePutRequest
+		@return MultiregionsAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) MultiregionsAPIReferencePutRequest
+	Update(ctx context.Context, reference string) MultiregionsAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMultiregionsResponse
-	ReferencePutExecute(r MultiregionsAPIReferencePutRequest) (*UpdateMultiregionsResponse, *http.Response, error)
+	UpdateExecute(r MultiregionsAPIUpdateRequest) (*UpdateMultiregionsResponse, *http.Response, error)
 }
 
 // MultiregionsAPIService MultiregionsAPI service
 type MultiregionsAPIService internal.Service
 
-type MultiregionsAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     MultiregionsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type MultiregionsAPIListRequest struct {
+	ctx              context.Context
+	ApiService       MultiregionsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r MultiregionsAPIGetRequest) ReturnFields(returnFields string) MultiregionsAPIGetRequest {
+func (r MultiregionsAPIListRequest) ReturnFields(returnFields string) MultiregionsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MultiregionsAPIGetRequest) ReturnFields2(returnFields2 string) MultiregionsAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MultiregionsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MultiregionsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MultiregionsAPIGetRequest) MaxResults(maxResults int32) MultiregionsAPIGetRequest {
+func (r MultiregionsAPIListRequest) MaxResults(maxResults int32) MultiregionsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MultiregionsAPIGetRequest) ReturnAsObject(returnAsObject int32) MultiregionsAPIGetRequest {
+func (r MultiregionsAPIListRequest) ReturnAsObject(returnAsObject int32) MultiregionsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MultiregionsAPIGetRequest) Paging(paging int32) MultiregionsAPIGetRequest {
+func (r MultiregionsAPIListRequest) Paging(paging int32) MultiregionsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MultiregionsAPIGetRequest) PageId(pageId string) MultiregionsAPIGetRequest {
+func (r MultiregionsAPIListRequest) PageId(pageId string) MultiregionsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MultiregionsAPIGetRequest) Filters(filters map[string]interface{}) MultiregionsAPIGetRequest {
+func (r MultiregionsAPIListRequest) Filters(filters map[string]interface{}) MultiregionsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MultiregionsAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MultiregionsAPIGetRequest {
+func (r MultiregionsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MultiregionsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MultiregionsAPIGetRequest) Execute() (*ListMultiregionsResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r MultiregionsAPIListRequest) Execute() (*ListMultiregionsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve multiregions objects
+List Retrieve multiregions objects
 
 Returns a list of multiregions objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MultiregionsAPIGetRequest
+	@return MultiregionsAPIListRequest
 */
-func (a *MultiregionsAPIService) Get(ctx context.Context) MultiregionsAPIGetRequest {
-	return MultiregionsAPIGetRequest{
+func (a *MultiregionsAPIService) List(ctx context.Context) MultiregionsAPIListRequest {
+	return MultiregionsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *MultiregionsAPIService) Get(ctx context.Context) MultiregionsAPIGetRequ
 // Execute executes the request
 //
 //	@return ListMultiregionsResponse
-func (a *MultiregionsAPIService) GetExecute(r MultiregionsAPIGetRequest) (*ListMultiregionsResponse, *http.Response, error) {
+func (a *MultiregionsAPIService) ListExecute(r MultiregionsAPIListRequest) (*ListMultiregionsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *MultiregionsAPIService) GetExecute(r MultiregionsAPIGetRequest) (*ListM
 		localVarReturnValue *ListMultiregionsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MultiregionsAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MultiregionsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *MultiregionsAPIService) GetExecute(r MultiregionsAPIGetRequest) (*ListM
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *MultiregionsAPIService) GetExecute(r MultiregionsAPIGetRequest) (*ListM
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MultiregionsAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     MultiregionsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MultiregionsAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       MultiregionsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r MultiregionsAPIReferenceGetRequest) ReturnFields(returnFields string) MultiregionsAPIReferenceGetRequest {
+func (r MultiregionsAPIReadRequest) ReturnFields(returnFields string) MultiregionsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MultiregionsAPIReferenceGetRequest) ReturnFields2(returnFields2 string) MultiregionsAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MultiregionsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MultiregionsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MultiregionsAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) MultiregionsAPIReferenceGetRequest {
+func (r MultiregionsAPIReadRequest) ReturnAsObject(returnAsObject int32) MultiregionsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MultiregionsAPIReferenceGetRequest) Execute() (*GetMultiregionsResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r MultiregionsAPIReadRequest) Execute() (*GetMultiregionsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific multiregions object
+Read Get a specific multiregions object
 
 Returns a specific multiregions object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the multiregions object
-	@return MultiregionsAPIReferenceGetRequest
+	@return MultiregionsAPIReadRequest
 */
-func (a *MultiregionsAPIService) ReferenceGet(ctx context.Context, reference string) MultiregionsAPIReferenceGetRequest {
-	return MultiregionsAPIReferenceGetRequest{
+func (a *MultiregionsAPIService) Read(ctx context.Context, reference string) MultiregionsAPIReadRequest {
+	return MultiregionsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *MultiregionsAPIService) ReferenceGet(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return GetMultiregionsResponse
-func (a *MultiregionsAPIService) ReferenceGetExecute(r MultiregionsAPIReferenceGetRequest) (*GetMultiregionsResponse, *http.Response, error) {
+func (a *MultiregionsAPIService) ReadExecute(r MultiregionsAPIReadRequest) (*GetMultiregionsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *MultiregionsAPIService) ReferenceGetExecute(r MultiregionsAPIReferenceG
 		localVarReturnValue *GetMultiregionsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MultiregionsAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MultiregionsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *MultiregionsAPIService) ReferenceGetExecute(r MultiregionsAPIReferenceG
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *MultiregionsAPIService) ReferenceGetExecute(r MultiregionsAPIReferenceG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MultiregionsAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     MultiregionsAPI
-	reference      string
-	multiregions   *Multiregions
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MultiregionsAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       MultiregionsAPI
+	reference        string
+	multiregions     *Multiregions
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r MultiregionsAPIReferencePutRequest) Multiregions(multiregions Multiregions) MultiregionsAPIReferencePutRequest {
+func (r MultiregionsAPIUpdateRequest) Multiregions(multiregions Multiregions) MultiregionsAPIUpdateRequest {
 	r.multiregions = &multiregions
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MultiregionsAPIReferencePutRequest) ReturnFields(returnFields string) MultiregionsAPIReferencePutRequest {
+func (r MultiregionsAPIUpdateRequest) ReturnFields(returnFields string) MultiregionsAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MultiregionsAPIReferencePutRequest) ReturnFields2(returnFields2 string) MultiregionsAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r MultiregionsAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MultiregionsAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MultiregionsAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) MultiregionsAPIReferencePutRequest {
+func (r MultiregionsAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MultiregionsAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MultiregionsAPIReferencePutRequest) Execute() (*UpdateMultiregionsResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r MultiregionsAPIUpdateRequest) Execute() (*UpdateMultiregionsResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a multiregions object
+Update Update a multiregions object
 
 Updates a specific multiregions object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the multiregions object
-	@return MultiregionsAPIReferencePutRequest
+	@return MultiregionsAPIUpdateRequest
 */
-func (a *MultiregionsAPIService) ReferencePut(ctx context.Context, reference string) MultiregionsAPIReferencePutRequest {
-	return MultiregionsAPIReferencePutRequest{
+func (a *MultiregionsAPIService) Update(ctx context.Context, reference string) MultiregionsAPIUpdateRequest {
+	return MultiregionsAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *MultiregionsAPIService) ReferencePut(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return UpdateMultiregionsResponse
-func (a *MultiregionsAPIService) ReferencePutExecute(r MultiregionsAPIReferencePutRequest) (*UpdateMultiregionsResponse, *http.Response, error) {
+func (a *MultiregionsAPIService) UpdateExecute(r MultiregionsAPIUpdateRequest) (*UpdateMultiregionsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *MultiregionsAPIService) ReferencePutExecute(r MultiregionsAPIReferenceP
 		localVarReturnValue *UpdateMultiregionsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MultiregionsAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MultiregionsAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *MultiregionsAPIService) ReferencePutExecute(r MultiregionsAPIReferenceP
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

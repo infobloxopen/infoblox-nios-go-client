@@ -23,11 +23,11 @@ func TestFingerprintAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test FingerprintAPIService Get", func(t *testing.T) {
+	t.Run("Test FingerprintAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FingerprintAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.FingerprintAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestFingerprintAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FingerprintAPIService Post", func(t *testing.T) {
+	t.Run("Test FingerprintAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FingerprintAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.FingerprintAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FingerprintAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.FingerprintAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestFingerprintAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FingerprintAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test FingerprintAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.FingerprintAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test FingerprintAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.FingerprintAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FingerprintAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestFingerprintAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FingerprintAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test FingerprintAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.FingerprintAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FingerprintAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

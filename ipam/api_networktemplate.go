@@ -23,150 +23,386 @@ import (
 
 type NetworktemplateAPI interface {
 	/*
-		Get Retrieve networktemplate objects
-
-		Returns a list of networktemplate objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NetworktemplateAPIGetRequest
-	*/
-	Get(ctx context.Context) NetworktemplateAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListNetworktemplateResponse
-	GetExecute(r NetworktemplateAPIGetRequest) (*ListNetworktemplateResponse, *http.Response, error)
-	/*
-		Post Create a networktemplate object
+		Create Create a networktemplate object
 
 		Creates a new networktemplate object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NetworktemplateAPIPostRequest
+		@return NetworktemplateAPICreateRequest
 	*/
-	Post(ctx context.Context) NetworktemplateAPIPostRequest
+	Create(ctx context.Context) NetworktemplateAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNetworktemplateResponse
-	PostExecute(r NetworktemplateAPIPostRequest) (*CreateNetworktemplateResponse, *http.Response, error)
+	CreateExecute(r NetworktemplateAPICreateRequest) (*CreateNetworktemplateResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a networktemplate object
+		Delete Delete a networktemplate object
 
 		Deletes a specific networktemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the networktemplate object
-		@return NetworktemplateAPIReferenceDeleteRequest
+		@return NetworktemplateAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) NetworktemplateAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NetworktemplateAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r NetworktemplateAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NetworktemplateAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific networktemplate object
+		List Retrieve networktemplate objects
+
+		Returns a list of networktemplate objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NetworktemplateAPIListRequest
+	*/
+	List(ctx context.Context) NetworktemplateAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNetworktemplateResponse
+	ListExecute(r NetworktemplateAPIListRequest) (*ListNetworktemplateResponse, *http.Response, error)
+	/*
+		Read Get a specific networktemplate object
 
 		Returns a specific networktemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the networktemplate object
-		@return NetworktemplateAPIReferenceGetRequest
+		@return NetworktemplateAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) NetworktemplateAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) NetworktemplateAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNetworktemplateResponse
-	ReferenceGetExecute(r NetworktemplateAPIReferenceGetRequest) (*GetNetworktemplateResponse, *http.Response, error)
+	ReadExecute(r NetworktemplateAPIReadRequest) (*GetNetworktemplateResponse, *http.Response, error)
 	/*
-		ReferencePut Update a networktemplate object
+		Update Update a networktemplate object
 
 		Updates a specific networktemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the networktemplate object
-		@return NetworktemplateAPIReferencePutRequest
+		@return NetworktemplateAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) NetworktemplateAPIReferencePutRequest
+	Update(ctx context.Context, reference string) NetworktemplateAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNetworktemplateResponse
-	ReferencePutExecute(r NetworktemplateAPIReferencePutRequest) (*UpdateNetworktemplateResponse, *http.Response, error)
+	UpdateExecute(r NetworktemplateAPIUpdateRequest) (*UpdateNetworktemplateResponse, *http.Response, error)
 }
 
 // NetworktemplateAPIService NetworktemplateAPI service
 type NetworktemplateAPIService internal.Service
 
-type NetworktemplateAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     NetworktemplateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type NetworktemplateAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       NetworktemplateAPI
+	networktemplate  *Networktemplate
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r NetworktemplateAPICreateRequest) Networktemplate(networktemplate Networktemplate) NetworktemplateAPICreateRequest {
+	r.networktemplate = &networktemplate
+	return r
 }
 
 // Enter the field names followed by comma
-func (r NetworktemplateAPIGetRequest) ReturnFields(returnFields string) NetworktemplateAPIGetRequest {
+func (r NetworktemplateAPICreateRequest) ReturnFields(returnFields string) NetworktemplateAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworktemplateAPIGetRequest) ReturnFields2(returnFields2 string) NetworktemplateAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworktemplateAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworktemplateAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NetworktemplateAPICreateRequest) ReturnAsObject(returnAsObject int32) NetworktemplateAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r NetworktemplateAPICreateRequest) Execute() (*CreateNetworktemplateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a networktemplate object
+
+Creates a new networktemplate object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NetworktemplateAPICreateRequest
+*/
+func (a *NetworktemplateAPIService) Create(ctx context.Context) NetworktemplateAPICreateRequest {
+	return NetworktemplateAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateNetworktemplateResponse
+func (a *NetworktemplateAPIService) CreateExecute(r NetworktemplateAPICreateRequest) (*CreateNetworktemplateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateNetworktemplateResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworktemplateAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/networktemplate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.networktemplate == nil {
+		return localVarReturnValue, nil, internal.ReportError("networktemplate is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.networktemplate != nil {
+		if r.networktemplate.Extattrs == nil {
+			r.networktemplate.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.networktemplate.Extattrs)[k]; !ok {
+				(*r.networktemplate.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.networktemplate
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NetworktemplateAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService NetworktemplateAPI
+	reference  string
+}
+
+func (r NetworktemplateAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a networktemplate object
+
+Deletes a specific networktemplate object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the networktemplate object
+	@return NetworktemplateAPIDeleteRequest
+*/
+func (a *NetworktemplateAPIService) Delete(ctx context.Context, reference string) NetworktemplateAPIDeleteRequest {
+	return NetworktemplateAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *NetworktemplateAPIService) DeleteExecute(r NetworktemplateAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworktemplateAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/networktemplate/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type NetworktemplateAPIListRequest struct {
+	ctx              context.Context
+	ApiService       NetworktemplateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r NetworktemplateAPIListRequest) ReturnFields(returnFields string) NetworktemplateAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NetworktemplateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworktemplateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r NetworktemplateAPIGetRequest) MaxResults(maxResults int32) NetworktemplateAPIGetRequest {
+func (r NetworktemplateAPIListRequest) MaxResults(maxResults int32) NetworktemplateAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworktemplateAPIGetRequest) ReturnAsObject(returnAsObject int32) NetworktemplateAPIGetRequest {
+func (r NetworktemplateAPIListRequest) ReturnAsObject(returnAsObject int32) NetworktemplateAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r NetworktemplateAPIGetRequest) Paging(paging int32) NetworktemplateAPIGetRequest {
+func (r NetworktemplateAPIListRequest) Paging(paging int32) NetworktemplateAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r NetworktemplateAPIGetRequest) PageId(pageId string) NetworktemplateAPIGetRequest {
+func (r NetworktemplateAPIListRequest) PageId(pageId string) NetworktemplateAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r NetworktemplateAPIGetRequest) Filters(filters map[string]interface{}) NetworktemplateAPIGetRequest {
+func (r NetworktemplateAPIListRequest) Filters(filters map[string]interface{}) NetworktemplateAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r NetworktemplateAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NetworktemplateAPIGetRequest {
+func (r NetworktemplateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NetworktemplateAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r NetworktemplateAPIGetRequest) Execute() (*ListNetworktemplateResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r NetworktemplateAPIListRequest) Execute() (*ListNetworktemplateResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve networktemplate objects
+List Retrieve networktemplate objects
 
 Returns a list of networktemplate objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NetworktemplateAPIGetRequest
+	@return NetworktemplateAPIListRequest
 */
-func (a *NetworktemplateAPIService) Get(ctx context.Context) NetworktemplateAPIGetRequest {
-	return NetworktemplateAPIGetRequest{
+func (a *NetworktemplateAPIService) List(ctx context.Context) NetworktemplateAPIListRequest {
+	return NetworktemplateAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *NetworktemplateAPIService) Get(ctx context.Context) NetworktemplateAPIG
 // Execute executes the request
 //
 //	@return ListNetworktemplateResponse
-func (a *NetworktemplateAPIService) GetExecute(r NetworktemplateAPIGetRequest) (*ListNetworktemplateResponse, *http.Response, error) {
+func (a *NetworktemplateAPIService) ListExecute(r NetworktemplateAPIListRequest) (*ListNetworktemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *NetworktemplateAPIService) GetExecute(r NetworktemplateAPIGetRequest) (
 		localVarReturnValue *ListNetworktemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworktemplateAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworktemplateAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *NetworktemplateAPIService) GetExecute(r NetworktemplateAPIGetRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *NetworktemplateAPIService) GetExecute(r NetworktemplateAPIGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NetworktemplateAPIPostRequest struct {
-	ctx             context.Context
-	ApiService      NetworktemplateAPI
-	networktemplate *Networktemplate
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
-}
-
-// Object data to create
-func (r NetworktemplateAPIPostRequest) Networktemplate(networktemplate Networktemplate) NetworktemplateAPIPostRequest {
-	r.networktemplate = &networktemplate
-	return r
+type NetworktemplateAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       NetworktemplateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r NetworktemplateAPIPostRequest) ReturnFields(returnFields string) NetworktemplateAPIPostRequest {
+func (r NetworktemplateAPIReadRequest) ReturnFields(returnFields string) NetworktemplateAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworktemplateAPIPostRequest) ReturnFields2(returnFields2 string) NetworktemplateAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworktemplateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworktemplateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworktemplateAPIPostRequest) ReturnAsObject(returnAsObject int32) NetworktemplateAPIPostRequest {
+func (r NetworktemplateAPIReadRequest) ReturnAsObject(returnAsObject int32) NetworktemplateAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NetworktemplateAPIPostRequest) Execute() (*CreateNetworktemplateResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r NetworktemplateAPIReadRequest) Execute() (*GetNetworktemplateResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a networktemplate object
-
-Creates a new networktemplate object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NetworktemplateAPIPostRequest
-*/
-func (a *NetworktemplateAPIService) Post(ctx context.Context) NetworktemplateAPIPostRequest {
-	return NetworktemplateAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateNetworktemplateResponse
-func (a *NetworktemplateAPIService) PostExecute(r NetworktemplateAPIPostRequest) (*CreateNetworktemplateResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateNetworktemplateResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworktemplateAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/networktemplate"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.networktemplate == nil {
-		return localVarReturnValue, nil, internal.ReportError("networktemplate is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.networktemplate != nil {
-		if r.networktemplate.Extattrs == nil {
-			r.networktemplate.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.networktemplate.Extattrs)[k]; !ok {
-				(*r.networktemplate.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.networktemplate
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NetworktemplateAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService NetworktemplateAPI
-	reference  string
-}
-
-func (r NetworktemplateAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a networktemplate object
-
-Deletes a specific networktemplate object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the networktemplate object
-	@return NetworktemplateAPIReferenceDeleteRequest
-*/
-func (a *NetworktemplateAPIService) ReferenceDelete(ctx context.Context, reference string) NetworktemplateAPIReferenceDeleteRequest {
-	return NetworktemplateAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *NetworktemplateAPIService) ReferenceDeleteExecute(r NetworktemplateAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworktemplateAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/networktemplate/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type NetworktemplateAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     NetworktemplateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r NetworktemplateAPIReferenceGetRequest) ReturnFields(returnFields string) NetworktemplateAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworktemplateAPIReferenceGetRequest) ReturnFields2(returnFields2 string) NetworktemplateAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NetworktemplateAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) NetworktemplateAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r NetworktemplateAPIReferenceGetRequest) Execute() (*GetNetworktemplateResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific networktemplate object
+Read Get a specific networktemplate object
 
 Returns a specific networktemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the networktemplate object
-	@return NetworktemplateAPIReferenceGetRequest
+	@return NetworktemplateAPIReadRequest
 */
-func (a *NetworktemplateAPIService) ReferenceGet(ctx context.Context, reference string) NetworktemplateAPIReferenceGetRequest {
-	return NetworktemplateAPIReferenceGetRequest{
+func (a *NetworktemplateAPIService) Read(ctx context.Context, reference string) NetworktemplateAPIReadRequest {
+	return NetworktemplateAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *NetworktemplateAPIService) ReferenceGet(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return GetNetworktemplateResponse
-func (a *NetworktemplateAPIService) ReferenceGetExecute(r NetworktemplateAPIReferenceGetRequest) (*GetNetworktemplateResponse, *http.Response, error) {
+func (a *NetworktemplateAPIService) ReadExecute(r NetworktemplateAPIReadRequest) (*GetNetworktemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *NetworktemplateAPIService) ReferenceGetExecute(r NetworktemplateAPIRefe
 		localVarReturnValue *GetNetworktemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworktemplateAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworktemplateAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *NetworktemplateAPIService) ReferenceGetExecute(r NetworktemplateAPIRefe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *NetworktemplateAPIService) ReferenceGetExecute(r NetworktemplateAPIRefe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NetworktemplateAPIReferencePutRequest struct {
-	ctx             context.Context
-	ApiService      NetworktemplateAPI
-	reference       string
-	networktemplate *Networktemplate
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+type NetworktemplateAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       NetworktemplateAPI
+	reference        string
+	networktemplate  *Networktemplate
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r NetworktemplateAPIReferencePutRequest) Networktemplate(networktemplate Networktemplate) NetworktemplateAPIReferencePutRequest {
+func (r NetworktemplateAPIUpdateRequest) Networktemplate(networktemplate Networktemplate) NetworktemplateAPIUpdateRequest {
 	r.networktemplate = &networktemplate
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NetworktemplateAPIReferencePutRequest) ReturnFields(returnFields string) NetworktemplateAPIReferencePutRequest {
+func (r NetworktemplateAPIUpdateRequest) ReturnFields(returnFields string) NetworktemplateAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworktemplateAPIReferencePutRequest) ReturnFields2(returnFields2 string) NetworktemplateAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworktemplateAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworktemplateAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworktemplateAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) NetworktemplateAPIReferencePutRequest {
+func (r NetworktemplateAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NetworktemplateAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NetworktemplateAPIReferencePutRequest) Execute() (*UpdateNetworktemplateResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r NetworktemplateAPIUpdateRequest) Execute() (*UpdateNetworktemplateResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a networktemplate object
+Update Update a networktemplate object
 
 Updates a specific networktemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the networktemplate object
-	@return NetworktemplateAPIReferencePutRequest
+	@return NetworktemplateAPIUpdateRequest
 */
-func (a *NetworktemplateAPIService) ReferencePut(ctx context.Context, reference string) NetworktemplateAPIReferencePutRequest {
-	return NetworktemplateAPIReferencePutRequest{
+func (a *NetworktemplateAPIService) Update(ctx context.Context, reference string) NetworktemplateAPIUpdateRequest {
+	return NetworktemplateAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *NetworktemplateAPIService) ReferencePut(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return UpdateNetworktemplateResponse
-func (a *NetworktemplateAPIService) ReferencePutExecute(r NetworktemplateAPIReferencePutRequest) (*UpdateNetworktemplateResponse, *http.Response, error) {
+func (a *NetworktemplateAPIService) UpdateExecute(r NetworktemplateAPIUpdateRequest) (*UpdateNetworktemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *NetworktemplateAPIService) ReferencePutExecute(r NetworktemplateAPIRefe
 		localVarReturnValue *UpdateNetworktemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworktemplateAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworktemplateAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *NetworktemplateAPIService) ReferencePutExecute(r NetworktemplateAPIRefe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

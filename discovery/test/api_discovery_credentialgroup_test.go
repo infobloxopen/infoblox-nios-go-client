@@ -23,11 +23,11 @@ func TestDiscoveryCredentialgroupAPIService(t *testing.T) {
 
 	apiClient := discovery.NewAPIClient()
 
-	t.Run("Test DiscoveryCredentialgroupAPIService DiscoverycredentialgroupGet", func(t *testing.T) {
+	t.Run("Test DiscoveryCredentialgroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DiscoveryCredentialgroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDiscoveryCredentialgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryCredentialgroupAPIService DiscoverycredentialgroupPost", func(t *testing.T) {
+	t.Run("Test DiscoveryCredentialgroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DiscoveryCredentialgroupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DiscoveryCredentialgroupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DiscoveryCredentialgroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDiscoveryCredentialgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryCredentialgroupAPIService DiscoverycredentialgroupReferenceDelete", func(t *testing.T) {
+	t.Run("Test DiscoveryCredentialgroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DiscoveryCredentialgroupAPIService DiscoverycredentialgroupReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryCredentialgroupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDiscoveryCredentialgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryCredentialgroupAPIService DiscoverycredentialgroupReferencePut", func(t *testing.T) {
+	t.Run("Test DiscoveryCredentialgroupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DiscoveryCredentialgroupAPI.DiscoverycredentialgroupReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryCredentialgroupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

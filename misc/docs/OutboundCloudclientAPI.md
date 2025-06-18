@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OutboundcloudclientGet**](OutboundCloudclientAPI.md#OutboundcloudclientGet) | **Get** /outbound:cloudclient | Retrieve outbound:cloudclient objects
-[**OutboundcloudclientReferenceGet**](OutboundCloudclientAPI.md#OutboundcloudclientReferenceGet) | **Get** /outbound:cloudclient/{reference} | Get a specific outbound:cloudclient object
-[**OutboundcloudclientReferencePut**](OutboundCloudclientAPI.md#OutboundcloudclientReferencePut) | **Put** /outbound:cloudclient/{reference} | Update a outbound:cloudclient object
+[**List**](OutboundCloudclientAPI.md#List) | **Get** /outbound:cloudclient | Retrieve outbound:cloudclient objects
+[**Read**](OutboundCloudclientAPI.md#Read) | **Get** /outbound:cloudclient/{reference} | Get a specific outbound:cloudclient object
+[**Update**](OutboundCloudclientAPI.md#Update) | **Put** /outbound:cloudclient/{reference} | Update a outbound:cloudclient object
 
 
 
-## OutboundcloudclientGet
+## List
 
-> ListOutboundCloudclientResponse OutboundcloudclientGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListOutboundCloudclientResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve outbound:cloudclient objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.OutboundCloudclientAPI.OutboundcloudclientGet(context.Background()).Execute()
+	resp, r, err := apiClient.OutboundCloudclientAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutboundCloudclientAPI.OutboundcloudclientGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OutboundCloudclientAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OutboundcloudclientGet`: ListOutboundCloudclientResponse
-	fmt.Fprintf(os.Stdout, "Response from `OutboundCloudclientAPI.OutboundcloudclientGet`: %v\n", resp)
+	// response from `List`: ListOutboundCloudclientResponse
+	fmt.Fprintf(os.Stdout, "Response from `OutboundCloudclientAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `OutboundCloudclientAPIOutboundcloudclientGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `OutboundCloudclientAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OutboundcloudclientReferenceGet
+## Read
 
-> GetOutboundCloudclientResponse OutboundcloudclientReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetOutboundCloudclientResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific outbound:cloudclient object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the outbound:cloudclient object
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.OutboundCloudclientAPI.OutboundcloudclientReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.OutboundCloudclientAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutboundCloudclientAPI.OutboundcloudclientReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OutboundCloudclientAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OutboundcloudclientReferenceGet`: GetOutboundCloudclientResponse
-	fmt.Fprintf(os.Stdout, "Response from `OutboundCloudclientAPI.OutboundcloudclientReferenceGet`: %v\n", resp)
+	// response from `Read`: GetOutboundCloudclientResponse
+	fmt.Fprintf(os.Stdout, "Response from `OutboundCloudclientAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `OutboundCloudclientAPIOutboundcloudclientReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `OutboundCloudclientAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## OutboundcloudclientReferencePut
+## Update
 
-> UpdateOutboundCloudclientResponse OutboundcloudclientReferencePut(ctx, reference).OutboundCloudclient(outboundCloudclient).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateOutboundCloudclientResponse Update(ctx, reference).OutboundCloudclient(outboundCloudclient).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a outbound:cloudclient object
 
@@ -180,13 +180,13 @@ func main() {
 	outboundCloudclient := *misc.NewOutboundCloudclient() // OutboundCloudclient | Object data to update
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.OutboundCloudclientAPI.OutboundcloudclientReferencePut(context.Background(), reference).OutboundCloudclient(outboundCloudclient).Execute()
+	resp, r, err := apiClient.OutboundCloudclientAPI.Update(context.Background(), reference).OutboundCloudclient(outboundCloudclient).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OutboundCloudclientAPI.OutboundcloudclientReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OutboundCloudclientAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OutboundcloudclientReferencePut`: UpdateOutboundCloudclientResponse
-	fmt.Fprintf(os.Stdout, "Response from `OutboundCloudclientAPI.OutboundcloudclientReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateOutboundCloudclientResponse
+	fmt.Fprintf(os.Stdout, "Response from `OutboundCloudclientAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `OutboundCloudclientAPIOutboundcloudclientReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `OutboundCloudclientAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **outboundCloudclient** | [**OutboundCloudclient**](OutboundCloudclient.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

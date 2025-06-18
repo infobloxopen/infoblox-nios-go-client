@@ -23,11 +23,11 @@ func TestAllendpointsAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test AllendpointsAPIService Get", func(t *testing.T) {
+	t.Run("Test AllendpointsAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AllendpointsAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AllendpointsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestAllendpointsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AllendpointsAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test AllendpointsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.AllendpointsAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AllendpointsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

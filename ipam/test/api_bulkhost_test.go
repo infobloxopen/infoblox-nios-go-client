@@ -23,11 +23,11 @@ func TestBulkhostAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test BulkhostAPIService Get", func(t *testing.T) {
+	t.Run("Test BulkhostAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.BulkhostAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BulkhostAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestBulkhostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BulkhostAPIService Post", func(t *testing.T) {
+	t.Run("Test BulkhostAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.BulkhostAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.BulkhostAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BulkhostAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.BulkhostAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestBulkhostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BulkhostAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test BulkhostAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.BulkhostAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test BulkhostAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.BulkhostAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.BulkhostAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestBulkhostAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BulkhostAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test BulkhostAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.BulkhostAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.BulkhostAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

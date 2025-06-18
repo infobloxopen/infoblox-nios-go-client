@@ -23,11 +23,11 @@ func TestSmartfolderGlobalAPIService(t *testing.T) {
 
 	apiClient := smartfolder.NewAPIClient()
 
-	t.Run("Test SmartfolderGlobalAPIService SmartfolderglobalGet", func(t *testing.T) {
+	t.Run("Test SmartfolderGlobalAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SmartfolderGlobalAPI.SmartfolderglobalGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SmartfolderGlobalAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestSmartfolderGlobalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SmartfolderGlobalAPIService SmartfolderglobalPost", func(t *testing.T) {
+	t.Run("Test SmartfolderGlobalAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SmartfolderGlobalAPI.SmartfolderglobalPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.SmartfolderGlobalAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SmartfolderGlobalAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.SmartfolderGlobalAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestSmartfolderGlobalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SmartfolderGlobalAPIService SmartfolderglobalReferenceDelete", func(t *testing.T) {
+	t.Run("Test SmartfolderGlobalAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.SmartfolderGlobalAPI.SmartfolderglobalReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SmartfolderGlobalAPIService SmartfolderglobalReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.SmartfolderGlobalAPI.SmartfolderglobalReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SmartfolderGlobalAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestSmartfolderGlobalAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SmartfolderGlobalAPIService SmartfolderglobalReferencePut", func(t *testing.T) {
+	t.Run("Test SmartfolderGlobalAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.SmartfolderGlobalAPI.SmartfolderglobalReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SmartfolderGlobalAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridcloudapivmaddressGet**](GridCloudapiVmaddressAPI.md#GridcloudapivmaddressGet) | **Get** /grid:cloudapi:vmaddress | Retrieve grid:cloudapi:vmaddress objects
-[**GridcloudapivmaddressReferenceGet**](GridCloudapiVmaddressAPI.md#GridcloudapivmaddressReferenceGet) | **Get** /grid:cloudapi:vmaddress/{reference} | Get a specific grid:cloudapi:vmaddress object
+[**List**](GridCloudapiVmaddressAPI.md#List) | **Get** /grid:cloudapi:vmaddress | Retrieve grid:cloudapi:vmaddress objects
+[**Read**](GridCloudapiVmaddressAPI.md#Read) | **Get** /grid:cloudapi:vmaddress/{reference} | Get a specific grid:cloudapi:vmaddress object
 
 
 
-## GridcloudapivmaddressGet
+## List
 
-> ListGridCloudapiVmaddressResponse GridcloudapivmaddressGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridCloudapiVmaddressResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:cloudapi:vmaddress objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiVmaddressAPI.GridcloudapivmaddressGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridCloudapiVmaddressAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiVmaddressAPI.GridcloudapivmaddressGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiVmaddressAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapivmaddressGet`: ListGridCloudapiVmaddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiVmaddressAPI.GridcloudapivmaddressGet`: %v\n", resp)
+	// response from `List`: ListGridCloudapiVmaddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiVmaddressAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiVmaddressAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridcloudapivmaddressReferenceGet
+## Read
 
-> GetGridCloudapiVmaddressResponse GridcloudapivmaddressReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridCloudapiVmaddressResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:cloudapi:vmaddress object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:cloudapi:vmaddress object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridCloudapiVmaddressAPI.GridcloudapivmaddressReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridCloudapiVmaddressAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiVmaddressAPI.GridcloudapivmaddressReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridCloudapiVmaddressAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridcloudapivmaddressReferenceGet`: GetGridCloudapiVmaddressResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiVmaddressAPI.GridcloudapivmaddressReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridCloudapiVmaddressResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridCloudapiVmaddressAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridCloudapiVmaddressAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

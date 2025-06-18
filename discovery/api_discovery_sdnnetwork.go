@@ -23,110 +23,110 @@ import (
 
 type DiscoverySdnnetworkAPI interface {
 	/*
-		DiscoverysdnnetworkGet Retrieve discovery:sdnnetwork objects
+		List Retrieve discovery:sdnnetwork objects
 
 		Returns a list of discovery:sdnnetwork objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest
+		@return DiscoverySdnnetworkAPIListRequest
 	*/
-	DiscoverysdnnetworkGet(ctx context.Context) DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest
+	List(ctx context.Context) DiscoverySdnnetworkAPIListRequest
 
-	// DiscoverysdnnetworkGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDiscoverySdnnetworkResponse
-	DiscoverysdnnetworkGetExecute(r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) (*ListDiscoverySdnnetworkResponse, *http.Response, error)
+	ListExecute(r DiscoverySdnnetworkAPIListRequest) (*ListDiscoverySdnnetworkResponse, *http.Response, error)
 	/*
-		DiscoverysdnnetworkReferenceGet Get a specific discovery:sdnnetwork object
+		Read Get a specific discovery:sdnnetwork object
 
 		Returns a specific discovery:sdnnetwork object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:sdnnetwork object
-		@return DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest
+		@return DiscoverySdnnetworkAPIReadRequest
 	*/
-	DiscoverysdnnetworkReferenceGet(ctx context.Context, reference string) DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoverySdnnetworkAPIReadRequest
 
-	// DiscoverysdnnetworkReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoverySdnnetworkResponse
-	DiscoverysdnnetworkReferenceGetExecute(r DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest) (*GetDiscoverySdnnetworkResponse, *http.Response, error)
+	ReadExecute(r DiscoverySdnnetworkAPIReadRequest) (*GetDiscoverySdnnetworkResponse, *http.Response, error)
 }
 
 // DiscoverySdnnetworkAPIService DiscoverySdnnetworkAPI service
 type DiscoverySdnnetworkAPIService internal.Service
 
-type DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest struct {
-	ctx            context.Context
-	ApiService     DiscoverySdnnetworkAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DiscoverySdnnetworkAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DiscoverySdnnetworkAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) ReturnFields(returnFields string) DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest {
+func (r DiscoverySdnnetworkAPIListRequest) ReturnFields(returnFields string) DiscoverySdnnetworkAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) ReturnFields2(returnFields2 string) DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoverySdnnetworkAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoverySdnnetworkAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) MaxResults(maxResults int32) DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest {
+func (r DiscoverySdnnetworkAPIListRequest) MaxResults(maxResults int32) DiscoverySdnnetworkAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) ReturnAsObject(returnAsObject int32) DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest {
+func (r DiscoverySdnnetworkAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoverySdnnetworkAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) Paging(paging int32) DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest {
+func (r DiscoverySdnnetworkAPIListRequest) Paging(paging int32) DiscoverySdnnetworkAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) PageId(pageId string) DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest {
+func (r DiscoverySdnnetworkAPIListRequest) PageId(pageId string) DiscoverySdnnetworkAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) Filters(filters map[string]interface{}) DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest {
+func (r DiscoverySdnnetworkAPIListRequest) Filters(filters map[string]interface{}) DiscoverySdnnetworkAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest {
+func (r DiscoverySdnnetworkAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoverySdnnetworkAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) Execute() (*ListDiscoverySdnnetworkResponse, *http.Response, error) {
-	return r.ApiService.DiscoverysdnnetworkGetExecute(r)
+func (r DiscoverySdnnetworkAPIListRequest) Execute() (*ListDiscoverySdnnetworkResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DiscoverysdnnetworkGet Retrieve discovery:sdnnetwork objects
+List Retrieve discovery:sdnnetwork objects
 
 Returns a list of discovery:sdnnetwork objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest
+	@return DiscoverySdnnetworkAPIListRequest
 */
-func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkGet(ctx context.Context) DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest {
-	return DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest{
+func (a *DiscoverySdnnetworkAPIService) List(ctx context.Context) DiscoverySdnnetworkAPIListRequest {
+	return DiscoverySdnnetworkAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkGet(ctx context.Conte
 // Execute executes the request
 //
 //	@return ListDiscoverySdnnetworkResponse
-func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkGetExecute(r DiscoverySdnnetworkAPIDiscoverysdnnetworkGetRequest) (*ListDiscoverySdnnetworkResponse, *http.Response, error) {
+func (a *DiscoverySdnnetworkAPIService) ListExecute(r DiscoverySdnnetworkAPIListRequest) (*ListDiscoverySdnnetworkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkGetExecute(r Discover
 		localVarReturnValue *ListDiscoverySdnnetworkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoverySdnnetworkAPIService.DiscoverysdnnetworkGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoverySdnnetworkAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkGetExecute(r Discover
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkGetExecute(r Discover
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DiscoverySdnnetworkAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DiscoverySdnnetworkAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DiscoverySdnnetworkAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest) ReturnFields(returnFields string) DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest {
+func (r DiscoverySdnnetworkAPIReadRequest) ReturnFields(returnFields string) DiscoverySdnnetworkAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoverySdnnetworkAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoverySdnnetworkAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest {
+func (r DiscoverySdnnetworkAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoverySdnnetworkAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest) Execute() (*GetDiscoverySdnnetworkResponse, *http.Response, error) {
-	return r.ApiService.DiscoverysdnnetworkReferenceGetExecute(r)
+func (r DiscoverySdnnetworkAPIReadRequest) Execute() (*GetDiscoverySdnnetworkResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DiscoverysdnnetworkReferenceGet Get a specific discovery:sdnnetwork object
+Read Get a specific discovery:sdnnetwork object
 
 Returns a specific discovery:sdnnetwork object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:sdnnetwork object
-	@return DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest
+	@return DiscoverySdnnetworkAPIReadRequest
 */
-func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkReferenceGet(ctx context.Context, reference string) DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest {
-	return DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest{
+func (a *DiscoverySdnnetworkAPIService) Read(ctx context.Context, reference string) DiscoverySdnnetworkAPIReadRequest {
+	return DiscoverySdnnetworkAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkReferenceGet(ctx cont
 // Execute executes the request
 //
 //	@return GetDiscoverySdnnetworkResponse
-func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkReferenceGetExecute(r DiscoverySdnnetworkAPIDiscoverysdnnetworkReferenceGetRequest) (*GetDiscoverySdnnetworkResponse, *http.Response, error) {
+func (a *DiscoverySdnnetworkAPIService) ReadExecute(r DiscoverySdnnetworkAPIReadRequest) (*GetDiscoverySdnnetworkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkReferenceGetExecute(r
 		localVarReturnValue *GetDiscoverySdnnetworkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoverySdnnetworkAPIService.DiscoverysdnnetworkReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoverySdnnetworkAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *DiscoverySdnnetworkAPIService) DiscoverysdnnetworkReferenceGetExecute(r
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

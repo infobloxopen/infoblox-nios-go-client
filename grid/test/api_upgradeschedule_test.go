@@ -23,11 +23,11 @@ func TestUpgradescheduleAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test UpgradescheduleAPIService Get", func(t *testing.T) {
+	t.Run("Test UpgradescheduleAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UpgradescheduleAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UpgradescheduleAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestUpgradescheduleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradescheduleAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test UpgradescheduleAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.UpgradescheduleAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.UpgradescheduleAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestUpgradescheduleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradescheduleAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test UpgradescheduleAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.UpgradescheduleAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.UpgradescheduleAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

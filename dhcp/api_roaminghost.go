@@ -23,150 +23,386 @@ import (
 
 type RoaminghostAPI interface {
 	/*
-		Get Retrieve roaminghost objects
-
-		Returns a list of roaminghost objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RoaminghostAPIGetRequest
-	*/
-	Get(ctx context.Context) RoaminghostAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListRoaminghostResponse
-	GetExecute(r RoaminghostAPIGetRequest) (*ListRoaminghostResponse, *http.Response, error)
-	/*
-		Post Create a roaminghost object
+		Create Create a roaminghost object
 
 		Creates a new roaminghost object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RoaminghostAPIPostRequest
+		@return RoaminghostAPICreateRequest
 	*/
-	Post(ctx context.Context) RoaminghostAPIPostRequest
+	Create(ctx context.Context) RoaminghostAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRoaminghostResponse
-	PostExecute(r RoaminghostAPIPostRequest) (*CreateRoaminghostResponse, *http.Response, error)
+	CreateExecute(r RoaminghostAPICreateRequest) (*CreateRoaminghostResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a roaminghost object
+		Delete Delete a roaminghost object
 
 		Deletes a specific roaminghost object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the roaminghost object
-		@return RoaminghostAPIReferenceDeleteRequest
+		@return RoaminghostAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) RoaminghostAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RoaminghostAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r RoaminghostAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RoaminghostAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific roaminghost object
+		List Retrieve roaminghost objects
+
+		Returns a list of roaminghost objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RoaminghostAPIListRequest
+	*/
+	List(ctx context.Context) RoaminghostAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRoaminghostResponse
+	ListExecute(r RoaminghostAPIListRequest) (*ListRoaminghostResponse, *http.Response, error)
+	/*
+		Read Get a specific roaminghost object
 
 		Returns a specific roaminghost object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the roaminghost object
-		@return RoaminghostAPIReferenceGetRequest
+		@return RoaminghostAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) RoaminghostAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) RoaminghostAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRoaminghostResponse
-	ReferenceGetExecute(r RoaminghostAPIReferenceGetRequest) (*GetRoaminghostResponse, *http.Response, error)
+	ReadExecute(r RoaminghostAPIReadRequest) (*GetRoaminghostResponse, *http.Response, error)
 	/*
-		ReferencePut Update a roaminghost object
+		Update Update a roaminghost object
 
 		Updates a specific roaminghost object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the roaminghost object
-		@return RoaminghostAPIReferencePutRequest
+		@return RoaminghostAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) RoaminghostAPIReferencePutRequest
+	Update(ctx context.Context, reference string) RoaminghostAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRoaminghostResponse
-	ReferencePutExecute(r RoaminghostAPIReferencePutRequest) (*UpdateRoaminghostResponse, *http.Response, error)
+	UpdateExecute(r RoaminghostAPIUpdateRequest) (*UpdateRoaminghostResponse, *http.Response, error)
 }
 
 // RoaminghostAPIService RoaminghostAPI service
 type RoaminghostAPIService internal.Service
 
-type RoaminghostAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     RoaminghostAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type RoaminghostAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       RoaminghostAPI
+	roaminghost      *Roaminghost
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r RoaminghostAPICreateRequest) Roaminghost(roaminghost Roaminghost) RoaminghostAPICreateRequest {
+	r.roaminghost = &roaminghost
+	return r
 }
 
 // Enter the field names followed by comma
-func (r RoaminghostAPIGetRequest) ReturnFields(returnFields string) RoaminghostAPIGetRequest {
+func (r RoaminghostAPICreateRequest) ReturnFields(returnFields string) RoaminghostAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RoaminghostAPIGetRequest) ReturnFields2(returnFields2 string) RoaminghostAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r RoaminghostAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RoaminghostAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RoaminghostAPICreateRequest) ReturnAsObject(returnAsObject int32) RoaminghostAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r RoaminghostAPICreateRequest) Execute() (*CreateRoaminghostResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a roaminghost object
+
+Creates a new roaminghost object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RoaminghostAPICreateRequest
+*/
+func (a *RoaminghostAPIService) Create(ctx context.Context) RoaminghostAPICreateRequest {
+	return RoaminghostAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateRoaminghostResponse
+func (a *RoaminghostAPIService) CreateExecute(r RoaminghostAPICreateRequest) (*CreateRoaminghostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateRoaminghostResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RoaminghostAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/roaminghost"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.roaminghost == nil {
+		return localVarReturnValue, nil, internal.ReportError("roaminghost is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.roaminghost != nil {
+		if r.roaminghost.Extattrs == nil {
+			r.roaminghost.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.roaminghost.Extattrs)[k]; !ok {
+				(*r.roaminghost.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.roaminghost
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RoaminghostAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RoaminghostAPI
+	reference  string
+}
+
+func (r RoaminghostAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a roaminghost object
+
+Deletes a specific roaminghost object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the roaminghost object
+	@return RoaminghostAPIDeleteRequest
+*/
+func (a *RoaminghostAPIService) Delete(ctx context.Context, reference string) RoaminghostAPIDeleteRequest {
+	return RoaminghostAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RoaminghostAPIService) DeleteExecute(r RoaminghostAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RoaminghostAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/roaminghost/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RoaminghostAPIListRequest struct {
+	ctx              context.Context
+	ApiService       RoaminghostAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RoaminghostAPIListRequest) ReturnFields(returnFields string) RoaminghostAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RoaminghostAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RoaminghostAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RoaminghostAPIGetRequest) MaxResults(maxResults int32) RoaminghostAPIGetRequest {
+func (r RoaminghostAPIListRequest) MaxResults(maxResults int32) RoaminghostAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RoaminghostAPIGetRequest) ReturnAsObject(returnAsObject int32) RoaminghostAPIGetRequest {
+func (r RoaminghostAPIListRequest) ReturnAsObject(returnAsObject int32) RoaminghostAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RoaminghostAPIGetRequest) Paging(paging int32) RoaminghostAPIGetRequest {
+func (r RoaminghostAPIListRequest) Paging(paging int32) RoaminghostAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RoaminghostAPIGetRequest) PageId(pageId string) RoaminghostAPIGetRequest {
+func (r RoaminghostAPIListRequest) PageId(pageId string) RoaminghostAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RoaminghostAPIGetRequest) Filters(filters map[string]interface{}) RoaminghostAPIGetRequest {
+func (r RoaminghostAPIListRequest) Filters(filters map[string]interface{}) RoaminghostAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RoaminghostAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RoaminghostAPIGetRequest {
+func (r RoaminghostAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RoaminghostAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RoaminghostAPIGetRequest) Execute() (*ListRoaminghostResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r RoaminghostAPIListRequest) Execute() (*ListRoaminghostResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve roaminghost objects
+List Retrieve roaminghost objects
 
 Returns a list of roaminghost objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RoaminghostAPIGetRequest
+	@return RoaminghostAPIListRequest
 */
-func (a *RoaminghostAPIService) Get(ctx context.Context) RoaminghostAPIGetRequest {
-	return RoaminghostAPIGetRequest{
+func (a *RoaminghostAPIService) List(ctx context.Context) RoaminghostAPIListRequest {
+	return RoaminghostAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *RoaminghostAPIService) Get(ctx context.Context) RoaminghostAPIGetReques
 // Execute executes the request
 //
 //	@return ListRoaminghostResponse
-func (a *RoaminghostAPIService) GetExecute(r RoaminghostAPIGetRequest) (*ListRoaminghostResponse, *http.Response, error) {
+func (a *RoaminghostAPIService) ListExecute(r RoaminghostAPIListRequest) (*ListRoaminghostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *RoaminghostAPIService) GetExecute(r RoaminghostAPIGetRequest) (*ListRoa
 		localVarReturnValue *ListRoaminghostResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RoaminghostAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RoaminghostAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *RoaminghostAPIService) GetExecute(r RoaminghostAPIGetRequest) (*ListRoa
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *RoaminghostAPIService) GetExecute(r RoaminghostAPIGetRequest) (*ListRoa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RoaminghostAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     RoaminghostAPI
-	roaminghost    *Roaminghost
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r RoaminghostAPIPostRequest) Roaminghost(roaminghost Roaminghost) RoaminghostAPIPostRequest {
-	r.roaminghost = &roaminghost
-	return r
+type RoaminghostAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       RoaminghostAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r RoaminghostAPIPostRequest) ReturnFields(returnFields string) RoaminghostAPIPostRequest {
+func (r RoaminghostAPIReadRequest) ReturnFields(returnFields string) RoaminghostAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RoaminghostAPIPostRequest) ReturnFields2(returnFields2 string) RoaminghostAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r RoaminghostAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RoaminghostAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RoaminghostAPIPostRequest) ReturnAsObject(returnAsObject int32) RoaminghostAPIPostRequest {
+func (r RoaminghostAPIReadRequest) ReturnAsObject(returnAsObject int32) RoaminghostAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RoaminghostAPIPostRequest) Execute() (*CreateRoaminghostResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r RoaminghostAPIReadRequest) Execute() (*GetRoaminghostResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a roaminghost object
-
-Creates a new roaminghost object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RoaminghostAPIPostRequest
-*/
-func (a *RoaminghostAPIService) Post(ctx context.Context) RoaminghostAPIPostRequest {
-	return RoaminghostAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateRoaminghostResponse
-func (a *RoaminghostAPIService) PostExecute(r RoaminghostAPIPostRequest) (*CreateRoaminghostResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateRoaminghostResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RoaminghostAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/roaminghost"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.roaminghost == nil {
-		return localVarReturnValue, nil, internal.ReportError("roaminghost is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.roaminghost != nil {
-		if r.roaminghost.Extattrs == nil {
-			r.roaminghost.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.roaminghost.Extattrs)[k]; !ok {
-				(*r.roaminghost.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.roaminghost
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RoaminghostAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RoaminghostAPI
-	reference  string
-}
-
-func (r RoaminghostAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a roaminghost object
-
-Deletes a specific roaminghost object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the roaminghost object
-	@return RoaminghostAPIReferenceDeleteRequest
-*/
-func (a *RoaminghostAPIService) ReferenceDelete(ctx context.Context, reference string) RoaminghostAPIReferenceDeleteRequest {
-	return RoaminghostAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RoaminghostAPIService) ReferenceDeleteExecute(r RoaminghostAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RoaminghostAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/roaminghost/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RoaminghostAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     RoaminghostAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r RoaminghostAPIReferenceGetRequest) ReturnFields(returnFields string) RoaminghostAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RoaminghostAPIReferenceGetRequest) ReturnFields2(returnFields2 string) RoaminghostAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RoaminghostAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) RoaminghostAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r RoaminghostAPIReferenceGetRequest) Execute() (*GetRoaminghostResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific roaminghost object
+Read Get a specific roaminghost object
 
 Returns a specific roaminghost object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the roaminghost object
-	@return RoaminghostAPIReferenceGetRequest
+	@return RoaminghostAPIReadRequest
 */
-func (a *RoaminghostAPIService) ReferenceGet(ctx context.Context, reference string) RoaminghostAPIReferenceGetRequest {
-	return RoaminghostAPIReferenceGetRequest{
+func (a *RoaminghostAPIService) Read(ctx context.Context, reference string) RoaminghostAPIReadRequest {
+	return RoaminghostAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RoaminghostAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetRoaminghostResponse
-func (a *RoaminghostAPIService) ReferenceGetExecute(r RoaminghostAPIReferenceGetRequest) (*GetRoaminghostResponse, *http.Response, error) {
+func (a *RoaminghostAPIService) ReadExecute(r RoaminghostAPIReadRequest) (*GetRoaminghostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RoaminghostAPIService) ReferenceGetExecute(r RoaminghostAPIReferenceGet
 		localVarReturnValue *GetRoaminghostResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RoaminghostAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RoaminghostAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *RoaminghostAPIService) ReferenceGetExecute(r RoaminghostAPIReferenceGet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *RoaminghostAPIService) ReferenceGetExecute(r RoaminghostAPIReferenceGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RoaminghostAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     RoaminghostAPI
-	reference      string
-	roaminghost    *Roaminghost
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type RoaminghostAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       RoaminghostAPI
+	reference        string
+	roaminghost      *Roaminghost
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r RoaminghostAPIReferencePutRequest) Roaminghost(roaminghost Roaminghost) RoaminghostAPIReferencePutRequest {
+func (r RoaminghostAPIUpdateRequest) Roaminghost(roaminghost Roaminghost) RoaminghostAPIUpdateRequest {
 	r.roaminghost = &roaminghost
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RoaminghostAPIReferencePutRequest) ReturnFields(returnFields string) RoaminghostAPIReferencePutRequest {
+func (r RoaminghostAPIUpdateRequest) ReturnFields(returnFields string) RoaminghostAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RoaminghostAPIReferencePutRequest) ReturnFields2(returnFields2 string) RoaminghostAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r RoaminghostAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RoaminghostAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RoaminghostAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) RoaminghostAPIReferencePutRequest {
+func (r RoaminghostAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RoaminghostAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RoaminghostAPIReferencePutRequest) Execute() (*UpdateRoaminghostResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r RoaminghostAPIUpdateRequest) Execute() (*UpdateRoaminghostResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a roaminghost object
+Update Update a roaminghost object
 
 Updates a specific roaminghost object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the roaminghost object
-	@return RoaminghostAPIReferencePutRequest
+	@return RoaminghostAPIUpdateRequest
 */
-func (a *RoaminghostAPIService) ReferencePut(ctx context.Context, reference string) RoaminghostAPIReferencePutRequest {
-	return RoaminghostAPIReferencePutRequest{
+func (a *RoaminghostAPIService) Update(ctx context.Context, reference string) RoaminghostAPIUpdateRequest {
+	return RoaminghostAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RoaminghostAPIService) ReferencePut(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return UpdateRoaminghostResponse
-func (a *RoaminghostAPIService) ReferencePutExecute(r RoaminghostAPIReferencePutRequest) (*UpdateRoaminghostResponse, *http.Response, error) {
+func (a *RoaminghostAPIService) UpdateExecute(r RoaminghostAPIUpdateRequest) (*UpdateRoaminghostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RoaminghostAPIService) ReferencePutExecute(r RoaminghostAPIReferencePut
 		localVarReturnValue *UpdateRoaminghostResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RoaminghostAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RoaminghostAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *RoaminghostAPIService) ReferencePutExecute(r RoaminghostAPIReferencePut
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

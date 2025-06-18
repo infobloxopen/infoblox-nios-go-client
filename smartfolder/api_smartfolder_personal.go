@@ -23,150 +23,374 @@ import (
 
 type SmartfolderPersonalAPI interface {
 	/*
-		SmartfolderpersonalGet Retrieve smartfolder:personal objects
-
-		Returns a list of smartfolder:personal objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SmartfolderPersonalAPISmartfolderpersonalGetRequest
-	*/
-	SmartfolderpersonalGet(ctx context.Context) SmartfolderPersonalAPISmartfolderpersonalGetRequest
-
-	// SmartfolderpersonalGetExecute executes the request
-	//  @return ListSmartfolderPersonalResponse
-	SmartfolderpersonalGetExecute(r SmartfolderPersonalAPISmartfolderpersonalGetRequest) (*ListSmartfolderPersonalResponse, *http.Response, error)
-	/*
-		SmartfolderpersonalPost Create a smartfolder:personal object
+		Create Create a smartfolder:personal object
 
 		Creates a new smartfolder:personal object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SmartfolderPersonalAPISmartfolderpersonalPostRequest
+		@return SmartfolderPersonalAPICreateRequest
 	*/
-	SmartfolderpersonalPost(ctx context.Context) SmartfolderPersonalAPISmartfolderpersonalPostRequest
+	Create(ctx context.Context) SmartfolderPersonalAPICreateRequest
 
-	// SmartfolderpersonalPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateSmartfolderPersonalResponse
-	SmartfolderpersonalPostExecute(r SmartfolderPersonalAPISmartfolderpersonalPostRequest) (*CreateSmartfolderPersonalResponse, *http.Response, error)
+	CreateExecute(r SmartfolderPersonalAPICreateRequest) (*CreateSmartfolderPersonalResponse, *http.Response, error)
 	/*
-		SmartfolderpersonalReferenceDelete Delete a smartfolder:personal object
+		Delete Delete a smartfolder:personal object
 
 		Deletes a specific smartfolder:personal object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the smartfolder:personal object
-		@return SmartfolderPersonalAPISmartfolderpersonalReferenceDeleteRequest
+		@return SmartfolderPersonalAPIDeleteRequest
 	*/
-	SmartfolderpersonalReferenceDelete(ctx context.Context, reference string) SmartfolderPersonalAPISmartfolderpersonalReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) SmartfolderPersonalAPIDeleteRequest
 
-	// SmartfolderpersonalReferenceDeleteExecute executes the request
-	SmartfolderpersonalReferenceDeleteExecute(r SmartfolderPersonalAPISmartfolderpersonalReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r SmartfolderPersonalAPIDeleteRequest) (*http.Response, error)
 	/*
-		SmartfolderpersonalReferenceGet Get a specific smartfolder:personal object
+		List Retrieve smartfolder:personal objects
+
+		Returns a list of smartfolder:personal objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return SmartfolderPersonalAPIListRequest
+	*/
+	List(ctx context.Context) SmartfolderPersonalAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListSmartfolderPersonalResponse
+	ListExecute(r SmartfolderPersonalAPIListRequest) (*ListSmartfolderPersonalResponse, *http.Response, error)
+	/*
+		Read Get a specific smartfolder:personal object
 
 		Returns a specific smartfolder:personal object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the smartfolder:personal object
-		@return SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest
+		@return SmartfolderPersonalAPIReadRequest
 	*/
-	SmartfolderpersonalReferenceGet(ctx context.Context, reference string) SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest
+	Read(ctx context.Context, reference string) SmartfolderPersonalAPIReadRequest
 
-	// SmartfolderpersonalReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSmartfolderPersonalResponse
-	SmartfolderpersonalReferenceGetExecute(r SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest) (*GetSmartfolderPersonalResponse, *http.Response, error)
+	ReadExecute(r SmartfolderPersonalAPIReadRequest) (*GetSmartfolderPersonalResponse, *http.Response, error)
 	/*
-		SmartfolderpersonalReferencePut Update a smartfolder:personal object
+		Update Update a smartfolder:personal object
 
 		Updates a specific smartfolder:personal object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the smartfolder:personal object
-		@return SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest
+		@return SmartfolderPersonalAPIUpdateRequest
 	*/
-	SmartfolderpersonalReferencePut(ctx context.Context, reference string) SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest
+	Update(ctx context.Context, reference string) SmartfolderPersonalAPIUpdateRequest
 
-	// SmartfolderpersonalReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateSmartfolderPersonalResponse
-	SmartfolderpersonalReferencePutExecute(r SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest) (*UpdateSmartfolderPersonalResponse, *http.Response, error)
+	UpdateExecute(r SmartfolderPersonalAPIUpdateRequest) (*UpdateSmartfolderPersonalResponse, *http.Response, error)
 }
 
 // SmartfolderPersonalAPIService SmartfolderPersonalAPI service
 type SmartfolderPersonalAPIService internal.Service
 
-type SmartfolderPersonalAPISmartfolderpersonalGetRequest struct {
-	ctx            context.Context
-	ApiService     SmartfolderPersonalAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type SmartfolderPersonalAPICreateRequest struct {
+	ctx                 context.Context
+	ApiService          SmartfolderPersonalAPI
+	smartfolderPersonal *SmartfolderPersonal
+	returnFields        *string
+	returnFieldsPlus    *string
+	returnAsObject      *int32
+}
+
+// Object data to create
+func (r SmartfolderPersonalAPICreateRequest) SmartfolderPersonal(smartfolderPersonal SmartfolderPersonal) SmartfolderPersonalAPICreateRequest {
+	r.smartfolderPersonal = &smartfolderPersonal
+	return r
 }
 
 // Enter the field names followed by comma
-func (r SmartfolderPersonalAPISmartfolderpersonalGetRequest) ReturnFields(returnFields string) SmartfolderPersonalAPISmartfolderpersonalGetRequest {
+func (r SmartfolderPersonalAPICreateRequest) ReturnFields(returnFields string) SmartfolderPersonalAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SmartfolderPersonalAPISmartfolderpersonalGetRequest) ReturnFields2(returnFields2 string) SmartfolderPersonalAPISmartfolderpersonalGetRequest {
-	r.returnFields2 = &returnFields2
+func (r SmartfolderPersonalAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SmartfolderPersonalAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r SmartfolderPersonalAPICreateRequest) ReturnAsObject(returnAsObject int32) SmartfolderPersonalAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r SmartfolderPersonalAPICreateRequest) Execute() (*CreateSmartfolderPersonalResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a smartfolder:personal object
+
+Creates a new smartfolder:personal object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SmartfolderPersonalAPICreateRequest
+*/
+func (a *SmartfolderPersonalAPIService) Create(ctx context.Context) SmartfolderPersonalAPICreateRequest {
+	return SmartfolderPersonalAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateSmartfolderPersonalResponse
+func (a *SmartfolderPersonalAPIService) CreateExecute(r SmartfolderPersonalAPICreateRequest) (*CreateSmartfolderPersonalResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateSmartfolderPersonalResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderPersonalAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/smartfolder:personal"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.smartfolderPersonal == nil {
+		return localVarReturnValue, nil, internal.ReportError("smartfolderPersonal is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.smartfolderPersonal
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SmartfolderPersonalAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService SmartfolderPersonalAPI
+	reference  string
+}
+
+func (r SmartfolderPersonalAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a smartfolder:personal object
+
+Deletes a specific smartfolder:personal object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the smartfolder:personal object
+	@return SmartfolderPersonalAPIDeleteRequest
+*/
+func (a *SmartfolderPersonalAPIService) Delete(ctx context.Context, reference string) SmartfolderPersonalAPIDeleteRequest {
+	return SmartfolderPersonalAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *SmartfolderPersonalAPIService) DeleteExecute(r SmartfolderPersonalAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderPersonalAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/smartfolder:personal/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type SmartfolderPersonalAPIListRequest struct {
+	ctx              context.Context
+	ApiService       SmartfolderPersonalAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r SmartfolderPersonalAPIListRequest) ReturnFields(returnFields string) SmartfolderPersonalAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r SmartfolderPersonalAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SmartfolderPersonalAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r SmartfolderPersonalAPISmartfolderpersonalGetRequest) MaxResults(maxResults int32) SmartfolderPersonalAPISmartfolderpersonalGetRequest {
+func (r SmartfolderPersonalAPIListRequest) MaxResults(maxResults int32) SmartfolderPersonalAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SmartfolderPersonalAPISmartfolderpersonalGetRequest) ReturnAsObject(returnAsObject int32) SmartfolderPersonalAPISmartfolderpersonalGetRequest {
+func (r SmartfolderPersonalAPIListRequest) ReturnAsObject(returnAsObject int32) SmartfolderPersonalAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r SmartfolderPersonalAPISmartfolderpersonalGetRequest) Paging(paging int32) SmartfolderPersonalAPISmartfolderpersonalGetRequest {
+func (r SmartfolderPersonalAPIListRequest) Paging(paging int32) SmartfolderPersonalAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r SmartfolderPersonalAPISmartfolderpersonalGetRequest) PageId(pageId string) SmartfolderPersonalAPISmartfolderpersonalGetRequest {
+func (r SmartfolderPersonalAPIListRequest) PageId(pageId string) SmartfolderPersonalAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r SmartfolderPersonalAPISmartfolderpersonalGetRequest) Filters(filters map[string]interface{}) SmartfolderPersonalAPISmartfolderpersonalGetRequest {
+func (r SmartfolderPersonalAPIListRequest) Filters(filters map[string]interface{}) SmartfolderPersonalAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r SmartfolderPersonalAPISmartfolderpersonalGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SmartfolderPersonalAPISmartfolderpersonalGetRequest {
+func (r SmartfolderPersonalAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SmartfolderPersonalAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r SmartfolderPersonalAPISmartfolderpersonalGetRequest) Execute() (*ListSmartfolderPersonalResponse, *http.Response, error) {
-	return r.ApiService.SmartfolderpersonalGetExecute(r)
+func (r SmartfolderPersonalAPIListRequest) Execute() (*ListSmartfolderPersonalResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-SmartfolderpersonalGet Retrieve smartfolder:personal objects
+List Retrieve smartfolder:personal objects
 
 Returns a list of smartfolder:personal objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SmartfolderPersonalAPISmartfolderpersonalGetRequest
+	@return SmartfolderPersonalAPIListRequest
 */
-func (a *SmartfolderPersonalAPIService) SmartfolderpersonalGet(ctx context.Context) SmartfolderPersonalAPISmartfolderpersonalGetRequest {
-	return SmartfolderPersonalAPISmartfolderpersonalGetRequest{
+func (a *SmartfolderPersonalAPIService) List(ctx context.Context) SmartfolderPersonalAPIListRequest {
+	return SmartfolderPersonalAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalGet(ctx context.Conte
 // Execute executes the request
 //
 //	@return ListSmartfolderPersonalResponse
-func (a *SmartfolderPersonalAPIService) SmartfolderpersonalGetExecute(r SmartfolderPersonalAPISmartfolderpersonalGetRequest) (*ListSmartfolderPersonalResponse, *http.Response, error) {
+func (a *SmartfolderPersonalAPIService) ListExecute(r SmartfolderPersonalAPIListRequest) (*ListSmartfolderPersonalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalGetExecute(r Smartfol
 		localVarReturnValue *ListSmartfolderPersonalResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderPersonalAPIService.SmartfolderpersonalGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderPersonalAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalGetExecute(r Smartfol
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalGetExecute(r Smartfol
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SmartfolderPersonalAPISmartfolderpersonalPostRequest struct {
-	ctx                 context.Context
-	ApiService          SmartfolderPersonalAPI
-	smartfolderPersonal *SmartfolderPersonal
-	returnFields        *string
-	returnFields2       *string
-	returnAsObject      *int32
-}
-
-// Object data to create
-func (r SmartfolderPersonalAPISmartfolderpersonalPostRequest) SmartfolderPersonal(smartfolderPersonal SmartfolderPersonal) SmartfolderPersonalAPISmartfolderpersonalPostRequest {
-	r.smartfolderPersonal = &smartfolderPersonal
-	return r
+type SmartfolderPersonalAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       SmartfolderPersonalAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r SmartfolderPersonalAPISmartfolderpersonalPostRequest) ReturnFields(returnFields string) SmartfolderPersonalAPISmartfolderpersonalPostRequest {
+func (r SmartfolderPersonalAPIReadRequest) ReturnFields(returnFields string) SmartfolderPersonalAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SmartfolderPersonalAPISmartfolderpersonalPostRequest) ReturnFields2(returnFields2 string) SmartfolderPersonalAPISmartfolderpersonalPostRequest {
-	r.returnFields2 = &returnFields2
+func (r SmartfolderPersonalAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SmartfolderPersonalAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SmartfolderPersonalAPISmartfolderpersonalPostRequest) ReturnAsObject(returnAsObject int32) SmartfolderPersonalAPISmartfolderpersonalPostRequest {
+func (r SmartfolderPersonalAPIReadRequest) ReturnAsObject(returnAsObject int32) SmartfolderPersonalAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SmartfolderPersonalAPISmartfolderpersonalPostRequest) Execute() (*CreateSmartfolderPersonalResponse, *http.Response, error) {
-	return r.ApiService.SmartfolderpersonalPostExecute(r)
+func (r SmartfolderPersonalAPIReadRequest) Execute() (*GetSmartfolderPersonalResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-SmartfolderpersonalPost Create a smartfolder:personal object
-
-Creates a new smartfolder:personal object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SmartfolderPersonalAPISmartfolderpersonalPostRequest
-*/
-func (a *SmartfolderPersonalAPIService) SmartfolderpersonalPost(ctx context.Context) SmartfolderPersonalAPISmartfolderpersonalPostRequest {
-	return SmartfolderPersonalAPISmartfolderpersonalPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateSmartfolderPersonalResponse
-func (a *SmartfolderPersonalAPIService) SmartfolderpersonalPostExecute(r SmartfolderPersonalAPISmartfolderpersonalPostRequest) (*CreateSmartfolderPersonalResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateSmartfolderPersonalResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderPersonalAPIService.SmartfolderpersonalPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/smartfolder:personal"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.smartfolderPersonal == nil {
-		return localVarReturnValue, nil, internal.ReportError("smartfolderPersonal is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.smartfolderPersonal
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type SmartfolderPersonalAPISmartfolderpersonalReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService SmartfolderPersonalAPI
-	reference  string
-}
-
-func (r SmartfolderPersonalAPISmartfolderpersonalReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.SmartfolderpersonalReferenceDeleteExecute(r)
-}
-
-/*
-SmartfolderpersonalReferenceDelete Delete a smartfolder:personal object
-
-Deletes a specific smartfolder:personal object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the smartfolder:personal object
-	@return SmartfolderPersonalAPISmartfolderpersonalReferenceDeleteRequest
-*/
-func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferenceDelete(ctx context.Context, reference string) SmartfolderPersonalAPISmartfolderpersonalReferenceDeleteRequest {
-	return SmartfolderPersonalAPISmartfolderpersonalReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferenceDeleteExecute(r SmartfolderPersonalAPISmartfolderpersonalReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderPersonalAPIService.SmartfolderpersonalReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/smartfolder:personal/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     SmartfolderPersonalAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest) ReturnFields(returnFields string) SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest) ReturnFields2(returnFields2 string) SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest) ReturnAsObject(returnAsObject int32) SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest) Execute() (*GetSmartfolderPersonalResponse, *http.Response, error) {
-	return r.ApiService.SmartfolderpersonalReferenceGetExecute(r)
-}
-
-/*
-SmartfolderpersonalReferenceGet Get a specific smartfolder:personal object
+Read Get a specific smartfolder:personal object
 
 Returns a specific smartfolder:personal object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the smartfolder:personal object
-	@return SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest
+	@return SmartfolderPersonalAPIReadRequest
 */
-func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferenceGet(ctx context.Context, reference string) SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest {
-	return SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest{
+func (a *SmartfolderPersonalAPIService) Read(ctx context.Context, reference string) SmartfolderPersonalAPIReadRequest {
+	return SmartfolderPersonalAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferenceGet(ctx cont
 // Execute executes the request
 //
 //	@return GetSmartfolderPersonalResponse
-func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferenceGetExecute(r SmartfolderPersonalAPISmartfolderpersonalReferenceGetRequest) (*GetSmartfolderPersonalResponse, *http.Response, error) {
+func (a *SmartfolderPersonalAPIService) ReadExecute(r SmartfolderPersonalAPIReadRequest) (*GetSmartfolderPersonalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferenceGetExecute(r
 		localVarReturnValue *GetSmartfolderPersonalResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderPersonalAPIService.SmartfolderpersonalReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderPersonalAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferenceGetExecute(r
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferenceGetExecute(r
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest struct {
+type SmartfolderPersonalAPIUpdateRequest struct {
 	ctx                 context.Context
 	ApiService          SmartfolderPersonalAPI
 	reference           string
 	smartfolderPersonal *SmartfolderPersonal
 	returnFields        *string
-	returnFields2       *string
+	returnFieldsPlus    *string
 	returnAsObject      *int32
 }
 
 // Object data to update
-func (r SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest) SmartfolderPersonal(smartfolderPersonal SmartfolderPersonal) SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest {
+func (r SmartfolderPersonalAPIUpdateRequest) SmartfolderPersonal(smartfolderPersonal SmartfolderPersonal) SmartfolderPersonalAPIUpdateRequest {
 	r.smartfolderPersonal = &smartfolderPersonal
 	return r
 }
 
 // Enter the field names followed by comma
-func (r SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest) ReturnFields(returnFields string) SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest {
+func (r SmartfolderPersonalAPIUpdateRequest) ReturnFields(returnFields string) SmartfolderPersonalAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest) ReturnFields2(returnFields2 string) SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r SmartfolderPersonalAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SmartfolderPersonalAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest) ReturnAsObject(returnAsObject int32) SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest {
+func (r SmartfolderPersonalAPIUpdateRequest) ReturnAsObject(returnAsObject int32) SmartfolderPersonalAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest) Execute() (*UpdateSmartfolderPersonalResponse, *http.Response, error) {
-	return r.ApiService.SmartfolderpersonalReferencePutExecute(r)
+func (r SmartfolderPersonalAPIUpdateRequest) Execute() (*UpdateSmartfolderPersonalResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-SmartfolderpersonalReferencePut Update a smartfolder:personal object
+Update Update a smartfolder:personal object
 
 Updates a specific smartfolder:personal object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the smartfolder:personal object
-	@return SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest
+	@return SmartfolderPersonalAPIUpdateRequest
 */
-func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferencePut(ctx context.Context, reference string) SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest {
-	return SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest{
+func (a *SmartfolderPersonalAPIService) Update(ctx context.Context, reference string) SmartfolderPersonalAPIUpdateRequest {
+	return SmartfolderPersonalAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferencePut(ctx cont
 // Execute executes the request
 //
 //	@return UpdateSmartfolderPersonalResponse
-func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferencePutExecute(r SmartfolderPersonalAPISmartfolderpersonalReferencePutRequest) (*UpdateSmartfolderPersonalResponse, *http.Response, error) {
+func (a *SmartfolderPersonalAPIService) UpdateExecute(r SmartfolderPersonalAPIUpdateRequest) (*UpdateSmartfolderPersonalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferencePutExecute(r
 		localVarReturnValue *UpdateSmartfolderPersonalResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderPersonalAPIService.SmartfolderpersonalReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderPersonalAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *SmartfolderPersonalAPIService) SmartfolderpersonalReferencePutExecute(r
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

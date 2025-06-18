@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](NatgroupAPI.md#Get) | **Get** /natgroup | Retrieve natgroup objects
-[**Post**](NatgroupAPI.md#Post) | **Post** /natgroup | Create a natgroup object
-[**ReferenceDelete**](NatgroupAPI.md#ReferenceDelete) | **Delete** /natgroup/{reference} | Delete a natgroup object
-[**ReferenceGet**](NatgroupAPI.md#ReferenceGet) | **Get** /natgroup/{reference} | Get a specific natgroup object
-[**ReferencePut**](NatgroupAPI.md#ReferencePut) | **Put** /natgroup/{reference} | Update a natgroup object
+[**Create**](NatgroupAPI.md#Create) | **Post** /natgroup | Create a natgroup object
+[**Delete**](NatgroupAPI.md#Delete) | **Delete** /natgroup/{reference} | Delete a natgroup object
+[**List**](NatgroupAPI.md#List) | **Get** /natgroup | Retrieve natgroup objects
+[**Read**](NatgroupAPI.md#Read) | **Get** /natgroup/{reference} | Get a specific natgroup object
+[**Update**](NatgroupAPI.md#Update) | **Put** /natgroup/{reference} | Update a natgroup object
 
 
 
-## Get
+## Create
 
-> ListNatgroupResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateNatgroupResponse Create(ctx).Natgroup(natgroup).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a natgroup object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+)
+
+func main() {
+	natgroup := *grid.NewNatgroup() // Natgroup | Object data to create
+
+	apiClient := grid.NewAPIClient()
+	resp, r, err := apiClient.NatgroupAPI.Create(context.Background()).Natgroup(natgroup).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NatgroupAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateNatgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `NatgroupAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `NatgroupAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**natgroup** | [**Natgroup**](Natgroup.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateNatgroupResponse**](CreateNatgroupResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a natgroup object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the natgroup object
+
+	apiClient := grid.NewAPIClient()
+	r, err := apiClient.NatgroupAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NatgroupAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the natgroup object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `NatgroupAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListNatgroupResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve natgroup objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.NatgroupAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.NatgroupAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NatgroupAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NatgroupAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListNatgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `NatgroupAPI.Get`: %v\n", resp)
+	// response from `List`: ListNatgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `NatgroupAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NatgroupAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NatgroupAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateNatgroupResponse Post(ctx).Natgroup(natgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a natgroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
-)
-
-func main() {
-	natgroup := *grid.NewNatgroup() // Natgroup | Object data to create
-
-	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.NatgroupAPI.Post(context.Background()).Natgroup(natgroup).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NatgroupAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateNatgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `NatgroupAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NatgroupAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**natgroup** | [**Natgroup**](Natgroup.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateNatgroupResponse**](CreateNatgroupResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a natgroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the natgroup object
-
-	apiClient := grid.NewAPIClient()
-	r, err := apiClient.NatgroupAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NatgroupAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the natgroup object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NatgroupAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetNatgroupResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetNatgroupResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific natgroup object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the natgroup object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.NatgroupAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.NatgroupAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NatgroupAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NatgroupAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetNatgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `NatgroupAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetNatgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `NatgroupAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NatgroupAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NatgroupAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateNatgroupResponse ReferencePut(ctx, reference).Natgroup(natgroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateNatgroupResponse Update(ctx, reference).Natgroup(natgroup).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a natgroup object
 
@@ -318,13 +318,13 @@ func main() {
 	natgroup := *grid.NewNatgroup() // Natgroup | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.NatgroupAPI.ReferencePut(context.Background(), reference).Natgroup(natgroup).Execute()
+	resp, r, err := apiClient.NatgroupAPI.Update(context.Background(), reference).Natgroup(natgroup).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NatgroupAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NatgroupAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateNatgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `NatgroupAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateNatgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `NatgroupAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NatgroupAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NatgroupAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **natgroup** | [**Natgroup**](Natgroup.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

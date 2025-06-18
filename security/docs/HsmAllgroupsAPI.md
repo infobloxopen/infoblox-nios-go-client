@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**HsmallgroupsGet**](HsmAllgroupsAPI.md#HsmallgroupsGet) | **Get** /hsm:allgroups | Retrieve hsm:allgroups objects
-[**HsmallgroupsReferenceGet**](HsmAllgroupsAPI.md#HsmallgroupsReferenceGet) | **Get** /hsm:allgroups/{reference} | Get a specific hsm:allgroups object
-[**HsmallgroupsReferencePut**](HsmAllgroupsAPI.md#HsmallgroupsReferencePut) | **Put** /hsm:allgroups/{reference} | Update a hsm:allgroups object
+[**List**](HsmAllgroupsAPI.md#List) | **Get** /hsm:allgroups | Retrieve hsm:allgroups objects
+[**Read**](HsmAllgroupsAPI.md#Read) | **Get** /hsm:allgroups/{reference} | Get a specific hsm:allgroups object
+[**Update**](HsmAllgroupsAPI.md#Update) | **Put** /hsm:allgroups/{reference} | Update a hsm:allgroups object
 
 
 
-## HsmallgroupsGet
+## List
 
-> ListHsmAllgroupsResponse HsmallgroupsGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListHsmAllgroupsResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve hsm:allgroups objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.HsmAllgroupsAPI.HsmallgroupsGet(context.Background()).Execute()
+	resp, r, err := apiClient.HsmAllgroupsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HsmAllgroupsAPI.HsmallgroupsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HsmAllgroupsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HsmallgroupsGet`: ListHsmAllgroupsResponse
-	fmt.Fprintf(os.Stdout, "Response from `HsmAllgroupsAPI.HsmallgroupsGet`: %v\n", resp)
+	// response from `List`: ListHsmAllgroupsResponse
+	fmt.Fprintf(os.Stdout, "Response from `HsmAllgroupsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `HsmAllgroupsAPIHsmallgroupsGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `HsmAllgroupsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HsmallgroupsReferenceGet
+## Read
 
-> GetHsmAllgroupsResponse HsmallgroupsReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetHsmAllgroupsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific hsm:allgroups object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the hsm:allgroups object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.HsmAllgroupsAPI.HsmallgroupsReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.HsmAllgroupsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HsmAllgroupsAPI.HsmallgroupsReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HsmAllgroupsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HsmallgroupsReferenceGet`: GetHsmAllgroupsResponse
-	fmt.Fprintf(os.Stdout, "Response from `HsmAllgroupsAPI.HsmallgroupsReferenceGet`: %v\n", resp)
+	// response from `Read`: GetHsmAllgroupsResponse
+	fmt.Fprintf(os.Stdout, "Response from `HsmAllgroupsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `HsmAllgroupsAPIHsmallgroupsReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `HsmAllgroupsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## HsmallgroupsReferencePut
+## Update
 
-> UpdateHsmAllgroupsResponse HsmallgroupsReferencePut(ctx, reference).HsmAllgroups(hsmAllgroups).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateHsmAllgroupsResponse Update(ctx, reference).HsmAllgroups(hsmAllgroups).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a hsm:allgroups object
 
@@ -180,13 +180,13 @@ func main() {
 	hsmAllgroups := *security.NewHsmAllgroups() // HsmAllgroups | Object data to update
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.HsmAllgroupsAPI.HsmallgroupsReferencePut(context.Background(), reference).HsmAllgroups(hsmAllgroups).Execute()
+	resp, r, err := apiClient.HsmAllgroupsAPI.Update(context.Background(), reference).HsmAllgroups(hsmAllgroups).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HsmAllgroupsAPI.HsmallgroupsReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `HsmAllgroupsAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `HsmallgroupsReferencePut`: UpdateHsmAllgroupsResponse
-	fmt.Fprintf(os.Stdout, "Response from `HsmAllgroupsAPI.HsmallgroupsReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateHsmAllgroupsResponse
+	fmt.Fprintf(os.Stdout, "Response from `HsmAllgroupsAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `HsmAllgroupsAPIHsmallgroupsReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `HsmAllgroupsAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **hsmAllgroups** | [**HsmAllgroups**](HsmAllgroups.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

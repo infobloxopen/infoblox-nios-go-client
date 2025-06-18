@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**MemberthreatinsightGet**](MemberThreatinsightAPI.md#MemberthreatinsightGet) | **Get** /member:threatinsight | Retrieve member:threatinsight objects
-[**MemberthreatinsightReferenceGet**](MemberThreatinsightAPI.md#MemberthreatinsightReferenceGet) | **Get** /member:threatinsight/{reference} | Get a specific member:threatinsight object
-[**MemberthreatinsightReferencePut**](MemberThreatinsightAPI.md#MemberthreatinsightReferencePut) | **Put** /member:threatinsight/{reference} | Update a member:threatinsight object
+[**List**](MemberThreatinsightAPI.md#List) | **Get** /member:threatinsight | Retrieve member:threatinsight objects
+[**Read**](MemberThreatinsightAPI.md#Read) | **Get** /member:threatinsight/{reference} | Get a specific member:threatinsight object
+[**Update**](MemberThreatinsightAPI.md#Update) | **Put** /member:threatinsight/{reference} | Update a member:threatinsight object
 
 
 
-## MemberthreatinsightGet
+## List
 
-> ListMemberThreatinsightResponse MemberthreatinsightGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListMemberThreatinsightResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve member:threatinsight objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberThreatinsightAPI.MemberthreatinsightGet(context.Background()).Execute()
+	resp, r, err := apiClient.MemberThreatinsightAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatinsightAPI.MemberthreatinsightGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatinsightAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MemberthreatinsightGet`: ListMemberThreatinsightResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberThreatinsightAPI.MemberthreatinsightGet`: %v\n", resp)
+	// response from `List`: ListMemberThreatinsightResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberThreatinsightAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberThreatinsightAPIMemberthreatinsightGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberThreatinsightAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## MemberthreatinsightReferenceGet
+## Read
 
-> GetMemberThreatinsightResponse MemberthreatinsightReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMemberThreatinsightResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific member:threatinsight object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the member:threatinsight object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberThreatinsightAPI.MemberthreatinsightReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MemberThreatinsightAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatinsightAPI.MemberthreatinsightReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatinsightAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MemberthreatinsightReferenceGet`: GetMemberThreatinsightResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberThreatinsightAPI.MemberthreatinsightReferenceGet`: %v\n", resp)
+	// response from `Read`: GetMemberThreatinsightResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberThreatinsightAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberThreatinsightAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## MemberthreatinsightReferencePut
+## Update
 
-> UpdateMemberThreatinsightResponse MemberthreatinsightReferencePut(ctx, reference).MemberThreatinsight(memberThreatinsight).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateMemberThreatinsightResponse Update(ctx, reference).MemberThreatinsight(memberThreatinsight).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a member:threatinsight object
 
@@ -180,13 +180,13 @@ func main() {
 	memberThreatinsight := *grid.NewMemberThreatinsight() // MemberThreatinsight | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberThreatinsightAPI.MemberthreatinsightReferencePut(context.Background(), reference).MemberThreatinsight(memberThreatinsight).Execute()
+	resp, r, err := apiClient.MemberThreatinsightAPI.Update(context.Background(), reference).MemberThreatinsight(memberThreatinsight).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatinsightAPI.MemberthreatinsightReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatinsightAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MemberthreatinsightReferencePut`: UpdateMemberThreatinsightResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberThreatinsightAPI.MemberthreatinsightReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateMemberThreatinsightResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberThreatinsightAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberThreatinsightAPIMemberthreatinsightReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberThreatinsightAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **memberThreatinsight** | [**MemberThreatinsight**](MemberThreatinsight.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -23,11 +23,11 @@ func TestDtcTopologyRuleAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcTopologyRuleAPIService DtctopologyruleGet", func(t *testing.T) {
+	t.Run("Test DtcTopologyRuleAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcTopologyRuleAPI.DtctopologyruleGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcTopologyRuleAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDtcTopologyRuleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcTopologyRuleAPIService DtctopologyruleReferenceGet", func(t *testing.T) {
+	t.Run("Test DtcTopologyRuleAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcTopologyRuleAPI.DtctopologyruleReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcTopologyRuleAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestDtcTopologyRuleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcTopologyRuleAPIService DtctopologyruleReferencePut", func(t *testing.T) {
+	t.Run("Test DtcTopologyRuleAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcTopologyRuleAPI.DtctopologyruleReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcTopologyRuleAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

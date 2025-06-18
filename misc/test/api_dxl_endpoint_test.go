@@ -23,11 +23,11 @@ func TestDxlEndpointAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test DxlEndpointAPIService DxlendpointGet", func(t *testing.T) {
+	t.Run("Test DxlEndpointAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DxlEndpointAPI.DxlendpointGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DxlEndpointAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDxlEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DxlEndpointAPIService DxlendpointPost", func(t *testing.T) {
+	t.Run("Test DxlEndpointAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DxlEndpointAPI.DxlendpointPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DxlEndpointAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DxlEndpointAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DxlEndpointAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDxlEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DxlEndpointAPIService DxlendpointReferenceDelete", func(t *testing.T) {
+	t.Run("Test DxlEndpointAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DxlEndpointAPI.DxlendpointReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DxlEndpointAPIService DxlendpointReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DxlEndpointAPI.DxlendpointReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DxlEndpointAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDxlEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DxlEndpointAPIService DxlendpointReferencePut", func(t *testing.T) {
+	t.Run("Test DxlEndpointAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DxlEndpointAPI.DxlendpointReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DxlEndpointAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

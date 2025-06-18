@@ -46,6 +46,7 @@ paths:
   /discovery:
     get:
       description: Returns a list of discovery objects matching the search criteria
+      operationId: DiscoveryList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -143,6 +144,7 @@ paths:
   /discovery/{reference}:
     get:
       description: Returns a specific discovery object by reference
+      operationId: DiscoveryRead
       parameters:
       - description: Reference of the discovery object
         explode: false
@@ -204,6 +206,7 @@ paths:
     get:
       description: Returns a list of discovery:credentialgroup objects matching the
         search criteria
+      operationId: DiscoveryCredentialgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -300,6 +303,7 @@ paths:
       - DiscoveryCredentialgroup
     post:
       description: Creates a new discovery:credentialgroup object
+      operationId: DiscoveryCredentialgroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -359,6 +363,7 @@ paths:
   /discovery:credentialgroup/{reference}:
     delete:
       description: Deletes a specific discovery:credentialgroup object by reference
+      operationId: DiscoveryCredentialgroupDelete
       parameters:
       - description: Reference of the discovery:credentialgroup object
         explode: false
@@ -386,6 +391,7 @@ paths:
       - DiscoveryCredentialgroup
     get:
       description: Returns a specific discovery:credentialgroup object by reference
+      operationId: DiscoveryCredentialgroupRead
       parameters:
       - description: Reference of the discovery:credentialgroup object
         explode: false
@@ -445,6 +451,7 @@ paths:
       - DiscoveryCredentialgroup
     put:
       description: Updates a specific discovery:credentialgroup object by reference
+      operationId: DiscoveryCredentialgroupUpdate
       parameters:
       - description: Reference of the discovery:credentialgroup object
         explode: false
@@ -513,6 +520,7 @@ paths:
     get:
       description: Returns a list of discovery:device objects matching the search
         criteria
+      operationId: DiscoveryDeviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -610,6 +618,7 @@ paths:
   /discovery:device/{reference}:
     get:
       description: Returns a specific discovery:device object by reference
+      operationId: DiscoveryDeviceRead
       parameters:
       - description: Reference of the discovery:device object
         explode: false
@@ -669,6 +678,7 @@ paths:
       - DiscoveryDevice
     put:
       description: Updates a specific discovery:device object by reference
+      operationId: DiscoveryDeviceUpdate
       parameters:
       - description: Reference of the discovery:device object
         explode: false
@@ -738,6 +748,7 @@ paths:
     get:
       description: Returns a list of discovery:devicecomponent objects matching the
         search criteria
+      operationId: DiscoveryDevicecomponentList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -835,6 +846,7 @@ paths:
   /discovery:devicecomponent/{reference}:
     get:
       description: Returns a specific discovery:devicecomponent object by reference
+      operationId: DiscoveryDevicecomponentRead
       parameters:
       - description: Reference of the discovery:devicecomponent object
         explode: false
@@ -896,6 +908,7 @@ paths:
     get:
       description: Returns a list of discovery:deviceinterface objects matching the
         search criteria
+      operationId: DiscoveryDeviceinterfaceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -993,6 +1006,7 @@ paths:
   /discovery:deviceinterface/{reference}:
     get:
       description: Returns a specific discovery:deviceinterface object by reference
+      operationId: DiscoveryDeviceinterfaceRead
       parameters:
       - description: Reference of the discovery:deviceinterface object
         explode: false
@@ -1052,6 +1066,7 @@ paths:
       - DiscoveryDeviceinterface
     put:
       description: Updates a specific discovery:deviceinterface object by reference
+      operationId: DiscoveryDeviceinterfaceUpdate
       parameters:
       - description: Reference of the discovery:deviceinterface object
         explode: false
@@ -1121,6 +1136,7 @@ paths:
     get:
       description: Returns a list of discovery:deviceneighbor objects matching the
         search criteria
+      operationId: DiscoveryDeviceneighborList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1218,6 +1234,7 @@ paths:
   /discovery:deviceneighbor/{reference}:
     get:
       description: Returns a specific discovery:deviceneighbor object by reference
+      operationId: DiscoveryDeviceneighborRead
       parameters:
       - description: Reference of the discovery:deviceneighbor object
         explode: false
@@ -1279,6 +1296,7 @@ paths:
     get:
       description: Returns a list of discovery:devicesupportbundle objects matching
         the search criteria
+      operationId: DiscoveryDevicesupportbundleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1376,6 +1394,7 @@ paths:
   /discovery:devicesupportbundle/{reference}:
     delete:
       description: Deletes a specific discovery:devicesupportbundle object by reference
+      operationId: DiscoveryDevicesupportbundleDelete
       parameters:
       - description: Reference of the discovery:devicesupportbundle object
         explode: false
@@ -1403,6 +1422,7 @@ paths:
       - DiscoveryDevicesupportbundle
     get:
       description: Returns a specific discovery:devicesupportbundle object by reference
+      operationId: DiscoveryDevicesupportbundleRead
       parameters:
       - description: Reference of the discovery:devicesupportbundle object
         explode: false
@@ -1464,6 +1484,7 @@ paths:
     get:
       description: Returns a list of discovery:diagnostictask objects matching the
         search criteria
+      operationId: DiscoveryDiagnostictaskList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1561,6 +1582,7 @@ paths:
   /discovery:diagnostictask/{reference}:
     get:
       description: Returns a specific discovery:diagnostictask object by reference
+      operationId: DiscoveryDiagnostictaskRead
       parameters:
       - description: Reference of the discovery:diagnostictask object
         explode: false
@@ -1620,6 +1642,7 @@ paths:
       - DiscoveryDiagnostictask
     put:
       description: Updates a specific discovery:diagnostictask object by reference
+      operationId: DiscoveryDiagnostictaskUpdate
       parameters:
       - description: Reference of the discovery:diagnostictask object
         explode: false
@@ -1688,6 +1711,7 @@ paths:
     get:
       description: Returns a list of discovery:gridproperties objects matching the
         search criteria
+      operationId: DiscoveryGridpropertiesList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1785,6 +1809,7 @@ paths:
   /discovery:gridproperties/{reference}:
     get:
       description: Returns a specific discovery:gridproperties object by reference
+      operationId: DiscoveryGridpropertiesRead
       parameters:
       - description: Reference of the discovery:gridproperties object
         explode: false
@@ -1844,6 +1869,7 @@ paths:
       - DiscoveryGridproperties
     put:
       description: Updates a specific discovery:gridproperties object by reference
+      operationId: DiscoveryGridpropertiesUpdate
       parameters:
       - description: Reference of the discovery:gridproperties object
         explode: false
@@ -1912,6 +1938,7 @@ paths:
     get:
       description: Returns a list of discovery:memberproperties objects matching the
         search criteria
+      operationId: DiscoveryMemberpropertiesList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2009,6 +2036,7 @@ paths:
   /discovery:memberproperties/{reference}:
     get:
       description: Returns a specific discovery:memberproperties object by reference
+      operationId: DiscoveryMemberpropertiesRead
       parameters:
       - description: Reference of the discovery:memberproperties object
         explode: false
@@ -2068,6 +2096,7 @@ paths:
       - DiscoveryMemberproperties
     put:
       description: Updates a specific discovery:memberproperties object by reference
+      operationId: DiscoveryMemberpropertiesUpdate
       parameters:
       - description: Reference of the discovery:memberproperties object
         explode: false
@@ -2136,6 +2165,7 @@ paths:
     get:
       description: Returns a list of discovery:sdnnetwork objects matching the search
         criteria
+      operationId: DiscoverySdnnetworkList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2233,6 +2263,7 @@ paths:
   /discovery:sdnnetwork/{reference}:
     get:
       description: Returns a specific discovery:sdnnetwork object by reference
+      operationId: DiscoverySdnnetworkRead
       parameters:
       - description: Reference of the discovery:sdnnetwork object
         explode: false
@@ -2294,6 +2325,7 @@ paths:
     get:
       description: Returns a list of discovery:status objects matching the search
         criteria
+      operationId: DiscoveryStatusList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2391,6 +2423,7 @@ paths:
   /discovery:status/{reference}:
     get:
       description: Returns a specific discovery:status object by reference
+      operationId: DiscoveryStatusRead
       parameters:
       - description: Reference of the discovery:status object
         explode: false
@@ -2451,6 +2484,7 @@ paths:
   /discovery:vrf:
     get:
       description: Returns a list of discovery:vrf objects matching the search criteria
+      operationId: DiscoveryVrfList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2548,6 +2582,7 @@ paths:
   /discovery:vrf/{reference}:
     get:
       description: Returns a specific discovery:vrf object by reference
+      operationId: DiscoveryVrfRead
       parameters:
       - description: Reference of the discovery:vrf object
         explode: false
@@ -2608,6 +2643,7 @@ paths:
   /vdiscoverytask:
     get:
       description: Returns a list of vdiscoverytask objects matching the search criteria
+      operationId: VdiscoverytaskList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2704,6 +2740,7 @@ paths:
       - Vdiscoverytask
     post:
       description: Creates a new vdiscoverytask object
+      operationId: VdiscoverytaskCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2763,6 +2800,7 @@ paths:
   /vdiscoverytask/{reference}:
     delete:
       description: Deletes a specific vdiscoverytask object by reference
+      operationId: VdiscoverytaskDelete
       parameters:
       - description: Reference of the vdiscoverytask object
         explode: false
@@ -2790,6 +2828,7 @@ paths:
       - Vdiscoverytask
     get:
       description: Returns a specific vdiscoverytask object by reference
+      operationId: VdiscoverytaskRead
       parameters:
       - description: Reference of the vdiscoverytask object
         explode: false
@@ -2849,6 +2888,7 @@ paths:
       - Vdiscoverytask
     put:
       description: Updates a specific vdiscoverytask object by reference
+      operationId: VdiscoverytaskUpdate
       parameters:
       - description: Reference of the vdiscoverytask object
         explode: false
@@ -3820,6 +3860,7 @@ components:
         index:
           description: "The interface index number, as reported by SNMP."
           example: 1
+          format: int64
           readOnly: true
           type: integer
         last_change:

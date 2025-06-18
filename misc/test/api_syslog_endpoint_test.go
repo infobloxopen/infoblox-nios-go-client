@@ -23,11 +23,11 @@ func TestSyslogEndpointAPIService(t *testing.T) {
 
 	apiClient := misc.NewAPIClient()
 
-	t.Run("Test SyslogEndpointAPIService SyslogendpointGet", func(t *testing.T) {
+	t.Run("Test SyslogEndpointAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SyslogEndpointAPI.SyslogendpointGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SyslogEndpointAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestSyslogEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SyslogEndpointAPIService SyslogendpointPost", func(t *testing.T) {
+	t.Run("Test SyslogEndpointAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SyslogEndpointAPI.SyslogendpointPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.SyslogEndpointAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SyslogEndpointAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.SyslogEndpointAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestSyslogEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SyslogEndpointAPIService SyslogendpointReferenceDelete", func(t *testing.T) {
+	t.Run("Test SyslogEndpointAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.SyslogEndpointAPI.SyslogendpointReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SyslogEndpointAPIService SyslogendpointReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.SyslogEndpointAPI.SyslogendpointReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SyslogEndpointAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestSyslogEndpointAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SyslogEndpointAPIService SyslogendpointReferencePut", func(t *testing.T) {
+	t.Run("Test SyslogEndpointAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.SyslogEndpointAPI.SyslogendpointReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SyslogEndpointAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

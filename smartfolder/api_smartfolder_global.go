@@ -23,150 +23,374 @@ import (
 
 type SmartfolderGlobalAPI interface {
 	/*
-		SmartfolderglobalGet Retrieve smartfolder:global objects
-
-		Returns a list of smartfolder:global objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SmartfolderGlobalAPISmartfolderglobalGetRequest
-	*/
-	SmartfolderglobalGet(ctx context.Context) SmartfolderGlobalAPISmartfolderglobalGetRequest
-
-	// SmartfolderglobalGetExecute executes the request
-	//  @return ListSmartfolderGlobalResponse
-	SmartfolderglobalGetExecute(r SmartfolderGlobalAPISmartfolderglobalGetRequest) (*ListSmartfolderGlobalResponse, *http.Response, error)
-	/*
-		SmartfolderglobalPost Create a smartfolder:global object
+		Create Create a smartfolder:global object
 
 		Creates a new smartfolder:global object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SmartfolderGlobalAPISmartfolderglobalPostRequest
+		@return SmartfolderGlobalAPICreateRequest
 	*/
-	SmartfolderglobalPost(ctx context.Context) SmartfolderGlobalAPISmartfolderglobalPostRequest
+	Create(ctx context.Context) SmartfolderGlobalAPICreateRequest
 
-	// SmartfolderglobalPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateSmartfolderGlobalResponse
-	SmartfolderglobalPostExecute(r SmartfolderGlobalAPISmartfolderglobalPostRequest) (*CreateSmartfolderGlobalResponse, *http.Response, error)
+	CreateExecute(r SmartfolderGlobalAPICreateRequest) (*CreateSmartfolderGlobalResponse, *http.Response, error)
 	/*
-		SmartfolderglobalReferenceDelete Delete a smartfolder:global object
+		Delete Delete a smartfolder:global object
 
 		Deletes a specific smartfolder:global object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the smartfolder:global object
-		@return SmartfolderGlobalAPISmartfolderglobalReferenceDeleteRequest
+		@return SmartfolderGlobalAPIDeleteRequest
 	*/
-	SmartfolderglobalReferenceDelete(ctx context.Context, reference string) SmartfolderGlobalAPISmartfolderglobalReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) SmartfolderGlobalAPIDeleteRequest
 
-	// SmartfolderglobalReferenceDeleteExecute executes the request
-	SmartfolderglobalReferenceDeleteExecute(r SmartfolderGlobalAPISmartfolderglobalReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r SmartfolderGlobalAPIDeleteRequest) (*http.Response, error)
 	/*
-		SmartfolderglobalReferenceGet Get a specific smartfolder:global object
+		List Retrieve smartfolder:global objects
+
+		Returns a list of smartfolder:global objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return SmartfolderGlobalAPIListRequest
+	*/
+	List(ctx context.Context) SmartfolderGlobalAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListSmartfolderGlobalResponse
+	ListExecute(r SmartfolderGlobalAPIListRequest) (*ListSmartfolderGlobalResponse, *http.Response, error)
+	/*
+		Read Get a specific smartfolder:global object
 
 		Returns a specific smartfolder:global object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the smartfolder:global object
-		@return SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest
+		@return SmartfolderGlobalAPIReadRequest
 	*/
-	SmartfolderglobalReferenceGet(ctx context.Context, reference string) SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest
+	Read(ctx context.Context, reference string) SmartfolderGlobalAPIReadRequest
 
-	// SmartfolderglobalReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSmartfolderGlobalResponse
-	SmartfolderglobalReferenceGetExecute(r SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest) (*GetSmartfolderGlobalResponse, *http.Response, error)
+	ReadExecute(r SmartfolderGlobalAPIReadRequest) (*GetSmartfolderGlobalResponse, *http.Response, error)
 	/*
-		SmartfolderglobalReferencePut Update a smartfolder:global object
+		Update Update a smartfolder:global object
 
 		Updates a specific smartfolder:global object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the smartfolder:global object
-		@return SmartfolderGlobalAPISmartfolderglobalReferencePutRequest
+		@return SmartfolderGlobalAPIUpdateRequest
 	*/
-	SmartfolderglobalReferencePut(ctx context.Context, reference string) SmartfolderGlobalAPISmartfolderglobalReferencePutRequest
+	Update(ctx context.Context, reference string) SmartfolderGlobalAPIUpdateRequest
 
-	// SmartfolderglobalReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateSmartfolderGlobalResponse
-	SmartfolderglobalReferencePutExecute(r SmartfolderGlobalAPISmartfolderglobalReferencePutRequest) (*UpdateSmartfolderGlobalResponse, *http.Response, error)
+	UpdateExecute(r SmartfolderGlobalAPIUpdateRequest) (*UpdateSmartfolderGlobalResponse, *http.Response, error)
 }
 
 // SmartfolderGlobalAPIService SmartfolderGlobalAPI service
 type SmartfolderGlobalAPIService internal.Service
 
-type SmartfolderGlobalAPISmartfolderglobalGetRequest struct {
-	ctx            context.Context
-	ApiService     SmartfolderGlobalAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type SmartfolderGlobalAPICreateRequest struct {
+	ctx               context.Context
+	ApiService        SmartfolderGlobalAPI
+	smartfolderGlobal *SmartfolderGlobal
+	returnFields      *string
+	returnFieldsPlus  *string
+	returnAsObject    *int32
+}
+
+// Object data to create
+func (r SmartfolderGlobalAPICreateRequest) SmartfolderGlobal(smartfolderGlobal SmartfolderGlobal) SmartfolderGlobalAPICreateRequest {
+	r.smartfolderGlobal = &smartfolderGlobal
+	return r
 }
 
 // Enter the field names followed by comma
-func (r SmartfolderGlobalAPISmartfolderglobalGetRequest) ReturnFields(returnFields string) SmartfolderGlobalAPISmartfolderglobalGetRequest {
+func (r SmartfolderGlobalAPICreateRequest) ReturnFields(returnFields string) SmartfolderGlobalAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SmartfolderGlobalAPISmartfolderglobalGetRequest) ReturnFields2(returnFields2 string) SmartfolderGlobalAPISmartfolderglobalGetRequest {
-	r.returnFields2 = &returnFields2
+func (r SmartfolderGlobalAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SmartfolderGlobalAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r SmartfolderGlobalAPICreateRequest) ReturnAsObject(returnAsObject int32) SmartfolderGlobalAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r SmartfolderGlobalAPICreateRequest) Execute() (*CreateSmartfolderGlobalResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a smartfolder:global object
+
+Creates a new smartfolder:global object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SmartfolderGlobalAPICreateRequest
+*/
+func (a *SmartfolderGlobalAPIService) Create(ctx context.Context) SmartfolderGlobalAPICreateRequest {
+	return SmartfolderGlobalAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateSmartfolderGlobalResponse
+func (a *SmartfolderGlobalAPIService) CreateExecute(r SmartfolderGlobalAPICreateRequest) (*CreateSmartfolderGlobalResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateSmartfolderGlobalResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderGlobalAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/smartfolder:global"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.smartfolderGlobal == nil {
+		return localVarReturnValue, nil, internal.ReportError("smartfolderGlobal is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.smartfolderGlobal
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SmartfolderGlobalAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService SmartfolderGlobalAPI
+	reference  string
+}
+
+func (r SmartfolderGlobalAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a smartfolder:global object
+
+Deletes a specific smartfolder:global object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the smartfolder:global object
+	@return SmartfolderGlobalAPIDeleteRequest
+*/
+func (a *SmartfolderGlobalAPIService) Delete(ctx context.Context, reference string) SmartfolderGlobalAPIDeleteRequest {
+	return SmartfolderGlobalAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *SmartfolderGlobalAPIService) DeleteExecute(r SmartfolderGlobalAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderGlobalAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/smartfolder:global/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type SmartfolderGlobalAPIListRequest struct {
+	ctx              context.Context
+	ApiService       SmartfolderGlobalAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r SmartfolderGlobalAPIListRequest) ReturnFields(returnFields string) SmartfolderGlobalAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r SmartfolderGlobalAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SmartfolderGlobalAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r SmartfolderGlobalAPISmartfolderglobalGetRequest) MaxResults(maxResults int32) SmartfolderGlobalAPISmartfolderglobalGetRequest {
+func (r SmartfolderGlobalAPIListRequest) MaxResults(maxResults int32) SmartfolderGlobalAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SmartfolderGlobalAPISmartfolderglobalGetRequest) ReturnAsObject(returnAsObject int32) SmartfolderGlobalAPISmartfolderglobalGetRequest {
+func (r SmartfolderGlobalAPIListRequest) ReturnAsObject(returnAsObject int32) SmartfolderGlobalAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r SmartfolderGlobalAPISmartfolderglobalGetRequest) Paging(paging int32) SmartfolderGlobalAPISmartfolderglobalGetRequest {
+func (r SmartfolderGlobalAPIListRequest) Paging(paging int32) SmartfolderGlobalAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r SmartfolderGlobalAPISmartfolderglobalGetRequest) PageId(pageId string) SmartfolderGlobalAPISmartfolderglobalGetRequest {
+func (r SmartfolderGlobalAPIListRequest) PageId(pageId string) SmartfolderGlobalAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r SmartfolderGlobalAPISmartfolderglobalGetRequest) Filters(filters map[string]interface{}) SmartfolderGlobalAPISmartfolderglobalGetRequest {
+func (r SmartfolderGlobalAPIListRequest) Filters(filters map[string]interface{}) SmartfolderGlobalAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r SmartfolderGlobalAPISmartfolderglobalGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SmartfolderGlobalAPISmartfolderglobalGetRequest {
+func (r SmartfolderGlobalAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SmartfolderGlobalAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r SmartfolderGlobalAPISmartfolderglobalGetRequest) Execute() (*ListSmartfolderGlobalResponse, *http.Response, error) {
-	return r.ApiService.SmartfolderglobalGetExecute(r)
+func (r SmartfolderGlobalAPIListRequest) Execute() (*ListSmartfolderGlobalResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-SmartfolderglobalGet Retrieve smartfolder:global objects
+List Retrieve smartfolder:global objects
 
 Returns a list of smartfolder:global objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SmartfolderGlobalAPISmartfolderglobalGetRequest
+	@return SmartfolderGlobalAPIListRequest
 */
-func (a *SmartfolderGlobalAPIService) SmartfolderglobalGet(ctx context.Context) SmartfolderGlobalAPISmartfolderglobalGetRequest {
-	return SmartfolderGlobalAPISmartfolderglobalGetRequest{
+func (a *SmartfolderGlobalAPIService) List(ctx context.Context) SmartfolderGlobalAPIListRequest {
+	return SmartfolderGlobalAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalGet(ctx context.Context) 
 // Execute executes the request
 //
 //	@return ListSmartfolderGlobalResponse
-func (a *SmartfolderGlobalAPIService) SmartfolderglobalGetExecute(r SmartfolderGlobalAPISmartfolderglobalGetRequest) (*ListSmartfolderGlobalResponse, *http.Response, error) {
+func (a *SmartfolderGlobalAPIService) ListExecute(r SmartfolderGlobalAPIListRequest) (*ListSmartfolderGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalGetExecute(r SmartfolderG
 		localVarReturnValue *ListSmartfolderGlobalResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderGlobalAPIService.SmartfolderglobalGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderGlobalAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalGetExecute(r SmartfolderG
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalGetExecute(r SmartfolderG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SmartfolderGlobalAPISmartfolderglobalPostRequest struct {
-	ctx               context.Context
-	ApiService        SmartfolderGlobalAPI
-	smartfolderGlobal *SmartfolderGlobal
-	returnFields      *string
-	returnFields2     *string
-	returnAsObject    *int32
-}
-
-// Object data to create
-func (r SmartfolderGlobalAPISmartfolderglobalPostRequest) SmartfolderGlobal(smartfolderGlobal SmartfolderGlobal) SmartfolderGlobalAPISmartfolderglobalPostRequest {
-	r.smartfolderGlobal = &smartfolderGlobal
-	return r
+type SmartfolderGlobalAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       SmartfolderGlobalAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r SmartfolderGlobalAPISmartfolderglobalPostRequest) ReturnFields(returnFields string) SmartfolderGlobalAPISmartfolderglobalPostRequest {
+func (r SmartfolderGlobalAPIReadRequest) ReturnFields(returnFields string) SmartfolderGlobalAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SmartfolderGlobalAPISmartfolderglobalPostRequest) ReturnFields2(returnFields2 string) SmartfolderGlobalAPISmartfolderglobalPostRequest {
-	r.returnFields2 = &returnFields2
+func (r SmartfolderGlobalAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SmartfolderGlobalAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SmartfolderGlobalAPISmartfolderglobalPostRequest) ReturnAsObject(returnAsObject int32) SmartfolderGlobalAPISmartfolderglobalPostRequest {
+func (r SmartfolderGlobalAPIReadRequest) ReturnAsObject(returnAsObject int32) SmartfolderGlobalAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SmartfolderGlobalAPISmartfolderglobalPostRequest) Execute() (*CreateSmartfolderGlobalResponse, *http.Response, error) {
-	return r.ApiService.SmartfolderglobalPostExecute(r)
+func (r SmartfolderGlobalAPIReadRequest) Execute() (*GetSmartfolderGlobalResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-SmartfolderglobalPost Create a smartfolder:global object
-
-Creates a new smartfolder:global object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SmartfolderGlobalAPISmartfolderglobalPostRequest
-*/
-func (a *SmartfolderGlobalAPIService) SmartfolderglobalPost(ctx context.Context) SmartfolderGlobalAPISmartfolderglobalPostRequest {
-	return SmartfolderGlobalAPISmartfolderglobalPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateSmartfolderGlobalResponse
-func (a *SmartfolderGlobalAPIService) SmartfolderglobalPostExecute(r SmartfolderGlobalAPISmartfolderglobalPostRequest) (*CreateSmartfolderGlobalResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateSmartfolderGlobalResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderGlobalAPIService.SmartfolderglobalPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/smartfolder:global"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.smartfolderGlobal == nil {
-		return localVarReturnValue, nil, internal.ReportError("smartfolderGlobal is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.smartfolderGlobal
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type SmartfolderGlobalAPISmartfolderglobalReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService SmartfolderGlobalAPI
-	reference  string
-}
-
-func (r SmartfolderGlobalAPISmartfolderglobalReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.SmartfolderglobalReferenceDeleteExecute(r)
-}
-
-/*
-SmartfolderglobalReferenceDelete Delete a smartfolder:global object
-
-Deletes a specific smartfolder:global object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the smartfolder:global object
-	@return SmartfolderGlobalAPISmartfolderglobalReferenceDeleteRequest
-*/
-func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferenceDelete(ctx context.Context, reference string) SmartfolderGlobalAPISmartfolderglobalReferenceDeleteRequest {
-	return SmartfolderGlobalAPISmartfolderglobalReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferenceDeleteExecute(r SmartfolderGlobalAPISmartfolderglobalReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderGlobalAPIService.SmartfolderglobalReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/smartfolder:global/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     SmartfolderGlobalAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest) ReturnFields(returnFields string) SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest) ReturnFields2(returnFields2 string) SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest) ReturnAsObject(returnAsObject int32) SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest) Execute() (*GetSmartfolderGlobalResponse, *http.Response, error) {
-	return r.ApiService.SmartfolderglobalReferenceGetExecute(r)
-}
-
-/*
-SmartfolderglobalReferenceGet Get a specific smartfolder:global object
+Read Get a specific smartfolder:global object
 
 Returns a specific smartfolder:global object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the smartfolder:global object
-	@return SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest
+	@return SmartfolderGlobalAPIReadRequest
 */
-func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferenceGet(ctx context.Context, reference string) SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest {
-	return SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest{
+func (a *SmartfolderGlobalAPIService) Read(ctx context.Context, reference string) SmartfolderGlobalAPIReadRequest {
+	return SmartfolderGlobalAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferenceGet(ctx context.
 // Execute executes the request
 //
 //	@return GetSmartfolderGlobalResponse
-func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferenceGetExecute(r SmartfolderGlobalAPISmartfolderglobalReferenceGetRequest) (*GetSmartfolderGlobalResponse, *http.Response, error) {
+func (a *SmartfolderGlobalAPIService) ReadExecute(r SmartfolderGlobalAPIReadRequest) (*GetSmartfolderGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferenceGetExecute(r Sma
 		localVarReturnValue *GetSmartfolderGlobalResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderGlobalAPIService.SmartfolderglobalReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderGlobalAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferenceGetExecute(r Sma
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferenceGetExecute(r Sma
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SmartfolderGlobalAPISmartfolderglobalReferencePutRequest struct {
+type SmartfolderGlobalAPIUpdateRequest struct {
 	ctx               context.Context
 	ApiService        SmartfolderGlobalAPI
 	reference         string
 	smartfolderGlobal *SmartfolderGlobal
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
 // Object data to update
-func (r SmartfolderGlobalAPISmartfolderglobalReferencePutRequest) SmartfolderGlobal(smartfolderGlobal SmartfolderGlobal) SmartfolderGlobalAPISmartfolderglobalReferencePutRequest {
+func (r SmartfolderGlobalAPIUpdateRequest) SmartfolderGlobal(smartfolderGlobal SmartfolderGlobal) SmartfolderGlobalAPIUpdateRequest {
 	r.smartfolderGlobal = &smartfolderGlobal
 	return r
 }
 
 // Enter the field names followed by comma
-func (r SmartfolderGlobalAPISmartfolderglobalReferencePutRequest) ReturnFields(returnFields string) SmartfolderGlobalAPISmartfolderglobalReferencePutRequest {
+func (r SmartfolderGlobalAPIUpdateRequest) ReturnFields(returnFields string) SmartfolderGlobalAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SmartfolderGlobalAPISmartfolderglobalReferencePutRequest) ReturnFields2(returnFields2 string) SmartfolderGlobalAPISmartfolderglobalReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r SmartfolderGlobalAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SmartfolderGlobalAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SmartfolderGlobalAPISmartfolderglobalReferencePutRequest) ReturnAsObject(returnAsObject int32) SmartfolderGlobalAPISmartfolderglobalReferencePutRequest {
+func (r SmartfolderGlobalAPIUpdateRequest) ReturnAsObject(returnAsObject int32) SmartfolderGlobalAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SmartfolderGlobalAPISmartfolderglobalReferencePutRequest) Execute() (*UpdateSmartfolderGlobalResponse, *http.Response, error) {
-	return r.ApiService.SmartfolderglobalReferencePutExecute(r)
+func (r SmartfolderGlobalAPIUpdateRequest) Execute() (*UpdateSmartfolderGlobalResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-SmartfolderglobalReferencePut Update a smartfolder:global object
+Update Update a smartfolder:global object
 
 Updates a specific smartfolder:global object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the smartfolder:global object
-	@return SmartfolderGlobalAPISmartfolderglobalReferencePutRequest
+	@return SmartfolderGlobalAPIUpdateRequest
 */
-func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferencePut(ctx context.Context, reference string) SmartfolderGlobalAPISmartfolderglobalReferencePutRequest {
-	return SmartfolderGlobalAPISmartfolderglobalReferencePutRequest{
+func (a *SmartfolderGlobalAPIService) Update(ctx context.Context, reference string) SmartfolderGlobalAPIUpdateRequest {
+	return SmartfolderGlobalAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferencePut(ctx context.
 // Execute executes the request
 //
 //	@return UpdateSmartfolderGlobalResponse
-func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferencePutExecute(r SmartfolderGlobalAPISmartfolderglobalReferencePutRequest) (*UpdateSmartfolderGlobalResponse, *http.Response, error) {
+func (a *SmartfolderGlobalAPIService) UpdateExecute(r SmartfolderGlobalAPIUpdateRequest) (*UpdateSmartfolderGlobalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferencePutExecute(r Sma
 		localVarReturnValue *UpdateSmartfolderGlobalResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderGlobalAPIService.SmartfolderglobalReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SmartfolderGlobalAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *SmartfolderGlobalAPIService) SmartfolderglobalReferencePutExecute(r Sma
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

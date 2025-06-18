@@ -72,6 +72,7 @@ paths:
   /dhcp:statistics:
     get:
       description: Returns a list of dhcp:statistics objects matching the search criteria
+      operationId: DhcpStatisticsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -169,6 +170,7 @@ paths:
   /dhcp:statistics/{reference}:
     get:
       description: Returns a specific dhcp:statistics object by reference
+      operationId: DhcpStatisticsRead
       parameters:
       - description: Reference of the dhcp:statistics object
         explode: false
@@ -229,6 +231,7 @@ paths:
   /dhcpfailover:
     get:
       description: Returns a list of dhcpfailover objects matching the search criteria
+      operationId: DhcpfailoverList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -325,6 +328,7 @@ paths:
       - Dhcpfailover
     post:
       description: Creates a new dhcpfailover object
+      operationId: DhcpfailoverCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -385,6 +389,7 @@ paths:
   /dhcpfailover/{reference}:
     delete:
       description: Deletes a specific dhcpfailover object by reference
+      operationId: DhcpfailoverDelete
       parameters:
       - description: Reference of the dhcpfailover object
         explode: false
@@ -412,6 +417,7 @@ paths:
       - Dhcpfailover
     get:
       description: Returns a specific dhcpfailover object by reference
+      operationId: DhcpfailoverRead
       parameters:
       - description: Reference of the dhcpfailover object
         explode: false
@@ -471,6 +477,7 @@ paths:
       - Dhcpfailover
     put:
       description: Updates a specific dhcpfailover object by reference
+      operationId: DhcpfailoverUpdate
       parameters:
       - description: Reference of the dhcpfailover object
         explode: false
@@ -540,6 +547,7 @@ paths:
     get:
       description: Returns a list of dhcpoptiondefinition objects matching the search
         criteria
+      operationId: DhcpoptiondefinitionList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -636,6 +644,7 @@ paths:
       - Dhcpoptiondefinition
     post:
       description: Creates a new dhcpoptiondefinition object
+      operationId: DhcpoptiondefinitionCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -695,6 +704,7 @@ paths:
   /dhcpoptiondefinition/{reference}:
     delete:
       description: Deletes a specific dhcpoptiondefinition object by reference
+      operationId: DhcpoptiondefinitionDelete
       parameters:
       - description: Reference of the dhcpoptiondefinition object
         explode: false
@@ -722,6 +732,7 @@ paths:
       - Dhcpoptiondefinition
     get:
       description: Returns a specific dhcpoptiondefinition object by reference
+      operationId: DhcpoptiondefinitionRead
       parameters:
       - description: Reference of the dhcpoptiondefinition object
         explode: false
@@ -781,6 +792,7 @@ paths:
       - Dhcpoptiondefinition
     put:
       description: Updates a specific dhcpoptiondefinition object by reference
+      operationId: DhcpoptiondefinitionUpdate
       parameters:
       - description: Reference of the dhcpoptiondefinition object
         explode: false
@@ -848,6 +860,7 @@ paths:
   /dhcpoptionspace:
     get:
       description: Returns a list of dhcpoptionspace objects matching the search criteria
+      operationId: DhcpoptionspaceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -944,6 +957,7 @@ paths:
       - Dhcpoptionspace
     post:
       description: Creates a new dhcpoptionspace object
+      operationId: DhcpoptionspaceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1003,6 +1017,7 @@ paths:
   /dhcpoptionspace/{reference}:
     delete:
       description: Deletes a specific dhcpoptionspace object by reference
+      operationId: DhcpoptionspaceDelete
       parameters:
       - description: Reference of the dhcpoptionspace object
         explode: false
@@ -1030,6 +1045,7 @@ paths:
       - Dhcpoptionspace
     get:
       description: Returns a specific dhcpoptionspace object by reference
+      operationId: DhcpoptionspaceRead
       parameters:
       - description: Reference of the dhcpoptionspace object
         explode: false
@@ -1089,6 +1105,7 @@ paths:
       - Dhcpoptionspace
     put:
       description: Updates a specific dhcpoptionspace object by reference
+      operationId: DhcpoptionspaceUpdate
       parameters:
       - description: Reference of the dhcpoptionspace object
         explode: false
@@ -1157,6 +1174,7 @@ paths:
     get:
       description: Returns a list of filterfingerprint objects matching the search
         criteria
+      operationId: FilterfingerprintList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1253,6 +1271,7 @@ paths:
       - Filterfingerprint
     post:
       description: Creates a new filterfingerprint object
+      operationId: FilterfingerprintCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1313,6 +1332,7 @@ paths:
   /filterfingerprint/{reference}:
     delete:
       description: Deletes a specific filterfingerprint object by reference
+      operationId: FilterfingerprintDelete
       parameters:
       - description: Reference of the filterfingerprint object
         explode: false
@@ -1340,6 +1360,7 @@ paths:
       - Filterfingerprint
     get:
       description: Returns a specific filterfingerprint object by reference
+      operationId: FilterfingerprintRead
       parameters:
       - description: Reference of the filterfingerprint object
         explode: false
@@ -1399,6 +1420,7 @@ paths:
       - Filterfingerprint
     put:
       description: Updates a specific filterfingerprint object by reference
+      operationId: FilterfingerprintUpdate
       parameters:
       - description: Reference of the filterfingerprint object
         explode: false
@@ -1467,6 +1489,7 @@ paths:
   /filtermac:
     get:
       description: Returns a list of filtermac objects matching the search criteria
+      operationId: FiltermacList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1563,6 +1586,7 @@ paths:
       - Filtermac
     post:
       description: Creates a new filtermac object
+      operationId: FiltermacCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1623,6 +1647,7 @@ paths:
   /filtermac/{reference}:
     delete:
       description: Deletes a specific filtermac object by reference
+      operationId: FiltermacDelete
       parameters:
       - description: Reference of the filtermac object
         explode: false
@@ -1650,6 +1675,7 @@ paths:
       - Filtermac
     get:
       description: Returns a specific filtermac object by reference
+      operationId: FiltermacRead
       parameters:
       - description: Reference of the filtermac object
         explode: false
@@ -1709,6 +1735,7 @@ paths:
       - Filtermac
     put:
       description: Updates a specific filtermac object by reference
+      operationId: FiltermacUpdate
       parameters:
       - description: Reference of the filtermac object
         explode: false
@@ -1777,6 +1804,7 @@ paths:
   /filternac:
     get:
       description: Returns a list of filternac objects matching the search criteria
+      operationId: FilternacList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1873,6 +1901,7 @@ paths:
       - Filternac
     post:
       description: Creates a new filternac object
+      operationId: FilternacCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1933,6 +1962,7 @@ paths:
   /filternac/{reference}:
     delete:
       description: Deletes a specific filternac object by reference
+      operationId: FilternacDelete
       parameters:
       - description: Reference of the filternac object
         explode: false
@@ -1960,6 +1990,7 @@ paths:
       - Filternac
     get:
       description: Returns a specific filternac object by reference
+      operationId: FilternacRead
       parameters:
       - description: Reference of the filternac object
         explode: false
@@ -2019,6 +2050,7 @@ paths:
       - Filternac
     put:
       description: Updates a specific filternac object by reference
+      operationId: FilternacUpdate
       parameters:
       - description: Reference of the filternac object
         explode: false
@@ -2087,6 +2119,7 @@ paths:
   /filteroption:
     get:
       description: Returns a list of filteroption objects matching the search criteria
+      operationId: FilteroptionList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2183,6 +2216,7 @@ paths:
       - Filteroption
     post:
       description: Creates a new filteroption object
+      operationId: FilteroptionCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2243,6 +2277,7 @@ paths:
   /filteroption/{reference}:
     delete:
       description: Deletes a specific filteroption object by reference
+      operationId: FilteroptionDelete
       parameters:
       - description: Reference of the filteroption object
         explode: false
@@ -2270,6 +2305,7 @@ paths:
       - Filteroption
     get:
       description: Returns a specific filteroption object by reference
+      operationId: FilteroptionRead
       parameters:
       - description: Reference of the filteroption object
         explode: false
@@ -2329,6 +2365,7 @@ paths:
       - Filteroption
     put:
       description: Updates a specific filteroption object by reference
+      operationId: FilteroptionUpdate
       parameters:
       - description: Reference of the filteroption object
         explode: false
@@ -2398,6 +2435,7 @@ paths:
     get:
       description: Returns a list of filterrelayagent objects matching the search
         criteria
+      operationId: FilterrelayagentList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2494,6 +2532,7 @@ paths:
       - Filterrelayagent
     post:
       description: Creates a new filterrelayagent object
+      operationId: FilterrelayagentCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2554,6 +2593,7 @@ paths:
   /filterrelayagent/{reference}:
     delete:
       description: Deletes a specific filterrelayagent object by reference
+      operationId: FilterrelayagentDelete
       parameters:
       - description: Reference of the filterrelayagent object
         explode: false
@@ -2581,6 +2621,7 @@ paths:
       - Filterrelayagent
     get:
       description: Returns a specific filterrelayagent object by reference
+      operationId: FilterrelayagentRead
       parameters:
       - description: Reference of the filterrelayagent object
         explode: false
@@ -2640,6 +2681,7 @@ paths:
       - Filterrelayagent
     put:
       description: Updates a specific filterrelayagent object by reference
+      operationId: FilterrelayagentUpdate
       parameters:
       - description: Reference of the filterrelayagent object
         explode: false
@@ -2708,6 +2750,7 @@ paths:
   /fingerprint:
     get:
       description: Returns a list of fingerprint objects matching the search criteria
+      operationId: FingerprintList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2804,6 +2847,7 @@ paths:
       - Fingerprint
     post:
       description: Creates a new fingerprint object
+      operationId: FingerprintCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2864,6 +2908,7 @@ paths:
   /fingerprint/{reference}:
     delete:
       description: Deletes a specific fingerprint object by reference
+      operationId: FingerprintDelete
       parameters:
       - description: Reference of the fingerprint object
         explode: false
@@ -2891,6 +2936,7 @@ paths:
       - Fingerprint
     get:
       description: Returns a specific fingerprint object by reference
+      operationId: FingerprintRead
       parameters:
       - description: Reference of the fingerprint object
         explode: false
@@ -2950,6 +2996,7 @@ paths:
       - Fingerprint
     put:
       description: Updates a specific fingerprint object by reference
+      operationId: FingerprintUpdate
       parameters:
       - description: Reference of the fingerprint object
         explode: false
@@ -3018,6 +3065,7 @@ paths:
   /fixedaddress:
     get:
       description: Returns a list of fixedaddress objects matching the search criteria
+      operationId: FixedaddressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3114,6 +3162,7 @@ paths:
       - Fixedaddress
     post:
       description: Creates a new fixedaddress object
+      operationId: FixedaddressCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3174,6 +3223,7 @@ paths:
   /fixedaddress/{reference}:
     delete:
       description: Deletes a specific fixedaddress object by reference
+      operationId: FixedaddressDelete
       parameters:
       - description: Reference of the fixedaddress object
         explode: false
@@ -3201,6 +3251,7 @@ paths:
       - Fixedaddress
     get:
       description: Returns a specific fixedaddress object by reference
+      operationId: FixedaddressRead
       parameters:
       - description: Reference of the fixedaddress object
         explode: false
@@ -3260,6 +3311,7 @@ paths:
       - Fixedaddress
     put:
       description: Updates a specific fixedaddress object by reference
+      operationId: FixedaddressUpdate
       parameters:
       - description: Reference of the fixedaddress object
         explode: false
@@ -3329,6 +3381,7 @@ paths:
     get:
       description: Returns a list of fixedaddresstemplate objects matching the search
         criteria
+      operationId: FixedaddresstemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3425,6 +3478,7 @@ paths:
       - Fixedaddresstemplate
     post:
       description: Creates a new fixedaddresstemplate object
+      operationId: FixedaddresstemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3485,6 +3539,7 @@ paths:
   /fixedaddresstemplate/{reference}:
     delete:
       description: Deletes a specific fixedaddresstemplate object by reference
+      operationId: FixedaddresstemplateDelete
       parameters:
       - description: Reference of the fixedaddresstemplate object
         explode: false
@@ -3512,6 +3567,7 @@ paths:
       - Fixedaddresstemplate
     get:
       description: Returns a specific fixedaddresstemplate object by reference
+      operationId: FixedaddresstemplateRead
       parameters:
       - description: Reference of the fixedaddresstemplate object
         explode: false
@@ -3571,6 +3627,7 @@ paths:
       - Fixedaddresstemplate
     put:
       description: Updates a specific fixedaddresstemplate object by reference
+      operationId: FixedaddresstemplateUpdate
       parameters:
       - description: Reference of the fixedaddresstemplate object
         explode: false
@@ -3640,6 +3697,7 @@ paths:
     get:
       description: Returns a list of ipv6dhcpoptiondefinition objects matching the
         search criteria
+      operationId: Ipv6dhcpoptiondefinitionList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3736,6 +3794,7 @@ paths:
       - Ipv6dhcpoptiondefinition
     post:
       description: Creates a new ipv6dhcpoptiondefinition object
+      operationId: Ipv6dhcpoptiondefinitionCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3795,6 +3854,7 @@ paths:
   /ipv6dhcpoptiondefinition/{reference}:
     delete:
       description: Deletes a specific ipv6dhcpoptiondefinition object by reference
+      operationId: Ipv6dhcpoptiondefinitionDelete
       parameters:
       - description: Reference of the ipv6dhcpoptiondefinition object
         explode: false
@@ -3822,6 +3882,7 @@ paths:
       - Ipv6dhcpoptiondefinition
     get:
       description: Returns a specific ipv6dhcpoptiondefinition object by reference
+      operationId: Ipv6dhcpoptiondefinitionRead
       parameters:
       - description: Reference of the ipv6dhcpoptiondefinition object
         explode: false
@@ -3881,6 +3942,7 @@ paths:
       - Ipv6dhcpoptiondefinition
     put:
       description: Updates a specific ipv6dhcpoptiondefinition object by reference
+      operationId: Ipv6dhcpoptiondefinitionUpdate
       parameters:
       - description: Reference of the ipv6dhcpoptiondefinition object
         explode: false
@@ -3949,6 +4011,7 @@ paths:
     get:
       description: Returns a list of ipv6dhcpoptionspace objects matching the search
         criteria
+      operationId: Ipv6dhcpoptionspaceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4045,6 +4108,7 @@ paths:
       - Ipv6dhcpoptionspace
     post:
       description: Creates a new ipv6dhcpoptionspace object
+      operationId: Ipv6dhcpoptionspaceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4104,6 +4168,7 @@ paths:
   /ipv6dhcpoptionspace/{reference}:
     delete:
       description: Deletes a specific ipv6dhcpoptionspace object by reference
+      operationId: Ipv6dhcpoptionspaceDelete
       parameters:
       - description: Reference of the ipv6dhcpoptionspace object
         explode: false
@@ -4131,6 +4196,7 @@ paths:
       - Ipv6dhcpoptionspace
     get:
       description: Returns a specific ipv6dhcpoptionspace object by reference
+      operationId: Ipv6dhcpoptionspaceRead
       parameters:
       - description: Reference of the ipv6dhcpoptionspace object
         explode: false
@@ -4190,6 +4256,7 @@ paths:
       - Ipv6dhcpoptionspace
     put:
       description: Updates a specific ipv6dhcpoptionspace object by reference
+      operationId: Ipv6dhcpoptionspaceUpdate
       parameters:
       - description: Reference of the ipv6dhcpoptionspace object
         explode: false
@@ -4258,6 +4325,7 @@ paths:
     get:
       description: Returns a list of ipv6filteroption objects matching the search
         criteria
+      operationId: Ipv6filteroptionList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4354,6 +4422,7 @@ paths:
       - Ipv6filteroption
     post:
       description: Creates a new ipv6filteroption object
+      operationId: Ipv6filteroptionCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4414,6 +4483,7 @@ paths:
   /ipv6filteroption/{reference}:
     delete:
       description: Deletes a specific ipv6filteroption object by reference
+      operationId: Ipv6filteroptionDelete
       parameters:
       - description: Reference of the ipv6filteroption object
         explode: false
@@ -4441,6 +4511,7 @@ paths:
       - Ipv6filteroption
     get:
       description: Returns a specific ipv6filteroption object by reference
+      operationId: Ipv6filteroptionRead
       parameters:
       - description: Reference of the ipv6filteroption object
         explode: false
@@ -4500,6 +4571,7 @@ paths:
       - Ipv6filteroption
     put:
       description: Updates a specific ipv6filteroption object by reference
+      operationId: Ipv6filteroptionUpdate
       parameters:
       - description: Reference of the ipv6filteroption object
         explode: false
@@ -4569,6 +4641,7 @@ paths:
     get:
       description: Returns a list of ipv6fixedaddress objects matching the search
         criteria
+      operationId: Ipv6fixedaddressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4665,6 +4738,7 @@ paths:
       - Ipv6fixedaddress
     post:
       description: Creates a new ipv6fixedaddress object
+      operationId: Ipv6fixedaddressCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4725,6 +4799,7 @@ paths:
   /ipv6fixedaddress/{reference}:
     delete:
       description: Deletes a specific ipv6fixedaddress object by reference
+      operationId: Ipv6fixedaddressDelete
       parameters:
       - description: Reference of the ipv6fixedaddress object
         explode: false
@@ -4752,6 +4827,7 @@ paths:
       - Ipv6fixedaddress
     get:
       description: Returns a specific ipv6fixedaddress object by reference
+      operationId: Ipv6fixedaddressRead
       parameters:
       - description: Reference of the ipv6fixedaddress object
         explode: false
@@ -4811,6 +4887,7 @@ paths:
       - Ipv6fixedaddress
     put:
       description: Updates a specific ipv6fixedaddress object by reference
+      operationId: Ipv6fixedaddressUpdate
       parameters:
       - description: Reference of the ipv6fixedaddress object
         explode: false
@@ -4880,6 +4957,7 @@ paths:
     get:
       description: Returns a list of ipv6fixedaddresstemplate objects matching the
         search criteria
+      operationId: Ipv6fixedaddresstemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4976,6 +5054,7 @@ paths:
       - Ipv6fixedaddresstemplate
     post:
       description: Creates a new ipv6fixedaddresstemplate object
+      operationId: Ipv6fixedaddresstemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5036,6 +5115,7 @@ paths:
   /ipv6fixedaddresstemplate/{reference}:
     delete:
       description: Deletes a specific ipv6fixedaddresstemplate object by reference
+      operationId: Ipv6fixedaddresstemplateDelete
       parameters:
       - description: Reference of the ipv6fixedaddresstemplate object
         explode: false
@@ -5063,6 +5143,7 @@ paths:
       - Ipv6fixedaddresstemplate
     get:
       description: Returns a specific ipv6fixedaddresstemplate object by reference
+      operationId: Ipv6fixedaddresstemplateRead
       parameters:
       - description: Reference of the ipv6fixedaddresstemplate object
         explode: false
@@ -5122,6 +5203,7 @@ paths:
       - Ipv6fixedaddresstemplate
     put:
       description: Updates a specific ipv6fixedaddresstemplate object by reference
+      operationId: Ipv6fixedaddresstemplateUpdate
       parameters:
       - description: Reference of the ipv6fixedaddresstemplate object
         explode: false
@@ -5190,6 +5272,7 @@ paths:
   /ipv6range:
     get:
       description: Returns a list of ipv6range objects matching the search criteria
+      operationId: Ipv6rangeList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5286,6 +5369,7 @@ paths:
       - Ipv6range
     post:
       description: Creates a new ipv6range object
+      operationId: Ipv6rangeCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5346,6 +5430,7 @@ paths:
   /ipv6range/{reference}:
     delete:
       description: Deletes a specific ipv6range object by reference
+      operationId: Ipv6rangeDelete
       parameters:
       - description: Reference of the ipv6range object
         explode: false
@@ -5373,6 +5458,7 @@ paths:
       - Ipv6range
     get:
       description: Returns a specific ipv6range object by reference
+      operationId: Ipv6rangeRead
       parameters:
       - description: Reference of the ipv6range object
         explode: false
@@ -5432,6 +5518,7 @@ paths:
       - Ipv6range
     put:
       description: Updates a specific ipv6range object by reference
+      operationId: Ipv6rangeUpdate
       parameters:
       - description: Reference of the ipv6range object
         explode: false
@@ -5501,6 +5588,7 @@ paths:
     get:
       description: Returns a list of ipv6rangetemplate objects matching the search
         criteria
+      operationId: Ipv6rangetemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5597,6 +5685,7 @@ paths:
       - Ipv6rangetemplate
     post:
       description: Creates a new ipv6rangetemplate object
+      operationId: Ipv6rangetemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5656,6 +5745,7 @@ paths:
   /ipv6rangetemplate/{reference}:
     delete:
       description: Deletes a specific ipv6rangetemplate object by reference
+      operationId: Ipv6rangetemplateDelete
       parameters:
       - description: Reference of the ipv6rangetemplate object
         explode: false
@@ -5683,6 +5773,7 @@ paths:
       - Ipv6rangetemplate
     get:
       description: Returns a specific ipv6rangetemplate object by reference
+      operationId: Ipv6rangetemplateRead
       parameters:
       - description: Reference of the ipv6rangetemplate object
         explode: false
@@ -5742,6 +5833,7 @@ paths:
       - Ipv6rangetemplate
     put:
       description: Updates a specific ipv6rangetemplate object by reference
+      operationId: Ipv6rangetemplateUpdate
       parameters:
       - description: Reference of the ipv6rangetemplate object
         explode: false
@@ -5810,6 +5902,7 @@ paths:
     get:
       description: Returns a list of ipv6sharednetwork objects matching the search
         criteria
+      operationId: Ipv6sharednetworkList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5906,6 +5999,7 @@ paths:
       - Ipv6sharednetwork
     post:
       description: Creates a new ipv6sharednetwork object
+      operationId: Ipv6sharednetworkCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5966,6 +6060,7 @@ paths:
   /ipv6sharednetwork/{reference}:
     delete:
       description: Deletes a specific ipv6sharednetwork object by reference
+      operationId: Ipv6sharednetworkDelete
       parameters:
       - description: Reference of the ipv6sharednetwork object
         explode: false
@@ -5993,6 +6088,7 @@ paths:
       - Ipv6sharednetwork
     get:
       description: Returns a specific ipv6sharednetwork object by reference
+      operationId: Ipv6sharednetworkRead
       parameters:
       - description: Reference of the ipv6sharednetwork object
         explode: false
@@ -6052,6 +6148,7 @@ paths:
       - Ipv6sharednetwork
     put:
       description: Updates a specific ipv6sharednetwork object by reference
+      operationId: Ipv6sharednetworkUpdate
       parameters:
       - description: Reference of the ipv6sharednetwork object
         explode: false
@@ -6120,6 +6217,7 @@ paths:
   /lease:
     get:
       description: Returns a list of lease objects matching the search criteria
+      operationId: LeaseList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6217,6 +6315,7 @@ paths:
   /lease/{reference}:
     delete:
       description: Deletes a specific lease object by reference
+      operationId: LeaseDelete
       parameters:
       - description: Reference of the lease object
         explode: false
@@ -6244,6 +6343,7 @@ paths:
       - Lease
     get:
       description: Returns a specific lease object by reference
+      operationId: LeaseRead
       parameters:
       - description: Reference of the lease object
         explode: false
@@ -6305,6 +6405,7 @@ paths:
     get:
       description: Returns a list of macfilteraddress objects matching the search
         criteria
+      operationId: MacfilteraddressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6401,6 +6502,7 @@ paths:
       - Macfilteraddress
     post:
       description: Creates a new macfilteraddress object
+      operationId: MacfilteraddressCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6461,6 +6563,7 @@ paths:
   /macfilteraddress/{reference}:
     delete:
       description: Deletes a specific macfilteraddress object by reference
+      operationId: MacfilteraddressDelete
       parameters:
       - description: Reference of the macfilteraddress object
         explode: false
@@ -6488,6 +6591,7 @@ paths:
       - Macfilteraddress
     get:
       description: Returns a specific macfilteraddress object by reference
+      operationId: MacfilteraddressRead
       parameters:
       - description: Reference of the macfilteraddress object
         explode: false
@@ -6547,6 +6651,7 @@ paths:
       - Macfilteraddress
     put:
       description: Updates a specific macfilteraddress object by reference
+      operationId: MacfilteraddressUpdate
       parameters:
       - description: Reference of the macfilteraddress object
         explode: false
@@ -6615,6 +6720,7 @@ paths:
   /range:
     get:
       description: Returns a list of range objects matching the search criteria
+      operationId: RangeList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6711,6 +6817,7 @@ paths:
       - Range
     post:
       description: Creates a new range object
+      operationId: RangeCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -6771,6 +6878,7 @@ paths:
   /range/{reference}:
     delete:
       description: Deletes a specific range object by reference
+      operationId: RangeDelete
       parameters:
       - description: Reference of the range object
         explode: false
@@ -6798,6 +6906,7 @@ paths:
       - Range
     get:
       description: Returns a specific range object by reference
+      operationId: RangeRead
       parameters:
       - description: Reference of the range object
         explode: false
@@ -6857,6 +6966,7 @@ paths:
       - Range
     put:
       description: Updates a specific range object by reference
+      operationId: RangeUpdate
       parameters:
       - description: Reference of the range object
         explode: false
@@ -6925,6 +7035,7 @@ paths:
   /rangetemplate:
     get:
       description: Returns a list of rangetemplate objects matching the search criteria
+      operationId: RangetemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7021,6 +7132,7 @@ paths:
       - Rangetemplate
     post:
       description: Creates a new rangetemplate object
+      operationId: RangetemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7081,6 +7193,7 @@ paths:
   /rangetemplate/{reference}:
     delete:
       description: Deletes a specific rangetemplate object by reference
+      operationId: RangetemplateDelete
       parameters:
       - description: Reference of the rangetemplate object
         explode: false
@@ -7108,6 +7221,7 @@ paths:
       - Rangetemplate
     get:
       description: Returns a specific rangetemplate object by reference
+      operationId: RangetemplateRead
       parameters:
       - description: Reference of the rangetemplate object
         explode: false
@@ -7167,6 +7281,7 @@ paths:
       - Rangetemplate
     put:
       description: Updates a specific rangetemplate object by reference
+      operationId: RangetemplateUpdate
       parameters:
       - description: Reference of the rangetemplate object
         explode: false
@@ -7235,6 +7350,7 @@ paths:
   /roaminghost:
     get:
       description: Returns a list of roaminghost objects matching the search criteria
+      operationId: RoaminghostList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7331,6 +7447,7 @@ paths:
       - Roaminghost
     post:
       description: Creates a new roaminghost object
+      operationId: RoaminghostCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7391,6 +7508,7 @@ paths:
   /roaminghost/{reference}:
     delete:
       description: Deletes a specific roaminghost object by reference
+      operationId: RoaminghostDelete
       parameters:
       - description: Reference of the roaminghost object
         explode: false
@@ -7418,6 +7536,7 @@ paths:
       - Roaminghost
     get:
       description: Returns a specific roaminghost object by reference
+      operationId: RoaminghostRead
       parameters:
       - description: Reference of the roaminghost object
         explode: false
@@ -7477,6 +7596,7 @@ paths:
       - Roaminghost
     put:
       description: Updates a specific roaminghost object by reference
+      operationId: RoaminghostUpdate
       parameters:
       - description: Reference of the roaminghost object
         explode: false
@@ -7545,6 +7665,7 @@ paths:
   /sharednetwork:
     get:
       description: Returns a list of sharednetwork objects matching the search criteria
+      operationId: SharednetworkList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7641,6 +7762,7 @@ paths:
       - Sharednetwork
     post:
       description: Creates a new sharednetwork object
+      operationId: SharednetworkCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7701,6 +7823,7 @@ paths:
   /sharednetwork/{reference}:
     delete:
       description: Deletes a specific sharednetwork object by reference
+      operationId: SharednetworkDelete
       parameters:
       - description: Reference of the sharednetwork object
         explode: false
@@ -7728,6 +7851,7 @@ paths:
       - Sharednetwork
     get:
       description: Returns a specific sharednetwork object by reference
+      operationId: SharednetworkRead
       parameters:
       - description: Reference of the sharednetwork object
         explode: false
@@ -7787,6 +7911,7 @@ paths:
       - Sharednetwork
     put:
       description: Updates a specific sharednetwork object by reference
+      operationId: SharednetworkUpdate
       parameters:
       - description: Reference of the sharednetwork object
         explode: false
@@ -7855,6 +7980,7 @@ paths:
   /orderedranges:
     get:
       description: Returns a list of orderedranges objects matching the search criteria
+      operationId: OrderedrangesList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -7952,6 +8078,7 @@ paths:
   /orderedranges/{reference}:
     get:
       description: Returns a specific orderedranges object by reference
+      operationId: OrderedrangesRead
       parameters:
       - description: Reference of the orderedranges object
         explode: false
@@ -8011,6 +8138,7 @@ paths:
       - Orderedranges
     put:
       description: Updates a specific orderedranges object by reference
+      operationId: OrderedrangesUpdate
       parameters:
       - description: Reference of the orderedranges object
         explode: false
@@ -16534,6 +16662,7 @@ components:
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
           example: 1
+          format: int64
           type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied to this
@@ -17979,6 +18108,7 @@ components:
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
           example: 1
+          format: int64
           type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on this
@@ -19143,6 +19273,7 @@ components:
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
           example: 1
+          format: int64
           type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the

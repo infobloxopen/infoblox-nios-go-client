@@ -23,150 +23,386 @@ import (
 
 type MsserverAPI interface {
 	/*
-		Get Retrieve msserver objects
-
-		Returns a list of msserver objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MsserverAPIGetRequest
-	*/
-	Get(ctx context.Context) MsserverAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListMsserverResponse
-	GetExecute(r MsserverAPIGetRequest) (*ListMsserverResponse, *http.Response, error)
-	/*
-		Post Create a msserver object
+		Create Create a msserver object
 
 		Creates a new msserver object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MsserverAPIPostRequest
+		@return MsserverAPICreateRequest
 	*/
-	Post(ctx context.Context) MsserverAPIPostRequest
+	Create(ctx context.Context) MsserverAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateMsserverResponse
-	PostExecute(r MsserverAPIPostRequest) (*CreateMsserverResponse, *http.Response, error)
+	CreateExecute(r MsserverAPICreateRequest) (*CreateMsserverResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a msserver object
+		Delete Delete a msserver object
 
 		Deletes a specific msserver object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver object
-		@return MsserverAPIReferenceDeleteRequest
+		@return MsserverAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) MsserverAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) MsserverAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r MsserverAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r MsserverAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific msserver object
+		List Retrieve msserver objects
+
+		Returns a list of msserver objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return MsserverAPIListRequest
+	*/
+	List(ctx context.Context) MsserverAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListMsserverResponse
+	ListExecute(r MsserverAPIListRequest) (*ListMsserverResponse, *http.Response, error)
+	/*
+		Read Get a specific msserver object
 
 		Returns a specific msserver object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver object
-		@return MsserverAPIReferenceGetRequest
+		@return MsserverAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) MsserverAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) MsserverAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMsserverResponse
-	ReferenceGetExecute(r MsserverAPIReferenceGetRequest) (*GetMsserverResponse, *http.Response, error)
+	ReadExecute(r MsserverAPIReadRequest) (*GetMsserverResponse, *http.Response, error)
 	/*
-		ReferencePut Update a msserver object
+		Update Update a msserver object
 
 		Updates a specific msserver object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the msserver object
-		@return MsserverAPIReferencePutRequest
+		@return MsserverAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) MsserverAPIReferencePutRequest
+	Update(ctx context.Context, reference string) MsserverAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMsserverResponse
-	ReferencePutExecute(r MsserverAPIReferencePutRequest) (*UpdateMsserverResponse, *http.Response, error)
+	UpdateExecute(r MsserverAPIUpdateRequest) (*UpdateMsserverResponse, *http.Response, error)
 }
 
 // MsserverAPIService MsserverAPI service
 type MsserverAPIService internal.Service
 
-type MsserverAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     MsserverAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type MsserverAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       MsserverAPI
+	msserver         *Msserver
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r MsserverAPICreateRequest) Msserver(msserver Msserver) MsserverAPICreateRequest {
+	r.msserver = &msserver
+	return r
 }
 
 // Enter the field names followed by comma
-func (r MsserverAPIGetRequest) ReturnFields(returnFields string) MsserverAPIGetRequest {
+func (r MsserverAPICreateRequest) ReturnFields(returnFields string) MsserverAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAPIGetRequest) ReturnFields2(returnFields2 string) MsserverAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r MsserverAPICreateRequest) ReturnAsObject(returnAsObject int32) MsserverAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r MsserverAPICreateRequest) Execute() (*CreateMsserverResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a msserver object
+
+Creates a new msserver object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MsserverAPICreateRequest
+*/
+func (a *MsserverAPIService) Create(ctx context.Context) MsserverAPICreateRequest {
+	return MsserverAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateMsserverResponse
+func (a *MsserverAPIService) CreateExecute(r MsserverAPICreateRequest) (*CreateMsserverResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateMsserverResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/msserver"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.msserver == nil {
+		return localVarReturnValue, nil, internal.ReportError("msserver is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.msserver != nil {
+		if r.msserver.Extattrs == nil {
+			r.msserver.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.msserver.Extattrs)[k]; !ok {
+				(*r.msserver.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.msserver
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MsserverAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService MsserverAPI
+	reference  string
+}
+
+func (r MsserverAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a msserver object
+
+Deletes a specific msserver object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the msserver object
+	@return MsserverAPIDeleteRequest
+*/
+func (a *MsserverAPIService) Delete(ctx context.Context, reference string) MsserverAPIDeleteRequest {
+	return MsserverAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *MsserverAPIService) DeleteExecute(r MsserverAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/msserver/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type MsserverAPIListRequest struct {
+	ctx              context.Context
+	ApiService       MsserverAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r MsserverAPIListRequest) ReturnFields(returnFields string) MsserverAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r MsserverAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MsserverAPIGetRequest) MaxResults(maxResults int32) MsserverAPIGetRequest {
+func (r MsserverAPIListRequest) MaxResults(maxResults int32) MsserverAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverAPIGetRequest) ReturnAsObject(returnAsObject int32) MsserverAPIGetRequest {
+func (r MsserverAPIListRequest) ReturnAsObject(returnAsObject int32) MsserverAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MsserverAPIGetRequest) Paging(paging int32) MsserverAPIGetRequest {
+func (r MsserverAPIListRequest) Paging(paging int32) MsserverAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MsserverAPIGetRequest) PageId(pageId string) MsserverAPIGetRequest {
+func (r MsserverAPIListRequest) PageId(pageId string) MsserverAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MsserverAPIGetRequest) Filters(filters map[string]interface{}) MsserverAPIGetRequest {
+func (r MsserverAPIListRequest) Filters(filters map[string]interface{}) MsserverAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MsserverAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MsserverAPIGetRequest {
+func (r MsserverAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MsserverAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MsserverAPIGetRequest) Execute() (*ListMsserverResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r MsserverAPIListRequest) Execute() (*ListMsserverResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve msserver objects
+List Retrieve msserver objects
 
 Returns a list of msserver objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MsserverAPIGetRequest
+	@return MsserverAPIListRequest
 */
-func (a *MsserverAPIService) Get(ctx context.Context) MsserverAPIGetRequest {
-	return MsserverAPIGetRequest{
+func (a *MsserverAPIService) List(ctx context.Context) MsserverAPIListRequest {
+	return MsserverAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *MsserverAPIService) Get(ctx context.Context) MsserverAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListMsserverResponse
-func (a *MsserverAPIService) GetExecute(r MsserverAPIGetRequest) (*ListMsserverResponse, *http.Response, error) {
+func (a *MsserverAPIService) ListExecute(r MsserverAPIListRequest) (*ListMsserverResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *MsserverAPIService) GetExecute(r MsserverAPIGetRequest) (*ListMsserverR
 		localVarReturnValue *ListMsserverResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *MsserverAPIService) GetExecute(r MsserverAPIGetRequest) (*ListMsserverR
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *MsserverAPIService) GetExecute(r MsserverAPIGetRequest) (*ListMsserverR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MsserverAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     MsserverAPI
-	msserver       *Msserver
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r MsserverAPIPostRequest) Msserver(msserver Msserver) MsserverAPIPostRequest {
-	r.msserver = &msserver
-	return r
+type MsserverAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       MsserverAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r MsserverAPIPostRequest) ReturnFields(returnFields string) MsserverAPIPostRequest {
+func (r MsserverAPIReadRequest) ReturnFields(returnFields string) MsserverAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAPIPostRequest) ReturnFields2(returnFields2 string) MsserverAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverAPIPostRequest) ReturnAsObject(returnAsObject int32) MsserverAPIPostRequest {
+func (r MsserverAPIReadRequest) ReturnAsObject(returnAsObject int32) MsserverAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MsserverAPIPostRequest) Execute() (*CreateMsserverResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r MsserverAPIReadRequest) Execute() (*GetMsserverResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a msserver object
-
-Creates a new msserver object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MsserverAPIPostRequest
-*/
-func (a *MsserverAPIService) Post(ctx context.Context) MsserverAPIPostRequest {
-	return MsserverAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateMsserverResponse
-func (a *MsserverAPIService) PostExecute(r MsserverAPIPostRequest) (*CreateMsserverResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateMsserverResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/msserver"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.msserver == nil {
-		return localVarReturnValue, nil, internal.ReportError("msserver is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.msserver != nil {
-		if r.msserver.Extattrs == nil {
-			r.msserver.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.msserver.Extattrs)[k]; !ok {
-				(*r.msserver.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.msserver
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MsserverAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService MsserverAPI
-	reference  string
-}
-
-func (r MsserverAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a msserver object
-
-Deletes a specific msserver object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the msserver object
-	@return MsserverAPIReferenceDeleteRequest
-*/
-func (a *MsserverAPIService) ReferenceDelete(ctx context.Context, reference string) MsserverAPIReferenceDeleteRequest {
-	return MsserverAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *MsserverAPIService) ReferenceDeleteExecute(r MsserverAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/msserver/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type MsserverAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     MsserverAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r MsserverAPIReferenceGetRequest) ReturnFields(returnFields string) MsserverAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAPIReferenceGetRequest) ReturnFields2(returnFields2 string) MsserverAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r MsserverAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) MsserverAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r MsserverAPIReferenceGetRequest) Execute() (*GetMsserverResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific msserver object
+Read Get a specific msserver object
 
 Returns a specific msserver object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the msserver object
-	@return MsserverAPIReferenceGetRequest
+	@return MsserverAPIReadRequest
 */
-func (a *MsserverAPIService) ReferenceGet(ctx context.Context, reference string) MsserverAPIReferenceGetRequest {
-	return MsserverAPIReferenceGetRequest{
+func (a *MsserverAPIService) Read(ctx context.Context, reference string) MsserverAPIReadRequest {
+	return MsserverAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *MsserverAPIService) ReferenceGet(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return GetMsserverResponse
-func (a *MsserverAPIService) ReferenceGetExecute(r MsserverAPIReferenceGetRequest) (*GetMsserverResponse, *http.Response, error) {
+func (a *MsserverAPIService) ReadExecute(r MsserverAPIReadRequest) (*GetMsserverResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *MsserverAPIService) ReferenceGetExecute(r MsserverAPIReferenceGetReques
 		localVarReturnValue *GetMsserverResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *MsserverAPIService) ReferenceGetExecute(r MsserverAPIReferenceGetReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *MsserverAPIService) ReferenceGetExecute(r MsserverAPIReferenceGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MsserverAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     MsserverAPI
-	reference      string
-	msserver       *Msserver
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MsserverAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       MsserverAPI
+	reference        string
+	msserver         *Msserver
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r MsserverAPIReferencePutRequest) Msserver(msserver Msserver) MsserverAPIReferencePutRequest {
+func (r MsserverAPIUpdateRequest) Msserver(msserver Msserver) MsserverAPIUpdateRequest {
 	r.msserver = &msserver
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MsserverAPIReferencePutRequest) ReturnFields(returnFields string) MsserverAPIReferencePutRequest {
+func (r MsserverAPIUpdateRequest) ReturnFields(returnFields string) MsserverAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MsserverAPIReferencePutRequest) ReturnFields2(returnFields2 string) MsserverAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r MsserverAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MsserverAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MsserverAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) MsserverAPIReferencePutRequest {
+func (r MsserverAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MsserverAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MsserverAPIReferencePutRequest) Execute() (*UpdateMsserverResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r MsserverAPIUpdateRequest) Execute() (*UpdateMsserverResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a msserver object
+Update Update a msserver object
 
 Updates a specific msserver object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the msserver object
-	@return MsserverAPIReferencePutRequest
+	@return MsserverAPIUpdateRequest
 */
-func (a *MsserverAPIService) ReferencePut(ctx context.Context, reference string) MsserverAPIReferencePutRequest {
-	return MsserverAPIReferencePutRequest{
+func (a *MsserverAPIService) Update(ctx context.Context, reference string) MsserverAPIUpdateRequest {
+	return MsserverAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *MsserverAPIService) ReferencePut(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return UpdateMsserverResponse
-func (a *MsserverAPIService) ReferencePutExecute(r MsserverAPIReferencePutRequest) (*UpdateMsserverResponse, *http.Response, error) {
+func (a *MsserverAPIService) UpdateExecute(r MsserverAPIUpdateRequest) (*UpdateMsserverResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *MsserverAPIService) ReferencePutExecute(r MsserverAPIReferencePutReques
 		localVarReturnValue *UpdateMsserverResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MsserverAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *MsserverAPIService) ReferencePutExecute(r MsserverAPIReferencePutReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

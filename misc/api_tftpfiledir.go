@@ -23,150 +23,374 @@ import (
 
 type TftpfiledirAPI interface {
 	/*
-		Get Retrieve tftpfiledir objects
-
-		Returns a list of tftpfiledir objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return TftpfiledirAPIGetRequest
-	*/
-	Get(ctx context.Context) TftpfiledirAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListTftpfiledirResponse
-	GetExecute(r TftpfiledirAPIGetRequest) (*ListTftpfiledirResponse, *http.Response, error)
-	/*
-		Post Create a tftpfiledir object
+		Create Create a tftpfiledir object
 
 		Creates a new tftpfiledir object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return TftpfiledirAPIPostRequest
+		@return TftpfiledirAPICreateRequest
 	*/
-	Post(ctx context.Context) TftpfiledirAPIPostRequest
+	Create(ctx context.Context) TftpfiledirAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateTftpfiledirResponse
-	PostExecute(r TftpfiledirAPIPostRequest) (*CreateTftpfiledirResponse, *http.Response, error)
+	CreateExecute(r TftpfiledirAPICreateRequest) (*CreateTftpfiledirResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a tftpfiledir object
+		Delete Delete a tftpfiledir object
 
 		Deletes a specific tftpfiledir object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the tftpfiledir object
-		@return TftpfiledirAPIReferenceDeleteRequest
+		@return TftpfiledirAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) TftpfiledirAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) TftpfiledirAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r TftpfiledirAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r TftpfiledirAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific tftpfiledir object
+		List Retrieve tftpfiledir objects
+
+		Returns a list of tftpfiledir objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return TftpfiledirAPIListRequest
+	*/
+	List(ctx context.Context) TftpfiledirAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListTftpfiledirResponse
+	ListExecute(r TftpfiledirAPIListRequest) (*ListTftpfiledirResponse, *http.Response, error)
+	/*
+		Read Get a specific tftpfiledir object
 
 		Returns a specific tftpfiledir object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the tftpfiledir object
-		@return TftpfiledirAPIReferenceGetRequest
+		@return TftpfiledirAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) TftpfiledirAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) TftpfiledirAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetTftpfiledirResponse
-	ReferenceGetExecute(r TftpfiledirAPIReferenceGetRequest) (*GetTftpfiledirResponse, *http.Response, error)
+	ReadExecute(r TftpfiledirAPIReadRequest) (*GetTftpfiledirResponse, *http.Response, error)
 	/*
-		ReferencePut Update a tftpfiledir object
+		Update Update a tftpfiledir object
 
 		Updates a specific tftpfiledir object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the tftpfiledir object
-		@return TftpfiledirAPIReferencePutRequest
+		@return TftpfiledirAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) TftpfiledirAPIReferencePutRequest
+	Update(ctx context.Context, reference string) TftpfiledirAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateTftpfiledirResponse
-	ReferencePutExecute(r TftpfiledirAPIReferencePutRequest) (*UpdateTftpfiledirResponse, *http.Response, error)
+	UpdateExecute(r TftpfiledirAPIUpdateRequest) (*UpdateTftpfiledirResponse, *http.Response, error)
 }
 
 // TftpfiledirAPIService TftpfiledirAPI service
 type TftpfiledirAPIService internal.Service
 
-type TftpfiledirAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     TftpfiledirAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type TftpfiledirAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       TftpfiledirAPI
+	tftpfiledir      *Tftpfiledir
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r TftpfiledirAPICreateRequest) Tftpfiledir(tftpfiledir Tftpfiledir) TftpfiledirAPICreateRequest {
+	r.tftpfiledir = &tftpfiledir
+	return r
 }
 
 // Enter the field names followed by comma
-func (r TftpfiledirAPIGetRequest) ReturnFields(returnFields string) TftpfiledirAPIGetRequest {
+func (r TftpfiledirAPICreateRequest) ReturnFields(returnFields string) TftpfiledirAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TftpfiledirAPIGetRequest) ReturnFields2(returnFields2 string) TftpfiledirAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r TftpfiledirAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) TftpfiledirAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r TftpfiledirAPICreateRequest) ReturnAsObject(returnAsObject int32) TftpfiledirAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r TftpfiledirAPICreateRequest) Execute() (*CreateTftpfiledirResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a tftpfiledir object
+
+Creates a new tftpfiledir object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return TftpfiledirAPICreateRequest
+*/
+func (a *TftpfiledirAPIService) Create(ctx context.Context) TftpfiledirAPICreateRequest {
+	return TftpfiledirAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateTftpfiledirResponse
+func (a *TftpfiledirAPIService) CreateExecute(r TftpfiledirAPICreateRequest) (*CreateTftpfiledirResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateTftpfiledirResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TftpfiledirAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/tftpfiledir"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.tftpfiledir == nil {
+		return localVarReturnValue, nil, internal.ReportError("tftpfiledir is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.tftpfiledir
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type TftpfiledirAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService TftpfiledirAPI
+	reference  string
+}
+
+func (r TftpfiledirAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a tftpfiledir object
+
+Deletes a specific tftpfiledir object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the tftpfiledir object
+	@return TftpfiledirAPIDeleteRequest
+*/
+func (a *TftpfiledirAPIService) Delete(ctx context.Context, reference string) TftpfiledirAPIDeleteRequest {
+	return TftpfiledirAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *TftpfiledirAPIService) DeleteExecute(r TftpfiledirAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TftpfiledirAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/tftpfiledir/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type TftpfiledirAPIListRequest struct {
+	ctx              context.Context
+	ApiService       TftpfiledirAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r TftpfiledirAPIListRequest) ReturnFields(returnFields string) TftpfiledirAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r TftpfiledirAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) TftpfiledirAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r TftpfiledirAPIGetRequest) MaxResults(maxResults int32) TftpfiledirAPIGetRequest {
+func (r TftpfiledirAPIListRequest) MaxResults(maxResults int32) TftpfiledirAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r TftpfiledirAPIGetRequest) ReturnAsObject(returnAsObject int32) TftpfiledirAPIGetRequest {
+func (r TftpfiledirAPIListRequest) ReturnAsObject(returnAsObject int32) TftpfiledirAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r TftpfiledirAPIGetRequest) Paging(paging int32) TftpfiledirAPIGetRequest {
+func (r TftpfiledirAPIListRequest) Paging(paging int32) TftpfiledirAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r TftpfiledirAPIGetRequest) PageId(pageId string) TftpfiledirAPIGetRequest {
+func (r TftpfiledirAPIListRequest) PageId(pageId string) TftpfiledirAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r TftpfiledirAPIGetRequest) Filters(filters map[string]interface{}) TftpfiledirAPIGetRequest {
+func (r TftpfiledirAPIListRequest) Filters(filters map[string]interface{}) TftpfiledirAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r TftpfiledirAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) TftpfiledirAPIGetRequest {
+func (r TftpfiledirAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) TftpfiledirAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r TftpfiledirAPIGetRequest) Execute() (*ListTftpfiledirResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r TftpfiledirAPIListRequest) Execute() (*ListTftpfiledirResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve tftpfiledir objects
+List Retrieve tftpfiledir objects
 
 Returns a list of tftpfiledir objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return TftpfiledirAPIGetRequest
+	@return TftpfiledirAPIListRequest
 */
-func (a *TftpfiledirAPIService) Get(ctx context.Context) TftpfiledirAPIGetRequest {
-	return TftpfiledirAPIGetRequest{
+func (a *TftpfiledirAPIService) List(ctx context.Context) TftpfiledirAPIListRequest {
+	return TftpfiledirAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *TftpfiledirAPIService) Get(ctx context.Context) TftpfiledirAPIGetReques
 // Execute executes the request
 //
 //	@return ListTftpfiledirResponse
-func (a *TftpfiledirAPIService) GetExecute(r TftpfiledirAPIGetRequest) (*ListTftpfiledirResponse, *http.Response, error) {
+func (a *TftpfiledirAPIService) ListExecute(r TftpfiledirAPIListRequest) (*ListTftpfiledirResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *TftpfiledirAPIService) GetExecute(r TftpfiledirAPIGetRequest) (*ListTft
 		localVarReturnValue *ListTftpfiledirResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TftpfiledirAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TftpfiledirAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *TftpfiledirAPIService) GetExecute(r TftpfiledirAPIGetRequest) (*ListTft
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *TftpfiledirAPIService) GetExecute(r TftpfiledirAPIGetRequest) (*ListTft
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type TftpfiledirAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     TftpfiledirAPI
-	tftpfiledir    *Tftpfiledir
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r TftpfiledirAPIPostRequest) Tftpfiledir(tftpfiledir Tftpfiledir) TftpfiledirAPIPostRequest {
-	r.tftpfiledir = &tftpfiledir
-	return r
+type TftpfiledirAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       TftpfiledirAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r TftpfiledirAPIPostRequest) ReturnFields(returnFields string) TftpfiledirAPIPostRequest {
+func (r TftpfiledirAPIReadRequest) ReturnFields(returnFields string) TftpfiledirAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TftpfiledirAPIPostRequest) ReturnFields2(returnFields2 string) TftpfiledirAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r TftpfiledirAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) TftpfiledirAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r TftpfiledirAPIPostRequest) ReturnAsObject(returnAsObject int32) TftpfiledirAPIPostRequest {
+func (r TftpfiledirAPIReadRequest) ReturnAsObject(returnAsObject int32) TftpfiledirAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r TftpfiledirAPIPostRequest) Execute() (*CreateTftpfiledirResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r TftpfiledirAPIReadRequest) Execute() (*GetTftpfiledirResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a tftpfiledir object
-
-Creates a new tftpfiledir object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return TftpfiledirAPIPostRequest
-*/
-func (a *TftpfiledirAPIService) Post(ctx context.Context) TftpfiledirAPIPostRequest {
-	return TftpfiledirAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateTftpfiledirResponse
-func (a *TftpfiledirAPIService) PostExecute(r TftpfiledirAPIPostRequest) (*CreateTftpfiledirResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateTftpfiledirResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TftpfiledirAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/tftpfiledir"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.tftpfiledir == nil {
-		return localVarReturnValue, nil, internal.ReportError("tftpfiledir is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.tftpfiledir
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type TftpfiledirAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService TftpfiledirAPI
-	reference  string
-}
-
-func (r TftpfiledirAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a tftpfiledir object
-
-Deletes a specific tftpfiledir object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the tftpfiledir object
-	@return TftpfiledirAPIReferenceDeleteRequest
-*/
-func (a *TftpfiledirAPIService) ReferenceDelete(ctx context.Context, reference string) TftpfiledirAPIReferenceDeleteRequest {
-	return TftpfiledirAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *TftpfiledirAPIService) ReferenceDeleteExecute(r TftpfiledirAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TftpfiledirAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/tftpfiledir/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type TftpfiledirAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     TftpfiledirAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r TftpfiledirAPIReferenceGetRequest) ReturnFields(returnFields string) TftpfiledirAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TftpfiledirAPIReferenceGetRequest) ReturnFields2(returnFields2 string) TftpfiledirAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r TftpfiledirAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) TftpfiledirAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r TftpfiledirAPIReferenceGetRequest) Execute() (*GetTftpfiledirResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific tftpfiledir object
+Read Get a specific tftpfiledir object
 
 Returns a specific tftpfiledir object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the tftpfiledir object
-	@return TftpfiledirAPIReferenceGetRequest
+	@return TftpfiledirAPIReadRequest
 */
-func (a *TftpfiledirAPIService) ReferenceGet(ctx context.Context, reference string) TftpfiledirAPIReferenceGetRequest {
-	return TftpfiledirAPIReferenceGetRequest{
+func (a *TftpfiledirAPIService) Read(ctx context.Context, reference string) TftpfiledirAPIReadRequest {
+	return TftpfiledirAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *TftpfiledirAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetTftpfiledirResponse
-func (a *TftpfiledirAPIService) ReferenceGetExecute(r TftpfiledirAPIReferenceGetRequest) (*GetTftpfiledirResponse, *http.Response, error) {
+func (a *TftpfiledirAPIService) ReadExecute(r TftpfiledirAPIReadRequest) (*GetTftpfiledirResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *TftpfiledirAPIService) ReferenceGetExecute(r TftpfiledirAPIReferenceGet
 		localVarReturnValue *GetTftpfiledirResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TftpfiledirAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TftpfiledirAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *TftpfiledirAPIService) ReferenceGetExecute(r TftpfiledirAPIReferenceGet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *TftpfiledirAPIService) ReferenceGetExecute(r TftpfiledirAPIReferenceGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type TftpfiledirAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     TftpfiledirAPI
-	reference      string
-	tftpfiledir    *Tftpfiledir
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type TftpfiledirAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       TftpfiledirAPI
+	reference        string
+	tftpfiledir      *Tftpfiledir
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r TftpfiledirAPIReferencePutRequest) Tftpfiledir(tftpfiledir Tftpfiledir) TftpfiledirAPIReferencePutRequest {
+func (r TftpfiledirAPIUpdateRequest) Tftpfiledir(tftpfiledir Tftpfiledir) TftpfiledirAPIUpdateRequest {
 	r.tftpfiledir = &tftpfiledir
 	return r
 }
 
 // Enter the field names followed by comma
-func (r TftpfiledirAPIReferencePutRequest) ReturnFields(returnFields string) TftpfiledirAPIReferencePutRequest {
+func (r TftpfiledirAPIUpdateRequest) ReturnFields(returnFields string) TftpfiledirAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r TftpfiledirAPIReferencePutRequest) ReturnFields2(returnFields2 string) TftpfiledirAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r TftpfiledirAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) TftpfiledirAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r TftpfiledirAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) TftpfiledirAPIReferencePutRequest {
+func (r TftpfiledirAPIUpdateRequest) ReturnAsObject(returnAsObject int32) TftpfiledirAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r TftpfiledirAPIReferencePutRequest) Execute() (*UpdateTftpfiledirResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r TftpfiledirAPIUpdateRequest) Execute() (*UpdateTftpfiledirResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a tftpfiledir object
+Update Update a tftpfiledir object
 
 Updates a specific tftpfiledir object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the tftpfiledir object
-	@return TftpfiledirAPIReferencePutRequest
+	@return TftpfiledirAPIUpdateRequest
 */
-func (a *TftpfiledirAPIService) ReferencePut(ctx context.Context, reference string) TftpfiledirAPIReferencePutRequest {
-	return TftpfiledirAPIReferencePutRequest{
+func (a *TftpfiledirAPIService) Update(ctx context.Context, reference string) TftpfiledirAPIUpdateRequest {
+	return TftpfiledirAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *TftpfiledirAPIService) ReferencePut(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return UpdateTftpfiledirResponse
-func (a *TftpfiledirAPIService) ReferencePutExecute(r TftpfiledirAPIReferencePutRequest) (*UpdateTftpfiledirResponse, *http.Response, error) {
+func (a *TftpfiledirAPIService) UpdateExecute(r TftpfiledirAPIUpdateRequest) (*UpdateTftpfiledirResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *TftpfiledirAPIService) ReferencePutExecute(r TftpfiledirAPIReferencePut
 		localVarReturnValue *UpdateTftpfiledirResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TftpfiledirAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "TftpfiledirAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *TftpfiledirAPIService) ReferencePutExecute(r TftpfiledirAPIReferencePut
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

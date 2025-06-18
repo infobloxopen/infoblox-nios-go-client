@@ -23,11 +23,24 @@ func TestDiscoveryDevicesupportbundleAPIService(t *testing.T) {
 
 	apiClient := discovery.NewAPIClient()
 
-	t.Run("Test DiscoveryDevicesupportbundleAPIService DiscoverydevicesupportbundleGet", func(t *testing.T) {
+	t.Run("Test DiscoveryDevicesupportbundleAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleGet(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.DiscoveryDevicesupportbundleAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DiscoveryDevicesupportbundleAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DiscoveryDevicesupportbundleAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,26 +48,13 @@ func TestDiscoveryDevicesupportbundleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryDevicesupportbundleAPIService DiscoverydevicesupportbundleReferenceDelete", func(t *testing.T) {
+	t.Run("Test DiscoveryDevicesupportbundleAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DiscoveryDevicesupportbundleAPIService DiscoverydevicesupportbundleReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DiscoveryDevicesupportbundleAPI.DiscoverydevicesupportbundleReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryDevicesupportbundleAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

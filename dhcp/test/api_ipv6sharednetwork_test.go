@@ -23,11 +23,11 @@ func TestIpv6sharednetworkAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test Ipv6sharednetworkAPIService Get", func(t *testing.T) {
+	t.Run("Test Ipv6sharednetworkAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6sharednetworkAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Ipv6sharednetworkAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestIpv6sharednetworkAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6sharednetworkAPIService Post", func(t *testing.T) {
+	t.Run("Test Ipv6sharednetworkAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6sharednetworkAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.Ipv6sharednetworkAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test Ipv6sharednetworkAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Ipv6sharednetworkAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestIpv6sharednetworkAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6sharednetworkAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test Ipv6sharednetworkAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.Ipv6sharednetworkAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test Ipv6sharednetworkAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.Ipv6sharednetworkAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6sharednetworkAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestIpv6sharednetworkAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6sharednetworkAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test Ipv6sharednetworkAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.Ipv6sharednetworkAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6sharednetworkAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

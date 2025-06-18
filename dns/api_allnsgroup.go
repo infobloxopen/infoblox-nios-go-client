@@ -23,110 +23,110 @@ import (
 
 type AllnsgroupAPI interface {
 	/*
-		Get Retrieve allnsgroup objects
+		List Retrieve allnsgroup objects
 
 		Returns a list of allnsgroup objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AllnsgroupAPIGetRequest
+		@return AllnsgroupAPIListRequest
 	*/
-	Get(ctx context.Context) AllnsgroupAPIGetRequest
+	List(ctx context.Context) AllnsgroupAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListAllnsgroupResponse
-	GetExecute(r AllnsgroupAPIGetRequest) (*ListAllnsgroupResponse, *http.Response, error)
+	ListExecute(r AllnsgroupAPIListRequest) (*ListAllnsgroupResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific allnsgroup object
+		Read Get a specific allnsgroup object
 
 		Returns a specific allnsgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the allnsgroup object
-		@return AllnsgroupAPIReferenceGetRequest
+		@return AllnsgroupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AllnsgroupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AllnsgroupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAllnsgroupResponse
-	ReferenceGetExecute(r AllnsgroupAPIReferenceGetRequest) (*GetAllnsgroupResponse, *http.Response, error)
+	ReadExecute(r AllnsgroupAPIReadRequest) (*GetAllnsgroupResponse, *http.Response, error)
 }
 
 // AllnsgroupAPIService AllnsgroupAPI service
 type AllnsgroupAPIService internal.Service
 
-type AllnsgroupAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     AllnsgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type AllnsgroupAPIListRequest struct {
+	ctx              context.Context
+	ApiService       AllnsgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r AllnsgroupAPIGetRequest) ReturnFields(returnFields string) AllnsgroupAPIGetRequest {
+func (r AllnsgroupAPIListRequest) ReturnFields(returnFields string) AllnsgroupAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AllnsgroupAPIGetRequest) ReturnFields2(returnFields2 string) AllnsgroupAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r AllnsgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AllnsgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r AllnsgroupAPIGetRequest) MaxResults(maxResults int32) AllnsgroupAPIGetRequest {
+func (r AllnsgroupAPIListRequest) MaxResults(maxResults int32) AllnsgroupAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AllnsgroupAPIGetRequest) ReturnAsObject(returnAsObject int32) AllnsgroupAPIGetRequest {
+func (r AllnsgroupAPIListRequest) ReturnAsObject(returnAsObject int32) AllnsgroupAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r AllnsgroupAPIGetRequest) Paging(paging int32) AllnsgroupAPIGetRequest {
+func (r AllnsgroupAPIListRequest) Paging(paging int32) AllnsgroupAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r AllnsgroupAPIGetRequest) PageId(pageId string) AllnsgroupAPIGetRequest {
+func (r AllnsgroupAPIListRequest) PageId(pageId string) AllnsgroupAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r AllnsgroupAPIGetRequest) Filters(filters map[string]interface{}) AllnsgroupAPIGetRequest {
+func (r AllnsgroupAPIListRequest) Filters(filters map[string]interface{}) AllnsgroupAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r AllnsgroupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AllnsgroupAPIGetRequest {
+func (r AllnsgroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AllnsgroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r AllnsgroupAPIGetRequest) Execute() (*ListAllnsgroupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r AllnsgroupAPIListRequest) Execute() (*ListAllnsgroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve allnsgroup objects
+List Retrieve allnsgroup objects
 
 Returns a list of allnsgroup objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AllnsgroupAPIGetRequest
+	@return AllnsgroupAPIListRequest
 */
-func (a *AllnsgroupAPIService) Get(ctx context.Context) AllnsgroupAPIGetRequest {
-	return AllnsgroupAPIGetRequest{
+func (a *AllnsgroupAPIService) List(ctx context.Context) AllnsgroupAPIListRequest {
+	return AllnsgroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *AllnsgroupAPIService) Get(ctx context.Context) AllnsgroupAPIGetRequest 
 // Execute executes the request
 //
 //	@return ListAllnsgroupResponse
-func (a *AllnsgroupAPIService) GetExecute(r AllnsgroupAPIGetRequest) (*ListAllnsgroupResponse, *http.Response, error) {
+func (a *AllnsgroupAPIService) ListExecute(r AllnsgroupAPIListRequest) (*ListAllnsgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *AllnsgroupAPIService) GetExecute(r AllnsgroupAPIGetRequest) (*ListAllns
 		localVarReturnValue *ListAllnsgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllnsgroupAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllnsgroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *AllnsgroupAPIService) GetExecute(r AllnsgroupAPIGetRequest) (*ListAllns
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *AllnsgroupAPIService) GetExecute(r AllnsgroupAPIGetRequest) (*ListAllns
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AllnsgroupAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     AllnsgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type AllnsgroupAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       AllnsgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r AllnsgroupAPIReferenceGetRequest) ReturnFields(returnFields string) AllnsgroupAPIReferenceGetRequest {
+func (r AllnsgroupAPIReadRequest) ReturnFields(returnFields string) AllnsgroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AllnsgroupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AllnsgroupAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r AllnsgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AllnsgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AllnsgroupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AllnsgroupAPIReferenceGetRequest {
+func (r AllnsgroupAPIReadRequest) ReturnAsObject(returnAsObject int32) AllnsgroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AllnsgroupAPIReferenceGetRequest) Execute() (*GetAllnsgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r AllnsgroupAPIReadRequest) Execute() (*GetAllnsgroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific allnsgroup object
+Read Get a specific allnsgroup object
 
 Returns a specific allnsgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the allnsgroup object
-	@return AllnsgroupAPIReferenceGetRequest
+	@return AllnsgroupAPIReadRequest
 */
-func (a *AllnsgroupAPIService) ReferenceGet(ctx context.Context, reference string) AllnsgroupAPIReferenceGetRequest {
-	return AllnsgroupAPIReferenceGetRequest{
+func (a *AllnsgroupAPIService) Read(ctx context.Context, reference string) AllnsgroupAPIReadRequest {
+	return AllnsgroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *AllnsgroupAPIService) ReferenceGet(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return GetAllnsgroupResponse
-func (a *AllnsgroupAPIService) ReferenceGetExecute(r AllnsgroupAPIReferenceGetRequest) (*GetAllnsgroupResponse, *http.Response, error) {
+func (a *AllnsgroupAPIService) ReadExecute(r AllnsgroupAPIReadRequest) (*GetAllnsgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *AllnsgroupAPIService) ReferenceGetExecute(r AllnsgroupAPIReferenceGetRe
 		localVarReturnValue *GetAllnsgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllnsgroupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllnsgroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *AllnsgroupAPIService) ReferenceGetExecute(r AllnsgroupAPIReferenceGetRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

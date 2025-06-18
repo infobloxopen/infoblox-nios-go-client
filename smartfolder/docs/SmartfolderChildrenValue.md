@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ValueInteger** | Pointer to **int32** | The integer value of the Smart Folder query. | [optional] 
+**ValueInteger** | Pointer to **int64** | The integer value of the Smart Folder query. | [optional] 
 **ValueString** | Pointer to **string** | The string value of the Smart Folder query. | [optional] 
 **ValueDate** | Pointer to **int64** | The timestamp value of the Smart Folder query. | [optional] 
 **ValueBoolean** | Pointer to **bool** | The boolean value of the Smart Folder query. | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetValueInteger
 
-`func (o *SmartfolderChildrenValue) GetValueInteger() int32`
+`func (o *SmartfolderChildrenValue) GetValueInteger() int64`
 
 GetValueInteger returns the ValueInteger field if non-nil, zero value otherwise.
 
 ### GetValueIntegerOk
 
-`func (o *SmartfolderChildrenValue) GetValueIntegerOk() (*int32, bool)`
+`func (o *SmartfolderChildrenValue) GetValueIntegerOk() (*int64, bool)`
 
 GetValueIntegerOk returns a tuple with the ValueInteger field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValueInteger
 
-`func (o *SmartfolderChildrenValue) SetValueInteger(v int32)`
+`func (o *SmartfolderChildrenValue) SetValueInteger(v int64)`
 
 SetValueInteger sets ValueInteger field to given value.
 

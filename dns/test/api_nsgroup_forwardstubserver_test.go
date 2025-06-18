@@ -23,11 +23,11 @@ func TestNsgroupForwardstubserverAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test NsgroupForwardstubserverAPIService NsgroupforwardstubserverGet", func(t *testing.T) {
+	t.Run("Test NsgroupForwardstubserverAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NsgroupForwardstubserverAPI.NsgroupforwardstubserverGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NsgroupForwardstubserverAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNsgroupForwardstubserverAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupForwardstubserverAPIService NsgroupforwardstubserverPost", func(t *testing.T) {
+	t.Run("Test NsgroupForwardstubserverAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NsgroupForwardstubserverAPI.NsgroupforwardstubserverPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NsgroupForwardstubserverAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NsgroupForwardstubserverAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NsgroupForwardstubserverAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNsgroupForwardstubserverAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupForwardstubserverAPIService NsgroupforwardstubserverReferenceDelete", func(t *testing.T) {
+	t.Run("Test NsgroupForwardstubserverAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NsgroupForwardstubserverAPIService NsgroupforwardstubserverReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NsgroupForwardstubserverAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNsgroupForwardstubserverAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NsgroupForwardstubserverAPIService NsgroupforwardstubserverReferencePut", func(t *testing.T) {
+	t.Run("Test NsgroupForwardstubserverAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NsgroupForwardstubserverAPI.NsgroupforwardstubserverReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NsgroupForwardstubserverAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

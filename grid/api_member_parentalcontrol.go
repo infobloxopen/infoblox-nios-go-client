@@ -23,124 +23,124 @@ import (
 
 type MemberParentalcontrolAPI interface {
 	/*
-		MemberparentalcontrolGet Retrieve member:parentalcontrol objects
+		List Retrieve member:parentalcontrol objects
 
 		Returns a list of member:parentalcontrol objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberParentalcontrolAPIMemberparentalcontrolGetRequest
+		@return MemberParentalcontrolAPIListRequest
 	*/
-	MemberparentalcontrolGet(ctx context.Context) MemberParentalcontrolAPIMemberparentalcontrolGetRequest
+	List(ctx context.Context) MemberParentalcontrolAPIListRequest
 
-	// MemberparentalcontrolGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListMemberParentalcontrolResponse
-	MemberparentalcontrolGetExecute(r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) (*ListMemberParentalcontrolResponse, *http.Response, error)
+	ListExecute(r MemberParentalcontrolAPIListRequest) (*ListMemberParentalcontrolResponse, *http.Response, error)
 	/*
-		MemberparentalcontrolReferenceGet Get a specific member:parentalcontrol object
+		Read Get a specific member:parentalcontrol object
 
 		Returns a specific member:parentalcontrol object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:parentalcontrol object
-		@return MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest
+		@return MemberParentalcontrolAPIReadRequest
 	*/
-	MemberparentalcontrolReferenceGet(ctx context.Context, reference string) MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest
+	Read(ctx context.Context, reference string) MemberParentalcontrolAPIReadRequest
 
-	// MemberparentalcontrolReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMemberParentalcontrolResponse
-	MemberparentalcontrolReferenceGetExecute(r MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest) (*GetMemberParentalcontrolResponse, *http.Response, error)
+	ReadExecute(r MemberParentalcontrolAPIReadRequest) (*GetMemberParentalcontrolResponse, *http.Response, error)
 	/*
-		MemberparentalcontrolReferencePut Update a member:parentalcontrol object
+		Update Update a member:parentalcontrol object
 
 		Updates a specific member:parentalcontrol object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:parentalcontrol object
-		@return MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest
+		@return MemberParentalcontrolAPIUpdateRequest
 	*/
-	MemberparentalcontrolReferencePut(ctx context.Context, reference string) MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest
+	Update(ctx context.Context, reference string) MemberParentalcontrolAPIUpdateRequest
 
-	// MemberparentalcontrolReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMemberParentalcontrolResponse
-	MemberparentalcontrolReferencePutExecute(r MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest) (*UpdateMemberParentalcontrolResponse, *http.Response, error)
+	UpdateExecute(r MemberParentalcontrolAPIUpdateRequest) (*UpdateMemberParentalcontrolResponse, *http.Response, error)
 }
 
 // MemberParentalcontrolAPIService MemberParentalcontrolAPI service
 type MemberParentalcontrolAPIService internal.Service
 
-type MemberParentalcontrolAPIMemberparentalcontrolGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberParentalcontrolAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type MemberParentalcontrolAPIListRequest struct {
+	ctx              context.Context
+	ApiService       MemberParentalcontrolAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) ReturnFields(returnFields string) MemberParentalcontrolAPIMemberparentalcontrolGetRequest {
+func (r MemberParentalcontrolAPIListRequest) ReturnFields(returnFields string) MemberParentalcontrolAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) ReturnFields2(returnFields2 string) MemberParentalcontrolAPIMemberparentalcontrolGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberParentalcontrolAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberParentalcontrolAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) MaxResults(maxResults int32) MemberParentalcontrolAPIMemberparentalcontrolGetRequest {
+func (r MemberParentalcontrolAPIListRequest) MaxResults(maxResults int32) MemberParentalcontrolAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) ReturnAsObject(returnAsObject int32) MemberParentalcontrolAPIMemberparentalcontrolGetRequest {
+func (r MemberParentalcontrolAPIListRequest) ReturnAsObject(returnAsObject int32) MemberParentalcontrolAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) Paging(paging int32) MemberParentalcontrolAPIMemberparentalcontrolGetRequest {
+func (r MemberParentalcontrolAPIListRequest) Paging(paging int32) MemberParentalcontrolAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) PageId(pageId string) MemberParentalcontrolAPIMemberparentalcontrolGetRequest {
+func (r MemberParentalcontrolAPIListRequest) PageId(pageId string) MemberParentalcontrolAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) Filters(filters map[string]interface{}) MemberParentalcontrolAPIMemberparentalcontrolGetRequest {
+func (r MemberParentalcontrolAPIListRequest) Filters(filters map[string]interface{}) MemberParentalcontrolAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberParentalcontrolAPIMemberparentalcontrolGetRequest {
+func (r MemberParentalcontrolAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberParentalcontrolAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) Execute() (*ListMemberParentalcontrolResponse, *http.Response, error) {
-	return r.ApiService.MemberparentalcontrolGetExecute(r)
+func (r MemberParentalcontrolAPIListRequest) Execute() (*ListMemberParentalcontrolResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MemberparentalcontrolGet Retrieve member:parentalcontrol objects
+List Retrieve member:parentalcontrol objects
 
 Returns a list of member:parentalcontrol objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberParentalcontrolAPIMemberparentalcontrolGetRequest
+	@return MemberParentalcontrolAPIListRequest
 */
-func (a *MemberParentalcontrolAPIService) MemberparentalcontrolGet(ctx context.Context) MemberParentalcontrolAPIMemberparentalcontrolGetRequest {
-	return MemberParentalcontrolAPIMemberparentalcontrolGetRequest{
+func (a *MemberParentalcontrolAPIService) List(ctx context.Context) MemberParentalcontrolAPIListRequest {
+	return MemberParentalcontrolAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolGet(ctx context.C
 // Execute executes the request
 //
 //	@return ListMemberParentalcontrolResponse
-func (a *MemberParentalcontrolAPIService) MemberparentalcontrolGetExecute(r MemberParentalcontrolAPIMemberparentalcontrolGetRequest) (*ListMemberParentalcontrolResponse, *http.Response, error) {
+func (a *MemberParentalcontrolAPIService) ListExecute(r MemberParentalcontrolAPIListRequest) (*ListMemberParentalcontrolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolGetExecute(r Memb
 		localVarReturnValue *ListMemberParentalcontrolResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberParentalcontrolAPIService.MemberparentalcontrolGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberParentalcontrolAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolGetExecute(r Memb
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolGetExecute(r Memb
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberParentalcontrolAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MemberParentalcontrolAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       MemberParentalcontrolAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest) ReturnFields(returnFields string) MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest {
+func (r MemberParentalcontrolAPIReadRequest) ReturnFields(returnFields string) MemberParentalcontrolAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest) ReturnFields2(returnFields2 string) MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberParentalcontrolAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberParentalcontrolAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest) ReturnAsObject(returnAsObject int32) MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest {
+func (r MemberParentalcontrolAPIReadRequest) ReturnAsObject(returnAsObject int32) MemberParentalcontrolAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest) Execute() (*GetMemberParentalcontrolResponse, *http.Response, error) {
-	return r.ApiService.MemberparentalcontrolReferenceGetExecute(r)
+func (r MemberParentalcontrolAPIReadRequest) Execute() (*GetMemberParentalcontrolResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MemberparentalcontrolReferenceGet Get a specific member:parentalcontrol object
+Read Get a specific member:parentalcontrol object
 
 Returns a specific member:parentalcontrol object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:parentalcontrol object
-	@return MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest
+	@return MemberParentalcontrolAPIReadRequest
 */
-func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferenceGet(ctx context.Context, reference string) MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest {
-	return MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest{
+func (a *MemberParentalcontrolAPIService) Read(ctx context.Context, reference string) MemberParentalcontrolAPIReadRequest {
+	return MemberParentalcontrolAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferenceGet(ctx 
 // Execute executes the request
 //
 //	@return GetMemberParentalcontrolResponse
-func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferenceGetExecute(r MemberParentalcontrolAPIMemberparentalcontrolReferenceGetRequest) (*GetMemberParentalcontrolResponse, *http.Response, error) {
+func (a *MemberParentalcontrolAPIService) ReadExecute(r MemberParentalcontrolAPIReadRequest) (*GetMemberParentalcontrolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferenceGetExecu
 		localVarReturnValue *GetMemberParentalcontrolResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberParentalcontrolAPIService.MemberparentalcontrolReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberParentalcontrolAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferenceGetExecu
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferenceGetExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest struct {
+type MemberParentalcontrolAPIUpdateRequest struct {
 	ctx                   context.Context
 	ApiService            MemberParentalcontrolAPI
 	reference             string
 	memberParentalcontrol *MemberParentalcontrol
 	returnFields          *string
-	returnFields2         *string
+	returnFieldsPlus      *string
 	returnAsObject        *int32
 }
 
 // Object data to update
-func (r MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest) MemberParentalcontrol(memberParentalcontrol MemberParentalcontrol) MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest {
+func (r MemberParentalcontrolAPIUpdateRequest) MemberParentalcontrol(memberParentalcontrol MemberParentalcontrol) MemberParentalcontrolAPIUpdateRequest {
 	r.memberParentalcontrol = &memberParentalcontrol
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest) ReturnFields(returnFields string) MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest {
+func (r MemberParentalcontrolAPIUpdateRequest) ReturnFields(returnFields string) MemberParentalcontrolAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest) ReturnFields2(returnFields2 string) MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberParentalcontrolAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberParentalcontrolAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest) ReturnAsObject(returnAsObject int32) MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest {
+func (r MemberParentalcontrolAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MemberParentalcontrolAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest) Execute() (*UpdateMemberParentalcontrolResponse, *http.Response, error) {
-	return r.ApiService.MemberparentalcontrolReferencePutExecute(r)
+func (r MemberParentalcontrolAPIUpdateRequest) Execute() (*UpdateMemberParentalcontrolResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-MemberparentalcontrolReferencePut Update a member:parentalcontrol object
+Update Update a member:parentalcontrol object
 
 Updates a specific member:parentalcontrol object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:parentalcontrol object
-	@return MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest
+	@return MemberParentalcontrolAPIUpdateRequest
 */
-func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferencePut(ctx context.Context, reference string) MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest {
-	return MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest{
+func (a *MemberParentalcontrolAPIService) Update(ctx context.Context, reference string) MemberParentalcontrolAPIUpdateRequest {
+	return MemberParentalcontrolAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferencePut(ctx 
 // Execute executes the request
 //
 //	@return UpdateMemberParentalcontrolResponse
-func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferencePutExecute(r MemberParentalcontrolAPIMemberparentalcontrolReferencePutRequest) (*UpdateMemberParentalcontrolResponse, *http.Response, error) {
+func (a *MemberParentalcontrolAPIService) UpdateExecute(r MemberParentalcontrolAPIUpdateRequest) (*UpdateMemberParentalcontrolResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferencePutExecu
 		localVarReturnValue *UpdateMemberParentalcontrolResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberParentalcontrolAPIService.MemberparentalcontrolReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberParentalcontrolAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *MemberParentalcontrolAPIService) MemberparentalcontrolReferencePutExecu
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

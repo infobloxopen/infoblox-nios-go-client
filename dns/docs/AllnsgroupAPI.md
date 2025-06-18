@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](AllnsgroupAPI.md#Get) | **Get** /allnsgroup | Retrieve allnsgroup objects
-[**ReferenceGet**](AllnsgroupAPI.md#ReferenceGet) | **Get** /allnsgroup/{reference} | Get a specific allnsgroup object
+[**List**](AllnsgroupAPI.md#List) | **Get** /allnsgroup | Retrieve allnsgroup objects
+[**Read**](AllnsgroupAPI.md#Read) | **Get** /allnsgroup/{reference} | Get a specific allnsgroup object
 
 
 
-## Get
+## List
 
-> ListAllnsgroupResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListAllnsgroupResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve allnsgroup objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.AllnsgroupAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.AllnsgroupAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AllnsgroupAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AllnsgroupAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListAllnsgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `AllnsgroupAPI.Get`: %v\n", resp)
+	// response from `List`: ListAllnsgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `AllnsgroupAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AllnsgroupAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AllnsgroupAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetAllnsgroupResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetAllnsgroupResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific allnsgroup object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the allnsgroup object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.AllnsgroupAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.AllnsgroupAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AllnsgroupAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AllnsgroupAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetAllnsgroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `AllnsgroupAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetAllnsgroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `AllnsgroupAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AllnsgroupAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AllnsgroupAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

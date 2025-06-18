@@ -23,150 +23,374 @@ import (
 
 type AzurednstaskgroupAPI interface {
 	/*
-		Get Retrieve azurednstaskgroup objects
-
-		Returns a list of azurednstaskgroup objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AzurednstaskgroupAPIGetRequest
-	*/
-	Get(ctx context.Context) AzurednstaskgroupAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListAzurednstaskgroupResponse
-	GetExecute(r AzurednstaskgroupAPIGetRequest) (*ListAzurednstaskgroupResponse, *http.Response, error)
-	/*
-		Post Create a azurednstaskgroup object
+		Create Create a azurednstaskgroup object
 
 		Creates a new azurednstaskgroup object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AzurednstaskgroupAPIPostRequest
+		@return AzurednstaskgroupAPICreateRequest
 	*/
-	Post(ctx context.Context) AzurednstaskgroupAPIPostRequest
+	Create(ctx context.Context) AzurednstaskgroupAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateAzurednstaskgroupResponse
-	PostExecute(r AzurednstaskgroupAPIPostRequest) (*CreateAzurednstaskgroupResponse, *http.Response, error)
+	CreateExecute(r AzurednstaskgroupAPICreateRequest) (*CreateAzurednstaskgroupResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a azurednstaskgroup object
+		Delete Delete a azurednstaskgroup object
 
 		Deletes a specific azurednstaskgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the azurednstaskgroup object
-		@return AzurednstaskgroupAPIReferenceDeleteRequest
+		@return AzurednstaskgroupAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) AzurednstaskgroupAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) AzurednstaskgroupAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r AzurednstaskgroupAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r AzurednstaskgroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific azurednstaskgroup object
+		List Retrieve azurednstaskgroup objects
+
+		Returns a list of azurednstaskgroup objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return AzurednstaskgroupAPIListRequest
+	*/
+	List(ctx context.Context) AzurednstaskgroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListAzurednstaskgroupResponse
+	ListExecute(r AzurednstaskgroupAPIListRequest) (*ListAzurednstaskgroupResponse, *http.Response, error)
+	/*
+		Read Get a specific azurednstaskgroup object
 
 		Returns a specific azurednstaskgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the azurednstaskgroup object
-		@return AzurednstaskgroupAPIReferenceGetRequest
+		@return AzurednstaskgroupAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AzurednstaskgroupAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AzurednstaskgroupAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAzurednstaskgroupResponse
-	ReferenceGetExecute(r AzurednstaskgroupAPIReferenceGetRequest) (*GetAzurednstaskgroupResponse, *http.Response, error)
+	ReadExecute(r AzurednstaskgroupAPIReadRequest) (*GetAzurednstaskgroupResponse, *http.Response, error)
 	/*
-		ReferencePut Update a azurednstaskgroup object
+		Update Update a azurednstaskgroup object
 
 		Updates a specific azurednstaskgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the azurednstaskgroup object
-		@return AzurednstaskgroupAPIReferencePutRequest
+		@return AzurednstaskgroupAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) AzurednstaskgroupAPIReferencePutRequest
+	Update(ctx context.Context, reference string) AzurednstaskgroupAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateAzurednstaskgroupResponse
-	ReferencePutExecute(r AzurednstaskgroupAPIReferencePutRequest) (*UpdateAzurednstaskgroupResponse, *http.Response, error)
+	UpdateExecute(r AzurednstaskgroupAPIUpdateRequest) (*UpdateAzurednstaskgroupResponse, *http.Response, error)
 }
 
 // AzurednstaskgroupAPIService AzurednstaskgroupAPI service
 type AzurednstaskgroupAPIService internal.Service
 
-type AzurednstaskgroupAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     AzurednstaskgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type AzurednstaskgroupAPICreateRequest struct {
+	ctx               context.Context
+	ApiService        AzurednstaskgroupAPI
+	azurednstaskgroup *Azurednstaskgroup
+	returnFields      *string
+	returnFieldsPlus  *string
+	returnAsObject    *int32
+}
+
+// Object data to create
+func (r AzurednstaskgroupAPICreateRequest) Azurednstaskgroup(azurednstaskgroup Azurednstaskgroup) AzurednstaskgroupAPICreateRequest {
+	r.azurednstaskgroup = &azurednstaskgroup
+	return r
 }
 
 // Enter the field names followed by comma
-func (r AzurednstaskgroupAPIGetRequest) ReturnFields(returnFields string) AzurednstaskgroupAPIGetRequest {
+func (r AzurednstaskgroupAPICreateRequest) ReturnFields(returnFields string) AzurednstaskgroupAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzurednstaskgroupAPIGetRequest) ReturnFields2(returnFields2 string) AzurednstaskgroupAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r AzurednstaskgroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) AzurednstaskgroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r AzurednstaskgroupAPICreateRequest) ReturnAsObject(returnAsObject int32) AzurednstaskgroupAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r AzurednstaskgroupAPICreateRequest) Execute() (*CreateAzurednstaskgroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a azurednstaskgroup object
+
+Creates a new azurednstaskgroup object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return AzurednstaskgroupAPICreateRequest
+*/
+func (a *AzurednstaskgroupAPIService) Create(ctx context.Context) AzurednstaskgroupAPICreateRequest {
+	return AzurednstaskgroupAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateAzurednstaskgroupResponse
+func (a *AzurednstaskgroupAPIService) CreateExecute(r AzurednstaskgroupAPICreateRequest) (*CreateAzurednstaskgroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateAzurednstaskgroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzurednstaskgroupAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/azurednstaskgroup"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.azurednstaskgroup == nil {
+		return localVarReturnValue, nil, internal.ReportError("azurednstaskgroup is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.azurednstaskgroup
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type AzurednstaskgroupAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService AzurednstaskgroupAPI
+	reference  string
+}
+
+func (r AzurednstaskgroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a azurednstaskgroup object
+
+Deletes a specific azurednstaskgroup object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the azurednstaskgroup object
+	@return AzurednstaskgroupAPIDeleteRequest
+*/
+func (a *AzurednstaskgroupAPIService) Delete(ctx context.Context, reference string) AzurednstaskgroupAPIDeleteRequest {
+	return AzurednstaskgroupAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *AzurednstaskgroupAPIService) DeleteExecute(r AzurednstaskgroupAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzurednstaskgroupAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/azurednstaskgroup/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type AzurednstaskgroupAPIListRequest struct {
+	ctx              context.Context
+	ApiService       AzurednstaskgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r AzurednstaskgroupAPIListRequest) ReturnFields(returnFields string) AzurednstaskgroupAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r AzurednstaskgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AzurednstaskgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r AzurednstaskgroupAPIGetRequest) MaxResults(maxResults int32) AzurednstaskgroupAPIGetRequest {
+func (r AzurednstaskgroupAPIListRequest) MaxResults(maxResults int32) AzurednstaskgroupAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AzurednstaskgroupAPIGetRequest) ReturnAsObject(returnAsObject int32) AzurednstaskgroupAPIGetRequest {
+func (r AzurednstaskgroupAPIListRequest) ReturnAsObject(returnAsObject int32) AzurednstaskgroupAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r AzurednstaskgroupAPIGetRequest) Paging(paging int32) AzurednstaskgroupAPIGetRequest {
+func (r AzurednstaskgroupAPIListRequest) Paging(paging int32) AzurednstaskgroupAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r AzurednstaskgroupAPIGetRequest) PageId(pageId string) AzurednstaskgroupAPIGetRequest {
+func (r AzurednstaskgroupAPIListRequest) PageId(pageId string) AzurednstaskgroupAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r AzurednstaskgroupAPIGetRequest) Filters(filters map[string]interface{}) AzurednstaskgroupAPIGetRequest {
+func (r AzurednstaskgroupAPIListRequest) Filters(filters map[string]interface{}) AzurednstaskgroupAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r AzurednstaskgroupAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AzurednstaskgroupAPIGetRequest {
+func (r AzurednstaskgroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AzurednstaskgroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r AzurednstaskgroupAPIGetRequest) Execute() (*ListAzurednstaskgroupResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r AzurednstaskgroupAPIListRequest) Execute() (*ListAzurednstaskgroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve azurednstaskgroup objects
+List Retrieve azurednstaskgroup objects
 
 Returns a list of azurednstaskgroup objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AzurednstaskgroupAPIGetRequest
+	@return AzurednstaskgroupAPIListRequest
 */
-func (a *AzurednstaskgroupAPIService) Get(ctx context.Context) AzurednstaskgroupAPIGetRequest {
-	return AzurednstaskgroupAPIGetRequest{
+func (a *AzurednstaskgroupAPIService) List(ctx context.Context) AzurednstaskgroupAPIListRequest {
+	return AzurednstaskgroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *AzurednstaskgroupAPIService) Get(ctx context.Context) Azurednstaskgroup
 // Execute executes the request
 //
 //	@return ListAzurednstaskgroupResponse
-func (a *AzurednstaskgroupAPIService) GetExecute(r AzurednstaskgroupAPIGetRequest) (*ListAzurednstaskgroupResponse, *http.Response, error) {
+func (a *AzurednstaskgroupAPIService) ListExecute(r AzurednstaskgroupAPIListRequest) (*ListAzurednstaskgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *AzurednstaskgroupAPIService) GetExecute(r AzurednstaskgroupAPIGetReques
 		localVarReturnValue *ListAzurednstaskgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzurednstaskgroupAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzurednstaskgroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *AzurednstaskgroupAPIService) GetExecute(r AzurednstaskgroupAPIGetReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *AzurednstaskgroupAPIService) GetExecute(r AzurednstaskgroupAPIGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AzurednstaskgroupAPIPostRequest struct {
-	ctx               context.Context
-	ApiService        AzurednstaskgroupAPI
-	azurednstaskgroup *Azurednstaskgroup
-	returnFields      *string
-	returnFields2     *string
-	returnAsObject    *int32
-}
-
-// Object data to create
-func (r AzurednstaskgroupAPIPostRequest) Azurednstaskgroup(azurednstaskgroup Azurednstaskgroup) AzurednstaskgroupAPIPostRequest {
-	r.azurednstaskgroup = &azurednstaskgroup
-	return r
+type AzurednstaskgroupAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       AzurednstaskgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r AzurednstaskgroupAPIPostRequest) ReturnFields(returnFields string) AzurednstaskgroupAPIPostRequest {
+func (r AzurednstaskgroupAPIReadRequest) ReturnFields(returnFields string) AzurednstaskgroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzurednstaskgroupAPIPostRequest) ReturnFields2(returnFields2 string) AzurednstaskgroupAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r AzurednstaskgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AzurednstaskgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AzurednstaskgroupAPIPostRequest) ReturnAsObject(returnAsObject int32) AzurednstaskgroupAPIPostRequest {
+func (r AzurednstaskgroupAPIReadRequest) ReturnAsObject(returnAsObject int32) AzurednstaskgroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AzurednstaskgroupAPIPostRequest) Execute() (*CreateAzurednstaskgroupResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r AzurednstaskgroupAPIReadRequest) Execute() (*GetAzurednstaskgroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a azurednstaskgroup object
-
-Creates a new azurednstaskgroup object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AzurednstaskgroupAPIPostRequest
-*/
-func (a *AzurednstaskgroupAPIService) Post(ctx context.Context) AzurednstaskgroupAPIPostRequest {
-	return AzurednstaskgroupAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateAzurednstaskgroupResponse
-func (a *AzurednstaskgroupAPIService) PostExecute(r AzurednstaskgroupAPIPostRequest) (*CreateAzurednstaskgroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateAzurednstaskgroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzurednstaskgroupAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/azurednstaskgroup"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.azurednstaskgroup == nil {
-		return localVarReturnValue, nil, internal.ReportError("azurednstaskgroup is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.azurednstaskgroup
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type AzurednstaskgroupAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService AzurednstaskgroupAPI
-	reference  string
-}
-
-func (r AzurednstaskgroupAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a azurednstaskgroup object
-
-Deletes a specific azurednstaskgroup object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the azurednstaskgroup object
-	@return AzurednstaskgroupAPIReferenceDeleteRequest
-*/
-func (a *AzurednstaskgroupAPIService) ReferenceDelete(ctx context.Context, reference string) AzurednstaskgroupAPIReferenceDeleteRequest {
-	return AzurednstaskgroupAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *AzurednstaskgroupAPIService) ReferenceDeleteExecute(r AzurednstaskgroupAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzurednstaskgroupAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/azurednstaskgroup/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type AzurednstaskgroupAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     AzurednstaskgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r AzurednstaskgroupAPIReferenceGetRequest) ReturnFields(returnFields string) AzurednstaskgroupAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzurednstaskgroupAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AzurednstaskgroupAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r AzurednstaskgroupAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AzurednstaskgroupAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r AzurednstaskgroupAPIReferenceGetRequest) Execute() (*GetAzurednstaskgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific azurednstaskgroup object
+Read Get a specific azurednstaskgroup object
 
 Returns a specific azurednstaskgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the azurednstaskgroup object
-	@return AzurednstaskgroupAPIReferenceGetRequest
+	@return AzurednstaskgroupAPIReadRequest
 */
-func (a *AzurednstaskgroupAPIService) ReferenceGet(ctx context.Context, reference string) AzurednstaskgroupAPIReferenceGetRequest {
-	return AzurednstaskgroupAPIReferenceGetRequest{
+func (a *AzurednstaskgroupAPIService) Read(ctx context.Context, reference string) AzurednstaskgroupAPIReadRequest {
+	return AzurednstaskgroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *AzurednstaskgroupAPIService) ReferenceGet(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return GetAzurednstaskgroupResponse
-func (a *AzurednstaskgroupAPIService) ReferenceGetExecute(r AzurednstaskgroupAPIReferenceGetRequest) (*GetAzurednstaskgroupResponse, *http.Response, error) {
+func (a *AzurednstaskgroupAPIService) ReadExecute(r AzurednstaskgroupAPIReadRequest) (*GetAzurednstaskgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *AzurednstaskgroupAPIService) ReferenceGetExecute(r AzurednstaskgroupAPI
 		localVarReturnValue *GetAzurednstaskgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzurednstaskgroupAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzurednstaskgroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *AzurednstaskgroupAPIService) ReferenceGetExecute(r AzurednstaskgroupAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *AzurednstaskgroupAPIService) ReferenceGetExecute(r AzurednstaskgroupAPI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AzurednstaskgroupAPIReferencePutRequest struct {
+type AzurednstaskgroupAPIUpdateRequest struct {
 	ctx               context.Context
 	ApiService        AzurednstaskgroupAPI
 	reference         string
 	azurednstaskgroup *Azurednstaskgroup
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
 // Object data to update
-func (r AzurednstaskgroupAPIReferencePutRequest) Azurednstaskgroup(azurednstaskgroup Azurednstaskgroup) AzurednstaskgroupAPIReferencePutRequest {
+func (r AzurednstaskgroupAPIUpdateRequest) Azurednstaskgroup(azurednstaskgroup Azurednstaskgroup) AzurednstaskgroupAPIUpdateRequest {
 	r.azurednstaskgroup = &azurednstaskgroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r AzurednstaskgroupAPIReferencePutRequest) ReturnFields(returnFields string) AzurednstaskgroupAPIReferencePutRequest {
+func (r AzurednstaskgroupAPIUpdateRequest) ReturnFields(returnFields string) AzurednstaskgroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AzurednstaskgroupAPIReferencePutRequest) ReturnFields2(returnFields2 string) AzurednstaskgroupAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r AzurednstaskgroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) AzurednstaskgroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AzurednstaskgroupAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) AzurednstaskgroupAPIReferencePutRequest {
+func (r AzurednstaskgroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) AzurednstaskgroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AzurednstaskgroupAPIReferencePutRequest) Execute() (*UpdateAzurednstaskgroupResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r AzurednstaskgroupAPIUpdateRequest) Execute() (*UpdateAzurednstaskgroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a azurednstaskgroup object
+Update Update a azurednstaskgroup object
 
 Updates a specific azurednstaskgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the azurednstaskgroup object
-	@return AzurednstaskgroupAPIReferencePutRequest
+	@return AzurednstaskgroupAPIUpdateRequest
 */
-func (a *AzurednstaskgroupAPIService) ReferencePut(ctx context.Context, reference string) AzurednstaskgroupAPIReferencePutRequest {
-	return AzurednstaskgroupAPIReferencePutRequest{
+func (a *AzurednstaskgroupAPIService) Update(ctx context.Context, reference string) AzurednstaskgroupAPIUpdateRequest {
+	return AzurednstaskgroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *AzurednstaskgroupAPIService) ReferencePut(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return UpdateAzurednstaskgroupResponse
-func (a *AzurednstaskgroupAPIService) ReferencePutExecute(r AzurednstaskgroupAPIReferencePutRequest) (*UpdateAzurednstaskgroupResponse, *http.Response, error) {
+func (a *AzurednstaskgroupAPIService) UpdateExecute(r AzurednstaskgroupAPIUpdateRequest) (*UpdateAzurednstaskgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *AzurednstaskgroupAPIService) ReferencePutExecute(r AzurednstaskgroupAPI
 		localVarReturnValue *UpdateAzurednstaskgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzurednstaskgroupAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AzurednstaskgroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *AzurednstaskgroupAPIService) ReferencePutExecute(r AzurednstaskgroupAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -23,11 +23,11 @@ func TestDtcMonitorAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
-	t.Run("Test DtcMonitorAPIService DtcmonitorGet", func(t *testing.T) {
+	t.Run("Test DtcMonitorAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DtcMonitorAPI.DtcmonitorGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDtcMonitorAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorAPIService DtcmonitorReferenceGet", func(t *testing.T) {
+	t.Run("Test DtcMonitorAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcMonitorAPI.DtcmonitorReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestDtcMonitorAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DtcMonitorAPIService DtcmonitorReferencePut", func(t *testing.T) {
+	t.Run("Test DtcMonitorAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DtcMonitorAPI.DtcmonitorReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DtcMonitorAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

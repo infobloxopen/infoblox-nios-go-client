@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](FederatedrealmsAPI.md#Get) | **Get** /federatedrealms | Retrieve federatedrealms objects
-[**ReferenceGet**](FederatedrealmsAPI.md#ReferenceGet) | **Get** /federatedrealms/{reference} | Get a specific federatedrealms object
+[**List**](FederatedrealmsAPI.md#List) | **Get** /federatedrealms | Retrieve federatedrealms objects
+[**Read**](FederatedrealmsAPI.md#Read) | **Get** /federatedrealms/{reference} | Get a specific federatedrealms object
 
 
 
-## Get
+## List
 
-> ListFederatedrealmsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListFederatedrealmsResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve federatedrealms objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := federatedrealms.NewAPIClient()
-	resp, r, err := apiClient.FederatedrealmsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.FederatedrealmsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FederatedrealmsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FederatedrealmsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListFederatedrealmsResponse
-	fmt.Fprintf(os.Stdout, "Response from `FederatedrealmsAPI.Get`: %v\n", resp)
+	// response from `List`: ListFederatedrealmsResponse
+	fmt.Fprintf(os.Stdout, "Response from `FederatedrealmsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FederatedrealmsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FederatedrealmsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetFederatedrealmsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetFederatedrealmsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific federatedrealms object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the federatedrealms object
 
 	apiClient := federatedrealms.NewAPIClient()
-	resp, r, err := apiClient.FederatedrealmsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.FederatedrealmsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FederatedrealmsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FederatedrealmsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetFederatedrealmsResponse
-	fmt.Fprintf(os.Stdout, "Response from `FederatedrealmsAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetFederatedrealmsResponse
+	fmt.Fprintf(os.Stdout, "Response from `FederatedrealmsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FederatedrealmsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FederatedrealmsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

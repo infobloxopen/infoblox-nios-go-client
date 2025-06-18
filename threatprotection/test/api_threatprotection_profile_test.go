@@ -23,11 +23,11 @@ func TestThreatprotectionProfileAPIService(t *testing.T) {
 
 	apiClient := threatprotection.NewAPIClient()
 
-	t.Run("Test ThreatprotectionProfileAPIService ThreatprotectionprofileGet", func(t *testing.T) {
+	t.Run("Test ThreatprotectionProfileAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ThreatprotectionProfileAPI.ThreatprotectionprofileGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ThreatprotectionProfileAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestThreatprotectionProfileAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatprotectionProfileAPIService ThreatprotectionprofilePost", func(t *testing.T) {
+	t.Run("Test ThreatprotectionProfileAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ThreatprotectionProfileAPI.ThreatprotectionprofilePost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ThreatprotectionProfileAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ThreatprotectionProfileAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ThreatprotectionProfileAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestThreatprotectionProfileAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatprotectionProfileAPIService ThreatprotectionprofileReferenceDelete", func(t *testing.T) {
+	t.Run("Test ThreatprotectionProfileAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ThreatprotectionProfileAPI.ThreatprotectionprofileReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ThreatprotectionProfileAPIService ThreatprotectionprofileReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ThreatprotectionProfileAPI.ThreatprotectionprofileReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ThreatprotectionProfileAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestThreatprotectionProfileAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ThreatprotectionProfileAPIService ThreatprotectionprofileReferencePut", func(t *testing.T) {
+	t.Run("Test ThreatprotectionProfileAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ThreatprotectionProfileAPI.ThreatprotectionprofileReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ThreatprotectionProfileAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

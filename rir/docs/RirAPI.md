@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RirAPI.md#Get) | **Get** /rir | Retrieve rir objects
-[**ReferenceGet**](RirAPI.md#ReferenceGet) | **Get** /rir/{reference} | Get a specific rir object
-[**ReferencePut**](RirAPI.md#ReferencePut) | **Put** /rir/{reference} | Update a rir object
+[**List**](RirAPI.md#List) | **Get** /rir | Retrieve rir objects
+[**Read**](RirAPI.md#Read) | **Get** /rir/{reference} | Get a specific rir object
+[**Update**](RirAPI.md#Update) | **Put** /rir/{reference} | Update a rir object
 
 
 
-## Get
+## List
 
-> ListRirResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRirResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve rir objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := rir.NewAPIClient()
-	resp, r, err := apiClient.RirAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RirAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RirAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RirAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRirResponse
-	fmt.Fprintf(os.Stdout, "Response from `RirAPI.Get`: %v\n", resp)
+	// response from `List`: ListRirResponse
+	fmt.Fprintf(os.Stdout, "Response from `RirAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RirAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RirAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetRirResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRirResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific rir object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the rir object
 
 	apiClient := rir.NewAPIClient()
-	resp, r, err := apiClient.RirAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RirAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RirAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RirAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRirResponse
-	fmt.Fprintf(os.Stdout, "Response from `RirAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRirResponse
+	fmt.Fprintf(os.Stdout, "Response from `RirAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RirAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RirAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateRirResponse ReferencePut(ctx, reference).Rir(rir).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRirResponse Update(ctx, reference).Rir(rir).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a rir object
 
@@ -180,13 +180,13 @@ func main() {
 	rir := *rir.NewRir() // Rir | Object data to update
 
 	apiClient := rir.NewAPIClient()
-	resp, r, err := apiClient.RirAPI.ReferencePut(context.Background(), reference).Rir(rir).Execute()
+	resp, r, err := apiClient.RirAPI.Update(context.Background(), reference).Rir(rir).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RirAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RirAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRirResponse
-	fmt.Fprintf(os.Stdout, "Response from `RirAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateRirResponse
+	fmt.Fprintf(os.Stdout, "Response from `RirAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RirAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RirAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **rir** | [**Rir**](Rir.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -23,110 +23,110 @@ import (
 
 type GridCloudapiVmaddressAPI interface {
 	/*
-		GridcloudapivmaddressGet Retrieve grid:cloudapi:vmaddress objects
+		List Retrieve grid:cloudapi:vmaddress objects
 
 		Returns a list of grid:cloudapi:vmaddress objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest
+		@return GridCloudapiVmaddressAPIListRequest
 	*/
-	GridcloudapivmaddressGet(ctx context.Context) GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest
+	List(ctx context.Context) GridCloudapiVmaddressAPIListRequest
 
-	// GridcloudapivmaddressGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridCloudapiVmaddressResponse
-	GridcloudapivmaddressGetExecute(r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) (*ListGridCloudapiVmaddressResponse, *http.Response, error)
+	ListExecute(r GridCloudapiVmaddressAPIListRequest) (*ListGridCloudapiVmaddressResponse, *http.Response, error)
 	/*
-		GridcloudapivmaddressReferenceGet Get a specific grid:cloudapi:vmaddress object
+		Read Get a specific grid:cloudapi:vmaddress object
 
 		Returns a specific grid:cloudapi:vmaddress object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:cloudapi:vmaddress object
-		@return GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest
+		@return GridCloudapiVmaddressAPIReadRequest
 	*/
-	GridcloudapivmaddressReferenceGet(ctx context.Context, reference string) GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest
+	Read(ctx context.Context, reference string) GridCloudapiVmaddressAPIReadRequest
 
-	// GridcloudapivmaddressReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridCloudapiVmaddressResponse
-	GridcloudapivmaddressReferenceGetExecute(r GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest) (*GetGridCloudapiVmaddressResponse, *http.Response, error)
+	ReadExecute(r GridCloudapiVmaddressAPIReadRequest) (*GetGridCloudapiVmaddressResponse, *http.Response, error)
 }
 
 // GridCloudapiVmaddressAPIService GridCloudapiVmaddressAPI service
 type GridCloudapiVmaddressAPIService internal.Service
 
-type GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest struct {
-	ctx            context.Context
-	ApiService     GridCloudapiVmaddressAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type GridCloudapiVmaddressAPIListRequest struct {
+	ctx              context.Context
+	ApiService       GridCloudapiVmaddressAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) ReturnFields(returnFields string) GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest {
+func (r GridCloudapiVmaddressAPIListRequest) ReturnFields(returnFields string) GridCloudapiVmaddressAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) ReturnFields2(returnFields2 string) GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridCloudapiVmaddressAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridCloudapiVmaddressAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) MaxResults(maxResults int32) GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest {
+func (r GridCloudapiVmaddressAPIListRequest) MaxResults(maxResults int32) GridCloudapiVmaddressAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) ReturnAsObject(returnAsObject int32) GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest {
+func (r GridCloudapiVmaddressAPIListRequest) ReturnAsObject(returnAsObject int32) GridCloudapiVmaddressAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) Paging(paging int32) GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest {
+func (r GridCloudapiVmaddressAPIListRequest) Paging(paging int32) GridCloudapiVmaddressAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) PageId(pageId string) GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest {
+func (r GridCloudapiVmaddressAPIListRequest) PageId(pageId string) GridCloudapiVmaddressAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) Filters(filters map[string]interface{}) GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest {
+func (r GridCloudapiVmaddressAPIListRequest) Filters(filters map[string]interface{}) GridCloudapiVmaddressAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest {
+func (r GridCloudapiVmaddressAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridCloudapiVmaddressAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) Execute() (*ListGridCloudapiVmaddressResponse, *http.Response, error) {
-	return r.ApiService.GridcloudapivmaddressGetExecute(r)
+func (r GridCloudapiVmaddressAPIListRequest) Execute() (*ListGridCloudapiVmaddressResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridcloudapivmaddressGet Retrieve grid:cloudapi:vmaddress objects
+List Retrieve grid:cloudapi:vmaddress objects
 
 Returns a list of grid:cloudapi:vmaddress objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest
+	@return GridCloudapiVmaddressAPIListRequest
 */
-func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressGet(ctx context.Context) GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest {
-	return GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest{
+func (a *GridCloudapiVmaddressAPIService) List(ctx context.Context) GridCloudapiVmaddressAPIListRequest {
+	return GridCloudapiVmaddressAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressGet(ctx context.C
 // Execute executes the request
 //
 //	@return ListGridCloudapiVmaddressResponse
-func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressGetExecute(r GridCloudapiVmaddressAPIGridcloudapivmaddressGetRequest) (*ListGridCloudapiVmaddressResponse, *http.Response, error) {
+func (a *GridCloudapiVmaddressAPIService) ListExecute(r GridCloudapiVmaddressAPIListRequest) (*ListGridCloudapiVmaddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressGetExecute(r Grid
 		localVarReturnValue *ListGridCloudapiVmaddressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiVmaddressAPIService.GridcloudapivmaddressGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiVmaddressAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressGetExecute(r Grid
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressGetExecute(r Grid
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     GridCloudapiVmaddressAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type GridCloudapiVmaddressAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       GridCloudapiVmaddressAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest) ReturnFields(returnFields string) GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest {
+func (r GridCloudapiVmaddressAPIReadRequest) ReturnFields(returnFields string) GridCloudapiVmaddressAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest) ReturnFields2(returnFields2 string) GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridCloudapiVmaddressAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridCloudapiVmaddressAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest {
+func (r GridCloudapiVmaddressAPIReadRequest) ReturnAsObject(returnAsObject int32) GridCloudapiVmaddressAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest) Execute() (*GetGridCloudapiVmaddressResponse, *http.Response, error) {
-	return r.ApiService.GridcloudapivmaddressReferenceGetExecute(r)
+func (r GridCloudapiVmaddressAPIReadRequest) Execute() (*GetGridCloudapiVmaddressResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridcloudapivmaddressReferenceGet Get a specific grid:cloudapi:vmaddress object
+Read Get a specific grid:cloudapi:vmaddress object
 
 Returns a specific grid:cloudapi:vmaddress object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:cloudapi:vmaddress object
-	@return GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest
+	@return GridCloudapiVmaddressAPIReadRequest
 */
-func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressReferenceGet(ctx context.Context, reference string) GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest {
-	return GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest{
+func (a *GridCloudapiVmaddressAPIService) Read(ctx context.Context, reference string) GridCloudapiVmaddressAPIReadRequest {
+	return GridCloudapiVmaddressAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressReferenceGet(ctx 
 // Execute executes the request
 //
 //	@return GetGridCloudapiVmaddressResponse
-func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressReferenceGetExecute(r GridCloudapiVmaddressAPIGridcloudapivmaddressReferenceGetRequest) (*GetGridCloudapiVmaddressResponse, *http.Response, error) {
+func (a *GridCloudapiVmaddressAPIService) ReadExecute(r GridCloudapiVmaddressAPIReadRequest) (*GetGridCloudapiVmaddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressReferenceGetExecu
 		localVarReturnValue *GetGridCloudapiVmaddressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiVmaddressAPIService.GridcloudapivmaddressReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridCloudapiVmaddressAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *GridCloudapiVmaddressAPIService) GridcloudapivmaddressReferenceGetExecu
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

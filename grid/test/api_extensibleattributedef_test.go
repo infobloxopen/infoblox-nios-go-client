@@ -23,11 +23,11 @@ func TestExtensibleattributedefAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test ExtensibleattributedefAPIService Get", func(t *testing.T) {
+	t.Run("Test ExtensibleattributedefAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ExtensibleattributedefAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ExtensibleattributedefAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestExtensibleattributedefAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ExtensibleattributedefAPIService Post", func(t *testing.T) {
+	t.Run("Test ExtensibleattributedefAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ExtensibleattributedefAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ExtensibleattributedefAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ExtensibleattributedefAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ExtensibleattributedefAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestExtensibleattributedefAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ExtensibleattributedefAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test ExtensibleattributedefAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ExtensibleattributedefAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ExtensibleattributedefAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ExtensibleattributedefAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ExtensibleattributedefAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestExtensibleattributedefAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ExtensibleattributedefAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test ExtensibleattributedefAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ExtensibleattributedefAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ExtensibleattributedefAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

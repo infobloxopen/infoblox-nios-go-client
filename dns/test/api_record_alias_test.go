@@ -23,11 +23,11 @@ func TestRecordAliasAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordAliasAPIService RecordaliasGet", func(t *testing.T) {
+	t.Run("Test RecordAliasAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordAliasAPI.RecordaliasGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordAliasAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRecordAliasAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordAliasAPIService RecordaliasPost", func(t *testing.T) {
+	t.Run("Test RecordAliasAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordAliasAPI.RecordaliasPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RecordAliasAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RecordAliasAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RecordAliasAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRecordAliasAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordAliasAPIService RecordaliasReferenceDelete", func(t *testing.T) {
+	t.Run("Test RecordAliasAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RecordAliasAPI.RecordaliasReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RecordAliasAPIService RecordaliasReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RecordAliasAPI.RecordaliasReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordAliasAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRecordAliasAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordAliasAPIService RecordaliasReferencePut", func(t *testing.T) {
+	t.Run("Test RecordAliasAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordAliasAPI.RecordaliasReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordAliasAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

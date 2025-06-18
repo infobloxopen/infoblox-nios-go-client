@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridthreatinsightGet**](GridThreatinsightAPI.md#GridthreatinsightGet) | **Get** /grid:threatinsight | Retrieve grid:threatinsight objects
-[**GridthreatinsightReferenceGet**](GridThreatinsightAPI.md#GridthreatinsightReferenceGet) | **Get** /grid:threatinsight/{reference} | Get a specific grid:threatinsight object
-[**GridthreatinsightReferencePut**](GridThreatinsightAPI.md#GridthreatinsightReferencePut) | **Put** /grid:threatinsight/{reference} | Update a grid:threatinsight object
+[**List**](GridThreatinsightAPI.md#List) | **Get** /grid:threatinsight | Retrieve grid:threatinsight objects
+[**Read**](GridThreatinsightAPI.md#Read) | **Get** /grid:threatinsight/{reference} | Get a specific grid:threatinsight object
+[**Update**](GridThreatinsightAPI.md#Update) | **Put** /grid:threatinsight/{reference} | Update a grid:threatinsight object
 
 
 
-## GridthreatinsightGet
+## List
 
-> ListGridThreatinsightResponse GridthreatinsightGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridThreatinsightResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:threatinsight objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridThreatinsightAPI.GridthreatinsightGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridThreatinsightAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatinsightAPI.GridthreatinsightGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatinsightAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridthreatinsightGet`: ListGridThreatinsightResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridThreatinsightAPI.GridthreatinsightGet`: %v\n", resp)
+	// response from `List`: ListGridThreatinsightResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridThreatinsightAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridThreatinsightAPIGridthreatinsightGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridThreatinsightAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridthreatinsightReferenceGet
+## Read
 
-> GetGridThreatinsightResponse GridthreatinsightReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridThreatinsightResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:threatinsight object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:threatinsight object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridThreatinsightAPI.GridthreatinsightReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridThreatinsightAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatinsightAPI.GridthreatinsightReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatinsightAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridthreatinsightReferenceGet`: GetGridThreatinsightResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridThreatinsightAPI.GridthreatinsightReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridThreatinsightResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridThreatinsightAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridThreatinsightAPIGridthreatinsightReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridThreatinsightAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridthreatinsightReferencePut
+## Update
 
-> UpdateGridThreatinsightResponse GridthreatinsightReferencePut(ctx, reference).GridThreatinsight(gridThreatinsight).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridThreatinsightResponse Update(ctx, reference).GridThreatinsight(gridThreatinsight).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:threatinsight object
 
@@ -180,13 +180,13 @@ func main() {
 	gridThreatinsight := *grid.NewGridThreatinsight() // GridThreatinsight | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridThreatinsightAPI.GridthreatinsightReferencePut(context.Background(), reference).GridThreatinsight(gridThreatinsight).Execute()
+	resp, r, err := apiClient.GridThreatinsightAPI.Update(context.Background(), reference).GridThreatinsight(gridThreatinsight).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatinsightAPI.GridthreatinsightReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridThreatinsightAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridthreatinsightReferencePut`: UpdateGridThreatinsightResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridThreatinsightAPI.GridthreatinsightReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGridThreatinsightResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridThreatinsightAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridThreatinsightAPIGridthreatinsightReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridThreatinsightAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **gridThreatinsight** | [**GridThreatinsight**](GridThreatinsight.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

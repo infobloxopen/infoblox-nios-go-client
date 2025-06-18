@@ -23,11 +23,11 @@ func TestDiscoveryGridpropertiesAPIService(t *testing.T) {
 
 	apiClient := discovery.NewAPIClient()
 
-	t.Run("Test DiscoveryGridpropertiesAPIService DiscoverygridpropertiesGet", func(t *testing.T) {
+	t.Run("Test DiscoveryGridpropertiesAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DiscoveryGridpropertiesAPI.DiscoverygridpropertiesGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DiscoveryGridpropertiesAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestDiscoveryGridpropertiesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryGridpropertiesAPIService DiscoverygridpropertiesReferenceGet", func(t *testing.T) {
+	t.Run("Test DiscoveryGridpropertiesAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DiscoveryGridpropertiesAPI.DiscoverygridpropertiesReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryGridpropertiesAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestDiscoveryGridpropertiesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryGridpropertiesAPIService DiscoverygridpropertiesReferencePut", func(t *testing.T) {
+	t.Run("Test DiscoveryGridpropertiesAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DiscoveryGridpropertiesAPI.DiscoverygridpropertiesReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryGridpropertiesAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -31,7 +31,9 @@ type FuncCall struct {
 	// The object to be called.
 	Object *string `json:"_object,omitempty"`
 	// The parameters for the object.
-	ObjectParameters     map[string]interface{} `json:"_object_parameters,omitempty"`
+	ObjectParameters map[string]interface{} `json:"_object_parameters,omitempty"`
+	// A WAPI object reference on which the function calls. Either _object or _object_ref must be set.
+	ObjectRef            *string `json:"_object_ref,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -239,6 +241,38 @@ func (o *FuncCall) SetObjectParameters(v map[string]interface{}) {
 	o.ObjectParameters = v
 }
 
+// GetObjectRef returns the ObjectRef field value if set, zero value otherwise.
+func (o *FuncCall) GetObjectRef() string {
+	if o == nil || IsNil(o.ObjectRef) {
+		var ret string
+		return ret
+	}
+	return *o.ObjectRef
+}
+
+// GetObjectRefOk returns a tuple with the ObjectRef field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FuncCall) GetObjectRefOk() (*string, bool) {
+	if o == nil || IsNil(o.ObjectRef) {
+		return nil, false
+	}
+	return o.ObjectRef, true
+}
+
+// HasObjectRef returns a boolean if a field has been set.
+func (o *FuncCall) HasObjectRef() bool {
+	if o != nil && !IsNil(o.ObjectRef) {
+		return true
+	}
+
+	return false
+}
+
+// SetObjectRef gets a reference to the given string and assigns it to the ObjectRef field.
+func (o *FuncCall) SetObjectRef(v string) {
+	o.ObjectRef = &v
+}
+
 func (o FuncCall) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -264,6 +298,9 @@ func (o FuncCall) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ObjectParameters) {
 		toSerialize["_object_parameters"] = o.ObjectParameters
+	}
+	if !IsNil(o.ObjectRef) {
+		toSerialize["_object_ref"] = o.ObjectRef
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -314,6 +351,7 @@ func (o *FuncCall) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "_result_field")
 		delete(additionalProperties, "_object")
 		delete(additionalProperties, "_object_parameters")
+		delete(additionalProperties, "_object_ref")
 		o.AdditionalProperties = additionalProperties
 	}
 

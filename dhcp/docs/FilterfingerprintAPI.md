@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](FilterfingerprintAPI.md#Get) | **Get** /filterfingerprint | Retrieve filterfingerprint objects
-[**Post**](FilterfingerprintAPI.md#Post) | **Post** /filterfingerprint | Create a filterfingerprint object
-[**ReferenceDelete**](FilterfingerprintAPI.md#ReferenceDelete) | **Delete** /filterfingerprint/{reference} | Delete a filterfingerprint object
-[**ReferenceGet**](FilterfingerprintAPI.md#ReferenceGet) | **Get** /filterfingerprint/{reference} | Get a specific filterfingerprint object
-[**ReferencePut**](FilterfingerprintAPI.md#ReferencePut) | **Put** /filterfingerprint/{reference} | Update a filterfingerprint object
+[**Create**](FilterfingerprintAPI.md#Create) | **Post** /filterfingerprint | Create a filterfingerprint object
+[**Delete**](FilterfingerprintAPI.md#Delete) | **Delete** /filterfingerprint/{reference} | Delete a filterfingerprint object
+[**List**](FilterfingerprintAPI.md#List) | **Get** /filterfingerprint | Retrieve filterfingerprint objects
+[**Read**](FilterfingerprintAPI.md#Read) | **Get** /filterfingerprint/{reference} | Get a specific filterfingerprint object
+[**Update**](FilterfingerprintAPI.md#Update) | **Put** /filterfingerprint/{reference} | Update a filterfingerprint object
 
 
 
-## Get
+## Create
 
-> ListFilterfingerprintResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateFilterfingerprintResponse Create(ctx).Filterfingerprint(filterfingerprint).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a filterfingerprint object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+)
+
+func main() {
+	filterfingerprint := *dhcp.NewFilterfingerprint() // Filterfingerprint | Object data to create
+
+	apiClient := dhcp.NewAPIClient()
+	resp, r, err := apiClient.FilterfingerprintAPI.Create(context.Background()).Filterfingerprint(filterfingerprint).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FilterfingerprintAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateFilterfingerprintResponse
+	fmt.Fprintf(os.Stdout, "Response from `FilterfingerprintAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `FilterfingerprintAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**filterfingerprint** | [**Filterfingerprint**](Filterfingerprint.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateFilterfingerprintResponse**](CreateFilterfingerprintResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a filterfingerprint object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the filterfingerprint object
+
+	apiClient := dhcp.NewAPIClient()
+	r, err := apiClient.FilterfingerprintAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FilterfingerprintAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the filterfingerprint object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `FilterfingerprintAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListFilterfingerprintResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve filterfingerprint objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.FilterfingerprintAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.FilterfingerprintAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FilterfingerprintAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FilterfingerprintAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListFilterfingerprintResponse
-	fmt.Fprintf(os.Stdout, "Response from `FilterfingerprintAPI.Get`: %v\n", resp)
+	// response from `List`: ListFilterfingerprintResponse
+	fmt.Fprintf(os.Stdout, "Response from `FilterfingerprintAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FilterfingerprintAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FilterfingerprintAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateFilterfingerprintResponse Post(ctx).Filterfingerprint(filterfingerprint).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a filterfingerprint object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
-)
-
-func main() {
-	filterfingerprint := *dhcp.NewFilterfingerprint() // Filterfingerprint | Object data to create
-
-	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.FilterfingerprintAPI.Post(context.Background()).Filterfingerprint(filterfingerprint).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FilterfingerprintAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateFilterfingerprintResponse
-	fmt.Fprintf(os.Stdout, "Response from `FilterfingerprintAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `FilterfingerprintAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**filterfingerprint** | [**Filterfingerprint**](Filterfingerprint.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateFilterfingerprintResponse**](CreateFilterfingerprintResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a filterfingerprint object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the filterfingerprint object
-
-	apiClient := dhcp.NewAPIClient()
-	r, err := apiClient.FilterfingerprintAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FilterfingerprintAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the filterfingerprint object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `FilterfingerprintAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetFilterfingerprintResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetFilterfingerprintResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific filterfingerprint object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the filterfingerprint object
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.FilterfingerprintAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.FilterfingerprintAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FilterfingerprintAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FilterfingerprintAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetFilterfingerprintResponse
-	fmt.Fprintf(os.Stdout, "Response from `FilterfingerprintAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetFilterfingerprintResponse
+	fmt.Fprintf(os.Stdout, "Response from `FilterfingerprintAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FilterfingerprintAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FilterfingerprintAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateFilterfingerprintResponse ReferencePut(ctx, reference).Filterfingerprint(filterfingerprint).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateFilterfingerprintResponse Update(ctx, reference).Filterfingerprint(filterfingerprint).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a filterfingerprint object
 
@@ -318,13 +318,13 @@ func main() {
 	filterfingerprint := *dhcp.NewFilterfingerprint() // Filterfingerprint | Object data to update
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.FilterfingerprintAPI.ReferencePut(context.Background(), reference).Filterfingerprint(filterfingerprint).Execute()
+	resp, r, err := apiClient.FilterfingerprintAPI.Update(context.Background(), reference).Filterfingerprint(filterfingerprint).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FilterfingerprintAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FilterfingerprintAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateFilterfingerprintResponse
-	fmt.Fprintf(os.Stdout, "Response from `FilterfingerprintAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateFilterfingerprintResponse
+	fmt.Fprintf(os.Stdout, "Response from `FilterfingerprintAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FilterfingerprintAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FilterfingerprintAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **filterfingerprint** | [**Filterfingerprint**](Filterfingerprint.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -23,124 +23,124 @@ import (
 
 type MemberThreatinsightAPI interface {
 	/*
-		MemberthreatinsightGet Retrieve member:threatinsight objects
+		List Retrieve member:threatinsight objects
 
 		Returns a list of member:threatinsight objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberThreatinsightAPIMemberthreatinsightGetRequest
+		@return MemberThreatinsightAPIListRequest
 	*/
-	MemberthreatinsightGet(ctx context.Context) MemberThreatinsightAPIMemberthreatinsightGetRequest
+	List(ctx context.Context) MemberThreatinsightAPIListRequest
 
-	// MemberthreatinsightGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListMemberThreatinsightResponse
-	MemberthreatinsightGetExecute(r MemberThreatinsightAPIMemberthreatinsightGetRequest) (*ListMemberThreatinsightResponse, *http.Response, error)
+	ListExecute(r MemberThreatinsightAPIListRequest) (*ListMemberThreatinsightResponse, *http.Response, error)
 	/*
-		MemberthreatinsightReferenceGet Get a specific member:threatinsight object
+		Read Get a specific member:threatinsight object
 
 		Returns a specific member:threatinsight object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:threatinsight object
-		@return MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest
+		@return MemberThreatinsightAPIReadRequest
 	*/
-	MemberthreatinsightReferenceGet(ctx context.Context, reference string) MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest
+	Read(ctx context.Context, reference string) MemberThreatinsightAPIReadRequest
 
-	// MemberthreatinsightReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMemberThreatinsightResponse
-	MemberthreatinsightReferenceGetExecute(r MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest) (*GetMemberThreatinsightResponse, *http.Response, error)
+	ReadExecute(r MemberThreatinsightAPIReadRequest) (*GetMemberThreatinsightResponse, *http.Response, error)
 	/*
-		MemberthreatinsightReferencePut Update a member:threatinsight object
+		Update Update a member:threatinsight object
 
 		Updates a specific member:threatinsight object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:threatinsight object
-		@return MemberThreatinsightAPIMemberthreatinsightReferencePutRequest
+		@return MemberThreatinsightAPIUpdateRequest
 	*/
-	MemberthreatinsightReferencePut(ctx context.Context, reference string) MemberThreatinsightAPIMemberthreatinsightReferencePutRequest
+	Update(ctx context.Context, reference string) MemberThreatinsightAPIUpdateRequest
 
-	// MemberthreatinsightReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMemberThreatinsightResponse
-	MemberthreatinsightReferencePutExecute(r MemberThreatinsightAPIMemberthreatinsightReferencePutRequest) (*UpdateMemberThreatinsightResponse, *http.Response, error)
+	UpdateExecute(r MemberThreatinsightAPIUpdateRequest) (*UpdateMemberThreatinsightResponse, *http.Response, error)
 }
 
 // MemberThreatinsightAPIService MemberThreatinsightAPI service
 type MemberThreatinsightAPIService internal.Service
 
-type MemberThreatinsightAPIMemberthreatinsightGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberThreatinsightAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type MemberThreatinsightAPIListRequest struct {
+	ctx              context.Context
+	ApiService       MemberThreatinsightAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r MemberThreatinsightAPIMemberthreatinsightGetRequest) ReturnFields(returnFields string) MemberThreatinsightAPIMemberthreatinsightGetRequest {
+func (r MemberThreatinsightAPIListRequest) ReturnFields(returnFields string) MemberThreatinsightAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberThreatinsightAPIMemberthreatinsightGetRequest) ReturnFields2(returnFields2 string) MemberThreatinsightAPIMemberthreatinsightGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberThreatinsightAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberThreatinsightAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MemberThreatinsightAPIMemberthreatinsightGetRequest) MaxResults(maxResults int32) MemberThreatinsightAPIMemberthreatinsightGetRequest {
+func (r MemberThreatinsightAPIListRequest) MaxResults(maxResults int32) MemberThreatinsightAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberThreatinsightAPIMemberthreatinsightGetRequest) ReturnAsObject(returnAsObject int32) MemberThreatinsightAPIMemberthreatinsightGetRequest {
+func (r MemberThreatinsightAPIListRequest) ReturnAsObject(returnAsObject int32) MemberThreatinsightAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MemberThreatinsightAPIMemberthreatinsightGetRequest) Paging(paging int32) MemberThreatinsightAPIMemberthreatinsightGetRequest {
+func (r MemberThreatinsightAPIListRequest) Paging(paging int32) MemberThreatinsightAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MemberThreatinsightAPIMemberthreatinsightGetRequest) PageId(pageId string) MemberThreatinsightAPIMemberthreatinsightGetRequest {
+func (r MemberThreatinsightAPIListRequest) PageId(pageId string) MemberThreatinsightAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MemberThreatinsightAPIMemberthreatinsightGetRequest) Filters(filters map[string]interface{}) MemberThreatinsightAPIMemberthreatinsightGetRequest {
+func (r MemberThreatinsightAPIListRequest) Filters(filters map[string]interface{}) MemberThreatinsightAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MemberThreatinsightAPIMemberthreatinsightGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberThreatinsightAPIMemberthreatinsightGetRequest {
+func (r MemberThreatinsightAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberThreatinsightAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MemberThreatinsightAPIMemberthreatinsightGetRequest) Execute() (*ListMemberThreatinsightResponse, *http.Response, error) {
-	return r.ApiService.MemberthreatinsightGetExecute(r)
+func (r MemberThreatinsightAPIListRequest) Execute() (*ListMemberThreatinsightResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MemberthreatinsightGet Retrieve member:threatinsight objects
+List Retrieve member:threatinsight objects
 
 Returns a list of member:threatinsight objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberThreatinsightAPIMemberthreatinsightGetRequest
+	@return MemberThreatinsightAPIListRequest
 */
-func (a *MemberThreatinsightAPIService) MemberthreatinsightGet(ctx context.Context) MemberThreatinsightAPIMemberthreatinsightGetRequest {
-	return MemberThreatinsightAPIMemberthreatinsightGetRequest{
+func (a *MemberThreatinsightAPIService) List(ctx context.Context) MemberThreatinsightAPIListRequest {
+	return MemberThreatinsightAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightGet(ctx context.Conte
 // Execute executes the request
 //
 //	@return ListMemberThreatinsightResponse
-func (a *MemberThreatinsightAPIService) MemberthreatinsightGetExecute(r MemberThreatinsightAPIMemberthreatinsightGetRequest) (*ListMemberThreatinsightResponse, *http.Response, error) {
+func (a *MemberThreatinsightAPIService) ListExecute(r MemberThreatinsightAPIListRequest) (*ListMemberThreatinsightResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightGetExecute(r MemberTh
 		localVarReturnValue *ListMemberThreatinsightResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatinsightAPIService.MemberthreatinsightGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatinsightAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightGetExecute(r MemberTh
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightGetExecute(r MemberTh
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberThreatinsightAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MemberThreatinsightAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       MemberThreatinsightAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest) ReturnFields(returnFields string) MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest {
+func (r MemberThreatinsightAPIReadRequest) ReturnFields(returnFields string) MemberThreatinsightAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest) ReturnFields2(returnFields2 string) MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberThreatinsightAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberThreatinsightAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest) ReturnAsObject(returnAsObject int32) MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest {
+func (r MemberThreatinsightAPIReadRequest) ReturnAsObject(returnAsObject int32) MemberThreatinsightAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest) Execute() (*GetMemberThreatinsightResponse, *http.Response, error) {
-	return r.ApiService.MemberthreatinsightReferenceGetExecute(r)
+func (r MemberThreatinsightAPIReadRequest) Execute() (*GetMemberThreatinsightResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MemberthreatinsightReferenceGet Get a specific member:threatinsight object
+Read Get a specific member:threatinsight object
 
 Returns a specific member:threatinsight object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:threatinsight object
-	@return MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest
+	@return MemberThreatinsightAPIReadRequest
 */
-func (a *MemberThreatinsightAPIService) MemberthreatinsightReferenceGet(ctx context.Context, reference string) MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest {
-	return MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest{
+func (a *MemberThreatinsightAPIService) Read(ctx context.Context, reference string) MemberThreatinsightAPIReadRequest {
+	return MemberThreatinsightAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightReferenceGet(ctx cont
 // Execute executes the request
 //
 //	@return GetMemberThreatinsightResponse
-func (a *MemberThreatinsightAPIService) MemberthreatinsightReferenceGetExecute(r MemberThreatinsightAPIMemberthreatinsightReferenceGetRequest) (*GetMemberThreatinsightResponse, *http.Response, error) {
+func (a *MemberThreatinsightAPIService) ReadExecute(r MemberThreatinsightAPIReadRequest) (*GetMemberThreatinsightResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightReferenceGetExecute(r
 		localVarReturnValue *GetMemberThreatinsightResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatinsightAPIService.MemberthreatinsightReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatinsightAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightReferenceGetExecute(r
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightReferenceGetExecute(r
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberThreatinsightAPIMemberthreatinsightReferencePutRequest struct {
+type MemberThreatinsightAPIUpdateRequest struct {
 	ctx                 context.Context
 	ApiService          MemberThreatinsightAPI
 	reference           string
 	memberThreatinsight *MemberThreatinsight
 	returnFields        *string
-	returnFields2       *string
+	returnFieldsPlus    *string
 	returnAsObject      *int32
 }
 
 // Object data to update
-func (r MemberThreatinsightAPIMemberthreatinsightReferencePutRequest) MemberThreatinsight(memberThreatinsight MemberThreatinsight) MemberThreatinsightAPIMemberthreatinsightReferencePutRequest {
+func (r MemberThreatinsightAPIUpdateRequest) MemberThreatinsight(memberThreatinsight MemberThreatinsight) MemberThreatinsightAPIUpdateRequest {
 	r.memberThreatinsight = &memberThreatinsight
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MemberThreatinsightAPIMemberthreatinsightReferencePutRequest) ReturnFields(returnFields string) MemberThreatinsightAPIMemberthreatinsightReferencePutRequest {
+func (r MemberThreatinsightAPIUpdateRequest) ReturnFields(returnFields string) MemberThreatinsightAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberThreatinsightAPIMemberthreatinsightReferencePutRequest) ReturnFields2(returnFields2 string) MemberThreatinsightAPIMemberthreatinsightReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberThreatinsightAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberThreatinsightAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberThreatinsightAPIMemberthreatinsightReferencePutRequest) ReturnAsObject(returnAsObject int32) MemberThreatinsightAPIMemberthreatinsightReferencePutRequest {
+func (r MemberThreatinsightAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MemberThreatinsightAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberThreatinsightAPIMemberthreatinsightReferencePutRequest) Execute() (*UpdateMemberThreatinsightResponse, *http.Response, error) {
-	return r.ApiService.MemberthreatinsightReferencePutExecute(r)
+func (r MemberThreatinsightAPIUpdateRequest) Execute() (*UpdateMemberThreatinsightResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-MemberthreatinsightReferencePut Update a member:threatinsight object
+Update Update a member:threatinsight object
 
 Updates a specific member:threatinsight object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:threatinsight object
-	@return MemberThreatinsightAPIMemberthreatinsightReferencePutRequest
+	@return MemberThreatinsightAPIUpdateRequest
 */
-func (a *MemberThreatinsightAPIService) MemberthreatinsightReferencePut(ctx context.Context, reference string) MemberThreatinsightAPIMemberthreatinsightReferencePutRequest {
-	return MemberThreatinsightAPIMemberthreatinsightReferencePutRequest{
+func (a *MemberThreatinsightAPIService) Update(ctx context.Context, reference string) MemberThreatinsightAPIUpdateRequest {
+	return MemberThreatinsightAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightReferencePut(ctx cont
 // Execute executes the request
 //
 //	@return UpdateMemberThreatinsightResponse
-func (a *MemberThreatinsightAPIService) MemberthreatinsightReferencePutExecute(r MemberThreatinsightAPIMemberthreatinsightReferencePutRequest) (*UpdateMemberThreatinsightResponse, *http.Response, error) {
+func (a *MemberThreatinsightAPIService) UpdateExecute(r MemberThreatinsightAPIUpdateRequest) (*UpdateMemberThreatinsightResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightReferencePutExecute(r
 		localVarReturnValue *UpdateMemberThreatinsightResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatinsightAPIService.MemberthreatinsightReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatinsightAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *MemberThreatinsightAPIService) MemberthreatinsightReferencePutExecute(r
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

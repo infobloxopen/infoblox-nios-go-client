@@ -23,11 +23,11 @@ func TestGcpdnstaskgroupAPIService(t *testing.T) {
 
 	apiClient := cloud.NewAPIClient()
 
-	t.Run("Test GcpdnstaskgroupAPIService Get", func(t *testing.T) {
+	t.Run("Test GcpdnstaskgroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GcpdnstaskgroupAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GcpdnstaskgroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestGcpdnstaskgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GcpdnstaskgroupAPIService Post", func(t *testing.T) {
+	t.Run("Test GcpdnstaskgroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GcpdnstaskgroupAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.GcpdnstaskgroupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GcpdnstaskgroupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.GcpdnstaskgroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestGcpdnstaskgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GcpdnstaskgroupAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test GcpdnstaskgroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.GcpdnstaskgroupAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test GcpdnstaskgroupAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.GcpdnstaskgroupAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GcpdnstaskgroupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestGcpdnstaskgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GcpdnstaskgroupAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test GcpdnstaskgroupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.GcpdnstaskgroupAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.GcpdnstaskgroupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

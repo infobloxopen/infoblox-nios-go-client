@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](ZoneStubAPI.md#Get) | **Get** /zone_stub | Retrieve zone_stub objects
-[**Post**](ZoneStubAPI.md#Post) | **Post** /zone_stub | Create a zone_stub object
-[**ReferenceDelete**](ZoneStubAPI.md#ReferenceDelete) | **Delete** /zone_stub/{reference} | Delete a zone_stub object
-[**ReferenceGet**](ZoneStubAPI.md#ReferenceGet) | **Get** /zone_stub/{reference} | Get a specific zone_stub object
-[**ReferencePut**](ZoneStubAPI.md#ReferencePut) | **Put** /zone_stub/{reference} | Update a zone_stub object
+[**Create**](ZoneStubAPI.md#Create) | **Post** /zone_stub | Create a zone_stub object
+[**Delete**](ZoneStubAPI.md#Delete) | **Delete** /zone_stub/{reference} | Delete a zone_stub object
+[**List**](ZoneStubAPI.md#List) | **Get** /zone_stub | Retrieve zone_stub objects
+[**Read**](ZoneStubAPI.md#Read) | **Get** /zone_stub/{reference} | Get a specific zone_stub object
+[**Update**](ZoneStubAPI.md#Update) | **Put** /zone_stub/{reference} | Update a zone_stub object
 
 
 
-## Get
+## Create
 
-> ListZoneStubResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateZoneStubResponse Create(ctx).ZoneStub(zoneStub).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a zone_stub object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	zoneStub := *dns.NewZoneStub() // ZoneStub | Object data to create
+
+	apiClient := dns.NewAPIClient()
+	resp, r, err := apiClient.ZoneStubAPI.Create(context.Background()).ZoneStub(zoneStub).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneStubAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateZoneStubResponse
+	fmt.Fprintf(os.Stdout, "Response from `ZoneStubAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ZoneStubAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**zoneStub** | [**ZoneStub**](ZoneStub.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateZoneStubResponse**](CreateZoneStubResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a zone_stub object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the zone_stub object
+
+	apiClient := dns.NewAPIClient()
+	r, err := apiClient.ZoneStubAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneStubAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the zone_stub object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ZoneStubAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListZoneStubResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve zone_stub objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneStubAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.ZoneStubAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneStubAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneStubAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListZoneStubResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneStubAPI.Get`: %v\n", resp)
+	// response from `List`: ListZoneStubResponse
+	fmt.Fprintf(os.Stdout, "Response from `ZoneStubAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ZoneStubAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ZoneStubAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateZoneStubResponse Post(ctx).ZoneStub(zoneStub).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a zone_stub object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	zoneStub := *dns.NewZoneStub() // ZoneStub | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneStubAPI.Post(context.Background()).ZoneStub(zoneStub).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneStubAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateZoneStubResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneStubAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ZoneStubAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**zoneStub** | [**ZoneStub**](ZoneStub.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateZoneStubResponse**](CreateZoneStubResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a zone_stub object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the zone_stub object
-
-	apiClient := dns.NewAPIClient()
-	r, err := apiClient.ZoneStubAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneStubAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the zone_stub object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ZoneStubAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetZoneStubResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetZoneStubResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific zone_stub object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the zone_stub object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneStubAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ZoneStubAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneStubAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneStubAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetZoneStubResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneStubAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetZoneStubResponse
+	fmt.Fprintf(os.Stdout, "Response from `ZoneStubAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ZoneStubAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ZoneStubAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateZoneStubResponse ReferencePut(ctx, reference).ZoneStub(zoneStub).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateZoneStubResponse Update(ctx, reference).ZoneStub(zoneStub).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a zone_stub object
 
@@ -318,13 +318,13 @@ func main() {
 	zoneStub := *dns.NewZoneStub() // ZoneStub | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneStubAPI.ReferencePut(context.Background(), reference).ZoneStub(zoneStub).Execute()
+	resp, r, err := apiClient.ZoneStubAPI.Update(context.Background(), reference).ZoneStub(zoneStub).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneStubAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneStubAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateZoneStubResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneStubAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateZoneStubResponse
+	fmt.Fprintf(os.Stdout, "Response from `ZoneStubAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ZoneStubAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ZoneStubAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **zoneStub** | [**ZoneStub**](ZoneStub.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

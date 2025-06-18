@@ -23,124 +23,124 @@ import (
 
 type MemberThreatprotectionAPI interface {
 	/*
-		MemberthreatprotectionGet Retrieve member:threatprotection objects
+		List Retrieve member:threatprotection objects
 
 		Returns a list of member:threatprotection objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberThreatprotectionAPIMemberthreatprotectionGetRequest
+		@return MemberThreatprotectionAPIListRequest
 	*/
-	MemberthreatprotectionGet(ctx context.Context) MemberThreatprotectionAPIMemberthreatprotectionGetRequest
+	List(ctx context.Context) MemberThreatprotectionAPIListRequest
 
-	// MemberthreatprotectionGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListMemberThreatprotectionResponse
-	MemberthreatprotectionGetExecute(r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) (*ListMemberThreatprotectionResponse, *http.Response, error)
+	ListExecute(r MemberThreatprotectionAPIListRequest) (*ListMemberThreatprotectionResponse, *http.Response, error)
 	/*
-		MemberthreatprotectionReferenceGet Get a specific member:threatprotection object
+		Read Get a specific member:threatprotection object
 
 		Returns a specific member:threatprotection object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:threatprotection object
-		@return MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest
+		@return MemberThreatprotectionAPIReadRequest
 	*/
-	MemberthreatprotectionReferenceGet(ctx context.Context, reference string) MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest
+	Read(ctx context.Context, reference string) MemberThreatprotectionAPIReadRequest
 
-	// MemberthreatprotectionReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMemberThreatprotectionResponse
-	MemberthreatprotectionReferenceGetExecute(r MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest) (*GetMemberThreatprotectionResponse, *http.Response, error)
+	ReadExecute(r MemberThreatprotectionAPIReadRequest) (*GetMemberThreatprotectionResponse, *http.Response, error)
 	/*
-		MemberthreatprotectionReferencePut Update a member:threatprotection object
+		Update Update a member:threatprotection object
 
 		Updates a specific member:threatprotection object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:threatprotection object
-		@return MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest
+		@return MemberThreatprotectionAPIUpdateRequest
 	*/
-	MemberthreatprotectionReferencePut(ctx context.Context, reference string) MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest
+	Update(ctx context.Context, reference string) MemberThreatprotectionAPIUpdateRequest
 
-	// MemberthreatprotectionReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMemberThreatprotectionResponse
-	MemberthreatprotectionReferencePutExecute(r MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest) (*UpdateMemberThreatprotectionResponse, *http.Response, error)
+	UpdateExecute(r MemberThreatprotectionAPIUpdateRequest) (*UpdateMemberThreatprotectionResponse, *http.Response, error)
 }
 
 // MemberThreatprotectionAPIService MemberThreatprotectionAPI service
 type MemberThreatprotectionAPIService internal.Service
 
-type MemberThreatprotectionAPIMemberthreatprotectionGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberThreatprotectionAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type MemberThreatprotectionAPIListRequest struct {
+	ctx              context.Context
+	ApiService       MemberThreatprotectionAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) ReturnFields(returnFields string) MemberThreatprotectionAPIMemberthreatprotectionGetRequest {
+func (r MemberThreatprotectionAPIListRequest) ReturnFields(returnFields string) MemberThreatprotectionAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) ReturnFields2(returnFields2 string) MemberThreatprotectionAPIMemberthreatprotectionGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberThreatprotectionAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberThreatprotectionAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) MaxResults(maxResults int32) MemberThreatprotectionAPIMemberthreatprotectionGetRequest {
+func (r MemberThreatprotectionAPIListRequest) MaxResults(maxResults int32) MemberThreatprotectionAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) ReturnAsObject(returnAsObject int32) MemberThreatprotectionAPIMemberthreatprotectionGetRequest {
+func (r MemberThreatprotectionAPIListRequest) ReturnAsObject(returnAsObject int32) MemberThreatprotectionAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) Paging(paging int32) MemberThreatprotectionAPIMemberthreatprotectionGetRequest {
+func (r MemberThreatprotectionAPIListRequest) Paging(paging int32) MemberThreatprotectionAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) PageId(pageId string) MemberThreatprotectionAPIMemberthreatprotectionGetRequest {
+func (r MemberThreatprotectionAPIListRequest) PageId(pageId string) MemberThreatprotectionAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) Filters(filters map[string]interface{}) MemberThreatprotectionAPIMemberthreatprotectionGetRequest {
+func (r MemberThreatprotectionAPIListRequest) Filters(filters map[string]interface{}) MemberThreatprotectionAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberThreatprotectionAPIMemberthreatprotectionGetRequest {
+func (r MemberThreatprotectionAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberThreatprotectionAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) Execute() (*ListMemberThreatprotectionResponse, *http.Response, error) {
-	return r.ApiService.MemberthreatprotectionGetExecute(r)
+func (r MemberThreatprotectionAPIListRequest) Execute() (*ListMemberThreatprotectionResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MemberthreatprotectionGet Retrieve member:threatprotection objects
+List Retrieve member:threatprotection objects
 
 Returns a list of member:threatprotection objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberThreatprotectionAPIMemberthreatprotectionGetRequest
+	@return MemberThreatprotectionAPIListRequest
 */
-func (a *MemberThreatprotectionAPIService) MemberthreatprotectionGet(ctx context.Context) MemberThreatprotectionAPIMemberthreatprotectionGetRequest {
-	return MemberThreatprotectionAPIMemberthreatprotectionGetRequest{
+func (a *MemberThreatprotectionAPIService) List(ctx context.Context) MemberThreatprotectionAPIListRequest {
+	return MemberThreatprotectionAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionGet(ctx context
 // Execute executes the request
 //
 //	@return ListMemberThreatprotectionResponse
-func (a *MemberThreatprotectionAPIService) MemberthreatprotectionGetExecute(r MemberThreatprotectionAPIMemberthreatprotectionGetRequest) (*ListMemberThreatprotectionResponse, *http.Response, error) {
+func (a *MemberThreatprotectionAPIService) ListExecute(r MemberThreatprotectionAPIListRequest) (*ListMemberThreatprotectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionGetExecute(r Me
 		localVarReturnValue *ListMemberThreatprotectionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatprotectionAPIService.MemberthreatprotectionGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatprotectionAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionGetExecute(r Me
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionGetExecute(r Me
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberThreatprotectionAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MemberThreatprotectionAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       MemberThreatprotectionAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest) ReturnFields(returnFields string) MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest {
+func (r MemberThreatprotectionAPIReadRequest) ReturnFields(returnFields string) MemberThreatprotectionAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest) ReturnFields2(returnFields2 string) MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberThreatprotectionAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberThreatprotectionAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest) ReturnAsObject(returnAsObject int32) MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest {
+func (r MemberThreatprotectionAPIReadRequest) ReturnAsObject(returnAsObject int32) MemberThreatprotectionAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest) Execute() (*GetMemberThreatprotectionResponse, *http.Response, error) {
-	return r.ApiService.MemberthreatprotectionReferenceGetExecute(r)
+func (r MemberThreatprotectionAPIReadRequest) Execute() (*GetMemberThreatprotectionResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MemberthreatprotectionReferenceGet Get a specific member:threatprotection object
+Read Get a specific member:threatprotection object
 
 Returns a specific member:threatprotection object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:threatprotection object
-	@return MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest
+	@return MemberThreatprotectionAPIReadRequest
 */
-func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferenceGet(ctx context.Context, reference string) MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest {
-	return MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest{
+func (a *MemberThreatprotectionAPIService) Read(ctx context.Context, reference string) MemberThreatprotectionAPIReadRequest {
+	return MemberThreatprotectionAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferenceGet(ct
 // Execute executes the request
 //
 //	@return GetMemberThreatprotectionResponse
-func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferenceGetExecute(r MemberThreatprotectionAPIMemberthreatprotectionReferenceGetRequest) (*GetMemberThreatprotectionResponse, *http.Response, error) {
+func (a *MemberThreatprotectionAPIService) ReadExecute(r MemberThreatprotectionAPIReadRequest) (*GetMemberThreatprotectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferenceGetExe
 		localVarReturnValue *GetMemberThreatprotectionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatprotectionAPIService.MemberthreatprotectionReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatprotectionAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferenceGetExe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferenceGetExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest struct {
+type MemberThreatprotectionAPIUpdateRequest struct {
 	ctx                    context.Context
 	ApiService             MemberThreatprotectionAPI
 	reference              string
 	memberThreatprotection *MemberThreatprotection
 	returnFields           *string
-	returnFields2          *string
+	returnFieldsPlus       *string
 	returnAsObject         *int32
 }
 
 // Object data to update
-func (r MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest) MemberThreatprotection(memberThreatprotection MemberThreatprotection) MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest {
+func (r MemberThreatprotectionAPIUpdateRequest) MemberThreatprotection(memberThreatprotection MemberThreatprotection) MemberThreatprotectionAPIUpdateRequest {
 	r.memberThreatprotection = &memberThreatprotection
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest) ReturnFields(returnFields string) MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest {
+func (r MemberThreatprotectionAPIUpdateRequest) ReturnFields(returnFields string) MemberThreatprotectionAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest) ReturnFields2(returnFields2 string) MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberThreatprotectionAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberThreatprotectionAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest) ReturnAsObject(returnAsObject int32) MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest {
+func (r MemberThreatprotectionAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MemberThreatprotectionAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest) Execute() (*UpdateMemberThreatprotectionResponse, *http.Response, error) {
-	return r.ApiService.MemberthreatprotectionReferencePutExecute(r)
+func (r MemberThreatprotectionAPIUpdateRequest) Execute() (*UpdateMemberThreatprotectionResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-MemberthreatprotectionReferencePut Update a member:threatprotection object
+Update Update a member:threatprotection object
 
 Updates a specific member:threatprotection object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:threatprotection object
-	@return MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest
+	@return MemberThreatprotectionAPIUpdateRequest
 */
-func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferencePut(ctx context.Context, reference string) MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest {
-	return MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest{
+func (a *MemberThreatprotectionAPIService) Update(ctx context.Context, reference string) MemberThreatprotectionAPIUpdateRequest {
+	return MemberThreatprotectionAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferencePut(ct
 // Execute executes the request
 //
 //	@return UpdateMemberThreatprotectionResponse
-func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferencePutExecute(r MemberThreatprotectionAPIMemberthreatprotectionReferencePutRequest) (*UpdateMemberThreatprotectionResponse, *http.Response, error) {
+func (a *MemberThreatprotectionAPIService) UpdateExecute(r MemberThreatprotectionAPIUpdateRequest) (*UpdateMemberThreatprotectionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferencePutExe
 		localVarReturnValue *UpdateMemberThreatprotectionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatprotectionAPIService.MemberthreatprotectionReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberThreatprotectionAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *MemberThreatprotectionAPIService) MemberthreatprotectionReferencePutExe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

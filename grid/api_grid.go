@@ -23,124 +23,124 @@ import (
 
 type GridAPI interface {
 	/*
-		Get Retrieve grid objects
+		List Retrieve grid objects
 
 		Returns a list of grid objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridAPIGetRequest
+		@return GridAPIListRequest
 	*/
-	Get(ctx context.Context) GridAPIGetRequest
+	List(ctx context.Context) GridAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListGridResponse
-	GetExecute(r GridAPIGetRequest) (*ListGridResponse, *http.Response, error)
+	ListExecute(r GridAPIListRequest) (*ListGridResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific grid object
+		Read Get a specific grid object
 
 		Returns a specific grid object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid object
-		@return GridAPIReferenceGetRequest
+		@return GridAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) GridAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) GridAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridResponse
-	ReferenceGetExecute(r GridAPIReferenceGetRequest) (*GetGridResponse, *http.Response, error)
+	ReadExecute(r GridAPIReadRequest) (*GetGridResponse, *http.Response, error)
 	/*
-		ReferencePut Update a grid object
+		Update Update a grid object
 
 		Updates a specific grid object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid object
-		@return GridAPIReferencePutRequest
+		@return GridAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) GridAPIReferencePutRequest
+	Update(ctx context.Context, reference string) GridAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridResponse
-	ReferencePutExecute(r GridAPIReferencePutRequest) (*UpdateGridResponse, *http.Response, error)
+	UpdateExecute(r GridAPIUpdateRequest) (*UpdateGridResponse, *http.Response, error)
 }
 
 // GridAPIService GridAPI service
 type GridAPIService internal.Service
 
-type GridAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     GridAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type GridAPIListRequest struct {
+	ctx              context.Context
+	ApiService       GridAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r GridAPIGetRequest) ReturnFields(returnFields string) GridAPIGetRequest {
+func (r GridAPIListRequest) ReturnFields(returnFields string) GridAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridAPIGetRequest) ReturnFields2(returnFields2 string) GridAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridAPIGetRequest) MaxResults(maxResults int32) GridAPIGetRequest {
+func (r GridAPIListRequest) MaxResults(maxResults int32) GridAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridAPIGetRequest) ReturnAsObject(returnAsObject int32) GridAPIGetRequest {
+func (r GridAPIListRequest) ReturnAsObject(returnAsObject int32) GridAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridAPIGetRequest) Paging(paging int32) GridAPIGetRequest {
+func (r GridAPIListRequest) Paging(paging int32) GridAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridAPIGetRequest) PageId(pageId string) GridAPIGetRequest {
+func (r GridAPIListRequest) PageId(pageId string) GridAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridAPIGetRequest) Filters(filters map[string]interface{}) GridAPIGetRequest {
+func (r GridAPIListRequest) Filters(filters map[string]interface{}) GridAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridAPIGetRequest {
+func (r GridAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridAPIGetRequest) Execute() (*ListGridResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r GridAPIListRequest) Execute() (*ListGridResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve grid objects
+List Retrieve grid objects
 
 Returns a list of grid objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridAPIGetRequest
+	@return GridAPIListRequest
 */
-func (a *GridAPIService) Get(ctx context.Context) GridAPIGetRequest {
-	return GridAPIGetRequest{
+func (a *GridAPIService) List(ctx context.Context) GridAPIListRequest {
+	return GridAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *GridAPIService) Get(ctx context.Context) GridAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListGridResponse
-func (a *GridAPIService) GetExecute(r GridAPIGetRequest) (*ListGridResponse, *http.Response, error) {
+func (a *GridAPIService) ListExecute(r GridAPIListRequest) (*ListGridResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *GridAPIService) GetExecute(r GridAPIGetRequest) (*ListGridResponse, *ht
 		localVarReturnValue *ListGridResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *GridAPIService) GetExecute(r GridAPIGetRequest) (*ListGridResponse, *ht
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *GridAPIService) GetExecute(r GridAPIGetRequest) (*ListGridResponse, *ht
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     GridAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type GridAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       GridAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r GridAPIReferenceGetRequest) ReturnFields(returnFields string) GridAPIReferenceGetRequest {
+func (r GridAPIReadRequest) ReturnFields(returnFields string) GridAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridAPIReferenceGetRequest) ReturnFields2(returnFields2 string) GridAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridAPIReferenceGetRequest {
+func (r GridAPIReadRequest) ReturnAsObject(returnAsObject int32) GridAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridAPIReferenceGetRequest) Execute() (*GetGridResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r GridAPIReadRequest) Execute() (*GetGridResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific grid object
+Read Get a specific grid object
 
 Returns a specific grid object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid object
-	@return GridAPIReferenceGetRequest
+	@return GridAPIReadRequest
 */
-func (a *GridAPIService) ReferenceGet(ctx context.Context, reference string) GridAPIReferenceGetRequest {
-	return GridAPIReferenceGetRequest{
+func (a *GridAPIService) Read(ctx context.Context, reference string) GridAPIReadRequest {
+	return GridAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *GridAPIService) ReferenceGet(ctx context.Context, reference string) Gri
 // Execute executes the request
 //
 //	@return GetGridResponse
-func (a *GridAPIService) ReferenceGetExecute(r GridAPIReferenceGetRequest) (*GetGridResponse, *http.Response, error) {
+func (a *GridAPIService) ReadExecute(r GridAPIReadRequest) (*GetGridResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *GridAPIService) ReferenceGetExecute(r GridAPIReferenceGetRequest) (*Get
 		localVarReturnValue *GetGridResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *GridAPIService) ReferenceGetExecute(r GridAPIReferenceGetRequest) (*Get
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *GridAPIService) ReferenceGetExecute(r GridAPIReferenceGetRequest) (*Get
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     GridAPI
-	reference      string
-	grid           *Grid
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type GridAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       GridAPI
+	reference        string
+	grid             *Grid
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r GridAPIReferencePutRequest) Grid(grid Grid) GridAPIReferencePutRequest {
+func (r GridAPIUpdateRequest) Grid(grid Grid) GridAPIUpdateRequest {
 	r.grid = &grid
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridAPIReferencePutRequest) ReturnFields(returnFields string) GridAPIReferencePutRequest {
+func (r GridAPIUpdateRequest) ReturnFields(returnFields string) GridAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridAPIReferencePutRequest) ReturnFields2(returnFields2 string) GridAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r GridAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) GridAPIReferencePutRequest {
+func (r GridAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridAPIReferencePutRequest) Execute() (*UpdateGridResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r GridAPIUpdateRequest) Execute() (*UpdateGridResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a grid object
+Update Update a grid object
 
 Updates a specific grid object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid object
-	@return GridAPIReferencePutRequest
+	@return GridAPIUpdateRequest
 */
-func (a *GridAPIService) ReferencePut(ctx context.Context, reference string) GridAPIReferencePutRequest {
-	return GridAPIReferencePutRequest{
+func (a *GridAPIService) Update(ctx context.Context, reference string) GridAPIUpdateRequest {
+	return GridAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *GridAPIService) ReferencePut(ctx context.Context, reference string) Gri
 // Execute executes the request
 //
 //	@return UpdateGridResponse
-func (a *GridAPIService) ReferencePutExecute(r GridAPIReferencePutRequest) (*UpdateGridResponse, *http.Response, error) {
+func (a *GridAPIService) UpdateExecute(r GridAPIUpdateRequest) (*UpdateGridResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *GridAPIService) ReferencePutExecute(r GridAPIReferencePutRequest) (*Upd
 		localVarReturnValue *UpdateGridResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *GridAPIService) ReferencePutExecute(r GridAPIReferencePutRequest) (*Upd
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

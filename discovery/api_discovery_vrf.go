@@ -23,110 +23,110 @@ import (
 
 type DiscoveryVrfAPI interface {
 	/*
-		DiscoveryvrfGet Retrieve discovery:vrf objects
+		List Retrieve discovery:vrf objects
 
 		Returns a list of discovery:vrf objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoveryVrfAPIDiscoveryvrfGetRequest
+		@return DiscoveryVrfAPIListRequest
 	*/
-	DiscoveryvrfGet(ctx context.Context) DiscoveryVrfAPIDiscoveryvrfGetRequest
+	List(ctx context.Context) DiscoveryVrfAPIListRequest
 
-	// DiscoveryvrfGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDiscoveryVrfResponse
-	DiscoveryvrfGetExecute(r DiscoveryVrfAPIDiscoveryvrfGetRequest) (*ListDiscoveryVrfResponse, *http.Response, error)
+	ListExecute(r DiscoveryVrfAPIListRequest) (*ListDiscoveryVrfResponse, *http.Response, error)
 	/*
-		DiscoveryvrfReferenceGet Get a specific discovery:vrf object
+		Read Get a specific discovery:vrf object
 
 		Returns a specific discovery:vrf object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:vrf object
-		@return DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest
+		@return DiscoveryVrfAPIReadRequest
 	*/
-	DiscoveryvrfReferenceGet(ctx context.Context, reference string) DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoveryVrfAPIReadRequest
 
-	// DiscoveryvrfReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoveryVrfResponse
-	DiscoveryvrfReferenceGetExecute(r DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest) (*GetDiscoveryVrfResponse, *http.Response, error)
+	ReadExecute(r DiscoveryVrfAPIReadRequest) (*GetDiscoveryVrfResponse, *http.Response, error)
 }
 
 // DiscoveryVrfAPIService DiscoveryVrfAPI service
 type DiscoveryVrfAPIService internal.Service
 
-type DiscoveryVrfAPIDiscoveryvrfGetRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryVrfAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DiscoveryVrfAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DiscoveryVrfAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryVrfAPIDiscoveryvrfGetRequest) ReturnFields(returnFields string) DiscoveryVrfAPIDiscoveryvrfGetRequest {
+func (r DiscoveryVrfAPIListRequest) ReturnFields(returnFields string) DiscoveryVrfAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryVrfAPIDiscoveryvrfGetRequest) ReturnFields2(returnFields2 string) DiscoveryVrfAPIDiscoveryvrfGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryVrfAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryVrfAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoveryVrfAPIDiscoveryvrfGetRequest) MaxResults(maxResults int32) DiscoveryVrfAPIDiscoveryvrfGetRequest {
+func (r DiscoveryVrfAPIListRequest) MaxResults(maxResults int32) DiscoveryVrfAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryVrfAPIDiscoveryvrfGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryVrfAPIDiscoveryvrfGetRequest {
+func (r DiscoveryVrfAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoveryVrfAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoveryVrfAPIDiscoveryvrfGetRequest) Paging(paging int32) DiscoveryVrfAPIDiscoveryvrfGetRequest {
+func (r DiscoveryVrfAPIListRequest) Paging(paging int32) DiscoveryVrfAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoveryVrfAPIDiscoveryvrfGetRequest) PageId(pageId string) DiscoveryVrfAPIDiscoveryvrfGetRequest {
+func (r DiscoveryVrfAPIListRequest) PageId(pageId string) DiscoveryVrfAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoveryVrfAPIDiscoveryvrfGetRequest) Filters(filters map[string]interface{}) DiscoveryVrfAPIDiscoveryvrfGetRequest {
+func (r DiscoveryVrfAPIListRequest) Filters(filters map[string]interface{}) DiscoveryVrfAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoveryVrfAPIDiscoveryvrfGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryVrfAPIDiscoveryvrfGetRequest {
+func (r DiscoveryVrfAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryVrfAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoveryVrfAPIDiscoveryvrfGetRequest) Execute() (*ListDiscoveryVrfResponse, *http.Response, error) {
-	return r.ApiService.DiscoveryvrfGetExecute(r)
+func (r DiscoveryVrfAPIListRequest) Execute() (*ListDiscoveryVrfResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DiscoveryvrfGet Retrieve discovery:vrf objects
+List Retrieve discovery:vrf objects
 
 Returns a list of discovery:vrf objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoveryVrfAPIDiscoveryvrfGetRequest
+	@return DiscoveryVrfAPIListRequest
 */
-func (a *DiscoveryVrfAPIService) DiscoveryvrfGet(ctx context.Context) DiscoveryVrfAPIDiscoveryvrfGetRequest {
-	return DiscoveryVrfAPIDiscoveryvrfGetRequest{
+func (a *DiscoveryVrfAPIService) List(ctx context.Context) DiscoveryVrfAPIListRequest {
+	return DiscoveryVrfAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *DiscoveryVrfAPIService) DiscoveryvrfGet(ctx context.Context) DiscoveryV
 // Execute executes the request
 //
 //	@return ListDiscoveryVrfResponse
-func (a *DiscoveryVrfAPIService) DiscoveryvrfGetExecute(r DiscoveryVrfAPIDiscoveryvrfGetRequest) (*ListDiscoveryVrfResponse, *http.Response, error) {
+func (a *DiscoveryVrfAPIService) ListExecute(r DiscoveryVrfAPIListRequest) (*ListDiscoveryVrfResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *DiscoveryVrfAPIService) DiscoveryvrfGetExecute(r DiscoveryVrfAPIDiscove
 		localVarReturnValue *ListDiscoveryVrfResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryVrfAPIService.DiscoveryvrfGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryVrfAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *DiscoveryVrfAPIService) DiscoveryvrfGetExecute(r DiscoveryVrfAPIDiscove
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *DiscoveryVrfAPIService) DiscoveryvrfGetExecute(r DiscoveryVrfAPIDiscove
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryVrfAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DiscoveryVrfAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DiscoveryVrfAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest) ReturnFields(returnFields string) DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest {
+func (r DiscoveryVrfAPIReadRequest) ReturnFields(returnFields string) DiscoveryVrfAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryVrfAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryVrfAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest {
+func (r DiscoveryVrfAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoveryVrfAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest) Execute() (*GetDiscoveryVrfResponse, *http.Response, error) {
-	return r.ApiService.DiscoveryvrfReferenceGetExecute(r)
+func (r DiscoveryVrfAPIReadRequest) Execute() (*GetDiscoveryVrfResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DiscoveryvrfReferenceGet Get a specific discovery:vrf object
+Read Get a specific discovery:vrf object
 
 Returns a specific discovery:vrf object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:vrf object
-	@return DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest
+	@return DiscoveryVrfAPIReadRequest
 */
-func (a *DiscoveryVrfAPIService) DiscoveryvrfReferenceGet(ctx context.Context, reference string) DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest {
-	return DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest{
+func (a *DiscoveryVrfAPIService) Read(ctx context.Context, reference string) DiscoveryVrfAPIReadRequest {
+	return DiscoveryVrfAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *DiscoveryVrfAPIService) DiscoveryvrfReferenceGet(ctx context.Context, r
 // Execute executes the request
 //
 //	@return GetDiscoveryVrfResponse
-func (a *DiscoveryVrfAPIService) DiscoveryvrfReferenceGetExecute(r DiscoveryVrfAPIDiscoveryvrfReferenceGetRequest) (*GetDiscoveryVrfResponse, *http.Response, error) {
+func (a *DiscoveryVrfAPIService) ReadExecute(r DiscoveryVrfAPIReadRequest) (*GetDiscoveryVrfResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *DiscoveryVrfAPIService) DiscoveryvrfReferenceGetExecute(r DiscoveryVrfA
 		localVarReturnValue *GetDiscoveryVrfResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryVrfAPIService.DiscoveryvrfReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryVrfAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *DiscoveryVrfAPIService) DiscoveryvrfReferenceGetExecute(r DiscoveryVrfA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

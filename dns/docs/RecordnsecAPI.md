@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RecordnsecGet**](RecordNsecAPI.md#RecordnsecGet) | **Get** /record:nsec | Retrieve record:nsec objects
-[**RecordnsecReferenceGet**](RecordNsecAPI.md#RecordnsecReferenceGet) | **Get** /record:nsec/{reference} | Get a specific record:nsec object
+[**List**](RecordNsecAPI.md#List) | **Get** /record:nsec | Retrieve record:nsec objects
+[**Read**](RecordNsecAPI.md#Read) | **Get** /record:nsec/{reference} | Get a specific record:nsec object
 
 
 
-## RecordnsecGet
+## List
 
-> ListRecordNsecResponse RecordnsecGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordNsecResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:nsec objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordNsecAPI.RecordnsecGet(context.Background()).Execute()
+	resp, r, err := apiClient.RecordNsecAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordNsecAPI.RecordnsecGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNsecAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordnsecGet`: ListRecordNsecResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordNsecAPI.RecordnsecGet`: %v\n", resp)
+	// response from `List`: ListRecordNsecResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordNsecAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordNsecAPIRecordnsecGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNsecAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RecordnsecReferenceGet
+## Read
 
-> GetRecordNsecResponse RecordnsecReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordNsecResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:nsec object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:nsec object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordNsecAPI.RecordnsecReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordNsecAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordNsecAPI.RecordnsecReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordNsecAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RecordnsecReferenceGet`: GetRecordNsecResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordNsecAPI.RecordnsecReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordNsecResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordNsecAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordNsecAPIRecordnsecReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordNsecAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -64,7 +64,7 @@ type Sharednetwork struct {
 	// A list of MAC addresses the appliance will ignore.
 	IgnoreMacAddresses []string `json:"ignore_mac_addresses,omitempty"`
 	// An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day).
-	LeaseScavengeTime *int32 `json:"lease_scavenge_time,omitempty"`
+	LeaseScavengeTime *int64 `json:"lease_scavenge_time,omitempty"`
 	// This field contains the logic filters to be applied on the this shared network. This list corresponds to the match rules that are written to the dhcpd configuration file.
 	LogicFilterRules []SharednetworkLogicFilterRules `json:"logic_filter_rules,omitempty"`
 	MsAdUserData     *SharednetworkMsAdUserData      `json:"ms_ad_user_data,omitempty"`
@@ -846,9 +846,9 @@ func (o *Sharednetwork) SetIgnoreMacAddresses(v []string) {
 }
 
 // GetLeaseScavengeTime returns the LeaseScavengeTime field value if set, zero value otherwise.
-func (o *Sharednetwork) GetLeaseScavengeTime() int32 {
+func (o *Sharednetwork) GetLeaseScavengeTime() int64 {
 	if o == nil || IsNil(o.LeaseScavengeTime) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LeaseScavengeTime
@@ -856,7 +856,7 @@ func (o *Sharednetwork) GetLeaseScavengeTime() int32 {
 
 // GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sharednetwork) GetLeaseScavengeTimeOk() (*int32, bool) {
+func (o *Sharednetwork) GetLeaseScavengeTimeOk() (*int64, bool) {
 	if o == nil || IsNil(o.LeaseScavengeTime) {
 		return nil, false
 	}
@@ -872,8 +872,8 @@ func (o *Sharednetwork) HasLeaseScavengeTime() bool {
 	return false
 }
 
-// SetLeaseScavengeTime gets a reference to the given int32 and assigns it to the LeaseScavengeTime field.
-func (o *Sharednetwork) SetLeaseScavengeTime(v int32) {
+// SetLeaseScavengeTime gets a reference to the given int64 and assigns it to the LeaseScavengeTime field.
+func (o *Sharednetwork) SetLeaseScavengeTime(v int64) {
 	o.LeaseScavengeTime = &v
 }
 

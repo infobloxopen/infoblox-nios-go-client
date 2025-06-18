@@ -23,11 +23,11 @@ func TestRirOrganizationAPIService(t *testing.T) {
 
 	apiClient := rir.NewAPIClient()
 
-	t.Run("Test RirOrganizationAPIService RirorganizationGet", func(t *testing.T) {
+	t.Run("Test RirOrganizationAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RirOrganizationAPI.RirorganizationGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RirOrganizationAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRirOrganizationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RirOrganizationAPIService RirorganizationPost", func(t *testing.T) {
+	t.Run("Test RirOrganizationAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RirOrganizationAPI.RirorganizationPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RirOrganizationAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RirOrganizationAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RirOrganizationAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRirOrganizationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RirOrganizationAPIService RirorganizationReferenceDelete", func(t *testing.T) {
+	t.Run("Test RirOrganizationAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RirOrganizationAPI.RirorganizationReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RirOrganizationAPIService RirorganizationReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RirOrganizationAPI.RirorganizationReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RirOrganizationAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRirOrganizationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RirOrganizationAPIService RirorganizationReferencePut", func(t *testing.T) {
+	t.Run("Test RirOrganizationAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RirOrganizationAPI.RirorganizationReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RirOrganizationAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

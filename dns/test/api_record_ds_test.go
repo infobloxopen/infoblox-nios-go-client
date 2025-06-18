@@ -23,11 +23,24 @@ func TestRecordDsAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordDsAPIService RecorddsGet", func(t *testing.T) {
+	t.Run("Test RecordDsAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordDsAPI.RecorddsGet(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RecordDsAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RecordDsAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RecordDsAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,26 +48,13 @@ func TestRecordDsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordDsAPIService RecorddsReferenceDelete", func(t *testing.T) {
+	t.Run("Test RecordDsAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RecordDsAPI.RecorddsReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RecordDsAPIService RecorddsReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RecordDsAPI.RecorddsReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordDsAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

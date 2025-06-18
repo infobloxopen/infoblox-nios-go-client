@@ -79,32 +79,32 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ThreatprotectionGridRuleAPI* | [**ThreatprotectiongridruleGet**](docs/ThreatprotectionGridRuleAPI.md#threatprotectiongridruleget) | **Get** /threatprotection:grid:rule | Retrieve threatprotection:grid:rule objects
-*ThreatprotectionGridRuleAPI* | [**ThreatprotectiongridrulePost**](docs/ThreatprotectionGridRuleAPI.md#threatprotectiongridrulepost) | **Post** /threatprotection:grid:rule | Create a threatprotection:grid:rule object
-*ThreatprotectionGridRuleAPI* | [**ThreatprotectiongridruleReferenceDelete**](docs/ThreatprotectionGridRuleAPI.md#threatprotectiongridrulereferencedelete) | **Delete** /threatprotection:grid:rule/{reference} | Delete a threatprotection:grid:rule object
-*ThreatprotectionGridRuleAPI* | [**ThreatprotectiongridruleReferenceGet**](docs/ThreatprotectionGridRuleAPI.md#threatprotectiongridrulereferenceget) | **Get** /threatprotection:grid:rule/{reference} | Get a specific threatprotection:grid:rule object
-*ThreatprotectionGridRuleAPI* | [**ThreatprotectiongridruleReferencePut**](docs/ThreatprotectionGridRuleAPI.md#threatprotectiongridrulereferenceput) | **Put** /threatprotection:grid:rule/{reference} | Update a threatprotection:grid:rule object
-*ThreatprotectionProfileAPI* | [**ThreatprotectionprofileGet**](docs/ThreatprotectionProfileAPI.md#threatprotectionprofileget) | **Get** /threatprotection:profile | Retrieve threatprotection:profile objects
-*ThreatprotectionProfileAPI* | [**ThreatprotectionprofilePost**](docs/ThreatprotectionProfileAPI.md#threatprotectionprofilepost) | **Post** /threatprotection:profile | Create a threatprotection:profile object
-*ThreatprotectionProfileAPI* | [**ThreatprotectionprofileReferenceDelete**](docs/ThreatprotectionProfileAPI.md#threatprotectionprofilereferencedelete) | **Delete** /threatprotection:profile/{reference} | Delete a threatprotection:profile object
-*ThreatprotectionProfileAPI* | [**ThreatprotectionprofileReferenceGet**](docs/ThreatprotectionProfileAPI.md#threatprotectionprofilereferenceget) | **Get** /threatprotection:profile/{reference} | Get a specific threatprotection:profile object
-*ThreatprotectionProfileAPI* | [**ThreatprotectionprofileReferencePut**](docs/ThreatprotectionProfileAPI.md#threatprotectionprofilereferenceput) | **Put** /threatprotection:profile/{reference} | Update a threatprotection:profile object
-*ThreatprotectionProfileRuleAPI* | [**ThreatprotectionprofileruleGet**](docs/ThreatprotectionProfileRuleAPI.md#threatprotectionprofileruleget) | **Get** /threatprotection:profile:rule | Retrieve threatprotection:profile:rule objects
-*ThreatprotectionProfileRuleAPI* | [**ThreatprotectionprofileruleReferenceGet**](docs/ThreatprotectionProfileRuleAPI.md#threatprotectionprofilerulereferenceget) | **Get** /threatprotection:profile:rule/{reference} | Get a specific threatprotection:profile:rule object
-*ThreatprotectionProfileRuleAPI* | [**ThreatprotectionprofileruleReferencePut**](docs/ThreatprotectionProfileRuleAPI.md#threatprotectionprofilerulereferenceput) | **Put** /threatprotection:profile:rule/{reference} | Update a threatprotection:profile:rule object
-*ThreatprotectionRuleAPI* | [**ThreatprotectionruleGet**](docs/ThreatprotectionRuleAPI.md#threatprotectionruleget) | **Get** /threatprotection:rule | Retrieve threatprotection:rule objects
-*ThreatprotectionRuleAPI* | [**ThreatprotectionruleReferenceGet**](docs/ThreatprotectionRuleAPI.md#threatprotectionrulereferenceget) | **Get** /threatprotection:rule/{reference} | Get a specific threatprotection:rule object
-*ThreatprotectionRuleAPI* | [**ThreatprotectionruleReferencePut**](docs/ThreatprotectionRuleAPI.md#threatprotectionrulereferenceput) | **Put** /threatprotection:rule/{reference} | Update a threatprotection:rule object
-*ThreatprotectionRulecategoryAPI* | [**ThreatprotectionrulecategoryGet**](docs/ThreatprotectionRulecategoryAPI.md#threatprotectionrulecategoryget) | **Get** /threatprotection:rulecategory | Retrieve threatprotection:rulecategory objects
-*ThreatprotectionRulecategoryAPI* | [**ThreatprotectionrulecategoryReferenceGet**](docs/ThreatprotectionRulecategoryAPI.md#threatprotectionrulecategoryreferenceget) | **Get** /threatprotection:rulecategory/{reference} | Get a specific threatprotection:rulecategory object
-*ThreatprotectionRulesetAPI* | [**ThreatprotectionrulesetGet**](docs/ThreatprotectionRulesetAPI.md#threatprotectionrulesetget) | **Get** /threatprotection:ruleset | Retrieve threatprotection:ruleset objects
-*ThreatprotectionRulesetAPI* | [**ThreatprotectionrulesetReferenceDelete**](docs/ThreatprotectionRulesetAPI.md#threatprotectionrulesetreferencedelete) | **Delete** /threatprotection:ruleset/{reference} | Delete a threatprotection:ruleset object
-*ThreatprotectionRulesetAPI* | [**ThreatprotectionrulesetReferenceGet**](docs/ThreatprotectionRulesetAPI.md#threatprotectionrulesetreferenceget) | **Get** /threatprotection:ruleset/{reference} | Get a specific threatprotection:ruleset object
-*ThreatprotectionRulesetAPI* | [**ThreatprotectionrulesetReferencePut**](docs/ThreatprotectionRulesetAPI.md#threatprotectionrulesetreferenceput) | **Put** /threatprotection:ruleset/{reference} | Update a threatprotection:ruleset object
-*ThreatprotectionRuletemplateAPI* | [**ThreatprotectionruletemplateGet**](docs/ThreatprotectionRuletemplateAPI.md#threatprotectionruletemplateget) | **Get** /threatprotection:ruletemplate | Retrieve threatprotection:ruletemplate objects
-*ThreatprotectionRuletemplateAPI* | [**ThreatprotectionruletemplateReferenceGet**](docs/ThreatprotectionRuletemplateAPI.md#threatprotectionruletemplatereferenceget) | **Get** /threatprotection:ruletemplate/{reference} | Get a specific threatprotection:ruletemplate object
-*ThreatprotectionStatisticsAPI* | [**ThreatprotectionstatisticsGet**](docs/ThreatprotectionStatisticsAPI.md#threatprotectionstatisticsget) | **Get** /threatprotection:statistics | Retrieve threatprotection:statistics objects
-*ThreatprotectionStatisticsAPI* | [**ThreatprotectionstatisticsReferenceGet**](docs/ThreatprotectionStatisticsAPI.md#threatprotectionstatisticsreferenceget) | **Get** /threatprotection:statistics/{reference} | Get a specific threatprotection:statistics object
+*ThreatprotectionGridRuleAPI* | [**Create**](docs/ThreatprotectionGridRuleAPI.md#create) | **Post** /threatprotection:grid:rule | Create a threatprotection:grid:rule object
+*ThreatprotectionGridRuleAPI* | [**Delete**](docs/ThreatprotectionGridRuleAPI.md#delete) | **Delete** /threatprotection:grid:rule/{reference} | Delete a threatprotection:grid:rule object
+*ThreatprotectionGridRuleAPI* | [**List**](docs/ThreatprotectionGridRuleAPI.md#list) | **Get** /threatprotection:grid:rule | Retrieve threatprotection:grid:rule objects
+*ThreatprotectionGridRuleAPI* | [**Read**](docs/ThreatprotectionGridRuleAPI.md#read) | **Get** /threatprotection:grid:rule/{reference} | Get a specific threatprotection:grid:rule object
+*ThreatprotectionGridRuleAPI* | [**Update**](docs/ThreatprotectionGridRuleAPI.md#update) | **Put** /threatprotection:grid:rule/{reference} | Update a threatprotection:grid:rule object
+*ThreatprotectionProfileAPI* | [**Create**](docs/ThreatprotectionProfileAPI.md#create) | **Post** /threatprotection:profile | Create a threatprotection:profile object
+*ThreatprotectionProfileAPI* | [**Delete**](docs/ThreatprotectionProfileAPI.md#delete) | **Delete** /threatprotection:profile/{reference} | Delete a threatprotection:profile object
+*ThreatprotectionProfileAPI* | [**List**](docs/ThreatprotectionProfileAPI.md#list) | **Get** /threatprotection:profile | Retrieve threatprotection:profile objects
+*ThreatprotectionProfileAPI* | [**Read**](docs/ThreatprotectionProfileAPI.md#read) | **Get** /threatprotection:profile/{reference} | Get a specific threatprotection:profile object
+*ThreatprotectionProfileAPI* | [**Update**](docs/ThreatprotectionProfileAPI.md#update) | **Put** /threatprotection:profile/{reference} | Update a threatprotection:profile object
+*ThreatprotectionProfileRuleAPI* | [**List**](docs/ThreatprotectionProfileRuleAPI.md#list) | **Get** /threatprotection:profile:rule | Retrieve threatprotection:profile:rule objects
+*ThreatprotectionProfileRuleAPI* | [**Read**](docs/ThreatprotectionProfileRuleAPI.md#read) | **Get** /threatprotection:profile:rule/{reference} | Get a specific threatprotection:profile:rule object
+*ThreatprotectionProfileRuleAPI* | [**Update**](docs/ThreatprotectionProfileRuleAPI.md#update) | **Put** /threatprotection:profile:rule/{reference} | Update a threatprotection:profile:rule object
+*ThreatprotectionRuleAPI* | [**List**](docs/ThreatprotectionRuleAPI.md#list) | **Get** /threatprotection:rule | Retrieve threatprotection:rule objects
+*ThreatprotectionRuleAPI* | [**Read**](docs/ThreatprotectionRuleAPI.md#read) | **Get** /threatprotection:rule/{reference} | Get a specific threatprotection:rule object
+*ThreatprotectionRuleAPI* | [**Update**](docs/ThreatprotectionRuleAPI.md#update) | **Put** /threatprotection:rule/{reference} | Update a threatprotection:rule object
+*ThreatprotectionRulecategoryAPI* | [**List**](docs/ThreatprotectionRulecategoryAPI.md#list) | **Get** /threatprotection:rulecategory | Retrieve threatprotection:rulecategory objects
+*ThreatprotectionRulecategoryAPI* | [**Read**](docs/ThreatprotectionRulecategoryAPI.md#read) | **Get** /threatprotection:rulecategory/{reference} | Get a specific threatprotection:rulecategory object
+*ThreatprotectionRulesetAPI* | [**Delete**](docs/ThreatprotectionRulesetAPI.md#delete) | **Delete** /threatprotection:ruleset/{reference} | Delete a threatprotection:ruleset object
+*ThreatprotectionRulesetAPI* | [**List**](docs/ThreatprotectionRulesetAPI.md#list) | **Get** /threatprotection:ruleset | Retrieve threatprotection:ruleset objects
+*ThreatprotectionRulesetAPI* | [**Read**](docs/ThreatprotectionRulesetAPI.md#read) | **Get** /threatprotection:ruleset/{reference} | Get a specific threatprotection:ruleset object
+*ThreatprotectionRulesetAPI* | [**Update**](docs/ThreatprotectionRulesetAPI.md#update) | **Put** /threatprotection:ruleset/{reference} | Update a threatprotection:ruleset object
+*ThreatprotectionRuletemplateAPI* | [**List**](docs/ThreatprotectionRuletemplateAPI.md#list) | **Get** /threatprotection:ruletemplate | Retrieve threatprotection:ruletemplate objects
+*ThreatprotectionRuletemplateAPI* | [**Read**](docs/ThreatprotectionRuletemplateAPI.md#read) | **Get** /threatprotection:ruletemplate/{reference} | Get a specific threatprotection:ruletemplate object
+*ThreatprotectionStatisticsAPI* | [**List**](docs/ThreatprotectionStatisticsAPI.md#list) | **Get** /threatprotection:statistics | Retrieve threatprotection:statistics objects
+*ThreatprotectionStatisticsAPI* | [**Read**](docs/ThreatprotectionStatisticsAPI.md#read) | **Get** /threatprotection:statistics/{reference} | Get a specific threatprotection:statistics object
 
 
 ## Documentation For Models

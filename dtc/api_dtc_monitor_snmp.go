@@ -23,150 +23,386 @@ import (
 
 type DtcMonitorSnmpAPI interface {
 	/*
-		DtcmonitorsnmpGet Retrieve dtc:monitor:snmp objects
-
-		Returns a list of dtc:monitor:snmp objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest
-	*/
-	DtcmonitorsnmpGet(ctx context.Context) DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest
-
-	// DtcmonitorsnmpGetExecute executes the request
-	//  @return ListDtcMonitorSnmpResponse
-	DtcmonitorsnmpGetExecute(r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) (*ListDtcMonitorSnmpResponse, *http.Response, error)
-	/*
-		DtcmonitorsnmpPost Create a dtc:monitor:snmp object
+		Create Create a dtc:monitor:snmp object
 
 		Creates a new dtc:monitor:snmp object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest
+		@return DtcMonitorSnmpAPICreateRequest
 	*/
-	DtcmonitorsnmpPost(ctx context.Context) DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest
+	Create(ctx context.Context) DtcMonitorSnmpAPICreateRequest
 
-	// DtcmonitorsnmpPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDtcMonitorSnmpResponse
-	DtcmonitorsnmpPostExecute(r DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest) (*CreateDtcMonitorSnmpResponse, *http.Response, error)
+	CreateExecute(r DtcMonitorSnmpAPICreateRequest) (*CreateDtcMonitorSnmpResponse, *http.Response, error)
 	/*
-		DtcmonitorsnmpReferenceDelete Delete a dtc:monitor:snmp object
+		Delete Delete a dtc:monitor:snmp object
 
 		Deletes a specific dtc:monitor:snmp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:snmp object
-		@return DtcMonitorSnmpAPIDtcmonitorsnmpReferenceDeleteRequest
+		@return DtcMonitorSnmpAPIDeleteRequest
 	*/
-	DtcmonitorsnmpReferenceDelete(ctx context.Context, reference string) DtcMonitorSnmpAPIDtcmonitorsnmpReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DtcMonitorSnmpAPIDeleteRequest
 
-	// DtcmonitorsnmpReferenceDeleteExecute executes the request
-	DtcmonitorsnmpReferenceDeleteExecute(r DtcMonitorSnmpAPIDtcmonitorsnmpReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DtcMonitorSnmpAPIDeleteRequest) (*http.Response, error)
 	/*
-		DtcmonitorsnmpReferenceGet Get a specific dtc:monitor:snmp object
+		List Retrieve dtc:monitor:snmp objects
+
+		Returns a list of dtc:monitor:snmp objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DtcMonitorSnmpAPIListRequest
+	*/
+	List(ctx context.Context) DtcMonitorSnmpAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDtcMonitorSnmpResponse
+	ListExecute(r DtcMonitorSnmpAPIListRequest) (*ListDtcMonitorSnmpResponse, *http.Response, error)
+	/*
+		Read Get a specific dtc:monitor:snmp object
 
 		Returns a specific dtc:monitor:snmp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:snmp object
-		@return DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest
+		@return DtcMonitorSnmpAPIReadRequest
 	*/
-	DtcmonitorsnmpReferenceGet(ctx context.Context, reference string) DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcMonitorSnmpAPIReadRequest
 
-	// DtcmonitorsnmpReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcMonitorSnmpResponse
-	DtcmonitorsnmpReferenceGetExecute(r DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest) (*GetDtcMonitorSnmpResponse, *http.Response, error)
+	ReadExecute(r DtcMonitorSnmpAPIReadRequest) (*GetDtcMonitorSnmpResponse, *http.Response, error)
 	/*
-		DtcmonitorsnmpReferencePut Update a dtc:monitor:snmp object
+		Update Update a dtc:monitor:snmp object
 
 		Updates a specific dtc:monitor:snmp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:monitor:snmp object
-		@return DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest
+		@return DtcMonitorSnmpAPIUpdateRequest
 	*/
-	DtcmonitorsnmpReferencePut(ctx context.Context, reference string) DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest
+	Update(ctx context.Context, reference string) DtcMonitorSnmpAPIUpdateRequest
 
-	// DtcmonitorsnmpReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcMonitorSnmpResponse
-	DtcmonitorsnmpReferencePutExecute(r DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest) (*UpdateDtcMonitorSnmpResponse, *http.Response, error)
+	UpdateExecute(r DtcMonitorSnmpAPIUpdateRequest) (*UpdateDtcMonitorSnmpResponse, *http.Response, error)
 }
 
 // DtcMonitorSnmpAPIService DtcMonitorSnmpAPI service
 type DtcMonitorSnmpAPIService internal.Service
 
-type DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorSnmpAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DtcMonitorSnmpAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       DtcMonitorSnmpAPI
+	dtcMonitorSnmp   *DtcMonitorSnmp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r DtcMonitorSnmpAPICreateRequest) DtcMonitorSnmp(dtcMonitorSnmp DtcMonitorSnmp) DtcMonitorSnmpAPICreateRequest {
+	r.dtcMonitorSnmp = &dtcMonitorSnmp
+	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) ReturnFields(returnFields string) DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest {
+func (r DtcMonitorSnmpAPICreateRequest) ReturnFields(returnFields string) DtcMonitorSnmpAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) ReturnFields2(returnFields2 string) DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcMonitorSnmpAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcMonitorSnmpAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DtcMonitorSnmpAPICreateRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSnmpAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r DtcMonitorSnmpAPICreateRequest) Execute() (*CreateDtcMonitorSnmpResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a dtc:monitor:snmp object
+
+Creates a new dtc:monitor:snmp object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DtcMonitorSnmpAPICreateRequest
+*/
+func (a *DtcMonitorSnmpAPIService) Create(ctx context.Context) DtcMonitorSnmpAPICreateRequest {
+	return DtcMonitorSnmpAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateDtcMonitorSnmpResponse
+func (a *DtcMonitorSnmpAPIService) CreateExecute(r DtcMonitorSnmpAPICreateRequest) (*CreateDtcMonitorSnmpResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateDtcMonitorSnmpResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSnmpAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:monitor:snmp"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.dtcMonitorSnmp == nil {
+		return localVarReturnValue, nil, internal.ReportError("dtcMonitorSnmp is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorSnmp != nil {
+		if r.dtcMonitorSnmp.Extattrs == nil {
+			r.dtcMonitorSnmp.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.dtcMonitorSnmp.Extattrs)[k]; !ok {
+				(*r.dtcMonitorSnmp.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.dtcMonitorSnmp
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DtcMonitorSnmpAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DtcMonitorSnmpAPI
+	reference  string
+}
+
+func (r DtcMonitorSnmpAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a dtc:monitor:snmp object
+
+Deletes a specific dtc:monitor:snmp object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the dtc:monitor:snmp object
+	@return DtcMonitorSnmpAPIDeleteRequest
+*/
+func (a *DtcMonitorSnmpAPIService) Delete(ctx context.Context, reference string) DtcMonitorSnmpAPIDeleteRequest {
+	return DtcMonitorSnmpAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DtcMonitorSnmpAPIService) DeleteExecute(r DtcMonitorSnmpAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSnmpAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:monitor:snmp/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DtcMonitorSnmpAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DtcMonitorSnmpAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DtcMonitorSnmpAPIListRequest) ReturnFields(returnFields string) DtcMonitorSnmpAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DtcMonitorSnmpAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcMonitorSnmpAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) MaxResults(maxResults int32) DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest {
+func (r DtcMonitorSnmpAPIListRequest) MaxResults(maxResults int32) DtcMonitorSnmpAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest {
+func (r DtcMonitorSnmpAPIListRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSnmpAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) Paging(paging int32) DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest {
+func (r DtcMonitorSnmpAPIListRequest) Paging(paging int32) DtcMonitorSnmpAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) PageId(pageId string) DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest {
+func (r DtcMonitorSnmpAPIListRequest) PageId(pageId string) DtcMonitorSnmpAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) Filters(filters map[string]interface{}) DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest {
+func (r DtcMonitorSnmpAPIListRequest) Filters(filters map[string]interface{}) DtcMonitorSnmpAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest {
+func (r DtcMonitorSnmpAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcMonitorSnmpAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) Execute() (*ListDtcMonitorSnmpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorsnmpGetExecute(r)
+func (r DtcMonitorSnmpAPIListRequest) Execute() (*ListDtcMonitorSnmpResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DtcmonitorsnmpGet Retrieve dtc:monitor:snmp objects
+List Retrieve dtc:monitor:snmp objects
 
 Returns a list of dtc:monitor:snmp objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest
+	@return DtcMonitorSnmpAPIListRequest
 */
-func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpGet(ctx context.Context) DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest {
-	return DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest{
+func (a *DtcMonitorSnmpAPIService) List(ctx context.Context) DtcMonitorSnmpAPIListRequest {
+	return DtcMonitorSnmpAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpGet(ctx context.Context) DtcMon
 // Execute executes the request
 //
 //	@return ListDtcMonitorSnmpResponse
-func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpGetExecute(r DtcMonitorSnmpAPIDtcmonitorsnmpGetRequest) (*ListDtcMonitorSnmpResponse, *http.Response, error) {
+func (a *DtcMonitorSnmpAPIService) ListExecute(r DtcMonitorSnmpAPIListRequest) (*ListDtcMonitorSnmpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpGetExecute(r DtcMonitorSnmpAPID
 		localVarReturnValue *ListDtcMonitorSnmpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSnmpAPIService.DtcmonitorsnmpGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSnmpAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpGetExecute(r DtcMonitorSnmpAPID
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpGetExecute(r DtcMonitorSnmpAPID
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorSnmpAPI
-	dtcMonitorSnmp *DtcMonitorSnmp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest) DtcMonitorSnmp(dtcMonitorSnmp DtcMonitorSnmp) DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest {
-	r.dtcMonitorSnmp = &dtcMonitorSnmp
-	return r
+type DtcMonitorSnmpAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DtcMonitorSnmpAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest) ReturnFields(returnFields string) DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest {
+func (r DtcMonitorSnmpAPIReadRequest) ReturnFields(returnFields string) DtcMonitorSnmpAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest) ReturnFields2(returnFields2 string) DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcMonitorSnmpAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcMonitorSnmpAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest {
+func (r DtcMonitorSnmpAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSnmpAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest) Execute() (*CreateDtcMonitorSnmpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorsnmpPostExecute(r)
+func (r DtcMonitorSnmpAPIReadRequest) Execute() (*GetDtcMonitorSnmpResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtcmonitorsnmpPost Create a dtc:monitor:snmp object
-
-Creates a new dtc:monitor:snmp object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest
-*/
-func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpPost(ctx context.Context) DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest {
-	return DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateDtcMonitorSnmpResponse
-func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpPostExecute(r DtcMonitorSnmpAPIDtcmonitorsnmpPostRequest) (*CreateDtcMonitorSnmpResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateDtcMonitorSnmpResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSnmpAPIService.DtcmonitorsnmpPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:monitor:snmp"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.dtcMonitorSnmp == nil {
-		return localVarReturnValue, nil, internal.ReportError("dtcMonitorSnmp is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorSnmp != nil {
-		if r.dtcMonitorSnmp.Extattrs == nil {
-			r.dtcMonitorSnmp.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcMonitorSnmp.Extattrs)[k]; !ok {
-				(*r.dtcMonitorSnmp.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.dtcMonitorSnmp
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DtcMonitorSnmpAPIDtcmonitorsnmpReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DtcMonitorSnmpAPI
-	reference  string
-}
-
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DtcmonitorsnmpReferenceDeleteExecute(r)
-}
-
-/*
-DtcmonitorsnmpReferenceDelete Delete a dtc:monitor:snmp object
-
-Deletes a specific dtc:monitor:snmp object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the dtc:monitor:snmp object
-	@return DtcMonitorSnmpAPIDtcmonitorsnmpReferenceDeleteRequest
-*/
-func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferenceDelete(ctx context.Context, reference string) DtcMonitorSnmpAPIDtcmonitorsnmpReferenceDeleteRequest {
-	return DtcMonitorSnmpAPIDtcmonitorsnmpReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferenceDeleteExecute(r DtcMonitorSnmpAPIDtcmonitorsnmpReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSnmpAPIService.DtcmonitorsnmpReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:monitor:snmp/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorSnmpAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest) ReturnFields(returnFields string) DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest) ReturnFields2(returnFields2 string) DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest) Execute() (*GetDtcMonitorSnmpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorsnmpReferenceGetExecute(r)
-}
-
-/*
-DtcmonitorsnmpReferenceGet Get a specific dtc:monitor:snmp object
+Read Get a specific dtc:monitor:snmp object
 
 Returns a specific dtc:monitor:snmp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:snmp object
-	@return DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest
+	@return DtcMonitorSnmpAPIReadRequest
 */
-func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferenceGet(ctx context.Context, reference string) DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest {
-	return DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest{
+func (a *DtcMonitorSnmpAPIService) Read(ctx context.Context, reference string) DtcMonitorSnmpAPIReadRequest {
+	return DtcMonitorSnmpAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferenceGet(ctx context.Contex
 // Execute executes the request
 //
 //	@return GetDtcMonitorSnmpResponse
-func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferenceGetExecute(r DtcMonitorSnmpAPIDtcmonitorsnmpReferenceGetRequest) (*GetDtcMonitorSnmpResponse, *http.Response, error) {
+func (a *DtcMonitorSnmpAPIService) ReadExecute(r DtcMonitorSnmpAPIReadRequest) (*GetDtcMonitorSnmpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferenceGetExecute(r DtcMonito
 		localVarReturnValue *GetDtcMonitorSnmpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSnmpAPIService.DtcmonitorsnmpReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSnmpAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferenceGetExecute(r DtcMonito
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferenceGetExecute(r DtcMonito
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     DtcMonitorSnmpAPI
-	reference      string
-	dtcMonitorSnmp *DtcMonitorSnmp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DtcMonitorSnmpAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       DtcMonitorSnmpAPI
+	reference        string
+	dtcMonitorSnmp   *DtcMonitorSnmp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest) DtcMonitorSnmp(dtcMonitorSnmp DtcMonitorSnmp) DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest {
+func (r DtcMonitorSnmpAPIUpdateRequest) DtcMonitorSnmp(dtcMonitorSnmp DtcMonitorSnmp) DtcMonitorSnmpAPIUpdateRequest {
 	r.dtcMonitorSnmp = &dtcMonitorSnmp
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest) ReturnFields(returnFields string) DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest {
+func (r DtcMonitorSnmpAPIUpdateRequest) ReturnFields(returnFields string) DtcMonitorSnmpAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest) ReturnFields2(returnFields2 string) DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcMonitorSnmpAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcMonitorSnmpAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest {
+func (r DtcMonitorSnmpAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcMonitorSnmpAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest) Execute() (*UpdateDtcMonitorSnmpResponse, *http.Response, error) {
-	return r.ApiService.DtcmonitorsnmpReferencePutExecute(r)
+func (r DtcMonitorSnmpAPIUpdateRequest) Execute() (*UpdateDtcMonitorSnmpResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtcmonitorsnmpReferencePut Update a dtc:monitor:snmp object
+Update Update a dtc:monitor:snmp object
 
 Updates a specific dtc:monitor:snmp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:monitor:snmp object
-	@return DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest
+	@return DtcMonitorSnmpAPIUpdateRequest
 */
-func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferencePut(ctx context.Context, reference string) DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest {
-	return DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest{
+func (a *DtcMonitorSnmpAPIService) Update(ctx context.Context, reference string) DtcMonitorSnmpAPIUpdateRequest {
+	return DtcMonitorSnmpAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferencePut(ctx context.Contex
 // Execute executes the request
 //
 //	@return UpdateDtcMonitorSnmpResponse
-func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferencePutExecute(r DtcMonitorSnmpAPIDtcmonitorsnmpReferencePutRequest) (*UpdateDtcMonitorSnmpResponse, *http.Response, error) {
+func (a *DtcMonitorSnmpAPIService) UpdateExecute(r DtcMonitorSnmpAPIUpdateRequest) (*UpdateDtcMonitorSnmpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferencePutExecute(r DtcMonito
 		localVarReturnValue *UpdateDtcMonitorSnmpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSnmpAPIService.DtcmonitorsnmpReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcMonitorSnmpAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *DtcMonitorSnmpAPIService) DtcmonitorsnmpReferencePutExecute(r DtcMonito
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

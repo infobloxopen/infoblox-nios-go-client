@@ -23,150 +23,374 @@ import (
 
 type DtcRecordNaptrAPI interface {
 	/*
-		DtcrecordnaptrGet Retrieve dtc:record:naptr objects
-
-		Returns a list of dtc:record:naptr objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcRecordNaptrAPIDtcrecordnaptrGetRequest
-	*/
-	DtcrecordnaptrGet(ctx context.Context) DtcRecordNaptrAPIDtcrecordnaptrGetRequest
-
-	// DtcrecordnaptrGetExecute executes the request
-	//  @return ListDtcRecordNaptrResponse
-	DtcrecordnaptrGetExecute(r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) (*ListDtcRecordNaptrResponse, *http.Response, error)
-	/*
-		DtcrecordnaptrPost Create a dtc:record:naptr object
+		Create Create a dtc:record:naptr object
 
 		Creates a new dtc:record:naptr object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcRecordNaptrAPIDtcrecordnaptrPostRequest
+		@return DtcRecordNaptrAPICreateRequest
 	*/
-	DtcrecordnaptrPost(ctx context.Context) DtcRecordNaptrAPIDtcrecordnaptrPostRequest
+	Create(ctx context.Context) DtcRecordNaptrAPICreateRequest
 
-	// DtcrecordnaptrPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDtcRecordNaptrResponse
-	DtcrecordnaptrPostExecute(r DtcRecordNaptrAPIDtcrecordnaptrPostRequest) (*CreateDtcRecordNaptrResponse, *http.Response, error)
+	CreateExecute(r DtcRecordNaptrAPICreateRequest) (*CreateDtcRecordNaptrResponse, *http.Response, error)
 	/*
-		DtcrecordnaptrReferenceDelete Delete a dtc:record:naptr object
+		Delete Delete a dtc:record:naptr object
 
 		Deletes a specific dtc:record:naptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:record:naptr object
-		@return DtcRecordNaptrAPIDtcrecordnaptrReferenceDeleteRequest
+		@return DtcRecordNaptrAPIDeleteRequest
 	*/
-	DtcrecordnaptrReferenceDelete(ctx context.Context, reference string) DtcRecordNaptrAPIDtcrecordnaptrReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DtcRecordNaptrAPIDeleteRequest
 
-	// DtcrecordnaptrReferenceDeleteExecute executes the request
-	DtcrecordnaptrReferenceDeleteExecute(r DtcRecordNaptrAPIDtcrecordnaptrReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DtcRecordNaptrAPIDeleteRequest) (*http.Response, error)
 	/*
-		DtcrecordnaptrReferenceGet Get a specific dtc:record:naptr object
+		List Retrieve dtc:record:naptr objects
+
+		Returns a list of dtc:record:naptr objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DtcRecordNaptrAPIListRequest
+	*/
+	List(ctx context.Context) DtcRecordNaptrAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDtcRecordNaptrResponse
+	ListExecute(r DtcRecordNaptrAPIListRequest) (*ListDtcRecordNaptrResponse, *http.Response, error)
+	/*
+		Read Get a specific dtc:record:naptr object
 
 		Returns a specific dtc:record:naptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:record:naptr object
-		@return DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest
+		@return DtcRecordNaptrAPIReadRequest
 	*/
-	DtcrecordnaptrReferenceGet(ctx context.Context, reference string) DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcRecordNaptrAPIReadRequest
 
-	// DtcrecordnaptrReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcRecordNaptrResponse
-	DtcrecordnaptrReferenceGetExecute(r DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest) (*GetDtcRecordNaptrResponse, *http.Response, error)
+	ReadExecute(r DtcRecordNaptrAPIReadRequest) (*GetDtcRecordNaptrResponse, *http.Response, error)
 	/*
-		DtcrecordnaptrReferencePut Update a dtc:record:naptr object
+		Update Update a dtc:record:naptr object
 
 		Updates a specific dtc:record:naptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc:record:naptr object
-		@return DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest
+		@return DtcRecordNaptrAPIUpdateRequest
 	*/
-	DtcrecordnaptrReferencePut(ctx context.Context, reference string) DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest
+	Update(ctx context.Context, reference string) DtcRecordNaptrAPIUpdateRequest
 
-	// DtcrecordnaptrReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDtcRecordNaptrResponse
-	DtcrecordnaptrReferencePutExecute(r DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest) (*UpdateDtcRecordNaptrResponse, *http.Response, error)
+	UpdateExecute(r DtcRecordNaptrAPIUpdateRequest) (*UpdateDtcRecordNaptrResponse, *http.Response, error)
 }
 
 // DtcRecordNaptrAPIService DtcRecordNaptrAPI service
 type DtcRecordNaptrAPIService internal.Service
 
-type DtcRecordNaptrAPIDtcrecordnaptrGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcRecordNaptrAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DtcRecordNaptrAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       DtcRecordNaptrAPI
+	dtcRecordNaptr   *DtcRecordNaptr
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r DtcRecordNaptrAPICreateRequest) DtcRecordNaptr(dtcRecordNaptr DtcRecordNaptr) DtcRecordNaptrAPICreateRequest {
+	r.dtcRecordNaptr = &dtcRecordNaptr
+	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) ReturnFields(returnFields string) DtcRecordNaptrAPIDtcrecordnaptrGetRequest {
+func (r DtcRecordNaptrAPICreateRequest) ReturnFields(returnFields string) DtcRecordNaptrAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) ReturnFields2(returnFields2 string) DtcRecordNaptrAPIDtcrecordnaptrGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcRecordNaptrAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcRecordNaptrAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DtcRecordNaptrAPICreateRequest) ReturnAsObject(returnAsObject int32) DtcRecordNaptrAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r DtcRecordNaptrAPICreateRequest) Execute() (*CreateDtcRecordNaptrResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a dtc:record:naptr object
+
+Creates a new dtc:record:naptr object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DtcRecordNaptrAPICreateRequest
+*/
+func (a *DtcRecordNaptrAPIService) Create(ctx context.Context) DtcRecordNaptrAPICreateRequest {
+	return DtcRecordNaptrAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateDtcRecordNaptrResponse
+func (a *DtcRecordNaptrAPIService) CreateExecute(r DtcRecordNaptrAPICreateRequest) (*CreateDtcRecordNaptrResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateDtcRecordNaptrResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordNaptrAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:record:naptr"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.dtcRecordNaptr == nil {
+		return localVarReturnValue, nil, internal.ReportError("dtcRecordNaptr is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.dtcRecordNaptr
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DtcRecordNaptrAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DtcRecordNaptrAPI
+	reference  string
+}
+
+func (r DtcRecordNaptrAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a dtc:record:naptr object
+
+Deletes a specific dtc:record:naptr object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the dtc:record:naptr object
+	@return DtcRecordNaptrAPIDeleteRequest
+*/
+func (a *DtcRecordNaptrAPIService) Delete(ctx context.Context, reference string) DtcRecordNaptrAPIDeleteRequest {
+	return DtcRecordNaptrAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DtcRecordNaptrAPIService) DeleteExecute(r DtcRecordNaptrAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordNaptrAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dtc:record:naptr/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DtcRecordNaptrAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DtcRecordNaptrAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DtcRecordNaptrAPIListRequest) ReturnFields(returnFields string) DtcRecordNaptrAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DtcRecordNaptrAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcRecordNaptrAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) MaxResults(maxResults int32) DtcRecordNaptrAPIDtcrecordnaptrGetRequest {
+func (r DtcRecordNaptrAPIListRequest) MaxResults(maxResults int32) DtcRecordNaptrAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) ReturnAsObject(returnAsObject int32) DtcRecordNaptrAPIDtcrecordnaptrGetRequest {
+func (r DtcRecordNaptrAPIListRequest) ReturnAsObject(returnAsObject int32) DtcRecordNaptrAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) Paging(paging int32) DtcRecordNaptrAPIDtcrecordnaptrGetRequest {
+func (r DtcRecordNaptrAPIListRequest) Paging(paging int32) DtcRecordNaptrAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) PageId(pageId string) DtcRecordNaptrAPIDtcrecordnaptrGetRequest {
+func (r DtcRecordNaptrAPIListRequest) PageId(pageId string) DtcRecordNaptrAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) Filters(filters map[string]interface{}) DtcRecordNaptrAPIDtcrecordnaptrGetRequest {
+func (r DtcRecordNaptrAPIListRequest) Filters(filters map[string]interface{}) DtcRecordNaptrAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcRecordNaptrAPIDtcrecordnaptrGetRequest {
+func (r DtcRecordNaptrAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcRecordNaptrAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) Execute() (*ListDtcRecordNaptrResponse, *http.Response, error) {
-	return r.ApiService.DtcrecordnaptrGetExecute(r)
+func (r DtcRecordNaptrAPIListRequest) Execute() (*ListDtcRecordNaptrResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DtcrecordnaptrGet Retrieve dtc:record:naptr objects
+List Retrieve dtc:record:naptr objects
 
 Returns a list of dtc:record:naptr objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcRecordNaptrAPIDtcrecordnaptrGetRequest
+	@return DtcRecordNaptrAPIListRequest
 */
-func (a *DtcRecordNaptrAPIService) DtcrecordnaptrGet(ctx context.Context) DtcRecordNaptrAPIDtcrecordnaptrGetRequest {
-	return DtcRecordNaptrAPIDtcrecordnaptrGetRequest{
+func (a *DtcRecordNaptrAPIService) List(ctx context.Context) DtcRecordNaptrAPIListRequest {
+	return DtcRecordNaptrAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrGet(ctx context.Context) DtcRec
 // Execute executes the request
 //
 //	@return ListDtcRecordNaptrResponse
-func (a *DtcRecordNaptrAPIService) DtcrecordnaptrGetExecute(r DtcRecordNaptrAPIDtcrecordnaptrGetRequest) (*ListDtcRecordNaptrResponse, *http.Response, error) {
+func (a *DtcRecordNaptrAPIService) ListExecute(r DtcRecordNaptrAPIListRequest) (*ListDtcRecordNaptrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrGetExecute(r DtcRecordNaptrAPID
 		localVarReturnValue *ListDtcRecordNaptrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordNaptrAPIService.DtcrecordnaptrGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordNaptrAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrGetExecute(r DtcRecordNaptrAPID
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrGetExecute(r DtcRecordNaptrAPID
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcRecordNaptrAPIDtcrecordnaptrPostRequest struct {
-	ctx            context.Context
-	ApiService     DtcRecordNaptrAPI
-	dtcRecordNaptr *DtcRecordNaptr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r DtcRecordNaptrAPIDtcrecordnaptrPostRequest) DtcRecordNaptr(dtcRecordNaptr DtcRecordNaptr) DtcRecordNaptrAPIDtcrecordnaptrPostRequest {
-	r.dtcRecordNaptr = &dtcRecordNaptr
-	return r
+type DtcRecordNaptrAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DtcRecordNaptrAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DtcRecordNaptrAPIDtcrecordnaptrPostRequest) ReturnFields(returnFields string) DtcRecordNaptrAPIDtcrecordnaptrPostRequest {
+func (r DtcRecordNaptrAPIReadRequest) ReturnFields(returnFields string) DtcRecordNaptrAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordNaptrAPIDtcrecordnaptrPostRequest) ReturnFields2(returnFields2 string) DtcRecordNaptrAPIDtcrecordnaptrPostRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcRecordNaptrAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcRecordNaptrAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcRecordNaptrAPIDtcrecordnaptrPostRequest) ReturnAsObject(returnAsObject int32) DtcRecordNaptrAPIDtcrecordnaptrPostRequest {
+func (r DtcRecordNaptrAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcRecordNaptrAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcRecordNaptrAPIDtcrecordnaptrPostRequest) Execute() (*CreateDtcRecordNaptrResponse, *http.Response, error) {
-	return r.ApiService.DtcrecordnaptrPostExecute(r)
+func (r DtcRecordNaptrAPIReadRequest) Execute() (*GetDtcRecordNaptrResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DtcrecordnaptrPost Create a dtc:record:naptr object
-
-Creates a new dtc:record:naptr object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcRecordNaptrAPIDtcrecordnaptrPostRequest
-*/
-func (a *DtcRecordNaptrAPIService) DtcrecordnaptrPost(ctx context.Context) DtcRecordNaptrAPIDtcrecordnaptrPostRequest {
-	return DtcRecordNaptrAPIDtcrecordnaptrPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateDtcRecordNaptrResponse
-func (a *DtcRecordNaptrAPIService) DtcrecordnaptrPostExecute(r DtcRecordNaptrAPIDtcrecordnaptrPostRequest) (*CreateDtcRecordNaptrResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateDtcRecordNaptrResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordNaptrAPIService.DtcrecordnaptrPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:record:naptr"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.dtcRecordNaptr == nil {
-		return localVarReturnValue, nil, internal.ReportError("dtcRecordNaptr is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.dtcRecordNaptr
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DtcRecordNaptrAPIDtcrecordnaptrReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DtcRecordNaptrAPI
-	reference  string
-}
-
-func (r DtcRecordNaptrAPIDtcrecordnaptrReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DtcrecordnaptrReferenceDeleteExecute(r)
-}
-
-/*
-DtcrecordnaptrReferenceDelete Delete a dtc:record:naptr object
-
-Deletes a specific dtc:record:naptr object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the dtc:record:naptr object
-	@return DtcRecordNaptrAPIDtcrecordnaptrReferenceDeleteRequest
-*/
-func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferenceDelete(ctx context.Context, reference string) DtcRecordNaptrAPIDtcrecordnaptrReferenceDeleteRequest {
-	return DtcRecordNaptrAPIDtcrecordnaptrReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferenceDeleteExecute(r DtcRecordNaptrAPIDtcrecordnaptrReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordNaptrAPIService.DtcrecordnaptrReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc:record:naptr/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcRecordNaptrAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest) ReturnFields(returnFields string) DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest) ReturnFields2(returnFields2 string) DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest) Execute() (*GetDtcRecordNaptrResponse, *http.Response, error) {
-	return r.ApiService.DtcrecordnaptrReferenceGetExecute(r)
-}
-
-/*
-DtcrecordnaptrReferenceGet Get a specific dtc:record:naptr object
+Read Get a specific dtc:record:naptr object
 
 Returns a specific dtc:record:naptr object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:record:naptr object
-	@return DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest
+	@return DtcRecordNaptrAPIReadRequest
 */
-func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferenceGet(ctx context.Context, reference string) DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest {
-	return DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest{
+func (a *DtcRecordNaptrAPIService) Read(ctx context.Context, reference string) DtcRecordNaptrAPIReadRequest {
+	return DtcRecordNaptrAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferenceGet(ctx context.Contex
 // Execute executes the request
 //
 //	@return GetDtcRecordNaptrResponse
-func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferenceGetExecute(r DtcRecordNaptrAPIDtcrecordnaptrReferenceGetRequest) (*GetDtcRecordNaptrResponse, *http.Response, error) {
+func (a *DtcRecordNaptrAPIService) ReadExecute(r DtcRecordNaptrAPIReadRequest) (*GetDtcRecordNaptrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferenceGetExecute(r DtcRecord
 		localVarReturnValue *GetDtcRecordNaptrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordNaptrAPIService.DtcrecordnaptrReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordNaptrAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferenceGetExecute(r DtcRecord
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferenceGetExecute(r DtcRecord
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     DtcRecordNaptrAPI
-	reference      string
-	dtcRecordNaptr *DtcRecordNaptr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DtcRecordNaptrAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       DtcRecordNaptrAPI
+	reference        string
+	dtcRecordNaptr   *DtcRecordNaptr
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest) DtcRecordNaptr(dtcRecordNaptr DtcRecordNaptr) DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest {
+func (r DtcRecordNaptrAPIUpdateRequest) DtcRecordNaptr(dtcRecordNaptr DtcRecordNaptr) DtcRecordNaptrAPIUpdateRequest {
 	r.dtcRecordNaptr = &dtcRecordNaptr
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest) ReturnFields(returnFields string) DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest {
+func (r DtcRecordNaptrAPIUpdateRequest) ReturnFields(returnFields string) DtcRecordNaptrAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest) ReturnFields2(returnFields2 string) DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcRecordNaptrAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcRecordNaptrAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest {
+func (r DtcRecordNaptrAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DtcRecordNaptrAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest) Execute() (*UpdateDtcRecordNaptrResponse, *http.Response, error) {
-	return r.ApiService.DtcrecordnaptrReferencePutExecute(r)
+func (r DtcRecordNaptrAPIUpdateRequest) Execute() (*UpdateDtcRecordNaptrResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DtcrecordnaptrReferencePut Update a dtc:record:naptr object
+Update Update a dtc:record:naptr object
 
 Updates a specific dtc:record:naptr object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc:record:naptr object
-	@return DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest
+	@return DtcRecordNaptrAPIUpdateRequest
 */
-func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferencePut(ctx context.Context, reference string) DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest {
-	return DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest{
+func (a *DtcRecordNaptrAPIService) Update(ctx context.Context, reference string) DtcRecordNaptrAPIUpdateRequest {
+	return DtcRecordNaptrAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferencePut(ctx context.Contex
 // Execute executes the request
 //
 //	@return UpdateDtcRecordNaptrResponse
-func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferencePutExecute(r DtcRecordNaptrAPIDtcrecordnaptrReferencePutRequest) (*UpdateDtcRecordNaptrResponse, *http.Response, error) {
+func (a *DtcRecordNaptrAPIService) UpdateExecute(r DtcRecordNaptrAPIUpdateRequest) (*UpdateDtcRecordNaptrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferencePutExecute(r DtcRecord
 		localVarReturnValue *UpdateDtcRecordNaptrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordNaptrAPIService.DtcrecordnaptrReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcRecordNaptrAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *DtcRecordNaptrAPIService) DtcrecordnaptrReferencePutExecute(r DtcRecord
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

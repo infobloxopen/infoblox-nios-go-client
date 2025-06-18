@@ -23,11 +23,11 @@ func TestMsserverAdsitesSiteAPIService(t *testing.T) {
 
 	apiClient := microsoftserver.NewAPIClient()
 
-	t.Run("Test MsserverAdsitesSiteAPIService MsserveradsitessiteGet", func(t *testing.T) {
+	t.Run("Test MsserverAdsitesSiteAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MsserverAdsitesSiteAPI.MsserveradsitessiteGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MsserverAdsitesSiteAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestMsserverAdsitesSiteAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MsserverAdsitesSiteAPIService MsserveradsitessitePost", func(t *testing.T) {
+	t.Run("Test MsserverAdsitesSiteAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MsserverAdsitesSiteAPI.MsserveradsitessitePost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.MsserverAdsitesSiteAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MsserverAdsitesSiteAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.MsserverAdsitesSiteAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestMsserverAdsitesSiteAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MsserverAdsitesSiteAPIService MsserveradsitessiteReferenceDelete", func(t *testing.T) {
+	t.Run("Test MsserverAdsitesSiteAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.MsserverAdsitesSiteAPI.MsserveradsitessiteReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MsserverAdsitesSiteAPIService MsserveradsitessiteReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.MsserverAdsitesSiteAPI.MsserveradsitessiteReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MsserverAdsitesSiteAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestMsserverAdsitesSiteAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MsserverAdsitesSiteAPIService MsserveradsitessiteReferencePut", func(t *testing.T) {
+	t.Run("Test MsserverAdsitesSiteAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MsserverAdsitesSiteAPI.MsserveradsitessiteReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MsserverAdsitesSiteAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

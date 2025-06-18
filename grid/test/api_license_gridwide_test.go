@@ -23,11 +23,24 @@ func TestLicenseGridwideAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test LicenseGridwideAPIService LicensegridwideGet", func(t *testing.T) {
+	t.Run("Test LicenseGridwideAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.LicenseGridwideAPI.LicensegridwideGet(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.LicenseGridwideAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test LicenseGridwideAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.LicenseGridwideAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,26 +48,13 @@ func TestLicenseGridwideAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test LicenseGridwideAPIService LicensegridwideReferenceDelete", func(t *testing.T) {
+	t.Run("Test LicenseGridwideAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.LicenseGridwideAPI.LicensegridwideReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test LicenseGridwideAPIService LicensegridwideReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.LicenseGridwideAPI.LicensegridwideReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.LicenseGridwideAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

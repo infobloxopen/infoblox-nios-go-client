@@ -43,11 +43,10 @@ type RecordPtr struct {
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// Determines if the reclamation is allowed for the record or not.
-	ForbidReclamation *bool `json:"forbid_reclamation,omitempty"`
-	// The IPv4 Address of the record.
-	Ipv4addr *string            `json:"ipv4addr,omitempty"`
-	Ipv6addr *RecordPtrIpv6addr `json:"ipv6addr,omitempty"`
-	FuncCall *FuncCall          `json:"func_call,omitempty"`
+	ForbidReclamation *bool              `json:"forbid_reclamation,omitempty"`
+	Ipv4addr          *RecordPtrIpv4addr `json:"ipv4addr,omitempty"`
+	FuncCall          *FuncCall          `json:"func_call,omitempty"`
+	Ipv6addr          *RecordPtrIpv6addr `json:"ipv6addr,omitempty"`
 	// The time of the last DNS query in Epoch seconds format.
 	LastQueried  *int64                 `json:"last_queried,omitempty"`
 	MsAdUserData *RecordPtrMsAdUserData `json:"ms_ad_user_data,omitempty"`
@@ -535,9 +534,9 @@ func (o *RecordPtr) SetForbidReclamation(v bool) {
 }
 
 // GetIpv4addr returns the Ipv4addr field value if set, zero value otherwise.
-func (o *RecordPtr) GetIpv4addr() string {
+func (o *RecordPtr) GetIpv4addr() RecordPtrIpv4addr {
 	if o == nil || IsNil(o.Ipv4addr) {
-		var ret string
+		var ret RecordPtrIpv4addr
 		return ret
 	}
 	return *o.Ipv4addr
@@ -545,7 +544,7 @@ func (o *RecordPtr) GetIpv4addr() string {
 
 // GetIpv4addrOk returns a tuple with the Ipv4addr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecordPtr) GetIpv4addrOk() (*string, bool) {
+func (o *RecordPtr) GetIpv4addrOk() (*RecordPtrIpv4addr, bool) {
 	if o == nil || IsNil(o.Ipv4addr) {
 		return nil, false
 	}
@@ -561,41 +560,9 @@ func (o *RecordPtr) HasIpv4addr() bool {
 	return false
 }
 
-// SetIpv4addr gets a reference to the given string and assigns it to the Ipv4addr field.
-func (o *RecordPtr) SetIpv4addr(v string) {
+// SetIpv4addr gets a reference to the given RecordPtrIpv4addr and assigns it to the Ipv4addr field.
+func (o *RecordPtr) SetIpv4addr(v RecordPtrIpv4addr) {
 	o.Ipv4addr = &v
-}
-
-// GetIpv6addr returns the Ipv6addr field value if set, zero value otherwise.
-func (o *RecordPtr) GetIpv6addr() RecordPtrIpv6addr {
-	if o == nil || IsNil(o.Ipv6addr) {
-		var ret RecordPtrIpv6addr
-		return ret
-	}
-	return *o.Ipv6addr
-}
-
-// GetIpv6addrOk returns a tuple with the Ipv6addr field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RecordPtr) GetIpv6addrOk() (*RecordPtrIpv6addr, bool) {
-	if o == nil || IsNil(o.Ipv6addr) {
-		return nil, false
-	}
-	return o.Ipv6addr, true
-}
-
-// HasIpv6addr returns a boolean if a field has been set.
-func (o *RecordPtr) HasIpv6addr() bool {
-	if o != nil && !IsNil(o.Ipv6addr) {
-		return true
-	}
-
-	return false
-}
-
-// SetIpv6addr gets a reference to the given RecordPtrIpv6addr and assigns it to the Ipv6addr field.
-func (o *RecordPtr) SetIpv6addr(v RecordPtrIpv6addr) {
-	o.Ipv6addr = &v
 }
 
 // GetFuncCall returns the FuncCall field value if set, zero value otherwise.
@@ -628,6 +595,38 @@ func (o *RecordPtr) HasFuncCall() bool {
 // SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
 func (o *RecordPtr) SetFuncCall(v FuncCall) {
 	o.FuncCall = &v
+}
+
+// GetIpv6addr returns the Ipv6addr field value if set, zero value otherwise.
+func (o *RecordPtr) GetIpv6addr() RecordPtrIpv6addr {
+	if o == nil || IsNil(o.Ipv6addr) {
+		var ret RecordPtrIpv6addr
+		return ret
+	}
+	return *o.Ipv6addr
+}
+
+// GetIpv6addrOk returns a tuple with the Ipv6addr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RecordPtr) GetIpv6addrOk() (*RecordPtrIpv6addr, bool) {
+	if o == nil || IsNil(o.Ipv6addr) {
+		return nil, false
+	}
+	return o.Ipv6addr, true
+}
+
+// HasIpv6addr returns a boolean if a field has been set.
+func (o *RecordPtr) HasIpv6addr() bool {
+	if o != nil && !IsNil(o.Ipv6addr) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpv6addr gets a reference to the given RecordPtrIpv6addr and assigns it to the Ipv6addr field.
+func (o *RecordPtr) SetIpv6addr(v RecordPtrIpv6addr) {
+	o.Ipv6addr = &v
 }
 
 // GetLastQueried returns the LastQueried field value if set, zero value otherwise.
@@ -1005,11 +1004,11 @@ func (o RecordPtr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ipv4addr) {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
-	if !IsNil(o.Ipv6addr) {
-		toSerialize["ipv6addr"] = o.Ipv6addr
-	}
 	if !IsNil(o.FuncCall) {
 		toSerialize["func_call"] = o.FuncCall
+	}
+	if !IsNil(o.Ipv6addr) {
+		toSerialize["ipv6addr"] = o.Ipv6addr
 	}
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried

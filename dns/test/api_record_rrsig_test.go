@@ -23,11 +23,11 @@ func TestRecordRrsigAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordRrsigAPIService RecordrrsigGet", func(t *testing.T) {
+	t.Run("Test RecordRrsigAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordRrsigAPI.RecordrrsigGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordRrsigAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestRecordRrsigAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordRrsigAPIService RecordrrsigReferenceGet", func(t *testing.T) {
+	t.Run("Test RecordRrsigAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordRrsigAPI.RecordrrsigReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordRrsigAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

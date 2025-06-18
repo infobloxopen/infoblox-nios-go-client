@@ -79,11 +79,11 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*NamedaclAPI* | [**Get**](docs/NamedaclAPI.md#get) | **Get** /namedacl | Retrieve namedacl objects
-*NamedaclAPI* | [**Post**](docs/NamedaclAPI.md#post) | **Post** /namedacl | Create a namedacl object
-*NamedaclAPI* | [**ReferenceDelete**](docs/NamedaclAPI.md#referencedelete) | **Delete** /namedacl/{reference} | Delete a namedacl object
-*NamedaclAPI* | [**ReferenceGet**](docs/NamedaclAPI.md#referenceget) | **Get** /namedacl/{reference} | Get a specific namedacl object
-*NamedaclAPI* | [**ReferencePut**](docs/NamedaclAPI.md#referenceput) | **Put** /namedacl/{reference} | Update a namedacl object
+*NamedaclAPI* | [**Create**](docs/NamedaclAPI.md#create) | **Post** /namedacl | Create a namedacl object
+*NamedaclAPI* | [**Delete**](docs/NamedaclAPI.md#delete) | **Delete** /namedacl/{reference} | Delete a namedacl object
+*NamedaclAPI* | [**List**](docs/NamedaclAPI.md#list) | **Get** /namedacl | Retrieve namedacl objects
+*NamedaclAPI* | [**Read**](docs/NamedaclAPI.md#read) | **Get** /namedacl/{reference} | Get a specific namedacl object
+*NamedaclAPI* | [**Update**](docs/NamedaclAPI.md#update) | **Put** /namedacl/{reference} | Update a namedacl object
 
 
 ## Documentation For Models

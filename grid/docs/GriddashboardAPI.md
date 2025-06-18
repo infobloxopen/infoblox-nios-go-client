@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GriddashboardGet**](GridDashboardAPI.md#GriddashboardGet) | **Get** /grid:dashboard | Retrieve grid:dashboard objects
-[**GriddashboardReferenceGet**](GridDashboardAPI.md#GriddashboardReferenceGet) | **Get** /grid:dashboard/{reference} | Get a specific grid:dashboard object
-[**GriddashboardReferencePut**](GridDashboardAPI.md#GriddashboardReferencePut) | **Put** /grid:dashboard/{reference} | Update a grid:dashboard object
+[**List**](GridDashboardAPI.md#List) | **Get** /grid:dashboard | Retrieve grid:dashboard objects
+[**Read**](GridDashboardAPI.md#Read) | **Get** /grid:dashboard/{reference} | Get a specific grid:dashboard object
+[**Update**](GridDashboardAPI.md#Update) | **Put** /grid:dashboard/{reference} | Update a grid:dashboard object
 
 
 
-## GriddashboardGet
+## List
 
-> ListGridDashboardResponse GriddashboardGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridDashboardResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:dashboard objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridDashboardAPI.GriddashboardGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridDashboardAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridDashboardAPI.GriddashboardGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridDashboardAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GriddashboardGet`: ListGridDashboardResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridDashboardAPI.GriddashboardGet`: %v\n", resp)
+	// response from `List`: ListGridDashboardResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridDashboardAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridDashboardAPIGriddashboardGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridDashboardAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GriddashboardReferenceGet
+## Read
 
-> GetGridDashboardResponse GriddashboardReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridDashboardResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:dashboard object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:dashboard object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridDashboardAPI.GriddashboardReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridDashboardAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridDashboardAPI.GriddashboardReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridDashboardAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GriddashboardReferenceGet`: GetGridDashboardResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridDashboardAPI.GriddashboardReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridDashboardResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridDashboardAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridDashboardAPIGriddashboardReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridDashboardAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GriddashboardReferencePut
+## Update
 
-> UpdateGridDashboardResponse GriddashboardReferencePut(ctx, reference).GridDashboard(gridDashboard).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateGridDashboardResponse Update(ctx, reference).GridDashboard(gridDashboard).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a grid:dashboard object
 
@@ -180,13 +180,13 @@ func main() {
 	gridDashboard := *grid.NewGridDashboard() // GridDashboard | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridDashboardAPI.GriddashboardReferencePut(context.Background(), reference).GridDashboard(gridDashboard).Execute()
+	resp, r, err := apiClient.GridDashboardAPI.Update(context.Background(), reference).GridDashboard(gridDashboard).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridDashboardAPI.GriddashboardReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridDashboardAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GriddashboardReferencePut`: UpdateGridDashboardResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridDashboardAPI.GriddashboardReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateGridDashboardResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridDashboardAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridDashboardAPIGriddashboardReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridDashboardAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **gridDashboard** | [**GridDashboard**](GridDashboard.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

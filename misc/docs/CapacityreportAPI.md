@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](CapacityreportAPI.md#Get) | **Get** /capacityreport | Retrieve capacityreport objects
-[**ReferenceGet**](CapacityreportAPI.md#ReferenceGet) | **Get** /capacityreport/{reference} | Get a specific capacityreport object
+[**List**](CapacityreportAPI.md#List) | **Get** /capacityreport | Retrieve capacityreport objects
+[**Read**](CapacityreportAPI.md#Read) | **Get** /capacityreport/{reference} | Get a specific capacityreport object
 
 
 
-## Get
+## List
 
-> ListCapacityreportResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListCapacityreportResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve capacityreport objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.CapacityreportAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.CapacityreportAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CapacityreportAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CapacityreportAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListCapacityreportResponse
-	fmt.Fprintf(os.Stdout, "Response from `CapacityreportAPI.Get`: %v\n", resp)
+	// response from `List`: ListCapacityreportResponse
+	fmt.Fprintf(os.Stdout, "Response from `CapacityreportAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `CapacityreportAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `CapacityreportAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetCapacityreportResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetCapacityreportResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific capacityreport object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the capacityreport object
 
 	apiClient := misc.NewAPIClient()
-	resp, r, err := apiClient.CapacityreportAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.CapacityreportAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CapacityreportAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CapacityreportAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetCapacityreportResponse
-	fmt.Fprintf(os.Stdout, "Response from `CapacityreportAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetCapacityreportResponse
+	fmt.Fprintf(os.Stdout, "Response from `CapacityreportAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `CapacityreportAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `CapacityreportAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

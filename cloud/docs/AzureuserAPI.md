@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](AzureuserAPI.md#Get) | **Get** /azureuser | Retrieve azureuser objects
-[**Post**](AzureuserAPI.md#Post) | **Post** /azureuser | Create a azureuser object
-[**ReferenceDelete**](AzureuserAPI.md#ReferenceDelete) | **Delete** /azureuser/{reference} | Delete a azureuser object
-[**ReferenceGet**](AzureuserAPI.md#ReferenceGet) | **Get** /azureuser/{reference} | Get a specific azureuser object
-[**ReferencePut**](AzureuserAPI.md#ReferencePut) | **Put** /azureuser/{reference} | Update a azureuser object
+[**Create**](AzureuserAPI.md#Create) | **Post** /azureuser | Create a azureuser object
+[**Delete**](AzureuserAPI.md#Delete) | **Delete** /azureuser/{reference} | Delete a azureuser object
+[**List**](AzureuserAPI.md#List) | **Get** /azureuser | Retrieve azureuser objects
+[**Read**](AzureuserAPI.md#Read) | **Get** /azureuser/{reference} | Get a specific azureuser object
+[**Update**](AzureuserAPI.md#Update) | **Put** /azureuser/{reference} | Update a azureuser object
 
 
 
-## Get
+## Create
 
-> ListAzureuserResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateAzureuserResponse Create(ctx).Azureuser(azureuser).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a azureuser object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
+)
+
+func main() {
+	azureuser := *cloud.NewAzureuser() // Azureuser | Object data to create
+
+	apiClient := cloud.NewAPIClient()
+	resp, r, err := apiClient.AzureuserAPI.Create(context.Background()).Azureuser(azureuser).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AzureuserAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateAzureuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `AzureuserAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AzureuserAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**azureuser** | [**Azureuser**](Azureuser.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateAzureuserResponse**](CreateAzureuserResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a azureuser object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the azureuser object
+
+	apiClient := cloud.NewAPIClient()
+	r, err := apiClient.AzureuserAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AzureuserAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the azureuser object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AzureuserAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListAzureuserResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve azureuser objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.AzureuserAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.AzureuserAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AzureuserAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AzureuserAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListAzureuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `AzureuserAPI.Get`: %v\n", resp)
+	// response from `List`: ListAzureuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `AzureuserAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AzureuserAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AzureuserAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateAzureuserResponse Post(ctx).Azureuser(azureuser).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a azureuser object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
-)
-
-func main() {
-	azureuser := *cloud.NewAzureuser() // Azureuser | Object data to create
-
-	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.AzureuserAPI.Post(context.Background()).Azureuser(azureuser).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AzureuserAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateAzureuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `AzureuserAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AzureuserAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**azureuser** | [**Azureuser**](Azureuser.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateAzureuserResponse**](CreateAzureuserResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a azureuser object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/cloud"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the azureuser object
-
-	apiClient := cloud.NewAPIClient()
-	r, err := apiClient.AzureuserAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AzureuserAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the azureuser object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AzureuserAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetAzureuserResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetAzureuserResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific azureuser object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the azureuser object
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.AzureuserAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.AzureuserAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AzureuserAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AzureuserAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetAzureuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `AzureuserAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetAzureuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `AzureuserAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AzureuserAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AzureuserAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateAzureuserResponse ReferencePut(ctx, reference).Azureuser(azureuser).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateAzureuserResponse Update(ctx, reference).Azureuser(azureuser).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a azureuser object
 
@@ -318,13 +318,13 @@ func main() {
 	azureuser := *cloud.NewAzureuser() // Azureuser | Object data to update
 
 	apiClient := cloud.NewAPIClient()
-	resp, r, err := apiClient.AzureuserAPI.ReferencePut(context.Background(), reference).Azureuser(azureuser).Execute()
+	resp, r, err := apiClient.AzureuserAPI.Update(context.Background(), reference).Azureuser(azureuser).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AzureuserAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AzureuserAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateAzureuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `AzureuserAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateAzureuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `AzureuserAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AzureuserAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AzureuserAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **azureuser** | [**Azureuser**](Azureuser.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -23,124 +23,124 @@ import (
 
 type HostnamerewritepolicyAPI interface {
 	/*
-		Get Retrieve hostnamerewritepolicy objects
+		List Retrieve hostnamerewritepolicy objects
 
 		Returns a list of hostnamerewritepolicy objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return HostnamerewritepolicyAPIGetRequest
+		@return HostnamerewritepolicyAPIListRequest
 	*/
-	Get(ctx context.Context) HostnamerewritepolicyAPIGetRequest
+	List(ctx context.Context) HostnamerewritepolicyAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListHostnamerewritepolicyResponse
-	GetExecute(r HostnamerewritepolicyAPIGetRequest) (*ListHostnamerewritepolicyResponse, *http.Response, error)
+	ListExecute(r HostnamerewritepolicyAPIListRequest) (*ListHostnamerewritepolicyResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific hostnamerewritepolicy object
+		Read Get a specific hostnamerewritepolicy object
 
 		Returns a specific hostnamerewritepolicy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the hostnamerewritepolicy object
-		@return HostnamerewritepolicyAPIReferenceGetRequest
+		@return HostnamerewritepolicyAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) HostnamerewritepolicyAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) HostnamerewritepolicyAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetHostnamerewritepolicyResponse
-	ReferenceGetExecute(r HostnamerewritepolicyAPIReferenceGetRequest) (*GetHostnamerewritepolicyResponse, *http.Response, error)
+	ReadExecute(r HostnamerewritepolicyAPIReadRequest) (*GetHostnamerewritepolicyResponse, *http.Response, error)
 	/*
-		ReferencePut Update a hostnamerewritepolicy object
+		Update Update a hostnamerewritepolicy object
 
 		Updates a specific hostnamerewritepolicy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the hostnamerewritepolicy object
-		@return HostnamerewritepolicyAPIReferencePutRequest
+		@return HostnamerewritepolicyAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) HostnamerewritepolicyAPIReferencePutRequest
+	Update(ctx context.Context, reference string) HostnamerewritepolicyAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateHostnamerewritepolicyResponse
-	ReferencePutExecute(r HostnamerewritepolicyAPIReferencePutRequest) (*UpdateHostnamerewritepolicyResponse, *http.Response, error)
+	UpdateExecute(r HostnamerewritepolicyAPIUpdateRequest) (*UpdateHostnamerewritepolicyResponse, *http.Response, error)
 }
 
 // HostnamerewritepolicyAPIService HostnamerewritepolicyAPI service
 type HostnamerewritepolicyAPIService internal.Service
 
-type HostnamerewritepolicyAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     HostnamerewritepolicyAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type HostnamerewritepolicyAPIListRequest struct {
+	ctx              context.Context
+	ApiService       HostnamerewritepolicyAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r HostnamerewritepolicyAPIGetRequest) ReturnFields(returnFields string) HostnamerewritepolicyAPIGetRequest {
+func (r HostnamerewritepolicyAPIListRequest) ReturnFields(returnFields string) HostnamerewritepolicyAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r HostnamerewritepolicyAPIGetRequest) ReturnFields2(returnFields2 string) HostnamerewritepolicyAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r HostnamerewritepolicyAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) HostnamerewritepolicyAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r HostnamerewritepolicyAPIGetRequest) MaxResults(maxResults int32) HostnamerewritepolicyAPIGetRequest {
+func (r HostnamerewritepolicyAPIListRequest) MaxResults(maxResults int32) HostnamerewritepolicyAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r HostnamerewritepolicyAPIGetRequest) ReturnAsObject(returnAsObject int32) HostnamerewritepolicyAPIGetRequest {
+func (r HostnamerewritepolicyAPIListRequest) ReturnAsObject(returnAsObject int32) HostnamerewritepolicyAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r HostnamerewritepolicyAPIGetRequest) Paging(paging int32) HostnamerewritepolicyAPIGetRequest {
+func (r HostnamerewritepolicyAPIListRequest) Paging(paging int32) HostnamerewritepolicyAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r HostnamerewritepolicyAPIGetRequest) PageId(pageId string) HostnamerewritepolicyAPIGetRequest {
+func (r HostnamerewritepolicyAPIListRequest) PageId(pageId string) HostnamerewritepolicyAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r HostnamerewritepolicyAPIGetRequest) Filters(filters map[string]interface{}) HostnamerewritepolicyAPIGetRequest {
+func (r HostnamerewritepolicyAPIListRequest) Filters(filters map[string]interface{}) HostnamerewritepolicyAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r HostnamerewritepolicyAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) HostnamerewritepolicyAPIGetRequest {
+func (r HostnamerewritepolicyAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) HostnamerewritepolicyAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r HostnamerewritepolicyAPIGetRequest) Execute() (*ListHostnamerewritepolicyResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r HostnamerewritepolicyAPIListRequest) Execute() (*ListHostnamerewritepolicyResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve hostnamerewritepolicy objects
+List Retrieve hostnamerewritepolicy objects
 
 Returns a list of hostnamerewritepolicy objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return HostnamerewritepolicyAPIGetRequest
+	@return HostnamerewritepolicyAPIListRequest
 */
-func (a *HostnamerewritepolicyAPIService) Get(ctx context.Context) HostnamerewritepolicyAPIGetRequest {
-	return HostnamerewritepolicyAPIGetRequest{
+func (a *HostnamerewritepolicyAPIService) List(ctx context.Context) HostnamerewritepolicyAPIListRequest {
+	return HostnamerewritepolicyAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *HostnamerewritepolicyAPIService) Get(ctx context.Context) Hostnamerewri
 // Execute executes the request
 //
 //	@return ListHostnamerewritepolicyResponse
-func (a *HostnamerewritepolicyAPIService) GetExecute(r HostnamerewritepolicyAPIGetRequest) (*ListHostnamerewritepolicyResponse, *http.Response, error) {
+func (a *HostnamerewritepolicyAPIService) ListExecute(r HostnamerewritepolicyAPIListRequest) (*ListHostnamerewritepolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *HostnamerewritepolicyAPIService) GetExecute(r HostnamerewritepolicyAPIG
 		localVarReturnValue *ListHostnamerewritepolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostnamerewritepolicyAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostnamerewritepolicyAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *HostnamerewritepolicyAPIService) GetExecute(r HostnamerewritepolicyAPIG
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *HostnamerewritepolicyAPIService) GetExecute(r HostnamerewritepolicyAPIG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type HostnamerewritepolicyAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     HostnamerewritepolicyAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type HostnamerewritepolicyAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       HostnamerewritepolicyAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r HostnamerewritepolicyAPIReferenceGetRequest) ReturnFields(returnFields string) HostnamerewritepolicyAPIReferenceGetRequest {
+func (r HostnamerewritepolicyAPIReadRequest) ReturnFields(returnFields string) HostnamerewritepolicyAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r HostnamerewritepolicyAPIReferenceGetRequest) ReturnFields2(returnFields2 string) HostnamerewritepolicyAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r HostnamerewritepolicyAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) HostnamerewritepolicyAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r HostnamerewritepolicyAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) HostnamerewritepolicyAPIReferenceGetRequest {
+func (r HostnamerewritepolicyAPIReadRequest) ReturnAsObject(returnAsObject int32) HostnamerewritepolicyAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r HostnamerewritepolicyAPIReferenceGetRequest) Execute() (*GetHostnamerewritepolicyResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r HostnamerewritepolicyAPIReadRequest) Execute() (*GetHostnamerewritepolicyResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific hostnamerewritepolicy object
+Read Get a specific hostnamerewritepolicy object
 
 Returns a specific hostnamerewritepolicy object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the hostnamerewritepolicy object
-	@return HostnamerewritepolicyAPIReferenceGetRequest
+	@return HostnamerewritepolicyAPIReadRequest
 */
-func (a *HostnamerewritepolicyAPIService) ReferenceGet(ctx context.Context, reference string) HostnamerewritepolicyAPIReferenceGetRequest {
-	return HostnamerewritepolicyAPIReferenceGetRequest{
+func (a *HostnamerewritepolicyAPIService) Read(ctx context.Context, reference string) HostnamerewritepolicyAPIReadRequest {
+	return HostnamerewritepolicyAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *HostnamerewritepolicyAPIService) ReferenceGet(ctx context.Context, refe
 // Execute executes the request
 //
 //	@return GetHostnamerewritepolicyResponse
-func (a *HostnamerewritepolicyAPIService) ReferenceGetExecute(r HostnamerewritepolicyAPIReferenceGetRequest) (*GetHostnamerewritepolicyResponse, *http.Response, error) {
+func (a *HostnamerewritepolicyAPIService) ReadExecute(r HostnamerewritepolicyAPIReadRequest) (*GetHostnamerewritepolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *HostnamerewritepolicyAPIService) ReferenceGetExecute(r Hostnamerewritep
 		localVarReturnValue *GetHostnamerewritepolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostnamerewritepolicyAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostnamerewritepolicyAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *HostnamerewritepolicyAPIService) ReferenceGetExecute(r Hostnamerewritep
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *HostnamerewritepolicyAPIService) ReferenceGetExecute(r Hostnamerewritep
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type HostnamerewritepolicyAPIReferencePutRequest struct {
+type HostnamerewritepolicyAPIUpdateRequest struct {
 	ctx                   context.Context
 	ApiService            HostnamerewritepolicyAPI
 	reference             string
 	hostnamerewritepolicy *Hostnamerewritepolicy
 	returnFields          *string
-	returnFields2         *string
+	returnFieldsPlus      *string
 	returnAsObject        *int32
 }
 
 // Object data to update
-func (r HostnamerewritepolicyAPIReferencePutRequest) Hostnamerewritepolicy(hostnamerewritepolicy Hostnamerewritepolicy) HostnamerewritepolicyAPIReferencePutRequest {
+func (r HostnamerewritepolicyAPIUpdateRequest) Hostnamerewritepolicy(hostnamerewritepolicy Hostnamerewritepolicy) HostnamerewritepolicyAPIUpdateRequest {
 	r.hostnamerewritepolicy = &hostnamerewritepolicy
 	return r
 }
 
 // Enter the field names followed by comma
-func (r HostnamerewritepolicyAPIReferencePutRequest) ReturnFields(returnFields string) HostnamerewritepolicyAPIReferencePutRequest {
+func (r HostnamerewritepolicyAPIUpdateRequest) ReturnFields(returnFields string) HostnamerewritepolicyAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r HostnamerewritepolicyAPIReferencePutRequest) ReturnFields2(returnFields2 string) HostnamerewritepolicyAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r HostnamerewritepolicyAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) HostnamerewritepolicyAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r HostnamerewritepolicyAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) HostnamerewritepolicyAPIReferencePutRequest {
+func (r HostnamerewritepolicyAPIUpdateRequest) ReturnAsObject(returnAsObject int32) HostnamerewritepolicyAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r HostnamerewritepolicyAPIReferencePutRequest) Execute() (*UpdateHostnamerewritepolicyResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r HostnamerewritepolicyAPIUpdateRequest) Execute() (*UpdateHostnamerewritepolicyResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a hostnamerewritepolicy object
+Update Update a hostnamerewritepolicy object
 
 Updates a specific hostnamerewritepolicy object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the hostnamerewritepolicy object
-	@return HostnamerewritepolicyAPIReferencePutRequest
+	@return HostnamerewritepolicyAPIUpdateRequest
 */
-func (a *HostnamerewritepolicyAPIService) ReferencePut(ctx context.Context, reference string) HostnamerewritepolicyAPIReferencePutRequest {
-	return HostnamerewritepolicyAPIReferencePutRequest{
+func (a *HostnamerewritepolicyAPIService) Update(ctx context.Context, reference string) HostnamerewritepolicyAPIUpdateRequest {
+	return HostnamerewritepolicyAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *HostnamerewritepolicyAPIService) ReferencePut(ctx context.Context, refe
 // Execute executes the request
 //
 //	@return UpdateHostnamerewritepolicyResponse
-func (a *HostnamerewritepolicyAPIService) ReferencePutExecute(r HostnamerewritepolicyAPIReferencePutRequest) (*UpdateHostnamerewritepolicyResponse, *http.Response, error) {
+func (a *HostnamerewritepolicyAPIService) UpdateExecute(r HostnamerewritepolicyAPIUpdateRequest) (*UpdateHostnamerewritepolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *HostnamerewritepolicyAPIService) ReferencePutExecute(r Hostnamerewritep
 		localVarReturnValue *UpdateHostnamerewritepolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostnamerewritepolicyAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "HostnamerewritepolicyAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *HostnamerewritepolicyAPIService) ReferencePutExecute(r Hostnamerewritep
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

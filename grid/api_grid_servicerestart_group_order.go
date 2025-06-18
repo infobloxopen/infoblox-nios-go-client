@@ -23,137 +23,272 @@ import (
 
 type GridServicerestartGroupOrderAPI interface {
 	/*
-		GridservicerestartgrouporderGet Retrieve grid:servicerestart:group:order objects
-
-		Returns a list of grid:servicerestart:group:order objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest
-	*/
-	GridservicerestartgrouporderGet(ctx context.Context) GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest
-
-	// GridservicerestartgrouporderGetExecute executes the request
-	//  @return ListGridServicerestartGroupOrderResponse
-	GridservicerestartgrouporderGetExecute(r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) (*ListGridServicerestartGroupOrderResponse, *http.Response, error)
-	/*
-		GridservicerestartgrouporderPost Create a grid:servicerestart:group:order object
+		Create Create a grid:servicerestart:group:order object
 
 		Creates a new grid:servicerestart:group:order object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest
+		@return GridServicerestartGroupOrderAPICreateRequest
 	*/
-	GridservicerestartgrouporderPost(ctx context.Context) GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest
+	Create(ctx context.Context) GridServicerestartGroupOrderAPICreateRequest
 
-	// GridservicerestartgrouporderPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateGridServicerestartGroupOrderResponse
-	GridservicerestartgrouporderPostExecute(r GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest) (*CreateGridServicerestartGroupOrderResponse, *http.Response, error)
+	CreateExecute(r GridServicerestartGroupOrderAPICreateRequest) (*CreateGridServicerestartGroupOrderResponse, *http.Response, error)
 	/*
-		GridservicerestartgrouporderReferenceGet Get a specific grid:servicerestart:group:order object
+		List Retrieve grid:servicerestart:group:order objects
+
+		Returns a list of grid:servicerestart:group:order objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return GridServicerestartGroupOrderAPIListRequest
+	*/
+	List(ctx context.Context) GridServicerestartGroupOrderAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListGridServicerestartGroupOrderResponse
+	ListExecute(r GridServicerestartGroupOrderAPIListRequest) (*ListGridServicerestartGroupOrderResponse, *http.Response, error)
+	/*
+		Read Get a specific grid:servicerestart:group:order object
 
 		Returns a specific grid:servicerestart:group:order object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:servicerestart:group:order object
-		@return GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest
+		@return GridServicerestartGroupOrderAPIReadRequest
 	*/
-	GridservicerestartgrouporderReferenceGet(ctx context.Context, reference string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest
+	Read(ctx context.Context, reference string) GridServicerestartGroupOrderAPIReadRequest
 
-	// GridservicerestartgrouporderReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetGridServicerestartGroupOrderResponse
-	GridservicerestartgrouporderReferenceGetExecute(r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest) (*GetGridServicerestartGroupOrderResponse, *http.Response, error)
+	ReadExecute(r GridServicerestartGroupOrderAPIReadRequest) (*GetGridServicerestartGroupOrderResponse, *http.Response, error)
 	/*
-		GridservicerestartgrouporderReferencePut Update a grid:servicerestart:group:order object
+		Update Update a grid:servicerestart:group:order object
 
 		Updates a specific grid:servicerestart:group:order object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the grid:servicerestart:group:order object
-		@return GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest
+		@return GridServicerestartGroupOrderAPIUpdateRequest
 	*/
-	GridservicerestartgrouporderReferencePut(ctx context.Context, reference string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest
+	Update(ctx context.Context, reference string) GridServicerestartGroupOrderAPIUpdateRequest
 
-	// GridservicerestartgrouporderReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateGridServicerestartGroupOrderResponse
-	GridservicerestartgrouporderReferencePutExecute(r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest) (*UpdateGridServicerestartGroupOrderResponse, *http.Response, error)
+	UpdateExecute(r GridServicerestartGroupOrderAPIUpdateRequest) (*UpdateGridServicerestartGroupOrderResponse, *http.Response, error)
 }
 
 // GridServicerestartGroupOrderAPIService GridServicerestartGroupOrderAPI service
 type GridServicerestartGroupOrderAPIService internal.Service
 
-type GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest struct {
-	ctx            context.Context
-	ApiService     GridServicerestartGroupOrderAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type GridServicerestartGroupOrderAPICreateRequest struct {
+	ctx                          context.Context
+	ApiService                   GridServicerestartGroupOrderAPI
+	gridServicerestartGroupOrder *GridServicerestartGroupOrder
+	returnFields                 *string
+	returnFieldsPlus             *string
+	returnAsObject               *int32
+}
+
+// Object data to create
+func (r GridServicerestartGroupOrderAPICreateRequest) GridServicerestartGroupOrder(gridServicerestartGroupOrder GridServicerestartGroupOrder) GridServicerestartGroupOrderAPICreateRequest {
+	r.gridServicerestartGroupOrder = &gridServicerestartGroupOrder
+	return r
 }
 
 // Enter the field names followed by comma
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) ReturnFields(returnFields string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest {
+func (r GridServicerestartGroupOrderAPICreateRequest) ReturnFields(returnFields string) GridServicerestartGroupOrderAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) ReturnFields2(returnFields2 string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest {
-	r.returnFields2 = &returnFields2
+func (r GridServicerestartGroupOrderAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridServicerestartGroupOrderAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r GridServicerestartGroupOrderAPICreateRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupOrderAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r GridServicerestartGroupOrderAPICreateRequest) Execute() (*CreateGridServicerestartGroupOrderResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a grid:servicerestart:group:order object
+
+Creates a new grid:servicerestart:group:order object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return GridServicerestartGroupOrderAPICreateRequest
+*/
+func (a *GridServicerestartGroupOrderAPIService) Create(ctx context.Context) GridServicerestartGroupOrderAPICreateRequest {
+	return GridServicerestartGroupOrderAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateGridServicerestartGroupOrderResponse
+func (a *GridServicerestartGroupOrderAPIService) CreateExecute(r GridServicerestartGroupOrderAPICreateRequest) (*CreateGridServicerestartGroupOrderResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateGridServicerestartGroupOrderResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupOrderAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/grid:servicerestart:group:order"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.gridServicerestartGroupOrder == nil {
+		return localVarReturnValue, nil, internal.ReportError("gridServicerestartGroupOrder is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.gridServicerestartGroupOrder
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GridServicerestartGroupOrderAPIListRequest struct {
+	ctx              context.Context
+	ApiService       GridServicerestartGroupOrderAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r GridServicerestartGroupOrderAPIListRequest) ReturnFields(returnFields string) GridServicerestartGroupOrderAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r GridServicerestartGroupOrderAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) GridServicerestartGroupOrderAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) MaxResults(maxResults int32) GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest {
+func (r GridServicerestartGroupOrderAPIListRequest) MaxResults(maxResults int32) GridServicerestartGroupOrderAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest {
+func (r GridServicerestartGroupOrderAPIListRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupOrderAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) Paging(paging int32) GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest {
+func (r GridServicerestartGroupOrderAPIListRequest) Paging(paging int32) GridServicerestartGroupOrderAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) PageId(pageId string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest {
+func (r GridServicerestartGroupOrderAPIListRequest) PageId(pageId string) GridServicerestartGroupOrderAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) Filters(filters map[string]interface{}) GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest {
+func (r GridServicerestartGroupOrderAPIListRequest) Filters(filters map[string]interface{}) GridServicerestartGroupOrderAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) Extattrfilter(extattrfilter map[string]interface{}) GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest {
+func (r GridServicerestartGroupOrderAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridServicerestartGroupOrderAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) Execute() (*ListGridServicerestartGroupOrderResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartgrouporderGetExecute(r)
+func (r GridServicerestartGroupOrderAPIListRequest) Execute() (*ListGridServicerestartGroupOrderResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-GridservicerestartgrouporderGet Retrieve grid:servicerestart:group:order objects
+List Retrieve grid:servicerestart:group:order objects
 
 Returns a list of grid:servicerestart:group:order objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest
+	@return GridServicerestartGroupOrderAPIListRequest
 */
-func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderGet(ctx context.Context) GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest {
-	return GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest{
+func (a *GridServicerestartGroupOrderAPIService) List(ctx context.Context) GridServicerestartGroupOrderAPIListRequest {
+	return GridServicerestartGroupOrderAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -162,7 +297,7 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderGet
 // Execute executes the request
 //
 //	@return ListGridServicerestartGroupOrderResponse
-func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderGetExecute(r GridServicerestartGroupOrderAPIGridservicerestartgrouporderGetRequest) (*ListGridServicerestartGroupOrderResponse, *http.Response, error) {
+func (a *GridServicerestartGroupOrderAPIService) ListExecute(r GridServicerestartGroupOrderAPIListRequest) (*ListGridServicerestartGroupOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -170,7 +305,7 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderGet
 		localVarReturnValue *ListGridServicerestartGroupOrderResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupOrderAPIService.GridservicerestartgrouporderGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupOrderAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -184,8 +319,8 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderGet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -252,183 +387,48 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest struct {
-	ctx                          context.Context
-	ApiService                   GridServicerestartGroupOrderAPI
-	gridServicerestartGroupOrder *GridServicerestartGroupOrder
-	returnFields                 *string
-	returnFields2                *string
-	returnAsObject               *int32
-}
-
-// Object data to create
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest) GridServicerestartGroupOrder(gridServicerestartGroupOrder GridServicerestartGroupOrder) GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest {
-	r.gridServicerestartGroupOrder = &gridServicerestartGroupOrder
-	return r
+type GridServicerestartGroupOrderAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       GridServicerestartGroupOrderAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest) ReturnFields(returnFields string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest {
+func (r GridServicerestartGroupOrderAPIReadRequest) ReturnFields(returnFields string) GridServicerestartGroupOrderAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest) ReturnFields2(returnFields2 string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest {
-	r.returnFields2 = &returnFields2
+func (r GridServicerestartGroupOrderAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) GridServicerestartGroupOrderAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest {
+func (r GridServicerestartGroupOrderAPIReadRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupOrderAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest) Execute() (*CreateGridServicerestartGroupOrderResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartgrouporderPostExecute(r)
+func (r GridServicerestartGroupOrderAPIReadRequest) Execute() (*GetGridServicerestartGroupOrderResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-GridservicerestartgrouporderPost Create a grid:servicerestart:group:order object
-
-Creates a new grid:servicerestart:group:order object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest
-*/
-func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderPost(ctx context.Context) GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest {
-	return GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateGridServicerestartGroupOrderResponse
-func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderPostExecute(r GridServicerestartGroupOrderAPIGridservicerestartgrouporderPostRequest) (*CreateGridServicerestartGroupOrderResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateGridServicerestartGroupOrderResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupOrderAPIService.GridservicerestartgrouporderPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/grid:servicerestart:group:order"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.gridServicerestartGroupOrder == nil {
-		return localVarReturnValue, nil, internal.ReportError("gridServicerestartGroupOrder is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.gridServicerestartGroupOrder
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     GridServicerestartGroupOrderAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest) ReturnFields(returnFields string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest) ReturnFields2(returnFields2 string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest) Execute() (*GetGridServicerestartGroupOrderResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartgrouporderReferenceGetExecute(r)
-}
-
-/*
-GridservicerestartgrouporderReferenceGet Get a specific grid:servicerestart:group:order object
+Read Get a specific grid:servicerestart:group:order object
 
 Returns a specific grid:servicerestart:group:order object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:servicerestart:group:order object
-	@return GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest
+	@return GridServicerestartGroupOrderAPIReadRequest
 */
-func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderReferenceGet(ctx context.Context, reference string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest {
-	return GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest{
+func (a *GridServicerestartGroupOrderAPIService) Read(ctx context.Context, reference string) GridServicerestartGroupOrderAPIReadRequest {
+	return GridServicerestartGroupOrderAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -438,7 +438,7 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderRef
 // Execute executes the request
 //
 //	@return GetGridServicerestartGroupOrderResponse
-func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderReferenceGetExecute(r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferenceGetRequest) (*GetGridServicerestartGroupOrderResponse, *http.Response, error) {
+func (a *GridServicerestartGroupOrderAPIService) ReadExecute(r GridServicerestartGroupOrderAPIReadRequest) (*GetGridServicerestartGroupOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -446,7 +446,7 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderRef
 		localVarReturnValue *GetGridServicerestartGroupOrderResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupOrderAPIService.GridservicerestartgrouporderReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupOrderAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -461,8 +461,8 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderRef
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -514,55 +514,55 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderRef
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest struct {
+type GridServicerestartGroupOrderAPIUpdateRequest struct {
 	ctx                          context.Context
 	ApiService                   GridServicerestartGroupOrderAPI
 	reference                    string
 	gridServicerestartGroupOrder *GridServicerestartGroupOrder
 	returnFields                 *string
-	returnFields2                *string
+	returnFieldsPlus             *string
 	returnAsObject               *int32
 }
 
 // Object data to update
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest) GridServicerestartGroupOrder(gridServicerestartGroupOrder GridServicerestartGroupOrder) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest {
+func (r GridServicerestartGroupOrderAPIUpdateRequest) GridServicerestartGroupOrder(gridServicerestartGroupOrder GridServicerestartGroupOrder) GridServicerestartGroupOrderAPIUpdateRequest {
 	r.gridServicerestartGroupOrder = &gridServicerestartGroupOrder
 	return r
 }
 
 // Enter the field names followed by comma
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest) ReturnFields(returnFields string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest {
+func (r GridServicerestartGroupOrderAPIUpdateRequest) ReturnFields(returnFields string) GridServicerestartGroupOrderAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest) ReturnFields2(returnFields2 string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r GridServicerestartGroupOrderAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) GridServicerestartGroupOrderAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest {
+func (r GridServicerestartGroupOrderAPIUpdateRequest) ReturnAsObject(returnAsObject int32) GridServicerestartGroupOrderAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest) Execute() (*UpdateGridServicerestartGroupOrderResponse, *http.Response, error) {
-	return r.ApiService.GridservicerestartgrouporderReferencePutExecute(r)
+func (r GridServicerestartGroupOrderAPIUpdateRequest) Execute() (*UpdateGridServicerestartGroupOrderResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-GridservicerestartgrouporderReferencePut Update a grid:servicerestart:group:order object
+Update Update a grid:servicerestart:group:order object
 
 Updates a specific grid:servicerestart:group:order object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the grid:servicerestart:group:order object
-	@return GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest
+	@return GridServicerestartGroupOrderAPIUpdateRequest
 */
-func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderReferencePut(ctx context.Context, reference string) GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest {
-	return GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest{
+func (a *GridServicerestartGroupOrderAPIService) Update(ctx context.Context, reference string) GridServicerestartGroupOrderAPIUpdateRequest {
+	return GridServicerestartGroupOrderAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -572,7 +572,7 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderRef
 // Execute executes the request
 //
 //	@return UpdateGridServicerestartGroupOrderResponse
-func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderReferencePutExecute(r GridServicerestartGroupOrderAPIGridservicerestartgrouporderReferencePutRequest) (*UpdateGridServicerestartGroupOrderResponse, *http.Response, error) {
+func (a *GridServicerestartGroupOrderAPIService) UpdateExecute(r GridServicerestartGroupOrderAPIUpdateRequest) (*UpdateGridServicerestartGroupOrderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -580,7 +580,7 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderRef
 		localVarReturnValue *UpdateGridServicerestartGroupOrderResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupOrderAPIService.GridservicerestartgrouporderReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "GridServicerestartGroupOrderAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -598,8 +598,8 @@ func (a *GridServicerestartGroupOrderAPIService) GridservicerestartgrouporderRef
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

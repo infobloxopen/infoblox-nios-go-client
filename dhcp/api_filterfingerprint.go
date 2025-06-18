@@ -23,150 +23,386 @@ import (
 
 type FilterfingerprintAPI interface {
 	/*
-		Get Retrieve filterfingerprint objects
-
-		Returns a list of filterfingerprint objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FilterfingerprintAPIGetRequest
-	*/
-	Get(ctx context.Context) FilterfingerprintAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListFilterfingerprintResponse
-	GetExecute(r FilterfingerprintAPIGetRequest) (*ListFilterfingerprintResponse, *http.Response, error)
-	/*
-		Post Create a filterfingerprint object
+		Create Create a filterfingerprint object
 
 		Creates a new filterfingerprint object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FilterfingerprintAPIPostRequest
+		@return FilterfingerprintAPICreateRequest
 	*/
-	Post(ctx context.Context) FilterfingerprintAPIPostRequest
+	Create(ctx context.Context) FilterfingerprintAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateFilterfingerprintResponse
-	PostExecute(r FilterfingerprintAPIPostRequest) (*CreateFilterfingerprintResponse, *http.Response, error)
+	CreateExecute(r FilterfingerprintAPICreateRequest) (*CreateFilterfingerprintResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a filterfingerprint object
+		Delete Delete a filterfingerprint object
 
 		Deletes a specific filterfingerprint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filterfingerprint object
-		@return FilterfingerprintAPIReferenceDeleteRequest
+		@return FilterfingerprintAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) FilterfingerprintAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) FilterfingerprintAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r FilterfingerprintAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r FilterfingerprintAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific filterfingerprint object
+		List Retrieve filterfingerprint objects
+
+		Returns a list of filterfingerprint objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return FilterfingerprintAPIListRequest
+	*/
+	List(ctx context.Context) FilterfingerprintAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListFilterfingerprintResponse
+	ListExecute(r FilterfingerprintAPIListRequest) (*ListFilterfingerprintResponse, *http.Response, error)
+	/*
+		Read Get a specific filterfingerprint object
 
 		Returns a specific filterfingerprint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filterfingerprint object
-		@return FilterfingerprintAPIReferenceGetRequest
+		@return FilterfingerprintAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) FilterfingerprintAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) FilterfingerprintAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetFilterfingerprintResponse
-	ReferenceGetExecute(r FilterfingerprintAPIReferenceGetRequest) (*GetFilterfingerprintResponse, *http.Response, error)
+	ReadExecute(r FilterfingerprintAPIReadRequest) (*GetFilterfingerprintResponse, *http.Response, error)
 	/*
-		ReferencePut Update a filterfingerprint object
+		Update Update a filterfingerprint object
 
 		Updates a specific filterfingerprint object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filterfingerprint object
-		@return FilterfingerprintAPIReferencePutRequest
+		@return FilterfingerprintAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) FilterfingerprintAPIReferencePutRequest
+	Update(ctx context.Context, reference string) FilterfingerprintAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateFilterfingerprintResponse
-	ReferencePutExecute(r FilterfingerprintAPIReferencePutRequest) (*UpdateFilterfingerprintResponse, *http.Response, error)
+	UpdateExecute(r FilterfingerprintAPIUpdateRequest) (*UpdateFilterfingerprintResponse, *http.Response, error)
 }
 
 // FilterfingerprintAPIService FilterfingerprintAPI service
 type FilterfingerprintAPIService internal.Service
 
-type FilterfingerprintAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     FilterfingerprintAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type FilterfingerprintAPICreateRequest struct {
+	ctx               context.Context
+	ApiService        FilterfingerprintAPI
+	filterfingerprint *Filterfingerprint
+	returnFields      *string
+	returnFieldsPlus  *string
+	returnAsObject    *int32
+}
+
+// Object data to create
+func (r FilterfingerprintAPICreateRequest) Filterfingerprint(filterfingerprint Filterfingerprint) FilterfingerprintAPICreateRequest {
+	r.filterfingerprint = &filterfingerprint
+	return r
 }
 
 // Enter the field names followed by comma
-func (r FilterfingerprintAPIGetRequest) ReturnFields(returnFields string) FilterfingerprintAPIGetRequest {
+func (r FilterfingerprintAPICreateRequest) ReturnFields(returnFields string) FilterfingerprintAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterfingerprintAPIGetRequest) ReturnFields2(returnFields2 string) FilterfingerprintAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterfingerprintAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterfingerprintAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r FilterfingerprintAPICreateRequest) ReturnAsObject(returnAsObject int32) FilterfingerprintAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r FilterfingerprintAPICreateRequest) Execute() (*CreateFilterfingerprintResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a filterfingerprint object
+
+Creates a new filterfingerprint object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return FilterfingerprintAPICreateRequest
+*/
+func (a *FilterfingerprintAPIService) Create(ctx context.Context) FilterfingerprintAPICreateRequest {
+	return FilterfingerprintAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateFilterfingerprintResponse
+func (a *FilterfingerprintAPIService) CreateExecute(r FilterfingerprintAPICreateRequest) (*CreateFilterfingerprintResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateFilterfingerprintResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterfingerprintAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/filterfingerprint"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.filterfingerprint == nil {
+		return localVarReturnValue, nil, internal.ReportError("filterfingerprint is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filterfingerprint != nil {
+		if r.filterfingerprint.Extattrs == nil {
+			r.filterfingerprint.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.filterfingerprint.Extattrs)[k]; !ok {
+				(*r.filterfingerprint.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.filterfingerprint
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type FilterfingerprintAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService FilterfingerprintAPI
+	reference  string
+}
+
+func (r FilterfingerprintAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a filterfingerprint object
+
+Deletes a specific filterfingerprint object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the filterfingerprint object
+	@return FilterfingerprintAPIDeleteRequest
+*/
+func (a *FilterfingerprintAPIService) Delete(ctx context.Context, reference string) FilterfingerprintAPIDeleteRequest {
+	return FilterfingerprintAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *FilterfingerprintAPIService) DeleteExecute(r FilterfingerprintAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterfingerprintAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/filterfingerprint/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type FilterfingerprintAPIListRequest struct {
+	ctx              context.Context
+	ApiService       FilterfingerprintAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r FilterfingerprintAPIListRequest) ReturnFields(returnFields string) FilterfingerprintAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r FilterfingerprintAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterfingerprintAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r FilterfingerprintAPIGetRequest) MaxResults(maxResults int32) FilterfingerprintAPIGetRequest {
+func (r FilterfingerprintAPIListRequest) MaxResults(maxResults int32) FilterfingerprintAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilterfingerprintAPIGetRequest) ReturnAsObject(returnAsObject int32) FilterfingerprintAPIGetRequest {
+func (r FilterfingerprintAPIListRequest) ReturnAsObject(returnAsObject int32) FilterfingerprintAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r FilterfingerprintAPIGetRequest) Paging(paging int32) FilterfingerprintAPIGetRequest {
+func (r FilterfingerprintAPIListRequest) Paging(paging int32) FilterfingerprintAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r FilterfingerprintAPIGetRequest) PageId(pageId string) FilterfingerprintAPIGetRequest {
+func (r FilterfingerprintAPIListRequest) PageId(pageId string) FilterfingerprintAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r FilterfingerprintAPIGetRequest) Filters(filters map[string]interface{}) FilterfingerprintAPIGetRequest {
+func (r FilterfingerprintAPIListRequest) Filters(filters map[string]interface{}) FilterfingerprintAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r FilterfingerprintAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) FilterfingerprintAPIGetRequest {
+func (r FilterfingerprintAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) FilterfingerprintAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r FilterfingerprintAPIGetRequest) Execute() (*ListFilterfingerprintResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r FilterfingerprintAPIListRequest) Execute() (*ListFilterfingerprintResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve filterfingerprint objects
+List Retrieve filterfingerprint objects
 
 Returns a list of filterfingerprint objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FilterfingerprintAPIGetRequest
+	@return FilterfingerprintAPIListRequest
 */
-func (a *FilterfingerprintAPIService) Get(ctx context.Context) FilterfingerprintAPIGetRequest {
-	return FilterfingerprintAPIGetRequest{
+func (a *FilterfingerprintAPIService) List(ctx context.Context) FilterfingerprintAPIListRequest {
+	return FilterfingerprintAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *FilterfingerprintAPIService) Get(ctx context.Context) Filterfingerprint
 // Execute executes the request
 //
 //	@return ListFilterfingerprintResponse
-func (a *FilterfingerprintAPIService) GetExecute(r FilterfingerprintAPIGetRequest) (*ListFilterfingerprintResponse, *http.Response, error) {
+func (a *FilterfingerprintAPIService) ListExecute(r FilterfingerprintAPIListRequest) (*ListFilterfingerprintResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *FilterfingerprintAPIService) GetExecute(r FilterfingerprintAPIGetReques
 		localVarReturnValue *ListFilterfingerprintResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterfingerprintAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterfingerprintAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *FilterfingerprintAPIService) GetExecute(r FilterfingerprintAPIGetReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *FilterfingerprintAPIService) GetExecute(r FilterfingerprintAPIGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FilterfingerprintAPIPostRequest struct {
-	ctx               context.Context
-	ApiService        FilterfingerprintAPI
-	filterfingerprint *Filterfingerprint
-	returnFields      *string
-	returnFields2     *string
-	returnAsObject    *int32
-}
-
-// Object data to create
-func (r FilterfingerprintAPIPostRequest) Filterfingerprint(filterfingerprint Filterfingerprint) FilterfingerprintAPIPostRequest {
-	r.filterfingerprint = &filterfingerprint
-	return r
+type FilterfingerprintAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       FilterfingerprintAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r FilterfingerprintAPIPostRequest) ReturnFields(returnFields string) FilterfingerprintAPIPostRequest {
+func (r FilterfingerprintAPIReadRequest) ReturnFields(returnFields string) FilterfingerprintAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterfingerprintAPIPostRequest) ReturnFields2(returnFields2 string) FilterfingerprintAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterfingerprintAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterfingerprintAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilterfingerprintAPIPostRequest) ReturnAsObject(returnAsObject int32) FilterfingerprintAPIPostRequest {
+func (r FilterfingerprintAPIReadRequest) ReturnAsObject(returnAsObject int32) FilterfingerprintAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FilterfingerprintAPIPostRequest) Execute() (*CreateFilterfingerprintResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r FilterfingerprintAPIReadRequest) Execute() (*GetFilterfingerprintResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a filterfingerprint object
-
-Creates a new filterfingerprint object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FilterfingerprintAPIPostRequest
-*/
-func (a *FilterfingerprintAPIService) Post(ctx context.Context) FilterfingerprintAPIPostRequest {
-	return FilterfingerprintAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateFilterfingerprintResponse
-func (a *FilterfingerprintAPIService) PostExecute(r FilterfingerprintAPIPostRequest) (*CreateFilterfingerprintResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateFilterfingerprintResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterfingerprintAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/filterfingerprint"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.filterfingerprint == nil {
-		return localVarReturnValue, nil, internal.ReportError("filterfingerprint is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filterfingerprint != nil {
-		if r.filterfingerprint.Extattrs == nil {
-			r.filterfingerprint.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.filterfingerprint.Extattrs)[k]; !ok {
-				(*r.filterfingerprint.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.filterfingerprint
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type FilterfingerprintAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService FilterfingerprintAPI
-	reference  string
-}
-
-func (r FilterfingerprintAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a filterfingerprint object
-
-Deletes a specific filterfingerprint object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the filterfingerprint object
-	@return FilterfingerprintAPIReferenceDeleteRequest
-*/
-func (a *FilterfingerprintAPIService) ReferenceDelete(ctx context.Context, reference string) FilterfingerprintAPIReferenceDeleteRequest {
-	return FilterfingerprintAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *FilterfingerprintAPIService) ReferenceDeleteExecute(r FilterfingerprintAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterfingerprintAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/filterfingerprint/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type FilterfingerprintAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     FilterfingerprintAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r FilterfingerprintAPIReferenceGetRequest) ReturnFields(returnFields string) FilterfingerprintAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterfingerprintAPIReferenceGetRequest) ReturnFields2(returnFields2 string) FilterfingerprintAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r FilterfingerprintAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) FilterfingerprintAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r FilterfingerprintAPIReferenceGetRequest) Execute() (*GetFilterfingerprintResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific filterfingerprint object
+Read Get a specific filterfingerprint object
 
 Returns a specific filterfingerprint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the filterfingerprint object
-	@return FilterfingerprintAPIReferenceGetRequest
+	@return FilterfingerprintAPIReadRequest
 */
-func (a *FilterfingerprintAPIService) ReferenceGet(ctx context.Context, reference string) FilterfingerprintAPIReferenceGetRequest {
-	return FilterfingerprintAPIReferenceGetRequest{
+func (a *FilterfingerprintAPIService) Read(ctx context.Context, reference string) FilterfingerprintAPIReadRequest {
+	return FilterfingerprintAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *FilterfingerprintAPIService) ReferenceGet(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return GetFilterfingerprintResponse
-func (a *FilterfingerprintAPIService) ReferenceGetExecute(r FilterfingerprintAPIReferenceGetRequest) (*GetFilterfingerprintResponse, *http.Response, error) {
+func (a *FilterfingerprintAPIService) ReadExecute(r FilterfingerprintAPIReadRequest) (*GetFilterfingerprintResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *FilterfingerprintAPIService) ReferenceGetExecute(r FilterfingerprintAPI
 		localVarReturnValue *GetFilterfingerprintResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterfingerprintAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterfingerprintAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *FilterfingerprintAPIService) ReferenceGetExecute(r FilterfingerprintAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *FilterfingerprintAPIService) ReferenceGetExecute(r FilterfingerprintAPI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FilterfingerprintAPIReferencePutRequest struct {
+type FilterfingerprintAPIUpdateRequest struct {
 	ctx               context.Context
 	ApiService        FilterfingerprintAPI
 	reference         string
 	filterfingerprint *Filterfingerprint
 	returnFields      *string
-	returnFields2     *string
+	returnFieldsPlus  *string
 	returnAsObject    *int32
 }
 
 // Object data to update
-func (r FilterfingerprintAPIReferencePutRequest) Filterfingerprint(filterfingerprint Filterfingerprint) FilterfingerprintAPIReferencePutRequest {
+func (r FilterfingerprintAPIUpdateRequest) Filterfingerprint(filterfingerprint Filterfingerprint) FilterfingerprintAPIUpdateRequest {
 	r.filterfingerprint = &filterfingerprint
 	return r
 }
 
 // Enter the field names followed by comma
-func (r FilterfingerprintAPIReferencePutRequest) ReturnFields(returnFields string) FilterfingerprintAPIReferencePutRequest {
+func (r FilterfingerprintAPIUpdateRequest) ReturnFields(returnFields string) FilterfingerprintAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilterfingerprintAPIReferencePutRequest) ReturnFields2(returnFields2 string) FilterfingerprintAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r FilterfingerprintAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilterfingerprintAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilterfingerprintAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) FilterfingerprintAPIReferencePutRequest {
+func (r FilterfingerprintAPIUpdateRequest) ReturnAsObject(returnAsObject int32) FilterfingerprintAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FilterfingerprintAPIReferencePutRequest) Execute() (*UpdateFilterfingerprintResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r FilterfingerprintAPIUpdateRequest) Execute() (*UpdateFilterfingerprintResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a filterfingerprint object
+Update Update a filterfingerprint object
 
 Updates a specific filterfingerprint object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the filterfingerprint object
-	@return FilterfingerprintAPIReferencePutRequest
+	@return FilterfingerprintAPIUpdateRequest
 */
-func (a *FilterfingerprintAPIService) ReferencePut(ctx context.Context, reference string) FilterfingerprintAPIReferencePutRequest {
-	return FilterfingerprintAPIReferencePutRequest{
+func (a *FilterfingerprintAPIService) Update(ctx context.Context, reference string) FilterfingerprintAPIUpdateRequest {
+	return FilterfingerprintAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *FilterfingerprintAPIService) ReferencePut(ctx context.Context, referenc
 // Execute executes the request
 //
 //	@return UpdateFilterfingerprintResponse
-func (a *FilterfingerprintAPIService) ReferencePutExecute(r FilterfingerprintAPIReferencePutRequest) (*UpdateFilterfingerprintResponse, *http.Response, error) {
+func (a *FilterfingerprintAPIService) UpdateExecute(r FilterfingerprintAPIUpdateRequest) (*UpdateFilterfingerprintResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *FilterfingerprintAPIService) ReferencePutExecute(r FilterfingerprintAPI
 		localVarReturnValue *UpdateFilterfingerprintResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterfingerprintAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilterfingerprintAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *FilterfingerprintAPIService) ReferencePutExecute(r FilterfingerprintAPI
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

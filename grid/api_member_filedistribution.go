@@ -23,124 +23,124 @@ import (
 
 type MemberFiledistributionAPI interface {
 	/*
-		MemberfiledistributionGet Retrieve member:filedistribution objects
+		List Retrieve member:filedistribution objects
 
 		Returns a list of member:filedistribution objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return MemberFiledistributionAPIMemberfiledistributionGetRequest
+		@return MemberFiledistributionAPIListRequest
 	*/
-	MemberfiledistributionGet(ctx context.Context) MemberFiledistributionAPIMemberfiledistributionGetRequest
+	List(ctx context.Context) MemberFiledistributionAPIListRequest
 
-	// MemberfiledistributionGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListMemberFiledistributionResponse
-	MemberfiledistributionGetExecute(r MemberFiledistributionAPIMemberfiledistributionGetRequest) (*ListMemberFiledistributionResponse, *http.Response, error)
+	ListExecute(r MemberFiledistributionAPIListRequest) (*ListMemberFiledistributionResponse, *http.Response, error)
 	/*
-		MemberfiledistributionReferenceGet Get a specific member:filedistribution object
+		Read Get a specific member:filedistribution object
 
 		Returns a specific member:filedistribution object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:filedistribution object
-		@return MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest
+		@return MemberFiledistributionAPIReadRequest
 	*/
-	MemberfiledistributionReferenceGet(ctx context.Context, reference string) MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest
+	Read(ctx context.Context, reference string) MemberFiledistributionAPIReadRequest
 
-	// MemberfiledistributionReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetMemberFiledistributionResponse
-	MemberfiledistributionReferenceGetExecute(r MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest) (*GetMemberFiledistributionResponse, *http.Response, error)
+	ReadExecute(r MemberFiledistributionAPIReadRequest) (*GetMemberFiledistributionResponse, *http.Response, error)
 	/*
-		MemberfiledistributionReferencePut Update a member:filedistribution object
+		Update Update a member:filedistribution object
 
 		Updates a specific member:filedistribution object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the member:filedistribution object
-		@return MemberFiledistributionAPIMemberfiledistributionReferencePutRequest
+		@return MemberFiledistributionAPIUpdateRequest
 	*/
-	MemberfiledistributionReferencePut(ctx context.Context, reference string) MemberFiledistributionAPIMemberfiledistributionReferencePutRequest
+	Update(ctx context.Context, reference string) MemberFiledistributionAPIUpdateRequest
 
-	// MemberfiledistributionReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateMemberFiledistributionResponse
-	MemberfiledistributionReferencePutExecute(r MemberFiledistributionAPIMemberfiledistributionReferencePutRequest) (*UpdateMemberFiledistributionResponse, *http.Response, error)
+	UpdateExecute(r MemberFiledistributionAPIUpdateRequest) (*UpdateMemberFiledistributionResponse, *http.Response, error)
 }
 
 // MemberFiledistributionAPIService MemberFiledistributionAPI service
 type MemberFiledistributionAPIService internal.Service
 
-type MemberFiledistributionAPIMemberfiledistributionGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberFiledistributionAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type MemberFiledistributionAPIListRequest struct {
+	ctx              context.Context
+	ApiService       MemberFiledistributionAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r MemberFiledistributionAPIMemberfiledistributionGetRequest) ReturnFields(returnFields string) MemberFiledistributionAPIMemberfiledistributionGetRequest {
+func (r MemberFiledistributionAPIListRequest) ReturnFields(returnFields string) MemberFiledistributionAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberFiledistributionAPIMemberfiledistributionGetRequest) ReturnFields2(returnFields2 string) MemberFiledistributionAPIMemberfiledistributionGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberFiledistributionAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberFiledistributionAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r MemberFiledistributionAPIMemberfiledistributionGetRequest) MaxResults(maxResults int32) MemberFiledistributionAPIMemberfiledistributionGetRequest {
+func (r MemberFiledistributionAPIListRequest) MaxResults(maxResults int32) MemberFiledistributionAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberFiledistributionAPIMemberfiledistributionGetRequest) ReturnAsObject(returnAsObject int32) MemberFiledistributionAPIMemberfiledistributionGetRequest {
+func (r MemberFiledistributionAPIListRequest) ReturnAsObject(returnAsObject int32) MemberFiledistributionAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r MemberFiledistributionAPIMemberfiledistributionGetRequest) Paging(paging int32) MemberFiledistributionAPIMemberfiledistributionGetRequest {
+func (r MemberFiledistributionAPIListRequest) Paging(paging int32) MemberFiledistributionAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r MemberFiledistributionAPIMemberfiledistributionGetRequest) PageId(pageId string) MemberFiledistributionAPIMemberfiledistributionGetRequest {
+func (r MemberFiledistributionAPIListRequest) PageId(pageId string) MemberFiledistributionAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r MemberFiledistributionAPIMemberfiledistributionGetRequest) Filters(filters map[string]interface{}) MemberFiledistributionAPIMemberfiledistributionGetRequest {
+func (r MemberFiledistributionAPIListRequest) Filters(filters map[string]interface{}) MemberFiledistributionAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r MemberFiledistributionAPIMemberfiledistributionGetRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberFiledistributionAPIMemberfiledistributionGetRequest {
+func (r MemberFiledistributionAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) MemberFiledistributionAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r MemberFiledistributionAPIMemberfiledistributionGetRequest) Execute() (*ListMemberFiledistributionResponse, *http.Response, error) {
-	return r.ApiService.MemberfiledistributionGetExecute(r)
+func (r MemberFiledistributionAPIListRequest) Execute() (*ListMemberFiledistributionResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-MemberfiledistributionGet Retrieve member:filedistribution objects
+List Retrieve member:filedistribution objects
 
 Returns a list of member:filedistribution objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MemberFiledistributionAPIMemberfiledistributionGetRequest
+	@return MemberFiledistributionAPIListRequest
 */
-func (a *MemberFiledistributionAPIService) MemberfiledistributionGet(ctx context.Context) MemberFiledistributionAPIMemberfiledistributionGetRequest {
-	return MemberFiledistributionAPIMemberfiledistributionGetRequest{
+func (a *MemberFiledistributionAPIService) List(ctx context.Context) MemberFiledistributionAPIListRequest {
+	return MemberFiledistributionAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionGet(ctx context
 // Execute executes the request
 //
 //	@return ListMemberFiledistributionResponse
-func (a *MemberFiledistributionAPIService) MemberfiledistributionGetExecute(r MemberFiledistributionAPIMemberfiledistributionGetRequest) (*ListMemberFiledistributionResponse, *http.Response, error) {
+func (a *MemberFiledistributionAPIService) ListExecute(r MemberFiledistributionAPIListRequest) (*ListMemberFiledistributionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionGetExecute(r Me
 		localVarReturnValue *ListMemberFiledistributionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberFiledistributionAPIService.MemberfiledistributionGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberFiledistributionAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionGetExecute(r Me
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionGetExecute(r Me
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     MemberFiledistributionAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type MemberFiledistributionAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       MemberFiledistributionAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest) ReturnFields(returnFields string) MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest {
+func (r MemberFiledistributionAPIReadRequest) ReturnFields(returnFields string) MemberFiledistributionAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest) ReturnFields2(returnFields2 string) MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberFiledistributionAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberFiledistributionAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest) ReturnAsObject(returnAsObject int32) MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest {
+func (r MemberFiledistributionAPIReadRequest) ReturnAsObject(returnAsObject int32) MemberFiledistributionAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest) Execute() (*GetMemberFiledistributionResponse, *http.Response, error) {
-	return r.ApiService.MemberfiledistributionReferenceGetExecute(r)
+func (r MemberFiledistributionAPIReadRequest) Execute() (*GetMemberFiledistributionResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-MemberfiledistributionReferenceGet Get a specific member:filedistribution object
+Read Get a specific member:filedistribution object
 
 Returns a specific member:filedistribution object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:filedistribution object
-	@return MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest
+	@return MemberFiledistributionAPIReadRequest
 */
-func (a *MemberFiledistributionAPIService) MemberfiledistributionReferenceGet(ctx context.Context, reference string) MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest {
-	return MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest{
+func (a *MemberFiledistributionAPIService) Read(ctx context.Context, reference string) MemberFiledistributionAPIReadRequest {
+	return MemberFiledistributionAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionReferenceGet(ct
 // Execute executes the request
 //
 //	@return GetMemberFiledistributionResponse
-func (a *MemberFiledistributionAPIService) MemberfiledistributionReferenceGetExecute(r MemberFiledistributionAPIMemberfiledistributionReferenceGetRequest) (*GetMemberFiledistributionResponse, *http.Response, error) {
+func (a *MemberFiledistributionAPIService) ReadExecute(r MemberFiledistributionAPIReadRequest) (*GetMemberFiledistributionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionReferenceGetExe
 		localVarReturnValue *GetMemberFiledistributionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberFiledistributionAPIService.MemberfiledistributionReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberFiledistributionAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionReferenceGetExe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionReferenceGetExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type MemberFiledistributionAPIMemberfiledistributionReferencePutRequest struct {
+type MemberFiledistributionAPIUpdateRequest struct {
 	ctx                    context.Context
 	ApiService             MemberFiledistributionAPI
 	reference              string
 	memberFiledistribution *MemberFiledistribution
 	returnFields           *string
-	returnFields2          *string
+	returnFieldsPlus       *string
 	returnAsObject         *int32
 }
 
 // Object data to update
-func (r MemberFiledistributionAPIMemberfiledistributionReferencePutRequest) MemberFiledistribution(memberFiledistribution MemberFiledistribution) MemberFiledistributionAPIMemberfiledistributionReferencePutRequest {
+func (r MemberFiledistributionAPIUpdateRequest) MemberFiledistribution(memberFiledistribution MemberFiledistribution) MemberFiledistributionAPIUpdateRequest {
 	r.memberFiledistribution = &memberFiledistribution
 	return r
 }
 
 // Enter the field names followed by comma
-func (r MemberFiledistributionAPIMemberfiledistributionReferencePutRequest) ReturnFields(returnFields string) MemberFiledistributionAPIMemberfiledistributionReferencePutRequest {
+func (r MemberFiledistributionAPIUpdateRequest) ReturnFields(returnFields string) MemberFiledistributionAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r MemberFiledistributionAPIMemberfiledistributionReferencePutRequest) ReturnFields2(returnFields2 string) MemberFiledistributionAPIMemberfiledistributionReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r MemberFiledistributionAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) MemberFiledistributionAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r MemberFiledistributionAPIMemberfiledistributionReferencePutRequest) ReturnAsObject(returnAsObject int32) MemberFiledistributionAPIMemberfiledistributionReferencePutRequest {
+func (r MemberFiledistributionAPIUpdateRequest) ReturnAsObject(returnAsObject int32) MemberFiledistributionAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r MemberFiledistributionAPIMemberfiledistributionReferencePutRequest) Execute() (*UpdateMemberFiledistributionResponse, *http.Response, error) {
-	return r.ApiService.MemberfiledistributionReferencePutExecute(r)
+func (r MemberFiledistributionAPIUpdateRequest) Execute() (*UpdateMemberFiledistributionResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-MemberfiledistributionReferencePut Update a member:filedistribution object
+Update Update a member:filedistribution object
 
 Updates a specific member:filedistribution object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the member:filedistribution object
-	@return MemberFiledistributionAPIMemberfiledistributionReferencePutRequest
+	@return MemberFiledistributionAPIUpdateRequest
 */
-func (a *MemberFiledistributionAPIService) MemberfiledistributionReferencePut(ctx context.Context, reference string) MemberFiledistributionAPIMemberfiledistributionReferencePutRequest {
-	return MemberFiledistributionAPIMemberfiledistributionReferencePutRequest{
+func (a *MemberFiledistributionAPIService) Update(ctx context.Context, reference string) MemberFiledistributionAPIUpdateRequest {
+	return MemberFiledistributionAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionReferencePut(ct
 // Execute executes the request
 //
 //	@return UpdateMemberFiledistributionResponse
-func (a *MemberFiledistributionAPIService) MemberfiledistributionReferencePutExecute(r MemberFiledistributionAPIMemberfiledistributionReferencePutRequest) (*UpdateMemberFiledistributionResponse, *http.Response, error) {
+func (a *MemberFiledistributionAPIService) UpdateExecute(r MemberFiledistributionAPIUpdateRequest) (*UpdateMemberFiledistributionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionReferencePutExe
 		localVarReturnValue *UpdateMemberFiledistributionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberFiledistributionAPIService.MemberfiledistributionReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "MemberFiledistributionAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *MemberFiledistributionAPIService) MemberfiledistributionReferencePutExe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

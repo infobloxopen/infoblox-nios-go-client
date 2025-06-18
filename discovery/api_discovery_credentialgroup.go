@@ -23,150 +23,374 @@ import (
 
 type DiscoveryCredentialgroupAPI interface {
 	/*
-		DiscoverycredentialgroupGet Retrieve discovery:credentialgroup objects
-
-		Returns a list of discovery:credentialgroup objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest
-	*/
-	DiscoverycredentialgroupGet(ctx context.Context) DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest
-
-	// DiscoverycredentialgroupGetExecute executes the request
-	//  @return ListDiscoveryCredentialgroupResponse
-	DiscoverycredentialgroupGetExecute(r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) (*ListDiscoveryCredentialgroupResponse, *http.Response, error)
-	/*
-		DiscoverycredentialgroupPost Create a discovery:credentialgroup object
+		Create Create a discovery:credentialgroup object
 
 		Creates a new discovery:credentialgroup object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest
+		@return DiscoveryCredentialgroupAPICreateRequest
 	*/
-	DiscoverycredentialgroupPost(ctx context.Context) DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest
+	Create(ctx context.Context) DiscoveryCredentialgroupAPICreateRequest
 
-	// DiscoverycredentialgroupPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDiscoveryCredentialgroupResponse
-	DiscoverycredentialgroupPostExecute(r DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest) (*CreateDiscoveryCredentialgroupResponse, *http.Response, error)
+	CreateExecute(r DiscoveryCredentialgroupAPICreateRequest) (*CreateDiscoveryCredentialgroupResponse, *http.Response, error)
 	/*
-		DiscoverycredentialgroupReferenceDelete Delete a discovery:credentialgroup object
+		Delete Delete a discovery:credentialgroup object
 
 		Deletes a specific discovery:credentialgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:credentialgroup object
-		@return DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest
+		@return DiscoveryCredentialgroupAPIDeleteRequest
 	*/
-	DiscoverycredentialgroupReferenceDelete(ctx context.Context, reference string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DiscoveryCredentialgroupAPIDeleteRequest
 
-	// DiscoverycredentialgroupReferenceDeleteExecute executes the request
-	DiscoverycredentialgroupReferenceDeleteExecute(r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DiscoveryCredentialgroupAPIDeleteRequest) (*http.Response, error)
 	/*
-		DiscoverycredentialgroupReferenceGet Get a specific discovery:credentialgroup object
+		List Retrieve discovery:credentialgroup objects
+
+		Returns a list of discovery:credentialgroup objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DiscoveryCredentialgroupAPIListRequest
+	*/
+	List(ctx context.Context) DiscoveryCredentialgroupAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDiscoveryCredentialgroupResponse
+	ListExecute(r DiscoveryCredentialgroupAPIListRequest) (*ListDiscoveryCredentialgroupResponse, *http.Response, error)
+	/*
+		Read Get a specific discovery:credentialgroup object
 
 		Returns a specific discovery:credentialgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:credentialgroup object
-		@return DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest
+		@return DiscoveryCredentialgroupAPIReadRequest
 	*/
-	DiscoverycredentialgroupReferenceGet(ctx context.Context, reference string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest
+	Read(ctx context.Context, reference string) DiscoveryCredentialgroupAPIReadRequest
 
-	// DiscoverycredentialgroupReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDiscoveryCredentialgroupResponse
-	DiscoverycredentialgroupReferenceGetExecute(r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest) (*GetDiscoveryCredentialgroupResponse, *http.Response, error)
+	ReadExecute(r DiscoveryCredentialgroupAPIReadRequest) (*GetDiscoveryCredentialgroupResponse, *http.Response, error)
 	/*
-		DiscoverycredentialgroupReferencePut Update a discovery:credentialgroup object
+		Update Update a discovery:credentialgroup object
 
 		Updates a specific discovery:credentialgroup object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the discovery:credentialgroup object
-		@return DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest
+		@return DiscoveryCredentialgroupAPIUpdateRequest
 	*/
-	DiscoverycredentialgroupReferencePut(ctx context.Context, reference string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest
+	Update(ctx context.Context, reference string) DiscoveryCredentialgroupAPIUpdateRequest
 
-	// DiscoverycredentialgroupReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDiscoveryCredentialgroupResponse
-	DiscoverycredentialgroupReferencePutExecute(r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest) (*UpdateDiscoveryCredentialgroupResponse, *http.Response, error)
+	UpdateExecute(r DiscoveryCredentialgroupAPIUpdateRequest) (*UpdateDiscoveryCredentialgroupResponse, *http.Response, error)
 }
 
 // DiscoveryCredentialgroupAPIService DiscoveryCredentialgroupAPI service
 type DiscoveryCredentialgroupAPIService internal.Service
 
-type DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryCredentialgroupAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DiscoveryCredentialgroupAPICreateRequest struct {
+	ctx                      context.Context
+	ApiService               DiscoveryCredentialgroupAPI
+	discoveryCredentialgroup *DiscoveryCredentialgroup
+	returnFields             *string
+	returnFieldsPlus         *string
+	returnAsObject           *int32
+}
+
+// Object data to create
+func (r DiscoveryCredentialgroupAPICreateRequest) DiscoveryCredentialgroup(discoveryCredentialgroup DiscoveryCredentialgroup) DiscoveryCredentialgroupAPICreateRequest {
+	r.discoveryCredentialgroup = &discoveryCredentialgroup
+	return r
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) ReturnFields(returnFields string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest {
+func (r DiscoveryCredentialgroupAPICreateRequest) ReturnFields(returnFields string) DiscoveryCredentialgroupAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) ReturnFields2(returnFields2 string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryCredentialgroupAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryCredentialgroupAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DiscoveryCredentialgroupAPICreateRequest) ReturnAsObject(returnAsObject int32) DiscoveryCredentialgroupAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r DiscoveryCredentialgroupAPICreateRequest) Execute() (*CreateDiscoveryCredentialgroupResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a discovery:credentialgroup object
+
+Creates a new discovery:credentialgroup object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DiscoveryCredentialgroupAPICreateRequest
+*/
+func (a *DiscoveryCredentialgroupAPIService) Create(ctx context.Context) DiscoveryCredentialgroupAPICreateRequest {
+	return DiscoveryCredentialgroupAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateDiscoveryCredentialgroupResponse
+func (a *DiscoveryCredentialgroupAPIService) CreateExecute(r DiscoveryCredentialgroupAPICreateRequest) (*CreateDiscoveryCredentialgroupResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateDiscoveryCredentialgroupResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryCredentialgroupAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/discovery:credentialgroup"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.discoveryCredentialgroup == nil {
+		return localVarReturnValue, nil, internal.ReportError("discoveryCredentialgroup is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.discoveryCredentialgroup
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DiscoveryCredentialgroupAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DiscoveryCredentialgroupAPI
+	reference  string
+}
+
+func (r DiscoveryCredentialgroupAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a discovery:credentialgroup object
+
+Deletes a specific discovery:credentialgroup object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the discovery:credentialgroup object
+	@return DiscoveryCredentialgroupAPIDeleteRequest
+*/
+func (a *DiscoveryCredentialgroupAPIService) Delete(ctx context.Context, reference string) DiscoveryCredentialgroupAPIDeleteRequest {
+	return DiscoveryCredentialgroupAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DiscoveryCredentialgroupAPIService) DeleteExecute(r DiscoveryCredentialgroupAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryCredentialgroupAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/discovery:credentialgroup/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DiscoveryCredentialgroupAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DiscoveryCredentialgroupAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DiscoveryCredentialgroupAPIListRequest) ReturnFields(returnFields string) DiscoveryCredentialgroupAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DiscoveryCredentialgroupAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryCredentialgroupAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) MaxResults(maxResults int32) DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest {
+func (r DiscoveryCredentialgroupAPIListRequest) MaxResults(maxResults int32) DiscoveryCredentialgroupAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest {
+func (r DiscoveryCredentialgroupAPIListRequest) ReturnAsObject(returnAsObject int32) DiscoveryCredentialgroupAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) Paging(paging int32) DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest {
+func (r DiscoveryCredentialgroupAPIListRequest) Paging(paging int32) DiscoveryCredentialgroupAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) PageId(pageId string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest {
+func (r DiscoveryCredentialgroupAPIListRequest) PageId(pageId string) DiscoveryCredentialgroupAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) Filters(filters map[string]interface{}) DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest {
+func (r DiscoveryCredentialgroupAPIListRequest) Filters(filters map[string]interface{}) DiscoveryCredentialgroupAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest {
+func (r DiscoveryCredentialgroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoveryCredentialgroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) Execute() (*ListDiscoveryCredentialgroupResponse, *http.Response, error) {
-	return r.ApiService.DiscoverycredentialgroupGetExecute(r)
+func (r DiscoveryCredentialgroupAPIListRequest) Execute() (*ListDiscoveryCredentialgroupResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-DiscoverycredentialgroupGet Retrieve discovery:credentialgroup objects
+List Retrieve discovery:credentialgroup objects
 
 Returns a list of discovery:credentialgroup objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest
+	@return DiscoveryCredentialgroupAPIListRequest
 */
-func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupGet(ctx context.Context) DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest {
-	return DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest{
+func (a *DiscoveryCredentialgroupAPIService) List(ctx context.Context) DiscoveryCredentialgroupAPIListRequest {
+	return DiscoveryCredentialgroupAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupGet(ctx con
 // Execute executes the request
 //
 //	@return ListDiscoveryCredentialgroupResponse
-func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupGetExecute(r DiscoveryCredentialgroupAPIDiscoverycredentialgroupGetRequest) (*ListDiscoveryCredentialgroupResponse, *http.Response, error) {
+func (a *DiscoveryCredentialgroupAPIService) ListExecute(r DiscoveryCredentialgroupAPIListRequest) (*ListDiscoveryCredentialgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupGetExecute(
 		localVarReturnValue *ListDiscoveryCredentialgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryCredentialgroupAPIService.DiscoverycredentialgroupGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryCredentialgroupAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupGetExecute(
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupGetExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest struct {
-	ctx                      context.Context
-	ApiService               DiscoveryCredentialgroupAPI
-	discoveryCredentialgroup *DiscoveryCredentialgroup
-	returnFields             *string
-	returnFields2            *string
-	returnAsObject           *int32
-}
-
-// Object data to create
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest) DiscoveryCredentialgroup(discoveryCredentialgroup DiscoveryCredentialgroup) DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest {
-	r.discoveryCredentialgroup = &discoveryCredentialgroup
-	return r
+type DiscoveryCredentialgroupAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DiscoveryCredentialgroupAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest) ReturnFields(returnFields string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest {
+func (r DiscoveryCredentialgroupAPIReadRequest) ReturnFields(returnFields string) DiscoveryCredentialgroupAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest) ReturnFields2(returnFields2 string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryCredentialgroupAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryCredentialgroupAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest) ReturnAsObject(returnAsObject int32) DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest {
+func (r DiscoveryCredentialgroupAPIReadRequest) ReturnAsObject(returnAsObject int32) DiscoveryCredentialgroupAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest) Execute() (*CreateDiscoveryCredentialgroupResponse, *http.Response, error) {
-	return r.ApiService.DiscoverycredentialgroupPostExecute(r)
+func (r DiscoveryCredentialgroupAPIReadRequest) Execute() (*GetDiscoveryCredentialgroupResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-DiscoverycredentialgroupPost Create a discovery:credentialgroup object
-
-Creates a new discovery:credentialgroup object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest
-*/
-func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupPost(ctx context.Context) DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest {
-	return DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateDiscoveryCredentialgroupResponse
-func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupPostExecute(r DiscoveryCredentialgroupAPIDiscoverycredentialgroupPostRequest) (*CreateDiscoveryCredentialgroupResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateDiscoveryCredentialgroupResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryCredentialgroupAPIService.DiscoverycredentialgroupPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/discovery:credentialgroup"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.discoveryCredentialgroup == nil {
-		return localVarReturnValue, nil, internal.ReportError("discoveryCredentialgroup is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.discoveryCredentialgroup
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DiscoveryCredentialgroupAPI
-	reference  string
-}
-
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DiscoverycredentialgroupReferenceDeleteExecute(r)
-}
-
-/*
-DiscoverycredentialgroupReferenceDelete Delete a discovery:credentialgroup object
-
-Deletes a specific discovery:credentialgroup object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the discovery:credentialgroup object
-	@return DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest
-*/
-func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferenceDelete(ctx context.Context, reference string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest {
-	return DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferenceDeleteExecute(r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryCredentialgroupAPIService.DiscoverycredentialgroupReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/discovery:credentialgroup/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DiscoveryCredentialgroupAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest) ReturnFields(returnFields string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest) ReturnFields2(returnFields2 string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest) ReturnAsObject(returnAsObject int32) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest) Execute() (*GetDiscoveryCredentialgroupResponse, *http.Response, error) {
-	return r.ApiService.DiscoverycredentialgroupReferenceGetExecute(r)
-}
-
-/*
-DiscoverycredentialgroupReferenceGet Get a specific discovery:credentialgroup object
+Read Get a specific discovery:credentialgroup object
 
 Returns a specific discovery:credentialgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:credentialgroup object
-	@return DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest
+	@return DiscoveryCredentialgroupAPIReadRequest
 */
-func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferenceGet(ctx context.Context, reference string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest {
-	return DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest{
+func (a *DiscoveryCredentialgroupAPIService) Read(ctx context.Context, reference string) DiscoveryCredentialgroupAPIReadRequest {
+	return DiscoveryCredentialgroupAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferenceGe
 // Execute executes the request
 //
 //	@return GetDiscoveryCredentialgroupResponse
-func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferenceGetExecute(r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferenceGetRequest) (*GetDiscoveryCredentialgroupResponse, *http.Response, error) {
+func (a *DiscoveryCredentialgroupAPIService) ReadExecute(r DiscoveryCredentialgroupAPIReadRequest) (*GetDiscoveryCredentialgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferenceGe
 		localVarReturnValue *GetDiscoveryCredentialgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryCredentialgroupAPIService.DiscoverycredentialgroupReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryCredentialgroupAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferenceGe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferenceGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest struct {
+type DiscoveryCredentialgroupAPIUpdateRequest struct {
 	ctx                      context.Context
 	ApiService               DiscoveryCredentialgroupAPI
 	reference                string
 	discoveryCredentialgroup *DiscoveryCredentialgroup
 	returnFields             *string
-	returnFields2            *string
+	returnFieldsPlus         *string
 	returnAsObject           *int32
 }
 
 // Object data to update
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest) DiscoveryCredentialgroup(discoveryCredentialgroup DiscoveryCredentialgroup) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest {
+func (r DiscoveryCredentialgroupAPIUpdateRequest) DiscoveryCredentialgroup(discoveryCredentialgroup DiscoveryCredentialgroup) DiscoveryCredentialgroupAPIUpdateRequest {
 	r.discoveryCredentialgroup = &discoveryCredentialgroup
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest) ReturnFields(returnFields string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest {
+func (r DiscoveryCredentialgroupAPIUpdateRequest) ReturnFields(returnFields string) DiscoveryCredentialgroupAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest) ReturnFields2(returnFields2 string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r DiscoveryCredentialgroupAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DiscoveryCredentialgroupAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest) ReturnAsObject(returnAsObject int32) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest {
+func (r DiscoveryCredentialgroupAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DiscoveryCredentialgroupAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest) Execute() (*UpdateDiscoveryCredentialgroupResponse, *http.Response, error) {
-	return r.ApiService.DiscoverycredentialgroupReferencePutExecute(r)
+func (r DiscoveryCredentialgroupAPIUpdateRequest) Execute() (*UpdateDiscoveryCredentialgroupResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-DiscoverycredentialgroupReferencePut Update a discovery:credentialgroup object
+Update Update a discovery:credentialgroup object
 
 Updates a specific discovery:credentialgroup object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the discovery:credentialgroup object
-	@return DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest
+	@return DiscoveryCredentialgroupAPIUpdateRequest
 */
-func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferencePut(ctx context.Context, reference string) DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest {
-	return DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest{
+func (a *DiscoveryCredentialgroupAPIService) Update(ctx context.Context, reference string) DiscoveryCredentialgroupAPIUpdateRequest {
+	return DiscoveryCredentialgroupAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferencePu
 // Execute executes the request
 //
 //	@return UpdateDiscoveryCredentialgroupResponse
-func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferencePutExecute(r DiscoveryCredentialgroupAPIDiscoverycredentialgroupReferencePutRequest) (*UpdateDiscoveryCredentialgroupResponse, *http.Response, error) {
+func (a *DiscoveryCredentialgroupAPIService) UpdateExecute(r DiscoveryCredentialgroupAPIUpdateRequest) (*UpdateDiscoveryCredentialgroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferencePu
 		localVarReturnValue *UpdateDiscoveryCredentialgroupResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryCredentialgroupAPIService.DiscoverycredentialgroupReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DiscoveryCredentialgroupAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *DiscoveryCredentialgroupAPIService) DiscoverycredentialgroupReferencePu
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

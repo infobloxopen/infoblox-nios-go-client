@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GridmaxminddbinfoGet**](GridMaxminddbinfoAPI.md#GridmaxminddbinfoGet) | **Get** /grid:maxminddbinfo | Retrieve grid:maxminddbinfo objects
-[**GridmaxminddbinfoReferenceGet**](GridMaxminddbinfoAPI.md#GridmaxminddbinfoReferenceGet) | **Get** /grid:maxminddbinfo/{reference} | Get a specific grid:maxminddbinfo object
+[**List**](GridMaxminddbinfoAPI.md#List) | **Get** /grid:maxminddbinfo | Retrieve grid:maxminddbinfo objects
+[**Read**](GridMaxminddbinfoAPI.md#Read) | **Get** /grid:maxminddbinfo/{reference} | Get a specific grid:maxminddbinfo object
 
 
 
-## GridmaxminddbinfoGet
+## List
 
-> ListGridMaxminddbinfoResponse GridmaxminddbinfoGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridMaxminddbinfoResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:maxminddbinfo objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridMaxminddbinfoAPI.GridmaxminddbinfoGet(context.Background()).Execute()
+	resp, r, err := apiClient.GridMaxminddbinfoAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridMaxminddbinfoAPI.GridmaxminddbinfoGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridMaxminddbinfoAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridmaxminddbinfoGet`: ListGridMaxminddbinfoResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridMaxminddbinfoAPI.GridmaxminddbinfoGet`: %v\n", resp)
+	// response from `List`: ListGridMaxminddbinfoResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridMaxminddbinfoAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridMaxminddbinfoAPIGridmaxminddbinfoGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridMaxminddbinfoAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GridmaxminddbinfoReferenceGet
+## Read
 
-> GetGridMaxminddbinfoResponse GridmaxminddbinfoReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridMaxminddbinfoResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:maxminddbinfo object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:maxminddbinfo object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridMaxminddbinfoAPI.GridmaxminddbinfoReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridMaxminddbinfoAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridMaxminddbinfoAPI.GridmaxminddbinfoReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridMaxminddbinfoAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GridmaxminddbinfoReferenceGet`: GetGridMaxminddbinfoResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridMaxminddbinfoAPI.GridmaxminddbinfoReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridMaxminddbinfoResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridMaxminddbinfoAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridMaxminddbinfoAPIGridmaxminddbinfoReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridMaxminddbinfoAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

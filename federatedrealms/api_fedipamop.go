@@ -23,110 +23,110 @@ import (
 
 type FedipamopAPI interface {
 	/*
-		Get Retrieve fedipamop objects
+		List Retrieve fedipamop objects
 
 		Returns a list of fedipamop objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FedipamopAPIGetRequest
+		@return FedipamopAPIListRequest
 	*/
-	Get(ctx context.Context) FedipamopAPIGetRequest
+	List(ctx context.Context) FedipamopAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListFedipamopResponse
-	GetExecute(r FedipamopAPIGetRequest) (*ListFedipamopResponse, *http.Response, error)
+	ListExecute(r FedipamopAPIListRequest) (*ListFedipamopResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific fedipamop object
+		Read Get a specific fedipamop object
 
 		Returns a specific fedipamop object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the fedipamop object
-		@return FedipamopAPIReferenceGetRequest
+		@return FedipamopAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) FedipamopAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) FedipamopAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetFedipamopResponse
-	ReferenceGetExecute(r FedipamopAPIReferenceGetRequest) (*GetFedipamopResponse, *http.Response, error)
+	ReadExecute(r FedipamopAPIReadRequest) (*GetFedipamopResponse, *http.Response, error)
 }
 
 // FedipamopAPIService FedipamopAPI service
 type FedipamopAPIService internal.Service
 
-type FedipamopAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     FedipamopAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type FedipamopAPIListRequest struct {
+	ctx              context.Context
+	ApiService       FedipamopAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r FedipamopAPIGetRequest) ReturnFields(returnFields string) FedipamopAPIGetRequest {
+func (r FedipamopAPIListRequest) ReturnFields(returnFields string) FedipamopAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FedipamopAPIGetRequest) ReturnFields2(returnFields2 string) FedipamopAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r FedipamopAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FedipamopAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r FedipamopAPIGetRequest) MaxResults(maxResults int32) FedipamopAPIGetRequest {
+func (r FedipamopAPIListRequest) MaxResults(maxResults int32) FedipamopAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FedipamopAPIGetRequest) ReturnAsObject(returnAsObject int32) FedipamopAPIGetRequest {
+func (r FedipamopAPIListRequest) ReturnAsObject(returnAsObject int32) FedipamopAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r FedipamopAPIGetRequest) Paging(paging int32) FedipamopAPIGetRequest {
+func (r FedipamopAPIListRequest) Paging(paging int32) FedipamopAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r FedipamopAPIGetRequest) PageId(pageId string) FedipamopAPIGetRequest {
+func (r FedipamopAPIListRequest) PageId(pageId string) FedipamopAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r FedipamopAPIGetRequest) Filters(filters map[string]interface{}) FedipamopAPIGetRequest {
+func (r FedipamopAPIListRequest) Filters(filters map[string]interface{}) FedipamopAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r FedipamopAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) FedipamopAPIGetRequest {
+func (r FedipamopAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) FedipamopAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r FedipamopAPIGetRequest) Execute() (*ListFedipamopResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r FedipamopAPIListRequest) Execute() (*ListFedipamopResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve fedipamop objects
+List Retrieve fedipamop objects
 
 Returns a list of fedipamop objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FedipamopAPIGetRequest
+	@return FedipamopAPIListRequest
 */
-func (a *FedipamopAPIService) Get(ctx context.Context) FedipamopAPIGetRequest {
-	return FedipamopAPIGetRequest{
+func (a *FedipamopAPIService) List(ctx context.Context) FedipamopAPIListRequest {
+	return FedipamopAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *FedipamopAPIService) Get(ctx context.Context) FedipamopAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListFedipamopResponse
-func (a *FedipamopAPIService) GetExecute(r FedipamopAPIGetRequest) (*ListFedipamopResponse, *http.Response, error) {
+func (a *FedipamopAPIService) ListExecute(r FedipamopAPIListRequest) (*ListFedipamopResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *FedipamopAPIService) GetExecute(r FedipamopAPIGetRequest) (*ListFedipam
 		localVarReturnValue *ListFedipamopResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FedipamopAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FedipamopAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *FedipamopAPIService) GetExecute(r FedipamopAPIGetRequest) (*ListFedipam
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *FedipamopAPIService) GetExecute(r FedipamopAPIGetRequest) (*ListFedipam
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FedipamopAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     FedipamopAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type FedipamopAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       FedipamopAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r FedipamopAPIReferenceGetRequest) ReturnFields(returnFields string) FedipamopAPIReferenceGetRequest {
+func (r FedipamopAPIReadRequest) ReturnFields(returnFields string) FedipamopAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FedipamopAPIReferenceGetRequest) ReturnFields2(returnFields2 string) FedipamopAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r FedipamopAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FedipamopAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FedipamopAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) FedipamopAPIReferenceGetRequest {
+func (r FedipamopAPIReadRequest) ReturnAsObject(returnAsObject int32) FedipamopAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FedipamopAPIReferenceGetRequest) Execute() (*GetFedipamopResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r FedipamopAPIReadRequest) Execute() (*GetFedipamopResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific fedipamop object
+Read Get a specific fedipamop object
 
 Returns a specific fedipamop object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the fedipamop object
-	@return FedipamopAPIReferenceGetRequest
+	@return FedipamopAPIReadRequest
 */
-func (a *FedipamopAPIService) ReferenceGet(ctx context.Context, reference string) FedipamopAPIReferenceGetRequest {
-	return FedipamopAPIReferenceGetRequest{
+func (a *FedipamopAPIService) Read(ctx context.Context, reference string) FedipamopAPIReadRequest {
+	return FedipamopAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *FedipamopAPIService) ReferenceGet(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return GetFedipamopResponse
-func (a *FedipamopAPIService) ReferenceGetExecute(r FedipamopAPIReferenceGetRequest) (*GetFedipamopResponse, *http.Response, error) {
+func (a *FedipamopAPIService) ReadExecute(r FedipamopAPIReadRequest) (*GetFedipamopResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *FedipamopAPIService) ReferenceGetExecute(r FedipamopAPIReferenceGetRequ
 		localVarReturnValue *GetFedipamopResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FedipamopAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FedipamopAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *FedipamopAPIService) ReferenceGetExecute(r FedipamopAPIReferenceGetRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -23,11 +23,11 @@ func TestUpgradestatusAPIService(t *testing.T) {
 
 	apiClient := grid.NewAPIClient()
 
-	t.Run("Test UpgradestatusAPIService Get", func(t *testing.T) {
+	t.Run("Test UpgradestatusAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UpgradestatusAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UpgradestatusAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestUpgradestatusAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradestatusAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test UpgradestatusAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.UpgradestatusAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.UpgradestatusAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestUpgradestatusAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UpgradestatusAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test UpgradestatusAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.UpgradestatusAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.UpgradestatusAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

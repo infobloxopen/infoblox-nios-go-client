@@ -23,110 +23,110 @@ import (
 
 type ThreatprotectionRuletemplateAPI interface {
 	/*
-		ThreatprotectionruletemplateGet Retrieve threatprotection:ruletemplate objects
+		List Retrieve threatprotection:ruletemplate objects
 
 		Returns a list of threatprotection:ruletemplate objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest
+		@return ThreatprotectionRuletemplateAPIListRequest
 	*/
-	ThreatprotectionruletemplateGet(ctx context.Context) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest
+	List(ctx context.Context) ThreatprotectionRuletemplateAPIListRequest
 
-	// ThreatprotectionruletemplateGetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListThreatprotectionRuletemplateResponse
-	ThreatprotectionruletemplateGetExecute(r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) (*ListThreatprotectionRuletemplateResponse, *http.Response, error)
+	ListExecute(r ThreatprotectionRuletemplateAPIListRequest) (*ListThreatprotectionRuletemplateResponse, *http.Response, error)
 	/*
-		ThreatprotectionruletemplateReferenceGet Get a specific threatprotection:ruletemplate object
+		Read Get a specific threatprotection:ruletemplate object
 
 		Returns a specific threatprotection:ruletemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the threatprotection:ruletemplate object
-		@return ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest
+		@return ThreatprotectionRuletemplateAPIReadRequest
 	*/
-	ThreatprotectionruletemplateReferenceGet(ctx context.Context, reference string) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest
+	Read(ctx context.Context, reference string) ThreatprotectionRuletemplateAPIReadRequest
 
-	// ThreatprotectionruletemplateReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetThreatprotectionRuletemplateResponse
-	ThreatprotectionruletemplateReferenceGetExecute(r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest) (*GetThreatprotectionRuletemplateResponse, *http.Response, error)
+	ReadExecute(r ThreatprotectionRuletemplateAPIReadRequest) (*GetThreatprotectionRuletemplateResponse, *http.Response, error)
 }
 
 // ThreatprotectionRuletemplateAPIService ThreatprotectionRuletemplateAPI service
 type ThreatprotectionRuletemplateAPIService internal.Service
 
-type ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest struct {
-	ctx            context.Context
-	ApiService     ThreatprotectionRuletemplateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type ThreatprotectionRuletemplateAPIListRequest struct {
+	ctx              context.Context
+	ApiService       ThreatprotectionRuletemplateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) ReturnFields(returnFields string) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest {
+func (r ThreatprotectionRuletemplateAPIListRequest) ReturnFields(returnFields string) ThreatprotectionRuletemplateAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) ReturnFields2(returnFields2 string) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ThreatprotectionRuletemplateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ThreatprotectionRuletemplateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) MaxResults(maxResults int32) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest {
+func (r ThreatprotectionRuletemplateAPIListRequest) MaxResults(maxResults int32) ThreatprotectionRuletemplateAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest {
+func (r ThreatprotectionRuletemplateAPIListRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionRuletemplateAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) Paging(paging int32) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest {
+func (r ThreatprotectionRuletemplateAPIListRequest) Paging(paging int32) ThreatprotectionRuletemplateAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) PageId(pageId string) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest {
+func (r ThreatprotectionRuletemplateAPIListRequest) PageId(pageId string) ThreatprotectionRuletemplateAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) Filters(filters map[string]interface{}) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest {
+func (r ThreatprotectionRuletemplateAPIListRequest) Filters(filters map[string]interface{}) ThreatprotectionRuletemplateAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest {
+func (r ThreatprotectionRuletemplateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ThreatprotectionRuletemplateAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) Execute() (*ListThreatprotectionRuletemplateResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectionruletemplateGetExecute(r)
+func (r ThreatprotectionRuletemplateAPIListRequest) Execute() (*ListThreatprotectionRuletemplateResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ThreatprotectionruletemplateGet Retrieve threatprotection:ruletemplate objects
+List Retrieve threatprotection:ruletemplate objects
 
 Returns a list of threatprotection:ruletemplate objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest
+	@return ThreatprotectionRuletemplateAPIListRequest
 */
-func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateGet(ctx context.Context) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest {
-	return ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest{
+func (a *ThreatprotectionRuletemplateAPIService) List(ctx context.Context) ThreatprotectionRuletemplateAPIListRequest {
+	return ThreatprotectionRuletemplateAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateGet
 // Execute executes the request
 //
 //	@return ListThreatprotectionRuletemplateResponse
-func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateGetExecute(r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateGetRequest) (*ListThreatprotectionRuletemplateResponse, *http.Response, error) {
+func (a *ThreatprotectionRuletemplateAPIService) ListExecute(r ThreatprotectionRuletemplateAPIListRequest) (*ListThreatprotectionRuletemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateGet
 		localVarReturnValue *ListThreatprotectionRuletemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRuletemplateAPIService.ThreatprotectionruletemplateGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRuletemplateAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateGet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     ThreatprotectionRuletemplateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type ThreatprotectionRuletemplateAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       ThreatprotectionRuletemplateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest) ReturnFields(returnFields string) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest {
+func (r ThreatprotectionRuletemplateAPIReadRequest) ReturnFields(returnFields string) ThreatprotectionRuletemplateAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest) ReturnFields2(returnFields2 string) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ThreatprotectionRuletemplateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ThreatprotectionRuletemplateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest {
+func (r ThreatprotectionRuletemplateAPIReadRequest) ReturnAsObject(returnAsObject int32) ThreatprotectionRuletemplateAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest) Execute() (*GetThreatprotectionRuletemplateResponse, *http.Response, error) {
-	return r.ApiService.ThreatprotectionruletemplateReferenceGetExecute(r)
+func (r ThreatprotectionRuletemplateAPIReadRequest) Execute() (*GetThreatprotectionRuletemplateResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ThreatprotectionruletemplateReferenceGet Get a specific threatprotection:ruletemplate object
+Read Get a specific threatprotection:ruletemplate object
 
 Returns a specific threatprotection:ruletemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the threatprotection:ruletemplate object
-	@return ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest
+	@return ThreatprotectionRuletemplateAPIReadRequest
 */
-func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateReferenceGet(ctx context.Context, reference string) ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest {
-	return ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest{
+func (a *ThreatprotectionRuletemplateAPIService) Read(ctx context.Context, reference string) ThreatprotectionRuletemplateAPIReadRequest {
+	return ThreatprotectionRuletemplateAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateRef
 // Execute executes the request
 //
 //	@return GetThreatprotectionRuletemplateResponse
-func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateReferenceGetExecute(r ThreatprotectionRuletemplateAPIThreatprotectionruletemplateReferenceGetRequest) (*GetThreatprotectionRuletemplateResponse, *http.Response, error) {
+func (a *ThreatprotectionRuletemplateAPIService) ReadExecute(r ThreatprotectionRuletemplateAPIReadRequest) (*GetThreatprotectionRuletemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateRef
 		localVarReturnValue *GetThreatprotectionRuletemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRuletemplateAPIService.ThreatprotectionruletemplateReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ThreatprotectionRuletemplateAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *ThreatprotectionRuletemplateAPIService) ThreatprotectionruletemplateRef
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

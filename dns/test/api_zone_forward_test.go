@@ -23,11 +23,11 @@ func TestZoneForwardAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test ZoneForwardAPIService Get", func(t *testing.T) {
+	t.Run("Test ZoneForwardAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ZoneForwardAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ZoneForwardAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestZoneForwardAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneForwardAPIService Post", func(t *testing.T) {
+	t.Run("Test ZoneForwardAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ZoneForwardAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ZoneForwardAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ZoneForwardAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ZoneForwardAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestZoneForwardAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneForwardAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test ZoneForwardAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ZoneForwardAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ZoneForwardAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ZoneForwardAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ZoneForwardAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestZoneForwardAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneForwardAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test ZoneForwardAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ZoneForwardAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ZoneForwardAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

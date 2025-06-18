@@ -23,123 +23,212 @@ import (
 
 type RecordDhcidAPI interface {
 	/*
-		RecorddhcidGet Retrieve record:dhcid objects
-
-		Returns a list of record:dhcid objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordDhcidAPIRecorddhcidGetRequest
-	*/
-	RecorddhcidGet(ctx context.Context) RecordDhcidAPIRecorddhcidGetRequest
-
-	// RecorddhcidGetExecute executes the request
-	//  @return ListRecordDhcidResponse
-	RecorddhcidGetExecute(r RecordDhcidAPIRecorddhcidGetRequest) (*ListRecordDhcidResponse, *http.Response, error)
-	/*
-		RecorddhcidReferenceDelete Delete a record:dhcid object
+		Delete Delete a record:dhcid object
 
 		Deletes a specific record:dhcid object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:dhcid object
-		@return RecordDhcidAPIRecorddhcidReferenceDeleteRequest
+		@return RecordDhcidAPIDeleteRequest
 	*/
-	RecorddhcidReferenceDelete(ctx context.Context, reference string) RecordDhcidAPIRecorddhcidReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordDhcidAPIDeleteRequest
 
-	// RecorddhcidReferenceDeleteExecute executes the request
-	RecorddhcidReferenceDeleteExecute(r RecordDhcidAPIRecorddhcidReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordDhcidAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecorddhcidReferenceGet Get a specific record:dhcid object
+		List Retrieve record:dhcid objects
+
+		Returns a list of record:dhcid objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordDhcidAPIListRequest
+	*/
+	List(ctx context.Context) RecordDhcidAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordDhcidResponse
+	ListExecute(r RecordDhcidAPIListRequest) (*ListRecordDhcidResponse, *http.Response, error)
+	/*
+		Read Get a specific record:dhcid object
 
 		Returns a specific record:dhcid object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:dhcid object
-		@return RecordDhcidAPIRecorddhcidReferenceGetRequest
+		@return RecordDhcidAPIReadRequest
 	*/
-	RecorddhcidReferenceGet(ctx context.Context, reference string) RecordDhcidAPIRecorddhcidReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordDhcidAPIReadRequest
 
-	// RecorddhcidReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordDhcidResponse
-	RecorddhcidReferenceGetExecute(r RecordDhcidAPIRecorddhcidReferenceGetRequest) (*GetRecordDhcidResponse, *http.Response, error)
+	ReadExecute(r RecordDhcidAPIReadRequest) (*GetRecordDhcidResponse, *http.Response, error)
 }
 
 // RecordDhcidAPIService RecordDhcidAPI service
 type RecordDhcidAPIService internal.Service
 
-type RecordDhcidAPIRecorddhcidGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordDhcidAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type RecordDhcidAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RecordDhcidAPI
+	reference  string
+}
+
+func (r RecordDhcidAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a record:dhcid object
+
+Deletes a specific record:dhcid object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the record:dhcid object
+	@return RecordDhcidAPIDeleteRequest
+*/
+func (a *RecordDhcidAPIService) Delete(ctx context.Context, reference string) RecordDhcidAPIDeleteRequest {
+	return RecordDhcidAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RecordDhcidAPIService) DeleteExecute(r RecordDhcidAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDhcidAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:dhcid/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RecordDhcidAPIListRequest struct {
+	ctx              context.Context
+	ApiService       RecordDhcidAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r RecordDhcidAPIRecorddhcidGetRequest) ReturnFields(returnFields string) RecordDhcidAPIRecorddhcidGetRequest {
+func (r RecordDhcidAPIListRequest) ReturnFields(returnFields string) RecordDhcidAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDhcidAPIRecorddhcidGetRequest) ReturnFields2(returnFields2 string) RecordDhcidAPIRecorddhcidGetRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordDhcidAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordDhcidAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordDhcidAPIRecorddhcidGetRequest) MaxResults(maxResults int32) RecordDhcidAPIRecorddhcidGetRequest {
+func (r RecordDhcidAPIListRequest) MaxResults(maxResults int32) RecordDhcidAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordDhcidAPIRecorddhcidGetRequest) ReturnAsObject(returnAsObject int32) RecordDhcidAPIRecorddhcidGetRequest {
+func (r RecordDhcidAPIListRequest) ReturnAsObject(returnAsObject int32) RecordDhcidAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordDhcidAPIRecorddhcidGetRequest) Paging(paging int32) RecordDhcidAPIRecorddhcidGetRequest {
+func (r RecordDhcidAPIListRequest) Paging(paging int32) RecordDhcidAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordDhcidAPIRecorddhcidGetRequest) PageId(pageId string) RecordDhcidAPIRecorddhcidGetRequest {
+func (r RecordDhcidAPIListRequest) PageId(pageId string) RecordDhcidAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordDhcidAPIRecorddhcidGetRequest) Filters(filters map[string]interface{}) RecordDhcidAPIRecorddhcidGetRequest {
+func (r RecordDhcidAPIListRequest) Filters(filters map[string]interface{}) RecordDhcidAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordDhcidAPIRecorddhcidGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordDhcidAPIRecorddhcidGetRequest {
+func (r RecordDhcidAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordDhcidAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordDhcidAPIRecorddhcidGetRequest) Execute() (*ListRecordDhcidResponse, *http.Response, error) {
-	return r.ApiService.RecorddhcidGetExecute(r)
+func (r RecordDhcidAPIListRequest) Execute() (*ListRecordDhcidResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RecorddhcidGet Retrieve record:dhcid objects
+List Retrieve record:dhcid objects
 
 Returns a list of record:dhcid objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordDhcidAPIRecorddhcidGetRequest
+	@return RecordDhcidAPIListRequest
 */
-func (a *RecordDhcidAPIService) RecorddhcidGet(ctx context.Context) RecordDhcidAPIRecorddhcidGetRequest {
-	return RecordDhcidAPIRecorddhcidGetRequest{
+func (a *RecordDhcidAPIService) List(ctx context.Context) RecordDhcidAPIListRequest {
+	return RecordDhcidAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -148,7 +237,7 @@ func (a *RecordDhcidAPIService) RecorddhcidGet(ctx context.Context) RecordDhcidA
 // Execute executes the request
 //
 //	@return ListRecordDhcidResponse
-func (a *RecordDhcidAPIService) RecorddhcidGetExecute(r RecordDhcidAPIRecorddhcidGetRequest) (*ListRecordDhcidResponse, *http.Response, error) {
+func (a *RecordDhcidAPIService) ListExecute(r RecordDhcidAPIListRequest) (*ListRecordDhcidResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -156,7 +245,7 @@ func (a *RecordDhcidAPIService) RecorddhcidGetExecute(r RecordDhcidAPIRecorddhci
 		localVarReturnValue *ListRecordDhcidResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDhcidAPIService.RecorddhcidGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDhcidAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -170,8 +259,8 @@ func (a *RecordDhcidAPIService) RecorddhcidGetExecute(r RecordDhcidAPIRecorddhci
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -238,137 +327,48 @@ func (a *RecordDhcidAPIService) RecorddhcidGetExecute(r RecordDhcidAPIRecorddhci
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordDhcidAPIRecorddhcidReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RecordDhcidAPI
-	reference  string
-}
-
-func (r RecordDhcidAPIRecorddhcidReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecorddhcidReferenceDeleteExecute(r)
-}
-
-/*
-RecorddhcidReferenceDelete Delete a record:dhcid object
-
-Deletes a specific record:dhcid object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the record:dhcid object
-	@return RecordDhcidAPIRecorddhcidReferenceDeleteRequest
-*/
-func (a *RecordDhcidAPIService) RecorddhcidReferenceDelete(ctx context.Context, reference string) RecordDhcidAPIRecorddhcidReferenceDeleteRequest {
-	return RecordDhcidAPIRecorddhcidReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RecordDhcidAPIService) RecorddhcidReferenceDeleteExecute(r RecordDhcidAPIRecorddhcidReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDhcidAPIService.RecorddhcidReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:dhcid/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RecordDhcidAPIRecorddhcidReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordDhcidAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type RecordDhcidAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       RecordDhcidAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r RecordDhcidAPIRecorddhcidReferenceGetRequest) ReturnFields(returnFields string) RecordDhcidAPIRecorddhcidReferenceGetRequest {
+func (r RecordDhcidAPIReadRequest) ReturnFields(returnFields string) RecordDhcidAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordDhcidAPIRecorddhcidReferenceGetRequest) ReturnFields2(returnFields2 string) RecordDhcidAPIRecorddhcidReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordDhcidAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordDhcidAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordDhcidAPIRecorddhcidReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordDhcidAPIRecorddhcidReferenceGetRequest {
+func (r RecordDhcidAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordDhcidAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordDhcidAPIRecorddhcidReferenceGetRequest) Execute() (*GetRecordDhcidResponse, *http.Response, error) {
-	return r.ApiService.RecorddhcidReferenceGetExecute(r)
+func (r RecordDhcidAPIReadRequest) Execute() (*GetRecordDhcidResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecorddhcidReferenceGet Get a specific record:dhcid object
+Read Get a specific record:dhcid object
 
 Returns a specific record:dhcid object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:dhcid object
-	@return RecordDhcidAPIRecorddhcidReferenceGetRequest
+	@return RecordDhcidAPIReadRequest
 */
-func (a *RecordDhcidAPIService) RecorddhcidReferenceGet(ctx context.Context, reference string) RecordDhcidAPIRecorddhcidReferenceGetRequest {
-	return RecordDhcidAPIRecorddhcidReferenceGetRequest{
+func (a *RecordDhcidAPIService) Read(ctx context.Context, reference string) RecordDhcidAPIReadRequest {
+	return RecordDhcidAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -378,7 +378,7 @@ func (a *RecordDhcidAPIService) RecorddhcidReferenceGet(ctx context.Context, ref
 // Execute executes the request
 //
 //	@return GetRecordDhcidResponse
-func (a *RecordDhcidAPIService) RecorddhcidReferenceGetExecute(r RecordDhcidAPIRecorddhcidReferenceGetRequest) (*GetRecordDhcidResponse, *http.Response, error) {
+func (a *RecordDhcidAPIService) ReadExecute(r RecordDhcidAPIReadRequest) (*GetRecordDhcidResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -386,7 +386,7 @@ func (a *RecordDhcidAPIService) RecorddhcidReferenceGetExecute(r RecordDhcidAPIR
 		localVarReturnValue *GetRecordDhcidResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDhcidAPIService.RecorddhcidReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordDhcidAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -401,8 +401,8 @@ func (a *RecordDhcidAPIService) RecorddhcidReferenceGetExecute(r RecordDhcidAPIR
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

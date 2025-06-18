@@ -23,150 +23,386 @@ import (
 
 type RecordRpzPtrAPI interface {
 	/*
-		RecordrpzptrGet Retrieve record:rpz:ptr objects
-
-		Returns a list of record:rpz:ptr objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordRpzPtrAPIRecordrpzptrGetRequest
-	*/
-	RecordrpzptrGet(ctx context.Context) RecordRpzPtrAPIRecordrpzptrGetRequest
-
-	// RecordrpzptrGetExecute executes the request
-	//  @return ListRecordRpzPtrResponse
-	RecordrpzptrGetExecute(r RecordRpzPtrAPIRecordrpzptrGetRequest) (*ListRecordRpzPtrResponse, *http.Response, error)
-	/*
-		RecordrpzptrPost Create a record:rpz:ptr object
+		Create Create a record:rpz:ptr object
 
 		Creates a new record:rpz:ptr object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return RecordRpzPtrAPIRecordrpzptrPostRequest
+		@return RecordRpzPtrAPICreateRequest
 	*/
-	RecordrpzptrPost(ctx context.Context) RecordRpzPtrAPIRecordrpzptrPostRequest
+	Create(ctx context.Context) RecordRpzPtrAPICreateRequest
 
-	// RecordrpzptrPostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateRecordRpzPtrResponse
-	RecordrpzptrPostExecute(r RecordRpzPtrAPIRecordrpzptrPostRequest) (*CreateRecordRpzPtrResponse, *http.Response, error)
+	CreateExecute(r RecordRpzPtrAPICreateRequest) (*CreateRecordRpzPtrResponse, *http.Response, error)
 	/*
-		RecordrpzptrReferenceDelete Delete a record:rpz:ptr object
+		Delete Delete a record:rpz:ptr object
 
 		Deletes a specific record:rpz:ptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:ptr object
-		@return RecordRpzPtrAPIRecordrpzptrReferenceDeleteRequest
+		@return RecordRpzPtrAPIDeleteRequest
 	*/
-	RecordrpzptrReferenceDelete(ctx context.Context, reference string) RecordRpzPtrAPIRecordrpzptrReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) RecordRpzPtrAPIDeleteRequest
 
-	// RecordrpzptrReferenceDeleteExecute executes the request
-	RecordrpzptrReferenceDeleteExecute(r RecordRpzPtrAPIRecordrpzptrReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r RecordRpzPtrAPIDeleteRequest) (*http.Response, error)
 	/*
-		RecordrpzptrReferenceGet Get a specific record:rpz:ptr object
+		List Retrieve record:rpz:ptr objects
+
+		Returns a list of record:rpz:ptr objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return RecordRpzPtrAPIListRequest
+	*/
+	List(ctx context.Context) RecordRpzPtrAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListRecordRpzPtrResponse
+	ListExecute(r RecordRpzPtrAPIListRequest) (*ListRecordRpzPtrResponse, *http.Response, error)
+	/*
+		Read Get a specific record:rpz:ptr object
 
 		Returns a specific record:rpz:ptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:ptr object
-		@return RecordRpzPtrAPIRecordrpzptrReferenceGetRequest
+		@return RecordRpzPtrAPIReadRequest
 	*/
-	RecordrpzptrReferenceGet(ctx context.Context, reference string) RecordRpzPtrAPIRecordrpzptrReferenceGetRequest
+	Read(ctx context.Context, reference string) RecordRpzPtrAPIReadRequest
 
-	// RecordrpzptrReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetRecordRpzPtrResponse
-	RecordrpzptrReferenceGetExecute(r RecordRpzPtrAPIRecordrpzptrReferenceGetRequest) (*GetRecordRpzPtrResponse, *http.Response, error)
+	ReadExecute(r RecordRpzPtrAPIReadRequest) (*GetRecordRpzPtrResponse, *http.Response, error)
 	/*
-		RecordrpzptrReferencePut Update a record:rpz:ptr object
+		Update Update a record:rpz:ptr object
 
 		Updates a specific record:rpz:ptr object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the record:rpz:ptr object
-		@return RecordRpzPtrAPIRecordrpzptrReferencePutRequest
+		@return RecordRpzPtrAPIUpdateRequest
 	*/
-	RecordrpzptrReferencePut(ctx context.Context, reference string) RecordRpzPtrAPIRecordrpzptrReferencePutRequest
+	Update(ctx context.Context, reference string) RecordRpzPtrAPIUpdateRequest
 
-	// RecordrpzptrReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateRecordRpzPtrResponse
-	RecordrpzptrReferencePutExecute(r RecordRpzPtrAPIRecordrpzptrReferencePutRequest) (*UpdateRecordRpzPtrResponse, *http.Response, error)
+	UpdateExecute(r RecordRpzPtrAPIUpdateRequest) (*UpdateRecordRpzPtrResponse, *http.Response, error)
 }
 
 // RecordRpzPtrAPIService RecordRpzPtrAPI service
 type RecordRpzPtrAPIService internal.Service
 
-type RecordRpzPtrAPIRecordrpzptrGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordRpzPtrAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type RecordRpzPtrAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       RecordRpzPtrAPI
+	recordRpzPtr     *RecordRpzPtr
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r RecordRpzPtrAPICreateRequest) RecordRpzPtr(recordRpzPtr RecordRpzPtr) RecordRpzPtrAPICreateRequest {
+	r.recordRpzPtr = &recordRpzPtr
+	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzPtrAPIRecordrpzptrGetRequest) ReturnFields(returnFields string) RecordRpzPtrAPIRecordrpzptrGetRequest {
+func (r RecordRpzPtrAPICreateRequest) ReturnFields(returnFields string) RecordRpzPtrAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzPtrAPIRecordrpzptrGetRequest) ReturnFields2(returnFields2 string) RecordRpzPtrAPIRecordrpzptrGetRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordRpzPtrAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordRpzPtrAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r RecordRpzPtrAPICreateRequest) ReturnAsObject(returnAsObject int32) RecordRpzPtrAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r RecordRpzPtrAPICreateRequest) Execute() (*CreateRecordRpzPtrResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a record:rpz:ptr object
+
+Creates a new record:rpz:ptr object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return RecordRpzPtrAPICreateRequest
+*/
+func (a *RecordRpzPtrAPIService) Create(ctx context.Context) RecordRpzPtrAPICreateRequest {
+	return RecordRpzPtrAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateRecordRpzPtrResponse
+func (a *RecordRpzPtrAPIService) CreateExecute(r RecordRpzPtrAPICreateRequest) (*CreateRecordRpzPtrResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateRecordRpzPtrResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzPtrAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:rpz:ptr"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.recordRpzPtr == nil {
+		return localVarReturnValue, nil, internal.ReportError("recordRpzPtr is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordRpzPtr != nil {
+		if r.recordRpzPtr.Extattrs == nil {
+			r.recordRpzPtr.Extattrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.recordRpzPtr.Extattrs)[k]; !ok {
+				(*r.recordRpzPtr.Extattrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.recordRpzPtr
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RecordRpzPtrAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService RecordRpzPtrAPI
+	reference  string
+}
+
+func (r RecordRpzPtrAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a record:rpz:ptr object
+
+Deletes a specific record:rpz:ptr object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the record:rpz:ptr object
+	@return RecordRpzPtrAPIDeleteRequest
+*/
+func (a *RecordRpzPtrAPIService) Delete(ctx context.Context, reference string) RecordRpzPtrAPIDeleteRequest {
+	return RecordRpzPtrAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *RecordRpzPtrAPIService) DeleteExecute(r RecordRpzPtrAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzPtrAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/record:rpz:ptr/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type RecordRpzPtrAPIListRequest struct {
+	ctx              context.Context
+	ApiService       RecordRpzPtrAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r RecordRpzPtrAPIListRequest) ReturnFields(returnFields string) RecordRpzPtrAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r RecordRpzPtrAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordRpzPtrAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r RecordRpzPtrAPIRecordrpzptrGetRequest) MaxResults(maxResults int32) RecordRpzPtrAPIRecordrpzptrGetRequest {
+func (r RecordRpzPtrAPIListRequest) MaxResults(maxResults int32) RecordRpzPtrAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzPtrAPIRecordrpzptrGetRequest) ReturnAsObject(returnAsObject int32) RecordRpzPtrAPIRecordrpzptrGetRequest {
+func (r RecordRpzPtrAPIListRequest) ReturnAsObject(returnAsObject int32) RecordRpzPtrAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r RecordRpzPtrAPIRecordrpzptrGetRequest) Paging(paging int32) RecordRpzPtrAPIRecordrpzptrGetRequest {
+func (r RecordRpzPtrAPIListRequest) Paging(paging int32) RecordRpzPtrAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r RecordRpzPtrAPIRecordrpzptrGetRequest) PageId(pageId string) RecordRpzPtrAPIRecordrpzptrGetRequest {
+func (r RecordRpzPtrAPIListRequest) PageId(pageId string) RecordRpzPtrAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r RecordRpzPtrAPIRecordrpzptrGetRequest) Filters(filters map[string]interface{}) RecordRpzPtrAPIRecordrpzptrGetRequest {
+func (r RecordRpzPtrAPIListRequest) Filters(filters map[string]interface{}) RecordRpzPtrAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r RecordRpzPtrAPIRecordrpzptrGetRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRpzPtrAPIRecordrpzptrGetRequest {
+func (r RecordRpzPtrAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRpzPtrAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r RecordRpzPtrAPIRecordrpzptrGetRequest) Execute() (*ListRecordRpzPtrResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzptrGetExecute(r)
+func (r RecordRpzPtrAPIListRequest) Execute() (*ListRecordRpzPtrResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RecordrpzptrGet Retrieve record:rpz:ptr objects
+List Retrieve record:rpz:ptr objects
 
 Returns a list of record:rpz:ptr objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordRpzPtrAPIRecordrpzptrGetRequest
+	@return RecordRpzPtrAPIListRequest
 */
-func (a *RecordRpzPtrAPIService) RecordrpzptrGet(ctx context.Context) RecordRpzPtrAPIRecordrpzptrGetRequest {
-	return RecordRpzPtrAPIRecordrpzptrGetRequest{
+func (a *RecordRpzPtrAPIService) List(ctx context.Context) RecordRpzPtrAPIListRequest {
+	return RecordRpzPtrAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrGet(ctx context.Context) RecordRpzP
 // Execute executes the request
 //
 //	@return ListRecordRpzPtrResponse
-func (a *RecordRpzPtrAPIService) RecordrpzptrGetExecute(r RecordRpzPtrAPIRecordrpzptrGetRequest) (*ListRecordRpzPtrResponse, *http.Response, error) {
+func (a *RecordRpzPtrAPIService) ListExecute(r RecordRpzPtrAPIListRequest) (*ListRecordRpzPtrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrGetExecute(r RecordRpzPtrAPIRecordr
 		localVarReturnValue *ListRecordRpzPtrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzPtrAPIService.RecordrpzptrGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzPtrAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrGetExecute(r RecordRpzPtrAPIRecordr
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrGetExecute(r RecordRpzPtrAPIRecordr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordRpzPtrAPIRecordrpzptrPostRequest struct {
-	ctx            context.Context
-	ApiService     RecordRpzPtrAPI
-	recordRpzPtr   *RecordRpzPtr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r RecordRpzPtrAPIRecordrpzptrPostRequest) RecordRpzPtr(recordRpzPtr RecordRpzPtr) RecordRpzPtrAPIRecordrpzptrPostRequest {
-	r.recordRpzPtr = &recordRpzPtr
-	return r
+type RecordRpzPtrAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       RecordRpzPtrAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzPtrAPIRecordrpzptrPostRequest) ReturnFields(returnFields string) RecordRpzPtrAPIRecordrpzptrPostRequest {
+func (r RecordRpzPtrAPIReadRequest) ReturnFields(returnFields string) RecordRpzPtrAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzPtrAPIRecordrpzptrPostRequest) ReturnFields2(returnFields2 string) RecordRpzPtrAPIRecordrpzptrPostRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordRpzPtrAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordRpzPtrAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzPtrAPIRecordrpzptrPostRequest) ReturnAsObject(returnAsObject int32) RecordRpzPtrAPIRecordrpzptrPostRequest {
+func (r RecordRpzPtrAPIReadRequest) ReturnAsObject(returnAsObject int32) RecordRpzPtrAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzPtrAPIRecordrpzptrPostRequest) Execute() (*CreateRecordRpzPtrResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzptrPostExecute(r)
+func (r RecordRpzPtrAPIReadRequest) Execute() (*GetRecordRpzPtrResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-RecordrpzptrPost Create a record:rpz:ptr object
-
-Creates a new record:rpz:ptr object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return RecordRpzPtrAPIRecordrpzptrPostRequest
-*/
-func (a *RecordRpzPtrAPIService) RecordrpzptrPost(ctx context.Context) RecordRpzPtrAPIRecordrpzptrPostRequest {
-	return RecordRpzPtrAPIRecordrpzptrPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateRecordRpzPtrResponse
-func (a *RecordRpzPtrAPIService) RecordrpzptrPostExecute(r RecordRpzPtrAPIRecordrpzptrPostRequest) (*CreateRecordRpzPtrResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateRecordRpzPtrResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzPtrAPIService.RecordrpzptrPost")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:rpz:ptr"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.recordRpzPtr == nil {
-		return localVarReturnValue, nil, internal.ReportError("recordRpzPtr is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordRpzPtr != nil {
-		if r.recordRpzPtr.Extattrs == nil {
-			r.recordRpzPtr.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordRpzPtr.Extattrs)[k]; !ok {
-				(*r.recordRpzPtr.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.recordRpzPtr
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RecordRpzPtrAPIRecordrpzptrReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService RecordRpzPtrAPI
-	reference  string
-}
-
-func (r RecordRpzPtrAPIRecordrpzptrReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RecordrpzptrReferenceDeleteExecute(r)
-}
-
-/*
-RecordrpzptrReferenceDelete Delete a record:rpz:ptr object
-
-Deletes a specific record:rpz:ptr object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the record:rpz:ptr object
-	@return RecordRpzPtrAPIRecordrpzptrReferenceDeleteRequest
-*/
-func (a *RecordRpzPtrAPIService) RecordrpzptrReferenceDelete(ctx context.Context, reference string) RecordRpzPtrAPIRecordrpzptrReferenceDeleteRequest {
-	return RecordRpzPtrAPIRecordrpzptrReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *RecordRpzPtrAPIService) RecordrpzptrReferenceDeleteExecute(r RecordRpzPtrAPIRecordrpzptrReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzPtrAPIService.RecordrpzptrReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/record:rpz:ptr/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type RecordRpzPtrAPIRecordrpzptrReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     RecordRpzPtrAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r RecordRpzPtrAPIRecordrpzptrReferenceGetRequest) ReturnFields(returnFields string) RecordRpzPtrAPIRecordrpzptrReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzPtrAPIRecordrpzptrReferenceGetRequest) ReturnFields2(returnFields2 string) RecordRpzPtrAPIRecordrpzptrReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r RecordRpzPtrAPIRecordrpzptrReferenceGetRequest) ReturnAsObject(returnAsObject int32) RecordRpzPtrAPIRecordrpzptrReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r RecordRpzPtrAPIRecordrpzptrReferenceGetRequest) Execute() (*GetRecordRpzPtrResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzptrReferenceGetExecute(r)
-}
-
-/*
-RecordrpzptrReferenceGet Get a specific record:rpz:ptr object
+Read Get a specific record:rpz:ptr object
 
 Returns a specific record:rpz:ptr object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:ptr object
-	@return RecordRpzPtrAPIRecordrpzptrReferenceGetRequest
+	@return RecordRpzPtrAPIReadRequest
 */
-func (a *RecordRpzPtrAPIService) RecordrpzptrReferenceGet(ctx context.Context, reference string) RecordRpzPtrAPIRecordrpzptrReferenceGetRequest {
-	return RecordRpzPtrAPIRecordrpzptrReferenceGetRequest{
+func (a *RecordRpzPtrAPIService) Read(ctx context.Context, reference string) RecordRpzPtrAPIReadRequest {
+	return RecordRpzPtrAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrReferenceGet(ctx context.Context, r
 // Execute executes the request
 //
 //	@return GetRecordRpzPtrResponse
-func (a *RecordRpzPtrAPIService) RecordrpzptrReferenceGetExecute(r RecordRpzPtrAPIRecordrpzptrReferenceGetRequest) (*GetRecordRpzPtrResponse, *http.Response, error) {
+func (a *RecordRpzPtrAPIService) ReadExecute(r RecordRpzPtrAPIReadRequest) (*GetRecordRpzPtrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrReferenceGetExecute(r RecordRpzPtrA
 		localVarReturnValue *GetRecordRpzPtrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzPtrAPIService.RecordrpzptrReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzPtrAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrReferenceGetExecute(r RecordRpzPtrA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrReferenceGetExecute(r RecordRpzPtrA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RecordRpzPtrAPIRecordrpzptrReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     RecordRpzPtrAPI
-	reference      string
-	recordRpzPtr   *RecordRpzPtr
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type RecordRpzPtrAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       RecordRpzPtrAPI
+	reference        string
+	recordRpzPtr     *RecordRpzPtr
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r RecordRpzPtrAPIRecordrpzptrReferencePutRequest) RecordRpzPtr(recordRpzPtr RecordRpzPtr) RecordRpzPtrAPIRecordrpzptrReferencePutRequest {
+func (r RecordRpzPtrAPIUpdateRequest) RecordRpzPtr(recordRpzPtr RecordRpzPtr) RecordRpzPtrAPIUpdateRequest {
 	r.recordRpzPtr = &recordRpzPtr
 	return r
 }
 
 // Enter the field names followed by comma
-func (r RecordRpzPtrAPIRecordrpzptrReferencePutRequest) ReturnFields(returnFields string) RecordRpzPtrAPIRecordrpzptrReferencePutRequest {
+func (r RecordRpzPtrAPIUpdateRequest) ReturnFields(returnFields string) RecordRpzPtrAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r RecordRpzPtrAPIRecordrpzptrReferencePutRequest) ReturnFields2(returnFields2 string) RecordRpzPtrAPIRecordrpzptrReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r RecordRpzPtrAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) RecordRpzPtrAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r RecordRpzPtrAPIRecordrpzptrReferencePutRequest) ReturnAsObject(returnAsObject int32) RecordRpzPtrAPIRecordrpzptrReferencePutRequest {
+func (r RecordRpzPtrAPIUpdateRequest) ReturnAsObject(returnAsObject int32) RecordRpzPtrAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r RecordRpzPtrAPIRecordrpzptrReferencePutRequest) Execute() (*UpdateRecordRpzPtrResponse, *http.Response, error) {
-	return r.ApiService.RecordrpzptrReferencePutExecute(r)
+func (r RecordRpzPtrAPIUpdateRequest) Execute() (*UpdateRecordRpzPtrResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-RecordrpzptrReferencePut Update a record:rpz:ptr object
+Update Update a record:rpz:ptr object
 
 Updates a specific record:rpz:ptr object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the record:rpz:ptr object
-	@return RecordRpzPtrAPIRecordrpzptrReferencePutRequest
+	@return RecordRpzPtrAPIUpdateRequest
 */
-func (a *RecordRpzPtrAPIService) RecordrpzptrReferencePut(ctx context.Context, reference string) RecordRpzPtrAPIRecordrpzptrReferencePutRequest {
-	return RecordRpzPtrAPIRecordrpzptrReferencePutRequest{
+func (a *RecordRpzPtrAPIService) Update(ctx context.Context, reference string) RecordRpzPtrAPIUpdateRequest {
+	return RecordRpzPtrAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrReferencePut(ctx context.Context, r
 // Execute executes the request
 //
 //	@return UpdateRecordRpzPtrResponse
-func (a *RecordRpzPtrAPIService) RecordrpzptrReferencePutExecute(r RecordRpzPtrAPIRecordrpzptrReferencePutRequest) (*UpdateRecordRpzPtrResponse, *http.Response, error) {
+func (a *RecordRpzPtrAPIService) UpdateExecute(r RecordRpzPtrAPIUpdateRequest) (*UpdateRecordRpzPtrResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrReferencePutExecute(r RecordRpzPtrA
 		localVarReturnValue *UpdateRecordRpzPtrResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzPtrAPIService.RecordrpzptrReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "RecordRpzPtrAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *RecordRpzPtrAPIService) RecordrpzptrReferencePutExecute(r RecordRpzPtrA
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

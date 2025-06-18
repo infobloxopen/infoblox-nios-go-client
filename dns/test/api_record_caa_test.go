@@ -23,11 +23,11 @@ func TestRecordCaaAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordCaaAPIService RecordcaaGet", func(t *testing.T) {
+	t.Run("Test RecordCaaAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordCaaAPI.RecordcaaGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordCaaAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRecordCaaAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordCaaAPIService RecordcaaPost", func(t *testing.T) {
+	t.Run("Test RecordCaaAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordCaaAPI.RecordcaaPost(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RecordCaaAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RecordCaaAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RecordCaaAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRecordCaaAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordCaaAPIService RecordcaaReferenceDelete", func(t *testing.T) {
+	t.Run("Test RecordCaaAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RecordCaaAPI.RecordcaaReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RecordCaaAPIService RecordcaaReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RecordCaaAPI.RecordcaaReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordCaaAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRecordCaaAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordCaaAPIService RecordcaaReferencePut", func(t *testing.T) {
+	t.Run("Test RecordCaaAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordCaaAPI.RecordcaaReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordCaaAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

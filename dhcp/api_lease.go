@@ -23,123 +23,212 @@ import (
 
 type LeaseAPI interface {
 	/*
-		Get Retrieve lease objects
-
-		Returns a list of lease objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return LeaseAPIGetRequest
-	*/
-	Get(ctx context.Context) LeaseAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListLeaseResponse
-	GetExecute(r LeaseAPIGetRequest) (*ListLeaseResponse, *http.Response, error)
-	/*
-		ReferenceDelete Delete a lease object
+		Delete Delete a lease object
 
 		Deletes a specific lease object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the lease object
-		@return LeaseAPIReferenceDeleteRequest
+		@return LeaseAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) LeaseAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) LeaseAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r LeaseAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r LeaseAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific lease object
+		List Retrieve lease objects
+
+		Returns a list of lease objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return LeaseAPIListRequest
+	*/
+	List(ctx context.Context) LeaseAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListLeaseResponse
+	ListExecute(r LeaseAPIListRequest) (*ListLeaseResponse, *http.Response, error)
+	/*
+		Read Get a specific lease object
 
 		Returns a specific lease object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the lease object
-		@return LeaseAPIReferenceGetRequest
+		@return LeaseAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) LeaseAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) LeaseAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetLeaseResponse
-	ReferenceGetExecute(r LeaseAPIReferenceGetRequest) (*GetLeaseResponse, *http.Response, error)
+	ReadExecute(r LeaseAPIReadRequest) (*GetLeaseResponse, *http.Response, error)
 }
 
 // LeaseAPIService LeaseAPI service
 type LeaseAPIService internal.Service
 
-type LeaseAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     LeaseAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type LeaseAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService LeaseAPI
+	reference  string
+}
+
+func (r LeaseAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a lease object
+
+Deletes a specific lease object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the lease object
+	@return LeaseAPIDeleteRequest
+*/
+func (a *LeaseAPIService) Delete(ctx context.Context, reference string) LeaseAPIDeleteRequest {
+	return LeaseAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *LeaseAPIService) DeleteExecute(r LeaseAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LeaseAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/lease/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type LeaseAPIListRequest struct {
+	ctx              context.Context
+	ApiService       LeaseAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r LeaseAPIGetRequest) ReturnFields(returnFields string) LeaseAPIGetRequest {
+func (r LeaseAPIListRequest) ReturnFields(returnFields string) LeaseAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LeaseAPIGetRequest) ReturnFields2(returnFields2 string) LeaseAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r LeaseAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) LeaseAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r LeaseAPIGetRequest) MaxResults(maxResults int32) LeaseAPIGetRequest {
+func (r LeaseAPIListRequest) MaxResults(maxResults int32) LeaseAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r LeaseAPIGetRequest) ReturnAsObject(returnAsObject int32) LeaseAPIGetRequest {
+func (r LeaseAPIListRequest) ReturnAsObject(returnAsObject int32) LeaseAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r LeaseAPIGetRequest) Paging(paging int32) LeaseAPIGetRequest {
+func (r LeaseAPIListRequest) Paging(paging int32) LeaseAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r LeaseAPIGetRequest) PageId(pageId string) LeaseAPIGetRequest {
+func (r LeaseAPIListRequest) PageId(pageId string) LeaseAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r LeaseAPIGetRequest) Filters(filters map[string]interface{}) LeaseAPIGetRequest {
+func (r LeaseAPIListRequest) Filters(filters map[string]interface{}) LeaseAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r LeaseAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) LeaseAPIGetRequest {
+func (r LeaseAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) LeaseAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r LeaseAPIGetRequest) Execute() (*ListLeaseResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r LeaseAPIListRequest) Execute() (*ListLeaseResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve lease objects
+List Retrieve lease objects
 
 Returns a list of lease objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return LeaseAPIGetRequest
+	@return LeaseAPIListRequest
 */
-func (a *LeaseAPIService) Get(ctx context.Context) LeaseAPIGetRequest {
-	return LeaseAPIGetRequest{
+func (a *LeaseAPIService) List(ctx context.Context) LeaseAPIListRequest {
+	return LeaseAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -148,7 +237,7 @@ func (a *LeaseAPIService) Get(ctx context.Context) LeaseAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListLeaseResponse
-func (a *LeaseAPIService) GetExecute(r LeaseAPIGetRequest) (*ListLeaseResponse, *http.Response, error) {
+func (a *LeaseAPIService) ListExecute(r LeaseAPIListRequest) (*ListLeaseResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -156,7 +245,7 @@ func (a *LeaseAPIService) GetExecute(r LeaseAPIGetRequest) (*ListLeaseResponse, 
 		localVarReturnValue *ListLeaseResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LeaseAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LeaseAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -170,8 +259,8 @@ func (a *LeaseAPIService) GetExecute(r LeaseAPIGetRequest) (*ListLeaseResponse, 
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -238,137 +327,48 @@ func (a *LeaseAPIService) GetExecute(r LeaseAPIGetRequest) (*ListLeaseResponse, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type LeaseAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService LeaseAPI
-	reference  string
-}
-
-func (r LeaseAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a lease object
-
-Deletes a specific lease object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the lease object
-	@return LeaseAPIReferenceDeleteRequest
-*/
-func (a *LeaseAPIService) ReferenceDelete(ctx context.Context, reference string) LeaseAPIReferenceDeleteRequest {
-	return LeaseAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *LeaseAPIService) ReferenceDeleteExecute(r LeaseAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LeaseAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/lease/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type LeaseAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     LeaseAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type LeaseAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       LeaseAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r LeaseAPIReferenceGetRequest) ReturnFields(returnFields string) LeaseAPIReferenceGetRequest {
+func (r LeaseAPIReadRequest) ReturnFields(returnFields string) LeaseAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r LeaseAPIReferenceGetRequest) ReturnFields2(returnFields2 string) LeaseAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r LeaseAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) LeaseAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r LeaseAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) LeaseAPIReferenceGetRequest {
+func (r LeaseAPIReadRequest) ReturnAsObject(returnAsObject int32) LeaseAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r LeaseAPIReferenceGetRequest) Execute() (*GetLeaseResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r LeaseAPIReadRequest) Execute() (*GetLeaseResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific lease object
+Read Get a specific lease object
 
 Returns a specific lease object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the lease object
-	@return LeaseAPIReferenceGetRequest
+	@return LeaseAPIReadRequest
 */
-func (a *LeaseAPIService) ReferenceGet(ctx context.Context, reference string) LeaseAPIReferenceGetRequest {
-	return LeaseAPIReferenceGetRequest{
+func (a *LeaseAPIService) Read(ctx context.Context, reference string) LeaseAPIReadRequest {
+	return LeaseAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -378,7 +378,7 @@ func (a *LeaseAPIService) ReferenceGet(ctx context.Context, reference string) Le
 // Execute executes the request
 //
 //	@return GetLeaseResponse
-func (a *LeaseAPIService) ReferenceGetExecute(r LeaseAPIReferenceGetRequest) (*GetLeaseResponse, *http.Response, error) {
+func (a *LeaseAPIService) ReadExecute(r LeaseAPIReadRequest) (*GetLeaseResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -386,7 +386,7 @@ func (a *LeaseAPIService) ReferenceGetExecute(r LeaseAPIReferenceGetRequest) (*G
 		localVarReturnValue *GetLeaseResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LeaseAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "LeaseAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -401,8 +401,8 @@ func (a *LeaseAPIService) ReferenceGetExecute(r LeaseAPIReferenceGetRequest) (*G
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

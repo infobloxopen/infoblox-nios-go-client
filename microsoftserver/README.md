@@ -79,33 +79,33 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MsserverAPI* | [**Get**](docs/MsserverAPI.md#get) | **Get** /msserver | Retrieve msserver objects
-*MsserverAPI* | [**Post**](docs/MsserverAPI.md#post) | **Post** /msserver | Create a msserver object
-*MsserverAPI* | [**ReferenceDelete**](docs/MsserverAPI.md#referencedelete) | **Delete** /msserver/{reference} | Delete a msserver object
-*MsserverAPI* | [**ReferenceGet**](docs/MsserverAPI.md#referenceget) | **Get** /msserver/{reference} | Get a specific msserver object
-*MsserverAPI* | [**ReferencePut**](docs/MsserverAPI.md#referenceput) | **Put** /msserver/{reference} | Update a msserver object
-*MsserverAdsitesDomainAPI* | [**MsserveradsitesdomainGet**](docs/MsserverAdsitesDomainAPI.md#msserveradsitesdomainget) | **Get** /msserver:adsites:domain | Retrieve msserver:adsites:domain objects
-*MsserverAdsitesDomainAPI* | [**MsserveradsitesdomainReferenceGet**](docs/MsserverAdsitesDomainAPI.md#msserveradsitesdomainreferenceget) | **Get** /msserver:adsites:domain/{reference} | Get a specific msserver:adsites:domain object
-*MsserverAdsitesSiteAPI* | [**MsserveradsitessiteGet**](docs/MsserverAdsitesSiteAPI.md#msserveradsitessiteget) | **Get** /msserver:adsites:site | Retrieve msserver:adsites:site objects
-*MsserverAdsitesSiteAPI* | [**MsserveradsitessitePost**](docs/MsserverAdsitesSiteAPI.md#msserveradsitessitepost) | **Post** /msserver:adsites:site | Create a msserver:adsites:site object
-*MsserverAdsitesSiteAPI* | [**MsserveradsitessiteReferenceDelete**](docs/MsserverAdsitesSiteAPI.md#msserveradsitessitereferencedelete) | **Delete** /msserver:adsites:site/{reference} | Delete a msserver:adsites:site object
-*MsserverAdsitesSiteAPI* | [**MsserveradsitessiteReferenceGet**](docs/MsserverAdsitesSiteAPI.md#msserveradsitessitereferenceget) | **Get** /msserver:adsites:site/{reference} | Get a specific msserver:adsites:site object
-*MsserverAdsitesSiteAPI* | [**MsserveradsitessiteReferencePut**](docs/MsserverAdsitesSiteAPI.md#msserveradsitessitereferenceput) | **Put** /msserver:adsites:site/{reference} | Update a msserver:adsites:site object
-*MsserverDhcpAPI* | [**MsserverdhcpGet**](docs/MsserverDhcpAPI.md#msserverdhcpget) | **Get** /msserver:dhcp | Retrieve msserver:dhcp objects
-*MsserverDhcpAPI* | [**MsserverdhcpPost**](docs/MsserverDhcpAPI.md#msserverdhcppost) | **Post** /msserver:dhcp | Create a msserver:dhcp object
-*MsserverDhcpAPI* | [**MsserverdhcpReferenceDelete**](docs/MsserverDhcpAPI.md#msserverdhcpreferencedelete) | **Delete** /msserver:dhcp/{reference} | Delete a msserver:dhcp object
-*MsserverDhcpAPI* | [**MsserverdhcpReferenceGet**](docs/MsserverDhcpAPI.md#msserverdhcpreferenceget) | **Get** /msserver:dhcp/{reference} | Get a specific msserver:dhcp object
-*MsserverDhcpAPI* | [**MsserverdhcpReferencePut**](docs/MsserverDhcpAPI.md#msserverdhcpreferenceput) | **Put** /msserver:dhcp/{reference} | Update a msserver:dhcp object
-*MsserverDnsAPI* | [**MsserverdnsGet**](docs/MsserverDnsAPI.md#msserverdnsget) | **Get** /msserver:dns | Retrieve msserver:dns objects
-*MsserverDnsAPI* | [**MsserverdnsPost**](docs/MsserverDnsAPI.md#msserverdnspost) | **Post** /msserver:dns | Create a msserver:dns object
-*MsserverDnsAPI* | [**MsserverdnsReferenceDelete**](docs/MsserverDnsAPI.md#msserverdnsreferencedelete) | **Delete** /msserver:dns/{reference} | Delete a msserver:dns object
-*MsserverDnsAPI* | [**MsserverdnsReferenceGet**](docs/MsserverDnsAPI.md#msserverdnsreferenceget) | **Get** /msserver:dns/{reference} | Get a specific msserver:dns object
-*MsserverDnsAPI* | [**MsserverdnsReferencePut**](docs/MsserverDnsAPI.md#msserverdnsreferenceput) | **Put** /msserver:dns/{reference} | Update a msserver:dns object
-*MssuperscopeAPI* | [**Get**](docs/MssuperscopeAPI.md#get) | **Get** /mssuperscope | Retrieve mssuperscope objects
-*MssuperscopeAPI* | [**Post**](docs/MssuperscopeAPI.md#post) | **Post** /mssuperscope | Create a mssuperscope object
-*MssuperscopeAPI* | [**ReferenceDelete**](docs/MssuperscopeAPI.md#referencedelete) | **Delete** /mssuperscope/{reference} | Delete a mssuperscope object
-*MssuperscopeAPI* | [**ReferenceGet**](docs/MssuperscopeAPI.md#referenceget) | **Get** /mssuperscope/{reference} | Get a specific mssuperscope object
-*MssuperscopeAPI* | [**ReferencePut**](docs/MssuperscopeAPI.md#referenceput) | **Put** /mssuperscope/{reference} | Update a mssuperscope object
+*MsserverAPI* | [**Create**](docs/MsserverAPI.md#create) | **Post** /msserver | Create a msserver object
+*MsserverAPI* | [**Delete**](docs/MsserverAPI.md#delete) | **Delete** /msserver/{reference} | Delete a msserver object
+*MsserverAPI* | [**List**](docs/MsserverAPI.md#list) | **Get** /msserver | Retrieve msserver objects
+*MsserverAPI* | [**Read**](docs/MsserverAPI.md#read) | **Get** /msserver/{reference} | Get a specific msserver object
+*MsserverAPI* | [**Update**](docs/MsserverAPI.md#update) | **Put** /msserver/{reference} | Update a msserver object
+*MsserverAdsitesDomainAPI* | [**List**](docs/MsserverAdsitesDomainAPI.md#list) | **Get** /msserver:adsites:domain | Retrieve msserver:adsites:domain objects
+*MsserverAdsitesDomainAPI* | [**Read**](docs/MsserverAdsitesDomainAPI.md#read) | **Get** /msserver:adsites:domain/{reference} | Get a specific msserver:adsites:domain object
+*MsserverAdsitesSiteAPI* | [**Create**](docs/MsserverAdsitesSiteAPI.md#create) | **Post** /msserver:adsites:site | Create a msserver:adsites:site object
+*MsserverAdsitesSiteAPI* | [**Delete**](docs/MsserverAdsitesSiteAPI.md#delete) | **Delete** /msserver:adsites:site/{reference} | Delete a msserver:adsites:site object
+*MsserverAdsitesSiteAPI* | [**List**](docs/MsserverAdsitesSiteAPI.md#list) | **Get** /msserver:adsites:site | Retrieve msserver:adsites:site objects
+*MsserverAdsitesSiteAPI* | [**Read**](docs/MsserverAdsitesSiteAPI.md#read) | **Get** /msserver:adsites:site/{reference} | Get a specific msserver:adsites:site object
+*MsserverAdsitesSiteAPI* | [**Update**](docs/MsserverAdsitesSiteAPI.md#update) | **Put** /msserver:adsites:site/{reference} | Update a msserver:adsites:site object
+*MsserverDhcpAPI* | [**Create**](docs/MsserverDhcpAPI.md#create) | **Post** /msserver:dhcp | Create a msserver:dhcp object
+*MsserverDhcpAPI* | [**Delete**](docs/MsserverDhcpAPI.md#delete) | **Delete** /msserver:dhcp/{reference} | Delete a msserver:dhcp object
+*MsserverDhcpAPI* | [**List**](docs/MsserverDhcpAPI.md#list) | **Get** /msserver:dhcp | Retrieve msserver:dhcp objects
+*MsserverDhcpAPI* | [**Read**](docs/MsserverDhcpAPI.md#read) | **Get** /msserver:dhcp/{reference} | Get a specific msserver:dhcp object
+*MsserverDhcpAPI* | [**Update**](docs/MsserverDhcpAPI.md#update) | **Put** /msserver:dhcp/{reference} | Update a msserver:dhcp object
+*MsserverDnsAPI* | [**Create**](docs/MsserverDnsAPI.md#create) | **Post** /msserver:dns | Create a msserver:dns object
+*MsserverDnsAPI* | [**Delete**](docs/MsserverDnsAPI.md#delete) | **Delete** /msserver:dns/{reference} | Delete a msserver:dns object
+*MsserverDnsAPI* | [**List**](docs/MsserverDnsAPI.md#list) | **Get** /msserver:dns | Retrieve msserver:dns objects
+*MsserverDnsAPI* | [**Read**](docs/MsserverDnsAPI.md#read) | **Get** /msserver:dns/{reference} | Get a specific msserver:dns object
+*MsserverDnsAPI* | [**Update**](docs/MsserverDnsAPI.md#update) | **Put** /msserver:dns/{reference} | Update a msserver:dns object
+*MssuperscopeAPI* | [**Create**](docs/MssuperscopeAPI.md#create) | **Post** /mssuperscope | Create a mssuperscope object
+*MssuperscopeAPI* | [**Delete**](docs/MssuperscopeAPI.md#delete) | **Delete** /mssuperscope/{reference} | Delete a mssuperscope object
+*MssuperscopeAPI* | [**List**](docs/MssuperscopeAPI.md#list) | **Get** /mssuperscope | Retrieve mssuperscope objects
+*MssuperscopeAPI* | [**Read**](docs/MssuperscopeAPI.md#read) | **Get** /mssuperscope/{reference} | Get a specific mssuperscope object
+*MssuperscopeAPI* | [**Update**](docs/MssuperscopeAPI.md#update) | **Put** /mssuperscope/{reference} | Update a mssuperscope object
 
 
 ## Documentation For Models

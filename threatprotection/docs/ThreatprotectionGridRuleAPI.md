@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ThreatprotectiongridruleGet**](ThreatprotectionGridRuleAPI.md#ThreatprotectiongridruleGet) | **Get** /threatprotection:grid:rule | Retrieve threatprotection:grid:rule objects
-[**ThreatprotectiongridrulePost**](ThreatprotectionGridRuleAPI.md#ThreatprotectiongridrulePost) | **Post** /threatprotection:grid:rule | Create a threatprotection:grid:rule object
-[**ThreatprotectiongridruleReferenceDelete**](ThreatprotectionGridRuleAPI.md#ThreatprotectiongridruleReferenceDelete) | **Delete** /threatprotection:grid:rule/{reference} | Delete a threatprotection:grid:rule object
-[**ThreatprotectiongridruleReferenceGet**](ThreatprotectionGridRuleAPI.md#ThreatprotectiongridruleReferenceGet) | **Get** /threatprotection:grid:rule/{reference} | Get a specific threatprotection:grid:rule object
-[**ThreatprotectiongridruleReferencePut**](ThreatprotectionGridRuleAPI.md#ThreatprotectiongridruleReferencePut) | **Put** /threatprotection:grid:rule/{reference} | Update a threatprotection:grid:rule object
+[**Create**](ThreatprotectionGridRuleAPI.md#Create) | **Post** /threatprotection:grid:rule | Create a threatprotection:grid:rule object
+[**Delete**](ThreatprotectionGridRuleAPI.md#Delete) | **Delete** /threatprotection:grid:rule/{reference} | Delete a threatprotection:grid:rule object
+[**List**](ThreatprotectionGridRuleAPI.md#List) | **Get** /threatprotection:grid:rule | Retrieve threatprotection:grid:rule objects
+[**Read**](ThreatprotectionGridRuleAPI.md#Read) | **Get** /threatprotection:grid:rule/{reference} | Get a specific threatprotection:grid:rule object
+[**Update**](ThreatprotectionGridRuleAPI.md#Update) | **Put** /threatprotection:grid:rule/{reference} | Update a threatprotection:grid:rule object
 
 
 
-## ThreatprotectiongridruleGet
+## Create
 
-> ListThreatprotectionGridRuleResponse ThreatprotectiongridruleGet(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateThreatprotectionGridRuleResponse Create(ctx).ThreatprotectionGridRule(threatprotectionGridRule).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a threatprotection:grid:rule object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/threatprotection"
+)
+
+func main() {
+	threatprotectionGridRule := *threatprotection.NewThreatprotectionGridRule() // ThreatprotectionGridRule | Object data to create
+
+	apiClient := threatprotection.NewAPIClient()
+	resp, r, err := apiClient.ThreatprotectionGridRuleAPI.Create(context.Background()).ThreatprotectionGridRule(threatprotectionGridRule).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionGridRuleAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateThreatprotectionGridRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionGridRuleAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ThreatprotectionGridRuleAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**threatprotectionGridRule** | [**ThreatprotectionGridRule**](ThreatprotectionGridRule.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateThreatprotectionGridRuleResponse**](CreateThreatprotectionGridRuleResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a threatprotection:grid:rule object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/threatprotection"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the threatprotection:grid:rule object
+
+	apiClient := threatprotection.NewAPIClient()
+	r, err := apiClient.ThreatprotectionGridRuleAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionGridRuleAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the threatprotection:grid:rule object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ThreatprotectionGridRuleAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListThreatprotectionGridRuleResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve threatprotection:grid:rule objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionGridRuleAPI.ThreatprotectiongridruleGet(context.Background()).Execute()
+	resp, r, err := apiClient.ThreatprotectionGridRuleAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionGridRuleAPI.ThreatprotectiongridruleGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionGridRuleAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatprotectiongridruleGet`: ListThreatprotectionGridRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionGridRuleAPI.ThreatprotectiongridruleGet`: %v\n", resp)
+	// response from `List`: ListThreatprotectionGridRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionGridRuleAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatprotectionGridRuleAPIThreatprotectiongridruleGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatprotectionGridRuleAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ThreatprotectiongridrulePost
+## Read
 
-> CreateThreatprotectionGridRuleResponse ThreatprotectiongridrulePost(ctx).ThreatprotectionGridRule(threatprotectionGridRule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a threatprotection:grid:rule object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/threatprotection"
-)
-
-func main() {
-	threatprotectionGridRule := *threatprotection.NewThreatprotectionGridRule() // ThreatprotectionGridRule | Object data to create
-
-	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionGridRuleAPI.ThreatprotectiongridrulePost(context.Background()).ThreatprotectionGridRule(threatprotectionGridRule).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionGridRuleAPI.ThreatprotectiongridrulePost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ThreatprotectiongridrulePost`: CreateThreatprotectionGridRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionGridRuleAPI.ThreatprotectiongridrulePost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ThreatprotectionGridRuleAPIThreatprotectiongridrulePostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**threatprotectionGridRule** | [**ThreatprotectionGridRule**](ThreatprotectionGridRule.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateThreatprotectionGridRuleResponse**](CreateThreatprotectionGridRuleResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ThreatprotectiongridruleReferenceDelete
-
-> ThreatprotectiongridruleReferenceDelete(ctx, reference).Execute()
-
-Delete a threatprotection:grid:rule object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/threatprotection"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the threatprotection:grid:rule object
-
-	apiClient := threatprotection.NewAPIClient()
-	r, err := apiClient.ThreatprotectionGridRuleAPI.ThreatprotectiongridruleReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionGridRuleAPI.ThreatprotectiongridruleReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the threatprotection:grid:rule object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ThreatprotectiongridruleReferenceGet
-
-> GetThreatprotectionGridRuleResponse ThreatprotectiongridruleReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetThreatprotectionGridRuleResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific threatprotection:grid:rule object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the threatprotection:grid:rule object
 
 	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionGridRuleAPI.ThreatprotectiongridruleReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ThreatprotectionGridRuleAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionGridRuleAPI.ThreatprotectiongridruleReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionGridRuleAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatprotectiongridruleReferenceGet`: GetThreatprotectionGridRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionGridRuleAPI.ThreatprotectiongridruleReferenceGet`: %v\n", resp)
+	// response from `Read`: GetThreatprotectionGridRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionGridRuleAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatprotectionGridRuleAPIThreatprotectiongridruleReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatprotectionGridRuleAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ThreatprotectiongridruleReferencePut
+## Update
 
-> UpdateThreatprotectionGridRuleResponse ThreatprotectiongridruleReferencePut(ctx, reference).ThreatprotectionGridRule(threatprotectionGridRule).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateThreatprotectionGridRuleResponse Update(ctx, reference).ThreatprotectionGridRule(threatprotectionGridRule).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a threatprotection:grid:rule object
 
@@ -318,13 +318,13 @@ func main() {
 	threatprotectionGridRule := *threatprotection.NewThreatprotectionGridRule() // ThreatprotectionGridRule | Object data to update
 
 	apiClient := threatprotection.NewAPIClient()
-	resp, r, err := apiClient.ThreatprotectionGridRuleAPI.ThreatprotectiongridruleReferencePut(context.Background(), reference).ThreatprotectionGridRule(threatprotectionGridRule).Execute()
+	resp, r, err := apiClient.ThreatprotectionGridRuleAPI.Update(context.Background(), reference).ThreatprotectionGridRule(threatprotectionGridRule).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionGridRuleAPI.ThreatprotectiongridruleReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ThreatprotectionGridRuleAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ThreatprotectiongridruleReferencePut`: UpdateThreatprotectionGridRuleResponse
-	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionGridRuleAPI.ThreatprotectiongridruleReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateThreatprotectionGridRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `ThreatprotectionGridRuleAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ThreatprotectionGridRuleAPIThreatprotectiongridruleReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ThreatprotectionGridRuleAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **threatprotectionGridRule** | [**ThreatprotectionGridRule**](ThreatprotectionGridRule.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -23,124 +23,124 @@ import (
 
 type OrderedrangesAPI interface {
 	/*
-		Get Retrieve orderedranges objects
+		List Retrieve orderedranges objects
 
 		Returns a list of orderedranges objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return OrderedrangesAPIGetRequest
+		@return OrderedrangesAPIListRequest
 	*/
-	Get(ctx context.Context) OrderedrangesAPIGetRequest
+	List(ctx context.Context) OrderedrangesAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListOrderedrangesResponse
-	GetExecute(r OrderedrangesAPIGetRequest) (*ListOrderedrangesResponse, *http.Response, error)
+	ListExecute(r OrderedrangesAPIListRequest) (*ListOrderedrangesResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific orderedranges object
+		Read Get a specific orderedranges object
 
 		Returns a specific orderedranges object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the orderedranges object
-		@return OrderedrangesAPIReferenceGetRequest
+		@return OrderedrangesAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) OrderedrangesAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) OrderedrangesAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetOrderedrangesResponse
-	ReferenceGetExecute(r OrderedrangesAPIReferenceGetRequest) (*GetOrderedrangesResponse, *http.Response, error)
+	ReadExecute(r OrderedrangesAPIReadRequest) (*GetOrderedrangesResponse, *http.Response, error)
 	/*
-		ReferencePut Update a orderedranges object
+		Update Update a orderedranges object
 
 		Updates a specific orderedranges object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the orderedranges object
-		@return OrderedrangesAPIReferencePutRequest
+		@return OrderedrangesAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) OrderedrangesAPIReferencePutRequest
+	Update(ctx context.Context, reference string) OrderedrangesAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateOrderedrangesResponse
-	ReferencePutExecute(r OrderedrangesAPIReferencePutRequest) (*UpdateOrderedrangesResponse, *http.Response, error)
+	UpdateExecute(r OrderedrangesAPIUpdateRequest) (*UpdateOrderedrangesResponse, *http.Response, error)
 }
 
 // OrderedrangesAPIService OrderedrangesAPI service
 type OrderedrangesAPIService internal.Service
 
-type OrderedrangesAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     OrderedrangesAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type OrderedrangesAPIListRequest struct {
+	ctx              context.Context
+	ApiService       OrderedrangesAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r OrderedrangesAPIGetRequest) ReturnFields(returnFields string) OrderedrangesAPIGetRequest {
+func (r OrderedrangesAPIListRequest) ReturnFields(returnFields string) OrderedrangesAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedrangesAPIGetRequest) ReturnFields2(returnFields2 string) OrderedrangesAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r OrderedrangesAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) OrderedrangesAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r OrderedrangesAPIGetRequest) MaxResults(maxResults int32) OrderedrangesAPIGetRequest {
+func (r OrderedrangesAPIListRequest) MaxResults(maxResults int32) OrderedrangesAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r OrderedrangesAPIGetRequest) ReturnAsObject(returnAsObject int32) OrderedrangesAPIGetRequest {
+func (r OrderedrangesAPIListRequest) ReturnAsObject(returnAsObject int32) OrderedrangesAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r OrderedrangesAPIGetRequest) Paging(paging int32) OrderedrangesAPIGetRequest {
+func (r OrderedrangesAPIListRequest) Paging(paging int32) OrderedrangesAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r OrderedrangesAPIGetRequest) PageId(pageId string) OrderedrangesAPIGetRequest {
+func (r OrderedrangesAPIListRequest) PageId(pageId string) OrderedrangesAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r OrderedrangesAPIGetRequest) Filters(filters map[string]interface{}) OrderedrangesAPIGetRequest {
+func (r OrderedrangesAPIListRequest) Filters(filters map[string]interface{}) OrderedrangesAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r OrderedrangesAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) OrderedrangesAPIGetRequest {
+func (r OrderedrangesAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) OrderedrangesAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r OrderedrangesAPIGetRequest) Execute() (*ListOrderedrangesResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r OrderedrangesAPIListRequest) Execute() (*ListOrderedrangesResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve orderedranges objects
+List Retrieve orderedranges objects
 
 Returns a list of orderedranges objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return OrderedrangesAPIGetRequest
+	@return OrderedrangesAPIListRequest
 */
-func (a *OrderedrangesAPIService) Get(ctx context.Context) OrderedrangesAPIGetRequest {
-	return OrderedrangesAPIGetRequest{
+func (a *OrderedrangesAPIService) List(ctx context.Context) OrderedrangesAPIListRequest {
+	return OrderedrangesAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *OrderedrangesAPIService) Get(ctx context.Context) OrderedrangesAPIGetRe
 // Execute executes the request
 //
 //	@return ListOrderedrangesResponse
-func (a *OrderedrangesAPIService) GetExecute(r OrderedrangesAPIGetRequest) (*ListOrderedrangesResponse, *http.Response, error) {
+func (a *OrderedrangesAPIService) ListExecute(r OrderedrangesAPIListRequest) (*ListOrderedrangesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *OrderedrangesAPIService) GetExecute(r OrderedrangesAPIGetRequest) (*Lis
 		localVarReturnValue *ListOrderedrangesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedrangesAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedrangesAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *OrderedrangesAPIService) GetExecute(r OrderedrangesAPIGetRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *OrderedrangesAPIService) GetExecute(r OrderedrangesAPIGetRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type OrderedrangesAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     OrderedrangesAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type OrderedrangesAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       OrderedrangesAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r OrderedrangesAPIReferenceGetRequest) ReturnFields(returnFields string) OrderedrangesAPIReferenceGetRequest {
+func (r OrderedrangesAPIReadRequest) ReturnFields(returnFields string) OrderedrangesAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedrangesAPIReferenceGetRequest) ReturnFields2(returnFields2 string) OrderedrangesAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r OrderedrangesAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) OrderedrangesAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r OrderedrangesAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) OrderedrangesAPIReferenceGetRequest {
+func (r OrderedrangesAPIReadRequest) ReturnAsObject(returnAsObject int32) OrderedrangesAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r OrderedrangesAPIReferenceGetRequest) Execute() (*GetOrderedrangesResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r OrderedrangesAPIReadRequest) Execute() (*GetOrderedrangesResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific orderedranges object
+Read Get a specific orderedranges object
 
 Returns a specific orderedranges object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the orderedranges object
-	@return OrderedrangesAPIReferenceGetRequest
+	@return OrderedrangesAPIReadRequest
 */
-func (a *OrderedrangesAPIService) ReferenceGet(ctx context.Context, reference string) OrderedrangesAPIReferenceGetRequest {
-	return OrderedrangesAPIReferenceGetRequest{
+func (a *OrderedrangesAPIService) Read(ctx context.Context, reference string) OrderedrangesAPIReadRequest {
+	return OrderedrangesAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *OrderedrangesAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetOrderedrangesResponse
-func (a *OrderedrangesAPIService) ReferenceGetExecute(r OrderedrangesAPIReferenceGetRequest) (*GetOrderedrangesResponse, *http.Response, error) {
+func (a *OrderedrangesAPIService) ReadExecute(r OrderedrangesAPIReadRequest) (*GetOrderedrangesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *OrderedrangesAPIService) ReferenceGetExecute(r OrderedrangesAPIReferenc
 		localVarReturnValue *GetOrderedrangesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedrangesAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedrangesAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *OrderedrangesAPIService) ReferenceGetExecute(r OrderedrangesAPIReferenc
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *OrderedrangesAPIService) ReferenceGetExecute(r OrderedrangesAPIReferenc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type OrderedrangesAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     OrderedrangesAPI
-	reference      string
-	orderedranges  *Orderedranges
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type OrderedrangesAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       OrderedrangesAPI
+	reference        string
+	orderedranges    *Orderedranges
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r OrderedrangesAPIReferencePutRequest) Orderedranges(orderedranges Orderedranges) OrderedrangesAPIReferencePutRequest {
+func (r OrderedrangesAPIUpdateRequest) Orderedranges(orderedranges Orderedranges) OrderedrangesAPIUpdateRequest {
 	r.orderedranges = &orderedranges
 	return r
 }
 
 // Enter the field names followed by comma
-func (r OrderedrangesAPIReferencePutRequest) ReturnFields(returnFields string) OrderedrangesAPIReferencePutRequest {
+func (r OrderedrangesAPIUpdateRequest) ReturnFields(returnFields string) OrderedrangesAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r OrderedrangesAPIReferencePutRequest) ReturnFields2(returnFields2 string) OrderedrangesAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r OrderedrangesAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) OrderedrangesAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r OrderedrangesAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) OrderedrangesAPIReferencePutRequest {
+func (r OrderedrangesAPIUpdateRequest) ReturnAsObject(returnAsObject int32) OrderedrangesAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r OrderedrangesAPIReferencePutRequest) Execute() (*UpdateOrderedrangesResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r OrderedrangesAPIUpdateRequest) Execute() (*UpdateOrderedrangesResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a orderedranges object
+Update Update a orderedranges object
 
 Updates a specific orderedranges object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the orderedranges object
-	@return OrderedrangesAPIReferencePutRequest
+	@return OrderedrangesAPIUpdateRequest
 */
-func (a *OrderedrangesAPIService) ReferencePut(ctx context.Context, reference string) OrderedrangesAPIReferencePutRequest {
-	return OrderedrangesAPIReferencePutRequest{
+func (a *OrderedrangesAPIService) Update(ctx context.Context, reference string) OrderedrangesAPIUpdateRequest {
+	return OrderedrangesAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *OrderedrangesAPIService) ReferencePut(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return UpdateOrderedrangesResponse
-func (a *OrderedrangesAPIService) ReferencePutExecute(r OrderedrangesAPIReferencePutRequest) (*UpdateOrderedrangesResponse, *http.Response, error) {
+func (a *OrderedrangesAPIService) UpdateExecute(r OrderedrangesAPIUpdateRequest) (*UpdateOrderedrangesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *OrderedrangesAPIService) ReferencePutExecute(r OrderedrangesAPIReferenc
 		localVarReturnValue *UpdateOrderedrangesResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedrangesAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "OrderedrangesAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *OrderedrangesAPIService) ReferencePutExecute(r OrderedrangesAPIReferenc
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
