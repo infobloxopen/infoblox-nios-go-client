@@ -209,6 +209,33 @@ func (a *FixedaddressAPIService) CreateExecute(r FixedaddressAPICreateRequest) (
 			}
 		}
 	}
+	if r.fixedaddress.FuncCall != nil {
+		bodyForFuncCall := r.fixedaddress
+		if bodyForFuncCall.FuncCall.AttributeName == "" {
+			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+		}
+		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
+		if funcStr == "Ipv4addr" {
+			if bodyForFuncCall.Ipv4addr.String != nil {
+				return localVarReturnValue, nil, internal.ReportError("Ipv4addr cannot be provided when function call is used")
+			} else {
+
+				var l FixedaddressIpv4addr
+				var m FixedaddressIpv4addrOneOf
+				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
+				m.Parameters = bodyForFuncCall.FuncCall.Parameters
+				m.ResultField = bodyForFuncCall.FuncCall.ResultField
+				m.Object = bodyForFuncCall.FuncCall.Object
+				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
+
+				l.FixedaddressIpv4addrOneOf = &m
+				l.String = nil
+				bodyForFuncCall.Ipv4addr = &l
+				bodyForFuncCall.FuncCall = nil
+			}
+		}
+		r.fixedaddress = bodyForFuncCall
+	}
 	// body params
 	localVarPostBody = r.fixedaddress
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -746,6 +773,12 @@ func (a *FixedaddressAPIService) UpdateExecute(r FixedaddressAPIUpdateRequest) (
 				}
 			}
 		}
+	}
+	if r.fixedaddress.FuncCall != nil {
+		bodyForFuncCall := r.fixedaddress
+		bodyForFuncCall.FuncCall = nil
+		bodyForFuncCall.Ipv4addr = nil
+		r.fixedaddress = bodyForFuncCall
 	}
 	// body params
 	localVarPostBody = r.fixedaddress

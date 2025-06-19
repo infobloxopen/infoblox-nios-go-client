@@ -72,9 +72,9 @@ type Fixedaddress struct {
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested.
-	IgnoreDhcpOptionListRequest *bool `json:"ignore_dhcp_option_list_request,omitempty"`
-	// The IPv4 Address of the fixed address.
-	Ipv4addr *string `json:"ipv4addr,omitempty"`
+	IgnoreDhcpOptionListRequest *bool                 `json:"ignore_dhcp_option_list_request,omitempty"`
+	Ipv4addr                    *FixedaddressIpv4addr `json:"ipv4addr,omitempty"`
+	FuncCall                    *FuncCall             `json:"func_call,omitempty"`
 	// This flag reflects whether the MAC address for this fixed address is invalid.
 	IsInvalidMac *bool `json:"is_invalid_mac,omitempty"`
 	// This field contains the logic filters to be applied on the this fixed address. This list corresponds to the match rules that are written to the dhcpd configuration file.
@@ -1051,9 +1051,9 @@ func (o *Fixedaddress) SetIgnoreDhcpOptionListRequest(v bool) {
 }
 
 // GetIpv4addr returns the Ipv4addr field value if set, zero value otherwise.
-func (o *Fixedaddress) GetIpv4addr() string {
+func (o *Fixedaddress) GetIpv4addr() FixedaddressIpv4addr {
 	if o == nil || IsNil(o.Ipv4addr) {
-		var ret string
+		var ret FixedaddressIpv4addr
 		return ret
 	}
 	return *o.Ipv4addr
@@ -1061,7 +1061,7 @@ func (o *Fixedaddress) GetIpv4addr() string {
 
 // GetIpv4addrOk returns a tuple with the Ipv4addr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Fixedaddress) GetIpv4addrOk() (*string, bool) {
+func (o *Fixedaddress) GetIpv4addrOk() (*FixedaddressIpv4addr, bool) {
 	if o == nil || IsNil(o.Ipv4addr) {
 		return nil, false
 	}
@@ -1077,9 +1077,41 @@ func (o *Fixedaddress) HasIpv4addr() bool {
 	return false
 }
 
-// SetIpv4addr gets a reference to the given string and assigns it to the Ipv4addr field.
-func (o *Fixedaddress) SetIpv4addr(v string) {
+// SetIpv4addr gets a reference to the given FixedaddressIpv4addr and assigns it to the Ipv4addr field.
+func (o *Fixedaddress) SetIpv4addr(v FixedaddressIpv4addr) {
 	o.Ipv4addr = &v
+}
+
+// GetFuncCall returns the FuncCall field value if set, zero value otherwise.
+func (o *Fixedaddress) GetFuncCall() FuncCall {
+	if o == nil || IsNil(o.FuncCall) {
+		var ret FuncCall
+		return ret
+	}
+	return *o.FuncCall
+}
+
+// GetFuncCallOk returns a tuple with the FuncCall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Fixedaddress) GetFuncCallOk() (*FuncCall, bool) {
+	if o == nil || IsNil(o.FuncCall) {
+		return nil, false
+	}
+	return o.FuncCall, true
+}
+
+// HasFuncCall returns a boolean if a field has been set.
+func (o *Fixedaddress) HasFuncCall() bool {
+	if o != nil && !IsNil(o.FuncCall) {
+		return true
+	}
+
+	return false
+}
+
+// SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
+func (o *Fixedaddress) SetFuncCall(v FuncCall) {
+	o.FuncCall = &v
 }
 
 // GetIsInvalidMac returns the IsInvalidMac field value if set, zero value otherwise.
@@ -2202,6 +2234,9 @@ func (o Fixedaddress) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ipv4addr) {
 		toSerialize["ipv4addr"] = o.Ipv4addr
+	}
+	if !IsNil(o.FuncCall) {
+		toSerialize["func_call"] = o.FuncCall
 	}
 	if !IsNil(o.IsInvalidMac) {
 		toSerialize["is_invalid_mac"] = o.IsInvalidMac
