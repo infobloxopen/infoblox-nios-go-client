@@ -105,6 +105,8 @@ docs/FixedaddressAPI.md
 docs/FixedaddressCliCredentials.md
 docs/FixedaddressCloudInfo.md
 docs/FixedaddressDiscoveredData.md
+docs/FixedaddressIpv4addr.md
+docs/FixedaddressIpv4addrOneOf.md
 docs/FixedaddressLogicFilterRules.md
 docs/FixedaddressMsAdUserData.md
 docs/FixedaddressMsOptions.md
@@ -117,6 +119,7 @@ docs/Fixedaddresstemplate.md
 docs/FixedaddresstemplateAPI.md
 docs/FixedaddresstemplateLogicFilterRules.md
 docs/FixedaddresstemplateOptions.md
+docs/FuncCall.md
 docs/GetDhcpStatisticsResponse.md
 docs/GetDhcpStatisticsResponseObjectAsResult.md
 docs/GetDhcpfailoverResponse.md
@@ -183,6 +186,8 @@ docs/Ipv6fixedaddressAPI.md
 docs/Ipv6fixedaddressCliCredentials.md
 docs/Ipv6fixedaddressCloudInfo.md
 docs/Ipv6fixedaddressDiscoveredData.md
+docs/Ipv6fixedaddressIpv6addr.md
+docs/Ipv6fixedaddressIpv6addrOneOf.md
 docs/Ipv6fixedaddressLogicFilterRules.md
 docs/Ipv6fixedaddressMsAdUserData.md
 docs/Ipv6fixedaddressOptions.md
@@ -450,6 +455,8 @@ model_fixedaddress.go
 model_fixedaddress_cli_credentials.go
 model_fixedaddress_cloud_info.go
 model_fixedaddress_discovered_data.go
+model_fixedaddress_ipv4addr.go
+model_fixedaddress_ipv4addr_one_of.go
 model_fixedaddress_logic_filter_rules.go
 model_fixedaddress_ms_ad_user_data.go
 model_fixedaddress_ms_options.go
@@ -461,6 +468,7 @@ model_fixedaddresscloudinfo_delegated_member.go
 model_fixedaddresstemplate.go
 model_fixedaddresstemplate_logic_filter_rules.go
 model_fixedaddresstemplate_options.go
+model_func_call.go
 model_get_dhcp_statistics_response.go
 model_get_dhcp_statistics_response_object_as_result.go
 model_get_dhcpfailover_response.go
@@ -523,6 +531,8 @@ model_ipv6fixedaddress.go
 model_ipv6fixedaddress_cli_credentials.go
 model_ipv6fixedaddress_cloud_info.go
 model_ipv6fixedaddress_discovered_data.go
+model_ipv6fixedaddress_ipv6addr.go
+model_ipv6fixedaddress_ipv6addr_one_of.go
 model_ipv6fixedaddress_logic_filter_rules.go
 model_ipv6fixedaddress_ms_ad_user_data.go
 model_ipv6fixedaddress_options.go

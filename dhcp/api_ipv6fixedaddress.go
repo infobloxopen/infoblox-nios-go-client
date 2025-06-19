@@ -209,6 +209,33 @@ func (a *Ipv6fixedaddressAPIService) CreateExecute(r Ipv6fixedaddressAPICreateRe
 			}
 		}
 	}
+	if r.ipv6fixedaddress.FuncCall != nil {
+		bodyForFuncCall := r.ipv6fixedaddress
+		if bodyForFuncCall.FuncCall.AttributeName == "" {
+			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+		}
+		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
+		if funcStr == "Ipv6addr" {
+			if bodyForFuncCall.Ipv6addr.String != nil {
+				return localVarReturnValue, nil, internal.ReportError("Ipv6addr cannot be provided when function call is used")
+			} else {
+
+				var l Ipv6fixedaddressIpv6addr
+				var m Ipv6fixedaddressIpv6addrOneOf
+				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
+				m.Parameters = bodyForFuncCall.FuncCall.Parameters
+				m.ResultField = bodyForFuncCall.FuncCall.ResultField
+				m.Object = bodyForFuncCall.FuncCall.Object
+				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
+
+				l.Ipv6fixedaddressIpv6addrOneOf = &m
+				l.String = nil
+				bodyForFuncCall.Ipv6addr = &l
+				bodyForFuncCall.FuncCall = nil
+			}
+		}
+		r.ipv6fixedaddress = bodyForFuncCall
+	}
 	// body params
 	localVarPostBody = r.ipv6fixedaddress
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -746,6 +773,12 @@ func (a *Ipv6fixedaddressAPIService) UpdateExecute(r Ipv6fixedaddressAPIUpdateRe
 				}
 			}
 		}
+	}
+	if r.ipv6fixedaddress.FuncCall != nil {
+		bodyForFuncCall := r.ipv6fixedaddress
+		bodyForFuncCall.FuncCall = nil
+		bodyForFuncCall.Ipv6addr = nil
+		r.ipv6fixedaddress = bodyForFuncCall
 	}
 	// body params
 	localVarPostBody = r.ipv6fixedaddress

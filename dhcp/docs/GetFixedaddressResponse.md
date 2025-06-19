@@ -32,7 +32,8 @@ Name | Type | Description | Notes
 **EnablePxeLeaseTime** | Pointer to **bool** | Set this to True if you want the DHCP server to use a different lease time for PXE clients. | [optional] 
 **Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **IgnoreDhcpOptionListRequest** | Pointer to **bool** | If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested. | [optional] 
-**Ipv4addr** | Pointer to **string** | The IPv4 Address of the fixed address. | [optional] 
+**Ipv4addr** | Pointer to [**FixedaddressIpv4addr**](FixedaddressIpv4addr.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
 **IsInvalidMac** | Pointer to **bool** | This flag reflects whether the MAC address for this fixed address is invalid. | [optional] [readonly] 
 **LogicFilterRules** | Pointer to [**[]FixedaddressLogicFilterRules**](FixedaddressLogicFilterRules.md) | This field contains the logic filters to be applied on the this fixed address. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **Mac** | Pointer to **string** | The MAC address value for this fixed address. | [optional] 
@@ -788,20 +789,20 @@ HasIgnoreDhcpOptionListRequest returns a boolean if a field has been set.
 
 ### GetIpv4addr
 
-`func (o *GetFixedaddressResponse) GetIpv4addr() string`
+`func (o *GetFixedaddressResponse) GetIpv4addr() FixedaddressIpv4addr`
 
 GetIpv4addr returns the Ipv4addr field if non-nil, zero value otherwise.
 
 ### GetIpv4addrOk
 
-`func (o *GetFixedaddressResponse) GetIpv4addrOk() (*string, bool)`
+`func (o *GetFixedaddressResponse) GetIpv4addrOk() (*FixedaddressIpv4addr, bool)`
 
 GetIpv4addrOk returns a tuple with the Ipv4addr field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv4addr
 
-`func (o *GetFixedaddressResponse) SetIpv4addr(v string)`
+`func (o *GetFixedaddressResponse) SetIpv4addr(v FixedaddressIpv4addr)`
 
 SetIpv4addr sets Ipv4addr field to given value.
 
@@ -810,6 +811,31 @@ SetIpv4addr sets Ipv4addr field to given value.
 `func (o *GetFixedaddressResponse) HasIpv4addr() bool`
 
 HasIpv4addr returns a boolean if a field has been set.
+
+### GetFuncCall
+
+`func (o *GetFixedaddressResponse) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *GetFixedaddressResponse) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *GetFixedaddressResponse) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *GetFixedaddressResponse) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
 
 ### GetIsInvalidMac
 

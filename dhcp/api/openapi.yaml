@@ -383,8 +383,8 @@ paths:
       summary: Create a dhcpfailover object
       tags:
       - Dhcpfailover
-      x-tf-resource: nios_dhcp_dhcpfailover
-      x-tf-datasource: nios_dhcp_dhcpfailover
+      x-tf-resource: dhcp_dhcpfailover
+      x-tf-datasource: dhcp_dhcpfailover
       x-sdk-default-ext-attrs: true
   /dhcpfailover/{reference}:
     delete:
@@ -699,8 +699,8 @@ paths:
       summary: Create a dhcpoptiondefinition object
       tags:
       - Dhcpoptiondefinition
-      x-tf-resource: nios_dhcp_dhcpoptiondefinition
-      x-tf-datasource: nios_dhcp_dhcpoptiondefinition
+      x-tf-resource: dhcp_dhcpoptiondefinition
+      x-tf-datasource: dhcp_dhcpoptiondefinition
   /dhcpoptiondefinition/{reference}:
     delete:
       description: Deletes a specific dhcpoptiondefinition object by reference
@@ -1012,8 +1012,8 @@ paths:
       summary: Create a dhcpoptionspace object
       tags:
       - Dhcpoptionspace
-      x-tf-resource: nios_dhcp_dhcpoptionspace
-      x-tf-datasource: nios_dhcp_dhcpoptionspace
+      x-tf-resource: dhcp_dhcpoptionspace
+      x-tf-datasource: dhcp_dhcpoptionspace
   /dhcpoptionspace/{reference}:
     delete:
       description: Deletes a specific dhcpoptionspace object by reference
@@ -1326,8 +1326,8 @@ paths:
       summary: Create a filterfingerprint object
       tags:
       - Filterfingerprint
-      x-tf-resource: nios_dhcp_filterfingerprint
-      x-tf-datasource: nios_dhcp_filterfingerprint
+      x-tf-resource: dhcp_filterfingerprint
+      x-tf-datasource: dhcp_filterfingerprint
       x-sdk-default-ext-attrs: true
   /filterfingerprint/{reference}:
     delete:
@@ -1641,8 +1641,8 @@ paths:
       summary: Create a filtermac object
       tags:
       - Filtermac
-      x-tf-resource: nios_dhcp_filtermac
-      x-tf-datasource: nios_dhcp_filtermac
+      x-tf-resource: dhcp_filtermac
+      x-tf-datasource: dhcp_filtermac
       x-sdk-default-ext-attrs: true
   /filtermac/{reference}:
     delete:
@@ -1956,8 +1956,8 @@ paths:
       summary: Create a filternac object
       tags:
       - Filternac
-      x-tf-resource: nios_dhcp_filternac
-      x-tf-datasource: nios_dhcp_filternac
+      x-tf-resource: dhcp_filternac
+      x-tf-datasource: dhcp_filternac
       x-sdk-default-ext-attrs: true
   /filternac/{reference}:
     delete:
@@ -2271,8 +2271,8 @@ paths:
       summary: Create a filteroption object
       tags:
       - Filteroption
-      x-tf-resource: nios_dhcp_filteroption
-      x-tf-datasource: nios_dhcp_filteroption
+      x-tf-resource: dhcp_filteroption
+      x-tf-datasource: dhcp_filteroption
       x-sdk-default-ext-attrs: true
   /filteroption/{reference}:
     delete:
@@ -2587,8 +2587,8 @@ paths:
       summary: Create a filterrelayagent object
       tags:
       - Filterrelayagent
-      x-tf-resource: nios_dhcp_filterrelayagent
-      x-tf-datasource: nios_dhcp_filterrelayagent
+      x-tf-resource: dhcp_filterrelayagent
+      x-tf-datasource: dhcp_filterrelayagent
       x-sdk-default-ext-attrs: true
   /filterrelayagent/{reference}:
     delete:
@@ -2902,8 +2902,8 @@ paths:
       summary: Create a fingerprint object
       tags:
       - Fingerprint
-      x-tf-resource: nios_dhcp_fingerprint
-      x-tf-datasource: nios_dhcp_fingerprint
+      x-tf-resource: dhcp_fingerprint
+      x-tf-datasource: dhcp_fingerprint
       x-sdk-default-ext-attrs: true
   /fingerprint/{reference}:
     delete:
@@ -3217,9 +3217,12 @@ paths:
       summary: Create a fixedaddress object
       tags:
       - Fixedaddress
-      x-tf-resource: nios_dhcp_fixedaddress
-      x-tf-datasource: nios_dhcp_fixedaddress
+      x-tf-resource: dhcp_fixedaddress
+      x-tf-datasource: dhcp_fixedaddress
       x-sdk-default-ext-attrs: true
+      x-sdk-post-function-call:
+      - Ipv4addr
+      x-tf-function-call: true
   /fixedaddress/{reference}:
     delete:
       description: Deletes a specific fixedaddress object by reference
@@ -3377,6 +3380,9 @@ paths:
       tags:
       - Fixedaddress
       x-sdk-default-ext-attrs: true
+      x-sdk-put-function-call:
+      - Ipv4addr
+      x-tf-function-call: true
   /fixedaddresstemplate:
     get:
       description: Returns a list of fixedaddresstemplate objects matching the search
@@ -3533,8 +3539,8 @@ paths:
       summary: Create a fixedaddresstemplate object
       tags:
       - Fixedaddresstemplate
-      x-tf-resource: nios_dhcp_fixedaddresstemplate
-      x-tf-datasource: nios_dhcp_fixedaddresstemplate
+      x-tf-resource: dhcp_fixedaddresstemplate
+      x-tf-datasource: dhcp_fixedaddresstemplate
       x-sdk-default-ext-attrs: true
   /fixedaddresstemplate/{reference}:
     delete:
@@ -3849,8 +3855,8 @@ paths:
       summary: Create a ipv6dhcpoptiondefinition object
       tags:
       - Ipv6dhcpoptiondefinition
-      x-tf-resource: nios_dhcp_ipv6dhcpoptiondefinition
-      x-tf-datasource: nios_dhcp_ipv6dhcpoptiondefinition
+      x-tf-resource: dhcp_ipv6dhcpoptiondefinition
+      x-tf-datasource: dhcp_ipv6dhcpoptiondefinition
   /ipv6dhcpoptiondefinition/{reference}:
     delete:
       description: Deletes a specific ipv6dhcpoptiondefinition object by reference
@@ -4163,8 +4169,8 @@ paths:
       summary: Create a ipv6dhcpoptionspace object
       tags:
       - Ipv6dhcpoptionspace
-      x-tf-resource: nios_dhcp_ipv6dhcpoptionspace
-      x-tf-datasource: nios_dhcp_ipv6dhcpoptionspace
+      x-tf-resource: dhcp_ipv6dhcpoptionspace
+      x-tf-datasource: dhcp_ipv6dhcpoptionspace
   /ipv6dhcpoptionspace/{reference}:
     delete:
       description: Deletes a specific ipv6dhcpoptionspace object by reference
@@ -4477,8 +4483,8 @@ paths:
       summary: Create a ipv6filteroption object
       tags:
       - Ipv6filteroption
-      x-tf-resource: nios_dhcp_ipv6filteroption
-      x-tf-datasource: nios_dhcp_ipv6filteroption
+      x-tf-resource: dhcp_ipv6filteroption
+      x-tf-datasource: dhcp_ipv6filteroption
       x-sdk-default-ext-attrs: true
   /ipv6filteroption/{reference}:
     delete:
@@ -4793,9 +4799,12 @@ paths:
       summary: Create a ipv6fixedaddress object
       tags:
       - Ipv6fixedaddress
-      x-tf-resource: nios_dhcp_ipv6fixedaddress
-      x-tf-datasource: nios_dhcp_ipv6fixedaddress
+      x-tf-resource: dhcp_ipv6fixedaddress
+      x-tf-datasource: dhcp_ipv6fixedaddress
       x-sdk-default-ext-attrs: true
+      x-sdk-post-function-call:
+      - Ipv6addr
+      x-tf-function-call: true
   /ipv6fixedaddress/{reference}:
     delete:
       description: Deletes a specific ipv6fixedaddress object by reference
@@ -4953,6 +4962,9 @@ paths:
       tags:
       - Ipv6fixedaddress
       x-sdk-default-ext-attrs: true
+      x-sdk-put-function-call:
+      - Ipv6addr
+      x-tf-function-call: true
   /ipv6fixedaddresstemplate:
     get:
       description: Returns a list of ipv6fixedaddresstemplate objects matching the
@@ -5109,8 +5121,8 @@ paths:
       summary: Create a ipv6fixedaddresstemplate object
       tags:
       - Ipv6fixedaddresstemplate
-      x-tf-resource: nios_dhcp_ipv6fixedaddresstemplate
-      x-tf-datasource: nios_dhcp_ipv6fixedaddresstemplate
+      x-tf-resource: dhcp_ipv6fixedaddresstemplate
+      x-tf-datasource: dhcp_ipv6fixedaddresstemplate
       x-sdk-default-ext-attrs: true
   /ipv6fixedaddresstemplate/{reference}:
     delete:
@@ -5424,8 +5436,8 @@ paths:
       summary: Create a ipv6range object
       tags:
       - Ipv6range
-      x-tf-resource: nios_dhcp_ipv6range
-      x-tf-datasource: nios_dhcp_ipv6range
+      x-tf-resource: dhcp_ipv6range
+      x-tf-datasource: dhcp_ipv6range
       x-sdk-default-ext-attrs: true
   /ipv6range/{reference}:
     delete:
@@ -5740,8 +5752,8 @@ paths:
       summary: Create a ipv6rangetemplate object
       tags:
       - Ipv6rangetemplate
-      x-tf-resource: nios_dhcp_ipv6rangetemplate
-      x-tf-datasource: nios_dhcp_ipv6rangetemplate
+      x-tf-resource: dhcp_ipv6rangetemplate
+      x-tf-datasource: dhcp_ipv6rangetemplate
   /ipv6rangetemplate/{reference}:
     delete:
       description: Deletes a specific ipv6rangetemplate object by reference
@@ -6054,8 +6066,8 @@ paths:
       summary: Create a ipv6sharednetwork object
       tags:
       - Ipv6sharednetwork
-      x-tf-resource: nios_dhcp_ipv6sharednetwork
-      x-tf-datasource: nios_dhcp_ipv6sharednetwork
+      x-tf-resource: dhcp_ipv6sharednetwork
+      x-tf-datasource: dhcp_ipv6sharednetwork
       x-sdk-default-ext-attrs: true
   /ipv6sharednetwork/{reference}:
     delete:
@@ -6557,8 +6569,8 @@ paths:
       summary: Create a macfilteraddress object
       tags:
       - Macfilteraddress
-      x-tf-resource: nios_dhcp_macfilteraddress
-      x-tf-datasource: nios_dhcp_macfilteraddress
+      x-tf-resource: dhcp_macfilteraddress
+      x-tf-datasource: dhcp_macfilteraddress
       x-sdk-default-ext-attrs: true
   /macfilteraddress/{reference}:
     delete:
@@ -6872,8 +6884,8 @@ paths:
       summary: Create a range object
       tags:
       - Range
-      x-tf-resource: nios_dhcp_range
-      x-tf-datasource: nios_dhcp_range
+      x-tf-resource: dhcp_range
+      x-tf-datasource: dhcp_range
       x-sdk-default-ext-attrs: true
   /range/{reference}:
     delete:
@@ -7187,8 +7199,8 @@ paths:
       summary: Create a rangetemplate object
       tags:
       - Rangetemplate
-      x-tf-resource: nios_dhcp_rangetemplate
-      x-tf-datasource: nios_dhcp_rangetemplate
+      x-tf-resource: dhcp_rangetemplate
+      x-tf-datasource: dhcp_rangetemplate
       x-sdk-default-ext-attrs: true
   /rangetemplate/{reference}:
     delete:
@@ -7502,8 +7514,8 @@ paths:
       summary: Create a roaminghost object
       tags:
       - Roaminghost
-      x-tf-resource: nios_dhcp_roaminghost
-      x-tf-datasource: nios_dhcp_roaminghost
+      x-tf-resource: dhcp_roaminghost
+      x-tf-datasource: dhcp_roaminghost
       x-sdk-default-ext-attrs: true
   /roaminghost/{reference}:
     delete:
@@ -7817,8 +7829,8 @@ paths:
       summary: Create a sharednetwork object
       tags:
       - Sharednetwork
-      x-tf-resource: nios_dhcp_sharednetwork
-      x-tf-datasource: nios_dhcp_sharednetwork
+      x-tf-resource: dhcp_sharednetwork
+      x-tf-datasource: dhcp_sharednetwork
       x-sdk-default-ext-attrs: true
   /sharednetwork/{reference}:
     delete:
@@ -9629,6 +9641,13 @@ components:
         always_update_dns: false
         device_type: Example device_type
         use_pxe_lease_time: false
+        func_call:
+          _result_field: _result_field
+          _object_function: _object_function
+          _object_parameters: "{}"
+          attribute_name: attribute_name
+          _object: _object
+          _parameters: "{}"
         cli_credentials:
         - credential_type: Example credential_type
           password: Example password
@@ -9769,7 +9788,7 @@ components:
           device_vendor: Example device_vendor
           v_entity_type: Example v_entity_type
         enable_pxe_lease_time: false
-        ipv4addr: Example ipv4addr
+        ipv4addr: Fixedaddress_ipv4addr
         use_nextserver: false
         ddns_hostname: Example ddns_hostname
         enable_immediate_discovery: false
@@ -9981,9 +10000,9 @@ components:
           example: false
           type: boolean
         ipv4addr:
-          description: The IPv4 Address of the fixed address.
-          example: Example ipv4addr
-          type: string
+          $ref: '#/components/schemas/Fixedaddress_ipv4addr'
+        func_call:
+          $ref: '#/components/schemas/FuncCall'
         is_invalid_mac:
           description: This flag reflects whether the MAC address for this fixed address
             is invalid.
@@ -10151,6 +10170,37 @@ components:
             \ settings."
           example: false
           type: boolean
+      type: object
+    FuncCall:
+      description: Function Call attribute
+      example:
+        _result_field: _result_field
+        _object_function: _object_function
+        _object_parameters: "{}"
+        attribute_name: attribute_name
+        _object: _object
+        _parameters: "{}"
+      properties:
+        attribute_name:
+          description: The attribute to be called.
+          type: string
+        _object_function:
+          description: The function to be called.
+          type: string
+        _parameters:
+          description: The parameters for the function.
+          type: object
+        _result_field:
+          description: The result field of the function.
+          type: string
+        _object:
+          description: The object to be called.
+          type: string
+        _object_parameters:
+          description: The parameters for the object.
+          type: object
+      required:
+      - attribute_name
       type: object
     FixedaddressCliCredentials:
       example:
@@ -11724,9 +11774,16 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         device_type: Example device_type
+        func_call:
+          _result_field: _result_field
+          _object_function: _object_function
+          _object_parameters: "{}"
+          attribute_name: attribute_name
+          _object: _object
+          _parameters: "{}"
         use_snmp_credential: false
         use_valid_lifetime: false
-        ipv6addr: Example ipv6addr
+        ipv6addr: Ipv6fixedaddress_ipv6addr
         network: Example network
         domain_name_servers:
         - domain_name_servers
@@ -12004,9 +12061,9 @@ components:
             \ values for extensible attributes, see {extattrs:values}."
           type: object
         ipv6addr:
-          description: The IPv6 Address of the DHCP IPv6 fixed address.
-          example: Example ipv6addr
-          type: string
+          $ref: '#/components/schemas/Ipv6fixedaddress_ipv6addr'
+        func_call:
+          $ref: '#/components/schemas/FuncCall'
         ipv6prefix:
           description: The IPv6 Address prefix of the DHCP IPv6 fixed address.
           example: Example ipv6prefix
@@ -20209,6 +20266,26 @@ components:
           $ref: '#/components/schemas/Fingerprint'
       title: UpdateFingerprintResponseAsObject
       type: object
+    Fixedaddress_ipv4addr_oneOf:
+      description: "fixedaddress: The IPv4 Address of the fixed address."
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+      type: object
+    Fixedaddress_ipv4addr:
+      description: The IPv4 Address of the fixed address.
+      oneOf:
+      - description: "fixedaddress: The IPv4 Address of the fixed address."
+        type: string
+      - $ref: '#/components/schemas/Fixedaddress_ipv4addr_oneOf'
     ListFixedaddressResponseObject:
       description: The response format to retrieve __Fixedaddress__ objects.
       properties:
@@ -20230,6 +20307,13 @@ components:
           always_update_dns: false
           device_type: Example device_type
           use_pxe_lease_time: false
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           cli_credentials:
           - credential_type: Example credential_type
             password: Example password
@@ -20370,7 +20454,7 @@ components:
             device_vendor: Example device_vendor
             v_entity_type: Example v_entity_type
           enable_pxe_lease_time: false
-          ipv4addr: Example ipv4addr
+          ipv4addr: Fixedaddress_ipv4addr
           use_nextserver: false
           ddns_hostname: Example ddns_hostname
           enable_immediate_discovery: false
@@ -20467,6 +20551,13 @@ components:
           always_update_dns: false
           device_type: Example device_type
           use_pxe_lease_time: false
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           cli_credentials:
           - credential_type: Example credential_type
             password: Example password
@@ -20607,7 +20698,7 @@ components:
             device_vendor: Example device_vendor
             v_entity_type: Example v_entity_type
           enable_pxe_lease_time: false
-          ipv4addr: Example ipv4addr
+          ipv4addr: Fixedaddress_ipv4addr
           use_nextserver: false
           ddns_hostname: Example ddns_hostname
           enable_immediate_discovery: false
@@ -20984,6 +21075,26 @@ components:
           $ref: '#/components/schemas/Ipv6filteroption'
       title: UpdateIpv6filteroptionResponseAsObject
       type: object
+    Ipv6fixedaddress_ipv6addr_oneOf:
+      description: "ipv6fixedaddress: The IPv6 Address of the DHCP IPv6 fixed address."
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+      type: object
+    Ipv6fixedaddress_ipv6addr:
+      description: The IPv6 Address of the DHCP IPv6 fixed address.
+      oneOf:
+      - description: "ipv6fixedaddress: The IPv6 Address of the DHCP IPv6 fixed address."
+        type: string
+      - $ref: '#/components/schemas/Ipv6fixedaddress_ipv6addr_oneOf'
     ListIpv6fixedaddressResponseObject:
       description: The response format to retrieve __Ipv6fixedaddress__ objects.
       properties:
@@ -21016,9 +21127,16 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           device_type: Example device_type
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           use_snmp_credential: false
           use_valid_lifetime: false
-          ipv6addr: Example ipv6addr
+          ipv6addr: Ipv6fixedaddress_ipv6addr
           network: Example network
           domain_name_servers:
           - domain_name_servers
@@ -21227,9 +21345,16 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           device_type: Example device_type
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           use_snmp_credential: false
           use_valid_lifetime: false
-          ipv6addr: Example ipv6addr
+          ipv6addr: Ipv6fixedaddress_ipv6addr
           network: Example network
           domain_name_servers:
           - domain_name_servers

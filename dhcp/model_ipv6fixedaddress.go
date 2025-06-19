@@ -54,9 +54,9 @@ type Ipv6fixedaddress struct {
 	// Determines if the discovery for the IPv6 fixed address should be immediately enabled.
 	EnableImmediateDiscovery *bool `json:"enable_immediate_discovery,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
-	// The IPv6 Address of the DHCP IPv6 fixed address.
-	Ipv6addr *string `json:"ipv6addr,omitempty"`
+	Extattrs *map[string]ExtAttrs      `json:"extattrs,omitempty"`
+	Ipv6addr *Ipv6fixedaddressIpv6addr `json:"ipv6addr,omitempty"`
+	FuncCall *FuncCall                 `json:"func_call,omitempty"`
 	// The IPv6 Address prefix of the DHCP IPv6 fixed address.
 	Ipv6prefix *string `json:"ipv6prefix,omitempty"`
 	// Prefix bits of the DHCP IPv6 fixed address.
@@ -734,9 +734,9 @@ func (o *Ipv6fixedaddress) SetExtattrs(v map[string]ExtAttrs) {
 }
 
 // GetIpv6addr returns the Ipv6addr field value if set, zero value otherwise.
-func (o *Ipv6fixedaddress) GetIpv6addr() string {
+func (o *Ipv6fixedaddress) GetIpv6addr() Ipv6fixedaddressIpv6addr {
 	if o == nil || IsNil(o.Ipv6addr) {
-		var ret string
+		var ret Ipv6fixedaddressIpv6addr
 		return ret
 	}
 	return *o.Ipv6addr
@@ -744,7 +744,7 @@ func (o *Ipv6fixedaddress) GetIpv6addr() string {
 
 // GetIpv6addrOk returns a tuple with the Ipv6addr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6fixedaddress) GetIpv6addrOk() (*string, bool) {
+func (o *Ipv6fixedaddress) GetIpv6addrOk() (*Ipv6fixedaddressIpv6addr, bool) {
 	if o == nil || IsNil(o.Ipv6addr) {
 		return nil, false
 	}
@@ -760,9 +760,41 @@ func (o *Ipv6fixedaddress) HasIpv6addr() bool {
 	return false
 }
 
-// SetIpv6addr gets a reference to the given string and assigns it to the Ipv6addr field.
-func (o *Ipv6fixedaddress) SetIpv6addr(v string) {
+// SetIpv6addr gets a reference to the given Ipv6fixedaddressIpv6addr and assigns it to the Ipv6addr field.
+func (o *Ipv6fixedaddress) SetIpv6addr(v Ipv6fixedaddressIpv6addr) {
 	o.Ipv6addr = &v
+}
+
+// GetFuncCall returns the FuncCall field value if set, zero value otherwise.
+func (o *Ipv6fixedaddress) GetFuncCall() FuncCall {
+	if o == nil || IsNil(o.FuncCall) {
+		var ret FuncCall
+		return ret
+	}
+	return *o.FuncCall
+}
+
+// GetFuncCallOk returns a tuple with the FuncCall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Ipv6fixedaddress) GetFuncCallOk() (*FuncCall, bool) {
+	if o == nil || IsNil(o.FuncCall) {
+		return nil, false
+	}
+	return o.FuncCall, true
+}
+
+// HasFuncCall returns a boolean if a field has been set.
+func (o *Ipv6fixedaddress) HasFuncCall() bool {
+	if o != nil && !IsNil(o.FuncCall) {
+		return true
+	}
+
+	return false
+}
+
+// SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
+func (o *Ipv6fixedaddress) SetFuncCall(v FuncCall) {
+	o.FuncCall = &v
 }
 
 // GetIpv6prefix returns the Ipv6prefix field value if set, zero value otherwise.
@@ -1666,6 +1698,9 @@ func (o Ipv6fixedaddress) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ipv6addr) {
 		toSerialize["ipv6addr"] = o.Ipv6addr
+	}
+	if !IsNil(o.FuncCall) {
+		toSerialize["func_call"] = o.FuncCall
 	}
 	if !IsNil(o.Ipv6prefix) {
 		toSerialize["ipv6prefix"] = o.Ipv6prefix
