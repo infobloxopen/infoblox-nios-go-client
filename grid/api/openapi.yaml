@@ -1941,8 +1941,8 @@ paths:
       summary: Create a grid:servicerestart:group object
       tags:
       - GridServicerestartGroup
-      x-tf-resource: nios_grid_grid_servicerestart_group
-      x-tf-datasource: nios_grid_grid_servicerestart_group
+      x-tf-resource: grid_grid_servicerestart_group
+      x-tf-datasource: grid_grid_servicerestart_group
       x-sdk-default-ext-attrs: true
   /grid:servicerestart:group/{reference}:
     delete:
@@ -4802,8 +4802,8 @@ paths:
       summary: Create a grid:servicerestart:group:order object
       tags:
       - GridServicerestartGroupOrder
-      x-tf-resource: nios_grid_grid_servicerestart_group_order
-      x-tf-datasource: nios_grid_grid_servicerestart_group_order
+      x-tf-resource: grid_grid_servicerestart_group_order
+      x-tf-datasource: grid_grid_servicerestart_group_order
   /grid:servicerestart:group:order/{reference}:
     get:
       description: Returns a specific grid:servicerestart:group:order object by reference
@@ -5408,8 +5408,8 @@ paths:
       summary: Create a natgroup object
       tags:
       - Natgroup
-      x-tf-resource: nios_grid_natgroup
-      x-tf-datasource: nios_grid_natgroup
+      x-tf-resource: grid_natgroup
+      x-tf-datasource: grid_natgroup
   /natgroup/{reference}:
     delete:
       description: Deletes a specific natgroup object by reference
@@ -5721,8 +5721,8 @@ paths:
       summary: Create a member object
       tags:
       - Member
-      x-tf-resource: nios_grid_member
-      x-tf-datasource: nios_grid_member
+      x-tf-resource: grid_member
+      x-tf-datasource: grid_member
       x-sdk-default-ext-attrs: true
   /member/{reference}:
     delete:
@@ -7812,8 +7812,8 @@ paths:
       summary: Create a memberdfp object
       tags:
       - Memberdfp
-      x-tf-resource: nios_grid_memberdfp
-      x-tf-datasource: nios_grid_memberdfp
+      x-tf-resource: grid_memberdfp
+      x-tf-datasource: grid_memberdfp
       x-sdk-default-ext-attrs: true
   /memberdfp/{reference}:
     delete:
@@ -8127,8 +8127,8 @@ paths:
       summary: Create a gmcgroup object
       tags:
       - Gmcgroup
-      x-tf-resource: nios_grid_gmcgroup
-      x-tf-datasource: nios_grid_gmcgroup
+      x-tf-resource: grid_gmcgroup
+      x-tf-datasource: grid_gmcgroup
   /gmcgroup/{reference}:
     delete:
       description: Deletes a specific gmcgroup object by reference
@@ -8893,8 +8893,8 @@ paths:
       summary: Create a upgradegroup object
       tags:
       - Upgradegroup
-      x-tf-resource: nios_grid_upgradegroup
-      x-tf-datasource: nios_grid_upgradegroup
+      x-tf-resource: grid_upgradegroup
+      x-tf-datasource: grid_upgradegroup
   /upgradegroup/{reference}:
     delete:
       description: Deletes a specific upgradegroup object by reference
@@ -9847,8 +9847,8 @@ paths:
       summary: Create a extensibleattributedef object
       tags:
       - Extensibleattributedef
-      x-tf-resource: nios_grid_extensibleattributedef
-      x-tf-datasource: nios_grid_extensibleattributedef
+      x-tf-resource: grid_extensibleattributedef
+      x-tf-datasource: grid_extensibleattributedef
   /extensibleattributedef/{reference}:
     delete:
       description: Deletes a specific extensibleattributedef object by reference

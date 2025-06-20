@@ -474,12 +474,12 @@ func (a *DtcObjectAPIService) UpdateExecute(r DtcObjectAPIUpdateRequest) (*Updat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcObject != nil {
-		if r.dtcObject.Extattrs == nil {
-			r.dtcObject.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcObject.ExtAttrs == nil {
+			r.dtcObject.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcObject.Extattrs)[k]; !ok {
-				(*r.dtcObject.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcObject.ExtAttrs)[k]; !ok {
+				(*r.dtcObject.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

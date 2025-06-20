@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **DescriptionTaskInfo** | Pointer to [**DiscoveryDeviceinterfaceDescriptionTaskInfo**](DiscoveryDeviceinterfaceDescriptionTaskInfo.md) |  | [optional] 
 **Device** | Pointer to **string** | The ref to the device to which the interface belongs. | [optional] [readonly] 
 **Duplex** | Pointer to **string** | The duplex state of the interface. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **IfaddrInfos** | Pointer to [**[]DiscoveryDeviceinterfaceIfaddrInfos**](DiscoveryDeviceinterfaceIfaddrInfos.md) | List of IFaddr information associated with the interface. | [optional] [readonly] 
 **Index** | Pointer to **int64** | The interface index number, as reported by SNMP. | [optional] [readonly] 
 **LastChange** | Pointer to **int64** | Timestamp of the last interface property change detected. | [optional] [readonly] 
@@ -671,30 +671,30 @@ SetDuplex sets Duplex field to given value.
 
 HasDuplex returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetDiscoveryDeviceinterfaceResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetDiscoveryDeviceinterfaceResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetDiscoveryDeviceinterfaceResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetDiscoveryDeviceinterfaceResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetDiscoveryDeviceinterfaceResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetDiscoveryDeviceinterfaceResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetDiscoveryDeviceinterfaceResponse) HasExtattrs() bool`
+`func (o *GetDiscoveryDeviceinterfaceResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetIfaddrInfos
 

@@ -198,12 +198,12 @@ func (a *PxgridEndpointAPIService) CreateExecute(r PxgridEndpointAPICreateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.pxgridEndpoint != nil {
-		if r.pxgridEndpoint.Extattrs == nil {
-			r.pxgridEndpoint.Extattrs = &map[string]ExtAttrs{}
+		if r.pxgridEndpoint.ExtAttrs == nil {
+			r.pxgridEndpoint.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.pxgridEndpoint.Extattrs)[k]; !ok {
-				(*r.pxgridEndpoint.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.pxgridEndpoint.ExtAttrs)[k]; !ok {
+				(*r.pxgridEndpoint.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *PxgridEndpointAPIService) UpdateExecute(r PxgridEndpointAPIUpdateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.pxgridEndpoint != nil {
-		if r.pxgridEndpoint.Extattrs == nil {
-			r.pxgridEndpoint.Extattrs = &map[string]ExtAttrs{}
+		if r.pxgridEndpoint.ExtAttrs == nil {
+			r.pxgridEndpoint.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.pxgridEndpoint.Extattrs)[k]; !ok {
-				(*r.pxgridEndpoint.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.pxgridEndpoint.ExtAttrs)[k]; !ok {
+				(*r.pxgridEndpoint.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

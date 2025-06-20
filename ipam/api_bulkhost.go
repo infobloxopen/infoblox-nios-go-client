@@ -198,12 +198,12 @@ func (a *BulkhostAPIService) CreateExecute(r BulkhostAPICreateRequest) (*CreateB
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.bulkhost != nil {
-		if r.bulkhost.Extattrs == nil {
-			r.bulkhost.Extattrs = &map[string]ExtAttrs{}
+		if r.bulkhost.ExtAttrs == nil {
+			r.bulkhost.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.bulkhost.Extattrs)[k]; !ok {
-				(*r.bulkhost.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.bulkhost.ExtAttrs)[k]; !ok {
+				(*r.bulkhost.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *BulkhostAPIService) UpdateExecute(r BulkhostAPIUpdateRequest) (*UpdateB
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.bulkhost != nil {
-		if r.bulkhost.Extattrs == nil {
-			r.bulkhost.Extattrs = &map[string]ExtAttrs{}
+		if r.bulkhost.ExtAttrs == nil {
+			r.bulkhost.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.bulkhost.Extattrs)[k]; !ok {
-				(*r.bulkhost.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.bulkhost.ExtAttrs)[k]; !ok {
+				(*r.bulkhost.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -198,12 +198,12 @@ func (a *Ipv6filteroptionAPIService) CreateExecute(r Ipv6filteroptionAPICreateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6filteroption != nil {
-		if r.ipv6filteroption.Extattrs == nil {
-			r.ipv6filteroption.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6filteroption.ExtAttrs == nil {
+			r.ipv6filteroption.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6filteroption.Extattrs)[k]; !ok {
-				(*r.ipv6filteroption.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6filteroption.ExtAttrs)[k]; !ok {
+				(*r.ipv6filteroption.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *Ipv6filteroptionAPIService) UpdateExecute(r Ipv6filteroptionAPIUpdateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6filteroption != nil {
-		if r.ipv6filteroption.Extattrs == nil {
-			r.ipv6filteroption.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6filteroption.ExtAttrs == nil {
+			r.ipv6filteroption.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6filteroption.Extattrs)[k]; !ok {
-				(*r.ipv6filteroption.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6filteroption.ExtAttrs)[k]; !ok {
+				(*r.ipv6filteroption.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

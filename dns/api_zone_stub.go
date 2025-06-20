@@ -198,12 +198,12 @@ func (a *ZoneStubAPIService) CreateExecute(r ZoneStubAPICreateRequest) (*CreateZ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneStub != nil {
-		if r.zoneStub.Extattrs == nil {
-			r.zoneStub.Extattrs = &map[string]ExtAttrs{}
+		if r.zoneStub.ExtAttrs == nil {
+			r.zoneStub.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.zoneStub.Extattrs)[k]; !ok {
-				(*r.zoneStub.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.zoneStub.ExtAttrs)[k]; !ok {
+				(*r.zoneStub.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *ZoneStubAPIService) UpdateExecute(r ZoneStubAPIUpdateRequest) (*UpdateZ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneStub != nil {
-		if r.zoneStub.Extattrs == nil {
-			r.zoneStub.Extattrs = &map[string]ExtAttrs{}
+		if r.zoneStub.ExtAttrs == nil {
+			r.zoneStub.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.zoneStub.Extattrs)[k]; !ok {
-				(*r.zoneStub.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.zoneStub.ExtAttrs)[k]; !ok {
+				(*r.zoneStub.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

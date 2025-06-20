@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **LogLevel** | Pointer to **string** | The log level for a notification REST endpoint. | [optional] 
 **Name** | Pointer to **string** | The name of a Syslog endpoint. | [optional] 
 **OutboundMemberType** | Pointer to **string** | The outbound member that will generate events. | [optional] 
@@ -61,30 +61,30 @@ SetRef sets Ref field to given value.
 
 HasRef returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *SyslogEndpoint) GetExtattrs() map[string]ExtAttrs`
+`func (o *SyslogEndpoint) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *SyslogEndpoint) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *SyslogEndpoint) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *SyslogEndpoint) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *SyslogEndpoint) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *SyslogEndpoint) HasExtattrs() bool`
+`func (o *SyslogEndpoint) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetLogLevel
 

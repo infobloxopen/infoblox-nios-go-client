@@ -198,12 +198,12 @@ func (a *FtpuserAPIService) CreateExecute(r FtpuserAPICreateRequest) (*CreateFtp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ftpuser != nil {
-		if r.ftpuser.Extattrs == nil {
-			r.ftpuser.Extattrs = &map[string]ExtAttrs{}
+		if r.ftpuser.ExtAttrs == nil {
+			r.ftpuser.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ftpuser.Extattrs)[k]; !ok {
-				(*r.ftpuser.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ftpuser.ExtAttrs)[k]; !ok {
+				(*r.ftpuser.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *FtpuserAPIService) UpdateExecute(r FtpuserAPIUpdateRequest) (*UpdateFtp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ftpuser != nil {
-		if r.ftpuser.Extattrs == nil {
-			r.ftpuser.Extattrs = &map[string]ExtAttrs{}
+		if r.ftpuser.ExtAttrs == nil {
+			r.ftpuser.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ftpuser.Extattrs)[k]; !ok {
-				(*r.ftpuser.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ftpuser.ExtAttrs)[k]; !ok {
+				(*r.ftpuser.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

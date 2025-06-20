@@ -198,12 +198,12 @@ func (a *FixedaddresstemplateAPIService) CreateExecute(r FixedaddresstemplateAPI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.fixedaddresstemplate != nil {
-		if r.fixedaddresstemplate.Extattrs == nil {
-			r.fixedaddresstemplate.Extattrs = &map[string]ExtAttrs{}
+		if r.fixedaddresstemplate.ExtAttrs == nil {
+			r.fixedaddresstemplate.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.fixedaddresstemplate.Extattrs)[k]; !ok {
-				(*r.fixedaddresstemplate.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.fixedaddresstemplate.ExtAttrs)[k]; !ok {
+				(*r.fixedaddresstemplate.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *FixedaddresstemplateAPIService) UpdateExecute(r FixedaddresstemplateAPI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.fixedaddresstemplate != nil {
-		if r.fixedaddresstemplate.Extattrs == nil {
-			r.fixedaddresstemplate.Extattrs = &map[string]ExtAttrs{}
+		if r.fixedaddresstemplate.ExtAttrs == nil {
+			r.fixedaddresstemplate.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.fixedaddresstemplate.Extattrs)[k]; !ok {
-				(*r.fixedaddresstemplate.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.fixedaddresstemplate.ExtAttrs)[k]; !ok {
+				(*r.fixedaddresstemplate.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -198,12 +198,12 @@ func (a *MssuperscopeAPIService) CreateExecute(r MssuperscopeAPICreateRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.mssuperscope != nil {
-		if r.mssuperscope.Extattrs == nil {
-			r.mssuperscope.Extattrs = &map[string]ExtAttrs{}
+		if r.mssuperscope.ExtAttrs == nil {
+			r.mssuperscope.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.mssuperscope.Extattrs)[k]; !ok {
-				(*r.mssuperscope.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.mssuperscope.ExtAttrs)[k]; !ok {
+				(*r.mssuperscope.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *MssuperscopeAPIService) UpdateExecute(r MssuperscopeAPIUpdateRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.mssuperscope != nil {
-		if r.mssuperscope.Extattrs == nil {
-			r.mssuperscope.Extattrs = &map[string]ExtAttrs{}
+		if r.mssuperscope.ExtAttrs == nil {
+			r.mssuperscope.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.mssuperscope.Extattrs)[k]; !ok {
-				(*r.mssuperscope.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.mssuperscope.ExtAttrs)[k]; !ok {
+				(*r.mssuperscope.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

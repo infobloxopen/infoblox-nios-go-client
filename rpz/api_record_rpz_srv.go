@@ -198,12 +198,12 @@ func (a *RecordRpzSrvAPIService) CreateExecute(r RecordRpzSrvAPICreateRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordRpzSrv != nil {
-		if r.recordRpzSrv.Extattrs == nil {
-			r.recordRpzSrv.Extattrs = &map[string]ExtAttrs{}
+		if r.recordRpzSrv.ExtAttrs == nil {
+			r.recordRpzSrv.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordRpzSrv.Extattrs)[k]; !ok {
-				(*r.recordRpzSrv.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordRpzSrv.ExtAttrs)[k]; !ok {
+				(*r.recordRpzSrv.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *RecordRpzSrvAPIService) UpdateExecute(r RecordRpzSrvAPIUpdateRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordRpzSrv != nil {
-		if r.recordRpzSrv.Extattrs == nil {
-			r.recordRpzSrv.Extattrs = &map[string]ExtAttrs{}
+		if r.recordRpzSrv.ExtAttrs == nil {
+			r.recordRpzSrv.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordRpzSrv.Extattrs)[k]; !ok {
-				(*r.recordRpzSrv.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordRpzSrv.ExtAttrs)[k]; !ok {
+				(*r.recordRpzSrv.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

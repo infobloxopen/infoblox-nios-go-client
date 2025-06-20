@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CircuitIdSubstringLength** | Pointer to **int64** | The circuit ID substring length. | [optional] 
 **CircuitIdSubstringOffset** | Pointer to **int64** | The circuit ID substring offset. | [optional] 
 **Comment** | Pointer to **string** | A descriptive comment of a DHCP relay agent filter object. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **IsCircuitId** | Pointer to **string** | The circuit ID matching rule of a DHCP relay agent filter object. The circuit_id value takes effect only if the value is \&quot;MATCHES_VALUE\&quot;. | [optional] 
 **IsCircuitIdSubstring** | Pointer to **bool** | Determines if the substring of circuit ID, instead of the full circuit ID, is matched. | [optional] 
 **IsRemoteId** | Pointer to **string** | The remote ID matching rule of a DHCP relay agent filter object. The remote_id value takes effect only if the value is Matches_Value. | [optional] 
@@ -164,30 +164,30 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetFilterrelayagentResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetFilterrelayagentResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetFilterrelayagentResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetFilterrelayagentResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetFilterrelayagentResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetFilterrelayagentResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetFilterrelayagentResponse) HasExtattrs() bool`
+`func (o *GetFilterrelayagentResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetIsCircuitId
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Disable** | Pointer to **bool** | The disable flag of a DNS BulkHost record. | [optional] 
 **DnsPrefix** | Pointer to **string** | The prefix, in punycode format, for the bulk host. | [optional] [readonly] 
 **EndAddr** | Pointer to **string** | The last IP address in the address range for the bulk host. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **NameTemplate** | Pointer to **string** | The bulk host name template. | [optional] 
 **NetworkView** | Pointer to **string** | The network view associated with the bulk host view. | [optional] [readonly] 
@@ -195,30 +195,30 @@ SetEndAddr sets EndAddr field to given value.
 
 HasEndAddr returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetBulkhostResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetBulkhostResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetBulkhostResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetBulkhostResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetBulkhostResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetBulkhostResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetBulkhostResponse) HasExtattrs() bool`
+`func (o *GetBulkhostResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetLastQueried
 

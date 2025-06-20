@@ -198,12 +198,12 @@ func (a *RecordRpzAaaaIpaddressAPIService) CreateExecute(r RecordRpzAaaaIpaddres
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordRpzAaaaIpaddress != nil {
-		if r.recordRpzAaaaIpaddress.Extattrs == nil {
-			r.recordRpzAaaaIpaddress.Extattrs = &map[string]ExtAttrs{}
+		if r.recordRpzAaaaIpaddress.ExtAttrs == nil {
+			r.recordRpzAaaaIpaddress.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordRpzAaaaIpaddress.Extattrs)[k]; !ok {
-				(*r.recordRpzAaaaIpaddress.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordRpzAaaaIpaddress.ExtAttrs)[k]; !ok {
+				(*r.recordRpzAaaaIpaddress.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *RecordRpzAaaaIpaddressAPIService) UpdateExecute(r RecordRpzAaaaIpaddres
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordRpzAaaaIpaddress != nil {
-		if r.recordRpzAaaaIpaddress.Extattrs == nil {
-			r.recordRpzAaaaIpaddress.Extattrs = &map[string]ExtAttrs{}
+		if r.recordRpzAaaaIpaddress.ExtAttrs == nil {
+			r.recordRpzAaaaIpaddress.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordRpzAaaaIpaddress.Extattrs)[k]; !ok {
-				(*r.recordRpzAaaaIpaddress.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordRpzAaaaIpaddress.ExtAttrs)[k]; !ok {
+				(*r.recordRpzAaaaIpaddress.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -198,12 +198,12 @@ func (a *ApprovalworkflowAPIService) CreateExecute(r ApprovalworkflowAPICreateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.approvalworkflow != nil {
-		if r.approvalworkflow.Extattrs == nil {
-			r.approvalworkflow.Extattrs = &map[string]ExtAttrs{}
+		if r.approvalworkflow.ExtAttrs == nil {
+			r.approvalworkflow.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.approvalworkflow.Extattrs)[k]; !ok {
-				(*r.approvalworkflow.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.approvalworkflow.ExtAttrs)[k]; !ok {
+				(*r.approvalworkflow.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *ApprovalworkflowAPIService) UpdateExecute(r ApprovalworkflowAPIUpdateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.approvalworkflow != nil {
-		if r.approvalworkflow.Extattrs == nil {
-			r.approvalworkflow.Extattrs = &map[string]ExtAttrs{}
+		if r.approvalworkflow.ExtAttrs == nil {
+			r.approvalworkflow.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.approvalworkflow.Extattrs)[k]; !ok {
-				(*r.approvalworkflow.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.approvalworkflow.ExtAttrs)[k]; !ok {
+				(*r.approvalworkflow.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

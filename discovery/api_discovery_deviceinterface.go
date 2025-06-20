@@ -474,12 +474,12 @@ func (a *DiscoveryDeviceinterfaceAPIService) UpdateExecute(r DiscoveryDeviceinte
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.discoveryDeviceinterface != nil {
-		if r.discoveryDeviceinterface.Extattrs == nil {
-			r.discoveryDeviceinterface.Extattrs = &map[string]ExtAttrs{}
+		if r.discoveryDeviceinterface.ExtAttrs == nil {
+			r.discoveryDeviceinterface.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.discoveryDeviceinterface.Extattrs)[k]; !ok {
-				(*r.discoveryDeviceinterface.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.discoveryDeviceinterface.ExtAttrs)[k]; !ok {
+				(*r.discoveryDeviceinterface.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

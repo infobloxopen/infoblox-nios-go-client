@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **ClientCertificateValidTo** | Pointer to **int64** | The pxgrid endpoint client certificate valid to. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The Cisco ISE endpoint descriptive comment. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether a Cisco ISE endpoint is disabled or not. When this is set to False, the Cisco ISE endpoint is enabled. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **LogLevel** | Pointer to **string** | The log level for a notification pxgrid endpoint. | [optional] 
 **Name** | Pointer to **string** | The name of the pxgrid endpoint. | [optional] 
 **NetworkView** | Pointer to **string** | The pxgrid network view name. | [optional] 
@@ -246,30 +246,30 @@ SetDisable sets Disable field to given value.
 
 HasDisable returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetPxgridEndpointResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetPxgridEndpointResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetPxgridEndpointResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetPxgridEndpointResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetPxgridEndpointResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetPxgridEndpointResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetPxgridEndpointResponse) HasExtattrs() bool`
+`func (o *GetPxgridEndpointResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetLogLevel
 

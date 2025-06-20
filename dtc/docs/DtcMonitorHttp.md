@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **ContentExtractType** | Pointer to **string** | A content extraction expected type for the extracted data. | [optional] 
 **ContentExtractValue** | Pointer to **string** | A content extraction value to compare with extracted result. | [optional] 
 **EnableSni** | Pointer to **bool** | Determines whether the Server Name Indication (SNI) for HTTPS monitor is enabled. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Interval** | Pointer to **int64** | The interval for TCP health check. | [optional] 
 **Name** | Pointer to **string** | The display name for this DTC monitor. | [optional] 
 **Port** | Pointer to **int64** | Port for TCP requests. | [optional] 
@@ -348,30 +348,30 @@ SetEnableSni sets EnableSni field to given value.
 
 HasEnableSni returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *DtcMonitorHttp) GetExtattrs() map[string]ExtAttrs`
+`func (o *DtcMonitorHttp) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *DtcMonitorHttp) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *DtcMonitorHttp) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *DtcMonitorHttp) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *DtcMonitorHttp) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *DtcMonitorHttp) HasExtattrs() bool`
+`func (o *DtcMonitorHttp) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetInterval
 

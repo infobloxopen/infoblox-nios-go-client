@@ -369,8 +369,8 @@ paths:
       summary: Create a bfdtemplate object
       tags:
       - Bfdtemplate
-      x-tf-resource: nios_misc_bfdtemplate
-      x-tf-datasource: nios_misc_bfdtemplate
+      x-tf-resource: misc_bfdtemplate
+      x-tf-datasource: misc_bfdtemplate
   /bfdtemplate/{reference}:
     delete:
       description: Deletes a specific bfdtemplate object by reference
@@ -909,8 +909,8 @@ paths:
       summary: Create a datacollectioncluster object
       tags:
       - Datacollectioncluster
-      x-tf-resource: nios_misc_datacollectioncluster
-      x-tf-datasource: nios_misc_datacollectioncluster
+      x-tf-resource: misc_datacollectioncluster
+      x-tf-datasource: misc_datacollectioncluster
   /datacollectioncluster/{reference}:
     delete:
       description: Deletes a specific datacollectioncluster object by reference
@@ -1699,8 +1699,8 @@ paths:
       summary: Create a dxl:endpoint object
       tags:
       - DxlEndpoint
-      x-tf-resource: nios_misc_dxl_endpoint
-      x-tf-datasource: nios_misc_dxl_endpoint
+      x-tf-resource: misc_dxl_endpoint
+      x-tf-datasource: misc_dxl_endpoint
       x-sdk-default-ext-attrs: true
   /dxl:endpoint/{reference}:
     delete:
@@ -2746,8 +2746,8 @@ paths:
       summary: Create a pxgrid:endpoint object
       tags:
       - PxgridEndpoint
-      x-tf-resource: nios_misc_pxgrid_endpoint
-      x-tf-datasource: nios_misc_pxgrid_endpoint
+      x-tf-resource: misc_pxgrid_endpoint
+      x-tf-datasource: misc_pxgrid_endpoint
       x-sdk-default-ext-attrs: true
   /pxgrid:endpoint/{reference}:
     delete:
@@ -3061,8 +3061,8 @@ paths:
       summary: Create a ruleset object
       tags:
       - Ruleset
-      x-tf-resource: nios_misc_ruleset
-      x-tf-datasource: nios_misc_ruleset
+      x-tf-resource: misc_ruleset
+      x-tf-datasource: misc_ruleset
   /ruleset/{reference}:
     delete:
       description: Deletes a specific ruleset object by reference
@@ -3946,8 +3946,8 @@ paths:
       summary: Create a syslog:endpoint object
       tags:
       - SyslogEndpoint
-      x-tf-resource: nios_misc_syslog_endpoint
-      x-tf-datasource: nios_misc_syslog_endpoint
+      x-tf-resource: misc_syslog_endpoint
+      x-tf-datasource: misc_syslog_endpoint
       x-sdk-default-ext-attrs: true
   /syslog:endpoint/{reference}:
     delete:
@@ -4487,8 +4487,8 @@ paths:
       summary: Create a tftpfiledir object
       tags:
       - Tftpfiledir
-      x-tf-resource: nios_misc_tftpfiledir
-      x-tf-datasource: nios_misc_tftpfiledir
+      x-tf-resource: misc_tftpfiledir
+      x-tf-datasource: misc_tftpfiledir
   /tftpfiledir/{reference}:
     delete:
       description: Deletes a specific tftpfiledir object by reference

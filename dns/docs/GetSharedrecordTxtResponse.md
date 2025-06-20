@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Comment for this shared record; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines if this shared record is disabled or not. False means that the record is enabled. | [optional] 
 **DnsName** | Pointer to **string** | The name for this shared record in punycode format. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | Name for this shared record. This value can be in unicode format. | [optional] 
 **SharedRecordGroup** | Pointer to **string** | The name of the shared record group in which the record resides. | [optional] 
 **Text** | Pointer to **string** | Text associated with the shared record. It can contain up to 255 bytes per substring and up a total of 512 bytes. To enter leading, trailing or embedded spaces in the text, add quotes (\&quot; \&quot;) around the text to preserve the spaces. | [optional] 
@@ -135,30 +135,30 @@ SetDnsName sets DnsName field to given value.
 
 HasDnsName returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetSharedrecordTxtResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetSharedrecordTxtResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetSharedrecordTxtResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetSharedrecordTxtResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetSharedrecordTxtResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetSharedrecordTxtResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetSharedrecordTxtResponse) HasExtattrs() bool`
+`func (o *GetSharedrecordTxtResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetName
 

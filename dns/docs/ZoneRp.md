@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Disable** | Pointer to **bool** | Determines whether a zone is disabled or not. When this is set to False, the zone is enabled. | [optional] 
 **DisplayDomain** | Pointer to **string** | The displayed name of the DNS zone. | [optional] [readonly] 
 **DnsSoaEmail** | Pointer to **string** | The SOA email for the zone in punycode format. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalPrimaries** | Pointer to [**[]ZoneRpExternalPrimaries**](ZoneRpExternalPrimaries.md) | The list of external primary servers. | [optional] 
 **ExternalSecondaries** | Pointer to [**[]ZoneRpExternalSecondaries**](ZoneRpExternalSecondaries.md) | The list of external secondary servers. | [optional] 
 **FireeyeRuleMapping** | Pointer to [**ZoneRpFireeyeRuleMapping**](ZoneRpFireeyeRuleMapping.md) |  | [optional] 
@@ -224,30 +224,30 @@ SetDnsSoaEmail sets DnsSoaEmail field to given value.
 
 HasDnsSoaEmail returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *ZoneRp) GetExtattrs() map[string]ExtAttrs`
+`func (o *ZoneRp) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *ZoneRp) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *ZoneRp) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *ZoneRp) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *ZoneRp) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *ZoneRp) HasExtattrs() bool`
+`func (o *ZoneRp) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetExternalPrimaries
 

@@ -270,8 +270,8 @@ paths:
       summary: Create a record:a object
       tags:
       - RecordA
-      x-tf-resource: nios_dns_record_a
-      x-tf-datasource: nios_dns_record_a
+      x-tf-resource: dns_record_a
+      x-tf-datasource: dns_record_a
       x-sdk-default-ext-attrs: true
       x-sdk-post-function-call:
       - Ipv4addr
@@ -600,8 +600,8 @@ paths:
       summary: Create a record:aaaa object
       tags:
       - RecordAaaa
-      x-tf-resource: nios_dns_record_aaaa
-      x-tf-datasource: nios_dns_record_aaaa
+      x-tf-resource: dns_record_aaaa
+      x-tf-datasource: dns_record_aaaa
       x-sdk-default-ext-attrs: true
       x-sdk-post-function-call:
       - Ipv6addr
@@ -930,8 +930,8 @@ paths:
       summary: Create a record:alias object
       tags:
       - RecordAlias
-      x-tf-resource: nios_dns_record_alias
-      x-tf-datasource: nios_dns_record_alias
+      x-tf-resource: dns_record_alias
+      x-tf-datasource: dns_record_alias
       x-sdk-default-ext-attrs: true
   /record:alias/{reference}:
     delete:
@@ -1245,8 +1245,8 @@ paths:
       summary: Create a record:cname object
       tags:
       - RecordCname
-      x-tf-resource: nios_dns_record_cname
-      x-tf-datasource: nios_dns_record_cname
+      x-tf-resource: dns_record_cname
+      x-tf-datasource: dns_record_cname
       x-sdk-default-ext-attrs: true
   /record:cname/{reference}:
     delete:
@@ -1560,8 +1560,8 @@ paths:
       summary: Create a record:mx object
       tags:
       - RecordMx
-      x-tf-resource: nios_dns_record_mx
-      x-tf-datasource: nios_dns_record_mx
+      x-tf-resource: dns_record_mx
+      x-tf-datasource: dns_record_mx
       x-sdk-default-ext-attrs: true
   /record:mx/{reference}:
     delete:
@@ -1875,8 +1875,8 @@ paths:
       summary: Create a record:txt object
       tags:
       - RecordTxt
-      x-tf-resource: nios_dns_record_txt
-      x-tf-datasource: nios_dns_record_txt
+      x-tf-resource: dns_record_txt
+      x-tf-datasource: dns_record_txt
       x-sdk-default-ext-attrs: true
   /record:txt/{reference}:
     delete:
@@ -2190,8 +2190,8 @@ paths:
       summary: Create a record:ptr object
       tags:
       - RecordPtr
-      x-tf-resource: nios_dns_record_ptr
-      x-tf-datasource: nios_dns_record_ptr
+      x-tf-resource: dns_record_ptr
+      x-tf-datasource: dns_record_ptr
       x-sdk-default-ext-attrs: true
       x-sdk-post-function-call:
       - Ipv4addr
@@ -2513,8 +2513,8 @@ paths:
       summary: Create a record:srv object
       tags:
       - RecordSrv
-      x-tf-resource: nios_dns_record_srv
-      x-tf-datasource: nios_dns_record_srv
+      x-tf-resource: dns_record_srv
+      x-tf-datasource: dns_record_srv
       x-sdk-default-ext-attrs: true
   /record:srv/{reference}:
     delete:
@@ -2828,8 +2828,8 @@ paths:
       summary: Create a record:ns object
       tags:
       - RecordNs
-      x-tf-resource: nios_dns_record_ns
-      x-tf-datasource: nios_dns_record_ns
+      x-tf-resource: dns_record_ns
+      x-tf-datasource: dns_record_ns
   /record:ns/{reference}:
     delete:
       description: Deletes a specific record:ns object by reference
@@ -3141,8 +3141,8 @@ paths:
       summary: Create a record:host object
       tags:
       - RecordHost
-      x-tf-resource: nios_dns_record_host
-      x-tf-datasource: nios_dns_record_host
+      x-tf-resource: dns_record_host
+      x-tf-datasource: dns_record_host
       x-sdk-default-ext-attrs: true
   /record:host/{reference}:
     delete:
@@ -3456,8 +3456,8 @@ paths:
       summary: Create a record:dname object
       tags:
       - RecordDname
-      x-tf-resource: nios_dns_record_dname
-      x-tf-datasource: nios_dns_record_dname
+      x-tf-resource: dns_record_dname
+      x-tf-datasource: dns_record_dname
       x-sdk-default-ext-attrs: true
   /record:dname/{reference}:
     delete:
@@ -3771,8 +3771,8 @@ paths:
       summary: Create a record:naptr object
       tags:
       - RecordNaptr
-      x-tf-resource: nios_dns_record_naptr
-      x-tf-datasource: nios_dns_record_naptr
+      x-tf-resource: dns_record_naptr
+      x-tf-datasource: dns_record_naptr
       x-sdk-default-ext-attrs: true
   /record:naptr/{reference}:
     delete:
@@ -4086,8 +4086,8 @@ paths:
       summary: Create a record:tlsa object
       tags:
       - RecordTlsa
-      x-tf-resource: nios_dns_record_tlsa
-      x-tf-datasource: nios_dns_record_tlsa
+      x-tf-resource: dns_record_tlsa
+      x-tf-datasource: dns_record_tlsa
       x-sdk-default-ext-attrs: true
   /record:tlsa/{reference}:
     delete:
@@ -4401,8 +4401,8 @@ paths:
       summary: Create a record:caa object
       tags:
       - RecordCaa
-      x-tf-resource: nios_dns_record_caa
-      x-tf-datasource: nios_dns_record_caa
+      x-tf-resource: dns_record_caa
+      x-tf-datasource: dns_record_caa
       x-sdk-default-ext-attrs: true
   /record:caa/{reference}:
     delete:
@@ -5886,8 +5886,8 @@ paths:
       summary: Create a record:unknown object
       tags:
       - RecordUnknown
-      x-tf-resource: nios_dns_record_unknown
-      x-tf-datasource: nios_dns_record_unknown
+      x-tf-resource: dns_record_unknown
+      x-tf-datasource: dns_record_unknown
       x-sdk-default-ext-attrs: true
   /record:unknown/{reference}:
     delete:
@@ -6655,8 +6655,8 @@ paths:
       summary: Create a zone_auth object
       tags:
       - ZoneAuth
-      x-tf-resource: nios_dns_zone_auth
-      x-tf-datasource: nios_dns_zone_auth
+      x-tf-resource: dns_zone_auth
+      x-tf-datasource: dns_zone_auth
       x-sdk-default-ext-attrs: true
   /zone_auth/{reference}:
     delete:
@@ -6981,8 +6981,8 @@ paths:
       summary: Create a zone_delegated object
       tags:
       - ZoneDelegated
-      x-tf-resource: nios_dns_zone_delegated
-      x-tf-datasource: nios_dns_zone_delegated
+      x-tf-resource: dns_zone_delegated
+      x-tf-datasource: dns_zone_delegated
       x-sdk-default-ext-attrs: true
   /zone_delegated/{reference}:
     delete:
@@ -7296,8 +7296,8 @@ paths:
       summary: Create a zone_forward object
       tags:
       - ZoneForward
-      x-tf-resource: nios_dns_zone_forward
-      x-tf-datasource: nios_dns_zone_forward
+      x-tf-resource: dns_zone_forward
+      x-tf-datasource: dns_zone_forward
       x-sdk-default-ext-attrs: true
   /zone_forward/{reference}:
     delete:
@@ -7611,8 +7611,8 @@ paths:
       summary: Create a zone_stub object
       tags:
       - ZoneStub
-      x-tf-resource: nios_dns_zone_stub
-      x-tf-datasource: nios_dns_zone_stub
+      x-tf-resource: dns_zone_stub
+      x-tf-datasource: dns_zone_stub
       x-sdk-default-ext-attrs: true
   /zone_stub/{reference}:
     delete:
@@ -7926,8 +7926,8 @@ paths:
       summary: Create a zone_rp object
       tags:
       - ZoneRp
-      x-tf-resource: nios_dns_zone_rp
-      x-tf-datasource: nios_dns_zone_rp
+      x-tf-resource: dns_zone_rp
+      x-tf-datasource: dns_zone_rp
       x-sdk-default-ext-attrs: true
   /zone_rp/{reference}:
     delete:
@@ -8561,8 +8561,8 @@ paths:
       summary: Create a recordnamepolicy object
       tags:
       - Recordnamepolicy
-      x-tf-resource: nios_dns_recordnamepolicy
-      x-tf-datasource: nios_dns_recordnamepolicy
+      x-tf-resource: dns_recordnamepolicy
+      x-tf-datasource: dns_recordnamepolicy
   /recordnamepolicy/{reference}:
     delete:
       description: Deletes a specific recordnamepolicy object by reference
@@ -8874,8 +8874,8 @@ paths:
       summary: Create a dns64group object
       tags:
       - Dns64group
-      x-tf-resource: nios_dns_dns64group
-      x-tf-datasource: nios_dns_dns64group
+      x-tf-resource: dns_dns64group
+      x-tf-datasource: dns_dns64group
       x-sdk-default-ext-attrs: true
   /dns64group/{reference}:
     delete:
@@ -9349,8 +9349,8 @@ paths:
       summary: Create a ddns:principalcluster object
       tags:
       - DdnsPrincipalcluster
-      x-tf-resource: nios_dns_ddns_principalcluster
-      x-tf-datasource: nios_dns_ddns_principalcluster
+      x-tf-resource: dns_ddns_principalcluster
+      x-tf-datasource: dns_ddns_principalcluster
   /ddns:principalcluster/{reference}:
     delete:
       description: Deletes a specific ddns:principalcluster object by reference
@@ -9663,8 +9663,8 @@ paths:
       summary: Create a ddns:principalcluster:group object
       tags:
       - DdnsPrincipalclusterGroup
-      x-tf-resource: nios_dns_ddns_principalcluster_group
-      x-tf-datasource: nios_dns_ddns_principalcluster_group
+      x-tf-resource: dns_ddns_principalcluster_group
+      x-tf-datasource: dns_ddns_principalcluster_group
   /ddns:principalcluster:group/{reference}:
     delete:
       description: Deletes a specific ddns:principalcluster:group object by reference
@@ -10203,8 +10203,8 @@ paths:
       summary: Create a sharedrecord:a object
       tags:
       - SharedrecordA
-      x-tf-resource: nios_dns_sharedrecord_a
-      x-tf-datasource: nios_dns_sharedrecord_a
+      x-tf-resource: dns_sharedrecord_a
+      x-tf-datasource: dns_sharedrecord_a
       x-sdk-default-ext-attrs: true
   /sharedrecord:a/{reference}:
     delete:
@@ -10519,8 +10519,8 @@ paths:
       summary: Create a sharedrecord:aaaa object
       tags:
       - SharedrecordAaaa
-      x-tf-resource: nios_dns_sharedrecord_aaaa
-      x-tf-datasource: nios_dns_sharedrecord_aaaa
+      x-tf-resource: dns_sharedrecord_aaaa
+      x-tf-datasource: dns_sharedrecord_aaaa
       x-sdk-default-ext-attrs: true
   /sharedrecord:aaaa/{reference}:
     delete:
@@ -10835,8 +10835,8 @@ paths:
       summary: Create a sharedrecord:cname object
       tags:
       - SharedrecordCname
-      x-tf-resource: nios_dns_sharedrecord_cname
-      x-tf-datasource: nios_dns_sharedrecord_cname
+      x-tf-resource: dns_sharedrecord_cname
+      x-tf-datasource: dns_sharedrecord_cname
       x-sdk-default-ext-attrs: true
   /sharedrecord:cname/{reference}:
     delete:
@@ -11150,8 +11150,8 @@ paths:
       summary: Create a sharedrecord:mx object
       tags:
       - SharedrecordMx
-      x-tf-resource: nios_dns_sharedrecord_mx
-      x-tf-datasource: nios_dns_sharedrecord_mx
+      x-tf-resource: dns_sharedrecord_mx
+      x-tf-datasource: dns_sharedrecord_mx
       x-sdk-default-ext-attrs: true
   /sharedrecord:mx/{reference}:
     delete:
@@ -11466,8 +11466,8 @@ paths:
       summary: Create a sharedrecord:srv object
       tags:
       - SharedrecordSrv
-      x-tf-resource: nios_dns_sharedrecord_srv
-      x-tf-datasource: nios_dns_sharedrecord_srv
+      x-tf-resource: dns_sharedrecord_srv
+      x-tf-datasource: dns_sharedrecord_srv
       x-sdk-default-ext-attrs: true
   /sharedrecord:srv/{reference}:
     delete:
@@ -11782,8 +11782,8 @@ paths:
       summary: Create a sharedrecord:txt object
       tags:
       - SharedrecordTxt
-      x-tf-resource: nios_dns_sharedrecord_txt
-      x-tf-datasource: nios_dns_sharedrecord_txt
+      x-tf-resource: dns_sharedrecord_txt
+      x-tf-datasource: dns_sharedrecord_txt
       x-sdk-default-ext-attrs: true
   /sharedrecord:txt/{reference}:
     delete:
@@ -12098,8 +12098,8 @@ paths:
       summary: Create a sharedrecordgroup object
       tags:
       - Sharedrecordgroup
-      x-tf-resource: nios_dns_sharedrecordgroup
-      x-tf-datasource: nios_dns_sharedrecordgroup
+      x-tf-resource: dns_sharedrecordgroup
+      x-tf-datasource: dns_sharedrecordgroup
       x-sdk-default-ext-attrs: true
   /sharedrecordgroup/{reference}:
     delete:
@@ -12640,8 +12640,8 @@ paths:
       summary: Create a nsgroup object
       tags:
       - Nsgroup
-      x-tf-resource: nios_dns_nsgroup
-      x-tf-datasource: nios_dns_nsgroup
+      x-tf-resource: dns_nsgroup
+      x-tf-datasource: dns_nsgroup
       x-sdk-default-ext-attrs: true
   /nsgroup/{reference}:
     delete:
@@ -12956,8 +12956,8 @@ paths:
       summary: Create a nsgroup:delegation object
       tags:
       - NsgroupDelegation
-      x-tf-resource: nios_dns_nsgroup_delegation
-      x-tf-datasource: nios_dns_nsgroup_delegation
+      x-tf-resource: dns_nsgroup_delegation
+      x-tf-datasource: dns_nsgroup_delegation
       x-sdk-default-ext-attrs: true
   /nsgroup:delegation/{reference}:
     delete:
@@ -13272,8 +13272,8 @@ paths:
       summary: Create a nsgroup:forwardingmember object
       tags:
       - NsgroupForwardingmember
-      x-tf-resource: nios_dns_nsgroup_forwardingmember
-      x-tf-datasource: nios_dns_nsgroup_forwardingmember
+      x-tf-resource: dns_nsgroup_forwardingmember
+      x-tf-datasource: dns_nsgroup_forwardingmember
       x-sdk-default-ext-attrs: true
   /nsgroup:forwardingmember/{reference}:
     delete:
@@ -13588,8 +13588,8 @@ paths:
       summary: Create a nsgroup:forwardstubserver object
       tags:
       - NsgroupForwardstubserver
-      x-tf-resource: nios_dns_nsgroup_forwardstubserver
-      x-tf-datasource: nios_dns_nsgroup_forwardstubserver
+      x-tf-resource: dns_nsgroup_forwardstubserver
+      x-tf-datasource: dns_nsgroup_forwardstubserver
       x-sdk-default-ext-attrs: true
   /nsgroup:forwardstubserver/{reference}:
     delete:
@@ -13904,8 +13904,8 @@ paths:
       summary: Create a nsgroup:stubmember object
       tags:
       - NsgroupStubmember
-      x-tf-resource: nios_dns_nsgroup_stubmember
-      x-tf-datasource: nios_dns_nsgroup_stubmember
+      x-tf-resource: dns_nsgroup_stubmember
+      x-tf-datasource: dns_nsgroup_stubmember
       x-sdk-default-ext-attrs: true
   /nsgroup:stubmember/{reference}:
     delete:

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Disable** | Pointer to **bool** | Determines if this shared record is disabled or not. False means that the record is enabled. | [optional] 
 **DnsName** | Pointer to **string** | The name for this shared record in punycode format. | [optional] [readonly] 
 **DnsTarget** | Pointer to **string** | The name for a shared SRV record in punycode format. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | Name for this shared record. This value can be in unicode format. | [optional] 
 **Port** | Pointer to **int64** | The port of the shared SRV record. Valid values are from 0 to 65535 (inclusive), in 32-bit unsigned integer format. | [optional] 
 **Priority** | Pointer to **int64** | The priority of the shared SRV record. Valid values are from 0 to 65535 (inclusive), in 32-bit unsigned integer format. | [optional] 
@@ -164,30 +164,30 @@ SetDnsTarget sets DnsTarget field to given value.
 
 HasDnsTarget returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetSharedrecordSrvResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetSharedrecordSrvResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetSharedrecordSrvResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetSharedrecordSrvResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetSharedrecordSrvResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetSharedrecordSrvResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetSharedrecordSrvResponse) HasExtattrs() bool`
+`func (o *GetSharedrecordSrvResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetName
 

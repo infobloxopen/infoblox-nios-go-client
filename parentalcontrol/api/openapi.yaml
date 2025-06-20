@@ -181,8 +181,8 @@ paths:
       summary: Create a parentalcontrol:avp object
       tags:
       - ParentalcontrolAvp
-      x-tf-resource: nios_parentalcontrol_parentalcontrol_avp
-      x-tf-datasource: nios_parentalcontrol_parentalcontrol_avp
+      x-tf-resource: parentalcontrol_parentalcontrol_avp
+      x-tf-datasource: parentalcontrol_parentalcontrol_avp
   /parentalcontrol:avp/{reference}:
     delete:
       description: Deletes a specific parentalcontrol:avp object by reference
@@ -495,8 +495,8 @@ paths:
       summary: Create a parentalcontrol:blockingpolicy object
       tags:
       - ParentalcontrolBlockingpolicy
-      x-tf-resource: nios_parentalcontrol_parentalcontrol_blockingpolicy
-      x-tf-datasource: nios_parentalcontrol_parentalcontrol_blockingpolicy
+      x-tf-resource: parentalcontrol_parentalcontrol_blockingpolicy
+      x-tf-datasource: parentalcontrol_parentalcontrol_blockingpolicy
   /parentalcontrol:blockingpolicy/{reference}:
     delete:
       description: Deletes a specific parentalcontrol:blockingpolicy object by reference
@@ -1036,8 +1036,8 @@ paths:
       summary: Create a parentalcontrol:subscriberrecord object
       tags:
       - ParentalcontrolSubscriberrecord
-      x-tf-resource: nios_parentalcontrol_parentalcontrol_subscriberrecord
-      x-tf-datasource: nios_parentalcontrol_parentalcontrol_subscriberrecord
+      x-tf-resource: parentalcontrol_parentalcontrol_subscriberrecord
+      x-tf-datasource: parentalcontrol_parentalcontrol_subscriberrecord
   /parentalcontrol:subscriberrecord/{reference}:
     delete:
       description: Deletes a specific parentalcontrol:subscriberrecord object by reference
@@ -1350,8 +1350,8 @@ paths:
       summary: Create a parentalcontrol:subscribersite object
       tags:
       - ParentalcontrolSubscribersite
-      x-tf-resource: nios_parentalcontrol_parentalcontrol_subscribersite
-      x-tf-datasource: nios_parentalcontrol_parentalcontrol_subscribersite
+      x-tf-resource: parentalcontrol_parentalcontrol_subscribersite
+      x-tf-datasource: parentalcontrol_parentalcontrol_subscribersite
       x-sdk-default-ext-attrs: true
   /parentalcontrol:subscribersite/{reference}:
     delete:

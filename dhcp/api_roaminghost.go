@@ -198,12 +198,12 @@ func (a *RoaminghostAPIService) CreateExecute(r RoaminghostAPICreateRequest) (*C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.roaminghost != nil {
-		if r.roaminghost.Extattrs == nil {
-			r.roaminghost.Extattrs = &map[string]ExtAttrs{}
+		if r.roaminghost.ExtAttrs == nil {
+			r.roaminghost.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.roaminghost.Extattrs)[k]; !ok {
-				(*r.roaminghost.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.roaminghost.ExtAttrs)[k]; !ok {
+				(*r.roaminghost.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *RoaminghostAPIService) UpdateExecute(r RoaminghostAPIUpdateRequest) (*U
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.roaminghost != nil {
-		if r.roaminghost.Extattrs == nil {
-			r.roaminghost.Extattrs = &map[string]ExtAttrs{}
+		if r.roaminghost.ExtAttrs == nil {
+			r.roaminghost.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.roaminghost.Extattrs)[k]; !ok {
-				(*r.roaminghost.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.roaminghost.ExtAttrs)[k]; !ok {
+				(*r.roaminghost.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

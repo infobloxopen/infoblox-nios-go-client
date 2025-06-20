@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **DiscoveredData** | Pointer to [**RecordPtrDiscoveredData**](RecordPtrDiscoveredData.md) |  | [optional] 
 **DnsName** | Pointer to **string** | The name for a DNS PTR record in punycode format. | [optional] [readonly] 
 **DnsPtrdname** | Pointer to **string** | The domain name of the DNS PTR record in punycode format. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ForbidReclamation** | Pointer to **bool** | Determines if the reclamation is allowed for the record or not. | [optional] 
 **Ipv4addr** | Pointer to [**RecordPtrIpv4addr**](RecordPtrIpv4addr.md) |  | [optional] 
 **FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
@@ -351,30 +351,30 @@ SetDnsPtrdname sets DnsPtrdname field to given value.
 
 HasDnsPtrdname returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *RecordPtr) GetExtattrs() map[string]ExtAttrs`
+`func (o *RecordPtr) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *RecordPtr) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *RecordPtr) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *RecordPtr) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *RecordPtr) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *RecordPtr) HasExtattrs() bool`
+`func (o *RecordPtr) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetForbidReclamation
 

@@ -198,12 +198,12 @@ func (a *SyslogEndpointAPIService) CreateExecute(r SyslogEndpointAPICreateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.syslogEndpoint != nil {
-		if r.syslogEndpoint.Extattrs == nil {
-			r.syslogEndpoint.Extattrs = &map[string]ExtAttrs{}
+		if r.syslogEndpoint.ExtAttrs == nil {
+			r.syslogEndpoint.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.syslogEndpoint.Extattrs)[k]; !ok {
-				(*r.syslogEndpoint.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.syslogEndpoint.ExtAttrs)[k]; !ok {
+				(*r.syslogEndpoint.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *SyslogEndpointAPIService) UpdateExecute(r SyslogEndpointAPIUpdateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.syslogEndpoint != nil {
-		if r.syslogEndpoint.Extattrs == nil {
-			r.syslogEndpoint.Extattrs = &map[string]ExtAttrs{}
+		if r.syslogEndpoint.ExtAttrs == nil {
+			r.syslogEndpoint.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.syslogEndpoint.Extattrs)[k]; !ok {
-				(*r.syslogEndpoint.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.syslogEndpoint.ExtAttrs)[k]; !ok {
+				(*r.syslogEndpoint.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

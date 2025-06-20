@@ -198,12 +198,12 @@ func (a *NamedaclAPIService) CreateExecute(r NamedaclAPICreateRequest) (*CreateN
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.namedacl != nil {
-		if r.namedacl.Extattrs == nil {
-			r.namedacl.Extattrs = &map[string]ExtAttrs{}
+		if r.namedacl.ExtAttrs == nil {
+			r.namedacl.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.namedacl.Extattrs)[k]; !ok {
-				(*r.namedacl.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.namedacl.ExtAttrs)[k]; !ok {
+				(*r.namedacl.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *NamedaclAPIService) UpdateExecute(r NamedaclAPIUpdateRequest) (*UpdateN
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.namedacl != nil {
-		if r.namedacl.Extattrs == nil {
-			r.namedacl.Extattrs = &map[string]ExtAttrs{}
+		if r.namedacl.ExtAttrs == nil {
+			r.namedacl.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.namedacl.Extattrs)[k]; !ok {
-				(*r.namedacl.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.namedacl.ExtAttrs)[k]; !ok {
+				(*r.namedacl.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

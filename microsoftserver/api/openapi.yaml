@@ -182,8 +182,8 @@ paths:
       summary: Create a msserver object
       tags:
       - Msserver
-      x-tf-resource: nios_microsoftserver_msserver
-      x-tf-datasource: nios_microsoftserver_msserver
+      x-tf-resource: microsoftserver_msserver
+      x-tf-datasource: microsoftserver_msserver
       x-sdk-default-ext-attrs: true
   /msserver/{reference}:
     delete:
@@ -658,8 +658,8 @@ paths:
       summary: Create a msserver:adsites:site object
       tags:
       - MsserverAdsitesSite
-      x-tf-resource: nios_microsoftserver_msserver_adsites_site
-      x-tf-datasource: nios_microsoftserver_msserver_adsites_site
+      x-tf-resource: microsoftserver_msserver_adsites_site
+      x-tf-datasource: microsoftserver_msserver_adsites_site
   /msserver:adsites:site/{reference}:
     delete:
       description: Deletes a specific msserver:adsites:site object by reference
@@ -971,8 +971,8 @@ paths:
       summary: Create a msserver:dhcp object
       tags:
       - MsserverDhcp
-      x-tf-resource: nios_microsoftserver_msserver_dhcp
-      x-tf-datasource: nios_microsoftserver_msserver_dhcp
+      x-tf-resource: microsoftserver_msserver_dhcp
+      x-tf-datasource: microsoftserver_msserver_dhcp
   /msserver:dhcp/{reference}:
     delete:
       description: Deletes a specific msserver:dhcp object by reference
@@ -1284,8 +1284,8 @@ paths:
       summary: Create a msserver:dns object
       tags:
       - MsserverDns
-      x-tf-resource: nios_microsoftserver_msserver_dns
-      x-tf-datasource: nios_microsoftserver_msserver_dns
+      x-tf-resource: microsoftserver_msserver_dns
+      x-tf-datasource: microsoftserver_msserver_dns
   /msserver:dns/{reference}:
     delete:
       description: Deletes a specific msserver:dns object by reference
@@ -1597,8 +1597,8 @@ paths:
       summary: Create a mssuperscope object
       tags:
       - Mssuperscope
-      x-tf-resource: nios_microsoftserver_mssuperscope
-      x-tf-datasource: nios_microsoftserver_mssuperscope
+      x-tf-resource: microsoftserver_mssuperscope
+      x-tf-datasource: microsoftserver_mssuperscope
       x-sdk-default-ext-attrs: true
   /mssuperscope/{reference}:
     delete:

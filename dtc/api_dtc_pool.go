@@ -198,12 +198,12 @@ func (a *DtcPoolAPIService) CreateExecute(r DtcPoolAPICreateRequest) (*CreateDtc
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcPool != nil {
-		if r.dtcPool.Extattrs == nil {
-			r.dtcPool.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcPool.ExtAttrs == nil {
+			r.dtcPool.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcPool.Extattrs)[k]; !ok {
-				(*r.dtcPool.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcPool.ExtAttrs)[k]; !ok {
+				(*r.dtcPool.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *DtcPoolAPIService) UpdateExecute(r DtcPoolAPIUpdateRequest) (*UpdateDtc
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcPool != nil {
-		if r.dtcPool.Extattrs == nil {
-			r.dtcPool.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcPool.ExtAttrs == nil {
+			r.dtcPool.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcPool.Extattrs)[k]; !ok {
-				(*r.dtcPool.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcPool.ExtAttrs)[k]; !ok {
+				(*r.dtcPool.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -172,8 +172,8 @@ paths:
       summary: Create a namedacl object
       tags:
       - Namedacl
-      x-tf-resource: nios_acl_namedacl
-      x-tf-datasource: nios_acl_namedacl
+      x-tf-resource: acl_namedacl
+      x-tf-datasource: acl_namedacl
       x-sdk-default-ext-attrs: true
   /namedacl/{reference}:
     delete:

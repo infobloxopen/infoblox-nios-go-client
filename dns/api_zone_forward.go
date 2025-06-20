@@ -198,12 +198,12 @@ func (a *ZoneForwardAPIService) CreateExecute(r ZoneForwardAPICreateRequest) (*C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneForward != nil {
-		if r.zoneForward.Extattrs == nil {
-			r.zoneForward.Extattrs = &map[string]ExtAttrs{}
+		if r.zoneForward.ExtAttrs == nil {
+			r.zoneForward.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.zoneForward.Extattrs)[k]; !ok {
-				(*r.zoneForward.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.zoneForward.ExtAttrs)[k]; !ok {
+				(*r.zoneForward.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *ZoneForwardAPIService) UpdateExecute(r ZoneForwardAPIUpdateRequest) (*U
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneForward != nil {
-		if r.zoneForward.Extattrs == nil {
-			r.zoneForward.Extattrs = &map[string]ExtAttrs{}
+		if r.zoneForward.ExtAttrs == nil {
+			r.zoneForward.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.zoneForward.Extattrs)[k]; !ok {
-				(*r.zoneForward.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.zoneForward.ExtAttrs)[k]; !ok {
+				(*r.zoneForward.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

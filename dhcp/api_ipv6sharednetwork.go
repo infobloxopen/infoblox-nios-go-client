@@ -198,12 +198,12 @@ func (a *Ipv6sharednetworkAPIService) CreateExecute(r Ipv6sharednetworkAPICreate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6sharednetwork != nil {
-		if r.ipv6sharednetwork.Extattrs == nil {
-			r.ipv6sharednetwork.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6sharednetwork.ExtAttrs == nil {
+			r.ipv6sharednetwork.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6sharednetwork.Extattrs)[k]; !ok {
-				(*r.ipv6sharednetwork.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6sharednetwork.ExtAttrs)[k]; !ok {
+				(*r.ipv6sharednetwork.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *Ipv6sharednetworkAPIService) UpdateExecute(r Ipv6sharednetworkAPIUpdate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6sharednetwork != nil {
-		if r.ipv6sharednetwork.Extattrs == nil {
-			r.ipv6sharednetwork.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6sharednetwork.ExtAttrs == nil {
+			r.ipv6sharednetwork.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6sharednetwork.Extattrs)[k]; !ok {
-				(*r.ipv6sharednetwork.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6sharednetwork.ExtAttrs)[k]; !ok {
+				(*r.ipv6sharednetwork.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

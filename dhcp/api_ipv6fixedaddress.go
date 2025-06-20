@@ -198,12 +198,12 @@ func (a *Ipv6fixedaddressAPIService) CreateExecute(r Ipv6fixedaddressAPICreateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6fixedaddress != nil {
-		if r.ipv6fixedaddress.Extattrs == nil {
-			r.ipv6fixedaddress.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6fixedaddress.ExtAttrs == nil {
+			r.ipv6fixedaddress.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6fixedaddress.Extattrs)[k]; !ok {
-				(*r.ipv6fixedaddress.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6fixedaddress.ExtAttrs)[k]; !ok {
+				(*r.ipv6fixedaddress.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -763,12 +763,12 @@ func (a *Ipv6fixedaddressAPIService) UpdateExecute(r Ipv6fixedaddressAPIUpdateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6fixedaddress != nil {
-		if r.ipv6fixedaddress.Extattrs == nil {
-			r.ipv6fixedaddress.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6fixedaddress.ExtAttrs == nil {
+			r.ipv6fixedaddress.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6fixedaddress.Extattrs)[k]; !ok {
-				(*r.ipv6fixedaddress.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6fixedaddress.ExtAttrs)[k]; !ok {
+				(*r.ipv6fixedaddress.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

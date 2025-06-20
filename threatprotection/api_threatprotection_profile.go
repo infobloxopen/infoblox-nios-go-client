@@ -198,12 +198,12 @@ func (a *ThreatprotectionProfileAPIService) CreateExecute(r ThreatprotectionProf
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.threatprotectionProfile != nil {
-		if r.threatprotectionProfile.Extattrs == nil {
-			r.threatprotectionProfile.Extattrs = &map[string]ExtAttrs{}
+		if r.threatprotectionProfile.ExtAttrs == nil {
+			r.threatprotectionProfile.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.threatprotectionProfile.Extattrs)[k]; !ok {
-				(*r.threatprotectionProfile.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.threatprotectionProfile.ExtAttrs)[k]; !ok {
+				(*r.threatprotectionProfile.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *ThreatprotectionProfileAPIService) UpdateExecute(r ThreatprotectionProf
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.threatprotectionProfile != nil {
-		if r.threatprotectionProfile.Extattrs == nil {
-			r.threatprotectionProfile.Extattrs = &map[string]ExtAttrs{}
+		if r.threatprotectionProfile.ExtAttrs == nil {
+			r.threatprotectionProfile.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.threatprotectionProfile.Extattrs)[k]; !ok {
-				(*r.threatprotectionProfile.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.threatprotectionProfile.ExtAttrs)[k]; !ok {
+				(*r.threatprotectionProfile.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

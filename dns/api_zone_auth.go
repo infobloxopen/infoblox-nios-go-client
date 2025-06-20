@@ -198,12 +198,12 @@ func (a *ZoneAuthAPIService) CreateExecute(r ZoneAuthAPICreateRequest) (*CreateZ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneAuth != nil {
-		if r.zoneAuth.Extattrs == nil {
-			r.zoneAuth.Extattrs = &map[string]ExtAttrs{}
+		if r.zoneAuth.ExtAttrs == nil {
+			r.zoneAuth.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.zoneAuth.Extattrs)[k]; !ok {
-				(*r.zoneAuth.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.zoneAuth.ExtAttrs)[k]; !ok {
+				(*r.zoneAuth.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -746,12 +746,12 @@ func (a *ZoneAuthAPIService) UpdateExecute(r ZoneAuthAPIUpdateRequest) (*UpdateZ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneAuth != nil {
-		if r.zoneAuth.Extattrs == nil {
-			r.zoneAuth.Extattrs = &map[string]ExtAttrs{}
+		if r.zoneAuth.ExtAttrs == nil {
+			r.zoneAuth.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.zoneAuth.Extattrs)[k]; !ok {
-				(*r.zoneAuth.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.zoneAuth.ExtAttrs)[k]; !ok {
+				(*r.zoneAuth.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

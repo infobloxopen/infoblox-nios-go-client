@@ -198,12 +198,12 @@ func (a *SuperhostAPIService) CreateExecute(r SuperhostAPICreateRequest) (*Creat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.superhost != nil {
-		if r.superhost.Extattrs == nil {
-			r.superhost.Extattrs = &map[string]ExtAttrs{}
+		if r.superhost.ExtAttrs == nil {
+			r.superhost.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.superhost.Extattrs)[k]; !ok {
-				(*r.superhost.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.superhost.ExtAttrs)[k]; !ok {
+				(*r.superhost.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *SuperhostAPIService) UpdateExecute(r SuperhostAPIUpdateRequest) (*Updat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.superhost != nil {
-		if r.superhost.Extattrs == nil {
-			r.superhost.Extattrs = &map[string]ExtAttrs{}
+		if r.superhost.ExtAttrs == nil {
+			r.superhost.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.superhost.Extattrs)[k]; !ok {
-				(*r.superhost.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.superhost.ExtAttrs)[k]; !ok {
+				(*r.superhost.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

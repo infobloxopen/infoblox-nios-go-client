@@ -474,12 +474,12 @@ func (a *MemberDhcppropertiesAPIService) UpdateExecute(r MemberDhcppropertiesAPI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.memberDhcpproperties != nil {
-		if r.memberDhcpproperties.Extattrs == nil {
-			r.memberDhcpproperties.Extattrs = &map[string]ExtAttrs{}
+		if r.memberDhcpproperties.ExtAttrs == nil {
+			r.memberDhcpproperties.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.memberDhcpproperties.Extattrs)[k]; !ok {
-				(*r.memberDhcpproperties.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.memberDhcpproperties.ExtAttrs)[k]; !ok {
+				(*r.memberDhcpproperties.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

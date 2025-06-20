@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AuthenticationTime** | Pointer to **int64** | The absolute UNIX time (in seconds) since the address was last authenticated. | [optional] 
 **Comment** | Pointer to **string** | Comment for the MAC filter address; maximum 256 characters. | [optional] 
 **ExpirationTime** | Pointer to **int64** | The absolute UNIX time (in seconds) until the address expires. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Filter** | Pointer to **string** | Name of the MAC filter to which this address belongs. | [optional] 
 **Fingerprint** | Pointer to **string** | DHCP fingerprint for the address. | [optional] [readonly] 
 **GuestCustomField1** | Pointer to **string** | Guest custom field 1. | [optional] 
@@ -146,30 +146,30 @@ SetExpirationTime sets ExpirationTime field to given value.
 
 HasExpirationTime returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetMacfilteraddressResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetMacfilteraddressResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetMacfilteraddressResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetMacfilteraddressResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetMacfilteraddressResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetMacfilteraddressResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetMacfilteraddressResponse) HasExtattrs() bool`
+`func (o *GetMacfilteraddressResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFilter
 

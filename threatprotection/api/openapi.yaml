@@ -187,8 +187,8 @@ paths:
       summary: Create a threatprotection:grid:rule object
       tags:
       - ThreatprotectionGridRule
-      x-tf-resource: nios_threatprotection_threatprotection_grid_rule
-      x-tf-datasource: nios_threatprotection_threatprotection_grid_rule
+      x-tf-resource: threatprotection_threatprotection_grid_rule
+      x-tf-datasource: threatprotection_threatprotection_grid_rule
   /threatprotection:grid:rule/{reference}:
     delete:
       description: Deletes a specific threatprotection:grid:rule object by reference
@@ -501,8 +501,8 @@ paths:
       summary: Create a threatprotection:profile object
       tags:
       - ThreatprotectionProfile
-      x-tf-resource: nios_threatprotection_threatprotection_profile
-      x-tf-datasource: nios_threatprotection_threatprotection_profile
+      x-tf-resource: threatprotection_threatprotection_profile
+      x-tf-datasource: threatprotection_threatprotection_profile
       x-sdk-default-ext-attrs: true
   /threatprotection:profile/{reference}:
     delete:

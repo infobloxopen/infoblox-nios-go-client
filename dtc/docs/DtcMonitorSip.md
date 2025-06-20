@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Ciphers** | Pointer to **string** | An optional cipher list for secure TLS/SIPS connection. | [optional] 
 **ClientCert** | Pointer to **string** | An optional client certificate, supplied in TLS and SIPS mode if present. | [optional] 
 **Comment** | Pointer to **string** | Comment for this DTC monitor; maximum 256 characters. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Interval** | Pointer to **int64** | The interval for TCP health check. | [optional] 
 **Name** | Pointer to **string** | The display name for this DTC monitor. | [optional] 
 **Port** | Pointer to **int64** | The port value for SIP requests. | [optional] 
@@ -140,30 +140,30 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *DtcMonitorSip) GetExtattrs() map[string]ExtAttrs`
+`func (o *DtcMonitorSip) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *DtcMonitorSip) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *DtcMonitorSip) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *DtcMonitorSip) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *DtcMonitorSip) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *DtcMonitorSip) HasExtattrs() bool`
+`func (o *DtcMonitorSip) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetInterval
 

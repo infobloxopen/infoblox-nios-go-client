@@ -198,12 +198,12 @@ func (a *DxlEndpointAPIService) CreateExecute(r DxlEndpointAPICreateRequest) (*C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dxlEndpoint != nil {
-		if r.dxlEndpoint.Extattrs == nil {
-			r.dxlEndpoint.Extattrs = &map[string]ExtAttrs{}
+		if r.dxlEndpoint.ExtAttrs == nil {
+			r.dxlEndpoint.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dxlEndpoint.Extattrs)[k]; !ok {
-				(*r.dxlEndpoint.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dxlEndpoint.ExtAttrs)[k]; !ok {
+				(*r.dxlEndpoint.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *DxlEndpointAPIService) UpdateExecute(r DxlEndpointAPIUpdateRequest) (*U
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dxlEndpoint != nil {
-		if r.dxlEndpoint.Extattrs == nil {
-			r.dxlEndpoint.Extattrs = &map[string]ExtAttrs{}
+		if r.dxlEndpoint.ExtAttrs == nil {
+			r.dxlEndpoint.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dxlEndpoint.Extattrs)[k]; !ok {
-				(*r.dxlEndpoint.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dxlEndpoint.ExtAttrs)[k]; !ok {
+				(*r.dxlEndpoint.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

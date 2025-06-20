@@ -198,12 +198,12 @@ func (a *NsgroupForwardstubserverAPIService) CreateExecute(r NsgroupForwardstubs
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupForwardstubserver != nil {
-		if r.nsgroupForwardstubserver.Extattrs == nil {
-			r.nsgroupForwardstubserver.Extattrs = &map[string]ExtAttrs{}
+		if r.nsgroupForwardstubserver.ExtAttrs == nil {
+			r.nsgroupForwardstubserver.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.nsgroupForwardstubserver.Extattrs)[k]; !ok {
-				(*r.nsgroupForwardstubserver.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.nsgroupForwardstubserver.ExtAttrs)[k]; !ok {
+				(*r.nsgroupForwardstubserver.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *NsgroupForwardstubserverAPIService) UpdateExecute(r NsgroupForwardstubs
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.nsgroupForwardstubserver != nil {
-		if r.nsgroupForwardstubserver.Extattrs == nil {
-			r.nsgroupForwardstubserver.Extattrs = &map[string]ExtAttrs{}
+		if r.nsgroupForwardstubserver.ExtAttrs == nil {
+			r.nsgroupForwardstubserver.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.nsgroupForwardstubserver.Extattrs)[k]; !ok {
-				(*r.nsgroupForwardstubserver.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.nsgroupForwardstubserver.ExtAttrs)[k]; !ok {
+				(*r.nsgroupForwardstubserver.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

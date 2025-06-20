@@ -198,12 +198,12 @@ func (a *SharedrecordgroupAPIService) CreateExecute(r SharedrecordgroupAPICreate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.sharedrecordgroup != nil {
-		if r.sharedrecordgroup.Extattrs == nil {
-			r.sharedrecordgroup.Extattrs = &map[string]ExtAttrs{}
+		if r.sharedrecordgroup.ExtAttrs == nil {
+			r.sharedrecordgroup.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.sharedrecordgroup.Extattrs)[k]; !ok {
-				(*r.sharedrecordgroup.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.sharedrecordgroup.ExtAttrs)[k]; !ok {
+				(*r.sharedrecordgroup.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *SharedrecordgroupAPIService) UpdateExecute(r SharedrecordgroupAPIUpdate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.sharedrecordgroup != nil {
-		if r.sharedrecordgroup.Extattrs == nil {
-			r.sharedrecordgroup.Extattrs = &map[string]ExtAttrs{}
+		if r.sharedrecordgroup.ExtAttrs == nil {
+			r.sharedrecordgroup.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.sharedrecordgroup.Extattrs)[k]; !ok {
-				(*r.sharedrecordgroup.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.sharedrecordgroup.ExtAttrs)[k]; !ok {
+				(*r.sharedrecordgroup.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

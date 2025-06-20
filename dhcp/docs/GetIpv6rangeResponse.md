@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **EndAddr** | Pointer to **string** | The IPv6 Address end address of the DHCP IPv6 range. | [optional] 
 **EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP IPv6 Range object. | [optional] [readonly] 
 **Exclude** | Pointer to [**[]Ipv6rangeExclude**](Ipv6rangeExclude.md) | These are ranges of IP addresses that the appliance does not use to assign to clients. You can use these exclusion addresses as static IP addresses. They contain the start and end addresses of the exclusion range, and optionally,information about this exclusion range. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Ipv6EndPrefix** | Pointer to **string** | The IPv6 Address end prefix of the DHCP IPv6 range. | [optional] 
 **Ipv6PrefixBits** | Pointer to **int64** | Prefix bits of the DHCP IPv6 range. | [optional] 
 **Ipv6StartPrefix** | Pointer to **string** | The IPv6 Address starting prefix of the DHCP IPv6 range. | [optional] 
@@ -413,30 +413,30 @@ SetExclude sets Exclude field to given value.
 
 HasExclude returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetIpv6rangeResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetIpv6rangeResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetIpv6rangeResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetIpv6rangeResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetIpv6rangeResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetIpv6rangeResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetIpv6rangeResponse) HasExtattrs() bool`
+`func (o *GetIpv6rangeResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetIpv6EndPrefix
 

@@ -48,7 +48,7 @@ type ParentalcontrolSubscribersite struct {
 	// Enable/disable Subscriber Secure Policy Bypass for Allowed list.
 	EnableRpzFilteringBypass *bool `json:"enable_rpz_filtering_bypass,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The start of the first Deterministic block.
 	FirstPort *int64 `json:"first_port,omitempty"`
 	// Global allow list RPZ index. Valid values are between 0 and 63.
@@ -542,36 +542,36 @@ func (o *ParentalcontrolSubscribersite) SetEnableRpzFilteringBypass(v bool) {
 	o.EnableRpzFilteringBypass = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *ParentalcontrolSubscribersite) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *ParentalcontrolSubscribersite) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ParentalcontrolSubscribersite) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *ParentalcontrolSubscribersite) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *ParentalcontrolSubscribersite) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *ParentalcontrolSubscribersite) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *ParentalcontrolSubscribersite) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *ParentalcontrolSubscribersite) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetFirstPort returns the FirstPort field value if set, zero value otherwise.
@@ -1042,8 +1042,8 @@ func (o ParentalcontrolSubscribersite) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableRpzFilteringBypass) {
 		toSerialize["enable_rpz_filtering_bypass"] = o.EnableRpzFilteringBypass
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.FirstPort) {
 		toSerialize["first_port"] = o.FirstPort

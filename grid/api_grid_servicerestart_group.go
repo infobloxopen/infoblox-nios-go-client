@@ -198,12 +198,12 @@ func (a *GridServicerestartGroupAPIService) CreateExecute(r GridServicerestartGr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.gridServicerestartGroup != nil {
-		if r.gridServicerestartGroup.Extattrs == nil {
-			r.gridServicerestartGroup.Extattrs = &map[string]ExtAttrs{}
+		if r.gridServicerestartGroup.ExtAttrs == nil {
+			r.gridServicerestartGroup.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.gridServicerestartGroup.Extattrs)[k]; !ok {
-				(*r.gridServicerestartGroup.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.gridServicerestartGroup.ExtAttrs)[k]; !ok {
+				(*r.gridServicerestartGroup.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *GridServicerestartGroupAPIService) UpdateExecute(r GridServicerestartGr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.gridServicerestartGroup != nil {
-		if r.gridServicerestartGroup.Extattrs == nil {
-			r.gridServicerestartGroup.Extattrs = &map[string]ExtAttrs{}
+		if r.gridServicerestartGroup.ExtAttrs == nil {
+			r.gridServicerestartGroup.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.gridServicerestartGroup.Extattrs)[k]; !ok {
-				(*r.gridServicerestartGroup.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.gridServicerestartGroup.ExtAttrs)[k]; !ok {
+				(*r.gridServicerestartGroup.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

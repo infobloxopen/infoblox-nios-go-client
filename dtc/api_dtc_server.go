@@ -198,12 +198,12 @@ func (a *DtcServerAPIService) CreateExecute(r DtcServerAPICreateRequest) (*Creat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcServer != nil {
-		if r.dtcServer.Extattrs == nil {
-			r.dtcServer.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcServer.ExtAttrs == nil {
+			r.dtcServer.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcServer.Extattrs)[k]; !ok {
-				(*r.dtcServer.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcServer.ExtAttrs)[k]; !ok {
+				(*r.dtcServer.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *DtcServerAPIService) UpdateExecute(r DtcServerAPIUpdateRequest) (*Updat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcServer != nil {
-		if r.dtcServer.Extattrs == nil {
-			r.dtcServer.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcServer.ExtAttrs == nil {
+			r.dtcServer.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcServer.Extattrs)[k]; !ok {
-				(*r.dtcServer.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcServer.ExtAttrs)[k]; !ok {
+				(*r.dtcServer.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

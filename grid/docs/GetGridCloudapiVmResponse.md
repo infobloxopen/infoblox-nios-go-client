@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CloudInfo** | Pointer to [**GridCloudapiVmCloudInfo**](GridCloudapiVmCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the vm object; maximum 1024 characters. | [optional] 
 **ElasticIpAddress** | Pointer to **string** | Elastic IP address associated with the VM&#39;s primary interface. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FirstSeen** | Pointer to **int64** | The timestamp when the VM was first seen in the system. | [optional] [readonly] 
 **Hostname** | Pointer to **string** | Hostname part of the FQDN for the address associated with the VM&#39;s primary interface. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique ID associated with the VM. This is set only when the VM is first created. | [optional] [readonly] 
@@ -174,30 +174,30 @@ SetElasticIpAddress sets ElasticIpAddress field to given value.
 
 HasElasticIpAddress returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetGridCloudapiVmResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetGridCloudapiVmResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetGridCloudapiVmResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetGridCloudapiVmResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetGridCloudapiVmResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetGridCloudapiVmResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetGridCloudapiVmResponse) HasExtattrs() bool`
+`func (o *GetGridCloudapiVmResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFirstSeen
 

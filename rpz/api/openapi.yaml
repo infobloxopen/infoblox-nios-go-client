@@ -359,8 +359,8 @@ paths:
       summary: Create a record:rpz:a object
       tags:
       - RecordRpzA
-      x-tf-resource: nios_rpz_record_rpz_a
-      x-tf-datasource: nios_rpz_record_rpz_a
+      x-tf-resource: rpz_record_rpz_a
+      x-tf-datasource: rpz_record_rpz_a
       x-sdk-default-ext-attrs: true
   /record:rpz:a/{reference}:
     delete:
@@ -674,8 +674,8 @@ paths:
       summary: Create a record:rpz:aaaa object
       tags:
       - RecordRpzAaaa
-      x-tf-resource: nios_rpz_record_rpz_aaaa
-      x-tf-datasource: nios_rpz_record_rpz_aaaa
+      x-tf-resource: rpz_record_rpz_aaaa
+      x-tf-datasource: rpz_record_rpz_aaaa
       x-sdk-default-ext-attrs: true
   /record:rpz:aaaa/{reference}:
     delete:
@@ -990,8 +990,8 @@ paths:
       summary: Create a record:rpz:cname object
       tags:
       - RecordRpzCname
-      x-tf-resource: nios_rpz_record_rpz_cname
-      x-tf-datasource: nios_rpz_record_rpz_cname
+      x-tf-resource: rpz_record_rpz_cname
+      x-tf-datasource: rpz_record_rpz_cname
       x-sdk-default-ext-attrs: true
   /record:rpz:cname/{reference}:
     delete:
@@ -1305,8 +1305,8 @@ paths:
       summary: Create a record:rpz:mx object
       tags:
       - RecordRpzMx
-      x-tf-resource: nios_rpz_record_rpz_mx
-      x-tf-datasource: nios_rpz_record_rpz_mx
+      x-tf-resource: rpz_record_rpz_mx
+      x-tf-datasource: rpz_record_rpz_mx
       x-sdk-default-ext-attrs: true
   /record:rpz:mx/{reference}:
     delete:
@@ -1621,8 +1621,8 @@ paths:
       summary: Create a record:rpz:naptr object
       tags:
       - RecordRpzNaptr
-      x-tf-resource: nios_rpz_record_rpz_naptr
-      x-tf-datasource: nios_rpz_record_rpz_naptr
+      x-tf-resource: rpz_record_rpz_naptr
+      x-tf-datasource: rpz_record_rpz_naptr
       x-sdk-default-ext-attrs: true
   /record:rpz:naptr/{reference}:
     delete:
@@ -1936,8 +1936,8 @@ paths:
       summary: Create a record:rpz:ptr object
       tags:
       - RecordRpzPtr
-      x-tf-resource: nios_rpz_record_rpz_ptr
-      x-tf-datasource: nios_rpz_record_rpz_ptr
+      x-tf-resource: rpz_record_rpz_ptr
+      x-tf-datasource: rpz_record_rpz_ptr
       x-sdk-default-ext-attrs: true
   /record:rpz:ptr/{reference}:
     delete:
@@ -2251,8 +2251,8 @@ paths:
       summary: Create a record:rpz:srv object
       tags:
       - RecordRpzSrv
-      x-tf-resource: nios_rpz_record_rpz_srv
-      x-tf-datasource: nios_rpz_record_rpz_srv
+      x-tf-resource: rpz_record_rpz_srv
+      x-tf-datasource: rpz_record_rpz_srv
       x-sdk-default-ext-attrs: true
   /record:rpz:srv/{reference}:
     delete:
@@ -2566,8 +2566,8 @@ paths:
       summary: Create a record:rpz:txt object
       tags:
       - RecordRpzTxt
-      x-tf-resource: nios_rpz_record_rpz_txt
-      x-tf-datasource: nios_rpz_record_rpz_txt
+      x-tf-resource: rpz_record_rpz_txt
+      x-tf-datasource: rpz_record_rpz_txt
       x-sdk-default-ext-attrs: true
   /record:rpz:txt/{reference}:
     delete:
@@ -2882,8 +2882,8 @@ paths:
       summary: Create a record:rpz:a:ipaddress object
       tags:
       - RecordRpzAIpaddress
-      x-tf-resource: nios_rpz_record_rpz_a_ipaddress
-      x-tf-datasource: nios_rpz_record_rpz_a_ipaddress
+      x-tf-resource: rpz_record_rpz_a_ipaddress
+      x-tf-datasource: rpz_record_rpz_a_ipaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:a:ipaddress/{reference}:
     delete:
@@ -3198,8 +3198,8 @@ paths:
       summary: Create a record:rpz:aaaa:ipaddress object
       tags:
       - RecordRpzAaaaIpaddress
-      x-tf-resource: nios_rpz_record_rpz_aaaa_ipaddress
-      x-tf-datasource: nios_rpz_record_rpz_aaaa_ipaddress
+      x-tf-resource: rpz_record_rpz_aaaa_ipaddress
+      x-tf-datasource: rpz_record_rpz_aaaa_ipaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:aaaa:ipaddress/{reference}:
     delete:
@@ -3514,8 +3514,8 @@ paths:
       summary: Create a record:rpz:cname:ipaddress object
       tags:
       - RecordRpzCnameIpaddress
-      x-tf-resource: nios_rpz_record_rpz_cname_ipaddress
-      x-tf-datasource: nios_rpz_record_rpz_cname_ipaddress
+      x-tf-resource: rpz_record_rpz_cname_ipaddress
+      x-tf-datasource: rpz_record_rpz_cname_ipaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:ipaddress/{reference}:
     delete:
@@ -3830,8 +3830,8 @@ paths:
       summary: Create a record:rpz:cname:ipaddressdn object
       tags:
       - RecordRpzCnameIpaddressdn
-      x-tf-resource: nios_rpz_record_rpz_cname_ipaddressdn
-      x-tf-datasource: nios_rpz_record_rpz_cname_ipaddressdn
+      x-tf-resource: rpz_record_rpz_cname_ipaddressdn
+      x-tf-datasource: rpz_record_rpz_cname_ipaddressdn
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:ipaddressdn/{reference}:
     delete:
@@ -4146,8 +4146,8 @@ paths:
       summary: Create a record:rpz:cname:clientipaddress object
       tags:
       - RecordRpzCnameClientipaddress
-      x-tf-resource: nios_rpz_record_rpz_cname_clientipaddress
-      x-tf-datasource: nios_rpz_record_rpz_cname_clientipaddress
+      x-tf-resource: rpz_record_rpz_cname_clientipaddress
+      x-tf-datasource: rpz_record_rpz_cname_clientipaddress
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:clientipaddress/{reference}:
     delete:
@@ -4462,8 +4462,8 @@ paths:
       summary: Create a record:rpz:cname:clientipaddressdn object
       tags:
       - RecordRpzCnameClientipaddressdn
-      x-tf-resource: nios_rpz_record_rpz_cname_clientipaddressdn
-      x-tf-datasource: nios_rpz_record_rpz_cname_clientipaddressdn
+      x-tf-resource: rpz_record_rpz_cname_clientipaddressdn
+      x-tf-datasource: rpz_record_rpz_cname_clientipaddressdn
       x-sdk-default-ext-attrs: true
   /record:rpz:cname:clientipaddressdn/{reference}:
     delete:

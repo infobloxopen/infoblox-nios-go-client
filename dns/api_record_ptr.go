@@ -198,12 +198,12 @@ func (a *RecordPtrAPIService) CreateExecute(r RecordPtrAPICreateRequest) (*Creat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordPtr != nil {
-		if r.recordPtr.Extattrs == nil {
-			r.recordPtr.Extattrs = &map[string]ExtAttrs{}
+		if r.recordPtr.ExtAttrs == nil {
+			r.recordPtr.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordPtr.Extattrs)[k]; !ok {
-				(*r.recordPtr.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordPtr.ExtAttrs)[k]; !ok {
+				(*r.recordPtr.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -790,12 +790,12 @@ func (a *RecordPtrAPIService) UpdateExecute(r RecordPtrAPIUpdateRequest) (*Updat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordPtr != nil {
-		if r.recordPtr.Extattrs == nil {
-			r.recordPtr.Extattrs = &map[string]ExtAttrs{}
+		if r.recordPtr.ExtAttrs == nil {
+			r.recordPtr.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordPtr.Extattrs)[k]; !ok {
-				(*r.recordPtr.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordPtr.ExtAttrs)[k]; !ok {
+				(*r.recordPtr.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -198,12 +198,12 @@ func (a *FilternacAPIService) CreateExecute(r FilternacAPICreateRequest) (*Creat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filternac != nil {
-		if r.filternac.Extattrs == nil {
-			r.filternac.Extattrs = &map[string]ExtAttrs{}
+		if r.filternac.ExtAttrs == nil {
+			r.filternac.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.filternac.Extattrs)[k]; !ok {
-				(*r.filternac.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.filternac.ExtAttrs)[k]; !ok {
+				(*r.filternac.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *FilternacAPIService) UpdateExecute(r FilternacAPIUpdateRequest) (*Updat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filternac != nil {
-		if r.filternac.Extattrs == nil {
-			r.filternac.Extattrs = &map[string]ExtAttrs{}
+		if r.filternac.ExtAttrs == nil {
+			r.filternac.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.filternac.Extattrs)[k]; !ok {
-				(*r.filternac.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.filternac.ExtAttrs)[k]; !ok {
+				(*r.filternac.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

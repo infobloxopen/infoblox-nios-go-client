@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **Comment** | Pointer to **string** | Comment for the Restart Group; maximum 256 characters. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **IsDefault** | Pointer to **bool** | Determines if this Restart Group is the default group. | [optional] [readonly] 
 **LastUpdatedTime** | Pointer to **int64** | The timestamp when the status of the latest request has changed. | [optional] [readonly] 
 **Members** | Pointer to **[]string** | The list of members belonging to the group. | [optional] 
@@ -88,30 +88,30 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetGridServicerestartGroupResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetGridServicerestartGroupResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetGridServicerestartGroupResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetGridServicerestartGroupResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetGridServicerestartGroupResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetGridServicerestartGroupResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetGridServicerestartGroupResponse) HasExtattrs() bool`
+`func (o *GetGridServicerestartGroupResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetIsDefault
 

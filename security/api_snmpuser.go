@@ -198,12 +198,12 @@ func (a *SnmpuserAPIService) CreateExecute(r SnmpuserAPICreateRequest) (*CreateS
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.snmpuser != nil {
-		if r.snmpuser.Extattrs == nil {
-			r.snmpuser.Extattrs = &map[string]ExtAttrs{}
+		if r.snmpuser.ExtAttrs == nil {
+			r.snmpuser.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.snmpuser.Extattrs)[k]; !ok {
-				(*r.snmpuser.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.snmpuser.ExtAttrs)[k]; !ok {
+				(*r.snmpuser.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *SnmpuserAPIService) UpdateExecute(r SnmpuserAPIUpdateRequest) (*UpdateS
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.snmpuser != nil {
-		if r.snmpuser.Extattrs == nil {
-			r.snmpuser.Extattrs = &map[string]ExtAttrs{}
+		if r.snmpuser.ExtAttrs == nil {
+			r.snmpuser.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.snmpuser.Extattrs)[k]; !ok {
-				(*r.snmpuser.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.snmpuser.ExtAttrs)[k]; !ok {
+				(*r.snmpuser.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
